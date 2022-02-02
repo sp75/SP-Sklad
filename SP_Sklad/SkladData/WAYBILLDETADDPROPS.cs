@@ -24,6 +24,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> CardId { get; set; }
         public string Notes { get; set; }
         public Nullable<int> WbMaked { get; set; }
+        public string BarCode { get; set; }
     
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual WaybillList WaybillList { get; set; }

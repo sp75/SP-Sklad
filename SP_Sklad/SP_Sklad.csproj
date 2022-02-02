@@ -406,6 +406,12 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\RetailUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\RetailUserControl.Designer.cs">
+      <DependentUpon>RetailUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\XtraRep\DocListReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -762,6 +768,9 @@
     <Compile Include="SkladData\v_Actives.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_BarCodes.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -772,6 +781,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_ErrorLog.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_GetRetailTree.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_IntermediateWeighing.cs">
@@ -1607,6 +1619,12 @@
     <Compile Include="WBForm\frmWayBillMove.Designer.cs">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWBSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBSales.Designer.cs">
+      <DependentUpon>frmWBSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillOut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1741,6 +1759,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\RetailUserControl.resx">
+      <DependentUpon>RetailUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
@@ -1968,6 +1989,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillMove.resx">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBSales.resx">
+      <DependentUpon>frmWBSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
@@ -2237,6 +2261,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="BMP\PNG\finance32.png" />
+    <None Include="BMP\1\currencyexchange.png" />
     <Content Include="main_ico.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>

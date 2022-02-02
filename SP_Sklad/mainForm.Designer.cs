@@ -88,6 +88,8 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.retailUserControl1 = new SP_Sklad.MainTabs.RetailUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -106,6 +108,7 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            this.xtraTabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
@@ -739,11 +742,30 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
+            this.xtraTabPage8,
             this.xtraTabPage4,
             this.xtraTabPage5,
             this.xtraTabPage6,
             this.xtraTabPage7});
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
+            // 
+            // xtraTabPage8
+            // 
+            this.xtraTabPage8.Controls.Add(this.retailUserControl1);
+            this.xtraTabPage8.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
+            this.xtraTabPage8.Name = "xtraTabPage8";
+            this.xtraTabPage8.Size = new System.Drawing.Size(1182, 572);
+            this.xtraTabPage8.TabPageWidth = 100;
+            this.xtraTabPage8.Text = "Продажі";
+            // 
+            // retailUserControl1
+            // 
+            this.retailUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.retailUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.retailUserControl1.Name = "retailUserControl1";
+            this.retailUserControl1.set_tree_node = null;
+            this.retailUserControl1.Size = new System.Drawing.Size(1182, 572);
+            this.retailUserControl1.TabIndex = 0;
             // 
             // UserTreeImgList
             // 
@@ -816,6 +838,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm
@@ -853,6 +877,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            this.xtraTabPage8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
@@ -921,6 +946,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
+        private MainTabs.RetailUserControl retailUserControl1;
     }
 }
 

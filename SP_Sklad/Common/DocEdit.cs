@@ -99,7 +99,15 @@ namespace SP_Sklad.Common
                                wb_re_out.ShowDialog();
                            }
                        }
-                   }
+
+                    if (dr.WType == -25)
+                    {
+                        using (var wbs_out = new frmWBSales(dr.WType, wb.WbillId))
+                        {
+                            wbs_out.ShowDialog();
+                        }
+                    }
+                }
 
                    catch (EntityCommandExecutionException exception)
                    {

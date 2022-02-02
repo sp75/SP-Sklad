@@ -411,5 +411,10 @@ namespace SP_Sklad.WBForm
             InventoryDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             NumEdit.Enabled = user_settings.AccessEditDocNum;
         }
+
+        private void NowDateBtn_Click(object sender, EventArgs e)
+        {
+            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+        }
     }
 }

@@ -1401,6 +1401,7 @@
           <Property Name="CardId" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="WbMaked" Type="int" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="WayBillDetTaxes">
           <Key>
@@ -1634,7 +1635,7 @@ warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
           <Property Name="Produced" Type="nvarchar" MaxLength="255" />
-          <Property Name="NDS" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Serials" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
@@ -1686,6 +1687,15 @@ warning 6002: The table/view 'sp_base.dbo.v_Actives' does not have a primary key
           <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
           <Property Name="CashLess" Type="numeric" Precision="38" Scale="2" />
           <Property Name="Active" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_BarCodes">
+          <Key>
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1779,6 +1789,35 @@ warning 6002: The table/view 'sp_base.dbo.v_ErrorLog' does not have a primary ke
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_GetDocsTree">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="IsGroup" />
+            <PropertyRef Name="ShowExpanded" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FunId" Type="int" />
+          <Property Name="PId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="ImageIndex" Type="int" />
+          <Property Name="IsGroup" Type="int" Nullable="false" />
+          <Property Name="ShowInTree" Type="int" />
+          <Property Name="GType" Type="int" />
+          <Property Name="DisabledIndex" Type="int" />
+          <Property Name="ShowExpanded" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="CanView" Type="int" />
+          <Property Name="CanInsert" Type="int" />
+          <Property Name="CanModify" Type="int" />
+          <Property Name="CanDelete" Type="int" />
+          <Property Name="CanPost" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="WType" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_GetRetailTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_GetRetailTree">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="PId" />
@@ -6809,6 +6848,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Actives].[Active] AS [Active]
     FROM [dbo].[v_Actives] AS [v_Actives]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_BarCodes].[MatId] AS [MatId], 
+    [v_BarCodes].[BarCode] AS [BarCode]
+    FROM [dbo].[v_BarCodes] AS [v_BarCodes]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="Self.v_DiscCards" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_DiscCards].[CardId] AS [CardId], 
@@ -6896,6 +6941,28 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_GetDocsTree].[UserId] AS [UserId], 
     [v_GetDocsTree].[WType] AS [WType]
     FROM [dbo].[v_GetDocsTree] AS [v_GetDocsTree]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_GetRetailTree" EntityType="Self.v_GetRetailTree" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_GetRetailTree].[Id] AS [Id], 
+    [v_GetRetailTree].[FunId] AS [FunId], 
+    [v_GetRetailTree].[PId] AS [PId], 
+    [v_GetRetailTree].[Num] AS [Num], 
+    [v_GetRetailTree].[ImageIndex] AS [ImageIndex], 
+    [v_GetRetailTree].[IsGroup] AS [IsGroup], 
+    [v_GetRetailTree].[ShowInTree] AS [ShowInTree], 
+    [v_GetRetailTree].[GType] AS [GType], 
+    [v_GetRetailTree].[DisabledIndex] AS [DisabledIndex], 
+    [v_GetRetailTree].[ShowExpanded] AS [ShowExpanded], 
+    [v_GetRetailTree].[Name] AS [Name], 
+    [v_GetRetailTree].[CanView] AS [CanView], 
+    [v_GetRetailTree].[CanInsert] AS [CanInsert], 
+    [v_GetRetailTree].[CanModify] AS [CanModify], 
+    [v_GetRetailTree].[CanDelete] AS [CanDelete], 
+    [v_GetRetailTree].[CanPost] AS [CanPost], 
+    [v_GetRetailTree].[UserId] AS [UserId], 
+    [v_GetRetailTree].[WType] AS [WType]
+    FROM [dbo].[v_GetRetailTree] AS [v_GetRetailTree]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_IntermediateWeighing" EntityType="Self.v_IntermediateWeighing" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -9534,6 +9601,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetUserAccessMatGroup" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessMatGroup_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_BarCodes" EntityType="BaseModel.v_BarCodes" />
+          <EntitySet Name="v_GetRetailTree" EntityType="BaseModel.v_GetRetailTree" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10964,7 +11033,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="Num" Type="Int32" />
           <Property Name="Produced" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NDS" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="NDS" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="Serials" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -11455,6 +11524,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WBDAP_POSID" FromRole="WayBillDetAddProps" ToRole="WaybillDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLDETADDPROPS_WBILLID" FromRole="WayBillDetAddProps" ToRole="WaybillList" />
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_WBDAP_CARDID" FromRole="WayBillDetAddProps" ToRole="DiscCards" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_PriceTypes">
           <Key>
@@ -15927,6 +15997,40 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
+        <EntityType Name="v_BarCodes">
+          <Key>
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_GetRetailTree">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="IsGroup" />
+            <PropertyRef Name="ShowExpanded" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FunId" Type="Int32" />
+          <Property Name="PId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="ImageIndex" Type="Int32" />
+          <Property Name="IsGroup" Type="Int32" Nullable="false" />
+          <Property Name="ShowInTree" Type="Int32" />
+          <Property Name="GType" Type="Int32" />
+          <Property Name="DisabledIndex" Type="Int32" />
+          <Property Name="ShowExpanded" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CanView" Type="Int32" />
+          <Property Name="CanInsert" Type="Int32" />
+          <Property Name="CanModify" Type="Int32" />
+          <Property Name="CanDelete" Type="Int32" />
+          <Property Name="CanPost" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="WType" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -17349,6 +17453,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WayBillDetAddProps">
             <EntityTypeMapping TypeName="BaseModel.WayBillDetAddProps">
               <MappingFragment StoreEntitySet="WayBillDetAddProps">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="WbMaked" ColumnName="WbMaked" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="CardId" ColumnName="CardId" />
@@ -20154,6 +20259,38 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="v_BarCodes">
+            <EntityTypeMapping TypeName="BaseModel.v_BarCodes">
+              <MappingFragment StoreEntitySet="v_BarCodes">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_GetRetailTree">
+            <EntityTypeMapping TypeName="BaseModel.v_GetRetailTree">
+              <MappingFragment StoreEntitySet="v_GetRetailTree">
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CanPost" ColumnName="CanPost" />
+                <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+                <ScalarProperty Name="CanModify" ColumnName="CanModify" />
+                <ScalarProperty Name="CanInsert" ColumnName="CanInsert" />
+                <ScalarProperty Name="CanView" ColumnName="CanView" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShowExpanded" ColumnName="ShowExpanded" />
+                <ScalarProperty Name="DisabledIndex" ColumnName="DisabledIndex" />
+                <ScalarProperty Name="GType" ColumnName="GType" />
+                <ScalarProperty Name="ShowInTree" ColumnName="ShowInTree" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

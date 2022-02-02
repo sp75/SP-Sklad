@@ -46,6 +46,10 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -140,6 +144,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.WarehouseEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -210,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WarehouseEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).BeginInit();
@@ -1246,6 +1253,8 @@
             // 
             // xtraTabPage8
             // 
+            this.xtraTabPage8.Controls.Add(this.WarehouseEdit);
+            this.xtraTabPage8.Controls.Add(this.labelControl8);
             this.xtraTabPage8.Controls.Add(this.labelControl5);
             this.xtraTabPage8.Controls.Add(this.CashEditComboBox);
             this.xtraTabPage8.Controls.Add(this.AccountEdit);
@@ -1257,6 +1266,34 @@
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(635, 380);
             this.xtraTabPage8.Text = "РМК";
+            // 
+            // WarehouseEdit
+            // 
+            this.WarehouseEdit.Location = new System.Drawing.Point(15, 304);
+            this.WarehouseEdit.Name = "WarehouseEdit";
+            this.WarehouseEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("WarehouseEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            this.WarehouseEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WarehouseEdit.Properties.DisplayMember = "Name";
+            this.WarehouseEdit.Properties.ShowFooter = false;
+            this.WarehouseEdit.Properties.ShowHeader = false;
+            this.WarehouseEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.WarehouseEdit.Properties.ValueMember = "WId";
+            this.WarehouseEdit.Size = new System.Drawing.Size(386, 22);
+            this.WarehouseEdit.StyleController = this.styleController1;
+            this.WarehouseEdit.TabIndex = 82;
+            this.WarehouseEdit.EditValueChanged += new System.EventHandler(this.WarehouseEdit_EditValueChanged);
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl8.Location = new System.Drawing.Point(15, 282);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(40, 16);
+            this.labelControl8.TabIndex = 81;
+            this.labelControl8.Text = "Склад:";
             // 
             // labelControl5
             // 
@@ -1277,7 +1314,7 @@
             this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
             this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CashEditComboBox.Properties.DisplayMember = "Name";
@@ -1300,7 +1337,7 @@
             this.AccountEdit.Properties.Appearance.Options.UseFont = true;
             this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AccountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AccountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, true)});
             this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
@@ -1332,7 +1369,7 @@
             this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
             this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("ChargeTypesEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("ChargeTypesEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, true)});
             this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.ChargeTypesEdit.Properties.DisplayMember = "Name";
@@ -1360,7 +1397,7 @@
             this.KagentComboBox.Name = "KagentComboBox";
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("KagentComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("KagentComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, true)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
@@ -1378,10 +1415,10 @@
             // 
             this.labelControl64.Location = new System.Drawing.Point(15, 19);
             this.labelControl64.Name = "labelControl64";
-            this.labelControl64.Size = new System.Drawing.Size(167, 16);
+            this.labelControl64.Size = new System.Drawing.Size(85, 16);
             this.labelControl64.StyleController = this.styleController1;
             this.labelControl64.TabIndex = 57;
-            this.labelControl64.Text = "Покупець за замовчуванням";
+            this.labelControl64.Text = "Торгова точка";
             // 
             // xtraTabPage6
             // 
@@ -1521,6 +1558,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WarehouseEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).EndInit();
@@ -1646,5 +1684,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
+        private DevExpress.XtraEditors.LookUpEdit WarehouseEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
     }
 }

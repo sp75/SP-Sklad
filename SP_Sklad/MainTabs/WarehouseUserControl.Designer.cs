@@ -2133,7 +2133,7 @@
             this.gridColumn46.OptionsColumn.AllowEdit = false;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 1;
-            this.gridColumn46.Width = 88;
+            this.gridColumn46.Width = 99;
             // 
             // gridColumn47
             // 
@@ -2143,7 +2143,7 @@
             this.gridColumn47.OptionsColumn.AllowEdit = false;
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 2;
-            this.gridColumn47.Width = 191;
+            this.gridColumn47.Width = 215;
             // 
             // gridColumn48
             // 
@@ -2153,7 +2153,7 @@
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 4;
-            this.gridColumn48.Width = 125;
+            this.gridColumn48.Width = 141;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -2170,7 +2170,7 @@
             this.gridColumn49.Name = "gridColumn49";
             this.gridColumn49.Visible = true;
             this.gridColumn49.VisibleIndex = 3;
-            this.gridColumn49.Width = 89;
+            this.gridColumn49.Width = 100;
             // 
             // MatListGridColumnWh
             // 
@@ -2180,7 +2180,7 @@
             this.MatListGridColumnWh.Name = "MatListGridColumnWh";
             this.MatListGridColumnWh.Visible = true;
             this.MatListGridColumnWh.VisibleIndex = 5;
-            this.MatListGridColumnWh.Width = 279;
+            this.MatListGridColumnWh.Width = 315;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -2204,7 +2204,7 @@
             this.gridColumn51.Name = "gridColumn51";
             this.gridColumn51.Visible = true;
             this.gridColumn51.VisibleIndex = 6;
-            this.gridColumn51.Width = 91;
+            this.gridColumn51.Width = 102;
             // 
             // gridColumn52
             // 
@@ -2214,7 +2214,7 @@
             this.gridColumn52.Name = "gridColumn52";
             this.gridColumn52.Visible = true;
             this.gridColumn52.VisibleIndex = 7;
-            this.gridColumn52.Width = 252;
+            this.gridColumn52.Width = 191;
             // 
             // repositoryItemLookUpEdit2
             // 

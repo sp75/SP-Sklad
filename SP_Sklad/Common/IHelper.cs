@@ -92,29 +92,29 @@ namespace SP_Sklad.Common
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                foreach (var item in f.uc.custom_mat_list.OrderBy(o=> o.Num).ToList())
+                foreach (var item in f.uc.custom_mat_list.OrderBy(o => o.Num).ToList())
                 {
                     var price = (item.Price ?? 0);
 
                     var wbd = db.WaybillDet.Add(new WaybillDet
-                      {
-                          WbillId = wb.WbillId,
-                          Num = wb.WaybillDet.Count(),
-                          MatId = item.MatId,
-                          WId = item.WId,
-                          Amount = item.Amount,
-                          Price = price,
-                          Discount = 0,
-                          Nds = wb.Nds,
-                          CurrId = wb.CurrId,
-                          OnDate = wb.OnDate,
-                          OnValue = wb.OnValue,
-                          BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
-                          PosKind = 0,
-                          PosParent = 0,
-                          DiscountKind = 0
+                    {
+                        WbillId = wb.WbillId,
+                        Num = wb.WaybillDet.Count(),
+                        MatId = item.MatId,
+                        WId = item.WId,
+                        Amount = item.Amount,
+                        Price = price,
+                        Discount = 0,
+                        Nds = wb.Nds,
+                        CurrId = wb.CurrId,
+                        OnDate = wb.OnDate,
+                        OnValue = wb.OnValue,
+                        BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
+                        PosKind = 0,
+                        PosParent = 0,
+                        DiscountKind = 0
 
-                      });
+                    });
 
                     if (wb.WType == -16)
                     {
@@ -124,6 +124,14 @@ namespace SP_Sklad.Common
                         wbd.BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2);
                     }
                     db.SaveChanges();
+
+
+                    var wbdp = new WayBillDetAddProps
+                    {
+                        PosId = wbd.PosId,
+                        BarCode = item.BarCode
+                    };
+                    db.WayBillDetAddProps.Add(wbdp);
 
                     if (wb.WType == 16)
                     {
@@ -186,7 +194,7 @@ namespace SP_Sklad.Common
                     db.WaybillDet.Add(wbd);
                     db.SaveChanges();
 
-                    if(wb.WType == 16)
+                    if (wb.WType == 16)
                     {
                         db.WMatTurn.Add(new WMatTurn()
                         {
@@ -923,6 +931,7 @@ namespace SP_Sklad.Common
         public decimal Amount { get; set; }
         public decimal? Price { get; set; }
         public int WId { get; set; }
+        public string BarCode { get; set; }
     }
 
     public class CatalogTreeList

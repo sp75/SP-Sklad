@@ -187,6 +187,8 @@ namespace SP_Sklad.SkladData
         public DbSet<Cars> Cars { get; set; }
         public DbSet<WeighingScales> WeighingScales { get; set; }
         public DbSet<UserAccessMatGroup> UserAccessMatGroup { get; set; }
+        public DbSet<v_BarCodes> v_BarCodes { get; set; }
+        public DbSet<v_GetRetailTree> v_GetRetailTree { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

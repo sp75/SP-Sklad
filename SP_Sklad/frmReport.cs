@@ -353,7 +353,25 @@ namespace SP_Sklad
                     this.KontragentPanel.Visible = false;
                     this.CarPanel.Visible = true;
                     this.StatusPanel.Visible = true;
+                    break;
 
+                case 47:
+                    this.OutDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    break;
+
+                case 48:
+                    this.OnDateGroupBox.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    this.PeriodGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
                     break;
             }
         }

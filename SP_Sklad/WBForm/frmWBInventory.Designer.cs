@@ -580,6 +580,7 @@
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
             this.NowDateBtn.TabIndex = 10;
+            this.NowDateBtn.Click += new System.EventHandler(this.NowDateBtn_Click);
             // 
             // AttLabel
             // 
@@ -640,8 +641,8 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true));
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
+            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.OnDateDBEdit.EditValue = null;
             this.OnDateDBEdit.Location = new System.Drawing.Point(324, 41);
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

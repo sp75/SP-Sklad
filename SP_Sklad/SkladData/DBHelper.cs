@@ -19,6 +19,7 @@ namespace SP_Sklad.SkladData
         private static List<ChargeType> _charge_type;
         private static LoginUser _current_user;
         private static List<KagentList> _kagents;
+        private static List<KagentList> _retail_outlets;
         private static List<Currency> _currency;
         private static Enterprise _enterprise;
         private static List<Enterprise> _enterprise_list;
@@ -139,6 +140,31 @@ namespace SP_Sklad.SkladData
         {
             _kagents = null;
         }
+
+        public static List<KagentList> RetailOutlets
+        {
+            get
+            {
+                if (_retail_outlets == null)
+                {
+                    //_kagents = new BaseEntities().KagentList.ToList();
+                    using (var _db = DB.SkladBase())
+                    {
+                        var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+
+                        _retail_outlets = (from k in _db.KagentList
+                                           join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                                           from subfg in gj.DefaultIfEmpty()
+                                           where k.KaKind == 5 && (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && (k.Archived == 0 || k.Archived == null) && k.Deleted == 0
+                                           select k
+                                 ).Distinct().ToList();
+                    }
+                }
+                return _retail_outlets;
+            }
+        }
+
+
 
         public static IEnumerable<Kontragent> KagentsList
         {
@@ -302,6 +328,16 @@ namespace SP_Sklad.SkladData
                 _wh_list = value;
             }
 
+        }
+
+        public static List<WhList> GetWhList(int UserId, BaseEntities _db)
+        {
+            return _wh_list = _db.Warehouse.Where(w => w.Deleted == 0 && w.UserAccessWh.Any(u => u.UserId == UserId)).Select(s => new WhList
+            {
+                WId = s.WId,
+                Name = s.Name,
+                Def = s.Def
+            }).ToList();
         }
 
         public static List<Packaging> Packaging

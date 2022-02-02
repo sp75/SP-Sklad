@@ -176,7 +176,8 @@ namespace SP.Base.Models
         public virtual DbSet<v_WorkDate> v_WorkDate { get; set; }
 
         public virtual DbSet<REP_1_Result> REP_1_Result { get; set; }
-      
+        public virtual DbSet<REP_47_Result> REP_47_Result { get; set; }
+
         public virtual DbSet<REP_2_Result> REP_2_Result { get; set; }
         public virtual DbSet<Tara> Tara { get; set; }
         public virtual DbSet<TaraGroup> TaraGroup { get; set; }
@@ -195,6 +196,18 @@ namespace SP.Base.Models
             var user_idParameter = user_id.HasValue ? new ObjectParameter("user_id", user_id) : new ObjectParameter("user_id", typeof(int));
 
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_1_Result>("REP_1", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter);
+        }
+
+        public virtual ObjectResult<REP_47_Result> REP_47(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, int? user_id)
+        {
+            var from_dateParameter = new ObjectParameter("from_date", from_date);
+            var to_dateParameter = new ObjectParameter("to_date", to_date);
+            var grp_idParameter = grp_id.HasValue ? new ObjectParameter("grp_id", grp_id) : new ObjectParameter("grp_id", typeof(int));
+            var ka_idParameter = ka_id.HasValue ? new ObjectParameter("ka_id", ka_id) : new ObjectParameter("ka_id", typeof(int));
+            var whParameter = wh != null ? new ObjectParameter("wh", wh) : new ObjectParameter("wh", typeof(string));
+            var user_idParameter = user_id.HasValue ? new ObjectParameter("user_id", user_id) : new ObjectParameter("user_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REP_47_Result>("REP_47", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter,  user_idParameter);
         }
 
         public virtual ObjectResult<REP_2_Result> REP_2(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? wb_status, int? user_id)

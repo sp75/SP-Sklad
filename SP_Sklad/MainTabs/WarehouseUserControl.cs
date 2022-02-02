@@ -533,12 +533,20 @@ namespace SP_Sklad.MainTabs
                 var pos = WhMatGetBS.IndexOf(row);
                 WhMatGetBS.Position = pos;
 
-                /*  if (row == null)
-                  {
-                      MessageBox.Show("Товар не знайдено !");
-                      BarCodeEdit.Text = "";
-                      return;
-                  }*/
+                if (row == null)
+                {
+                    using (var db = new BaseEntities())
+                    {
+                        var bc = db.v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
+                        if (bc != null)
+                        {
+                            row = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.MatId == bc.MatId);
+                            pos = WhMatGetBS.IndexOf(row);
+                            WhMatGetBS.Position = pos;
+                        }
+                    }
+                }
+
                 if (MatListTabPage.PageVisible)
                 {
                     if (row != null)

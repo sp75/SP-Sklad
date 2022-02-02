@@ -254,8 +254,17 @@ namespace SP_Sklad.WBForm
                     }
                     else
                     {
-                        textBox1.Text = "Товар не знайдено!";
+                        var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == BarCodeStr);
+                        if (bc != null)
+                        {
+                            AddMat(bc.MatId);
+                        }
+                        else
+                        {
+                            textBox1.Text = "Товар не знайдено!";
+                        }
                     }
+
 
                     BarCodeStr = "";
                 }
@@ -657,7 +666,7 @@ namespace SP_Sklad.WBForm
         {
             Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
         }
-             
+
         private void simpleButton11_Click_1(object sender, EventArgs e)
         {
             _rawinput.KeyPressed -= OnKeyPressed;
@@ -671,6 +680,14 @@ namespace SP_Sklad.WBForm
                     if (mat != null)
                     {
                         AddMat(mat.MatId);
+                    }
+                    else
+                    {
+                        var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
+                        if (bc != null)
+                        {
+                            AddMat(bc.MatId);
+                        }
                     }
                 }
             }

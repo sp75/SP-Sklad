@@ -882,7 +882,8 @@ namespace SP_Sklad.MainTabs
                 Name = row.Name,
                 Amount = 1,
                 Price = GetPrice(row.MatId, wb),
-                WId = row.WId != null ? row.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId
+                WId = row.WId != null ? row.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
+                BarCode = BarCodeEdit.Text
             });
 
             MatListGridView.RefreshData();

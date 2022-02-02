@@ -88,7 +88,7 @@ namespace SP_Sklad.WBDetForm
                 WaybillDetBS.DataSource = _wbd;
                 WHComboBox.EditValue = wid;
 
-                   wbdp = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                wbdp = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
                 if (wbdp == null)
                 {
                     wbdp = new WayBillDetAddProps();
@@ -106,12 +106,12 @@ namespace SP_Sklad.WBDetForm
 
                 MatComboBox.Enabled = (wbdp == null || wbdp.WbMaked == null);
                 MatEditBtn.Enabled = MatComboBox.Enabled;
-             //   AmountEdit.Enabled = (MatComboBox.Enabled  );
+                //   AmountEdit.Enabled = (MatComboBox.Enabled  );
                 ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
 
                 CurrencyBS.DataSource = _db.Currency.Where(w => w.CurrId == _wb.CurrId).FirstOrDefault();
 
-              
+
             }
             else
             {

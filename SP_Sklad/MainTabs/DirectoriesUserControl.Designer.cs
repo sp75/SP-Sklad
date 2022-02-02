@@ -368,6 +368,7 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -2352,7 +2353,8 @@
             this.gridColumn41,
             this.gridColumn42,
             this.gridColumn44,
-            this.gridColumn37});
+            this.gridColumn37,
+            this.gridColumn74});
             this.MatListGridView.GridControl = this.MatListGridControl;
             this.MatListGridView.Name = "MatListGridView";
             this.MatListGridView.OptionsView.ShowGroupPanel = false;
@@ -2365,7 +2367,7 @@
             this.gridColumn40.OptionsColumn.AllowEdit = false;
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 0;
-            this.gridColumn40.Width = 71;
+            this.gridColumn40.Width = 98;
             // 
             // gridColumn41
             // 
@@ -2375,7 +2377,7 @@
             this.gridColumn41.OptionsColumn.AllowEdit = false;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 1;
-            this.gridColumn41.Width = 151;
+            this.gridColumn41.Width = 209;
             // 
             // gridColumn42
             // 
@@ -2385,7 +2387,7 @@
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
             this.gridColumn42.VisibleIndex = 3;
-            this.gridColumn42.Width = 89;
+            this.gridColumn42.Width = 123;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -2402,7 +2404,7 @@
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 2;
-            this.gridColumn44.Width = 72;
+            this.gridColumn44.Width = 99;
             // 
             // gridColumn37
             // 
@@ -2412,7 +2414,7 @@
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 4;
-            this.gridColumn37.Width = 307;
+            this.gridColumn37.Width = 290;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -3888,6 +3890,15 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
+            // gridColumn74
+            // 
+            this.gridColumn74.Caption = "Штрих код";
+            this.gridColumn74.FieldName = "BarCode";
+            this.gridColumn74.Name = "gridColumn74";
+            this.gridColumn74.Visible = true;
+            this.gridColumn74.VisibleIndex = 5;
+            this.gridColumn74.Width = 243;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4403,5 +4414,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn92;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
     }
 }

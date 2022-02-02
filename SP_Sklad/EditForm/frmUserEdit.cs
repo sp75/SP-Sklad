@@ -119,8 +119,10 @@ namespace SP_Sklad.EditForm
             }).ToList();
 
             AccountEdit.EditValue = user_settings.AccountDefaultRMK;
+ 
 
-
+          //  WarehouseEdit.Properties.DataSource = DBHelper.GetWhList(_user_id.Value, _db);
+            WarehouseEdit.EditValue = user_settings.WarehouseDefaultRMK;
 
             ValidateForm();
         }
@@ -136,6 +138,7 @@ namespace SP_Sklad.EditForm
                     UserTreeAccessBS.DataSource = _db.GetUserAccessTree(_user_id).ToList();
                     xtraTabControl2.SelectedTabPageIndex = 0;
                     break;
+
                 case 4:
                     UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
                     xtraTabControl2.SelectedTabPageIndex = 1;
@@ -148,10 +151,15 @@ namespace SP_Sklad.EditForm
                     xtraTabControl2.SelectedTabPageIndex = 3;
                     break;
 
+                case 7:
+                    WarehouseEdit.Properties.DataSource = DBHelper.GetWhList(_user_id.Value, _db);
+                    break;
+
                 case 8:
                     RefreshUserAccessMatGroup();
                     xtraTabControl2.SelectedTabPageIndex = 4;
                     break;
+
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
@@ -566,6 +574,11 @@ namespace SP_Sklad.EditForm
                // RefreshUserAccessMatGroup();
             }
 
+        }
+
+        private void WarehouseEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            user_settings.WarehouseDefaultRMK = (int)WarehouseEdit.EditValue;
         }
     }
 }

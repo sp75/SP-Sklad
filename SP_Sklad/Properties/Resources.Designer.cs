@@ -131,6 +131,16 @@ namespace SP_Sklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap currencyexchange {
+            get {
+                object obj = ResourceManager.GetObject("currencyexchange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не можливо переглянути властивості, документ вже відкрито на одній із робочих станцій!.
         /// </summary>
         internal static string deadlock {
