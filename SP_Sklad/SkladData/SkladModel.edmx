@@ -90,6 +90,7 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" />
           <Property Name="EnterpriseId" Type="int" />
+          <Property Name="LicenseKey" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="ChargeType">
           <Key>
@@ -9942,6 +9943,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="EnterpriseId" />
           <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_CashDesks" FromRole="CashDesks" ToRole="UserAccessCashDesks" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_CASHID" FromRole="CashDesks" ToRole="PayDoc" />
+          <Property Name="LicenseKey" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PayType">
           <Key>
@@ -16350,6 +16352,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="CashDesks">
             <EntityTypeMapping TypeName="BaseModel.CashDesks">
               <MappingFragment StoreEntitySet="CashDesks">
+                <ScalarProperty Name="LicenseKey" ColumnName="LicenseKey" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />

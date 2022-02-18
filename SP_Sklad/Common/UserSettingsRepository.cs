@@ -204,6 +204,25 @@ namespace SP_Sklad.Common
             set { Set("WAREHOUSE_DEFAULT_RMK", value); }
         }
 
+        public string CashierLoginCheckbox
+        {
+            get
+            {
+                var v = Get("CASHIER_LOGIN_RMK");
+                return string.IsNullOrEmpty(v) ? "" : v;
+            }
+            set { Set("CASHIER_LOGIN_RMK", value); }
+        }
+
+        public string CashierPasswordCheckbox
+        {
+            get
+            {
+                var v = Get("CASHIER_PASS_RMK");
+                return string.IsNullOrEmpty(v) ? "" : v;
+            }
+            set { Set("CASHIER_PASS_RMK", value); }
+        }
 
         /// <summary>
         /// not show message copy documents

@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public Nullable<int> Def { get; set; }
         public Nullable<int> EnterpriseId { get; set; }
+        public string LicenseKey { get; set; }
     
         public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
         public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }

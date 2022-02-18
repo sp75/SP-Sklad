@@ -144,6 +144,10 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.PassCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.LoginCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.WarehouseEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -216,6 +220,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
@@ -1253,6 +1259,10 @@
             // 
             // xtraTabPage8
             // 
+            this.xtraTabPage8.Controls.Add(this.PassCheckboxEdit);
+            this.xtraTabPage8.Controls.Add(this.labelControl13);
+            this.xtraTabPage8.Controls.Add(this.LoginCheckboxEdit);
+            this.xtraTabPage8.Controls.Add(this.labelControl9);
             this.xtraTabPage8.Controls.Add(this.WarehouseEdit);
             this.xtraTabPage8.Controls.Add(this.labelControl8);
             this.xtraTabPage8.Controls.Add(this.labelControl5);
@@ -1267,9 +1277,45 @@
             this.xtraTabPage8.Size = new System.Drawing.Size(635, 380);
             this.xtraTabPage8.Text = "РМК";
             // 
+            // PassCheckboxEdit
+            // 
+            this.PassCheckboxEdit.Location = new System.Drawing.Point(225, 315);
+            this.PassCheckboxEdit.Name = "PassCheckboxEdit";
+            this.PassCheckboxEdit.Size = new System.Drawing.Size(176, 22);
+            this.PassCheckboxEdit.StyleController = this.styleController1;
+            this.PassCheckboxEdit.TabIndex = 86;
+            this.PassCheckboxEdit.EditValueChanged += new System.EventHandler(this.PassCheckboxEdit_EditValueChanged);
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl13.Location = new System.Drawing.Point(225, 293);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(153, 16);
+            this.labelControl13.TabIndex = 85;
+            this.labelControl13.Text = "Пароль касира (checkbox)";
+            // 
+            // LoginCheckboxEdit
+            // 
+            this.LoginCheckboxEdit.Location = new System.Drawing.Point(15, 315);
+            this.LoginCheckboxEdit.Name = "LoginCheckboxEdit";
+            this.LoginCheckboxEdit.Size = new System.Drawing.Size(183, 22);
+            this.LoginCheckboxEdit.StyleController = this.styleController1;
+            this.LoginCheckboxEdit.TabIndex = 84;
+            this.LoginCheckboxEdit.EditValueChanged += new System.EventHandler(this.LoginCheckboxEdit_EditValueChanged);
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl9.Location = new System.Drawing.Point(15, 293);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(141, 16);
+            this.labelControl9.TabIndex = 83;
+            this.labelControl9.Text = "Логін касира (checkbox)";
+            // 
             // WarehouseEdit
             // 
-            this.WarehouseEdit.Location = new System.Drawing.Point(15, 304);
+            this.WarehouseEdit.Location = new System.Drawing.Point(15, 247);
             this.WarehouseEdit.Name = "WarehouseEdit";
             this.WarehouseEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -1289,7 +1335,7 @@
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl8.Location = new System.Drawing.Point(15, 282);
+            this.labelControl8.Location = new System.Drawing.Point(15, 225);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(40, 16);
             this.labelControl8.TabIndex = 81;
@@ -1298,7 +1344,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl5.Location = new System.Drawing.Point(15, 217);
+            this.labelControl5.Location = new System.Drawing.Point(225, 153);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(51, 16);
             this.labelControl5.TabIndex = 80;
@@ -1308,7 +1354,7 @@
             // 
             this.CashEditComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.CashEditComboBox.Location = new System.Drawing.Point(15, 171);
+            this.CashEditComboBox.Location = new System.Drawing.Point(15, 175);
             this.CashEditComboBox.Name = "CashEditComboBox";
             this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
@@ -1322,7 +1368,7 @@
             this.CashEditComboBox.Properties.ShowHeader = false;
             this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.CashEditComboBox.Properties.ValueMember = "CashId";
-            this.CashEditComboBox.Size = new System.Drawing.Size(386, 22);
+            this.CashEditComboBox.Size = new System.Drawing.Size(183, 22);
             this.CashEditComboBox.TabIndex = 79;
             this.CashEditComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CashEditComboBox_ButtonClick);
             this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.CashEditComboBox_EditValueChanged);
@@ -1331,7 +1377,7 @@
             // 
             this.AccountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AccountEdit.Location = new System.Drawing.Point(15, 239);
+            this.AccountEdit.Location = new System.Drawing.Point(225, 175);
             this.AccountEdit.Name = "AccountEdit";
             this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.AccountEdit.Properties.Appearance.Options.UseFont = true;
@@ -1345,7 +1391,7 @@
             this.AccountEdit.Properties.DisplayMember = "AccNum";
             this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.AccountEdit.Properties.ValueMember = "AccId";
-            this.AccountEdit.Size = new System.Drawing.Size(386, 22);
+            this.AccountEdit.Size = new System.Drawing.Size(176, 22);
             this.AccountEdit.TabIndex = 78;
             this.AccountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AccountEdit_ButtonClick);
             this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
@@ -1353,7 +1399,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl3.Location = new System.Drawing.Point(15, 149);
+            this.labelControl3.Location = new System.Drawing.Point(15, 153);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(32, 16);
             this.labelControl3.TabIndex = 77;
@@ -1363,7 +1409,7 @@
             // 
             this.ChargeTypesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChargeTypesEdit.Location = new System.Drawing.Point(15, 105);
+            this.ChargeTypesEdit.Location = new System.Drawing.Point(15, 107);
             this.ChargeTypesEdit.Name = "ChargeTypesEdit";
             this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
@@ -1385,7 +1431,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl7.Location = new System.Drawing.Point(15, 83);
+            this.labelControl7.Location = new System.Drawing.Point(15, 85);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(89, 16);
             this.labelControl7.TabIndex = 74;
@@ -1558,6 +1604,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WarehouseEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
@@ -1686,5 +1734,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit3;
         private DevExpress.XtraEditors.LookUpEdit WarehouseEdit;
         private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit PassCheckboxEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl13;
+        private DevExpress.XtraEditors.TextEdit LoginCheckboxEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
     }
 }

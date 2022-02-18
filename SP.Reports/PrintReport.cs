@@ -1618,22 +1618,25 @@ SELECT WaybillList.[WbillId]
 	  ,osadka.TaraName
 	  ,Materials.Name RecipeName
 	  ,DATEDIFF(minute , formation.OnDate , osadka.OnDate) FormationMinuteCount 
+      ,formation.OutNetto
   FROM WaybillList
   inner join WayBillMake m on m.WbillId = WaybillList.WbillId
   inner join MatRecipe mr on mr.RecId = m.RecId
   inner join Materials on Materials.MatId = mr.MatId
-  cross apply ( select min(TechProcDet.OnDate) OnDate 
+  inner join MatGroup mg on Materials.GrpId = mg.GrpId
+  cross apply ( select min(TechProcDet.OnDate) OnDate , sum(TechProcDet.OutNetto) OutNetto
                 from TechProcDet
 				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
                 where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('formation') ) formation
-  cross apply ( select min(TechProcDet.OnDate) OnDate , Tara.Name as TaraName
+  cross apply ( select max(TechProcDet.OnDate) OnDate , Tara.Name as TaraName
                 from TechProcDet
 				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
 				inner join Tara on Tara.TaraId = TechProcDet.SausageSyringeId
                 where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('osadka')
 				group by Tara.Name ) osadka
 
-  where WType = -20 and WaybillList.OnDate between {0} and {1}", OnDate.Date, OnDate.Date.AddDays(1));
+  where WType = -20 and WaybillList.OnDate between {0} and {1} 
+  order by mg.Name, Materials.barcode, Materials.matid, Materials.artikul", OnDate.Date, OnDate.Date.AddDays(1)); 
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("range1", wb_make.ToList());
@@ -1644,11 +1647,12 @@ SELECT WaybillList.[WbillId]
             public int WbillId { get; set; }
             public DateTime OnDate { get; set; }
             public string Num { get; set; }
-            public DateTime OsadkaOnDate { get; set; }
-            public DateTime FormationOnDate { get; set; }
+            public DateTime? OsadkaOnDate { get; set; }
+            public DateTime? FormationOnDate { get; set; }
             public string TaraName { get; set; }
             public string RecipeName { get; set; }
-            public int FormationMinuteCount { get; set; }
+            public int? FormationMinuteCount { get; set; }
+            public decimal? OutNetto { get; set; }
         }
 
         public class rep_45
