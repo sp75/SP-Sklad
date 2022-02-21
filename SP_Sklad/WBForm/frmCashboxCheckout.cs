@@ -19,7 +19,7 @@ namespace SP_Sklad.WBForm
     {
         BaseEntities _db { get; set; }
         private WaybillList _wb { get; set; }
-        private PayDoc _pd { get; set; }
+  //      private PayDoc _pd { get; set; }
         private GetUserAccessTree_Result _user_Access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
@@ -55,7 +55,7 @@ namespace SP_Sklad.WBForm
 
 
             SumAllEdit.Value = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue).Value;
-            PutSumEdit.Value = SumAllEdit.Value;
+            PutCashSumEdit.Value = SumAllEdit.Value;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -63,63 +63,61 @@ namespace SP_Sklad.WBForm
            
         }
 
-        private void PayDoc(int PType)
+        private void PayDoc(int PType, decimal total)
         {
             _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wb.WbillId);
 
-            if (_pd == null)
+            if (_user_Access.CanInsert == 1)
             {
-                if (_user_Access.CanInsert == 1)
+                var _pd = _db.PayDoc.Add(new PayDoc()
                 {
-                    _pd = _db.PayDoc.Add(new PayDoc()
-                    {
-                        Id = Guid.NewGuid(),
-                        DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(), //Номер документа
-                        Total = Convert.ToDecimal(SumAllEdit.Value),
-                        Checked = _user_Access.CanPost == 1 ? 1 : 0,
-                        OnDate = _wb.OnDate,
-                        WithNDS = 1,  // З НДС
-                        PTypeId = PType,  // Вид оплати
-                        CashId = PType == 1 ? (int?)user_settings.CashDesksDefaultRMK : null,  // Каса 
-                        AccId = PType == 2 ? (int?)user_settings.AccountDefaultRMK : null, // Acount
-                        CTypeId = user_settings.DefaultChargeTypeByRMK,//(int)ChargeTypesEdit.EditValue,
-                        CurrId = 2,  //Валюта по умолчанию
-                        OnValue = 1,  //Курс валюти
-                        MPersonId = _wb.PersonId,
-                        KaId = _wb.KaId,
-                        UpdatedBy = DBHelper.CurrentUser.UserId,
-                        EntId = DBHelper.Enterprise.KaId,
-                        ReportingDate = _wb.OnDate
-                    });
+                    Id = Guid.NewGuid(),
+                    DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(), //Номер документа
+                    Total = total,
+                    Checked = _user_Access.CanPost == 1 ? 1 : 0,
+                    OnDate = _wb.OnDate,
+                    WithNDS = 1,  // З НДС
+                    PTypeId = PType,  // Вид оплати
+                    CashId = PType == 1 ? (int?)user_settings.CashDesksDefaultRMK : null,  // Каса 
+                    AccId = PType == 2 ? (int?)user_settings.AccountDefaultRMK : null, // Acount
+                    CTypeId = user_settings.DefaultChargeTypeByRMK,//(int)ChargeTypesEdit.EditValue,
+                    CurrId = 2,  //Валюта по умолчанию
+                    OnValue = 1,  //Курс валюти
+                    MPersonId = _wb.PersonId,
+                    KaId = _wb.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    EntId = DBHelper.Enterprise.KaId,
+                    ReportingDate = _wb.OnDate
+                });
 
-                    if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
-                    if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+                if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
+                if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
 
 
-                    _db.SaveChanges();
+                _db.SaveChanges();
 
-                    var new_pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+                var new_pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
 
-                    if (new_pd != null)
-                    {
-                        _db.SetDocRel(_wb.Id, new_pd.Id);
-                    }
+                if (new_pd != null)
+                {
+                    _db.SetDocRel(_wb.Id, new_pd.Id);
                 }
             }
 
             _db.SaveChanges();
         }
 
-      
+
 
         private void PutSumEdit_EditValueChanged(object sender, EventArgs e)
         {
-            var put_sum = string.IsNullOrEmpty(PutSumEdit.Text) ? 0 : Convert.ToDecimal(PutSumEdit.Text);
+            var put_cash_sum = string.IsNullOrEmpty(PutCashSumEdit.Text) ? 0 : Convert.ToDecimal(PutCashSumEdit.Text);
+            var put_cashless_sum = PutCashlessSumEdit.Value;
+            var put_sum = put_cash_sum + put_cashless_sum;
 
             calcEdit2.Value = put_sum - SumAllEdit.Value;
 
-            simpleButton2.Enabled = put_sum >= SumAllEdit.Value;
-            simpleButton4.Enabled = put_sum >= SumAllEdit.Value;
+            PayBtn.Enabled = put_sum >= SumAllEdit.Value;
         }
 
         private void PutSumEdit_KeyPress(object sender, KeyPressEventArgs e)
@@ -129,37 +127,37 @@ namespace SP_Sklad.WBForm
 
         private void frmCashboxCheckout_Shown(object sender, EventArgs e)
         {
-            simpleButton2.Enabled = user_settings.CashDesksDefaultRMK != 0;
-            simpleButton4.Enabled = user_settings.AccountDefaultRMK != 0;
+            PutCashSumEdit.Enabled = user_settings.CashDesksDefaultRMK != 0;
+            PutCashlessSumEdit.Enabled = user_settings.AccountDefaultRMK != 0;
 
-            PutSumEdit.Focus();
+            PutCashSumEdit.Focus();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            PayDoc(1);
+         
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            PayDoc(2);
+ 
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            PutSumEdit.Text += ((SimpleButton)sender).Text;
+            PutCashSumEdit.Text += ((SimpleButton)sender).Text;
         }
 
         private void simpleButton12_Click(object sender, EventArgs e)
         {
-            PutSumEdit.Text = "";
+            PutCashSumEdit.Text = "";
         }
 
         private void simpleButton13_Click(object sender, EventArgs e)
         {
-            if (!PutSumEdit.Text.Any(a => a == ','))
+            if (!PutCashSumEdit.Text.Any(a => a == ','))
             {
-                PutSumEdit.Text += ",";
+                PutCashSumEdit.Text += ",";
             }
         }
 
@@ -167,13 +165,7 @@ namespace SP_Sklad.WBForm
         {
             if (keyData == Keys.F9)
             {
-                simpleButton2.PerformClick();
-                return true;
-            }
-
-            if (keyData == Keys.F4)
-            {
-                simpleButton4.PerformClick();
+                PayBtn.PerformClick();
                 return true;
             }
 
@@ -186,6 +178,19 @@ namespace SP_Sklad.WBForm
             using (var frm = new frmSetWBNote(_wb))
             {
                 frm.ShowDialog();
+            }
+        }
+
+        private void PayBtn_Click(object sender, EventArgs e)
+        {
+            if (PutCashSumEdit.Value > 0)
+            {
+                PayDoc(1, Convert.ToDecimal(SumAllEdit.Value - PutCashlessSumEdit.Value));
+            }
+
+            if(PutCashlessSumEdit.Value > 0)
+            {
+                PayDoc(2, Convert.ToDecimal(PutCashlessSumEdit.Value));
             }
         }
     }

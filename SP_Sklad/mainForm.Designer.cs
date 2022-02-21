@@ -754,7 +754,6 @@
             this.xtraTabPage8.Controls.Add(this.retailUserControl1);
             this.xtraTabPage8.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.PageVisible = false;
             this.xtraTabPage8.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage8.TabPageWidth = 100;
             this.xtraTabPage8.Text = "Продажі";

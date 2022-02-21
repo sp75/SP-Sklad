@@ -145,25 +145,17 @@ namespace SP_Sklad.SkladData
         {
             get
             {
-                if (_retail_outlets == null)
+                using (var _db = DB.SkladBase())
                 {
-                    //_kagents = new BaseEntities().KagentList.ToList();
-                    using (var _db = DB.SkladBase())
-                    {
-                        var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
-
-                        _retail_outlets = (from k in _db.KagentList
-                                           join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                                           from subfg in gj.DefaultIfEmpty()
-                                           where k.KaKind == 5 && (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && (k.Archived == 0 || k.Archived == null) && k.Deleted == 0
-                                           select k
-                                 ).Distinct().ToList();
-                    }
+                    return _retail_outlets = (from k in _db.KagentList
+                                              join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                                              from subfg in gj.DefaultIfEmpty()
+                                              where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.Enterprise.KaId && (k.Archived == 0 || k.Archived == null) && k.Deleted == 0
+                                              select k
+                             ).Distinct().ToList();
                 }
-                return _retail_outlets;
             }
         }
-
 
 
         public static IEnumerable<Kontragent> KagentsList

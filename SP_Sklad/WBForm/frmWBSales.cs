@@ -89,19 +89,7 @@ namespace SP_Sklad.WBForm
 
                 if (is_new_record)
                 {
-                    if (wb.WType == 2)
-                    {
-                        wb.Num = new BaseEntities().GetDocNum("wb_invoice").FirstOrDefault();
-                    }
-                    else if (wb.WType == -16)
-                    {
-                        wb.Num = new BaseEntities().GetDocNum("wb(-16)").FirstOrDefault();
-                    }
-                    else
-                    {
-                        wb.Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault();
-                    }
-                    //     wb.PersonId = DBHelper.CurrentUser.KaId;
+                    wb.Num = new BaseEntities().GetDocNum("wb_sales_out").FirstOrDefault();
                 }
 
                 WaybillListBS.DataSource = wb;
@@ -131,9 +119,6 @@ namespace SP_Sklad.WBForm
         {
             SetFormCaption();
 
-            TurnDocCheckBox.Enabled = !(_wtype == 2 || _wtype == -16);
-
-            ProcurationBtn.Enabled = (_wtype == -1);
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
@@ -144,9 +129,7 @@ namespace SP_Sklad.WBForm
 
         private void SetFormCaption()
         {
-            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name ;
-            if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
-            if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
+            Text = "Реалізація товарів, Продавець: " + DBHelper.Enterprise.Name;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -199,11 +182,11 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value &&  OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
+            bool result = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value &&  OnDateDBEdit.EditValue != null && wbd_list != null && wbd_list.Any());
 
-            if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
+            if (result && TurnDocCheckBox.Checked)
             {
-                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0 && w.Total > 0);
+                result = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0 && w.Total > 0);
             }
 
             barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;
@@ -213,10 +196,10 @@ namespace SP_Sklad.WBForm
             RsvInfoBtn.Enabled = EditMaterialBtn.Enabled ;
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-            payDocUserControl1.panelControl1.Enabled = recult;
+            payDocUserControl1.panelControl1.Enabled = result;
 
-            OkButton.Enabled = recult;
-            return recult;
+            OkButton.Enabled = result;
+            return result;
         }
 
         private void frmWayBillOut_FormClosed(object sender, FormClosedEventArgs e)
@@ -228,17 +211,8 @@ namespace SP_Sklad.WBForm
             if (is_new_record)
             {
                 _db.DeleteWhere<WaybillList>(w => w.WbillId == _wbill_id);
-                //   current_transaction.Commit();
-
             }
-
-      /*      if (current_transaction.UnderlyingTransaction.Connection != null)
-            {
-                current_transaction.Rollback();
-            }*/
-
             _db.Dispose();
-         //   current_transaction.Dispose();
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -536,15 +510,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var df = new frmWaybillSvcDet(_db, null, wb);
-            if (df.ShowDialog() == DialogResult.OK)
-            {
-                RefreshDet();
-            }
-        }
-
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             wb.UpdatedAt = DateTime.Now;
@@ -661,11 +626,7 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillTMCDet(_db, null, wb);
-            if (df.ShowDialog() == DialogResult.OK)
-            {
-                RefreshDet();
-            }
+
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -698,7 +659,7 @@ namespace SP_Sklad.WBForm
         {
             if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
             {
-                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №"+wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                var m_recult = MessageBox.Show(Resources.save_wb, "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
             
                 if (m_recult == DialogResult.Yes)
                 {
@@ -785,9 +746,5 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void ContractSaleBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
     }
 }
