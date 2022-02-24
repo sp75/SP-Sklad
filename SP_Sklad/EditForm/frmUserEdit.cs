@@ -122,7 +122,7 @@ namespace SP_Sklad.EditForm
  
 
           //  WarehouseEdit.Properties.DataSource = DBHelper.GetWhList(_user_id.Value, _db);
-            WarehouseEdit.EditValue = user_settings.WarehouseDefaultRMK;
+         
             LoginCheckboxEdit.Text = user_settings.CashierLoginCheckbox;
             PassCheckboxEdit.Text = user_settings.CashierPasswordCheckbox;
 
@@ -154,7 +154,7 @@ namespace SP_Sklad.EditForm
                     break;
 
                 case 7:
-                    WarehouseEdit.Properties.DataSource = DBHelper.GetWhList(_user_id.Value, _db);
+                
                     break;
 
                 case 8:
@@ -576,11 +576,6 @@ namespace SP_Sklad.EditForm
                // RefreshUserAccessMatGroup();
             }
 
-        }
-
-        private void WarehouseEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            user_settings.WarehouseDefaultRMK = (int)WarehouseEdit.EditValue;
         }
 
         private void LoginCheckboxEdit_EditValueChanged(object sender, EventArgs e)

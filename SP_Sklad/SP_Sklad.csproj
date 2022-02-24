@@ -490,6 +490,9 @@
     <Compile Include="SkladData\GetRelDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetRemainByWh_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1487,6 +1490,12 @@
     <Compile Include="WBDetForm\frmPlannedCalculationDet.Designer.cs">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBSalesDetOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBSalesDetOut.Designer.cs">
+      <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWBMoveDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1565,6 +1574,12 @@
     <Compile Include="WBForm\frmCashboxCheckout.Designer.cs">
       <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmCashierWorkplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmCashierWorkplace.Designer.cs">
+      <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmKAgentActReconciliation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1618,6 +1633,12 @@
     </Compile>
     <Compile Include="WBForm\frmWayBillMove.Designer.cs">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmWBSalesReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWBSalesReturn.Designer.cs">
+      <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWBSales.cs">
       <SubType>Form</SubType>
@@ -1924,6 +1945,9 @@
     <EmbeddedResource Include="WBDetForm\frmPlannedCalculationDet.resx">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBSalesDetOut.resx">
+      <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
       <DependentUpon>frmWBMoveDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -1963,6 +1987,9 @@
     <EmbeddedResource Include="WBForm\frmCashboxCheckout.resx">
       <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmCashierWorkplace.resx">
+      <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
       <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>
     </EmbeddedResource>
@@ -1989,6 +2016,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillMove.resx">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWBSalesReturn.resx">
+      <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBSales.resx">
       <DependentUpon>frmWBSales.cs</DependentUpon>

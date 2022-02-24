@@ -152,6 +152,8 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.calcEdit10 = new DevExpress.XtraEditors.CalcEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -214,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit10.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -447,6 +450,8 @@
             // 
             // groupControl2
             // 
+            this.groupControl2.Controls.Add(this.labelControl20);
+            this.groupControl2.Controls.Add(this.calcEdit10);
             this.groupControl2.Controls.Add(this.calcEdit7);
             this.groupControl2.Controls.Add(this.labelControl16);
             this.groupControl2.Controls.Add(this.labelControl17);
@@ -481,7 +486,7 @@
             // calcEdit7
             // 
             this.calcEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossDeviation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.calcEdit7.Location = new System.Drawing.Point(458, 245);
+            this.calcEdit7.Location = new System.Drawing.Point(458, 248);
             this.calcEdit7.Name = "calcEdit7";
             this.calcEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -491,7 +496,7 @@
             // 
             // labelControl16
             // 
-            this.labelControl16.Location = new System.Drawing.Point(281, 246);
+            this.labelControl16.Location = new System.Drawing.Point(281, 249);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(171, 16);
             this.labelControl16.StyleController = this.styleController1;
@@ -521,7 +526,7 @@
             // calcEdit6
             // 
             this.calcEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "Deviation", true));
-            this.calcEdit6.Location = new System.Drawing.Point(458, 174);
+            this.calcEdit6.Location = new System.Drawing.Point(458, 177);
             this.calcEdit6.Name = "calcEdit6";
             this.calcEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -531,7 +536,7 @@
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(362, 175);
+            this.labelControl15.Location = new System.Drawing.Point(362, 178);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(90, 16);
             this.labelControl15.StyleController = this.styleController1;
@@ -550,7 +555,7 @@
             // 
             // MsrLabel
             // 
-            this.MsrLabel.Location = new System.Drawing.Point(266, 145);
+            this.MsrLabel.Location = new System.Drawing.Point(290, 145);
             this.MsrLabel.Name = "MsrLabel";
             this.MsrLabel.Size = new System.Drawing.Size(18, 16);
             this.MsrLabel.StyleController = this.styleController1;
@@ -692,7 +697,7 @@
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Num", true));
             this.textEdit10.Location = new System.Drawing.Point(89, 31);
             this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(171, 22);
+            this.textEdit10.Size = new System.Drawing.Size(195, 22);
             this.textEdit10.StyleController = this.styleController1;
             this.textEdit10.TabIndex = 34;
             // 
@@ -715,7 +720,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("textEdit3.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
             this.textEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.textEdit3.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.textEdit3_Properties_ButtonClick);
-            this.textEdit3.Size = new System.Drawing.Size(171, 22);
+            this.textEdit3.Size = new System.Drawing.Size(195, 22);
             this.textEdit3.TabIndex = 42;
             // 
             // textEdit2
@@ -1479,6 +1484,26 @@
             this.simpleButton8.Text = "Видалити";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(26, 178);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(150, 16);
+            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.TabIndex = 70;
+            this.labelControl20.Text = "Норматив часу формовки";
+            // 
+            // calcEdit10
+            // 
+            this.calcEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "TimeNorm", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.calcEdit10.Location = new System.Drawing.Point(182, 177);
+            this.calcEdit10.Name = "calcEdit10";
+            this.calcEdit10.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.calcEdit10.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.calcEdit10.Size = new System.Drawing.Size(102, 20);
+            this.calcEdit10.TabIndex = 69;
+            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1565,6 +1590,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit10.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1690,5 +1716,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.SimpleButton simpleButton8;
         private System.Windows.Forms.BindingSource MatRecipeAdditionalCostsBS;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.CalcEdit calcEdit10;
     }
 }

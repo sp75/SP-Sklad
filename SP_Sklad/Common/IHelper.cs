@@ -152,7 +152,7 @@ namespace SP_Sklad.Common
             }
         }
 
-        static public void ShowMatListByWH(BaseEntities db, WaybillList wb, DiscCards disc_card = null)
+        static public void ShowMatListByWH(BaseEntities db, WaybillList wb, DiscCards disc_card = null, int? WId = -1)
         {
             var f = new frmWhCatalog(1, disc_card);
 
@@ -166,6 +166,24 @@ namespace SP_Sklad.Common
             f.uc.wb = wb;
             f.uc.isMatList = true;
 
+
+            if (WId != -1)
+            {
+                f.uc.gridColumn49.Visible = false;
+                f.uc.gridColumn51.Visible = false;
+                f.uc.gridColumn52.Visible = false;
+                f.uc.MatListGridColumnWh.Visible = (WId == -1);
+                f.uc.bar3.Visible = false;
+                f.uc.ByWhBtn.Down = true;
+                f.uc.splitContainerControl1.SplitterPosition = 0;
+
+                f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == WId).ToList();
+
+                f.uc.GrpNameGridColumn.GroupIndex = 0;
+            }
+
+
+
             if (f.ShowDialog() == DialogResult.OK)
             {
                 var num = wb.WaybillDet.Count();
@@ -177,7 +195,7 @@ namespace SP_Sklad.Common
                         Num = ++num,
                         OnDate = wb.OnDate,
                         MatId = item.MatId,
-                        WId = item.WId,
+                        WId = WId == -1 ? item.WId : WId,
                         Amount = item.Amount,
                         Price = item.Price - (item.Price * item.Discount / 100),
                         PtypeId = item.PTypeId,

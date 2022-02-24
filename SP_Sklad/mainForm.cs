@@ -285,7 +285,7 @@ namespace SP_Sklad
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var frm = new frmCashboxWBOut())
+            using (var frm = new frmCashierWorkplace())
             {
                 frm.ShowDialog();
 

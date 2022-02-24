@@ -201,14 +201,14 @@ namespace SP_Sklad.MainTabs
                         ReportingDate = _wb.OnDate
                     });
 
-                    if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
-                    if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+                    if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
+                    if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
 
-                 /*   if ((int)PTypeComboBox.EditValue == 2)
-                    {
-                        var acc = AccountEdit.GetSelectedDataRow() as user_acc;
-                        _pd.DocType = _pd.DocType * acc.ExtDocType;
-                    }*/
+                    /*   if ((int)PTypeComboBox.EditValue == 2)
+                       {
+                           var acc = AccountEdit.GetSelectedDataRow() as user_acc;
+                           _pd.DocType = _pd.DocType * acc.ExtDocType;
+                       }*/
 
                     _db.SaveChanges();
 

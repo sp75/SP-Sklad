@@ -60,8 +60,7 @@ namespace SP_Sklad.WBForm
             current_wid = 34;
         }
 
-
-        private void OkButton_Click(object sender, EventArgs e)
+        private void SaveWbill()
         {
             if (!DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db)) return;
 
@@ -69,8 +68,6 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
-
-            //     payDocUserControl1.Execute(wb.WbillId);
 
             wb.UpdatedAt = DateTime.Now;
             _db.Save(wb.WbillId);
@@ -83,22 +80,57 @@ namespace SP_Sklad.WBForm
             }
 
             is_new_record = false;
+        }
 
-            Close();
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            if (!ResivedItems() || WaybillDetOutBS.Count == 0)
+            {
+                return;
+            }
+
+            if (!DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
+            {
+                return;
+            }
+
+            if (!DBHelper.CheckInDate(wb, _db, wb.OnDate))
+            {
+                return;
+            }
+
+            wb.UpdatedAt = DateTime.Now;
+
+            _db.Save(wb.WbillId);
+
+            using (var pay = new frmCashboxCheckout(_db, wb))
+            {
+                if (pay.ShowDialog() == DialogResult.OK)
+                {
+                    //OkButton.PerformClick();
+                    SaveWbill();
+                    NewWaybill();
+                }
+            };
         }
 
         private void frmCashboxWBOut_Load(object sender, EventArgs e)
         {
             user_settings = new UserSettingsRepository(UserSession.UserId, _db);
 
+            NewWaybill();
+        }
+
+        private void NewWaybill()
+        {
             is_new_record = true;
 
             wb = _db.WaybillList.Add(new WaybillList()
             {
                 Id = Guid.NewGuid(),
-                WType = -1,
+                WType = -25,
                 OnDate = DBHelper.ServerDateTime(),
-                Num = new BaseEntities().GetDocNum("wb_out").FirstOrDefault(),
+                Num = new BaseEntities().GetDocNum("wb_sales_out").FirstOrDefault(),
                 CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                 OnValue = 1,
                 PersonId = DBHelper.CurrentUser.KaId,
@@ -115,24 +147,9 @@ namespace SP_Sklad.WBForm
             DBHelper.UpdateSessionWaybill(wb.WbillId);
 
             WaybillListBS.DataSource = wb;
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            _rawinput.KeyPressed -= OnKeyPressed;
-
-            wb.Kontragent = _db.Kagent.Find(wb.KaId);
-
-            IHelper.ShowMatListByWH(_db, wb, disc_card);
-
-            _db.SaveChanges();
-
-            _rawinput.KeyPressed += OnKeyPressed;
-
             RefreshDet();
-
-            WaybillDetOutGridView.MoveLastVisible();
         }
+
 
         private void RefreshDet()
         {
@@ -305,7 +322,7 @@ namespace SP_Sklad.WBForm
 
             if (keyData == Keys.F9)
             {
-                PayDocBtn.PerformClick();
+            //    PayDocBtn.PerformClick();
                 return true;
             }
 
@@ -336,21 +353,6 @@ namespace SP_Sklad.WBForm
             AmountEdit.Text += ((SimpleButton)sender).Text;
         }
 
-        private void BarCodeTextEdit_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*  if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeTextEdit.Text))
-              {
-                  var mat = _db.Materials.FirstOrDefault(w => w.BarCode == BarCodeTextEdit.Text);
-
-                  if (mat != null)
-                  {
-                      AddMat(mat.MatId);
-                  }
-
-                  BarCodeTextEdit.Text = "";
-              }*/
-        }
-
 
         private void AddMat(int mat_id)
         {
@@ -362,7 +364,7 @@ namespace SP_Sklad.WBForm
                 var mat_price = DB.SkladBase().GetListMatPrices(mat_id, wb.CurrId, p_type).FirstOrDefault();
 
                 var discount = _db.GetDiscount(wb.KaId, mat_id).FirstOrDefault();
-                var remain_in_wh = _db.MatRemainByWh(mat_id, 0, 0, DateTime.Now, "*", DBHelper.CurrentUser.UserId).ToList();
+            //    var remain_in_wh = _db.MatRemainByWh(mat_id, wb.Kontragent.WId, 0, DateTime.Now, "*", DBHelper.CurrentUser.UserId).ToList();
                 var price = mat_price != null ? (mat_price.Price ?? 0) : 0;
 
                 var num = wb.WaybillDet.Count();
@@ -372,7 +374,7 @@ namespace SP_Sklad.WBForm
                     Num = ++num,
                     OnDate = wb.OnDate,
                     MatId = mat_id,
-                    WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
+                    WId = wb.Kontragent.WId,//remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                     Amount = 1,
                     Price = price - (price * (discount ?? 0.00m) / 100),
                     PtypeId = mat_price != null ? mat_price.PType : null,
@@ -402,10 +404,6 @@ namespace SP_Sklad.WBForm
             WaybillDetOutGridView.MoveLast();
         }
 
-        private void GetSammary()
-        {
-
-        }
 
         private void DisCartButton_Click(object sender, EventArgs e)
         {
@@ -416,6 +414,7 @@ namespace SP_Sklad.WBForm
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     disc_card = frm.cart;
+                    wb.CustomerId = disc_card.KaId;
 
                     RefreshDet();
 
@@ -448,6 +447,7 @@ namespace SP_Sklad.WBForm
                 if (wbd_row.PosType == 3)
                 {
                     disc_card = null;
+                    wb.CustomerId = null;
 
                     foreach (var item in _db.WaybillDet.Where(w => w.WbillId == wb.WbillId))
                     {
@@ -519,6 +519,8 @@ namespace SP_Sklad.WBForm
         {
             if(wbd_row == null)
             {
+                textBox1.Text = "";
+                label1.Text = "";
                 return;
             }
 
@@ -535,50 +537,10 @@ namespace SP_Sklad.WBForm
             PrintDoc.Show(wb.Id, wb.WType, _db);
         }
 
-        private void simpleButton24_Click(object sender, EventArgs e)
-        {
-            _rawinput.KeyPressed -= OnKeyPressed;
-
-            using (var frm = new frmSetCustomDiscount(_db, wb))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshDet();
-                }
-            }
-            _rawinput.KeyPressed += OnKeyPressed;
-        }
-
         private void simpleButton19_Click(object sender, EventArgs e)
         {
-            if (!ResivedItems() || WaybillDetOutBS.Count == 0)
-            {
-                return;
-            }
-
-            if (!DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
-            {
-                return;
-            }
-
-            if (!DBHelper.CheckInDate(wb, _db, wb.OnDate))
-            {
-                return;
-            }
-
-            wb.UpdatedAt = DateTime.Now;
-
-            _db.Save(wb.WbillId);
-
-            using (var pay = new frmCashboxCheckout(_db, wb))
-            {
-                if (pay.ShowDialog() == DialogResult.OK)
-                {
-                    OkButton.PerformClick();
-                }
-            }
+           
         }
-
 
         private bool ResivedItems()
         {
@@ -636,7 +598,7 @@ namespace SP_Sklad.WBForm
 
         private void frmCashboxWBOut_Shown(object sender, EventArgs e)
         {
-            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
+            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Торгова точка: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
             label1.Focus();
 
             if(string.IsNullOrEmpty(Settings.Default.barcode_scanner_name))
@@ -645,61 +607,16 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void simpleButton25_Click(object sender, EventArgs e)
-        {
-            _rawinput.KeyPressed -= OnKeyPressed;
-
-            using (var frm = new frmKagents())
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    wb.KaId = frm.focused_row.KaId;
-
-                    SetFormTitle();
-                }
-            }
-
-            _rawinput.KeyPressed += OnKeyPressed;
-        }
-
         private void SetFormTitle()
         {
-            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Покупець: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
-        }
-
-        private void simpleButton11_Click_1(object sender, EventArgs e)
-        {
-            _rawinput.KeyPressed -= OnKeyPressed;
-
-            using (var frm = new frmBarCode())
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    var mat = _db.Materials.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
-
-                    if (mat != null)
-                    {
-                        AddMat(mat.MatId);
-                    }
-                    else
-                    {
-                        var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
-                        if (bc != null)
-                        {
-                            AddMat(bc.MatId);
-                        }
-                    }
-                }
-            }
-
-            _rawinput.KeyPressed += OnKeyPressed;
+            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Торгова точка: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
         }
 
         private void frmCashboxWBOut_FormClosing(object sender, FormClosingEventArgs e)
         {
             if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
             {
-                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                var m_recult = MessageBox.Show(Resources.save_wb, "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
                 if (m_recult == DialogResult.Yes)
                 {
@@ -734,5 +651,80 @@ namespace SP_Sklad.WBForm
             }
         }
 
+        private void KAgentBtn_Click(object sender, EventArgs e)
+        {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
+            using (var frm = new frmKagents())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    wb.CustomerId = frm.focused_row.KaId;
+
+                    SetFormTitle();
+                }
+            }
+
+            _rawinput.KeyPressed += OnKeyPressed;
+        }
+
+        private void DiscountBtn_Click(object sender, EventArgs e)
+        {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
+            using (var frm = new frmSetCustomDiscount(_db, wb))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
+            }
+            _rawinput.KeyPressed += OnKeyPressed;
+        }
+
+        private void WhListBtn_Click(object sender, EventArgs e)
+        {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
+            wb.Kontragent = _db.Kagent.Find(wb.KaId);
+
+            IHelper.ShowMatListByWH(_db, wb, disc_card, wb.Kontragent.WId);
+
+            _db.SaveChanges();
+
+            _rawinput.KeyPressed += OnKeyPressed;
+
+            RefreshDet();
+
+            WaybillDetOutGridView.MoveLastVisible();
+        }
+
+        private void BarCodeBtn_Click(object sender, EventArgs e)
+        {
+            _rawinput.KeyPressed -= OnKeyPressed;
+
+            using (var frm = new frmBarCode())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var mat = _db.Materials.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
+
+                    if (mat != null)
+                    {
+                        AddMat(mat.MatId);
+                    }
+                    else
+                    {
+                        var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
+                        if (bc != null)
+                        {
+                            AddMat(bc.MatId);
+                        }
+                    }
+                }
+            }
+
+            _rawinput.KeyPressed += OnKeyPressed;
+        }
     }
 }

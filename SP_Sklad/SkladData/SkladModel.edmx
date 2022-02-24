@@ -454,6 +454,7 @@
           <Property Name="CashDeskId" Type="int" />
           <Property Name="Declaration" Type="nvarchar(max)" />
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
+          <Property Name="WId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -710,6 +711,7 @@
           <Property Name="ThermoLossOut" Type="numeric" Precision="15" Scale="4" />
           <Property Name="ThermoLossDeviation" Type="numeric" Precision="15" Scale="4" />
           <Property Name="MeasureId" Type="int" />
+          <Property Name="TimeNorm" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="MatRecipeAdditionalCosts">
           <Key>
@@ -841,6 +843,7 @@
           <Property Name="ReportingDate" Type="datetime" />
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="ActualSummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
+          <Property Name="ReceiptId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="PayDocType">
           <Key>
@@ -1448,6 +1451,7 @@
           <Property Name="PTypeId" Type="int" />
           <Property Name="CarId" Type="uniqueidentifier" />
           <Property Name="RouteId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -1625,6 +1629,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="WebUserName" Type="nvarchar" MaxLength="256" />
           <Property Name="RouteId" Type="int" />
+          <Property Name="WId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5293,6 +5298,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetRemainByWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="w_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+                <Property Name="NDS" Type="numeric" Precision="15" Scale="8" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetReportTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
@@ -6797,7 +6816,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[UserName] AS [UserName], 
     [KagentList].[AspNetUserId] AS [AspNetUserId], 
     [KagentList].[WebUserName] AS [WebUserName], 
-    [KagentList].[RouteId] AS [RouteId]
+    [KagentList].[RouteId] AS [RouteId], 
+    [KagentList].[WId] AS [WId]
     FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="Self.MaterialsList" store:Type="Views" store:Schema="dbo">
@@ -9604,6 +9624,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <EntitySet Name="v_BarCodes" EntityType="BaseModel.v_BarCodes" />
           <EntitySet Name="v_GetRetailTree" EntityType="BaseModel.v_GetRetailTree" />
+          <FunctionImport Name="GetRemainByWh" IsComposable="true" ReturnType="Collection(BaseModel.GetRemainByWh_Result)">
+            <Parameter Name="w_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -10438,6 +10462,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ThermoLossDeviation" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MeasureId" Type="Int32" />
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MatRecipe_MeasureId" FromRole="MatRecipe" ToRole="Measures" />
+          <Property Name="TimeNorm" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -12161,6 +12186,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PTypeId" Type="Int32" />
           <Property Name="CarId" Type="Guid" />
           <Property Name="RouteId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -12996,6 +13022,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="KAgentAdjustment1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="Kagent" ToRole="KAgentAdjustment" />
           <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
+          <Property Name="WId" Type="Int32" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -14564,6 +14591,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
           <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ActualSummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ReceiptId" Type="Guid" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -15576,6 +15604,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AspNetUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="WebUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="RouteId" Type="Int32" />
+          <Property Name="WId" Type="Int32" />
         </EntityType>
         <EntityType Name="AdditionalCosts">
           <Key>
@@ -16033,6 +16062,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UserId" Type="Int32" />
           <Property Name="WType" Type="Int32" />
         </EntityType>
+        <ComplexType Name="GetRemainByWh_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="8" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -16723,6 +16758,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecipe">
             <EntityTypeMapping TypeName="BaseModel.MatRecipe">
               <MappingFragment StoreEntitySet="MatRecipe">
+                <ScalarProperty Name="TimeNorm" ColumnName="TimeNorm" />
                 <ScalarProperty Name="MeasureId" ColumnName="MeasureId" />
                 <ScalarProperty Name="ThermoLossDeviation" ColumnName="ThermoLossDeviation" />
                 <ScalarProperty Name="ThermoLossOut" ColumnName="ThermoLossOut" />
@@ -17800,6 +17836,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
@@ -18208,6 +18245,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
                 <ScalarProperty Name="Declaration" ColumnName="Declaration" />
                 <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
@@ -19170,6 +19208,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="PayDoc">
             <EntityTypeMapping TypeName="BaseModel.PayDoc">
               <MappingFragment StoreEntitySet="PayDoc">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
                 <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
@@ -19833,6 +19872,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
@@ -20294,6 +20334,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetRemainByWh" FunctionName="BaseModel.Store.GetRemainByWh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRemainByWh_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

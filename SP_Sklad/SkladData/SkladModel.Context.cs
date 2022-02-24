@@ -2422,5 +2422,19 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessMatGroup_Result>("[BaseEntities].[GetUserAccessMatGroup](@user_id)", user_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetRemainByWh")]
+        public virtual IQueryable<GetRemainByWh_Result> GetRemainByWh(Nullable<int> w_id, Nullable<System.DateTime> on_date)
+        {
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRemainByWh_Result>("[BaseEntities].[GetRemainByWh](@w_id, @on_date)", w_idParameter, on_dateParameter);
+        }
     }
 }

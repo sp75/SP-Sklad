@@ -16,7 +16,7 @@ using System.Drawing;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmWBReturnIn : DevExpress.XtraEditors.XtraForm
+    public partial class frmWBSalesReturn : DevExpress.XtraEditors.XtraForm
     {
         private int _wtype { get; set; }
         BaseEntities _db { get; set; }
@@ -29,7 +29,7 @@ namespace SP_Sklad.WBForm
         }
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWBReturnIn(int wtype, int? wbill_id)
+        public frmWBSalesReturn(int wtype, int? wbill_id)
         {
             is_new_record = false;
             _wtype = wtype;
@@ -42,7 +42,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWBReturnIn_Load(object sender, EventArgs e)
         {
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.RetailOutlets;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WHComboBox.Properties.DataSource = DBHelper.WhList;
             OutDateEdit.DateTime = DateTime.Now.Date.AddDays(-3);
@@ -56,7 +56,7 @@ namespace SP_Sklad.WBForm
                     Id = Guid.NewGuid(),
                     WType = _wtype,
                     OnDate = DBHelper.ServerDateTime(),
-                    Num = DB.SkladBase().GetDocNum("wb(6)").FirstOrDefault(),
+                    Num = DB.SkladBase().GetDocNum("wb_sales_in").FirstOrDefault(),
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
@@ -99,7 +99,7 @@ namespace SP_Sklad.WBForm
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
-                ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
+                
 
                 payDocUserControl1.OnLoad(_db, wb);
                 KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
@@ -308,7 +308,7 @@ namespace SP_Sklad.WBForm
                 string kod = BarCodeText[0];
                 var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
 
-                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -1))
+                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -25))
                 {
                     if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
@@ -398,11 +398,7 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillTMCDet(_db, null, wb);
-            if (df.ShowDialog() == DialogResult.OK)
-            {
-                RefreshDet();
-            }
+
         }
 
         private void frmWBReturnIn_FormClosing(object sender, FormClosingEventArgs e)

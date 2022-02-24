@@ -194,15 +194,6 @@ namespace SP_Sklad.Common
             set { Set("ACCOUNT_DEFAULT_RMK", value); }
         }
 
-        public int WarehouseDefaultRMK
-        {
-            get
-            {
-                var v = Get("WAREHOUSE_DEFAULT_RMK");
-                return string.IsNullOrEmpty(v) ? 0 : Convert.ToInt32(v);
-            }
-            set { Set("WAREHOUSE_DEFAULT_RMK", value); }
-        }
 
         public string CashierLoginCheckbox
         {

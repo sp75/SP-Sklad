@@ -30,6 +30,7 @@ namespace SP_Sklad.WBDetForm
         public int? outPosId { get; set; }
         private int? _def_wid { get; set; }
         private DateTime _start_date { get; set; }
+        private int wtype_out { get; set; }
 
         public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid, DateTime start_date)
         {
@@ -40,6 +41,15 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
             _def_wid = wid;
             _start_date = start_date;
+           
+            if (_wb.WType == 6) // повернення від клієнта
+            {
+                wtype_out = -1;
+            }
+            if (_wb.WType == 25) // Реєстрація продаж
+            {
+                wtype_out = -25;
+            }
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
         }
@@ -73,7 +83,7 @@ namespace SP_Sklad.WBDetForm
 
             if (pos_out_list == null)
             {
-                pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, -1);
+                pos_out_list = _db.GetPosOut(_start_date, _wb.OnDate, 0, _wb.KaId, wtype_out);
             }
 
             MatComboBox.Properties.DataSource = pos_out_list;
@@ -247,7 +257,7 @@ namespace SP_Sklad.WBDetForm
             var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
             int matId = row != null ? row.MatId : 0;
 
-            using (var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value))
+            using (var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value, wtype_out))
             {
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

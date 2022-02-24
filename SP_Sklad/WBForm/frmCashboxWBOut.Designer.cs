@@ -39,6 +39,8 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.WhListBtn = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton20 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton19 = new DevExpress.XtraEditors.SimpleButton();
             this.BarCodeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.KAgentBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DiscountBtn = new DevExpress.XtraEditors.SimpleButton();
@@ -105,7 +107,6 @@
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
             this.PrintDocBtn = new DevExpress.XtraEditors.SimpleButton();
-            this.PayDocBtn = new DevExpress.XtraEditors.SimpleButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -220,15 +221,17 @@
             this.WhListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.WhListBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.WhListBtn.Appearance.Options.UseFont = true;
-            this.WhListBtn.Location = new System.Drawing.Point(333, 6);
+            this.WhListBtn.Location = new System.Drawing.Point(445, 6);
             this.WhListBtn.Name = "WhListBtn";
             this.WhListBtn.Size = new System.Drawing.Size(108, 49);
             this.WhListBtn.TabIndex = 23;
-            this.WhListBtn.Text = "Додати списком\r\n(F5)";
-            this.WhListBtn.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.WhListBtn.Text = "Підібрати товари\r\n(F5)";
+            this.WhListBtn.Click += new System.EventHandler(this.WhListBtn_Click);
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton20);
+            this.panelControl2.Controls.Add(this.simpleButton19);
             this.panelControl2.Controls.Add(this.BarCodeBtn);
             this.panelControl2.Controls.Add(this.KAgentBtn);
             this.panelControl2.Controls.Add(this.DiscountBtn);
@@ -242,48 +245,70 @@
             this.panelControl2.Size = new System.Drawing.Size(1368, 60);
             this.panelControl2.TabIndex = 15;
             // 
+            // simpleButton20
+            // 
+            this.simpleButton20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton20.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton20.Appearance.Options.UseFont = true;
+            this.simpleButton20.Location = new System.Drawing.Point(107, 6);
+            this.simpleButton20.Name = "simpleButton20";
+            this.simpleButton20.Size = new System.Drawing.Size(109, 49);
+            this.simpleButton20.TabIndex = 29;
+            this.simpleButton20.Text = "Вилучення\r\nкоштів";
+            // 
+            // simpleButton19
+            // 
+            this.simpleButton19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.simpleButton19.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton19.Appearance.Options.UseFont = true;
+            this.simpleButton19.Location = new System.Drawing.Point(5, 6);
+            this.simpleButton19.Name = "simpleButton19";
+            this.simpleButton19.Size = new System.Drawing.Size(96, 49);
+            this.simpleButton19.TabIndex = 28;
+            this.simpleButton19.Text = "Внесення\r\nкоштів";
+            // 
             // BarCodeBtn
             // 
             this.BarCodeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BarCodeBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.BarCodeBtn.Appearance.Options.UseFont = true;
-            this.BarCodeBtn.Location = new System.Drawing.Point(447, 6);
+            this.BarCodeBtn.Location = new System.Drawing.Point(559, 6);
             this.BarCodeBtn.Name = "BarCodeBtn";
             this.BarCodeBtn.Size = new System.Drawing.Size(94, 49);
             this.BarCodeBtn.TabIndex = 27;
             this.BarCodeBtn.Text = "Штрихкод\r\n(F7)";
-            this.BarCodeBtn.Click += new System.EventHandler(this.simpleButton11_Click_1);
+            this.BarCodeBtn.Click += new System.EventHandler(this.BarCodeBtn_Click);
             // 
             // KAgentBtn
             // 
             this.KAgentBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.KAgentBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.KAgentBtn.Appearance.Options.UseFont = true;
-            this.KAgentBtn.Location = new System.Drawing.Point(10, 5);
+            this.KAgentBtn.Location = new System.Drawing.Point(659, 5);
             this.KAgentBtn.Name = "KAgentBtn";
             this.KAgentBtn.Size = new System.Drawing.Size(92, 49);
             this.KAgentBtn.TabIndex = 26;
             this.KAgentBtn.Text = "Покупець \r\n(F2)";
-            this.KAgentBtn.Click += new System.EventHandler(this.simpleButton25_Click);
+            this.KAgentBtn.Click += new System.EventHandler(this.KAgentBtn_Click);
             // 
             // DiscountBtn
             // 
             this.DiscountBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DiscountBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DiscountBtn.Appearance.Options.UseFont = true;
-            this.DiscountBtn.Location = new System.Drawing.Point(108, 6);
+            this.DiscountBtn.Location = new System.Drawing.Point(222, 6);
             this.DiscountBtn.Name = "DiscountBtn";
             this.DiscountBtn.Size = new System.Drawing.Size(92, 49);
             this.DiscountBtn.TabIndex = 25;
             this.DiscountBtn.Text = "Знижка, %\r\n (F8)";
-            this.DiscountBtn.Click += new System.EventHandler(this.simpleButton24_Click);
+            this.DiscountBtn.Click += new System.EventHandler(this.DiscountBtn_Click);
             // 
             // DisCartButton
             // 
             this.DisCartButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DisCartButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.DisCartButton.Appearance.Options.UseFont = true;
-            this.DisCartButton.Location = new System.Drawing.Point(208, 6);
+            this.DisCartButton.Location = new System.Drawing.Point(320, 6);
             this.DisCartButton.Name = "DisCartButton";
             this.DisCartButton.Size = new System.Drawing.Size(119, 49);
             this.DisCartButton.TabIndex = 24;
@@ -293,13 +318,15 @@
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.OkButton.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
             this.OkButton.Appearance.Options.UseFont = true;
-            this.OkButton.Location = new System.Drawing.Point(1143, 5);
+            this.OkButton.Appearance.Options.UseForeColor = true;
+            this.OkButton.Location = new System.Drawing.Point(1115, 5);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(107, 49);
+            this.OkButton.Size = new System.Drawing.Size(135, 49);
             this.OkButton.TabIndex = 0;
-            this.OkButton.Text = "Застосувати\r\n(F10)";
+            this.OkButton.Text = "Прийняти оплату\r\n(F10)";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // simpleButton1
@@ -1015,7 +1042,6 @@
             this.panel6.Controls.Add(this.panelControl4);
             this.panel6.Controls.Add(this.AmountEdit);
             this.panel6.Controls.Add(this.PrintDocBtn);
-            this.panel6.Controls.Add(this.PayDocBtn);
             this.panel6.Controls.Add(this.panel7);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(5, 5);
@@ -1070,28 +1096,13 @@
             this.PrintDocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PrintDocBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.PrintDocBtn.Appearance.Options.UseFont = true;
-            this.PrintDocBtn.Location = new System.Drawing.Point(1203, 79);
+            this.PrintDocBtn.Location = new System.Drawing.Point(1281, 79);
             this.PrintDocBtn.Name = "PrintDocBtn";
             this.PrintDocBtn.Size = new System.Drawing.Size(71, 39);
             this.PrintDocBtn.TabIndex = 43;
             this.PrintDocBtn.TabStop = false;
             this.PrintDocBtn.Text = "Видакова\r\n(F3)";
             this.PrintDocBtn.Click += new System.EventHandler(this.simpleButton11_Click);
-            // 
-            // PayDocBtn
-            // 
-            this.PayDocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PayDocBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.PayDocBtn.Appearance.ForeColor = System.Drawing.Color.ForestGreen;
-            this.PayDocBtn.Appearance.Options.UseFont = true;
-            this.PayDocBtn.Appearance.Options.UseForeColor = true;
-            this.PayDocBtn.Location = new System.Drawing.Point(1280, 79);
-            this.PayDocBtn.Name = "PayDocBtn";
-            this.PayDocBtn.Size = new System.Drawing.Size(71, 39);
-            this.PayDocBtn.TabIndex = 42;
-            this.PayDocBtn.TabStop = false;
-            this.PayDocBtn.Text = "Оплата\r\n(F9)";
-            this.PayDocBtn.Click += new System.EventHandler(this.simpleButton19_Click);
             // 
             // panel7
             // 
@@ -1308,7 +1319,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private System.Windows.Forms.Panel panel8;
         private DevExpress.XtraEditors.SimpleButton PrintDocBtn;
-        private DevExpress.XtraEditors.SimpleButton PayDocBtn;
         private System.Windows.Forms.Panel panel9;
         private DevExpress.XtraGrid.GridControl WhMatGridControl;
         public DevExpress.XtraGrid.Views.BandedGrid.BandedGridView WhMatGridView;
@@ -1337,5 +1347,7 @@
         private System.Windows.Forms.Panel panel7;
         private DevExpress.XtraEditors.PanelControl panelControl4;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton20;
+        private DevExpress.XtraEditors.SimpleButton simpleButton19;
     }
 }

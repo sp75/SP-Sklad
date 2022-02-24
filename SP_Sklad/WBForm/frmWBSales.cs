@@ -103,7 +103,7 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var df = new frmWayBillDetOut(_db, null, wb, disc_card))
+            using (var df = new frmWBSalesDetOut(_db, null, wb, disc_card, wb.Kontragent.WId.Value))
             {
                 if (df.ShowDialog() == DialogResult.OK)
                 {
@@ -283,6 +283,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
             wb.KaId = row.KaId;
+            wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
             wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
 
@@ -489,9 +490,9 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            wb.Kontragent = _db.Kagent.Find(wb.KaId);
+         //   wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
-            IHelper.ShowMatListByWH(_db, wb, disc_card);
+            IHelper.ShowMatListByWH(_db, wb, disc_card, wb.Kontragent.WId);
 
             if (MessageBox.Show("Зарезервувати товар ? ", "Резервування", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
@@ -557,11 +558,6 @@ namespace SP_Sklad.WBForm
         }
 
 
-        private void ProcurationBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
          private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
@@ -622,11 +618,6 @@ namespace SP_Sklad.WBForm
             {
                 IHelper.ShowMatInfo(wbd_row.MatId);
             }
-        }
-
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

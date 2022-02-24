@@ -34,9 +34,12 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.PutCashlessSumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.PutCashSumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.PayBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
@@ -51,20 +54,17 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.btn8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.PutCashlessSumEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.PayBtn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumAllEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PutCashlessSumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PutCashSumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PutCashlessSumEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -143,6 +143,31 @@
             this.panelControl7.Size = new System.Drawing.Size(462, 136);
             this.panelControl7.TabIndex = 71;
             // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Location = new System.Drawing.Point(9, 74);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(137, 16);
+            this.labelControl3.TabIndex = 48;
+            this.labelControl3.Text = "Внесена сума (картка):";
+            // 
+            // PutCashlessSumEdit
+            // 
+            this.PutCashlessSumEdit.Location = new System.Drawing.Point(9, 96);
+            this.PutCashlessSumEdit.Name = "PutCashlessSumEdit";
+            this.PutCashlessSumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.PutCashlessSumEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.PutCashlessSumEdit.Properties.Appearance.Options.UseFont = true;
+            this.PutCashlessSumEdit.Properties.Appearance.Options.UseForeColor = true;
+            this.PutCashlessSumEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.PutCashlessSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.PutCashlessSumEdit.Properties.ShowCloseButton = true;
+            this.PutCashlessSumEdit.Size = new System.Drawing.Size(444, 32);
+            this.PutCashlessSumEdit.TabIndex = 47;
+            this.PutCashlessSumEdit.TabStop = false;
+            this.PutCashlessSumEdit.EditValueChanged += new System.EventHandler(this.PutSumEdit_EditValueChanged);
+            // 
             // PutCashSumEdit
             // 
             this.PutCashSumEdit.Location = new System.Drawing.Point(9, 27);
@@ -179,6 +204,21 @@
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(462, 292);
             this.panelControl2.TabIndex = 72;
+            // 
+            // PayBtn
+            // 
+            this.PayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PayBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.PayBtn.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.PayBtn.Appearance.Options.UseFont = true;
+            this.PayBtn.Appearance.Options.UseForeColor = true;
+            this.PayBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.PayBtn.Location = new System.Drawing.Point(9, 6);
+            this.PayBtn.Name = "PayBtn";
+            this.PayBtn.Size = new System.Drawing.Size(211, 65);
+            this.PayBtn.TabIndex = 83;
+            this.PayBtn.Text = "Сплатити (F9)";
+            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
             // 
             // simpleButton5
             // 
@@ -370,44 +410,6 @@
             this.simpleButton3.Text = "7";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
-            // PutCashlessSumEdit
-            // 
-            this.PutCashlessSumEdit.Location = new System.Drawing.Point(9, 96);
-            this.PutCashlessSumEdit.Name = "PutCashlessSumEdit";
-            this.PutCashlessSumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.PutCashlessSumEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.PutCashlessSumEdit.Properties.Appearance.Options.UseFont = true;
-            this.PutCashlessSumEdit.Properties.Appearance.Options.UseForeColor = true;
-            this.PutCashlessSumEdit.Properties.DisplayFormat.FormatString = "0.00";
-            this.PutCashlessSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.PutCashlessSumEdit.Properties.ShowCloseButton = true;
-            this.PutCashlessSumEdit.Size = new System.Drawing.Size(444, 32);
-            this.PutCashlessSumEdit.TabIndex = 47;
-            this.PutCashlessSumEdit.TabStop = false;
-            this.PutCashlessSumEdit.EditValueChanged += new System.EventHandler(this.PutSumEdit_EditValueChanged);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl3.Location = new System.Drawing.Point(9, 74);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(137, 16);
-            this.labelControl3.TabIndex = 48;
-            this.labelControl3.Text = "Внесена сума (картка):";
-            // 
-            // PayBtn
-            // 
-            this.PayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PayBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.PayBtn.Appearance.Options.UseFont = true;
-            this.PayBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.PayBtn.Location = new System.Drawing.Point(9, 6);
-            this.PayBtn.Name = "PayBtn";
-            this.PayBtn.Size = new System.Drawing.Size(211, 65);
-            this.PayBtn.TabIndex = 83;
-            this.PayBtn.Text = "Сплатити (F9)";
-            this.PayBtn.Click += new System.EventHandler(this.PayBtn_Click);
-            // 
             // frmCashboxCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,11 +432,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
             this.panelControl7.ResumeLayout(false);
             this.panelControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PutCashlessSumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PutCashSumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PutCashlessSumEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

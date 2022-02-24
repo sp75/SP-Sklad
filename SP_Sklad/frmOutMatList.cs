@@ -21,15 +21,17 @@ namespace SP_Sklad
         private DateTime _endDate { get; set; }
         private int _matId { get; set; }
         private int _kaId { get; set; }
+        private int _w_type { get; set; }
         public List<GetPosOutView> pos_out_list { get; set; }
 
-        public frmOutMatList(BaseEntities db, DateTime startDate, DateTime endDate, int matId, int kaId)
+        public frmOutMatList(BaseEntities db, DateTime startDate, DateTime endDate, int matId, int kaId, int w_type)
         {
             InitializeComponent();
             _matId = matId;
             _startDate = startDate;
             _endDate = endDate;
             _kaId = kaId;
+            _w_type = w_type;
             _db = db;
         }
 
@@ -52,7 +54,7 @@ namespace SP_Sklad
                 return;
             }
 
-            pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, -1).ToList();
+            pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, _w_type).ToList();
             
             GetPosOutBS.DataSource = pos_out_list;
 

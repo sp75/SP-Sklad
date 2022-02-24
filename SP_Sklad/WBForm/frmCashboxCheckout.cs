@@ -19,7 +19,6 @@ namespace SP_Sklad.WBForm
     {
         BaseEntities _db { get; set; }
         private WaybillList _wb { get; set; }
-  //      private PayDoc _pd { get; set; }
         private GetUserAccessTree_Result _user_Access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
@@ -44,7 +43,7 @@ namespace SP_Sklad.WBForm
         {
             user_settings = new UserSettingsRepository(UserSession.UserId, _db);
 
-            if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType))   // Вхідний платіж
+            if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType))   // Вхідний платіж
             {
                 _user_Access = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList().FirstOrDefault(w => w.FunId == 26);
             }
@@ -90,8 +89,8 @@ namespace SP_Sklad.WBForm
                     ReportingDate = _wb.OnDate
                 });
 
-                if (new int[] { 1, 6, 16 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
-                if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+                if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
+                if (new int[] { -1, -6, 2, -16 ,-25}.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
 
 
                 _db.SaveChanges();
@@ -117,7 +116,7 @@ namespace SP_Sklad.WBForm
 
             calcEdit2.Value = put_sum - SumAllEdit.Value;
 
-            PayBtn.Enabled = put_sum >= SumAllEdit.Value;
+            PayBtn.Enabled = put_sum >= SumAllEdit.Value && PutCashlessSumEdit.Value <= SumAllEdit.Value;
         }
 
         private void PutSumEdit_KeyPress(object sender, KeyPressEventArgs e)

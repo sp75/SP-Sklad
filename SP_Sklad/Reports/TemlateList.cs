@@ -10,6 +10,7 @@ namespace SP_Sklad.Reports
     {
         public static String wb_in { get { return "WayBill_In.xlsx"; } }
         public static String wb_out { get { return "WayBill_Out.xlsx"; } }
+        public static String wb_sales_out { get { return "WayBilSales_Out.xlsx"; } }
         public static String write_on { get { return "WriteOn.xlsx"; } }
         public static String write_off { get { return "WriteOff.xlsx"; } }
         public static String re_supp { get { return "ReturnSupplier.xlsx"; } }

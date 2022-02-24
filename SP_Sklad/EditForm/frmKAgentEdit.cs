@@ -160,6 +160,12 @@ namespace SP_Sklad.EditForm
 
                 PayTypeEdit.Properties.DataSource = DB.SkladBase().PayType.ToList();
                 CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks;
+                WarehouseEdit.Properties.DataSource = _db.Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList
+                {
+                    WId = s.WId,
+                    Name = s.Name,
+                    Def = s.Def
+                }).ToList(); 
 
 
                 GetAccounts();

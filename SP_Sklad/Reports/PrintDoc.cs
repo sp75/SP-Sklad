@@ -27,6 +27,11 @@ namespace SP_Sklad.Reports
                    IHelper.Print(data_report, TemlateList.wb_out);
                     break;
 
+                case -25:
+                    var sale_data_report = WayBillOutReport(id, db);
+                    IHelper.Print(sale_data_report, TemlateList.wb_sales_out);
+                    break;
+
                 case 5:
                     WayBillReport(id, db, TemlateList.write_on);
                     break;

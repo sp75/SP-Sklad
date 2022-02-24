@@ -56,5 +56,6 @@ namespace SP_Sklad.SkladData
         public string AspNetUserId { get; set; }
         public string WebUserName { get; set; }
         public Nullable<int> RouteId { get; set; }
+        public Nullable<int> WId { get; set; }
     }
 }

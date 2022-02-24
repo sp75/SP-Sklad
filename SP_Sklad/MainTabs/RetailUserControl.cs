@@ -227,30 +227,16 @@ namespace SP_Sklad.MainTabs
                         }
 
                     }
-                    if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
-                    {
-                        using (var wb_in = new frmWayBillIn(cur_wtype, null))
-                        {
-                            wb_in.ShowDialog();
-                        }
-                    }
 
-                    if (cur_wtype == 6) // Повернення від клієнта
+                    if (cur_wtype == 25) // Повернення від клієнта
                     {
-                        using (var wb_re_in = new frmWBReturnIn(cur_wtype, null))
+                        using (var wb_re_in = new frmWBSalesReturn(cur_wtype, null))
                         {
                             wb_re_in.ShowDialog();
                         }
                     }
 
-                    if (cur_wtype == -6) //Повернення постачальнику
-                    {
-                        using (var wb_re_out = new frmWBReturnOut(null))
-                        {
-                            wb_re_out.ShowDialog();
-                        }
-
-                    }
+ 
                     break;
 
                 case 4:
@@ -263,33 +249,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 5:
-                    new frmPriceList().ShowDialog();
+                   
                     break;
 
-                /*           case 6: frmContr = new  TfrmContr(Application);
-                                   frmContr->CONTRACTS->Open();
-                                   frmContr->CONTRACTS->Append();
-                                   if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                   if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                   frmContr->CONTRACTS->Post();
-                                   frmContr->CONTRACTS->Edit();
-
-                                   frmContr->CONTRPARAMS->Append();
-                                   frmContr->CONTRPARAMS->Post();
-                                   frmContr->CONTRRESULTS->Append();
-
-                                   frmContr->ShowModal() ;
-                                   delete frmContr;
-                                   break;
-
-                           case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                   frmTaxWB->TaxWB->Open();
-                                   frmTaxWB->TaxWB->Append();
-                                   frmTaxWB->TaxWB->Post();
-                                   frmTaxWB->TaxWB->Edit();
-                                   frmTaxWB->ShowModal() ;
-                                   delete frmTaxWB;
-                                   break;*/
                 case 8:
                     new frmKAgentAdjustment().ShowDialog();
 

@@ -1619,6 +1619,9 @@ SELECT WaybillList.[WbillId]
 	  ,Materials.Name RecipeName
 	  ,DATEDIFF(minute , formation.OnDate , osadka.OnDate) FormationMinuteCount 
       ,formation.OutNetto
+      ,mr.TimeNorm
+      ,mg.GrpId 
+      ,mg.Name GrpName
   FROM WaybillList
   inner join WayBillMake m on m.WbillId = WaybillList.WbillId
   inner join MatRecipe mr on mr.RecId = m.RecId
@@ -1636,10 +1639,26 @@ SELECT WaybillList.[WbillId]
 				group by Tara.Name ) osadka
 
   where WType = -20 and WaybillList.OnDate between {0} and {1} 
-  order by mg.Name, Materials.barcode, Materials.matid, Materials.artikul", OnDate.Date, OnDate.Date.AddDays(1)); 
+  order by mg.Name, Materials.barcode, Materials.matid, Materials.artikul", OnDate.Date, OnDate.Date.AddDays(1));
+
+            var mat_grp = wb_make.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            {
+                s.Key.GrpId,
+                Name = s.Key.GrpName
+            }).OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "GrpId",
+                fk = "GrpId",
+                master_table = "MatGroup",
+                child_table = "range1"
+            });
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp);
             data_for_report.Add("range1", wb_make.ToList());
+            data_for_report.Add("_realation_", realation);
         }
 
         public class rep_48
@@ -1653,6 +1672,9 @@ SELECT WaybillList.[WbillId]
             public string RecipeName { get; set; }
             public int? FormationMinuteCount { get; set; }
             public decimal? OutNetto { get; set; }
+            public decimal? TimeNorm { get; set; }
+            public int? GrpId { get; set; }
+            public string GrpName { get; set; }
         }
 
         public class rep_45
