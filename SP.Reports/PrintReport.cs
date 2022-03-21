@@ -244,6 +244,10 @@ namespace SP.Reports
                     REP_48();
                     break;
 
+                case 49:
+                    REP_49();
+                    break;
+
                 default:
                     break;
             }
@@ -1514,6 +1518,69 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("Kagent", kagents.ToList());
+        }
+
+        public class rep_49
+        {
+            public int KaId { get; set; }
+            public string BarCode { get; set; }
+            public string KagentName { get; set; }
+            public int MatId { get; set; }
+            public string MatName { get; set; }
+            public string Artikul { get; set; }
+            public decimal? Amount { get; set; }
+            public string MsrName { get; set; }
+        }
+
+        private void REP_49()
+        {
+            int grp = Convert.ToInt32(MatGroup.GrpId);
+
+            var mat = _db.Database.SqlQuery<rep_49>(@"select 
+       ka.KaId, 
+	   m.BarCode, 
+	   ka.Name KagentName,
+	   m.MatId, 
+	   m.Name MatName, 
+	   m.Artikul,
+	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount, 
+	   ms.shortname MsrName
+    from materials m
+    join waybilldet wbd on m.matid=wbd.matid
+    join waybilllist wbl on wbl.wbillid=wbd.wbillid
+    join measures ms on ms.mid=m.mid
+	join MatGroup mg on m.GrpId = mg.GrpId
+    left outer join kagent ka on ka.kaid=wbl.kaid
+    left outer join WAYBILLMOVE wbm on wbm.wbillid = wbl.wbillid
+
+    where  wbl.WType = -16
+           and wbl.ondate between {0} and {1}
+    group by m.BarCode, m.MatId,  m.name, m.artikul, ms.shortname, ka.kaid, ka.Name , m.mid", StartDate.Date, EndDate.Date.AddDays(1)).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+
+            var ka_grp = mat.GroupBy(g => new { g.KaId, g.KagentName }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KagentName,
+                Summ = s.Sum(xs => xs.Amount)
+            }).OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", ka_grp);
+            data_for_report.Add("MatOutDet", mat);
+            data_for_report.Add("_realation_", realation);
         }
 
         public class rep_46
