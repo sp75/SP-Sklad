@@ -555,14 +555,9 @@ namespace SP_Sklad.WBDetForm
         {
             if (e.Button.Index == 1)
             {
-
-                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 1);
-              //  IHelper.ShowMatListByWH(_db, _wb, _cart, _wb.Kontragent.WId);
-                _wbd.WId = result.wid;
-                WHComboBox.EditValue = result.wid;
+                var result = IHelper.ShowRemainByWH(MatComboBox.EditValue, WHComboBox.EditValue, 3);
                 _wbd.MatId = result.mat_id;
                 MatComboBox.EditValue = result.mat_id;
-
             }
         }
     }

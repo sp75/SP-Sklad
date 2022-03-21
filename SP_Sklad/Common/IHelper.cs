@@ -603,6 +603,33 @@ namespace SP_Sklad.Common
                             }
                         }
                     }
+                    break;
+                case 3:
+                    if(old_WID != null)
+                    {
+                        int wid = Convert.ToInt32(old_WID);
+
+                        f.uc.gridColumn49.Visible = false;
+                        f.uc.gridColumn51.Visible = false;
+                        f.uc.gridColumn52.Visible = false;
+                        f.uc.MatListGridColumnWh.Visible = (wid == -1);
+                        f.uc.bar3.Visible = false;
+                        f.uc.ByWhBtn.Down = true;
+                        f.uc.splitContainerControl1.SplitterPosition = 0;
+
+                        f.uc.WHTreeList.DataSource = DB.SkladBase().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
+
+                        f.uc.GrpNameGridColumn.GroupIndex = 0;
+
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
+                        }
+                        else
+                        {
+                            result.mat_id = old_MATID != null ? (int)old_MATID : 0;
+                        }
+                    }
 
                     break;
 

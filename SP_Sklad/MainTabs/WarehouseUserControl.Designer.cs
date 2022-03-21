@@ -239,6 +239,7 @@
             this.gridColumn77 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn58 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
@@ -297,7 +298,6 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -1132,6 +1132,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // whContentTab
@@ -2692,6 +2693,12 @@
             this.gridColumn58.FieldName = "Notes";
             this.gridColumn58.Name = "gridColumn58";
             // 
+            // gridColumn59
+            // 
+            this.gridColumn59.Caption = "Підстава";
+            this.gridColumn59.FieldName = "Reason";
+            this.gridColumn59.Name = "gridColumn59";
+            // 
             // xtraTabControl2
             // 
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -3300,12 +3307,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
-            // 
-            // gridColumn59
-            // 
-            this.gridColumn59.Caption = "Підстава";
-            this.gridColumn59.FieldName = "Reason";
-            this.gridColumn59.Name = "gridColumn59";
             // 
             // WarehouseUserControl
             // 

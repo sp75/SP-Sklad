@@ -133,6 +133,7 @@
             this.gridColumn85 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn86 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn154 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn197 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.AttributeGridControl = new DevExpress.XtraGrid.GridControl();
             this.AttributeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -485,7 +486,6 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn197 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1323,6 +1323,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1957,6 +1958,15 @@
             this.gridColumn154.Visible = true;
             this.gridColumn154.VisibleIndex = 6;
             this.gridColumn154.Width = 79;
+            // 
+            // gridColumn197
+            // 
+            this.gridColumn197.Caption = "Шприць";
+            this.gridColumn197.FieldName = "SausageSyringe";
+            this.gridColumn197.Name = "gridColumn197";
+            this.gridColumn197.Visible = true;
+            this.gridColumn197.VisibleIndex = 9;
+            this.gridColumn197.Width = 72;
             // 
             // xtraTabPage11
             // 
@@ -5947,15 +5957,6 @@
             this.bar5.DockCol = 0;
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
-            // 
-            // gridColumn197
-            // 
-            this.gridColumn197.Caption = "Шприць";
-            this.gridColumn197.FieldName = "SausageSyringe";
-            this.gridColumn197.Name = "gridColumn197";
-            this.gridColumn197.Visible = true;
-            this.gridColumn197.VisibleIndex = 9;
-            this.gridColumn197.Width = 72;
             // 
             // ManufacturingUserControl
             // 

@@ -220,6 +220,7 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.ServicesGridControl = new DevExpress.XtraGrid.GridControl();
@@ -368,7 +369,6 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1235,6 +1235,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2429,6 +2430,15 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ShowLines = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
+            // 
+            // gridColumn74
+            // 
+            this.gridColumn74.Caption = "Штрих код";
+            this.gridColumn74.FieldName = "BarCode";
+            this.gridColumn74.Name = "gridColumn74";
+            this.gridColumn74.Visible = true;
+            this.gridColumn74.VisibleIndex = 5;
+            this.gridColumn74.Width = 243;
             // 
             // gridView7
             // 
@@ -3889,15 +3899,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowRecipeArchiveRecordsbarCheckItem)});
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
-            // 
-            // gridColumn74
-            // 
-            this.gridColumn74.Caption = "Штрих код";
-            this.gridColumn74.FieldName = "BarCode";
-            this.gridColumn74.Name = "gridColumn74";
-            this.gridColumn74.Visible = true;
-            this.gridColumn74.VisibleIndex = 5;
-            this.gridColumn74.Width = 243;
             // 
             // DirectoriesUserControl
             // 
