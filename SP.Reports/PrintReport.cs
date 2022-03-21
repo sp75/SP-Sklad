@@ -1523,39 +1523,32 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
         public class rep_49
         {
             public int KaId { get; set; }
-            public string BarCode { get; set; }
             public string KagentName { get; set; }
-            public int MatId { get; set; }
-            public string MatName { get; set; }
-            public string Artikul { get; set; }
+            public int GrpId { get; set; }
+            public string GrpName { get; set; }
             public decimal? Amount { get; set; }
-            public string MsrName { get; set; }
         }
 
         private void REP_49()
         {
-            int grp = Convert.ToInt32(MatGroup.GrpId);
-
             var mat = _db.Database.SqlQuery<rep_49>(@"select 
        ka.KaId, 
-	   m.BarCode, 
+	   m.GrpId,
+       mg.Name GrpName,
 	   ka.Name KagentName,
-	   m.MatId, 
-	   m.Name MatName, 
-	   m.Artikul,
-	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount, 
-	   ms.shortname MsrName
+	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
     from materials m
     join waybilldet wbd on m.matid=wbd.matid
     join waybilllist wbl on wbl.wbillid=wbd.wbillid
     join measures ms on ms.mid=m.mid
 	join MatGroup mg on m.GrpId = mg.GrpId
     left outer join kagent ka on ka.kaid=wbl.kaid
-    left outer join WAYBILLMOVE wbm on wbm.wbillid = wbl.wbillid
 
-    where  wbl.WType = -16
+    where  wbl.WType = -16 and wbl.checked = 0
            and wbl.ondate between {0} and {1}
-    group by m.BarCode, m.MatId,  m.name, m.artikul, ms.shortname, ka.kaid, ka.Name , m.mid", StartDate.Date, EndDate.Date.AddDays(1)).ToList();
+           and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
+           and {3} in (ka.kaid , 0 )
+    group by mg.Name , m.GrpId, ka.kaid, ka.Name", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId).ToList();
 
             if (!mat.Any())
             {
