@@ -1531,7 +1531,8 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
 
         private void REP_49()
         {
-            var mat = _db.Database.SqlQuery<rep_49>(@"select 
+            var mat = _db.Database.SqlQuery<rep_49>(@"select * from (
+    select 
        ka.KaId, 
 	   m.GrpId,
        mg.Name GrpName,
@@ -1548,7 +1549,10 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
            and wbl.ondate between {0} and {1}
            and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
            and {3} in (ka.kaid , 0 )
-    group by mg.Name , m.GrpId, ka.kaid, ka.Name", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId).ToList();
+           and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
+    group by mg.Name , m.GrpId, ka.kaid, ka.Name
+    )x
+    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr).ToList();
 
             if (!mat.Any())
             {
