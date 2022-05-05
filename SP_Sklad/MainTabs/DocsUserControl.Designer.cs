@@ -73,6 +73,7 @@
             this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -855,7 +856,8 @@
             this.gridColumn104,
             this.gridColumn108,
             this.gridColumn109,
-            this.gridColumn110});
+            this.gridColumn110,
+            this.gridColumn111});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1094,6 +1096,12 @@
             this.gridColumn110.Caption = "Водій";
             this.gridColumn110.FieldName = "Received";
             this.gridColumn110.Name = "gridColumn110";
+            // 
+            // gridColumn111
+            // 
+            this.gridColumn111.Caption = "К-сть всього, кг";
+            this.gridColumn111.FieldName = "TotalAmount";
+            this.gridColumn111.Name = "gridColumn111";
             // 
             // panelControl2
             // 
@@ -5915,5 +5923,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row20;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row21;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
     }
 }

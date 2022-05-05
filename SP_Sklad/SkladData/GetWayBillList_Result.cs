@@ -56,6 +56,7 @@ namespace SP_Sklad.SkladData
         public string PTypeName { get; set; }
         public string RouteName { get; set; }
         public string CarName { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
         public Nullable<decimal> Balans { get; set; }
     }
 }

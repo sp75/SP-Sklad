@@ -2375,6 +2375,30 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDocList_Result>("[BaseEntities].[GetDocList](@from_date, @to_date, @ka_id, @w_type)", from_dateParameter, to_dateParameter, ka_idParameter, w_typeParameter);
         }
     
+        [EdmFunction("BaseEntities", "GetUserAccessMatGroup")]
+        public virtual IQueryable<GetUserAccessMatGroup_Result> GetUserAccessMatGroup(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessMatGroup_Result>("[BaseEntities].[GetUserAccessMatGroup](@user_id)", user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetRemainByWh")]
+        public virtual IQueryable<GetRemainByWh_Result> GetRemainByWh(Nullable<int> w_id, Nullable<System.DateTime> on_date)
+        {
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRemainByWh_Result>("[BaseEntities].[GetRemainByWh](@w_id, @on_date)", w_idParameter, on_dateParameter);
+        }
+    
         [EdmFunction("BaseEntities", "GetWayBillList")]
         public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> person_id)
         {
@@ -2411,30 +2435,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetUserAccessMatGroup")]
-        public virtual IQueryable<GetUserAccessMatGroup_Result> GetUserAccessMatGroup(Nullable<int> user_id)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessMatGroup_Result>("[BaseEntities].[GetUserAccessMatGroup](@user_id)", user_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetRemainByWh")]
-        public virtual IQueryable<GetRemainByWh_Result> GetRemainByWh(Nullable<int> w_id, Nullable<System.DateTime> on_date)
-        {
-            var w_idParameter = w_id.HasValue ?
-                new ObjectParameter("w_id", w_id) :
-                new ObjectParameter("w_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRemainByWh_Result>("[BaseEntities].[GetRemainByWh](@w_id, @on_date)", w_idParameter, on_dateParameter);
         }
     }
 }
