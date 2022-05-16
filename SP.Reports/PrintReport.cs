@@ -285,7 +285,8 @@ namespace SP.Reports
             string wh = Convert.ToString(Warehouse.WId);
             int status = Convert.ToInt32(Status);
 
-            var mat = _db.REP_2(StartDate, EndDate, grp, Kagent.KaId, wh, DocStr, status, _user_id).AsQueryable().OrderBy(GetSortedList(_rep_id)).ToList();
+            var sort_list = GetSortedList(_rep_id);
+            var mat = _db.REP_2(StartDate, EndDate, grp, Kagent.KaId, wh, DocStr, status, _user_id).AsQueryable().OrderBy(sort_list).ToList();
 
             if (!mat.Any())
             {
@@ -1276,7 +1277,8 @@ FROM            (
             string wh = Convert.ToString(Warehouse.WId);
             int kid = Convert.ToInt32(Kagent.KaId);
             Guid grp_kg = KontragentGroup.Id;
-            var mat = _db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderBy(GetSortedList(_rep_id)).ToList();
+            var sort_list = GetSortedList(_rep_id);
+            var mat = _db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderBy(sort_list).ToList();
 
             if (!mat.Any())
             {
@@ -1329,7 +1331,8 @@ FROM            (
         }
         private void REP_41()
         {
-            var kagent = _db.REP_41(new DateTime(StartDate.Year, 1, 1), KontragentGroup.Id).OrderBy(GetSortedList(_rep_id)).ToList();
+            var sort_list = GetSortedList(_rep_id);
+            var kagent = _db.REP_41(new DateTime(StartDate.Year, 1, 1), KontragentGroup.Id).OrderBy(sort_list).ToList();
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("KagentRange", kagent.ToList());
