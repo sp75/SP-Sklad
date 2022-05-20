@@ -32,6 +32,8 @@ namespace SP_Sklad.SkladData
         public int Deleted { get; set; }
         public Nullable<int> PPTypeId { get; set; }
         public Nullable<int> ExtraType { get; set; }
+        public Nullable<int> RoundUpTo { get; set; }
+        public Nullable<int> RoundingMethod { get; set; }
     
         public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
         public virtual ICollection<MatGroupPrices> MatGroupPrices1 { get; set; }

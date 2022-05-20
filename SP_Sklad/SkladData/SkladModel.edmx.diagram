@@ -171,13 +171,6 @@
         <AssociationConnector Association="BaseModel.FK_WBS_WBILLID" />
         <EntityTypeShape EntityType="BaseModel.UserSettings" Width="1.5" PointX="21.625" PointY="0.625" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentSaldo" Width="1.5" PointX="10.535968673665062" PointY="17.949280389560982" />
-        <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="23.75" PointY="0.625" />
-        <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="25.75" PointY="0.625" />
-        <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" ManuallyRouted="false" >
-        </AssociationConnector>
-        <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
         <EntityTypeShape EntityType="BaseModel.DocRels" Width="1.5" PointX="2.375" PointY="15.5" />
         <EntityTypeShape EntityType="BaseModel.DiscCards" Width="1.5" PointX="4.9849580828961724" PointY="17.977166675951874" />
         <AssociationConnector Association="BaseModel.FK_WBDAP_CARDID" />
@@ -261,7 +254,6 @@
         <EntityTypeShape EntityType="BaseModel.v_PlannedCalculationDetDet" Width="1.5" PointX="3.5971362272264136" PointY="14.626537806646217" />
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_CalcRawMaterialDet_CalcRawMaterials" />
-        <AssociationConnector Association="BaseModel.FK_PlannedCalculation_PriceList" />
         <EntityTypeShape EntityType="BaseModel.PayDoc" Width="1.5" PointX="9.3021072471989825" PointY="11.196627681700806" />
         <AssociationConnector Association="BaseModel.FK_PD_CASHID" />
         <AssociationConnector Association="BaseModel.FK__PAYDOC__CTYPEID__2334397B" />
@@ -305,7 +297,6 @@
         <EntityTypeShape EntityType="BaseModel.v_KAgentAdjustmentDet" Width="1.5" PointX="22.375" PointY="13.75" />
         <EntityTypeShape EntityType="BaseModel.KAgentAdjustmentDet" Width="1.5" PointX="7.375" PointY="54.625" />
         <AssociationConnector Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" />
-        <AssociationConnector Association="BaseModel.PriceListKagent" />
         <EntityTypeShape EntityType="BaseModel.TechProcess" Width="1.5" PointX="25.375" PointY="5.875" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
         <AssociationConnector Association="BaseModel.FK_TECHPROCDET_TECHPROCESS" />
@@ -324,6 +315,13 @@
         <AssociationConnector Association="BaseModel.FK_Routes_Cars" />
         <EntityTypeShape EntityType="BaseModel.WeighingScales" Width="1.5" PointX="28.375" PointY="8.75" />
         <EntityTypeShape EntityType="BaseModel.UserAccessMatGroup" Width="1.5" PointX="29" PointY="13.375" />
+        <EntityTypeShape EntityType="BaseModel.v_PriceList" Width="1.5" PointX="26.25" PointY="29.125" />
+        <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="24.375" PointY="0.75" />
+        <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" />
+        <AssociationConnector Association="BaseModel.FK_PlannedCalculation_PriceList" />
+        <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
+        <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
+        <AssociationConnector Association="BaseModel.PriceListKagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

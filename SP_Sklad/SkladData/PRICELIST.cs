@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public PriceList()
         {
-            this.PriceListDet = new HashSet<PriceListDet>();
             this.PlannedCalculation = new HashSet<PlannedCalculation>();
+            this.PriceListDet = new HashSet<PriceListDet>();
             this.Kagent = new HashSet<Kagent>();
         }
     
@@ -35,9 +35,9 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdatedAt { get; set; }
     
         public virtual Currency Currency { get; set; }
+        public virtual ICollection<PlannedCalculation> PlannedCalculation { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
-        public virtual ICollection<PlannedCalculation> PlannedCalculation { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

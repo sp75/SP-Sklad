@@ -25,7 +25,8 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
 
             ExtraTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "На ціну приходу" }, new { Id = 2, Name = "На категорію" }, new { Id = 3, Name = "Прайс-лист" } };
-           
+            RoundingMethodEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "По арифметичним правилам" }, /*new { Id = 1, Name = "Завжди в більшу сторону" },*/ new { Id = 2, Name = "Завжди в меншу сторону" } };
+
             lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
         }
 
@@ -40,7 +41,9 @@ namespace SP_Sklad.EditForm
                     Num = _db.PriceTypes.Count() + 1,
                     Def = _db.PriceTypes.Any(a => a.Def == 1) ? 0 : 1,
                     Deleted = 0,
-                    ExtraType = 0
+                    ExtraType = 0,
+                    RoundUpTo = 2,
+                    RoundingMethod = 0
 
                 });
                 Text = "Додати нову цінову категорію:";
@@ -61,8 +64,14 @@ namespace SP_Sklad.EditForm
             ExtraTypeLookUpEdit_EditValueChanged(sender, e);
             checkEdit3_CheckedChanged(sender, e);
 
-            if (pt.PPTypeId == null || pt.ExtraType == 2 || pt.ExtraType == 3) checkEdit3.Checked = true;
-            else checkEdit4.Checked = true;
+            if (pt.PPTypeId == null || pt.ExtraType == 2 || pt.ExtraType == 3)
+            {
+                checkEdit3.Checked = true;
+            }
+            else
+            {
+                checkEdit4.Checked = true;
+            }
         }
 
         private void OkButton_Click(object sender, EventArgs e)

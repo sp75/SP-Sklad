@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 
@@ -88,6 +89,22 @@ namespace SP_Sklad.EditForm
             public int RouteId { get; set; }
             public string DriverName { get; set; }
             public string Number { get; set; }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var id = IHelper.ShowDirectList(null, 3);
+            if (id != null)
+            {
+                using (var _db = new BaseEntities())
+                {
+                    int k = Convert.ToInt32(id);
+
+                    var ka = _db.Kagent.FirstOrDefault(w => w.KaId == k);
+
+                    ReceivedTextEdit.Text = ka.Name;
+                }
+            }
         }
     }
 }

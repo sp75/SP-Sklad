@@ -21,7 +21,7 @@ namespace SP_Sklad.Reports
         public static String wb_inv { get { return "InventoryAct.xlsx"; } }
         public static String wb_deb { get { return "nakladnaDeboning.xlsx"; } }
         public static String wb_maked { get { return "nakladnaMaked.xlsx"; } }
-        public static String p_list { get { return "PriceList2.xlsx"; } }
+        public static String p_list { get { return "PriceList.xlsx"; } }
         public static String pay_doc_in { get { return "PrihOr.xlsx"; } }
         public static String pay_doc_out { get { return "RashOr.xlsx"; } }
         public static String wb_invoice { get { return "Invoice.xlsx"; } }

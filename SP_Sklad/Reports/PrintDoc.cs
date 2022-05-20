@@ -520,11 +520,31 @@ namespace SP_Sklad.Reports
                 s.GrpName,
                 s.Name,
                 s.Price,
-                BarCode_Price = Getlable(s.Price, s.BarCode)
+                BarCode_Price = Getlable(s.Price, s.BarCode),
+                s.GrpId,
+                s.Discount,
+                s.MsrName,
+                s.Notes
             }).ToList();
+
+            var mat_grp = pl_d.GroupBy(g => new { g.GrpName }).Select(s => new
+            {
+                s.Key.GrpName,
+            }).OrderBy(o => o.GrpName).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "GrpName",
+                fk = "GrpName",
+                master_table = "MatGroup",
+                child_table = "PriceListDet"
+            });
 
             dataForReport.Add("PriceList", pl);
             dataForReport.Add("PriceListDet", pl_d);
+            dataForReport.Add("MatGroup", mat_grp);
+            dataForReport.Add("_realation_", realation);
 
             IHelper.Print(dataForReport, TemlateList.p_list);
         }

@@ -1255,40 +1255,6 @@ namespace SP_Sklad.MainTabs
 
                     db.CreateOrderByPriceList(_wb.WbillId, pl_row.PlId);
 
-                    /*  int count = 0;
-                      var pld = db.PriceListDet.Where(w => w.PlId == pl_row.PlId).OrderBy(o => o.Num).ToList();
-
-                      foreach (var item in pld.Where(w => w.PlDetType == 0).ToList())
-                      {
-                          var DiscountPrice = item.Price - (item.Price * (item.Discount ?? 0) / 100);
-
-                          db.WaybillDet.Add(new WaybillDet
-                          {
-                              WbillId = _wb.WbillId,
-                              Amount = 0,
-                              Discount = item.Discount ?? 0,
-                              Nds = _wb.Nds,
-                              CurrId = _wb.CurrId,
-                              OnDate = _wb.OnDate,
-                              Num = ++count,
-                              OnValue = _wb.OnValue,
-                              PosKind = 0,
-                              PosParent = 0,
-                              DiscountKind = 1,
-                              //   PtypeId = db.Kagent.Find(_wb.KaId).PTypeId,
-                              WayBillDetAddProps = new WayBillDetAddProps(),
-                              BasePrice = item.Price,
-                              Price = DiscountPrice * 100 / (100 + _wb.Nds),
-                              WId = db.Materials.Find(item.MatId).WId,
-                              MatId = item.MatId.Value,
-                              Notes = item.Notes
-                          });
-                      }
-
-                      db.SaveChanges();*/
-
-
-
                     ++wb_count;
                 }
 

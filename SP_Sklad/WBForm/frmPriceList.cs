@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
@@ -70,7 +71,7 @@ namespace SP_Sklad.WBForm
 
             foreach (var item in _db.Kagent.Where(w => w.Deleted == 0 && (w.Archived == 0 || w.Archived == null)).OrderBy(o => o.Name).Select(s => new { s.KaId, s.Name, IsWork = s.PriceList.Any(a => a.PlId == _pl_id), s.PriceList }))
             {
-                checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, !item.PriceList.Where(wp => wp.PlId != _pl_id).Any());
+                checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, /*!item.PriceList.Where(wp => wp.PlId != _pl_id).Any()*/ true);
             }
 
 
@@ -314,7 +315,7 @@ namespace SP_Sklad.WBForm
         private decimal GetPrice(int? mat_id)
         {
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
-            var mat_price = _db.GetListMatPrices(mat_id, pl.CurrId, p_type).FirstOrDefault();
+            var mat_price = _db.GetMatPrice(mat_id, pl.CurrId, p_type).FirstOrDefault();
 
             return mat_price != null ? (mat_price.Price != null ? mat_price.Price.Value : 0.00m) : 0.00m;
         }
@@ -606,7 +607,7 @@ namespace SP_Sklad.WBForm
 
             foreach(var item in _db.PriceListDet.Where(w=> w.PlId == PlId))
             {
-                var pld = _db.PriceListDet.Where(w => w.MatId == item.MatId && w.PlDetType == 0).FirstOrDefault();
+                var pld = _db.PriceListDet.Where(w => w.MatId == item.MatId && w.PlDetType == 0 && w.PlId == _pl_id).FirstOrDefault();
                 if(pld != null)
                 {
                     pld.Price = item.Price;
@@ -629,6 +630,26 @@ namespace SP_Sklad.WBForm
             {
                 e.Appearance.ForeColor = Color.Red;
             }
+        }
+
+        private void PTypeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                PTypeEdit.EditValue = null;
+            }
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var btn_edit = sender as ButtonEdit;
+
+            foreach (var item in _db.PriceListDet.Where(w => w.PlId == _pl_id))
+            {
+                item.Discount = Convert.ToDecimal(btn_edit.EditValue);
+            }
+            _db.SaveChanges();
+            GetDetail();
         }
     }
 }

@@ -33,7 +33,6 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
@@ -48,10 +47,15 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.RoundingMethodEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.RoundUpToEdit = new DevExpress.XtraEditors.SpinEdit();
+            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -66,6 +70,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RoundingMethodEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoundUpToEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -73,7 +82,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 324);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 398);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(639, 52);
             this.BottomPanel.TabIndex = 19;
@@ -110,10 +119,6 @@
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
             // 
-            // PriceTypesBS
-            // 
-            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
-            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -131,7 +136,7 @@
             // DefCheckBox
             // 
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "Def", true));
-            this.DefCheckBox.Location = new System.Drawing.Point(23, 270);
+            this.DefCheckBox.Location = new System.Drawing.Point(23, 361);
             this.DefCheckBox.Name = "DefCheckBox";
             this.DefCheckBox.Properties.Caption = "Основна цінова категорія  (використовувати за змовчуванням)";
             this.DefCheckBox.Properties.ValueChecked = 1;
@@ -191,7 +196,7 @@
             // lookUpEdit2
             // 
             this.lookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "PPTypeId", true));
-            this.lookUpEdit2.Location = new System.Drawing.Point(415, 94);
+            this.lookUpEdit2.Location = new System.Drawing.Point(415, 92);
             this.lookUpEdit2.Name = "lookUpEdit2";
             this.lookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -258,7 +263,7 @@
             // 
             // checkEdit4
             // 
-            this.checkEdit4.Location = new System.Drawing.Point(26, 93);
+            this.checkEdit4.Location = new System.Drawing.Point(17, 93);
             this.checkEdit4.Name = "checkEdit4";
             this.checkEdit4.Properties.Caption = "Знижка, %";
             this.checkEdit4.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
@@ -271,7 +276,7 @@
             // checkEdit3
             // 
             this.checkEdit3.EditValue = true;
-            this.checkEdit3.Location = new System.Drawing.Point(26, 47);
+            this.checkEdit3.Location = new System.Drawing.Point(17, 49);
             this.checkEdit3.Name = "checkEdit3";
             this.checkEdit3.Properties.Caption = "Націнка, %";
             this.checkEdit3.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.Radio;
@@ -292,6 +297,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.groupControl1);
             this.panelControl1.Controls.Add(this.DefCheckBox);
             this.panelControl1.Controls.Add(this.groupControl2);
             this.panelControl1.Controls.Add(this.labelControl3);
@@ -299,14 +305,96 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(639, 324);
+            this.panelControl1.Size = new System.Drawing.Size(639, 398);
             this.panelControl1.TabIndex = 43;
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Controls.Add(this.RoundingMethodEdit);
+            this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.labelControl1);
+            this.groupControl1.Controls.Add(this.RoundUpToEdit);
+            this.groupControl1.Location = new System.Drawing.Point(23, 237);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(591, 103);
+            this.groupControl1.TabIndex = 43;
+            this.groupControl1.Tag = "";
+            this.groupControl1.Text = "Правила заокруглення цін";
+            // 
+            // RoundingMethodEdit
+            // 
+            this.RoundingMethodEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "RoundingMethod", true));
+            this.RoundingMethodEdit.Location = new System.Drawing.Point(143, 35);
+            this.RoundingMethodEdit.Name = "RoundingMethodEdit";
+            this.RoundingMethodEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RoundingMethodEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.RoundingMethodEdit.Properties.DisplayMember = "Name";
+            this.RoundingMethodEdit.Properties.ShowFooter = false;
+            this.RoundingMethodEdit.Properties.ShowHeader = false;
+            this.RoundingMethodEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.RoundingMethodEdit.Properties.ValueMember = "Id";
+            this.RoundingMethodEdit.Size = new System.Drawing.Size(231, 22);
+            this.RoundingMethodEdit.StyleController = this.styleController1;
+            this.RoundingMethodEdit.TabIndex = 72;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(17, 38);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(120, 16);
+            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.TabIndex = 70;
+            this.labelControl2.Text = "Метод заокруглення";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(429, 38);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(56, 16);
+            this.labelControl1.StyleController = this.styleController1;
+            this.labelControl1.TabIndex = 58;
+            this.labelControl1.Text = "Точність:";
+            // 
+            // RoundUpToEdit
+            // 
+            this.RoundUpToEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PriceTypesBS, "RoundUpTo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RoundUpToEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.RoundUpToEdit.Location = new System.Drawing.Point(491, 35);
+            this.RoundUpToEdit.Name = "RoundUpToEdit";
+            this.RoundUpToEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RoundUpToEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.RoundUpToEdit.Properties.IsFloatValue = false;
+            this.RoundUpToEdit.Properties.Mask.EditMask = "N00";
+            this.RoundUpToEdit.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.RoundUpToEdit.Properties.MinValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            -2147483648});
+            this.RoundUpToEdit.Size = new System.Drawing.Size(67, 22);
+            this.RoundUpToEdit.StyleController = this.styleController1;
+            this.RoundUpToEdit.TabIndex = 69;
+            // 
+            // PriceTypesBS
+            // 
+            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
             // 
             // frmPricetypesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 376);
+            this.ClientSize = new System.Drawing.Size(639, 450);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.BottomPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -318,7 +406,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -335,6 +422,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RoundingMethodEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoundUpToEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,5 +453,10 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.CalcEdit calcEdit2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.LookUpEdit RoundingMethodEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SpinEdit RoundUpToEdit;
     }
 }

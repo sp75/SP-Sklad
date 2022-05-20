@@ -234,6 +234,7 @@
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox16 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -2781,7 +2782,8 @@
             this.gridColumn46,
             this.gridColumn47,
             this.gridColumn48,
-            this.gridColumn49});
+            this.gridColumn49,
+            this.gridColumn112});
             this.PriceListGridView.GridControl = this.PriceListGridControl;
             this.PriceListGridView.Name = "PriceListGridView";
             this.PriceListGridView.OptionsBehavior.Editable = false;
@@ -2800,7 +2802,7 @@
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 0;
-            this.gridColumn46.Width = 313;
+            this.gridColumn46.Width = 362;
             // 
             // gridColumn47
             // 
@@ -2808,8 +2810,8 @@
             this.gridColumn47.FieldName = "OnDate";
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.Visible = true;
-            this.gridColumn47.VisibleIndex = 2;
-            this.gridColumn47.Width = 83;
+            this.gridColumn47.VisibleIndex = 1;
+            this.gridColumn47.Width = 96;
             // 
             // gridColumn48
             // 
@@ -2817,8 +2819,8 @@
             this.gridColumn48.FieldName = "Notes";
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
-            this.gridColumn48.VisibleIndex = 1;
-            this.gridColumn48.Width = 308;
+            this.gridColumn48.VisibleIndex = 2;
+            this.gridColumn48.Width = 230;
             // 
             // gridColumn49
             // 
@@ -2826,8 +2828,17 @@
             this.gridColumn49.FieldName = "CurrName";
             this.gridColumn49.Name = "gridColumn49";
             this.gridColumn49.Visible = true;
-            this.gridColumn49.VisibleIndex = 3;
-            this.gridColumn49.Width = 101;
+            this.gridColumn49.VisibleIndex = 4;
+            this.gridColumn49.Width = 93;
+            // 
+            // gridColumn112
+            // 
+            this.gridColumn112.Caption = "Категорія цін";
+            this.gridColumn112.FieldName = "PriceTypeName";
+            this.gridColumn112.Name = "gridColumn112";
+            this.gridColumn112.Visible = true;
+            this.gridColumn112.VisibleIndex = 3;
+            this.gridColumn112.Width = 238;
             // 
             // repositoryItemImageEdit3
             // 
@@ -5924,5 +5935,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row21;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
     }
 }

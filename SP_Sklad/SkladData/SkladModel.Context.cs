@@ -122,8 +122,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WaybillList> WaybillList { get; set; }
         public DbSet<UserSettings> UserSettings { get; set; }
         public DbSet<v_KAgentSaldo> v_KAgentSaldo { get; set; }
-        public DbSet<PriceList> PriceList { get; set; }
-        public DbSet<v_PriceList> v_PriceList { get; set; }
         public DbSet<v_WaybillList> v_WaybillList { get; set; }
         public DbSet<DocRels> DocRels { get; set; }
         public DbSet<DiscCards> DiscCards { get; set; }
@@ -189,6 +187,8 @@ namespace SP_Sklad.SkladData
         public DbSet<UserAccessMatGroup> UserAccessMatGroup { get; set; }
         public DbSet<v_BarCodes> v_BarCodes { get; set; }
         public DbSet<v_GetRetailTree> v_GetRetailTree { get; set; }
+        public DbSet<v_PriceList> v_PriceList { get; set; }
+        public DbSet<PriceList> PriceList { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -214,16 +214,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("IN_CHECKED", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_CONTRACTS_LIST_Result>("[BaseEntities].[SP_CONTRACTS_LIST](@IN_DOCTYPE, @IN_FROMDATE, @IN_TODATE, @IN_KAID, @IN_CHECKED)", iN_DOCTYPEParameter, iN_FROMDATEParameter, iN_TODATEParameter, iN_KAIDParameter, iN_CHECKEDParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "SP_GET_AVG_PRICE")]
-        public virtual IQueryable<SP_GET_AVG_PRICE_Result> SP_GET_AVG_PRICE(Nullable<int> iN_POSID)
-        {
-            var iN_POSIDParameter = iN_POSID.HasValue ?
-                new ObjectParameter("IN_POSID", iN_POSID) :
-                new ObjectParameter("IN_POSID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<SP_GET_AVG_PRICE_Result>("[BaseEntities].[SP_GET_AVG_PRICE](@IN_POSID)", iN_POSIDParameter);
         }
     
         [EdmFunction("BaseEntities", "SP_GET_MAT_EXTRA")]
@@ -2435,6 +2425,24 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatPrice")]
+        public virtual IQueryable<GetMatPrice_Result> GetMatPrice(Nullable<int> mat_id, Nullable<int> in_curr_id, Nullable<int> p_type)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var in_curr_idParameter = in_curr_id.HasValue ?
+                new ObjectParameter("in_curr_id", in_curr_id) :
+                new ObjectParameter("in_curr_id", typeof(int));
+    
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[BaseEntities].[GetMatPrice](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
         }
     }
 }

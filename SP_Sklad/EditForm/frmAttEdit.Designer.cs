@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttEdit));
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -41,6 +42,7 @@
             this.AttDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -96,7 +98,7 @@
             this.ReceivedTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Received", true));
             this.ReceivedTextEdit.Location = new System.Drawing.Point(24, 39);
             this.ReceivedTextEdit.Name = "ReceivedTextEdit";
-            this.ReceivedTextEdit.Size = new System.Drawing.Size(406, 22);
+            this.ReceivedTextEdit.Size = new System.Drawing.Size(381, 22);
             this.ReceivedTextEdit.StyleController = this.styleController1;
             this.ReceivedTextEdit.TabIndex = 45;
             // 
@@ -184,6 +186,17 @@
             this.labelControl2.TabIndex = 50;
             this.labelControl2.Text = "Маршрут\\Машина";
             // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
+            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton2.Location = new System.Drawing.Point(408, 39);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
+            this.simpleButton2.TabIndex = 52;
+            this.simpleButton2.ToolTip = "Обновити ціни по категоріїї";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // WaybillListBS
             // 
             this.WaybillListBS.DataSource = typeof(SP_Sklad.SkladData.WaybillList);
@@ -193,6 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 247);
+            this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.CarsLookUpEdit);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.AttDateEdit);
@@ -237,5 +251,6 @@
         private DevExpress.XtraEditors.DateEdit AttDateEdit;
         private DevExpress.XtraEditors.LookUpEdit CarsLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
     }
 }

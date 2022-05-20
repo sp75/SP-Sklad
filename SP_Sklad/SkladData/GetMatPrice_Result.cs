@@ -11,8 +11,12 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class SP_GET_AVG_PRICE_Result
+    public partial class GetMatPrice_Result
     {
-        public Nullable<decimal> AVG_IN_PICE { get; set; }
+        public Nullable<int> PType { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> CurrId { get; set; }
+        public string CurrName { get; set; }
+        public Nullable<double> Dis { get; set; }
     }
 }

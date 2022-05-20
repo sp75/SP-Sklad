@@ -123,4 +123,16 @@
   <metadata name="WaybillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>170, 33</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="simpleButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAFLSURBVDhPxZIhjIQwEEUrkUhsJbKyFlmJxCKRyNrKyspaJLJyLRKJxCKRyH8fgjx211xukp9p
+        CP91Zjriz2J6eSQv8YqKucT9+buYRott6YDDUT2Orb1AM6H3L+9jtMVlxE7I1gBrjWM2GPrsW0BGk7mM
+        WJinCkgaieB1Hj9DYkdAyoFXyayAkTpn8S3AuwKTI2AgIJ5S2DnI2InPZjVWkEOGwH5HajlhvPk0a1am
+        evUMCUuETAUCWkTKs/yOxroVMLFAv2gUXQ4b7e8QyVLtXl/mcDTwPHezhiCk9DnPCnUqUdYPe5EFln4b
+        3WZg1+q61SQJSUBLQDdpZPrpOb2AW1n6TvH93drALoQxey5WXAOaUEM1D3OoYoWMO9AmtrAEDNuAYR3g
+        J482tMirHIUpnod4huUaa8e+az5ZRWkBaSRMbxDG8N78DyHED/mIE86UfphaAAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
