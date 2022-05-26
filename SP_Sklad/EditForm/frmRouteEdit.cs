@@ -62,5 +62,13 @@ namespace SP_Sklad.EditForm
                 }
             }
         }
+
+        private void DriversLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                DriversLookUpEdit.EditValue = null;
+            }
+        }
     }
 }

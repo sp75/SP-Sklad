@@ -115,7 +115,8 @@
             this.DriversLookUpEdit.Location = new System.Drawing.Point(12, 101);
             this.DriversLookUpEdit.Name = "DriversLookUpEdit";
             this.DriversLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
             this.DriversLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
             this.DriversLookUpEdit.Properties.DisplayMember = "Name";
@@ -124,6 +125,7 @@
             this.DriversLookUpEdit.Properties.ShowFooter = false;
             this.DriversLookUpEdit.Properties.ShowHeader = false;
             this.DriversLookUpEdit.Properties.ValueMember = "KaId";
+            this.DriversLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DriversLookUpEdit_Properties_ButtonClick);
             this.DriversLookUpEdit.Size = new System.Drawing.Size(451, 22);
             this.DriversLookUpEdit.StyleController = this.styleController1;
             this.DriversLookUpEdit.TabIndex = 45;

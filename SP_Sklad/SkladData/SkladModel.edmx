@@ -80,6 +80,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverId" Type="int" />
         </EntityType>
         <EntityType Name="CashDesks">
           <Key>
@@ -2953,6 +2954,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="PlannedCalculationDet">
               <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cars_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cars" Type="Self.Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="DriverId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7584,6 +7599,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="MatRecipe" EntitySet="MatRecipe" />
             <End Role="PlannedCalculationDet" EntitySet="PlannedCalculationDet" />
           </AssociationSet>
+          <AssociationSet Name="FK_Cars_Kagent" Association="Self.FK_Cars_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
           <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="Self.FK_COMMISSI_REFERENCE_KAGENT">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Commission" EntitySet="Commission" />
@@ -9646,6 +9665,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="in_curr_id" Mode="In" Type="Int32" />
             <Parameter Name="p_type" Mode="In" Type="Int32" />
           </FunctionImport>
+          <AssociationSet Name="FK_Cars_Kagent" Association="BaseModel.FK_Cars_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12958,6 +12981,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
           <Property Name="WId" Type="Int32" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
+          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -15864,6 +15888,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Routes_Cars" FromRole="Cars" ToRole="Routes" />
+          <Property Name="DriverId" Type="Int32" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Cars" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_Routes_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
@@ -16097,6 +16123,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="CurrName" Nullable="true" MaxLength="16" />
           <Property Type="Double" Name="Dis" Nullable="true" />
         </ComplexType>
+        <Association Name="FK_Cars_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20197,6 +20237,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="BaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

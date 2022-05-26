@@ -322,6 +322,7 @@
         <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
         <AssociationConnector Association="BaseModel.PriceListKagent" />
+        <AssociationConnector Association="BaseModel.FK_Cars_Kagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

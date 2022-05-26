@@ -50,6 +50,7 @@ namespace SP_Sklad.SkladData
             this.KAgentAdjustment1 = new HashSet<KAgentAdjustment>();
             this.KAgentAdjustment2 = new HashSet<KAgentAdjustment>();
             this.PriceList = new HashSet<PriceList>();
+            this.Cars = new HashSet<Cars>();
         }
     
         public int KaId { get; set; }
@@ -129,5 +130,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentAdjustment> KAgentAdjustment1 { get; set; }
         public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
+        public virtual ICollection<Cars> Cars { get; set; }
     }
 }

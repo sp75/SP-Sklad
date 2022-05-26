@@ -110,6 +110,7 @@
             this.LoginGridColumn = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn80 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -322,6 +323,8 @@
             this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
             this.RouteGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn101 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn102 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
             this.DiscCardsGridControl = new DevExpress.XtraGrid.GridControl();
             this.DiscCardsBS = new System.Windows.Forms.BindingSource(this.components);
@@ -352,6 +355,13 @@
             this.gridColumn89 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn90 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn91 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
+            this.CarsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.CarsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.CarsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn96 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn97 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -369,7 +379,6 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -514,6 +523,10 @@
             this.xtraTabPage32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).BeginInit();
+            this.xtraTabPage34.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsGridView)).BeginInit();
             this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
@@ -1049,7 +1062,7 @@
             // 
             // MoveMatToArchiveBarBtnItem
             // 
-            this.MoveMatToArchiveBarBtnItem.Caption = "Перемістити в архів";
+            this.MoveMatToArchiveBarBtnItem.Caption = "Перемістити/Відновити з архіву";
             this.MoveMatToArchiveBarBtnItem.Id = 33;
             this.MoveMatToArchiveBarBtnItem.Name = "MoveMatToArchiveBarBtnItem";
             this.MoveMatToArchiveBarBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
@@ -1237,6 +1250,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -1431,6 +1445,14 @@
             this.gridColumn81.VisibleIndex = 3;
             this.gridColumn81.Width = 129;
             // 
+            // gridColumn75
+            // 
+            this.gridColumn75.Caption = "Посада";
+            this.gridColumn75.FieldName = "JobName";
+            this.gridColumn75.Name = "gridColumn75";
+            this.gridColumn75.Visible = true;
+            this.gridColumn75.VisibleIndex = 6;
+            // 
             // xtraTabControl2
             // 
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1458,6 +1480,7 @@
             // 
             // vGridControl1
             // 
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -2596,7 +2619,8 @@
             this.xtraTabPage29,
             this.xtraTabPage30,
             this.xtraTabPage17,
-            this.xtraTabPage32});
+            this.xtraTabPage32,
+            this.xtraTabPage34});
             // 
             // xtraTabPage19
             // 
@@ -3418,7 +3442,9 @@
             this.RouteGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.RouteGridView.Appearance.Row.Options.UseFont = true;
             this.RouteGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn9});
+            this.gridColumn9,
+            this.gridColumn101,
+            this.gridColumn102});
             this.RouteGridView.GridControl = this.RouteGridControl;
             this.RouteGridView.Name = "RouteGridView";
             this.RouteGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -3436,7 +3462,25 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 527;
+            this.gridColumn9.Width = 459;
+            // 
+            // gridColumn101
+            // 
+            this.gridColumn101.Caption = "Машина";
+            this.gridColumn101.FieldName = "Cars.Name";
+            this.gridColumn101.Name = "gridColumn101";
+            this.gridColumn101.Visible = true;
+            this.gridColumn101.VisibleIndex = 1;
+            this.gridColumn101.Width = 290;
+            // 
+            // gridColumn102
+            // 
+            this.gridColumn102.Caption = "Водій";
+            this.gridColumn102.FieldName = "Kagent1.Name";
+            this.gridColumn102.Name = "gridColumn102";
+            this.gridColumn102.Visible = true;
+            this.gridColumn102.VisibleIndex = 2;
+            this.gridColumn102.Width = 319;
             // 
             // xtraTabPage30
             // 
@@ -3732,6 +3776,74 @@
             this.gridColumn91.FieldName = "Archived";
             this.gridColumn91.Name = "gridColumn91";
             // 
+            // xtraTabPage34
+            // 
+            this.xtraTabPage34.Controls.Add(this.CarsGridControl);
+            this.xtraTabPage34.Name = "xtraTabPage34";
+            this.xtraTabPage34.Size = new System.Drawing.Size(1086, 558);
+            this.xtraTabPage34.Text = "Машини";
+            // 
+            // CarsGridControl
+            // 
+            this.CarsGridControl.DataSource = this.CarsBS;
+            this.CarsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CarsGridControl.Location = new System.Drawing.Point(0, 0);
+            this.CarsGridControl.MainView = this.CarsGridView;
+            this.CarsGridControl.Name = "CarsGridControl";
+            this.CarsGridControl.Size = new System.Drawing.Size(1086, 558);
+            this.CarsGridControl.TabIndex = 5;
+            this.CarsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.CarsGridView});
+            // 
+            // CarsBS
+            // 
+            this.CarsBS.DataSource = typeof(SP_Sklad.SkladData.Cars);
+            // 
+            // CarsGridView
+            // 
+            this.CarsGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CarsGridView.Appearance.Row.Options.UseFont = true;
+            this.CarsGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn76,
+            this.gridColumn96,
+            this.gridColumn97});
+            this.CarsGridView.GridControl = this.CarsGridControl;
+            this.CarsGridView.Name = "CarsGridView";
+            this.CarsGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.CarsGridView.OptionsBehavior.Editable = false;
+            this.CarsGridView.OptionsBehavior.ReadOnly = true;
+            this.CarsGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.CarsGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.CarsGridView.OptionsView.ShowGroupPanel = false;
+            this.CarsGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
+            // 
+            // gridColumn76
+            // 
+            this.gridColumn76.Caption = "Назва";
+            this.gridColumn76.FieldName = "Name";
+            this.gridColumn76.Name = "gridColumn76";
+            this.gridColumn76.Visible = true;
+            this.gridColumn76.VisibleIndex = 0;
+            this.gridColumn76.Width = 455;
+            // 
+            // gridColumn96
+            // 
+            this.gridColumn96.Caption = "Номер";
+            this.gridColumn96.FieldName = "Number";
+            this.gridColumn96.Name = "gridColumn96";
+            this.gridColumn96.Visible = true;
+            this.gridColumn96.VisibleIndex = 1;
+            this.gridColumn96.Width = 194;
+            // 
+            // gridColumn97
+            // 
+            this.gridColumn97.Caption = "Водій";
+            this.gridColumn97.FieldName = "Kagent.Name";
+            this.gridColumn97.Name = "gridColumn97";
+            this.gridColumn97.Visible = true;
+            this.gridColumn97.VisibleIndex = 2;
+            this.gridColumn97.Width = 419;
+            // 
             // xtraTabPage33
             // 
             this.xtraTabPage33.Controls.Add(this.TaraGridControl);
@@ -3902,14 +4014,6 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
-            // gridColumn75
-            // 
-            this.gridColumn75.Caption = "Посада";
-            this.gridColumn75.FieldName = "JobName";
-            this.gridColumn75.Name = "gridColumn75";
-            this.gridColumn75.Visible = true;
-            this.gridColumn75.VisibleIndex = 6;
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4073,6 +4177,10 @@
             this.xtraTabPage32.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).EndInit();
+            this.xtraTabPage34.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CarsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsGridView)).EndInit();
             this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
@@ -4427,5 +4535,14 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn75;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
+        private DevExpress.XtraGrid.GridControl CarsGridControl;
+        private System.Windows.Forms.BindingSource CarsBS;
+        public DevExpress.XtraGrid.Views.Grid.GridView CarsGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn76;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn96;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn97;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn101;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
     }
 }

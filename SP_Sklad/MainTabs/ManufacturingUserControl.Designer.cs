@@ -1324,6 +1324,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab

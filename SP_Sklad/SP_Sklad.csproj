@@ -250,6 +250,12 @@
     <Compile Include="EditForm\frmAccountTypeEdit.Designer.cs">
       <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmCarEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCarEdit.Designer.cs">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmAttEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1702,6 +1708,9 @@
     </Compile>
     <EmbeddedResource Include="EditForm\frmAccountTypeEdit.resx">
       <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCarEdit.resx">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmAttEdit.resx">
       <DependentUpon>frmAttEdit.cs</DependentUpon>

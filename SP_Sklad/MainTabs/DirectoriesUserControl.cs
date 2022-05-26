@@ -285,6 +285,11 @@ namespace SP_Sklad.MainTabs
                             PreparationMatRecipeGridControl.DataSource = _db.v_MatRecipe.Where(w => w.RType == 3).ToList();
                             extDirTabControl.SelectedTabPageIndex = 13;
                             break;
+
+                        case 87:
+                            CarsBS.DataSource = _db.Cars.ToList();
+                            extDirTabControl.SelectedTabPageIndex = 14;
+                            break;
                     }
                     break;
 
@@ -439,7 +444,9 @@ namespace SP_Sklad.MainTabs
                             }
                             break;
 
-
+                        case 87:
+                            result = new frmCarEdit((CarsGridView.GetFocusedRow() as Cars).Id).ShowDialog();
+                            break;
                     }
                     break;
 
@@ -548,6 +555,10 @@ namespace SP_Sklad.MainTabs
                             new frmPreparationMatRecipe().ShowDialog();
                             break;
 
+                        case 87:
+                            new frmCarEdit().ShowDialog();
+                            break;
+
                     }
                     break;
             }
@@ -590,8 +601,9 @@ namespace SP_Sklad.MainTabs
                         {
                             var mat = db.Materials.Find(r.MatId);
                             var mat_remain = db.v_MatRemains.Where(w => w.MatId == r.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                            var mat_recipe = db.MatRecipe.Where(w => w.MatId == r.MatId).Any();
 
-                            if (mat != null && mat_remain == null)
+                            if (mat != null && mat_remain == null && !mat_recipe)
                             {
                                 mat.Deleted = 1;
                             }
@@ -695,6 +707,11 @@ namespace SP_Sklad.MainTabs
                             case 81:
                                 int prop_mat_rec = ((dynamic)PreparationMatRecipeGridView.GetFocusedRow()).RecId;
                                 db.DeleteWhere<MatRecipe>(w => w.RecId == prop_mat_rec);
+                                break;
+
+                            case 87:
+                                var car = (CarsGridView.GetFocusedRow() as Cars);
+                                db.DeleteWhere<Cars>(w => w.Id == car.Id);
                                 break;
                         }
                         break;
@@ -955,6 +972,11 @@ namespace SP_Sklad.MainTabs
                         var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
                         if (mat_remain == null || mat_remain.Remain == null || mat_remain.Remain == 0)
                         {
+                            foreach(var item in db.MatRecipe.Where(w => w.MatId == focused_mat.MatId))
+                            {
+                                item.Archived = true;
+                            }
+
                             mat.Archived = 1;
                         }
                         else
