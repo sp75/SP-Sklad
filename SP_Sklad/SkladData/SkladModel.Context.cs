@@ -2389,6 +2389,24 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRemainByWh_Result>("[BaseEntities].[GetRemainByWh](@w_id, @on_date)", w_idParameter, on_dateParameter);
         }
     
+        [EdmFunction("BaseEntities", "GetMatPrice")]
+        public virtual IQueryable<GetMatPrice_Result> GetMatPrice(Nullable<int> mat_id, Nullable<int> in_curr_id, Nullable<int> p_type)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var in_curr_idParameter = in_curr_id.HasValue ?
+                new ObjectParameter("in_curr_id", in_curr_id) :
+                new ObjectParameter("in_curr_id", typeof(int));
+    
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[BaseEntities].[GetMatPrice](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
+        }
+    
         [EdmFunction("BaseEntities", "GetWayBillList")]
         public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> person_id)
         {
@@ -2425,24 +2443,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetMatPrice")]
-        public virtual IQueryable<GetMatPrice_Result> GetMatPrice(Nullable<int> mat_id, Nullable<int> in_curr_id, Nullable<int> p_type)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var in_curr_idParameter = in_curr_id.HasValue ?
-                new ObjectParameter("in_curr_id", in_curr_id) :
-                new ObjectParameter("in_curr_id", typeof(int));
-    
-            var p_typeParameter = p_type.HasValue ?
-                new ObjectParameter("p_type", p_type) :
-                new ObjectParameter("p_type", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[BaseEntities].[GetMatPrice](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
         }
     }
 }

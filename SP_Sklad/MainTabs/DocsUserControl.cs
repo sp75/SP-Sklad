@@ -24,6 +24,7 @@ using System.IO;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using System.Diagnostics;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.MainTabs
 {
@@ -124,6 +125,8 @@ namespace SP_Sklad.MainTabs
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+
+                repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
             }
 
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -1456,14 +1459,27 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
-        }
 
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
             IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
+        }
+
+        private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
+        {
+            if(!EditItemBtn.Enabled)
+            {
+                return;
+            }
+
+            var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+
+            var wb =_db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+
+            wb.PTypeId = PTypeId;
+            _db.SaveChanges();
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

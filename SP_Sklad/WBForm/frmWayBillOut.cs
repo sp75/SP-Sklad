@@ -322,6 +322,7 @@ namespace SP_Sklad.WBForm
                 wb.CarId = r.CarId;
                 wb.RouteId = row.RouteId;
                 wb.Received = r.Kagent1 != null ? r.Kagent1.Name : "";
+                wb.DriverId = r.Kagent1 != null ? (int?)r.Kagent1.KaId : null;
             }
 
             GetOk();

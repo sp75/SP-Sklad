@@ -489,6 +489,8 @@
             this.searchLookUpEdit1View.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.searchLookUpEdit1View.Name = "searchLookUpEdit1View";
             this.searchLookUpEdit1View.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.searchLookUpEdit1View.OptionsView.RowAutoHeight = true;
+            this.searchLookUpEdit1View.OptionsView.ShowAutoFilterRow = true;
             this.searchLookUpEdit1View.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -496,6 +498,7 @@
             this.gridColumn1.Caption = "Назва";
             this.gridColumn1.FieldName = "MatName";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Like;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
             this.gridColumn1.Width = 250;

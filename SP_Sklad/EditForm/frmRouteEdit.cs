@@ -44,7 +44,7 @@ namespace SP_Sklad.EditForm
 
             RoutesBS.DataSource = r;
 
-            DriversLookUpEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new { s.KaId, s.Name }).ToList();
+            DriversLookUpEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
             CarsLookUpEdit.Properties.DataSource =  _db.Cars.ToList();
         }
 
@@ -68,6 +68,17 @@ namespace SP_Sklad.EditForm
             if (e.Button.Index == 1)
             {
                 DriversLookUpEdit.EditValue = null;
+            }
+        }
+
+        private void DriversLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if(DriversLookUpEdit.ContainsFocus)
+            {
+                var row = DriversLookUpEdit.GetSelectedDataRow() as Kontragent;
+                var car = _db.Cars.FirstOrDefault(w => w.DriverId == row.KaId);
+
+                r.CarId = car != null ? (Guid?)car.Id : null;
             }
         }
     }

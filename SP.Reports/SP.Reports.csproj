@@ -83,6 +83,7 @@
     <Compile Include="Models\Views\GrpComboBoxItem.cs" />
     <Compile Include="Models\Views\GrpKagentComboBoxItem.cs" />
     <Compile Include="Models\Views\KagentComboBoxItem.cs" />
+    <Compile Include="Models\Views\KAKIndComboBoxItem.cs" />
     <Compile Include="Models\Views\make_wb.cs" />
     <Compile Include="Models\Views\MatComboBoxItem.cs" />
     <Compile Include="Models\Views\not_use_rec_mat.cs" />

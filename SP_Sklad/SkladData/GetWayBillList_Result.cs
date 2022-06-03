@@ -53,10 +53,13 @@ namespace SP_Sklad.SkladData
         public string EntName { get; set; }
         public string KagentGroupName { get; set; }
         public string DocType { get; set; }
+        public Nullable<int> PTypeId { get; set; }
         public string PTypeName { get; set; }
         public string RouteName { get; set; }
         public string CarName { get; set; }
-        public Nullable<decimal> TotalAmount { get; set; }
+        public Nullable<decimal> DefTotalAmount { get; set; }
+        public Nullable<decimal> ExTotalAmount { get; set; }
         public Nullable<decimal> Balans { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     }
 }

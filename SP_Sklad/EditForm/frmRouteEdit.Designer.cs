@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
@@ -40,13 +39,14 @@
             this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // NotesTextEdit
@@ -59,10 +59,6 @@
             this.NotesTextEdit.Size = new System.Drawing.Size(451, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
-            // 
-            // RoutesBS
-            // 
-            this.RoutesBS.DataSource = typeof(SP_Sklad.SkladData.Routes);
             // 
             // styleController1
             // 
@@ -111,7 +107,7 @@
             // 
             // DriversLookUpEdit
             // 
-            this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.RoutesBS, "DriverId", true));
+            this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.RoutesBS, "DriverId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DriversLookUpEdit.Location = new System.Drawing.Point(12, 101);
             this.DriversLookUpEdit.Name = "DriversLookUpEdit";
             this.DriversLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -129,6 +125,7 @@
             this.DriversLookUpEdit.Size = new System.Drawing.Size(451, 22);
             this.DriversLookUpEdit.StyleController = this.styleController1;
             this.DriversLookUpEdit.TabIndex = 45;
+            this.DriversLookUpEdit.EditValueChanged += new System.EventHandler(this.DriversLookUpEdit_EditValueChanged);
             // 
             // labelControl54
             // 
@@ -158,7 +155,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
             this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Kagent.Name", "Водій")});
             this.CarsLookUpEdit.Properties.DisplayMember = "Name";
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.ShowHeader = false;
@@ -168,6 +166,10 @@
             this.CarsLookUpEdit.Size = new System.Drawing.Size(451, 22);
             this.CarsLookUpEdit.StyleController = this.styleController1;
             this.CarsLookUpEdit.TabIndex = 47;
+            // 
+            // RoutesBS
+            // 
+            this.RoutesBS.DataSource = typeof(SP_Sklad.SkladData.Routes);
             // 
             // frmRouteEdit
             // 
@@ -188,12 +190,12 @@
             this.Text = "Властивості маршрута";
             this.Load += new System.EventHandler(this.frmRouteEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

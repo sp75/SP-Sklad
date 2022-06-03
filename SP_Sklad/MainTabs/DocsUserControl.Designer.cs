@@ -104,6 +104,7 @@
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.category = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -123,6 +124,7 @@
             this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row23 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -496,6 +498,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -1456,7 +1459,8 @@
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.RecordWidth = 400;
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox12});
+            this.repositoryItemImageComboBox12,
+            this.repositoryItemLookUpEdit3});
             this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
@@ -1468,7 +1472,8 @@
             this.row11,
             this.row10,
             this.row9,
-            this.row8});
+            this.row8,
+            this.row23});
             this.vGridControl1.Size = new System.Drawing.Size(1031, 225);
             this.vGridControl1.TabIndex = 0;
             // 
@@ -1487,6 +1492,20 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
             this.repositoryItemImageComboBox12.Name = "repositoryItemImageComboBox12";
             this.repositoryItemImageComboBox12.SmallImages = this.GridImageList;
+            // 
+            // repositoryItemLookUpEdit3
+            // 
+            this.repositoryItemLookUpEdit3.AutoHeight = false;
+            this.repositoryItemLookUpEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit3.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.repositoryItemLookUpEdit3.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit3.Name = "repositoryItemLookUpEdit3";
+            this.repositoryItemLookUpEdit3.ShowFooter = false;
+            this.repositoryItemLookUpEdit3.ShowHeader = false;
+            this.repositoryItemLookUpEdit3.ValueMember = "PTypeId";
+            this.repositoryItemLookUpEdit3.EditValueChanged += new System.EventHandler(this.repositoryItemLookUpEdit3_EditValueChanged);
             // 
             // row
             // 
@@ -1530,6 +1549,7 @@
             // 
             // row4
             // 
+            this.row4.Height = 16;
             this.row4.Name = "row4";
             this.row4.Properties.Caption = "Факс";
             this.row4.Properties.FieldName = "Fax";
@@ -1617,6 +1637,14 @@
             this.row8.Name = "row8";
             this.row8.Properties.Caption = "Сума";
             this.row8.Properties.FieldName = "SummAll";
+            // 
+            // row23
+            // 
+            this.row23.Name = "row23";
+            this.row23.Properties.Caption = "Вид оплати";
+            this.row23.Properties.FieldName = "PTypeId";
+            this.row23.Properties.ReadOnly = false;
+            this.row23.Properties.RowEdit = this.repositoryItemLookUpEdit3;
             // 
             // xtraTabPage2
             // 
@@ -5365,6 +5393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -5937,5 +5966,7 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row22;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row23;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit3;
     }
 }

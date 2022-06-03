@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace SP.Reports.Models.Views
 {
-    public class CarList
+   public class KAKIndComboBoxItem
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Number { get; set; }
-        public string DriverName { get; set; }
     }
 }

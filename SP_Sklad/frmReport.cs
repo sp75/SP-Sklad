@@ -95,6 +95,19 @@ namespace SP_Sklad
                     break;
 
                 case 5:
+                    this.OnDateGroupBox.Visible = true;
+                    this.KontragentPanel.Visible = false;
+                    this.PeriodGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
+                    KaKindPanel.Visible = true;
+                    break;
+
                 case 6:
                 case 45:
                     this.OnDateGroupBox.Visible = true;
@@ -353,6 +366,7 @@ namespace SP_Sklad
                     this.KontragentPanel.Visible = false;
                     this.CarPanel.Visible = true;
                     this.StatusPanel.Visible = true;
+                    this.DriverPanel.Visible = true;
                     break;
 
                 case 47:
@@ -588,8 +602,21 @@ namespace SP_Sklad
             {
                 Height += CarPanel.Height;
 
-                CarsLookUpEdit.Properties.DataSource = new BaseEntities().Cars.Select(s=> new CarList {  Id = s.Id, Number = s.Number, Name = s.Name}).ToList();
+                CarsLookUpEdit.Properties.DataSource = new BaseEntities().Cars.Select(s=> new CarList {  Id = s.Id, Number = s.Number, Name = s.Name, DriverName = s.Kagent.Name}).ToList();
                // CarsLookUpEdit.EditValue = -1;
+            }
+
+            if (DriverPanel.Visible)
+            {
+                Height += DriverPanel.Height;
+                DriversLookUpEdit.Properties.DataSource = new BaseEntities().Kagent.Where(w => w.JobType == 3).Select(s => new { s.KaId, s.Name }).ToList();
+            }
+
+            if (KaKindPanel.Visible)
+            {
+                Height += KaKindPanel.Height;
+                KaKindLookUpEdit.Properties.DataSource = new List<object>() { new KAKIndComboBoxItem { Id = -1, Name = "Усі" } }.Concat(new BaseEntities().KAKInd.Select(s=> new KAKIndComboBoxItem {  Id = s.Id, Name = s.Name}).ToList());
+                KaKindLookUpEdit.EditValue = -1;
             }
         }
 
@@ -682,7 +709,9 @@ namespace SP_Sklad
                        Person = PersonLookUpEdit.GetSelectedDataRow(),
                        RsvStatus = wmatturnStatus.EditValue,
                        CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList,
-                       Car = CarsLookUpEdit.GetSelectedDataRow() as CarList
+                       Car = CarsLookUpEdit.GetSelectedDataRow() as CarList,
+                       Driver = DriversLookUpEdit.GetSelectedDataRow() as KagentComboBoxItem,
+                       KontragentTyp = KaKindLookUpEdit.GetSelectedDataRow() as KAKIndComboBoxItem
                    };
 
                    var template_name = pr2.GetTemlate(_rep_id);
@@ -768,6 +797,11 @@ namespace SP_Sklad
         }
 
         private void ChTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DriversLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
 
         }

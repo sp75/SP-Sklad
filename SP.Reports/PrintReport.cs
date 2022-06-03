@@ -35,7 +35,8 @@ namespace SP.Reports
         public object RsvStatus { get; set; }
         public CashDesksList CashDesk { get; set; }
         public CarList Car { get; set; }
-
+        public KagentComboBoxItem Driver { get; set; }
+        public KAKIndComboBoxItem KontragentTyp { get; set; }
 
         private int? _person_id { get; set; }
         private int _user_id { get; set; }
@@ -378,7 +379,9 @@ namespace SP.Reports
         }
         private void REP_5()
         {
-            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
+            var typ_id = KontragentTyp != null ? KontragentTyp.Id : -1;
+
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, typ_id).Where(w => w.Saldo > 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
@@ -393,7 +396,7 @@ namespace SP.Reports
         }
         private void REP_6()
         {
-            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
+            var kagents = _db.REP_5_6(OnDate, KontragentGroup.Id, -1).Where(w => w.Saldo < 0).ToList().Select((s, index) => new
             {
                 N = index + 1,
                 s.Name,
@@ -1602,6 +1605,7 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
         {
             var car_id = Car != null ? Car.Id : Guid.Empty;
             int status = Convert.ToInt32(Status);
+            var driver_id = Driver != null ? Driver.KaId : -1;
 
             var sql_1 = @"
    	            select wbl.Num , c.Id CarId , c.Name CarName, c.Number CarNumber , wbl.KaId , k.[Name] KaName, wbl.OnDate , wbl.Checked,
@@ -1610,10 +1614,10 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
                 from [WaybillList] wbl
                 inner join [dbo].[Cars] c on c.Id = wbl.CarId
                 inner join [dbo].[Kagent] k on k.KaId = wbl.KaId
-                where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) and {3} in (wbl.Checked, -1)
+                where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) and {3} in (wbl.Checked, -1) and {4} in ( wbl.DriverId, -1 )
                 order by k.[Name] ";
 
-            var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, car_id, status).ToList();
+            var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, car_id, status, driver_id).ToList();
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("WaybillList", waybill_list);

@@ -38,6 +38,7 @@ namespace SP_Sklad.EditForm
             _wb.Received = null;
             _wb.CarId = null;
             _wb.RouteId = null;
+            _wb.DriverId = null;
         }
 
         private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -66,6 +67,7 @@ namespace SP_Sklad.EditForm
             _wb.Received = sr.DriverName;
             _wb.RouteId = sr.RouteId;
             _wb.CarId = sr.Id;
+            _wb.DriverId = sr.DriverId;
         }
 
         private List<CarsList> GetRoute()
@@ -77,7 +79,8 @@ namespace SP_Sklad.EditForm
                 RouteId = s.Id,
                 RouteName = s.Name,
                 DriverName = s.Kagent1.Name,
-                Number = s.Cars.Number
+                Number = s.Cars.Number,
+                DriverId = s.Kagent1.KaId
             }).ToList();
         }
 
@@ -89,6 +92,7 @@ namespace SP_Sklad.EditForm
             public int RouteId { get; set; }
             public string DriverName { get; set; }
             public string Number { get; set; }
+            public int? DriverId { get; set; }
         }
 
     }
