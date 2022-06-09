@@ -101,7 +101,7 @@ namespace SP_Sklad.EditForm
             comboBoxEdit2.Text = user_settings.GridFontName;
             comboBoxEdit1.Value = user_settings.GridFontSize;
 
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.Kagents.Where(w=> w.KaKind == 5);
             KagentComboBox.EditValue = user_settings.DefaultBuyer;
 
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
@@ -491,13 +491,13 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+                KagentComboBox.EditValue = null;
             }
         }
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            user_settings.DefaultBuyer = (int)KagentComboBox.EditValue;
+            user_settings.DefaultBuyer = (int?)KagentComboBox.EditValue;
         }
 
         private void ChargeTypesEdit_EditValueChanged(object sender, EventArgs e)

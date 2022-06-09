@@ -61,7 +61,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    KaId = user_settings.DefaultBuyer
                 });
                 _db.SaveChanges();
 
@@ -102,8 +103,10 @@ namespace SP_Sklad.WBForm
                 
 
                 payDocUserControl1.OnLoad(_db, wb);
-                KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
+          //      KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
+
+       //     KagentComboBox.Enabled = user_settings.DefaultBuyer == null;
 
             RefreshDet();
         }
@@ -134,7 +137,7 @@ namespace SP_Sklad.WBForm
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
             OrdInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-            KagentComboBox.Enabled = WaybillDetInBS.Count == 0;
+            KagentComboBox.Enabled = WaybillDetInBS.Count == 0 && user_settings.DefaultBuyer == null && !payDocUserControl1.IsPayDoc();
             KagBalBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
             OkButton.Enabled = recult;

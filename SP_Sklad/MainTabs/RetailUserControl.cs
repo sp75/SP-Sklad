@@ -70,9 +70,19 @@ namespace SP_Sklad.MainTabs
             if (!DesignMode)
             {
                 _db = new BaseEntities();
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
-                wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                wbKagentList.EditValue = 0;
+                wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.RetailOutlets.Select(s => new { s.KaId, s.Name }));
+
+                if (!user_settings.DefaultBuyer.HasValue)
+                {
+                    wbKagentList.EditValue = 0;
+                }
+                else
+                {
+                    wbKagentList.EditValue = user_settings.DefaultBuyer;
+                    wbKagentList.Enabled = false;
+                }
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -114,7 +124,7 @@ namespace SP_Sklad.MainTabs
                 gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
                 gridColumn44.Caption = gridColumn50.Caption;
 
-                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }

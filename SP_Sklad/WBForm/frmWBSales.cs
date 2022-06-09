@@ -71,7 +71,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    KaId = user_settings.DefaultBuyer
                 });
 
                 _db.SaveChanges();
@@ -97,6 +98,7 @@ namespace SP_Sklad.WBForm
                 payDocUserControl1.OnLoad(_db, wb);
                 KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
+            KagentComboBox.Enabled = user_settings.DefaultBuyer == null;
 
             RefreshDet();
         }

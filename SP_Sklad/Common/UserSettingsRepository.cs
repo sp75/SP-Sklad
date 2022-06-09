@@ -154,12 +154,12 @@ namespace SP_Sklad.Common
             set { Set("GRID_FONT_NAME", value); }
         }
 
-        public int DefaultBuyer
+        public int? DefaultBuyer
         {
             get
             {
                 var v = Get("DEFAULT_BUYER");
-                return string.IsNullOrEmpty(v) ? DBHelper.Kagents.FirstOrDefault().KaId : Convert.ToInt32(v);
+                return string.IsNullOrEmpty(v) ? (int?)null : Convert.ToInt32(v);
             }
             set { Set("DEFAULT_BUYER", value); }
         }

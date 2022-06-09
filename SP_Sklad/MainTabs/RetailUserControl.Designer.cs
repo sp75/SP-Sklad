@@ -1021,11 +1021,11 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(437, 14);
+            this.labelControl3.Location = new System.Drawing.Point(421, 14);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 13);
+            this.labelControl3.Size = new System.Drawing.Size(70, 13);
             this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Конрагент";
+            this.labelControl3.Text = "Торгові точки";
             // 
             // wbEndDate
             // 
