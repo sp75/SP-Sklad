@@ -992,7 +992,14 @@ FROM            (
                           FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
                                                     dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
                                                     dbo.Currency AS c ON c.CurrId = wbl.CurrId
-                          WHERE        (wbl.Checked = 1)
+                          WHERE        (wbl.Checked = 1 and wbl.WType <> 6)
+                          
+                          UNION
+                          SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.ReportingDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
+                                                    dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
+                                                    dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE        (wbl.Checked = 1 and wbl.WType = 6)
 
 						  UNION
 						  SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, COALESCE (debtka.KaId, creditka.KaId) AS KaId, COALESCE (debtka.Name, creditka.Name) AS Name, wbl.Checked, NULL , wbl.SummAll, 

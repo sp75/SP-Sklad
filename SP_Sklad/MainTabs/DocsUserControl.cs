@@ -1097,7 +1097,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (wb_focused_row.WType == 6 && wb_focused_row.Checked == 1)
+            if ((wb_focused_row.WType == 6 || wb_focused_row.WType == 1) && wb_focused_row.Checked == 1)
             {
                 var _wbill_ids = new List<int?>();
                 using (var db = DB.SkladBase())
@@ -1129,25 +1129,26 @@ namespace SP_Sklad.MainTabs
 
                             foreach (var det_item in wb_det.Where(w => w.WId == wid))
                             {
-                                var _wbd = db.WaybillDet.Add(new WaybillDet()
+                                var pos_in = db.GetPosIn(wb.OnDate, det_item.MatId, det_item.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.PosId == det_item.PosId).OrderBy(o => o.OnDate).FirstOrDefault();
+                                if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == det_item.WId && a.UseReceived))
                                 {
-                                    WbillId = wb.WbillId,
-                                    Num = wb.WaybillDet.Count() + 1,
-                                    Amount = det_item.Amount,
-                                    OnValue = det_item.OnValue,
-                                    WId = det_item.WId,
-                                    Nds = wb.Nds,
-                                    CurrId = wb.CurrId,
-                                    OnDate = wb.OnDate,
-                                    MatId = det_item.MatId,
-                                    Price = det_item.Price,
-                                    BasePrice = det_item.Price
-                                });
-                                db.SaveChanges();
 
-                                var pos_in = db.GetPosIn(wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.CurRemain >= _wbd.Amount && w.PosId == det_item.PosId).OrderBy(o=> o.OnDate).FirstOrDefault();
-                                if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
-                                {
+                                    var _wbd = db.WaybillDet.Add(new WaybillDet()
+                                    {
+                                        WbillId = wb.WbillId,
+                                        Num = wb.WaybillDet.Count() + 1,
+                                        Amount = pos_in.CurRemain.Value,
+                                        OnValue = det_item.OnValue,
+                                        WId = det_item.WId,
+                                        Nds = wb.Nds,
+                                        CurrId = wb.CurrId,
+                                        OnDate = wb.OnDate,
+                                        MatId = det_item.MatId,
+                                        Price = det_item.Price,
+                                        BasePrice = det_item.Price
+                                    });
+                                    db.SaveChanges();
+
                                     db.WMatTurn.Add(new WMatTurn
                                     {
                                         PosId = pos_in.PosId,
@@ -1313,7 +1314,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            barButtonItem11.Enabled = wb_focused_row.WType == 6;
+            barButtonItem11.Enabled = wb_focused_row.WType == 6 || wb_focused_row.WType == 1;
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)

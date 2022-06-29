@@ -77,6 +77,8 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ReportingDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
@@ -125,6 +127,8 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportingDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportingDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
@@ -461,6 +465,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.ReportingDateEdit);
+            this.panelControl1.Controls.Add(this.labelControl9);
             this.panelControl1.Controls.Add(this.NotesEdit);
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.OnDateDBEdit);
@@ -484,12 +490,38 @@
             this.panelControl1.Size = new System.Drawing.Size(589, 209);
             this.panelControl1.TabIndex = 4;
             // 
+            // ReportingDateEdit
+            // 
+            this.ReportingDateEdit.EditValue = null;
+            this.ReportingDateEdit.Location = new System.Drawing.Point(482, 145);
+            this.ReportingDateEdit.MenuManager = this.barManager1;
+            this.ReportingDateEdit.Name = "ReportingDateEdit";
+            this.ReportingDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ReportingDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.ReportingDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.ReportingDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.ReportingDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.ReportingDateEdit.Size = new System.Drawing.Size(96, 22);
+            this.ReportingDateEdit.StyleController = this.styleController1;
+            this.ReportingDateEdit.TabIndex = 45;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(387, 148);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(89, 16);
+            this.labelControl9.StyleController = this.styleController1;
+            this.labelControl9.TabIndex = 33;
+            this.labelControl9.Text = "Дата звітності:";
+            // 
             // NotesEdit
             // 
             this.NotesEdit.Location = new System.Drawing.Point(75, 145);
             this.NotesEdit.MenuManager = this.barManager1;
             this.NotesEdit.Name = "NotesEdit";
-            this.NotesEdit.Size = new System.Drawing.Size(503, 22);
+            this.NotesEdit.Size = new System.Drawing.Size(292, 22);
             this.NotesEdit.StyleController = this.styleController1;
             this.NotesEdit.TabIndex = 32;
             // 
@@ -960,6 +992,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportingDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportingDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
@@ -1061,5 +1095,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraEditors.DateEdit ReportingDateEdit;
     }
 }

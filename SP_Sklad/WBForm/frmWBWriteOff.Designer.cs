@@ -685,6 +685,8 @@
             this.gridColumn4.Caption = "Кількість";
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 123;

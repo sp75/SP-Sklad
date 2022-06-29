@@ -93,6 +93,8 @@ namespace SP.Base.Models
 
         public int? PTypeId { get; set; }
 
+        public DateTime? ShipmentDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }
 

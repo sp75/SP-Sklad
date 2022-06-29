@@ -71,7 +71,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    ShipmentDate = DBHelper.ServerDateTime()
                 });
 
                 _db.SaveChanges();
@@ -279,7 +280,7 @@ namespace SP_Sklad.WBForm
                             {
                                 item.WayBillDetAddProps.CardId = null;
                             }
-                            else
+                            else 
                             {
                                 _db.WayBillDetAddProps.Add(new WayBillDetAddProps
                                 {

@@ -61,7 +61,8 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    ReportingDate = DBHelper.ServerDateTime()
                 });
                 _db.SaveChanges();
 
@@ -100,6 +101,7 @@ namespace SP_Sklad.WBForm
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
+                ReportingDateEdit.DataBindings.Add(new Binding("EditValue", wb, "ReportingDate", true, DataSourceUpdateMode.OnPropertyChanged));
 
                 payDocUserControl1.OnLoad(_db, wb);
                 KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();

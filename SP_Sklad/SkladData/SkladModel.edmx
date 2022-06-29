@@ -1456,6 +1456,8 @@
           <Property Name="RouteId" Type="int" />
           <Property Name="CustomerId" Type="int" />
           <Property Name="DriverId" Type="int" />
+          <Property Name="ReportingDate" Type="datetime" />
+          <Property Name="ShipmentDate" Type="datetime" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -5614,6 +5616,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CarName" Type="nvarchar" MaxLength="103" />
                 <Property Name="DefTotalAmount" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="ExTotalAmount" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="ShipmentDate" Type="datetime" />
+                <Property Name="ReportingDate" Type="datetime" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
                 <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
               </RowType>
@@ -12230,6 +12234,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RouteId" Type="Int32" />
           <Property Name="CustomerId" Type="Int32" />
           <Property Name="DriverId" Type="Int32" />
+          <Property Name="ReportingDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipmentDate" Type="DateTime" Precision="3" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -16140,6 +16146,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="CarName" Nullable="true" MaxLength="103" />
           <Property Type="Decimal" Name="DefTotalAmount" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="ExTotalAmount" Nullable="true" Precision="38" Scale="8" />
+          <Property Type="DateTime" Name="ShipmentDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ReportingDate" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
           <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
@@ -17906,6 +17914,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
@@ -20430,6 +20440,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
                 <ScalarProperty Name="DefTotalAmount" ColumnName="DefTotalAmount" />
                 <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
               </ComplexTypeMapping>

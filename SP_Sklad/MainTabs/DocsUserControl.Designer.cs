@@ -74,6 +74,8 @@
             this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -862,7 +864,9 @@
             this.gridColumn108,
             this.gridColumn109,
             this.gridColumn110,
-            this.gridColumn111});
+            this.gridColumn111,
+            this.gridColumn113,
+            this.gridColumn114});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1107,6 +1111,18 @@
             this.gridColumn111.Caption = "К-сть всього, кг";
             this.gridColumn111.FieldName = "TotalAmount";
             this.gridColumn111.Name = "gridColumn111";
+            // 
+            // gridColumn113
+            // 
+            this.gridColumn113.Caption = "Дата відвантаження";
+            this.gridColumn113.FieldName = "ShipmentDate";
+            this.gridColumn113.Name = "gridColumn113";
+            // 
+            // gridColumn114
+            // 
+            this.gridColumn114.Caption = "Дата звітності";
+            this.gridColumn114.FieldName = "ReportingDate";
+            this.gridColumn114.Name = "gridColumn114";
             // 
             // panelControl2
             // 
@@ -5968,5 +5984,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row23;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
     }
 }

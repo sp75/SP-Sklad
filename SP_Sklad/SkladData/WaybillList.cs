@@ -61,6 +61,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RouteId { get; set; }
         public Nullable<int> CustomerId { get; set; }
         public Nullable<int> DriverId { get; set; }
+        public Nullable<System.DateTime> ReportingDate { get; set; }
+        public Nullable<System.DateTime> ShipmentDate { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }
