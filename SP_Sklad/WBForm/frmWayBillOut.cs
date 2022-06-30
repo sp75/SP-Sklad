@@ -56,6 +56,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
+            PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -72,7 +73,8 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    ShipmentDate = DBHelper.ServerDateTime()
+                    ShipmentDate = DBHelper.ServerDateTime(),
+                    PTypeId = 1
                 });
 
                 _db.SaveChanges();
@@ -136,6 +138,9 @@ namespace SP_Sklad.WBForm
             checkEdit2.Visible = (_wtype == 2 || _wtype == -16);
             ToDateEdit.Visible = checkEdit2.Visible;
             TurnDocCheckBox.Enabled = !checkEdit2.Visible;
+
+            labelControl5.Visible = (_wtype == -1);
+            PTypeComboBox.Visible = (_wtype == -1);
 
             ProcurationBtn.Enabled = (_wtype == -1);
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
