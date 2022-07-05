@@ -504,6 +504,8 @@ namespace SP_Sklad.MainTabs
             }
 
             bar1.Visible = true;
+
+            var child_node_list = _db.v_GetDocsTree.Where(w => (w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId) && w.PId == focused_tree_node.Id).ToList();
             switch (focused_tree_node.GType)
             {
                 case 0:
@@ -511,17 +513,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 1:
-                    if (focused_tree_node.Id == 32)
+                    if (focused_tree_node.WType == null)
                     {
-                        GetWayBillList("-1,1,2,-7");
-                    }
-                    else if (focused_tree_node.Id == 106)
-                    {
-                        GetWayBillList("-16,16");
-                    }
-                    else if (focused_tree_node.Id == 55)
-                    {
-                        GetWayBillList("-6,6");
+                        GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
                     }
                     else
                     {
@@ -540,10 +534,12 @@ namespace SP_Sklad.MainTabs
                     }
                     else if (focused_tree_node.Id == 31)
                     {
-                        GetPayDocList("-1,1,-2");
+                        if (child_node_list.Any())
+                        {
+                            GetPayDocList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType != -2 ? s.WType / 3 : s.WType)).ToList()));
+                        }
                     }
                     break;
-
 
                 case 5:
                     int top_row = PriceListGridView.TopRowIndex;

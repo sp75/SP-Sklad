@@ -100,7 +100,17 @@ namespace SP_Sklad.MainTabs
                 kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                PDKagentList.EditValue = 0;
+                if (!user_settings.DefaultBuyer.HasValue)
+                {
+                    PDKagentList.EditValue = 0;
+                }
+                else
+                {
+                    PDKagentList.EditValue = user_settings.DefaultBuyer;
+                    PDKagentList.Enabled = false;
+                }
+
+                
 
                 PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 PDSatusList.EditValue = -1;
@@ -249,9 +259,9 @@ namespace SP_Sklad.MainTabs
  
                     break;
 
-                case 4:
+                case 2:
 
-                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
+                    int? w_type = focused_tree_node.WType == -26 ? -1 : 1;
                     using (var pd = new frmPayDoc(w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
                     {
                         pd.ShowDialog();
@@ -284,7 +294,7 @@ namespace SP_Sklad.MainTabs
                         DocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillList_Result);
                         break;
 
-                    case 4:
+                    case 2:
                         DocEdit.PDEdit(PayDocGridView.GetFocusedRow() as GetPayDocList_Result);
                         break;
  
@@ -350,7 +360,7 @@ namespace SP_Sklad.MainTabs
                                 }
                                 break;
 
-                            case 4:
+                            case 2:
                                 var _pd = db.PayDoc.Find(pd_row.PayDocId);
 
                                 if (_pd != null)
@@ -413,18 +423,23 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                case 4:
-                    if (cur_wtype == -2)
+                case 2:
+
+                    if (cur_wtype == 26)
                     {
-                        GetPayDocList("-2");
+                        GetPayDocList("1");
                     }
-                    else if (cur_wtype == -3 || cur_wtype == 3)
+                    else if (cur_wtype == -26)
                     {
-                        GetPayDocList((cur_wtype / 3).ToString());
+                        GetPayDocList("-1");
                     }
-                    else if (focused_tree_node.Id == 31)
+                    else if (focused_tree_node.Id == 130)
                     {
-                        GetPayDocList("-1,1,-2");
+                        var l = _db.v_GetRetailTree.Where(w => (w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId) && w.PId == 130).ToList().Select(s=> Convert.ToString(s.WType) ).ToList();
+                        if (l.Any())
+                        {
+                            GetPayDocList(string.Join(",", l).Replace("26","1"));
+                        }
                     }
                     break;
 
@@ -484,7 +499,7 @@ namespace SP_Sklad.MainTabs
 
                         break;
 
-                    case 4:
+                    case 2:
                         var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
                         var pd = _db.PayDoc.Find(pd_row.PayDocId);
                         if (pd != null)
@@ -625,16 +640,6 @@ namespace SP_Sklad.MainTabs
                         }
                     }
 
-                    /*         if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
-                             {
-                                 frmWBReturnOut = new  TfrmWBReturnOut(Application);
-                                 frmWBReturnOut->WayBillList->Open();
-                                 frmWBReturnOut->WayBillList->Append();
-                                 frmWBReturnOut->WayBillListWTYPE->Value  = -6;
-                                 frmWBReturnOut->WayBillList->Post();
-                                 frmWBReturnOut->WayBillList->Edit();
-                                 frmWBReturnOut->ShowModal() ;
-                             }*/
                     break;
 
                 case 4:
@@ -727,11 +732,11 @@ namespace SP_Sklad.MainTabs
             }
 
             int? doc_type;
-            if (new[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
+            if (new[] { 132 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = -1;
             }
-            else if (new[] { 27, 56, 39, 107 }.Any(a => a == focused_tree_node.Id))
+            else if (new[] { 131 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = 1;
             }
@@ -821,7 +826,7 @@ namespace SP_Sklad.MainTabs
                 RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
             }
 
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
+            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetRetailTree;
 
             bool isModify = (dr != null && (DBHelper.CashDesks.Any(a => a.CashId == dr.CashId) || dr.CashId == null));
 

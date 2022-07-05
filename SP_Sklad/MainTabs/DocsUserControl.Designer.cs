@@ -1606,6 +1606,7 @@
             // 
             // row22
             // 
+            this.row22.Height = 16;
             this.row22.Name = "row22";
             this.row22.Properties.Caption = "Водіій";
             this.row22.Properties.FieldName = "Received";
