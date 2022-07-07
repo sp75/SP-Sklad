@@ -338,7 +338,7 @@
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 49);
             this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "Відмінити\r\n(F11)";
+            this.simpleButton1.Text = "Вихід \r\n(F11)";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panel4

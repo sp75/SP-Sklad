@@ -15,11 +15,11 @@ using SP_Sklad.SkladData;
 
 namespace SP_Sklad
 {
-    public partial class frmKABalans : DevExpress.XtraEditors.XtraForm
+    public partial class frmKaBalans : DevExpress.XtraEditors.XtraForm
     {
         public int _ka_id { get; set; }
 
-        public frmKABalans(int KaId)
+        public frmKaBalans(int KaId)
         {
             InitializeComponent();
             _ka_id = KaId;

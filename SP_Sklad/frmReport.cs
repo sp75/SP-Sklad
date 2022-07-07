@@ -609,7 +609,7 @@ namespace SP_Sklad
             if (DriverPanel.Visible)
             {
                 Height += DriverPanel.Height;
-                DriversLookUpEdit.Properties.DataSource = new BaseEntities().Kagent.Where(w => w.JobType == 3).Select(s => new { s.KaId, s.Name }).ToList();
+                DriversLookUpEdit.Properties.DataSource = new BaseEntities().Kagent.Where(w => w.JobType == 3).Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }).ToList();
             }
 
             if (KaKindPanel.Visible)

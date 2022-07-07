@@ -642,7 +642,7 @@ namespace SP_Sklad.Common
         {
             if (DBHelper.CurrentUser.ShowBalance == 1)
             {
-                var f = new frmKABalans(ka_id);
+                var f = new frmKaBalans(ka_id);
                 f.ShowDialog();
             }
             else MessageBox.Show("Перегляд заборонено!");

@@ -26,10 +26,5 @@ namespace SP_Sklad.ViewsForm
             Stream stream = new MemoryStream(_pdf);
             pdfViewer1.LoadDocument(stream);
         }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-          
-        }
     }
 }

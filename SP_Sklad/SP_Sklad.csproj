@@ -190,9 +190,8 @@
     <Reference Include="NCalc">
       <HintPath>..\..\..\MyWebApplication\OpenXml.ReportBuilderXLS\OpenXml.ReportBuilderXLS\bin\Debug\NCalc.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="RawInput">
@@ -611,6 +610,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SchedulingOrders.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Shift.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\StornoWayBill_Result.cs">
@@ -1041,11 +1043,11 @@
     <Compile Include="frmInParty.Designer.cs">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmKABalans.cs">
+    <Compile Include="frmKaBalans.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmKABalans.Designer.cs">
-      <DependentUpon>frmKABalans.cs</DependentUpon>
+    <Compile Include="frmKaBalans.Designer.cs">
+      <DependentUpon>frmKaBalans.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogHistory.cs">
       <SubType>Form</SubType>
@@ -1877,8 +1879,8 @@
     <EmbeddedResource Include="frmInParty.resx">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmKABalans.resx">
-      <DependentUpon>frmKABalans.cs</DependentUpon>
+    <EmbeddedResource Include="frmKaBalans.resx">
+      <DependentUpon>frmKaBalans.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogHistory.resx">
       <DependentUpon>frmLogHistory.cs</DependentUpon>
@@ -2305,6 +2307,10 @@
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CheckboxIntegration\CheckboxIntegration.csproj">
+      <Project>{b2814945-82a8-4b37-8eed-a6fe751bb8b3}</Project>
+      <Name>CheckboxIntegration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
       <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
       <Name>SkladEngine</Name>
