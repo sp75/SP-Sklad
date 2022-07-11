@@ -83,12 +83,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton3.Location = new System.Drawing.Point(12, 201);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(275, 57);
             this.simpleButton3.TabIndex = 86;
             this.simpleButton3.Text = "Касова книга";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // btnCloseShift
             // 
@@ -143,6 +143,7 @@
             this.Name = "frmCashierWorkplace";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "РМК";
+            this.Load += new System.EventHandler(this.frmCashierWorkplace_Load);
             this.ResumeLayout(false);
 
         }

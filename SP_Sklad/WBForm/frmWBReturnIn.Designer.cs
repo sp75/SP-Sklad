@@ -118,6 +118,9 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.payDocUserControl2 = new SP_Sklad.MainTabs.PayDocUserControl();
+            this.payDocUserControl3 = new SP_Sklad.MainTabs.PayDocUserControl();
+            this.payDocUserControl4 = new SP_Sklad.MainTabs.PayDocUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -720,6 +723,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.payDocUserControl4);
+            this.panel1.Controls.Add(this.payDocUserControl3);
+            this.panel1.Controls.Add(this.payDocUserControl2);
             this.panel1.Controls.Add(this.payDocUserControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(594, 5);
@@ -960,6 +966,27 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(983, 0);
             // 
+            // payDocUserControl2
+            // 
+            this.payDocUserControl2.Location = new System.Drawing.Point(0, 0);
+            this.payDocUserControl2.Name = "payDocUserControl2";
+            this.payDocUserControl2.Size = new System.Drawing.Size(395, 213);
+            this.payDocUserControl2.TabIndex = 1;
+            // 
+            // payDocUserControl3
+            // 
+            this.payDocUserControl3.Location = new System.Drawing.Point(0, 0);
+            this.payDocUserControl3.Name = "payDocUserControl3";
+            this.payDocUserControl3.Size = new System.Drawing.Size(395, 213);
+            this.payDocUserControl3.TabIndex = 2;
+            // 
+            // payDocUserControl4
+            // 
+            this.payDocUserControl4.Location = new System.Drawing.Point(0, 0);
+            this.payDocUserControl4.Name = "payDocUserControl4";
+            this.payDocUserControl4.Size = new System.Drawing.Size(395, 213);
+            this.payDocUserControl4.TabIndex = 3;
+            // 
             // frmWBReturnIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1097,5 +1124,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.DateEdit ReportingDateEdit;
+        private MainTabs.PayDocUserControl payDocUserControl4;
+        private MainTabs.PayDocUserControl payDocUserControl3;
+        private MainTabs.PayDocUserControl payDocUserControl2;
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Models\CashierSigninRespond.cs" />
     <Compile Include="Models\CreateShiftRespond.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\ReceiptServicePayload.cs" />
     <Compile Include="Models\ReceiptsSellRequest.cs" />
     <Compile Include="Models\ReceiptsSellRespond.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1027,6 +1027,17 @@
           <Property Name="Checked" Type="int" />
           <Property Name="Num" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalSum" Type="int" />
+          <Property Name="TotalPayment" Type="int" />
+          <Property Name="CeatedAt" Type="datetime" />
+          <Property Name="ShiftId" Type="uniqueidentifier" />
+        </EntityType>
         <EntityType Name="RepLng">
           <Key>
             <PropertyRef Name="RepId" />
@@ -6763,6 +6774,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ProductionPlanDet" EntityType="Self.ProductionPlanDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionPlans" EntityType="Self.ProductionPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfileDocSetting" EntityType="Self.ProfileDocSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RepLng" EntityType="Self.RepLng" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportSortedFields" EntityType="Self.ReportSortedFields" Schema="dbo" store:Type="Tables" />
@@ -9688,6 +9700,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
+          <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -16175,6 +16188,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
           <Property Name="UserId" Type="Int32" />
         </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalSum" Type="Int32" />
+          <Property Name="TotalPayment" Type="Int32" />
+          <Property Name="CeatedAt" Type="DateTime" Precision="3" />
+          <Property Name="ShiftId" Type="Guid" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20479,6 +20503,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
                 <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipt">
+            <EntityTypeMapping TypeName="BaseModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CeatedAt" ColumnName="CeatedAt" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="TotalSum" ColumnName="TotalSum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

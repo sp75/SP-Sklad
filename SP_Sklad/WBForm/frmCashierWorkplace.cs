@@ -44,7 +44,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            using (var frm = new frmCashboxWBOut())
+            using (var frm = new frmCashboxWBOut(_access_token))
             {
                 frm.ShowDialog();
             }
@@ -57,17 +57,48 @@ namespace SP_Sklad.WBForm
             {
                 using (var db = new BaseEntities())
                 {
-                    db.Shift.Add(new SkladData.Shift { Id = new Guid(new_shift.id),  CreatedAt = Convert.ToDateTime(new_shift.created_at), UserId = DBHelper.CurrentUser.UserId });
+                    db.Shift.Add(new SkladData.Shift
+                    {
+                        Id = new_shift.id,
+                        CreatedAt = new_shift.created_at,
+                        UserId = DBHelper.CurrentUser.UserId,
+                        OpenedAt = WaitingOpeningShift(new_shift.id)
+                    });
 
                     db.SaveChanges();
                 }
-
+                simpleButton5.Enabled = true;
                 simpleButton5.PerformClick();
             }
             else
             {
                 MessageBox.Show(new_shift.error.message);
             }
+        }
+
+        public DateTime WaitingOpeningShift(Guid shift_id)
+        {
+            DateTime? open_at = null;
+
+            while(!open_at.HasValue)
+            {
+                var new_shift = new CheckboxClient(_access_token).GetShift(shift_id);
+                open_at = new_shift.opened_at;
+            }
+
+            return open_at.Value;
+        }
+        public DateTime WaitingClosingShift(Guid shift_id)
+        {
+            DateTime? closed_at = null;
+
+            while (!closed_at.HasValue)
+            {
+                var new_shift = new CheckboxClient(_access_token).GetShift(shift_id);
+                closed_at = new_shift.closed_at;
+            }
+
+            return closed_at.Value;
         }
 
         private void btnCloseShift_Click(object sender, EventArgs e)
@@ -77,13 +108,18 @@ namespace SP_Sklad.WBForm
             {
                 using (var db = new BaseEntities())
                 {
-                    var shift = db.Shift.FirstOrDefault(w => w.Id == new Guid(new_shift.id));
+                    var shift = db.Shift.FirstOrDefault(w => w.Id == new_shift.id);
 
                     if (shift != null)
                     {
-                        shift.ClosedAt = Convert.ToDateTime(new_shift.closed_at);
+                        shift.ClosedAt = WaitingClosingShift(new_shift.id);
+                        shift.UpdatedAt = new_shift.updated_at;
                     }
+
+                    db.SaveChanges();
                 }
+
+                simpleButton5.Enabled = false;
 
 
                 var z_report = new CheckboxClient(_access_token).GetReportText(new Guid(new_shift.z_report.id), ReceiptExportFormat.text);
@@ -136,6 +172,20 @@ namespace SP_Sklad.WBForm
             RichTextBoxLink rtbl = new RichTextBoxLink(new PrintingSystem());
             rtbl.RichTextBox = rtb;
             rtbl.ShowPreviewDialog();
+        }
+
+        private void frmCashierWorkplace_Load(object sender, EventArgs e)
+        {
+            using (var db = new BaseEntities())
+            {
+                var active_shift = db.Shift.OrderByDescending(o => o.CreatedAt).FirstOrDefault(w => w.UserId == DBHelper.CurrentUser.UserId);
+                simpleButton5.Enabled = (active_shift != null && !active_shift.ClosedAt.HasValue) || string.IsNullOrEmpty(_access_token);
+            }
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            IHelper.KssBook(DateTime.Now.Date);
         }
     }
 }

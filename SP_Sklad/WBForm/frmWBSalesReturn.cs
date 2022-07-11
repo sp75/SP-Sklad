@@ -13,6 +13,10 @@ using SP_Sklad.Reports;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
 using System.Drawing;
+using System.Collections.Generic;
+using CheckboxIntegration.Models;
+using CheckboxIntegration.Client;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -181,7 +185,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-            payDocUserControl1.Execute(wb.WbillId);
+            payDocUserControl1.Execute(wb.WbillId, true);
 
         //    current_transaction.Commit();
 
@@ -397,11 +401,6 @@ namespace SP_Sklad.WBForm
                 OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
                 wb.OnDate = OnDateDBEdit.DateTime;
             }
-        }
-
-        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void frmWBReturnIn_FormClosing(object sender, FormClosingEventArgs e)

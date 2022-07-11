@@ -15,6 +15,8 @@ using SP_Sklad.Reports;
 using System.Data.Entity.Core.Objects;
 using SP_Sklad.Properties;
 using RawInput_dll;
+using CheckboxIntegration.Models;
+using CheckboxIntegration.Client;
 
 namespace SP_Sklad.WBForm
 {
@@ -43,8 +45,12 @@ namespace SP_Sklad.WBForm
         private UserSettingsRepository user_settings { get; set; }
         private long KeyDownTicks { get; set; }
         private readonly RawInput _rawinput;
-        public frmCashboxWBOut()
+
+        private string _access_token { get; set; }
+        public frmCashboxWBOut(string access_token)
         {
+            _access_token = access_token;
+
             InitializeComponent();
 
             _rawinput = new RawInput(Handle, true);
@@ -103,7 +109,7 @@ namespace SP_Sklad.WBForm
 
             _db.Save(wb.WbillId);
 
-            using (var pay = new frmCashboxCheckout(_db, wb))
+            using (var pay = new frmCashboxCheckout(_db, wb, _access_token))
             {
                 if (pay.ShowDialog() == DialogResult.OK)
                 {
@@ -605,6 +611,13 @@ namespace SP_Sklad.WBForm
             {
                 textBox1.Text = "Налаштуйте сканер штрихкодів, Сервіс->Налаштування->Торгове обладнання";
             }
+
+            if(string.IsNullOrEmpty(_access_token))
+            {
+                error_autch_label.Visible = true;
+                simpleButton19.Enabled = false;
+                simpleButton20.Enabled = false;
+            }
         }
 
         private void SetFormTitle()
@@ -725,6 +738,115 @@ namespace SP_Sklad.WBForm
             }
 
             _rawinput.KeyPressed += OnKeyPressed;
+        }
+
+        private void simpleButton19_Click_1(object sender, EventArgs e)
+        {
+            using (var frm = new frmNumericKeypad())
+            {
+                frm.Text = "Внесення коштів";
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    decimal val = Convert.ToDecimal(frm.AmountEdit.Text);
+
+                    var receipt = CreateServiceReceipt(Convert.ToInt32(val * 100));
+
+                    if (receipt.error == null)
+                    {
+                        CreateFinDoc(val, receipt.id);
+
+                        GetReceiptPdf(receipt.id);
+                    }
+                    else
+                    {
+                        MessageBox.Show(receipt.error.message);
+                    }
+                }
+            }
+        }
+
+        private ReceiptsSellRespond CreateServiceReceipt(int value)
+        {
+            var req = new ReceiptServicePayload
+            {
+                id = Guid.NewGuid(),
+                payment = new Payment
+                {
+                    type = PaymentType.CASH.ToString(),
+                    value = value,
+                    label = "Готівка"
+                }
+            };
+
+            var new_receipts = new CheckboxClient(_access_token).CreateServiceReceipt(req);
+
+            return new_receipts;
+        }
+
+        private void GetReceiptPdf(Guid receipt_id)
+        {
+            if (receipt_id != Guid.Empty)
+            {
+                var pdf = new CheckboxClient(_access_token).GetReceiptPdf(receipt_id, ReceiptExportFormat.pdf);
+                using (var frm = new frmPdfView(pdf))
+                {
+                    frm.ShowDialog();
+                }
+            }
+        }
+
+        private void CreateFinDoc(decimal value, Guid receipt_id)
+        {
+            using (var new_db = new BaseEntities())
+            {
+                var _pd = new_db.PayDoc.Add(new PayDoc
+                {
+                    Id = Guid.NewGuid(),
+                    Checked = 1,
+                    DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
+                    OnDate = DBHelper.ServerDateTime(),
+                    Total = value,
+                    CTypeId = 1,// За товар
+                    WithNDS = 1,// З НДС
+                    PTypeId = 1,// Наличкой
+                    CashId = user_settings.CashDesksDefaultRMK,
+                    CurrId = 2,  //Валюта по умолчанию
+                    OnValue = 1, //Курс валюти
+                    MPersonId = DBHelper.CurrentUser.KaId,
+                    DocType = 6,//Коригування залишку
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    EntId = DBHelper.Enterprise.KaId,
+                    OperId = Guid.NewGuid(),
+                    ReceiptId = receipt_id
+                });
+
+                new_db.SaveChanges();
+            }
+        }
+
+        private void simpleButton20_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmNumericKeypad())
+            {
+                frm.Text = "Вилучення коштів";
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    decimal val = Convert.ToDecimal(frm.AmountEdit.Text) *-1;
+
+                    var receipt = CreateServiceReceipt(Convert.ToInt32(val * 100));
+
+                    if (receipt.error == null)
+                    {
+                        CreateFinDoc(val, receipt.id);
+
+                        GetReceiptPdf(receipt.id);
+                    }
+                    else
+                    {
+                        MessageBox.Show(receipt.error.message);
+                    }
+                }
+            }
         }
     }
 }

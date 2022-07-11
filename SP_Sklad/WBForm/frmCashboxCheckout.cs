@@ -1,5 +1,8 @@
-﻿using DevExpress.XtraEditors;
+﻿using CheckboxIntegration.Client;
+using CheckboxIntegration.Models;
+using DevExpress.XtraEditors;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 using System;
@@ -21,6 +24,8 @@ namespace SP_Sklad.WBForm
         private WaybillList _wb { get; set; }
         private GetUserAccessTree_Result _user_Access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
+        private string _access_token { get; set; }
+        public bool is_authorization { get; set; }
 
         private class user_acc
         {
@@ -31,12 +36,14 @@ namespace SP_Sklad.WBForm
         }
         private List<user_acc> user_acc_list { get; set; }
 
-        public frmCashboxCheckout(BaseEntities db, WaybillList wb)
+        public frmCashboxCheckout(BaseEntities db, WaybillList wb, string access_token)
         {
             InitializeComponent();
 
             _db = db;
             _wb = wb;
+            _access_token = access_token;
+            is_authorization = !string.IsNullOrEmpty(_access_token);
         }
 
         private void frmCashboxCheckoutcs_Load(object sender, EventArgs e)
@@ -62,7 +69,7 @@ namespace SP_Sklad.WBForm
            
         }
 
-        private void PayDoc(int PType, decimal total)
+        private void PayDoc(int PType, decimal total, Guid receipt_id)
         {
             _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wb.WbillId);
 
@@ -86,7 +93,8 @@ namespace SP_Sklad.WBForm
                     KaId = _wb.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId,
-                    ReportingDate = _wb.OnDate
+                    ReportingDate = _wb.OnDate,
+                    ReceiptId = receipt_id
                 });
 
                 if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
@@ -105,8 +113,6 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
         }
-
-
 
         private void PutSumEdit_EditValueChanged(object sender, EventArgs e)
         {
@@ -130,16 +136,6 @@ namespace SP_Sklad.WBForm
             PutCashlessSumEdit.Enabled = user_settings.AccountDefaultRMK != 0;
 
             PutCashSumEdit.Focus();
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
- 
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -182,15 +178,98 @@ namespace SP_Sklad.WBForm
 
         private void PayBtn_Click(object sender, EventArgs e)
         {
+            List<Payment> payments = new List<Payment>();
+
             if (PutCashSumEdit.Value > 0)
             {
-                PayDoc(1, Convert.ToDecimal(SumAllEdit.Value - PutCashlessSumEdit.Value));
+                payments.Add(new Payment
+                {
+                    type = PaymentType.CASH.ToString(),
+                    value = Convert.ToInt32((SumAllEdit.Value - PutCashlessSumEdit.Value) * 100),//Convert.ToInt32( wb_det.Sum(s => s.Amount * s.Price )  * 100 ),
+                    label = "Готівка"
+                });
             }
 
-            if(PutCashlessSumEdit.Value > 0)
+            if (PutCashlessSumEdit.Value > 0)
             {
-                PayDoc(2, Convert.ToDecimal(PutCashlessSumEdit.Value));
+                payments.Add(new Payment
+                {
+                    type = PaymentType.CASHLESS.ToString(),
+                    value = Convert.ToInt32(PutCashlessSumEdit.Value * 100),
+                    label = "Картка"
+                });
+            }
+
+            var receipt = CreateReceiptSell(payments);
+
+            if (PutCashSumEdit.Value > 0)
+            {
+                PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value, receipt.id);
+            }
+
+            if (PutCashlessSumEdit.Value > 0)
+            {
+                PayDoc(2, PutCashlessSumEdit.Value, receipt.id);
+            }
+
+            if (is_authorization && receipt.id != Guid.Empty)
+            {
+                _db.Receipt.Add(new Receipt
+                {
+                    Id = receipt.id,
+                    CeatedAt = receipt.created_at,
+                    TotalPayment = receipt.total_payment,
+                    TotalSum = receipt.total_sum,
+                    Status = receipt.status,
+                    ShiftId = receipt.shift.id
+                });
+                _db.SaveChanges();
+
+                var pdf = new CheckboxClient(_access_token).GetReceiptPdf(receipt.id, ReceiptExportFormat.pdf);
+                using (var frm = new frmPdfView(pdf))
+                {
+                    frm.ShowDialog();
+                }
+            }
+            else
+            {
+                PrintDoc.Show(_wb.Id, _wb.WType, _db);
             }
         }
+
+        private ReceiptsSellRespond CreateReceiptSell(List<Payment> payments)
+        {
+            var wb_det = _db.GetWayBillDetOut(_wb.WbillId).ToList();
+
+            var req = new ReceiptsSellRequest
+            {
+                id = Guid.NewGuid(),
+                cashier_name = DBHelper.CurrentUser.Name,
+                departament = DBHelper.Kagents.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
+                goods = wb_det.Select(s => new Good
+                {
+                    quantity = Convert.ToInt32(s.Amount * 1000),
+                    good = new Good2
+                    {
+                        code = s.MatId.ToString(),
+                        barcode = s.BarCode,
+                        name = s.MatName,
+                        price = Convert.ToInt32(s.Price * 100)
+                    },
+                    discounts = new List<object>(),
+                    is_return = false
+
+                }).ToList(),
+                payments = payments,
+                discounts = new List<object>(),
+                technical_return = false,
+                rounding = false
+            };
+
+            var new_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);
+
+            return new_receipts;
+        }
+
     }
 }

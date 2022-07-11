@@ -588,6 +588,9 @@
     <Compile Include="SkladData\PriceList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Receipt.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\ReportSortedFields.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -958,6 +961,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmKaGroup.Designer.cs">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmNumericKeypad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmNumericKeypad.Designer.cs">
+      <DependentUpon>frmNumericKeypad.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmTestComPort.cs">
       <SubType>Form</SubType>
@@ -1836,6 +1845,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmNumericKeypad.resx">
+      <DependentUpon>frmNumericKeypad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmTestComPort.resx">
       <DependentUpon>frmTestComPort.cs</DependentUpon>

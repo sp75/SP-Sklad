@@ -108,6 +108,7 @@
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
             this.PrintDocBtn = new DevExpress.XtraEditors.SimpleButton();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.error_autch_label = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -255,6 +256,7 @@
             this.simpleButton20.Size = new System.Drawing.Size(109, 49);
             this.simpleButton20.TabIndex = 29;
             this.simpleButton20.Text = "Вилучення\r\nкоштів";
+            this.simpleButton20.Click += new System.EventHandler(this.simpleButton20_Click);
             // 
             // simpleButton19
             // 
@@ -266,6 +268,7 @@
             this.simpleButton19.Size = new System.Drawing.Size(96, 49);
             this.simpleButton19.TabIndex = 28;
             this.simpleButton19.Text = "Внесення\r\nкоштів";
+            this.simpleButton19.Click += new System.EventHandler(this.simpleButton19_Click_1);
             // 
             // BarCodeBtn
             // 
@@ -1106,6 +1109,7 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.error_autch_label);
             this.panel7.Controls.Add(this.panelControl7);
             this.panel7.Controls.Add(this.panel3);
             this.panel7.Controls.Add(this.panelControl1);
@@ -1115,6 +1119,18 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(1348, 67);
             this.panel7.TabIndex = 15;
+            // 
+            // error_autch_label
+            // 
+            this.error_autch_label.AutoSize = true;
+            this.error_autch_label.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.error_autch_label.ForeColor = System.Drawing.Color.Red;
+            this.error_autch_label.Location = new System.Drawing.Point(679, 5);
+            this.error_autch_label.Name = "error_autch_label";
+            this.error_autch_label.Size = new System.Drawing.Size(296, 38);
+            this.error_autch_label.TabIndex = 15;
+            this.error_autch_label.Text = "Помилка аутентифікації на Checkbox, \r\nфіскалізація чека не буде відбуватися !";
+            this.error_autch_label.Visible = false;
             // 
             // panel3
             // 
@@ -1250,6 +1266,7 @@
             this.panelControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
@@ -1349,5 +1366,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton20;
         private DevExpress.XtraEditors.SimpleButton simpleButton19;
+        private System.Windows.Forms.Label error_autch_label;
     }
 }

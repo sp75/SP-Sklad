@@ -60,7 +60,9 @@ namespace SP.Reports
                         MsrName =  Material != null ? Material.MsrName : "",
                         CType = ChType != null ? ChType.Name : "",
                         KontragentGroupName = KontragentGroup != null ? KontragentGroup.Name : "",
-                        Year = StartDate.Year.ToString()
+                        Year = StartDate.Year.ToString(),
+                        DriverName = Driver!= null ? Driver.Name : "",
+                        CarName =  Car!= null ? Car.Name : ""
                     }
                 };
 
@@ -913,6 +915,12 @@ namespace SP.Reports
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", mat_grp.Where(w => mat.Select(s => s.GrpId).Contains(w.GrpId)).OrderBy(o => o.Name).ToList());
             data_for_report.Add("MatInDet", mat);
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                TotalAmount = s.Sum(r => r.Amount),
+                TotalOnSum = s.Sum(r => r.OnSum)
+            }).ToList()); 
+
             data_for_report.Add("_realation_", realation);
         }
         private void REP_29()

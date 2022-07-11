@@ -89,6 +89,9 @@ namespace CheckboxIntegration.Client
             }
 
         }
+
+
+
         #endregion
 
         #region Зміни
@@ -170,17 +173,37 @@ namespace CheckboxIntegration.Client
             }
         }
 
-        
+        /// <summary>
+        /// Отримання інформації про зміну
+        /// </summary>
+        /// <param name="shift_id ">shift id</param>
+        /// <param name="properties">https://api.checkbox.ua/api/docs#/%D0%97%D0%BC%D1%96%D0%BD%D0%B8/get_shift_api_v1_shifts__shift_id__get</param>
+        /// <returns>Get Shift</returns>
+        public CreateShiftRespond GetShift(Guid shift_id)
+        {
+            var response = _client.GetAsync(string.Format("shifts/{0}", shift_id)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsAsync<CreateShiftRespond>().Result;
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
 
         #endregion
-
 
         #region Чеки
 
         /// <summary>
         /// Створення чеку продажу/повернення, його фіскалізація та доставка клієнту по email.
         /// </summary>
-        /// <param name="acc_id">Accession id</param>
         /// <param name="properties">https://dev-api.checkbox.in.ua/api/redoc#operation/create_receipt_api_v1_receipts_sell_post</param>
         /// <returns></returns>
         public ReceiptsSellRespond ReceiptsSell(ReceiptsSellRequest properties)
@@ -257,9 +280,40 @@ namespace CheckboxIntegration.Client
             }
         }
 
+
+        /// <summary>
+        /// Створення сервісного чеку внесення або винесення коштів. Для чеку сума винесення повинна бути вказана зі знаком мінус, а для внесення зі знаком плюс.
+        /// </summary>
+        /// <param name="receipt_id">receipt id</param>
+        /// <param name="properties">https://api.checkbox.ua/api/docs#/%D0%A7%D0%B5%D0%BA%D0%B8/create_service_receipt_api_v1_receipts_service_post</param>
+        /// <returns></returns>
+        public ReceiptsSellRespond CreateServiceReceipt(ReceiptServicePayload properties)
+        {
+            string jsonString = JsonConvert.SerializeObject(properties);
+
+            var response = _client.PostAsJsonAsync("receipts/service", properties).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsAsync<ReceiptsSellRespond>().Result;
+                return result;
+            }
+            else
+            {
+                var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
+                return new ReceiptsSellRespond
+                {
+                    error = apiErrorResponse
+                };
+            }
+        }
+
+
         #endregion
 
-       
+
 
     }
 }

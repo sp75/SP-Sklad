@@ -79,15 +79,15 @@ namespace CheckboxIntegration.Models
 
     public class CreateShiftRespond
     {
-        public string id { get; set; }
+        public Guid id { get; set; }
         public int serial { get; set; }
         public ZReport z_report { get; set; }
-        public string opened_at { get; set; }
-        public string closed_at { get; set; }
+        public DateTime? opened_at { get; set; }
+        public DateTime? closed_at { get; set; }
    //     public InitialTransaction initial_transaction { get; set; }
   //      public ClosingTransaction closing_transaction { get; set; }
-        public string created_at { get; set; }
-        public string updated_at { get; set; }
+        public DateTime created_at { get; set; }
+        public DateTime? updated_at { get; set; }
   //      public Balance balance { get; set; }
    //     public List<Tax> taxes { get; set; }
    //     public CashRegister cash_register { get; set; }

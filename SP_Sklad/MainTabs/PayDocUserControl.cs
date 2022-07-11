@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
 using SP_Sklad.ViewsForm;
+using CheckboxIntegration.Models;
+using CheckboxIntegration.Client;
 
 namespace SP_Sklad.MainTabs
 {
@@ -168,7 +170,7 @@ namespace SP_Sklad.MainTabs
 
         }
 
-        public void Execute(int wbill_id)
+        public void Execute(int wbill_id, bool fiscalization_check = false )
         {
             _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == wbill_id);
             if (_wb == null && !panelControl1.Enabled)
@@ -176,10 +178,20 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
+
             if (_pd == null && ExecPayCheckBox.Checked)
             {
                 if (_user_Access.CanInsert == 1)
                 {
+                    Guid? ReceiptId = null;
+
+                    if (fiscalization_check)
+                    {
+                        var receipt = CreateReceiptSell();
+                        ReceiptId = receipt.id;
+                    }
+
+
                     _pd = _db.PayDoc.Add(new PayDoc()
                     {
                         Id = Guid.NewGuid(),
@@ -198,7 +210,8 @@ namespace SP_Sklad.MainTabs
                         KaId = _wb.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         EntId = DBHelper.Enterprise.KaId,
-                        ReportingDate = _wb.OnDate
+                        ReportingDate = _wb.OnDate,
+                        ReceiptId = ReceiptId
                     });
 
                     if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
@@ -316,5 +329,71 @@ namespace SP_Sklad.MainTabs
 
             }
         }
+
+        private ReceiptsSellRespond CreateReceiptSell()
+        {
+            List<Payment> payments = new List<Payment>();
+            var total = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+
+            payments.Add(new Payment
+            {
+                type = PaymentType.CASH.ToString(),
+                value = Convert.ToInt32(total * 100),
+                label = "Готівка"
+            });
+
+            var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
+
+            var req = new ReceiptsSellRequest
+            {
+                id = Guid.NewGuid(),
+                cashier_name = DBHelper.CurrentUser.Name,
+                departament = DBHelper.Kagents.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
+                goods = wb_det.Select(s => new Good
+                {
+                    quantity = Convert.ToInt32(s.Amount * 1000),
+                    good = new Good2
+                    {
+                        code = s.MatId.ToString(),
+                        //   barcode = s.BarCode,
+                        name = s.MatName,
+                        price = Convert.ToInt32(s.Price * 100)
+                    },
+                    discounts = new List<object>(),
+                    is_return = true
+
+                }).ToList(),
+                payments = payments,
+                discounts = new List<object>(),
+                technical_return = true,
+                rounding = false
+            };
+
+            var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+            var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
+
+            string _access_token = login.access_token;
+
+            var return_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);
+
+            if (return_receipts.id != Guid.Empty)
+            {
+                _db.Receipt.Add(new Receipt
+                {
+                    Id = return_receipts.id,
+                    CeatedAt = return_receipts.created_at,
+                    TotalPayment = return_receipts.total_payment,
+                    TotalSum = return_receipts.total_sum,
+                    Status = return_receipts.status,
+                    ShiftId = return_receipts.shift.id
+                });
+                _db.SaveChanges();
+            }
+
+            return return_receipts;
+        }
+
+
+
     }
 }

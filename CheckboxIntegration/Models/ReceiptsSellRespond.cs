@@ -128,7 +128,7 @@ namespace CheckboxIntegration.Models
 
     public class Shift
     {
-        public string id { get; set; }
+        public Guid id { get; set; }
         public int serial { get; set; }
         public string status { get; set; }
         public object z_report { get; set; }
@@ -146,7 +146,7 @@ namespace CheckboxIntegration.Models
 
     public class ReceiptsSellRespond
     {
-        public string id { get; set; }
+        public Guid id { get; set; }
         public string type { get; set; }
         public Transaction transaction { get; set; }
         public int serial { get; set; }

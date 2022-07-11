@@ -963,6 +963,56 @@ namespace SP_Sklad.Common
 
             return main_sum + ext_sum;
         }
+
+        public static void KssBook(DateTime start_date)
+        {
+            var data_for_report = new Dictionary<string, IList>();
+            var rel = new List<object>();
+            var end_date = start_date.Date.AddDays(1);
+
+            using (var db = DB.SkladBase())
+            {
+                var list = db.PayDoc.Where(w => w.OnDate >= start_date && w.OnDate < end_date && (w.DocType == -1 || w.DocType == 1) && w.Checked == 1 && w.MPersonId == DBHelper.CurrentUser.KaId && w.CashId != null).
+                    Select(s => new
+                    {
+                        s.DocNum,
+                        s.OnDate,
+                        Total = s.DocType * s.Total,
+                        KaName = s.Kagent.Name,
+                        PersonName = s.Kagent1.Name,
+                        s.CashId,
+                        CashDeskName = s.CashDesks.Name
+                    }).ToList();
+
+                data_for_report.Add("range1", list);
+                data_for_report.Add("range2", list.GroupBy(g => new { g.CashId, g.CashDeskName }).Select(s => new { s.Key.CashId, s.Key.CashDeskName }).ToList());
+                rel.Add(new
+                {
+                    pk = "CashId",
+                    fk = "CashId",
+                    master_table = "range2",
+                    child_table = "range1"
+                });
+                data_for_report.Add("_realation_", rel);
+
+                var Cashlist = DBHelper.CashDesks.Select(s => s.CashId).ToList();
+                var start_saldo = db.MoneyOnDate(start_date.AddDays(-1)).Where(w => Cashlist.Contains(w.CashId.Value)).Sum(s => s.Saldo);
+                var end_saldo = db.MoneyOnDate(start_date).Where(w => Cashlist.Contains(w.CashId.Value)).Sum(s => s.Saldo);
+
+                var obj = new List<object>();
+                obj.Add(new
+                {
+                    start_date = start_date.ToShortDateString(),
+                    person = DBHelper.CurrentUser.Name,
+                    start_saldo = start_saldo,
+                    end_saldo = end_saldo,
+                    total = list.Sum(s => s.Total)
+                });
+
+                data_for_report.Add("XLRPARAMS", obj);
+                IHelper.Print(data_for_report, "kss_book.xlsx");
+            }
+        }
     }
 
 

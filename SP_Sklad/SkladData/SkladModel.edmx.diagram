@@ -324,6 +324,7 @@
         <AssociationConnector Association="BaseModel.PriceListKagent" />
         <AssociationConnector Association="BaseModel.FK_Cars_Kagent" />
         <EntityTypeShape EntityType="BaseModel.Shift" Width="1.5" PointX="29" PointY="29.375" />
+        <EntityTypeShape EntityType="BaseModel.Receipt" Width="1.5" PointX="14.625" PointY="29.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
