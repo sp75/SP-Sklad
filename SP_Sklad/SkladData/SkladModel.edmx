@@ -5356,6 +5356,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="DocType" Type="int" />
                 <Property Name="RelType" Type="int" Nullable="false" />
                 <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+                <Property Name="ReceiptId" Type="uniqueidentifier" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -9292,9 +9293,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
-          <Parameter Name="originator_id" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="ExecuteWayBill" ReturnType="Collection(BaseModel.ExecuteWayBill_Result)">
             <Parameter Name="WBILLID" Mode="In" Type="Int32" />
             <Parameter Name="NEW_WTYPE" Mode="In" Type="Int32" />
@@ -9701,6 +9699,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
           <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
+          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
+            <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -14251,19 +14252,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="FormationAmount" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="FinishAmount" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
-        <ComplexType Name="GetRelDocList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="33" Scale="8" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-          <Property Type="Int32" Name="RelType" Nullable="false" />
-          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
-        </ComplexType>
         <ComplexType Name="ExecuteWayBill_Result">
           <Property Type="Int32" Name="Checked" Nullable="true" />
           <Property Type="Guid" Name="NewDocId" Nullable="true" />
@@ -16199,6 +16187,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CeatedAt" Type="DateTime" Precision="3" />
           <Property Name="ShiftId" Type="Guid" />
         </EntityType>
+        <ComplexType Name="GetRelDocList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="33" Scale="8" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="Int32" Name="RelType" Nullable="false" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="Guid" Name="ReceiptId" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -19043,23 +19045,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="RelType" ColumnName="RelType" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ExecuteWayBill" FunctionName="BaseModel.Store.ExecuteWayBill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.ExecuteWayBill_Result">
@@ -20519,6 +20504,24 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="RelType" ColumnName="RelType" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocType { get; set; }
         public int RelType { get; set; }
         public string DocTypeName { get; set; }
+        public Nullable<System.Guid> ReceiptId { get; set; }
     }
 }

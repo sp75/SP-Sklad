@@ -24,6 +24,8 @@ using System.IO;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using System.Diagnostics;
+using CheckboxIntegration.Client;
+using CheckboxIntegration.Models;
 
 namespace SP_Sklad.MainTabs
 {
@@ -36,6 +38,7 @@ namespace SP_Sklad.MainTabs
         public int? set_tree_node { get; set; }
         private UserSettingsRepository user_settings { get; set; }
         private List<KaTemplateList> ka_template_list { get; set; }
+        private string _access_token { get; set; }
 
         private GetWayBillList_Result wb_focused_row
         {
@@ -71,6 +74,10 @@ namespace SP_Sklad.MainTabs
             {
                 _db = new BaseEntities();
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+
+                var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
+
+                _access_token = login.access_token;
 
                 wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.RetailOutlets.Select(s => new { s.KaId, s.Name }));
 
@@ -800,7 +807,20 @@ namespace SP_Sklad.MainTabs
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
 
-            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
+            if (!string.IsNullOrEmpty(_access_token) && row.ReceiptId.HasValue && row.ReceiptId.Value != Guid.Empty)
+            {
+                var info = new CheckboxClient(_access_token).GetReceipt(row.ReceiptId.Value);
+
+                var pdf = new CheckboxClient(_access_token).GetReceiptPdf(row.ReceiptId.Value, ReceiptExportFormat.pdf);
+                using (var frm = new frmPdfView(pdf))
+                {
+                    frm.ShowDialog();
+                }
+            }
+            else {
+
+                PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
+            }
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

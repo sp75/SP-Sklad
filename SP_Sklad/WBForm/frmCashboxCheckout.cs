@@ -246,6 +246,7 @@ namespace SP_Sklad.WBForm
                 id = Guid.NewGuid(),
                 cashier_name = DBHelper.CurrentUser.Name,
                 departament = DBHelper.Kagents.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
+
                 goods = wb_det.Select(s => new Good
                 {
                     quantity = Convert.ToInt32(s.Amount * 1000),
@@ -263,7 +264,8 @@ namespace SP_Sklad.WBForm
                 payments = payments,
                 discounts = new List<object>(),
                 technical_return = false,
-                rounding = false
+                rounding = false,
+                barcode = _wb.WbillId.ToString()
             };
 
             var new_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);

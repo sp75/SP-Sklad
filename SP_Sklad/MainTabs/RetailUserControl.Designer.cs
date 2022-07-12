@@ -408,6 +408,7 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).BeginInit();
             this.wbContentTab.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
@@ -4684,6 +4685,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).EndInit();
             this.wbContentTab.ResumeLayout(false);

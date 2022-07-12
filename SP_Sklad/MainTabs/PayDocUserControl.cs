@@ -191,7 +191,6 @@ namespace SP_Sklad.MainTabs
                         ReceiptId = receipt.id;
                     }
 
-
                     _pd = _db.PayDoc.Add(new PayDoc()
                     {
                         Id = Guid.NewGuid(),
@@ -366,7 +365,8 @@ namespace SP_Sklad.MainTabs
                 payments = payments,
                 discounts = new List<object>(),
                 technical_return = true,
-                rounding = false
+                rounding = false,
+                barcode = _wb.WbillId.ToString()
             };
 
             var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);

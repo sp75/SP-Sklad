@@ -9,6 +9,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CheckboxIntegration.Client;
+using CheckboxIntegration.Models;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
@@ -1013,6 +1015,7 @@ namespace SP_Sklad.Common
                 IHelper.Print(data_for_report, "kss_book.xlsx");
             }
         }
+
     }
 
 

@@ -24,6 +24,7 @@ namespace CheckboxIntegration.Models
         public bool rounding { get; set; }
         public bool technical_return { get; set; }
         public bool is_pawnshop { get; set; }
+        public string barcode { get; set; }
     }
 
 
