@@ -90,6 +90,57 @@ namespace CheckboxIntegration.Client
 
         }
 
+        /// <summary>
+        /// Cashier Signature Status
+        /// </summary>
+        /// <param name="properties">https://api.checkbox.ua/api/docs#/%D0%9A%D0%B0%D1%81%D0%B8%D1%80/check_signature_api_v1_cashier_check_signature_get</param>
+        /// <returns>Cashier Signature Status</returns>
+        public CashierSignatureStatus CheckSignature()
+        {
+            var response = _client.GetAsync("cashier/check-signature").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsAsync<CashierSignatureStatus>().Result;
+                return result;
+            }
+            else
+            {
+                var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
+                return new CashierSignatureStatus
+                {
+                    error = apiErrorResponse
+                };
+            }
+        }
+
+        /// <summary>
+        /// Отримання інформації про активну зміну користувача (касира)
+        /// </summary>
+        /// <param name="properties">https://api.checkbox.ua/api/docs#/%D0%9A%D0%B0%D1%81%D0%B8%D1%80/get_cashier_shift_api_v1_cashier_shift_get</param>
+        /// <returns>Cashier Signature Status</returns>
+        public ShiftWithCashRegisterModel GetCashierShift()
+        {
+            var response = _client.GetAsync("cashier/shift").Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsAsync<ShiftWithCashRegisterModel>().Result;
+                return result;
+            }
+            else
+            {
+                var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
+                return new ShiftWithCashRegisterModel
+                {
+                    error = apiErrorResponse
+                };
+            }
+        }
 
 
         #endregion
@@ -256,7 +307,6 @@ namespace CheckboxIntegration.Client
             }
         }
 
-
         /// <summary>
         /// Отримання PDF представлення чеку згідно наказу №329 від 08.06.2021.
         /// </summary>
@@ -279,7 +329,6 @@ namespace CheckboxIntegration.Client
                 return null;
             }
         }
-
 
         /// <summary>
         /// Створення сервісного чеку внесення або винесення коштів. Для чеку сума винесення повинна бути вказана зі знаком мінус, а для внесення зі знаком плюс.
@@ -310,10 +359,36 @@ namespace CheckboxIntegration.Client
             }
         }
 
-
         #endregion
 
+        #region Звіти
+        /// <summary>
+        /// Генерація X звіту
+        /// </summary>
+        /// <param name="properties">https://api.checkbox.ua/api/docs#/%D0%97%D0%B2%D1%96%D1%82%D0%B8/create_x_report_api_v1_reports_post</param>
+        /// <returns>ReportModel</returns>
+        public ReportModel CreateXReport()
+        {
+            var response = _client.PostAsJsonAsync("reports", new { }).Result;
 
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsAsync<ReportModel>().Result;
+                return result;
+            }
+            else
+            {
+                var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
+                return new ReportModel
+                {
+                    error = apiErrorResponse
+                };
+            }
+        }
+
+        #endregion
 
     }
 }

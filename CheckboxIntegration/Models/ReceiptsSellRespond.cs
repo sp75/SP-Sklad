@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CheckboxIntegration.Client;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,20 +90,6 @@ namespace CheckboxIntegration.Models
         public string previous_hash { get; set; }
     }
 
-    public class Balance
-    {
-        public int initial { get; set; }
-        public int balance { get; set; }
-        public int cash_sales { get; set; }
-        public int card_sales { get; set; }
-        public int cash_returns { get; set; }
-        public int card_returns { get; set; }
-        public int service_in { get; set; }
-        public int service_out { get; set; }
-        public DateTime? updated_at { get; set; }
-    }
-
-
     public class CashRegister
     {
         public string id { get; set; }
@@ -138,7 +125,7 @@ namespace CheckboxIntegration.Models
         public object closing_transaction { get; set; }
         public DateTime? created_at { get; set; }
         public DateTime? updated_at { get; set; }
-        public Balance balance { get; set; }
+        public BalanceModel balance { get; set; }
     //    public List<Tax> taxes { get; set; }
         public CashRegister cash_register { get; set; }
         public Cashier cashier { get; set; }
@@ -158,8 +145,8 @@ namespace CheckboxIntegration.Models
         public int total_payment { get; set; }
         public int total_rest { get; set; }
         public int rest { get; set; }
-        public object fiscal_code { get; set; }
-        public object fiscal_date { get; set; }
+        public string fiscal_code { get; set; }
+        public DateTime? fiscal_date { get; set; }
         public object delivered_at { get; set; }
         public DateTime? created_at { get; set; }
         public object updated_at { get; set; }
@@ -168,7 +155,7 @@ namespace CheckboxIntegration.Models
         public object order_id { get; set; }
         public object header { get; set; }
         public object footer { get; set; }
-        public object barcode { get; set; }
+        public string barcode { get; set; }
         public bool is_created_offline { get; set; }
         public bool is_sent_dps { get; set; }
         public object sent_dps_at { get; set; }
@@ -180,6 +167,23 @@ namespace CheckboxIntegration.Models
         public object control_number { get; set; }
 
         public ErrorMessage error { get; set; }
+
+
+        public void WaitingReceiptFiscalCode()
+        {
+            while (!this.fiscal_date.HasValue)
+            {
+                var receipt = new CheckboxClient().GetReceipt(this.id);
+
+                if(receipt.error != null)
+                {
+                    break;
+                }
+
+                fiscal_date = receipt.fiscal_date;
+                fiscal_code = receipt.fiscal_code;
+            }
+        }
     }
 
 

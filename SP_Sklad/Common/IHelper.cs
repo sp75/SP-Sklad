@@ -966,7 +966,7 @@ namespace SP_Sklad.Common
             return main_sum + ext_sum;
         }
 
-        public static void KssBook(DateTime start_date)
+        public static void KssBook(DateTime start_date, int cash_id)
         {
             var data_for_report = new Dictionary<string, IList>();
             var rel = new List<object>();
@@ -974,16 +974,16 @@ namespace SP_Sklad.Common
 
             using (var db = DB.SkladBase())
             {
-                var list = db.PayDoc.Where(w => w.OnDate >= start_date && w.OnDate < end_date && (w.DocType == -1 || w.DocType == 1) && w.Checked == 1 && w.MPersonId == DBHelper.CurrentUser.KaId && w.CashId != null).
+                var list = db.v_PayDoc.Where(w => w.OnDate >= start_date && w.OnDate < end_date /*&& (w.DocType == -1 || w.DocType == 1)*/ && w.Checked == 1/* && w.MPersonId == DBHelper.CurrentUser.KaId && w.CashId != null*/ && w.CashId == cash_id).ToList().
                     Select(s => new
                     {
                         s.DocNum,
                         s.OnDate,
-                        Total = s.DocType * s.Total,
-                        KaName = s.Kagent.Name,
-                        PersonName = s.Kagent1.Name,
+                        Total = s.ActualSummInCurr,
+                        KaName =!string.IsNullOrEmpty( s.KaName) ? s.KaName : s.DocTypeName,
+                        PersonName = s.PersonName,
                         s.CashId,
-                        CashDeskName = s.CashDesks.Name
+                        CashDeskName = s.CashdName
                     }).ToList();
 
                 data_for_report.Add("range1", list);
@@ -997,9 +997,9 @@ namespace SP_Sklad.Common
                 });
                 data_for_report.Add("_realation_", rel);
 
-                var Cashlist = DBHelper.CashDesks.Select(s => s.CashId).ToList();
-                var start_saldo = db.MoneyOnDate(start_date.AddDays(-1)).Where(w => Cashlist.Contains(w.CashId.Value)).Sum(s => s.Saldo);
-                var end_saldo = db.MoneyOnDate(start_date).Where(w => Cashlist.Contains(w.CashId.Value)).Sum(s => s.Saldo);
+             //   var Cashlist = DBHelper.CashDesks.Select(s => s.CashId).ToList();
+                var start_saldo = db.MoneyOnDate(start_date.AddDays(-1)).Where(w =>w.CashId == cash_id).Sum(s => s.Saldo);
+                var end_saldo = db.MoneyOnDate(start_date).Where(w => w.CashId == cash_id).Sum(s => s.Saldo);
 
                 var obj = new List<object>();
                 obj.Add(new

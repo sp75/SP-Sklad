@@ -1037,6 +1037,9 @@
           <Property Name="TotalPayment" Type="int" />
           <Property Name="CeatedAt" Type="datetime" />
           <Property Name="ShiftId" Type="uniqueidentifier" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiscalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FiscalDate" Type="datetime" />
         </EntityType>
         <EntityType Name="RepLng">
           <Key>
@@ -2145,7 +2148,9 @@ warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key 
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="SummInCurr" Type="numeric" Precision="31" Scale="6" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="ActualSummInCurr" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7235,7 +7240,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PayDoc].[BankName] AS [BankName], 
     [v_PayDoc].[KAU] AS [KAU], 
     [v_PayDoc].[Id] AS [Id], 
-    [v_PayDoc].[SummInCurr] AS [SummInCurr]
+    [v_PayDoc].[SummInCurr] AS [SummInCurr], 
+    [v_PayDoc].[DocTypeName] AS [DocTypeName], 
+    [v_PayDoc].[ActualSummInCurr] AS [ActualSummInCurr]
     FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PlannedCalculation" EntityType="Self.v_PlannedCalculation" store:Type="Views" store:Schema="dbo">
@@ -9700,7 +9707,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
           <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
           <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
-            <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          <Parameter Name="originator_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -14453,7 +14460,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="BankName" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Name="SummInCurr" Type="Decimal" Precision="31" Scale="6" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ActualSummInCurr" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_MatRecipe">
           <Key>
@@ -16186,6 +16195,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TotalPayment" Type="Int32" />
           <Property Name="CeatedAt" Type="DateTime" Precision="3" />
           <Property Name="ShiftId" Type="Guid" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalDate" Type="DateTime" Precision="3" />
         </EntityType>
         <ComplexType Name="GetRelDocList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -19176,6 +19188,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
+                <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
                 <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="KAU" ColumnName="KAU" />
@@ -20495,6 +20509,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Receipt">
             <EntityTypeMapping TypeName="BaseModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="FiscalDate" ColumnName="FiscalDate" />
+                <ScalarProperty Name="FiscalCode" ColumnName="FiscalCode" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
                 <ScalarProperty Name="CeatedAt" ColumnName="CeatedAt" />
                 <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />

@@ -116,6 +116,7 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
@@ -162,7 +163,7 @@
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1368, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1394, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // styleController1
@@ -243,7 +244,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 778);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1368, 60);
+            this.panelControl2.Size = new System.Drawing.Size(1394, 60);
             this.panelControl2.TabIndex = 15;
             // 
             // simpleButton20
@@ -325,7 +326,7 @@
             this.OkButton.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
             this.OkButton.Appearance.Options.UseFont = true;
             this.OkButton.Appearance.Options.UseForeColor = true;
-            this.OkButton.Location = new System.Drawing.Point(1115, 5);
+            this.OkButton.Location = new System.Drawing.Point(1141, 5);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(135, 49);
             this.OkButton.TabIndex = 0;
@@ -337,7 +338,7 @@
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1256, 6);
+            this.simpleButton1.Location = new System.Drawing.Point(1282, 6);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 49);
             this.simpleButton1.TabIndex = 1;
@@ -353,7 +354,7 @@
             this.panel4.Location = new System.Drawing.Point(2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.panel4.Size = new System.Drawing.Size(1030, 81);
+            this.panel4.Size = new System.Drawing.Size(1056, 81);
             this.panel4.TabIndex = 13;
             // 
             // textBox1
@@ -366,7 +367,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1020, 40);
+            this.textBox1.Size = new System.Drawing.Size(1046, 40);
             this.textBox1.TabIndex = 14;
             this.textBox1.TabStop = false;
             // 
@@ -376,7 +377,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 16F);
             this.label1.Location = new System.Drawing.Point(5, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1020, 31);
+            this.label1.Size = new System.Drawing.Size(1046, 31);
             this.label1.TabIndex = 15;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -389,7 +390,7 @@
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl6.Size = new System.Drawing.Size(1368, 778);
+            this.panelControl6.Size = new System.Drawing.Size(1394, 778);
             this.panelControl6.TabIndex = 28;
             // 
             // panel5
@@ -401,7 +402,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(5, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1358, 595);
+            this.panel5.Size = new System.Drawing.Size(1384, 595);
             this.panel5.TabIndex = 0;
             // 
             // panel8
@@ -411,7 +412,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(1044, 319);
+            this.panel8.Size = new System.Drawing.Size(1070, 319);
             this.panel8.TabIndex = 24;
             // 
             // WaybillDetOutGridControl
@@ -427,7 +428,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1034, 309);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1060, 309);
             this.WaybillDetOutGridControl.TabIndex = 23;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -636,7 +637,7 @@
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitterControl1.Location = new System.Drawing.Point(0, 319);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1044, 5);
+            this.splitterControl1.Size = new System.Drawing.Size(1070, 5);
             this.splitterControl1.TabIndex = 37;
             this.splitterControl1.TabStop = false;
             this.splitterControl1.Visible = false;
@@ -648,7 +649,7 @@
             this.panel9.Location = new System.Drawing.Point(0, 324);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(1044, 271);
+            this.panel9.Size = new System.Drawing.Size(1070, 271);
             this.panel9.TabIndex = 25;
             this.panel9.Visible = false;
             // 
@@ -661,7 +662,7 @@
             this.WhMatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox5});
-            this.WhMatGridControl.Size = new System.Drawing.Size(1034, 261);
+            this.WhMatGridControl.Size = new System.Drawing.Size(1060, 261);
             this.WhMatGridControl.TabIndex = 1;
             this.WhMatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhMatGridView});
@@ -826,7 +827,7 @@
             this.NumPadPanel.Controls.Add(this.btn8);
             this.NumPadPanel.Controls.Add(this.simpleButton3);
             this.NumPadPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.NumPadPanel.Location = new System.Drawing.Point(1044, 0);
+            this.NumPadPanel.Location = new System.Drawing.Point(1070, 0);
             this.NumPadPanel.Name = "NumPadPanel";
             this.NumPadPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.NumPadPanel.Size = new System.Drawing.Size(314, 595);
@@ -1041,6 +1042,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.simpleButton11);
             this.panel6.Controls.Add(this.simpleButton2);
             this.panel6.Controls.Add(this.panelControl4);
             this.panel6.Controls.Add(this.AmountEdit);
@@ -1050,7 +1052,7 @@
             this.panel6.Location = new System.Drawing.Point(5, 5);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
-            this.panel6.Size = new System.Drawing.Size(1358, 173);
+            this.panel6.Size = new System.Drawing.Size(1384, 173);
             this.panel6.TabIndex = 1;
             // 
             // simpleButton2
@@ -1058,7 +1060,7 @@
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(1050, 79);
+            this.simpleButton2.Location = new System.Drawing.Point(1076, 79);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(71, 39);
             this.simpleButton2.TabIndex = 45;
@@ -1073,14 +1075,14 @@
             this.panelControl4.Controls.Add(this.panel4);
             this.panelControl4.Location = new System.Drawing.Point(5, 79);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1034, 85);
+            this.panelControl4.Size = new System.Drawing.Size(1060, 85);
             this.panelControl4.TabIndex = 15;
             // 
             // AmountEdit
             // 
             this.AmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountEdit.Enabled = false;
-            this.AmountEdit.Location = new System.Drawing.Point(1050, 124);
+            this.AmountEdit.Location = new System.Drawing.Point(1076, 124);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.AmountEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
@@ -1099,7 +1101,7 @@
             this.PrintDocBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PrintDocBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.PrintDocBtn.Appearance.Options.UseFont = true;
-            this.PrintDocBtn.Location = new System.Drawing.Point(1281, 79);
+            this.PrintDocBtn.Location = new System.Drawing.Point(1307, 79);
             this.PrintDocBtn.Name = "PrintDocBtn";
             this.PrintDocBtn.Size = new System.Drawing.Size(71, 39);
             this.PrintDocBtn.TabIndex = 43;
@@ -1117,7 +1119,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(5, 5);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1348, 67);
+            this.panel7.Size = new System.Drawing.Size(1374, 67);
             this.panel7.TabIndex = 15;
             // 
             // error_autch_label
@@ -1184,7 +1186,7 @@
             this.panelControl3.Controls.Add(this.labelControl5);
             this.panelControl3.Controls.Add(this.textEdit2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl3.Location = new System.Drawing.Point(1045, 0);
+            this.panelControl3.Location = new System.Drawing.Point(1071, 0);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(303, 67);
             this.panelControl3.TabIndex = 11;
@@ -1216,11 +1218,24 @@
             this.textEdit2.TabIndex = 11;
             this.textEdit2.TabStop = false;
             // 
+            // simpleButton11
+            // 
+            this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton11.Appearance.Options.UseFont = true;
+            this.simpleButton11.Location = new System.Drawing.Point(1153, 78);
+            this.simpleButton11.Name = "simpleButton11";
+            this.simpleButton11.Size = new System.Drawing.Size(71, 39);
+            this.simpleButton11.TabIndex = 46;
+            this.simpleButton11.TabStop = false;
+            this.simpleButton11.Text = "Каса";
+            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click_1);
+            // 
             // frmCashboxWBOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1368, 838);
+            this.ClientSize = new System.Drawing.Size(1394, 838);
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);
@@ -1367,5 +1382,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton20;
         private DevExpress.XtraEditors.SimpleButton simpleButton19;
         private System.Windows.Forms.Label error_autch_label;
+        private DevExpress.XtraEditors.SimpleButton simpleButton11;
     }
 }

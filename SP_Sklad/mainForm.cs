@@ -298,11 +298,6 @@ namespace SP_Sklad
             new frmAboutAs().ShowDialog();
         }
 
-        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            IHelper.KssBook(Convert.ToDateTime(CurDateEditBarItem.EditValue).Date);
-        }
-
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //           Process.Start("http://178.136.7.248/web-sklad/sp_sklad/SP_Sklad.rar");

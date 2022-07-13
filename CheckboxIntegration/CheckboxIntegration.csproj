@@ -47,13 +47,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\CheckboxClient.cs" />
+    <Compile Include="Models\BalanceModel.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\CashierSignatureStatus.cs" />
     <Compile Include="Models\CashierSigninRequest.cs" />
     <Compile Include="Models\CashierSigninRespond.cs" />
+    <Compile Include="Models\CashRegisterModel.cs" />
     <Compile Include="Models\CreateShiftRespond.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\ReceiptServicePayload.cs" />
     <Compile Include="Models\ReceiptsSellRequest.cs" />
     <Compile Include="Models\ReceiptsSellRespond.cs" />
+    <Compile Include="Models\ReportModel.cs" />
+    <Compile Include="Models\ShiftStatus.cs" />
+    <Compile Include="Models\ShiftTaxModel.cs" />
+    <Compile Include="Models\ShiftWithCashRegisterModel.cs" />
+    <Compile Include="Models\SignatureType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -828,6 +828,9 @@ namespace SP_Sklad.WBForm
         {
             using (var frm = new frmNumericKeypad())
             {
+                var cashier_shift = new CheckboxClient(_access_token).GetCashierShift();
+                frm.AmountEdit.Text = Convert.ToString( cashier_shift.balance.balance / 100.00);
+
                 frm.Text = "Вилучення коштів";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
@@ -846,6 +849,27 @@ namespace SP_Sklad.WBForm
                         MessageBox.Show(receipt.error.message);
                     }
                 }
+            }
+        }
+
+        private void simpleButton11_Click_1(object sender, EventArgs e)
+        {
+            var new_receipts = new CheckboxClient(_access_token).GetCashierShift();
+
+            using (var frm = new frmCustomInfo())
+            {
+                frm.Text = "Інформація про активну зміну користувача (касира)";
+                frm.AddItem("Зміна відкрита", new_receipts.opened_at);
+                frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
+                frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
+                frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
+                frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+
+                var money = _db.MoneyOnDate(DateTime.Now);
+                var cur_user_cash = money.Where(w => w.CashId == user_settings.CashDesksDefaultRMK).Sum(s => s.SaldoDef);
+                frm.AddItem("Залишок в касі (sp_sklad)", cur_user_cash);
+
+                frm.ShowDialog();
             }
         }
     }

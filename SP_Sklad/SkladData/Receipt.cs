@@ -20,5 +20,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> TotalPayment { get; set; }
         public Nullable<System.DateTime> CeatedAt { get; set; }
         public Nullable<System.Guid> ShiftId { get; set; }
+        public string BarCode { get; set; }
+        public string FiscalCode { get; set; }
+        public Nullable<System.DateTime> FiscalDate { get; set; }
     }
 }

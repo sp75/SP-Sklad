@@ -932,6 +932,12 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmCustomInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmCustomInfo.Designer.cs">
+      <DependentUpon>frmCustomInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmFinancesView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1830,6 +1836,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmCustomInfo.resx">
+      <DependentUpon>frmCustomInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmFinancesView.resx">
       <DependentUpon>frmFinancesView.cs</DependentUpon>

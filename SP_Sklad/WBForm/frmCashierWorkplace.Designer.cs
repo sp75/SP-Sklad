@@ -76,6 +76,7 @@
             this.simpleButton2.Size = new System.Drawing.Size(275, 57);
             this.simpleButton2.TabIndex = 85;
             this.simpleButton2.Text = "Х-Звіт";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton3
             // 

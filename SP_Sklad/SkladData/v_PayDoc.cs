@@ -57,5 +57,7 @@ namespace SP_Sklad.SkladData
         public string KAU { get; set; }
         public System.Guid Id { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
+        public string DocTypeName { get; set; }
+        public Nullable<decimal> ActualSummInCurr { get; set; }
     }
 }

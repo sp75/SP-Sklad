@@ -88,6 +88,7 @@ namespace SP_Sklad.WBForm
 
             return open_at.Value;
         }
+
         public DateTime WaitingClosingShift(Guid shift_id)
         {
             DateTime? closed_at = null;
@@ -185,7 +186,29 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            IHelper.KssBook(DateTime.Now.Date);
+            IHelper.KssBook(DateTime.Now.Date, user_settings.CashDesksDefaultRMK);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var new_x_report = new CheckboxClient(_access_token).CreateXReport();
+            if (new_x_report.error == null)
+            {
+                var x_report = new CheckboxClient(_access_token).GetReportText(new_x_report.id, ReceiptExportFormat.text);
+
+                var result_file = Path.Combine(Application.StartupPath, "Rep", new_x_report.id.ToString() + ".txt");
+                File.WriteAllBytes(result_file, x_report);
+
+                if (File.Exists(result_file))
+                {
+                    Process.Start(result_file);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show(new_x_report.error.message);
+            }
         }
     }
 }

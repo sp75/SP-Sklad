@@ -221,7 +221,8 @@ namespace SP_Sklad.WBForm
                     TotalPayment = receipt.total_payment,
                     TotalSum = receipt.total_sum,
                     Status = receipt.status,
-                    ShiftId = receipt.shift.id
+                    ShiftId = receipt.shift.id,
+                    BarCode = receipt.barcode
                 });
                 _db.SaveChanges();
 
