@@ -16,6 +16,7 @@ namespace CheckboxIntegration.Client
 
         private const string BASE_ADDRESS = " https://api.checkbox.ua/api/v1/";
         private readonly HttpClient _client;
+        private string _access_token { get; set; }
 
         public CheckboxClient()
             : this(null)
@@ -55,6 +56,8 @@ namespace CheckboxIntegration.Client
                 response.EnsureSuccessStatusCode();
 
                 var result = response.Content.ReadAsAsync<CashierSigninRespond>().Result;
+                _access_token = result.access_token;
+
                 return result;
             }
             else 
@@ -257,7 +260,7 @@ namespace CheckboxIntegration.Client
         /// </summary>
         /// <param name="properties">https://dev-api.checkbox.in.ua/api/redoc#operation/create_receipt_api_v1_receipts_sell_post</param>
         /// <returns></returns>
-        public ReceiptsSellRespond ReceiptsSell(ReceiptsSellRequest properties)
+        public ReceiptsSellRespond CreateReceipt(ReceiptSellPayload properties)
         {
             string jsonString = JsonConvert.SerializeObject(properties);
 
@@ -336,9 +339,33 @@ namespace CheckboxIntegration.Client
         /// <param name="receipt_id">receipt id</param>
         /// <param name="properties">https://dev-api.checkbox.in.ua/api/docs#/%D0%A7%D0%B5%D0%BA%D0%B8/get_receipt_pdf_api_v1_receipts__receipt_id__pdf_get</param>
         /// <returns></returns>
-        public byte[] GetReceiptPng(Guid receipt_id, int paper_width = 58, int qrcode_scale = 75)
+        public byte[] GetReceiptPng(Guid receipt_id, int paper_width = 58, int qrcode_scale = 50)
         {
             var response = _client.GetAsync(string.Format("receipts/{0}/png?paper_width={1}&qrcode_scale={2}", receipt_id, paper_width, qrcode_scale)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsByteArrayAsync().Result;
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Отримання текстового представлення чека для термопринтеру згідно наказу №329 від 08.06.2021.
+        /// </summary>
+        /// <param name="receipt_id">receipt id</param>
+        /// <param name="width">Кількість символів у рядку</param>
+        /// <param name="properties">https://dev-api.checkbox.in.ua/api/docs#/%D0%A7%D0%B5%D0%BA%D0%B8/get_receipt_pdf_api_v1_receipts__receipt_id__pdf_get</param>
+        /// <returns></returns>
+        public byte[] GetReceiptTxt(Guid receipt_id, int width = 42)
+        {
+            var response = _client.GetAsync(string.Format("receipts/{0}/text?width={1}", receipt_id, width)).Result;
 
             if (response.IsSuccessStatusCode)
             {

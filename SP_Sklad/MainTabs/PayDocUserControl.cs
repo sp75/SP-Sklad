@@ -343,7 +343,7 @@ namespace SP_Sklad.MainTabs
 
             var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
 
-            var req = new ReceiptsSellRequest
+            var req = new ReceiptSellPayload
             {
                 id = Guid.NewGuid(),
                 cashier_name = DBHelper.CurrentUser.Name,
@@ -374,7 +374,7 @@ namespace SP_Sklad.MainTabs
 
             string _access_token = login.access_token;
 
-            var return_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);
+            var return_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
 
             if (return_receipts.id != Guid.Empty)
             {

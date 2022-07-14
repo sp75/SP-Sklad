@@ -131,7 +131,7 @@ namespace CheckboxIntegration.Models
         public Cashier cashier { get; set; }
     }
 
-    public class ReceiptsSellRespond
+    public class ReceiptsSellRespond: BaseModel
     {
         public Guid id { get; set; }
         public string type { get; set; }
@@ -156,6 +156,7 @@ namespace CheckboxIntegration.Models
         public object header { get; set; }
         public object footer { get; set; }
         public string barcode { get; set; }
+        public object custom { get; set; }
         public bool is_created_offline { get; set; }
         public bool is_sent_dps { get; set; }
         public object sent_dps_at { get; set; }
@@ -166,14 +167,11 @@ namespace CheckboxIntegration.Models
         public Shift shift { get; set; }
         public object control_number { get; set; }
 
-        public ErrorMessage error { get; set; }
-
-
-        public void WaitingReceiptFiscalCode()
+        public void WaitingReceiptFiscalCode(string access_token)
         {
             while (!this.fiscal_date.HasValue)
             {
-                var receipt = new CheckboxClient().GetReceipt(this.id);
+                var receipt = new CheckboxClient(access_token).GetReceipt(this.id);
 
                 if(receipt.error != null)
                 {

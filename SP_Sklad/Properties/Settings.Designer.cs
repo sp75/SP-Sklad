@@ -272,5 +272,17 @@ namespace SP_Sklad.Properties {
                 this["weighing_scales_2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string receipt_printer {
+            get {
+                return ((string)(this["receipt_printer"]));
+            }
+            set {
+                this["receipt_printer"] = value;
+            }
+        }
     }
 }

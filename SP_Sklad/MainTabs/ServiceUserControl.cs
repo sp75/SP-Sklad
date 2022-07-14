@@ -12,6 +12,7 @@ using SP_Sklad.EditForm;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.ViewsForm;
+using System.Drawing.Printing;
 
 namespace SP_Sklad.MainTabs
 {
@@ -60,6 +61,17 @@ namespace SP_Sklad.MainTabs
                          ComPortSpeedEdit.Text = s.ComPortSpeed;
                      }*/
             }
+
+            // Add list of installed printers found to the combo box.
+            // The pkInstalledPrinters string will be used to provide the display string.
+            String pkInstalledPrinters;
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+                comboInstalledPrinters.Properties.Items.Add(pkInstalledPrinters);
+            }
+
+            comboInstalledPrinters.Text = Settings.Default.receipt_printer;
 
             DeviceNameRMKTextEdit.Text = Settings.Default.barcode_scanner_name;
         }

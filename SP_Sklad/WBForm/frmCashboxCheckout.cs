@@ -2,6 +2,7 @@
 using CheckboxIntegration.Models;
 using DevExpress.XtraEditors;
 using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
@@ -204,6 +205,10 @@ namespace SP_Sklad.WBForm
             }
 
             var receipt = CreateReceiptSell(payments);
+            if(receipt.error != null)
+            {
+                throw new Exception(receipt.error.message);
+            }
 
             if (PutCashSumEdit.Value > 0)
             {
@@ -225,40 +230,13 @@ namespace SP_Sklad.WBForm
                     TotalSum = receipt.total_sum,
                     Status = receipt.status,
                     ShiftId = receipt.shift.id,
-                    BarCode = receipt.barcode
+                    BarCode = receipt.barcode,
+                    FiscalCode = receipt.fiscal_code,
+                    FiscalDate = receipt.fiscal_date
                 });
                 _db.SaveChanges();
 
-                var txt_receipt = new CheckboxClient(_access_token).GetReceiptPdf(receipt.id, ReceiptExportFormat.text);
-                /*   using (var frm = new frmPdfView(pdf))
-                   {
-                       frm.ShowDialog();
-                   }*/
-                /*   var result_file = Path.Combine(Application.StartupPath, "Rep", receipt.id.ToString() + ".txt");
-                   File.WriteAllBytes(result_file, pdf);
-
-                   if (File.Exists(result_file))
-                   {
-                       Process.Start(result_file);
-                   }*/
-
-                var z = Encoding.UTF8.GetString(txt_receipt);
-
-
-                PrintDocument p = new PrintDocument();
-            //    p.PrinterSettings.PrinterName = "";
-                p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-                {
-                    e1.Graphics.DrawString(z, new Font("Bahnschrift SemiLight Condensed", 9), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
-                };
-                try
-                {
-                    p.Print();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Exception Occured While Printing", ex);
-                }
+                IHelper.PrintReceiptPng(_access_token, receipt.id);
             }
             else
             {
@@ -270,7 +248,7 @@ namespace SP_Sklad.WBForm
         {
             var wb_det = _db.GetWayBillDetOut(_wb.WbillId).ToList();
 
-            var req = new ReceiptsSellRequest
+            var req = new ReceiptSellPayload
             {
                 id = Guid.NewGuid(),
                 cashier_name = DBHelper.CurrentUser.Name,
@@ -297,7 +275,8 @@ namespace SP_Sklad.WBForm
               //  barcode = _wb.WbillId.ToString()
             };
 
-            var new_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);
+            var new_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
+            new_receipts.WaitingReceiptFiscalCode(_access_token);
 
             return new_receipts;
         }

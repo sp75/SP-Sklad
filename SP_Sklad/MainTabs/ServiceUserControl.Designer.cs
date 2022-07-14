@@ -169,9 +169,11 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
+            this.comboInstalledPrinters = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WeighingScalesLookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.ComPortSpeed2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -271,9 +273,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboInstalledPrinters.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).BeginInit();
@@ -1803,6 +1806,8 @@
             // 
             // xtraTabPage16
             // 
+            this.xtraTabPage16.Controls.Add(this.comboInstalledPrinters);
+            this.xtraTabPage16.Controls.Add(this.labelControl16);
             this.xtraTabPage16.Controls.Add(this.groupControl1);
             this.xtraTabPage16.Controls.Add(this.groupControl3);
             this.xtraTabPage16.Controls.Add(this.labelControl13);
@@ -1813,6 +1818,33 @@
             this.xtraTabPage16.Size = new System.Drawing.Size(957, 560);
             this.xtraTabPage16.Text = "Торгове обладнання";
             // 
+            // comboInstalledPrinters
+            // 
+            this.comboInstalledPrinters.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "receipt_printer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.comboInstalledPrinters.EditValue = global::SP_Sklad.Properties.Settings.Default.receipt_printer;
+            this.comboInstalledPrinters.Location = new System.Drawing.Point(12, 35);
+            this.comboInstalledPrinters.Name = "comboInstalledPrinters";
+            this.comboInstalledPrinters.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.comboInstalledPrinters.Properties.Appearance.Options.UseFont = true;
+            this.comboInstalledPrinters.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboInstalledPrinters.Size = new System.Drawing.Size(364, 22);
+            this.comboInstalledPrinters.TabIndex = 86;
+            // 
+            // labelControl16
+            // 
+            this.labelControl16.Location = new System.Drawing.Point(12, 13);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(180, 16);
+            this.labelControl16.StyleController = this.styleController1;
+            this.labelControl16.TabIndex = 85;
+            this.labelControl16.Text = "Термопринтер для друку чеків";
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.labelControl15);
@@ -1822,7 +1854,7 @@
             this.groupControl1.Controls.Add(this.labelControl10);
             this.groupControl1.Controls.Add(this.ComPortName2Edit);
             this.groupControl1.Controls.Add(this.labelControl11);
-            this.groupControl1.Location = new System.Drawing.Point(446, 101);
+            this.groupControl1.Location = new System.Drawing.Point(446, 163);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(414, 189);
             this.groupControl1.TabIndex = 84;
@@ -1837,11 +1869,6 @@
             this.labelControl15.StyleController = this.styleController1;
             this.labelControl15.TabIndex = 85;
             this.labelControl15.Text = "Модель";
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // WeighingScalesLookUpEdit2
             // 
@@ -1949,7 +1976,7 @@
             this.groupControl3.Controls.Add(this.labelControl5);
             this.groupControl3.Controls.Add(this.labelControl4);
             this.groupControl3.Controls.Add(this.ComPortNameEdit);
-            this.groupControl3.Location = new System.Drawing.Point(12, 101);
+            this.groupControl3.Location = new System.Drawing.Point(12, 163);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(415, 189);
             this.groupControl3.TabIndex = 83;
@@ -2064,7 +2091,7 @@
             // 
             // labelControl13
             // 
-            this.labelControl13.Location = new System.Drawing.Point(12, 79);
+            this.labelControl13.Location = new System.Drawing.Point(12, 141);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(31, 16);
             this.labelControl13.StyleController = this.styleController1;
@@ -2073,7 +2100,7 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(794, 34);
+            this.simpleButton2.Location = new System.Drawing.Point(794, 96);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(66, 22);
             this.simpleButton2.TabIndex = 80;
@@ -2082,7 +2109,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(12, 12);
+            this.labelControl12.Location = new System.Drawing.Point(12, 74);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(118, 16);
             this.labelControl12.StyleController = this.styleController1;
@@ -2091,7 +2118,7 @@
             // 
             // DeviceNameRMKTextEdit
             // 
-            this.DeviceNameRMKTextEdit.Location = new System.Drawing.Point(12, 34);
+            this.DeviceNameRMKTextEdit.Location = new System.Drawing.Point(12, 96);
             this.DeviceNameRMKTextEdit.Name = "DeviceNameRMKTextEdit";
             this.DeviceNameRMKTextEdit.Properties.NullText = "для налаштування відскануйте будь який штрих код";
             this.DeviceNameRMKTextEdit.Properties.ReadOnly = true;
@@ -2333,10 +2360,11 @@
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage16.ResumeLayout(false);
             this.xtraTabPage16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboInstalledPrinters.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).EndInit();
@@ -2541,5 +2569,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.ComboBoxEdit ComPortName2Edit;
         private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.ComboBoxEdit comboInstalledPrinters;
+        private DevExpress.XtraEditors.LabelControl labelControl16;
     }
 }

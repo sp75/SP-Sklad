@@ -54,9 +54,10 @@
     <Compile Include="Models\CashierSigninRespond.cs" />
     <Compile Include="Models\CashRegisterModel.cs" />
     <Compile Include="Models\CreateShiftRespond.cs" />
+    <Compile Include="Models\DeliveryPayload.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\ReceiptSellPayload.cs" />
     <Compile Include="Models\ReceiptServicePayload.cs" />
-    <Compile Include="Models\ReceiptsSellRequest.cs" />
     <Compile Include="Models\ReceiptsSellRespond.cs" />
     <Compile Include="Models\ReportModel.cs" />
     <Compile Include="Models\ShiftStatus.cs" />

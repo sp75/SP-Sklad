@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -1013,6 +1014,64 @@ namespace SP_Sklad.Common
 
                 data_for_report.Add("XLRPARAMS", obj);
                 IHelper.Print(data_for_report, "kss_book.xlsx");
+            }
+        }
+
+        public static void PrintReceiptPng(string access_token, Guid receipt_id)
+        {
+            var png_data = new CheckboxClient(access_token).GetReceiptPng(receipt_id);
+
+            var ms = new MemoryStream(png_data) { Position = 0 };
+            Image i = Image.FromStream(ms);
+
+            PrintDocument p = new PrintDocument();
+            p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
+            p.DefaultPageSettings.Landscape = false;
+            p.DefaultPageSettings.PaperSize = new PaperSize("Custom", p.DefaultPageSettings.PaperSize.Width, Convert.ToInt32(((p.DefaultPageSettings.PaperSize.Width) * i.Height) / i.Width));
+
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawImage(i, e1.PageBounds);
+            };
+            try
+            {
+                p.Print();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
+            }
+        }
+
+        public static void PrintTxtReceipt(string access_token, Guid receipt_id)
+        {
+            var txt_receipt = new CheckboxClient(access_token).GetReceiptTxt(receipt_id);
+
+            //      var result_file = Path.Combine(Application.StartupPath, "Rep", receipt.id.ToString() + ".txt");
+            //    File.WriteAllBytes(result_file, txt_receipt);
+            /*
+                               if (File.Exists(result_file))
+                               {
+                                   Process.Start(result_file);
+                               }*/
+
+            var z = Encoding.UTF8.GetString(txt_receipt);
+
+
+            PrintDocument p = new PrintDocument();
+            p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(z, new Font("Bahnschrift SemiLight Condensed", 9), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
+            };
+            try
+            {
+                p.Print();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
             }
         }
 
