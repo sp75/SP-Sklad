@@ -331,6 +331,29 @@ namespace CheckboxIntegration.Client
         }
 
         /// <summary>
+        /// Отримання графічного представлення чека для термопринтеру згідно наказу №329 від 08.06.2021.
+        /// </summary>
+        /// <param name="receipt_id">receipt id</param>
+        /// <param name="properties">https://dev-api.checkbox.in.ua/api/docs#/%D0%A7%D0%B5%D0%BA%D0%B8/get_receipt_pdf_api_v1_receipts__receipt_id__pdf_get</param>
+        /// <returns></returns>
+        public byte[] GetReceiptPng(Guid receipt_id, int paper_width = 58, int qrcode_scale = 75)
+        {
+            var response = _client.GetAsync(string.Format("receipts/{0}/png?paper_width={1}&qrcode_scale={2}", receipt_id, paper_width, qrcode_scale)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsByteArrayAsync().Result;
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Створення сервісного чеку внесення або винесення коштів. Для чеку сума винесення повинна бути вказана зі знаком мінус, а для внесення зі знаком плюс.
         /// </summary>
         /// <param name="receipt_id">receipt id</param>

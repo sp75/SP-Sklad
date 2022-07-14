@@ -26,6 +26,7 @@ using SP_Sklad.ViewsForm;
 using System.Diagnostics;
 using CheckboxIntegration.Client;
 using CheckboxIntegration.Models;
+using System.Drawing.Printing;
 
 namespace SP_Sklad.MainTabs
 {
@@ -809,15 +810,56 @@ namespace SP_Sklad.MainTabs
 
             if (!string.IsNullOrEmpty(_access_token) && row.ReceiptId.HasValue && row.ReceiptId.Value != Guid.Empty)
             {
-                var info = new CheckboxClient(_access_token).GetReceipt(row.ReceiptId.Value);
+                /*  var pdf = new CheckboxClient(_access_token).GetReceiptPdf(row.ReceiptId.Value, ReceiptExportFormat.pdf);
+                  using (var frm = new frmPdfView(pdf))
+                  {
+                      frm.ShowDialog();
+                  }*/
 
-                var pdf = new CheckboxClient(_access_token).GetReceiptPdf(row.ReceiptId.Value, ReceiptExportFormat.pdf);
-                using (var frm = new frmPdfView(pdf))
+                var receipt = new CheckboxClient(_access_token).GetReceipt(row.ReceiptId.Value);
+
+                var pdf = new CheckboxClient(_access_token).GetReceiptPng(row.ReceiptId.Value, 58, 30);
+                  var result_file = Path.Combine(Application.StartupPath, "Rep", row.ReceiptId.Value.ToString() + ".png");
+                  File.WriteAllBytes(result_file, pdf);
+
+                /*    if (File.Exists(result_file))
+                    {
+                        Process.Start(result_file);
+                    }*/
+
+                Image i = Image.FromFile(result_file);
+
+                PrintDocument p = new PrintDocument();
+                //    p.PrinterSettings.PrinterName = "";
+
+                p.DefaultPageSettings.PaperSize  = new System.Drawing.Printing.PaperSize("custom", 58, 210);
+
+                using (PrintDialog printDialog = new PrintDialog())
                 {
-                    frm.ShowDialog();
+                    if (printDialog.ShowDialog() == DialogResult.Yes)
+                    {
+
+                        p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+                {
+
+                    e1.Graphics.DrawImage(i, e1.PageBounds/*new RectangleF(0, 0,  p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height)*/);
+                };
+                        try
+                        {
+                            p.Print();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Exception Occured While Printing", ex);
+                        }
+                    }
                 }
+
+
             }
-            else {
+            else
+            {
 
                 PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
             }
