@@ -141,6 +141,10 @@ namespace SP_Sklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_tree_node == null)
+            {
+                return;
+            }
 
             switch (focused_tree_node.GType)
             {

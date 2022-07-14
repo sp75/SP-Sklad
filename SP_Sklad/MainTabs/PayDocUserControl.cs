@@ -366,7 +366,7 @@ namespace SP_Sklad.MainTabs
                 discounts = new List<object>(),
                 technical_return = true,
                 rounding = false,
-                barcode = _wb.WbillId.ToString()
+              //  barcode = _wb.WbillId.ToString()
             };
 
             var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
@@ -375,6 +375,7 @@ namespace SP_Sklad.MainTabs
             string _access_token = login.access_token;
 
             var return_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
+            return_receipts.WaitingReceiptFiscalCode(_access_token);
 
             if (return_receipts.id != Guid.Empty)
             {
