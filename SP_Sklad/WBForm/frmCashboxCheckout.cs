@@ -10,7 +10,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Objects;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -226,10 +229,35 @@ namespace SP_Sklad.WBForm
                 });
                 _db.SaveChanges();
 
-                var pdf = new CheckboxClient(_access_token).GetReceiptPdf(receipt.id, ReceiptExportFormat.pdf);
-                using (var frm = new frmPdfView(pdf))
+                var txt_receipt = new CheckboxClient(_access_token).GetReceiptPdf(receipt.id, ReceiptExportFormat.text);
+                /*   using (var frm = new frmPdfView(pdf))
+                   {
+                       frm.ShowDialog();
+                   }*/
+                /*   var result_file = Path.Combine(Application.StartupPath, "Rep", receipt.id.ToString() + ".txt");
+                   File.WriteAllBytes(result_file, pdf);
+
+                   if (File.Exists(result_file))
+                   {
+                       Process.Start(result_file);
+                   }*/
+
+                var z = Encoding.UTF8.GetString(txt_receipt);
+
+
+                PrintDocument p = new PrintDocument();
+            //    p.PrinterSettings.PrinterName = "";
+                p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
                 {
-                    frm.ShowDialog();
+                    e1.Graphics.DrawString(z, new Font("Bahnschrift SemiLight Condensed", 9), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
+                };
+                try
+                {
+                    p.Print();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Exception Occured While Printing", ex);
                 }
             }
             else
@@ -266,7 +294,7 @@ namespace SP_Sklad.WBForm
                 discounts = new List<object>(),
                 technical_return = false,
                 rounding = false,
-                barcode = _wb.WbillId.ToString()
+              //  barcode = _wb.WbillId.ToString()
             };
 
             var new_receipts = new CheckboxClient(_access_token).ReceiptsSell(req);
