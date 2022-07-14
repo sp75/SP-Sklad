@@ -183,14 +183,6 @@ namespace SP_Sklad.MainTabs
             {
                 if (_user_Access.CanInsert == 1)
                 {
-                    Guid? ReceiptId = null;
-
-                    if (fiscalization_check)
-                    {
-                        var receipt = CreateReceiptSell();
-                        ReceiptId = receipt.id;
-                    }
-
                     _pd = _db.PayDoc.Add(new PayDoc()
                     {
                         Id = Guid.NewGuid(),
@@ -209,12 +201,17 @@ namespace SP_Sklad.MainTabs
                         KaId = _wb.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         EntId = DBHelper.Enterprise.KaId,
-                        ReportingDate = _wb.OnDate,
-                        ReceiptId = ReceiptId
+                        ReportingDate = _wb.OnDate
                     });
 
                     if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
                     if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
+
+                    if (fiscalization_check)
+                    {
+                        var receipt = CreateReceiptSell(_pd.DocType == -1);
+                        _pd.ReceiptId = receipt.id;
+                    }
 
                     /*   if ((int)PTypeComboBox.EditValue == 2)
                        {
@@ -329,7 +326,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private ReceiptsSellRespond CreateReceiptSell()
+        private ReceiptsSellRespond CreateReceiptSell(bool return_receipt)
         {
             List<Payment> payments = new List<Payment>();
             var total = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
@@ -359,7 +356,7 @@ namespace SP_Sklad.MainTabs
                         price = Convert.ToInt32(s.Price * 100)
                     },
                     discounts = new List<object>(),
-                    is_return = true
+                    is_return = return_receipt
 
                 }).ToList(),
                 payments = payments,
