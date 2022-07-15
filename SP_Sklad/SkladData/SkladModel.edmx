@@ -1483,6 +1483,7 @@
           <Property Name="DriverId" Type="int" />
           <Property Name="ReportingDate" Type="datetime" />
           <Property Name="ShipmentDate" Type="datetime" />
+          <Property Name="ReceiptId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -5646,6 +5647,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="ExTotalAmount" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="ShipmentDate" Type="datetime" />
                 <Property Name="ReportingDate" Type="datetime" />
+                <Property Name="ReceiptId" Type="uniqueidentifier" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
                 <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
               </RowType>
@@ -9694,6 +9696,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Cars" EntitySet="Cars" />
           </AssociationSet>
+          <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
+          <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
+          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
+          <Parameter Name="originator_id" Mode="In" Type="Guid" />
+          </FunctionImport>
           <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -9703,11 +9710,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
-          <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
-          <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
-          <Parameter Name="originator_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -12270,6 +12272,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DriverId" Type="Int32" />
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
           <Property Name="ShipmentDate" Type="DateTime" Precision="3" />
+          <Property Name="ReceiptId" Type="Guid" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -16122,6 +16125,45 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OpenedAt" Type="DateTime" Precision="3" />
+          <Property Name="ClosedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Receipt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalSum" Type="Int32" />
+          <Property Name="TotalPayment" Type="Int32" />
+          <Property Name="CeatedAt" Type="DateTime" Precision="3" />
+          <Property Name="ShiftId" Type="Guid" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FiscalDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="GetRelDocList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="33" Scale="8" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="Int32" Name="RelType" Nullable="false" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="Guid" Name="ReceiptId" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetWayBillList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
           <Property Type="Int32" Name="WbillId" Nullable="false" />
@@ -16171,47 +16213,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="ExTotalAmount" Nullable="true" Precision="38" Scale="8" />
           <Property Type="DateTime" Name="ShipmentDate" Nullable="true" Precision="23" />
           <Property Type="DateTime" Name="ReportingDate" Nullable="true" Precision="23" />
+          <Property Type="Guid" Name="ReceiptId" Nullable="true" />
           <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
           <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
-        <EntityType Name="Shift">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="OpenedAt" Type="DateTime" Precision="3" />
-          <Property Name="ClosedAt" Type="DateTime" Precision="3" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UserId" Type="Int32" />
-        </EntityType>
-        <EntityType Name="Receipt">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TotalSum" Type="Int32" />
-          <Property Name="TotalPayment" Type="Int32" />
-          <Property Name="CeatedAt" Type="DateTime" Precision="3" />
-          <Property Name="ShiftId" Type="Guid" />
-          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FiscalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FiscalDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <ComplexType Name="GetRelDocList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Summ" Nullable="true" Precision="33" Scale="8" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrencyName" Nullable="true" MaxLength="3" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-          <Property Type="Int32" Name="RelType" Nullable="false" />
-          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
-          <Property Type="Guid" Name="ReceiptId" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -17976,6 +17980,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
@@ -20438,6 +20443,51 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Shift">
+            <EntityTypeMapping TypeName="BaseModel.Shift">
+              <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
+                <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Receipt">
+            <EntityTypeMapping TypeName="BaseModel.Receipt">
+              <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="FiscalDate" ColumnName="FiscalDate" />
+                <ScalarProperty Name="FiscalCode" ColumnName="FiscalCode" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CeatedAt" ColumnName="CeatedAt" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="TotalSum" ColumnName="TotalSum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Summ" ColumnName="Summ" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="RelType" ColumnName="RelType" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
@@ -20489,53 +20539,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />
                 <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="Shift">
-            <EntityTypeMapping TypeName="BaseModel.Shift">
-              <MappingFragment StoreEntitySet="Shift">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
-                <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Receipt">
-            <EntityTypeMapping TypeName="BaseModel.Receipt">
-              <MappingFragment StoreEntitySet="Receipt">
-                <ScalarProperty Name="FiscalDate" ColumnName="FiscalDate" />
-                <ScalarProperty Name="FiscalCode" ColumnName="FiscalCode" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
-                <ScalarProperty Name="CeatedAt" ColumnName="CeatedAt" />
-                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
-                <ScalarProperty Name="TotalSum" ColumnName="TotalSum" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetRelDocList" FunctionName="BaseModel.Store.GetRelDocList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetRelDocList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Summ" ColumnName="Summ" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="RelType" ColumnName="RelType" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

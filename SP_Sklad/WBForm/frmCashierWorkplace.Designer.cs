@@ -43,7 +43,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton5.Location = new System.Drawing.Point(12, 12);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(275, 57);
@@ -70,7 +69,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton2.Location = new System.Drawing.Point(12, 138);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(275, 57);

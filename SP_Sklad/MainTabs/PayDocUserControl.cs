@@ -170,7 +170,7 @@ namespace SP_Sklad.MainTabs
 
         }
 
-        public void Execute(int wbill_id, bool fiscalization_check = false )
+        public void Execute(int wbill_id, bool fiscalization_check = false)
         {
             _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == wbill_id);
             if (_wb == null && !panelControl1.Enabled)
@@ -211,6 +211,7 @@ namespace SP_Sklad.MainTabs
                     {
                         var receipt = CreateReceiptSell(_pd.DocType == -1);
                         _pd.ReceiptId = receipt.id;
+                        _wb.ReceiptId = receipt.id;
                     }
 
                     /*   if ((int)PTypeComboBox.EditValue == 2)

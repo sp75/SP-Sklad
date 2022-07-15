@@ -1146,11 +1146,6 @@ namespace SP_Sklad.MainTabs
             DeboningGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
         }
 
-        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
-
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             dynamic dr = IntermediateWeighingByWbGridView.GetFocusedRow() ;

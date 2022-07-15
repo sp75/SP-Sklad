@@ -2399,6 +2399,16 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[BaseEntities].[GetMatPrice](@mat_id, @in_curr_id, @p_type)", mat_idParameter, in_curr_idParameter, p_typeParameter);
         }
     
+        [EdmFunction("BaseEntities", "GetRelDocList")]
+        public virtual IQueryable<GetRelDocList_Result> GetRelDocList(Nullable<System.Guid> originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@originator_id)", originator_idParameter);
+        }
+    
         [EdmFunction("BaseEntities", "GetWayBillList")]
         public virtual IQueryable<GetWayBillList_Result> GetWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, string wh, Nullable<int> person_id)
         {
@@ -2435,16 +2445,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
-        }
-    
-        [EdmFunction("BaseEntities", "GetRelDocList")]
-        public virtual IQueryable<GetRelDocList_Result> GetRelDocList(Nullable<System.Guid> originator_id)
-        {
-            var originator_idParameter = originator_id.HasValue ?
-                new ObjectParameter("originator_id", originator_id) :
-                new ObjectParameter("originator_id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocList_Result>("[BaseEntities].[GetRelDocList](@originator_id)", originator_idParameter);
         }
     }
 }

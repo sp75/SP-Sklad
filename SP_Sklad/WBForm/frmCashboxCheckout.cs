@@ -75,7 +75,8 @@ namespace SP_Sklad.WBForm
 
         private void PayDoc(int PType, decimal total, Guid receipt_id)
         {
-            _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == _wb.WbillId);
+            _wb = _db.WaybillList.FirstOrDefault(s => s.WbillId == _wb.WbillId);
+            _wb.ReceiptId = receipt_id;
 
             if (_user_Access.CanInsert == 1)
             {
@@ -222,6 +223,8 @@ namespace SP_Sklad.WBForm
 
             if (is_authorization && receipt.id != Guid.Empty)
             {
+                _wb.ReceiptId = receipt.id;
+
                 _db.Receipt.Add(new Receipt
                 {
                     Id = receipt.id,

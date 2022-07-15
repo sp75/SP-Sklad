@@ -75,6 +75,7 @@ namespace SP_Sklad
             docsUserControl1.SaveGridLayouts();
             whUserControl.SaveGridLayouts();
             manufacturingUserControl1.SaveGridLayouts();
+            retailUserControl1.SaveGridLayouts();
 
             using (var db = new BaseEntities())
             {

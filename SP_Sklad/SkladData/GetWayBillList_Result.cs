@@ -61,6 +61,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ExTotalAmount { get; set; }
         public Nullable<System.DateTime> ShipmentDate { get; set; }
         public Nullable<System.DateTime> ReportingDate { get; set; }
+        public Nullable<System.Guid> ReceiptId { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
     }
