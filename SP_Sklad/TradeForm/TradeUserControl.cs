@@ -196,7 +196,7 @@ namespace SP_Sklad.MainTabs
                 History.AddEntry(new HistoryEntity
                 {
                     FunId = focused_tree_node.FunId.Value,
-                    MainTabs = 0
+                    MainTabs = 3
                 });
 
                 if (DocsTreeList.ContainsFocus)
@@ -492,7 +492,7 @@ namespace SP_Sklad.MainTabs
                     PrintDoc.Show(dr.Id, dr.WType, _db);
                     break;
 
-                case 4:
+                case 2:
                     var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
                     PrintDoc.Show(pd.Id, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
                     break;

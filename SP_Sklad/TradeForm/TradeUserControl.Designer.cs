@@ -2505,7 +2505,7 @@
             // 
             this.barSubItem1.Caption = "Друк/Попередній перегляд";
             this.barSubItem1.Id = 29;
-            this.barSubItem1.ImageIndex = 6;
+            this.barSubItem1.ImageIndex = 17;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintReceiptBtn)});
@@ -2514,15 +2514,15 @@
             // 
             // PrintItemBtn
             // 
-            this.PrintItemBtn.Caption = "Наклада";
+            this.PrintItemBtn.Caption = "Попередній перегляд";
             this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageIndex = 22;
+            this.PrintItemBtn.ImageIndex = 6;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
             // PrintReceiptBtn
             // 
-            this.PrintReceiptBtn.Caption = "Чек";
+            this.PrintReceiptBtn.Caption = "Друк чека";
             this.PrintReceiptBtn.Id = 30;
             this.PrintReceiptBtn.ImageIndex = 21;
             this.PrintReceiptBtn.Name = "PrintReceiptBtn";

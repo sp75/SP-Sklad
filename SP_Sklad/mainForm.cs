@@ -126,7 +126,11 @@ namespace SP_Sklad
             AddWBInBtn.Enabled = user_acc.Any(w => w.FunId == 21 && w.CanInsert == 1);
 
             xtraTabControl1.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
-            SetNode(new HistoryEntity { FunId = Properties.Settings.Default.LastFunId, MainTabs = Properties.Settings.Default.LastTabPage } );
+            SetNode(new HistoryEntity
+            {
+                FunId = Properties.Settings.Default.LastFunId,
+                MainTabs = Properties.Settings.Default.LastTabPage
+            } );
         }
 
         private void barEditItem3_EditValueChanged(object sender, EventArgs e)
@@ -199,11 +203,6 @@ namespace SP_Sklad
             Properties.Settings.Default.LastTabPage = xtraTabControl1.SelectedTabPageIndex;
         }
 
-        private void xtraTabControl1_SelectedPageChanging(object sender, DevExpress.XtraTab.TabPageChangingEventArgs e)
-        {
-           
-        }
-
         private void PrevBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var p = History.Previous();
@@ -247,6 +246,10 @@ namespace SP_Sklad
                     break;
 
                 case 3:
+                    tradeUserControl1.DocsTreeList.FocusedNode = tradeUserControl1.DocsTreeList.FindNodeByFieldValue("FunId", e.FunId);
+                    break;
+
+                case 4:
                     financesUserControl1.FinancesTreeList.FocusedNode = financesUserControl1.FinancesTreeList.FindNodeByFieldValue("FunId", e.FunId);
                     break;
 

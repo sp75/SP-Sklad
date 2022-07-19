@@ -85,7 +85,7 @@ namespace SP_Sklad.MainTabs
 
             if (focused_tree_node.FunId != null)
             {
-                History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 6 });
+                History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 7 });
 
                 if (DirTreeList.ContainsFocus)
                 {
