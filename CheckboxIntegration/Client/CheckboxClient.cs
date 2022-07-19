@@ -37,6 +37,8 @@ namespace CheckboxIntegration.Client
             {
                 _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", access_token);
             }
+
+            _access_token = access_token;
         }
 
 
@@ -271,6 +273,9 @@ namespace CheckboxIntegration.Client
                 response.EnsureSuccessStatusCode();
 
                 var result = response.Content.ReadAsAsync<ReceiptsSellRespond>().Result;
+
+                result.WaitingReceiptFiscalCode(_access_token);
+
                 return result;
             }
             else

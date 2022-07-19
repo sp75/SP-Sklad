@@ -19,20 +19,15 @@ namespace SP_Sklad.Common
         private const int LockingErrorNumber = 1222;
         private const int UpdateConflictErrorNumber = 3960;
 
-       public static void WBEdit(GetWayBillList_Result dr)
+       public static void WBEdit(int wbill_id, int w_type)
        {
            int? result = 0;
-
-           if (dr == null)
-           {
-               return;
-           }
 
            using (var db = new BaseEntities())
            {
                 try
                 {
-                    var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == dr.WbillId);
+                    var wb = db.WaybillList.FirstOrDefault(f => f.WbillId == wbill_id);
 
                     if (wb == null)
                     {
@@ -55,7 +50,7 @@ namespace SP_Sklad.Common
                     {
                         if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            result = DBHelper.StornoOrder(db, dr.WbillId);
+                            result = DBHelper.StornoOrder(db, wbill_id);
                         }
                         else
                         {
@@ -68,31 +63,31 @@ namespace SP_Sklad.Common
                         return;
                     }
 
-                    if (dr.WType == 1 || dr.WType == 16)
+                    if (w_type == 1 || w_type == 16)
                     {
-                        using (var wb_in = new frmWayBillIn(dr.WType, wb.WbillId))
+                        using (var wb_in = new frmWayBillIn(w_type, wb.WbillId))
                         {
                             wb_in.ShowDialog();
                         }
                     }
 
-                    if (dr.WType == -1 || dr.WType == -16 || dr.WType == 2)
+                    if (w_type == -1 || w_type == -16 || w_type == 2)
                     {
-                        using (var wb_out = new frmWayBillOut(dr.WType, wb.WbillId))
+                        using (var wb_out = new frmWayBillOut(w_type, wb.WbillId))
                         {
                             wb_out.ShowDialog();
                         }
                     }
 
-                    if (dr.WType == 6)// Повернення від кліента
+                    if (w_type == 6)// Повернення від кліента
                     {
-                        using (var wb_re_in = new frmWBReturnIn(dr.WType, wb.WbillId))
+                        using (var wb_re_in = new frmWBReturnIn(w_type, wb.WbillId))
                         {
                             wb_re_in.ShowDialog();
                         }
                     }
 
-                    if (dr.WType == -6) //Повернення постачальнику
+                    if (w_type == -6) //Повернення постачальнику
                     {
                         using (var wb_re_out = new frmWBReturnOut(wb.WbillId))
                         {
@@ -100,17 +95,17 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                    if (dr.WType == -25)
+                    if (w_type == -25)
                     {
-                        using (var wbs_out = new frmWBSales(dr.WType, wb.WbillId))
+                        using (var wbs_out = new frmWBSales(w_type, wb.WbillId))
                         {
                             wbs_out.ShowDialog();
                         }
                     }
 
-                    if (dr.WType == 25)
+                    if (w_type == 25)
                     {
-                        using (var wbs_out = new frmWBSalesReturn(dr.WType, wb.WbillId))
+                        using (var wbs_out = new frmWBSalesReturn(w_type, wb.WbillId))
                         {
                             wbs_out.ShowDialog();
                         }

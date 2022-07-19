@@ -172,7 +172,7 @@ namespace SP_Sklad.MainTabs
 
         public void Execute(int wbill_id, bool fiscalization_check = false)
         {
-            _wb = _db.WaybillList.AsNoTracking().FirstOrDefault(s => s.WbillId == wbill_id);
+            _wb = _db.WaybillList.FirstOrDefault(s => s.WbillId == wbill_id);
             if (_wb == null && !panelControl1.Enabled)
             {
                 return;
@@ -362,7 +362,7 @@ namespace SP_Sklad.MainTabs
                 }).ToList(),
                 payments = payments,
                 discounts = new List<object>(),
-                technical_return = true,
+                technical_return = return_receipt,
                 rounding = false,
               //  barcode = _wb.WbillId.ToString()
             };
@@ -373,7 +373,6 @@ namespace SP_Sklad.MainTabs
             string _access_token = login.access_token;
 
             var return_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
-            return_receipts.WaitingReceiptFiscalCode(_access_token);
 
             if (return_receipts.id != Guid.Empty)
             {
@@ -384,7 +383,10 @@ namespace SP_Sklad.MainTabs
                     TotalPayment = return_receipts.total_payment,
                     TotalSum = return_receipts.total_sum,
                     Status = return_receipts.status,
-                    ShiftId = return_receipts.shift.id
+                    ShiftId = return_receipts.shift.id,
+                    BarCode = return_receipts.barcode,
+                    FiscalCode = return_receipts.fiscal_code,
+                    FiscalDate = return_receipts.fiscal_date
                 });
                 _db.SaveChanges();
             }

@@ -125,7 +125,10 @@ namespace SP_Sklad.WBForm
             var put_cashless_sum = PutCashlessSumEdit.Value;
             var put_sum = put_cash_sum + put_cashless_sum;
 
-            calcEdit2.Value = put_sum - SumAllEdit.Value;
+            if (put_sum - SumAllEdit.Value >= 0)
+            {
+                RemainderEdit.Value = put_sum - SumAllEdit.Value;
+            }
 
             PayBtn.Enabled = put_sum >= SumAllEdit.Value && PutCashlessSumEdit.Value <= SumAllEdit.Value;
         }
@@ -177,7 +180,10 @@ namespace SP_Sklad.WBForm
         {
             using (var frm = new frmSetWBNote(_wb))
             {
-                frm.ShowDialog();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    PrintDoc.Show(_wb.Id, _wb.WType, _db);
+                }
             }
         }
 
@@ -279,7 +285,7 @@ namespace SP_Sklad.WBForm
             };
 
             var new_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
-            new_receipts.WaitingReceiptFiscalCode(_access_token);
+         //   new_receipts.WaitingReceiptFiscalCode(_access_token);
 
             return new_receipts;
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.calcEdit2 = new DevExpress.XtraEditors.CalcEdit();
+            this.RemainderEdit = new DevExpress.XtraEditors.CalcEdit();
             this.SumAllEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -56,7 +56,7 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemainderEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumAllEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
@@ -69,7 +69,7 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.calcEdit2);
+            this.panelControl1.Controls.Add(this.RemainderEdit);
             this.panelControl1.Controls.Add(this.SumAllEdit);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.labelControl1);
@@ -79,23 +79,23 @@
             this.panelControl1.Size = new System.Drawing.Size(462, 79);
             this.panelControl1.TabIndex = 70;
             // 
-            // calcEdit2
+            // RemainderEdit
             // 
-            this.calcEdit2.Location = new System.Drawing.Point(231, 27);
-            this.calcEdit2.Name = "calcEdit2";
-            this.calcEdit2.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.calcEdit2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.calcEdit2.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.calcEdit2.Properties.Appearance.Options.UseBackColor = true;
-            this.calcEdit2.Properties.Appearance.Options.UseFont = true;
-            this.calcEdit2.Properties.Appearance.Options.UseForeColor = true;
-            this.calcEdit2.Properties.DisplayFormat.FormatString = "0.00";
-            this.calcEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.calcEdit2.Properties.ReadOnly = true;
-            this.calcEdit2.Properties.ShowCloseButton = true;
-            this.calcEdit2.Size = new System.Drawing.Size(222, 32);
-            this.calcEdit2.TabIndex = 46;
-            this.calcEdit2.TabStop = false;
+            this.RemainderEdit.Location = new System.Drawing.Point(231, 27);
+            this.RemainderEdit.Name = "RemainderEdit";
+            this.RemainderEdit.Properties.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.RemainderEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.RemainderEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.RemainderEdit.Properties.Appearance.Options.UseBackColor = true;
+            this.RemainderEdit.Properties.Appearance.Options.UseFont = true;
+            this.RemainderEdit.Properties.Appearance.Options.UseForeColor = true;
+            this.RemainderEdit.Properties.DisplayFormat.FormatString = "0.00";
+            this.RemainderEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.RemainderEdit.Properties.ReadOnly = true;
+            this.RemainderEdit.Properties.ShowCloseButton = true;
+            this.RemainderEdit.Size = new System.Drawing.Size(222, 32);
+            this.RemainderEdit.TabIndex = 46;
+            this.RemainderEdit.TabStop = false;
             // 
             // SumAllEdit
             // 
@@ -427,7 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RemainderEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumAllEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
             this.panelControl7.ResumeLayout(false);
@@ -449,7 +449,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.CalcEdit SumAllEdit;
-        private DevExpress.XtraEditors.CalcEdit calcEdit2;
+        private DevExpress.XtraEditors.CalcEdit RemainderEdit;
         private DevExpress.XtraEditors.CalcEdit PutCashSumEdit;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SimpleButton simpleButton12;

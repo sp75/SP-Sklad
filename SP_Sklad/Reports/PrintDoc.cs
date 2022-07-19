@@ -105,6 +105,9 @@ namespace SP_Sklad.Reports
                     PlannedCalculationReport(id, db);
                     break;
 
+                case 25:
+                    WayBillReport(id, db, TemlateList.re_cust);
+                    break;
             }
 
             using (var _db = DB.SkladBase())

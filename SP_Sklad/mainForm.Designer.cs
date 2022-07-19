@@ -88,7 +88,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.retailUserControl1 = new SP_Sklad.MainTabs.RetailUserControl();
+            this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
@@ -744,21 +744,21 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.retailUserControl1);
+            this.xtraTabPage8.Controls.Add(this.tradeUserControl1);
             this.xtraTabPage8.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(1182, 572);
             this.xtraTabPage8.TabPageWidth = 120;
             this.xtraTabPage8.Text = "Продажі";
             // 
-            // retailUserControl1
+            // tradeUserControl1
             // 
-            this.retailUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.retailUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.retailUserControl1.Name = "retailUserControl1";
-            this.retailUserControl1.set_tree_node = null;
-            this.retailUserControl1.Size = new System.Drawing.Size(1182, 572);
-            this.retailUserControl1.TabIndex = 0;
+            this.tradeUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tradeUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.tradeUserControl1.Name = "tradeUserControl1";
+            this.tradeUserControl1.set_tree_node = null;
+            this.tradeUserControl1.Size = new System.Drawing.Size(1182, 572);
+            this.tradeUserControl1.TabIndex = 0;
             // 
             // UserTreeImgList
             // 
@@ -941,7 +941,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
-        private MainTabs.RetailUserControl retailUserControl1;
+        private MainTabs.TradeUserControl tradeUserControl1;
     }
 }
 

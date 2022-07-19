@@ -411,11 +411,17 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainTabs\RetailUserControl.cs">
+    <Compile Include="TradeForm\frmSalesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmSalesList.Designer.cs">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\TradeUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MainTabs\RetailUserControl.Designer.cs">
-      <DependentUpon>RetailUserControl.cs</DependentUpon>
+    <Compile Include="TradeForm\TradeUserControl.Designer.cs">
+      <DependentUpon>TradeUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\XtraRep\DocListReport.cs">
       <SubType>Component</SubType>
@@ -499,6 +505,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRemainByWh_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetRetailWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
@@ -1513,10 +1522,10 @@
     <Compile Include="WBDetForm\frmPlannedCalculationDet.Designer.cs">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBDetForm\frmWBSalesDetOut.cs">
+    <Compile Include="TradeForm\frmWBSalesDetOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBDetForm\frmWBSalesDetOut.Designer.cs">
+    <Compile Include="TradeForm\frmWBSalesDetOut.Designer.cs">
       <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
     </Compile>
     <Compile Include="WBDetForm\frmWBMoveDet.cs">
@@ -1591,16 +1600,16 @@
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmCashboxCheckout.cs">
+    <Compile Include="TradeForm\frmCashboxCheckout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmCashboxCheckout.Designer.cs">
+    <Compile Include="TradeForm\frmCashboxCheckout.Designer.cs">
       <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmCashierWorkplace.cs">
+    <Compile Include="TradeForm\frmCashierWorkplace.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmCashierWorkplace.Designer.cs">
+    <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmKAgentActReconciliation.cs">
@@ -1615,10 +1624,10 @@
     <Compile Include="WBForm\frmPlannedCalculation.Designer.cs">
       <DependentUpon>frmPlannedCalculation.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmCashboxWBOut.cs">
+    <Compile Include="TradeForm\frmCashboxWBOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmCashboxWBOut.Designer.cs">
+    <Compile Include="TradeForm\frmCashboxWBOut.Designer.cs">
       <DependentUpon>frmCashboxWBOut.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmPriceList.cs">
@@ -1657,16 +1666,16 @@
     <Compile Include="WBForm\frmWayBillMove.Designer.cs">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmWBSalesReturn.cs">
+    <Compile Include="TradeForm\frmWBSalesReturn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmWBSalesReturn.Designer.cs">
+    <Compile Include="TradeForm\frmWBSalesReturn.Designer.cs">
       <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmWBSales.cs">
+    <Compile Include="TradeForm\frmWBSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmWBSales.Designer.cs">
+    <Compile Include="TradeForm\frmWBSales.Designer.cs">
       <DependentUpon>frmWBSales.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWayBillOut.cs">
@@ -1807,8 +1816,11 @@
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainTabs\RetailUserControl.resx">
-      <DependentUpon>RetailUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="TradeForm\frmSalesList.resx">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\TradeUserControl.resx">
+      <DependentUpon>TradeUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
@@ -1977,7 +1989,7 @@
     <EmbeddedResource Include="WBDetForm\frmPlannedCalculationDet.resx">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBDetForm\frmWBSalesDetOut.resx">
+    <EmbeddedResource Include="TradeForm\frmWBSalesDetOut.resx">
       <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
@@ -2016,10 +2028,10 @@
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmCashboxCheckout.resx">
+    <EmbeddedResource Include="TradeForm\frmCashboxCheckout.resx">
       <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmCashierWorkplace.resx">
+    <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
@@ -2028,7 +2040,7 @@
     <EmbeddedResource Include="WBForm\frmPlannedCalculation.resx">
       <DependentUpon>frmPlannedCalculation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmCashboxWBOut.resx">
+    <EmbeddedResource Include="TradeForm\frmCashboxWBOut.resx">
       <DependentUpon>frmCashboxWBOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmPriceList.resx">
@@ -2049,10 +2061,10 @@
     <EmbeddedResource Include="WBForm\frmWayBillMove.resx">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmWBSalesReturn.resx">
+    <EmbeddedResource Include="TradeForm\frmWBSalesReturn.resx">
       <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmWBSales.resx">
+    <EmbeddedResource Include="TradeForm\frmWBSales.resx">
       <DependentUpon>frmWBSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
@@ -2115,6 +2127,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetRetailWayBillList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessMatGroup_Result.datasource" />

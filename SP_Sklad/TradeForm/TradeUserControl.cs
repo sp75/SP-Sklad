@@ -31,7 +31,7 @@ using DevExpress.Pdf;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class RetailUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class TradeUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         int cur_wtype = 0;
         int show_null_balance = 1;
@@ -42,11 +42,11 @@ namespace SP_Sklad.MainTabs
         private List<KaTemplateList> ka_template_list { get; set; }
         private string _access_token { get; set; }
 
-        private GetWayBillList_Result wb_focused_row
+        private GetRetailWayBillList_Result wb_focused_row
         {
             get
             {
-                return WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                return WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
             }
         }
 
@@ -59,7 +59,7 @@ namespace SP_Sklad.MainTabs
         }
 
 
-        public RetailUserControl()
+        public TradeUserControl()
         {
             InitializeComponent();
             ka_template_list = new List<KaTemplateList>();
@@ -69,8 +69,8 @@ namespace SP_Sklad.MainTabs
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "RetailUserControl\\WbGridView");
-            PayDocGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "RetailUserControl\\PayDocGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "TradeUserControl\\WbGridView");
+            PayDocGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "TradeUserControl\\PayDocGridView");
 
             if (!DesignMode)
             {
@@ -143,7 +143,7 @@ namespace SP_Sklad.MainTabs
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
         }
 
-        void GetWayBillList(string wtyp)
+        void GetRetailWayBillList(string wtyp)
         {
             if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -154,7 +154,7 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
+            GetRetailWayBillListBS.DataSource = _db.GetRetailWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance,  DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -184,6 +184,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = false;
             CopyItemBtn.Enabled = false;
             PrintItemBtn.Enabled = false;
+            PrintReceiptBtn.Enabled = false;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
@@ -273,7 +274,7 @@ namespace SP_Sklad.MainTabs
                 switch (gtype)
                 {
                     case 1:
-                        DocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillList_Result);
+                        DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
                         break;
 
                     case 2:
@@ -298,7 +299,7 @@ namespace SP_Sklad.MainTabs
             }
 
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
-            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
             var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
 
             //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
@@ -373,11 +374,11 @@ namespace SP_Sklad.MainTabs
                 case 1:
                     if (focused_tree_node.Id == 129)
                     {
-                        GetWayBillList("-25,25");
+                        GetRetailWayBillList("-25,25");
                     }
                     else
                     {
-                        GetWayBillList(cur_wtype.ToString());
+                        GetRetailWayBillList(cur_wtype.ToString());
                     }
                     break;
 
@@ -418,7 +419,7 @@ namespace SP_Sklad.MainTabs
                 switch (g_type)
                 {
                     case 1:
-                        var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                        var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
                         if (dr == null)
                         {
                             return;
@@ -483,7 +484,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                    var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
                     if (dr == null)
                     {
                         return;
@@ -518,7 +519,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+                    var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
                     var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
@@ -567,7 +568,7 @@ namespace SP_Sklad.MainTabs
 
         private void DocsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-   
+            EditCheckBtn.Enabled = wb_focused_row != null && wb_focused_row.Checked == 0 && wb_focused_row.WType == -25;
         }
 
         private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -668,7 +669,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            var dr = e.Row as GetWayBillList_Result;
+            var dr = e.Row as GetRetailWayBillList_Result;
 
             xtraTabControl2_SelectedPageChanged(sender, null);
 
@@ -677,6 +678,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && (dr.Checked == 0 || dr.Checked == 1));
             CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
             PrintItemBtn.Enabled = (dr != null);
+            PrintReceiptBtn.Enabled = PrintItemBtn.Enabled;
         }
 
         private void PayDocGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -698,6 +700,7 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1 && isModify);
             CopyItemBtn.Enabled = EditItemBtn.Enabled;
             PrintItemBtn.Enabled = (dr != null);
+            PrintReceiptBtn.Enabled = PrintItemBtn.Enabled;
         }
 
        
@@ -841,7 +844,7 @@ namespace SP_Sklad.MainTabs
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
+            var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
           
             if (dr == null)
             {
@@ -910,8 +913,8 @@ namespace SP_Sklad.MainTabs
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\RetailUserControl\\WbGridView");
-            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\RetailUserControl\\PayDocGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\WbGridView");
+            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\PayDocGridView");
         }
 
  
@@ -959,5 +962,25 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-     }
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
+
+            using (var db = new BaseEntities())
+            {
+                switch (gtype)
+                {
+                    case 1:
+                        using (var frm = new frmCashboxWBOut(_access_token, wb_focused_row.WbillId))
+                        {
+                            frm.ShowDialog();
+                        }
+                        break;
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
+           
+        }
+    }
 }

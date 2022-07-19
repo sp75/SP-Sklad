@@ -319,7 +319,7 @@ namespace SP_Sklad.MainTabs
                 switch (gtype)
                 {
                     case 1:
-                        DocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillList_Result);
+                        DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
                         break;
 
                     case 4:

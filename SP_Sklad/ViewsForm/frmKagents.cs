@@ -16,6 +16,7 @@ namespace SP_Sklad.ViewsForm
     public partial class frmKagents : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
+        private int _KaKind { get; set; }
         public KagentList focused_row
         {
             get
@@ -24,15 +25,16 @@ namespace SP_Sklad.ViewsForm
             }
         }
 
-        public frmKagents()
+        public frmKagents(int KaKind)
         {
             InitializeComponent();
             _db = DB.SkladBase();
+            _KaKind = KaKind;
         }
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            KontragentBS.DataSource = DBHelper.Kagents;
+            KontragentBS.DataSource = DBHelper.Kagents.Where(w=> w.KaKind == _KaKind || _KaKind == -1);
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)
