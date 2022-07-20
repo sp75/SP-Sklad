@@ -464,6 +464,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1319,6 +1320,7 @@
             this.gridColumn13,
             this.gridColumn37,
             this.gridColumn39,
+            this.gridColumn115,
             this.gridColumn41,
             this.gridColumn50,
             this.gridColumn94});
@@ -1380,7 +1382,7 @@
             // 
             // gridColumn13
             // 
-            this.gridColumn13.Caption = "Ціна з ПДВ";
+            this.gridColumn13.Caption = "Ціна без ПДВ";
             this.gridColumn13.DisplayFormat.FormatString = "0.00";
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "Price";
@@ -1397,7 +1399,7 @@
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 7;
+            this.gridColumn37.VisibleIndex = 8;
             this.gridColumn37.Width = 94;
             // 
             // gridColumn39
@@ -1427,7 +1429,7 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 8;
+            this.gridColumn50.VisibleIndex = 9;
             this.gridColumn50.Width = 104;
             // 
             // gridColumn94
@@ -5361,6 +5363,14 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // gridColumn115
+            // 
+            this.gridColumn115.Caption = "Ціна з ПДВ";
+            this.gridColumn115.FieldName = "BasePrice";
+            this.gridColumn115.Name = "gridColumn115";
+            this.gridColumn115.Visible = true;
+            this.gridColumn115.VisibleIndex = 7;
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5987,5 +5997,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn115;
     }
 }

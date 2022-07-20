@@ -206,7 +206,14 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 56:
-                            CashDesksBS.DataSource = DB.SkladBase().CashDesks.ToList().Where(w => DBHelper.CashDesks.Select(s => s.CashId).Contains(w.CashId)).ToList();
+                            if (isDirectList)
+                            {
+                                CashDesksBS.DataSource = DB.SkladBase().CashDesks.ToList().Where(w => DBHelper.CashDesks.Select(s => s.CashId).Contains(w.CashId)).ToList();
+                            }
+                            else
+                            {
+                                CashDesksBS.DataSource = DB.SkladBase().CashDesks.ToList();
+                            }
                             extDirTabControl.SelectedTabPageIndex = 7;
                             break;
 
