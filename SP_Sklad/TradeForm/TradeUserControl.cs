@@ -42,11 +42,11 @@ namespace SP_Sklad.MainTabs
         private List<KaTemplateList> ka_template_list { get; set; }
         private string _access_token { get; set; }
 
-        private GetRetailWayBillList_Result wb_focused_row
+        private GetTradeWayBillList_Result wb_focused_row
         {
             get
             {
-                return WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+                return WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
             }
         }
 
@@ -143,7 +143,7 @@ namespace SP_Sklad.MainTabs
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
         }
 
-        void GetRetailWayBillList(string wtyp)
+        void GetTradeWayBillList(string wtyp)
         {
             if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
             {
@@ -154,7 +154,7 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetRetailWayBillListBS.DataSource = _db.GetRetailWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance,  DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
+            GetTradeWayBillListBS.DataSource = _db.GetTradeWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance,  DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -299,7 +299,7 @@ namespace SP_Sklad.MainTabs
             }
 
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
-            var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+            var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
             var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
 
             //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
@@ -374,11 +374,11 @@ namespace SP_Sklad.MainTabs
                 case 1:
                     if (focused_tree_node.Id == 129)
                     {
-                        GetRetailWayBillList("-25,25");
+                        GetTradeWayBillList("-25,25");
                     }
                     else
                     {
-                        GetRetailWayBillList(cur_wtype.ToString());
+                        GetTradeWayBillList(cur_wtype.ToString());
                     }
                     break;
 
@@ -419,7 +419,7 @@ namespace SP_Sklad.MainTabs
                 switch (g_type)
                 {
                     case 1:
-                        var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+                        var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
                         if (dr == null)
                         {
                             return;
@@ -484,7 +484,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+                    var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
                     if (dr == null)
                     {
                         return;
@@ -519,7 +519,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+                    var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
                     var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
@@ -669,7 +669,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            var dr = e.Row as GetRetailWayBillList_Result;
+            var dr = e.Row as GetTradeWayBillList_Result;
 
             xtraTabControl2_SelectedPageChanged(sender, null);
 
@@ -844,7 +844,7 @@ namespace SP_Sklad.MainTabs
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            var dr = WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+            var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
           
             if (dr == null)
             {

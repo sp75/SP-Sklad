@@ -411,6 +411,9 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetTradeWayBillList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TradeForm\frmSalesList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -505,9 +508,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetRemainByWh_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetRetailWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
@@ -2127,7 +2127,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
-    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetRetailWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradeWayBillList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessMatGroup_Result.datasource" />

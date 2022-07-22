@@ -13,11 +13,11 @@ namespace SP_Sklad.TradeForm
 {
     public partial class frmSalesList : DevExpress.XtraEditors.XtraForm
     {
-        public GetRetailWayBillList_Result wb_focused_row
+        public GetTradeWayBillList_Result wb_focused_row
         {
             get
             {
-                return WbGridView.GetFocusedRow() as GetRetailWayBillList_Result;
+                return WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
             }
         }
         public frmSalesList(int kagent_id, int status, DateTime from_date, DateTime to_date)
@@ -25,7 +25,7 @@ namespace SP_Sklad.TradeForm
             InitializeComponent();
 
 
-            GetTradeWayBillListBS.DataSource = new BaseEntities().GetRetailWayBillList(from_date, to_date, "-25", status, kagent_id, 1, DBHelper.CurrentUser.KaId).Where(w => w.SummAll > 0).OrderByDescending(o => o.OnDate).ToList();
+            GetTradeWayBillListBS.DataSource = new BaseEntities().GetTradeWayBillList(from_date, to_date, "-25", status, kagent_id, 1, DBHelper.CurrentUser.KaId).Where(w => w.SummAll > 0).OrderByDescending(o => o.OnDate).ToList();
         }
 
         private void frmDeferredCheck_Load(object sender, EventArgs e)

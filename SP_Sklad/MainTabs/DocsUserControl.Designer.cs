@@ -98,6 +98,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn94 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -464,7 +465,6 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -773,8 +773,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_basket_full_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1410,6 +1412,14 @@
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 3;
             this.gridColumn39.Width = 217;
+            // 
+            // gridColumn115
+            // 
+            this.gridColumn115.Caption = "Ціна з ПДВ";
+            this.gridColumn115.FieldName = "BasePrice";
+            this.gridColumn115.Name = "gridColumn115";
+            this.gridColumn115.Visible = true;
+            this.gridColumn115.VisibleIndex = 7;
             // 
             // gridColumn41
             // 
@@ -5362,14 +5372,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // gridColumn115
-            // 
-            this.gridColumn115.Caption = "Ціна з ПДВ";
-            this.gridColumn115.FieldName = "BasePrice";
-            this.gridColumn115.Name = "gridColumn115";
-            this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 7;
             // 
             // DocsUserControl
             // 

@@ -11,7 +11,7 @@ namespace SP_Sklad.SkladData
 {
     using System;
     
-    public partial class GetRetailWayBillList_Result
+    public partial class GetTradeWayBillList_Result
     {
         public System.Guid Id { get; set; }
         public int WbillId { get; set; }

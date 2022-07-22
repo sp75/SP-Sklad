@@ -2447,8 +2447,8 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[BaseEntities].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetRetailWayBillList")]
-        public virtual IQueryable<GetRetailWayBillList_Result> GetRetailWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, Nullable<int> person_id)
+        [EdmFunction("BaseEntities", "GetTradeWayBillList")]
+        public virtual IQueryable<GetTradeWayBillList_Result> GetTradeWayBillList(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, string w_type, Nullable<int> @checked, Nullable<int> ka_id, Nullable<int> show_null_balance, Nullable<int> person_id)
         {
             var from_dateParameter = from_date.HasValue ?
                 new ObjectParameter("from_date", from_date) :
@@ -2478,7 +2478,7 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", person_id) :
                 new ObjectParameter("person_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRetailWayBillList_Result>("[BaseEntities].[GetRetailWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, person_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetTradeWayBillList_Result>("[BaseEntities].[GetTradeWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, person_idParameter);
         }
     }
 }

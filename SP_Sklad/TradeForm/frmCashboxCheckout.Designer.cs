@@ -54,6 +54,7 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.btn8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RemainderEdit.Properties)).BeginInit();
@@ -196,6 +197,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Controls.Add(this.PayBtn);
             this.panelControl2.Controls.Add(this.simpleButton5);
             this.panelControl2.Controls.Add(this.panel2);
@@ -410,6 +412,21 @@
             this.simpleButton3.Text = "7";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Appearance.Options.UseForeColor = true;
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(9, 76);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(211, 36);
+            this.simpleButton1.TabIndex = 84;
+            this.simpleButton1.Text = "Сплатити без чеку";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // frmCashboxCheckout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,5 +485,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.CalcEdit PutCashlessSumEdit;
         public DevExpress.XtraEditors.SimpleButton PayBtn;
+        public DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

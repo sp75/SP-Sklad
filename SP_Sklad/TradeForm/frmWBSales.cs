@@ -150,7 +150,7 @@ namespace SP_Sklad.WBForm
 
             _db.Save(wb.WbillId);
 
-            payDocUserControl1.Execute(wb.WbillId, true);
+            payDocUserControl1.Execute(wb.WbillId, fiscalization_checkEdit.Checked);
 
             if (TurnDocCheckBox.Checked)
             {

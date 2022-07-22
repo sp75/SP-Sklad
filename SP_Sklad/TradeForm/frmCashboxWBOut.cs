@@ -945,11 +945,67 @@ namespace SP_Sklad.WBForm
         {
             using (var frm = new frmSalesList(user_settings.DefaultBuyer.Value, 1, DateTime.Now.Date.AddDays(-14), DateTime.Now.Date.AddDays(1)))
             {
-                frm.Text = "Продажі";
+                frm.Text = "Роздрібні продажі (Чеки)";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
+                    var list = _db.GetPosOut(frm.wb_focused_row.OnDate.Date, frm.wb_focused_row.OnDate.Date.AddDays(1), 0, user_settings.DefaultBuyer, -25).Where(w => w.WbillId == frm.wb_focused_row.WbillId && w.Remain > 0).ToList();
 
+                    if (list.Any())
+                    {
+                        var return_wb = _db.WaybillList.Add(new WaybillList()
+                        {
+                            Id = Guid.NewGuid(),
+                            WType = 25,
+                            OnDate = DBHelper.ServerDateTime(),
+                            Num = DB.SkladBase().GetDocNum("wb_sales_in").FirstOrDefault(),
+                            CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                            OnValue = 1,
+                            PersonId = DBHelper.CurrentUser.KaId,
+                            UpdatedBy = DBHelper.CurrentUser.UserId,
+                            EntId = DBHelper.Enterprise.KaId,
+                            KaId = user_settings.DefaultBuyer
+                        });
+                        _db.SaveChanges();
 
+                        var wid = _db.Kagent.FirstOrDefault(w => w.KaId == user_settings.DefaultBuyer).WId;
+
+                        foreach (var pos_out_row in list)
+                        {
+                            int num = 0;
+
+                            var ordered_in_list = _db.GetShippedPosIn(pos_out_row.PosId).ToList();
+                            foreach (var item in ordered_in_list.Where(w => w.Remain > 0))
+                            {
+                                var t_wbd = _db.WaybillDet.Add(new WaybillDet
+                                {
+                                    WbillId = return_wb.WbillId,
+                                    Amount = item.Remain.Value,
+                                    Price = pos_out_row.Price,
+                                    BasePrice = pos_out_row.Price + pos_out_row.Price * pos_out_row.Nds / 100,
+                                    Nds = pos_out_row.Nds,
+                                    CurrId = pos_out_row.CurrId,
+                                    OnValue = pos_out_row.OnValue,
+                                    OnDate = pos_out_row.OnDate,
+                                    WId = wid,
+                                    MatId = pos_out_row.MatId,
+                                    Num = ++num
+                                });
+
+                                _db.SaveChanges();
+
+                                _db.ReturnRel.Add(new ReturnRel
+                                {
+                                    PosId = t_wbd.PosId,
+                                    OutPosId = pos_out_row.PosId,
+                                    PPosId = item.PosId
+                                });
+                            }
+                        }
+
+                        _db.SaveChanges();
+
+                        DocEdit.WBEdit(return_wb.WbillId, 25);
+                    }
                 }
             }
         }
@@ -961,11 +1017,14 @@ namespace SP_Sklad.WBForm
             using (var frm = new frmCustomInfo())
             {
                 frm.Text = "Інформація про активну зміну користувача (касира)";
-                frm.AddItem("Зміна відкрита", new_receipts.opened_at);
-                frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
-                frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
-                frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
-                frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+                if (new_receipts.error != null)
+                {
+                    frm.AddItem("Зміна відкрита", new_receipts.opened_at);
+                    frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
+                    frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
+                    frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
+                    frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+                }
 
                 var money = _db.MoneyOnDate(DateTime.Now);
                 var cur_user_cash = money.Where(w => w.CashId == user_settings.CashDesksDefaultRMK).Sum(s => s.SaldoDef);

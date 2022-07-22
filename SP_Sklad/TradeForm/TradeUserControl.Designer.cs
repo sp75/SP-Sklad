@@ -47,7 +47,7 @@
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
-            this.GetRetailWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GetTradeWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -216,7 +216,6 @@
             this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.KAgentAdjustmentBS = new System.Windows.Forms.BindingSource(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -267,7 +266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetRetailWayBillListBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetTradeWayBillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
@@ -334,7 +333,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
@@ -469,8 +467,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_cart2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_basket_full_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -514,7 +514,7 @@
             // 
             // WBGridControl
             // 
-            this.WBGridControl.DataSource = this.GetRetailWayBillListBS;
+            this.WBGridControl.DataSource = this.GetTradeWayBillListBS;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBGridControl.Location = new System.Drawing.Point(0, 44);
             this.WBGridControl.MainView = this.WbGridView;
@@ -528,9 +528,9 @@
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 
-            // GetRetailWayBillListBS
+            // GetTradeWayBillListBS
             // 
-            this.GetRetailWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetRetailWayBillList_Result);
+            this.GetTradeWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetTradeWayBillList_Result);
             // 
             // WbGridView
             // 
@@ -581,7 +581,7 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 45),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 44)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
@@ -634,7 +634,8 @@
             this.GridImageList.Images.SetKeyName(41, "Debt adjustment.png");
             this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
             this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
-            this.GridImageList.Images.SetKeyName(44, "shopping_cart2.png");
+            this.GridImageList.Images.SetKeyName(44, "shopping_basket_full_2.png");
+            this.GridImageList.Images.SetKeyName(45, "purchasing (8).png");
             // 
             // gridColumn2
             // 
@@ -1133,7 +1134,7 @@
             // 
             // WayBillListInfoBS
             // 
-            this.WayBillListInfoBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
+            this.WayBillListInfoBS.DataSource = typeof(SP_Sklad.SkladData.GetTradeWayBillList_Result);
             // 
             // repositoryItemImageComboBox12
             // 
@@ -1189,6 +1190,7 @@
             // 
             // row4
             // 
+            this.row4.Height = 16;
             this.row4.Name = "row4";
             this.row4.Properties.Caption = "Факс";
             this.row4.Properties.FieldName = "Fax";
@@ -2388,10 +2390,6 @@
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1043, 31);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
-            // KAgentAdjustmentBS
-            // 
-            this.KAgentAdjustmentBS.DataSource = typeof(SP_Sklad.SkladData.v_KAgentAdjustment);
-            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -2815,7 +2813,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetRetailWayBillListBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GetTradeWayBillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
@@ -2884,7 +2882,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
@@ -3048,7 +3045,7 @@
         public DevExpress.XtraEditors.LookUpEdit PDKagentList;
         public DevExpress.XtraEditors.DateEdit PDEndDate;
         public DevExpress.XtraEditors.DateEdit PDStartDate;
-        private System.Windows.Forms.BindingSource GetRetailWayBillListBS;
+        private System.Windows.Forms.BindingSource GetTradeWayBillListBS;
         private System.Windows.Forms.BindingSource GetPayDocListBS;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
@@ -3078,7 +3075,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn52;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row19;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private System.Windows.Forms.BindingSource KAgentAdjustmentBS;
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.Bar bar5;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage24;

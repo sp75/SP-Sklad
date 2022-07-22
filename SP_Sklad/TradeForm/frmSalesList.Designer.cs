@@ -88,7 +88,7 @@
             // 
             // GetTradeWayBillListBS
             // 
-            this.GetTradeWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetRetailWayBillList_Result);
+            this.GetTradeWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetTradeWayBillList_Result);
             // 
             // WBGridControl
             // 

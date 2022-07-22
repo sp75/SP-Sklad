@@ -188,7 +188,6 @@ namespace SP_Sklad.WBDetForm
                 _temp_return_rel = null;
             }
 
-            var fff = _db.Entry<WaybillDet>(_wbd).State;
             if (_db.Entry<WaybillDet>(_wbd).State != EntityState.Detached)
             {
                 _db.WaybillDet.Remove(_wbd);

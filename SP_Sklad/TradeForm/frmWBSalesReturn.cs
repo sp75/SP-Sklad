@@ -185,7 +185,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-            payDocUserControl1.Execute(wb.WbillId, true);
+            payDocUserControl1.Execute(wb.WbillId, fiscalization_checkEdit.Checked);
 
         //    current_transaction.Commit();
 

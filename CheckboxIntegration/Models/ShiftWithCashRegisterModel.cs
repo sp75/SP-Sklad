@@ -22,5 +22,11 @@ namespace CheckboxIntegration.Models
         public List<ShiftTaxModel> taxes { get; set; }
         public CashRegisterModel cash_register { get; set; }
         public ErrorMessage error { get; set; }
+
+        public bool IsError()
+        {
+            return error != null;
+        }
+
     }
 }

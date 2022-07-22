@@ -73,7 +73,7 @@ namespace SP_Sklad.WBForm
            
         }
 
-        private void PayDoc(int PType, decimal total, Guid receipt_id)
+        private void PayDoc(int PType, decimal total, Guid? receipt_id = null)
         {
             _wb = _db.WaybillList.FirstOrDefault(s => s.WbillId == _wb.WbillId);
             _wb.ReceiptId = receipt_id;
@@ -290,5 +290,19 @@ namespace SP_Sklad.WBForm
             return new_receipts;
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (PutCashSumEdit.Value > 0)
+            {
+                PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value);
+            }
+
+            if (PutCashlessSumEdit.Value > 0)
+            {
+                PayDoc(2, PutCashlessSumEdit.Value);
+            }
+
+            PrintDoc.Show(_wb.Id, _wb.WType, _db);
+        }
     }
 }
