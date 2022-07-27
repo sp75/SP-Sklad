@@ -1017,7 +1017,7 @@ namespace SP_Sklad.WBForm
             using (var frm = new frmCustomInfo())
             {
                 frm.Text = "Інформація про активну зміну користувача (касира)";
-                if (new_receipts.error != null)
+                if (new_receipts.error == null)
                 {
                     frm.AddItem("Зміна відкрита", new_receipts.opened_at);
                     frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
@@ -1028,7 +1028,8 @@ namespace SP_Sklad.WBForm
 
                 var money = _db.MoneyOnDate(DateTime.Now);
                 var cur_user_cash = money.Where(w => w.CashId == user_settings.CashDesksDefaultRMK).Sum(s => s.SaldoDef);
-                frm.AddItem("Залишок в касі (sp_sklad)", cur_user_cash);
+                var def_cashdesks =  _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).Name;
+                frm.AddItem($"Залишок в касі ({def_cashdesks})", cur_user_cash);
 
                 frm.ShowDialog();
             }

@@ -990,20 +990,20 @@ namespace SP.Reports
                   SZK = s.WType == 23 ? s.SummInCurr : null
               }).OrderBy(o => o.OnDate);*/
             var start_saldo = _db.Database.SqlQuery<KAgentSaldo>(@"select Saldo from GetKAgentSaldoByReportingDate({0}, DATEADD(day, -1, {1}))", Kagent.KaId, StartDate).First();
-
+             
             var list = _db.Database.SqlQuery<rep_30>(@"
 SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, 
               dbo.DocType.ShortName AS DocShortName, dbo.DocType.Name AS DocTypeName,
               (SELECT top 1 Saldo FROM GetKAgentSaldoByReportingDate (   x.KaId  , cast(OnDate as date) )) Saldo
 FROM            (
-                          SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          SELECT        wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
                           FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
                                                     dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
                                                     dbo.Currency AS c ON c.CurrId = wbl.CurrId
                           WHERE        (wbl.Checked = 1 and wbl.WType <> 6)
                           
                           UNION
-                          SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.ReportingDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          SELECT        wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
                           FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
                                                     dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
                                                     dbo.Currency AS c ON c.CurrId = wbl.CurrId
@@ -1019,7 +1019,7 @@ FROM            (
                           WHERE        (wbl.Checked = 1)
 
                           UNION
-                          SELECT        pd.Id, pd.ExDocType, pd.DocNum, pd.ReportingDate, ka.KaId, ka.Name, pd.Checked, NULL AS Expr1, pd.Total, pd.Total * pd.OnValue AS Expr2, c.ShortName, pd.OnValue, pd.CurrId, NULL AS Expr3, 
+                          SELECT        pd.Id, pd.ExDocType, pd.DocNum, coalesce(pd.ReportingDate, pd.ondate) OnDate, ka.KaId, ka.Name, pd.Checked, NULL AS Expr1, pd.Total, pd.Total * pd.OnValue AS Expr2, c.ShortName, pd.OnValue, pd.CurrId, NULL AS Expr3, 
                                                    pd.Total * pd.OnValue AS Expr4
                           FROM            dbo.PayDoc AS pd LEFT OUTER JOIN
                                                    dbo.Kagent AS ka ON ka.KaId = pd.KaId LEFT OUTER JOIN
@@ -1036,9 +1036,6 @@ FROM            (
                 f.CumulativeSaldo = start_saldo.Saldo + f.SummInCurr * f.WType / Math.Abs(f.WType.Value);
                 start_saldo.Saldo = f.CumulativeSaldo;
             });
-
-
-
 
             if (!list.Any())
             {

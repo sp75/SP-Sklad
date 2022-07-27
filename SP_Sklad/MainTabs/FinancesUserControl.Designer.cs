@@ -187,6 +187,7 @@
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnoverBS)).BeginInit();
@@ -275,6 +276,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             this.xtraTabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // DocsPopupMenu
@@ -1429,7 +1431,7 @@
             // 
             // PayDocTypeEdit
             // 
-            this.PayDocTypeEdit.Location = new System.Drawing.Point(639, 11);
+            this.PayDocTypeEdit.Location = new System.Drawing.Point(751, 11);
             this.PayDocTypeEdit.Name = "PayDocTypeEdit";
             this.PayDocTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1440,21 +1442,23 @@
             this.PayDocTypeEdit.Properties.ShowHeader = false;
             this.PayDocTypeEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.PayDocTypeEdit.Properties.ValueMember = "Id";
-            this.PayDocTypeEdit.Size = new System.Drawing.Size(245, 20);
+            this.PayDocTypeEdit.Size = new System.Drawing.Size(245, 22);
+            this.PayDocTypeEdit.StyleController = this.styleController1;
             this.PayDocTypeEdit.TabIndex = 28;
             this.PayDocTypeEdit.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(553, 14);
+            this.labelControl5.Location = new System.Drawing.Point(653, 14);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(80, 13);
+            this.labelControl5.Size = new System.Drawing.Size(92, 16);
+            this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 27;
             this.labelControl5.Text = "Тип документа:";
             // 
             // wbStatusList
             // 
-            this.wbStatusList.Location = new System.Drawing.Point(359, 11);
+            this.wbStatusList.Location = new System.Drawing.Point(391, 11);
             this.wbStatusList.Name = "wbStatusList";
             this.wbStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1463,49 +1467,54 @@
             this.wbStatusList.Properties.DisplayMember = "Name";
             this.wbStatusList.Properties.ShowHeader = false;
             this.wbStatusList.Properties.ValueMember = "Id";
-            this.wbStatusList.Size = new System.Drawing.Size(164, 20);
+            this.wbStatusList.Size = new System.Drawing.Size(232, 22);
+            this.wbStatusList.StyleController = this.styleController1;
             this.wbStatusList.TabIndex = 9;
             this.wbStatusList.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(313, 14);
+            this.labelControl10.Location = new System.Drawing.Point(341, 14);
             this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(40, 13);
+            this.labelControl10.Size = new System.Drawing.Size(44, 16);
+            this.labelControl10.StyleController = this.styleController1;
             this.labelControl10.TabIndex = 4;
             this.labelControl10.Text = "Статус:";
             // 
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(185, 11);
+            this.wbEndDate.Location = new System.Drawing.Point(194, 11);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbEndDate.Size = new System.Drawing.Size(100, 20);
+            this.wbEndDate.Size = new System.Drawing.Size(100, 22);
+            this.wbEndDate.StyleController = this.styleController1;
             this.wbEndDate.TabIndex = 3;
             this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(167, 14);
+            this.labelControl11.Location = new System.Drawing.Point(174, 14);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(12, 13);
+            this.labelControl11.Size = new System.Drawing.Size(14, 16);
+            this.labelControl11.StyleController = this.styleController1;
             this.labelControl11.TabIndex = 2;
             this.labelControl11.Text = "по";
             // 
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(61, 11);
+            this.wbStartDate.Location = new System.Drawing.Point(68, 11);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.wbStartDate.Size = new System.Drawing.Size(100, 20);
+            this.wbStartDate.Size = new System.Drawing.Size(100, 22);
+            this.wbStartDate.StyleController = this.styleController1;
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
@@ -1513,7 +1522,8 @@
             // 
             this.labelControl12.Location = new System.Drawing.Point(13, 14);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(42, 13);
+            this.labelControl12.Size = new System.Drawing.Size(49, 16);
+            this.labelControl12.StyleController = this.styleController1;
             this.labelControl12.TabIndex = 0;
             this.labelControl12.Text = "Період з";
             // 
@@ -1924,6 +1934,11 @@
             this.docsUserControl1.Size = new System.Drawing.Size(1024, 630);
             this.docsUserControl1.TabIndex = 0;
             // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // FinancesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2028,6 +2043,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             this.xtraTabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2180,5 +2196,6 @@
         public DevExpress.XtraTreeList.TreeList FinTreeList;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DocsUserControl docsUserControl1;
+        private DevExpress.XtraEditors.StyleController styleController1;
     }
 }

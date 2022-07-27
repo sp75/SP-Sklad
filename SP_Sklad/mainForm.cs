@@ -47,6 +47,11 @@ namespace SP_Sklad
 
             History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
 
+            if(!Directory.Exists(Path.Combine(Application.StartupPath, "Rep")))
+            {
+                Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Rep"));
+            }
+
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
