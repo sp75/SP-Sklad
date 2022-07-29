@@ -774,7 +774,8 @@ namespace SP_Sklad.MainTabs
                     var last_price = DB.SkladBase().GetLastPrice(row.MatId, 0, -1, DateTime.Now).FirstOrDefault();
                     ExtMatIfoBS.DataSource = new ExtMatIfo
                     {
-                        LastPrice = last_price != null ?  last_price.Price : 0
+                        LastPrice = last_price != null ? last_price.Price : 0,
+                        MatId = row.MatId
                     };
 
                     break;
@@ -1082,6 +1083,7 @@ namespace SP_Sklad.MainTabs
         public class ExtMatIfo
         {
             public decimal? LastPrice { get; set; }
+            public int MatId { get; set; }
         }
         public void SaveGridLayouts()
         {

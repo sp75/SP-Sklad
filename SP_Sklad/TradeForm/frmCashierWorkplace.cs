@@ -4,6 +4,7 @@ using DevExpress.XtraPrinting;
 using DevExpress.XtraPrintingLinks;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.TradeForm;
 using SP_Sklad.ViewsForm;
 using System;
 using System.Collections.Generic;
@@ -62,7 +63,8 @@ namespace SP_Sklad.WBForm
                         Id = new_shift.id,
                         CreatedAt = new_shift.created_at,
                         UserId = DBHelper.CurrentUser.UserId,
-                        OpenedAt = WaitingOpeningShift(new_shift.id)
+                        OpenedAt = WaitingOpeningShift(new_shift.id),
+                       CashId =  
                     });
 
                     db.SaveChanges();
@@ -208,6 +210,21 @@ namespace SP_Sklad.WBForm
             else
             {
                 MessageBox.Show(new_x_report.error.message);
+            }
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
+        {
+            using (var frm = new frmCashboxSettings())
+            {
+                if(frm.ShowDialog() == DialogResult.OK)
+                {
+                    using (var db = new BaseEntities())
+                    {
+                        user_settings = new UserSettingsRepository();
+                        _license_key = db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).LicenseKey;
+                    }
+                }
             }
         }
     }

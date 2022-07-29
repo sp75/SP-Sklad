@@ -1997,7 +1997,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -4782,7 +4782,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <CollectionType>
               <RowType>
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
-                <Property Name="WhSumm" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="WhSumm" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
@@ -4901,9 +4901,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="OnDate" Type="datetime" />
-                <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="4" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4916,7 +4916,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="Num" Type="int" Nullable="false" />
                 <Property Name="PosId" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="OnDate" Type="datetime" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -5020,11 +5020,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="GrpId" Type="int" />
                 <Property Name="WId" Type="int" />
                 <Property Name="Num" Type="int" />
-                <Property Name="MinReserv" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="MinReserv" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="CId" Type="int" />
                 <Property Name="DemandCat" Type="int" />
-                <Property Name="Weight" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="MSize" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="MSize" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Producer" Type="nvarchar" MaxLength="255" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="MType" Type="int" Nullable="false" />
@@ -5384,6 +5384,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <Function Name="GetReportTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetSaldoDetTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="GetServiceTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pos_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetSvcGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="root_cat_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="GrpId" Type="int" />
+                <Property Name="Name" Type="nvarchar" MaxLength="64" />
+                <Property Name="Level" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetTaraList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="grp" Type="int" Mode="In" />
+          <Parameter Name="get_child_node" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="TaraId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="WId" Type="int" />
+                <Property Name="Num" Type="int" />
+                <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="GrpName" Type="nvarchar" MaxLength="100" />
+                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+                <Property Name="DateAdded" Type="datetime" />
+                <Property Name="DateModified" Type="datetime" />
+                <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetTradeWayBillList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
           <Parameter Name="to_date" Type="datetime" Mode="In" />
@@ -5443,53 +5490,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="FiscalCode" Type="nvarchar" MaxLength="50" />
                 <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="GetSaldoDetTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="user_id" Type="int" Mode="In" />
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="on_date" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="GetServiceTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="user_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetShippedPosIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="pos_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="GetSvcGroupTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="root_cat_id" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="GrpId" Type="int" />
-                <Property Name="Name" Type="nvarchar" MaxLength="64" />
-                <Property Name="Level" Type="int" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
-        <Function Name="GetSvcTree" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="GetTaraList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="grp" Type="int" Mode="In" />
-          <Parameter Name="get_child_node" Type="int" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="TaraId" Type="int" Nullable="false" />
-                <Property Name="Name" Type="nvarchar" MaxLength="255" />
-                <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
-                <Property Name="Notes" Type="nvarchar" MaxLength="255" />
-                <Property Name="GrpId" Type="int" />
-                <Property Name="WId" Type="int" />
-                <Property Name="Num" Type="int" />
-                <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="GrpName" Type="nvarchar" MaxLength="100" />
-                <Property Name="WhName" Type="nvarchar" MaxLength="64" />
-                <Property Name="DateAdded" Type="datetime" />
-                <Property Name="DateModified" Type="datetime" />
-                <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -5854,7 +5854,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CashId" Type="int" />
                 <Property Name="OperId" Type="uniqueidentifier" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
@@ -5945,7 +5945,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
                 <Property Name="ToDate" Type="datetime" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
@@ -6210,12 +6210,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="KaId" Type="int" />
-                <Property Name="KaName" Type="nvarchar" MaxLength="64" Nullable="false" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
-                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
+                <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6264,11 +6264,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -9759,7 +9759,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Cars" EntitySet="Cars" />
           </AssociationSet>
-          <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
           <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
           <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
           <Parameter Name="originator_id" Mode="In" Type="Guid" />
@@ -9783,6 +9782,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="show_null_balance" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15339,7 +15339,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -16197,17 +16197,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Shift">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="OpenedAt" Type="DateTime" Precision="3" />
-          <Property Name="ClosedAt" Type="DateTime" Precision="3" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UserId" Type="Int32" />
-        </EntityType>
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="Id" />
@@ -16339,6 +16328,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="100" />
           <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
         </ComplexType>
+        <EntityType Name="Shift">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OpenedAt" Type="DateTime" Precision="3" />
+          <Property Name="ClosedAt" Type="DateTime" Precision="3" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20565,18 +20565,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Shift">
-            <EntityTypeMapping TypeName="BaseModel.Shift">
-              <MappingFragment StoreEntitySet="Shift">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
-                <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Receipt">
             <EntityTypeMapping TypeName="BaseModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
@@ -20673,6 +20661,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="Shift">
+            <EntityTypeMapping TypeName="BaseModel.Shift">
+              <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
+                <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

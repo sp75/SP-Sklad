@@ -68,6 +68,7 @@
             this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.wbKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -172,7 +173,6 @@
             this.gridColumn107 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.PDSatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -253,7 +253,6 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -274,6 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
@@ -313,7 +313,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PDSatusList.Properties)).BeginInit();
@@ -339,7 +338,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -471,8 +469,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_basket_full_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -518,13 +515,13 @@
             // 
             this.WBGridControl.DataSource = this.GetTradeWayBillListBS;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WBGridControl.Location = new System.Drawing.Point(0, 60);
+            this.WBGridControl.Location = new System.Drawing.Point(0, 50);
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(1123, 364);
+            this.WBGridControl.Size = new System.Drawing.Size(1123, 374);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -780,12 +777,12 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1123, 60);
+            this.panelControl2.Size = new System.Drawing.Size(1123, 50);
             this.panelControl2.TabIndex = 1;
             // 
             // wbStatusList
             // 
-            this.wbStatusList.Location = new System.Drawing.Point(943, 18);
+            this.wbStatusList.Location = new System.Drawing.Point(943, 14);
             this.wbStatusList.Name = "wbStatusList";
             this.wbStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -799,9 +796,14 @@
             this.wbStatusList.TabIndex = 8;
             this.wbStatusList.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
             // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(898, 21);
+            this.labelControl4.Location = new System.Drawing.Point(898, 17);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(39, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -810,7 +812,7 @@
             // 
             // wbKagentList
             // 
-            this.wbKagentList.Location = new System.Drawing.Point(502, 18);
+            this.wbKagentList.Location = new System.Drawing.Point(502, 14);
             this.wbKagentList.Name = "wbKagentList";
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -830,7 +832,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(415, 21);
+            this.labelControl3.Location = new System.Drawing.Point(415, 17);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(81, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -840,7 +842,7 @@
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(234, 18);
+            this.wbEndDate.Location = new System.Drawing.Point(234, 14);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -860,7 +862,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(214, 21);
+            this.labelControl2.Location = new System.Drawing.Point(214, 17);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(14, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -870,7 +872,7 @@
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(68, 18);
+            this.wbStartDate.Location = new System.Drawing.Point(68, 14);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -890,7 +892,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(13, 21);
+            this.labelControl1.Location = new System.Drawing.Point(13, 17);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(49, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -1113,7 +1115,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1031, 225);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1117, 225);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -1139,7 +1141,7 @@
             this.row10,
             this.row9,
             this.row8});
-            this.vGridControl1.Size = new System.Drawing.Size(1031, 225);
+            this.vGridControl1.Size = new System.Drawing.Size(1117, 225);
             this.vGridControl1.TabIndex = 0;
             // 
             // WayBillListInfoBS
@@ -1294,7 +1296,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1031, 225);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1117, 225);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1307,7 +1309,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(1031, 225);
+            this.gridControl3.Size = new System.Drawing.Size(1117, 225);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1487,7 +1489,7 @@
             this.xtraTabPage24.Controls.Add(this.gridControl10);
             this.xtraTabPage24.ImageIndex = 11;
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1031, 225);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1117, 225);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
             // gridControl10
@@ -1502,7 +1504,7 @@
             this.repositoryItemImageComboBox32,
             this.repositoryItemImageComboBox31,
             this.repositoryItemImageComboBox30});
-            this.gridControl10.Size = new System.Drawing.Size(1031, 225);
+            this.gridControl10.Size = new System.Drawing.Size(1117, 225);
             this.gridControl10.TabIndex = 1;
             this.gridControl10.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView8});
@@ -1673,7 +1675,7 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1037, 685);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1123, 685);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage10
@@ -1690,7 +1692,7 @@
             this.splitContainerControl3.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl3.Name = "splitContainerControl3";
             this.splitContainerControl3.Panel1.Controls.Add(this.PayDocGridControl);
-            this.splitContainerControl3.Panel1.Controls.Add(this.panel1);
+            this.splitContainerControl3.Panel1.Controls.Add(this.panelControl3);
             this.splitContainerControl3.Panel1.Text = "Panel1";
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
@@ -1703,7 +1705,7 @@
             // 
             this.PayDocGridControl.DataSource = this.GetPayDocListBS;
             this.PayDocGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PayDocGridControl.Location = new System.Drawing.Point(0, 52);
+            this.PayDocGridControl.Location = new System.Drawing.Point(0, 50);
             this.PayDocGridControl.MainView = this.PayDocGridView;
             this.PayDocGridControl.Name = "PayDocGridControl";
             this.PayDocGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -1711,7 +1713,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox5});
-            this.PayDocGridControl.Size = new System.Drawing.Size(1123, 410);
+            this.PayDocGridControl.Size = new System.Drawing.Size(1123, 412);
             this.PayDocGridControl.TabIndex = 0;
             this.PayDocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.PayDocGridView});
@@ -1945,16 +1947,6 @@
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.GridImageList;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panelControl3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.panel1.Size = new System.Drawing.Size(1123, 52);
-            this.panel1.TabIndex = 2;
-            // 
             // panelControl3
             // 
             this.panelControl3.Controls.Add(this.PDSatusList);
@@ -1965,15 +1957,15 @@
             this.panelControl3.Controls.Add(this.labelControl7);
             this.panelControl3.Controls.Add(this.PDStartDate);
             this.panelControl3.Controls.Add(this.labelControl8);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(0, 2);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl3.Location = new System.Drawing.Point(0, 0);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1123, 48);
+            this.panelControl3.Size = new System.Drawing.Size(1123, 50);
             this.panelControl3.TabIndex = 1;
             // 
             // PDSatusList
             // 
-            this.PDSatusList.Location = new System.Drawing.Point(729, 11);
+            this.PDSatusList.Location = new System.Drawing.Point(895, 14);
             this.PDSatusList.Name = "PDSatusList";
             this.PDSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1982,21 +1974,23 @@
             this.PDSatusList.Properties.DisplayMember = "Name";
             this.PDSatusList.Properties.ShowHeader = false;
             this.PDSatusList.Properties.ValueMember = "Id";
-            this.PDSatusList.Size = new System.Drawing.Size(164, 20);
+            this.PDSatusList.Size = new System.Drawing.Size(223, 22);
+            this.PDSatusList.StyleController = this.styleController1;
             this.PDSatusList.TabIndex = 8;
             this.PDSatusList.EditValueChanged += new System.EventHandler(this.PDStartDate_EditValueChanged);
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(687, 14);
+            this.labelControl5.Location = new System.Drawing.Point(850, 17);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(36, 13);
+            this.labelControl5.Size = new System.Drawing.Size(39, 16);
+            this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 7;
             this.labelControl5.Text = "Статус";
             // 
             // PDKagentList
             // 
-            this.PDKagentList.Location = new System.Drawing.Point(373, 11);
+            this.PDKagentList.Location = new System.Drawing.Point(392, 14);
             this.PDKagentList.Name = "PDKagentList";
             this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -2007,60 +2001,66 @@
             this.PDKagentList.Properties.ShowFooter = false;
             this.PDKagentList.Properties.ShowHeader = false;
             this.PDKagentList.Properties.ValueMember = "KaId";
-            this.PDKagentList.Size = new System.Drawing.Size(266, 22);
+            this.PDKagentList.Size = new System.Drawing.Size(423, 22);
+            this.PDKagentList.StyleController = this.styleController1;
             this.PDKagentList.TabIndex = 6;
             this.PDKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PDKagentList_ButtonClick);
             this.PDKagentList.EditValueChanged += new System.EventHandler(this.PDStartDate_EditValueChanged);
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(313, 14);
+            this.labelControl6.Location = new System.Drawing.Point(326, 17);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(54, 13);
+            this.labelControl6.Size = new System.Drawing.Size(60, 16);
+            this.labelControl6.StyleController = this.styleController1;
             this.labelControl6.TabIndex = 4;
             this.labelControl6.Text = "Конрагент";
             // 
             // PDEndDate
             // 
             this.PDEndDate.EditValue = null;
-            this.PDEndDate.Location = new System.Drawing.Point(185, 11);
+            this.PDEndDate.Location = new System.Drawing.Point(195, 14);
             this.PDEndDate.Name = "PDEndDate";
             this.PDEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.PDEndDate.Size = new System.Drawing.Size(100, 20);
+            this.PDEndDate.Size = new System.Drawing.Size(100, 22);
+            this.PDEndDate.StyleController = this.styleController1;
             this.PDEndDate.TabIndex = 3;
             this.PDEndDate.EditValueChanged += new System.EventHandler(this.PDStartDate_EditValueChanged);
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(167, 14);
+            this.labelControl7.Location = new System.Drawing.Point(175, 17);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(12, 13);
+            this.labelControl7.Size = new System.Drawing.Size(14, 16);
+            this.labelControl7.StyleController = this.styleController1;
             this.labelControl7.TabIndex = 2;
             this.labelControl7.Text = "по";
             // 
             // PDStartDate
             // 
             this.PDStartDate.EditValue = null;
-            this.PDStartDate.Location = new System.Drawing.Point(61, 11);
+            this.PDStartDate.Location = new System.Drawing.Point(69, 14);
             this.PDStartDate.Name = "PDStartDate";
             this.PDStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDStartDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.PDStartDate.Size = new System.Drawing.Size(100, 20);
+            this.PDStartDate.Size = new System.Drawing.Size(100, 22);
+            this.PDStartDate.StyleController = this.styleController1;
             this.PDStartDate.TabIndex = 1;
             this.PDStartDate.EditValueChanged += new System.EventHandler(this.PDStartDate_EditValueChanged);
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(13, 14);
+            this.labelControl8.Location = new System.Drawing.Point(14, 17);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(42, 13);
+            this.labelControl8.Size = new System.Drawing.Size(49, 16);
+            this.labelControl8.StyleController = this.styleController1;
             this.labelControl8.TabIndex = 0;
             this.labelControl8.Text = "Період з";
             // 
@@ -2217,7 +2217,7 @@
             this.xtraTabPage5.Controls.Add(this.RelPayDocGridControl);
             this.xtraTabPage5.ImageIndex = 2;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1031, 187);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1117, 187);
             this.xtraTabPage5.Text = "Зв\'язані документи";
             // 
             // RelPayDocGridControl
@@ -2230,7 +2230,7 @@
             this.repositoryItemImageComboBox10,
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8});
-            this.RelPayDocGridControl.Size = new System.Drawing.Size(1031, 187);
+            this.RelPayDocGridControl.Size = new System.Drawing.Size(1117, 187);
             this.RelPayDocGridControl.TabIndex = 1;
             this.RelPayDocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2798,11 +2798,6 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
             // TradeUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2836,6 +2831,7 @@
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
@@ -2875,7 +2871,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
@@ -2902,7 +2897,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2990,7 +2984,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit2;
-        private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl6;

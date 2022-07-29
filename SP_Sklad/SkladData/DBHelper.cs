@@ -141,7 +141,7 @@ namespace SP_Sklad.SkladData
             _kagents = null;
         }
 
-        public static List<KagentList> RetailOutlets
+        public static List<KagentList> TradingPoints
         {
             get
             {

@@ -189,8 +189,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_GetRetailTree> v_GetRetailTree { get; set; }
         public DbSet<v_PriceList> v_PriceList { get; set; }
         public DbSet<PriceList> PriceList { get; set; }
-        public DbSet<Shift> Shift { get; set; }
         public DbSet<Receipt> Receipt { get; set; }
+        public DbSet<Shift> Shift { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

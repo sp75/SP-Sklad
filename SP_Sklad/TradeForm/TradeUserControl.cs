@@ -81,7 +81,7 @@ namespace SP_Sklad.MainTabs
 
                 _access_token = login.access_token;
 
-                wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.RetailOutlets.Select(s => new { s.KaId, s.Name }));
+                wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
 
                 if (!user_settings.DefaultBuyer.HasValue)
                 {

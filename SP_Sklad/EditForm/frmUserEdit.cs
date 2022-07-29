@@ -107,7 +107,7 @@ namespace SP_Sklad.EditForm
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
             ChargeTypesEdit.EditValue = user_settings.DefaultChargeTypeByRMK;
 
-            CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks;
+            CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks.Where(w=> !string.IsNullOrEmpty( w.LicenseKey)).ToList();
             CashEditComboBox.EditValue = user_settings.CashDesksDefaultRMK;
 
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Select(s => new
@@ -251,7 +251,7 @@ namespace SP_Sklad.EditForm
 
         private void UpdateRow(GetUserAccessTree_Result row)
         {
-            var au = _db.UserAccess.FirstOrDefault(w => w.FunId == row.FunId && w.UserId == _user_id && _user_id != 0);
+            var au = _db.UserAccess.FirstOrDefault(w => w.FunId == row.FunId && w.UserId == _user_id && !(_user_id == 0 && row.FunId == 14));
             if (au != null)
             {
                 if (row.CanDelete != null) au.CanDelete = row.CanDelete.Value;
@@ -515,7 +515,13 @@ namespace SP_Sklad.EditForm
 
         private void frmUserEdit_FormClosed(object sender, FormClosedEventArgs e)
         {
-           
+            if (current_transaction.UnderlyingTransaction.Connection != null)
+            {
+                current_transaction.Rollback();
+            }
+
+            _db.Dispose();
+            current_transaction.Dispose();
         }
 
         private void CashEditComboBox_EditValueChanged(object sender, EventArgs e)

@@ -48,6 +48,8 @@ namespace SP_Sklad.WBForm
         private readonly RawInput _rawinput;
 
         private string _access_token { get; set; }
+        private string CashDesksName { get; set; }
+
         public frmCashboxWBOut(string access_token, int? wbill_id = null)
         {
             _access_token = access_token;
@@ -61,7 +63,6 @@ namespace SP_Sklad.WBForm
             //     Win32.DeviceAudit();            // Writes a file DeviceAudit.txt to the current directory
 
             _rawinput.KeyPressed += OnKeyPressed;
-
 
             _db = new BaseEntities();
 
@@ -142,13 +143,14 @@ namespace SP_Sklad.WBForm
 
             if (_wbill_id == null)
             {
-
                 NewWaybill();
             }
             else
             {
                 LoadWaybill(_wbill_id.Value);
             }
+
+            CashDesksName = _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).Name;
         }
 
         private void LoadWaybill(int wbill_id)
@@ -188,6 +190,7 @@ namespace SP_Sklad.WBForm
             _db.SaveChanges();
 
             _wbill_id = wb.WbillId;
+            wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
             DBHelper.UpdateSessionWaybill(wb.WbillId);
 
@@ -608,7 +611,7 @@ namespace SP_Sklad.WBForm
             {
                 splitterControl1.Visible = true;
                 panel9.Visible = true;
-                WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(0, 0, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+                WhMatGridControl.DataSource = DB.SkladBase().WhMatGet(0, wb.Kontragent.WId, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
                 WhMatGridView.ExpandAllGroups();
             }
             else
@@ -628,7 +631,7 @@ namespace SP_Sklad.WBForm
 
         private void frmCashboxWBOut_Shown(object sender, EventArgs e)
         {
-            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Торгова точка: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
+            Text = $"РМК [Каса: {CashDesksName}, Касир: {DBHelper.CurrentUser.Name}, Продавець: {(DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "")}, Торгова точка: {DBHelper.TradingPoints.FirstOrDefault(w => w.KaId == wb.KaId).Name} ]";
             label1.Focus();
 
             if (string.IsNullOrEmpty(Settings.Default.barcode_scanner_name))
@@ -722,8 +725,6 @@ namespace SP_Sklad.WBForm
         private void WhListBtn_Click(object sender, EventArgs e)
         {
             _rawinput.KeyPressed -= OnKeyPressed;
-
-            wb.Kontragent = _db.Kagent.Find(wb.KaId);
 
             IHelper.ShowMatListByWH(_db, wb, disc_card, wb.Kontragent.WId);
 
@@ -1028,8 +1029,7 @@ namespace SP_Sklad.WBForm
 
                 var money = _db.MoneyOnDate(DateTime.Now);
                 var cur_user_cash = money.Where(w => w.CashId == user_settings.CashDesksDefaultRMK).Sum(s => s.SaldoDef);
-                var def_cashdesks =  _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).Name;
-                frm.AddItem($"Залишок в касі ({def_cashdesks})", cur_user_cash);
+                frm.AddItem($"Залишок в касі ({CashDesksName})", cur_user_cash);
 
                 frm.ShowDialog();
             }

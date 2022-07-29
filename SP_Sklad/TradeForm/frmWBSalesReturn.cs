@@ -46,7 +46,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWBReturnIn_Load(object sender, EventArgs e)
         {
-            KagentComboBox.Properties.DataSource = DBHelper.RetailOutlets;
+            KagentComboBox.Properties.DataSource = DBHelper.TradingPoints;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WHComboBox.Properties.DataSource = DBHelper.WhList;
             OutDateEdit.DateTime = DateTime.Now.Date.AddDays(-3);

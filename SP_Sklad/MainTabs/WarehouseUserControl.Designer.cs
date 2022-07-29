@@ -123,6 +123,7 @@
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.OnDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.whKagentList = new DevExpress.XtraEditors.LookUpEdit();
@@ -216,6 +217,7 @@
             this.ExtMatIfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -298,7 +300,6 @@
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -320,6 +321,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whKagentList.Properties)).BeginInit();
@@ -407,7 +409,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // GridImageList
@@ -453,6 +454,7 @@
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
             this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
+            this.GridImageList.Images.SetKeyName(39, "purchasing (8).png");
             // 
             // PageImageList
             // 
@@ -1136,8 +1138,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_basket_full_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // whContentTab
@@ -1437,6 +1438,11 @@
             this.checkedComboBoxEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.checkedComboBoxEdit1_ButtonClick);
             this.checkedComboBoxEdit1.EditValueChanged += new System.EventHandler(this.checkedComboBoxEdit1_EditValueChanged);
             // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // labelControl7
             // 
             this.labelControl7.Location = new System.Drawing.Point(773, 15);
@@ -1696,7 +1702,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 39)});
             this.repositoryItemImageComboBox10.Name = "repositoryItemImageComboBox10";
             this.repositoryItemImageComboBox10.SmallImages = this.GridImageList;
             // 
@@ -2410,7 +2417,6 @@
             // vGridControl2
             // 
             this.vGridControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl2.DataSource = this.ExtMatIfoBS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
@@ -2420,7 +2426,8 @@
             this.repositoryItemCheckEdit3});
             this.vGridControl2.RowHeaderWidth = 294;
             this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.editorRow1});
+            this.editorRow1,
+            this.row2});
             this.vGridControl2.Size = new System.Drawing.Size(1386, 251);
             this.vGridControl2.TabIndex = 1;
             // 
@@ -2440,6 +2447,12 @@
             this.editorRow1.Name = "editorRow1";
             this.editorRow1.Properties.Caption = "Остання ціна продажу";
             this.editorRow1.Properties.FieldName = "LastPrice";
+            // 
+            // row2
+            // 
+            this.row2.Name = "row2";
+            this.row2.Properties.Caption = "Код обміну";
+            this.row2.Properties.FieldName = "MatId";
             // 
             // xtraTabPage6
             // 
@@ -3328,11 +3341,6 @@
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
             // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3368,6 +3376,7 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whKagentList.Properties)).EndInit();
@@ -3458,7 +3467,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3724,5 +3732,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn58;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn59;
         private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row2;
     }
 }

@@ -414,6 +414,12 @@
     <Compile Include="SkladData\GetTradeWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TradeForm\frmCashboxSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmCashboxSettings.Designer.cs">
+      <DependentUpon>frmCashboxSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="TradeForm\frmSalesList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1815,6 +1821,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmCashboxSettings.resx">
+      <DependentUpon>frmCashboxSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmSalesList.resx">
       <DependentUpon>frmSalesList.cs</DependentUpon>

@@ -53,7 +53,7 @@ namespace SP_Sklad.WBForm
         {
             WaybillDetOutGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmWBSales\\WaybillDetOutGridView");
 
-            KagentComboBox.Properties.DataSource = DBHelper.RetailOutlets;
+            KagentComboBox.Properties.DataSource = DBHelper.TradingPoints;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
 
