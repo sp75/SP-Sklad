@@ -139,19 +139,14 @@ namespace SP_Sklad.Common
   }
        }
 
-       public static void PDEdit(GetPayDocList_Result pd_row)
+       public static void PDEdit(int PayDocId, int DocType)
        {
-           if (pd_row == null)
-           {
-               return;
-           }
-
            using (var db = new BaseEntities())
            {
                var trans = db.Database.BeginTransaction();
                try
                {
-                   var pd = db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault();
+                   var pd = db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK, NOWAIT) where PayDocId = {0}", PayDocId).FirstOrDefault();
                    if (pd == null)
                    {
                        MessageBox.Show(Resources.not_find_wb);
@@ -171,7 +166,7 @@ namespace SP_Sklad.Common
 
                    if (pd.Checked == 0)
                    {
-                       using (var pd_form = new frmPayDoc(pd_row.DocType, pd_row.PayDocId))
+                       using (var pd_form = new frmPayDoc(DocType, PayDocId))
                        {
                            pd_form.ShowDialog();
                        }

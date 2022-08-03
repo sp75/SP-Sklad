@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7AA40A6E-8402-426B-8468-DE4316596947}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>SP.Stuffing</RootNamespace>
-    <AssemblyName>SP.Stuffing</AssemblyName>
+    <RootNamespace>SP.IntermediateWeighing</RootNamespace>
+    <AssemblyName>IntermediateWeighing</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -40,6 +41,7 @@
     <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -65,16 +67,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ComPortHelper.cs" />
+    <Compile Include="DBHelper.cs" />
+    <Compile Include="frmIntermediateWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmIntermediateWeighingDet.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmIntermediateWeighingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIntermediateWeighingList.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWeightEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWeightEdit.Designer.cs">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="make_det.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmIntermediateWeighingDet.resx">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIntermediateWeighingList.resx">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWeightEdit.resx">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -85,8 +117,10 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SP.Base.Models.IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP.Base.Models.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP.Base.Models.WBListMake_Result.datasource" />
     <None Include="Properties\Settings.settings">

@@ -62,5 +62,11 @@ namespace SP.Base.Models
 
         [Column(TypeName = "numeric")]
         public decimal? Total { get; set; }
+
+        [StringLength(255)]
+        public string VizokName { get; set; }
+
+        [Column(TypeName = "numeric")]
+        public decimal? VizokWeight { get; set; }
     }
 }

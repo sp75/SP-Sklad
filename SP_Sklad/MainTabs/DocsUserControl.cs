@@ -323,7 +323,8 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        DocEdit.PDEdit(PayDocGridView.GetFocusedRow() as GetPayDocList_Result);
+                        var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                        DocEdit.PDEdit(pd_row.PayDocId, pd_row.DocType);
                         break;
                     case 5:
                         var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;

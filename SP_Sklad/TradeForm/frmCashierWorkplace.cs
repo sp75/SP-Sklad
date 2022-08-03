@@ -64,7 +64,7 @@ namespace SP_Sklad.WBForm
                         CreatedAt = new_shift.created_at,
                         UserId = DBHelper.CurrentUser.UserId,
                         OpenedAt = WaitingOpeningShift(new_shift.id),
-                       CashId =  
+                        CashId = user_settings.CashDesksDefaultRMK
                     });
 
                     db.SaveChanges();
@@ -181,8 +181,10 @@ namespace SP_Sklad.WBForm
         {
             using (var db = new BaseEntities())
             {
-                var active_shift = db.Shift.OrderByDescending(o => o.CreatedAt).FirstOrDefault(w => w.UserId == DBHelper.CurrentUser.UserId);
-                simpleButton5.Enabled = (active_shift != null && !active_shift.ClosedAt.HasValue) || string.IsNullOrEmpty(_access_token);
+                var cashier_shift = new CheckboxClient(_access_token).GetCashierShift();
+
+                //        var active_shift = db.Shift.OrderByDescending(o => o.CreatedAt).FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK);
+                simpleButton5.Enabled = /*(active_shift != null && !active_shift.ClosedAt.HasValue)*/(!cashier_shift.is_error && cashier_shift.status == ShiftStatus.OPENED) || string.IsNullOrEmpty(_access_token);
             }
         }
 

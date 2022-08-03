@@ -411,7 +411,22 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.Designer.cs">
+      <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetTradePayDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetTradeWayBillList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\LoginHistory.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_LoginHistory.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TradeForm\frmCashboxSettings.cs">
@@ -1822,6 +1837,9 @@
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
+      <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmCashboxSettings.resx">
       <DependentUpon>frmCashboxSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -2136,6 +2154,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradePayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradeWayBillList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
@@ -2374,6 +2393,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

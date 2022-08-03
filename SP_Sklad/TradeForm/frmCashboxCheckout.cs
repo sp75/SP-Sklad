@@ -212,9 +212,9 @@ namespace SP_Sklad.WBForm
             }
 
             var receipt = CreateReceiptSell(payments);
-            if(receipt.error != null)
+            if (receipt.is_error)
             {
-                throw new Exception(receipt.error.message);
+                //                new frmMessageBox("Помилка", receipt.error.message).ShowDialog();
             }
 
             if (PutCashSumEdit.Value > 0)

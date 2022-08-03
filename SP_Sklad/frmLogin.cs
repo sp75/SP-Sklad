@@ -15,12 +15,17 @@ using System.Globalization;
 using SP_Sklad.Common;
 using System.Security.Principal;
 using DevExpress.LookAndFeel;
+using SP_Sklad.IntermediateWeighingInterface;
 
 namespace SP_Sklad
 {
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
     {
         private bool is_registered { get; set; }
+        private int user_id => (int)UserIDEdit.EditValue;
+        private string ip_address => UniqueID.GetPhysicalIPAdress();
+        private string user_name => string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
+
         public frmLogin()
         {
             InitializeComponent();
@@ -70,9 +75,6 @@ namespace SP_Sklad
                 kay_id = "123456789";
             }
             //            var ddd = DeCoding(Coding("77419"));  //test
-
-            var ip_address = UniqueID.GetPhysicalIPAdress();
-            var user_name = string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
 
             var identity = WindowsIdentity.GetCurrent();
             if (SystemInformation.TerminalServerSession && identity.User.IsAccountSid())
@@ -229,6 +231,8 @@ namespace SP_Sklad
             return rezult;
         }
 
+       
+
         private void OkButton_Click(object sender, EventArgs e)
         {
             if (!is_registered)
@@ -245,11 +249,30 @@ namespace SP_Sklad
                 {
                     user.LastLogin = DBHelper.ServerDateTime();
                     user.IsOnline = true;
+
+                    db.LoginHistory.Add(new LoginHistory
+                    {
+                        IpAddress = ip_address,
+                        MachineName = Environment.MachineName,
+                        UserName = user_name,
+                        UserId = user_id,
+                        LoginDate = DBHelper.ServerDateTime()
+                    });
+
                     db.SaveChanges();
 
                     this.Hide();
-                    mainForm.main_form = new mainForm((int)UserIDEdit.EditValue);
-                    mainForm.main_form.Show();
+
+                    if (user.WorkSpace == "intermediate_weighing_interface")
+                    {
+                        frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
+                        frmMainIntermediateWeighing.main_form.Show();
+                    }
+                    else
+                    {
+                        mainForm.main_form = new mainForm(user_id);
+                        mainForm.main_form.Show();
+                    }
                 }
                 else
                 {

@@ -330,7 +330,9 @@ namespace SP_Sklad.MainTabs
         private ReceiptsSellRespond CreateReceiptSell(bool return_receipt)
         {
             List<Payment> payments = new List<Payment>();
-            var total = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+       //     var total = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+            var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
+            var total = wb_det.Sum(s => s.TotalInCurrency);
 
             payments.Add(new Payment
             {
@@ -338,8 +340,6 @@ namespace SP_Sklad.MainTabs
                 value = Convert.ToInt32(total * 100),
                 label = "Готівка"
             });
-
-            var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
 
             var req = new ReceiptSellPayload
             {
@@ -367,7 +367,8 @@ namespace SP_Sklad.MainTabs
               //  barcode = _wb.WbillId.ToString()
             };
 
-            var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+            var cashier_id = _db.Kagent.FirstOrDefault(w => w.KaId == _wb.PersonId).UserId;
+            var user_settings = new UserSettingsRepository(/*DBHelper.CurrentUser.UserId*/cashier_id.Value, _db);
             var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
             string _access_token = login.access_token;

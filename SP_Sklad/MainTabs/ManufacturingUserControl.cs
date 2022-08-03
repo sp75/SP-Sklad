@@ -1353,7 +1353,7 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                switch (xtraTabControl5.SelectedTabPageIndex)
+                switch (xtraTabControl6.SelectedTabPageIndex)
                 {
                     case 0:
                         var list = DB.SkladBase().v_IntermediateWeighingDet.AsNoTracking().Where(w => w.IntermediateWeighingId == intermediate_weighing_focused_row.Id).OrderBy(o => o.CreatedDate).ToList();

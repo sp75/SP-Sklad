@@ -36,6 +36,7 @@ namespace SP.Base.Models
         public Guid? SessionId { get; set; }
 
         public int WbillId { get; set; }
+        public decimal? Amount { get; set; }
 
         public virtual Kagent Kagent { get; set; }
 

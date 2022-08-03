@@ -344,11 +344,17 @@ namespace SP_Sklad.WBForm
                 return true;
             }
 
-            /*     if (keyData == Keys.F3)
-                 {
-                     PrintDocBtn.PerformClick();
-                     return true;
-                 }*/
+            if (keyData == (Keys.Control | Keys.F12))
+            {
+                simpleButton21.PerformClick();
+                return true;
+            }
+
+            if (keyData == Keys.F3)
+            {
+                simpleButton22.PerformClick();
+                return true;
+            }
 
             if (keyData == Keys.F5)
             {
@@ -1017,7 +1023,7 @@ namespace SP_Sklad.WBForm
 
             using (var frm = new frmCustomInfo())
             {
-                frm.Text = "Інформація про активну зміну користувача (касира)";
+                frm.Text = $"Інформація про активну зміну касира: {DBHelper.CurrentUser.Name}";
                 if (new_receipts.error == null)
                 {
                     frm.AddItem("Зміна відкрита", new_receipts.opened_at);
@@ -1029,7 +1035,9 @@ namespace SP_Sklad.WBForm
 
                 var money = _db.MoneyOnDate(DateTime.Now);
                 var cur_user_cash = money.Where(w => w.CashId == user_settings.CashDesksDefaultRMK).Sum(s => s.SaldoDef);
+                var cur_user_acc = money.Where(w => w.AccId == user_settings.AccountDefaultRMK).Sum(s => s.SaldoDef);
                 frm.AddItem($"Залишок в касі ({CashDesksName})", cur_user_cash);
+                frm.AddItem($"Залишок на рахунку ({new BaseEntities().KAgentAccount.FirstOrDefault(w=> w.AccId == user_settings.AccountDefaultRMK).AccNum})", cur_user_acc);
 
                 frm.ShowDialog();
             }

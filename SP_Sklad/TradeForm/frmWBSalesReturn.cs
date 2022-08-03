@@ -202,6 +202,11 @@ namespace SP_Sklad.WBForm
 
             is_new_record = false;
 
+            if (MessageBox.Show("Розрукувати документ ?", "Накладна на повернення №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                PrintDoc.Show(wb.Id, wb.WType, _db);
+            }
+
             Close();
         }
 
@@ -407,7 +412,7 @@ namespace SP_Sklad.WBForm
         {
             if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
             {
-                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                var m_recult = MessageBox.Show(Resources.save_wb, "Накладна на повернення №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
                 if (m_recult == DialogResult.Yes)
                 {

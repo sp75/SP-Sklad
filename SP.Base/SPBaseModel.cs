@@ -154,6 +154,7 @@ namespace SP.Base.Models
         public virtual DbSet<v_EnterpriseList> v_EnterpriseList { get; set; }
         public virtual DbSet<v_ErrorLog> v_ErrorLog { get; set; }
         public virtual DbSet<v_GetDocsTree> v_GetDocsTree { get; set; }
+        public virtual DbSet<v_IntermediateWeighing> v_IntermediateWeighing { get; set; }
         public virtual DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
         public virtual DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
         public virtual DbSet<v_KAgentAdjustment> v_KAgentAdjustment { get; set; }
@@ -181,7 +182,8 @@ namespace SP.Base.Models
         public virtual DbSet<REP_2_Result> REP_2_Result { get; set; }
         public virtual DbSet<Tara> Tara { get; set; }
         public virtual DbSet<TaraGroup> TaraGroup { get; set; }
-
+        public virtual DbSet<UserAccessMatGroup> UserAccessMatGroup { get; set; }
+        public virtual DbSet<LoginHistory> LoginHistory { get; set; }
 
 
 
@@ -2423,6 +2425,14 @@ namespace SP.Base.Models
                 .Property(e => e.Amount)
                 .HasPrecision(15, 4);
 
+            modelBuilder.Entity<WayBillMake>()
+                .Property(e => e.AmountByRecipe)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WayBillMake>()
+                .Property(e => e.ShippedAmount)
+                .HasPrecision(15, 4);
+
             modelBuilder.Entity<WayBillSvc>()
                 .Property(e => e.Price)
                 .HasPrecision(15, 4);
@@ -2561,6 +2571,10 @@ namespace SP.Base.Models
                 .Property(e => e.StartSaldo)
                 .HasPrecision(15, 8);
 
+            modelBuilder.Entity<v_IntermediateWeighing>()
+                 .Property(e => e.Amount)
+                 .HasPrecision(15, 4);
+
             modelBuilder.Entity<v_IntermediateWeighingDet>()
                 .Property(e => e.Amount)
                 .HasPrecision(15, 4);
@@ -2571,6 +2585,10 @@ namespace SP.Base.Models
 
             modelBuilder.Entity<v_IntermediateWeighingDet>()
                 .Property(e => e.Total)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_IntermediateWeighingDet>()
+                .Property(e => e.VizokWeight)
                 .HasPrecision(15, 4);
 
             modelBuilder.Entity<v_KAgentAccount>()

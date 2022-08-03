@@ -166,6 +166,7 @@ namespace CheckboxIntegration.Models
         public object currency_exchange { get; set; }
         public Shift shift { get; set; }
         public object control_number { get; set; }
+        public bool is_error => error != null;
 
         public void WaitingReceiptFiscalCode(string access_token)
         {

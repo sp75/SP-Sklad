@@ -586,6 +586,17 @@
           <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="LoginHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginDate" Type="datetime" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="MatChange">
           <Key>
             <PropertyRef Name="MatId" />
@@ -1135,6 +1146,7 @@
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UserId" Type="int" />
+          <Property Name="CashId" Type="int" />
         </EntityType>
         <EntityType Name="SvcGroup">
           <Key>
@@ -1329,6 +1341,7 @@
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="InternalEditor" Type="bit" />
           <Property Name="IsWorking" Type="bit" Nullable="false" />
+          <Property Name="WorkSpace" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="UserSettings">
           <Key>
@@ -1997,7 +2010,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -2047,6 +2060,21 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentSaldo' does not have a primary
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="date" />
           <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_LoginHistory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_LoginHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LoginName" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginDate" Type="datetime" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4782,7 +4810,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <CollectionType>
               <RowType>
                 <Property Name="OnDate" Type="datetime" Nullable="false" />
-                <Property Name="WhSumm" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="WhSumm" Type="numeric" Precision="38" Scale="6" />
                 <Property Name="Debitors" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="Creditors" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="Cash" Type="numeric" Precision="38" Scale="2" />
@@ -4901,9 +4929,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <ReturnType>
             <CollectionType>
               <RowType>
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="OnDate" Type="datetime" />
-                <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="8" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -4916,7 +4944,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="Num" Type="int" Nullable="false" />
                 <Property Name="PosId" Type="int" Nullable="false" />
                 <Property Name="MatId" Type="int" Nullable="false" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="OnDate" Type="datetime" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -5020,11 +5048,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="GrpId" Type="int" />
                 <Property Name="WId" Type="int" />
                 <Property Name="Num" Type="int" />
-                <Property Name="MinReserv" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="MinReserv" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="CId" Type="int" />
                 <Property Name="DemandCat" Type="int" />
-                <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
-                <Property Name="MSize" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Weight" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="MSize" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="Producer" Type="nvarchar" MaxLength="255" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="MType" Type="int" Nullable="false" />
@@ -5430,6 +5458,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </RowType>
             </CollectionType>
           </ReturnType>
+        </Function>
+        <Function Name="GetTradePayDocList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="doc_type" Type="varchar" Mode="In" />
+          <Parameter Name="from_date" Type="datetime" Mode="In" />
+          <Parameter Name="to_date" Type="datetime" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="checked" Type="int" Mode="In" />
+          <Parameter Name="pay_type" Type="int" Mode="In" />
+          <Parameter Name="person_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetTradeWayBillList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="from_date" Type="datetime" Mode="In" />
@@ -5854,7 +5891,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CashId" Type="int" />
                 <Property Name="OperId" Type="uniqueidentifier" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
@@ -5945,7 +5982,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatId" Type="int" Nullable="false" />
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
                 <Property Name="ToDate" Type="datetime" />
                 <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
@@ -6210,12 +6247,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="KaId" Type="int" />
-                <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+                <Property Name="KaName" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
                 <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
-                <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+                <Property Name="PersonName" Type="nvarchar" MaxLength="64" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6264,11 +6301,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -6813,6 +6850,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="KontragentGroup" EntityType="Self.KontragentGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatChange" EntityType="Self.MatChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialMeasures" EntityType="Self.MaterialMeasures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
@@ -7231,6 +7269,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentSaldo].[OnDate] AS [OnDate], 
     [v_KAgentSaldo].[Saldo] AS [Saldo]
     FROM [dbo].[v_KAgentSaldo] AS [v_KAgentSaldo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_LoginHistory" EntityType="Self.v_LoginHistory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_LoginHistory].[Id] AS [Id], 
+    [v_LoginHistory].[IpAddress] AS [IpAddress], 
+    [v_LoginHistory].[LoginDate] AS [LoginDate], 
+    [v_LoginHistory].[MachineName] AS [MachineName], 
+    [v_LoginHistory].[UserName] AS [UserName], 
+    [v_LoginHistory].[LoginName] AS [LoginName], 
+    [v_LoginHistory].[FullName] AS [FullName]
+    FROM [dbo].[v_LoginHistory] AS [v_LoginHistory]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRecipe" EntityType="Self.v_MatRecipe" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -9783,6 +9832,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Shift" EntityType="BaseModel.Shift" />
+          <FunctionImport Name="GetTradePayDocList" ReturnType="Collection(BaseModel.GetTradePayDocList_Result)">
+            <Parameter Name="doc_type" Mode="In" Type="String" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="checked" Mode="In" Type="Int32" />
+            <Parameter Name="pay_type" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="LoginHistory" EntityType="BaseModel.LoginHistory" />
+          <EntitySet Name="v_LoginHistory" EntityType="BaseModel.v_LoginHistory" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -13503,6 +13563,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
           <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="Users" ToRole="UserAccessCashDesks" />
           <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
+          <Property Name="WorkSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Kagent_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
@@ -15339,7 +15400,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -16332,12 +16393,92 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="OpenedAt" Type="DateTime" Precision="3" />
-          <Property Name="ClosedAt" Type="DateTime" Precision="3" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Id" Nullable="false" Type="Guid" />
+          <Property Name="OpenedAt" Precision="3" Type="DateTime" />
+          <Property Name="ClosedAt" Precision="3" Type="DateTime" />
+          <Property Name="CreatedAt" Precision="3" Type="DateTime" />
+          <Property Name="UpdatedAt" Precision="3" Type="DateTime" />
           <Property Name="UserId" Type="Int32" />
+          <Property Name="CashId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="GetTradePayDocList_Result">
+          <Property Type="Int64" Name="Num" Nullable="true" />
+          <Property Type="Int32" Name="PayDocId" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="KaId" Nullable="true" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="PTypeId" Nullable="false" />
+          <Property Type="Int32" Name="CurrId" Nullable="false" />
+          <Property Type="Int32" Name="Deleted" Nullable="false" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="Int32" Name="WithNDS" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="MPersonId" Nullable="true" />
+          <Property Type="Int32" Name="CTypeId" Nullable="false" />
+          <Property Type="Int32" Name="AccId" Nullable="true" />
+          <Property Type="Int32" Name="CashId" Nullable="true" />
+          <Property Type="Guid" Name="OperId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="Schet" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="UpdatedBy" Nullable="true" />
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="ExDocType" Nullable="true" />
+          <Property Type="Int32" Name="EntId" Nullable="true" />
+          <Property Type="DateTime" Name="ReportingDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="ActualSummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Guid" Name="ReceiptId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="KaFullName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="KaPhone" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PersonName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="District" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="PostIndex" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Fax" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="www" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="KaType" Nullable="true" />
+          <Property Type="String" Name="ChargeName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="BankName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="EntName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="KaGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="SourceType" Nullable="true" MaxLength="128" />
+        </ComplexType>
+        <EntityType Name="LoginHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_LoginHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="LoginName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDate" Type="DateTime" Precision="3" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -18536,6 +18677,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="BaseModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="WorkSpace" ColumnName="WorkSpace" />
                 <ScalarProperty Name="IsWorking" ColumnName="IsWorking" />
                 <ScalarProperty Name="InternalEditor" ColumnName="InternalEditor" />
                 <ScalarProperty Name="GroupId" ColumnName="GroupId" />
@@ -20664,11 +20806,96 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Shift">
             <EntityTypeMapping TypeName="BaseModel.Shift">
               <MappingFragment StoreEntitySet="Shift">
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="ClosedAt" ColumnName="ClosedAt" />
                 <ScalarProperty Name="OpenedAt" ColumnName="OpenedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetTradePayDocList" FunctionName="BaseModel.Store.GetTradePayDocList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetTradePayDocList_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="WithNDS" ColumnName="WithNDS" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="MPersonId" ColumnName="MPersonId" />
+                <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Schet" ColumnName="Schet" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExDocType" ColumnName="ExDocType" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
+                <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
+                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="KaType" ColumnName="KaType" />
+                <ScalarProperty Name="ChargeName" ColumnName="ChargeName" />
+                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
+                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="KaGroupName" ColumnName="KaGroupName" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="SourceType" ColumnName="SourceType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="LoginHistory">
+            <EntityTypeMapping TypeName="BaseModel.LoginHistory">
+              <MappingFragment StoreEntitySet="LoginHistory">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_LoginHistory">
+            <EntityTypeMapping TypeName="BaseModel.v_LoginHistory">
+              <MappingFragment StoreEntitySet="v_LoginHistory">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

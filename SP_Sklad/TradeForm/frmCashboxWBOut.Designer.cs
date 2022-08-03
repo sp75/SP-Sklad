@@ -226,7 +226,7 @@
             this.WhListBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.WhListBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.WhListBtn.Appearance.Options.UseFont = true;
-            this.WhListBtn.Location = new System.Drawing.Point(595, 5);
+            this.WhListBtn.Location = new System.Drawing.Point(595, 6);
             this.WhListBtn.Name = "WhListBtn";
             this.WhListBtn.Size = new System.Drawing.Size(108, 49);
             this.WhListBtn.TabIndex = 23;
@@ -272,7 +272,7 @@
             this.simpleButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton23.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton23.Appearance.Options.UseFont = true;
-            this.simpleButton23.Location = new System.Drawing.Point(1030, 5);
+            this.simpleButton23.Location = new System.Drawing.Point(1030, 6);
             this.simpleButton23.Name = "simpleButton23";
             this.simpleButton23.Size = new System.Drawing.Size(91, 49);
             this.simpleButton23.TabIndex = 32;
@@ -284,11 +284,11 @@
             this.simpleButton22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.simpleButton22.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton22.Appearance.Options.UseFont = true;
-            this.simpleButton22.Location = new System.Drawing.Point(921, 5);
+            this.simpleButton22.Location = new System.Drawing.Point(921, 6);
             this.simpleButton22.Name = "simpleButton22";
             this.simpleButton22.Size = new System.Drawing.Size(91, 49);
             this.simpleButton22.TabIndex = 31;
-            this.simpleButton22.Text = "Відкладені \r\nчеки";
+            this.simpleButton22.Text = "Відкладені \r\nчеки (F3)";
             this.simpleButton22.Click += new System.EventHandler(this.simpleButton22_Click);
             // 
             // simpleButton21
@@ -382,7 +382,7 @@
             this.OkButton.Appearance.ForeColor = System.Drawing.Color.DarkGreen;
             this.OkButton.Appearance.Options.UseFont = true;
             this.OkButton.Appearance.Options.UseForeColor = true;
-            this.OkButton.Location = new System.Drawing.Point(1188, 5);
+            this.OkButton.Location = new System.Drawing.Point(1188, 6);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(135, 49);
             this.OkButton.TabIndex = 0;
@@ -468,7 +468,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(1117, 319);
+            this.panel8.Size = new System.Drawing.Size(1117, 312);
             this.panel8.TabIndex = 24;
             // 
             // WaybillDetOutGridControl
@@ -484,7 +484,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1107, 309);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1107, 302);
             this.WaybillDetOutGridControl.TabIndex = 23;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -691,9 +691,9 @@
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 319);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 312);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1117, 5);
+            this.splitterControl1.Size = new System.Drawing.Size(1117, 12);
             this.splitterControl1.TabIndex = 37;
             this.splitterControl1.TabStop = false;
             this.splitterControl1.Visible = false;
@@ -907,7 +907,7 @@
             this.simpleButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton12.Appearance.Options.UseFont = true;
-            this.simpleButton12.Location = new System.Drawing.Point(237, 219);
+            this.simpleButton12.Location = new System.Drawing.Point(237, 218);
             this.simpleButton12.Name = "simpleButton12";
             this.simpleButton12.Size = new System.Drawing.Size(71, 65);
             this.simpleButton12.TabIndex = 38;
@@ -933,7 +933,7 @@
             this.simpleButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton14.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton14.Appearance.Options.UseFont = true;
-            this.simpleButton14.Location = new System.Drawing.Point(6, 219);
+            this.simpleButton14.Location = new System.Drawing.Point(6, 218);
             this.simpleButton14.Name = "simpleButton14";
             this.simpleButton14.Size = new System.Drawing.Size(71, 65);
             this.simpleButton14.TabIndex = 36;
@@ -972,7 +972,7 @@
             this.simpleButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton17.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton17.Appearance.Options.UseFont = true;
-            this.simpleButton17.Location = new System.Drawing.Point(83, 147);
+            this.simpleButton17.Location = new System.Drawing.Point(83, 148);
             this.simpleButton17.Name = "simpleButton17";
             this.simpleButton17.Size = new System.Drawing.Size(71, 65);
             this.simpleButton17.TabIndex = 33;
@@ -1023,7 +1023,7 @@
             this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton9.Appearance.Options.UseFont = true;
-            this.simpleButton9.Location = new System.Drawing.Point(83, 76);
+            this.simpleButton9.Location = new System.Drawing.Point(83, 77);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(71, 65);
             this.simpleButton9.TabIndex = 29;

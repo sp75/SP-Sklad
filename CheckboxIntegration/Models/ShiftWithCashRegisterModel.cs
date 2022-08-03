@@ -23,10 +23,6 @@ namespace CheckboxIntegration.Models
         public CashRegisterModel cash_register { get; set; }
         public ErrorMessage error { get; set; }
 
-        public bool IsError()
-        {
-            return error != null;
-        }
-
+        public bool is_error => error != null;
     }
 }

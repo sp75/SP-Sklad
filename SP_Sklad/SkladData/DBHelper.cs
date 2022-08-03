@@ -14,6 +14,7 @@ namespace SP_Sklad.SkladData
     public static class DBHelper
     {
         private static List<PersonList> _persons;
+        private static List<PersonList> _cashiers;
         private static List<PayType> _pay_type;
         private static List<CashDesks> _cash_desks;
         private static List<ChargeType> _charge_type;
@@ -183,6 +184,22 @@ namespace SP_Sklad.SkladData
                     }).OrderBy(o => o.Name).ToList();
                 }
                 return _persons;
+            }
+        }
+
+        public static List<PersonList> Cashiers
+        {
+            get
+            {
+                if (_cashiers == null)
+                {
+                    _cashiers = Kagents.Where(w => w.JobType == 4).Select(s => new PersonList
+                    {
+                        KaId = s.KaId,
+                        Name = s.Name
+                    }).OrderBy(o => o.Name).ToList();
+                }
+                return _cashiers;
             }
         }
 

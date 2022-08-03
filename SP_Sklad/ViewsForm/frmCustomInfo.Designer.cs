@@ -32,9 +32,9 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.KontragentGrid = new DevExpress.XtraGrid.GridControl();
             this.KontragentGroupGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KontragentGrid)).BeginInit();
@@ -46,16 +46,16 @@
             // 
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 309);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 365);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(633, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(1103, 52);
             this.BottomPanel.TabIndex = 19;
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(528, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(998, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 0;
@@ -69,7 +69,7 @@
             this.KontragentGrid.Name = "KontragentGrid";
             this.KontragentGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.KontragentGrid.Size = new System.Drawing.Size(633, 309);
+            this.KontragentGrid.Size = new System.Drawing.Size(1103, 365);
             this.KontragentGrid.TabIndex = 20;
             this.KontragentGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KontragentGroupGridView});
@@ -89,6 +89,24 @@
             this.KontragentGroupGridView.OptionsBehavior.ReadOnly = true;
             this.KontragentGroupGridView.OptionsView.ShowGroupPanel = false;
             // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "Назва";
+            this.gridColumn30.FieldName = "Title";
+            this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.Visible = true;
+            this.gridColumn30.VisibleIndex = 0;
+            this.gridColumn30.Width = 732;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Значення";
+            this.gridColumn1.FieldName = "Value";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 252;
+            // 
             // repositoryItemImageComboBox1
             // 
             this.repositoryItemImageComboBox1.AutoHeight = false;
@@ -101,29 +119,11 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 1)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             // 
-            // gridColumn30
-            // 
-            this.gridColumn30.Caption = "Назва";
-            this.gridColumn30.FieldName = "Title";
-            this.gridColumn30.Name = "gridColumn30";
-            this.gridColumn30.Visible = true;
-            this.gridColumn30.VisibleIndex = 0;
-            this.gridColumn30.Width = 369;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Значення";
-            this.gridColumn1.FieldName = "Value";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 319;
-            // 
             // frmCustomInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 361);
+            this.ClientSize = new System.Drawing.Size(1103, 417);
             this.Controls.Add(this.KontragentGrid);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmCustomInfo";

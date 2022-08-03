@@ -22,6 +22,11 @@ namespace SP.Base.Models
         [Column(TypeName = "numeric")]
         public decimal Amount { get; set; }
 
+        public decimal? AmountByRecipe { get; set; }
+        public int? RecipeCount { get; set; }
+        public DateTime? EndProductionDate { get; set; }
+        public decimal? ShippedAmount { get; set; }
+
         public virtual Kagent Kagent { get; set; }
 
         public virtual MatRecipe MatRecipe { get; set; }

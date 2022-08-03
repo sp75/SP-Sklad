@@ -20,5 +20,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<int> UserId { get; set; }
+        public Nullable<int> CashId { get; set; }
     }
 }

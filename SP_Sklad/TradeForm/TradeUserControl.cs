@@ -82,16 +82,34 @@ namespace SP_Sklad.MainTabs
                 _access_token = login.access_token;
 
                 wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
+                PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
+
+                CashiersComboBox.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.Cashiers.Select(s => new { s.KaId, s.Name }));
+                PDCashiersComboBox.Properties.DataSource = CashiersComboBox.Properties.DataSource;
 
                 if (!user_settings.DefaultBuyer.HasValue)
                 {
                     wbKagentList.EditValue = 0;
+                    CashiersComboBox.EditValue = 0;
+                    PDCashiersComboBox.EditValue = 0;
+                    PDKagentList.EditValue = 0;
                 }
                 else
                 {
                     wbKagentList.EditValue = user_settings.DefaultBuyer;
                     wbKagentList.Enabled = false;
+
+                    CashiersComboBox.EditValue = DBHelper.CurrentUser.KaId;
+                    CashiersComboBox.Enabled = false;
+
+                    PDKagentList.EditValue = user_settings.DefaultBuyer;
+                    PDKagentList.Enabled = false;
+
+                    PDCashiersComboBox.EditValue = DBHelper.CurrentUser.KaId;
+                    PDCashiersComboBox.Enabled = false;
                 }
+
+              
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -101,17 +119,6 @@ namespace SP_Sklad.MainTabs
 
                 PDStartDate.EditValue = DateTime.Now.Date;
                 PDEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                if (!user_settings.DefaultBuyer.HasValue)
-                {
-                    PDKagentList.EditValue = 0;
-                }
-                else
-                {
-                    PDKagentList.EditValue = user_settings.DefaultBuyer;
-                    PDKagentList.Enabled = false;
-                }
 
                 PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 PDSatusList.EditValue = -1;
@@ -145,7 +152,7 @@ namespace SP_Sklad.MainTabs
 
         void GetTradeWayBillList(string wtyp)
         {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
+            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null|| CashiersComboBox.EditValue == null)
             {
                 return;
             }
@@ -154,13 +161,13 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
-            GetTradeWayBillListBS.DataSource = _db.GetTradeWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance,  DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
+            GetTradeWayBillListBS.DataSource = _db.GetTradeWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, (int)CashiersComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
         void GetPayDocList(string doc_typ)
         {
-            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
+            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null || PDCashiersComboBox.EditValue == null)
             {
                 return;
             }
@@ -169,7 +176,7 @@ namespace SP_Sklad.MainTabs
             var end_date = PDEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PDEndDate.DateTime;
 
             int top_row = PayDocGridView.TopRowIndex;
-            GetPayDocListBS.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1, DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
+            GetPayDocListBS.DataSource = _db.GetTradePayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1, (int)PDCashiersComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList();
             PayDocGridView.TopRowIndex = top_row;
         }
 
@@ -278,7 +285,8 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        DocEdit.PDEdit(PayDocGridView.GetFocusedRow() as GetPayDocList_Result);
+                        var pd_row = PayDocGridView.GetFocusedRow() as GetTradePayDocList_Result;
+                        DocEdit.PDEdit(pd_row.PayDocId, pd_row.DocType);
                         break;
                 }
             }
@@ -300,7 +308,7 @@ namespace SP_Sklad.MainTabs
 
             int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
             var dr = WbGridView.GetFocusedRow() as GetTradeWayBillList_Result;
-            var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+            var pd_row = PayDocGridView.GetFocusedRow() as GetTradePayDocList_Result;
 
             //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
             using (var db = new BaseEntities())
@@ -454,7 +462,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                        var pd_row = PayDocGridView.GetFocusedRow() as GetTradePayDocList_Result;
                         var pd = _db.PayDoc.Find(pd_row.PayDocId);
                         if (pd != null)
                         {
@@ -493,7 +501,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                    var pd = PayDocGridView.GetFocusedRow() as GetTradePayDocList_Result;
                     PrintDoc.Show(pd.Id, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
                     break;
 
@@ -551,7 +559,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                    var pd = PayDocGridView.GetFocusedRow() as GetTradePayDocList_Result;
                     var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                     int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
@@ -683,7 +691,7 @@ namespace SP_Sklad.MainTabs
 
         private void PayDocGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            var dr = e.Row as GetPayDocList_Result;
+            var dr = e.Row as GetTradePayDocList_Result;
             PayDocListInfoBS.DataSource = dr;
 
             if (dr != null)
