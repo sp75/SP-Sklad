@@ -87,20 +87,19 @@ namespace SP_Sklad.MainTabs
                 CashiersComboBox.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.Cashiers.Select(s => new { s.KaId, s.Name }));
                 PDCashiersComboBox.Properties.DataSource = CashiersComboBox.Properties.DataSource;
 
-                if (!user_settings.DefaultBuyer.HasValue)
-                {
-                    wbKagentList.EditValue = 0;
-                    CashiersComboBox.EditValue = 0;
-                    PDCashiersComboBox.EditValue = 0;
-                    PDKagentList.EditValue = 0;
-                }
-                else
+                if (user_settings.DefaultBuyer.HasValue)
                 {
                     wbKagentList.EditValue = user_settings.DefaultBuyer;
                     CashiersComboBox.EditValue = DBHelper.CurrentUser.KaId;
                     PDKagentList.EditValue = user_settings.DefaultBuyer;
                     PDCashiersComboBox.EditValue = DBHelper.CurrentUser.KaId;
-
+                }
+                else
+                {
+                    wbKagentList.EditValue = 0;
+                    CashiersComboBox.EditValue = 0;
+                    PDCashiersComboBox.EditValue = 0;
+                    PDKagentList.EditValue = 0;
                 }
                 wbKagentList.Enabled = DBHelper.is_main_cacher;
                 CashiersComboBox.Enabled = DBHelper.is_main_cacher;
