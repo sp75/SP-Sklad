@@ -31,6 +31,21 @@ namespace SP_Sklad.SkladData
         private static List<Packaging> _packaging;
         private static List<WhList> _wh_list;
         private static Currency _national_currency;
+        private static List<UserRoles> _user_roles;
+
+
+        public static List<UserRoles> UserRolesList
+        {
+            get
+            {
+                if (_user_roles == null)
+                {
+                    _user_roles = new BaseEntities().UserRoles.Where(w => w.UserId == mainForm.user_id).ToList();
+                }
+                return _user_roles;
+            }
+        }
+        public static bool is_main_cacher => UserRolesList.Any(a => a.RoleId == 1 || a.RoleId == 2);
 
         public static List<Countries> CountersList
         {

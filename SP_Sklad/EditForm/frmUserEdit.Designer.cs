@@ -139,6 +139,13 @@
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.RoleGridControl = new DevExpress.XtraGrid.GridControl();
+            this.RoleGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.PassCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
@@ -213,6 +220,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
+            this.xtraTabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).BeginInit();
@@ -294,6 +306,7 @@
             this.ImageList.Images.SetKeyName(15, "Каси.bmp");
             this.ImageList.Images.SetKeyName(16, "Склад+Торговля.bmp");
             this.ImageList.Images.SetKeyName(17, "iconfinder_folder_edit_36067.png");
+            this.ImageList.Images.SetKeyName(18, "grant.png");
             // 
             // barButtonItem1
             // 
@@ -618,7 +631,8 @@
             this.xtraTabPage3,
             this.xtraTabPage5,
             this.xtraTabPage7,
-            this.xtraTabPage9});
+            this.xtraTabPage9,
+            this.xtraTabPage10});
             // 
             // xtraTabPage2
             // 
@@ -1253,6 +1267,78 @@
             this.repositoryItemCheckEdit3.ValueChecked = 1;
             this.repositoryItemCheckEdit3.ValueUnchecked = 0;
             // 
+            // xtraTabPage10
+            // 
+            this.xtraTabPage10.Controls.Add(this.RoleGridControl);
+            this.xtraTabPage10.Name = "xtraTabPage10";
+            this.xtraTabPage10.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage10.Text = "Ролі";
+            // 
+            // RoleGridControl
+            // 
+            this.RoleGridControl.DataSource = this.UserAccessMatGroupBS;
+            this.RoleGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RoleGridControl.Location = new System.Drawing.Point(0, 0);
+            this.RoleGridControl.MainView = this.RoleGridView;
+            this.RoleGridControl.MenuManager = this.barManager1;
+            this.RoleGridControl.Name = "RoleGridControl";
+            this.RoleGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox4,
+            this.repositoryItemCheckEdit4});
+            this.RoleGridControl.Size = new System.Drawing.Size(635, 358);
+            this.RoleGridControl.TabIndex = 11;
+            this.RoleGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.RoleGridView});
+            // 
+            // RoleGridView
+            // 
+            this.RoleGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn9,
+            this.gridColumn10});
+            this.RoleGridView.GridControl = this.RoleGridControl;
+            this.RoleGridView.Name = "RoleGridView";
+            this.RoleGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.RoleGridView.OptionsBehavior.Editable = false;
+            this.RoleGridView.OptionsView.ShowGroupPanel = false;
+            this.RoleGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.RoleGridView_RowCellClick);
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Доступ";
+            this.gridColumn9.ColumnEdit = this.repositoryItemImageComboBox4;
+            this.gridColumn9.FieldName = "Allow";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
+            this.gridColumn9.Width = 73;
+            // 
+            // repositoryItemImageComboBox4
+            // 
+            this.repositoryItemImageComboBox4.AutoHeight = false;
+            this.repositoryItemImageComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox4.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 4)});
+            this.repositoryItemImageComboBox4.Name = "repositoryItemImageComboBox4";
+            this.repositoryItemImageComboBox4.SmallImages = this.ImageList;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Група товарів";
+            this.gridColumn10.FieldName = "Name";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.Width = 463;
+            // 
+            // repositoryItemCheckEdit4
+            // 
+            this.repositoryItemCheckEdit4.AutoHeight = false;
+            this.repositoryItemCheckEdit4.Name = "repositoryItemCheckEdit4";
+            this.repositoryItemCheckEdit4.ValueChecked = 1;
+            this.repositoryItemCheckEdit4.ValueUnchecked = 0;
+            // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Controls.Add(this.PassCheckboxEdit);
@@ -1568,6 +1654,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessMatGroupGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
+            this.xtraTabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.RoleGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoleGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).EndInit();
@@ -1701,5 +1792,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.TextEdit LoginCheckboxEdit;
         private DevExpress.XtraEditors.LabelControl labelControl9;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
+        private DevExpress.XtraGrid.GridControl RoleGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView RoleGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
     }
 }

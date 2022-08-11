@@ -54,6 +54,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 1, Text = "Додаткові", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 15, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 17, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 9, ParentId = 1, Text = "Ролі", ImgIdx = 18, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 15, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 3 });
 
@@ -162,6 +163,10 @@ namespace SP_Sklad.EditForm
                     xtraTabControl2.SelectedTabPageIndex = 4;
                     break;
 
+                case 9:
+                    RefreshUserRoles();
+                    xtraTabControl2.SelectedTabPageIndex = 5;
+                    break;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
@@ -175,6 +180,10 @@ namespace SP_Sklad.EditForm
         private void RefreshUserAccessMatGroup()
         {
             UserAccessMatGroupBS.DataSource = _db.GetUserAccessMatGroup(_user_id).ToList();
+        }
+        private void RefreshUserRoles()
+        {
+            RoleGridControl.DataSource = _db.GetUserRoles(_user_id).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -592,6 +601,36 @@ namespace SP_Sklad.EditForm
         private void PassCheckboxEdit_EditValueChanged(object sender, EventArgs e)
         {
             user_settings.CashierPasswordCheckbox = PassCheckboxEdit.Text;
+        }
+
+        private void RoleGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.CellValue == null)
+            {
+                return;
+            }
+
+            var row = RoleGridView.GetFocusedRow() as GetUserRoles_Result;
+
+            if (e.Column.FieldName == "Allow")
+            {
+
+                if ((int)e.CellValue == 0)
+                {
+                    _db.UserRoles.Add(new UserRoles { UserId = _user_id.Value, RoleId = row.Id });
+                    row.Allow = 1;
+                }
+                else
+                {
+                    _db.DeleteWhere<UserRoles>(w => w.UserId == _user_id.Value && w.RoleId == row.Id);
+                    row.Allow = 0;
+                }
+
+                _db.SaveChanges();
+
+                RoleGridView.RefreshRow(RoleGridView.FocusedRowHandle);
+            }
+
         }
     }
 }

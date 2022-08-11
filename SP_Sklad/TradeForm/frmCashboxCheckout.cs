@@ -53,16 +53,16 @@ namespace SP_Sklad.WBForm
         private void frmCashboxCheckoutcs_Load(object sender, EventArgs e)
         {
             user_settings = new UserSettingsRepository(UserSession.UserId, _db);
+            var user_access_tree = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList();
 
-            if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType))   // Вхідний платіж
+            if (_wb.WType == -25) // Чек  
             {
-                _user_Access = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList().FirstOrDefault(w => w.FunId == 26);
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 88); // Прибуткові касові ордера
             }
-            else
+            else if (_wb.WType == 25) // Повернення
             {
-                _user_Access = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList().FirstOrDefault(w => w.FunId == 25); //Вихідні платежі
-            } 
-
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 89); // Видаткові касові ордера
+            }
 
             SumAllEdit.Value = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue).Value;
             PutCashSumEdit.Value = SumAllEdit.Value;
@@ -249,7 +249,10 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                PrintDoc.Show(_wb.Id, _wb.WType, _db);
+                if (MessageBox.Show("Відкрити документ ?", "Видаткова накладна №" + _wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    PrintDoc.Show(_wb.Id, _wb.WType, _db);
+                }
             }
         }
 

@@ -43,14 +43,14 @@
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomPanel.Location = new System.Drawing.Point(0, 608);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1443, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(1484, 52);
             this.BottomPanel.TabIndex = 16;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1221, 10);
+            this.OkButton.Location = new System.Drawing.Point(1262, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -60,7 +60,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(1331, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(1372, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -69,6 +69,7 @@
             // uc
             // 
             this.uc.custom_mat_list = null;
+            this.uc.disc_card = null;
             this.uc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.uc.isDirectList = false;
             this.uc.isMatList = false;
@@ -76,15 +77,16 @@
             this.uc.Name = "uc";
             this.uc.resut = null;
             this.uc.set_tree_node = null;
-            this.uc.Size = new System.Drawing.Size(1443, 608);
+            this.uc.Size = new System.Drawing.Size(1484, 608);
             this.uc.TabIndex = 0;
             this.uc.wb = null;
+            this.uc.wh_mat_list = null;
             // 
             // frmWhCatalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1443, 660);
+            this.ClientSize = new System.Drawing.Size(1484, 660);
             this.Controls.Add(this.uc);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmWhCatalog";

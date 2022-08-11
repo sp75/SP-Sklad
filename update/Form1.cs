@@ -28,30 +28,16 @@ namespace update
             }
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Settings.Default.Save();
 
             var sp_sklad = Path.Combine(Application.StartupPath, "SP_Sklad.exe");
-            //    File.Copy(Path.Combine(Settings.Default.NewVersionPatch, "SP_Sklad.exe"), sp_sklad, true);
-            if (!is_web_dowload)
-            {
-                CopyList();
-            }
 
             if (File.Exists(sp_sklad))
             {
-                Process.Start(sp_sklad); 
+                Process.Start(sp_sklad);
             }
         }
 
@@ -81,7 +67,7 @@ namespace update
         private void DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             button3.Enabled = true;
-            button1.Enabled = true; 
+            button1.Enabled = true;
 
             string zipPath = Path.Combine(Application.StartupPath, "SP_Sklad_upd.zip");
 
@@ -103,6 +89,8 @@ namespace update
 
         private void WebCopy()
         {
+            is_web_dowload = true;
+
             button3.Enabled = false;
             button1.Enabled = false;
             using (WebClient client = new WebClient())
@@ -123,6 +111,7 @@ namespace update
 
         private void button1_Click(object sender, EventArgs e)
         {
+            CopyList();
             Close();
         }
 
@@ -130,6 +119,7 @@ namespace update
         {
             if (AutoUpdateCheckEdit.Checked && !is_web_dowload)
             {
+                CopyList();
                 Close();
             }
         }
@@ -141,7 +131,7 @@ namespace update
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(is_web_dowload)
+            if (is_web_dowload)
             {
                 WebCopy();
             }

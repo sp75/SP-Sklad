@@ -28,16 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource();
             this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -56,7 +55,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.accountTypeBindingSource = new System.Windows.Forms.BindingSource();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).BeginInit();
@@ -72,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountTypeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,7 +236,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.WaybillDetInGridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1011, 422);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1011, 477);
             this.xtraTabPage1.Text = "Списком";
             // 
             // WaybillDetInGridControl
@@ -247,7 +248,7 @@
             this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemCalcEdit1});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1011, 422);
+            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1011, 477);
             this.WaybillDetInGridControl.TabIndex = 3;
             this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetInGridView});
@@ -386,6 +387,10 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             // 
+            // accountTypeBindingSource
+            // 
+            this.accountTypeBindingSource.DataSource = typeof(SP_Sklad.SkladData.AccountType);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -419,6 +424,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.accountTypeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
 
@@ -454,5 +460,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private System.Windows.Forms.BindingSource accountTypeBindingSource;
     }
 }

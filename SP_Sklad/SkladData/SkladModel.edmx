@@ -1093,6 +1093,13 @@
           <Property Name="PPosId" Type="int" Nullable="false" />
           <Property Name="DPosId" Type="int" />
         </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Routes">
           <Key>
             <PropertyRef Name="Id" />
@@ -1322,6 +1329,14 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="WId" Type="int" Nullable="false" />
           <Property Name="UseReceived" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -4358,6 +4373,34 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_UsersGroup">
           <End Role="UsersGroup" Type="Self.UsersGroup" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -5580,6 +5623,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         </Function>
         <Function Name="GetUserAccessWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetUserRoles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="50" />
+                <Property Name="Allow" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="GetWaybillDetIn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
@@ -6888,6 +6943,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportSortedFields" EntityType="Self.ReportSortedFields" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReturnRel" EntityType="Self.ReturnRel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Routes" EntityType="Self.Routes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SchedulingOrders" EntityType="Self.SchedulingOrders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Serials" EntityType="Self.Serials" Schema="dbo" store:Type="Tables" />
@@ -6907,6 +6963,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="UserAccessCashDesks" EntityType="Self.UserAccessCashDesks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccessMatGroup" EntityType="Self.UserAccessMatGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAccessWh" EntityType="Self.UserAccessWh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersGroup" EntityType="Self.UsersGroup" Schema="dbo" store:Type="Tables" />
@@ -8171,6 +8228,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Users" EntitySet="Users" />
             <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="Self.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_UsersGroup" Association="Self.FK_Users_UsersGroup">
             <End Role="UsersGroup" EntitySet="UsersGroup" />
             <End Role="Users" EntitySet="Users" />
@@ -9162,31 +9227,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WayBillSvc" EntitySet="WayBillSvc" />
           </AssociationSet>
           <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
-          <EntitySet Name="Users" EntityType="BaseModel.Users" />
-          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.FK_OperLog_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="OperLog" EntitySet="OperLog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="PrintLog" EntitySet="PrintLog" />
-          </AssociationSet>
-          <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.FK_USERACCESS_1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccess" EntitySet="UserAccess" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
-            <End Role="UsersGroup" EntitySet="UsersGroup" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserSettings_Users" Association="BaseModel.FK_UserSettings_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserSettings" EntitySet="UserSettings" />
-          </AssociationSet>
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
           <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
           <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
@@ -9365,18 +9405,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="CashDesks" EntitySet="CashDesks" />
             <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
           </AssociationSet>
-          <AssociationSet Name="FK_UserAccessCashDesks_Users" Association="BaseModel.FK_UserAccessCashDesks_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
-          </AssociationSet>
           <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="UserAccessWh" EntityType="BaseModel.UserAccessWh" />
-          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
-          </AssociationSet>
           <AssociationSet Name="FK_UAWH_WID" Association="BaseModel.FK_UAWH_WID">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="UserAccessWh" EntitySet="UserAccessWh" />
@@ -9843,6 +9875,52 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <EntitySet Name="LoginHistory" EntityType="BaseModel.LoginHistory" />
           <EntitySet Name="v_LoginHistory" EntityType="BaseModel.v_LoginHistory" />
+          <FunctionImport Name="GetUserRoles" IsComposable="true" ReturnType="Collection(BaseModel.GetUserRoles_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="Roles" EntityType="BaseModel.Roles" />
+          <EntitySet Name="UserRoles" EntityType="BaseModel.UserRoles" />
+          <EntitySet Name="Users" EntityType="BaseModel.Users" />
+          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.FK_OperLog_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OperLog" EntitySet="OperLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRINTLOG_2" Association="BaseModel.FK_PRINTLOG_2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PrintLog" EntitySet="PrintLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Roles" Association="BaseModel.FK_UserRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USERACCESS_1" Association="BaseModel.FK_USERACCESS_1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccess" EntitySet="UserAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserAccessCashDesks_Users" Association="BaseModel.FK_UserAccessCashDesks_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessCashDesks" EntitySet="UserAccessCashDesks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UAWH_USERID" Association="BaseModel.FK_UAWH_USERID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserAccessWh" EntitySet="UserAccessWh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_Users" Association="BaseModel.FK_UserRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_UsersGroup" Association="BaseModel.FK_Users_UsersGroup">
+            <End Role="UsersGroup" EntitySet="UsersGroup" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserSettings_Users" Association="BaseModel.FK_UserSettings_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserSettings" EntitySet="UserSettings" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11589,8 +11667,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="DocNum" MaxLength="24" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="UserId" />
           <NavigationProperty Name="Tables" Relationship="BaseModel.FK__OPERLOG__TABID__0D44F85C" FromRole="OperLog" ToRole="Tables" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_OperLog_Users" FromRole="OperLog" ToRole="Users" />
           <Property Name="OriginatorId" Type="Guid" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_OperLog_Users" FromRole="OperLog" ToRole="Users" />
         </EntityType>
         <Association Name="FK__OPERLOG__TABID__0D44F85C">
           <End Type="BaseModel.Tables" Role="Tables" Multiplicity="0..1" />
@@ -13144,7 +13222,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="Kagent" ToRole="WayBillMakeProps" />
           <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <Property Type="Int32" Name="PayTypeId" />
           <Property Type="Int32" Name="CashDeskId" />
           <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -13160,6 +13237,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WId" Type="Int32" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -13537,114 +13615,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="UserId" />
           <Property Type="Binary" Name="ScreenShot" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Pass" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullName" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SysName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="ShowBalance" />
-          <Property Type="Int32" Name="ShowPrice" />
-          <Property Type="Int32" Name="EnableEditDate" />
-          <Property Type="DateTime" Name="LastLogin" Precision="3" />
-          <Property Type="Boolean" Name="IsOnline" />
-          <Property Type="String" Name="ReportFormat" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="GroupId" />
-          <Property Type="Boolean" Name="InternalEditor" />
-          <Property Type="Boolean" Name="IsWorking" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
-          <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
-          <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
-          <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
-          <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
-          <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
-          <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="Users" ToRole="UserAccessCashDesks" />
-          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
-          <Property Name="WorkSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_Kagent_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Kagent">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OperLog_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.OperLog" Role="OperLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="OperLog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRINTLOG_2">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.PrintLog" Role="PrintLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="PrintLog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_USERACCESS_1">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccess" Role="UserAccess" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccess">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_UsersGroup">
-          <End Type="BaseModel.UsersGroup" Role="UsersGroup" Multiplicity="0..1" />
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="GroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserSettings_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserSettings" Role="UserSettings" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserSettings">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="v_Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -14211,8 +14181,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="CashId" Nullable="false" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_CashDesks" FromRole="UserAccessCashDesks" ToRole="CashDesks" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="UserAccessCashDesks" ToRole="Users" />
           <Property Type="Int32" Name="Def" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="UserAccessCashDesks" ToRole="Users" />
         </EntityType>
         <Association Name="FK_UserAccessCashDesks_CashDesks">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="1">
@@ -14225,20 +14195,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="UserAccessCashDesks">
               <PropertyRef Name="CashId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserAccessCashDesks_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccessCashDesks" Role="UserAccessCashDesks" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccessCashDesks">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14256,24 +14212,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="WId" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UAWH_USERID" FromRole="UserAccessWh" ToRole="Users" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_UAWH_WID" FromRole="UserAccessWh" ToRole="Warehouse" />
           <Property Type="Boolean" Name="UseReceived" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UAWH_USERID" FromRole="UserAccessWh" ToRole="Users" />
         </EntityType>
-        <Association Name="FK_UAWH_USERID">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAccessWh">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UAWH_WID">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -16480,6 +16422,194 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="LoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="GetUserRoles_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Allow" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserRoles" Relationship="BaseModel.FK_UserRoles_Roles" FromRole="Roles" ToRole="UserRoles" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="BaseModel.FK_UserRoles_Roles" FromRole="UserRoles" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_UserRoles_Users" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SysName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShowBalance" Type="Int32" />
+          <Property Name="ShowPrice" Type="Int32" />
+          <Property Name="EnableEditDate" Type="Int32" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="IsOnline" Type="Boolean" />
+          <Property Name="ReportFormat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GroupId" Type="Guid" />
+          <Property Name="InternalEditor" Type="Boolean" />
+          <Property Name="IsWorking" Type="Boolean" Nullable="false" />
+          <Property Name="WorkSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
+          <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
+          <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
+          <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
+          <NavigationProperty Name="UserAccessCashDesks" Relationship="BaseModel.FK_UserAccessCashDesks_Users" FromRole="Users" ToRole="UserAccessCashDesks" />
+          <NavigationProperty Name="UserAccessWh" Relationship="BaseModel.FK_UAWH_USERID" FromRole="Users" ToRole="UserAccessWh" />
+          <NavigationProperty Name="UserRoles" Relationship="BaseModel.FK_UserRoles_Users" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
+          <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
+        </EntityType>
+        <Association Name="FK_Kagent_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OperLog_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.OperLog" Role="OperLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="OperLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRINTLOG_2">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.PrintLog" Role="PrintLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PrintLog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Roles">
+          <End Type="BaseModel.Roles" Role="Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserRoles" Role="UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USERACCESS_1">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccess" Role="UserAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccess">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserAccessCashDesks_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessCashDesks" Role="UserAccessCashDesks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessCashDesks">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UAWH_USERID">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserAccessWh" Role="UserAccessWh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAccessWh">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserRoles" Role="UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_UsersGroup">
+          <End Type="BaseModel.UsersGroup" Role="UsersGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserSettings_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.UserSettings" Role="UserSettings" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserSettings">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18671,27 +18801,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="BaseModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="WorkSpace" ColumnName="WorkSpace" />
-                <ScalarProperty Name="IsWorking" ColumnName="IsWorking" />
-                <ScalarProperty Name="InternalEditor" ColumnName="InternalEditor" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
-                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
-                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
-                <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
-                <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
-                <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
-                <ScalarProperty Name="SysName" ColumnName="SysName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20897,6 +21006,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
                 <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserRoles" FunctionName="BaseModel.Store.GetUserRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUserRoles_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Allow" ColumnName="Allow" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="BaseModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="BaseModel.UserRoles">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BaseModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="WorkSpace" ColumnName="WorkSpace" />
+                <ScalarProperty Name="IsWorking" ColumnName="IsWorking" />
+                <ScalarProperty Name="InternalEditor" ColumnName="InternalEditor" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ReportFormat" ColumnName="ReportFormat" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="EnableEditDate" ColumnName="EnableEditDate" />
+                <ScalarProperty Name="ShowPrice" ColumnName="ShowPrice" />
+                <ScalarProperty Name="ShowBalance" ColumnName="ShowBalance" />
+                <ScalarProperty Name="SysName" ColumnName="SysName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

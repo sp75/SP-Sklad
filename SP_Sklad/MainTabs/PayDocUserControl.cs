@@ -41,19 +41,32 @@ namespace SP_Sklad.MainTabs
         }
         private List<user_acc> user_acc_list { get; set; }
 
-        public void OnLoad(BaseEntities db, WaybillList wb)
+        public void OnLoad(BaseEntities db, WaybillList wb, bool fiscalization_check = false)
         {
+            fiscalization_checkEdit.Visible = fiscalization_check;
+            fiscalization_checkEdit.Checked = fiscalization_check;
+
             _db = db;
             _wb = wb;
+            var user_access_tree = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList();
 
             if (new int[] { -1, -6, 2, -16 }.Contains(_wb.WType))   // Вхідний платіж
             {
-                _user_Access = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList().FirstOrDefault(w => w.FunId == 26);
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 26);
             }
-            else
+            else if (new int[] { 1, 6, 16 }.Contains(_wb.WType))
             {
-                _user_Access = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList().FirstOrDefault(w => w.FunId == 25); //Вихідні платежі
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 25); //Вихідні платежі
             }
+            else if(_wb.WType == -25)// Чек  
+            {
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 88); // Прибуткові касові ордера
+            }
+            else if (_wb.WType == 25) // Повернення
+            {
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 89); // Видаткові касові ордера
+            }
+          
 
             panelControl1.Visible = _user_Access.CanView == 1;
 
@@ -170,7 +183,7 @@ namespace SP_Sklad.MainTabs
 
         }
 
-        public void Execute(int wbill_id, bool fiscalization_check = false)
+        public void Execute(int wbill_id)
         {
             _wb = _db.WaybillList.FirstOrDefault(s => s.WbillId == wbill_id);
             if (_wb == null && !panelControl1.Enabled)
@@ -207,7 +220,7 @@ namespace SP_Sklad.MainTabs
                     if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
                     if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
 
-                    if (fiscalization_check)
+                    if (fiscalization_checkEdit.Checked)
                     {
                         var receipt = CreateReceiptSell(_pd.DocType == -1);
                         _pd.ReceiptId = receipt.id;
@@ -334,12 +347,27 @@ namespace SP_Sklad.MainTabs
             var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
             var total = wb_det.Sum(s => s.TotalInCurrency);
 
-            payments.Add(new Payment
+            int PType = (int)PTypeComboBox.EditValue;
+            if (PType == 1)
             {
-                type = PaymentType.CASH.ToString(),
-                value = Convert.ToInt32(total * 100),
-                label = "Готівка"
-            });
+
+                payments.Add(new Payment
+                {
+                    type = PaymentType.CASH.ToString(),
+                    value = Convert.ToInt32(total * 100),
+                    label = "Готівка"
+                });
+            }
+
+            if (PType == 2)
+            {
+                payments.Add(new Payment
+                {
+                    type = PaymentType.CASHLESS.ToString(),
+                    value = Convert.ToInt32(total * 100),
+                    label = "Картка"
+                });
+            }
 
             var req = new ReceiptSellPayload
             {

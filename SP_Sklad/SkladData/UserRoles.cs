@@ -12,14 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class UserAccessWh
+    public partial class UserRoles
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int WId { get; set; }
-        public bool UseReceived { get; set; }
+        public int RoleId { get; set; }
     
-        public virtual Warehouse Warehouse { get; set; }
+        public virtual Roles Roles { get; set; }
         public virtual Users Users { get; set; }
     }
 }

@@ -16,6 +16,8 @@ using System.IO;
 using System.Diagnostics;
 using SP_Sklad.Properties;
 using DevExpress.XtraTreeList.Nodes;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.Data;
 
 namespace SP_Sklad.MainTabs
 {
@@ -51,10 +53,14 @@ namespace SP_Sklad.MainTabs
 
         public DirectoriesUserControl()
         {
+            
+
             InitializeComponent();
             _ka_archived = 0;
             _mat_archived = 0;
             _show_rec_archived = false;
+
+    //        KaGridControl.DataSource = null;
         }
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
@@ -118,26 +124,31 @@ namespace SP_Sklad.MainTabs
 
                     LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
 
-                    var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                    /*   var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
 
-                    var ka = (from k in _db.KagentList
-                              join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                              from subfg in gj.DefaultIfEmpty()
-                              where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
-                              select k
-                              );
+                       var ka = (from k in _db.KagentList
+                                 join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                                 from subfg in gj.DefaultIfEmpty()
+                                 where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
+                                 select k
+                                 );
 
-                    if (focused_tree_node.Id != 10)
-                    {
-                        ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
-                    }
+                       if (focused_tree_node.Id != 10)
+                       {
+                           ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+                       }
 
-                    if (_ka_archived == 0)
-                    {
-                        ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
-                    }
+                       if (_ka_archived == 0)
+                       {
+                           ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
+                       }
 
-                    KAgentDS.DataSource = ka.Distinct().ToList();
+                       KAgentDS.DataSource = ka.Distinct().ToList();*/
+
+                    KaGridControl.DataSource = null;
+
+                    KaGridControl.DataSource = KagentListSource;
+
 
                     DBHelper.ReloadKagents();
                     break;
@@ -226,7 +237,7 @@ namespace SP_Sklad.MainTabs
                             {
                                 recipe_list = recipe_list.Where(w => !w.Archived);
                             }
-                            if(focused_tree_node.Id < 0)
+                            if (focused_tree_node.Id < 0)
                             {
                                 recipe_list = recipe_list.Where(w => w.GrpId == focused_tree_node.GrpId);
                             }
@@ -273,7 +284,7 @@ namespace SP_Sklad.MainTabs
 
                         case 66:
                             var disc_cards = _db.v_DiscCards.AsQueryable();
-                         
+
                             if (focused_tree_node.Id < 0)
                             {
                                 disc_cards = disc_cards.Where(w => w.GrpId == focused_tree_node.GrpId);
@@ -1054,7 +1065,13 @@ namespace SP_Sklad.MainTabs
         {
             if (e.Column.FieldName == "Saldo")
             {
-                var saldo = e.CellValue != null ? Convert.ToInt32(e.CellValue) : 0;
+                if ( e.CellValue is NotLoadedObject || e.CellValue == null || e.CellValue == DBNull.Value  )
+                {
+                    return;
+                }
+
+                var saldo =  Convert.ToInt32(e.CellValue);
+
                 if (saldo < 0)
                 {
                     e.Appearance.ForeColor = Color.Red;
@@ -1063,7 +1080,6 @@ namespace SP_Sklad.MainTabs
                 {
                     e.Appearance.ForeColor = Color.Blue;
                 }
-
             }
         }
 
@@ -1231,6 +1247,11 @@ namespace SP_Sklad.MainTabs
         private void GetKontragentDetail()
         {
             var f_row = KaGridView.GetFocusedRow() as KagentList;
+
+            if(f_row == null)
+            {
+                return;
+            }
 
             KAgentInfoBS.DataSource = f_row;
             memoEdit1.Text = f_row.Notes;
@@ -1453,6 +1474,41 @@ namespace SP_Sklad.MainTabs
             else new frmDiscCardGroupEdit().ShowDialog();
 
             ExplorerRefreshBtn.PerformClick();
+        }
+
+        private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            var _db = DB.SkladBase();
+
+            /*      var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+
+                  var ka = (from k in _db.KagentList
+                            join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                            from subfg in gj.DefaultIfEmpty()
+                            where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
+                            select k
+                                     );*/
+
+            var ka = _db.KagentList.Where(w => w.Deleted == 0);
+
+            if (focused_tree_node.Id != 10)
+            {
+                ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+            }
+
+            if (_ka_archived == 0)
+            {
+                ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
+            }
+
+            e.QueryableSource = ka;
+
+            e.Tag = _db;
         }
     }
 }

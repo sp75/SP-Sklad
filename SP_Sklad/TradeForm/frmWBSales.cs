@@ -32,7 +32,7 @@ namespace SP_Sklad.WBForm
         {
             get
             {
-                return  WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result;
+                return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result;
             }
         }
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
@@ -95,10 +95,10 @@ namespace SP_Sklad.WBForm
 
                 WaybillListBS.DataSource = wb;
 
-                payDocUserControl1.OnLoad(_db, wb);
+                payDocUserControl1.OnLoad(_db, wb, true);
                 KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
-            KagentComboBox.Enabled = user_settings.DefaultBuyer == null;
+            KagentComboBox.Enabled = DBHelper.is_main_cacher;
 
             RefreshDet();
         }
@@ -150,7 +150,7 @@ namespace SP_Sklad.WBForm
 
             _db.Save(wb.WbillId);
 
-            payDocUserControl1.Execute(wb.WbillId, fiscalization_checkEdit.Checked);
+            payDocUserControl1.Execute(wb.WbillId);
 
             if (TurnDocCheckBox.Checked)
             {
@@ -163,6 +163,11 @@ namespace SP_Sklad.WBForm
             }
 
             is_new_record = false;
+
+            if (MessageBox.Show("Розрукувати документ ?", "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                PrintDoc.Show(wb.Id, wb.WType, _db);
+            }
 
             Close();
         }

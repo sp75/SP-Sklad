@@ -120,7 +120,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
-        public virtual Users Users { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
         public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
@@ -131,5 +130,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
         public virtual ICollection<Cars> Cars { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

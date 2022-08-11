@@ -73,7 +73,6 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.fiscalization_checkEdit = new DevExpress.XtraEditors.CheckEdit();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.WaybillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
@@ -125,7 +124,6 @@
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fiscalization_checkEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
@@ -470,7 +468,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.fiscalization_checkEdit);
             this.panelControl1.Controls.Add(this.PersonComboBox);
             this.panelControl1.Controls.Add(this.NotesEdit);
             this.panelControl1.Controls.Add(this.labelControl8);
@@ -487,19 +484,6 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(571, 206);
             this.panelControl1.TabIndex = 4;
-            // 
-            // fiscalization_checkEdit
-            // 
-            this.fiscalization_checkEdit.EditValue = 0;
-            this.fiscalization_checkEdit.Location = new System.Drawing.Point(381, 8);
-            this.fiscalization_checkEdit.MenuManager = this.barManager1;
-            this.fiscalization_checkEdit.Name = "fiscalization_checkEdit";
-            this.fiscalization_checkEdit.Properties.Caption = "Фіскальний чек";
-            this.fiscalization_checkEdit.Properties.ValueChecked = 1;
-            this.fiscalization_checkEdit.Properties.ValueUnchecked = 0;
-            this.fiscalization_checkEdit.Size = new System.Drawing.Size(215, 20);
-            this.fiscalization_checkEdit.StyleController = this.styleController1;
-            this.fiscalization_checkEdit.TabIndex = 36;
             // 
             // PersonComboBox
             // 
@@ -1074,7 +1058,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.fiscalization_checkEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
@@ -1182,6 +1165,5 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
-        private DevExpress.XtraEditors.CheckEdit fiscalization_checkEdit;
     }
 }

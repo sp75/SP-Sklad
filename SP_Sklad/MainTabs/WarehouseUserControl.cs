@@ -26,9 +26,9 @@ namespace SP_Sklad.MainTabs
 {
     public partial class WarehouseUserControl : DevExpress.XtraEditors.XtraUserControl
     {
-        int wid = 0;
-        string wh_list = "*";
-        int cur_wtype = 0;
+        public int wid = 0;
+
+        public string wh_list = "*";
 
         public bool isDirectList { get; set; }
         public bool isMatList { get; set; }
@@ -65,6 +65,7 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
             whContentTab.Visible = false;
+            //    WhMatGridControl.DataSource = null;
         }
         public class checkedWhList
         {
@@ -95,10 +96,10 @@ namespace SP_Sklad.MainTabs
                 WhComboBox.EditValue = "*";
 
 
-                var whlist = new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = false }).ToList();
+                var whlist = new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = s.WId == wid }).ToList();
                 foreach (var item in whlist)
                 {
-                    checkedComboBoxEdit1.Properties.Items.Add(item.WId, item.Name, item.IsChecked ? CheckState.Checked : CheckState.Unchecked, true);
+                    WhCheckedComboBox.Properties.Items.Add(item.WId, item.Name, item.IsChecked ? CheckState.Checked : CheckState.Unchecked, true);
                 }
 
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -153,31 +154,29 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
             focused_tree_node = WHTreeList.GetDataRecordByNode(e.Node) as GetWhTree_Result;
 
-            cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
 
-
-       /*     if (focused_tree_node.GType.Value == 1 && wh_mat_list != null && ByGrpBtn.Down && wh_mat_list.Any())
-            {
-                if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
-                {
-                    var grp = DB.SkladBase().GetMatGroupTree(focused_tree_node.Num).ToList().Select(s => s.GrpId);
-                    WhMatGetBS.DataSource = wh_mat_list.Where(w => grp.Contains(w.OutGrpId));
-                }
-                else
-                {
-                    WhMatGetBS.DataSource = wh_mat_list.Where(w => w.OutGrpId == focused_tree_node.Num || focused_tree_node.Num == 0);
-                }
-            }
-            else
-            {
-                RefrechItemBtn.PerformClick();
-            }*/
+            /*     if (focused_tree_node.GType.Value == 1 && wh_mat_list != null && ByGrpBtn.Down && wh_mat_list.Any())
+                 {
+                     if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+                     {
+                         var grp = DB.SkladBase().GetMatGroupTree(focused_tree_node.Num).ToList().Select(s => s.GrpId);
+                         WhMatGetBS.DataSource = wh_mat_list.Where(w => grp.Contains(w.OutGrpId));
+                     }
+                     else
+                     {
+                         WhMatGetBS.DataSource = wh_mat_list.Where(w => w.OutGrpId == focused_tree_node.Num || focused_tree_node.Num == 0);
+                     }
+                 }
+                 else
+                 {
+                     RefrechItemBtn.PerformClick();
+                 }*/
 
             RefrechItemBtn.PerformClick();
- 
+
             whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
 
- 
+
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 2 });
@@ -295,7 +294,8 @@ namespace SP_Sklad.MainTabs
                 {
                     switch (focused_tree_node.GType)
                     {
-                        case 2: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WBillId).FirstOrDefault();
+                        case 2:
+                            db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WBillId).FirstOrDefault();
                             break;
                     }
                     if (MessageBox.Show(Resources.delete_wb, "Видалити докумен", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -391,8 +391,8 @@ namespace SP_Sklad.MainTabs
 
             grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
             wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
-           
-            if(wh_list != "*")
+
+            if (wh_list != "*")
             {
                 wid = -1;
             }
@@ -420,28 +420,35 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 1:
-                  /*  int grp_id = 0;
+                    /*  int grp_id = 0;
 
-                    string grp = "";
+                      string grp = "";
 
-                    grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
-                    wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
-                    if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
-                    {
-                        wid = Convert.ToInt32(WhComboBox2.EditValue);
-                    }
+                      grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
+                      wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
+                      if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
+                      {
+                          wid = Convert.ToInt32(WhComboBox2.EditValue);
+                      }
 
-                    if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
-                    {
-                        grp = focused_tree_node.Num.ToString();
-                    }
+                      if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+                      {
+                          grp = focused_tree_node.Num.ToString();
+                      }
 
-                    int top_row = WhMatGridView.TopRowIndex;
-              //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
-                    wh_mat_list = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
-                    WhMatGetBS.DataSource = wh_mat_list;
-                    WhMatGridView.TopRowIndex = top_row;*/
+                      int top_row = WhMatGridView.TopRowIndex;
+                //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
+                      wh_mat_list = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
+                      WhMatGetBS.DataSource = wh_mat_list;
+                      WhMatGridView.TopRowIndex = top_row;*/
+
+
+
                     var result = GetMatOnWh();
+
+                //           WhMatGridControl.DataSource = null;
+                  //         WhMatGridControl.DataSource = WhMatGetSource;
+
                     break;
 
                 case 2:
@@ -466,11 +473,6 @@ namespace SP_Sklad.MainTabs
 
                     break;
             }
-        }
-
-        private void RefreshWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -516,7 +518,7 @@ namespace SP_Sklad.MainTabs
 
         private void whKagentList_EditValueChanged(object sender, EventArgs e)
         {
-            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus )
+            if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
             {
                 RefrechItemBtn.PerformClick();
             }
@@ -608,7 +610,7 @@ namespace SP_Sklad.MainTabs
 
         private void WhMatGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
-            MatPopupMenu.ShowPopup(Control.MousePosition); 
+            MatPopupMenu.ShowPopup(Control.MousePosition);
         }
 
         private void MatTurnInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -618,7 +620,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-             IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
+            IHelper.ShowTurnMaterial(focused_wh_mat.MatId);
         }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -692,10 +694,10 @@ namespace SP_Sklad.MainTabs
             }
 
             var rec = DB.SkladBase().MatRecipe.FirstOrDefault(w => w.MatId == focused_wh_mat.MatId && w.RType == 2);
-            var wh_remain =  WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result ;
+            var wh_remain = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
             if (rec != null)
             {
-                using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain.WId})
+                using (var f = new frmWBDeboning() { rec_id = rec.RecId, source_wid = wh_remain.WId })
                 {
                     f.ShowDialog();
                 }
@@ -877,6 +879,8 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
+
             switch (focused_tree_node.GType)
             {
                 case 2:
@@ -915,10 +919,10 @@ namespace SP_Sklad.MainTabs
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-         //   if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
-       //     {
-                RefrechItemBtn.PerformClick();
-       //     }
+            //   if (OnDateEdit.ContainsFocus || whKagentList.ContainsFocus)
+            //     {
+            RefrechItemBtn.PerformClick();
+            //     }
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -975,7 +979,7 @@ namespace SP_Sklad.MainTabs
 
         private void WhMatGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            if ( e.RowHandle < 0 )
+            if (e.RowHandle < 0)
             {
                 return;
             }
@@ -1151,11 +1155,11 @@ namespace SP_Sklad.MainTabs
 
         private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            if (checkedComboBoxEdit1.ContainsFocus)
+            if (WhCheckedComboBox.ContainsFocus)
             {
-                wh_list = checkedComboBoxEdit1.Properties.Items.Any(w => w.CheckState == CheckState.Checked) ? "" : "*";
+                wh_list = WhCheckedComboBox.Properties.Items.Any(w => w.CheckState == CheckState.Checked) ? "" : "*";
 
-                foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                foreach (var item in WhCheckedComboBox.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
                 {
                     wh_list += item.Value.ToString() + ",";
                 }
@@ -1166,13 +1170,40 @@ namespace SP_Sklad.MainTabs
 
         private void checkedComboBoxEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if(e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
-                for (int i = 0; i < checkedComboBoxEdit1.Properties.Items.Count; i++)
-                    checkedComboBoxEdit1.Properties.Items[i].CheckState = CheckState.Unchecked;
+                for (int i = 0; i < WhCheckedComboBox.Properties.Items.Count; i++)
+                    WhCheckedComboBox.Properties.Items[i].CheckState = CheckState.Unchecked;
 
                 RefrechItemBtn.PerformClick();
             }
+        }
+
+        private void WhMatGetSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            int grp_id = 0;
+
+            string grp = "";
+
+            grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
+            wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
+
+            if (wh_list != "*")
+            {
+                wid = -1;
+            }
+
+            if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
+            {
+                grp = focused_tree_node.Num.ToString();
+            }
+
+            e.QueryableSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0);
         }
     }
 }

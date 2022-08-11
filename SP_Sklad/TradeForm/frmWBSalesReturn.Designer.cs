@@ -113,7 +113,6 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
-            this.fiscalization_checkEdit = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -145,7 +144,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fiscalization_checkEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -448,7 +446,6 @@
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.fiscalization_checkEdit);
             this.panelControl1.Controls.Add(this.OutDateEdit);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.NotesEdit);
@@ -896,18 +893,6 @@
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Size = new System.Drawing.Size(983, 0);
             // 
-            // fiscalization_checkEdit
-            // 
-            this.fiscalization_checkEdit.Location = new System.Drawing.Point(375, 8);
-            this.fiscalization_checkEdit.MenuManager = this.barManager1;
-            this.fiscalization_checkEdit.Name = "fiscalization_checkEdit";
-            this.fiscalization_checkEdit.Properties.Caption = "Фіскальний чек";
-            this.fiscalization_checkEdit.Properties.ValueChecked = 1;
-            this.fiscalization_checkEdit.Properties.ValueUnchecked = 0;
-            this.fiscalization_checkEdit.Size = new System.Drawing.Size(203, 20);
-            this.fiscalization_checkEdit.StyleController = this.styleController1;
-            this.fiscalization_checkEdit.TabIndex = 35;
-            // 
             // frmWBSalesReturn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -963,7 +948,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fiscalization_checkEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1038,6 +1022,5 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraEditors.DateEdit OutDateEdit;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private DevExpress.XtraEditors.CheckEdit fiscalization_checkEdit;
     }
 }

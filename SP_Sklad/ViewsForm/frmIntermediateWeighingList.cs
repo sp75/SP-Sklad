@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using static SP_Sklad.WBDetForm.frmIntermediateWeighingDet;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 
 namespace SP_Sklad.ViewsForm
 {

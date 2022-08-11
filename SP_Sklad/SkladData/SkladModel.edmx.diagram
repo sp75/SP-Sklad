@@ -214,13 +214,6 @@
         <AssociationConnector Association="BaseModel.FK_WBL_ENTID" />
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         <EntityTypeShape EntityType="BaseModel.ErrorLog" Width="1.5" PointX="6.265295659315445" PointY="24.135572236094426" />
-        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="9.8311828159872352" PointY="1.1987865870812846" />
-        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
-        <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
-        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
-        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
-        <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
-        <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
         <EntityTypeShape EntityType="BaseModel.ProductionPlans" Width="1.5" PointX="9.0676300158107779" PointY="27.027135250636906" />
         <EntityTypeShape EntityType="BaseModel.v_ProductionPlanDet" Width="1.5" PointX="7.1313695288874994" PointY="13.55405656134433" />
         <EntityTypeShape EntityType="BaseModel.ViewLng" Width="1.5" PointX="7.88567450264733" PointY="2.908218444747952" />
@@ -239,9 +232,7 @@
         <AssociationConnector Association="BaseModel.FK_SchedulingOrders_MatRecipe" />
         <EntityTypeShape EntityType="BaseModel.UserAccessCashDesks" Width="1.5" PointX="7.7715711909213905" PointY="18.978822359339716" />
         <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_CashDesks" />
-        <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_Users" />
         <EntityTypeShape EntityType="BaseModel.UserAccessWh" Width="1.5" PointX="7.1020642831465519" PointY="25.560289156418428" />
-        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
         <AssociationConnector Association="BaseModel.FK_UAWH_WID" />
         <EntityTypeShape EntityType="BaseModel.WayBillTmc" Width="1.5" PointX="6.8033221283943028" PointY="26.097000536554027" />
         <AssociationConnector Association="BaseModel.FK_MoveInventories_Materials" />
@@ -327,6 +318,19 @@
         <EntityTypeShape EntityType="BaseModel.Shift" PointX="29" PointY="28.75" Width="1.5" />
         <EntityTypeShape EntityType="BaseModel.LoginHistory" Width="1.5" PointX="29.625" PointY="15.75" />
         <EntityTypeShape EntityType="BaseModel.v_LoginHistory" Width="1.5" PointX="29.375" PointY="23.75" />
+        <EntityTypeShape EntityType="BaseModel.Roles" Width="1.5" PointX="23.875" PointY="48.5" />
+        <EntityTypeShape EntityType="BaseModel.UserRoles" Width="1.5" PointX="26.125" PointY="43.25" />
+        <EntityTypeShape EntityType="BaseModel.Users" Width="1.5" PointX="23.875" PointY="41.5" />
+        <AssociationConnector Association="BaseModel.FK_Kagent_Users" />
+        <AssociationConnector Association="BaseModel.FK_OperLog_Users" />
+        <AssociationConnector Association="BaseModel.FK_PRINTLOG_2" />
+        <AssociationConnector Association="BaseModel.FK_UserRoles_Roles" />
+        <AssociationConnector Association="BaseModel.FK_USERACCESS_1" />
+        <AssociationConnector Association="BaseModel.FK_UserAccessCashDesks_Users" />
+        <AssociationConnector Association="BaseModel.FK_UAWH_USERID" />
+        <AssociationConnector Association="BaseModel.FK_UserRoles_Users" />
+        <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
+        <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

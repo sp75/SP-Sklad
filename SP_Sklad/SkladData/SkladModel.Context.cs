@@ -134,7 +134,6 @@ namespace SP_Sklad.SkladData
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
         public DbSet<ErrorLog> ErrorLog { get; set; }
-        public DbSet<Users> Users { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
         public DbSet<ProductionPlans> ProductionPlans { get; set; }
         public DbSet<v_MatRemains> v_MatRemains { get; set; }
@@ -193,6 +192,9 @@ namespace SP_Sklad.SkladData
         public DbSet<Shift> Shift { get; set; }
         public DbSet<LoginHistory> LoginHistory { get; set; }
         public DbSet<v_LoginHistory> v_LoginHistory { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        public DbSet<Users> Users { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2514,6 +2516,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("person_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetTradePayDocList_Result>("GetTradePayDocList", doc_typeParameter, from_dateParameter, to_dateParameter, ka_idParameter, checkedParameter, pay_typeParameter, person_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUserRoles")]
+        public virtual IQueryable<GetUserRoles_Result> GetUserRoles(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserRoles_Result>("[BaseEntities].[GetUserRoles](@user_id)", user_idParameter);
         }
     }
 }

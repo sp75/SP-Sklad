@@ -168,24 +168,15 @@ namespace SP_Sklad.Common
             f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
             f.uc.wb = wb;
             f.uc.isMatList = true;
-
+            f.uc.wid = WId.Value;
 
             if (WId != -1)
             {
-                f.uc.gridColumn49.Visible = false;
-                f.uc.gridColumn51.Visible = false;
-                f.uc.gridColumn52.Visible = false;
-                f.uc.MatListGridColumnWh.Visible = (WId == -1);
-                f.uc.bar3.Visible = false;
-                f.uc.ByWhBtn.Down = true;
-                f.uc.splitContainerControl1.SplitterPosition = 0;
-
-                f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == WId).ToList();
-
-                f.uc.GrpNameGridColumn.GroupIndex = 0;
+                f.uc.MatListGridColumnWh.Visible = false;
+                f.uc.WhCheckedComboBox.Enabled = false;
+                f.uc.wh_list = WId.Value.ToString();
+                f.uc.ByWhBtn.Enabled = false;
             }
-
-
 
             if (f.ShowDialog() == DialogResult.OK)
             {

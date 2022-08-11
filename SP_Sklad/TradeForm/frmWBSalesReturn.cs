@@ -104,9 +104,9 @@ namespace SP_Sklad.WBForm
                 NumEdit.DataBindings.Add(new Binding("EditValue", wb, "Num"));
                 OnDateDBEdit.DataBindings.Add(new Binding("EditValue", wb, "OnDate"));
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
-                
 
-                payDocUserControl1.OnLoad(_db, wb);
+
+                payDocUserControl1.OnLoad(_db, wb, true);
           //      KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
 
@@ -141,7 +141,7 @@ namespace SP_Sklad.WBForm
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
             OrdInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-            KagentComboBox.Enabled = WaybillDetInBS.Count == 0 && user_settings.DefaultBuyer == null && !payDocUserControl1.IsPayDoc();
+            KagentComboBox.Enabled = WaybillDetInBS.Count == 0 && DBHelper.is_main_cacher && !payDocUserControl1.IsPayDoc();
             KagBalBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
             OkButton.Enabled = recult;
@@ -185,7 +185,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-            payDocUserControl1.Execute(wb.WbillId, fiscalization_checkEdit.Checked);
+            payDocUserControl1.Execute(wb.WbillId);
 
         //    current_transaction.Commit();
 

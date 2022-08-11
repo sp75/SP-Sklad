@@ -375,6 +375,7 @@
             this.repositoryItemCheckEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
+            this.KagentListSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -3959,6 +3960,13 @@
             this.xtraTabPage11.Size = new System.Drawing.Size(1086, 580);
             this.xtraTabPage11.Text = "Корзиина";
             // 
+            // KagentListSource
+            // 
+            this.KagentListSource.AreSourceRowsThreadSafe = true;
+            this.KagentListSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.KagentList);
+            this.KagentListSource.KeyExpression = "KaId";
+            this.KagentListSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KagentListSource_GetQueryable);
+            // 
             // ExplorerPopupMenu
             // 
             this.ExplorerPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -4546,5 +4554,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn97;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn101;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource KagentListSource;
     }
 }

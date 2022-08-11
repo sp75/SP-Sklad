@@ -9,7 +9,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="NewVersionURL" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://178.136.7.248/web-sklad/sp_sklad/</Value>
+      <Value Profile="(Default)">http://109.207.194.97/websklad/sp_sklad/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

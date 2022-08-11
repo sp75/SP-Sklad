@@ -150,14 +150,14 @@ namespace SP_Sklad.FinanseForm
                     Text = "Властивості вихідного платежу";
                 }
 
-                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16).ToList();
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16 || w.Id == 25).ToList();
                 if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = 1;
             }
             else
             {
                 Text = "Властивості вхідного платежу";
                 labelControl13.Text = "Платник:";
-                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, }.Any(a => a.Equals(w.Id))).ToList();
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, -25 }.Any(a => a.Equals(w.Id))).ToList();
                 if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = -1;
             }
 
