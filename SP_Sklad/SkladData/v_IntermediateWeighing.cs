@@ -29,5 +29,7 @@ namespace SP_Sklad.SkladData
         public string WbNum { get; set; }
         public string PersonName { get; set; }
         public int WbChecked { get; set; }
+        public System.DateTime WbOnDate { get; set; }
+        public Nullable<int> RecipeCount { get; set; }
     }
 }

@@ -1923,6 +1923,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
             <PropertyRef Name="WbNum" />
             <PropertyRef Name="PersonName" />
             <PropertyRef Name="WbChecked" />
+            <PropertyRef Name="WbOnDate" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" />
@@ -1939,6 +1940,8 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
           <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WbChecked" Type="int" Nullable="false" />
+          <Property Name="WbOnDate" Type="datetime" Nullable="false" />
+          <Property Name="RecipeCount" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7225,7 +7228,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighing].[RecipeName] AS [RecipeName], 
     [v_IntermediateWeighing].[WbNum] AS [WbNum], 
     [v_IntermediateWeighing].[PersonName] AS [PersonName], 
-    [v_IntermediateWeighing].[WbChecked] AS [WbChecked]
+    [v_IntermediateWeighing].[WbChecked] AS [WbChecked], 
+    [v_IntermediateWeighing].[WbOnDate] AS [WbOnDate], 
+    [v_IntermediateWeighing].[RecipeCount] AS [RecipeCount]
     FROM [dbo].[v_IntermediateWeighing] AS [v_IntermediateWeighing]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_IntermediateWeighingDet" EntityType="Self.v_IntermediateWeighingDet" store:Type="Views" store:Schema="dbo">
@@ -15879,6 +15884,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WbNum" />
             <PropertyRef Name="PersonName" />
             <PropertyRef Name="WbChecked" />
+            <PropertyRef Name="WbOnDate" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -15895,6 +15901,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WbChecked" Type="Int32" Nullable="false" />
+          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecipeCount" Type="Int32" />
         </EntityType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
@@ -20568,6 +20576,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_IntermediateWeighing">
             <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighing">
               <MappingFragment StoreEntitySet="v_IntermediateWeighing">
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
                 <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="WbNum" ColumnName="WbNum" />

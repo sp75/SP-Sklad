@@ -418,6 +418,8 @@
     <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.Designer.cs">
       <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
+    <Compile Include="IntermediateWeighingInterface\Views\make_det.cs" />
     <Compile Include="SkladData\GetTradePayDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

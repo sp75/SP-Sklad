@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 
@@ -19,7 +20,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         public BaseEntities _db { get; set; }
 
-        private v_IntermediateWeighing intermediate_weighing_focused_row => IntermediateWeighingGridView.GetFocusedRow() as v_IntermediateWeighing;
+        private IntermediateWeighingView intermediate_weighing_focused_row => IntermediateWeighingGridView.GetFocusedRow() as IntermediateWeighingView;
 
         public frmMainIntermediateWeighing(int user_id)
         {
@@ -42,14 +43,28 @@ namespace SP_Sklad.IntermediateWeighingInterface
         void GetIntermediateWeighing()
         {
 
-            int top_row = IntermediateWeighingGridView.TopRowIndex;
-            var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
-            var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
+        //    int top_row = IntermediateWeighingGridView.TopRowIndex;
+        //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
+        //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
 
-            IntermediateWeighingBS.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date && w.OnDate <= end_date && w.Checked == 0).OrderBy(o => o.OnDate).ToList();
+            IntermediateWeighingBS.DataSource = _db.v_IntermediateWeighing.Where(w =>/* w.OnDate > satrt_date && w.OnDate <= end_date && */w.Checked == 0)
+                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount })
+                .Select(s=> new IntermediateWeighingView
+                {
+                    WbillId = s.Key.WbillId,
+                    WbNum = s.Key.WbNum,
+                    WbOnDate = s.Key.WbOnDate,
+                    RecipeName = s.Key.RecipeName,
+                    RecipeCount = s.Key.RecipeCount
+                })
+                .OrderBy(o => o.WbOnDate).ToList();
 
-            IntermediateWeighingGridView.TopRowIndex = top_row;
+
+     //       IntermediateWeighingGridView.TopRowIndex = top_row;
         }
+
+       
+
 
         private void xtraTabControl6_PaddingChanged(object sender, EventArgs e)
         {
@@ -65,11 +80,69 @@ namespace SP_Sklad.IntermediateWeighingInterface
             switch (xtraTabControl6.SelectedTabPageIndex)
             {
                 case 0:
-                    var list = _db.v_IntermediateWeighingDet.AsNoTracking().Where(w => w.IntermediateWeighingId == intermediate_weighing_focused_row.Id).OrderBy(o => o.CreatedDate).ToList();
+                    var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
+                    var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId);
+                    var det_list = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).ToList();
+
+
+                    var  mat_list = DB.SkladBase().GetWayBillMakeDet(intermediate_weighing_focused_row.WbillId).Where(w => group_list.Contains(w.GrpId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList()
+                        .Select(s => new make_det
+                        {
+                            MatName = s.MatName,
+                            MsrName = s.MsrName,
+                            AmountByRecipe = s.AmountByRecipe,
+                            AmountIntermediateWeighing = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId && w.MatId == s.MatId /*&& w.Id != det.Id*/).Sum(st => st.Total),
+                            MatId = s.MatId,
+                            WbillId = intermediate_weighing_focused_row.WbillId,
+                            RecipeCount = wbm.RecipeCount,
+                            IntermediateWeighingCount = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId && w.MatId == s.MatId /*&& w.Id != det.Id*/).Count(),
+                            TotalWeightByRecipe = wbm.AmountByRecipe,
+                            RecId = wbm.RecId
+                        }).ToList();
+
+                   
+
+                    var empty_list = mat_list.Where(w => !det_list.Any(a => a.MatId == w.MatId)).Select(ss => new make_det
+                    {
+                        MsrName = ss.MsrName,
+                        MatName = ss.MatName,
+                        AmountIntermediateWeighing = 0,
+                        Rn = 1,
+                        MatId = ss.MatId,
+                        WbillId = ss.WbillId,
+                        RecipeCount = ss.RecipeCount,
+                        IntermediateWeighingCount = ss.IntermediateWeighingCount
+                    }).ToList();
+
+                    var list = det_list.GroupBy(g => g.MatName)  // PARTITION BY ^^^^
+                   .Select(c => c.OrderBy(o => o.CreatedDate).Select((v, i) => new { i, v }).ToList()) //  ORDER BY ^^
+                   .SelectMany(c => c)
+                   .Select(c => new make_det
+                   {
+                       MsrName = c.v.MsrName,
+                       MatName = c.v.MatName,
+                       AmountIntermediateWeighing = c.v.Total,
+                       MatId = c.v.MatId,
+                       WbillId = c.v.WbillId,
+                       IntermediateWeighingCount = det_list.Count(co => co.MatId == c.v.MatId),
+                       RecipeCount = intermediate_weighing_focused_row.RecipeCount,
+                       Rn = c.i + 1
+                   }).ToList();
+
+                    list.AddRange(empty_list);
+
+                    bindingSource1.DataSource = list;
+
+                   /*
+
+
+
+
+                    var list = _db.v_IntermediateWeighingDet.AsNoTracking().Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).OrderBy(o => o.CreatedDate).ToList();
 
                     int top_row = WaybillDetInGridView.TopRowIndex;
                     IntermediateWeighingDetBS.DataSource = list;
-                    WaybillDetInGridView.TopRowIndex = top_row;
+                    WaybillDetInGridView.TopRowIndex = top_row;*/
                     break;
 
 

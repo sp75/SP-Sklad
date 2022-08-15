@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            this.gridColumn196 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn161 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn195 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -46,36 +54,17 @@
             this.splitContainerControl7 = new DevExpress.XtraEditors.SplitContainerControl();
             this.IntermediateWeighingGridControl = new DevExpress.XtraGrid.GridControl();
             this.IntermediateWeighingBS = new System.Windows.Forms.BindingSource(this.components);
-            this.IntermediateWeighingGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn158 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.IntermediateWeighingGridView = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridColumn159 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn160 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn161 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn162 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn163 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn195 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn196 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.IntermediateWeighingEndDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.IntermediateWeighingStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.xtraTabControl6 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage22 = new DevExpress.XtraTab.XtraTabPage();
-            this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
-            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn164 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn165 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn166 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn167 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn168 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn169 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn170 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn171 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox28 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.pivotGridField4 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.xtraTabPage27 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl16 = new DevExpress.XtraGrid.GridControl();
             this.gridView14 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -90,7 +79,7 @@
             this.gridColumn217 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn218 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn219 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.IntermediateWeighingByWBBS = new System.Windows.Forms.BindingSource(this.components);
+            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
@@ -108,28 +97,60 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl6)).BeginInit();
             this.xtraTabControl6.SuspendLayout();
             this.xtraTabPage22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox28)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.xtraTabPage27.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox30)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox31)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridColumn196
+            // 
+            this.gridColumn196.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.gridColumn196.AppearanceCell.Options.UseFont = true;
+            this.gridColumn196.Caption = "№ виробництва";
+            this.gridColumn196.FieldName = "WbNum";
+            this.gridColumn196.Name = "gridColumn196";
+            this.gridColumn196.Visible = true;
+            this.gridColumn196.VisibleIndex = 0;
+            this.gridColumn196.Width = 177;
+            // 
+            // gridColumn161
+            // 
+            this.gridColumn161.Caption = "Дата виробництва";
+            this.gridColumn161.DisplayFormat.FormatString = "g";
+            this.gridColumn161.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn161.FieldName = "WbOnDate";
+            this.gridColumn161.Name = "gridColumn161";
+            this.gridColumn161.Visible = true;
+            this.gridColumn161.VisibleIndex = 1;
+            this.gridColumn161.Width = 200;
+            // 
+            // gridColumn195
+            // 
+            this.gridColumn195.Caption = "Рецепт";
+            this.gridColumn195.FieldName = "RecipeName";
+            this.gridColumn195.Name = "gridColumn195";
+            this.gridColumn195.Visible = true;
+            this.gridColumn195.VisibleIndex = 2;
+            this.gridColumn195.Width = 548;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "К-сть закладок";
+            this.gridColumn1.FieldName = "RecipeCount";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.Width = 271;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -264,12 +285,11 @@
             this.splitContainerControl7.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl7.Name = "splitContainerControl7";
             this.splitContainerControl7.Panel1.Controls.Add(this.IntermediateWeighingGridControl);
-            this.splitContainerControl7.Panel1.Controls.Add(this.panelControl7);
             this.splitContainerControl7.Panel1.Text = "Panel1";
             this.splitContainerControl7.Panel2.Controls.Add(this.xtraTabControl6);
             this.splitContainerControl7.Panel2.Text = "Panel2";
             this.splitContainerControl7.Size = new System.Drawing.Size(1214, 581);
-            this.splitContainerControl7.SplitterPosition = 378;
+            this.splitContainerControl7.SplitterPosition = 384;
             this.splitContainerControl7.TabIndex = 6;
             this.splitContainerControl7.Text = "splitContainerControl7";
             // 
@@ -277,43 +297,42 @@
             // 
             this.IntermediateWeighingGridControl.DataSource = this.IntermediateWeighingBS;
             this.IntermediateWeighingGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IntermediateWeighingGridControl.Location = new System.Drawing.Point(0, 50);
+            this.IntermediateWeighingGridControl.Location = new System.Drawing.Point(0, 0);
             this.IntermediateWeighingGridControl.MainView = this.IntermediateWeighingGridView;
             this.IntermediateWeighingGridControl.Name = "IntermediateWeighingGridControl";
             this.IntermediateWeighingGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit6});
-            this.IntermediateWeighingGridControl.Size = new System.Drawing.Size(1214, 328);
+            this.IntermediateWeighingGridControl.Size = new System.Drawing.Size(1214, 384);
             this.IntermediateWeighingGridControl.TabIndex = 4;
             this.IntermediateWeighingGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.IntermediateWeighingGridView});
+            this.IntermediateWeighingGridView,
+            this.tileView1});
             // 
             // IntermediateWeighingGridView
             // 
             this.IntermediateWeighingGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn158,
-            this.gridColumn159,
-            this.gridColumn160,
+            this.gridColumn196,
             this.gridColumn161,
-            this.gridColumn162,
-            this.gridColumn163,
             this.gridColumn195,
-            this.gridColumn196});
+            this.gridColumn1});
             this.IntermediateWeighingGridView.GridControl = this.IntermediateWeighingGridControl;
             this.IntermediateWeighingGridView.Name = "IntermediateWeighingGridView";
-            this.IntermediateWeighingGridView.OptionsBehavior.Editable = false;
             this.IntermediateWeighingGridView.OptionsBehavior.ReadOnly = true;
-            this.IntermediateWeighingGridView.OptionsView.ShowFooter = true;
+            this.IntermediateWeighingGridView.OptionsFind.AlwaysVisible = true;
+            tileViewItemElement1.Column = this.gridColumn196;
+            tileViewItemElement1.Text = "gridColumn196";
+            tileViewItemElement2.Column = this.gridColumn161;
+            tileViewItemElement2.Text = "gridColumn161";
+            tileViewItemElement2.TextLocation = new System.Drawing.Point(-20, 20);
+            tileViewItemElement3.Column = this.gridColumn195;
+            tileViewItemElement3.Text = "gridColumn195";
+            tileViewItemElement4.Column = this.gridColumn1;
+            tileViewItemElement4.Text = "gridColumn1";
+            this.IntermediateWeighingGridView.TileTemplate.Add(tileViewItemElement1);
+            this.IntermediateWeighingGridView.TileTemplate.Add(tileViewItemElement2);
+            this.IntermediateWeighingGridView.TileTemplate.Add(tileViewItemElement3);
+            this.IntermediateWeighingGridView.TileTemplate.Add(tileViewItemElement4);
             this.IntermediateWeighingGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.IntermediateWeighingGridView_FocusedRowObjectChanged);
-            // 
-            // gridColumn158
-            // 
-            this.gridColumn158.Caption = "Статус";
-            this.gridColumn158.ColumnEdit = this.repositoryItemCheckEdit6;
-            this.gridColumn158.FieldName = "Checked";
-            this.gridColumn158.Name = "gridColumn158";
-            this.gridColumn158.Visible = true;
-            this.gridColumn158.VisibleIndex = 0;
-            this.gridColumn158.Width = 68;
             // 
             // repositoryItemCheckEdit6
             // 
@@ -322,133 +341,10 @@
             this.repositoryItemCheckEdit6.ValueChecked = 1;
             this.repositoryItemCheckEdit6.ValueUnchecked = 0;
             // 
-            // gridColumn159
+            // tileView1
             // 
-            this.gridColumn159.Caption = "#";
-            this.gridColumn159.FieldName = "Num";
-            this.gridColumn159.Name = "gridColumn159";
-            this.gridColumn159.Visible = true;
-            this.gridColumn159.VisibleIndex = 1;
-            this.gridColumn159.Width = 68;
-            // 
-            // gridColumn160
-            // 
-            this.gridColumn160.Caption = "Відповідальний";
-            this.gridColumn160.FieldName = "PersonName";
-            this.gridColumn160.Name = "gridColumn160";
-            this.gridColumn160.Visible = true;
-            this.gridColumn160.VisibleIndex = 6;
-            this.gridColumn160.Width = 145;
-            // 
-            // gridColumn161
-            // 
-            this.gridColumn161.Caption = "Дата";
-            this.gridColumn161.DisplayFormat.FormatString = "g";
-            this.gridColumn161.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn161.FieldName = "OnDate";
-            this.gridColumn161.Name = "gridColumn161";
-            this.gridColumn161.Visible = true;
-            this.gridColumn161.VisibleIndex = 2;
-            this.gridColumn161.Width = 97;
-            // 
-            // gridColumn162
-            // 
-            this.gridColumn162.Caption = "Примітка";
-            this.gridColumn162.Name = "gridColumn162";
-            this.gridColumn162.Visible = true;
-            this.gridColumn162.VisibleIndex = 7;
-            this.gridColumn162.Width = 311;
-            // 
-            // gridColumn163
-            // 
-            this.gridColumn163.Caption = "Вага закладки";
-            this.gridColumn163.FieldName = "Amount";
-            this.gridColumn163.Name = "gridColumn163";
-            this.gridColumn163.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
-            this.gridColumn163.Visible = true;
-            this.gridColumn163.VisibleIndex = 5;
-            this.gridColumn163.Width = 137;
-            // 
-            // gridColumn195
-            // 
-            this.gridColumn195.Caption = "Рецепт";
-            this.gridColumn195.FieldName = "RecipeName";
-            this.gridColumn195.Name = "gridColumn195";
-            this.gridColumn195.Visible = true;
-            this.gridColumn195.VisibleIndex = 4;
-            this.gridColumn195.Width = 61;
-            // 
-            // gridColumn196
-            // 
-            this.gridColumn196.Caption = "№ виробництва";
-            this.gridColumn196.FieldName = "WbNum";
-            this.gridColumn196.Name = "gridColumn196";
-            this.gridColumn196.Visible = true;
-            this.gridColumn196.VisibleIndex = 3;
-            this.gridColumn196.Width = 145;
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Controls.Add(this.IntermediateWeighingEndDate);
-            this.panelControl7.Controls.Add(this.labelControl20);
-            this.panelControl7.Controls.Add(this.IntermediateWeighingStartDate);
-            this.panelControl7.Controls.Add(this.labelControl21);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 0);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1214, 50);
-            this.panelControl7.TabIndex = 1;
-            // 
-            // IntermediateWeighingEndDate
-            // 
-            this.IntermediateWeighingEndDate.EditValue = null;
-            this.IntermediateWeighingEndDate.Location = new System.Drawing.Point(244, 14);
-            this.IntermediateWeighingEndDate.Name = "IntermediateWeighingEndDate";
-            this.IntermediateWeighingEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingEndDate.Properties.DisplayFormat.FormatString = "g";
-            this.IntermediateWeighingEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingEndDate.Properties.Mask.EditMask = "g";
-            this.IntermediateWeighingEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.IntermediateWeighingEndDate.Size = new System.Drawing.Size(149, 20);
-            this.IntermediateWeighingEndDate.TabIndex = 3;
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(224, 17);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(12, 13);
-            this.labelControl20.TabIndex = 2;
-            this.labelControl20.Text = "по";
-            // 
-            // IntermediateWeighingStartDate
-            // 
-            this.IntermediateWeighingStartDate.EditValue = null;
-            this.IntermediateWeighingStartDate.Location = new System.Drawing.Point(68, 14);
-            this.IntermediateWeighingStartDate.Name = "IntermediateWeighingStartDate";
-            this.IntermediateWeighingStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingStartDate.Properties.DisplayFormat.FormatString = "g";
-            this.IntermediateWeighingStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingStartDate.Properties.EditFormat.FormatString = "g";
-            this.IntermediateWeighingStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingStartDate.Properties.Mask.EditMask = "g";
-            this.IntermediateWeighingStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.IntermediateWeighingStartDate.Size = new System.Drawing.Size(140, 20);
-            this.IntermediateWeighingStartDate.TabIndex = 1;
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(13, 17);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(42, 13);
-            this.labelControl21.TabIndex = 0;
-            this.labelControl21.Text = "Період з";
+            this.tileView1.GridControl = this.IntermediateWeighingGridControl;
+            this.tileView1.Name = "tileView1";
             // 
             // xtraTabControl6
             // 
@@ -456,7 +352,7 @@
             this.xtraTabControl6.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl6.Name = "xtraTabControl6";
             this.xtraTabControl6.SelectedTabPage = this.xtraTabPage22;
-            this.xtraTabControl6.Size = new System.Drawing.Size(1214, 191);
+            this.xtraTabControl6.Size = new System.Drawing.Size(1214, 192);
             this.xtraTabControl6.TabIndex = 0;
             this.xtraTabControl6.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage22,
@@ -465,157 +361,108 @@
             // 
             // xtraTabPage22
             // 
-            this.xtraTabPage22.Controls.Add(this.WaybillDetInGridControl);
+            this.xtraTabPage22.Controls.Add(this.pivotGridControl1);
             this.xtraTabPage22.ImageIndex = 20;
             this.xtraTabPage22.Name = "xtraTabPage22";
-            this.xtraTabPage22.Size = new System.Drawing.Size(1212, 164);
+            this.xtraTabPage22.Size = new System.Drawing.Size(1208, 164);
             this.xtraTabPage22.Text = "Зважування";
             // 
-            // WaybillDetInGridControl
+            // pivotGridControl1
             // 
-            this.WaybillDetInGridControl.DataSource = this.IntermediateWeighingDetBS;
-            this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaybillDetInGridControl.Location = new System.Drawing.Point(0, 0);
-            this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
-            this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
-            this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox28,
-            this.repositoryItemCalcEdit5});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1212, 164);
-            this.WaybillDetInGridControl.TabIndex = 3;
-            this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WaybillDetInGridView});
+            this.pivotGridControl1.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.DataHeaderArea.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.DataHeaderArea.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.FocusedCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.pivotGridControl1.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.pivotGridControl1.Appearance.FocusedCell.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.RowHeaderArea.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.RowHeaderArea.Options.UseFont = true;
+            this.pivotGridControl1.Appearance.SelectedCell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridControl1.Appearance.SelectedCell.Options.UseFont = true;
+            this.pivotGridControl1.DataSource = this.bindingSource1;
+            this.pivotGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pivotGridControl1.Fields.AddRange(new DevExpress.XtraPivotGrid.PivotGridField[] {
+            this.pivotGridField1,
+            this.pivotGridField2,
+            this.pivotGridField3,
+            this.pivotGridField4});
+            this.pivotGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.pivotGridControl1.Name = "pivotGridControl1";
+            this.pivotGridControl1.OptionsSelection.MultiSelect = false;
+            this.pivotGridControl1.OptionsView.ShowColumnHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowDataHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowFilterHeaders = false;
+            this.pivotGridControl1.OptionsView.ShowRowGrandTotalHeader = false;
+            this.pivotGridControl1.OptionsView.ShowRowGrandTotals = false;
+            this.pivotGridControl1.Size = new System.Drawing.Size(1208, 164);
+            this.pivotGridControl1.TabIndex = 37;
             // 
-            // WaybillDetInGridView
+            // bindingSource1
             // 
-            this.WaybillDetInGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.WaybillDetInGridView.Appearance.Row.Options.UseFont = true;
-            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn164,
-            this.gridColumn165,
-            this.gridColumn166,
-            this.gridColumn167,
-            this.gridColumn168,
-            this.gridColumn169,
-            this.gridColumn170,
-            this.gridColumn171});
-            this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
-            this.WaybillDetInGridView.Name = "WaybillDetInGridView";
-            this.WaybillDetInGridView.OptionsView.ShowFooter = true;
-            this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
+            this.bindingSource1.DataSource = typeof(SP_Sklad.WBDetForm.frmIntermediateWeighingDet.make_det);
             // 
-            // gridColumn164
+            // pivotGridField1
             // 
-            this.gridColumn164.Caption = "Сировина";
-            this.gridColumn164.FieldName = "MatName";
-            this.gridColumn164.Name = "gridColumn164";
-            this.gridColumn164.OptionsColumn.AllowEdit = false;
-            this.gridColumn164.OptionsColumn.ReadOnly = true;
-            this.gridColumn164.Visible = true;
-            this.gridColumn164.VisibleIndex = 1;
-            this.gridColumn164.Width = 368;
+            this.pivotGridField1.AllowedAreas = DevExpress.XtraPivotGrid.PivotGridAllowedAreas.RowArea;
+            this.pivotGridField1.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField1.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField1.Appearance.Value.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField1.Appearance.Value.Options.UseFont = true;
+            this.pivotGridField1.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField1.AreaIndex = 0;
+            this.pivotGridField1.Caption = "Сировина";
+            this.pivotGridField1.FieldName = "MatName";
+            this.pivotGridField1.Name = "pivotGridField1";
+            this.pivotGridField1.Options.ReadOnly = true;
+            this.pivotGridField1.Width = 358;
             // 
-            // gridColumn165
+            // pivotGridField2
             // 
-            this.gridColumn165.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridColumn165.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn165.Caption = "Всього";
-            this.gridColumn165.ColumnEdit = this.repositoryItemCalcEdit5;
-            this.gridColumn165.FieldName = "Total";
-            this.gridColumn165.Name = "gridColumn165";
-            this.gridColumn165.OptionsColumn.AllowEdit = false;
-            this.gridColumn165.OptionsColumn.ReadOnly = true;
-            this.gridColumn165.Visible = true;
-            this.gridColumn165.VisibleIndex = 7;
-            this.gridColumn165.Width = 135;
+            this.pivotGridField2.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField2.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField2.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField2.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField2.Area = DevExpress.XtraPivotGrid.PivotArea.RowArea;
+            this.pivotGridField2.AreaIndex = 1;
+            this.pivotGridField2.Caption = "Од.";
+            this.pivotGridField2.FieldName = "MsrName";
+            this.pivotGridField2.Name = "pivotGridField2";
+            this.pivotGridField2.Width = 60;
             // 
-            // repositoryItemCalcEdit5
+            // pivotGridField3
             // 
-            this.repositoryItemCalcEdit5.AutoHeight = false;
-            this.repositoryItemCalcEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit5.DisplayFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemCalcEdit5.EditFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit5.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemCalcEdit5.Name = "repositoryItemCalcEdit5";
+            this.pivotGridField3.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField3.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField3.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField3.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField3.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.pivotGridField3.AreaIndex = 0;
+            this.pivotGridField3.Caption = "Зважено";
+            this.pivotGridField3.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.pivotGridField3.FieldName = "AmountIntermediateWeighing";
+            this.pivotGridField3.Name = "pivotGridField3";
             // 
-            // gridColumn166
+            // pivotGridField4
             // 
-            this.gridColumn166.Caption = "Од. вим.";
-            this.gridColumn166.FieldName = "MsrName";
-            this.gridColumn166.Name = "gridColumn166";
-            this.gridColumn166.OptionsColumn.AllowEdit = false;
-            this.gridColumn166.OptionsColumn.ReadOnly = true;
-            this.gridColumn166.Visible = true;
-            this.gridColumn166.VisibleIndex = 2;
-            this.gridColumn166.Width = 88;
-            // 
-            // gridColumn167
-            // 
-            this.gridColumn167.Caption = "Дата зважування";
-            this.gridColumn167.DisplayFormat.FormatString = "g";
-            this.gridColumn167.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn167.FieldName = "CreatedDate";
-            this.gridColumn167.Name = "gridColumn167";
-            this.gridColumn167.OptionsColumn.AllowEdit = false;
-            this.gridColumn167.OptionsColumn.ReadOnly = true;
-            this.gridColumn167.Visible = true;
-            this.gridColumn167.VisibleIndex = 0;
-            this.gridColumn167.Width = 133;
-            // 
-            // gridColumn168
-            // 
-            this.gridColumn168.Caption = "Тара";
-            this.gridColumn168.FieldName = "TaraAmount";
-            this.gridColumn168.Name = "gridColumn168";
-            this.gridColumn168.Visible = true;
-            this.gridColumn168.VisibleIndex = 4;
-            this.gridColumn168.Width = 84;
-            // 
-            // gridColumn169
-            // 
-            this.gridColumn169.Caption = "К-сть";
-            this.gridColumn169.FieldName = "Amount";
-            this.gridColumn169.Name = "gridColumn169";
-            this.gridColumn169.Visible = true;
-            this.gridColumn169.VisibleIndex = 3;
-            this.gridColumn169.Width = 61;
-            // 
-            // gridColumn170
-            // 
-            this.gridColumn170.Caption = "Візок";
-            this.gridColumn170.FieldName = "VizokName";
-            this.gridColumn170.Name = "gridColumn170";
-            this.gridColumn170.Visible = true;
-            this.gridColumn170.VisibleIndex = 5;
-            this.gridColumn170.Width = 126;
-            // 
-            // gridColumn171
-            // 
-            this.gridColumn171.Caption = "Вага візка";
-            this.gridColumn171.FieldName = "VizokWeight";
-            this.gridColumn171.Name = "gridColumn171";
-            this.gridColumn171.Visible = true;
-            this.gridColumn171.VisibleIndex = 6;
-            this.gridColumn171.Width = 71;
-            // 
-            // repositoryItemImageComboBox28
-            // 
-            this.repositoryItemImageComboBox28.AutoHeight = false;
-            this.repositoryItemImageComboBox28.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox28.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
-            this.repositoryItemImageComboBox28.Name = "repositoryItemImageComboBox28";
+            this.pivotGridField4.Appearance.Cell.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField4.Appearance.Cell.Options.UseFont = true;
+            this.pivotGridField4.Appearance.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.pivotGridField4.Appearance.Header.Options.UseFont = true;
+            this.pivotGridField4.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.pivotGridField4.AreaIndex = 0;
+            this.pivotGridField4.Caption = "#";
+            this.pivotGridField4.FieldName = "Rn";
+            this.pivotGridField4.Name = "pivotGridField4";
+            this.pivotGridField4.Width = 90;
             // 
             // xtraTabPage27
             // 
             this.xtraTabPage27.Controls.Add(this.gridControl16);
             this.xtraTabPage27.ImageIndex = 2;
             this.xtraTabPage27.Name = "xtraTabPage27";
-            this.xtraTabPage27.Size = new System.Drawing.Size(1212, 164);
+            this.xtraTabPage27.Size = new System.Drawing.Size(1208, 164);
             this.xtraTabPage27.Text = "Зв\'язані документи";
             // 
             // gridControl16
@@ -628,7 +475,7 @@
             this.repositoryItemImageComboBox32,
             this.repositoryItemImageComboBox31,
             this.repositoryItemImageComboBox30});
-            this.gridControl16.Size = new System.Drawing.Size(1212, 164);
+            this.gridControl16.Size = new System.Drawing.Size(1208, 164);
             this.gridControl16.TabIndex = 0;
             this.gridControl16.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView14});
@@ -832,28 +679,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl6)).EndInit();
             this.xtraTabControl6.ResumeLayout(false);
             this.xtraTabPage22.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox28)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.xtraTabPage27.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox30)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox31)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -876,35 +714,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl7;
         private DevExpress.XtraGrid.GridControl IntermediateWeighingGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView IntermediateWeighingGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn158;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn159;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn160;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn161;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn162;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn163;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn195;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn196;
-        private DevExpress.XtraEditors.PanelControl panelControl7;
-        public DevExpress.XtraEditors.DateEdit IntermediateWeighingEndDate;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
-        public DevExpress.XtraEditors.DateEdit IntermediateWeighingStartDate;
-        private DevExpress.XtraEditors.LabelControl labelControl21;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage22;
-        private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn164;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn165;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn166;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn167;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn168;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn169;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn170;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn171;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox28;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage27;
         private DevExpress.XtraGrid.GridControl gridControl16;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView14;
@@ -921,8 +733,19 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn219;
         private System.Windows.Forms.BindingSource IntermediateWeighingBS;
         private System.Windows.Forms.BindingSource IntermediateWeighingDetBS;
-        private System.Windows.Forms.BindingSource IntermediateWeighingByWBBS;
         private System.Windows.Forms.Button button1;
+        private DevExpress.XtraPivotGrid.PivotGridControl pivotGridControl1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField1;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField2;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField3;
+        private DevExpress.XtraPivotGrid.PivotGridField pivotGridField4;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
+        private DevExpress.XtraGrid.Views.Tile.TileView IntermediateWeighingGridView;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn196;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn161;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn195;
+        private DevExpress.XtraGrid.Columns.TileViewColumn gridColumn1;
     }
 }
 
