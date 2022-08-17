@@ -68,7 +68,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
             //    int top_row = IntermediateWeighingGridView.TopRowIndex;
             //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
             //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
-            var satrt_date = DateTime.Now.AddDays(-2);
+            var satrt_date = DateTime.Now.AddDays(-20);
 
             gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date/*&& w.OnDate <= end_date*/ && w.Checked == 0).ToList()
                 .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.Amount, g.BMP })
@@ -89,76 +89,9 @@ namespace SP_Sklad.IntermediateWeighingInterface
         }
 
 
-        private void xtraTabControl6_PaddingChanged(object sender, EventArgs e)
-        {
-            
-            if (intermediate_weighing_focused_row == null)
-            {
-
-                IntermediateWeighingDetBS.DataSource = null;
-              
-                return;
-            }
-
-
-                    var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
-                    var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId);
-                    var det_list = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).ToList();
-
-
-                    var  mat_list = DB.SkladBase().GetWayBillMakeDet(intermediate_weighing_focused_row.WbillId).Where(w => group_list.Contains(w.GrpId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList()
-                        .Select(s => new make_det
-                        {
-                            MatName = s.MatName,
-                            MsrName = s.MsrName,
-                            AmountByRecipe = s.AmountByRecipe,
-                            AmountIntermediateWeighing = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId && w.MatId == s.MatId /*&& w.Id != det.Id*/).Sum(st => st.Total),
-                            MatId = s.MatId,
-                            WbillId = intermediate_weighing_focused_row.WbillId,
-                            RecipeCount = wbm.RecipeCount,
-                            IntermediateWeighingCount = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId && w.MatId == s.MatId /*&& w.Id != det.Id*/).Count(),
-                            TotalWeightByRecipe = wbm.AmountByRecipe,
-                            RecId = wbm.RecId
-                        }).ToList();
-
-                   
-
-                    var empty_list = mat_list.Where(w => !det_list.Any(a => a.MatId == w.MatId)).Select(ss => new make_det
-                    {
-                        MsrName = ss.MsrName,
-                        MatName = ss.MatName,
-                        AmountIntermediateWeighing = 0,
-                        Rn = 1,
-                        MatId = ss.MatId,
-                        WbillId = ss.WbillId,
-                        RecipeCount = ss.RecipeCount,
-                        IntermediateWeighingCount = ss.IntermediateWeighingCount
-                    }).ToList();
-
-                    var list = det_list.GroupBy(g => g.MatName)  // PARTITION BY ^^^^
-                   .Select(c => c.OrderBy(o => o.CreatedDate).Select((v, i) => new { i, v }).ToList()) //  ORDER BY ^^
-                   .SelectMany(c => c)
-                   .Select(c => new make_det
-                   {
-                       MsrName = c.v.MsrName,
-                       MatName = c.v.MatName,
-                       AmountIntermediateWeighing = c.v.Total,
-                       MatId = c.v.MatId,
-                       WbillId = c.v.WbillId,
-                       IntermediateWeighingCount = det_list.Count(co => co.MatId == c.v.MatId),
-                       RecipeCount = intermediate_weighing_focused_row.RecipeCount,
-                       Rn = c.i + 1
-                   }).ToList();
-
-                    list.AddRange(empty_list);
-
-                    bindingSource1.DataSource = list;
-   
-        }
-
         private void IntermediateWeighingGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            xtraTabControl6_PaddingChanged(sender, null);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -222,6 +155,14 @@ namespace SP_Sklad.IntermediateWeighingInterface
             RecipeCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
             WBDateCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
          //   if (sold) price.Text = "Sold";
+        }
+
+        private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
+        {
+          
+
+
+            new FluentDesignForm1(intermediate_weighing_focused_row.WbillId).ShowDialog();
         }
     }
 }

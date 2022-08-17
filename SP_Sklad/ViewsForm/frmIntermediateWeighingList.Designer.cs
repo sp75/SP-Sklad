@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource();
+            this.GetWayBillMakeDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.pivotGridControl1 = new DevExpress.XtraPivotGrid.PivotGridControl();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pivotGridField1 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField2 = new DevExpress.XtraPivotGrid.PivotGridField();
             this.pivotGridField3 = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -55,8 +56,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.accountTypeBindingSource = new System.Windows.Forms.BindingSource();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController();
+            this.accountTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillMakeDetBS)).BeginInit();
@@ -136,7 +137,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.pivotGridControl1);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1011, 477);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1015, 480);
             this.xtraTabPage10.Text = "По зважуванням";
             // 
             // pivotGridControl1
@@ -168,11 +169,10 @@
             this.pivotGridControl1.OptionsView.ShowFilterHeaders = false;
             this.pivotGridControl1.OptionsView.ShowRowGrandTotalHeader = false;
             this.pivotGridControl1.OptionsView.ShowRowGrandTotals = false;
-            this.pivotGridControl1.Size = new System.Drawing.Size(1011, 477);
+            this.pivotGridControl1.Size = new System.Drawing.Size(1015, 480);
             this.pivotGridControl1.TabIndex = 36;
             this.pivotGridControl1.CellDoubleClick += new DevExpress.XtraPivotGrid.PivotCellEventHandler(this.pivotGridControl1_CellDoubleClick);
             this.pivotGridControl1.CellClick += new DevExpress.XtraPivotGrid.PivotCellEventHandler(this.pivotGridControl1_CellClick);
-            this.pivotGridControl1.FocusedCellChanged += new System.EventHandler(this.pivotGridControl1_FocusedCellChanged);
             // 
             // bindingSource1
             // 
@@ -236,7 +236,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.WaybillDetInGridControl);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1011, 477);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1015, 480);
             this.xtraTabPage1.Text = "Списком";
             // 
             // WaybillDetInGridControl
@@ -248,7 +248,7 @@
             this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemCalcEdit1});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1011, 477);
+            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1015, 480);
             this.WaybillDetInGridControl.TabIndex = 3;
             this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetInGridView});

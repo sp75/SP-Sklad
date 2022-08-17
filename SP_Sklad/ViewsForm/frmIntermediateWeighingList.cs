@@ -108,11 +108,6 @@ namespace SP_Sklad.ViewsForm
             }*/
         }
 
-        private void pivotGridControl1_FocusedCellChanged(object sender, EventArgs e)
-        {
-        
-        }
-
         private void pivotGridControl1_CellClick(object sender, DevExpress.XtraPivotGrid.PivotCellEventArgs e)
         {
             var dataSource = pivotGridControl1.CreateDrillDownDataSource(0, e.RowIndex);

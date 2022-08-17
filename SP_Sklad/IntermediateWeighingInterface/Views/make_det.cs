@@ -19,6 +19,8 @@ namespace SP_Sklad.IntermediateWeighingInterface.Views
         public int IntermediateWeighingCount { get; set; }
         public decimal? TotalWeightByRecipe { get; set; }
         public int? RecId { get; set; }
-
+        public Guid? IntermediateWeighingId { get; set; }
+        public string IntermediateWeighingNum { get; set; }
+        public Guid? IntermediateWeighingDetId { get; set; }
     }
 }

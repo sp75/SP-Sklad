@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SP_Sklad</RootNamespace>
     <AssemblyName>SP_Sklad</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -50,121 +51,122 @@
     <ApplicationIcon>main_ico.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.BonusSkins.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Data.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Data.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.DataAccess.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v15.2.UI, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.DataAccess.v15.2.UI, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Docs.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Docs.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Images.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Images.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Office.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Pdf.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Pdf.v15.2.Drawing, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Pdf.v15.2.Drawing, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.PivotGrid.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Printing.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.RichEdit.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Sparkline.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.SpellChecker.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.SpellChecker.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Spreadsheet.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Utils.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.Utils.v15.2.UI, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Xpo.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraBars.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraCharts.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v15.2.UI, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraCharts.v15.2.UI, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraCharts.v15.2.Wizard, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraEditors.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGauges.v15.2.Core, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraLayout.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraNavBar.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraPdfViewer.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraPdfViewer.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraPivotGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+    <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraRichEdit.v15.2.Extensions, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraRichEdit.v15.2.Extensions, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraSpellChecker.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraSpellChecker.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraSpreadsheet.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.16.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -188,17 +190,22 @@
     <Reference Include="NCalc">
       <HintPath>..\..\..\MyWebApplication\OpenXml.ReportBuilderXLS\OpenXml.ReportBuilderXLS\bin\Debug\NCalc.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
+    <Reference Include="RawInput">
+      <HintPath>Lib\RawInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Linq.Dynamic, Version=2.1.0.0, Culture=neutral, PublicKeyToken=667e828eb982ff2d, processorArchitecture=MSIL">
+      <HintPath>..\packages\AlanWay.System.Linq.Dynamic.0.0.1\lib\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Management" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -222,12 +229,13 @@
   <ItemGroup>
     <Compile Include="Common\ComPortHelper.cs" />
     <Compile Include="Common\DocEdit.cs" />
+    <Compile Include="Common\EAN13.cs" />
     <Compile Include="Common\EFAuditingHelperMethods.cs" />
     <Compile Include="Common\FindDoc.cs" />
+    <Compile Include="Common\GridExtensions.cs" />
     <Compile Include="Common\History.cs" />
     <Compile Include="Common\IHelper.cs" />
     <Compile Include="Common\ManufDocEdit.cs" />
-    <Compile Include="Common\MoneyToStr.cs" />
     <Compile Include="Common\UniqueID.cs" />
     <Compile Include="Common\UserSession.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
@@ -242,17 +250,35 @@
     <Compile Include="EditForm\frmAccountTypeEdit.Designer.cs">
       <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmCarEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCarEdit.Designer.cs">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmAttEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditForm\frmAttEdit.Designer.cs">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmCurrencyRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmCurrencyRate.Designer.cs">
+      <DependentUpon>frmCurrencyRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmBanksEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EditForm\frmBanksEdit.Designer.cs">
       <DependentUpon>frmBanksEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmAddBarCodeScanner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmAddBarCodeScanner.Designer.cs">
+      <DependentUpon>frmAddBarCodeScanner.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmCashdesksEdit.cs">
       <SubType>Form</SubType>
@@ -278,11 +304,53 @@
     <Compile Include="EditForm\frmDiscountCardEdit.Designer.cs">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditForm\frmMatListEdit.cs">
+    <Compile Include="EditForm\frmPreparationMatRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmMatListEdit.Designer.cs">
-      <DependentUpon>frmMatListEdit.cs</DependentUpon>
+    <Compile Include="EditForm\frmPreparationMatRecipe.Designer.cs">
+      <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmBarCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmBarCode.Designer.cs">
+      <DependentUpon>frmBarCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSvcGroupEdit.Designer.cs">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmTaraEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmTaraEdit.Designer.cs">
+      <DependentUpon>frmTaraEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmSetCustomDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSetCustomDiscount.Designer.cs">
+      <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmSetWBNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmSetWBNote.Designer.cs">
+      <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmTaraGroupEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmTaraGroupEdit.Designer.cs">
+      <DependentUpon>frmTaraGroupEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditForm\frmWeightEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmWeightEdit.Designer.cs">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmMeasuresEdit.cs">
       <SubType>Form</SubType>
@@ -320,6 +388,18 @@
     <Compile Include="FinanseForm\frmMoneyCorrecting.Designer.cs">
       <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
     </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryOut.Designer.cs">
+      <DependentUpon>frmMoneySalaryOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FinanseForm\frmMoneySalaryIn.Designer.cs">
+      <DependentUpon>frmMoneySalaryIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAboutAs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,16 +412,75 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.Designer.cs">
+      <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
+    <Compile Include="IntermediateWeighingInterface\Views\make_det.cs" />
+    <Compile Include="SkladData\GetTradePayDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetTradeWayBillList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetUserRoles_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\LoginHistory.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Roles.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\UserRoles.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_LoginHistory.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\frmCashboxSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmCashboxSettings.Designer.cs">
+      <DependentUpon>frmCashboxSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\frmSalesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmSalesList.Designer.cs">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\TradeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TradeForm\TradeUserControl.Designer.cs">
+      <DependentUpon>TradeUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\XtraRep\DocListReport.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\XtraRep\DocListReport.Designer.cs">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\AdditionalCosts.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\AdditionalCostsDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\AspNetUsers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\BanksPersons.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Cars.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\CurrencyRate.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Customers.cs">
@@ -371,7 +510,19 @@
     <Compile Include="SkladData\ExecuteWayBill_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatGroupPriceTypes_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatNds_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetMatPrice_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetMatTree_Result.cs">
@@ -383,13 +534,28 @@
     <Compile Include="SkladData\GetPriceListDet_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetRecipePreparationRawMaterials_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetRelDocList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetRemainByWh_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetTaraList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetUsedMaterials_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetUserAccessCashDesks_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\GetUserAccessMatGroup_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetUserAccessWh_Result.cs">
@@ -404,7 +570,22 @@
     <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetWayBillMakeDet_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetWMatTurnRemain_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\IntermediateWeighing.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\IntermediateWeighingDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\KAgentAdjustment.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\KAgentAdjustmentDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Licenses.cs">
@@ -413,7 +594,13 @@
     <Compile Include="SkladData\MaterialMeasures.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\MatRecipeAdditionalCosts.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\MoneyMoveList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\OperationTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\OrderedRels.cs">
@@ -434,6 +621,21 @@
     <Compile Include="SkladData\PosGet_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\PosRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\PreparationRawMaterialsList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\PriceList.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Receipt.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ReportSortedFields.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\REP_15_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -449,7 +651,13 @@
     <Compile Include="SkladData\REP_3_14_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\REP_41_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\SchedulingOrders.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\Shift.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\StornoWayBill_Result.cs">
@@ -460,9 +668,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetActualRemainByWh_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetKAgentSaldo_Result.cs">
@@ -537,9 +742,6 @@
     <Compile Include="SkladData\PosRel.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\PriceList.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\ProductionPlanDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -582,9 +784,6 @@
     <Compile Include="SkladData\REP_4_25_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\REP_4_5_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\ReservedAllPosition_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -594,10 +793,19 @@
     <Compile Include="SkladData\Services.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Tara.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\TaraGroup.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\TechProcDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessCashDesks.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\UserAccessMatGroup.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessWh.cs">
@@ -619,6 +827,9 @@
     <Compile Include="SkladData\v_Actives.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_BarCodes.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -629,6 +840,24 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_ErrorLog.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_GetRetailTree.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_IntermediateWeighing.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentAdjustment.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentAdjustmentDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentDocs.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_KAgentSaldo.cs">
@@ -688,7 +917,13 @@
     <Compile Include="SkladData\WBListMake_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\WeighingScales.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WhMatGet_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
@@ -727,11 +962,11 @@
     <Compile Include="EditForm\frmServicesEdit.Designer.cs">
       <DependentUpon>frmServicesEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditForm\frmSvcGroupEdit.cs">
+    <Compile Include="EditForm\frmDiscCardGroupEdit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditForm\frmSvcGroupEdit.Designer.cs">
-      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    <Compile Include="EditForm\frmDiscCardGroupEdit.Designer.cs">
+      <DependentUpon>frmDiscCardGroupEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="EditForm\frmUserEdit.cs">
       <SubType>Form</SubType>
@@ -739,17 +974,71 @@
     <Compile Include="EditForm\frmUserEdit.Designer.cs">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmCustomInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmCustomInfo.Designer.cs">
+      <DependentUpon>frmCustomInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmFinancesView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmFinancesView.Designer.cs">
+      <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmKagents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmKagents.Designer.cs">
+      <DependentUpon>frmKagents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmAdditionalCosts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmAdditionalCosts.Designer.cs">
+      <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmCars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmCars.Designer.cs">
+      <DependentUpon>frmCars.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmKaGroup.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewsForm\frmKaGroup.Designer.cs">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmNumericKeypad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmNumericKeypad.Designer.cs">
+      <DependentUpon>frmNumericKeypad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmTestComPort.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmTestComPort.Designer.cs">
+      <DependentUpon>frmTestComPort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmPdfView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewsForm\frmPdfView.Designer.cs">
       <DependentUpon>frmPdfView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmEditSortingReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmEditSortingReport.Designer.cs">
+      <DependentUpon>frmEditSortingReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmRemainOnWh .cs">
       <SubType>Form</SubType>
@@ -774,6 +1063,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmSpreadsheed.Designer.cs">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmIntermediateWeighingList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmIntermediateWeighingList.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmUserGroup.cs">
       <SubType>Form</SubType>
@@ -805,11 +1100,11 @@
     <Compile Include="frmInParty.Designer.cs">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmKABalans.cs">
+    <Compile Include="frmKaBalans.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmKABalans.Designer.cs">
-      <DependentUpon>frmKABalans.cs</DependentUpon>
+    <Compile Include="frmKaBalans.Designer.cs">
+      <DependentUpon>frmKaBalans.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogHistory.cs">
       <SubType>Form</SubType>
@@ -914,7 +1209,6 @@
       <DependentUpon>frmMatTurn.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\PrintDoc.cs" />
-    <Compile Include="Reports\PrintReport.cs" />
     <Compile Include="Reports\ReportBuilder.cs" />
     <Compile Include="Reports\TemlateList.cs" />
     <Compile Include="SkladData\AccountType.cs">
@@ -954,9 +1248,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Currency.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\CURRENCYRATE.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Database.cs" />
@@ -1024,9 +1315,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetReportTree_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetSaldoDetTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetServiceTree_Result.cs">
@@ -1168,16 +1456,10 @@
     <Compile Include="SkladData\SP_CONTRACTS_LIST_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkladData\SP_GET_AVG_PRICE_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SkladData\SP_GET_MATGRP_NDS_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_GET_MAT_EXTRA_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\SP_GET_MAT_NDS_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\SP_MATCHANGE_GET_WP_Result.cs">
@@ -1261,11 +1543,23 @@
     <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmIntermediateWeighingDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmIntermediateWeighingDet.Designer.cs">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmPlannedCalculationDet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WBDetForm\frmPlannedCalculationDet.Designer.cs">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\frmWBSalesDetOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmWBSalesDetOut.Designer.cs">
+      <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
     </Compile>
     <Compile Include="WBDetForm\frmWBMoveDet.cs">
       <SubType>Form</SubType>
@@ -1339,16 +1633,34 @@
     <Compile Include="WBDetForm\frmWriteOffDet.Designer.cs">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="TradeForm\frmCashboxCheckout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmCashboxCheckout.Designer.cs">
+      <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\frmCashierWorkplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
+      <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentActReconciliation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentActReconciliation.Designer.cs">
+      <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmPlannedCalculation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WBForm\frmPlannedCalculation.Designer.cs">
       <DependentUpon>frmPlannedCalculation.cs</DependentUpon>
     </Compile>
-    <Compile Include="WBForm\frmCashboxWBOut.cs">
+    <Compile Include="TradeForm\frmCashboxWBOut.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WBForm\frmCashboxWBOut.Designer.cs">
+    <Compile Include="TradeForm\frmCashboxWBOut.Designer.cs">
       <DependentUpon>frmCashboxWBOut.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmPriceList.cs">
@@ -1356,6 +1668,18 @@
     </Compile>
     <Compile Include="WBForm\frmPriceList.Designer.cs">
       <DependentUpon>frmPriceList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmIntermediateWeighing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmIntermediateWeighing.Designer.cs">
+      <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentAdjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmKAgentAdjustment.Designer.cs">
+      <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmProductionPlans.cs">
       <SubType>Form</SubType>
@@ -1375,6 +1699,18 @@
     <Compile Include="WBForm\frmWayBillMove.Designer.cs">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </Compile>
+    <Compile Include="TradeForm\frmWBSalesReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmWBSalesReturn.Designer.cs">
+      <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TradeForm\frmWBSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TradeForm\frmWBSales.Designer.cs">
+      <DependentUpon>frmWBSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillOut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1392,6 +1728,12 @@
     </Compile>
     <Compile Include="WBForm\frmWBInventory.Designer.cs">
       <DependentUpon>frmWBInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WBForm\frmPreparationRawMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmPreparationRawMaterials.Designer.cs">
+      <DependentUpon>frmPreparationRawMaterials.cs</DependentUpon>
     </Compile>
     <Compile Include="WBForm\frmWBManufacture.cs">
       <SubType>Form</SubType>
@@ -1426,11 +1768,20 @@
     <EmbeddedResource Include="EditForm\frmAccountTypeEdit.resx">
       <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCarEdit.resx">
+      <DependentUpon>frmCarEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmAttEdit.resx">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmCurrencyRate.resx">
+      <DependentUpon>frmCurrencyRate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmBanksEdit.resx">
       <DependentUpon>frmBanksEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmAddBarCodeScanner.resx">
+      <DependentUpon>frmAddBarCodeScanner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmCashdesksEdit.resx">
       <DependentUpon>frmCashdesksEdit.cs</DependentUpon>
@@ -1444,8 +1795,29 @@
     <EmbeddedResource Include="EditForm\frmDiscountCardEdit.resx">
       <DependentUpon>frmDiscountCardEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditForm\frmMatListEdit.resx">
-      <DependentUpon>frmMatListEdit.cs</DependentUpon>
+    <EmbeddedResource Include="EditForm\frmPreparationMatRecipe.resx">
+      <DependentUpon>frmPreparationMatRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmBarCode.resx">
+      <DependentUpon>frmBarCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSvcGroupEdit.resx">
+      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmTaraEdit.resx">
+      <DependentUpon>frmTaraEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSetCustomDiscount.resx">
+      <DependentUpon>frmSetCustomDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmSetWBNote.resx">
+      <DependentUpon>frmSetWBNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmTaraGroupEdit.resx">
+      <DependentUpon>frmTaraGroupEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmWeightEdit.resx">
+      <DependentUpon>frmWeightEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmMeasuresEdit.resx">
       <DependentUpon>frmMeasuresEdit.cs</DependentUpon>
@@ -1465,11 +1837,29 @@
     <EmbeddedResource Include="FinanseForm\frmMoneyCorrecting.resx">
       <DependentUpon>frmMoneyCorrecting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneySalaryOut.resx">
+      <DependentUpon>frmMoneySalaryOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FinanseForm\frmMoneySalaryIn.resx">
+      <DependentUpon>frmMoneySalaryIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAboutAs.resx">
       <DependentUpon>frmAboutAs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
+      <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmCashboxSettings.resx">
+      <DependentUpon>frmCashboxSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmSalesList.resx">
+      <DependentUpon>frmSalesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\TradeUserControl.resx">
+      <DependentUpon>TradeUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
@@ -1492,17 +1882,44 @@
     <EmbeddedResource Include="EditForm\frmServicesEdit.resx">
       <DependentUpon>frmServicesEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditForm\frmSvcGroupEdit.resx">
-      <DependentUpon>frmSvcGroupEdit.cs</DependentUpon>
+    <EmbeddedResource Include="EditForm\frmDiscCardGroupEdit.resx">
+      <DependentUpon>frmDiscCardGroupEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmUserEdit.resx">
       <DependentUpon>frmUserEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmCustomInfo.resx">
+      <DependentUpon>frmCustomInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmFinancesView.resx">
+      <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmKagents.resx">
+      <DependentUpon>frmKagents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmAdditionalCosts.resx">
+      <DependentUpon>frmAdditionalCosts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmCars.resx">
+      <DependentUpon>frmCars.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKaGroup.resx">
       <DependentUpon>frmKaGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmNumericKeypad.resx">
+      <DependentUpon>frmNumericKeypad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmTestComPort.resx">
+      <DependentUpon>frmTestComPort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmPdfView.resx">
       <DependentUpon>frmPdfView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmEditSortingReport.resx">
+      <DependentUpon>frmEditSortingReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmRemainOnWh .resx">
       <DependentUpon>frmRemainOnWh .cs</DependentUpon>
@@ -1515,6 +1932,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmSpreadsheed.resx">
       <DependentUpon>frmSpreadsheed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmIntermediateWeighingList.resx">
+      <DependentUpon>frmIntermediateWeighingList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmUserGroup.resx">
       <DependentUpon>frmUserGroup.cs</DependentUpon>
@@ -1531,8 +1951,8 @@
     <EmbeddedResource Include="frmInParty.resx">
       <DependentUpon>frmInParty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmKABalans.resx">
-      <DependentUpon>frmKABalans.cs</DependentUpon>
+    <EmbeddedResource Include="frmKaBalans.resx">
+      <DependentUpon>frmKaBalans.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogHistory.resx">
       <DependentUpon>frmLogHistory.cs</DependentUpon>
@@ -1602,8 +2022,14 @@
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmIntermediateWeighingDet.resx">
+      <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmPlannedCalculationDet.resx">
       <DependentUpon>frmPlannedCalculationDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmWBSalesDetOut.resx">
+      <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
       <DependentUpon>frmWBMoveDet.cs</DependentUpon>
@@ -1641,14 +2067,29 @@
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmCashboxCheckout.resx">
+      <DependentUpon>frmCashboxCheckout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
+      <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmKAgentActReconciliation.resx">
+      <DependentUpon>frmKAgentActReconciliation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmPlannedCalculation.resx">
       <DependentUpon>frmPlannedCalculation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WBForm\frmCashboxWBOut.resx">
+    <EmbeddedResource Include="TradeForm\frmCashboxWBOut.resx">
       <DependentUpon>frmCashboxWBOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmPriceList.resx">
       <DependentUpon>frmPriceList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmIntermediateWeighing.resx">
+      <DependentUpon>frmIntermediateWeighing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmKAgentAdjustment.resx">
+      <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmProductionPlans.resx">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
@@ -1659,6 +2100,12 @@
     <EmbeddedResource Include="WBForm\frmWayBillMove.resx">
       <DependentUpon>frmWayBillMove.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmWBSalesReturn.resx">
+      <DependentUpon>frmWBSalesReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TradeForm\frmWBSales.resx">
+      <DependentUpon>frmWBSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
     </EmbeddedResource>
@@ -1667,6 +2114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBInventory.resx">
       <DependentUpon>frmWBInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmPreparationRawMaterials.resx">
+      <DependentUpon>frmPreparationRawMaterials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBManufacture.resx">
       <DependentUpon>frmWBManufacture.cs</DependentUpon>
@@ -1685,18 +2135,23 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.EditForm.frmMatRecipe+MatRecDetList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.DirectoriesUserControl+PriceTypesView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.MainTabs.WarehouseUserControl+ExtMatIfo.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AccountType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Actives.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.AdditionalCosts.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Cars.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CashDesks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ChargeType.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Commission.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CommonParams.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Currency.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.CurrencyRate.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
@@ -1711,14 +2166,23 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradePayDocList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradeWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessCashDesks_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetUserAccessMatGroup_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWaybillDetIn_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillDetOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillListWh_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetWayBillMakeDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighing.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KaAddr.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KADiscount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAccount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentPersons.datasource" />
@@ -1727,9 +2191,11 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KontragentGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroupPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipe.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipeAdditionalCosts.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatRecipeTechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Measures.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MoneyMoveList_Result.datasource" />
@@ -1738,27 +2204,36 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PayDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PlannedCalculationDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.PreparationRawMaterialsList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.PriceTypes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ReportSortedFields.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.REP_15_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Tara.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.TaraGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.UserAccessMatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.MaterialMeasuresView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighing.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustmentDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />
@@ -1777,6 +2252,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillTmc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WBListMake_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.WBDetForm.frmIntermediateWeighingDet+make_det.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1899,14 +2375,35 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="BMP\PNG\finance32.png" />
+    <None Include="BMP\1\currencyexchange.png" />
     <Content Include="main_ico.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CheckboxIntegration\CheckboxIntegration.csproj">
+      <Project>{b2814945-82a8-4b37-8eed-a6fe751bb8b3}</Project>
+      <Name>CheckboxIntegration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
       <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
       <Name>SkladEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SP.Reports\SP.Reports.csproj">
+      <Project>{883fd91d-bb03-4aa6-b846-6f196cd0e6b4}</Project>
+      <Name>SP.Reports</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ScalesCOMServerLib">
+      <Guid>{D1D66117-8982-44F0-B31E-87EBD14FBFF9}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1924,6 +1924,8 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
             <PropertyRef Name="PersonName" />
             <PropertyRef Name="WbChecked" />
             <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="GrpId" />
+            <PropertyRef Name="GroupName" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" />
@@ -1942,6 +1944,9 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
           <Property Name="WbChecked" Type="int" Nullable="false" />
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
           <Property Name="RecipeCount" Type="int" />
+          <Property Name="BMP" Type="varbinary(max)" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7230,7 +7235,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighing].[PersonName] AS [PersonName], 
     [v_IntermediateWeighing].[WbChecked] AS [WbChecked], 
     [v_IntermediateWeighing].[WbOnDate] AS [WbOnDate], 
-    [v_IntermediateWeighing].[RecipeCount] AS [RecipeCount]
+    [v_IntermediateWeighing].[RecipeCount] AS [RecipeCount], 
+    [v_IntermediateWeighing].[BMP] AS [BMP], 
+    [v_IntermediateWeighing].[GrpId] AS [GrpId], 
+    [v_IntermediateWeighing].[GroupName] AS [GroupName]
     FROM [dbo].[v_IntermediateWeighing] AS [v_IntermediateWeighing]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_IntermediateWeighingDet" EntityType="Self.v_IntermediateWeighingDet" store:Type="Views" store:Schema="dbo">
@@ -15885,6 +15893,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="PersonName" />
             <PropertyRef Name="WbChecked" />
             <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="GrpId" />
+            <PropertyRef Name="GroupName" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -15903,6 +15913,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbChecked" Type="Int32" Nullable="false" />
           <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
@@ -20576,6 +20589,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_IntermediateWeighing">
             <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighing">
               <MappingFragment StoreEntitySet="v_IntermediateWeighing">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BMP" ColumnName="BMP" />
                 <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
                 <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
                 <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />

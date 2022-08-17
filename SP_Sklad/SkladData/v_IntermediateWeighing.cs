@@ -31,5 +31,8 @@ namespace SP_Sklad.SkladData
         public int WbChecked { get; set; }
         public System.DateTime WbOnDate { get; set; }
         public Nullable<int> RecipeCount { get; set; }
+        public byte[] BMP { get; set; }
+        public int GrpId { get; set; }
+        public string GroupName { get; set; }
     }
 }
