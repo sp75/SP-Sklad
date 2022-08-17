@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.TableLayout;
+using DevExpress.XtraGrid.Views.Tile;
 using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
@@ -20,16 +23,16 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         public BaseEntities _db { get; set; }
 
-        private IntermediateWeighingView intermediate_weighing_focused_row => IntermediateWeighingGridView.GetFocusedRow() as IntermediateWeighingView;
+        private IntermediateWeighingView intermediate_weighing_focused_row => tileView1.GetFocusedRow() as IntermediateWeighingView;
 
         public frmMainIntermediateWeighing(int user_id)
         {
             InitializeComponent();
-
             _user_id = user_id;
             _db = new BaseEntities();
+            GetIntermediateWeighing();
         }
-
+  
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
 
@@ -37,25 +40,47 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            GetIntermediateWeighing();
+            //GetIntermediateWeighing();
         }
+
+        private void RgViewType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tileView1.OptionsTiles.Orientation = (Orientation)rgViewType.SelectedIndex;
+        }
+        private void ToggleSwitch1_EditValueChanged(object sender, EventArgs e)
+        {
+            if (object.Equals(toggleSwitch1.EditValue, true))
+                tileView1.ColumnSet.GroupColumn = tileViewColumn2;
+            else
+                tileView1.ColumnSet.GroupColumn = null;
+        }
+        void repositoryItemZoomTrackBar1_EditValueChanged(object sender, EventArgs e)
+        {
+            int h = (int)(sender as BaseEdit).EditValue;
+            int w = (int)(h * 1.78);
+            tileView1.OptionsTiles.ItemSize = new Size(w, h);
+        }
+
 
         void GetIntermediateWeighing()
         {
 
-        //    int top_row = IntermediateWeighingGridView.TopRowIndex;
-        //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
-        //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
+            //    int top_row = IntermediateWeighingGridView.TopRowIndex;
+            //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
+            //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
+            var satrt_date = DateTime.Now.AddDays(-2);
 
-            IntermediateWeighingBS.DataSource = _db.v_IntermediateWeighing.Where(w =>/* w.OnDate > satrt_date && w.OnDate <= end_date && */w.Checked == 0)
-                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount })
+            gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date/*&& w.OnDate <= end_date*/ && w.Checked == 0).ToList()
+                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.Amount, g.BMP })
                 .Select(s=> new IntermediateWeighingView
                 {
                     WbillId = s.Key.WbillId,
                     WbNum = s.Key.WbNum,
                     WbOnDate = s.Key.WbOnDate,
                     RecipeName = s.Key.RecipeName,
-                    RecipeCount = s.Key.RecipeCount
+                    RecipeCount = s.Key.RecipeCount,
+                    Amount = String.Format("{0}Kg", s.Key.Amount.Value.ToString("0.0")) ,
+                    BMP = s.Key.BMP
                 })
                 .OrderBy(o => o.WbOnDate).ToList();
 
@@ -63,23 +88,19 @@ namespace SP_Sklad.IntermediateWeighingInterface
      //       IntermediateWeighingGridView.TopRowIndex = top_row;
         }
 
-       
-
 
         private void xtraTabControl6_PaddingChanged(object sender, EventArgs e)
         {
+            
             if (intermediate_weighing_focused_row == null)
             {
 
                 IntermediateWeighingDetBS.DataSource = null;
-                gridControl16.DataSource = null;
+              
                 return;
             }
 
 
-            switch (xtraTabControl6.SelectedTabPageIndex)
-            {
-                case 0:
                     var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
                     var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId);
                     var det_list = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).ToList();
@@ -132,24 +153,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                     list.AddRange(empty_list);
 
                     bindingSource1.DataSource = list;
-
-                   /*
-
-
-
-
-                    var list = _db.v_IntermediateWeighingDet.AsNoTracking().Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).OrderBy(o => o.CreatedDate).ToList();
-
-                    int top_row = WaybillDetInGridView.TopRowIndex;
-                    IntermediateWeighingDetBS.DataSource = list;
-                    WaybillDetInGridView.TopRowIndex = top_row;*/
-                    break;
-
-
-                case 1:
-                    //    gridControl16.DataSource = _db.GetRelDocList(intermediate_weighing_focused_row.Id).OrderBy(o => o.OnDate).ToList();
-                    break;
-            }
+   
         }
 
         private void IntermediateWeighingGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -197,6 +201,27 @@ namespace SP_Sklad.IntermediateWeighingInterface
             }
 
             Application.Exit();
+        }
+
+        Color colorPanelReady = Color.FromArgb(58, 166, 101);
+        Color colorPanelSold = Color.FromArgb(158, 158, 158);
+        Color colorCaptionReady = Color.FromArgb(193, 222, 204);
+        Color colorCaptionSold = Color.FromArgb(219, 219, 219);
+
+        private void tileView1_ItemCustomize(object sender, TileViewItemCustomizeEventArgs e)
+        {
+            if (e.Item == null || e.Item.Elements.Count == 0)
+                return;
+            bool sold = false;// (int)tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["Status"]) == 1;
+
+            var RecipeCaption = e.Item.GetElementByName("RecipeCaption");
+            var WBDateCaption = e.Item.GetElementByName("WBDateCaption");
+       //     var price = e.Item.GetElementByName("Price");
+
+            e.Item.AppearanceItem.Normal.BackColor = sold ? colorPanelSold : colorPanelReady;
+            RecipeCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
+            WBDateCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
+         //   if (sold) price.Text = "Sold";
         }
     }
 }

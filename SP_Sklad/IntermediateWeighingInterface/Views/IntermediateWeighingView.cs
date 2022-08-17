@@ -18,12 +18,14 @@ namespace SP_Sklad.IntermediateWeighingInterface.Views
         public int? UpdatedBy { get; set; }
         public Guid? SessionId { get; set; }
         public int WbillId { get; set; }
-        public decimal? Amount { get; set; }
+        public string Amount { get; set; }
         public string RecipeName { get; set; }
         public string WbNum { get; set; }
         public string PersonName { get; set; }
         public int WbChecked { get; set; }
         public System.DateTime WbOnDate { get; set; }
         public int? RecipeCount { get; set; }
+        public byte[] BMP { get; set; }
+        
     }
 }
