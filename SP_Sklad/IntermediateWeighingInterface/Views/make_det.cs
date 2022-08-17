@@ -22,5 +22,6 @@ namespace SP_Sklad.IntermediateWeighingInterface.Views
         public Guid? IntermediateWeighingId { get; set; }
         public string IntermediateWeighingNum { get; set; }
         public Guid? IntermediateWeighingDetId { get; set; }
+        public byte[] img { get; set; }
     }
 }

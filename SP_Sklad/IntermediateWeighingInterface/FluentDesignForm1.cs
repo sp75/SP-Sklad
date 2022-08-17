@@ -15,6 +15,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
     public partial class FluentDesignForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public BaseEntities _db { get; set; }
+        private make_det focused_row => tileView1.GetFocusedRow() as make_det;
 
         public FluentDesignForm1(int wbill_id)
         {
@@ -31,11 +32,12 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void FluentDesignForm1_Load(object sender, EventArgs e)
         {
-            tileView1.ColumnSet.GroupColumn = tileViewColumn1;
+            sidePanel1.Hide();
+            //tabPane1.Hide();
         }
         private List<make_det> GetDetail(int wbill_id)
         {
-            var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
+            var group_list = _db.UserAccessMatGroup.Where(w => w.UserId == frmMainIntermediateWeighing._user_id).Select(s => s.GrpId).ToList();
             var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == wbill_id);
             var intermediate_weighing = _db.IntermediateWeighing.Where(w => w.WbillId == wbill_id).OrderBy(o=> o.OnDate).ToList();
             var intermediate_det_list = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == wbill_id).ToList();
@@ -62,17 +64,29 @@ namespace SP_Sklad.IntermediateWeighingInterface
                         WbillId = wbill_id,
                         IntermediateWeighingCount = intermediate_det_list.Count(co => co.MatId == wb_make_item.MatId),
                         RecipeCount = intermediate_weighing.Count(),//wbm.RecipeCount,
-                        Rn = rn
+                        Rn = rn,
+                        img = _db.Materials.Find(wb_make_item.MatId).BMP
                     });
                 }
+            }
+
+            if (intermediate_weighing.Count() > 1)
+            {
+                tileView1.ColumnSet.GroupColumn = tileViewColumn1;
             }
 
             return result;
 
         }
 
-        public make_det focused_row { get; set; }
+     
 
+        private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
+        {
+            //tabPane1.Show();
+            sidePanel1.Show();
 
+            layoutControlGroup2.Text = focused_row.MatName;
+        }
     }
 }

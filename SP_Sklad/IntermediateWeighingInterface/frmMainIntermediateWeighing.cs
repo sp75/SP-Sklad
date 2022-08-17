@@ -159,10 +159,14 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
-          
+            using (var frm = new FluentDesignForm1(intermediate_weighing_focused_row.WbillId))
+            {
+                frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
+                frm.ShowDialog();
+            }
 
 
-            new FluentDesignForm1(intermediate_weighing_focused_row.WbillId).ShowDialog();
+                
         }
     }
 }
