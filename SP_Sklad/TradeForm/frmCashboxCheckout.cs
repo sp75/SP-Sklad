@@ -191,7 +191,7 @@ namespace SP_Sklad.WBForm
         {
             List<Payment> payments = new List<Payment>();
 
-            if (PutCashSumEdit.Value > 0)
+            if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
             {
                 payments.Add(new Payment
                 {
@@ -217,7 +217,7 @@ namespace SP_Sklad.WBForm
                 //                new frmMessageBox("Помилка", receipt.error.message).ShowDialog();
             }
 
-            if (PutCashSumEdit.Value > 0)
+            if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
             {
                 PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value, receipt.id);
             }
@@ -295,7 +295,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (PutCashSumEdit.Value > 0)
+            if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
             {
                 PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value);
             }
