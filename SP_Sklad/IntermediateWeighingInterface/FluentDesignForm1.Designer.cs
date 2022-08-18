@@ -60,6 +60,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -73,12 +78,13 @@
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.TotalEdit = new DevExpress.XtraEditors.CalcEdit();
             this.IntermediateWeighingEdit = new DevExpress.XtraEditors.CalcEdit();
             this.CalcAmount = new DevExpress.XtraEditors.CalcEdit();
             this.TaraCalcEdit = new DevExpress.XtraEditors.CalcEdit();
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -87,6 +93,7 @@
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -102,6 +109,7 @@
             this.tabNavigationPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalcAmount.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).BeginInit();
@@ -115,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
@@ -146,7 +155,7 @@
             // tileViewColumn4
             // 
             this.tileViewColumn4.Caption = "Зважено";
-            this.tileViewColumn4.FieldName = "AmountIntermediateWeighing";
+            this.tileViewColumn4.FieldName = "IntermediateWeighingDetTotal";
             this.tileViewColumn4.Name = "tileViewColumn4";
             this.tileViewColumn4.Visible = true;
             this.tileViewColumn4.VisibleIndex = 3;
@@ -166,7 +175,7 @@
             this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
             this.gridControl1.DataSource = this.bindingSource1;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.tileView1;
             this.gridControl1.Name = "gridControl1";
@@ -178,10 +187,8 @@
             // tileView1
             // 
             this.tileView1.Appearance.ItemNormal.BackColor = System.Drawing.Color.MistyRose;
-            this.tileView1.Appearance.ItemNormal.BorderColor = System.Drawing.Color.Transparent;
             this.tileView1.Appearance.ItemNormal.ForeColor = System.Drawing.Color.Black;
             this.tileView1.Appearance.ItemNormal.Options.UseBackColor = true;
-            this.tileView1.Appearance.ItemNormal.Options.UseBorderColor = true;
             this.tileView1.Appearance.ItemNormal.Options.UseForeColor = true;
             this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.tileViewColumn1,
@@ -313,11 +320,12 @@
             // layoutControl1
             // 
             this.layoutControl1.AllowCustomization = false;
+            this.layoutControl1.Controls.Add(this.TotalEdit);
             this.layoutControl1.Controls.Add(this.IntermediateWeighingEdit);
             this.layoutControl1.Controls.Add(this.CalcAmount);
             this.layoutControl1.Controls.Add(this.TaraCalcEdit);
             this.layoutControl1.Controls.Add(this.AmountEdit);
-            this.layoutControl1.Controls.Add(this.simpleButton2);
+            this.layoutControl1.Controls.Add(this.OkButton);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -327,40 +335,55 @@
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // TotalEdit
+            // 
+            this.TotalEdit.Enabled = false;
+            this.TotalEdit.Location = new System.Drawing.Point(12, 304);
+            this.TotalEdit.Name = "TotalEdit";
+            this.TotalEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.TotalEdit.Properties.Appearance.Options.UseFont = true;
+            this.TotalEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.TotalEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.TotalEdit.Properties.ShowCloseButton = true;
+            this.TotalEdit.Size = new System.Drawing.Size(220, 30);
+            this.TotalEdit.StyleController = this.layoutControl1;
+            this.TotalEdit.TabIndex = 52;
+            // 
             // IntermediateWeighingEdit
             // 
             this.IntermediateWeighingEdit.Enabled = false;
-            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(6, 228);
+            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(12, 254);
             this.IntermediateWeighingEdit.Name = "IntermediateWeighingEdit";
             this.IntermediateWeighingEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.IntermediateWeighingEdit.Properties.Appearance.Options.UseFont = true;
             this.IntermediateWeighingEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.IntermediateWeighingEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.IntermediateWeighingEdit.Properties.ShowCloseButton = true;
-            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(232, 30);
+            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(220, 30);
             this.IntermediateWeighingEdit.StyleController = this.layoutControl1;
             this.IntermediateWeighingEdit.TabIndex = 50;
             // 
             // CalcAmount
             // 
             this.CalcAmount.Enabled = false;
-            this.CalcAmount.Location = new System.Drawing.Point(6, 178);
+            this.CalcAmount.Location = new System.Drawing.Point(12, 201);
             this.CalcAmount.Name = "CalcAmount";
             this.CalcAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.CalcAmount.Properties.Appearance.Options.UseFont = true;
             this.CalcAmount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CalcAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.CalcAmount.Properties.ShowCloseButton = true;
-            this.CalcAmount.Size = new System.Drawing.Size(232, 30);
+            this.CalcAmount.Size = new System.Drawing.Size(220, 30);
             this.CalcAmount.StyleController = this.layoutControl1;
             this.CalcAmount.TabIndex = 47;
             // 
             // TaraCalcEdit
             // 
             this.TaraCalcEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "TaraAmount", true));
-            this.TaraCalcEdit.Location = new System.Drawing.Point(6, 96);
+            this.TaraCalcEdit.Location = new System.Drawing.Point(12, 106);
             this.TaraCalcEdit.Name = "TaraCalcEdit";
             this.TaraCalcEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.TaraCalcEdit.Properties.Appearance.Options.UseFont = true;
@@ -368,9 +391,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TaraCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TaraCalcEdit.Properties.ShowCloseButton = true;
-            this.TaraCalcEdit.Size = new System.Drawing.Size(232, 30);
+            this.TaraCalcEdit.Size = new System.Drawing.Size(220, 30);
             this.TaraCalcEdit.StyleController = this.layoutControl1;
             this.TaraCalcEdit.TabIndex = 46;
+            this.TaraCalcEdit.EditValueChanged += new System.EventHandler(this.TaraCalcEdit_EditValueChanged);
             // 
             // IntermediateWeighingDetBS
             // 
@@ -379,35 +403,38 @@
             // AmountEdit
             // 
             this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "Amount", true));
-            this.AmountEdit.Location = new System.Drawing.Point(6, 46);
+            this.AmountEdit.Location = new System.Drawing.Point(12, 53);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.AmountEdit.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F11), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "Ваги №1 (F11)", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "Ваги №2 (F12)", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F11), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "Ваги №1 (F11)", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "Ваги №2 (F12)", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(232, 30);
+            this.AmountEdit.Size = new System.Drawing.Size(220, 30);
             this.AmountEdit.StyleController = this.layoutControl1;
             this.AmountEdit.TabIndex = 45;
+            this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
+            this.AmountEdit.EditValueChanged += new System.EventHandler(this.TaraCalcEdit_EditValueChanged);
             // 
-            // simpleButton2
+            // OkButton
             // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.Beige;
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Location = new System.Drawing.Point(1, 265);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Padding = new System.Windows.Forms.Padding(15, 15, 15, 15);
-            this.simpleButton2.Size = new System.Drawing.Size(242, 54);
-            this.simpleButton2.StyleController = this.layoutControl1;
-            this.simpleButton2.TabIndex = 48;
-            this.simpleButton2.Text = "Застосувати";
+            this.OkButton.Appearance.BackColor = System.Drawing.Color.Beige;
+            this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.OkButton.Appearance.Options.UseBackColor = true;
+            this.OkButton.Appearance.Options.UseFont = true;
+            this.OkButton.Location = new System.Drawing.Point(2, 348);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Padding = new System.Windows.Forms.Padding(15);
+            this.OkButton.Size = new System.Drawing.Size(240, 54);
+            this.OkButton.StyleController = this.layoutControl1;
+            this.OkButton.TabIndex = 48;
+            this.OkButton.Text = "Застосувати";
+            this.OkButton.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // layoutControlGroup1
             // 
@@ -424,9 +451,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 320);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 404);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(244, 138);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(244, 54);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup2
@@ -437,7 +464,7 @@
             this.layoutControlItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(244, 132);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(244, 148);
             this.layoutControlGroup2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup2.Text = "Дані";
             // 
@@ -448,32 +475,33 @@
             this.layoutControlItem1.Control = this.AmountEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(234, 50);
+            this.layoutControlItem1.Size = new System.Drawing.Size(224, 53);
             this.layoutControlItem1.Text = "Кількість";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(99, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(111, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
             this.layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem2.Control = this.TaraCalcEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 50);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 53);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(234, 50);
+            this.layoutControlItem2.Size = new System.Drawing.Size(224, 53);
             this.layoutControlItem2.Text = "Тара, кг";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(99, 16);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(111, 16);
             // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
-            this.layoutControlItem5});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 132);
+            this.layoutControlItem5,
+            this.layoutControlItem6});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 148);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(244, 132);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(244, 198);
             this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup3.Text = "Підсумок";
             // 
@@ -484,29 +512,39 @@
             this.layoutControlItem3.Control = this.CalcAmount;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(234, 50);
+            this.layoutControlItem3.Size = new System.Drawing.Size(224, 53);
             this.layoutControlItem3.Text = "Планова вага";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(99, 16);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(111, 16);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
             this.layoutControlItem5.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem5.Control = this.IntermediateWeighingEdit;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 50);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 53);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(234, 50);
+            this.layoutControlItem5.Size = new System.Drawing.Size(224, 53);
             this.layoutControlItem5.Text = "Всього зважено:";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(99, 16);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(111, 16);
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.TotalEdit;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 106);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(224, 50);
+            this.layoutControlItem6.Text = "Залишилось зважити:";
+            this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(111, 13);
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.simpleButton2;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 264);
+            this.layoutControlItem4.Control = this.OkButton;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 346);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(244, 56);
+            this.layoutControlItem4.Size = new System.Drawing.Size(244, 58);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -575,6 +613,7 @@
             this.tabNavigationPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TotalEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalcAmount.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraCalcEdit.Properties)).EndInit();
@@ -588,6 +627,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
@@ -614,7 +654,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.CalcEdit CalcAmount;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.CalcEdit IntermediateWeighingEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
@@ -628,5 +668,7 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn4;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraEditors.CalcEdit TotalEdit;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

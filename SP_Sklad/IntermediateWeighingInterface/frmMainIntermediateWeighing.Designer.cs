@@ -61,6 +61,7 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumn6 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.IntermediateWeighingBS = new System.Windows.Forms.BindingSource(this.components);
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
@@ -71,6 +72,7 @@
             this.toggleSwitch1 = new DevExpress.XtraEditors.ToggleSwitch();
             this.zoomTrackBarControl1 = new DevExpress.XtraEditors.ZoomTrackBarControl();
             this.rgViewType = new DevExpress.XtraEditors.RadioGroup();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -79,6 +81,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup4 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -113,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumn1
@@ -291,17 +295,16 @@
             // tileView1
             // 
             this.tileView1.Appearance.ItemNormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(166)))), ((int)(((byte)(101)))));
-            this.tileView1.Appearance.ItemNormal.BorderColor = System.Drawing.Color.Transparent;
             this.tileView1.Appearance.ItemNormal.ForeColor = System.Drawing.Color.White;
             this.tileView1.Appearance.ItemNormal.Options.UseBackColor = true;
-            this.tileView1.Appearance.ItemNormal.Options.UseBorderColor = true;
             this.tileView1.Appearance.ItemNormal.Options.UseForeColor = true;
             this.tileView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.tileViewColumn1,
             this.tileViewColumn2,
             this.tileViewColumn3,
             this.tileViewColumn4,
-            this.tileViewColumn5});
+            this.tileViewColumn5,
+            this.tileViewColumn6});
             this.tileView1.GridControl = this.gridControl1;
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsTiles.IndentBetweenItems = 20;
@@ -384,7 +387,6 @@
             this.tileView1.TileTemplate.Add(tileViewItemElement7);
             this.tileView1.ItemClick += new DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventHandler(this.tileView1_ItemClick);
             this.tileView1.ItemCustomize += new DevExpress.XtraGrid.Views.Tile.TileViewItemCustomizeEventHandler(this.tileView1_ItemCustomize);
-            this.tileView1.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.IntermediateWeighingGridView_FocusedRowObjectChanged);
             // 
             // tileViewColumn5
             // 
@@ -393,6 +395,14 @@
             this.tileViewColumn5.Name = "tileViewColumn5";
             this.tileViewColumn5.Visible = true;
             this.tileViewColumn5.VisibleIndex = 4;
+            // 
+            // tileViewColumn6
+            // 
+            this.tileViewColumn6.Caption = "tileViewColumn6";
+            this.tileViewColumn6.FieldName = "IsDone";
+            this.tileViewColumn6.Name = "tileViewColumn6";
+            this.tileViewColumn6.Visible = true;
+            this.tileViewColumn6.VisibleIndex = 5;
             // 
             // button1
             // 
@@ -441,6 +451,7 @@
             this.layoutControl1.Controls.Add(this.toggleSwitch1);
             this.layoutControl1.Controls.Add(this.zoomTrackBarControl1);
             this.layoutControl1.Controls.Add(this.rgViewType);
+            this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -496,6 +507,22 @@
             this.rgViewType.TabIndex = 7;
             this.rgViewType.SelectedIndexChanged += new System.EventHandler(this.RgViewType_SelectedIndexChanged);
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.RoyalBlue;
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.Options.UseBackColor = true;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(2, 230);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Padding = new System.Windows.Forms.Padding(10);
+            this.simpleButton1.Size = new System.Drawing.Size(245, 56);
+            this.simpleButton1.StyleController = this.layoutControl1;
+            this.simpleButton1.TabIndex = 11;
+            this.simpleButton1.Text = "Обновити";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.GroupBordersVisible = false;
@@ -503,7 +530,8 @@
             this.emptySpaceItem1,
             this.layoutControlGroup2,
             this.layoutControlGroup3,
-            this.layoutControlGroup4});
+            this.layoutControlGroup4,
+            this.layoutControlItem2});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
             this.layoutControlGroup1.Size = new System.Drawing.Size(249, 548);
             this.layoutControlGroup1.TextVisible = false;
@@ -511,9 +539,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 228);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 288);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 320);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 260);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup2
@@ -583,6 +611,15 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.simpleButton1;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 228);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(249, 60);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
             // bar1
             // 
             this.bar1.BarName = "Custom 2";
@@ -601,6 +638,7 @@
             // 
             // frmMainIntermediateWeighing
             // 
+            this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1214, 581);
@@ -648,6 +686,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,6 +734,9 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn6;
     }
 }
 

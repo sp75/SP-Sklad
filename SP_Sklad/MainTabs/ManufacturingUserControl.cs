@@ -1037,6 +1037,11 @@ namespace SP_Sklad.MainTabs
 
         private void RefreshIntermediateWeighing()
         {
+            if(focused_row == null)
+            {
+                return;
+            }
+
             int top_row = IntermediateWeighingByWbGridView.TopRowIndex;
 
             using (var db = DB.SkladBase())

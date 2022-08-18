@@ -26,6 +26,7 @@ namespace SP_Sklad.IntermediateWeighingInterface.Views
         public System.DateTime WbOnDate { get; set; }
         public int? RecipeCount { get; set; }
         public byte[] BMP { get; set; }
-        
+        public bool IsDone { get; set; }
+
     }
 }

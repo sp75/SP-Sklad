@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -65,27 +66,28 @@ namespace SP_Sklad.IntermediateWeighingInterface
         void GetIntermediateWeighing()
         {
 
-            //    int top_row = IntermediateWeighingGridView.TopRowIndex;
+                //int top_row = tileView1.ind TopRowIndex;
             //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
             //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
-            var satrt_date = DateTime.Now.AddDays(-20);
+            var satrt_date = DateTime.Now.AddDays(-10);
 
-            gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date/*&& w.OnDate <= end_date*/ && w.Checked == 0).ToList()
-                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.Amount, g.BMP })
-                .Select(s=> new IntermediateWeighingView
+            gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date/*&& w.OnDate <= end_date*/ && w.Checked == 0)
+                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.MsrName, g.MatId })
+                .Select(s => new IntermediateWeighingView
                 {
                     WbillId = s.Key.WbillId,
                     WbNum = s.Key.WbNum,
                     WbOnDate = s.Key.WbOnDate,
                     RecipeName = s.Key.RecipeName,
                     RecipeCount = s.Key.RecipeCount,
-                    Amount = String.Format("{0}Kg", s.Key.Amount.Value.ToString("0.0")) ,
-                    BMP = s.Key.BMP
+                    Amount = SqlFunctions.StringConvert( s.Sum(su => su.Amount)) + s.Key.MsrName,
+                    BMP = _db.Materials.FirstOrDefault(f=> f.MatId ==s.Key.MatId).BMP,
+                    IsDone = !_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == s.Key.WbillId && w.IntermediateWeighingDetId == null && w.UserId == _user_id).Select(ss => ss.WbillId).Any()
                 })
                 .OrderBy(o => o.WbOnDate).ToList();
 
 
-     //       IntermediateWeighingGridView.TopRowIndex = top_row;
+            //       IntermediateWeighingGridView.TopRowIndex = top_row;
         }
 
 
@@ -107,7 +109,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 }
 
                 var iw = _db.IntermediateWeighing.Find(intermediate_weighing_focused_row.Id);
-                using (var f = new frmIntermediateWeighingDet(_db, Guid.NewGuid(), iw))
+                using (var f = new WBDetForm.frmIntermediateWeighingDet(_db, Guid.NewGuid(), iw))
                 {
                     f.ShowDialog();
                 }
@@ -145,13 +147,14 @@ namespace SP_Sklad.IntermediateWeighingInterface
         {
             if (e.Item == null || e.Item.Elements.Count == 0)
                 return;
-            bool sold = false;// (int)tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["Status"]) == 1;
+            bool sold =  (bool)tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["IsDone"]) ;
 
             var RecipeCaption = e.Item.GetElementByName("RecipeCaption");
             var WBDateCaption = e.Item.GetElementByName("WBDateCaption");
        //     var price = e.Item.GetElementByName("Price");
 
             e.Item.AppearanceItem.Normal.BackColor = sold ? colorPanelSold : colorPanelReady;
+
             RecipeCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
             WBDateCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
          //   if (sold) price.Text = "Sold";
@@ -163,10 +166,17 @@ namespace SP_Sklad.IntermediateWeighingInterface
             {
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
                 frm.ShowDialog();
+
+                GetIntermediateWeighing();
             }
 
 
                 
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            GetIntermediateWeighing();
         }
     }
 }

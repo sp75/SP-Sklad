@@ -169,7 +169,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WriteOffTypes> WriteOffTypes { get; set; }
         public DbSet<v_KAgentAdjustment> v_KAgentAdjustment { get; set; }
         public DbSet<v_KAgentDocs> v_KAgentDocs { get; set; }
-        public DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
         public DbSet<v_KAgentAdjustmentDet> v_KAgentAdjustmentDet { get; set; }
         public DbSet<KAgentAdjustmentDet> KAgentAdjustmentDet { get; set; }
         public DbSet<TechProcess> TechProcess { get; set; }
@@ -179,7 +178,6 @@ namespace SP_Sklad.SkladData
         public DbSet<AdditionalCostsDet> AdditionalCostsDet { get; set; }
         public DbSet<Tara> Tara { get; set; }
         public DbSet<TaraGroup> TaraGroup { get; set; }
-        public DbSet<v_IntermediateWeighing> v_IntermediateWeighing { get; set; }
         public DbSet<CurrencyRate> CurrencyRate { get; set; }
         public DbSet<Cars> Cars { get; set; }
         public DbSet<WeighingScales> WeighingScales { get; set; }
@@ -195,6 +193,10 @@ namespace SP_Sklad.SkladData
         public DbSet<Roles> Roles { get; set; }
         public DbSet<UserRoles> UserRoles { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<v_IntermediateWeighing> v_IntermediateWeighing { get; set; }
+        public DbSet<v_IntermediateWeighingDet> v_IntermediateWeighingDet { get; set; }
+        public DbSet<v_WaybillDet> v_WaybillDet { get; set; }
+        public DbSet<v_IntermediateWeighingSummary> v_IntermediateWeighingSummary { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

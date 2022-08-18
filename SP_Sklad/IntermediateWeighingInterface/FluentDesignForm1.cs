@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using SP_Sklad.EditForm;
 using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.SkladData;
 using System;
@@ -9,19 +10,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.IntermediateWeighingInterface
 {
     public partial class FluentDesignForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public BaseEntities _db { get; set; }
+        private IntermediateWeighingDet det { get; set; }
         private make_det focused_row => tileView1.GetFocusedRow() as make_det;
+        private int _wbill_id { get; set; }
 
         public FluentDesignForm1(int wbill_id)
         {
             InitializeComponent();
+            _wbill_id = wbill_id;
+
             _db = new BaseEntities();
-            bindingSource1.DataSource =  GetDetail(wbill_id);
+
+            GetDetail(wbill_id);
         }
 
 
@@ -33,8 +40,8 @@ namespace SP_Sklad.IntermediateWeighingInterface
         private void FluentDesignForm1_Load(object sender, EventArgs e)
         {
             sidePanel1.Hide();
-            //tabPane1.Hide();
         }
+
         private List<make_det> GetDetail(int wbill_id)
         {
             var group_list = _db.UserAccessMatGroup.Where(w => w.UserId == frmMainIntermediateWeighing._user_id).Select(s => s.GrpId).ToList();
@@ -52,20 +59,26 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 foreach (var wb_make_item in wb_make_det)
                 {
                     var intermediate_det_item = intermediate_det_list.FirstOrDefault(w => w.MatId == wb_make_item.MatId && w.IntermediateWeighingId == item.Id);
+
                     result.Add(new make_det
                     {
                         IntermediateWeighingId = item.Id,
                         IntermediateWeighingNum = item.Num,
-                        IntermediateWeighingDetId = intermediate_det_item?.Id,
+                        IntermediateWeighingAmount = item.Amount,
                         MsrName = wb_make_item.MsrName,
                         MatName = wb_make_item.MatName,
-                        AmountIntermediateWeighing = intermediate_det_item?.Total,
                         MatId = wb_make_item.MatId,
                         WbillId = wbill_id,
                         IntermediateWeighingCount = intermediate_det_list.Count(co => co.MatId == wb_make_item.MatId),
                         RecipeCount = intermediate_weighing.Count(),//wbm.RecipeCount,
                         Rn = rn,
-                        img = _db.Materials.Find(wb_make_item.MatId).BMP
+                        img = _db.Materials.FirstOrDefault(w=>  w.MatId == wb_make_item.MatId).BMP,
+                        AmountByRecipe = wb_make_item.AmountByRecipe,
+                        TotalWeightByRecipe = wbm.AmountByRecipe,
+                        TotalWeighted = wb_make_item.AmountIntermediateWeighing,
+                        IntermediateWeighingDetId = intermediate_det_item?.Id,
+                        IntermediateWeighingDetTotal =   intermediate_det_item != null ? string.Format("{0}{1}" , intermediate_det_item.Total.Value.ToString("0.000"), intermediate_det_item?.MsrName) :"",
+                        RecId = wbm.RecId
                     });
                 }
             }
@@ -75,6 +88,8 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 tileView1.ColumnSet.GroupColumn = tileViewColumn1;
             }
 
+            bindingSource1.DataSource = result;
+
             return result;
 
         }
@@ -83,10 +98,110 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
-            //tabPane1.Show();
             sidePanel1.Show();
 
             layoutControlGroup2.Text = focused_row.MatName;
+
+            if (focused_row.IntermediateWeighingDetId != null)
+            {
+                det = _db.IntermediateWeighingDet.Find(focused_row.IntermediateWeighingDetId);
+            }
+            else
+            {
+                det = new IntermediateWeighingDet
+                {
+                    Id = Guid.NewGuid(),
+                    Amount = 0,
+                    IntermediateWeighingId = focused_row.IntermediateWeighingId,
+                    CreatedDate = DBHelper.ServerDateTime(),
+                    TaraAmount = 0,
+                    MatId = focused_row.MatId
+                     
+                };
+            }
+
+            IntermediateWeighingDetBS.DataSource = det;
+
+            GetOk();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            det.Total = det.Amount - det.TaraAmount ;
+            det.TaraTotal = det.TaraAmount ;
+
+
+            if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
+            {
+                _db.IntermediateWeighingDet.Add(det);
+            }
+            _db.SaveChanges();
+
+            GetDetail(_wbill_id);
+        }
+
+        private void GetOk()
+        {
+            var row = focused_row;
+
+            if (row != null)
+            {
+                var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 2);
+
+            //    ByRecipeEdit.EditValue = row.AmountByRecipe;
+                IntermediateWeighingEdit.EditValue = row.TotalWeighted;
+                TotalEdit.EditValue = row.AmountByRecipe - (row.TotalWeighted ?? 0);
+
+                var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId)?.Deviation ?? 1000000;
+
+                var netto_amount = AmountEdit.Value - TaraCalcEdit.Value ;
+
+                CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value ;
+
+
+                OkButton.Enabled =  ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount);
+                
+            }
+            else
+            {
+                OkButton.Enabled = false;
+            }
+        }
+
+        private void TaraCalcEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                using (var frm = new frmWeightEdit(focused_row.MatName, 1))
+                {
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                        GetOk();
+                    }
+                }
+            }
+
+            if (e.Button.Index == 2)
+            {
+                using (var frm = new frmWeightEdit(focused_row.MatName, 2))
+                {
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                        GetOk();
+                    }
+                }
+            }
         }
     }
 }

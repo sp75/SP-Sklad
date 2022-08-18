@@ -1926,6 +1926,8 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
             <PropertyRef Name="WbOnDate" />
             <PropertyRef Name="GrpId" />
             <PropertyRef Name="GroupName" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MatId" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" />
@@ -1944,9 +1946,10 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
           <Property Name="WbChecked" Type="int" Nullable="false" />
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
           <Property Name="RecipeCount" Type="int" />
-          <Property Name="BMP" Type="varbinary(max)" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1978,6 +1981,41 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not ha
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="VizokName" Type="nvarchar" MaxLength="255" />
           <Property Name="VizokWeight" Type="numeric" Precision="15" Scale="4" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_IntermediateWeighingSummary">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="RecipeGrpId" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="ReceipeMsrName" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IntermediateWeighingDetId" Type="uniqueidentifier" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WbOnDate" Type="datetime" Nullable="false" />
+          <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
+          <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" />
+          <Property Name="RecipeCount" Type="int" />
+          <Property Name="RecipeGrpId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="ReceipeMsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2433,6 +2471,49 @@ warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key d
           <Property Name="InternalEditor" Type="bit" />
           <Property Name="IsWorking" Type="bit" Nullable="false" />
           <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillDet">
+          <Key>
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="PtypeId" Type="int" />
+          <Property Name="Num" Type="int" Nullable="false" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Expires" Type="datetime" />
+          <Property Name="PosKind" Type="int" />
+          <Property Name="PosParent" Type="int" />
+          <Property Name="MsrUnitId" Type="int" />
+          <Property Name="DiscountKind" Type="int" />
+          <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="BMP" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7236,9 +7317,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighing].[WbChecked] AS [WbChecked], 
     [v_IntermediateWeighing].[WbOnDate] AS [WbOnDate], 
     [v_IntermediateWeighing].[RecipeCount] AS [RecipeCount], 
-    [v_IntermediateWeighing].[BMP] AS [BMP], 
     [v_IntermediateWeighing].[GrpId] AS [GrpId], 
-    [v_IntermediateWeighing].[GroupName] AS [GroupName]
+    [v_IntermediateWeighing].[GroupName] AS [GroupName], 
+    [v_IntermediateWeighing].[MsrName] AS [MsrName], 
+    [v_IntermediateWeighing].[MatId] AS [MatId]
     FROM [dbo].[v_IntermediateWeighing] AS [v_IntermediateWeighing]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_IntermediateWeighingDet" EntityType="Self.v_IntermediateWeighingDet" store:Type="Views" store:Schema="dbo">
@@ -7260,6 +7342,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingDet].[VizokName] AS [VizokName], 
     [v_IntermediateWeighingDet].[VizokWeight] AS [VizokWeight]
     FROM [dbo].[v_IntermediateWeighingDet] AS [v_IntermediateWeighingDet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_IntermediateWeighingSummary" EntityType="Self.v_IntermediateWeighingSummary" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_IntermediateWeighingSummary].[WbillId] AS [WbillId], 
+    [v_IntermediateWeighingSummary].[MatId] AS [MatId], 
+    [v_IntermediateWeighingSummary].[IntermediateWeighingId] AS [IntermediateWeighingId], 
+    [v_IntermediateWeighingSummary].[IntermediateWeighingDetId] AS [IntermediateWeighingDetId], 
+    [v_IntermediateWeighingSummary].[MatName] AS [MatName], 
+    [v_IntermediateWeighingSummary].[WbOnDate] AS [WbOnDate], 
+    [v_IntermediateWeighingSummary].[Total] AS [Total], 
+    [v_IntermediateWeighingSummary].[Checked] AS [Checked], 
+    [v_IntermediateWeighingSummary].[RecipeName] AS [RecipeName], 
+    [v_IntermediateWeighingSummary].[WbNum] AS [WbNum], 
+    [v_IntermediateWeighingSummary].[IntermediateWeighingNum] AS [IntermediateWeighingNum], 
+    [v_IntermediateWeighingSummary].[IntermediateWeighingAmount] AS [IntermediateWeighingAmount], 
+    [v_IntermediateWeighingSummary].[MsrName] AS [MsrName], 
+    [v_IntermediateWeighingSummary].[RecipeCount] AS [RecipeCount], 
+    [v_IntermediateWeighingSummary].[RecipeGrpId] AS [RecipeGrpId], 
+    [v_IntermediateWeighingSummary].[GroupName] AS [GroupName], 
+    [v_IntermediateWeighingSummary].[ReceipeMsrName] AS [ReceipeMsrName], 
+    [v_IntermediateWeighingSummary].[GrpId] AS [GrpId], 
+    [v_IntermediateWeighingSummary].[UserId] AS [UserId]
+    FROM [dbo].[v_IntermediateWeighingSummary] AS [v_IntermediateWeighingSummary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -7583,6 +7688,39 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Users].[IsWorking] AS [IsWorking], 
     [v_Users].[EmployeeName] AS [EmployeeName]
     FROM [dbo].[v_Users] AS [v_Users]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillDet].[PosId] AS [PosId], 
+    [v_WaybillDet].[WbillId] AS [WbillId], 
+    [v_WaybillDet].[MatId] AS [MatId], 
+    [v_WaybillDet].[WId] AS [WId], 
+    [v_WaybillDet].[Amount] AS [Amount], 
+    [v_WaybillDet].[Price] AS [Price], 
+    [v_WaybillDet].[Discount] AS [Discount], 
+    [v_WaybillDet].[Nds] AS [Nds], 
+    [v_WaybillDet].[CurrId] AS [CurrId], 
+    [v_WaybillDet].[OnDate] AS [OnDate], 
+    [v_WaybillDet].[PtypeId] AS [PtypeId], 
+    [v_WaybillDet].[Num] AS [Num], 
+    [v_WaybillDet].[Checked] AS [Checked], 
+    [v_WaybillDet].[OnValue] AS [OnValue], 
+    [v_WaybillDet].[Total] AS [Total], 
+    [v_WaybillDet].[BasePrice] AS [BasePrice], 
+    [v_WaybillDet].[Expires] AS [Expires], 
+    [v_WaybillDet].[PosKind] AS [PosKind], 
+    [v_WaybillDet].[PosParent] AS [PosParent], 
+    [v_WaybillDet].[MsrUnitId] AS [MsrUnitId], 
+    [v_WaybillDet].[DiscountKind] AS [DiscountKind], 
+    [v_WaybillDet].[AvgInPrice] AS [AvgInPrice], 
+    [v_WaybillDet].[Notes] AS [Notes], 
+    [v_WaybillDet].[UpdateAt] AS [UpdateAt], 
+    [v_WaybillDet].[GrpName] AS [GrpName], 
+    [v_WaybillDet].[MsrName] AS [MsrName], 
+    [v_WaybillDet].[MatName] AS [MatName], 
+    [v_WaybillDet].[GrpId] AS [GrpId], 
+    [v_WaybillDet].[BMP] AS [BMP]
+    FROM [dbo].[v_WaybillDet] AS [v_WaybillDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="Self.v_WaybillList" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -9693,7 +9831,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
           </AssociationSet>
           <EntitySet Name="v_KAgentDocs" EntityType="BaseModel.v_KAgentDocs" />
-          <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
           <EntitySet Name="v_KAgentAdjustmentDet" EntityType="BaseModel.v_KAgentAdjustmentDet" />
           <EntitySet Name="KAgentAdjustmentDet" EntityType="BaseModel.KAgentAdjustmentDet" />
           <AssociationSet Name="FK_KAgentAdjustmentDet_KAgentAdjustment" Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment">
@@ -9785,7 +9922,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="grp" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="v_IntermediateWeighing" EntityType="BaseModel.v_IntermediateWeighing" />
           <FunctionImport Name="GetPayDocList" ReturnType="Collection(BaseModel.GetPayDocList_Result)">
             <Parameter Name="doc_type" Mode="In" Type="String" />
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -9934,6 +10070,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Users" EntitySet="Users" />
             <End Role="UserSettings" EntitySet="UserSettings" />
           </AssociationSet>
+          <EntitySet Name="v_IntermediateWeighing" EntityType="BaseModel.v_IntermediateWeighing" />
+          <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
+          <EntitySet Name="v_WaybillDet" EntityType="BaseModel.v_WaybillDet" />
+          <EntitySet Name="v_IntermediateWeighingSummary" EntityType="BaseModel.v_IntermediateWeighingSummary" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15319,35 +15459,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="v_IntermediateWeighingDet">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Amount" />
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="IntermediateWeighingId" />
-            <PropertyRef Name="MsrName" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Checked" />
-            <PropertyRef Name="PersonName" />
-            <PropertyRef Name="WbillId" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
-          <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
-          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="VizokName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="VizokWeight" Type="Decimal" Precision="15" Scale="4" />
-        </EntityType>
         <EntityType Name="v_KAgentAdjustmentDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -15882,41 +15993,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="DateTime" Name="DateModified" Nullable="true" Precision="23" />
           <Property Type="String" Name="InvNumber" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="v_IntermediateWeighing">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Checked" />
-            <PropertyRef Name="PersonId" />
-            <PropertyRef Name="WbillId" />
-            <PropertyRef Name="WbNum" />
-            <PropertyRef Name="PersonName" />
-            <PropertyRef Name="WbChecked" />
-            <PropertyRef Name="WbOnDate" />
-            <PropertyRef Name="GrpId" />
-            <PropertyRef Name="GroupName" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="Int32" Nullable="false" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="SessionId" Type="Guid" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="WbChecked" Type="Int32" Nullable="false" />
-          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RecipeCount" Type="Int32" />
-          <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="GrpId" Type="Int32" Nullable="false" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-        </EntityType>
         <ComplexType Name="GetPayDocList_Result">
           <Property Type="Int64" Name="Num" Nullable="true" />
           <Property Type="Int32" Name="PayDocId" Nullable="false" />
@@ -16631,6 +16707,147 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_IntermediateWeighing">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonId" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WbChecked" />
+            <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="GrpId" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WbChecked" Type="Int32" Nullable="false" />
+          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_IntermediateWeighingDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="TaraAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="VizokName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VizokWeight" Type="Decimal" Precision="15" Scale="4" />
+        </EntityType>
+        <EntityType Name="v_WaybillDet">
+          <Key>
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="PtypeId" Type="Int32" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Expires" Type="DateTime" Precision="3" />
+          <Property Name="PosKind" Type="Int32" />
+          <Property Name="PosParent" Type="Int32" />
+          <Property Name="MsrUnitId" Type="Int32" />
+          <Property Name="DiscountKind" Type="Int32" />
+          <Property Name="AvgInPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="v_IntermediateWeighingSummary">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="IntermediateWeighingId" />
+            <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="RecipeGrpId" />
+            <PropertyRef Name="GroupName" />
+            <PropertyRef Name="ReceipeMsrName" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="IntermediateWeighingId" Type="Guid" Nullable="false" />
+          <Property Name="IntermediateWeighingDetId" Type="Guid" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="RecipeGrpId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="ReceipeMsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20079,28 +20296,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="v_IntermediateWeighingDet">
-            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
-              <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
-                <ScalarProperty Name="VizokWeight" ColumnName="VizokWeight" />
-                <ScalarProperty Name="VizokName" ColumnName="VizokName" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_KAgentAdjustmentDet">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentAdjustmentDet">
               <MappingFragment StoreEntitySet="v_KAgentAdjustmentDet">
@@ -20586,32 +20781,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="v_IntermediateWeighing">
-            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighing">
-              <MappingFragment StoreEntitySet="v_IntermediateWeighing">
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="BMP" ColumnName="BMP" />
-                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
-                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
-                <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetPayDocList" FunctionName="BaseModel.Store.GetPayDocList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetPayDocList_Result">
@@ -21079,6 +21248,115 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighing">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighing">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighing">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
+                <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighingDet">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
+                <ScalarProperty Name="VizokWeight" ColumnName="VizokWeight" />
+                <ScalarProperty Name="VizokName" ColumnName="VizokName" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="TaraAmount" ColumnName="TaraAmount" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillDet">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillDet">
+              <MappingFragment StoreEntitySet="v_WaybillDet">
+                <ScalarProperty Name="BMP" ColumnName="BMP" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
+                <ScalarProperty Name="DiscountKind" ColumnName="DiscountKind" />
+                <ScalarProperty Name="MsrUnitId" ColumnName="MsrUnitId" />
+                <ScalarProperty Name="PosParent" ColumnName="PosParent" />
+                <ScalarProperty Name="PosKind" ColumnName="PosKind" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighingSummary">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingSummary">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighingSummary">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="ReceipeMsrName" ColumnName="ReceipeMsrName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="RecipeGrpId" ColumnName="RecipeGrpId" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="IntermediateWeighingAmount" ColumnName="IntermediateWeighingAmount" />
+                <ScalarProperty Name="IntermediateWeighingNum" ColumnName="IntermediateWeighingNum" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="IntermediateWeighingDetId" ColumnName="IntermediateWeighingDetId" />
+                <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

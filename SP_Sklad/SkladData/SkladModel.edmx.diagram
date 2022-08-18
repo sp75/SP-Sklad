@@ -284,7 +284,6 @@
         <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_OperationTypes" />
         <AssociationConnector Association="BaseModel.FK_KAgentAdjustment_WriteOffTypes" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentDocs" Width="1.5" PointX="24.375" PointY="22.75" />
-        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="13.375" PointY="12.75" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentAdjustmentDet" Width="1.5" PointX="22.375" PointY="13.75" />
         <EntityTypeShape EntityType="BaseModel.KAgentAdjustmentDet" Width="1.5" PointX="7.375" PointY="54.625" />
         <AssociationConnector Association="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" />
@@ -345,9 +344,12 @@
         <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="3.875" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="12.875" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighing" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_BarCodes" Width="1.5" PointX="16.5" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_GetRetailTree" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighing" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="14.75" PointY="6.25" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillDet" Width="1.5" PointX="18.5" PointY="2.375" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingSummary" Width="1.5" PointX="16.5" PointY="2.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
