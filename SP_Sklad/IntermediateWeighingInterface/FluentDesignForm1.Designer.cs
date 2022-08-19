@@ -65,11 +65,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -79,10 +74,14 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.TotalEdit = new DevExpress.XtraEditors.CalcEdit();
             this.IntermediateWeighingEdit = new DevExpress.XtraEditors.CalcEdit();
             this.CalcAmount = new DevExpress.XtraEditors.CalcEdit();
@@ -90,26 +89,30 @@
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.buttonEdit1 = new DevExpress.XtraEditors.ButtonEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.fluentDesignFormContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
+            this.sidePanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.sidePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
@@ -126,13 +129,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
             this.SuspendLayout();
@@ -171,11 +176,12 @@
             // fluentDesignFormContainer1
             // 
             this.fluentDesignFormContainer1.Controls.Add(this.gridControl1);
+            this.fluentDesignFormContainer1.Controls.Add(this.sidePanel2);
             this.fluentDesignFormContainer1.Controls.Add(this.sidePanel1);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(0, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1057, 591);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1057, 612);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // gridControl1
@@ -184,10 +190,10 @@
             this.gridControl1.DataSource = this.bindingSource1;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
-            this.gridControl1.Location = new System.Drawing.Point(0, 0);
+            this.gridControl1.Location = new System.Drawing.Point(0, 70);
             this.gridControl1.MainView = this.tileView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(812, 591);
+            this.gridControl1.Size = new System.Drawing.Size(768, 542);
             this.gridControl1.TabIndex = 39;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
@@ -294,13 +300,53 @@
             this.tileViewColumn5.Visible = true;
             this.tileViewColumn5.VisibleIndex = 4;
             // 
+            // sidePanel2
+            // 
+            this.sidePanel2.AllowResize = false;
+            this.sidePanel2.AllowSnap = false;
+            this.sidePanel2.Controls.Add(this.labelControl1);
+            this.sidePanel2.Controls.Add(this.pictureEdit1);
+            this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.sidePanel2.Location = new System.Drawing.Point(0, 0);
+            this.sidePanel2.Name = "sidePanel2";
+            this.sidePanel2.Size = new System.Drawing.Size(768, 70);
+            this.sidePanel2.TabIndex = 0;
+            this.sidePanel2.Text = "sidePanel2";
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.AutoEllipsis = true;
+            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelControl1.Location = new System.Drawing.Point(82, 0);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Padding = new System.Windows.Forms.Padding(10);
+            this.labelControl1.Size = new System.Drawing.Size(686, 69);
+            this.labelControl1.TabIndex = 56;
+            this.labelControl1.Text = "labelControl1";
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.pictureEdit1.Properties.PictureStoreMode = DevExpress.XtraEditors.Controls.PictureStoreMode.Image;
+            this.pictureEdit1.Properties.ReadOnly = true;
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(82, 69);
+            this.pictureEdit1.TabIndex = 57;
+            // 
             // sidePanel1
             // 
             this.sidePanel1.Controls.Add(this.tabPane1);
             this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel1.Location = new System.Drawing.Point(812, 0);
+            this.sidePanel1.Location = new System.Drawing.Point(768, 0);
             this.sidePanel1.Name = "sidePanel1";
-            this.sidePanel1.Size = new System.Drawing.Size(245, 591);
+            this.sidePanel1.Size = new System.Drawing.Size(289, 612);
             this.sidePanel1.TabIndex = 38;
             this.sidePanel1.Text = "sidePanel1";
             // 
@@ -312,9 +358,9 @@
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1});
-            this.tabPane1.RegularSize = new System.Drawing.Size(244, 591);
+            this.tabPane1.RegularSize = new System.Drawing.Size(288, 612);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(244, 591);
+            this.tabPane1.Size = new System.Drawing.Size(288, 612);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -324,31 +370,46 @@
             this.tabNavigationPage1.Controls.Add(this.layoutControl1);
             this.tabNavigationPage1.Font = new System.Drawing.Font("Tahoma", 10F);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(244, 558);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(288, 579);
             // 
             // layoutControl1
             // 
             this.layoutControl1.AllowCustomization = false;
+            this.layoutControl1.Controls.Add(this.simpleButton2);
             this.layoutControl1.Controls.Add(this.TotalEdit);
             this.layoutControl1.Controls.Add(this.IntermediateWeighingEdit);
             this.layoutControl1.Controls.Add(this.CalcAmount);
             this.layoutControl1.Controls.Add(this.TaraCalcEdit);
             this.layoutControl1.Controls.Add(this.AmountEdit);
             this.layoutControl1.Controls.Add(this.OkButton);
-            this.layoutControl1.Controls.Add(this.simpleButton2);
+            this.layoutControl1.Controls.Add(this.simpleButton3);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(282, 199, 650, 400);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(244, 558);
+            this.layoutControl1.Size = new System.Drawing.Size(288, 579);
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(2, 521);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
+            this.simpleButton2.Size = new System.Drawing.Size(284, 56);
+            this.simpleButton2.StyleController = this.layoutControl1;
+            this.simpleButton2.TabIndex = 55;
+            this.simpleButton2.Text = "До списку рецептів";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click_1);
             // 
             // TotalEdit
             // 
             this.TotalEdit.Enabled = false;
-            this.TotalEdit.Location = new System.Drawing.Point(12, 324);
+            this.TotalEdit.Location = new System.Drawing.Point(12, 394);
             this.TotalEdit.Name = "TotalEdit";
             this.TotalEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.TotalEdit.Properties.Appearance.Options.UseFont = true;
@@ -356,14 +417,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.TotalEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TotalEdit.Properties.ShowCloseButton = true;
-            this.TotalEdit.Size = new System.Drawing.Size(220, 30);
+            this.TotalEdit.Size = new System.Drawing.Size(264, 30);
             this.TotalEdit.StyleController = this.layoutControl1;
             this.TotalEdit.TabIndex = 52;
             // 
             // IntermediateWeighingEdit
             // 
             this.IntermediateWeighingEdit.Enabled = false;
-            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(12, 274);
+            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(12, 344);
             this.IntermediateWeighingEdit.Name = "IntermediateWeighingEdit";
             this.IntermediateWeighingEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.IntermediateWeighingEdit.Properties.Appearance.Options.UseFont = true;
@@ -371,14 +432,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.IntermediateWeighingEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.IntermediateWeighingEdit.Properties.ShowCloseButton = true;
-            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(220, 30);
+            this.IntermediateWeighingEdit.Size = new System.Drawing.Size(264, 30);
             this.IntermediateWeighingEdit.StyleController = this.layoutControl1;
             this.IntermediateWeighingEdit.TabIndex = 50;
             // 
             // CalcAmount
             // 
             this.CalcAmount.Enabled = false;
-            this.CalcAmount.Location = new System.Drawing.Point(12, 221);
+            this.CalcAmount.Location = new System.Drawing.Point(12, 291);
             this.CalcAmount.Name = "CalcAmount";
             this.CalcAmount.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.CalcAmount.Properties.Appearance.Options.UseFont = true;
@@ -386,7 +447,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CalcAmount.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.CalcAmount.Properties.ShowCloseButton = true;
-            this.CalcAmount.Size = new System.Drawing.Size(220, 30);
+            this.CalcAmount.Size = new System.Drawing.Size(264, 30);
             this.CalcAmount.StyleController = this.layoutControl1;
             this.CalcAmount.TabIndex = 47;
             // 
@@ -402,7 +463,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 30, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.TaraCalcEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TaraCalcEdit.Properties.ShowCloseButton = true;
-            this.TaraCalcEdit.Size = new System.Drawing.Size(220, 40);
+            this.TaraCalcEdit.Size = new System.Drawing.Size(264, 40);
             this.TaraCalcEdit.StyleController = this.layoutControl1;
             this.TaraCalcEdit.TabIndex = 46;
             this.TaraCalcEdit.EditValueChanged += new System.EventHandler(this.TaraCalcEdit_EditValueChanged);
@@ -419,13 +480,11 @@
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.AmountEdit.Properties.Appearance.Options.UseFont = true;
             editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
-            editorButtonImageOptions6.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions6.Image")));
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 30, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F11), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "Ваги №1 (F11)", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", 30, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(220, 40);
+            this.AmountEdit.Size = new System.Drawing.Size(264, 40);
             this.AmountEdit.StyleController = this.layoutControl1;
             this.AmountEdit.TabIndex = 45;
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
@@ -437,28 +496,31 @@
             this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.OkButton.Appearance.Options.UseBackColor = true;
             this.OkButton.Appearance.Options.UseFont = true;
-            this.OkButton.Location = new System.Drawing.Point(2, 368);
+            this.OkButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("OkButton.ImageOptions.Image")));
+            this.OkButton.Location = new System.Drawing.Point(2, 438);
             this.OkButton.Name = "OkButton";
             this.OkButton.Padding = new System.Windows.Forms.Padding(15);
-            this.OkButton.Size = new System.Drawing.Size(240, 54);
+            this.OkButton.Size = new System.Drawing.Size(284, 66);
             this.OkButton.StyleController = this.layoutControl1;
             this.OkButton.TabIndex = 48;
             this.OkButton.Text = "Застосувати";
             this.OkButton.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // simpleButton2
+            // simpleButton3
             // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(2, 500);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton2.Size = new System.Drawing.Size(240, 56);
-            this.simpleButton2.StyleController = this.layoutControl1;
-            this.simpleButton2.TabIndex = 53;
-            this.simpleButton2.Text = "До списку рецептів";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click_1);
+            this.simpleButton3.Appearance.BackColor = DevExpress.LookAndFeel.DXSkinColors.FillColors.Question;
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton3.Appearance.Options.UseBackColor = true;
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(12, 170);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Padding = new System.Windows.Forms.Padding(10);
+            this.simpleButton3.Size = new System.Drawing.Size(264, 56);
+            this.simpleButton3.StyleController = this.layoutControl1;
+            this.simpleButton3.TabIndex = 54;
+            this.simpleButton3.Text = "Зважити";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // layoutControlGroup1
             // 
@@ -467,10 +529,10 @@
             this.layoutControlGroup2,
             this.layoutControlGroup3,
             this.layoutControlItem4,
-            this.layoutControlItem7,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem7});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(244, 558);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(288, 579);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -478,10 +540,12 @@
             this.layoutControlGroup2.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem8,
+            this.emptySpaceItem2});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(244, 168);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(288, 238);
             this.layoutControlGroup2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup2.Text = "Дані";
             // 
@@ -492,7 +556,7 @@
             this.layoutControlItem1.Control = this.AmountEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(224, 63);
+            this.layoutControlItem1.Size = new System.Drawing.Size(268, 63);
             this.layoutControlItem1.Text = "Кількість";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(111, 16);
@@ -504,10 +568,27 @@
             this.layoutControlItem2.Control = this.TaraCalcEdit;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 63);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(224, 63);
+            this.layoutControlItem2.Size = new System.Drawing.Size(268, 63);
             this.layoutControlItem2.Text = "Тара, кг";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(111, 16);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.simpleButton3;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 136);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(268, 60);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 126);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(268, 10);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup3
             // 
@@ -516,9 +597,9 @@
             this.layoutControlItem3,
             this.layoutControlItem5,
             this.layoutControlItem6});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 168);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 238);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(244, 198);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(288, 198);
             this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup3.Text = "Підсумок";
             // 
@@ -529,7 +610,7 @@
             this.layoutControlItem3.Control = this.CalcAmount;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(224, 53);
+            this.layoutControlItem3.Size = new System.Drawing.Size(268, 53);
             this.layoutControlItem3.Text = "Планова вага";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(111, 16);
@@ -541,7 +622,7 @@
             this.layoutControlItem5.Control = this.IntermediateWeighingEdit;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 53);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(224, 53);
+            this.layoutControlItem5.Size = new System.Drawing.Size(268, 53);
             this.layoutControlItem5.Text = "Всього зважено:";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(111, 16);
@@ -551,7 +632,7 @@
             this.layoutControlItem6.Control = this.TotalEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 106);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(224, 50);
+            this.layoutControlItem6.Size = new System.Drawing.Size(268, 50);
             this.layoutControlItem6.Text = "Залишилось зважити:";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(111, 13);
@@ -559,28 +640,28 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.OkButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 366);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 436);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(244, 58);
+            this.layoutControlItem4.Size = new System.Drawing.Size(288, 70);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.simpleButton2;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 498);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(244, 60);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 424);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 506);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(244, 74);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(288, 13);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.simpleButton2;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 519);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(288, 60);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // fluentDesignFormControl1
             // 
@@ -593,6 +674,12 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.skinDropDownButtonItem1);
+            // 
+            // skinDropDownButtonItem1
+            // 
+            this.skinDropDownButtonItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.skinDropDownButtonItem1.Id = 0;
+            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
             // buttonEdit1
             // 
@@ -611,17 +698,11 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "simpleButton1";
             // 
-            // skinDropDownButtonItem1
-            // 
-            this.skinDropDownButtonItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.skinDropDownButtonItem1.Id = 0;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
             // FluentDesignForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 622);
+            this.ClientSize = new System.Drawing.Size(1057, 643);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.buttonEdit1);
@@ -639,6 +720,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
+            this.sidePanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.sidePanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
@@ -655,13 +738,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -702,8 +787,14 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn5;
         private DevExpress.XtraEditors.CalcEdit TotalEdit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.SidePanel sidePanel2;
+        public DevExpress.XtraEditors.LabelControl labelControl1;
+        public DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
     }
 }

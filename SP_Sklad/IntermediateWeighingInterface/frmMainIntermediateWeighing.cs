@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.SqlServer;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TableLayout;
 using DevExpress.XtraGrid.Views.Tile;
@@ -104,7 +106,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 WbOnDate = s.Key.WbOnDate,
                 RecipeName = s.Key.RecipeName,
                 RecipeCount = s.Key.RecipeCount,
-                Amount = SqlFunctions.StringConvert(s.Sum(su => su.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
+                Amount = SqlFunctions.StringConvert(s.GroupBy(gg=> new { gg.IntermediateWeighingId, gg.IntermediateWeighingAmount}).Sum(su => su.Key.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
                 BMP = _db.Materials.Where(ww=> ww.MatId == s.Key.RecipeMatId).Select(s2=> s2.BMP).FirstOrDefault(),
                 IsDone = !s.Any(w => w.IntermediateWeighingDetId == null)
             }).OrderBy(o => o.WbOnDate).ToList();
@@ -186,9 +188,26 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
+            var total = _db.IntermediateWeighing.Where(w => w.WbillId == intermediate_weighing_focused_row.WbillId).Sum(s => s.Amount);
+            var amount_by_recipe = _db.WayBillMake.FirstOrDefault(w => w.WbillId == intermediate_weighing_focused_row.WbillId).AmountByRecipe;
+
+            if ((total ?? 0) > (amount_by_recipe ?? 0))
+            {
+                MessageBox.Show("Вага закладок по виробництву більша запланованої");
+
+                return;
+            }
+
+
             using (var frm = new FluentDesignForm1(intermediate_weighing_focused_row.WbillId))
             {
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
+                if (intermediate_weighing_focused_row.BMP != null)
+                {
+                    frm.pictureEdit1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
+                }
+              
+                frm.labelControl1.Text =  intermediate_weighing_focused_row.RecipeName;
                 frm.ShowDialog();
 
                 GetIntermediateWeighing();

@@ -16,6 +16,7 @@ using SP_Sklad.Common;
 using System.Security.Principal;
 using DevExpress.LookAndFeel;
 using SP_Sklad.IntermediateWeighingInterface;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad
 {
@@ -265,6 +266,8 @@ namespace SP_Sklad
 
                     if (user.WorkSpace == "intermediate_weighing_interface")
                     {
+                        WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                        WindowsFormsSettings.TouchScaleFactor = 2;
                         frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
                         frmMainIntermediateWeighing.main_form.Show();
                     }

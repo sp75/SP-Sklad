@@ -74,10 +74,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
-            com_port.Close();
-
-            GetWeight();
+          
         }
 
         private void frmMatListEdit_Shown(object sender, EventArgs e)
@@ -93,5 +90,15 @@ namespace SP_Sklad.EditForm
             }
         }
 
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1 )
+            {
+                timer1.Stop();
+                com_port.Close();
+
+                GetWeight();
+            }
+        }
     }
 }

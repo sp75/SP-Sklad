@@ -253,5 +253,19 @@ namespace SP_Sklad.IntermediateWeighingInterface
         {
             Close();
         }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmWeightEdit(focused_row.MatName, 1))
+            {
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AmountEdit.EditValue = frm.AmountEdit.Value;
+
+                    GetOk();
+                }
+            }
+        }
     }
 }
