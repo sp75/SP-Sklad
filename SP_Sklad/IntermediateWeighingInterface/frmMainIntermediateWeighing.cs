@@ -66,25 +66,49 @@ namespace SP_Sklad.IntermediateWeighingInterface
         void GetIntermediateWeighing()
         {
 
-                //int top_row = tileView1.ind TopRowIndex;
+            //int top_row = tileView1.ind TopRowIndex;
             //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
             //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
             var satrt_date = DateTime.Now.AddDays(-10);
 
-            gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date/*&& w.OnDate <= end_date*/ && w.Checked == 0)
-                .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.MsrName, g.MatId })
-                .Select(s => new IntermediateWeighingView
+            /*     gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date && w.Checked == 0)
+                       .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.MsrName, g.MatId })
+                       .Select(s => new IntermediateWeighingView
+                       {
+                           WbillId = s.Key.WbillId,
+                           WbNum = s.Key.WbNum,
+                           WbOnDate = s.Key.WbOnDate,
+                           RecipeName = s.Key.RecipeName,
+                           RecipeCount = s.Key.RecipeCount,
+                           Amount = SqlFunctions.StringConvert( s.Sum(su => su.Amount)) + s.Key.MsrName,
+                           BMP = _db.Materials.FirstOrDefault(f=> f.MatId ==s.Key.MatId).BMP,
+                           IsDone = !_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == s.Key.WbillId && w.IntermediateWeighingDetId == null && w.UserId == _user_id).Select(ss => ss.WbillId).Any()
+                       })
+                       .OrderBy(o => o.WbOnDate).ToList();*/
+
+            gridControl1.DataSource = _db.v_IntermediateWeighingSummary.Where(w => w.OnDate > satrt_date && w.Checked == 0 && w.UserId == _user_id )
+                .GroupBy(g => new
                 {
-                    WbillId = s.Key.WbillId,
-                    WbNum = s.Key.WbNum,
-                    WbOnDate = s.Key.WbOnDate,
-                    RecipeName = s.Key.RecipeName,
-                    RecipeCount = s.Key.RecipeCount,
-                    Amount = SqlFunctions.StringConvert( s.Sum(su => su.Amount)) + s.Key.MsrName,
-                    BMP = _db.Materials.FirstOrDefault(f=> f.MatId ==s.Key.MatId).BMP,
-                    IsDone = !_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == s.Key.WbillId && w.IntermediateWeighingDetId == null && w.UserId == _user_id).Select(ss => ss.WbillId).Any()
+                    g.WbillId,
+                    g.WbNum,
+                    g.RecipeName,
+                    g.WbOnDate,
+                    g.RecipeCount,
+                    g.ReceipeMsrName,
+                    g.RecipeMatId
                 })
-                .OrderBy(o => o.WbOnDate).ToList();
+            .Select(s => new IntermediateWeighingView
+            {
+                WbillId = s.Key.WbillId,
+                WbNum = s.Key.WbNum,
+                WbOnDate = s.Key.WbOnDate,
+                RecipeName = s.Key.RecipeName,
+                RecipeCount = s.Key.RecipeCount,
+                Amount = SqlFunctions.StringConvert(s.Sum(su => su.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
+                BMP = _db.Materials.Where(ww=> ww.MatId == s.Key.RecipeMatId).Select(s2=> s2.BMP).FirstOrDefault(),
+                IsDone = !s.Any(w => w.IntermediateWeighingDetId == null)
+            }).OrderBy(o => o.WbOnDate).ToList();
+
 
 
             //       IntermediateWeighingGridView.TopRowIndex = top_row;
@@ -177,6 +201,11 @@ namespace SP_Sklad.IntermediateWeighingInterface
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             GetIntermediateWeighing();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

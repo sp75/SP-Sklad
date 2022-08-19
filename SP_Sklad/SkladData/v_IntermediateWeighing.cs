@@ -35,5 +35,7 @@ namespace SP_Sklad.SkladData
         public string GroupName { get; set; }
         public string MsrName { get; set; }
         public int MatId { get; set; }
+        public Nullable<decimal> AmountByRecipe { get; set; }
+        public Nullable<int> RecId { get; set; }
     }
 }

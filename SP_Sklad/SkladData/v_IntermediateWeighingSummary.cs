@@ -33,5 +33,12 @@ namespace SP_Sklad.SkladData
         public string ReceipeMsrName { get; set; }
         public Nullable<int> GrpId { get; set; }
         public int UserId { get; set; }
+        public byte[] BMP { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public int RecipeMatId { get; set; }
+        public Nullable<decimal> AmountByRecipe { get; set; }
+        public Nullable<decimal> TotalWeightByRecipe { get; set; }
+        public Nullable<decimal> AmountIntermediateWeighing { get; set; }
+        public Nullable<int> RecId { get; set; }
     }
 }
