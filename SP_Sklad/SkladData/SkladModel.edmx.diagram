@@ -330,6 +330,7 @@
         <AssociationConnector Association="BaseModel.FK_UserRoles_Users" />
         <AssociationConnector Association="BaseModel.FK_Users_UsersGroup" />
         <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
+        <EntityTypeShape EntityType="BaseModel.Interfaces" Width="1.5" PointX="30.75" PointY="1.25" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

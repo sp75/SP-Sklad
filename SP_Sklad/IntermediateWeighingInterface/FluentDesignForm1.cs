@@ -230,7 +230,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
         Color colorPanelReady = Color.MistyRose;//Color.FromArgb(58, 166, 101);
         Color colorPanelSold = Color.FromArgb(158, 158, 158);
         Color colorCaptionReady = Color.Black;//Color.FromArgb(193, 222, 204);
-        Color colorCaptionSold = Color.FromArgb(219, 219, 219);
+        Color colorCaptionSold =  Color.FromArgb(219, 219, 219);
 
         private void tileView1_ItemCustomize(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemCustomizeEventArgs e)
         {

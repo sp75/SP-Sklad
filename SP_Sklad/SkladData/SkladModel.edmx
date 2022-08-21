@@ -354,6 +354,13 @@
           <Property Name="Logging" Type="int" Nullable="false" />
           <Property Name="Flags" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Interfaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="IntermediateWeighing">
           <Key>
             <PropertyRef Name="Id" />
@@ -2000,12 +2007,12 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
             <PropertyRef Name="UserId" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="RecipeMatId" />
+            
           </Key>
           <Property Name="WbillId" Type="int" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="IntermediateWeighingId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="IntermediateWeighingDetId" Type="uniqueidentifier" />
-          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
@@ -2013,7 +2020,6 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="MsrName" Type="nvarchar" MaxLength="6" />
           <Property Name="RecipeCount" Type="int" />
           <Property Name="RecipeGrpId" Type="int" Nullable="false" />
           <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
@@ -2027,6 +2033,8 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
           <Property Name="AmountIntermediateWeighing" Type="numeric" Precision="38" Scale="4" />
           <Property Name="RecId" Type="int" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6987,6 +6995,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExtRel" EntityType="Self.ExtRel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Functions" EntityType="Self.Functions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Interfaces" EntityType="Self.Interfaces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IntermediateWeighing" EntityType="Self.IntermediateWeighing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IntermediateWeighingDet" EntityType="Self.IntermediateWeighingDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
@@ -7362,7 +7371,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingSummary].[MatId] AS [MatId], 
     [v_IntermediateWeighingSummary].[IntermediateWeighingId] AS [IntermediateWeighingId], 
     [v_IntermediateWeighingSummary].[IntermediateWeighingDetId] AS [IntermediateWeighingDetId], 
-    [v_IntermediateWeighingSummary].[MatName] AS [MatName], 
     [v_IntermediateWeighingSummary].[WbOnDate] AS [WbOnDate], 
     [v_IntermediateWeighingSummary].[Total] AS [Total], 
     [v_IntermediateWeighingSummary].[Checked] AS [Checked], 
@@ -7370,7 +7378,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingSummary].[WbNum] AS [WbNum], 
     [v_IntermediateWeighingSummary].[IntermediateWeighingNum] AS [IntermediateWeighingNum], 
     [v_IntermediateWeighingSummary].[IntermediateWeighingAmount] AS [IntermediateWeighingAmount], 
-    [v_IntermediateWeighingSummary].[MsrName] AS [MsrName], 
     [v_IntermediateWeighingSummary].[RecipeCount] AS [RecipeCount], 
     [v_IntermediateWeighingSummary].[RecipeGrpId] AS [RecipeGrpId], 
     [v_IntermediateWeighingSummary].[GroupName] AS [GroupName], 
@@ -7383,7 +7390,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingSummary].[TotalWeightByRecipe] AS [TotalWeightByRecipe], 
     [v_IntermediateWeighingSummary].[AmountByRecipe] AS [AmountByRecipe], 
     [v_IntermediateWeighingSummary].[AmountIntermediateWeighing] AS [AmountIntermediateWeighing], 
-    [v_IntermediateWeighingSummary].[RecId] AS [RecId]
+    [v_IntermediateWeighingSummary].[RecId] AS [RecId], 
+    [v_IntermediateWeighingSummary].[MatName] AS [MatName], 
+    [v_IntermediateWeighingSummary].[MsrName] AS [MsrName]
     FROM [dbo].[v_IntermediateWeighingSummary] AS [v_IntermediateWeighingSummary]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
@@ -10094,6 +10103,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_IntermediateWeighingDet" EntityType="BaseModel.v_IntermediateWeighingDet" />
           <EntitySet Name="v_WaybillDet" EntityType="BaseModel.v_WaybillDet" />
           <EntitySet Name="v_IntermediateWeighingSummary" EntityType="BaseModel.v_IntermediateWeighingSummary" />
+          <EntitySet Name="Interfaces" EntityType="BaseModel.Interfaces" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -16864,7 +16874,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RecipeCount" Type="Int32" />
           <Property Name="RecipeGrpId" Type="Int32" Nullable="false" />
           <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
@@ -16878,6 +16888,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TotalWeightByRecipe" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="AmountIntermediateWeighing" Type="Decimal" Precision="38" Scale="4" />
           <Property Name="RecId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Interfaces">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -21397,6 +21414,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="IntermediateWeighingId" ColumnName="IntermediateWeighingId" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Interfaces">
+            <EntityTypeMapping TypeName="BaseModel.Interfaces">
+              <MappingFragment StoreEntitySet="Interfaces">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

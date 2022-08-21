@@ -447,6 +447,9 @@
     <Compile Include="SkladData\GetUserRoles_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Interfaces.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\LoginHistory.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

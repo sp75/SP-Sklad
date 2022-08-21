@@ -204,7 +204,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
                 if (intermediate_weighing_focused_row.BMP != null)
                 {
-                    frm.pictureEdit1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
+                    frm.pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
                 }
               
                 frm.labelControl1.Text =  intermediate_weighing_focused_row.RecipeName;

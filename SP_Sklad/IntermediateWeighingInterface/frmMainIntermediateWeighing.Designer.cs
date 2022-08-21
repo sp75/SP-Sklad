@@ -37,9 +37,9 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement4 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement5 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainIntermediateWeighing));
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainIntermediateWeighing));
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
@@ -257,15 +257,15 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 0);
             this.barDockControl1.Manager = this.barManager2;
-            this.barDockControl1.Size = new System.Drawing.Size(1214, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1200, 0);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 581);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 565);
             this.barDockControl2.Manager = this.barManager2;
-            this.barDockControl2.Size = new System.Drawing.Size(1214, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1200, 0);
             // 
             // barDockControl3
             // 
@@ -273,15 +273,15 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControl3.Location = new System.Drawing.Point(0, 0);
             this.barDockControl3.Manager = this.barManager2;
-            this.barDockControl3.Size = new System.Drawing.Size(0, 581);
+            this.barDockControl3.Size = new System.Drawing.Size(0, 565);
             // 
             // barDockControl5
             // 
             this.barDockControl5.CausesValidation = false;
             this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl5.Location = new System.Drawing.Point(1214, 0);
+            this.barDockControl5.Location = new System.Drawing.Point(1200, 0);
             this.barDockControl5.Manager = this.barManager2;
-            this.barDockControl5.Size = new System.Drawing.Size(0, 581);
+            this.barDockControl5.Size = new System.Drawing.Size(0, 565);
             // 
             // gridControl1
             // 
@@ -290,7 +290,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.tileView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(964, 581);
+            this.gridControl1.Size = new System.Drawing.Size(950, 565);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
@@ -312,14 +312,15 @@
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsTiles.IndentBetweenItems = 20;
             this.tileView1.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(0);
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(340, 190);
+            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(340, 124);
             this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(20);
             this.tileView1.OptionsTiles.RowCount = 3;
-            tableColumnDefinition1.Length.Value = 152D;
-            tableColumnDefinition2.Length.Value = 188D;
+            tableColumnDefinition1.Length.Value = 194D;
+            tableColumnDefinition2.Length.Value = 146D;
             this.tileView1.TileColumns.Add(tableColumnDefinition1);
             this.tileView1.TileColumns.Add(tableColumnDefinition2);
+            tableRowDefinition1.Length.Value = 114D;
             this.tileView1.TileRows.Add(tableRowDefinition1);
             tileViewItemElement1.Appearance.Normal.FontSizeDelta = -1;
             tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
@@ -331,7 +332,7 @@
             tileViewItemElement1.TextLocation = new System.Drawing.Point(10, 10);
             tileViewItemElement2.AnchorElementIndex = 0;
             tileViewItemElement2.AnchorIndent = 2;
-            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            tileViewItemElement2.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             tileViewItemElement2.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement2.Column = this.tileViewColumn1;
             tileViewItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
@@ -339,7 +340,6 @@
             tileViewItemElement2.Name = "receipeValue";
             tileViewItemElement2.Text = "tileViewColumn1";
             tileViewItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            tileViewItemElement2.Width = 100;
             tileViewItemElement3.AnchorElementIndex = 1;
             tileViewItemElement3.AnchorIndent = 14;
             tileViewItemElement3.Appearance.Normal.FontSizeDelta = -1;
@@ -360,6 +360,7 @@
             tileViewItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement5.Column = this.tileViewColumn3;
             tileViewItemElement5.ColumnIndex = 1;
+            tileViewItemElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             tileViewItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
             tileViewItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
             tileViewItemElement5.Text = "tileViewColumn3";
@@ -373,13 +374,15 @@
             tileViewItemElement6.Text = "element1";
             tileViewItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.TopRight;
             tileViewItemElement6.Width = 3;
-            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Semilight", 25.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Normal.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            tileViewItemElement7.Appearance.Normal.ForeColor = System.Drawing.Color.MintCream;
             tileViewItemElement7.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement7.Appearance.Normal.Options.UseForeColor = true;
             tileViewItemElement7.Column = this.tileViewColumn4;
             tileViewItemElement7.Name = "Price";
             tileViewItemElement7.Text = "tileViewColumn4";
-            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
-            tileViewItemElement7.TextLocation = new System.Drawing.Point(10, -10);
+            tileViewItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomRight;
+            tileViewItemElement7.TextLocation = new System.Drawing.Point(-10, 0);
             this.tileView1.TileTemplate.Add(tileViewItemElement1);
             this.tileView1.TileTemplate.Add(tileViewItemElement2);
             this.tileView1.TileTemplate.Add(tileViewItemElement3);
@@ -420,9 +423,9 @@
             // 
             this.sidePanel1.Controls.Add(this.tabPane1);
             this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel1.Location = new System.Drawing.Point(964, 0);
+            this.sidePanel1.Location = new System.Drawing.Point(950, 0);
             this.sidePanel1.Name = "sidePanel1";
-            this.sidePanel1.Size = new System.Drawing.Size(250, 581);
+            this.sidePanel1.Size = new System.Drawing.Size(250, 565);
             this.sidePanel1.TabIndex = 13;
             this.sidePanel1.Text = "sidePanel1";
             // 
@@ -434,9 +437,9 @@
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1});
-            this.tabPane1.RegularSize = new System.Drawing.Size(249, 581);
+            this.tabPane1.RegularSize = new System.Drawing.Size(249, 565);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(249, 581);
+            this.tabPane1.Size = new System.Drawing.Size(249, 565);
             this.tabPane1.TabIndex = 0;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -445,7 +448,7 @@
             this.tabNavigationPage1.Caption = "Налаштування";
             this.tabNavigationPage1.Controls.Add(this.layoutControl1);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(249, 548);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(249, 538);
             // 
             // layoutControl1
             // 
@@ -459,17 +462,17 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(249, 548);
+            this.layoutControl1.Size = new System.Drawing.Size(249, 538);
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // toggleSwitch1
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(12, 198);
+            this.toggleSwitch1.Location = new System.Drawing.Point(12, 173);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.Properties.OffText = "Off";
             this.toggleSwitch1.Properties.OnText = "On";
-            this.toggleSwitch1.Size = new System.Drawing.Size(225, 18);
+            this.toggleSwitch1.Size = new System.Drawing.Size(225, 24);
             this.toggleSwitch1.StyleController = this.layoutControl1;
             this.toggleSwitch1.TabIndex = 10;
             this.toggleSwitch1.EditValueChanged += new System.EventHandler(this.ToggleSwitch1_EditValueChanged);
@@ -477,7 +480,7 @@
             // zoomTrackBarControl1
             // 
             this.zoomTrackBarControl1.EditValue = 185;
-            this.zoomTrackBarControl1.Location = new System.Drawing.Point(12, 136);
+            this.zoomTrackBarControl1.Location = new System.Drawing.Point(12, 114);
             this.zoomTrackBarControl1.Name = "zoomTrackBarControl1";
             this.zoomTrackBarControl1.Properties.Maximum = 200;
             this.zoomTrackBarControl1.Properties.Minimum = 170;
@@ -491,7 +494,7 @@
             // 
             this.rgViewType.AutoSizeInLayoutControl = true;
             this.rgViewType.EditValue = "Vertical";
-            this.rgViewType.Location = new System.Drawing.Point(12, 34);
+            this.rgViewType.Location = new System.Drawing.Point(12, 32);
             this.rgViewType.Name = "rgViewType";
             this.rgViewType.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             this.rgViewType.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -505,7 +508,7 @@
             this.rgViewType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("Horizontal", "Горизонтальна"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("Vertical", "Вертикальна")});
-            this.rgViewType.Size = new System.Drawing.Size(225, 56);
+            this.rgViewType.Size = new System.Drawing.Size(225, 38);
             this.rgViewType.StyleController = this.layoutControl1;
             this.rgViewType.TabIndex = 7;
             this.rgViewType.SelectedIndexChanged += new System.EventHandler(this.RgViewType_SelectedIndexChanged);
@@ -517,7 +520,7 @@
             this.simpleButton1.Appearance.Options.UseBackColor = true;
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(2, 230);
+            this.simpleButton1.Location = new System.Drawing.Point(2, 211);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Padding = new System.Windows.Forms.Padding(10);
             this.simpleButton1.Size = new System.Drawing.Size(245, 56);
@@ -531,7 +534,7 @@
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(2, 490);
+            this.simpleButton2.Location = new System.Drawing.Point(2, 480);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
             this.simpleButton2.Size = new System.Drawing.Size(245, 56);
@@ -551,7 +554,7 @@
             this.layoutControlItem5,
             this.emptySpaceItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 548);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 538);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -561,7 +564,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(249, 102);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(249, 82);
             this.layoutControlGroup2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup2.Text = "Орієнтація";
             // 
@@ -570,7 +573,7 @@
             this.layoutControlItem1.Control = this.rgViewType;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(229, 60);
+            this.layoutControlItem1.Size = new System.Drawing.Size(229, 42);
             this.layoutControlItem1.Text = "Orientation";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -581,9 +584,9 @@
             this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 82);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(249, 62);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(249, 59);
             this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup3.Text = "Розмір плитки";
             // 
@@ -592,7 +595,7 @@
             this.layoutControlItem3.Control = this.zoomTrackBarControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(229, 20);
+            this.layoutControlItem3.Size = new System.Drawing.Size(229, 19);
             this.layoutControlItem3.Text = "Tiles size";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -604,9 +607,9 @@
             this.layoutControlGroup4.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 164);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 141);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(249, 64);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(249, 68);
             this.layoutControlGroup4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup4.Text = "Згрупувати по даті виробництва";
             // 
@@ -615,7 +618,7 @@
             this.layoutControlItem4.Control = this.toggleSwitch1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(229, 22);
+            this.layoutControlItem4.Size = new System.Drawing.Size(229, 28);
             this.layoutControlItem4.Text = "Group by year built";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -624,7 +627,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 228);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 209);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(249, 60);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -633,7 +636,7 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 488);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 478);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(249, 60);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -642,9 +645,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 288);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 269);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 200);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 209);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // bar1
@@ -668,7 +671,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 581);
+            this.ClientSize = new System.Drawing.Size(1200, 565);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.sidePanel1);
             this.Controls.Add(this.barDockControl3);

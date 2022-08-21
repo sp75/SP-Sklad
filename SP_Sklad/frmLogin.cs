@@ -47,6 +47,9 @@ namespace SP_Sklad
                 MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
             }
 
+            InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.ToList();
+
+
             CheckTrial();
 
             var ver = new BaseEntities().CommonParams.FirstOrDefault().Ver;
@@ -264,17 +267,22 @@ namespace SP_Sklad
 
                     this.Hide();
 
-                    if (user.WorkSpace == "intermediate_weighing_interface")
+
+                    int interface_id = (int)InterfaceLookUpEdit.EditValue;
+
+                    switch (interface_id)
                     {
-                        WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
-                        WindowsFormsSettings.TouchScaleFactor = 2;
-                        frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
-                        frmMainIntermediateWeighing.main_form.Show();
-                    }
-                    else
-                    {
-                        mainForm.main_form = new mainForm(user_id);
-                        mainForm.main_form.Show();
+                        case 1:
+                            mainForm.main_form = new mainForm(user_id);
+                            mainForm.main_form.Show();
+                            break;
+                        
+                        case 2:
+                            WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                            WindowsFormsSettings.TouchScaleFactor = 2;
+                            frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
+                            frmMainIntermediateWeighing.main_form.Show();
+                            break;
                     }
                 }
                 else
