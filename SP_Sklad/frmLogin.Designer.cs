@@ -29,42 +29,42 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.InterfaceLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.passtextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.UserIDEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.InterfaceLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InterfaceLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passtextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserIDEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InterfaceLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -73,16 +73,26 @@
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(5, -3);
+            this.panelControl2.Location = new System.Drawing.Point(5, 349);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(372, 352);
+            this.panelControl2.Size = new System.Drawing.Size(386, 54);
             this.panelControl2.TabIndex = 29;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.AutoSize = true;
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(5, 9);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(38, 36);
+            this.simpleButton2.TabIndex = 5;
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(269, 311);
+            this.simpleButton1.Location = new System.Drawing.Point(283, 13);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(98, 30);
             this.simpleButton1.StyleController = this.styleController1;
@@ -90,11 +100,16 @@
             this.simpleButton1.Text = "Ні";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(165, 311);
+            this.OkButton.Location = new System.Drawing.Point(179, 13);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.StyleController = this.styleController1;
@@ -106,17 +121,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(22, 338);
+            this.label1.Location = new System.Drawing.Point(22, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(258, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "The username or password you entered is incorrect.";
             this.label1.Visible = false;
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // panelControl1
             // 
@@ -128,43 +138,8 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(372, 192);
+            this.panelControl1.Size = new System.Drawing.Size(386, 218);
             this.panelControl1.TabIndex = 30;
-            // 
-            // InterfaceLookUpEdit
-            // 
-            this.InterfaceLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "interfaces_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.InterfaceLookUpEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.interfaces_id;
-            this.InterfaceLookUpEdit.Location = new System.Drawing.Point(25, 47);
-            this.InterfaceLookUpEdit.Name = "InterfaceLookUpEdit";
-            this.InterfaceLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.InterfaceLookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.InterfaceLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.InterfaceLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            this.InterfaceLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.InterfaceLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.InterfaceLookUpEdit.Properties.DisplayMember = "Name";
-            this.InterfaceLookUpEdit.Properties.NullText = "";
-            this.InterfaceLookUpEdit.Properties.PopupSizeable = false;
-            this.InterfaceLookUpEdit.Properties.ShowFooter = false;
-            this.InterfaceLookUpEdit.Properties.ShowHeader = false;
-            this.InterfaceLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.InterfaceLookUpEdit.Properties.ValueMember = "Id";
-            this.InterfaceLookUpEdit.Size = new System.Drawing.Size(335, 38);
-            this.InterfaceLookUpEdit.TabIndex = 39;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(25, 18);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(92, 23);
-            this.labelControl3.TabIndex = 38;
-            this.labelControl3.Text = "Інтерфейс";
             // 
             // passtextEdit
             // 
@@ -208,9 +183,9 @@
             this.UserIDEdit.Properties.Appearance.Options.UseFont = true;
             this.UserIDEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 14F);
             this.UserIDEdit.Properties.AppearanceDropDown.Options.UseFont = true;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.UserIDEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.UserIDEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
             this.UserIDEdit.Properties.DisplayMember = "Name";
@@ -220,39 +195,60 @@
             this.UserIDEdit.Properties.ShowHeader = false;
             this.UserIDEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UserIDEdit.Properties.ValueMember = "UserId";
-            this.UserIDEdit.Size = new System.Drawing.Size(335, 38);
+            this.UserIDEdit.Size = new System.Drawing.Size(335, 40);
             this.UserIDEdit.TabIndex = 37;
             // 
-            // defaultLookAndFeel1
+            // labelControl3
             // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "Visual Studio 2013 Light";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.AutoSize = true;
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(5, 309);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(38, 36);
-            this.simpleButton2.TabIndex = 5;
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(25, 18);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(92, 23);
+            this.labelControl3.TabIndex = 38;
+            this.labelControl3.Text = "Інтерфейс";
             // 
             // panelControl3
             // 
             this.panelControl3.Controls.Add(this.labelControl3);
             this.panelControl3.Controls.Add(this.InterfaceLookUpEdit);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(5, 197);
+            this.panelControl3.Location = new System.Drawing.Point(5, 223);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(372, 100);
+            this.panelControl3.Size = new System.Drawing.Size(386, 100);
             this.panelControl3.TabIndex = 31;
             this.panelControl3.Visible = false;
+            // 
+            // InterfaceLookUpEdit
+            // 
+            this.InterfaceLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "interfaces_id", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.InterfaceLookUpEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.interfaces_id;
+            this.InterfaceLookUpEdit.Location = new System.Drawing.Point(25, 47);
+            this.InterfaceLookUpEdit.Name = "InterfaceLookUpEdit";
+            this.InterfaceLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.InterfaceLookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.InterfaceLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.InterfaceLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            this.InterfaceLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.InterfaceLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.InterfaceLookUpEdit.Properties.DisplayMember = "Name";
+            this.InterfaceLookUpEdit.Properties.NullText = "";
+            this.InterfaceLookUpEdit.Properties.PopupSizeable = false;
+            this.InterfaceLookUpEdit.Properties.ShowFooter = false;
+            this.InterfaceLookUpEdit.Properties.ShowHeader = false;
+            this.InterfaceLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.InterfaceLookUpEdit.Properties.ValueMember = "Id";
+            this.InterfaceLookUpEdit.Size = new System.Drawing.Size(335, 40);
+            this.InterfaceLookUpEdit.TabIndex = 39;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(382, 354);
+            this.ClientSize = new System.Drawing.Size(396, 408);
             this.ControlBox = false;
             this.Controls.Add(this.panelControl3);
             this.Controls.Add(this.panelControl1);
@@ -272,12 +268,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InterfaceLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passtextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserIDEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InterfaceLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -59,12 +59,12 @@
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.RecipeListSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn6 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.IntermediateWeighingBS = new System.Windows.Forms.BindingSource(this.components);
             this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -286,6 +286,7 @@
             // gridControl1
             // 
             this.gridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.gridControl1.DataSource = this.RecipeListSource;
             this.gridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.tileView1;
@@ -294,6 +295,13 @@
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
+            // 
+            // RecipeListSource
+            // 
+            this.RecipeListSource.AreSourceRowsThreadSafe = true;
+            this.RecipeListSource.DesignTimeElementType = typeof(SP_Sklad.IntermediateWeighingInterface.Views.IntermediateWeighingView);
+            this.RecipeListSource.KeyExpression = "WbillId";
+            this.RecipeListSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.RecipeListSource_GetQueryable);
             // 
             // tileView1
             // 
@@ -409,16 +417,6 @@
             this.tileViewColumn6.Visible = true;
             this.tileViewColumn6.VisibleIndex = 5;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(293, -3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // sidePanel1
             // 
             this.sidePanel1.Controls.Add(this.tabPane1);
@@ -448,7 +446,7 @@
             this.tabNavigationPage1.Caption = "Налаштування";
             this.tabNavigationPage1.Controls.Add(this.layoutControl1);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(249, 538);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(249, 532);
             // 
             // layoutControl1
             // 
@@ -462,39 +460,39 @@
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(249, 538);
+            this.layoutControl1.Size = new System.Drawing.Size(249, 532);
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // toggleSwitch1
             // 
-            this.toggleSwitch1.Location = new System.Drawing.Point(12, 173);
+            this.toggleSwitch1.Location = new System.Drawing.Point(12, 195);
             this.toggleSwitch1.Name = "toggleSwitch1";
             this.toggleSwitch1.Properties.OffText = "Off";
             this.toggleSwitch1.Properties.OnText = "On";
-            this.toggleSwitch1.Size = new System.Drawing.Size(225, 24);
+            this.toggleSwitch1.Size = new System.Drawing.Size(225, 18);
             this.toggleSwitch1.StyleController = this.layoutControl1;
             this.toggleSwitch1.TabIndex = 10;
             this.toggleSwitch1.EditValueChanged += new System.EventHandler(this.ToggleSwitch1_EditValueChanged);
             // 
             // zoomTrackBarControl1
             // 
-            this.zoomTrackBarControl1.EditValue = 185;
-            this.zoomTrackBarControl1.Location = new System.Drawing.Point(12, 114);
+            this.zoomTrackBarControl1.EditValue = 124;
+            this.zoomTrackBarControl1.Location = new System.Drawing.Point(12, 136);
             this.zoomTrackBarControl1.Name = "zoomTrackBarControl1";
-            this.zoomTrackBarControl1.Properties.Maximum = 200;
-            this.zoomTrackBarControl1.Properties.Minimum = 170;
+            this.zoomTrackBarControl1.Properties.Maximum = 250;
+            this.zoomTrackBarControl1.Properties.Minimum = 124;
             this.zoomTrackBarControl1.Size = new System.Drawing.Size(225, 16);
             this.zoomTrackBarControl1.StyleController = this.layoutControl1;
             this.zoomTrackBarControl1.TabIndex = 9;
-            this.zoomTrackBarControl1.Value = 185;
+            this.zoomTrackBarControl1.Value = 124;
             this.zoomTrackBarControl1.EditValueChanged += new System.EventHandler(this.repositoryItemZoomTrackBar1_EditValueChanged);
             // 
             // rgViewType
             // 
             this.rgViewType.AutoSizeInLayoutControl = true;
             this.rgViewType.EditValue = "Vertical";
-            this.rgViewType.Location = new System.Drawing.Point(12, 32);
+            this.rgViewType.Location = new System.Drawing.Point(12, 34);
             this.rgViewType.Name = "rgViewType";
             this.rgViewType.Properties.AllowHtmlDraw = DevExpress.Utils.DefaultBoolean.True;
             this.rgViewType.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -508,7 +506,7 @@
             this.rgViewType.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
             new DevExpress.XtraEditors.Controls.RadioGroupItem("Horizontal", "Горизонтальна"),
             new DevExpress.XtraEditors.Controls.RadioGroupItem("Vertical", "Вертикальна")});
-            this.rgViewType.Size = new System.Drawing.Size(225, 38);
+            this.rgViewType.Size = new System.Drawing.Size(225, 56);
             this.rgViewType.StyleController = this.layoutControl1;
             this.rgViewType.TabIndex = 7;
             this.rgViewType.SelectedIndexChanged += new System.EventHandler(this.RgViewType_SelectedIndexChanged);
@@ -520,7 +518,7 @@
             this.simpleButton1.Appearance.Options.UseBackColor = true;
             this.simpleButton1.Appearance.Options.UseFont = true;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(2, 211);
+            this.simpleButton1.Location = new System.Drawing.Point(2, 227);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Padding = new System.Windows.Forms.Padding(10);
             this.simpleButton1.Size = new System.Drawing.Size(245, 56);
@@ -534,7 +532,7 @@
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(2, 480);
+            this.simpleButton2.Location = new System.Drawing.Point(2, 474);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
             this.simpleButton2.Size = new System.Drawing.Size(245, 56);
@@ -554,7 +552,7 @@
             this.layoutControlItem5,
             this.emptySpaceItem1});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 538);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(249, 532);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -564,7 +562,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(249, 82);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(249, 102);
             this.layoutControlGroup2.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup2.Text = "Орієнтація";
             // 
@@ -573,7 +571,7 @@
             this.layoutControlItem1.Control = this.rgViewType;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(229, 42);
+            this.layoutControlItem1.Size = new System.Drawing.Size(229, 60);
             this.layoutControlItem1.Text = "Orientation";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -584,7 +582,7 @@
             this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 82);
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 102);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(249, 59);
             this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
@@ -595,7 +593,7 @@
             this.layoutControlItem3.Control = this.zoomTrackBarControl1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(229, 19);
+            this.layoutControlItem3.Size = new System.Drawing.Size(229, 17);
             this.layoutControlItem3.Text = "Tiles size";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
@@ -607,9 +605,9 @@
             this.layoutControlGroup4.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup4.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4});
-            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 141);
+            this.layoutControlGroup4.Location = new System.Drawing.Point(0, 161);
             this.layoutControlGroup4.Name = "layoutControlGroup4";
-            this.layoutControlGroup4.Size = new System.Drawing.Size(249, 68);
+            this.layoutControlGroup4.Size = new System.Drawing.Size(249, 64);
             this.layoutControlGroup4.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup4.Text = "Згрупувати по даті виробництва";
             // 
@@ -618,7 +616,7 @@
             this.layoutControlItem4.Control = this.toggleSwitch1;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(229, 28);
+            this.layoutControlItem4.Size = new System.Drawing.Size(229, 22);
             this.layoutControlItem4.Text = "Group by year built";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -627,7 +625,7 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 209);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 225);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(249, 60);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -636,7 +634,7 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 478);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 472);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(249, 60);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -645,9 +643,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 269);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 285);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 209);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(249, 187);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // bar1
@@ -740,7 +738,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private System.Windows.Forms.BindingSource IntermediateWeighingBS;
         private System.Windows.Forms.BindingSource IntermediateWeighingDetBS;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
@@ -770,6 +767,7 @@
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource RecipeListSource;
     }
 }
 

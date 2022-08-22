@@ -280,6 +280,7 @@ namespace SP_Sklad
                             break;
                         
                         case 2:
+                            WindowsFormsSettings.ForceDirectXPaint();
                             WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
                             WindowsFormsSettings.TouchScaleFactor = 2;
                             frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);

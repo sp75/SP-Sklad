@@ -148,7 +148,7 @@ namespace SP_Sklad.MainTabs
                     KaGridControl.DataSource = null;
 
                     KaGridControl.DataSource = KagentListSource;
-
+               //     KagentListSource.Refresh();
 
                     DBHelper.ReloadKagents();
                     break;
