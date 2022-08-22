@@ -137,6 +137,8 @@ namespace SpreadsheetReportBuilder
 
             }
 
+            workbook.CalculateFull();
+
           /*  if (!String.IsNullOrEmpty(OutFile))
             {
                 workbook.SaveDocument(OutFile);
