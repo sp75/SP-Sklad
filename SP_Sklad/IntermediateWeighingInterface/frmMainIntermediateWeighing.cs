@@ -65,8 +65,17 @@ namespace SP_Sklad.IntermediateWeighingInterface
             int w = (int)(h * 2.74);
             tileView1.OptionsTiles.ItemSize = new Size(w, h);
 
+         /*   if (h > 130)
+            {
 
-     //       var visibleItems = ((tileView1.GetViewInfo() as ITileControl).ViewInfo as TileViewInfoCore);
+
+                var visibleItems = ((tileView1.GetViewInfo() as ITileControl).ViewInfo as TileViewInfoCore).VisibleItems;
+                foreach(var i in visibleItems)
+                {
+                    i.Value["RecipeName"].Appearance = new TileItemAppearances() ;
+                }
+
+            }*/
         }
 
 
