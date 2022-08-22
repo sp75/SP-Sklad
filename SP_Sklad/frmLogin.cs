@@ -126,6 +126,8 @@ namespace SP_Sklad
                 db.SaveChanges();
             }
 
+
+            this.Height = this.Height - panelControl3.Height;
         }
 
         private void CheckTrial()
@@ -315,6 +317,20 @@ namespace SP_Sklad
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            if (!panelControl3.Visible)
+            {
+                panelControl3.Visible = true;
+                this.Height = this.Height + panelControl3.Height;
+            }
+            else
+            {
+                panelControl3.Visible = false;
+                this.Height = this.Height - panelControl3.Height;
+            }
         }
     }
 }
