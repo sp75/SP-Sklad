@@ -39,6 +39,7 @@
             this.PutCashSumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.PayBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,7 +55,6 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.btn8 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RemainderEdit.Properties)).BeginInit();
@@ -103,9 +103,7 @@
             this.SumAllEdit.Location = new System.Drawing.Point(9, 27);
             this.SumAllEdit.Name = "SumAllEdit";
             this.SumAllEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.SumAllEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.SumAllEdit.Properties.Appearance.Options.UseFont = true;
-            this.SumAllEdit.Properties.Appearance.Options.UseForeColor = true;
             this.SumAllEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SumAllEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SumAllEdit.Properties.ReadOnly = true;
@@ -117,6 +115,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(231, 5);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(42, 16);
@@ -126,6 +125,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(9, 5);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(106, 16);
@@ -147,6 +147,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(9, 74);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(137, 16);
@@ -158,9 +159,7 @@
             this.PutCashlessSumEdit.Location = new System.Drawing.Point(9, 96);
             this.PutCashlessSumEdit.Name = "PutCashlessSumEdit";
             this.PutCashlessSumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.PutCashlessSumEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.PutCashlessSumEdit.Properties.Appearance.Options.UseFont = true;
-            this.PutCashlessSumEdit.Properties.Appearance.Options.UseForeColor = true;
             this.PutCashlessSumEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.PutCashlessSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PutCashlessSumEdit.Properties.ShowCloseButton = true;
@@ -171,12 +170,16 @@
             // 
             // PutCashSumEdit
             // 
+            this.PutCashSumEdit.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PutCashSumEdit.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.PutCashSumEdit.Location = new System.Drawing.Point(9, 27);
             this.PutCashSumEdit.Name = "PutCashSumEdit";
             this.PutCashSumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.PutCashSumEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
             this.PutCashSumEdit.Properties.Appearance.Options.UseFont = true;
-            this.PutCashSumEdit.Properties.Appearance.Options.UseForeColor = true;
             this.PutCashSumEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.PutCashSumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PutCashSumEdit.Properties.ShowCloseButton = true;
@@ -189,6 +192,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(9, 5);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(139, 16);
@@ -207,13 +211,24 @@
             this.panelControl2.Size = new System.Drawing.Size(462, 292);
             this.panelControl2.TabIndex = 72;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.simpleButton1.Location = new System.Drawing.Point(9, 76);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(211, 65);
+            this.simpleButton1.TabIndex = 84;
+            this.simpleButton1.Text = "Сплатити без чеку";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // PayBtn
             // 
             this.PayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PayBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.PayBtn.Appearance.ForeColor = System.Drawing.Color.Green;
             this.PayBtn.Appearance.Options.UseFont = true;
-            this.PayBtn.Appearance.Options.UseForeColor = true;
             this.PayBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.PayBtn.Location = new System.Drawing.Point(9, 6);
             this.PayBtn.Name = "PayBtn";
@@ -411,21 +426,6 @@
             this.simpleButton3.TabStop = false;
             this.simpleButton3.Text = "7";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton1.Location = new System.Drawing.Point(9, 76);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(211, 36);
-            this.simpleButton1.TabIndex = 84;
-            this.simpleButton1.Text = "Сплатити без чеку";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // frmCashboxCheckout
             // 
