@@ -33,11 +33,14 @@ namespace SP_Sklad.WBForm
 
             using (var _db = new BaseEntities())
             {
-                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                try
+                {
+                    var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
-                var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
-
-                _access_token = login.access_token;
+                    _access_token = login.access_token;
+                }
+                catch { }
 
                 _license_key = _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).LicenseKey;
             }
@@ -203,6 +206,11 @@ namespace SP_Sklad.WBForm
                     }
                 }
             }
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
