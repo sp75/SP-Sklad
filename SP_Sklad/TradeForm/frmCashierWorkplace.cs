@@ -229,5 +229,10 @@ namespace SP_Sklad.WBForm
                 }
             }
         }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
