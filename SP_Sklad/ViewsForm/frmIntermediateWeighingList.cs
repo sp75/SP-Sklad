@@ -32,7 +32,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmUserGroup_Load(object sender, EventArgs e)
         {
-            var wb_maked = DB.SkladBase().WayBillMake.Where(w => w.WbillId == wb_id).Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
+     /*       var wb_maked = DB.SkladBase().WayBillMake.Where(w => w.WbillId == wb_id).Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
 
            Text = "Список сировини для зважування, Рецепт: "+ wb_maked.Name;
 
@@ -65,11 +65,51 @@ namespace SP_Sklad.ViewsForm
                Rn = c.i + 1
            }).ToList();
 
-            list.AddRange(empty_list);
+            list.AddRange(empty_list);*/
 
-            bindingSource1.DataSource = list;
+            using (var _db = DB.SkladBase())
+            {
+                var group_list = _db.UserAccessMatGroup.Where(w => w.UserId == mainForm.user_id).Select(s => s.GrpId).ToList();
+                var wbm = _db.WayBillMake.Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
+                var intermediate_weighing = _db.IntermediateWeighing.Where(w => w.WbillId == wb_id).OrderBy(o => o.OnDate).ToList();
+                var intermediate_det_list = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == wb_id).ToList();
 
-            WaybillDetInGridControl.DataSource = det_list.OrderBy(o => o.CreatedDate).ToList();
+                var wb_make_det = _db.GetWayBillMakeDet(wb_id).Where(w => group_list.Contains(w.GrpId.Value) && w.Rsv == 0).OrderBy(o => o.Num).ToList();
+
+                var result = new List<make_det>();
+                int rn = 0;
+                foreach (var item in intermediate_weighing)
+                {
+                    ++rn;
+                    foreach (var wb_make_item in wb_make_det)
+                    {
+                        var intermediate_det_item = intermediate_det_list.FirstOrDefault(w => w.MatId == wb_make_item.MatId && w.IntermediateWeighingId == item.Id);
+
+                        result.Add(new make_det
+                        {
+                            MsrName = wb_make_item.MsrName,
+                            MatName = wb_make_item.MatName,
+                            AmountIntermediateWeighing = intermediate_det_item?.Total,
+                            MatId = wb_make_item.MatId,
+                            WbillId = wb_id,
+                            IntermediateWeighingCount = intermediate_det_list.Count(co => co.MatId == wb_make_item.MatId),
+                            RecipeCount = intermediate_weighing.Count(),//wbm.RecipeCount,
+                            Rn = rn
+                        });
+                    }
+                }
+
+                Text = "Список сировини для зважування, Рецепт: " + wbm.Name;
+
+
+                bindingSource1.DataSource = result;
+
+                WaybillDetInGridControl.DataSource = intermediate_det_list.OrderBy(o => o.CreatedDate).ToList();
+            }
+
+         //   bindingSource1.DataSource = list;
+
+        //    WaybillDetInGridControl.DataSource = det_list.OrderBy(o => o.CreatedDate).ToList();
         }
 
         private void frmUserGroup_FormClosed(object sender, FormClosedEventArgs e)

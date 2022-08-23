@@ -35,7 +35,6 @@ namespace SP_Sklad.IntermediateWeighingInterface
             InitializeComponent();
             _user_id = user_id;
             _db = new BaseEntities();
-         //   GetIntermediateWeighing();
         }
   
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -45,13 +44,14 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //GetIntermediateWeighing();
+   
         }
 
         private void RgViewType_SelectedIndexChanged(object sender, EventArgs e)
         {
             tileView1.OptionsTiles.Orientation = (Orientation)rgViewType.SelectedIndex;
         }
+
         private void ToggleSwitch1_EditValueChanged(object sender, EventArgs e)
         {
             if (object.Equals(toggleSwitch1.EditValue, true))
@@ -59,78 +59,12 @@ namespace SP_Sklad.IntermediateWeighingInterface
             else
                 tileView1.ColumnSet.GroupColumn = null;
         }
+
         void repositoryItemZoomTrackBar1_EditValueChanged(object sender, EventArgs e)
         {
             int h = (int)(sender as BaseEdit).EditValue;
             int w = (int)(h * 2.74);
             tileView1.OptionsTiles.ItemSize = new Size(w, h);
-
-         /*   if (h > 130)
-            {
-
-
-                var visibleItems = ((tileView1.GetViewInfo() as ITileControl).ViewInfo as TileViewInfoCore).VisibleItems;
-                foreach(var i in visibleItems)
-                {
-                    i.Value["RecipeName"].Appearance = new TileItemAppearances() ;
-                }
-
-            }*/
-        }
-
-
-        void GetIntermediateWeighing()
-        {
-
-            //int top_row = tileView1.ind TopRowIndex;
-            //    var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
-            //    var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
-            //    var satrt_date = DateTime.Now.AddDays(-10);
-
-            /*     gridControl1.DataSource = _db.v_IntermediateWeighing.Where(w => w.OnDate > satrt_date && w.Checked == 0)
-                       .GroupBy(g => new { g.WbillId, g.WbNum, g.RecipeName, g.WbOnDate, g.RecipeCount, g.MsrName, g.MatId })
-                       .Select(s => new IntermediateWeighingView
-                       {
-                           WbillId = s.Key.WbillId,
-                           WbNum = s.Key.WbNum,
-                           WbOnDate = s.Key.WbOnDate,
-                           RecipeName = s.Key.RecipeName,
-                           RecipeCount = s.Key.RecipeCount,
-                           Amount = SqlFunctions.StringConvert( s.Sum(su => su.Amount)) + s.Key.MsrName,
-                           BMP = _db.Materials.FirstOrDefault(f=> f.MatId ==s.Key.MatId).BMP,
-                           IsDone = !_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == s.Key.WbillId && w.IntermediateWeighingDetId == null && w.UserId == _user_id).Select(ss => ss.WbillId).Any()
-                       })
-                       .OrderBy(o => o.WbOnDate).ToList();*/
-
-            /*   gridControl1.DataSource = _db.v_IntermediateWeighingSummary.Where(w => w.OnDate > satrt_date && w.Checked == 0 && w.UserId == _user_id )
-                   .GroupBy(g => new
-                   {
-                       g.WbillId,
-                       g.WbNum,
-                       g.RecipeName,
-                       g.WbOnDate,
-                       g.RecipeCount,
-                       g.ReceipeMsrName,
-                       g.RecipeMatId
-                   })
-               .Select(s => new IntermediateWeighingView
-               {
-                   WbillId = s.Key.WbillId,
-                   WbNum = s.Key.WbNum,
-                   WbOnDate = s.Key.WbOnDate,
-                   RecipeName = s.Key.RecipeName,
-                   RecipeCount = s.Key.RecipeCount,
-                   Amount = SqlFunctions.StringConvert(s.GroupBy(gg=> new { gg.IntermediateWeighingId, gg.IntermediateWeighingAmount}).Sum(su => su.Key.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
-                   BMP = _db.Materials.Where(ww=> ww.MatId == s.Key.RecipeMatId).Select(s2=> s2.BMP).FirstOrDefault(),
-                   IsDone = !s.Any(w => w.IntermediateWeighingDetId == null)
-               }).OrderBy(o => o.WbOnDate).ToList();
-               */
-
-            /*    gridControl1.DataSource = null;
-
-                gridControl1.DataSource = RecipeListSource;*/
-            RecipeListSource.Refresh();
-
         }
 
 
@@ -141,11 +75,6 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void frmMainIntermediateWeighing_FormClosed(object sender, FormClosedEventArgs e)
         {
-        /*    docsUserControl1.SaveGridLayouts();
-            whUserControl.SaveGridLayouts();
-            manufacturingUserControl1.SaveGridLayouts();
-            tradeUserControl1.SaveGridLayouts();*/
-
             using (var db = new BaseEntities())
             {
                 var user = db.Users.Find(_user_id);
@@ -167,27 +96,48 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void tileView1_ItemCustomize(object sender, TileViewItemCustomizeEventArgs e)
         {
-            if ( e.Item == null || e.Item.Elements.Count == 0)
+            if (e.Item == null || e.Item.Elements.Count == 0)
             {
                 return;
             }
-            var ddd = tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["IsDone"]);
-            if(ddd is NotLoadedObject )
+            var IsDoneValue = tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["IsDone"]);
+            if (IsDoneValue is NotLoadedObject)
             {
                 return;
             }
 
-            bool sold =  (bool)tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["IsDone"]) ;
+            bool is_done = (bool)IsDoneValue;
 
             var RecipeCaption = e.Item.GetElementByName("RecipeCaption");
             var WBDateCaption = e.Item.GetElementByName("WBDateCaption");
-       //     var price = e.Item.GetElementByName("Price");
+            var receipeValue = e.Item.GetElementByName("receipeValue");
+            //     var price = e.Item.GetElementByName("Price");
 
-            e.Item.AppearanceItem.Normal.BackColor = sold ? colorPanelSold : colorPanelReady;
+            e.Item.AppearanceItem.Normal.BackColor = is_done ? colorPanelSold : colorPanelReady;
 
-            RecipeCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
-            WBDateCaption.Appearance.Normal.ForeColor = sold ? colorCaptionSold : colorCaptionReady;
-         //   if (sold) price.Text = "Sold";
+
+            var font_receipeValue = receipeValue.Appearance.Normal.GetFont();
+            int h = (int)zoomTrackBarControl1.EditValue;
+            if (h > 150 && h < 200)
+            {
+                receipeValue.Appearance.Normal.Font = new Font(font_receipeValue.FontFamily, 12, font_receipeValue.Style);
+            }
+            else if (h >= 200 && h < 245)
+            {
+                receipeValue.Appearance.Normal.Font = new Font(font_receipeValue.FontFamily, 16, font_receipeValue.Style);
+            }
+            else if (h >= 245)
+            {
+                receipeValue.Appearance.Normal.Font = new Font(font_receipeValue.FontFamily, 20, font_receipeValue.Style);
+            }
+            else
+            {
+                receipeValue.Appearance.Normal.Font = new Font(font_receipeValue.FontFamily, 10, font_receipeValue.Style);
+            }
+
+            RecipeCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
+            WBDateCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
+            //   if (sold) price.Text = "Sold";
         }
 
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
@@ -219,17 +169,12 @@ namespace SP_Sklad.IntermediateWeighingInterface
               
                 frm.labelControl1.Text =  intermediate_weighing_focused_row.RecipeName;
                 frm.ShowDialog();
-
-            //      GetIntermediateWeighing();
             }
-
-
-                
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            GetIntermediateWeighing();
+            RecipeListSource.Refresh();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -262,13 +207,13 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 Amount = SqlFunctions.StringConvert(s.GroupBy(gg => new { gg.IntermediateWeighingId, gg.IntermediateWeighingAmount }).Sum(su => su.Key.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
                 BMP = _db.Materials.Where(ww => ww.MatId == s.Key.RecipeMatId).Select(s2 => s2.BMP).FirstOrDefault(),
                 IsDone = !s.Any(w => w.IntermediateWeighingDetId == null)
-            }).OrderBy(o => o.WbOnDate);
+            }).Where(ww=> IsDoneToggleSwitch.IsOn || ( !IsDoneToggleSwitch.IsOn && !ww.IsDone )).OrderBy(o => o.WbOnDate);
 
         }
 
-        private void tileView1_ColumnFilterChanged(object sender, EventArgs e)
+        private void IsDoneToggleSwitch_EditValueChanged(object sender, EventArgs e)
         {
-       
+            RecipeListSource.Refresh();
         }
     }
 }

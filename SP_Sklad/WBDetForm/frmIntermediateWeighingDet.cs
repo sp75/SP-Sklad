@@ -68,8 +68,6 @@ namespace SP_Sklad.WBDetForm
                 isNewRecord = true;
             }
 
-
-        //    var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
             var group_list =  DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
             var wbm = _db.WayBillMake.FirstOrDefault(w => w.WbillId == _iw.WbillId);
 

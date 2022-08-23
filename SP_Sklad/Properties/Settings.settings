@@ -71,5 +71,8 @@
     <Setting Name="interfaces_id" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="size_tile" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">124</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

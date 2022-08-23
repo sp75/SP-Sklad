@@ -17,6 +17,7 @@ using System.Security.Principal;
 using DevExpress.LookAndFeel;
 using SP_Sklad.IntermediateWeighingInterface;
 using DevExpress.XtraEditors;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad
 {
@@ -285,6 +286,22 @@ namespace SP_Sklad
                             WindowsFormsSettings.TouchScaleFactor = 2;
                             frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
                             frmMainIntermediateWeighing.main_form.Show();
+                            break;
+
+                            case 3:
+                            try
+                            {
+                                using (var frm = new frmCashierWorkplace())
+                                {
+                                    frm.Show();
+                                }
+                            }
+                            catch(Exception _ex)
+                            {
+                                MessageBox.Show(_ex.Message);
+                                Application.Exit();
+                            }
+
                             break;
                     }
                 }
