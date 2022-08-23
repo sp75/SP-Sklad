@@ -33,7 +33,7 @@ namespace SP_Sklad.Common
             get
             {
 #if DEBUG
-                return Path.Combine( @"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate" );
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "TempLate");
 #else
                 if (Directory.Exists(Path.Combine(Application.StartupPath, "TempLate")))
                 {
@@ -50,7 +50,7 @@ namespace SP_Sklad.Common
             get
             {
 #if DEBUG
-                return Path.Combine( @"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep" );
+                return Path.Combine(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\", "Rep");
 #else
                return Path.Combine(Application.StartupPath, "Rep" );
 #endif
@@ -68,7 +68,7 @@ namespace SP_Sklad.Common
             if (view == null)
             {
                 return false;
-            } 
+            }
 
             Point pt = view.GridControl.PointToClient(Control.MousePosition);
             GridHitInfo info = view.CalcHitInfo(pt);
@@ -80,7 +80,7 @@ namespace SP_Sklad.Common
             else return false;
         }
 
-         static public void ShowMatList(BaseEntities db, WaybillList wb)
+        static public void ShowMatList(BaseEntities db, WaybillList wb)
         {
             var f = new frmCatalog(2);
 
@@ -151,7 +151,7 @@ namespace SP_Sklad.Common
                     }
                 }
                 db.Save(wb.WbillId);
-                
+
             }
         }
 
@@ -240,12 +240,12 @@ namespace SP_Sklad.Common
             f.uc.bar3.Visible = false;
             f.uc.ByWhBtn.Down = true;
             f.uc.splitContainerControl1.SplitterPosition = 0;
-            
+
             f.uc.whKagentList.EditValue = ka_id;
             f.uc.whKagentList.Enabled = false;
 
             f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
-        
+
             f.uc.GrpNameGridColumn.GroupIndex = 0;
 
             f.uc.wb = wb;
@@ -570,7 +570,7 @@ namespace SP_Sklad.Common
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
-                     //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
+                        //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
                         var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
                         result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId;
                     }
@@ -599,7 +599,7 @@ namespace SP_Sklad.Common
                     }
                     break;
                 case 3:
-                    if(old_WID != null)
+                    if (old_WID != null)
                     {
                         int wid = Convert.ToInt32(old_WID);
 
@@ -659,7 +659,7 @@ namespace SP_Sklad.Common
                 return;
             }
 
-            new frmManufacturing(DB.SkladBase() , mat_id.Value).ShowDialog();
+            new frmManufacturing(DB.SkladBase(), mat_id.Value).ShowDialog();
         }
 
         static public void ShowMatRSV(int? mat_id, BaseEntities db)
@@ -693,7 +693,7 @@ namespace SP_Sklad.Common
 
         static public void ShowOrdered(int ka_id, int w_type, int mat_id)
         {
-            using (var f = new frmOrderedList( ka_id,  w_type,  mat_id))
+            using (var f = new frmOrderedList(ka_id, w_type, mat_id))
             {
                 f.ShowDialog();
             }
@@ -783,7 +783,7 @@ namespace SP_Sklad.Common
                 String result_file = Path.Combine(rep_path, Path.GetFileNameWithoutExtension(temlate) + "_" + DateTime.Now.Ticks.ToString() + "." + file_format);
 
                 var report = ReportBuilderXLS.GenerateReport(data_for_report, template_file).ToArray();
-          //      var calc = CalculationlFormulaExcel.CalcSpreadsheetDocument(report, true).ToArray();
+                //      var calc = CalculationlFormulaExcel.CalcSpreadsheetDocument(report, true).ToArray();
 
                 if (DBHelper.CurrentUser.InternalEditor != null && DBHelper.CurrentUser.InternalEditor.Value)
                 {
@@ -972,7 +972,7 @@ namespace SP_Sklad.Common
                         s.DocNum,
                         s.OnDate,
                         Total = s.ActualSummInCurr,
-                        KaName =!string.IsNullOrEmpty( s.KaName) ? s.KaName : s.DocTypeName,
+                        KaName = !string.IsNullOrEmpty(s.KaName) ? s.KaName : s.DocTypeName,
                         PersonName = s.PersonName,
                         s.CashId,
                         CashDeskName = s.CashdName
@@ -989,8 +989,8 @@ namespace SP_Sklad.Common
                 });
                 data_for_report.Add("_realation_", rel);
 
-             //   var Cashlist = DBHelper.CashDesks.Select(s => s.CashId).ToList();
-                var start_saldo = db.MoneyOnDate(start_date.AddDays(-1)).Where(w =>w.CashId == cash_id).Sum(s => s.Saldo);
+                //   var Cashlist = DBHelper.CashDesks.Select(s => s.CashId).ToList();
+                var start_saldo = db.MoneyOnDate(start_date.AddDays(-1)).Where(w => w.CashId == cash_id).Sum(s => s.Saldo);
                 var end_saldo = db.MoneyOnDate(start_date).Where(w => w.CashId == cash_id).Sum(s => s.Saldo);
 
                 var obj = new List<object>();
@@ -1059,6 +1059,51 @@ namespace SP_Sklad.Common
             try
             {
                 p.Print();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
+            }
+        }
+
+        public static byte[] PrintReportText(string access_token, Guid receipt_id)
+        {
+            var txt_receipt = new CheckboxClient(access_token).GetReportText(receipt_id);
+            var z = Encoding.UTF8.GetString(txt_receipt);
+
+            PrintDocument p = new PrintDocument();
+            p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(z, new Font("Bahnschrift SemiLight Condensed", 9), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
+            };
+            try
+            {
+                p.Print();
+
+                return txt_receipt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Exception Occured While Printing", ex);
+            }
+        }
+
+        public static byte[] PrintReportText(byte[] txt_receipt)
+        {
+            var z = Encoding.UTF8.GetString(txt_receipt);
+
+            PrintDocument p = new PrintDocument();
+            p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
+            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+            {
+                e1.Graphics.DrawString(z, new Font("Bahnschrift SemiLight Condensed", 9), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
+            };
+            try
+            {
+                p.Print();
+
+                return txt_receipt;
             }
             catch (Exception ex)
             {

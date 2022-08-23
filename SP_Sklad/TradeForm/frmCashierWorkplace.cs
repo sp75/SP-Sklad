@@ -106,17 +106,17 @@ namespace SP_Sklad.WBForm
 
         private void btnCloseShift_Click(object sender, EventArgs e)
         {
-            var new_shift = new CheckboxClient(_access_token).CloseShift();
-            if (new_shift.error == null)
+            var close_shift = new CheckboxClient(_access_token).CloseShift();
+            if (close_shift.error == null)
             {
                 using (var db = new BaseEntities())
                 {
-                    var shift = db.Shift.FirstOrDefault(w => w.Id == new_shift.id);
+                    var shift = db.Shift.FirstOrDefault(w => w.Id == close_shift.id);
 
                     if (shift != null)
                     {
-                        shift.ClosedAt = WaitingClosingShift(new_shift.id);
-                        shift.UpdatedAt = new_shift.updated_at;
+                        shift.ClosedAt = WaitingClosingShift(close_shift.id);
+                        shift.UpdatedAt = close_shift.updated_at;
                     }
 
                     db.SaveChanges();
@@ -125,9 +125,9 @@ namespace SP_Sklad.WBForm
                 simpleButton5.Enabled = false;
 
 
-                var z_report = new CheckboxClient(_access_token).GetReportText(new Guid(new_shift.z_report.id), ReceiptExportFormat.text);
+                var z_report = IHelper.PrintReportText(_access_token, new Guid(close_shift.z_report.id));
 
-                var result_file = Path.Combine(Application.StartupPath, "Rep", new_shift.z_report.id + ".txt");
+                var result_file = Path.Combine(Application.StartupPath, "Rep", close_shift.z_report.id + ".txt");
                 File.WriteAllBytes(result_file, z_report);
 
                 if (File.Exists(result_file))
@@ -135,35 +135,10 @@ namespace SP_Sklad.WBForm
                     Process.Start(result_file);
                 }
 
-                /*     var z = Encoding.UTF8.GetString(z_report);
-
-
-                    RichTextBox rtb = new RichTextBox();
-                    rtb.Text = File.ReadAllText(result_file, System.Text.Encoding.UTF8);
-                    RichTextBoxLink rtbl = new RichTextBoxLink(new PrintingSystem());
-                    rtbl.RichTextBox = rtb;
-                    rtbl.ShowPreviewDialog();*/
-
-                /*    PrintDocument p = new PrintDocument();
-                      p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-                      {
-                          e1.Graphics.DrawString(z, new Font("Times New Roman", 12), new SolidBrush(Color.Black), new RectangleF(0, 0, p.DefaultPageSettings.PrintableArea.Width, p.DefaultPageSettings.PrintableArea.Height));
-
-                      };
-                      try
-                      {
-                          p.Print();
-                      }
-                      catch (Exception ex)
-                      {
-                          throw new Exception("Exception Occured While Printing", ex);
-                      }
-
-                      MessageBox.Show("Зміна закрита, надрукувати Z-звіт ?");*/
             }
             else
             {
-                MessageBox.Show(new_shift.error.message);
+                MessageBox.Show(close_shift.error.message);
             }
         }
 
@@ -198,7 +173,7 @@ namespace SP_Sklad.WBForm
             var new_x_report = new CheckboxClient(_access_token).CreateXReport();
             if (new_x_report.error == null)
             {
-                var x_report = new CheckboxClient(_access_token).GetReportText(new_x_report.id, ReceiptExportFormat.text);
+                var x_report = IHelper.PrintReportText(_access_token, new_x_report.id);
 
                 var result_file = Path.Combine(Application.StartupPath, "Rep", new_x_report.id.ToString() + ".txt");
                 File.WriteAllBytes(result_file, x_report);

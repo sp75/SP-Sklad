@@ -205,30 +205,7 @@ namespace CheckboxIntegration.Client
                 };
             }
         }
-
-        /// <summary>
-        /// Отримання звіту в текстовому вигляді
-        /// </summary>
-        /// <param name="report_id">receipt id</param>
-        /// <param name="properties">https://dev-api.checkbox.in.ua/api/docs#/%D0%97%D0%B2%D1%96%D1%82%D0%B8/get_report_text_api_v1_reports__report_id__text_get</param>
-        /// <returns>Text Report</returns>
-        public byte[] GetReportText(Guid report_id, ReceiptExportFormat format)
-        {
-            var response = _client.GetAsync(string.Format("reports/{0}/{1}", report_id, format)).Result;
-
-            if (response.IsSuccessStatusCode)
-            {
-                response.EnsureSuccessStatusCode();
-
-                var result = response.Content.ReadAsByteArrayAsync().Result;
-                return result;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
+       
         /// <summary>
         /// Отримання інформації про зміну
         /// </summary>
@@ -370,6 +347,7 @@ namespace CheckboxIntegration.Client
         /// <returns></returns>
         public byte[] GetReceiptTxt(Guid receipt_id, int width = 42)
         {
+
             var response = _client.GetAsync(string.Format("receipts/{0}/text?width={1}", receipt_id, width)).Result;
 
             if (response.IsSuccessStatusCode)
@@ -440,6 +418,31 @@ namespace CheckboxIntegration.Client
                 {
                     error = apiErrorResponse
                 };
+            }
+        }
+
+
+        /// <summary>
+        /// Отримання звіту в текстовому вигляді
+        /// </summary>
+        /// <param name="receipt_id">receipt id</param>
+        /// <param name="width">Кількість символів у рядку</param>
+        /// <param name="properties"></param>
+        /// <returns></returns>
+        public byte[] GetReportText(Guid receipt_id, int width = 42)
+        {
+            var response = _client.GetAsync(string.Format("reports/{0}/text?width={1}", receipt_id, width)).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                response.EnsureSuccessStatusCode();
+
+                var result = response.Content.ReadAsByteArrayAsync().Result;
+                return result;
+            }
+            else
+            {
+                return null;
             }
         }
 

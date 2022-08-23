@@ -1,4 +1,5 @@
 ﻿using SP_Sklad.Common;
+using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +48,16 @@ namespace SP_Sklad.TradeForm
             }).ToList();
 
             AccountEdit.EditValue = user_settings.AccountDefaultRMK;
+
+
+            String pkInstalledPrinters;
+            for (int i = 0; i < PrinterSettings.InstalledPrinters.Count; i++)
+            {
+                pkInstalledPrinters = PrinterSettings.InstalledPrinters[i];
+                comboInstalledPrinters.Properties.Items.Add(pkInstalledPrinters);
+            }
+
+            comboInstalledPrinters.Text = Settings.Default.receipt_printer;
         }
 
         private void ChargeTypesEdit_EditValueChanged(object sender, EventArgs e)
