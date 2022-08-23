@@ -162,7 +162,7 @@ namespace SP_Sklad.WBForm
                 var cashier_shift = new CheckboxClient(_access_token).GetCashierShift();
 
                 //        var active_shift = db.Shift.OrderByDescending(o => o.CreatedAt).FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK);
-                simpleButton5.Enabled = /*(active_shift != null && !active_shift.ClosedAt.HasValue)*/(!cashier_shift.is_error && cashier_shift.status == ShiftStatus.OPENED) || string.IsNullOrEmpty(_access_token);
+                simpleButton5.Enabled = /*(active_shift != null && !active_shift.ClosedAt.HasValue)*/(cashier_shift != null && !cashier_shift.is_error && cashier_shift.status == ShiftStatus.OPENED) || string.IsNullOrEmpty(_access_token);
             }
         }
 
