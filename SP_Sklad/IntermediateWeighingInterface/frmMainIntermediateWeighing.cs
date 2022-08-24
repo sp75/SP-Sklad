@@ -184,7 +184,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void RecipeListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var satrt_date = DateTime.Now.AddDays(-10);
+            var satrt_date = DateTime.Now.AddDays(-2);
 
             e.QueryableSource = _db.v_IntermediateWeighingSummary.Where(w => w.OnDate > satrt_date && w.Checked == 0 && w.UserId == _user_id)
                 .GroupBy(g => new
@@ -207,7 +207,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 Amount = SqlFunctions.StringConvert(s.GroupBy(gg => new { gg.IntermediateWeighingId, gg.IntermediateWeighingAmount }).Sum(su => su.Key.IntermediateWeighingAmount)) + s.Key.ReceipeMsrName,
                 BMP = _db.Materials.Where(ww => ww.MatId == s.Key.RecipeMatId).Select(s2 => s2.BMP).FirstOrDefault(),
                 IsDone = !s.Any(w => w.IntermediateWeighingDetId == null)
-            }).Where(ww=> IsDoneToggleSwitch.IsOn || ( !IsDoneToggleSwitch.IsOn && !ww.IsDone )).OrderBy(o => o.WbOnDate);
+            }).Where(ww => IsDoneToggleSwitch.IsOn || (!IsDoneToggleSwitch.IsOn && !ww.IsDone));//.OrderBy(o => o.RecipeName);
 
         }
 
