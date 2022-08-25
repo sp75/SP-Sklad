@@ -464,6 +464,9 @@
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_IntermediateWeighingInterface.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingSummary.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

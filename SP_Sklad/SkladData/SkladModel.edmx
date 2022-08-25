@@ -1992,6 +1992,28 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not ha
           <Property Name="VizokWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingInterface' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_IntermediateWeighingInterface">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="ReceipeMsrName" />
+            <PropertyRef Name="RecipeMatId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WbOnDate" Type="nvarchar" MaxLength="4000" />
+          <Property Name="RecipeCount" Type="int" />
+          <Property Name="ReceipeMsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="RecipeMatId" Type="int" Nullable="false" />
+          <Property Name="BMP" Type="varbinary(max)" />
+          <Property Name="IsDone" Type="bit" />
+          <Property Name="Amount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_IntermediateWeighingSummary">
           <Key>
@@ -7365,6 +7387,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingDet].[VizokWeight] AS [VizokWeight]
     FROM [dbo].[v_IntermediateWeighingDet] AS [v_IntermediateWeighingDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_IntermediateWeighingInterface" EntityType="Self.v_IntermediateWeighingInterface" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_IntermediateWeighingInterface].[WbillId] AS [WbillId], 
+    [v_IntermediateWeighingInterface].[WbNum] AS [WbNum], 
+    [v_IntermediateWeighingInterface].[RecipeName] AS [RecipeName], 
+    [v_IntermediateWeighingInterface].[WbOnDate] AS [WbOnDate], 
+    [v_IntermediateWeighingInterface].[RecipeCount] AS [RecipeCount], 
+    [v_IntermediateWeighingInterface].[ReceipeMsrName] AS [ReceipeMsrName], 
+    [v_IntermediateWeighingInterface].[RecipeMatId] AS [RecipeMatId], 
+    [v_IntermediateWeighingInterface].[BMP] AS [BMP], 
+    [v_IntermediateWeighingInterface].[IsDone] AS [IsDone], 
+    [v_IntermediateWeighingInterface].[Amount] AS [Amount], 
+    [v_IntermediateWeighingInterface].[UserId] AS [UserId]
+    FROM [dbo].[v_IntermediateWeighingInterface] AS [v_IntermediateWeighingInterface]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_IntermediateWeighingSummary" EntityType="Self.v_IntermediateWeighingSummary" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_IntermediateWeighingSummary].[WbillId] AS [WbillId], 
@@ -10104,6 +10141,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WaybillDet" EntityType="BaseModel.v_WaybillDet" />
           <EntitySet Name="v_IntermediateWeighingSummary" EntityType="BaseModel.v_IntermediateWeighingSummary" />
           <EntitySet Name="Interfaces" EntityType="BaseModel.Interfaces" />
+          <EntitySet Name="v_IntermediateWeighingInterface" EntityType="BaseModel.v_IntermediateWeighingInterface" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -16896,6 +16934,26 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="v_IntermediateWeighingInterface">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="ReceipeMsrName" />
+            <PropertyRef Name="RecipeMatId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbOnDate" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="ReceipeMsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeMatId" Type="Int32" Nullable="false" />
+          <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsDone" Type="Boolean" />
+          <Property Name="Amount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -21422,6 +21480,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <MappingFragment StoreEntitySet="Interfaces">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_IntermediateWeighingInterface">
+            <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingInterface">
+              <MappingFragment StoreEntitySet="v_IntermediateWeighingInterface">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsDone" ColumnName="IsDone" />
+                <ScalarProperty Name="BMP" ColumnName="BMP" />
+                <ScalarProperty Name="RecipeMatId" ColumnName="RecipeMatId" />
+                <ScalarProperty Name="ReceipeMsrName" ColumnName="ReceipeMsrName" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
