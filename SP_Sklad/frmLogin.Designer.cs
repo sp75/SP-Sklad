@@ -197,6 +197,7 @@
             this.UserIDEdit.Properties.ValueMember = "UserId";
             this.UserIDEdit.Size = new System.Drawing.Size(335, 40);
             this.UserIDEdit.TabIndex = 37;
+            this.UserIDEdit.EditValueChanged += new System.EventHandler(this.UserIDEdit_EditValueChanged);
             // 
             // labelControl3
             // 
@@ -217,7 +218,6 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(386, 100);
             this.panelControl3.TabIndex = 31;
-            this.panelControl3.Visible = false;
             // 
             // InterfaceLookUpEdit
             // 
@@ -243,6 +243,8 @@
             this.InterfaceLookUpEdit.Properties.ValueMember = "Id";
             this.InterfaceLookUpEdit.Size = new System.Drawing.Size(335, 40);
             this.InterfaceLookUpEdit.TabIndex = 39;
+            this.InterfaceLookUpEdit.TabStop = false;
+            this.InterfaceLookUpEdit.EditValueChanged += new System.EventHandler(this.InterfaceLookUpEdit_EditValueChanged);
             // 
             // frmLogin
             // 

@@ -725,6 +725,7 @@
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmMainIntermediateWeighing.IconOptions.LargeImage")));
             this.Name = "frmMainIntermediateWeighing";
             this.Text = "Проміжкові зважування";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

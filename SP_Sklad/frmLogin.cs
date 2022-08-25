@@ -18,6 +18,7 @@ using DevExpress.LookAndFeel;
 using SP_Sklad.IntermediateWeighingInterface;
 using DevExpress.XtraEditors;
 using SP_Sklad.WBForm;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad
 {
@@ -49,7 +50,6 @@ namespace SP_Sklad
             }
 
             InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.ToList();
-
 
             CheckTrial();
 
@@ -127,8 +127,6 @@ namespace SP_Sklad
                 db.SaveChanges();
             }
 
-
-            this.Height = this.Height - panelControl3.Height;
         }
 
         private void CheckTrial()
@@ -271,7 +269,7 @@ namespace SP_Sklad
                     this.Hide();
 
 
-                    int interface_id = (int)InterfaceLookUpEdit.EditValue;
+                    int interface_id = Settings.Default.interfaces_id;
 
                     switch (interface_id)
                     {
@@ -279,7 +277,7 @@ namespace SP_Sklad
                             mainForm.main_form = new mainForm(user_id);
                             mainForm.main_form.Show();
                             break;
-                        
+
                         case 2:
                             WindowsFormsSettings.ForceDirectXPaint();
                             WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
@@ -288,7 +286,7 @@ namespace SP_Sklad
                             frmMainIntermediateWeighing.main_form.Show();
                             break;
 
-                            case 3:
+                        case 3:
                             try
                             {
                                 using (var frm = new frmCashierWorkplace())
@@ -296,12 +294,15 @@ namespace SP_Sklad
                                     frm.Show();
                                 }
                             }
-                            catch(Exception _ex)
+                            catch (Exception _ex)
                             {
                                 MessageBox.Show(_ex.Message);
                                 Application.Exit();
                             }
+                            break;
 
+                        default:
+                            Application.Exit();
                             break;
                     }
                 }
@@ -326,10 +327,22 @@ namespace SP_Sklad
             }
 
         }
+        private void GetOk()
+        {
+            OkButton.Enabled = !string.IsNullOrEmpty(UserIDEdit.Text) && !string.IsNullOrEmpty(InterfaceLookUpEdit.Text);
+        }
 
         private void frmLogin_Shown(object sender, EventArgs e)
         {
+            if (Settings.Default.interfaces_id > 0)
+            {
+                panelControl3.Visible = false;
+                this.Height = this.Height - panelControl3.Height;
+            }
+
             passtextEdit.Focus();
+
+            GetOk();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -349,6 +362,16 @@ namespace SP_Sklad
                 panelControl3.Visible = false;
                 this.Height = this.Height - panelControl3.Height;
             }
+        }
+
+        private void UserIDEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void InterfaceLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }
