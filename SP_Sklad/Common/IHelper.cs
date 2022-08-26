@@ -28,6 +28,8 @@ namespace SP_Sklad.Common
 {
     class IHelper
     {
+        public static int _user_id { get; set; }
+
         public static string template_path
         {
             get

@@ -40,7 +40,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_user_roles == null)
                 {
-                    _user_roles = new BaseEntities().UserRoles.Where(w => w.UserId == mainForm.user_id).ToList();
+                    _user_roles = new BaseEntities().UserRoles.Where(w => w.UserId == UserSession.UserId).ToList();
                 }
                 return _user_roles;
             }
@@ -108,7 +108,7 @@ namespace SP_Sklad.SkladData
                     return _current_user;
                 }
 
-                return _current_user = new BaseEntities().Users.Where(w => w.UserId == mainForm.user_id).ToList().Select(s => new LoginUser
+                return _current_user = new BaseEntities().Users.Where(w => w.UserId == UserSession.UserId).ToList().Select(s => new LoginUser
                 {
                     UserId = s.UserId,
                     Name = s.Name,
@@ -246,7 +246,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_enterprise == null)
                 {
-                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.KaId == mainForm.enterprise_id).Select(s => new Enterprise
+                    _enterprise = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.KaId == UserSession.EnterpriseId).Select(s => new Enterprise
                     {
                         KaId = s.KaId,
                         Name = s.Name,

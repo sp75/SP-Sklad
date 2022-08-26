@@ -15,6 +15,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TableLayout;
 using DevExpress.XtraGrid.Views.Tile;
 using DevExpress.XtraGrid.Views.Tile.ViewInfo;
+using SP_Sklad.Common;
 using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
@@ -23,12 +24,17 @@ namespace SP_Sklad.IntermediateWeighingInterface
 {
     public partial class frmMainIntermediateWeighing : DevExpress.XtraEditors.XtraForm
     {
-        public static int _user_id { get; set; }
+        private int _user_id { get; set; }
         public static frmMainIntermediateWeighing main_form { get; set; }
 
         public BaseEntities _db { get; set; }
 
         private IntermediateWeighingView intermediate_weighing_focused_row => tileView1.GetFocusedRow() is NotLoadedObject ? null : tileView1.GetFocusedRow() as IntermediateWeighingView;
+
+        public frmMainIntermediateWeighing()
+            :this (UserSession.UserId)
+        {
+        }
 
         public frmMainIntermediateWeighing(int user_id)
         {
@@ -37,11 +43,6 @@ namespace SP_Sklad.IntermediateWeighingInterface
             _db = new BaseEntities();
         }
   
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
    
@@ -65,12 +66,6 @@ namespace SP_Sklad.IntermediateWeighingInterface
             int h = (int)(sender as BaseEdit).EditValue;
             int w = (int)(h * 2.74);
             tileView1.OptionsTiles.ItemSize = new Size(w, h);
-        }
-
-
-        private void IntermediateWeighingGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            
         }
 
         private void frmMainIntermediateWeighing_FormClosed(object sender, FormClosedEventArgs e)
@@ -142,7 +137,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void tileView1_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
-            if(intermediate_weighing_focused_row == null)
+            if (intermediate_weighing_focused_row == null)
             {
                 return;
             }
@@ -159,15 +154,15 @@ namespace SP_Sklad.IntermediateWeighingInterface
             }
 
 
-            using (var frm = new FluentDesignForm1(intermediate_weighing_focused_row.WbillId))
+            using (var frm = new FluentDesignForm1(intermediate_weighing_focused_row.WbillId, _user_id))
             {
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
                 if (intermediate_weighing_focused_row.BMP != null)
                 {
                     frm.pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
                 }
-              
-                frm.labelControl1.Text =  intermediate_weighing_focused_row.RecipeName;
+
+                frm.labelControl1.Text = intermediate_weighing_focused_row.RecipeName;
                 frm.ShowDialog();
             }
         }

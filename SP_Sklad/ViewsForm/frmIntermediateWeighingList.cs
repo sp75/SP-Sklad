@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using static SP_Sklad.WBDetForm.frmIntermediateWeighingDet;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
+using SP_Sklad.Common;
 
 namespace SP_Sklad.ViewsForm
 {
@@ -69,7 +70,7 @@ namespace SP_Sklad.ViewsForm
 
             using (var _db = DB.SkladBase())
             {
-                var group_list = _db.UserAccessMatGroup.Where(w => w.UserId == mainForm.user_id).Select(s => s.GrpId).ToList();
+                var group_list = _db.UserAccessMatGroup.Where(w => w.UserId == UserSession.UserId).Select(s => s.GrpId).ToList();
                 var wbm = _db.WayBillMake.Select(s => new { s.RecipeCount, s.MatRecipe.Materials.Name }).FirstOrDefault();
                 var intermediate_weighing = _db.IntermediateWeighing.Where(w => w.WbillId == wb_id).OrderBy(o => o.OnDate).ToList();
                 var intermediate_det_list = _db.v_IntermediateWeighingDet.Where(w => w.WbillId == wb_id).ToList();

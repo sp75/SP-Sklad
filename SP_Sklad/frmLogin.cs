@@ -246,7 +246,11 @@ namespace SP_Sklad
 
                 return;
             }
-            
+
+            UserSession.UserId = user_id;
+            UserSession.SessionId = Guid.NewGuid();
+            UserSession.EnterpriseId  = Settings.Default.ent_id;
+
             using (var db = new BaseEntities())
             {
                 var user = db.Users.FirstOrDefault(w => w.Name == UserIDEdit.Text && w.Pass == passtextEdit.Text);
@@ -268,13 +272,10 @@ namespace SP_Sklad
 
                     this.Hide();
 
-
-                    int interface_id = Settings.Default.interfaces_id;
-
-                    switch (interface_id)
+                    switch (Settings.Default.interfaces_id)
                     {
                         case 1:
-                            mainForm.main_form = new mainForm(user_id);
+                            mainForm.main_form = new mainForm();
                             mainForm.main_form.Show();
                             break;
 
@@ -282,17 +283,15 @@ namespace SP_Sklad
                             WindowsFormsSettings.ForceDirectXPaint();
                             WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
                             WindowsFormsSettings.TouchScaleFactor = 2;
-                            frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing(user_id);
+                            frmMainIntermediateWeighing.main_form = new frmMainIntermediateWeighing();
                             frmMainIntermediateWeighing.main_form.Show();
                             break;
 
                         case 3:
                             try
                             {
-                                using (var frm = new frmCashierWorkplace())
-                                {
-                                    frm.Show();
-                                }
+                                frmCashierWorkplace.main_form = new frmCashierWorkplace();
+                                frmCashierWorkplace.main_form.Show();
                             }
                             catch (Exception _ex)
                             {

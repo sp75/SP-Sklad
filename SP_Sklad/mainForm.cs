@@ -22,17 +22,16 @@ namespace SP_Sklad
 {
     public partial class mainForm : DevExpress.XtraEditors.XtraForm
     {
-        public static int user_id { get; set; }
-        public static int enterprise_id { get; set; }
+        private int user_id { get; set; }
+      //  public static int enterprise_id { get; set; }
         public static mainForm main_form { get; set; }
+
+        public mainForm() : this(UserSession.UserId) { }
 
         public mainForm(int UserId)
         {
             InitializeComponent();
             user_id = UserId;
-
-            UserSession.UserId = UserId;
-            UserSession.SessionId = Guid.NewGuid();
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -108,18 +107,18 @@ namespace SP_Sklad
             {
                 if (enterprise != null)
                 {
-                    enterprise_id = enterprise.KaId;
+                    UserSession.EnterpriseId = enterprise.KaId;
                     barEditItem3.EditValue = enterprise.KaId;
                 }
             }
             else if ((int)barEditItem3.EditValue == 0 && enterprise != null)
             {
-                enterprise_id = enterprise.KaId;
+                UserSession.EnterpriseId = enterprise.KaId;
                 barEditItem3.EditValue = enterprise.KaId;
             }
             else
             {
-                enterprise_id = (int)barEditItem3.EditValue;
+                UserSession.EnterpriseId = (int)barEditItem3.EditValue;
             }
 
             GetMainHeder();
@@ -142,11 +141,11 @@ namespace SP_Sklad
         {
             if (barEditItem3.EditValue == DBNull.Value)
             {
-                barEditItem3.EditValue = enterprise_id;
+                barEditItem3.EditValue = UserSession.EnterpriseId;
             }
             else
             {
-                enterprise_id = (int)barEditItem3.EditValue;
+                UserSession.EnterpriseId = (int)barEditItem3.EditValue;
                 DBHelper.Enterprise = null;
             }
 

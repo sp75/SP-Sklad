@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -19,7 +20,7 @@ namespace SP_Sklad
         public frmLockApp()
         {
             InitializeComponent();
-            _users = DB.SkladBase().Users.FirstOrDefault(w => w.UserId == mainForm.user_id);
+            _users = DB.SkladBase().Users.FirstOrDefault(w => w.UserId == UserSession.UserId);
             is_close = false;
         }
 

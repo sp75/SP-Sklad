@@ -28,7 +28,6 @@ namespace SP_Sklad.WBForm
         public WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
         public int? _wbill_id { get; set; }
-        private int current_wid { get; set; }
         private DiscCards disc_card { get; set; }
         private GetWayBillDetOut_Result wbd_row
         {
@@ -49,6 +48,8 @@ namespace SP_Sklad.WBForm
 
         private string _access_token { get; set; }
         private string CashDesksName { get; set; }
+        private EnterpriseWorker Enterprise { get; set; }
+        private KagentList TradingPoint { get; set; }
 
         public frmCashboxWBOut(string access_token, int? wbill_id = null)
         {
@@ -65,8 +66,30 @@ namespace SP_Sklad.WBForm
             _rawinput.KeyPressed += OnKeyPressed;
 
             _db = new BaseEntities();
+        }
 
-            current_wid = 34;
+        private void frmCashboxWBOut_Load(object sender, EventArgs e)
+        {
+            user_settings = new UserSettingsRepository(UserSession.UserId, _db);
+            Enterprise = _db.EnterpriseWorker.Where(w => w.WorkerId == user_settings.DefaultBuyer).FirstOrDefault();
+            TradingPoint = DBHelper.TradingPoints.FirstOrDefault(w => w.KaId == user_settings.DefaultBuyer);
+
+            if (Enterprise == null)
+            {
+                MessageBox.Show("Не визначено підприемство для торгової точки " + TradingPoint.Name);
+                Close();
+            }
+
+            CashDesksName = _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).Name;
+
+            if (_wbill_id == null)
+            {
+                NewWaybill();
+            }
+            else
+            {
+                LoadWaybill(_wbill_id.Value);
+            }
         }
 
         private bool SaveWbill()
@@ -137,21 +160,7 @@ namespace SP_Sklad.WBForm
             };
         }
 
-        private void frmCashboxWBOut_Load(object sender, EventArgs e)
-        {
-            user_settings = new UserSettingsRepository(UserSession.UserId, _db);
 
-            if (_wbill_id == null)
-            {
-                NewWaybill();
-            }
-            else
-            {
-                LoadWaybill(_wbill_id.Value);
-            }
-
-            CashDesksName = _db.CashDesks.FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK).Name;
-        }
 
         private void LoadWaybill(int wbill_id)
         {
@@ -181,7 +190,7 @@ namespace SP_Sklad.WBForm
                 CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                 OnValue = 1,
                 PersonId = DBHelper.CurrentUser.KaId,
-                EntId = DBHelper.Enterprise.KaId,
+                EntId = Enterprise.EnterpriseId,
                 UpdatedBy = DBHelper.CurrentUser.UserId,
                 KaId = user_settings.DefaultBuyer,
                 Nds = 0
@@ -637,7 +646,7 @@ namespace SP_Sklad.WBForm
 
         private void frmCashboxWBOut_Shown(object sender, EventArgs e)
         {
-            Text = $"РМК [Каса: {CashDesksName}, Касир: {DBHelper.CurrentUser.Name}, Продавець: {(DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "")}, Торгова точка: {DBHelper.TradingPoints.FirstOrDefault(w => w.KaId == wb.KaId).Name} ]";
+            SetFormTitle();
             label1.Focus();
 
             if (string.IsNullOrEmpty(Settings.Default.barcode_scanner_name))
@@ -655,7 +664,7 @@ namespace SP_Sklad.WBForm
 
         private void SetFormTitle()
         {
-            Text = string.Format("РМК [Касир: {0}, Продавець: {1}, Торгова точка: {2} ]", DBHelper.CurrentUser.Name, (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : ""), DBHelper.Kagents.FirstOrDefault(w => w.KaId == wb.KaId).Name);
+            Text = $"РМК [Каса: {CashDesksName}, Касир: {DBHelper.CurrentUser.Name}, Продавець: {Enterprise.Kagent.Name}, Торгова точка: {TradingPoint.Name} ]";
         }
 
         private void frmCashboxWBOut_FormClosing(object sender, FormClosingEventArgs e)
@@ -1019,18 +1028,23 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
-            var new_receipts = new CheckboxClient(_access_token).GetCashierShift();
+          
 
             using (var frm = new frmCustomInfo())
             {
                 frm.Text = $"Інформація про активну зміну касира: {DBHelper.CurrentUser.Name}";
-                if (new_receipts.error == null)
+
+                if (!string.IsNullOrEmpty(_access_token))
                 {
-                    frm.AddItem("Зміна відкрита", new_receipts.opened_at);
-                    frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
-                    frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
-                    frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
-                    frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+                    var new_receipts = new CheckboxClient(_access_token).GetCashierShift();
+                    if (new_receipts.error == null)
+                    {
+                        frm.AddItem("Зміна відкрита", new_receipts.opened_at);
+                        frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
+                        frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
+                        frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
+                        frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+                    }
                 }
 
                 var money = _db.MoneyOnDate(DateTime.Now);

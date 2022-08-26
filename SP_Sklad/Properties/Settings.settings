@@ -14,8 +14,8 @@
     <Setting Name="user_id" Type="System.Object" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="ent_id" Type="System.Object" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="ent_id" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="main_status_bar" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

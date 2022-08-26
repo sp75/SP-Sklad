@@ -76,10 +76,14 @@ namespace SP_Sklad.MainTabs
             {
                 _db = new BaseEntities();
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                try
+                {
+                    var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
-                var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
-
-                _access_token = login.access_token;
+                    _access_token = login.access_token;
+                }
+                catch
+                { }
 
                 wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
