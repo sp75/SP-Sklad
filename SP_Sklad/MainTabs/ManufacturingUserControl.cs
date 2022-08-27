@@ -84,7 +84,7 @@ namespace SP_Sklad.MainTabs
                 dateEdit1.EditValue = DateTime.Now.Date.SetEndDay();
 
 
-                IntermediateWeighingStartDate.EditValue = DateTime.Now.Date.AddDays(-30);
+                IntermediateWeighingStartDate.EditValue = DateTime.Now.Date;
                 IntermediateWeighingEndDate.EditValue = DateTime.Now.Date.SetEndDay();
                 lookUpEdit3.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведений" }, new { Id = 0, Name = "Новий" } };
                 lookUpEdit3.EditValue = -1;

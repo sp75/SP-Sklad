@@ -431,6 +431,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(5, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1093, 31);
@@ -495,9 +496,9 @@
             this.WaybillDetOutGridView.Appearance.FocusedRow.ForeColor = System.Drawing.Color.Black;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseBackColor = true;
             this.WaybillDetOutGridView.Appearance.FocusedRow.Options.UseForeColor = true;
-            this.WaybillDetOutGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillDetOutGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F);
             this.WaybillDetOutGridView.Appearance.HeaderPanel.Options.UseFont = true;
-            this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.WaybillDetOutGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 14F);
             this.WaybillDetOutGridView.Appearance.Row.Options.UseFont = true;
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
@@ -1151,8 +1152,10 @@
             this.AmountEdit.Enabled = false;
             this.AmountEdit.Location = new System.Drawing.Point(1123, 124);
             this.AmountEdit.Name = "AmountEdit";
+            this.AmountEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.AmountEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.AmountEdit.Properties.Appearance.Options.UseBackColor = true;
             this.AmountEdit.Properties.Appearance.Options.UseFont = true;
             this.AmountEdit.Properties.Appearance.Options.UseForeColor = true;
             this.AmountEdit.Properties.DisplayFormat.FormatString = "0.0000";

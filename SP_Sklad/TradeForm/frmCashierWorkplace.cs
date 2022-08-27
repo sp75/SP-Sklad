@@ -146,16 +146,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RichTextBox rtb = new RichTextBox();
-            rtb.Text = File.ReadAllText(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\bin\Debug\Rep\b810cf5a-deb1-4bf1-bf24-9fa34f469ed9.txt", System.Text.Encoding.UTF8);
-            //rtb.LoadFile(@"c:\WinVSProjects\SP-Sklad\SP_Sklad\bin\Debug\Rep\b810cf5a-deb1-4bf1-bf24-9fa34f469ed9.txt", RichTextBoxStreamType.PlainText);
-            RichTextBoxLink rtbl = new RichTextBoxLink(new PrintingSystem());
-            rtbl.RichTextBox = rtb;
-            rtbl.ShowPreviewDialog();
-        }
-
         private void frmCashierWorkplace_Load(object sender, EventArgs e)
         {
             using (var db = new BaseEntities())
@@ -163,10 +153,8 @@ namespace SP_Sklad.WBForm
                 try
                 {
                     var cashier_shift = new CheckboxClient(_access_token).GetCashierShift();
-
-
                     //        var active_shift = db.Shift.OrderByDescending(o => o.CreatedAt).FirstOrDefault(w => w.CashId == user_settings.CashDesksDefaultRMK);
-                    simpleButton5.Enabled = /*(active_shift != null && !active_shift.ClosedAt.HasValue)*/(cashier_shift != null && !cashier_shift.is_error && cashier_shift.status == ShiftStatus.OPENED) || string.IsNullOrEmpty(_access_token);
+                    simpleButton5.Enabled = /*(active_shift != null && !active_shift.ClosedAt.HasValue)*/(cashier_shift != null && !cashier_shift.is_error && cashier_shift.status == ShiftStatus.OPENED && (DateTime.Now - cashier_shift.opened_at.Value).TotalHours < 24) || string.IsNullOrEmpty(_access_token);
                 }
                 catch
                 {
@@ -220,6 +208,28 @@ namespace SP_Sklad.WBForm
         private void simpleButton6_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmCustomInfo())
+            {
+                frm.Text = $"Інформація про активну зміну касира: {DBHelper.CurrentUser.Name}";
+
+                if (!string.IsNullOrEmpty(_access_token))
+                {
+                    var new_receipts = new CheckboxClient(_access_token).GetCashierShift();
+                    if (new_receipts.error == null)
+                    {
+                        frm.AddItem("Зміна відкрита", new_receipts.opened_at);
+                        frm.AddItem("Продаж за готівку", new_receipts.balance.cash_sales / 100.00);
+                        frm.AddItem("Продаж по картці", new_receipts.balance.card_sales / 100.00);
+                        frm.AddItem("Повернення готівкою", new_receipts.balance.cash_returns / 100.00);
+                        frm.AddItem("Залишок в касі (checkbox)", new_receipts.balance.balance / 100.00);
+                    }
+                }
+                frm.ShowDialog();
+            }
         }
     }
 }

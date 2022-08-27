@@ -37,8 +37,8 @@
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.btnCloseShift = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.button1 = new System.Windows.Forms.Button();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             this.simpleButton5.Appearance.Options.UseFont = true;
             this.simpleButton5.ImageOptions.ImageIndex = 1;
             this.simpleButton5.ImageOptions.ImageList = this.imageCollection1;
-            this.simpleButton5.Location = new System.Drawing.Point(12, 16);
+            this.simpleButton5.Location = new System.Drawing.Point(12, 4);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(275, 57);
             this.simpleButton5.TabIndex = 83;
@@ -85,7 +85,7 @@
             this.btnCreateShift.Appearance.Options.UseFont = true;
             this.btnCreateShift.ImageOptions.ImageIndex = 3;
             this.btnCreateShift.ImageOptions.ImageList = this.imageCollection1;
-            this.btnCreateShift.Location = new System.Drawing.Point(12, 79);
+            this.btnCreateShift.Location = new System.Drawing.Point(12, 67);
             this.btnCreateShift.Name = "btnCreateShift";
             this.btnCreateShift.Size = new System.Drawing.Size(275, 57);
             this.btnCreateShift.TabIndex = 84;
@@ -101,7 +101,7 @@
             this.simpleButton2.ImageOptions.ImageIndex = 6;
             this.simpleButton2.ImageOptions.ImageList = this.imageCollection1;
             this.simpleButton2.ImageOptions.ImageToTextIndent = 20;
-            this.simpleButton2.Location = new System.Drawing.Point(12, 142);
+            this.simpleButton2.Location = new System.Drawing.Point(12, 130);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(275, 57);
             this.simpleButton2.TabIndex = 85;
@@ -117,7 +117,7 @@
             this.simpleButton3.ImageOptions.ImageIndex = 5;
             this.simpleButton3.ImageOptions.ImageList = this.imageCollection1;
             this.simpleButton3.ImageOptions.ImageToTextIndent = 20;
-            this.simpleButton3.Location = new System.Drawing.Point(12, 205);
+            this.simpleButton3.Location = new System.Drawing.Point(12, 193);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(275, 57);
             this.simpleButton3.TabIndex = 86;
@@ -133,7 +133,7 @@
             this.btnCloseShift.ImageOptions.ImageIndex = 4;
             this.btnCloseShift.ImageOptions.ImageList = this.imageCollection1;
             this.btnCloseShift.ImageOptions.ImageToTextIndent = 20;
-            this.btnCloseShift.Location = new System.Drawing.Point(12, 268);
+            this.btnCloseShift.Location = new System.Drawing.Point(12, 256);
             this.btnCloseShift.Name = "btnCloseShift";
             this.btnCloseShift.Size = new System.Drawing.Size(275, 57);
             this.btnCloseShift.TabIndex = 87;
@@ -150,23 +150,12 @@
             this.simpleButton6.ImageOptions.ImageIndex = 2;
             this.simpleButton6.ImageOptions.ImageList = this.imageCollection1;
             this.simpleButton6.ImageOptions.ImageToTextIndent = 20;
-            this.simpleButton6.Location = new System.Drawing.Point(12, 454);
+            this.simpleButton6.Location = new System.Drawing.Point(12, 493);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(275, 57);
             this.simpleButton6.TabIndex = 88;
             this.simpleButton6.Text = "Закінчення роботи";
             this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(212, 331);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 89;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // simpleButton1
             // 
@@ -177,20 +166,37 @@
             this.simpleButton1.ImageOptions.ImageIndex = 0;
             this.simpleButton1.ImageOptions.ImageList = this.imageCollection1;
             this.simpleButton1.ImageOptions.ImageToTextIndent = 20;
-            this.simpleButton1.Location = new System.Drawing.Point(12, 360);
+            this.simpleButton1.Location = new System.Drawing.Point(12, 430);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(275, 57);
             this.simpleButton1.TabIndex = 90;
             this.simpleButton1.Text = "Налаштування";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
             // 
+            // simpleButton4
+            // 
+            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton4.Appearance.Options.UseFont = true;
+            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.simpleButton4.ImageOptions.ImageIndex = 4;
+            this.simpleButton4.ImageOptions.ImageList = this.imageCollection1;
+            this.simpleButton4.ImageOptions.ImageToTextIndent = 20;
+            this.simpleButton4.Location = new System.Drawing.Point(12, 319);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(275, 57);
+            this.simpleButton4.TabIndex = 91;
+            this.simpleButton4.Text = "Інформація по касі";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
             // frmCashierWorkplace
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(299, 523);
+            this.ClientSize = new System.Drawing.Size(299, 562);
+            this.Controls.Add(this.simpleButton4);
             this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.simpleButton6);
             this.Controls.Add(this.btnCloseShift);
             this.Controls.Add(this.simpleButton3);
@@ -215,8 +221,8 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.SimpleButton btnCloseShift;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
-        private System.Windows.Forms.Button button1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }
