@@ -30,18 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserEdit));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -261,6 +265,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(827, 0);
             // 
             // barDockControlBottom
@@ -268,6 +273,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(827, 0);
             // 
             // barDockControlLeft
@@ -275,6 +281,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 456);
             // 
             // barDockControlRight
@@ -282,6 +289,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(827, 0);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 456);
             // 
             // ImageList
@@ -312,7 +320,7 @@
             // 
             this.barButtonItem1.Caption = "Дозволити доступ до групи";
             this.barButtonItem1.Id = 7;
-            this.barButtonItem1.ImageIndex = 8;
+            this.barButtonItem1.ImageOptions.ImageIndex = 8;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -320,7 +328,7 @@
             // 
             this.barButtonItem2.Caption = "Заборонити доступ до групи";
             this.barButtonItem2.Id = 8;
-            this.barButtonItem2.ImageIndex = 10;
+            this.barButtonItem2.ImageOptions.ImageIndex = 10;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -328,7 +336,7 @@
             // 
             this.barButtonItem3.Caption = "Дозволити доступ до всіх груп";
             this.barButtonItem3.Id = 9;
-            this.barButtonItem3.ImageIndex = 6;
+            this.barButtonItem3.ImageOptions.ImageIndex = 6;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -336,7 +344,7 @@
             // 
             this.barButtonItem4.Caption = "Заборонити доступ до всіх груп";
             this.barButtonItem4.Id = 10;
-            this.barButtonItem4.ImageIndex = 5;
+            this.barButtonItem4.ImageOptions.ImageIndex = 5;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -344,14 +352,14 @@
             // 
             this.barButtonItem5.Caption = "Дозволити доступ до колонки";
             this.barButtonItem5.Id = 11;
-            this.barButtonItem5.ImageIndex = 9;
+            this.barButtonItem5.ImageOptions.ImageIndex = 9;
             this.barButtonItem5.Name = "barButtonItem5";
             // 
             // barButtonItem6
             // 
             this.barButtonItem6.Caption = "Заборонити доступ до колонки";
             this.barButtonItem6.Id = 12;
-            this.barButtonItem6.ImageIndex = 7;
+            this.barButtonItem6.ImageOptions.ImageIndex = 7;
             this.barButtonItem6.Name = "barButtonItem6";
             // 
             // styleController1
@@ -430,7 +438,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(187, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 402);
+            this.splitterControl1.Size = new System.Drawing.Size(10, 402);
             this.splitterControl1.TabIndex = 36;
             this.splitterControl1.TabStop = false;
             // 
@@ -439,12 +447,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(192, 0);
+            this.xtraTabControl1.Location = new System.Drawing.Point(197, 0);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(635, 402);
+            this.xtraTabControl1.Size = new System.Drawing.Size(630, 402);
             this.xtraTabControl1.TabIndex = 37;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -456,7 +464,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage1.Size = new System.Drawing.Size(630, 380);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -465,7 +473,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(635, 380);
+            this.panel1.Size = new System.Drawing.Size(630, 380);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -484,7 +492,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(635, 380);
+            this.groupControl2.Size = new System.Drawing.Size(630, 380);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -518,7 +526,7 @@
             this.UserGroupLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UserGroupLookUpEdit.Properties.ValueMember = "Id";
             this.UserGroupLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.UserGroupLookUpEdit_Properties_ButtonClick);
-            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(186, 22);
+            this.UserGroupLookUpEdit.Size = new System.Drawing.Size(181, 22);
             this.UserGroupLookUpEdit.StyleController = this.styleController1;
             this.UserGroupLookUpEdit.TabIndex = 63;
             // 
@@ -534,6 +542,7 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(26, 34);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(35, 16);
@@ -611,7 +620,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.xtraTabControl2);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage4.Size = new System.Drawing.Size(630, 380);
             this.xtraTabPage4.Text = "Права";
             // 
             // xtraTabControl2
@@ -624,7 +633,7 @@
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl2.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabControl2.Size = new System.Drawing.Size(630, 380);
             this.xtraTabControl2.TabIndex = 38;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
@@ -638,7 +647,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.panel2);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage2.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage2.Text = "Основні";
             // 
             // panel2
@@ -647,7 +656,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(635, 358);
+            this.panel2.Size = new System.Drawing.Size(630, 358);
             this.panel2.TabIndex = 29;
             // 
             // treeList1
@@ -673,11 +682,12 @@
             this.treeList1.Location = new System.Drawing.Point(0, 0);
             this.treeList1.Name = "treeList1";
             this.treeList1.OptionsBehavior.Editable = false;
+            this.treeList1.OptionsMenu.EnableNodeMenu = false;
             this.treeList1.ParentFieldName = "PId";
             this.treeList1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
             this.treeList1.SelectImageList = this.UserTreeImgList;
-            this.treeList1.Size = new System.Drawing.Size(635, 358);
+            this.treeList1.Size = new System.Drawing.Size(630, 358);
             this.treeList1.TabIndex = 0;
             this.treeList1.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
             this.treeList1.Click += new System.EventHandler(this.treeList1_Click);
@@ -736,10 +746,10 @@
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
-            this.repositoryItemCheckEdit1.ImageIndexChecked = 3;
-            this.repositoryItemCheckEdit1.ImageIndexGrayed = 2;
-            this.repositoryItemCheckEdit1.ImageIndexUnchecked = 4;
-            this.repositoryItemCheckEdit1.Images = this.ImageList;
+            this.repositoryItemCheckEdit1.ImageOptions.ImageIndexChecked = 3;
+            this.repositoryItemCheckEdit1.ImageOptions.ImageIndexGrayed = 2;
+            this.repositoryItemCheckEdit1.ImageOptions.ImageIndexUnchecked = 4;
+            this.repositoryItemCheckEdit1.ImageOptions.Images = this.ImageList;
             this.repositoryItemCheckEdit1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.ValueChecked = 1;
@@ -883,7 +893,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage3.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage3.Text = "Доступ до сладів";
             // 
             // UserAccessWhGridControl
@@ -895,7 +905,7 @@
             this.UserAccessWhGridControl.Name = "UserAccessWhGridControl";
             this.UserAccessWhGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.UserAccessWhGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessWhGridControl.Size = new System.Drawing.Size(630, 358);
             this.UserAccessWhGridControl.TabIndex = 8;
             this.UserAccessWhGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessWhGridView});
@@ -966,7 +976,7 @@
             this.xtraTabPage5.Controls.Add(this.checkEdit2);
             this.xtraTabPage5.Controls.Add(this.checkEdit1);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage5.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage5.Text = "Додаткові";
             // 
             // checkEdit8
@@ -1108,7 +1118,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.UserAccessCashDesksGridControl);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage7.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage7.Text = "Доступ до кас";
             // 
             // UserAccessCashDesksGridControl
@@ -1122,7 +1132,7 @@
             this.UserAccessCashDesksGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox2,
             this.repositoryItemCheckEdit2});
-            this.UserAccessCashDesksGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessCashDesksGridControl.Size = new System.Drawing.Size(630, 358);
             this.UserAccessCashDesksGridControl.TabIndex = 9;
             this.UserAccessCashDesksGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessCashDesksGridView});
@@ -1195,7 +1205,7 @@
             // 
             this.xtraTabPage9.Controls.Add(this.UserAccessMatGroupGridControl);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage9.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage9.Text = "Доступ до  груп товарів";
             // 
             // UserAccessMatGroupGridControl
@@ -1209,7 +1219,7 @@
             this.UserAccessMatGroupGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox3,
             this.repositoryItemCheckEdit3});
-            this.UserAccessMatGroupGridControl.Size = new System.Drawing.Size(635, 358);
+            this.UserAccessMatGroupGridControl.Size = new System.Drawing.Size(630, 358);
             this.UserAccessMatGroupGridControl.TabIndex = 10;
             this.UserAccessMatGroupGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessMatGroupGridView});
@@ -1271,7 +1281,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.RoleGridControl);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(635, 358);
+            this.xtraTabPage10.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage10.Text = "Ролі";
             // 
             // RoleGridControl
@@ -1285,7 +1295,7 @@
             this.RoleGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemCheckEdit4});
-            this.RoleGridControl.Size = new System.Drawing.Size(635, 358);
+            this.RoleGridControl.Size = new System.Drawing.Size(630, 358);
             this.RoleGridControl.TabIndex = 11;
             this.RoleGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.RoleGridView});
@@ -1354,7 +1364,7 @@
             this.xtraTabPage8.Controls.Add(this.KagentComboBox);
             this.xtraTabPage8.Controls.Add(this.labelControl64);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage8.Size = new System.Drawing.Size(630, 380);
             this.xtraTabPage8.Text = "РМК";
             // 
             // PassCheckboxEdit
@@ -1369,6 +1379,7 @@
             // labelControl13
             // 
             this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl13.Appearance.Options.UseFont = true;
             this.labelControl13.Location = new System.Drawing.Point(225, 293);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(153, 16);
@@ -1387,6 +1398,7 @@
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl9.Appearance.Options.UseFont = true;
             this.labelControl9.Location = new System.Drawing.Point(15, 293);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(141, 16);
@@ -1396,6 +1408,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl5.Appearance.Options.UseFont = true;
             this.labelControl5.Location = new System.Drawing.Point(337, 153);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(51, 16);
@@ -1410,9 +1423,10 @@
             this.CashEditComboBox.Name = "CashEditComboBox";
             this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("CashEditComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CashEditComboBox.Properties.DisplayMember = "Name";
@@ -1420,7 +1434,7 @@
             this.CashEditComboBox.Properties.ShowHeader = false;
             this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.CashEditComboBox.Properties.ValueMember = "CashId";
-            this.CashEditComboBox.Size = new System.Drawing.Size(289, 22);
+            this.CashEditComboBox.Size = new System.Drawing.Size(289, 24);
             this.CashEditComboBox.TabIndex = 79;
             this.CashEditComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CashEditComboBox_ButtonClick);
             this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.CashEditComboBox_EditValueChanged);
@@ -1433,9 +1447,10 @@
             this.AccountEdit.Name = "AccountEdit";
             this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.AccountEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AccountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
@@ -1443,7 +1458,7 @@
             this.AccountEdit.Properties.DisplayMember = "AccNum";
             this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.AccountEdit.Properties.ValueMember = "AccId";
-            this.AccountEdit.Size = new System.Drawing.Size(280, 22);
+            this.AccountEdit.Size = new System.Drawing.Size(280, 24);
             this.AccountEdit.TabIndex = 78;
             this.AccountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AccountEdit_ButtonClick);
             this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
@@ -1451,6 +1466,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(15, 153);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(32, 16);
@@ -1465,9 +1481,10 @@
             this.ChargeTypesEdit.Name = "ChargeTypesEdit";
             this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("ChargeTypesEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.ChargeTypesEdit.Properties.DisplayMember = "Name";
@@ -1475,7 +1492,7 @@
             this.ChargeTypesEdit.Properties.ShowHeader = false;
             this.ChargeTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.ChargeTypesEdit.Properties.ValueMember = "CTypeId";
-            this.ChargeTypesEdit.Size = new System.Drawing.Size(602, 22);
+            this.ChargeTypesEdit.Size = new System.Drawing.Size(602, 24);
             this.ChargeTypesEdit.TabIndex = 75;
             this.ChargeTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ChargeTypesEdit_ButtonClick);
             this.ChargeTypesEdit.EditValueChanged += new System.EventHandler(this.ChargeTypesEdit_EditValueChanged);
@@ -1483,6 +1500,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl7.Appearance.Options.UseFont = true;
             this.labelControl7.Location = new System.Drawing.Point(15, 85);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(89, 16);
@@ -1493,9 +1511,10 @@
             // 
             this.KagentComboBox.Location = new System.Drawing.Point(15, 41);
             this.KagentComboBox.Name = "KagentComboBox";
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("KagentComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
@@ -1524,7 +1543,7 @@
             this.xtraTabPage6.Controls.Add(this.labelControl2);
             this.xtraTabPage6.Controls.Add(this.textEdit3);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(635, 380);
+            this.xtraTabPage6.Size = new System.Drawing.Size(630, 380);
             this.xtraTabPage6.Text = "Додаткова інформація";
             // 
             // DiscountCheckBox
@@ -1535,7 +1554,7 @@
             this.DiscountCheckBox.Name = "DiscountCheckBox";
             this.DiscountCheckBox.Properties.AutoWidth = true;
             this.DiscountCheckBox.Properties.Caption = "Внутрішній редактор";
-            this.DiscountCheckBox.Size = new System.Drawing.Size(143, 20);
+            this.DiscountCheckBox.Size = new System.Drawing.Size(144, 20);
             this.DiscountCheckBox.StyleController = this.styleController1;
             this.DiscountCheckBox.TabIndex = 50;
             // 
