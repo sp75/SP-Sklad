@@ -1705,6 +1705,8 @@ SELECT WaybillList.[WbillId]
       ,mr.TimeNorm
       ,mg.GrpId 
       ,mg.Name GrpName
+      ,move_on_sgp.OnDate MoveOnSGPOnDate
+      ,cooking.OnDate CookingOnDate
   FROM WaybillList
   inner join WayBillMake m on m.WbillId = WaybillList.WbillId
   inner join MatRecipe mr on mr.RecId = m.RecId
@@ -1720,6 +1722,14 @@ SELECT WaybillList.[WbillId]
 				inner join Tara on Tara.TaraId = TechProcDet.SausageSyringeId
                 where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('osadka')
 				group by Tara.Name ) osadka
+  cross apply ( select min(TechProcDet.OnDate) OnDate , sum(TechProcDet.OutNetto) OutNetto
+                from TechProcDet
+				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
+                where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('move_on_sgp') ) move_on_sgp
+  cross apply ( select min(TechProcDet.OnDate) OnDate , sum(TechProcDet.OutNetto) OutNetto
+                from TechProcDet
+				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
+                where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('cooking') ) cooking
 
   where WType = -20 and WaybillList.OnDate between {0} and {1} 
   order by mg.Name, Materials.barcode, Materials.matid, Materials.artikul", OnDate.Date, OnDate.Date.AddDays(1));
@@ -1758,6 +1768,8 @@ SELECT WaybillList.[WbillId]
             public decimal? TimeNorm { get; set; }
             public int? GrpId { get; set; }
             public string GrpName { get; set; }
+            public DateTime? MoveOnSGPOnDate { get; set; }
+            public DateTime? CookingOnDate{ get; set; }
         }
 
         public class rep_45

@@ -136,6 +136,8 @@ namespace SP.Reports
 
             }
 
+            workbook.CalculateFull();
+
           /*  if (!String.IsNullOrEmpty(OutFile))
             {
                 workbook.SaveDocument(OutFile);
