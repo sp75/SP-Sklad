@@ -47,7 +47,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 86);
+            this.panelControl2.Location = new System.Drawing.Point(0, 85);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(556, 52);
             this.panelControl2.TabIndex = 21;
@@ -84,10 +84,12 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(16, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.Padding = new System.Windows.Forms.Padding(10);
+            this.pictureBox1.Size = new System.Drawing.Size(84, 85);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -95,17 +97,21 @@
             // MessageText
             // 
             this.MessageText.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.MessageText.Location = new System.Drawing.Point(106, 12);
+            this.MessageText.Appearance.Options.UseFont = true;
+            this.MessageText.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.MessageText.Dock = System.Windows.Forms.DockStyle.Top;
+            this.MessageText.Location = new System.Drawing.Point(84, 0);
             this.MessageText.Name = "MessageText";
-            this.MessageText.Size = new System.Drawing.Size(90, 19);
+            this.MessageText.Size = new System.Drawing.Size(472, 38);
             this.MessageText.TabIndex = 59;
-            this.MessageText.Text = "MessageText";
+            this.MessageText.Text = "MessageText dfdf sdf asdf asf asf asdf asdf asf asdfa sfda sdf asdfa sf asdf asdf" +
+    " asdf asdf asf asf";
             // 
             // frmMessageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 138);
+            this.ClientSize = new System.Drawing.Size(556, 137);
             this.Controls.Add(this.MessageText);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelControl2);

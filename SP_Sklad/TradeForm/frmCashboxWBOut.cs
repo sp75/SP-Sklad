@@ -94,6 +94,11 @@ namespace SP_Sklad.WBForm
 
         private bool SaveWbill()
         {
+            if( WaybillDetOutBS.Count == 0)
+            {
+                return false;
+            }
+
             if (!DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
             {
                 return false;
@@ -104,9 +109,11 @@ namespace SP_Sklad.WBForm
                 return false;
             }
 
-
-            if (!ResivedItems() || WaybillDetOutBS.Count == 0)
+            var list = ResivedItems();
+            if (list.Any())
             {
+               // MessageBox.Show("Не вдалося зарезервувати: " + String.Join(",", list));
+
                 return false;
             }
 
@@ -128,10 +135,23 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (!ResivedItems() || WaybillDetOutBS.Count == 0)
+            if (WaybillDetOutBS.Count == 0)
             {
                 return;
             }
+
+            var list = ResivedItems();
+            if (list.Any())
+            {
+                using (var frm = new frmMessageBox("Інформація", $"Не вдалося зарезервувати деякі позиціїї: {String.Join(", ", list)}, продовжити оплату ?", false))
+                {
+                    if (frm.ShowDialog() != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+            }
+
 
             if (!DBHelper.CheckOrderedInSuppliers(wb.WbillId, _db))
             {
@@ -590,7 +610,7 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private bool ResivedItems()
+        private List<string> ResivedItems()
         {
             _db.SaveChanges();
             var list = new List<string>();
@@ -610,14 +630,7 @@ namespace SP_Sklad.WBForm
 
             }
 
-            if (list.Any())
-            {
-                MessageBox.Show("Не вдалося зарезервувати: " + String.Join(",", list));
-
-                return false;
-            }
-
-            return true;
+            return list;
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
