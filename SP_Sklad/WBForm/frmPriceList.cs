@@ -626,7 +626,7 @@ namespace SP_Sklad.WBForm
 
             var wh_row = PriceListGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
 
-            if (wh_row != null && wh_row.Price < wh_row.LastInPrice)
+            if (wh_row != null && wh_row.Price < Math.Max(wh_row.LastInPrice ?? 0, wh_row.LastOutPrice ?? 0))
             {
                 e.Appearance.ForeColor = Color.Red;
             }

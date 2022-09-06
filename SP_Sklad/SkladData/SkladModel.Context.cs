@@ -199,6 +199,11 @@ namespace SP_Sklad.SkladData
         public DbSet<v_IntermediateWeighingSummary> v_IntermediateWeighingSummary { get; set; }
         public DbSet<Interfaces> Interfaces { get; set; }
         public DbSet<v_IntermediateWeighingInterface> v_IntermediateWeighingInterface { get; set; }
+        public DbSet<v_BankStatements> v_BankStatements { get; set; }
+        public DbSet<BanksProvidingStatements> BanksProvidingStatements { get; set; }
+        public DbSet<BankStatements> BankStatements { get; set; }
+        public DbSet<v_BankStatementsDet> v_BankStatementsDet { get; set; }
+        public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2248,15 +2253,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
         }
     
-        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
-        {
-            var pl_idParameter = pl_id.HasValue ?
-                new ObjectParameter("pl_id", pl_id) :
-                new ObjectParameter("pl_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
-        }
-    
         public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -2530,6 +2526,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserRoles_Result>("[BaseEntities].[GetUserRoles](@user_id)", user_idParameter);
+        }
+    
+        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
+        {
+            var pl_idParameter = pl_id.HasValue ?
+                new ObjectParameter("pl_id", pl_id) :
+                new ObjectParameter("pl_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
         }
     }
 }

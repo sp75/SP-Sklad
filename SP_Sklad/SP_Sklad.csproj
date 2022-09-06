@@ -70,10 +70,8 @@
     <Reference Include="DevExpress.DataVisualization.v21.1.Core, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Map.v21.1.Core, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v21.1.Core, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.XtraTreeMap.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Docs.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
@@ -148,6 +146,7 @@
     <Reference Include="DevExpress.XtraLayout.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraMap.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -440,6 +439,15 @@
     </Compile>
     <Compile Include="IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
     <Compile Include="IntermediateWeighingInterface\Views\make_det.cs" />
+    <Compile Include="SkladData\BanksProvidingStatements.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\BankStatements.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\BankStatementsDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetTradePayDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -459,6 +467,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserRoles.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_BankStatements.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_BankStatementsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
@@ -1713,6 +1727,12 @@
     <Compile Include="WBForm\frmKAgentAdjustment.Designer.cs">
       <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmBankStatements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmBankStatements.Designer.cs">
+      <DependentUpon>frmBankStatements.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmProductionPlans.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2126,6 +2146,9 @@
     <EmbeddedResource Include="WBForm\frmKAgentAdjustment.resx">
       <DependentUpon>frmKAgentAdjustment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmBankStatements.resx">
+      <DependentUpon>frmBankStatements.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmProductionPlans.resx">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
     </EmbeddedResource>
@@ -2179,6 +2202,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.AspNetUsers.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Banks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.BanksPersons.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.BankStatements.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Cars.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CashDesks.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ChargeType.datasource" />
@@ -2412,6 +2436,7 @@
   <ItemGroup>
     <None Include="BMP\PNG\finance32.png" />
     <None Include="BMP\1\currencyexchange.png" />
+    <None Include="BMP\PNG\Банки.png" />
     <Content Include="main_ico.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>

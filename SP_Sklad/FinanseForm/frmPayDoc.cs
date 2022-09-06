@@ -60,8 +60,7 @@ namespace SP_Sklad.FinanseForm
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
 
-            var ent_id = DBHelper.Enterprise.KaId;
-            user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new user_acc
+            user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).Select(s => new user_acc
             {
                 AccId = s.AccId,
                 AccNum = s.AccNum,

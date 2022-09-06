@@ -332,6 +332,9 @@
         <AssociationConnector Association="BaseModel.FK_UserSettings_Users" />
         <EntityTypeShape EntityType="BaseModel.Interfaces" Width="1.5" PointX="30.75" PointY="1.25" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingInterface" Width="1.5" PointX="30.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BaseModel.BanksProvidingStatements" Width="1.5" PointX="30.75" PointY="8.25" />
+        <EntityTypeShape EntityType="BaseModel.BankStatements" Width="1.5" PointX="31.75" PointY="23.25" />
+        <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="31.375" PointY="27.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -352,6 +355,8 @@
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="14.75" PointY="6.25" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillDet" Width="1.5" PointX="18.5" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingSummary" Width="1.5" PointX="16.5" PointY="2.375" />
+        <EntityTypeShape EntityType="BaseModel.v_BankStatements" Width="1.5" PointX="10.75" PointY="7.25" />
+        <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="9.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

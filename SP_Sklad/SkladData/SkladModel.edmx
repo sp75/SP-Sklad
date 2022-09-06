@@ -73,6 +73,46 @@
           <Property Name="Email" Type="nvarchar" MaxLength="64" />
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="BanksProvidingStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BankStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="BankProvidingId" Type="int" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="AccId" Type="int" />
+        </EntityType>
+        <EntityType Name="BankStatementsDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BankStatementId" Type="uniqueidentifier" />
+          <Property Name="FOP" Type="nvarchar" MaxLength="100" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="EGRPOU" Type="nvarchar" MaxLength="10" />
+          <Property Name="MFO" Type="nvarchar" MaxLength="10" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaySum" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="Checked" Type="int" />
+        </EntityType>
         <EntityType Name="Cars">
           <Key>
             <PropertyRef Name="Id" />
@@ -1763,6 +1803,48 @@ warning 6002: The table/view 'sp_base.dbo.v_Actives' does not have a primary key
           <Property Name="Active" Type="numeric" Precision="38" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_BankStatements' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_BankStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            <PropertyRef Name="PersonName" />
+            
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankProvidingId" Type="int" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="AccNum" Type="varchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_BankStatementsDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BankStatementId" Type="uniqueidentifier" />
+          <Property Name="FOP" Type="nvarchar" MaxLength="100" />
+          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="EGRPOU" Type="nvarchar" MaxLength="10" />
+          <Property Name="MFO" Type="nvarchar" MaxLength="10" />
+          <Property Name="Account" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaySum" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="500" />
+          <Property Name="KagentName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Checked" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_BarCodes">
           <Key>
@@ -2112,7 +2194,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -6076,7 +6158,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CashId" Type="int" />
                 <Property Name="OperId" Type="uniqueidentifier" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
                 <Property Name="PayTypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
@@ -6486,11 +6568,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -6992,6 +7074,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanksPersons" EntityType="Self.BanksPersons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BanksProvidingStatements" EntityType="Self.BanksProvidingStatements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankStatements" EntityType="Self.BankStatements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankStatementsDet" EntityType="Self.BankStatementsDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cars" EntityType="Self.Cars" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CashDesks" EntityType="Self.CashDesks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChargeType" EntityType="Self.ChargeType" Schema="dbo" store:Type="Tables" />
@@ -7223,6 +7308,39 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Actives].[CashLess] AS [CashLess], 
     [v_Actives].[Active] AS [Active]
     FROM [dbo].[v_Actives] AS [v_Actives]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_BankStatements" EntityType="Self.v_BankStatements" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_BankStatements].[Id] AS [Id], 
+    [v_BankStatements].[Num] AS [Num], 
+    [v_BankStatements].[BankProvidingId] AS [BankProvidingId], 
+    [v_BankStatements].[OnDate] AS [OnDate], 
+    [v_BankStatements].[Notes] AS [Notes], 
+    [v_BankStatements].[UpdatedBy] AS [UpdatedBy], 
+    [v_BankStatements].[SessionId] AS [SessionId], 
+    [v_BankStatements].[EntId] AS [EntId], 
+    [v_BankStatements].[UpdatedAt] AS [UpdatedAt], 
+    [v_BankStatements].[BankName] AS [BankName], 
+    [v_BankStatements].[PersonName] AS [PersonName], 
+    [v_BankStatements].[PersonId] AS [PersonId], 
+    [v_BankStatements].[Checked] AS [Checked], 
+    [v_BankStatements].[AccNum] AS [AccNum]
+    FROM [dbo].[v_BankStatements] AS [v_BankStatements]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_BankStatementsDet" EntityType="Self.v_BankStatementsDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_BankStatementsDet].[Id] AS [Id], 
+    [v_BankStatementsDet].[BankStatementId] AS [BankStatementId], 
+    [v_BankStatementsDet].[FOP] AS [FOP], 
+    [v_BankStatementsDet].[TransactionDate] AS [TransactionDate], 
+    [v_BankStatementsDet].[EGRPOU] AS [EGRPOU], 
+    [v_BankStatementsDet].[MFO] AS [MFO], 
+    [v_BankStatementsDet].[Account] AS [Account], 
+    [v_BankStatementsDet].[PaySum] AS [PaySum], 
+    [v_BankStatementsDet].[Reason] AS [Reason], 
+    [v_BankStatementsDet].[KagentName] AS [KagentName], 
+    [v_BankStatementsDet].[Checked] AS [Checked]
+    FROM [dbo].[v_BankStatementsDet] AS [v_BankStatementsDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -9952,9 +10070,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetWayBillMakeDet" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillMakeDet_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
-          <Parameter Name="pl_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="KagentList" EntityType="BaseModel.KagentList" />
           <EntitySet Name="AdditionalCosts" EntityType="BaseModel.AdditionalCosts" />
           <EntitySet Name="MatRecipeAdditionalCosts" EntityType="BaseModel.MatRecipeAdditionalCosts" />
@@ -10142,6 +10257,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_IntermediateWeighingSummary" EntityType="BaseModel.v_IntermediateWeighingSummary" />
           <EntitySet Name="Interfaces" EntityType="BaseModel.Interfaces" />
           <EntitySet Name="v_IntermediateWeighingInterface" EntityType="BaseModel.v_IntermediateWeighingInterface" />
+          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
+          <Parameter Name="pl_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="v_BankStatements" EntityType="BaseModel.v_BankStatements" />
+          <EntitySet Name="BanksProvidingStatements" EntityType="BaseModel.BanksProvidingStatements" />
+          <EntitySet Name="BankStatements" EntityType="BaseModel.BankStatements" />
+          <EntitySet Name="v_BankStatementsDet" EntityType="BaseModel.v_BankStatementsDet" />
+          <EntitySet Name="BankStatementsDet" EntityType="BaseModel.BankStatementsDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15534,7 +15657,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -15780,23 +15903,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Notes" Nullable="true" MaxLength="100" />
           <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="MatDefWId" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="GetPriceListDet_Result">
-          <Property Type="Int32" Name="PlDetId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PlDetType" Nullable="true" />
-          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="MatId" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Num" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="WId" Nullable="true" />
-          <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
         </ComplexType>
         <EntityType Name="KagentList">
           <Key>
@@ -16953,6 +17059,100 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="IsDone" Type="Boolean" />
           <Property Name="Amount" Type="Decimal" Precision="38" Scale="4" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="GetPriceListDet_Result">
+          <Property Type="Int32" Name="PlDetId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PlDetType" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="LastOutPrice" Nullable="true" Precision="15" Scale="4" />
+        </ComplexType>
+        <EntityType Name="v_BankStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PersonName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankProvidingId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="AccNum" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BanksProvidingStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BankStatements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="BankProvidingId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="AccId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_BankStatementsDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="BankStatementId" Type="Guid" />
+          <Property Name="FOP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="EGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaySum" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="KagentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" />
+        </EntityType>
+        <EntityType Name="BankStatementsDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="BankStatementId" Type="Guid" />
+          <Property Name="FOP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="EGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaySum" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="Checked" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -20633,27 +20833,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
-                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
-                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="LastInPrice" ColumnName="LastInPrice" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
@@ -21497,6 +21676,108 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
                 <ScalarProperty Name="WbNum" ColumnName="WbNum" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
+                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="LastInPrice" ColumnName="LastInPrice" />
+                <ScalarProperty Name="LastOutPrice" ColumnName="LastOutPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_BankStatements">
+            <EntityTypeMapping TypeName="BaseModel.v_BankStatements">
+              <MappingFragment StoreEntitySet="v_BankStatements">
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="BankProvidingId" ColumnName="BankProvidingId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BanksProvidingStatements">
+            <EntityTypeMapping TypeName="BaseModel.BanksProvidingStatements">
+              <MappingFragment StoreEntitySet="BanksProvidingStatements">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankStatements">
+            <EntityTypeMapping TypeName="BaseModel.BankStatements">
+              <MappingFragment StoreEntitySet="BankStatements">
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="BankProvidingId" ColumnName="BankProvidingId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_BankStatementsDet">
+            <EntityTypeMapping TypeName="BaseModel.v_BankStatementsDet">
+              <MappingFragment StoreEntitySet="v_BankStatementsDet">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="KagentName" ColumnName="KagentName" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PaySum" ColumnName="PaySum" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="MFO" ColumnName="MFO" />
+                <ScalarProperty Name="EGRPOU" ColumnName="EGRPOU" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="FOP" ColumnName="FOP" />
+                <ScalarProperty Name="BankStatementId" ColumnName="BankStatementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankStatementsDet">
+            <EntityTypeMapping TypeName="BaseModel.BankStatementsDet">
+              <MappingFragment StoreEntitySet="BankStatementsDet">
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PaySum" ColumnName="PaySum" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="MFO" ColumnName="MFO" />
+                <ScalarProperty Name="EGRPOU" ColumnName="EGRPOU" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="FOP" ColumnName="FOP" />
+                <ScalarProperty Name="BankStatementId" ColumnName="BankStatementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

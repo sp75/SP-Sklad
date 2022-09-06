@@ -62,6 +62,8 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private v_BankStatements bank_statements_row => BankStatementsGridView.GetFocusedRow() as v_BankStatements;
+
         public DocsUserControl()
         {
             InitializeComponent();
@@ -88,6 +90,9 @@ namespace SP_Sklad.MainTabs
                 kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 kaaStatusList.EditValue = -1;
 
+                lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                lookUpEdit2.EditValue = -1;
+
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
@@ -96,6 +101,9 @@ namespace SP_Sklad.MainTabs
 
                 kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
                 kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+
+                BSStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
+                BSEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -305,6 +313,10 @@ namespace SP_Sklad.MainTabs
 
                     break;
 
+                case 10:
+                    new frmBankStatements().ShowDialog();
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -335,68 +347,18 @@ namespace SP_Sklad.MainTabs
 
                         break;
 
-                    /*           case 6: ContractsList->Refresh();
-                                       if(ContractsListCHECKED->Value == 1)
-                                           if(MessageDlg(msg1,mtConfirmation,TMsgDlgButtons() << mbYes << mbNo ,0)==mrYes)
-                                              ExecuteBtn->Click();
-
-                                       if(ContractsListCHECKED->Value == 0)
-                                        {
-                                           try
-                                           {
-                                             try
-                                             {
-                                               frmContr = new  TfrmContr(Application);
-                                               frmContr->CONTRACTS->ParamByName("CONTRID")->Value = ContractsListCONTRID->Value;
-                                               frmContr->CONTRACTS->Open();
-                                               frmContr->CONTRACTS->Edit();
-                                               frmContr->CONTRACTS->LockRecord()  ;
-                                               frmContr->ShowModal() ;
-
-                                             }
-                                             catch(const Exception& e)
-                                             {
-                                                frmContr->Close();
-                                                if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                   else   ShowMessage(e.Message) ;
-                                             }
-                                           }
-                                           __finally
-                                           {
-                                               delete frmContr;
-                                           }
-                                        }
-                                       break;
-
-                               case 7: try
-                                       {
-                                          try
-                                          {
-                                            frmTaxWB = new  TfrmTaxWB(Application);
-                                            frmTaxWB->TaxWB->ParamByName("TWBID")->Value = TaxWBListTWBID->Value;
-                                            frmTaxWB->TaxWB->Open();
-                                            frmTaxWB->TaxWB->Edit();
-                                            frmTaxWB->TaxWB->LockRecord()  ;
-                                            frmTaxWB->ShowModal() ;
-                                          }
-                                          catch(const Exception& e)
-                                          {
-                                             frmTaxWB->Close();
-                                             if(e.Message.Pos("Deadlock") > 0) 	ShowMessage(Deadlock) ;
-                                                   else   ShowMessage(e.Message) ;
-                                          }
-                                       }
-                                       __finally
-                                       {
-                                           delete frmTaxWB;
-                                       }
-                                       break;*/
-
-                    case 8:
+                     case 8:
                         var kaa_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
                         using (var kaa_frm = new frmKAgentAdjustment(kaa_row.Id))
                         {
                             kaa_frm.ShowDialog();
+                        }
+                        break;
+
+                    case 10:
+                        using (var bs_frm = new frmBankStatements(bank_statements_row.Id))
+                        {
+                            bs_frm.ShowDialog();
                         }
                         break;
 
@@ -484,6 +446,20 @@ namespace SP_Sklad.MainTabs
                                     MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
                                 }
                                 break;
+
+                            case 10:
+
+                                var bs = db.BankStatements.Find(bank_statements_row.Id);
+
+                                if (bs != null)
+                                {
+                                    db.BankStatements.Remove(bs);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", bank_statements_row.Num));
+                                }
+                                break;
                         }
                         db.SaveChanges();
                     }
@@ -548,19 +524,12 @@ namespace SP_Sklad.MainTabs
                     PriceListGridView.TopRowIndex = top_row;
                     break;
 
-                /*      case 6: ContractsList->Refresh();
-                          ContractsList->FullRefresh();
-                          ContrDet->FullRefresh();
-                          break;
-
-                      case 7: TaxWBList->Refresh();
-                          TaxWBList->FullRefresh();
-                          TaxWBDet->FullRefresh();
-                          break;*/
-
                 case 8:
-
                     GetKAgentAdjustment("");
+                    break;
+
+                case 10:
+                    BankStatementsSource.Refresh();
                     break;
             }
 
@@ -1478,6 +1447,68 @@ namespace SP_Sklad.MainTabs
             _db.SaveChanges();
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void BankStatementsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            int status = (int)lookUpEdit2.EditValue;
+
+            var list = _db.v_BankStatements.Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && (status == -1 || w.Checked == status));
+
+            e.QueryableSource = list;
+        }
+
+        private void BankStatementsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var dr = bank_statements_row;
+
+            xtraTabControl6_SelectedPageChanged(sender, null);
+
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
+            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void xtraTabControl6_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (bank_statements_row == null)
+            {
+                BankStatementsDetGridControl.DataSource = null;
+                gridControl13.DataSource = null;
+             
+
+                return;
+            }
+
+            switch (xtraTabControl6.SelectedTabPageIndex)
+            {
+                case 0:
+
+                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
+                    break;
+
+           //     case 1:
+              //      WayBillListInfoBS.DataSource = dr;
+             //       break;
+
+                case 2:
+                    gridControl13.DataSource = _db.GetRelDocList(bank_statements_row.Id).OrderBy(o => o.OnDate).ToList();
+                    break;
+                
+            }
+
+        }
+
+        private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
     }
 }
