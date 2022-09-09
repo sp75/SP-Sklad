@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.SkladData;
@@ -38,6 +39,11 @@ namespace SP_Sklad.IntermediateWeighingInterface
         private void FluentDesignForm1_Load(object sender, EventArgs e)
         {
             sidePanel1.Hide();
+
+            using (var s = new UserSettingsRepository(UserSession.UserId, _db))
+            {
+                AmountEdit.ReadOnly = !(s.AccessEditWeight == "1");
+            }
         }
 
         private List<make_det> GetDetail(int wbill_id)
@@ -106,7 +112,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                     IntermediateWeighingDetId = s.IntermediateWeighingDetId,
                     IntermediateWeighingDetTotal = s.Total != null ? (SqlFunctions.StringConvert(s.Total,10,3) + s.MsrName): "",
                     RecId = s.RecId
-                }).ToList();
+                }).OrderBy(o=> o.IntermediateWeighingNum).ToList();
 
             bindingSource1.DataSource = result;
 
@@ -183,7 +189,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value ;
 
 
-                OkButton.Enabled =  ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount);
+                OkButton.Enabled =  ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount) && AmountEdit.Value > 0;
                 
             }
             else

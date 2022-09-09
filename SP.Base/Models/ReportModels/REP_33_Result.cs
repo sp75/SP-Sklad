@@ -30,5 +30,6 @@ namespace SP.Base.Models
         public decimal? Deviation { get; set; }
         public Nullable<decimal> OsadkaAmount { get; set; }
         public Nullable<decimal> AmountWater { get; set; }
+        public decimal? IntensiveAmount { get; set; }
     }
 }
