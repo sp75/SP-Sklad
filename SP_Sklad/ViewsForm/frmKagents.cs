@@ -17,6 +17,7 @@ namespace SP_Sklad.ViewsForm
     {
         private BaseEntities _db { get; set; }
         private int _KaKind { get; set; }
+        private string _okpo { get; set; }
         public KagentList focused_row
         {
             get
@@ -25,16 +26,17 @@ namespace SP_Sklad.ViewsForm
             }
         }
 
-        public frmKagents(int KaKind)
+        public frmKagents(int KaKind, string okpo)
         {
             InitializeComponent();
             _db = DB.SkladBase();
             _KaKind = KaKind;
+            _okpo = okpo;
         }
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            KontragentBS.DataSource = DBHelper.Kagents.Where(w=> w.KaKind == _KaKind || _KaKind == -1);
+            KontragentBS.DataSource = DBHelper.Kagents.Where(w => (w.KaKind == _KaKind || _KaKind == -1) && (w.OKPO == _okpo || _okpo == ""));
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)

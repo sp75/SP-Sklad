@@ -723,7 +723,7 @@ namespace SP_Sklad.WBForm
         {
             _rawinput.KeyPressed -= OnKeyPressed;
 
-            using (var frm = new frmKagents(1))
+            using (var frm = new frmKagents(1,""))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {

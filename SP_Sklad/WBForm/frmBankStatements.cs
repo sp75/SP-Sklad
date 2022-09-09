@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using DevExpress.Map.Native;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using SP_Sklad.WBDetForm;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -107,7 +108,7 @@ namespace SP_Sklad.WBForm
              int top_row = WaybillDetInGridView.TopRowIndex;
               ProductionPlanDetBS.DataSource = list;
               WaybillDetInGridView.TopRowIndex = top_row;*/
-            entityServerModeSource1.QueryableSource = _db.v_BankStatementsDet.Where(w=> w.BankStatementId == _doc_id);
+            entityServerModeSource1.QueryableSource = _db.v_BankStatementsDet.Where(w=> w.BankStatementId == _doc_id).OrderBy(o=> o.TransactionDate);
 
             GetOk();
         }
@@ -374,12 +375,20 @@ namespace SP_Sklad.WBForm
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            var d = _db.BankStatementsDet.Find(bs_det_row.Id);
+            using (var frm = new frmKagents(1, bs_det_row.EGRPOU))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var d = _db.BankStatementsDet.Find(bs_det_row.Id);
 
-            d.KaId = (int)IHelper.ShowDirectList(null, 1);
+                    d.KaId = frm.focused_row.KaId;
 
-                  _db.SaveChanges();
-            RefreshDet();
+                    _db.SaveChanges();
+                    RefreshDet();
+                }
+            }
+
+         //   d.KaId = (int)IHelper.ShowDirectList(null, 1);
 
         }
     }

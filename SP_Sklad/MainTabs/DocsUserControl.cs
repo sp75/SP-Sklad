@@ -1458,7 +1458,7 @@ namespace SP_Sklad.MainTabs
 
             int status = (int)lookUpEdit2.EditValue;
 
-            var list = _db.v_BankStatements.Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && (status == -1 || w.Checked == status));
+            var list = new BaseEntities().v_BankStatements.Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && (status == -1 || w.Checked == status));
 
             e.QueryableSource = list;
         }
@@ -1491,7 +1491,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
 
-                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
+                    BankStatementsDetGridControl.DataSource = new BaseEntities().v_BankStatementsDet.Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
                     break;
 
            //     case 1:
