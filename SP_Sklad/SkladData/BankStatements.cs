@@ -14,10 +14,14 @@ namespace SP_Sklad.SkladData
     
     public partial class BankStatements
     {
+        public BankStatements()
+        {
+            this.BankStatementsDet = new HashSet<BankStatementsDet>();
+        }
+    
         public System.Guid Id { get; set; }
         public string Num { get; set; }
         public int Checked { get; set; }
-        public Nullable<int> BankProvidingId { get; set; }
         public System.DateTime OnDate { get; set; }
         public string Notes { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
@@ -26,5 +30,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> EntId { get; set; }
         public Nullable<int> PersonId { get; set; }
         public Nullable<int> AccId { get; set; }
+        public Nullable<int> CTypeId { get; set; }
+    
+        public virtual ICollection<BankStatementsDet> BankStatementsDet { get; set; }
     }
 }

@@ -199,10 +199,10 @@ namespace SP_Sklad.SkladData
         public DbSet<v_IntermediateWeighingSummary> v_IntermediateWeighingSummary { get; set; }
         public DbSet<Interfaces> Interfaces { get; set; }
         public DbSet<v_IntermediateWeighingInterface> v_IntermediateWeighingInterface { get; set; }
-        public DbSet<v_BankStatements> v_BankStatements { get; set; }
         public DbSet<BanksProvidingStatements> BanksProvidingStatements { get; set; }
-        public DbSet<BankStatements> BankStatements { get; set; }
+        public DbSet<v_BankStatements> v_BankStatements { get; set; }
         public DbSet<v_BankStatementsDet> v_BankStatementsDet { get; set; }
+        public DbSet<BankStatements> BankStatements { get; set; }
         public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]

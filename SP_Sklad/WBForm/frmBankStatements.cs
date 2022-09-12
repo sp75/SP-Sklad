@@ -46,9 +46,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
 
-            BankProvidingComboBox.Properties.DataSource = _db.BanksProvidingStatements.ToList();
-            BankProvidingComboBox.EditValue = 1;
-
+            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
             if (_doc_id == null)
             {
@@ -94,8 +92,8 @@ namespace SP_Sklad.WBForm
 
         private void GetOk()
         {
-            OkButton.Enabled = BankProvidingComboBox.EditValue != DBNull.Value;//&& ProductionPlanDetBS.Count > 0;
-            barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
+            //OkButton.Enabled = BankProvidingComboBox.EditValue != DBNull.Value;
+            //barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
             EditMaterialBtn.Enabled = WaybillDetInGridView.RowCount > 0;
             DelMaterialBtn.Enabled = WaybillDetInGridView.RowCount > 0;
         }
@@ -117,63 +115,35 @@ namespace SP_Sklad.WBForm
         {
             if (ofdDBF.ShowDialog() == DialogResult.OK)
             {
-
-                using (FileStream fs = new FileStream(ofdDBF.FileName, FileMode.Open))
+                foreach (var file in ofdDBF.FileNames)
                 {
-                    DbfLoaderCore loader = new DbfLoaderCore(fs);
-                    
-                    foreach (DbfRecord dbf_row in loader.Records)
+                    using (FileStream fs = new FileStream(file, FileMode.Open))
                     {
-                        var row =  dbf_row.Attributes.ToDictionary(x => x.Name, x => x.Value);
+                        DbfLoaderCore loader = new DbfLoaderCore(fs);
 
-                        _db.BankStatementsDet.Add(new BankStatementsDet
+                        foreach (DbfRecord dbf_row in loader.Records)
                         {
-                            Id = Guid.NewGuid(),
-                            BankStatementId = bs.Id,
-                            EGRPOU = row["OKPO_A"].ToString(),
-                            Account = row["COUNT_A"].ToString(),
-                            FOP = row["NAME_A"].ToString(),
-                            MFO = row["MFO_A"].ToString(),
-                            Reason = row["N_P"].ToString(),
-                            PaySum = Convert.ToDecimal(row["SUMMA"]),
-                            TransactionDate = Convert.ToDateTime(row["DATE"] + " " + row["TIME"]),
-                            Checked = 0
-                        });
-
-                       
-                    }
-
-                    /*    string connStr = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + ofdDBF.FileName.Substring(0, ofdDBF.FileName.LastIndexOf("\\")) + ";Extended Properties=dBASE IV";
-
-                        OleDbConnection conn = new OleDbConnection(connStr);
-                        conn.Open();
-
-                        string cmd_string = "select * from " + ofdDBF.SafeFileName.Substring(0, ofdDBF.SafeFileName.IndexOf("."));
-                        // MessageBox.Show(cmd_string);
-                        OleDbDataAdapter da = new OleDbDataAdapter(cmd_string, conn);
-                        DataSet ds = new DataSet();
-                        da.Fill(ds);
-                        var table = ds.Tables[0];
-                        foreach (var item in table.Rows.Cast<DataRow>())
-                        {
-
-                            var ddd = System.Text.Encoding.GetEncoding(1251).GetBytes(item["NAME_A"].ToString());
-                        var sss = System.Text.Encoding.Unicode.GetString(ddd);
+                            var row = dbf_row.Attributes.ToDictionary(x => x.Name, x => x.Value);
 
                             _db.BankStatementsDet.Add(new BankStatementsDet
                             {
                                 Id = Guid.NewGuid(),
                                 BankStatementId = bs.Id,
-                                EGRPOU = item["OKPO_A"].ToString(),
-                                Account = item["COUNT_A"].ToString(),
-                                FOP = item["NAME_A"].ToString(),
+                                EGRPOU = row["OKPO_A"].ToString(),
+                                Account = row["COUNT_A"].ToString(),
+                                FOP = row["NAME_A"].ToString(),
+                                MFO = row["MFO_A"].ToString(),
+                                Reason = row["N_P"].ToString(),
+                                PaySum = Convert.ToDecimal(row["SUMMA"]),
+                                TransactionDate = Convert.ToDateTime(row["DATE"] + " " + row["TIME"]),
+                                Checked = 0,
+                                BankProvidingId = 2
                             });
+                        }
+                        _db.SaveChanges();
 
-
-                        }*/
-                    _db.SaveChanges();
-
-                    RefreshDet();
+                        RefreshDet();
+                    }
                 }
             }
         }
@@ -235,7 +205,7 @@ namespace SP_Sklad.WBForm
                             PTypeId = 2,  // Вид оплати
                             CashId = null,  // Каса 
                             AccId = (int?)AccountEdit.EditValue, // Acount
-                            CTypeId = DBHelper.ChargeTypes.FirstOrDefault(f => f.Def == 1).CTypeId,
+                            CTypeId = (int)ChargeTypesEdit.EditValue,
                             CurrId = 2,  //Валюта по умолчанию
                             OnValue = 1,  //Курс валюти
                             MPersonId = bs.PersonId,
@@ -335,13 +305,6 @@ namespace SP_Sklad.WBForm
             }*/
         }
 
-        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                BankProvidingComboBox.EditValue = IHelper.ShowDirectList(BankProvidingComboBox.EditValue, 2);
-            }
-        }
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {

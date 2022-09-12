@@ -16,17 +16,16 @@ namespace SP_Sklad.SkladData
     {
         public System.Guid Id { get; set; }
         public string Num { get; set; }
-        public Nullable<int> BankProvidingId { get; set; }
         public System.DateTime OnDate { get; set; }
         public string Notes { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
         public Nullable<int> EntId { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
-        public string BankName { get; set; }
         public string PersonName { get; set; }
         public Nullable<int> PersonId { get; set; }
         public int Checked { get; set; }
         public string AccNum { get; set; }
+        public string ChargeTypeName { get; set; }
     }
 }
