@@ -86,6 +86,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
+            this.BankStatementsDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -103,7 +104,7 @@
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.ofdDBF = new System.Windows.Forms.OpenFileDialog();
-            this.BankStatementsDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -124,12 +125,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BankStatementsDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BankStatementsDetBS)).BeginInit();
             this.SuspendLayout();
             // 
             // WBImgList
@@ -667,6 +668,10 @@
             this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetInGridView});
             // 
+            // BankStatementsDetBS
+            // 
+            this.BankStatementsDetBS.DataSource = typeof(SP_Sklad.SkladData.v_BankStatementsDet);
+            // 
             // WaybillDetInGridView
             // 
             this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -679,7 +684,8 @@
             this.colPaySum,
             this.colReason,
             this.colKagentName,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn3});
             this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
             this.WaybillDetInGridView.Name = "WaybillDetInGridView";
             this.WaybillDetInGridView.OptionsView.ShowFooter = true;
@@ -695,7 +701,7 @@
             this.gridColumn1.OptionsColumn.ShowCaption = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 32;
+            this.gridColumn1.Width = 30;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -710,8 +716,8 @@
             this.colFOP.FieldName = "FOP";
             this.colFOP.Name = "colFOP";
             this.colFOP.Visible = true;
-            this.colFOP.VisibleIndex = 3;
-            this.colFOP.Width = 139;
+            this.colFOP.VisibleIndex = 4;
+            this.colFOP.Width = 129;
             // 
             // colTransactionDate
             // 
@@ -721,8 +727,8 @@
             this.colTransactionDate.FieldName = "TransactionDate";
             this.colTransactionDate.Name = "colTransactionDate";
             this.colTransactionDate.Visible = true;
-            this.colTransactionDate.VisibleIndex = 4;
-            this.colTransactionDate.Width = 122;
+            this.colTransactionDate.VisibleIndex = 5;
+            this.colTransactionDate.Width = 112;
             // 
             // colEGRPOU
             // 
@@ -730,8 +736,8 @@
             this.colEGRPOU.FieldName = "EGRPOU";
             this.colEGRPOU.Name = "colEGRPOU";
             this.colEGRPOU.Visible = true;
-            this.colEGRPOU.VisibleIndex = 2;
-            this.colEGRPOU.Width = 125;
+            this.colEGRPOU.VisibleIndex = 3;
+            this.colEGRPOU.Width = 115;
             // 
             // colMFO
             // 
@@ -739,8 +745,8 @@
             this.colMFO.FieldName = "MFO";
             this.colMFO.Name = "colMFO";
             this.colMFO.Visible = true;
-            this.colMFO.VisibleIndex = 5;
-            this.colMFO.Width = 122;
+            this.colMFO.VisibleIndex = 6;
+            this.colMFO.Width = 112;
             // 
             // colAccount
             // 
@@ -748,8 +754,8 @@
             this.colAccount.FieldName = "Account";
             this.colAccount.Name = "colAccount";
             this.colAccount.Visible = true;
-            this.colAccount.VisibleIndex = 6;
-            this.colAccount.Width = 122;
+            this.colAccount.VisibleIndex = 7;
+            this.colAccount.Width = 112;
             // 
             // colPaySum
             // 
@@ -757,8 +763,8 @@
             this.colPaySum.FieldName = "PaySum";
             this.colPaySum.Name = "colPaySum";
             this.colPaySum.Visible = true;
-            this.colPaySum.VisibleIndex = 7;
-            this.colPaySum.Width = 77;
+            this.colPaySum.VisibleIndex = 8;
+            this.colPaySum.Width = 71;
             // 
             // colReason
             // 
@@ -766,8 +772,8 @@
             this.colReason.FieldName = "Reason";
             this.colReason.Name = "colReason";
             this.colReason.Visible = true;
-            this.colReason.VisibleIndex = 8;
-            this.colReason.Width = 123;
+            this.colReason.VisibleIndex = 9;
+            this.colReason.Width = 113;
             // 
             // colKagentName
             // 
@@ -776,7 +782,7 @@
             this.colKagentName.FieldName = "KagentName";
             this.colKagentName.Name = "colKagentName";
             this.colKagentName.Visible = true;
-            this.colKagentName.VisibleIndex = 9;
+            this.colKagentName.VisibleIndex = 10;
             this.colKagentName.Width = 206;
             // 
             // repositoryItemButtonEdit1
@@ -793,8 +799,8 @@
             this.gridColumn2.FieldName = "BankName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 126;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 116;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -832,9 +838,14 @@
             this.ofdDBF.Filter = "DBF files (*.dbf)|*.dbf";
             this.ofdDBF.Multiselect = true;
             // 
-            // BankStatementsDetBS
+            // gridColumn3
             // 
-            this.BankStatementsDetBS.DataSource = typeof(SP_Sklad.SkladData.v_BankStatementsDet);
+            this.gridColumn3.Caption = "№";
+            this.gridColumn3.FieldName = "DocNum";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.Width = 80;
             // 
             // frmBankStatements
             // 
@@ -881,12 +892,12 @@
             this.panelControl5.ResumeLayout(false);
             this.panelControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BankStatementsDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BankStatementsDetBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -958,5 +969,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.BindingSource BankStatementsDetBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

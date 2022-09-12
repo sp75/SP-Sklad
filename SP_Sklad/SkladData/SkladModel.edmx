@@ -113,6 +113,7 @@
           <Property Name="KaId" Type="int" />
           <Property Name="Checked" Type="int" />
           <Property Name="BankProvidingId" Type="int" />
+          <Property Name="DocNum" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Cars">
           <Key>
@@ -1844,6 +1845,7 @@ warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a p
           <Property Name="KagentName" Type="nvarchar" MaxLength="100" />
           <Property Name="Checked" Type="int" />
           <Property Name="BankName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocNum" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7355,7 +7357,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_BankStatementsDet].[Reason] AS [Reason], 
     [v_BankStatementsDet].[KagentName] AS [KagentName], 
     [v_BankStatementsDet].[Checked] AS [Checked], 
-    [v_BankStatementsDet].[BankName] AS [BankName]
+    [v_BankStatementsDet].[BankName] AS [BankName], 
+    [v_BankStatementsDet].[DocNum] AS [DocNum]
     FROM [dbo].[v_BankStatementsDet] AS [v_BankStatementsDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
@@ -17146,6 +17149,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KagentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Checked" Type="Int32" />
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="BankStatements">
           <Key>
@@ -17182,6 +17186,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Checked" Type="Int32" />
           <Property Name="BankProvidingId" Type="Int32" />
           <NavigationProperty Name="BankStatements" Relationship="BaseModel.FK_BankStatementsDet_BankStatements" FromRole="BankStatementsDet" ToRole="BankStatements" />
+          <Property Name="DocNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_BankStatementsDet_BankStatements">
           <End Type="BaseModel.BankStatements" Role="BankStatements" Multiplicity="0..1">
@@ -21774,6 +21779,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.v_BankStatementsDet">
               <MappingFragment StoreEntitySet="v_BankStatementsDet">
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
                 <ScalarProperty Name="KagentName" ColumnName="KagentName" />
@@ -21810,6 +21816,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.BankStatementsDet">
               <MappingFragment StoreEntitySet="BankStatementsDet">
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
                 <ScalarProperty Name="BankProvidingId" ColumnName="BankProvidingId" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />

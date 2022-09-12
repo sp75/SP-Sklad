@@ -94,19 +94,20 @@ namespace SP_Sklad.WBForm
         {
             //OkButton.Enabled = BankProvidingComboBox.EditValue != DBNull.Value;
             //barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
-            EditMaterialBtn.Enabled = WaybillDetInGridView.RowCount > 0;
-            DelMaterialBtn.Enabled = WaybillDetInGridView.RowCount > 0;
+            EditMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
+            DelMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
         }
 
         private void RefreshDet()
         {
+           // using (var t_db = new BaseEntities())
+          //  {
+                var list = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == _doc_id).OrderBy(o => o.TransactionDate).ToList();
 
-            var list = _db.v_BankStatementsDet.Where(w => w.BankStatementId == _doc_id).OrderBy(o => o.TransactionDate).ToList();
-
-            int top_row = WaybillDetInGridView.TopRowIndex;
-            BankStatementsDetBS.DataSource = list;
-            WaybillDetInGridView.TopRowIndex = top_row;
-            //   entityServerModeSource1.QueryableSource = _db.v_BankStatementsDet.Where(w=> w.BankStatementId == _doc_id).OrderBy(o=> o.TransactionDate);
+                int top_row = WaybillDetInGridView.TopRowIndex;
+                BankStatementsDetBS.DataSource = list;
+                WaybillDetInGridView.TopRowIndex = top_row;
+        //    }
 
             GetOk();
         }
@@ -137,7 +138,8 @@ namespace SP_Sklad.WBForm
                                 PaySum = Convert.ToDecimal(row["SUMMA"]),
                                 TransactionDate = Convert.ToDateTime(row["DATE"] + " " + row["TIME"]),
                                 Checked = 0,
-                                BankProvidingId = 2
+                                BankProvidingId = 2,
+                                DocNum = row["N_D"].ToString()
                             });
                         }
                         _db.SaveChanges();
@@ -250,13 +252,13 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
-            if (row != null)
+           
+            if (bs_det_row != null)
             {
-                var det = _db.ProductionPlanDet.Find(row.Id);
+                var det = _db.BankStatementsDet.Find(bs_det_row.Id);
                 if (det != null)
                 {
-                    _db.ProductionPlanDet.Remove(det);
+                    _db.BankStatementsDet.Remove(det);
                 }
                 _db.SaveChanges();
                 WaybillDetInGridView.DeleteSelectedRows();

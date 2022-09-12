@@ -529,7 +529,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 10:
-                    BankStatementsSource.Refresh();
+
+                    int rIndex = BankStatementsGridView.GetVisibleIndex(BankStatementsGridView.FocusedRowHandle);
+                    BankStatementsSource.QueryableSource = new BaseEntities().v_BankStatements.AsNoTracking().Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && ((int)lookUpEdit2.EditValue == -1 || w.Checked == (int)lookUpEdit2.EditValue));
+                    BankStatementsGridView.TopRowIndex = rIndex;
                     break;
             }
 
@@ -1451,16 +1454,7 @@ namespace SP_Sklad.MainTabs
 
         private void BankStatementsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (focused_tree_node == null)
-            {
-                return;
-            }
 
-            int status = (int)lookUpEdit2.EditValue;
-
-            var list = new BaseEntities().v_BankStatements.Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && (status == -1 || w.Checked == status));
-
-            e.QueryableSource = list;
         }
 
         private void BankStatementsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -1491,7 +1485,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
 
-                    BankStatementsDetGridControl.DataSource = new BaseEntities().v_BankStatementsDet.Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
+                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
                     break;
 
            //     case 1:

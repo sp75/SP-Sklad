@@ -26,5 +26,6 @@ namespace SP_Sklad.SkladData
         public string KagentName { get; set; }
         public Nullable<int> Checked { get; set; }
         public string BankName { get; set; }
+        public string DocNum { get; set; }
     }
 }
