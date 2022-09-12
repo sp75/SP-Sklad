@@ -1199,7 +1199,7 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageOptions.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1278, 228);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1277, 228);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
@@ -1225,7 +1225,7 @@
             this.row10,
             this.row9,
             this.row8});
-            this.vGridControl1.Size = new System.Drawing.Size(1278, 228);
+            this.vGridControl1.Size = new System.Drawing.Size(1277, 228);
             this.vGridControl1.TabIndex = 0;
             // 
             // WayBillListInfoBS
@@ -1380,7 +1380,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageOptions.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1278, 228);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1277, 228);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -1393,7 +1393,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(1278, 228);
+            this.gridControl3.Size = new System.Drawing.Size(1277, 228);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -1574,7 +1574,7 @@
             this.xtraTabPage24.Controls.Add(this.gridControl10);
             this.xtraTabPage24.ImageOptions.ImageIndex = 11;
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1278, 228);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1277, 228);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
             // gridControl10
@@ -1589,7 +1589,7 @@
             this.repositoryItemImageComboBox32,
             this.repositoryItemImageComboBox31,
             this.repositoryItemImageComboBox30});
-            this.gridControl10.Size = new System.Drawing.Size(1278, 228);
+            this.gridControl10.Size = new System.Drawing.Size(1277, 228);
             this.gridControl10.TabIndex = 1;
             this.gridControl10.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView8});
@@ -1760,14 +1760,14 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1279, 688);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1279, 695);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Controls.Add(this.splitContainerControl3);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1279, 688);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1279, 695);
             this.xtraTabPage10.Text = "Платіжні документи";
             // 
             // splitContainerControl3
@@ -1787,7 +1787,7 @@
             // 
             this.splitContainerControl3.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl3.Panel2.Text = "Panel2";
-            this.splitContainerControl3.Size = new System.Drawing.Size(1279, 688);
+            this.splitContainerControl3.Size = new System.Drawing.Size(1279, 695);
             this.splitContainerControl3.SplitterPosition = 462;
             this.splitContainerControl3.TabIndex = 1;
             this.splitContainerControl3.Text = "splitContainerControl3";
@@ -2193,7 +2193,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage4;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1279, 216);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1279, 223);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
@@ -2204,7 +2204,7 @@
             this.xtraTabPage4.Controls.Add(this.vGridControl2);
             this.xtraTabPage4.ImageOptions.ImageIndex = 1;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1277, 188);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1277, 195);
             this.xtraTabPage4.Text = "Інформація про платіж";
             // 
             // vGridControl2
@@ -2230,7 +2230,7 @@
             this.row19,
             this.row17,
             this.row16});
-            this.vGridControl2.Size = new System.Drawing.Size(1277, 188);
+            this.vGridControl2.Size = new System.Drawing.Size(1277, 195);
             this.vGridControl2.TabIndex = 0;
             // 
             // PayDocListInfoBS
@@ -2339,7 +2339,7 @@
             this.xtraTabPage5.Controls.Add(this.RelPayDocGridControl);
             this.xtraTabPage5.ImageOptions.ImageIndex = 2;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1277, 188);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1277, 195);
             this.xtraTabPage5.Text = "Зв\'язані документи";
             // 
             // RelPayDocGridControl
@@ -2352,7 +2352,7 @@
             this.repositoryItemImageComboBox10,
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8});
-            this.RelPayDocGridControl.Size = new System.Drawing.Size(1277, 188);
+            this.RelPayDocGridControl.Size = new System.Drawing.Size(1277, 195);
             this.RelPayDocGridControl.TabIndex = 1;
             this.RelPayDocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});

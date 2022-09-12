@@ -557,8 +557,6 @@ namespace SP_Sklad.MainTabs
                         {
                             var price = Convert.ToDecimal(BarCodeSplit[1] + "," + BarCodeSplit[2]);
                             var frm = new frmWeightEdit(row.MatName);
-                            frm.PriceEdit.EditValue = price;
-
                             if (frm.ShowDialog() == DialogResult.OK)
                             {
                                 var wh_row = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
@@ -569,7 +567,7 @@ namespace SP_Sklad.MainTabs
                                     MatId = row.MatId,
                                     Name = row.MatName,
                                     Amount = frm.AmountEdit.Value,
-                                    Price = frm.PriceEdit.Value,
+                                    Price = price,
                                     WId = wh_row != null ? wh_row.WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                                     PTypeId = null,
                                     Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m

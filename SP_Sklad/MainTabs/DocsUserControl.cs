@@ -1169,7 +1169,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
                     gridColumn37.Caption = "Сума в валюті, " + dr.CurrName;
-                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o => o.Num);
+                    gridControl2.DataSource = new BaseEntities().GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o => o.Num);
                     break;
 
                 case 1:

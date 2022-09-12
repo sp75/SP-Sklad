@@ -101,12 +101,12 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
 
-            /*  var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id).OrderBy(o => o.Num).ToList();
+            var list = _db.v_BankStatementsDet.Where(w => w.BankStatementId == _doc_id).OrderBy(o => o.TransactionDate).ToList();
 
-             int top_row = WaybillDetInGridView.TopRowIndex;
-              ProductionPlanDetBS.DataSource = list;
-              WaybillDetInGridView.TopRowIndex = top_row;*/
-            entityServerModeSource1.QueryableSource = _db.v_BankStatementsDet.Where(w=> w.BankStatementId == _doc_id).OrderBy(o=> o.TransactionDate);
+            int top_row = WaybillDetInGridView.TopRowIndex;
+            BankStatementsDetBS.DataSource = list;
+            WaybillDetInGridView.TopRowIndex = top_row;
+            //   entityServerModeSource1.QueryableSource = _db.v_BankStatementsDet.Where(w=> w.BankStatementId == _doc_id).OrderBy(o=> o.TransactionDate);
 
             GetOk();
         }

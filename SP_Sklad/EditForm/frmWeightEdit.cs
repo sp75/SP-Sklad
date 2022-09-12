@@ -23,7 +23,6 @@ namespace SP_Sklad.EditForm
         {
             InitializeComponent();
             AmountEdit.EditValue = 0;
-            PriceEdit.EditValue = 0;
             com_port = new ComPortHelper(weigher_index);
             Text = MatName;
         }

@@ -157,7 +157,12 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            det.Total = det.Amount - det.TaraAmount ;
+            if(det.Amount ==0)
+            {
+                return;
+            }
+
+            det.Total = det.Amount - det.TaraAmount ?? 0;
             det.TaraTotal = det.TaraAmount ;
 
 
@@ -270,6 +275,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AmountEdit.EditValue = frm.AmountEdit.Value;
+                    det.Amount = frm.AmountEdit.Value;
 
                     GetOk();
                 }

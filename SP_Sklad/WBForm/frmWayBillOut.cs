@@ -661,8 +661,6 @@ namespace SP_Sklad.WBForm
 
             using (var frm = new frmWeightEdit(wbd_row.MatName))
             {
-                frm.PriceEdit.EditValue = wbd_row.Price;
-
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     var wbd = _db.WaybillDet.Find(wbd_row.PosId);

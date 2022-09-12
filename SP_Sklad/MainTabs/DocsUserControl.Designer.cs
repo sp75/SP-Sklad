@@ -490,7 +490,6 @@
             this.colMFO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAccount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPaySum = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReason = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKagentName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemImageComboBox39 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -525,6 +524,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn122 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -900,7 +900,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "shopping_basket_full_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -5723,8 +5724,8 @@
             this.colMFO,
             this.colAccount,
             this.colPaySum,
-            this.colReason,
-            this.colKagentName});
+            this.colKagentName,
+            this.gridColumn122});
             this.BankStatementsDetGridView.GridControl = this.BankStatementsDetGridControl;
             this.BankStatementsDetGridView.Name = "BankStatementsDetGridView";
             this.BankStatementsDetGridView.OptionsView.ShowFooter = true;
@@ -5738,7 +5739,7 @@
             this.gridColumn119.OptionsColumn.ShowCaption = false;
             this.gridColumn119.Visible = true;
             this.gridColumn119.VisibleIndex = 0;
-            this.gridColumn119.Width = 31;
+            this.gridColumn119.Width = 33;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -5754,7 +5755,7 @@
             this.colFOP.Name = "colFOP";
             this.colFOP.Visible = true;
             this.colFOP.VisibleIndex = 2;
-            this.colFOP.Width = 139;
+            this.colFOP.Width = 152;
             // 
             // colTransactionDate
             // 
@@ -5765,7 +5766,7 @@
             this.colTransactionDate.Name = "colTransactionDate";
             this.colTransactionDate.Visible = true;
             this.colTransactionDate.VisibleIndex = 3;
-            this.colTransactionDate.Width = 122;
+            this.colTransactionDate.Width = 133;
             // 
             // colEGRPOU
             // 
@@ -5774,16 +5775,14 @@
             this.colEGRPOU.Name = "colEGRPOU";
             this.colEGRPOU.Visible = true;
             this.colEGRPOU.VisibleIndex = 1;
-            this.colEGRPOU.Width = 125;
+            this.colEGRPOU.Width = 137;
             // 
             // colMFO
             // 
             this.colMFO.Caption = "МФО";
             this.colMFO.FieldName = "MFO";
             this.colMFO.Name = "colMFO";
-            this.colMFO.Visible = true;
-            this.colMFO.VisibleIndex = 4;
-            this.colMFO.Width = 122;
+            this.colMFO.Width = 133;
             // 
             // colAccount
             // 
@@ -5791,8 +5790,8 @@
             this.colAccount.FieldName = "Account";
             this.colAccount.Name = "colAccount";
             this.colAccount.Visible = true;
-            this.colAccount.VisibleIndex = 5;
-            this.colAccount.Width = 122;
+            this.colAccount.VisibleIndex = 4;
+            this.colAccount.Width = 133;
             // 
             // colPaySum
             // 
@@ -5800,17 +5799,8 @@
             this.colPaySum.FieldName = "PaySum";
             this.colPaySum.Name = "colPaySum";
             this.colPaySum.Visible = true;
-            this.colPaySum.VisibleIndex = 6;
-            this.colPaySum.Width = 82;
-            // 
-            // colReason
-            // 
-            this.colReason.Caption = "Призначення платежу";
-            this.colReason.FieldName = "Reason";
-            this.colReason.Name = "colReason";
-            this.colReason.Visible = true;
-            this.colReason.VisibleIndex = 7;
-            this.colReason.Width = 123;
+            this.colPaySum.VisibleIndex = 5;
+            this.colPaySum.Width = 89;
             // 
             // colKagentName
             // 
@@ -5819,8 +5809,8 @@
             this.colKagentName.FieldName = "KagentName";
             this.colKagentName.Name = "colKagentName";
             this.colKagentName.Visible = true;
-            this.colKagentName.VisibleIndex = 8;
-            this.colKagentName.Width = 188;
+            this.colKagentName.VisibleIndex = 6;
+            this.colKagentName.Width = 161;
             // 
             // repositoryItemButtonEdit2
             // 
@@ -6214,6 +6204,15 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
+            // 
+            // gridColumn122
+            // 
+            this.gridColumn122.Caption = "Банк";
+            this.gridColumn122.FieldName = "BankName";
+            this.gridColumn122.Name = "gridColumn122";
+            this.gridColumn122.Visible = true;
+            this.gridColumn122.VisibleIndex = 7;
+            this.gridColumn122.Width = 132;
             // 
             // DocsUserControl
             // 
@@ -6955,10 +6954,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMFO;
         private DevExpress.XtraGrid.Columns.GridColumn colAccount;
         private DevExpress.XtraGrid.Columns.GridColumn colPaySum;
-        private DevExpress.XtraGrid.Columns.GridColumn colReason;
         private DevExpress.XtraGrid.Columns.GridColumn colKagentName;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox39;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn122;
     }
 }
