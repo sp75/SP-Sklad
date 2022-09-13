@@ -173,7 +173,17 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                ExecuteDocument();
+                if (!ExecuteDocument())
+                {
+                    TurnDocCheckBox.Checked = false;
+                    _db.SaveChanges();
+
+                    RefreshDet();
+
+                    MessageBox.Show("Не всі позиції рознесено !");
+
+                    return;
+                }
             }
 
             is_new_record = false;
@@ -181,7 +191,7 @@ namespace SP_Sklad.WBForm
             Close();
         }
 
-        private void ExecuteDocument()
+        private bool ExecuteDocument()
         {
             if (TurnDocCheckBox.Checked)
             {
@@ -193,38 +203,47 @@ namespace SP_Sklad.WBForm
                     string doc_setting_name = doc_type == -1 ? "pay_doc_out" : doc_type == 1 ? "pay_doc_in" : "pay_doc";
                     List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.EGRPOU).Select(s => s.KaId).ToList();
 
-                    foreach (var ka in ka_list)
+                    try
                     {
-                        var _pd = _db.PayDoc.Add(new PayDoc()
+                        foreach (var ka in ka_list)
                         {
-                            Id = Guid.NewGuid(),
-                            DocType = doc_type,
-                            DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(), //Номер документа
-                            Total = (item.PaySum.Value < 0 ? item.PaySum.Value * -1 : item.PaySum.Value) / ka_list.Count(),
-                            Checked = 1,
-                            OnDate = item.TransactionDate.Value,
-                            WithNDS = 1,  // З НДС
-                            PTypeId = 2,  // Вид оплати
-                            CashId = null,  // Каса 
-                            AccId = (int?)AccountEdit.EditValue, // Acount
-                            CTypeId = (int)ChargeTypesEdit.EditValue,
-                            CurrId = 2,  //Валюта по умолчанию
-                            OnValue = 1,  //Курс валюти
-                            MPersonId = bs.PersonId,
-                            KaId = ka,
-                            UpdatedBy = DBHelper.CurrentUser.UserId,
-                            EntId = DBHelper.Enterprise.KaId,
-                            ReportingDate = item.TransactionDate.Value,
-                        });
+                            var _pd = _db.PayDoc.Add(new PayDoc()
+                            {
+                                Id = Guid.NewGuid(),
+                                DocType = doc_type,
+                                DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(), //Номер документа
+                                Total = (item.PaySum.Value < 0 ? item.PaySum.Value * -1 : item.PaySum.Value) / ka_list.Count(),
+                                Checked = 1,
+                                OnDate = item.TransactionDate.Value,
+                                WithNDS = 1,  // З НДС
+                                PTypeId = 2,  // Вид оплати
+                                CashId = null,  // Каса 
+                                AccId = (int?)AccountEdit.EditValue, // Acount
+                                CTypeId = (int)ChargeTypesEdit.EditValue,
+                                CurrId = 2,  //Валюта по умолчанию
+                                OnValue = 1,  //Курс валюти
+                                MPersonId = bs.PersonId,
+                                KaId = ka,
+                                UpdatedBy = DBHelper.CurrentUser.UserId,
+                                EntId = DBHelper.Enterprise.KaId,
+                                ReportingDate = item.TransactionDate.Value,
+                            });
 
-                        _db.SaveChanges();
+                            _db.SaveChanges();
 
-                        _db.SetDocRel(bs.Id, _pd.Id);
+                            _db.SetDocRel(bs.Id, _pd.Id);
+                        }
+
+                        item.Checked = ka_list.Any() ? 1 : 0;
                     }
-
-                    item.Checked = 1;
+                    catch
+                    {
+                        item.Checked = 0;
+                    }
                 }
             }
+
+            return !_db.BankStatementsDet.Any(a => a.Checked == 0);
 
         }
 
@@ -355,6 +374,78 @@ namespace SP_Sklad.WBForm
 
          //   d.KaId = (int)IHelper.ShowDirectList(null, 1);
 
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (ofdDBF.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var file in ofdDBF.FileNames)
+                {
+                    using (FileStream fs = new FileStream(file, FileMode.Open))
+                    {
+                        fs.Seek(29, SeekOrigin.Begin);
+                        fs.WriteByte(201); // '101 - Dos 866, а 201 - Win 1251
+                        fs.Position = 0;
+
+                        string EGRPOU = "", FOP = "", Account = "";
+
+                        DbfLoaderCore loader = new DbfLoaderCore(fs, Encoding.GetEncoding(1251));
+
+                        foreach (DbfRecord dbf_row in loader.Records)
+                        {
+                            var row = dbf_row.Attributes.ToDictionary(x => x.Name, x => x.Value);
+
+                            if (row["FIELD0"].ToString() == "Код Клієнта" && EGRPOU =="")
+                            {
+                                EGRPOU = row["FIELD1"].ToString();
+                            }
+                            if (row["FIELD0"].ToString() == "Назва Клієнта"&& FOP=="")
+                            {
+                                FOP = row["FIELD1"].ToString();
+                            }
+
+                            if (row["FIELD0"].ToString() == "Рахунок Клієнта" && Account == "")
+                            {
+                                Account = row["FIELD1"].ToString().Substring(0,29);
+                            }
+
+
+                            if (int.TryParse(row["FIELD0"].ToString(), out int res))
+                            {
+                                decimal PaySum = 0;
+                                if (!string.IsNullOrEmpty(row["FIELD3"].ToString()))
+                                {
+                                    PaySum = Convert.ToDecimal(row["FIELD3"]) * -1;
+                                }
+                                if (!string.IsNullOrEmpty(row["FIELD4"].ToString()))
+                                {
+                                    PaySum = Convert.ToDecimal(row["FIELD4"]);
+                                }
+
+                                _db.BankStatementsDet.Add(new BankStatementsDet
+                                {
+                                    Id = Guid.NewGuid(),
+                                    BankStatementId = bs.Id,
+                                    EGRPOU = EGRPOU,
+                                    Account = Account,
+                                    FOP = FOP,
+                                    MFO = row["FIELD8"].ToString(),
+                                    Reason = row["FIELD9"].ToString(),
+                                    PaySum = PaySum,
+                                    TransactionDate = Convert.ToDateTime(row["FIELD2"].ToString()),
+                                    Checked = 0,
+                                    BankProvidingId = 1,
+                                    DocNum = row["FIELD1"].ToString()
+                                });
+                            }
+                            _db.SaveChanges();
+                        }
+
+                        RefreshDet();
+                    }
+                }
+            }
         }
     }
 }

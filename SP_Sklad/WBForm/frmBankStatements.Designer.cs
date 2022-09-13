@@ -100,11 +100,11 @@
             this.colKagentName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.ofdDBF = new System.Windows.Forms.OpenFileDialog();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -260,6 +260,7 @@
             this.barButtonItem4.Id = 21;
             this.barButtonItem4.ImageOptions.ImageIndex = 5;
             this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -802,6 +803,15 @@
             this.gridColumn2.VisibleIndex = 2;
             this.gridColumn2.Width = 116;
             // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "№";
+            this.gridColumn3.FieldName = "DocNum";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.Width = 80;
+            // 
             // repositoryItemImageComboBox1
             // 
             this.repositoryItemImageComboBox1.AutoHeight = false;
@@ -838,15 +848,6 @@
             this.ofdDBF.Filter = "DBF files (*.dbf)|*.dbf";
             this.ofdDBF.Multiselect = true;
             // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "№";
-            this.gridColumn3.FieldName = "DocNum";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 80;
-            // 
             // frmBankStatements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -866,7 +867,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmBankStatements";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Планування виробництва";
+            this.Text = "Банківські виписки";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProductionPlans_FormClosed);
             this.Load += new System.EventHandler(this.frmProductionPlans_Load);
             this.Shown += new System.EventHandler(this.frmProductionPlans_Shown);

@@ -914,6 +914,10 @@ namespace SP_Sklad.MainTabs
             {
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
+            else if (gridView10.Focus())
+            {
+                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
+            }
 
             FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
@@ -938,6 +942,10 @@ namespace SP_Sklad.MainTabs
             else if (gridView1.Focus())
             {
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
+            }
+            else if(gridView10.Focus())
+            {
+                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
             }
 
             PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
@@ -1503,6 +1511,15 @@ namespace SP_Sklad.MainTabs
         private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
         {
             if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
+        }
+
+        private void gridView10_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }
