@@ -43,7 +43,7 @@ namespace SP_Sklad.WBForm
   
         private void GetOk()
         {
-            OkButton.Enabled = ChargeTypesEdit.EditValue != DBNull.Value && AccountEdit.EditValue != DBNull.Value;
+            OkButton.Enabled =  AccountEdit.EditValue != DBNull.Value;
             //barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
             EditMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
             DelMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
@@ -146,7 +146,7 @@ namespace SP_Sklad.WBForm
         {
             if (TurnDocCheckBox.Checked)
             {
-                var list = _db.BankStatementsDet.Where(w => w.BankStatementId == bs.Id && w.Checked == 0).ToList();
+                var list = _db.BankStatementsDet.Where(w => w.BankStatementId == bs.Id && w.Checked == 0 && w.CTypeId != null).ToList();
 
                 foreach (var item in list)
                 {
@@ -170,7 +170,7 @@ namespace SP_Sklad.WBForm
                                 PTypeId = 2,  // Вид оплати
                                 CashId = null,  // Каса 
                                 AccId = (int?)AccountEdit.EditValue, // Acount
-                                CTypeId = (int)ChargeTypesEdit.EditValue,
+                                CTypeId = item.CTypeId.Value,
                                 CurrId = 2,  //Валюта по умолчанию
                                 OnValue = 1,  //Курс валюти
                                 MPersonId = bs.PersonId,
@@ -193,6 +193,8 @@ namespace SP_Sklad.WBForm
                     }
                 }
             }
+
+            _db.SaveChanges();
 
             return !_db.BankStatementsDet.Any(a => a.Checked == 0);
 
@@ -414,8 +416,6 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
 
-            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
-
             if (_doc_id == null)
             {
                 is_new_record = true;
@@ -456,6 +456,20 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
+        }
+
+        private void repositoryItemButtonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 0)
+            {
+                var d = _db.BankStatementsDet.Find(bs_det_row.Id);
+
+                d.CTypeId = (int)IHelper.ShowDirectList((object)d.CTypeId, 6);
+
+                _db.SaveChanges();
+
+                RefreshDet();
+            }
         }
     }
 }

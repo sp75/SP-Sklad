@@ -27,6 +27,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Checked { get; set; }
         public Nullable<int> BankProvidingId { get; set; }
         public string DocNum { get; set; }
+        public Nullable<int> CTypeId { get; set; }
     
         public virtual BankStatements BankStatements { get; set; }
     }

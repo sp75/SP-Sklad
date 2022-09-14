@@ -27,5 +27,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Checked { get; set; }
         public string BankName { get; set; }
         public string DocNum { get; set; }
+        public string ChargeTypeName { get; set; }
     }
 }
