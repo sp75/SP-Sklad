@@ -181,7 +181,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
             if (row != null)
             {
-                var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 2);
+                var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 3);
 
             //    ByRecipeEdit.EditValue = row.AmountByRecipe;
                 IntermediateWeighingEdit.EditValue = row.TotalWeighted;

@@ -40,59 +40,10 @@ namespace SP_Sklad.WBForm
             InitializeComponent();
 
         }
-
-        private void frmProductionPlans_Load(object sender, EventArgs e)
-        {
-            PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
-
-            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
-
-            if (_doc_id == null)
-            {
-                is_new_record = true;
-
-                bs = _db.BankStatements.Add(new BankStatements
-                {
-                    Id = Guid.NewGuid(),
-                    Checked = 0,
-                    OnDate = DBHelper.ServerDateTime(),
-                    Num = "",
-                    PersonId = DBHelper.CurrentUser.KaId,
-                    UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
-                });
-
-                _db.SaveChanges();
-            }
-            else
-            {
-                bs = _db.BankStatements.FirstOrDefault(f => f.Id == _doc_id );
-            }
-
-            if (bs != null)
-            {
-                _doc_id = bs.Id;
-
-                bs.SessionId =  (Guid?)UserSession.SessionId;
-                bs.UpdatedBy = UserSession.UserId;
-                bs.UpdatedAt = DateTime.Now;
-                _db.SaveChanges();
-
-                if (is_new_record)
-                {
-                    bs.Num = new BaseEntities().GetDocNum("bank_statements").FirstOrDefault();
-                }
-
-                BankStatementsBS.DataSource = bs;
-            }
-
-            RefreshDet();
-        }
-
+  
         private void GetOk()
         {
-            //OkButton.Enabled = BankProvidingComboBox.EditValue != DBNull.Value;
+            OkButton.Enabled = ChargeTypesEdit.EditValue != DBNull.Value && AccountEdit.EditValue != DBNull.Value;
             //barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
             EditMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
             DelMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
@@ -327,11 +278,6 @@ namespace SP_Sklad.WBForm
         }
 
 
-        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-            GetOk();
-        }
-
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -359,21 +305,31 @@ namespace SP_Sklad.WBForm
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            using (var frm = new frmKagents(1, bs_det_row.EGRPOU))
+            if (e.Button.Index == 0)
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+
+                using (var frm = new frmKagents(1, bs_det_row.EGRPOU))
                 {
-                    var d = _db.BankStatementsDet.Find(bs_det_row.Id);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var d = _db.BankStatementsDet.Find(bs_det_row.Id);
 
-                    d.KaId = frm.focused_row.KaId;
+                        d.KaId = frm.focused_row.KaId;
 
-                    _db.SaveChanges();
-                    RefreshDet();
+                        _db.SaveChanges();
+                        RefreshDet();
+                    }
                 }
             }
+            if(e.Button.Index == 1)
+            {
+                var d = _db.BankStatementsDet.Find(bs_det_row.Id);
 
-         //   d.KaId = (int)IHelper.ShowDirectList(null, 1);
+                d.KaId = null;
 
+                _db.SaveChanges();
+                RefreshDet();
+            }
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -446,6 +402,60 @@ namespace SP_Sklad.WBForm
                     }
                 }
             }
+        }
+
+        private void ChargeTypesEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void frmBankStatements_Load(object sender, EventArgs e)
+        {
+            PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
+
+            ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
+
+            if (_doc_id == null)
+            {
+                is_new_record = true;
+
+                bs = _db.BankStatements.Add(new BankStatements
+                {
+                    Id = Guid.NewGuid(),
+                    Checked = 0,
+                    OnDate = DBHelper.ServerDateTime(),
+                    Num = "",
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    EntId = DBHelper.Enterprise.KaId
+                });
+
+                _db.SaveChanges();
+            }
+            else
+            {
+                bs = _db.BankStatements.FirstOrDefault(f => f.Id == _doc_id);
+            }
+
+            if (bs != null)
+            {
+                _doc_id = bs.Id;
+
+                bs.SessionId = (Guid?)UserSession.SessionId;
+                bs.UpdatedBy = UserSession.UserId;
+                bs.UpdatedAt = DateTime.Now;
+                _db.SaveChanges();
+
+                if (is_new_record)
+                {
+                    bs.Num = new BaseEntities().GetDocNum("bank_statements").FirstOrDefault();
+                }
+
+                BankStatementsBS.DataSource = bs;
+            }
+
+            RefreshDet();
         }
     }
 }

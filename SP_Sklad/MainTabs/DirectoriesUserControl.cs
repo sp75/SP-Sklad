@@ -1210,6 +1210,26 @@ namespace SP_Sklad.MainTabs
         {
             if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
             {
+                /*   var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                   String kod = BarCodeSplit[0];
+
+                   var row = MatListDS.List.OfType<GetMatList_Result>().ToList().Find(f => f.BarCode == kod);
+                   var pos = MatListDS.IndexOf(row);
+                   MatListDS.Position = pos;*/
+
+                if (FindByBarCode() != null && xtraTabPage14.PageVisible)
+                {
+                    AddItem.PerformClick();
+                }
+
+                BarCodeEdit.Text = "";
+            }
+        }
+
+        private GetMatList_Result FindByBarCode()
+        {
+            if (!String.IsNullOrEmpty(BarCodeEdit.Text))
+            {
                 var BarCodeSplit = BarCodeEdit.Text.Split('+');
                 String kod = BarCodeSplit[0];
 
@@ -1217,13 +1237,10 @@ namespace SP_Sklad.MainTabs
                 var pos = MatListDS.IndexOf(row);
                 MatListDS.Position = pos;
 
-                if (row != null && xtraTabPage14.PageVisible)
-                {
-                    AddItem.PerformClick();
-                }
-
-                BarCodeEdit.Text = "";
+                return row;
             }
+
+            return null;
         }
 
         private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1509,6 +1526,14 @@ namespace SP_Sklad.MainTabs
             e.QueryableSource = ka;
 
             e.Tag = _db;
+        }
+
+        private void BarCodeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 0)
+            {
+                FindByBarCode();
+            }
         }
     }
 }

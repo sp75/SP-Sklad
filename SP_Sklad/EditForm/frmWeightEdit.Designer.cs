@@ -41,63 +41,42 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.panelControl3);
+            this.panelControl2.Controls.Add(this.AmountEdit);
+            this.panelControl2.Controls.Add(this.labelControl4);
             this.panelControl2.Controls.Add(this.panelControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(408, 204);
+            this.panelControl2.Size = new System.Drawing.Size(391, 176);
             this.panelControl2.TabIndex = 29;
-            // 
-            // panelControl1
-            // 
-            this.panelControl1.Controls.Add(this.OkButton);
-            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(2, 134);
-            this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(404, 68);
-            this.panelControl1.TabIndex = 29;
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.labelControl4);
-            this.panelControl3.Controls.Add(this.AmountEdit);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl3.Location = new System.Drawing.Point(2, 2);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(404, 132);
-            this.panelControl3.TabIndex = 29;
             // 
             // labelControl4
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 16F);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(23, 17);
+            this.labelControl4.Location = new System.Drawing.Point(12, 12);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(65, 33);
+            this.labelControl4.Size = new System.Drawing.Size(51, 25);
             this.labelControl4.TabIndex = 9;
             this.labelControl4.Text = "Вага:";
             // 
             // AmountEdit
             // 
-            this.AmountEdit.Location = new System.Drawing.Point(23, 56);
+            this.AmountEdit.Location = new System.Drawing.Point(12, 43);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.AmountEdit.Properties.Appearance.Options.UseFont = true;
@@ -114,17 +93,24 @@
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
             this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
             // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.OkButton);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(2, 106);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(387, 68);
+            this.panelControl1.TabIndex = 29;
+            // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.OkButton.Appearance.ForeColor = System.Drawing.Color.Green;
             this.OkButton.Appearance.Options.UseFont = true;
-            this.OkButton.Appearance.Options.UseForeColor = true;
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(283, 12);
+            this.OkButton.Location = new System.Drawing.Point(238, 12);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(98, 46);
+            this.OkButton.Size = new System.Drawing.Size(130, 46);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Так";
             // 
@@ -137,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 204);
+            this.ClientSize = new System.Drawing.Size(391, 176);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmWeightEdit";
@@ -148,12 +134,10 @@
             this.Shown += new System.EventHandler(this.frmMatListEdit_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            this.panelControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -162,7 +146,6 @@
 
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         public DevExpress.XtraEditors.CalcEdit AmountEdit;

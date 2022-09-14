@@ -350,7 +350,7 @@
             // TotalEdit
             // 
             this.TotalEdit.Enabled = false;
-            this.TotalEdit.Location = new System.Drawing.Point(12, 396);
+            this.TotalEdit.Location = new System.Drawing.Point(12, 399);
             this.TotalEdit.Name = "TotalEdit";
             this.TotalEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.TotalEdit.Properties.Appearance.Options.UseFont = true;
@@ -436,7 +436,7 @@
             this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.OkButton.Appearance.Options.UseFont = true;
             this.OkButton.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("OkButton.ImageOptions.SvgImage")));
-            this.OkButton.Location = new System.Drawing.Point(2, 440);
+            this.OkButton.Location = new System.Drawing.Point(2, 443);
             this.OkButton.Name = "OkButton";
             this.OkButton.Padding = new System.Windows.Forms.Padding(15);
             this.OkButton.Size = new System.Drawing.Size(284, 66);
@@ -476,6 +476,8 @@
             // 
             // layoutControlGroup2
             // 
+            this.layoutControlGroup2.AppearanceGroup.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlGroup2.AppearanceGroup.Options.UseFont = true;
             this.layoutControlGroup2.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
@@ -497,7 +499,7 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(268, 63);
             this.layoutControlItem1.Text = "Кількість";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(111, 16);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(131, 16);
             // 
             // layoutControlItem2
             // 
@@ -509,7 +511,7 @@
             this.layoutControlItem2.Size = new System.Drawing.Size(268, 63);
             this.layoutControlItem2.Text = "Тара, кг";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(111, 16);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(131, 16);
             // 
             // emptySpaceItem2
             // 
@@ -521,6 +523,8 @@
             // 
             // layoutControlGroup3
             // 
+            this.layoutControlGroup3.AppearanceGroup.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.layoutControlGroup3.AppearanceGroup.Options.UseFont = true;
             this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem3,
@@ -528,7 +532,7 @@
             this.layoutControlItem6});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 240);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(288, 198);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(288, 201);
             this.layoutControlGroup3.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup3.Text = "Підсумок";
             // 
@@ -540,9 +544,9 @@
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(268, 53);
-            this.layoutControlItem3.Text = "Планова вага";
+            this.layoutControlItem3.Text = "Планова вага:";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(111, 16);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(131, 16);
             // 
             // layoutControlItem5
             // 
@@ -554,22 +558,24 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(268, 53);
             this.layoutControlItem5.Text = "Всього зважено:";
             this.layoutControlItem5.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(111, 16);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(131, 16);
             // 
             // layoutControlItem6
             // 
+            this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem6.Control = this.TotalEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 106);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(268, 50);
+            this.layoutControlItem6.Size = new System.Drawing.Size(268, 53);
             this.layoutControlItem6.Text = "Залишилось зважити:";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(111, 13);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(131, 16);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.OkButton;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 438);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 441);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(288, 70);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -578,9 +584,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 508);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 511);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(288, 71);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(288, 68);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem8

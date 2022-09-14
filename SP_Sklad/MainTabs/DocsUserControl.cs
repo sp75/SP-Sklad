@@ -533,6 +533,8 @@ namespace SP_Sklad.MainTabs
                     int rIndex = BankStatementsGridView.GetVisibleIndex(BankStatementsGridView.FocusedRowHandle);
                     BankStatementsSource.QueryableSource = new BaseEntities().v_BankStatements.AsNoTracking().Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && ((int)lookUpEdit2.EditValue == -1 || w.Checked == (int)lookUpEdit2.EditValue));
                     BankStatementsGridView.TopRowIndex = rIndex;
+
+                    BankStatementsGridView_FocusedRowObjectChanged(sender, null);
                     break;
             }
 
@@ -1460,15 +1462,10 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void BankStatementsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
-        {
-
-        }
-
         private void BankStatementsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             var dr = bank_statements_row;
-
+            
             xtraTabControl6_SelectedPageChanged(sender, null);
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
