@@ -339,6 +339,8 @@ namespace SP_Sklad
                 this.Height = this.Height - panelControl3.Height;
             }
 
+            Text = $"Авторизація користувача [{InterfaceLookUpEdit.Text}]";
+
             passtextEdit.Focus();
 
             GetOk();
@@ -370,6 +372,8 @@ namespace SP_Sklad
 
         private void InterfaceLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
+            Text = $"Авторизація користувача [{InterfaceLookUpEdit.Text}]";
+
             GetOk();
         }
     }

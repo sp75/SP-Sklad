@@ -464,7 +464,8 @@ namespace SP_Sklad.WBForm
             {
                 var d = _db.BankStatementsDet.Find(bs_det_row.Id);
 
-                d.CTypeId = (int)IHelper.ShowDirectList((object)d.CTypeId, 6);
+                var f = IHelper.ShowDirectList((object)d.CTypeId, 6);
+                d.CTypeId = f == null ? null : (int?)f;
 
                 _db.SaveChanges();
 
