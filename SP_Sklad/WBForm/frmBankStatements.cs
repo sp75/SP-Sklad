@@ -153,17 +153,19 @@ namespace SP_Sklad.WBForm
                     var doc_type = item.PaySum > 0 ? 1 : -1;
                     string doc_setting_name = doc_type == -1 ? "pay_doc_out" : doc_type == 1 ? "pay_doc_in" : "pay_doc";
                     List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.EGRPOU).Select(s => s.KaId).ToList();
+                    var pay_sum = Math.Round(Math.Abs(item.PaySum.Value) / ka_list.Count(), 2, MidpointRounding.AwayFromZero);
+                    var pay_sum_dev = Math.Abs(item.PaySum.Value) - (pay_sum * ka_list.Count());
 
                     try
                     {
-                        foreach (var ka in ka_list)
+                        for (int i = 0; i < ka_list.Count(); i++)
                         {
                             var _pd = _db.PayDoc.Add(new PayDoc()
                             {
                                 Id = Guid.NewGuid(),
                                 DocType = doc_type,
                                 DocNum = new BaseEntities().GetDocNum(doc_setting_name).FirstOrDefault(), //Номер документа
-                                Total = (item.PaySum.Value < 0 ? item.PaySum.Value * -1 : item.PaySum.Value) / ka_list.Count(),
+                                Total = i == 0 ? pay_sum + pay_sum_dev : pay_sum,
                                 Checked = 1,
                                 OnDate = item.TransactionDate.Value,
                                 WithNDS = 1,  // З НДС
@@ -174,7 +176,7 @@ namespace SP_Sklad.WBForm
                                 CurrId = 2,  //Валюта по умолчанию
                                 OnValue = 1,  //Курс валюти
                                 MPersonId = bs.PersonId,
-                                KaId = ka,
+                                KaId = ka_list[i],
                                 UpdatedBy = DBHelper.CurrentUser.UserId,
                                 EntId = DBHelper.Enterprise.KaId,
                                 ReportingDate = item.TransactionDate.Value,
@@ -196,7 +198,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-            return !_db.BankStatementsDet.Any(a => a.Checked == 0);
+            return !_db.BankStatementsDet.AsNoTracking().Any(a => a.Checked == 0);
 
         }
 
