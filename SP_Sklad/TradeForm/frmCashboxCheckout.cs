@@ -214,7 +214,10 @@ namespace SP_Sklad.WBForm
             var receipt = CreateReceiptSell(payments);
             if (receipt.is_error)
             {
-                //                new frmMessageBox("Помилка", receipt.error.message).ShowDialog();
+                receipt.id = Guid.NewGuid();
+                receipt.created_at = DateTime.Now;
+                receipt.total_payment = 0;
+                receipt.total_sum = 0;
             }
 
             if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
@@ -241,8 +244,10 @@ namespace SP_Sklad.WBForm
                     ShiftId = receipt.shift.id,
                     BarCode = receipt.barcode,
                     FiscalCode = receipt.fiscal_code,
-                    FiscalDate = receipt.fiscal_date
+                    FiscalDate = receipt.fiscal_date,
+                    ErrorMessage = receipt.is_error ? receipt.error.message : ""
                 });
+
                 _db.SaveChanges();
 
                 IHelper.PrintReceiptPng(_access_token, receipt.id);
@@ -288,7 +293,6 @@ namespace SP_Sklad.WBForm
             };
 
             var new_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
-         //   new_receipts.WaitingReceiptFiscalCode(_access_token);
 
             return new_receipts;
         }

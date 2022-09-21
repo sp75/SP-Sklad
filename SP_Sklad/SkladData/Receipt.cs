@@ -23,5 +23,6 @@ namespace SP_Sklad.SkladData
         public string BarCode { get; set; }
         public string FiscalCode { get; set; }
         public Nullable<System.DateTime> FiscalDate { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }

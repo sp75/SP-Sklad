@@ -257,11 +257,21 @@ namespace CheckboxIntegration.Client
             }
             else
             {
-                var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
-                return new ReceiptsSellRespond
+                try
                 {
-                    error = apiErrorResponse
-                };
+                    var apiErrorResponse = response.Content.ReadAsAsync<ErrorMessage>().Result;
+                    return new ReceiptsSellRespond
+                    {
+                        error = apiErrorResponse
+                    };
+                }
+                catch (Exception err)
+                {
+                    return new ReceiptsSellRespond
+                    {
+                        error = new ErrorMessage {  message = $"{err.Message} [{response.Content.ReadAsStringAsync().Result}]" }
+                    };
+                }
             }
         }
 

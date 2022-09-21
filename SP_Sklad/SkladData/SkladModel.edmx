@@ -1101,6 +1101,7 @@
           <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
           <Property Name="FiscalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="FiscalDate" Type="datetime" />
+          <Property Name="ErrorMessage" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="RepLng">
           <Key>
@@ -16514,6 +16515,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FiscalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FiscalDate" Type="DateTime" Precision="3" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetRelDocList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -21352,6 +21354,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Receipt">
             <EntityTypeMapping TypeName="BaseModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
                 <ScalarProperty Name="FiscalDate" ColumnName="FiscalDate" />
                 <ScalarProperty Name="FiscalCode" ColumnName="FiscalCode" />
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
