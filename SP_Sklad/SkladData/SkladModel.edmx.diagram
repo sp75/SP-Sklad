@@ -25,7 +25,6 @@
         <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="18.875" PointY="25.5" />
         <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.6907472259787597" PointY="24.052519019717593" />
         <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
-        <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="5.06140572813405" PointY="25.430168983261179" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="6" PointY="12.5" />
         <EntityTypeShape EntityType="BaseModel.KaAddr" Width="1.5" PointX="11.764847153688244" PointY="23.276982437482562" />
         <EntityTypeShape EntityType="BaseModel.TAXREESTRTYPE" Width="1.5" PointX="11.394534431115972" PointY="0.32588514700806009" />
@@ -56,7 +55,6 @@
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_MATERIAL" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__CID__662B2B3B" />
         <AssociationConnector Association="BaseModel.FK_DEBONINGDET_MATERIALS" />
-        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__59C55456" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__5E8A0973" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__WID__65370702" />
@@ -73,7 +71,6 @@
         <EntityTypeShape EntityType="BaseModel.KAMatDiscount" Width="1.5" PointX="2.9017272158068268" PointY="12.329462563772436" />
         <EntityTypeShape EntityType="BaseModel.KAMatGroupDiscount" Width="1.5" PointX="16.875" PointY="4.25" />
         <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
-        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <EntityTypeShape EntityType="BaseModel.KAgentDoc" Width="1.5" PointX="21.375" PointY="5.25" />
         <EntityTypeShape EntityType="BaseModel.MatRecDet" Width="1.5" PointX="4.3067367618469223" PointY="20.215099657054573" />
         <AssociationConnector Association="BaseModel.FK_MatRecDet_Materials" />
@@ -116,7 +113,6 @@
         <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
         <AssociationConnector Association="BaseModel.FK_MP_MATID" />
-        <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
         <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
@@ -336,6 +332,11 @@
         <EntityTypeShape EntityType="BaseModel.BankStatements" Width="1.5" PointX="31.375" PointY="23" />
         <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="33.625" PointY="23" />
         <AssociationConnector Association="BaseModel.FK_BankStatementsDet_BankStatements" />
+        <EntityTypeShape EntityType="BaseModel.DefectsClassifier" Width="1.5" PointX="33" PointY="10.75" />
+        <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="0.75" PointY="16.75" />
+        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
+        <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
+        <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -358,6 +359,7 @@
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingSummary" Width="1.5" PointX="16.5" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.v_BankStatements" Width="1.5" PointX="9.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PriceListDet" Width="1.5" PointX="0.75" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

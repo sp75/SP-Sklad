@@ -25,6 +25,7 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<int> WbMaked { get; set; }
         public string BarCode { get; set; }
+        public Nullable<int> DefectsClassifierId { get; set; }
     
         public virtual WaybillDet WaybillDet { get; set; }
         public virtual WaybillList WaybillList { get; set; }

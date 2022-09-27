@@ -11,23 +11,26 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
+using static SP_Sklad.WBForm.frmWBManufacture;
 using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBDetForm
 {
-    public partial class frmWriteOffDet : DevExpress.XtraEditors.XtraForm
+    public partial class frmWBManufactureDet : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
+     //   private WayBillDetAddProps _wbd_props { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetActualRemainByWh_Result mat_remain { get; set; }
         public decimal? amount { get; set; }
         public int? mat_id { get; set; }
         public int _ka_id { get; set; }
+        public bool _industrial_processing { get; set; }
 
-        public frmWriteOffDet(BaseEntities db, int? PosId, WaybillList wb)
+        public frmWBManufactureDet(BaseEntities db, int? PosId, WaybillList wb, bool? industrial_processing)
         {
             InitializeComponent();
 
@@ -35,6 +38,7 @@ namespace SP_Sklad.WBDetForm
             _PosId = PosId;
             _wb = wb;
             _ka_id = 0;
+            _industrial_processing = Convert.ToBoolean(industrial_processing);//.HasValue ? industrial_processing.Value : false;
         }
 
         private void frmWriteOffDet_Load(object sender, EventArgs e)
@@ -73,18 +77,16 @@ namespace SP_Sklad.WBDetForm
 
             if (_wbd != null)
             {
-                PriceEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Price", true, DataSourceUpdateMode.OnValidation));
-                MatComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "MatId"));
-                WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnPropertyChanged));
-                AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
+
+                WaybillDetBS.DataSource = _wbd;
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
                     var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                       // _db.WMatTurn.RemoveRange(w_mat_turn);
-                     //   _db.SaveChanges();
+                        // _db.WMatTurn.RemoveRange(w_mat_turn);
+                        //   _db.SaveChanges();
 
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
@@ -99,6 +101,27 @@ namespace SP_Sklad.WBDetForm
                         }
                     }
                 }
+
+                if (_industrial_processing)
+                {
+                    labelControl5.Visible = true;
+                    DefectsClassifierEditLookUpEdit.Visible = true;
+
+                    if (_wbd.WayBillDetAddProps == null)
+                    {
+                        _wbd.WayBillDetAddProps = new WayBillDetAddProps { };
+
+                    }
+
+                    WayBillDetAddPropsBS.DataSource = _wbd.WayBillDetAddProps;
+
+                    if (_wbd.Materials != null)
+                    {
+                        DefectsClassifierEditLookUpEdit.Properties.TreeList.DataSource = _db.DefectsClassifier.Where(w => w.GrpId == _wbd.Materials.GrpId).Select(s => new { s.Id, s.PId, s.Name, ImageIndex = 9 }).ToList();
+                    }
+
+                    DefectsClassifierEditLookUpEdit.Refresh();
+                }
             }
 
             GetContent();
@@ -107,7 +130,7 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
-            bool recult = ((int)MatComboBox.EditValue > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.Value > 0);
+            bool recult = ((DefectsClassifierEditLookUpEdit.EditValue != DBNull.Value || !_industrial_processing) && MatComboBox.EditValue != null && WHComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && (int)MatComboBox.EditValue > 0 && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
 
@@ -144,6 +167,20 @@ namespace SP_Sklad.WBDetForm
             if (MatComboBox.ContainsFocus)
             {
                 _wbd.MatId = row.MatId;
+
+                if(_wbd.WayBillDetAddProps != null)
+                {
+                    _wbd.WayBillDetAddProps.DefectsClassifierId = null;
+                    DefectsClassifierEditLookUpEdit.EditValue = DBNull.Value;
+                    DefectsClassifierEditLookUpEdit.Properties.TreeList.DataSource = _db.DefectsClassifier.Where(w => w.GrpId == row.GrpId).Select(s => new
+                    {
+                        s.Id,
+                        s.PId,
+                        s.Name,
+                        ImageIndex = 9
+                    }).ToList();
+                }
+
                 GetContent();
             }
 
@@ -395,6 +432,11 @@ namespace SP_Sklad.WBDetForm
                     GetOk();
                 }
             }
+        }
+
+        private void DefectsClassifierEditLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

@@ -50,7 +50,6 @@ namespace SP_Sklad.SkladData
         public DbSet<CommonParams> CommonParams { get; set; }
         public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
-        public DbSet<MatGroup> MatGroup { get; set; }
         public DbSet<CityType> CityType { get; set; }
         public DbSet<KaAddr> KaAddr { get; set; }
         public DbSet<TAXREESTRTYPE> TAXREESTRTYPE { get; set; }
@@ -204,6 +203,9 @@ namespace SP_Sklad.SkladData
         public DbSet<v_BankStatementsDet> v_BankStatementsDet { get; set; }
         public DbSet<BankStatements> BankStatements { get; set; }
         public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
+        public DbSet<DefectsClassifier> DefectsClassifier { get; set; }
+        public DbSet<MatGroup> MatGroup { get; set; }
+        public DbSet<v_PriceListDet> v_PriceListDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2243,16 +2245,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PreparationRawMaterialsList_Result>("PreparationRawMaterialsList", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillMakeDet")]
-        public virtual IQueryable<GetWayBillMakeDet_Result> GetWayBillMakeDet(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
-        }
-    
         public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
         {
             var from_dateParameter = from_date.HasValue ?
@@ -2535,6 +2527,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pl_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillMakeDet")]
+        public virtual IQueryable<GetWayBillMakeDet_Result> GetWayBillMakeDet(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
         }
     }
 }

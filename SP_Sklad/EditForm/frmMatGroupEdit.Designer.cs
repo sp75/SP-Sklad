@@ -102,6 +102,13 @@
             this.DelIdividualMatPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.GoTopMatPricesBtn = new DevExpress.XtraEditors.SimpleButton();
             this.DisCheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.DefectsClassifierTreeList = new DevExpress.XtraTreeList.TreeList();
+            this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.DefectsClassifierBS = new System.Windows.Forms.BindingSource(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -150,6 +157,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).BeginInit();
+            this.xtraTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DefectsClassifierTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefectsClassifierBS)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -185,6 +195,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(808, 20);
             // 
             // barDockControlBottom
@@ -192,6 +203,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 490);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(808, 0);
             // 
             // barDockControlLeft
@@ -199,6 +211,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 470);
             // 
             // barDockControlRight
@@ -206,6 +219,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(808, 20);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 470);
             // 
             // ImageList
@@ -220,6 +234,7 @@
             this.ImageList.Images.SetKeyName(5, "Right_gray.png");
             this.ImageList.Images.SetKeyName(6, "Delete.bmp");
             this.ImageList.Images.SetKeyName(7, "CloseFolder.bmp");
+            this.ImageList.Images.SetKeyName(8, "settings.png");
             // 
             // barButtonItem3
             // 
@@ -304,17 +319,18 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(215, 20);
+            this.xtraTabControl1.Location = new System.Drawing.Point(220, 20);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(593, 416);
+            this.xtraTabControl1.Size = new System.Drawing.Size(588, 416);
             this.xtraTabControl1.TabIndex = 36;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
             this.xtraTabPage4,
-            this.xtraTabPage5});
+            this.xtraTabPage5,
+            this.xtraTabPage6});
             // 
             // xtraTabPage1
             // 
@@ -324,7 +340,7 @@
             this.xtraTabPage1.Controls.Add(this.checkEdit3);
             this.xtraTabPage1.Controls.Add(this.textEdit10);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(587, 388);
+            this.xtraTabPage1.Size = new System.Drawing.Size(586, 391);
             this.xtraTabPage1.Text = "Основна інформація";
             // 
             // GrpIdEdit
@@ -341,7 +357,7 @@
             this.GrpIdEdit.Properties.NullText = "";
             this.GrpIdEdit.Properties.TreeList = this.treeListLookUpEdit1TreeList;
             this.GrpIdEdit.Properties.ValueMember = "GrpId";
-            this.GrpIdEdit.Size = new System.Drawing.Size(332, 22);
+            this.GrpIdEdit.Size = new System.Drawing.Size(327, 22);
             this.GrpIdEdit.StyleController = this.styleController1;
             this.GrpIdEdit.TabIndex = 51;
             // 
@@ -356,7 +372,6 @@
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(42, 157);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
@@ -420,7 +435,7 @@
             this.textEdit10.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatGroupDS, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit10.Location = new System.Drawing.Point(19, 37);
             this.textEdit10.Name = "textEdit10";
-            this.textEdit10.Size = new System.Drawing.Size(332, 22);
+            this.textEdit10.Size = new System.Drawing.Size(327, 22);
             this.textEdit10.StyleController = this.styleController1;
             this.textEdit10.TabIndex = 34;
             // 
@@ -431,12 +446,12 @@
             this.xtraTabPage2.Controls.Add(this.EditPriceBtn);
             this.xtraTabPage2.Controls.Add(this.MatPriceGridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(587, 388);
+            this.xtraTabPage2.Size = new System.Drawing.Size(586, 391);
             this.xtraTabPage2.Text = " Ціноутворення ";
             // 
             // AddPriceBtn
             // 
-            this.AddPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("AddPriceBtn.Image")));
+            this.AddPriceBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddPriceBtn.ImageOptions.Image")));
             this.AddPriceBtn.Location = new System.Drawing.Point(10, 12);
             this.AddPriceBtn.Name = "AddPriceBtn";
             this.AddPriceBtn.Size = new System.Drawing.Size(106, 23);
@@ -446,7 +461,7 @@
             // 
             // DelPriceBtn
             // 
-            this.DelPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("DelPriceBtn.Image")));
+            this.DelPriceBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DelPriceBtn.ImageOptions.Image")));
             this.DelPriceBtn.Location = new System.Drawing.Point(234, 12);
             this.DelPriceBtn.Name = "DelPriceBtn";
             this.DelPriceBtn.Size = new System.Drawing.Size(101, 23);
@@ -456,7 +471,7 @@
             // 
             // EditPriceBtn
             // 
-            this.EditPriceBtn.Image = ((System.Drawing.Image)(resources.GetObject("EditPriceBtn.Image")));
+            this.EditPriceBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditPriceBtn.ImageOptions.Image")));
             this.EditPriceBtn.Location = new System.Drawing.Point(122, 12);
             this.EditPriceBtn.Name = "EditPriceBtn";
             this.EditPriceBtn.Size = new System.Drawing.Size(106, 23);
@@ -476,7 +491,7 @@
             this.MatPriceGridControl.Name = "MatPriceGridControl";
             this.MatPriceGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.MatPriceGridControl.Size = new System.Drawing.Size(568, 335);
+            this.MatPriceGridControl.Size = new System.Drawing.Size(563, 335);
             this.MatPriceGridControl.TabIndex = 15;
             this.MatPriceGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatPriceGridView});
@@ -542,7 +557,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.panel4);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(587, 388);
+            this.xtraTabPage3.Size = new System.Drawing.Size(586, 391);
             this.xtraTabPage3.Text = "Оподаткування";
             // 
             // panel4
@@ -555,12 +570,13 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(587, 388);
+            this.panel4.Size = new System.Drawing.Size(586, 391);
             this.panel4.TabIndex = 29;
             // 
             // NdsLabel
             // 
             this.NdsLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+            this.NdsLabel.Appearance.Options.UseFont = true;
             this.NdsLabel.Location = new System.Drawing.Point(20, 352);
             this.NdsLabel.Name = "NdsLabel";
             this.NdsLabel.Size = new System.Drawing.Size(6, 13);
@@ -570,9 +586,9 @@
             // 
             // simpleButton6
             // 
-            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.ImageList = this.ImageList;
-            this.simpleButton6.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
+            this.simpleButton6.ImageOptions.ImageList = this.ImageList;
+            this.simpleButton6.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton6.Location = new System.Drawing.Point(293, 64);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(22, 22);
@@ -618,7 +634,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.textEdit1);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(587, 388);
+            this.xtraTabPage4.Size = new System.Drawing.Size(586, 391);
             this.xtraTabPage4.Text = "Примітка";
             // 
             // textEdit1
@@ -627,7 +643,7 @@
             this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit1.Location = new System.Drawing.Point(0, 0);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(587, 388);
+            this.textEdit1.Size = new System.Drawing.Size(586, 391);
             this.textEdit1.TabIndex = 36;
             // 
             // xtraTabPage5
@@ -636,13 +652,15 @@
             this.xtraTabPage5.Controls.Add(this.PricePanel);
             this.xtraTabPage5.Controls.Add(this.panel1);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(587, 388);
+            this.xtraTabPage5.Size = new System.Drawing.Size(586, 391);
             this.xtraTabPage5.Text = "Ціна";
             // 
             // CommentLabel
             // 
             this.CommentLabel.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
             this.CommentLabel.Appearance.ForeColor = System.Drawing.Color.Blue;
+            this.CommentLabel.Appearance.Options.UseFont = true;
+            this.CommentLabel.Appearance.Options.UseForeColor = true;
             this.CommentLabel.Location = new System.Drawing.Point(30, 363);
             this.CommentLabel.Name = "CommentLabel";
             this.CommentLabel.Size = new System.Drawing.Size(6, 13);
@@ -659,7 +677,7 @@
             this.PricePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PricePanel.Location = new System.Drawing.Point(0, 45);
             this.PricePanel.Name = "PricePanel";
-            this.PricePanel.Size = new System.Drawing.Size(587, 303);
+            this.PricePanel.Size = new System.Drawing.Size(586, 303);
             this.PricePanel.TabIndex = 47;
             // 
             // CustomPricePanel
@@ -681,7 +699,7 @@
             this.checkEdit5.Properties.Caption = "з ПДВ";
             this.checkEdit5.Properties.ValueChecked = 1;
             this.checkEdit5.Properties.ValueUnchecked = 0;
-            this.checkEdit5.Size = new System.Drawing.Size(67, 19);
+            this.checkEdit5.Size = new System.Drawing.Size(67, 20);
             this.checkEdit5.TabIndex = 73;
             // 
             // MatPriceTypesBS
@@ -738,7 +756,7 @@
             this.AutoCalcPriceCheckEdit.Properties.RadioGroupIndex = 2;
             this.AutoCalcPriceCheckEdit.Properties.ValueChecked = 1;
             this.AutoCalcPriceCheckEdit.Properties.ValueUnchecked = 0;
-            this.AutoCalcPriceCheckEdit.Size = new System.Drawing.Size(397, 19);
+            this.AutoCalcPriceCheckEdit.Size = new System.Drawing.Size(397, 20);
             this.AutoCalcPriceCheckEdit.TabIndex = 43;
             this.AutoCalcPriceCheckEdit.CheckedChanged += new System.EventHandler(this.AutoCalcPriceCheckEdit_CheckedChanged);
             // 
@@ -752,7 +770,7 @@
             this.CustomPriceCheckEdit.Properties.RadioGroupIndex = 2;
             this.CustomPriceCheckEdit.Properties.ValueChecked = 1;
             this.CustomPriceCheckEdit.Properties.ValueUnchecked = 0;
-            this.CustomPriceCheckEdit.Size = new System.Drawing.Size(397, 19);
+            this.CustomPriceCheckEdit.Size = new System.Drawing.Size(397, 20);
             this.CustomPriceCheckEdit.TabIndex = 44;
             this.CustomPriceCheckEdit.TabStop = false;
             this.CustomPriceCheckEdit.CheckedChanged += new System.EventHandler(this.CustomPriceCheckEdit_CheckedChanged);
@@ -914,14 +932,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(587, 45);
+            this.panel1.Size = new System.Drawing.Size(586, 45);
             this.panel1.TabIndex = 48;
             // 
             // DelIdividualMatPriceBtn
             // 
-            this.DelIdividualMatPriceBtn.ImageIndex = 6;
-            this.DelIdividualMatPriceBtn.ImageList = this.ImageList;
-            this.DelIdividualMatPriceBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.DelIdividualMatPriceBtn.ImageOptions.ImageIndex = 6;
+            this.DelIdividualMatPriceBtn.ImageOptions.ImageList = this.ImageList;
+            this.DelIdividualMatPriceBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
             this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
             this.DelIdividualMatPriceBtn.Size = new System.Drawing.Size(22, 22);
@@ -931,9 +949,9 @@
             // 
             // GoTopMatPricesBtn
             // 
-            this.GoTopMatPricesBtn.Image = ((System.Drawing.Image)(resources.GetObject("GoTopMatPricesBtn.Image")));
-            this.GoTopMatPricesBtn.ImageList = this.ImageList;
-            this.GoTopMatPricesBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.GoTopMatPricesBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GoTopMatPricesBtn.ImageOptions.Image")));
+            this.GoTopMatPricesBtn.ImageOptions.ImageList = this.ImageList;
+            this.GoTopMatPricesBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.GoTopMatPricesBtn.Location = new System.Drawing.Point(535, 11);
             this.GoTopMatPricesBtn.Name = "GoTopMatPricesBtn";
             this.GoTopMatPricesBtn.Size = new System.Drawing.Size(22, 22);
@@ -948,15 +966,92 @@
             this.DisCheckBox.Properties.Caption = "Визначити відпускну ціну";
             this.DisCheckBox.Properties.ValueChecked = 0;
             this.DisCheckBox.Properties.ValueUnchecked = 1;
-            this.DisCheckBox.Size = new System.Drawing.Size(229, 19);
+            this.DisCheckBox.Size = new System.Drawing.Size(229, 20);
             this.DisCheckBox.TabIndex = 41;
             this.DisCheckBox.CheckedChanged += new System.EventHandler(this.DisCheckBox_CheckedChanged);
+            // 
+            // xtraTabPage6
+            // 
+            this.xtraTabPage6.Controls.Add(this.simpleButton4);
+            this.xtraTabPage6.Controls.Add(this.simpleButton2);
+            this.xtraTabPage6.Controls.Add(this.simpleButton3);
+            this.xtraTabPage6.Controls.Add(this.DefectsClassifierTreeList);
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(586, 391);
+            this.xtraTabPage6.Text = "Класифікатор браку";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.simpleButton4.Location = new System.Drawing.Point(209, 14);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton4.TabIndex = 22;
+            this.simpleButton4.Text = "Додати...";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(15, 14);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(178, 23);
+            this.simpleButton2.TabIndex = 21;
+            this.simpleButton2.Text = "Додати головну категорію";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(476, 14);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton3.TabIndex = 20;
+            this.simpleButton3.Text = "Видалити";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // DefectsClassifierTreeList
+            // 
+            this.DefectsClassifierTreeList.Appearance.FocusedCell.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.DefectsClassifierTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.DefectsClassifierTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.treeListColumn3});
+            this.DefectsClassifierTreeList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DefectsClassifierTreeList.DataSource = this.DefectsClassifierBS;
+            this.DefectsClassifierTreeList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DefectsClassifierTreeList.KeyFieldName = "Id";
+            this.DefectsClassifierTreeList.Location = new System.Drawing.Point(0, 56);
+            this.DefectsClassifierTreeList.Name = "DefectsClassifierTreeList";
+            this.DefectsClassifierTreeList.OptionsBehavior.EditingMode = DevExpress.XtraTreeList.TreeListEditingMode.EditForm;
+            this.DefectsClassifierTreeList.OptionsBehavior.EditorShowMode = DevExpress.XtraTreeList.TreeListEditorShowMode.DoubleClick;
+            this.DefectsClassifierTreeList.OptionsMenu.EnableNodeMenu = false;
+            this.DefectsClassifierTreeList.OptionsView.ShowColumns = false;
+            this.DefectsClassifierTreeList.OptionsView.ShowHorzLines = false;
+            this.DefectsClassifierTreeList.OptionsView.ShowIndicator = false;
+            this.DefectsClassifierTreeList.OptionsView.ShowVertLines = false;
+            this.DefectsClassifierTreeList.ParentFieldName = "PId";
+            this.DefectsClassifierTreeList.Size = new System.Drawing.Size(586, 335);
+            this.DefectsClassifierTreeList.TabIndex = 2;
+            this.DefectsClassifierTreeList.NodeChanged += new DevExpress.XtraTreeList.NodeChangedEventHandler(this.DefectsClassifierTreeList_NodeChanged);
+            // 
+            // treeListColumn3
+            // 
+            this.treeListColumn3.Caption = "Назва";
+            this.treeListColumn3.FieldName = "Name";
+            this.treeListColumn3.MinWidth = 34;
+            this.treeListColumn3.Name = "treeListColumn3";
+            this.treeListColumn3.Visible = true;
+            this.treeListColumn3.VisibleIndex = 0;
+            // 
+            // DefectsClassifierBS
+            // 
+            this.DefectsClassifierBS.DataSource = typeof(SP_Sklad.SkladData.DefectsClassifier);
             // 
             // splitterControl1
             // 
             this.splitterControl1.Location = new System.Drawing.Point(210, 20);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 416);
+            this.splitterControl1.Size = new System.Drawing.Size(10, 416);
             this.splitterControl1.TabIndex = 41;
             this.splitterControl1.TabStop = false;
             // 
@@ -1033,6 +1128,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DisCheckBox.Properties)).EndInit();
+            this.xtraTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DefectsClassifierTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DefectsClassifierBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1113,5 +1211,12 @@
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.CheckEdit NdsCheckEdit;
         private DevExpress.XtraEditors.LabelControl NdsLabel;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
+        public DevExpress.XtraTreeList.TreeList DefectsClassifierTreeList;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private System.Windows.Forms.BindingSource DefectsClassifierBS;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
     }
 }

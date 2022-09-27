@@ -61,7 +61,8 @@ namespace SP_Sklad.WBForm
                 MatName = s.Materials.Name,
                 MatId = s.MatId,
                 MsrName = s.Materials.Measures.ShortName,
-                AutoCalcRecipe = s.Materials.Measures.AutoCalcRecipe
+                AutoCalcRecipe = s.Materials.Measures.AutoCalcRecipe,
+                IndustrialProcessing = s.IndustrialProcessing
             }).ToList();
 
             if (_wbill_id == null)
@@ -122,6 +123,7 @@ namespace SP_Sklad.WBForm
             public int MatId { get; set; }
             public string MsrName { get; set; }
             public bool AutoCalcRecipe { get; set; }
+            public bool? IndustrialProcessing { get; set; }
         }
 
         private void RefreshDet()
@@ -156,6 +158,12 @@ namespace SP_Sklad.WBForm
             AmountMakeEdit.Enabled = RecipeComboBox.Enabled;
 
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
+
+            var row_recipe = RecipeComboBox.GetSelectedDataRow() as RecipeList;
+            if (row_recipe != null)
+            {
+                DefectsClassifierColumn.Visible = Convert.ToBoolean(row_recipe.IndustrialProcessing);
+            }
 
             OkButton.Enabled = recult;
             return recult;
@@ -282,7 +290,9 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var frm = new frmWriteOffDet(_db, null, wb))
+            var rec = RecipeComboBox.GetSelectedDataRow() as RecipeList;
+
+            using (var frm = new frmWBManufactureDet(_db, null, wb, rec.IndustrialProcessing))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
@@ -294,10 +304,11 @@ namespace SP_Sklad.WBForm
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillMakeDet_Result;
+            var rec = RecipeComboBox.GetSelectedDataRow() as RecipeList;
 
             if (dr != null)
             {
-                using (var frm = new frmWriteOffDet(_db, dr.PosId, wb))
+                using (var frm = new frmWBManufactureDet(_db, dr.PosId, wb, rec.IndustrialProcessing))
                 {
                     frm.ShowDialog();
                     RefreshDet();
@@ -424,12 +435,13 @@ namespace SP_Sklad.WBForm
 
         private void RecipeComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            dynamic row = RecipeComboBox.GetSelectedDataRow();
+            var  row = RecipeComboBox.GetSelectedDataRow() as RecipeList;
 
             if (RecipeComboBox.ContainsFocus && row != null)
             {
                 wb.WayBillMake.Amount = row.Amount;
                 MsrLabel.Text = row.MsrName;
+                
                 GetOk();
             }
         }

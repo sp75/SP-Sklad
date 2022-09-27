@@ -448,6 +448,9 @@
     <Compile Include="SkladData\BankStatementsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DefectsClassifier.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetTradePayDocList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -485,6 +488,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_LoginHistory.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_PriceListDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
@@ -1673,6 +1679,12 @@
     <Compile Include="WBDetForm\frmWBReturnDetOut.Designer.cs">
       <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWBManufactureDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWBManufactureDet.Designer.cs">
+      <DependentUpon>frmWBManufactureDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWriteOffDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2119,6 +2131,9 @@
     <EmbeddedResource Include="WBDetForm\frmWBReturnDetOut.resx">
       <DependentUpon>frmWBReturnDetOut.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWBManufactureDet.resx">
+      <DependentUpon>frmWBManufactureDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWriteOffDet.resx">
       <DependentUpon>frmWriteOffDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -2211,6 +2226,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Countries.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Currency.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CurrencyRate.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.DefectsClassifier.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
@@ -2298,6 +2314,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />

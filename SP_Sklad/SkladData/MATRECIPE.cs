@@ -39,6 +39,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ThermoLossDeviation { get; set; }
         public Nullable<int> MeasureId { get; set; }
         public Nullable<decimal> TimeNorm { get; set; }
+        public Nullable<bool> IndustrialProcessing { get; set; }
     
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }

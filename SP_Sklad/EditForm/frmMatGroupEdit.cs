@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraTreeList.Nodes;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
@@ -46,7 +47,8 @@ namespace SP_Sklad.EditForm
             TreeListBS.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             TreeListBS.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення ", ImgIdx = 1, TabIdx = 1 });
             TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
-            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Примітка", ImgIdx = 3, TabIdx = 3 });
+            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Класифікатор браку", ImgIdx = 8, TabIdx = 5 });
+            TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Примітка", ImgIdx = 3, TabIdx = 3 });
 
             if (_grp_id == null)
             {
@@ -74,6 +76,11 @@ namespace SP_Sklad.EditForm
                 GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 7 }).ToList();
 
                 MatGroupDS.DataSource = _mg;
+                DefectsClassifierBS.DataSource = _db.DefectsClassifier.Where(w => w.GrpId == _mg.GrpId).ToList();
+                DefectsClassifierTreeList.ExpandAll();
+
+
+
             }
 
             GetTreeMatPrices();
@@ -446,6 +453,43 @@ namespace SP_Sklad.EditForm
             {
                 NdsLabel.Text = "- Ставка ПДВ встановлена індивідуально";
             }
+        }
+
+        private void DefectsClassifierTreeList_NodeChanged(object sender, DevExpress.XtraTreeList.NodeChangedEventArgs e)
+        {
+            ;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var new_node = _db.DefectsClassifier.Add(new DefectsClassifier { Name = "Текст", GrpId = _mg.GrpId });
+            _db.SaveChanges();
+            new_node.PId = new_node.Id ;
+ 
+            DefectsClassifierBS.DataSource = _db.DefectsClassifier.Where(w => w.GrpId == _mg.GrpId).ToList();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            var node1 = DefectsClassifierTreeList.GetFocusedRow() as DefectsClassifier;
+
+            _db.DefectsClassifier.RemoveRange(_db.DefectsClassifier.Where(w => w.PId == node1.Id || w.Id == node1.Id));
+            _db.SaveChanges();
+            DefectsClassifierTreeList.FocusedNode.Remove();
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            var node1 = DefectsClassifierTreeList.GetFocusedRow() as DefectsClassifier;
+
+            var new_node = _db.DefectsClassifier.Add(new DefectsClassifier { Name = "Текст", GrpId = _mg.GrpId });
+            _db.SaveChanges();
+            new_node.PId = node1 == null ? new_node.Id : node1.Id;
+
+
+            DefectsClassifierBS.DataSource = _db.DefectsClassifier.Where(w => w.GrpId == _mg.GrpId).ToList();
+
+            DefectsClassifierTreeList.FocusedNode.Expand();
         }
     }
 }

@@ -12,21 +12,22 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MaterialsList
+    public partial class v_PriceListDet
     {
-        public int MatId { get; set; }
-        public Nullable<int> Num { get; set; }
-        public string Produced { get; set; }
-        public Nullable<decimal> NDS { get; set; }
-        public Nullable<int> Serials { get; set; }
+        public int PlDetId { get; set; }
         public string Name { get; set; }
-        public string Artikul { get; set; }
-        public Nullable<int> WId { get; set; }
-        public string MeasuresName { get; set; }
-        public int Deleted { get; set; }
-        public Nullable<int> Archived { get; set; }
-        public Nullable<bool> AutoCalcRecipe { get; set; }
+        public string MsrName { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> PlDetType { get; set; }
+        public string GrpName { get; set; }
+        public Nullable<int> MatId { get; set; }
         public Nullable<int> GrpId { get; set; }
-        public string GroupName { get; set; }
+        public string BarCode { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public string Artikul { get; set; }
+        public Nullable<int> Num { get; set; }
+        public string Notes { get; set; }
+        public Nullable<int> WId { get; set; }
+        public int PlId { get; set; }
     }
 }

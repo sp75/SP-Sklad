@@ -72,7 +72,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }
         public virtual ICollection<DeboningDet> DeboningDet { get; set; }
-        public virtual MatGroup MatGroup { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         public virtual Warehouse Warehouse1 { get; set; }
         public virtual Warehouse Warehouse2 { get; set; }
@@ -92,5 +91,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
     }
 }

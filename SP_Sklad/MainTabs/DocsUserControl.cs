@@ -994,7 +994,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = new BaseEntities())
                 {
-                    PriceListDetBS.DataSource = db.GetPriceListDet(pl_dr.PlId);
+                    PriceListDetBS.DataSource = db.v_PriceListDet.AsNoTracking().Where(w => w.PlId == pl_dr.PlId).OrderBy(o=> o.Num).ToList();
                     ka_template_list = db.PriceList.FirstOrDefault(w => w.PlId == pl_dr.PlId).Kagent.Select(s => new KaTemplateList
                     {
                         Check = true,

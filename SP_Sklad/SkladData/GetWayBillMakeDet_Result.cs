@@ -35,5 +35,7 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public Nullable<int> MatDefWId { get; set; }
+        public Nullable<int> DefectsClassifierId { get; set; }
+        public string DefectsClassifierName { get; set; }
     }
 }

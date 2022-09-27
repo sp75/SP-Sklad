@@ -1707,6 +1707,7 @@ SELECT WaybillList.[WbillId]
       ,mg.Name GrpName
       ,move_on_sgp.OnDate MoveOnSGPOnDate
       ,cooking.OnDate CookingOnDate
+      ,intensive.OnDate IntensiveOnDate
   FROM WaybillList
   inner join WayBillMake m on m.WbillId = WaybillList.WbillId
   inner join MatRecipe mr on mr.RecId = m.RecId
@@ -1730,6 +1731,10 @@ SELECT WaybillList.[WbillId]
                 from TechProcDet
 				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
                 where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('cooking') ) cooking
+  cross apply ( select min(TechProcDet.OnDate) OnDate , sum(TechProcDet.OutNetto) OutNetto
+                from TechProcDet
+				inner join TechProcess tp on tp.ProcId = TechProcDet.ProcId
+                where TechProcDet.WbillId = WaybillList.WbillId and tp.Kod in ('intensive') ) intensive
 
   where WType = -20 and WaybillList.OnDate between {0} and {1} 
   order by mg.Name, Materials.barcode, Materials.matid, Materials.artikul", OnDate.Date, OnDate.Date.AddDays(1));
@@ -1770,6 +1775,7 @@ SELECT WaybillList.[WbillId]
             public string GrpName { get; set; }
             public DateTime? MoveOnSGPOnDate { get; set; }
             public DateTime? CookingOnDate{ get; set; }
+            public DateTime? IntensiveOnDate { get; set; }
         }
 
         public class rep_45
