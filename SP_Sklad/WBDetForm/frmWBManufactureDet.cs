@@ -73,6 +73,7 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 _wbd = _db.WaybillDet.Find(_PosId);
+                _wbd.Materials = _db.Materials.Find(_wbd.MatId);
             }
 
             if (_wbd != null)

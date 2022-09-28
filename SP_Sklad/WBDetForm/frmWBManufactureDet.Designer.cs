@@ -432,6 +432,8 @@
             // 
             // treeListLookUpEdit1TreeList
             // 
+            this.treeListLookUpEdit1TreeList.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.treeListLookUpEdit1TreeList.Appearance.Row.Options.UseFont = true;
             this.treeListLookUpEdit1TreeList.KeyFieldName = "Id";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(0, 0);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";

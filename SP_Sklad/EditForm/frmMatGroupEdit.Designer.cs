@@ -1014,11 +1014,14 @@
             // 
             this.DefectsClassifierTreeList.Appearance.FocusedCell.BackColor = System.Drawing.Color.LightSkyBlue;
             this.DefectsClassifierTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.DefectsClassifierTreeList.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.DefectsClassifierTreeList.Appearance.Row.Options.UseFont = true;
             this.DefectsClassifierTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn3});
             this.DefectsClassifierTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.DefectsClassifierTreeList.DataSource = this.DefectsClassifierBS;
             this.DefectsClassifierTreeList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DefectsClassifierTreeList.Font = new System.Drawing.Font("Tahoma", 8.25F);
             this.DefectsClassifierTreeList.KeyFieldName = "Id";
             this.DefectsClassifierTreeList.Location = new System.Drawing.Point(0, 56);
             this.DefectsClassifierTreeList.Name = "DefectsClassifierTreeList";
