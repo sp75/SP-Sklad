@@ -322,12 +322,16 @@ namespace SP_Sklad.WBForm
 
             if (dr != null)
             {
-                DelRsvBarBtn.PerformClick();
+                if (MessageBox.Show($"Ви дійсно бажаєте видалити {dr.MatName} з документа?", "Виготовлення продукції №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
 
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
-                _db.SaveChanges();
+                    DelRsvBarBtn.PerformClick();
 
-                RefreshDet();
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                    _db.SaveChanges();
+
+                    RefreshDet();
+                }
             }
         }
 

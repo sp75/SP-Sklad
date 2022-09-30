@@ -484,6 +484,7 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.gridColumn199 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -2154,7 +2155,8 @@
             this.gridColumn75,
             this.gridColumn132,
             this.gridColumn134,
-            this.gridColumn135});
+            this.gridColumn135,
+            this.gridColumn199});
             this.gridView2.GridControl = this.gridControl2;
             this.gridView2.GroupCount = 1;
             this.gridView2.Images = this.GridImageList;
@@ -2222,7 +2224,7 @@
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 8;
-            this.gridColumn31.Width = 324;
+            this.gridColumn31.Width = 203;
             // 
             // gridColumn75
             // 
@@ -6052,6 +6054,15 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
+            // gridColumn199
+            // 
+            this.gridColumn199.Caption = "Причина дефекту";
+            this.gridColumn199.FieldName = "DefectsClassifierName";
+            this.gridColumn199.Name = "gridColumn199";
+            this.gridColumn199.Visible = true;
+            this.gridColumn199.VisibleIndex = 9;
+            this.gridColumn199.Width = 168;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6774,5 +6785,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn197;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn198;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn199;
     }
 }

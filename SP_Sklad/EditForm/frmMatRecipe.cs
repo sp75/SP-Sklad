@@ -107,6 +107,11 @@ namespace SP_Sklad.EditForm
         {
             _db.SaveChanges();
 
+            if(e.Node == null)
+            {
+                return;
+            }
+
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
             if(focused_tree_node.ParentId ==0)

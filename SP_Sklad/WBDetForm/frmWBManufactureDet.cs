@@ -22,7 +22,6 @@ namespace SP_Sklad.WBDetForm
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
-     //   private WayBillDetAddProps _wbd_props { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private GetActualRemainByWh_Result mat_remain { get; set; }
         public decimal? amount { get; set; }
