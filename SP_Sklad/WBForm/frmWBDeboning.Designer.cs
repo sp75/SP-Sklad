@@ -48,6 +48,7 @@
             this.RsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ByRecipeBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -107,6 +108,7 @@
             this.repositoryItemWhEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -145,6 +147,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -168,9 +171,10 @@
             this.MatInfoBtn,
             this.RsvBarBtn,
             this.DelRsvBarBtn,
-            this.ByRecipeBtn});
+            this.ByRecipeBtn,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 18;
+            this.barManager1.MaxItemId = 19;
             // 
             // bar2
             // 
@@ -193,7 +197,7 @@
             // 
             this.PrevievBtn.Caption = "Переглянути друковану форму накладної";
             this.PrevievBtn.Id = 0;
-            this.PrevievBtn.ImageIndex = 0;
+            this.PrevievBtn.ImageOptions.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
             this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
@@ -201,7 +205,7 @@
             // 
             this.MatInfoBtn.Caption = "Інформація про товар";
             this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageIndex = 4;
+            this.MatInfoBtn.ImageOptions.ImageIndex = 4;
             this.MatInfoBtn.Name = "MatInfoBtn";
             this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
@@ -209,7 +213,7 @@
             // 
             this.RsvInfoBtn.Caption = "Інформація про резерв товару";
             this.RsvInfoBtn.Id = 10;
-            this.RsvInfoBtn.ImageIndex = 3;
+            this.RsvInfoBtn.ImageOptions.ImageIndex = 3;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
             this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
@@ -235,7 +239,7 @@
             // 
             this.AddMaterialBtn.Caption = "Додати";
             this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageIndex = 5;
+            this.AddMaterialBtn.ImageOptions.ImageIndex = 5;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -245,7 +249,7 @@
             // 
             this.EditMaterialBtn.Caption = "Властивості";
             this.EditMaterialBtn.Id = 2;
-            this.EditMaterialBtn.ImageIndex = 6;
+            this.EditMaterialBtn.ImageOptions.ImageIndex = 6;
             this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.EditMaterialBtn.Name = "EditMaterialBtn";
             this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -255,7 +259,7 @@
             // 
             this.DelMaterialBtn.Caption = "Видалити";
             this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageIndex = 7;
+            this.DelMaterialBtn.ImageOptions.ImageIndex = 7;
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -267,8 +271,9 @@
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 217);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 31);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -276,6 +281,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(968, 24);
             // 
             // barDockControlBottom
@@ -283,6 +289,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 571);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(968, 0);
             // 
             // barDockControlLeft
@@ -290,6 +297,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 547);
             // 
             // barDockControlRight
@@ -297,6 +305,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(968, 24);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 547);
             // 
             // WBImgList
@@ -330,7 +339,7 @@
             // 
             this.RsvBarBtn.Caption = "Зарезервувати";
             this.RsvBarBtn.Id = 12;
-            this.RsvBarBtn.ImageIndex = 12;
+            this.RsvBarBtn.ImageOptions.ImageIndex = 12;
             this.RsvBarBtn.Name = "RsvBarBtn";
             this.RsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvBarBtn_ItemClick);
             // 
@@ -338,7 +347,7 @@
             // 
             this.DelRsvBarBtn.Caption = "Видалити з резерву";
             this.DelRsvBarBtn.Id = 14;
-            this.DelRsvBarBtn.ImageIndex = 14;
+            this.DelRsvBarBtn.ImageOptions.ImageIndex = 14;
             this.DelRsvBarBtn.Name = "DelRsvBarBtn";
             this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelRsvBarBtn_ItemClick);
             // 
@@ -346,9 +355,18 @@
             // 
             this.ByRecipeBtn.Caption = "Обвалити згідно рецепта";
             this.ByRecipeBtn.Id = 17;
-            this.ByRecipeBtn.ImageIndex = 17;
+            this.ByRecipeBtn.ImageOptions.ImageIndex = 17;
             this.ByRecipeBtn.Name = "ByRecipeBtn";
             this.ByRecipeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ByRecipeBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Видалити нульові позиції";
+            this.barButtonItem1.Id = 18;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // styleController1
             // 
@@ -430,9 +448,9 @@
             // 
             // WhInBtn
             // 
-            this.WhInBtn.ImageIndex = 18;
-            this.WhInBtn.ImageList = this.WBImgList;
-            this.WhInBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.WhInBtn.ImageOptions.ImageIndex = 18;
+            this.WhInBtn.ImageOptions.ImageList = this.WBImgList;
+            this.WhInBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.WhInBtn.Location = new System.Drawing.Point(534, 109);
             this.WhInBtn.Name = "WhInBtn";
             this.WhInBtn.Size = new System.Drawing.Size(22, 22);
@@ -441,9 +459,9 @@
             // 
             // ReceptBtn
             // 
-            this.ReceptBtn.ImageIndex = 17;
-            this.ReceptBtn.ImageList = this.WBImgList;
-            this.ReceptBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.ReceptBtn.ImageOptions.ImageIndex = 17;
+            this.ReceptBtn.ImageOptions.ImageList = this.WBImgList;
+            this.ReceptBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.ReceptBtn.Location = new System.Drawing.Point(534, 74);
             this.ReceptBtn.Name = "ReceptBtn";
             this.ReceptBtn.Size = new System.Drawing.Size(22, 22);
@@ -469,8 +487,8 @@
             // 
             // NowDateBtn
             // 
-            this.NowDateBtn.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.Image")));
-            this.NowDateBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.NowDateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NowDateBtn.ImageOptions.Image")));
+            this.NowDateBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.NowDateBtn.Location = new System.Drawing.Point(534, 41);
             this.NowDateBtn.Name = "NowDateBtn";
             this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
@@ -607,9 +625,9 @@
             // simpleButton3
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageIndex = 19;
-            this.simpleButton3.ImageList = this.WBImgList;
-            this.simpleButton3.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton3.ImageOptions.ImageIndex = 19;
+            this.simpleButton3.ImageOptions.ImageList = this.WBImgList;
+            this.simpleButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton3.Location = new System.Drawing.Point(359, 41);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(22, 22);
@@ -619,9 +637,9 @@
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageIndex = 19;
-            this.simpleButton2.ImageList = this.WBImgList;
-            this.simpleButton2.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton2.ImageOptions.ImageIndex = 19;
+            this.simpleButton2.ImageOptions.ImageList = this.WBImgList;
+            this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton2.Location = new System.Drawing.Point(359, 8);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
@@ -696,9 +714,9 @@
             // simpleButton4
             // 
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.ImageIndex = 19;
-            this.simpleButton4.ImageList = this.WBImgList;
-            this.simpleButton4.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton4.ImageOptions.ImageIndex = 19;
+            this.simpleButton4.ImageOptions.ImageList = this.WBImgList;
+            this.simpleButton4.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton4.Location = new System.Drawing.Point(359, 75);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
@@ -793,10 +811,10 @@
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraTabControl1.Images = this.WBImgList;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 248);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 241);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(968, 271);
+            this.xtraTabControl1.Size = new System.Drawing.Size(968, 278);
             this.xtraTabControl1.TabIndex = 18;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -805,9 +823,9 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.WaybillDetOutGridControl);
-            this.xtraTabPage1.ImageIndex = 20;
+            this.xtraTabPage1.ImageOptions.ImageIndex = 20;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(962, 240);
+            this.xtraTabPage1.Size = new System.Drawing.Size(966, 250);
             this.xtraTabPage1.Text = "Обвалка";
             // 
             // WaybillDetOutGridControl
@@ -820,7 +838,7 @@
             this.WaybillDetOutGridControl.Name = "WaybillDetOutGridControl";
             this.WaybillDetOutGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox2});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(962, 240);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(966, 250);
             this.WaybillDetOutGridControl.TabIndex = 2;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -945,9 +963,9 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.DeboningDetGridControl);
-            this.xtraTabPage2.ImageIndex = 21;
+            this.xtraTabPage2.ImageOptions.ImageIndex = 21;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(962, 240);
+            this.xtraTabPage2.Size = new System.Drawing.Size(966, 250);
             this.xtraTabPage2.Text = "Вихід";
             // 
             // DeboningDetGridControl
@@ -960,7 +978,7 @@
             this.DeboningDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemWhEdit,
             this.repositoryItemCalcEdit1});
-            this.DeboningDetGridControl.Size = new System.Drawing.Size(962, 240);
+            this.DeboningDetGridControl.Size = new System.Drawing.Size(966, 250);
             this.DeboningDetGridControl.TabIndex = 3;
             this.DeboningDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningDetGridView});
@@ -979,6 +997,7 @@
             this.DeboningDetGridView.Name = "DeboningDetGridView";
             this.DeboningDetGridView.OptionsView.ShowFooter = true;
             this.DeboningDetGridView.OptionsView.ShowGroupPanel = false;
+            this.DeboningDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.DeboningDetGridView_PopupMenuShowing);
             this.DeboningDetGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.DeboningGridView_CellValueChanged);
             // 
             // gridColumn9
@@ -1064,6 +1083,14 @@
             this.gridColumn14.VisibleIndex = 4;
             this.gridColumn14.Width = 112;
             // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
+            // 
             // frmWBDeboning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1125,6 +1152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemWhEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1209,5 +1237,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemWhEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private System.Windows.Forms.BindingSource WaybillDetOutBS;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }

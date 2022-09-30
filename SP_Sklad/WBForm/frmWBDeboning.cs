@@ -269,17 +269,39 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (wbd_row != null)
+            switch(xtraTabControl1.SelectedTabPageIndex)
             {
-                DelRsvBarBtn.PerformClick();
+                case 0:
+                    if (wbd_row != null)
+                    {
+                        DelRsvBarBtn.PerformClick();
 
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
-                _db.SaveChanges();
-                RefreshDeboningDet(true);
-                WaybillDetOutGridView.DeleteSelectedRows();
+                        _db.DeleteWhere<WaybillDet>(w => w.PosId == wbd_row.PosId);
+                        _db.SaveChanges();
+                        RefreshDeboningDet(true);
+                        WaybillDetOutGridView.DeleteSelectedRows();
 
-                GetOk();
+                        GetOk();
+                    }
+
+                    break;
+
+                case 1:
+                    {
+                        var dr = DeboningDetGridView.GetFocusedRow() as DeboningDetList;
+
+                        if (MessageBox.Show($"Ви дійсно бажаєте видалити {dr.MatName} з документа?", "Обвалка сировини №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            _db.DeleteWhere<DeboningDet>(w => w.DebId == dr.DebId);
+
+                            RefreshDeboningDet();
+                        }
+
+                        break;
+                    }
+
             }
+
         }
 
         private void RsvBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -499,6 +521,23 @@ namespace SP_Sklad.WBForm
                     e.Cancel = true;
                 }
 
+            }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.DeleteWhere<DeboningDet>(w => w.WBillId == _wbill_id && w.Amount == 0);
+            _db.SaveChanges();
+            RefreshDeboningDet();
+
+        }
+
+        private void DeboningDetGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                popupMenu1.ShowPopup(p2);
             }
         }
     }
