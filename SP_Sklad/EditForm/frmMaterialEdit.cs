@@ -695,6 +695,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton7_Click_1(object sender, EventArgs e)
         {
+
             var data_for_report = new Dictionary<string, IList>();
 
 
