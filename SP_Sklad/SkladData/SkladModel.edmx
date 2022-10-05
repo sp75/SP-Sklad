@@ -2498,10 +2498,10 @@ warning 6002: The table/view 'sp_base.dbo.v_PriceListDet' does not have a primar
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
           <Property Name="PlDetType" Type="int" />
-          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="MatId" Type="int" />
           <Property Name="GrpId" Type="int" />
-          <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="80" />
           <Property Name="Discount" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
           <Property Name="Num" Type="int" />
@@ -2558,6 +2558,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ProductionPlanDet' does not have a p
           <Property Name="Num" Type="int" />
           <Property Name="RecipeAmount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="ResipeOut" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="TotalOut" Type="numeric" Precision="35" Scale="12" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7897,7 +7898,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProductionPlanDet].[RecId] AS [RecId], 
     [v_ProductionPlanDet].[Num] AS [Num], 
     [v_ProductionPlanDet].[RecipeAmount] AS [RecipeAmount], 
-    [v_ProductionPlanDet].[ResipeOut] AS [ResipeOut]
+    [v_ProductionPlanDet].[ResipeOut] AS [ResipeOut], 
+    [v_ProductionPlanDet].[TotalOut] AS [TotalOut]
     FROM [dbo].[v_ProductionPlanDet] AS [v_ProductionPlanDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
@@ -14105,6 +14107,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="Num" />
           <Property Type="Decimal" Name="RecipeAmount" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="ResipeOut" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="TotalOut" Type="Decimal" Precision="35" Scale="12" />
         </EntityType>
         <EntityType Name="ViewLng">
           <Key>
@@ -17300,10 +17303,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="PlDetType" Type="Int32" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="MatId" Type="Int32" />
           <Property Name="GrpId" Type="Int32" />
-          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="BarCode" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
           <Property Name="Discount" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Num" Type="Int32" />
@@ -19582,6 +19585,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ProductionPlanDet">
             <EntityTypeMapping TypeName="BaseModel.v_ProductionPlanDet">
               <MappingFragment StoreEntitySet="v_ProductionPlanDet">
+                <ScalarProperty Name="TotalOut" ColumnName="TotalOut" />
                 <ScalarProperty Name="ResipeOut" ColumnName="ResipeOut" />
                 <ScalarProperty Name="RecipeAmount" ColumnName="RecipeAmount" />
                 <ScalarProperty Name="Num" ColumnName="Num" />

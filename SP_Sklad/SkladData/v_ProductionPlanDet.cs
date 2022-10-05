@@ -27,5 +27,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Num { get; set; }
         public decimal RecipeAmount { get; set; }
         public decimal ResipeOut { get; set; }
+        public Nullable<decimal> TotalOut { get; set; }
     }
 }
