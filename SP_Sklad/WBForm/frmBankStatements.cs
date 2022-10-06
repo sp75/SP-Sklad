@@ -81,16 +81,20 @@ namespace SP_Sklad.WBForm
                             {
                                 Id = Guid.NewGuid(),
                                 BankStatementId = bs.Id,
-                                EGRPOU = row["OKPO_A"].ToString(),
-                                Account = row["COUNT_A"].ToString(),
-                                FOP = row["NAME_A"].ToString(),
-                                MFO = row["MFO_A"].ToString(),
+                                PayerEGRPOU = row["OKPO_A"].ToString(),
+                                PayerAccount = row["COUNT_A"].ToString(),
+                                PayerName = row["NAME_A"].ToString(),
+                                PayerBankMFO = row["MFO_A"].ToString(),
                                 Reason = row["N_P"].ToString(),
                                 PaySum = Convert.ToDecimal(row["SUMMA"]),
                                 TransactionDate = Convert.ToDateTime(row["DATE"] + " " + row["TIME"]),
                                 Checked = 0,
                                 BankProvidingId = 2,
-                                DocNum = row["N_D"].ToString()
+                                DocNum = row["N_D"].ToString(),
+                                RecipientAccount = row["COUNT_B"].ToString(),
+                                RecipientBankMFO = row["MFO_B"].ToString(),
+                                RecipientEGRPOU = row["OKPO_B"].ToString(),
+                                RecipientName = row["NAME_B"].ToString()
                             });
                         }
                         _db.SaveChanges();
@@ -152,7 +156,7 @@ namespace SP_Sklad.WBForm
                 {
                     var doc_type = item.PaySum > 0 ? 1 : -1;
                     string doc_setting_name = doc_type == -1 ? "pay_doc_out" : doc_type == 1 ? "pay_doc_in" : "pay_doc";
-                    List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.EGRPOU).Select(s => s.KaId).ToList();
+                    List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.PayerEGRPOU).Select(s => s.KaId).ToList();
                     var pay_sum = Math.Round(Math.Abs(item.PaySum.Value) / ka_list.Count(), 2, MidpointRounding.AwayFromZero);
                     var pay_sum_dev = Math.Abs(item.PaySum.Value) - (pay_sum * ka_list.Count());
 
@@ -312,7 +316,7 @@ namespace SP_Sklad.WBForm
             if (e.Button.Index == 0)
             {
 
-                using (var frm = new frmKagents(1, bs_det_row.EGRPOU))
+                using (var frm = new frmKagents(1, bs_det_row.PayerEGRPOU))
                 {
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
@@ -387,10 +391,10 @@ namespace SP_Sklad.WBForm
                                 {
                                     Id = Guid.NewGuid(),
                                     BankStatementId = bs.Id,
-                                    EGRPOU = EGRPOU,
-                                    Account = Account,
-                                    FOP = FOP,
-                                    MFO = row["FIELD8"].ToString(),
+                                    PayerEGRPOU = EGRPOU,
+                                    PayerAccount = Account,
+                                    PayerName = FOP,
+                                    PayerBankMFO = row["FIELD8"].ToString(),
                                     Reason = row["FIELD9"].ToString(),
                                     PaySum = PaySum,
                                     TransactionDate = Convert.ToDateTime(row["FIELD2"].ToString()),

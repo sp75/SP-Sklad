@@ -302,6 +302,7 @@ namespace SP_Sklad.WBDetForm
             if (!DiscountCheckBox.Checked)
             {
                 _wbd.Discount = 0;
+                _wbd.DiscountKind = 0;
 
                 if (_wbd.WayBillDetAddProps != null)
                 {
@@ -316,7 +317,7 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            _wbd.Price = Convert.ToDecimal(PriceNotNDSEdit.EditValue);
+            _wbd.Price = Math.Round(Convert.ToDecimal(PriceNotNDSEdit.EditValue), 2);
 
             try
             {

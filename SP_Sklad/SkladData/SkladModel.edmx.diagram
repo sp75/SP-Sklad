@@ -330,13 +330,13 @@
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingInterface" Width="1.5" PointX="30.375" PointY="3.75" />
         <EntityTypeShape EntityType="BaseModel.BanksProvidingStatements" Width="1.5" PointX="30.75" PointY="8.25" />
         <EntityTypeShape EntityType="BaseModel.BankStatements" Width="1.5" PointX="31.375" PointY="23" />
-        <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="33.625" PointY="23" />
-        <AssociationConnector Association="BaseModel.FK_BankStatementsDet_BankStatements" />
         <EntityTypeShape EntityType="BaseModel.DefectsClassifier" Width="1.5" PointX="33" PointY="10.75" />
         <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="0.75" PointY="16.75" />
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
+        <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="33.625" PointY="22.375" />
+        <AssociationConnector Association="BaseModel.FK_BankStatementsDet_BankStatements" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -358,8 +358,8 @@
         <EntityTypeShape EntityType="BaseModel.v_WaybillDet" Width="1.5" PointX="18.5" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingSummary" Width="1.5" PointX="16.5" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.v_BankStatements" Width="1.5" PointX="9.375" PointY="11.75" />
-        <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="11.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_PriceListDet" Width="1.5" PointX="0.75" PointY="13.75" />
+        <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="11.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

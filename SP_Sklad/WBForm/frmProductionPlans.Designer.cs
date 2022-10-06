@@ -726,6 +726,8 @@
             this.WaybillDetInGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.WaybillDetInGridView.OptionsView.ShowFooter = true;
             this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetInGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillDetInGridView_CellValueChanged);
+            this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
             // 
             // gridBand2
             // 

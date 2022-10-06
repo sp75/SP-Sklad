@@ -59,5 +59,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> SummInCurr { get; set; }
         public string DocTypeName { get; set; }
         public Nullable<decimal> ActualSummInCurr { get; set; }
+        public string KaAccNum { get; set; }
     }
 }

@@ -202,8 +202,8 @@ namespace SP_Sklad.Common
                         BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
                         PosKind = 0,
                         PosParent = 0,
-                        DiscountKind = disc_card != null ? 2 : 0,
-
+                        DiscountKind = disc_card != null ? 2 : (item.Discount > 0 ? 1 : 0),
+                        WayBillDetAddProps = disc_card != null ? new WayBillDetAddProps { CardId = disc_card.CardId } : null
                     };
                     db.WaybillDet.Add(wbd);
                     db.SaveChanges();

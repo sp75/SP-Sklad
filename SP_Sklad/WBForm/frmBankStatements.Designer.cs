@@ -85,26 +85,33 @@
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
             this.BankStatementsDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.colFOP = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTransactionDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEGRPOU = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMFO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAccount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPaySum = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReason = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKagentName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFOP = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colTransactionDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colEGRPOU = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colMFO = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colAccount = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colPaySum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colReason = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colKagentName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.ofdDBF = new System.Windows.Forms.OpenFileDialog();
+            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -224,8 +231,8 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
@@ -405,7 +412,6 @@
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
@@ -647,7 +653,11 @@
             // 
             // WaybillDetInGridView
             // 
-            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.WaybillDetInGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand3,
+            this.gridBand1,
+            this.gridBand2});
+            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.gridColumn1,
             this.colFOP,
             this.colTransactionDate,
@@ -659,13 +669,16 @@
             this.colKagentName,
             this.gridColumn2,
             this.gridColumn3,
-            this.gridColumn4});
+            this.gridColumn4,
+            this.bandedGridColumn1,
+            this.bandedGridColumn2,
+            this.bandedGridColumn3,
+            this.bandedGridColumn4});
             this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
             this.WaybillDetInGridView.Name = "WaybillDetInGridView";
             this.WaybillDetInGridView.OptionsView.ShowFooter = true;
             this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetInGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillDetInGridView_CellValueChanged);
-            this.WaybillDetInGridView.DoubleClick += new System.EventHandler(this.WaybillDetInGridView_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -675,8 +688,7 @@
             this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.OptionsColumn.ShowCaption = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 30;
+            this.gridColumn1.Width = 22;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -687,13 +699,12 @@
             // 
             // colFOP
             // 
-            this.colFOP.Caption = "ФОП";
-            this.colFOP.FieldName = "FOP";
+            this.colFOP.Caption = "Назва";
+            this.colFOP.FieldName = "PayerName";
             this.colFOP.Name = "colFOP";
             this.colFOP.OptionsColumn.ReadOnly = true;
             this.colFOP.Visible = true;
-            this.colFOP.VisibleIndex = 4;
-            this.colFOP.Width = 122;
+            this.colFOP.Width = 84;
             // 
             // colTransactionDate
             // 
@@ -704,36 +715,34 @@
             this.colTransactionDate.Name = "colTransactionDate";
             this.colTransactionDate.OptionsColumn.ReadOnly = true;
             this.colTransactionDate.Visible = true;
-            this.colTransactionDate.VisibleIndex = 5;
-            this.colTransactionDate.Width = 116;
+            this.colTransactionDate.Width = 86;
             // 
             // colEGRPOU
             // 
             this.colEGRPOU.Caption = "ЕГРПОУ";
-            this.colEGRPOU.FieldName = "EGRPOU";
+            this.colEGRPOU.FieldName = "PayerEGRPOU";
             this.colEGRPOU.Name = "colEGRPOU";
             this.colEGRPOU.OptionsColumn.ReadOnly = true;
             this.colEGRPOU.Visible = true;
-            this.colEGRPOU.VisibleIndex = 3;
-            this.colEGRPOU.Width = 118;
+            this.colEGRPOU.Width = 81;
             // 
             // colMFO
             // 
             this.colMFO.Caption = "МФО";
-            this.colMFO.FieldName = "MFO";
+            this.colMFO.FieldName = "PayerBankMFO";
             this.colMFO.Name = "colMFO";
             this.colMFO.OptionsColumn.ReadOnly = true;
-            this.colMFO.Width = 105;
+            this.colMFO.Visible = true;
+            this.colMFO.Width = 72;
             // 
             // colAccount
             // 
             this.colAccount.Caption = "Рахунок ";
-            this.colAccount.FieldName = "Account";
+            this.colAccount.FieldName = "PayerAccount";
             this.colAccount.Name = "colAccount";
             this.colAccount.OptionsColumn.ReadOnly = true;
             this.colAccount.Visible = true;
-            this.colAccount.VisibleIndex = 6;
-            this.colAccount.Width = 116;
+            this.colAccount.Width = 83;
             // 
             // colPaySum
             // 
@@ -742,8 +751,7 @@
             this.colPaySum.Name = "colPaySum";
             this.colPaySum.OptionsColumn.ReadOnly = true;
             this.colPaySum.Visible = true;
-            this.colPaySum.VisibleIndex = 7;
-            this.colPaySum.Width = 73;
+            this.colPaySum.Width = 54;
             // 
             // colReason
             // 
@@ -752,8 +760,7 @@
             this.colReason.Name = "colReason";
             this.colReason.OptionsColumn.ReadOnly = true;
             this.colReason.Visible = true;
-            this.colReason.VisibleIndex = 8;
-            this.colReason.Width = 117;
+            this.colReason.Width = 87;
             // 
             // colKagentName
             // 
@@ -762,8 +769,7 @@
             this.colKagentName.FieldName = "KagentName";
             this.colKagentName.Name = "colKagentName";
             this.colKagentName.Visible = true;
-            this.colKagentName.VisibleIndex = 9;
-            this.colKagentName.Width = 162;
+            this.colKagentName.Width = 116;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -776,13 +782,12 @@
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Банк";
+            this.gridColumn2.Caption = "Виписка";
             this.gridColumn2.FieldName = "BankName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 119;
+            this.gridColumn2.Width = 88;
             // 
             // gridColumn3
             // 
@@ -791,8 +796,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 82;
+            this.gridColumn3.Width = 61;
             // 
             // gridColumn4
             // 
@@ -801,8 +805,7 @@
             this.gridColumn4.FieldName = "ChargeTypeName";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 10;
-            this.gridColumn4.Width = 141;
+            this.gridColumn4.Width = 109;
             // 
             // repositoryItemButtonEdit2
             // 
@@ -847,6 +850,75 @@
             this.ofdDBF.FileName = "openFileDialog1";
             this.ofdDBF.Filter = "DBF files (*.dbf)|*.dbf";
             this.ofdDBF.Multiselect = true;
+            // 
+            // bandedGridColumn1
+            // 
+            this.bandedGridColumn1.Caption = "Рахунок";
+            this.bandedGridColumn1.FieldName = "RecipientAccount";
+            this.bandedGridColumn1.Name = "bandedGridColumn1";
+            this.bandedGridColumn1.Visible = true;
+            this.bandedGridColumn1.Width = 62;
+            // 
+            // bandedGridColumn2
+            // 
+            this.bandedGridColumn2.Caption = "МФО";
+            this.bandedGridColumn2.FieldName = "RecipientBankMFO";
+            this.bandedGridColumn2.Name = "bandedGridColumn2";
+            this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.Width = 62;
+            // 
+            // bandedGridColumn3
+            // 
+            this.bandedGridColumn3.Caption = "ЕГРПОУ";
+            this.bandedGridColumn3.FieldName = "RecipientEGRPOU";
+            this.bandedGridColumn3.Name = "bandedGridColumn3";
+            this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 62;
+            // 
+            // bandedGridColumn4
+            // 
+            this.bandedGridColumn4.Caption = "Назва";
+            this.bandedGridColumn4.FieldName = "RecipientName";
+            this.bandedGridColumn4.Name = "bandedGridColumn4";
+            this.bandedGridColumn4.Visible = true;
+            this.bandedGridColumn4.Width = 67;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Документ";
+            this.gridBand3.Columns.Add(this.gridColumn1);
+            this.gridBand3.Columns.Add(this.gridColumn2);
+            this.gridBand3.Columns.Add(this.gridColumn3);
+            this.gridBand3.Columns.Add(this.colTransactionDate);
+            this.gridBand3.Columns.Add(this.colReason);
+            this.gridBand3.Columns.Add(this.colPaySum);
+            this.gridBand3.Columns.Add(this.colKagentName);
+            this.gridBand3.Columns.Add(this.gridColumn4);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 0;
+            this.gridBand3.Width = 623;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Платник";
+            this.gridBand1.Columns.Add(this.colFOP);
+            this.gridBand1.Columns.Add(this.colAccount);
+            this.gridBand1.Columns.Add(this.colEGRPOU);
+            this.gridBand1.Columns.Add(this.colMFO);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 1;
+            this.gridBand1.Width = 320;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Отримувач";
+            this.gridBand2.Columns.Add(this.bandedGridColumn4);
+            this.gridBand2.Columns.Add(this.bandedGridColumn1);
+            this.gridBand2.Columns.Add(this.bandedGridColumn3);
+            this.gridBand2.Columns.Add(this.bandedGridColumn2);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 2;
+            this.gridBand2.Width = 253;
             // 
             // frmBankStatements
             // 
@@ -945,31 +1017,38 @@
         private DevExpress.XtraBars.BarDockControl barDockControl1;
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
-        private DevExpress.XtraGrid.Columns.GridColumn colFOP;
-        private DevExpress.XtraGrid.Columns.GridColumn colTransactionDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colEGRPOU;
-        private DevExpress.XtraGrid.Columns.GridColumn colMFO;
-        private DevExpress.XtraGrid.Columns.GridColumn colAccount;
-        private DevExpress.XtraGrid.Columns.GridColumn colPaySum;
-        private DevExpress.XtraGrid.Columns.GridColumn colReason;
-        private DevExpress.XtraGrid.Columns.GridColumn colKagentName;
         private System.Windows.Forms.OpenFileDialog ofdDBF;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.LookUpEdit AccountEdit;
         private DevExpress.XtraEditors.LabelControl labelControl18;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.BindingSource BankStatementsDetBS;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView WaybillDetInGridView;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colFOP;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colTransactionDate;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colEGRPOU;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMFO;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAccount;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPaySum;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colReason;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colKagentName;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn3;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
     }
 }
