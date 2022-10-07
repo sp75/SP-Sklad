@@ -28,7 +28,7 @@ namespace SP_Sklad.WBForm
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
-        private v_BankStatementsDet bs_det_row => WaybillDetInGridView.GetFocusedRow() as v_BankStatementsDet;
+        private v_BankStatementsDet bs_det_row => BankStatementsDetGridView.GetFocusedRow() as v_BankStatementsDet;
     
         public frmBankStatements(Guid? doc_id = null)
         {
@@ -43,7 +43,7 @@ namespace SP_Sklad.WBForm
   
         private void GetOk()
         {
-            OkButton.Enabled =  AccountEdit.EditValue != DBNull.Value;
+         //   OkButton.Enabled =  AccountEdit.EditValue != DBNull.Value;
             //barSubItem1.Enabled =  BankProvidingComboBox.EditValue != DBNull.Value;
             EditMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
             DelMaterialBtn.Enabled = BankStatementsDetBS.Count > 0;
@@ -55,9 +55,9 @@ namespace SP_Sklad.WBForm
           //  {
                 var list = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == _doc_id).OrderBy(o => o.TransactionDate).ToList();
 
-                int top_row = WaybillDetInGridView.TopRowIndex;
+                int top_row = BankStatementsDetGridView.TopRowIndex;
                 BankStatementsDetBS.DataSource = list;
-                WaybillDetInGridView.TopRowIndex = top_row;
+                BankStatementsDetGridView.TopRowIndex = top_row;
         //    }
 
             GetOk();
@@ -107,7 +107,7 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
+            var row = BankStatementsDetGridView.GetFocusedRow() as v_ProductionPlanDet;
        //     new frmProductionPlanDet(_db, row.Id, bs).ShowDialog();
 
             RefreshDet();
@@ -160,6 +160,54 @@ namespace SP_Sklad.WBForm
                     var pay_sum = Math.Round(Math.Abs(item.PaySum.Value) / ka_list.Count(), 2, MidpointRounding.AwayFromZero);
                     var pay_sum_dev = Math.Abs(item.PaySum.Value) - (pay_sum * ka_list.Count());
 
+                    var payer_account = _db.KAgentAccount.FirstOrDefault(w => w.AccNum == item.PayerAccount && w.Kagent.KType == 3);
+                    if(payer_account == null)
+                    {
+                        continue;
+                    }
+
+                    var recipient_bank = _db.Banks.FirstOrDefault(b => b.MFO == item.RecipientBankMFO);
+                    if(recipient_bank == null)
+                    {
+                        continue;
+                    }
+
+
+                    var recipient_account = _db.KAgentAccount.FirstOrDefault(w => w.AccNum == item.RecipientAccount);
+
+                    if (recipient_account == null)
+                    {
+                        var ka = _db.Kagent.FirstOrDefault(w => w.OKPO == item.RecipientEGRPOU);
+                        if (ka == null)
+                        {
+
+                            var new_ka = _db.Kagent.Add(new Kagent
+                            {
+                                Name = item.RecipientName,
+                                OKPO = item.RecipientEGRPOU,
+                                KaKind = 6,
+                                Id = Guid.NewGuid(),
+                                KType = 0,
+                                KAgentAccount = new List<KAgentAccount>() { new KAgentAccount { AccNum = item.RecipientAccount, Banks = recipient_bank, TypeId = 1 } }
+                            });
+                        }
+                        else
+                        {
+                            _db.KAgentAccount.Add(new KAgentAccount
+                            {
+                                AccNum = item.RecipientAccount,
+                                Banks = recipient_bank,
+                                KAId = ka.KaId,
+                                TypeId = 1
+                            });
+                        }
+
+                        _db.SaveChanges();
+
+                        recipient_account = _db.KAgentAccount.FirstOrDefault(w => w.AccNum == item.RecipientAccount);
+                    }
+
+
                     try
                     {
                         for (int i = 0; i < ka_list.Count(); i++)
@@ -175,15 +223,16 @@ namespace SP_Sklad.WBForm
                                 WithNDS = 1,  // З НДС
                                 PTypeId = 2,  // Вид оплати
                                 CashId = null,  // Каса 
-                                AccId = (int?)AccountEdit.EditValue, // Acount
+                                AccId = payer_account.AccId, // Acount
                                 CTypeId = item.CTypeId.Value,
                                 CurrId = 2,  //Валюта по умолчанию
                                 OnValue = 1,  //Курс валюти
                                 MPersonId = bs.PersonId,
                                 KaId = ka_list[i],
                                 UpdatedBy = DBHelper.CurrentUser.UserId,
-                                EntId = DBHelper.Enterprise.KaId,
+                                EntId = payer_account.KAId,
                                 ReportingDate = item.TransactionDate.Value,
+                                KaAccId = recipient_account.AccId
                             });
 
                             _db.SaveChanges();
@@ -239,32 +288,23 @@ namespace SP_Sklad.WBForm
                     _db.BankStatementsDet.Remove(det);
                 }
                 _db.SaveChanges();
-                WaybillDetInGridView.DeleteSelectedRows();
+                BankStatementsDetGridView.DeleteSelectedRows();
             }
             GetOk();
         }
 
-  
+
         private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-          /*  var row = WaybillDetInGridView.GetFocusedRow() as v_ProductionPlanDet;
-            var wbd = _db.ProductionPlanDet.Find(row.Id);
-            if (e.Column.FieldName == "Amount")
-            {
+            var wbd = _db.BankStatementsDet.Find(bs_det_row.Id);
 
-                wbd.Amount = Convert.ToDecimal(e.Value);
-                var real_amount = wbd.Amount.Value - wbd.Remain.Value;
-                var tmp_amount = (real_amount / (row.ResipeOut == 0 ? 100.00m : row.ResipeOut)) * 100; // real_amount + (real_amount - (real_amount * row.ResipeOut / 100));
-                wbd.Total = Math.Ceiling(tmp_amount / row.RecipeAmount) * row.RecipeAmount;
-            }
-
-            if (e.Column.FieldName == "Total")
+            if (e.Column.FieldName == "CTypeId")
             {
-                wbd.Total = Convert.ToDecimal(e.Value);
+                wbd.CTypeId = Convert.ToInt32(e.Value);
             }
 
             _db.SaveChanges();
-            RefreshDet();*/
+            RefreshDet();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -272,10 +312,6 @@ namespace SP_Sklad.WBForm
 
         }
 
-        private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
-        }
 
         private void RsvInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -293,7 +329,7 @@ namespace SP_Sklad.WBForm
 
         private void frmProductionPlans_Shown(object sender, EventArgs e)
         {
-            WaybillDetInGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+            BankStatementsDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
 
         private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -420,7 +456,8 @@ namespace SP_Sklad.WBForm
         private void frmBankStatements_Load(object sender, EventArgs e)
         {
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
+            repositoryItemLookUpEdit1.DataSource = DBHelper.ChargeTypes;
+            //   AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).ToList();
 
             if (_doc_id == null)
             {
@@ -466,7 +503,12 @@ namespace SP_Sklad.WBForm
 
         private void repositoryItemButtonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 0)
+
+        }
+
+        private void repositoryItemLookUpEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
             {
                 var d = _db.BankStatementsDet.Find(bs_det_row.Id);
 

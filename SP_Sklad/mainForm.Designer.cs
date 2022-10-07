@@ -97,6 +97,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel2)).BeginInit();
             this.gridSplitContainer1.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage6.SuspendLayout();
@@ -267,18 +269,18 @@
             // PrevBtn
             // 
             this.PrevBtn.Caption = "Перейти назад";
-            this.PrevBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("PrevBtn.Glyph")));
             this.PrevBtn.Id = 24;
-            this.PrevBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("PrevBtn.LargeGlyph")));
+            this.PrevBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PrevBtn.ImageOptions.Image")));
+            this.PrevBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("PrevBtn.ImageOptions.LargeImage")));
             this.PrevBtn.Name = "PrevBtn";
             this.PrevBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevBtn_ItemClick);
             // 
             // NextBtn
             // 
             this.NextBtn.Caption = "Перейти вперед";
-            this.NextBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("NextBtn.Glyph")));
             this.NextBtn.Id = 25;
-            this.NextBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("NextBtn.LargeGlyph")));
+            this.NextBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.Image")));
+            this.NextBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.LargeImage")));
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
             // 
@@ -286,7 +288,7 @@
             // 
             this.AddWBInBtn.Caption = "Прибуткова накладна";
             this.AddWBInBtn.Id = 11;
-            this.AddWBInBtn.ImageIndex = 31;
+            this.AddWBInBtn.ImageOptions.ImageIndex = 31;
             this.AddWBInBtn.Name = "AddWBInBtn";
             this.AddWBInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
@@ -294,7 +296,7 @@
             // 
             this.AddWBOutBtn.Caption = "Видаткова накладна";
             this.AddWBOutBtn.Id = 10;
-            this.AddWBOutBtn.ImageIndex = 32;
+            this.AddWBOutBtn.ImageOptions.ImageIndex = 32;
             this.AddWBOutBtn.Name = "AddWBOutBtn";
             this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -302,7 +304,7 @@
             // 
             this.AddManufacturingBtn.Caption = "Виготовлення продукції";
             this.AddManufacturingBtn.Id = 12;
-            this.AddManufacturingBtn.ImageIndex = 30;
+            this.AddManufacturingBtn.ImageOptions.ImageIndex = 30;
             this.AddManufacturingBtn.Name = "AddManufacturingBtn";
             this.AddManufacturingBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
@@ -310,7 +312,7 @@
             // 
             this.AddDeboningBtn.Caption = "Обвалка";
             this.AddDeboningBtn.Id = 13;
-            this.AddDeboningBtn.ImageIndex = 29;
+            this.AddDeboningBtn.ImageOptions.ImageIndex = 29;
             this.AddDeboningBtn.Name = "AddDeboningBtn";
             this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
@@ -318,7 +320,7 @@
             // 
             this.barButtonItem11.Caption = "Робоче місце касира";
             this.barButtonItem11.Id = 28;
-            this.barButtonItem11.ImageIndex = 34;
+            this.barButtonItem11.ImageOptions.ImageIndex = 34;
             this.barButtonItem11.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
@@ -327,7 +329,7 @@
             // 
             this.barButtonItem3.Caption = "Тимчасове блокування";
             this.barButtonItem3.Id = 7;
-            this.barButtonItem3.ImageIndex = 33;
+            this.barButtonItem3.ImageOptions.ImageIndex = 33;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -402,7 +404,7 @@
             this.barEditItem3.EditValue = global::SP_Sklad.Properties.Settings.Default.ent_id;
             this.barEditItem3.EditWidth = 200;
             this.barEditItem3.Id = 16;
-            this.barEditItem3.ImageIndex = 25;
+            this.barEditItem3.ImageOptions.ImageIndex = 25;
             this.barEditItem3.Name = "barEditItem3";
             this.barEditItem3.EditValueChanged += new System.EventHandler(this.barEditItem3_EditValueChanged);
             // 
@@ -514,28 +516,32 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 52);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1188, 45);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 678);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 22);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 680);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 20);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 52);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 45);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 635);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 52);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 626);
+            this.barDockControlRight.Location = new System.Drawing.Point(1188, 45);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
             // 
             // barButtonItem2
             // 
@@ -589,9 +595,9 @@
             // xtraTabPage7
             // 
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
-            this.xtraTabPage7.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
+            this.xtraTabPage7.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage7.TabPageWidth = 120;
             this.xtraTabPage7.Text = "Сервіс";
             // 
@@ -600,15 +606,15 @@
             this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
             this.serviceUserControl1.Name = "serviceUserControl1";
-            this.serviceUserControl1.Size = new System.Drawing.Size(1186, 573);
+            this.serviceUserControl1.Size = new System.Drawing.Size(1186, 577);
             this.serviceUserControl1.TabIndex = 0;
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
-            this.xtraTabPage6.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
+            this.xtraTabPage6.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage6.TabPageWidth = 120;
             this.xtraTabPage6.Text = "Довідники";
             // 
@@ -620,16 +626,16 @@
             this.DirUserControl.isMatList = false;
             this.DirUserControl.Location = new System.Drawing.Point(0, 0);
             this.DirUserControl.Name = "DirUserControl";
-            this.DirUserControl.Size = new System.Drawing.Size(1186, 573);
+            this.DirUserControl.Size = new System.Drawing.Size(1186, 577);
             this.DirUserControl.TabIndex = 0;
             this.DirUserControl.wb = null;
             // 
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
-            this.xtraTabPage5.Image = global::SP_Sklad.Properties.Resources.company;
+            this.xtraTabPage5.ImageOptions.Image = global::SP_Sklad.Properties.Resources.company;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage5.TabPageWidth = 120;
             this.xtraTabPage5.Text = "Звіти";
             // 
@@ -638,15 +644,15 @@
             this.reportUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportUserControl1.Location = new System.Drawing.Point(0, 0);
             this.reportUserControl1.Name = "reportUserControl1";
-            this.reportUserControl1.Size = new System.Drawing.Size(1186, 573);
+            this.reportUserControl1.Size = new System.Drawing.Size(1186, 577);
             this.reportUserControl1.TabIndex = 0;
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
-            this.xtraTabPage4.Image = global::SP_Sklad.Properties.Resources.bank;
+            this.xtraTabPage4.ImageOptions.Image = global::SP_Sklad.Properties.Resources.bank;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage4.TabPageWidth = 120;
             this.xtraTabPage4.Text = "Фінанси";
             // 
@@ -656,15 +662,15 @@
             this.financesUserControl1.isDirectList = false;
             this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.financesUserControl1.Name = "financesUserControl1";
-            this.financesUserControl1.Size = new System.Drawing.Size(1186, 573);
+            this.financesUserControl1.Size = new System.Drawing.Size(1186, 577);
             this.financesUserControl1.TabIndex = 0;
             // 
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.whUserControl);
-            this.xtraTabPage3.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
+            this.xtraTabPage3.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage3.TabPageWidth = 120;
             this.xtraTabPage3.Text = "Склад";
             // 
@@ -679,7 +685,7 @@
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
             this.whUserControl.set_tree_node = null;
-            this.whUserControl.Size = new System.Drawing.Size(1186, 573);
+            this.whUserControl.Size = new System.Drawing.Size(1186, 577);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
             this.whUserControl.wh_mat_list = null;
@@ -687,9 +693,9 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
-            this.xtraTabPage2.Image = global::SP_Sklad.Properties.Resources.factory;
+            this.xtraTabPage2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.factory;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage2.TabPageWidth = 120;
             this.xtraTabPage2.Text = "Виробництво";
             // 
@@ -698,15 +704,15 @@
             this.manufacturingUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manufacturingUserControl1.Location = new System.Drawing.Point(0, 0);
             this.manufacturingUserControl1.Name = "manufacturingUserControl1";
-            this.manufacturingUserControl1.Size = new System.Drawing.Size(1186, 573);
+            this.manufacturingUserControl1.Size = new System.Drawing.Size(1186, 577);
             this.manufacturingUserControl1.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
-            this.xtraTabPage1.Image = global::SP_Sklad.Properties.Resources.administration;
+            this.xtraTabPage1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 575);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage1.TabPageWidth = 120;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -716,7 +722,7 @@
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
             this.docsUserControl1.set_tree_node = null;
-            this.docsUserControl1.Size = new System.Drawing.Size(1186, 575);
+            this.docsUserControl1.Size = new System.Drawing.Size(1186, 586);
             this.docsUserControl1.TabIndex = 0;
             // 
             // xtraTabControl1
@@ -726,10 +732,10 @@
             this.xtraTabControl1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Tahoma", 10F);
             this.xtraTabControl1.AppearancePage.HeaderActive.Options.UseFont = true;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 52);
+            this.xtraTabControl1.Location = new System.Drawing.Point(0, 45);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 626);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 635);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -745,9 +751,9 @@
             // xtraTabPage8
             // 
             this.xtraTabPage8.Controls.Add(this.tradeUserControl1);
-            this.xtraTabPage8.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
+            this.xtraTabPage8.ImageOptions.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1186, 573);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1186, 577);
             this.xtraTabPage8.TabPageWidth = 120;
             this.xtraTabPage8.Text = "Продажі";
             // 
@@ -757,7 +763,7 @@
             this.tradeUserControl1.Location = new System.Drawing.Point(0, 0);
             this.tradeUserControl1.Name = "tradeUserControl1";
             this.tradeUserControl1.set_tree_node = null;
-            this.tradeUserControl1.Size = new System.Drawing.Size(1186, 573);
+            this.tradeUserControl1.Size = new System.Drawing.Size(1186, 577);
             this.tradeUserControl1.TabIndex = 0;
             // 
             // UserTreeImgList
@@ -837,6 +843,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm
@@ -849,7 +856,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("mainForm.IconOptions.Icon")));
             this.Name = "mainForm";
             this.Text = "SP-Sklad";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -863,6 +870,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
             this.gridSplitContainer1.ResumeLayout(false);
             this.xtraTabPage7.ResumeLayout(false);

@@ -23,5 +23,7 @@ namespace SP_Sklad.SkladData
         public string MFO { get; set; }
         public string BankName { get; set; }
         public string TypeName { get; set; }
+        public string KaName { get; set; }
+        public int KType { get; set; }
     }
 }

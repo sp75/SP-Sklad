@@ -32,5 +32,6 @@ namespace SP_Sklad.SkladData
         public string RecipientBankMFO { get; set; }
         public string RecipientEGRPOU { get; set; }
         public string RecipientAccount { get; set; }
+        public Nullable<int> CTypeId { get; set; }
     }
 }

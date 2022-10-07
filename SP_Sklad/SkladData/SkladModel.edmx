@@ -1871,6 +1871,7 @@ warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a p
           <Property Name="RecipientBankMFO" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientEGRPOU" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientAccount" Type="nvarchar" MaxLength="50" />
+          <Property Name="CTypeId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2177,6 +2178,8 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a prima
             <PropertyRef Name="TypeId" />
             <PropertyRef Name="BankId" />
             <PropertyRef Name="AccNum" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="KType" />
           </Key>
           <Property Name="AccId" Type="int" Nullable="false" />
           <Property Name="KAId" Type="int" Nullable="false" />
@@ -2187,6 +2190,8 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a prima
           <Property Name="MFO" Type="nvarchar" MaxLength="50" />
           <Property Name="BankName" Type="nvarchar" MaxLength="128" />
           <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="KType" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7420,7 +7425,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_BankStatementsDet].[RecipientName] AS [RecipientName], 
     [v_BankStatementsDet].[RecipientBankMFO] AS [RecipientBankMFO], 
     [v_BankStatementsDet].[RecipientEGRPOU] AS [RecipientEGRPOU], 
-    [v_BankStatementsDet].[RecipientAccount] AS [RecipientAccount]
+    [v_BankStatementsDet].[RecipientAccount] AS [RecipientAccount], 
+    [v_BankStatementsDet].[CTypeId] AS [CTypeId]
     FROM [dbo].[v_BankStatementsDet] AS [v_BankStatementsDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
@@ -7641,7 +7647,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentAccount].[Def] AS [Def], 
     [v_KAgentAccount].[MFO] AS [MFO], 
     [v_KAgentAccount].[BankName] AS [BankName], 
-    [v_KAgentAccount].[TypeName] AS [TypeName]
+    [v_KAgentAccount].[TypeName] AS [TypeName], 
+    [v_KAgentAccount].[KaName] AS [KaName], 
+    [v_KAgentAccount].[KType] AS [KType]
     FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAdjustment" EntityType="Self.v_KAgentAdjustment" store:Type="Views" store:Schema="dbo">
@@ -12223,6 +12231,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="TypeId" />
             <PropertyRef Name="BankId" />
             <PropertyRef Name="AccNum" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="KType" />
           </Key>
           <Property Name="AccId" Type="Int32" Nullable="false" />
           <Property Name="KAId" Type="Int32" Nullable="false" />
@@ -12233,6 +12243,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MFO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BankName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KType" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Serials">
           <Key>
@@ -17300,6 +17312,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RecipientBankMFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientEGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CTypeId" Type="Int32" />
         </EntityType>
         <EntityType Name="BankStatementsDet">
           <Key>
@@ -18723,6 +18736,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KAgentAccount">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
               <MappingFragment StoreEntitySet="v_KAgentAccount">
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="MFO" ColumnName="MFO" />
@@ -21975,6 +21990,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.v_BankStatementsDet">
               <MappingFragment StoreEntitySet="v_BankStatementsDet">
+                <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
                 <ScalarProperty Name="RecipientAccount" ColumnName="RecipientAccount" />
                 <ScalarProperty Name="RecipientEGRPOU" ColumnName="RecipientEGRPOU" />
                 <ScalarProperty Name="RecipientBankMFO" ColumnName="RecipientBankMFO" />

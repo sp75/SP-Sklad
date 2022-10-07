@@ -59,14 +59,23 @@ namespace SP_Sklad.FinanseForm
             CurrEdit.Properties.DataSource = DBHelper.Currency;
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
+            RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KType != 3).ToList();/* Select(s => new user_acc
+            {
+                AccId = s.AccId,
+                AccNum = s.AccNum,
+                Name = s.BankName,
+                ExtDocType = 1
+            }).ToList();*/
 
+
+/*
             user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).Select(s => new user_acc
             {
                 AccId = s.AccId,
                 AccNum = s.AccNum,
                 Name = s.BankName,
                 ExtDocType = 1
-            }).ToList();
+            }).ToList();*/
 
 
             if (_PayDocId == null)
@@ -88,9 +97,9 @@ namespace SP_Sklad.FinanseForm
                     OnValue = 1,//Курс валюти
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = _DocType.Value,
-                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    UpdatedBy = UserSession.UserId,
                     KaId = _ka_id,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = UserSession.EnterpriseId,
                     ReportingDate = DBHelper.ServerDateTime()
                 });
             }
@@ -108,14 +117,24 @@ namespace SP_Sklad.FinanseForm
 
             }
 
-            AccountEdit.Properties.DataSource = user_acc_list.Concat(_db.KAgentAccount.Where(w => w.KAId == _pd.KaId).Select(s => new user_acc
+            /*    AccountEdit.Properties.DataSource = user_acc_list.Concat(_db.KAgentAccount.Where(w => w.KAId == _pd.KaId).Select(s => new user_acc
+                {
+                    AccId = s.AccId,
+                    AccNum = s.AccNum,
+                    Name = s.Kagent.Name,
+                    ExtDocType = -1,
+                    KaId = s.KAId
+                }).ToList()).ToList();*/
+
+
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == _pd.EntId).Select(s => new user_acc
             {
                 AccId = s.AccId,
                 AccNum = s.AccNum,
-                Name = s.Kagent.Name,
-                ExtDocType = -1,
-                KaId = s.KAId
-            }).ToList()).ToList();
+                Name = s.BankName,
+                ExtDocType = 1
+            }).ToList();
+
 
             if (_pd != null)
             {
@@ -136,6 +155,7 @@ namespace SP_Sklad.FinanseForm
                 NotesEdit.DataBindings.Add(new Binding("EditValue", _pd, "Notes"));
                 AccountEdit.DataBindings.Add(new Binding("EditValue", _pd, "AccId", true, DataSourceUpdateMode.OnPropertyChanged));
                 ReportingDateEdit.DataBindings.Add(new Binding("EditValue", _pd, "ReportingDate", true, DataSourceUpdateMode.OnPropertyChanged));
+                RecipientAccEdit.DataBindings.Add(new Binding("EditValue", _pd, "KaAccId", true, DataSourceUpdateMode.OnPropertyChanged));
             }
 
             if (_DocType < 0)
@@ -149,15 +169,21 @@ namespace SP_Sklad.FinanseForm
                     Text = "Властивості вихідного платежу";
                 }
 
-                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16 || w.Id == 25).ToList();
-                if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = 1;
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16 || w.Id == 25 || w.Id == 27).ToList();
+                if (TypDocsEdit.EditValue == null)
+                {
+                    TypDocsEdit.EditValue = 1;
+                }
             }
             else
             {
                 Text = "Властивості вхідного платежу";
                 labelControl13.Text = "Платник:";
-                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, -25 }.Any(a => a.Equals(w.Id))).ToList();
-                if (TypDocsEdit.EditValue == null) TypDocsEdit.EditValue = -1;
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => new int[] { -1, -6, 2, -16, -8, -25, 27 }.Any(a => a.Equals(w.Id))).ToList();
+                if (TypDocsEdit.EditValue == null)
+                {
+                    TypDocsEdit.EditValue = -1;
+                }
             }
 
             var rl = _db.GetRelDocList(_pd.Id).FirstOrDefault();
@@ -186,16 +212,26 @@ namespace SP_Sklad.FinanseForm
                 return;
             }
 
+            var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
             var rl = _db.GetRelDocList(_pd.Id).ToList();
-            foreach (var item in rl)
-            {
-                _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
-            }
-            _db.SaveChanges();
 
-            if (PayDocCheckEdit.Checked && DocListEdit.EditValue != null)
+
+            if (!PayDocCheckEdit.Checked)
             {
-                var row = DocListEdit.GetSelectedDataRow() as GetWayBillList_Result;
+                foreach (var item in rl)
+                {
+                    _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
+                }
+                _db.SaveChanges();
+            }
+
+           
+            if (PayDocCheckEdit.Checked && DocListEdit.EditValue != null && row != null)
+            {
+                foreach (var item in rl)
+                {
+                    _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
+                }
 
                 _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
                 _db.SetDocRel(row.Id, _pd.Id);
@@ -203,6 +239,7 @@ namespace SP_Sklad.FinanseForm
                 _db.SaveChanges();
             }
 
+            _db.SaveChanges();
             current_transaction.Commit();
 
             Close();
@@ -354,12 +391,12 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
+           
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+           
         }
 
         private void simpleButton7_Click(object sender, EventArgs e)
@@ -369,12 +406,12 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+          
         }
 
         private void AccountEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (AccountEdit.ContainsFocus)
+          /*  if (AccountEdit.ContainsFocus)
             {
                 var row = AccountEdit.GetSelectedDataRow() as user_acc;
                 if (row != null && row.ExtDocType == -1)
@@ -386,7 +423,7 @@ namespace SP_Sklad.FinanseForm
                 {
                     KagentComboBox.Enabled = true;
                 }
-            }
+            }*/
 
             GetOk();
         }
@@ -461,6 +498,36 @@ namespace SP_Sklad.FinanseForm
                 GetDocList();
 
                 DocListEdit.EditValue = null;
+            }
+        }
+
+        private void PersonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1 )
+            {
+                PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+            }
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+        
+
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void ChargeTypesEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
             }
         }
     }
