@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public string TypeName { get; set; }
         public string KaName { get; set; }
         public int KType { get; set; }
+        public string AccountName { get; set; }
     }
 }

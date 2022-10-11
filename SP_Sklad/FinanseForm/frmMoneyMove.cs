@@ -39,7 +39,7 @@ namespace SP_Sklad.FinanseForm
             CashToEdit.Properties.DataSource = DBHelper.CashDesks;
 
             var ent_id = DBHelper.Enterprise.KaId ;
-            AccountFromEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
+            AccountFromEdit.Properties.DataSource = _db.EnterpriseAccount./*Where(w => w.KaId == ent_id).*/Select(s => new { s.AccId, s.AccNum, s.BankName, s.KaName }).ToList();
             AccountToEdit.Properties.DataSource = AccountFromEdit.Properties.DataSource;
 
             PersonEdit.Properties.DataSource = DBHelper.Persons;

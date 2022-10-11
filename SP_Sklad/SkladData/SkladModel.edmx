@@ -2193,6 +2193,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a prima
           <Property Name="TypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="KType" Type="int" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7650,7 +7651,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentAccount].[BankName] AS [BankName], 
     [v_KAgentAccount].[TypeName] AS [TypeName], 
     [v_KAgentAccount].[KaName] AS [KaName], 
-    [v_KAgentAccount].[KType] AS [KType]
+    [v_KAgentAccount].[KType] AS [KType], 
+    [v_KAgentAccount].[AccountName] AS [AccountName]
     FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAdjustment" EntityType="Self.v_KAgentAdjustment" store:Type="Views" store:Schema="dbo">
@@ -12247,6 +12249,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="KType" Type="Int32" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Serials">
           <Key>
@@ -18739,6 +18742,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KAgentAccount">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
               <MappingFragment StoreEntitySet="v_KAgentAccount">
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
                 <ScalarProperty Name="KType" ColumnName="KType" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />

@@ -35,6 +35,16 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -50,16 +60,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -78,6 +78,12 @@
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.RecipientAccEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.ChargeTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.CommissionEdit = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -91,12 +97,6 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.NotesEdit = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.CommissionEdit = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.ChargeTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.RecipientAccEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.PayDocBS = new System.Windows.Forms.BindingSource(this.components);
             this.AdditionalCostsBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -113,6 +113,9 @@
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipientAccEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).BeginInit();
@@ -122,9 +125,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecipientAccEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdditionalCostsBS)).BeginInit();
             this.SuspendLayout();
@@ -136,14 +136,14 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl4.Location = new System.Drawing.Point(0, 535);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(577, 51);
+            this.panelControl4.Size = new System.Drawing.Size(576, 51);
             this.panelControl4.TabIndex = 11;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(356, 11);
+            this.OkButton.Location = new System.Drawing.Point(355, 11);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -154,7 +154,7 @@
             // 
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton5.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton5.Location = new System.Drawing.Point(465, 11);
+            this.simpleButton5.Location = new System.Drawing.Point(464, 11);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(100, 30);
             this.simpleButton5.TabIndex = 0;
@@ -168,7 +168,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = null;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(577, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(576, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // FormImgList
@@ -197,7 +197,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(577, 111);
+            this.panel1.Size = new System.Drawing.Size(576, 111);
             this.panel1.TabIndex = 18;
             // 
             // panelControl1
@@ -210,7 +210,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(567, 101);
+            this.panelControl1.Size = new System.Drawing.Size(566, 101);
             this.panelControl1.TabIndex = 5;
             // 
             // labelControl2
@@ -319,7 +319,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 111);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(5);
-            this.panel3.Size = new System.Drawing.Size(577, 207);
+            this.panel3.Size = new System.Drawing.Size(576, 207);
             this.panel3.TabIndex = 19;
             // 
             // panelControl3
@@ -341,8 +341,90 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(5, 5);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(567, 197);
+            this.panelControl3.Size = new System.Drawing.Size(566, 197);
             this.panelControl3.TabIndex = 7;
+            // 
+            // RecipientAccEdit
+            // 
+            this.RecipientAccEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "KaAccId", true));
+            this.RecipientAccEdit.Location = new System.Drawing.Point(12, 31);
+            this.RecipientAccEdit.Name = "RecipientAccEdit";
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            this.RecipientAccEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.RecipientAccEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Рахунок"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccountName", "Назва рахунка"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("KaName", "Контрагент"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "Банк")});
+            this.RecipientAccEdit.Properties.DisplayMember = "AccNum";
+            this.RecipientAccEdit.Properties.KeyMember = "AccId";
+            this.RecipientAccEdit.Properties.PopupWidth = 500;
+            this.RecipientAccEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+            this.RecipientAccEdit.Properties.ValueMember = "AccId";
+            this.RecipientAccEdit.Size = new System.Drawing.Size(259, 24);
+            this.RecipientAccEdit.StyleController = this.styleController1;
+            this.RecipientAccEdit.TabIndex = 55;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(12, 9);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(42, 16);
+            this.labelControl10.StyleController = this.styleController1;
+            this.labelControl10.TabIndex = 54;
+            this.labelControl10.Text = "Звідки:";
+            // 
+            // ChargeTypesEdit
+            // 
+            this.ChargeTypesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AdditionalCostsBS, "CTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ChargeTypesEdit.Location = new System.Drawing.Point(171, 162);
+            this.ChargeTypesEdit.Name = "ChargeTypesEdit";
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.ChargeTypesEdit.Properties.DisplayMember = "Name";
+            this.ChargeTypesEdit.Properties.ShowFooter = false;
+            this.ChargeTypesEdit.Properties.ShowHeader = false;
+            this.ChargeTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.ChargeTypesEdit.Properties.ValueMember = "CTypeId";
+            this.ChargeTypesEdit.Size = new System.Drawing.Size(383, 24);
+            this.ChargeTypesEdit.StyleController = this.styleController1;
+            this.ChargeTypesEdit.TabIndex = 46;
+            this.ChargeTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ChargeTypesEdit_ButtonClick);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(171, 140);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(109, 16);
+            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.TabIndex = 45;
+            this.labelControl6.Text = "На статтю витрат:";
+            // 
+            // CommissionEdit
+            // 
+            this.CommissionEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AdditionalCostsBS, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CommissionEdit.Location = new System.Drawing.Point(12, 163);
+            this.CommissionEdit.Name = "CommissionEdit";
+            this.CommissionEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.CommissionEdit.Size = new System.Drawing.Size(129, 22);
+            this.CommissionEdit.StyleController = this.styleController1;
+            this.CommissionEdit.TabIndex = 44;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Location = new System.Drawing.Point(12, 140);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(41, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 43;
+            this.labelControl5.Text = "Комісія";
             // 
             // AccountEdit
             // 
@@ -424,7 +506,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 318);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(5);
-            this.panel5.Size = new System.Drawing.Size(577, 217);
+            this.panel5.Size = new System.Drawing.Size(576, 217);
             this.panel5.TabIndex = 20;
             // 
             // panelControl6
@@ -438,7 +520,7 @@
             this.panelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl6.Location = new System.Drawing.Point(5, 5);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(567, 207);
+            this.panelControl6.Size = new System.Drawing.Size(566, 207);
             this.panelControl6.TabIndex = 12;
             // 
             // PersonEdit
@@ -506,87 +588,6 @@
             this.NotesEdit.Size = new System.Drawing.Size(542, 49);
             this.NotesEdit.TabIndex = 24;
             // 
-            // labelControl5
-            // 
-            this.labelControl5.Location = new System.Drawing.Point(12, 140);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(41, 16);
-            this.labelControl5.StyleController = this.styleController1;
-            this.labelControl5.TabIndex = 43;
-            this.labelControl5.Text = "Комісія";
-            // 
-            // CommissionEdit
-            // 
-            this.CommissionEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AdditionalCostsBS, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CommissionEdit.Location = new System.Drawing.Point(12, 163);
-            this.CommissionEdit.Name = "CommissionEdit";
-            this.CommissionEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CommissionEdit.Size = new System.Drawing.Size(129, 22);
-            this.CommissionEdit.StyleController = this.styleController1;
-            this.CommissionEdit.TabIndex = 44;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(171, 140);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(109, 16);
-            this.labelControl6.StyleController = this.styleController1;
-            this.labelControl6.TabIndex = 45;
-            this.labelControl6.Text = "На статтю витрат:";
-            // 
-            // ChargeTypesEdit
-            // 
-            this.ChargeTypesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AdditionalCostsBS, "CTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ChargeTypesEdit.Location = new System.Drawing.Point(171, 162);
-            this.ChargeTypesEdit.Name = "ChargeTypesEdit";
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.ChargeTypesEdit.Properties.DisplayMember = "Name";
-            this.ChargeTypesEdit.Properties.ShowFooter = false;
-            this.ChargeTypesEdit.Properties.ShowHeader = false;
-            this.ChargeTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.ChargeTypesEdit.Properties.ValueMember = "CTypeId";
-            this.ChargeTypesEdit.Size = new System.Drawing.Size(383, 24);
-            this.ChargeTypesEdit.StyleController = this.styleController1;
-            this.ChargeTypesEdit.TabIndex = 46;
-            this.ChargeTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ChargeTypesEdit_ButtonClick);
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Location = new System.Drawing.Point(12, 9);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(42, 16);
-            this.labelControl10.StyleController = this.styleController1;
-            this.labelControl10.TabIndex = 54;
-            this.labelControl10.Text = "Звідки:";
-            // 
-            // RecipientAccEdit
-            // 
-            this.RecipientAccEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "KaAccId", true));
-            this.RecipientAccEdit.Location = new System.Drawing.Point(12, 31);
-            this.RecipientAccEdit.Name = "RecipientAccEdit";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
-            this.RecipientAccEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.RecipientAccEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Рахунок"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("KaName", "Контрагент"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("BankName", "Банк")});
-            this.RecipientAccEdit.Properties.DisplayMember = "AccNum";
-            this.RecipientAccEdit.Properties.KeyMember = "AccId";
-            this.RecipientAccEdit.Properties.PopupWidth = 500;
-            this.RecipientAccEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
-            this.RecipientAccEdit.Properties.ValueMember = "AccId";
-            this.RecipientAccEdit.Size = new System.Drawing.Size(259, 24);
-            this.RecipientAccEdit.StyleController = this.styleController1;
-            this.RecipientAccEdit.TabIndex = 55;
-            // 
             // PayDocBS
             // 
             this.PayDocBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
@@ -599,7 +600,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(577, 586);
+            this.ClientSize = new System.Drawing.Size(576, 586);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -628,6 +629,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RecipientAccEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommissionEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).EndInit();
@@ -638,9 +642,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommissionEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RecipientAccEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdditionalCostsBS)).EndInit();
             this.ResumeLayout(false);
