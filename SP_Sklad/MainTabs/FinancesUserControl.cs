@@ -292,7 +292,7 @@ namespace SP_Sklad.MainTabs
                         var pd = db.PayDoc.Find(pd_row.PayDocId);
                         pd.Checked = pd_row.Checked == 0 ? 1 : 0;
 
-                        var pd_to = db.PayDoc.FirstOrDefault(w => w.OperId == pd.OperId);
+                        var pd_to = db.PayDoc.FirstOrDefault(w => w.OperId == pd.OperId && pd.PayDocId != w.PayDocId);
                         if (pd_to != null)
                         {
                             pd_to.Checked = pd.Checked;
@@ -360,5 +360,14 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmMoneyIn())
+            {
+                frm.ShowDialog();
+            }
+
+            RefrechItemBtn.PerformClick();
+        }
     }
 }

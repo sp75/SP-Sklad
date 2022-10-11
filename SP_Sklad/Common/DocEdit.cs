@@ -238,23 +238,31 @@ namespace SP_Sklad.Common
                    }
                    trans.Commit();
 
-                   if (pd.Checked == 0)
-                   {
-                       if (pd.DocType == 6)
-                       {
-                           using (var pd_form = new frmMoneyCorrecting(pd_row.PayDocId))
-                           {
-                               pd_form.ShowDialog();
-                           }
-                       }
+                    if (pd.Checked == 0)
+                    {
+                        if (pd.DocType == 6)
+                        {
+                            using (var pd_form = new frmMoneyCorrecting(pd_row.PayDocId))
+                            {
+                                pd_form.ShowDialog();
+                            }
+                        }
 
-                       if (pd.DocType == 3)
-                       {
-                           using (var pd_form = new frmMoneyMove(pd_row.PayDocId))
-                           {
-                               pd_form.ShowDialog();
-                           }
-                       }
+                        if (pd.DocType == 3)
+                        {
+                            using (var pd_form = new frmMoneyMove(pd_row.PayDocId))
+                            {
+                                pd_form.ShowDialog();
+                            }
+                        }
+
+                        if (pd.DocType == 11)
+                        {
+                            using (var pd_form = new frmMoneyIn(pd_row.PayDocId))
+                            {
+                                pd_form.ShowDialog();
+                            }
+                        }
                     }
 
                }

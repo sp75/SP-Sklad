@@ -530,6 +530,7 @@
           <Property Name="BankId" Type="int" Nullable="false" />
           <Property Name="AccNum" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Def" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="KAgentAdjustment">
           <Key>
@@ -11581,6 +11582,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Banks" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="Banks" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
@@ -18217,6 +18219,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KAgentAccount">
             <EntityTypeMapping TypeName="BaseModel.KAgentAccount">
               <MappingFragment StoreEntitySet="KAgentAccount">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="AccNum" ColumnName="AccNum" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />

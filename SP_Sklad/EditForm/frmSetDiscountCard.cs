@@ -64,7 +64,7 @@ namespace SP_Sklad.ViewsForm
                 foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId))
                 {
                     var DiscountPrice = item.BasePrice - (item.BasePrice * cart.OnValue / 100);
-                    item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
+                    item.Price = Math.Round(DiscountPrice.Value * 100 / (100 + item.Nds.Value), 2);
                     item.Discount = cart.OnValue;
                     item.DiscountKind = 2;
 

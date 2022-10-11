@@ -81,7 +81,7 @@ namespace SP_Sklad.FinanseForm
             if (_PayDocId == null)
             {
                 int w_type = _DocType.Value != -2 ? _DocType.Value * 3 : _DocType.Value;
-                string doc_setting_name = w_type == -3 ? "pay_doc_out" : w_type == 3 ? "pay_doc_in" : "pay_doc";
+                string doc_setting_name = w_type == -3 ? "pay_doc_out" : (w_type == 3 ? "pay_doc_in" : "pay_doc");
                 _pd = _db.PayDoc.Add(new PayDoc
                 {
                     Id = Guid.NewGuid(),

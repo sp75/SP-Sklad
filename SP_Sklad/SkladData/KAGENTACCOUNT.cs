@@ -26,6 +26,7 @@ namespace SP_Sklad.SkladData
         public int BankId { get; set; }
         public string AccNum { get; set; }
         public Nullable<int> Def { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
         public virtual AccountType AccountType { get; set; }

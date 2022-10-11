@@ -241,7 +241,7 @@ namespace SP_Sklad.WBForm
                     TotalPayment = receipt.total_payment,
                     TotalSum = receipt.total_sum,
                     Status = receipt.status,
-                    ShiftId = receipt.shift.id,
+                    ShiftId = receipt.shift != null ? (Guid?)receipt.shift.id : null,
                     BarCode = receipt.barcode,
                     FiscalCode = receipt.fiscal_code,
                     FiscalDate = receipt.fiscal_date,
