@@ -103,7 +103,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BankStatementId" Type="uniqueidentifier" />
-          <Property Name="PayerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PayerAccountName" Type="nvarchar" MaxLength="100" />
           <Property Name="TransactionDate" Type="datetime" />
           <Property Name="PayerEGRPOU" Type="nvarchar" MaxLength="10" />
           <Property Name="PayerBankMFO" Type="nvarchar" MaxLength="10" />
@@ -117,8 +117,11 @@
           <Property Name="RecipientAccount" Type="nvarchar" MaxLength="50" />
           <Property Name="RecipientEGRPOU" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientBankMFO" Type="nvarchar" MaxLength="10" />
-          <Property Name="RecipientName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RecipientAccountName" Type="nvarchar" MaxLength="100" />
           <Property Name="KaId" Type="int" />
+          <Property Name="RecipientBankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PayerBankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankCommission" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="Cars">
           <Key>
@@ -519,6 +522,7 @@
           <Property Name="Declaration" Type="nvarchar(max)" />
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="WId" Type="int" />
+          <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -922,6 +926,7 @@
           <Property Name="ActualSummInCurr" Type="numeric" Precision="15" Scale="2" StoreGeneratedPattern="Computed" />
           <Property Name="ReceiptId" Type="uniqueidentifier" />
           <Property Name="KaAccId" Type="int" />
+          <Property Name="BankCommission" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="PayDocType">
           <Key>
@@ -1864,15 +1869,18 @@ warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a p
           <Property Name="BankName" Type="nvarchar" MaxLength="50" />
           <Property Name="DocNum" Type="nvarchar" MaxLength="50" />
           <Property Name="ChargeTypeName" Type="nvarchar" MaxLength="128" />
-          <Property Name="PayerName" Type="nvarchar" MaxLength="100" />
           <Property Name="PayerEGRPOU" Type="nvarchar" MaxLength="10" />
           <Property Name="PayerBankMFO" Type="nvarchar" MaxLength="10" />
           <Property Name="PayerAccount" Type="nvarchar" MaxLength="50" />
-          <Property Name="RecipientName" Type="nvarchar" MaxLength="100" />
           <Property Name="RecipientBankMFO" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientEGRPOU" Type="nvarchar" MaxLength="10" />
           <Property Name="RecipientAccount" Type="nvarchar" MaxLength="50" />
           <Property Name="CTypeId" Type="int" />
+          <Property Name="PayerBankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RecipientBankName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RecipientAccountName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PayerAccountName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BankCommission" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2400,6 +2408,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key 
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="ActualSummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="KaAccNum" Type="varchar" MaxLength="64" />
+          <Property Name="BankCommission" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7420,15 +7429,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_BankStatementsDet].[BankName] AS [BankName], 
     [v_BankStatementsDet].[DocNum] AS [DocNum], 
     [v_BankStatementsDet].[ChargeTypeName] AS [ChargeTypeName], 
-    [v_BankStatementsDet].[PayerName] AS [PayerName], 
     [v_BankStatementsDet].[PayerEGRPOU] AS [PayerEGRPOU], 
     [v_BankStatementsDet].[PayerBankMFO] AS [PayerBankMFO], 
     [v_BankStatementsDet].[PayerAccount] AS [PayerAccount], 
-    [v_BankStatementsDet].[RecipientName] AS [RecipientName], 
     [v_BankStatementsDet].[RecipientBankMFO] AS [RecipientBankMFO], 
     [v_BankStatementsDet].[RecipientEGRPOU] AS [RecipientEGRPOU], 
     [v_BankStatementsDet].[RecipientAccount] AS [RecipientAccount], 
-    [v_BankStatementsDet].[CTypeId] AS [CTypeId]
+    [v_BankStatementsDet].[CTypeId] AS [CTypeId], 
+    [v_BankStatementsDet].[PayerBankName] AS [PayerBankName], 
+    [v_BankStatementsDet].[RecipientBankName] AS [RecipientBankName], 
+    [v_BankStatementsDet].[RecipientAccountName] AS [RecipientAccountName], 
+    [v_BankStatementsDet].[PayerAccountName] AS [PayerAccountName], 
+    [v_BankStatementsDet].[BankCommission] AS [BankCommission]
     FROM [dbo].[v_BankStatementsDet] AS [v_BankStatementsDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
@@ -7808,7 +7820,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PayDoc].[SummInCurr] AS [SummInCurr], 
     [v_PayDoc].[DocTypeName] AS [DocTypeName], 
     [v_PayDoc].[ActualSummInCurr] AS [ActualSummInCurr], 
-    [v_PayDoc].[KaAccNum] AS [KaAccNum]
+    [v_PayDoc].[KaAccNum] AS [KaAccNum], 
+    [v_PayDoc].[BankCommission] AS [BankCommission]
     FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PlannedCalculation" EntityType="Self.v_PlannedCalculation" store:Type="Views" store:Schema="dbo">
@@ -13660,6 +13673,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
+          <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -14965,6 +14979,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="ActualSummInCurr" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="KaAccNum" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BankCommission" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_MatRecipe">
           <Key>
@@ -15074,6 +15089,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ActualSummInCurr" Type="Decimal" Precision="15" Scale="2" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ReceiptId" Type="Guid" />
           <Property Name="KaAccId" Type="Int32" />
+          <Property Name="BankCommission" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -17309,15 +17325,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="BankName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DocNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ChargeTypeName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="PayerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PayerEGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="PayerBankMFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="PayerAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RecipientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="RecipientBankMFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientEGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CTypeId" Type="Int32" />
+          <Property Name="PayerBankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientBankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientAccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PayerAccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BankCommission" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="BankStatementsDet">
           <Key>
@@ -17325,7 +17344,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="BankStatementId" Type="Guid" />
-          <Property Name="PayerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PayerAccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TransactionDate" Type="DateTime" Precision="3" />
           <Property Name="PayerEGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="PayerBankMFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -17339,9 +17358,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RecipientAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RecipientEGRPOU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="RecipientBankMFO" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="RecipientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecipientAccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="KaId" Type="Int32" />
+          <Property Name="RecipientBankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PayerBankName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BankStatements" Relationship="BaseModel.FK_BankStatementsDet_BankStatements" FromRole="BankStatementsDet" ToRole="BankStatements" />
+          <Property Name="BankCommission" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <Association Name="FK_BankStatementsDet_BankStatements">
           <End Type="BaseModel.BankStatements" Role="BankStatements" Multiplicity="0..1">
@@ -19493,6 +19515,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
                 <ScalarProperty Name="Declaration" ColumnName="Declaration" />
@@ -20309,6 +20332,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
+                <ScalarProperty Name="BankCommission" ColumnName="BankCommission" />
                 <ScalarProperty Name="KaAccNum" ColumnName="KaAccNum" />
                 <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
                 <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
@@ -20423,6 +20447,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="PayDoc">
             <EntityTypeMapping TypeName="BaseModel.PayDoc">
               <MappingFragment StoreEntitySet="PayDoc">
+                <ScalarProperty Name="BankCommission" ColumnName="BankCommission" />
                 <ScalarProperty Name="KaAccId" ColumnName="KaAccId" />
                 <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="ActualSummInCurr" ColumnName="ActualSummInCurr" />
@@ -21997,15 +22022,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.v_BankStatementsDet">
               <MappingFragment StoreEntitySet="v_BankStatementsDet">
+                <ScalarProperty Name="BankCommission" ColumnName="BankCommission" />
+                <ScalarProperty Name="PayerAccountName" ColumnName="PayerAccountName" />
+                <ScalarProperty Name="RecipientAccountName" ColumnName="RecipientAccountName" />
+                <ScalarProperty Name="RecipientBankName" ColumnName="RecipientBankName" />
+                <ScalarProperty Name="PayerBankName" ColumnName="PayerBankName" />
                 <ScalarProperty Name="CTypeId" ColumnName="CTypeId" />
                 <ScalarProperty Name="RecipientAccount" ColumnName="RecipientAccount" />
                 <ScalarProperty Name="RecipientEGRPOU" ColumnName="RecipientEGRPOU" />
                 <ScalarProperty Name="RecipientBankMFO" ColumnName="RecipientBankMFO" />
-                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
                 <ScalarProperty Name="PayerAccount" ColumnName="PayerAccount" />
                 <ScalarProperty Name="PayerBankMFO" ColumnName="PayerBankMFO" />
                 <ScalarProperty Name="PayerEGRPOU" ColumnName="PayerEGRPOU" />
-                <ScalarProperty Name="PayerName" ColumnName="PayerName" />
                 <ScalarProperty Name="ChargeTypeName" ColumnName="ChargeTypeName" />
                 <ScalarProperty Name="DocNum" ColumnName="DocNum" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
@@ -22022,8 +22050,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.BankStatementsDet">
               <MappingFragment StoreEntitySet="BankStatementsDet">
+                <ScalarProperty Name="BankCommission" ColumnName="BankCommission" />
+                <ScalarProperty Name="PayerBankName" ColumnName="PayerBankName" />
+                <ScalarProperty Name="RecipientBankName" ColumnName="RecipientBankName" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="RecipientName" ColumnName="RecipientName" />
+                <ScalarProperty Name="RecipientAccountName" ColumnName="RecipientAccountName" />
                 <ScalarProperty Name="RecipientBankMFO" ColumnName="RecipientBankMFO" />
                 <ScalarProperty Name="RecipientEGRPOU" ColumnName="RecipientEGRPOU" />
                 <ScalarProperty Name="RecipientAccount" ColumnName="RecipientAccount" />
@@ -22037,7 +22068,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="PayerBankMFO" ColumnName="PayerBankMFO" />
                 <ScalarProperty Name="PayerEGRPOU" ColumnName="PayerEGRPOU" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
-                <ScalarProperty Name="PayerName" ColumnName="PayerName" />
+                <ScalarProperty Name="PayerAccountName" ColumnName="PayerAccountName" />
                 <ScalarProperty Name="BankStatementId" ColumnName="BankStatementId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -832,21 +832,21 @@ namespace SP_Sklad.EditForm
                 AspNetUserLookUpEdit.EditValue = null;
             }
         }
-/*
-        private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-            if (checkedComboBoxEdit2.ContainsFocus)
-            {
-                _db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
+        /*
+       private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+       {
+           if (checkedComboBoxEdit2.ContainsFocus)
+           {
+               _db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
 
-                foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
-                {
-                    _db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
-                }
+               foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+               {
+                   _db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
+               }
 
-                _db.SaveChanges();
-            }
-        }*/
+               _db.SaveChanges();
+           }
+       }*/
 
     }
 }

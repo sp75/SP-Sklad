@@ -24,14 +24,17 @@ namespace SP_Sklad.SkladData
         public string BankName { get; set; }
         public string DocNum { get; set; }
         public string ChargeTypeName { get; set; }
-        public string PayerName { get; set; }
         public string PayerEGRPOU { get; set; }
         public string PayerBankMFO { get; set; }
         public string PayerAccount { get; set; }
-        public string RecipientName { get; set; }
         public string RecipientBankMFO { get; set; }
         public string RecipientEGRPOU { get; set; }
         public string RecipientAccount { get; set; }
         public Nullable<int> CTypeId { get; set; }
+        public string PayerBankName { get; set; }
+        public string RecipientBankName { get; set; }
+        public string RecipientAccountName { get; set; }
+        public string PayerAccountName { get; set; }
+        public Nullable<decimal> BankCommission { get; set; }
     }
 }

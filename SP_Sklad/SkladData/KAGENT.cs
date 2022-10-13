@@ -90,6 +90,7 @@ namespace SP_Sklad.SkladData
         public string Declaration { get; set; }
         public string AspNetUserId { get; set; }
         public Nullable<int> WId { get; set; }
+        public string POSTerminalCode { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }

@@ -335,7 +335,7 @@
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
-        <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="33.625" PointY="22.375" />
+        <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="1.5" PointX="33.625" PointY="22.25" />
         <AssociationConnector Association="BaseModel.FK_BankStatementsDet_BankStatements" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >

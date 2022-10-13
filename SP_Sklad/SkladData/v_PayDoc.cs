@@ -60,5 +60,6 @@ namespace SP_Sklad.SkladData
         public string DocTypeName { get; set; }
         public Nullable<decimal> ActualSummInCurr { get; set; }
         public string KaAccNum { get; set; }
+        public Nullable<decimal> BankCommission { get; set; }
     }
 }

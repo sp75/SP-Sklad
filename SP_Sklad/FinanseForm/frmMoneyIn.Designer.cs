@@ -408,7 +408,7 @@
             // 
             // CommissionEdit
             // 
-            this.CommissionEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AdditionalCostsBS, "Total", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.CommissionEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.PayDocBS, "BankCommission", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CommissionEdit.Location = new System.Drawing.Point(12, 163);
             this.CommissionEdit.Name = "CommissionEdit";
             this.CommissionEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

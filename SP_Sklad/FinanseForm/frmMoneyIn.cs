@@ -38,8 +38,8 @@ namespace SP_Sklad.FinanseForm
             RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KType != 3).ToList();
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
-            var ent_id = DBHelper.Enterprise.KaId ;
-            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s=> new {s.AccId, s.AccNum, s.BankName }).ToList();
+            var ent_id = DBHelper.Enterprise.KaId;
+            AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
 
             if (_PayDocId == null)
             {
@@ -79,22 +79,22 @@ namespace SP_Sklad.FinanseForm
 
             if (_pd != null)
             {
-                 _pd.UpdatedBy = DBHelper.CurrentUser.UserId;
+                _pd.UpdatedBy = DBHelper.CurrentUser.UserId;
                 PayDocBS.DataSource = _pd;
             }
 
             _pd_additional_costs = _db.PayDoc.FirstOrDefault(w => w.OperId == _pd.OperId && w.DocType == -2);
 
-            if(_pd_additional_costs == null)
+            if (_pd_additional_costs == null)
             {
-                _pd_additional_costs = _pd_additional_costs = new PayDoc
+                _pd_additional_costs = new PayDoc
                 {
                     Id = Guid.NewGuid(),
                     Checked = 1,
                     DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
                     OnDate = DBHelper.ServerDateTime(),
                     Total = 0,
-                    CTypeId = DBHelper.ChargeTypes.Any(a => a.Def == 1) ? DBHelper.ChargeTypes.FirstOrDefault(w => w.Def == 1).CTypeId : DBHelper.ChargeTypes.FirstOrDefault().CTypeId,// За товар
+                    CTypeId = 0,
                     WithNDS = 1,// З НДС
                     PTypeId = 1,// Наличкой
                     CashId = DBHelper.CashDesks.Where(w => w.Def == 1).Select(s => s.CashId).FirstOrDefault(),// Каса по умолчанию
@@ -111,7 +111,6 @@ namespace SP_Sklad.FinanseForm
             }
 
             AdditionalCostsBS.DataSource = _pd_additional_costs;
-
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -120,6 +119,11 @@ namespace SP_Sklad.FinanseForm
             _pd_additional_costs.AccId = _pd.AccId;
             _pd_additional_costs.CashId = _pd.CashId;
             _pd_additional_costs.PTypeId = _pd.PTypeId;
+
+            if(_pd_additional_costs.CTypeId > 0)
+            {
+                _pd_additional_costs.Total = _pd.BankCommission ?? 0;
+            }
 
             if (_pd_additional_costs.Total > 0)
             {

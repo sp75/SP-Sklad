@@ -44,6 +44,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ActualSummInCurr { get; set; }
         public Nullable<System.Guid> ReceiptId { get; set; }
         public Nullable<int> KaAccId { get; set; }
+        public Nullable<decimal> BankCommission { get; set; }
     
         public virtual CashDesks CashDesks { get; set; }
         public virtual ChargeType ChargeType { get; set; }

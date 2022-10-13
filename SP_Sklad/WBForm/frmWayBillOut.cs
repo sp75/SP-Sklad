@@ -73,7 +73,7 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     EntId = DBHelper.Enterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    ShipmentDate = DBHelper.ServerDateTime(),
+                    ShipmentDate = DBHelper.ServerDateTime().Date.AddHours(8),
                     PTypeId = 1
                 });
 
