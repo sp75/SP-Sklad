@@ -245,7 +245,7 @@ namespace SP_Sklad.WBForm
                             MPersonId = DBHelper.CurrentUser.KaId,
                             DocType = -2, //Додаткові витрати
                             UpdatedBy = UserSession.UserId,
-                            EntId = UserSession.EnterpriseId,
+                            EntId = payer_account.KAId,
                             ReportingDate = item.TransactionDate.Value,
                             KaAccId = recipient_account.AccId,
                             KaId = recipient_account.KAId,
@@ -279,7 +279,7 @@ namespace SP_Sklad.WBForm
                             MPersonId = DBHelper.CurrentUser.KaId,
                             DocType = -3,
                             UpdatedBy = DBHelper.CurrentUser.UserId,
-                            EntId = DBHelper.Enterprise.KaId,
+                            EntId = payer_account.KAId,
                             OperId = oper_id,
                             Reason = item.Reason,
                             AccId = item.PaySum.Value < 0 ? payer_account.AccId : recipient_account.AccId
@@ -301,10 +301,10 @@ namespace SP_Sklad.WBForm
                             MPersonId = DBHelper.CurrentUser.KaId,
                             DocType = 3,
                             UpdatedBy = DBHelper.CurrentUser.UserId,
-                            EntId = DBHelper.Enterprise.KaId,
+                            EntId = payer_account.KAId,
                             OperId = oper_id,
                             Reason = item.Reason,
-                            AccId = item.PaySum.Value > 0 ? recipient_account.AccId : payer_account.AccId
+                            AccId = item.PaySum.Value > 0 ? payer_account.AccId : recipient_account.AccId
                         });
 
                         _db.SetDocRel(bs.Id, _pd_from.Id);

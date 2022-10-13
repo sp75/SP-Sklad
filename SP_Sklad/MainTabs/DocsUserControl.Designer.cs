@@ -1101,6 +1101,7 @@
             this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
             this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
             this.GridImageList.Images.SetKeyName(44, "CostAnalysis_16x16.png");
+            this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
             // 
             // gridColumn2
             // 
@@ -6153,7 +6154,11 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 33, 45),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -9, 40),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6)});
             this.repositoryItemImageComboBox37.Name = "repositoryItemImageComboBox37";
             this.repositoryItemImageComboBox37.SmallImages = this.GridImageList;
             // 

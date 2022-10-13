@@ -127,6 +127,10 @@ namespace SP_Sklad.Common
                 case -3: SetPayDocFilter(30);
                     break;
 
+                case -2:
+                    SetPayDocFilter(103);
+                    break;
+
                 case 2: SetDocFilter(39);
                     break;
 
