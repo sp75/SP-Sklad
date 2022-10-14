@@ -17,7 +17,7 @@ namespace SP_Sklad.SkladData
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> BankStatementId { get; set; }
         public string PayerAccountName { get; set; }
-        public Nullable<System.DateTime> TransactionDate { get; set; }
+        public System.DateTime TransactionDate { get; set; }
         public string PayerEGRPOU { get; set; }
         public string PayerBankMFO { get; set; }
         public string PayerAccount { get; set; }
@@ -35,7 +35,12 @@ namespace SP_Sklad.SkladData
         public string RecipientBankName { get; set; }
         public string PayerBankName { get; set; }
         public Nullable<decimal> BankCommission { get; set; }
+        public Nullable<int> DocTypeId { get; set; }
+        public Nullable<int> PayerAccountAccId { get; set; }
+        public Nullable<int> RecipientAccountAccId { get; set; }
     
         public virtual BankStatements BankStatements { get; set; }
+        public virtual KAgentAccount PayerKAgentAccount { get; set; }
+        public virtual KAgentAccount RecipientKAgentAccount { get; set; }
     }
 }

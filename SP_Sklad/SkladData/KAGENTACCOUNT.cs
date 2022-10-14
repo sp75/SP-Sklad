@@ -18,6 +18,8 @@ namespace SP_Sklad.SkladData
         {
             this.MoneySaldo = new HashSet<MoneySaldo>();
             this.PayDoc = new HashSet<PayDoc>();
+            this.BankStatementsDet = new HashSet<BankStatementsDet>();
+            this.BankStatementsDet1 = new HashSet<BankStatementsDet>();
         }
     
         public int AccId { get; set; }
@@ -33,5 +35,7 @@ namespace SP_Sklad.SkladData
         public virtual Banks Banks { get; set; }
         public virtual Kagent Kagent { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<BankStatementsDet> BankStatementsDet { get; set; }
+        public virtual ICollection<BankStatementsDet> BankStatementsDet1 { get; set; }
     }
 }

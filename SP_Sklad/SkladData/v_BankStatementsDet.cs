@@ -36,5 +36,7 @@ namespace SP_Sklad.SkladData
         public string RecipientAccountName { get; set; }
         public string PayerAccountName { get; set; }
         public Nullable<decimal> BankCommission { get; set; }
+        public Nullable<int> DocTypeId { get; set; }
+        public string DocTypeName { get; set; }
     }
 }

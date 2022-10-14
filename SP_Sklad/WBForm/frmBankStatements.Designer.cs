@@ -104,6 +104,7 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colFOP = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colAccount = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -310,7 +311,7 @@
             this.standaloneBarDockControl5.Location = new System.Drawing.Point(0, 198);
             this.standaloneBarDockControl5.Manager = this.barManager1;
             this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
-            this.standaloneBarDockControl5.Size = new System.Drawing.Size(1225, 24);
+            this.standaloneBarDockControl5.Size = new System.Drawing.Size(1332, 24);
             this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
             // 
             // barDockControlTop
@@ -319,7 +320,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1225, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1332, 24);
             // 
             // barDockControlBottom
             // 
@@ -327,7 +328,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 621);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1225, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1332, 0);
             // 
             // barDockControlLeft
             // 
@@ -341,7 +342,7 @@
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl3.Location = new System.Drawing.Point(1225, 24);
+            this.barDockControl3.Location = new System.Drawing.Point(1332, 24);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Size = new System.Drawing.Size(0, 597);
             // 
@@ -353,7 +354,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1225, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1332, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // standaloneBarDockControl2
@@ -364,7 +365,7 @@
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1225, 0);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1332, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // standaloneBarDockControl3
@@ -375,7 +376,7 @@
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1225, 0);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1332, 0);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // standaloneBarDockControl4
@@ -386,7 +387,7 @@
             this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl4.Manager = this.barManager1;
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
-            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1225, 0);
+            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1332, 0);
             this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
             // 
             // RsvInfoBtn
@@ -435,7 +436,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl3.Size = new System.Drawing.Size(1225, 174);
+            this.panelControl3.Size = new System.Drawing.Size(1332, 174);
             this.panelControl3.TabIndex = 19;
             // 
             // panel1
@@ -455,7 +456,7 @@
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(1215, 164);
+            this.panel1.Size = new System.Drawing.Size(1322, 164);
             this.panel1.TabIndex = 14;
             // 
             // labelControl14
@@ -464,10 +465,10 @@
             this.labelControl14.Appearance.Options.UseFont = true;
             this.labelControl14.Location = new System.Drawing.Point(363, 43);
             this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(47, 16);
+            this.labelControl14.Size = new System.Drawing.Size(219, 16);
             this.labelControl14.StyleController = this.styleController1;
             this.labelControl14.TabIndex = 43;
-            this.labelControl14.Text = "Рахунок";
+            this.labelControl14.Text = "Рахунок для зарахування еквайрингу";
             // 
             // AccountEdit
             // 
@@ -603,13 +604,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 569);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1225, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1332, 52);
             this.panelControl2.TabIndex = 20;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(1003, 10);
+            this.OkButton.Location = new System.Drawing.Point(1110, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -619,7 +620,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(1113, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(1220, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -633,7 +634,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 222);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1225, 347);
+            this.panelControl5.Size = new System.Drawing.Size(1332, 347);
             this.panelControl5.TabIndex = 21;
             // 
             // BankStatementsDetGridControl
@@ -648,7 +649,7 @@
             this.repositoryItemButtonEdit1,
             this.repositoryItemCheckEdit1,
             this.repositoryItemLookUpEdit1});
-            this.BankStatementsDetGridControl.Size = new System.Drawing.Size(1221, 343);
+            this.BankStatementsDetGridControl.Size = new System.Drawing.Size(1328, 343);
             this.BankStatementsDetGridControl.TabIndex = 2;
             this.BankStatementsDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.BankStatementsDetGridView});
@@ -684,7 +685,8 @@
             this.bandedGridColumn3,
             this.bandedGridColumn4,
             this.bandedGridColumn5,
-            this.bandedGridColumn6});
+            this.bandedGridColumn6,
+            this.bandedGridColumn7});
             this.BankStatementsDetGridView.GridControl = this.BankStatementsDetGridControl;
             this.BankStatementsDetGridView.Name = "BankStatementsDetGridView";
             this.BankStatementsDetGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
@@ -711,9 +713,10 @@
             this.gridBand3.Columns.Add(this.bandedGridColumn6);
             this.gridBand3.Columns.Add(this.colKagentName);
             this.gridBand3.Columns.Add(this.bandedGridColumn5);
+            this.gridBand3.Columns.Add(this.bandedGridColumn7);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 0;
-            this.gridBand3.Width = 853;
+            this.gridBand3.Width = 813;
             // 
             // gridColumn1
             // 
@@ -721,9 +724,11 @@
             this.gridColumn1.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn1.FieldName = "Checked";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowMove = false;
+            this.gridColumn1.OptionsColumn.AllowSize = false;
             this.gridColumn1.OptionsColumn.ReadOnly = true;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.Width = 58;
+            this.gridColumn1.Width = 34;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -739,7 +744,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.Width = 93;
+            this.gridColumn2.Width = 66;
             // 
             // gridColumn3
             // 
@@ -748,7 +753,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.Width = 68;
+            this.gridColumn3.Width = 49;
             // 
             // colTransactionDate
             // 
@@ -759,7 +764,7 @@
             this.colTransactionDate.Name = "colTransactionDate";
             this.colTransactionDate.OptionsColumn.ReadOnly = true;
             this.colTransactionDate.Visible = true;
-            this.colTransactionDate.Width = 130;
+            this.colTransactionDate.Width = 107;
             // 
             // colReason
             // 
@@ -776,7 +781,7 @@
             this.colPaySum.Name = "colPaySum";
             this.colPaySum.OptionsColumn.ReadOnly = true;
             this.colPaySum.Visible = true;
-            this.colPaySum.Width = 77;
+            this.colPaySum.Width = 63;
             // 
             // bandedGridColumn6
             // 
@@ -784,6 +789,7 @@
             this.bandedGridColumn6.FieldName = "BankCommission";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
             this.bandedGridColumn6.Visible = true;
+            this.bandedGridColumn6.Width = 63;
             // 
             // colKagentName
             // 
@@ -794,7 +800,7 @@
             this.colKagentName.FieldName = "KagentName";
             this.colKagentName.Name = "colKagentName";
             this.colKagentName.Visible = true;
-            this.colKagentName.Width = 170;
+            this.colKagentName.Width = 111;
             // 
             // repositoryItemButtonEdit1
             // 
@@ -814,7 +820,7 @@
             this.bandedGridColumn5.FieldName = "CTypeId";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.Width = 182;
+            this.bandedGridColumn5.Width = 124;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -836,6 +842,14 @@
             this.repositoryItemLookUpEdit1.ValueMember = "CTypeId";
             this.repositoryItemLookUpEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemLookUpEdit1_ButtonClick);
             // 
+            // bandedGridColumn7
+            // 
+            this.bandedGridColumn7.Caption = "Тип документу";
+            this.bandedGridColumn7.FieldName = "DocTypeName";
+            this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Visible = true;
+            this.bandedGridColumn7.Width = 196;
+            // 
             // gridBand1
             // 
             this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
@@ -847,7 +861,7 @@
             this.gridBand1.Columns.Add(this.colMFO);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 1;
-            this.gridBand1.Width = 219;
+            this.gridBand1.Width = 227;
             // 
             // colFOP
             // 
@@ -856,7 +870,7 @@
             this.colFOP.Name = "colFOP";
             this.colFOP.OptionsColumn.ReadOnly = true;
             this.colFOP.Visible = true;
-            this.colFOP.Width = 64;
+            this.colFOP.Width = 82;
             // 
             // colAccount
             // 
@@ -865,7 +879,7 @@
             this.colAccount.Name = "colAccount";
             this.colAccount.OptionsColumn.ReadOnly = true;
             this.colAccount.Visible = true;
-            this.colAccount.Width = 52;
+            this.colAccount.Width = 82;
             // 
             // colEGRPOU
             // 
@@ -874,7 +888,7 @@
             this.colEGRPOU.Name = "colEGRPOU";
             this.colEGRPOU.OptionsColumn.ReadOnly = true;
             this.colEGRPOU.Visible = true;
-            this.colEGRPOU.Width = 103;
+            this.colEGRPOU.Width = 63;
             // 
             // colMFO
             // 
@@ -895,7 +909,7 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn2);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 199;
+            this.gridBand2.Width = 263;
             // 
             // bandedGridColumn4
             // 
@@ -903,7 +917,7 @@
             this.bandedGridColumn4.FieldName = "RecipientAccountName";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 59;
+            this.bandedGridColumn4.Width = 99;
             // 
             // bandedGridColumn1
             // 
@@ -911,7 +925,7 @@
             this.bandedGridColumn1.FieldName = "RecipientAccount";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 51;
+            this.bandedGridColumn1.Width = 48;
             // 
             // bandedGridColumn3
             // 
@@ -919,7 +933,7 @@
             this.bandedGridColumn3.FieldName = "RecipientEGRPOU";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 89;
+            this.bandedGridColumn3.Width = 116;
             // 
             // bandedGridColumn2
             // 
@@ -934,7 +948,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Manager = null;
-            this.barDockControl1.Size = new System.Drawing.Size(1221, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1328, 0);
             // 
             // ofdDBF
             // 
@@ -957,7 +971,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1225, 621);
+            this.ClientSize = new System.Drawing.Size(1332, 621);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl5);
             this.Controls.Add(this.panelControl2);
@@ -1076,11 +1090,12 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraEditors.LookUpEdit AccountEdit;
         private DevExpress.XtraEditors.LabelControl labelControl14;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
     }
 }
