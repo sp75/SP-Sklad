@@ -380,6 +380,10 @@ namespace SP_Sklad.MainTabs
                 case 4:
                     switch (focused_tree_node.FunId)
                     {
+                        case 3:
+                            result = new frmCurrencyRate((CurrencyGridView.GetFocusedRow() as Currency).CurrId, DateTime.Now).ShowDialog();
+                            break;
+
                         case 20:
                             result = new frmWarehouseEdit((WarehouseGridView.GetFocusedRow() as Warehouse).WId).ShowDialog();
                             break;

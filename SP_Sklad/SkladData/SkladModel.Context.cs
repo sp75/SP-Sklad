@@ -2096,23 +2096,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<MoneyMoveList_Result>("[BaseEntities].[MoneyMoveList](@doc_type, @from_date, @to_date, @is_checked, @person_id)", doc_typeParameter, from_dateParameter, to_dateParameter, is_checkedParameter, person_idParameter);
         }
     
-        public virtual ObjectResult<GetSaldoDetTree_Result> GetSaldoDetTree(Nullable<int> user_id, Nullable<int> id, Nullable<System.DateTime> on_date)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetMatGroupPriceTypes")]
         public virtual IQueryable<GetMatGroupPriceTypes_Result> GetMatGroupPriceTypes(Nullable<int> grp_id)
         {
@@ -2537,6 +2520,23 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<GetSaldoDetTree_Result> GetSaldoDetTree(Nullable<int> user_id, Nullable<int> id, Nullable<System.DateTime> on_date)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
         }
     }
 }

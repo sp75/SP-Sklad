@@ -154,9 +154,10 @@ namespace SP_Sklad.WBForm
                     {
                         Name = item.RecipientAccountName,
                         OKPO = item.RecipientEGRPOU,
+                        INN = item.RecipientEGRPOU.Trim().Length == 10 ? item.RecipientEGRPOU : "",
                         KaKind = 6,
                         Id = Guid.NewGuid(),
-                        KType = 0,
+                        KType = item.RecipientEGRPOU.Trim().Length == 10 ? 1 : 0,
                         KAgentAccount = new List<KAgentAccount>() { new KAgentAccount { AccNum = item.RecipientAccount, Banks = recipient_bank, TypeId = 1, Name = item.RecipientAccountName } }
                     });
                 }

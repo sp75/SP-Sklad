@@ -20,5 +20,6 @@ namespace SP_Sklad.SkladData
         public string Name { get; set; }
         public Nullable<decimal> Saldo { get; set; }
         public int OriginalId { get; set; }
+        public string KaName { get; set; }
     }
 }

@@ -10137,11 +10137,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="is_checked" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetSaldoDetTree" ReturnType="Collection(BaseModel.GetSaldoDetTree_Result)">
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-            <Parameter Name="id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <FunctionImport Name="GetMatGroupPriceTypes" IsComposable="true" ReturnType="Collection(BaseModel.GetMatGroupPriceTypes_Result)">
           <Parameter Name="grp_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -10450,6 +10445,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="BankStatementsDet" EntitySet="BankStatementsDet" />
           </AssociationSet>
+          <FunctionImport Name="GetSaldoDetTree" ReturnType="Collection(BaseModel.GetSaldoDetTree_Result)">
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15618,15 +15618,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
         </ComplexType>
-        <ComplexType Name="GetSaldoDetTree_Result">
-          <Property Type="Int32" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="PId" Nullable="false" />
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
-          <Property Type="Int32" Name="OriginalId" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="GetMatGroupPriceTypes_Result">
           <Property Type="Int32" Name="PTypeId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
@@ -17462,6 +17453,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="GetSaldoDetTree_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="PId" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="ImageIndex" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Int32" Name="OriginalId" Nullable="false" />
+          <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -20786,19 +20787,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetSaldoDetTree" FunctionName="BaseModel.Store.GetSaldoDetTree">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetSaldoDetTree_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PId" ColumnName="PId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="OriginalId" ColumnName="OriginalId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetMatGroupPriceTypes" FunctionName="BaseModel.Store.GetMatGroupPriceTypes">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetMatGroupPriceTypes_Result">
@@ -22163,6 +22151,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetSaldoDetTree" FunctionName="BaseModel.Store.GetSaldoDetTree">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetSaldoDetTree_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ImageIndex" ColumnName="ImageIndex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="OriginalId" ColumnName="OriginalId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

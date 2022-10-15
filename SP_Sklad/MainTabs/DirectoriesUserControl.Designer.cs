@@ -112,6 +112,7 @@
             this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -336,9 +337,9 @@
             this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn92 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.CurrencyGridControl = new DevExpress.XtraGrid.GridControl();
             this.CurrencyBS = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CurrencyGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colShortName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDef1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -381,7 +382,6 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -531,9 +531,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).BeginInit();
             this.xtraTabPage17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyGridView)).BeginInit();
             this.xtraTabPage32.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).BeginInit();
@@ -1508,6 +1508,15 @@
             this.gridColumn103.Visible = true;
             this.gridColumn103.VisibleIndex = 5;
             this.gridColumn103.Width = 61;
+            // 
+            // gridColumn104
+            // 
+            this.gridColumn104.Caption = "ІПН";
+            this.gridColumn104.FieldName = "INN";
+            this.gridColumn104.Name = "gridColumn104";
+            this.gridColumn104.Visible = true;
+            this.gridColumn104.VisibleIndex = 6;
+            this.gridColumn104.Width = 61;
             // 
             // xtraTabControl2
             // 
@@ -3639,46 +3648,46 @@
             // 
             // xtraTabPage17
             // 
-            this.xtraTabPage17.Controls.Add(this.gridControl2);
+            this.xtraTabPage17.Controls.Add(this.CurrencyGridControl);
             this.xtraTabPage17.Name = "xtraTabPage17";
             this.xtraTabPage17.Size = new System.Drawing.Size(1085, 568);
             this.xtraTabPage17.Text = "Валюти";
             // 
-            // gridControl2
+            // CurrencyGridControl
             // 
-            this.gridControl2.DataSource = this.CurrencyBS;
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(0, 0);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(1085, 568);
-            this.gridControl2.TabIndex = 6;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.CurrencyGridControl.DataSource = this.CurrencyBS;
+            this.CurrencyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CurrencyGridControl.Location = new System.Drawing.Point(0, 0);
+            this.CurrencyGridControl.MainView = this.CurrencyGridView;
+            this.CurrencyGridControl.Name = "CurrencyGridControl";
+            this.CurrencyGridControl.Size = new System.Drawing.Size(1085, 568);
+            this.CurrencyGridControl.TabIndex = 6;
+            this.CurrencyGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.CurrencyGridView});
             // 
             // CurrencyBS
             // 
             this.CurrencyBS.DataSource = typeof(SP_Sklad.SkladData.Currency);
             // 
-            // gridView2
+            // CurrencyGridView
             // 
-            this.gridView2.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.gridView2.Appearance.Row.Options.UseFont = true;
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.CurrencyGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CurrencyGridView.Appearance.Row.Options.UseFont = true;
+            this.CurrencyGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colShortName,
             this.colName1,
             this.colDef1,
             this.colDeleted,
             this.colRepShortName,
             this.colRepFracName});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.AllowIncrementalSearch = true;
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsBehavior.ReadOnly = true;
-            this.gridView2.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView2.OptionsView.EnableAppearanceOddRow = true;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.CurrencyGridView.GridControl = this.CurrencyGridControl;
+            this.CurrencyGridView.Name = "CurrencyGridView";
+            this.CurrencyGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.CurrencyGridView.OptionsBehavior.Editable = false;
+            this.CurrencyGridView.OptionsBehavior.ReadOnly = true;
+            this.CurrencyGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.CurrencyGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.CurrencyGridView.OptionsView.ShowGroupPanel = false;
             // 
             // colShortName
             // 
@@ -4083,15 +4092,6 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
-            // gridColumn104
-            // 
-            this.gridColumn104.Caption = "ІПН";
-            this.gridColumn104.FieldName = "INN";
-            this.gridColumn104.Name = "gridColumn104";
-            this.gridColumn104.Visible = true;
-            this.gridColumn104.VisibleIndex = 6;
-            this.gridColumn104.Width = 61;
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4262,9 +4262,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DiscCardsGridView)).EndInit();
             this.xtraTabPage17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CurrencyBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CurrencyGridView)).EndInit();
             this.xtraTabPage32.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationMatRecipeGridView)).EndInit();
@@ -4581,9 +4581,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn RecipeArchivedGridColumn;
         private DevExpress.XtraBars.BarCheckItem ShowRecipeArchiveRecordsbarCheckItem;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage17;
-        private DevExpress.XtraGrid.GridControl gridControl2;
+        private DevExpress.XtraGrid.GridControl CurrencyGridControl;
         private System.Windows.Forms.BindingSource CurrencyBS;
-        public DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        public DevExpress.XtraGrid.Views.Grid.GridView CurrencyGridView;
         private DevExpress.XtraGrid.Columns.GridColumn colShortName;
         private DevExpress.XtraGrid.Columns.GridColumn colName1;
         private DevExpress.XtraGrid.Columns.GridColumn colDef1;

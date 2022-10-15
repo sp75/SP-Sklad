@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancesUserControl));
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series7 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView8 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series8 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView9 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series9 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView10 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series10 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView11 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series11 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView12 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series12 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView13 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView14 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView2 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView3 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView4 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView5 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView6 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView7 = new DevExpress.XtraCharts.LineSeriesView();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -94,6 +94,7 @@
             this.FinTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.treeListColumn4 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.MoneyTurnGridControl = new DevExpress.XtraGrid.GridControl();
@@ -272,20 +273,20 @@
             this.xtraTabControl4.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -490,7 +491,7 @@
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1023, 24);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1100, 24);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // bar2
@@ -515,7 +516,7 @@
             this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl4.Manager = this.barManager1;
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
-            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1023, 24);
+            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1100, 24);
             this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
             // 
             // bar3
@@ -540,7 +541,7 @@
             this.standaloneBarDockControl5.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl5.Manager = this.barManager1;
             this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
-            this.standaloneBarDockControl5.Size = new System.Drawing.Size(1023, 24);
+            this.standaloneBarDockControl5.Size = new System.Drawing.Size(1100, 24);
             this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
             // 
             // barDockControlTop
@@ -549,7 +550,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1257, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1404, 0);
             // 
             // barDockControlBottom
             // 
@@ -557,7 +558,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 662);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1257, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1404, 0);
             // 
             // barDockControlLeft
             // 
@@ -571,7 +572,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1257, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1404, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 662);
             // 
@@ -583,7 +584,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1257, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1404, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // standaloneBarDockControl2
@@ -594,7 +595,7 @@
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1025, 0);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1102, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // BarImageList
@@ -693,7 +694,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1257, 662);
+            this.panelControl1.Size = new System.Drawing.Size(1404, 662);
             this.panelControl1.TabIndex = 5;
             // 
             // splitContainerControl1
@@ -712,8 +713,8 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.wbContentTab);
             this.splitContainerControl1.Panel2.Controls.Add(this.standaloneBarDockControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(1253, 658);
-            this.splitContainerControl1.SplitterPosition = 218;
+            this.splitContainerControl1.Size = new System.Drawing.Size(1400, 658);
+            this.splitContainerControl1.SplitterPosition = 288;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
@@ -734,7 +735,7 @@
             this.FinancesTreeList.OptionsView.ShowVertLines = false;
             this.FinancesTreeList.ParentFieldName = "PId";
             this.FinancesTreeList.SelectImageList = this.UserTreeImgList;
-            this.FinancesTreeList.Size = new System.Drawing.Size(218, 658);
+            this.FinancesTreeList.Size = new System.Drawing.Size(288, 658);
             this.FinancesTreeList.TabIndex = 1;
             this.FinancesTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.FinancesTreeList_FocusedNodeChanged);
             // 
@@ -836,7 +837,7 @@
             this.wbContentTab.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.wbContentTab.Name = "wbContentTab";
             this.wbContentTab.SelectedTabPage = this.xtraTabPage7;
-            this.wbContentTab.Size = new System.Drawing.Size(1025, 658);
+            this.wbContentTab.Size = new System.Drawing.Size(1102, 658);
             this.wbContentTab.TabIndex = 2;
             this.wbContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
@@ -849,7 +850,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1023, 633);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1100, 633);
             this.xtraTabPage7.Text = "Фінанси";
             // 
             // splitContainerControl2
@@ -870,7 +871,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Controls.Add(this.panelControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1023, 633);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1100, 633);
             this.splitContainerControl2.SplitterPosition = 330;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -883,7 +884,7 @@
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1023, 306);
+            this.panelControl3.Size = new System.Drawing.Size(1100, 306);
             this.panelControl3.TabIndex = 4;
             // 
             // gridControl1
@@ -892,7 +893,7 @@
             this.gridControl1.Location = new System.Drawing.Point(718, 2);
             this.gridControl1.MainView = this.gridView3;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(303, 302);
+            this.gridControl1.Size = new System.Drawing.Size(380, 302);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -936,7 +937,8 @@
             // 
             this.FinTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn2,
-            this.treeListColumn3});
+            this.treeListColumn3,
+            this.treeListColumn4});
             this.FinTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.FinTreeList.Dock = System.Windows.Forms.DockStyle.Left;
             this.FinTreeList.KeyFieldName = "Id";
@@ -965,16 +967,25 @@
             this.treeListColumn2.Name = "treeListColumn2";
             this.treeListColumn2.Visible = true;
             this.treeListColumn2.VisibleIndex = 0;
-            this.treeListColumn2.Width = 577;
+            this.treeListColumn2.Width = 426;
             // 
             // treeListColumn3
             // 
-            this.treeListColumn3.Caption = "Сума";
+            this.treeListColumn3.Caption = "Залишок";
             this.treeListColumn3.FieldName = "Saldo";
             this.treeListColumn3.Name = "treeListColumn3";
             this.treeListColumn3.Visible = true;
-            this.treeListColumn3.VisibleIndex = 1;
-            this.treeListColumn3.Width = 156;
+            this.treeListColumn3.VisibleIndex = 2;
+            this.treeListColumn3.Width = 95;
+            // 
+            // treeListColumn4
+            // 
+            this.treeListColumn4.Caption = "Контрагент";
+            this.treeListColumn4.FieldName = "KaName";
+            this.treeListColumn4.Name = "treeListColumn4";
+            this.treeListColumn4.Visible = true;
+            this.treeListColumn4.VisibleIndex = 1;
+            this.treeListColumn4.Width = 183;
             // 
             // xtraTabControl2
             // 
@@ -983,7 +994,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 44);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1023, 249);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1100, 249);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15});
@@ -993,7 +1004,7 @@
             this.xtraTabPage15.Controls.Add(this.MoneyTurnGridControl);
             this.xtraTabPage15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage15.ImageOptions.Image")));
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1021, 221);
+            this.xtraTabPage15.Size = new System.Drawing.Size(1098, 221);
             this.xtraTabPage15.Text = "Обороти";
             // 
             // MoneyTurnGridControl
@@ -1005,7 +1016,7 @@
             this.MoneyTurnGridControl.Name = "MoneyTurnGridControl";
             this.MoneyTurnGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.MoneyTurnGridControl.Size = new System.Drawing.Size(1021, 221);
+            this.MoneyTurnGridControl.Size = new System.Drawing.Size(1098, 221);
             this.MoneyTurnGridControl.TabIndex = 0;
             this.MoneyTurnGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MoneyTurnGridView});
@@ -1148,7 +1159,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1023, 44);
+            this.panelControl2.Size = new System.Drawing.Size(1100, 44);
             this.panelControl2.TabIndex = 2;
             // 
             // CurrensyList
@@ -1243,14 +1254,14 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1023, 633);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1100, 633);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Controls.Add(this.splitContainerControl4);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1023, 633);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1100, 633);
             this.xtraTabPage8.Text = "Фінансові опереції";
             // 
             // splitContainerControl4
@@ -1271,7 +1282,7 @@
             // 
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(1023, 633);
+            this.splitContainerControl4.Size = new System.Drawing.Size(1100, 633);
             this.splitContainerControl4.SplitterPosition = 359;
             this.splitContainerControl4.TabIndex = 1;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -1286,7 +1297,7 @@
             this.MoneyMoveGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox2,
             this.CheckedItemImageComboBox});
-            this.MoneyMoveGridControl.Size = new System.Drawing.Size(1023, 291);
+            this.MoneyMoveGridControl.Size = new System.Drawing.Size(1100, 291);
             this.MoneyMoveGridControl.TabIndex = 0;
             this.MoneyMoveGridControl.UseEmbeddedNavigator = true;
             this.MoneyMoveGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -1485,7 +1496,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl4.Location = new System.Drawing.Point(0, 24);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1023, 44);
+            this.panelControl4.Size = new System.Drawing.Size(1100, 44);
             this.panelControl4.TabIndex = 1;
             // 
             // PayDocTypeEdit
@@ -1598,7 +1609,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage2;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1023, 264);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1100, 264);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage2,
@@ -1609,7 +1620,7 @@
             this.xtraTabPage2.Controls.Add(this.vGridControl1);
             this.xtraTabPage2.ImageOptions.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1021, 236);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1098, 236);
             this.xtraTabPage2.Text = "Інформація про фінансову операцію";
             // 
             // vGridControl1
@@ -1630,7 +1641,7 @@
             this.category1,
             this.row4,
             this.row5});
-            this.vGridControl1.Size = new System.Drawing.Size(1021, 236);
+            this.vGridControl1.Size = new System.Drawing.Size(1098, 236);
             this.vGridControl1.TabIndex = 0;
             // 
             // MoneyMoveListInfoBS
@@ -1734,7 +1745,7 @@
             // 
             this.xtraTabPage9.Controls.Add(this.splitContainerControl5);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(1023, 633);
+            this.xtraTabPage9.Size = new System.Drawing.Size(1100, 633);
             this.xtraTabPage9.Text = "Активи";
             // 
             // splitContainerControl5
@@ -1755,7 +1766,7 @@
             this.splitContainerControl5.Panel2.Controls.Add(this.xtraTabControl4);
             this.splitContainerControl5.Panel2.Controls.Add(this.panelControl5);
             this.splitContainerControl5.Panel2.Text = "Panel2";
-            this.splitContainerControl5.Size = new System.Drawing.Size(1023, 633);
+            this.splitContainerControl5.Size = new System.Drawing.Size(1100, 633);
             this.splitContainerControl5.SplitterPosition = 330;
             this.splitContainerControl5.TabIndex = 1;
             this.splitContainerControl5.Text = "splitContainerControl5";
@@ -1771,7 +1782,7 @@
             this.vGridControl3.RowHeaderWidth = 211;
             this.vGridControl3.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.categoryRow2});
-            this.vGridControl3.Size = new System.Drawing.Size(1023, 306);
+            this.vGridControl3.Size = new System.Drawing.Size(1100, 306);
             this.vGridControl3.TabIndex = 3;
             this.vGridControl3.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl3_CellValueChanged);
             // 
@@ -1850,7 +1861,7 @@
             this.xtraTabControl4.Location = new System.Drawing.Point(0, 44);
             this.xtraTabControl4.Name = "xtraTabControl4";
             this.xtraTabControl4.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl4.Size = new System.Drawing.Size(1023, 249);
+            this.xtraTabControl4.Size = new System.Drawing.Size(1100, 249);
             this.xtraTabControl4.TabIndex = 0;
             this.xtraTabControl4.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -1860,59 +1871,59 @@
             this.xtraTabPage1.Controls.Add(this.chartControl1);
             this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1021, 221);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1098, 221);
             this.xtraTabPage1.Text = "Зростання активів";
             // 
             // chartControl1
             // 
             this.chartControl1.DataSource = this.ActivesBS;
-            xyDiagram2.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram2;
+            xyDiagram1.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series7.ArgumentDataMember = "OnDate";
-            series7.Name = "Активи";
-            series7.ValueDataMembersSerializable = "Active";
-            series7.View = lineSeriesView8;
-            series8.ArgumentDataMember = "OnDate";
-            series8.Name = "Собівартість складу";
-            series8.ValueDataMembersSerializable = "WhSumm";
-            lineSeriesView9.Color = System.Drawing.Color.Gold;
-            series8.View = lineSeriesView9;
-            series9.ArgumentDataMember = "OnDate";
-            series9.Name = "Готівка";
-            series9.ValueDataMembersSerializable = "Cash";
-            lineSeriesView10.Color = System.Drawing.Color.OliveDrab;
-            series9.View = lineSeriesView10;
-            series10.ArgumentDataMember = "OnDate";
-            series10.Name = "Безготівкові гроші";
-            series10.ValueDataMembersSerializable = "CashLess";
-            series10.View = lineSeriesView11;
-            series11.ArgumentDataMember = "OnDate";
-            series11.Name = "Дебітори";
-            series11.ValueDataMembersSerializable = "Debitors";
-            lineSeriesView12.Color = System.Drawing.Color.Red;
-            series11.View = lineSeriesView12;
-            series12.ArgumentDataMember = "OnDate";
-            series12.Name = "Кредитори";
-            series12.ValueDataMembersSerializable = "Creditors";
-            lineSeriesView13.Color = System.Drawing.Color.Blue;
-            series12.View = lineSeriesView13;
+            series1.ArgumentDataMember = "OnDate";
+            series1.Name = "Активи";
+            series1.ValueDataMembersSerializable = "Active";
+            series1.View = lineSeriesView1;
+            series2.ArgumentDataMember = "OnDate";
+            series2.Name = "Собівартість складу";
+            series2.ValueDataMembersSerializable = "WhSumm";
+            lineSeriesView2.Color = System.Drawing.Color.Gold;
+            series2.View = lineSeriesView2;
+            series3.ArgumentDataMember = "OnDate";
+            series3.Name = "Готівка";
+            series3.ValueDataMembersSerializable = "Cash";
+            lineSeriesView3.Color = System.Drawing.Color.OliveDrab;
+            series3.View = lineSeriesView3;
+            series4.ArgumentDataMember = "OnDate";
+            series4.Name = "Безготівкові гроші";
+            series4.ValueDataMembersSerializable = "CashLess";
+            series4.View = lineSeriesView4;
+            series5.ArgumentDataMember = "OnDate";
+            series5.Name = "Дебітори";
+            series5.ValueDataMembersSerializable = "Debitors";
+            lineSeriesView5.Color = System.Drawing.Color.Red;
+            series5.View = lineSeriesView5;
+            series6.ArgumentDataMember = "OnDate";
+            series6.Name = "Кредитори";
+            series6.ValueDataMembersSerializable = "Creditors";
+            lineSeriesView6.Color = System.Drawing.Color.Blue;
+            series6.View = lineSeriesView6;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series7,
-        series8,
-        series9,
-        series10,
-        series11,
-        series12};
-            this.chartControl1.SeriesTemplate.View = lineSeriesView14;
-            this.chartControl1.Size = new System.Drawing.Size(1021, 221);
+        series1,
+        series2,
+        series3,
+        series4,
+        series5,
+        series6};
+            this.chartControl1.SeriesTemplate.View = lineSeriesView7;
+            this.chartControl1.Size = new System.Drawing.Size(1098, 221);
             this.chartControl1.TabIndex = 0;
             // 
             // ActivesBS
@@ -1929,7 +1940,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl5.Location = new System.Drawing.Point(0, 0);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1023, 44);
+            this.panelControl5.Size = new System.Drawing.Size(1100, 44);
             this.panelControl5.TabIndex = 2;
             // 
             // simpleButton1
@@ -1985,7 +1996,7 @@
             // 
             this.xtraTabPage10.Controls.Add(this.docsUserControl1);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(1023, 633);
+            this.xtraTabPage10.Size = new System.Drawing.Size(1100, 633);
             this.xtraTabPage10.Text = "Платіжні документи";
             // 
             // docsUserControl1
@@ -1994,7 +2005,7 @@
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
             this.docsUserControl1.set_tree_node = null;
-            this.docsUserControl1.Size = new System.Drawing.Size(1023, 633);
+            this.docsUserControl1.Size = new System.Drawing.Size(1100, 633);
             this.docsUserControl1.TabIndex = 0;
             // 
             // FinancesUserControl
@@ -2008,7 +2019,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "FinancesUserControl";
-            this.Size = new System.Drawing.Size(1257, 662);
+            this.Size = new System.Drawing.Size(1404, 662);
             this.Load += new System.EventHandler(this.FinancesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -2098,20 +2109,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).EndInit();
             this.xtraTabControl4.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();
@@ -2276,5 +2287,6 @@
         private DocsUserControl docsUserControl1;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
     }
 }
