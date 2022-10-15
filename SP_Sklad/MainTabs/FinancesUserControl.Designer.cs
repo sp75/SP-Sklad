@@ -1036,6 +1036,7 @@
             this.gridColumn17});
             this.MoneyTurnGridView.GridControl = this.MoneyTurnGridControl;
             this.MoneyTurnGridView.Name = "MoneyTurnGridView";
+            this.MoneyTurnGridView.OptionsBehavior.ReadOnly = true;
             this.MoneyTurnGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn9
@@ -1728,7 +1729,7 @@
             this.xtraTabPage3.Controls.Add(this.memoEdit1);
             this.xtraTabPage3.ImageOptions.ImageIndex = 9;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1021, 236);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1098, 236);
             this.xtraTabPage3.Text = "Примітка";
             // 
             // memoEdit1
@@ -1738,7 +1739,7 @@
             this.memoEdit1.Location = new System.Drawing.Point(0, 0);
             this.memoEdit1.MenuManager = this.barManager1;
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(1021, 236);
+            this.memoEdit1.Size = new System.Drawing.Size(1098, 236);
             this.memoEdit1.TabIndex = 0;
             // 
             // xtraTabPage9

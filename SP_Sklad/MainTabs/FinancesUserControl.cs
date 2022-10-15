@@ -51,10 +51,10 @@ namespace SP_Sklad.MainTabs
                     wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                     wbStatusList.EditValue = -1;
 
-                    TurnStartDate.EditValue = DateTime.Now.AddDays(-30);
+                    TurnStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                     TurnEndDate.EditValue = DateTime.Now;
 
-                    wbStartDate.EditValue = DateTime.Now.AddDays(-30);
+                    wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                     wbEndDate.EditValue = DateTime.Now.Date;
 
                     dateEdit2.EditValue = DateTime.Now.AddDays(-30);
