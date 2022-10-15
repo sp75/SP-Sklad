@@ -952,10 +952,10 @@
             // 
             this.labelControl19.Location = new System.Drawing.Point(356, 43);
             this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(20, 16);
+            this.labelControl19.Size = new System.Drawing.Size(202, 16);
             this.labelControl19.StyleController = this.styleController1;
             this.labelControl19.TabIndex = 38;
-            this.labelControl19.Text = "ІПН";
+            this.labelControl19.Text = "Індивідуальний податковий номер";
             // 
             // labelControl18
             // 
@@ -1465,7 +1465,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl8);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage2.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage2.Text = "Документ";
             // 
             // groupControl8
@@ -1483,7 +1483,7 @@
             this.groupControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl8.Location = new System.Drawing.Point(0, 0);
             this.groupControl8.Name = "groupControl8";
-            this.groupControl8.Size = new System.Drawing.Size(677, 581);
+            this.groupControl8.Size = new System.Drawing.Size(677, 607);
             this.groupControl8.TabIndex = 19;
             this.groupControl8.Tag = "";
             this.groupControl8.Text = "Документ ";
@@ -1592,7 +1592,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.panel4);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage3.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage3.Text = "Дод. інформація";
             // 
             // panel4
@@ -1601,7 +1601,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(677, 581);
+            this.panel4.Size = new System.Drawing.Size(677, 607);
             this.panel4.TabIndex = 29;
             // 
             // groupControl4
@@ -1626,7 +1626,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(677, 581);
+            this.groupControl4.Size = new System.Drawing.Size(677, 607);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
@@ -1862,7 +1862,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage4.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage4.Text = "Знижки";
             // 
             // groupControl5
@@ -1872,7 +1872,7 @@
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(677, 581);
+            this.groupControl5.Size = new System.Drawing.Size(677, 607);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             // 
@@ -1886,7 +1886,7 @@
             this.DiscPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DiscPanel.Location = new System.Drawing.Point(2, 23);
             this.DiscPanel.Name = "DiscPanel";
-            this.DiscPanel.Size = new System.Drawing.Size(673, 556);
+            this.DiscPanel.Size = new System.Drawing.Size(673, 582);
             this.DiscPanel.TabIndex = 44;
             // 
             // panelControl6
@@ -1900,7 +1900,7 @@
             this.panelControl6.Controls.Add(this.dropDownButton1);
             this.panelControl6.Location = new System.Drawing.Point(14, 85);
             this.panelControl6.Name = "panelControl6";
-            this.panelControl6.Size = new System.Drawing.Size(644, 458);
+            this.panelControl6.Size = new System.Drawing.Size(644, 484);
             this.panelControl6.TabIndex = 48;
             // 
             // DiscountGridControl
@@ -1912,7 +1912,7 @@
             this.DiscountGridControl.MainView = this.DiscountGridView;
             this.DiscountGridControl.MenuManager = this.barManager1;
             this.DiscountGridControl.Name = "DiscountGridControl";
-            this.DiscountGridControl.Size = new System.Drawing.Size(610, 386);
+            this.DiscountGridControl.Size = new System.Drawing.Size(610, 412);
             this.DiscountGridControl.TabIndex = 3;
             this.DiscountGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DiscountGridView});
@@ -2048,7 +2048,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.panel2);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage5.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage5.Text = "Конт. інфо.";
             // 
             // panel2
@@ -2060,7 +2060,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.panel2.Size = new System.Drawing.Size(677, 581);
+            this.panel2.Size = new System.Drawing.Size(677, 607);
             this.panel2.TabIndex = 29;
             // 
             // groupControl14
@@ -2076,7 +2076,7 @@
             this.groupControl14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl14.Location = new System.Drawing.Point(5, 391);
             this.groupControl14.Name = "groupControl14";
-            this.groupControl14.Size = new System.Drawing.Size(667, 185);
+            this.groupControl14.Size = new System.Drawing.Size(667, 211);
             this.groupControl14.TabIndex = 18;
             this.groupControl14.Tag = "";
             this.groupControl14.Text = "Контактна інформація ";
@@ -2495,7 +2495,7 @@
             // 
             this.xtraTabPage11.Controls.Add(this.groupControl15);
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage11.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage11.Text = "Конт. особ.";
             // 
             // groupControl15
@@ -2504,7 +2504,7 @@
             this.groupControl15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl15.Location = new System.Drawing.Point(0, 0);
             this.groupControl15.Name = "groupControl15";
-            this.groupControl15.Size = new System.Drawing.Size(677, 581);
+            this.groupControl15.Size = new System.Drawing.Size(677, 607);
             this.groupControl15.TabIndex = 18;
             this.groupControl15.Tag = "";
             this.groupControl15.Text = "Контактні особи ";
@@ -2518,7 +2518,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(2, 23);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(673, 556);
+            this.panel7.Size = new System.Drawing.Size(673, 582);
             this.panel7.TabIndex = 44;
             // 
             // AddPersonBtn
@@ -2561,7 +2561,7 @@
             this.KAgentPersonsGridControl.MainView = this.KAgentPersonsGridView;
             this.KAgentPersonsGridControl.MenuManager = this.barManager1;
             this.KAgentPersonsGridControl.Name = "KAgentPersonsGridControl";
-            this.KAgentPersonsGridControl.Size = new System.Drawing.Size(639, 492);
+            this.KAgentPersonsGridControl.Size = new System.Drawing.Size(639, 518);
             this.KAgentPersonsGridControl.TabIndex = 7;
             this.KAgentPersonsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KAgentPersonsGridView});
@@ -2614,7 +2614,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.groupControl11);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage6.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage6.Text = "Рахунки";
             // 
             // groupControl11
@@ -2623,7 +2623,7 @@
             this.groupControl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl11.Location = new System.Drawing.Point(0, 0);
             this.groupControl11.Name = "groupControl11";
-            this.groupControl11.Size = new System.Drawing.Size(677, 581);
+            this.groupControl11.Size = new System.Drawing.Size(677, 607);
             this.groupControl11.TabIndex = 17;
             this.groupControl11.Tag = "";
             this.groupControl11.Text = " Рахунки ";
@@ -2637,7 +2637,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(2, 23);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(673, 556);
+            this.panel6.Size = new System.Drawing.Size(673, 582);
             this.panel6.TabIndex = 44;
             // 
             // AddAccBtn
@@ -2682,7 +2682,7 @@
             this.AccountsGridControl.Name = "AccountsGridControl";
             this.AccountsGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.AccountsGridControl.Size = new System.Drawing.Size(639, 492);
+            this.AccountsGridControl.Size = new System.Drawing.Size(639, 518);
             this.AccountsGridControl.TabIndex = 7;
             this.AccountsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.AccountsGridView});
@@ -2754,7 +2754,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.groupControl10);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage7.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // groupControl10
@@ -2763,7 +2763,7 @@
             this.groupControl10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl10.Location = new System.Drawing.Point(0, 0);
             this.groupControl10.Name = "groupControl10";
-            this.groupControl10.Size = new System.Drawing.Size(677, 581);
+            this.groupControl10.Size = new System.Drawing.Size(677, 607);
             this.groupControl10.TabIndex = 36;
             this.groupControl10.Tag = "";
             this.groupControl10.Text = "Примітка ";
@@ -2774,7 +2774,7 @@
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(2, 23);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(673, 556);
+            this.textEdit8.Size = new System.Drawing.Size(673, 582);
             this.textEdit8.TabIndex = 35;
             // 
             // xtraTabPage12
@@ -2784,7 +2784,7 @@
             this.xtraTabPage12.Controls.Add(this.simpleButton19);
             this.xtraTabPage12.Controls.Add(this.simpleButton20);
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage12.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage12.Text = "Конт. особа";
             // 
             // panelControl10
@@ -2962,7 +2962,7 @@
             // 
             this.xtraTabPage13.Controls.Add(this.groupControl12);
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage13.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage13.Text = "Рахунок";
             // 
             // groupControl12
@@ -2974,7 +2974,7 @@
             this.groupControl12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl12.Location = new System.Drawing.Point(0, 0);
             this.groupControl12.Name = "groupControl12";
-            this.groupControl12.Size = new System.Drawing.Size(677, 581);
+            this.groupControl12.Size = new System.Drawing.Size(677, 607);
             this.groupControl12.TabIndex = 18;
             this.groupControl12.Tag = "";
             this.groupControl12.Text = " Рахунок ";
@@ -3030,7 +3030,7 @@
             this.panelControl9.Controls.Add(this.lookUpEdit1);
             this.panelControl9.Location = new System.Drawing.Point(20, 69);
             this.panelControl9.Name = "panelControl9";
-            this.panelControl9.Size = new System.Drawing.Size(636, 491);
+            this.panelControl9.Size = new System.Drawing.Size(636, 517);
             this.panelControl9.TabIndex = 49;
             // 
             // textEdit39
@@ -3178,7 +3178,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.groupControl6);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage14.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage14.Text = "Знижка на товар";
             // 
             // groupControl6
@@ -3190,7 +3190,7 @@
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(677, 581);
+            this.groupControl6.Size = new System.Drawing.Size(677, 607);
             this.groupControl6.TabIndex = 17;
             this.groupControl6.Tag = "";
             this.groupControl6.Text = " Знижка на товар";
@@ -3220,7 +3220,7 @@
             this.panelControl7.Controls.Add(this.MatLookUpEdit);
             this.panelControl7.Location = new System.Drawing.Point(20, 69);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(639, 487);
+            this.panelControl7.Size = new System.Drawing.Size(639, 513);
             this.panelControl7.TabIndex = 49;
             // 
             // labelControl11
@@ -3300,7 +3300,7 @@
             // 
             this.xtraTabPage15.Controls.Add(this.groupControl7);
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage15.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage15.Text = "Знижка на товарну групу";
             // 
             // groupControl7
@@ -3312,7 +3312,7 @@
             this.groupControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl7.Location = new System.Drawing.Point(0, 0);
             this.groupControl7.Name = "groupControl7";
-            this.groupControl7.Size = new System.Drawing.Size(677, 581);
+            this.groupControl7.Size = new System.Drawing.Size(677, 607);
             this.groupControl7.TabIndex = 18;
             this.groupControl7.Tag = "";
             this.groupControl7.Text = " Знижка на товар";
@@ -3342,7 +3342,7 @@
             this.panelControl8.Controls.Add(this.GroupLookUpEdit);
             this.panelControl8.Location = new System.Drawing.Point(20, 69);
             this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(639, 487);
+            this.panelControl8.Size = new System.Drawing.Size(639, 513);
             this.panelControl8.TabIndex = 49;
             // 
             // labelControl12
@@ -3424,7 +3424,7 @@
             this.xtraTabPage16.Appearance.PageClient.Options.UseBackColor = true;
             this.xtraTabPage16.Controls.Add(this.groupControl9);
             this.xtraTabPage16.Name = "xtraTabPage16";
-            this.xtraTabPage16.Size = new System.Drawing.Size(677, 581);
+            this.xtraTabPage16.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage16.Text = "Договір";
             // 
             // groupControl9
@@ -3438,7 +3438,7 @@
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(0, 0);
             this.groupControl9.Name = "groupControl9";
-            this.groupControl9.Size = new System.Drawing.Size(677, 581);
+            this.groupControl9.Size = new System.Drawing.Size(677, 607);
             this.groupControl9.TabIndex = 20;
             this.groupControl9.Tag = "";
             this.groupControl9.Text = "Цивільно-правововий договір  ";

@@ -125,6 +125,7 @@
           <Property Name="DocTypeId" Type="int" />
           <Property Name="PayerAccountAccId" Type="int" />
           <Property Name="RecipientAccountAccId" Type="int" />
+          <Property Name="IsAcquiringAccount" Type="bit" />
         </EntityType>
         <EntityType Name="Cars">
           <Key>
@@ -1861,10 +1862,11 @@ warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a p
         <EntityType Name="v_BankStatementsDet">
           <Key>
             <PropertyRef Name="Id" />
+            
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="BankStatementId" Type="uniqueidentifier" />
-          <Property Name="TransactionDate" Type="datetime" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
           <Property Name="PaySum" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Reason" Type="nvarchar" MaxLength="500" />
           <Property Name="KagentName" Type="nvarchar" MaxLength="100" />
@@ -17366,7 +17368,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="BankStatementId" Type="Guid" />
-          <Property Name="TransactionDate" Type="DateTime" Precision="3" />
+          <Property Name="TransactionDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="PaySum" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="KagentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -17420,6 +17422,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RecipientAccountAccId" Type="Int32" />
           <NavigationProperty Name="PayerKAgentAccount" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount" FromRole="BankStatementsDet" ToRole="KAgentAccount" />
           <NavigationProperty Name="RecipientKAgentAccount" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount1" FromRole="BankStatementsDet" ToRole="KAgentAccount" />
+          <Property Name="IsAcquiringAccount" Type="Boolean" />
         </EntityType>
         <Association Name="FK_BankStatementsDet_BankStatements">
           <End Type="BaseModel.BankStatements" Role="BankStatements" Multiplicity="0..1">
@@ -22132,6 +22135,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="BankStatementsDet">
             <EntityTypeMapping TypeName="BaseModel.BankStatementsDet">
               <MappingFragment StoreEntitySet="BankStatementsDet">
+                <ScalarProperty Name="IsAcquiringAccount" ColumnName="IsAcquiringAccount" />
                 <ScalarProperty Name="RecipientAccountAccId" ColumnName="RecipientAccountAccId" />
                 <ScalarProperty Name="PayerAccountAccId" ColumnName="PayerAccountAccId" />
                 <ScalarProperty Name="DocTypeId" ColumnName="DocTypeId" />

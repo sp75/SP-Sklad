@@ -16,7 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public System.Guid Id { get; set; }
         public Nullable<System.Guid> BankStatementId { get; set; }
-        public Nullable<System.DateTime> TransactionDate { get; set; }
+        public System.DateTime TransactionDate { get; set; }
         public Nullable<decimal> PaySum { get; set; }
         public string Reason { get; set; }
         public string KagentName { get; set; }

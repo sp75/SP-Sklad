@@ -111,6 +111,7 @@
             this.gridColumn80 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -174,6 +175,7 @@
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.BarCodeEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl3 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -379,7 +381,7 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.BarCodeEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -441,6 +443,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
@@ -549,7 +552,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1370,7 +1372,9 @@
             this.LoginGridColumn,
             this.gridColumn80,
             this.gridColumn81,
-            this.gridColumn75});
+            this.gridColumn75,
+            this.gridColumn103,
+            this.gridColumn104});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1403,8 +1407,6 @@
             this.gridColumn3.Caption = "Код аналітичного обліку";
             this.gridColumn3.FieldName = "KAU";
             this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 5;
             this.gridColumn3.Width = 64;
             // 
             // gridColumn4
@@ -1414,7 +1416,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 349;
+            this.gridColumn4.Width = 232;
             // 
             // KagentSaldoGridColumn
             // 
@@ -1426,8 +1428,8 @@
             this.KagentSaldoGridColumn.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Saldo", "Всього: {0:0.00}")});
             this.KagentSaldoGridColumn.Visible = true;
-            this.KagentSaldoGridColumn.VisibleIndex = 9;
-            this.KagentSaldoGridColumn.Width = 57;
+            this.KagentSaldoGridColumn.VisibleIndex = 10;
+            this.KagentSaldoGridColumn.Width = 68;
             // 
             // KagentGridColumnArchived
             // 
@@ -1451,7 +1453,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 4;
-            this.gridColumn10.Width = 133;
+            this.gridColumn10.Width = 105;
             // 
             // gridColumn11
             // 
@@ -1460,7 +1462,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 2;
-            this.gridColumn11.Width = 79;
+            this.gridColumn11.Width = 137;
             // 
             // LoginGridColumn
             // 
@@ -1468,8 +1470,8 @@
             this.LoginGridColumn.FieldName = "Login";
             this.LoginGridColumn.Name = "LoginGridColumn";
             this.LoginGridColumn.Visible = true;
-            this.LoginGridColumn.VisibleIndex = 7;
-            this.LoginGridColumn.Width = 80;
+            this.LoginGridColumn.VisibleIndex = 8;
+            this.LoginGridColumn.Width = 64;
             // 
             // gridColumn80
             // 
@@ -1477,8 +1479,8 @@
             this.gridColumn80.FieldName = "WebUserName";
             this.gridColumn80.Name = "gridColumn80";
             this.gridColumn80.Visible = true;
-            this.gridColumn80.VisibleIndex = 8;
-            this.gridColumn80.Width = 152;
+            this.gridColumn80.VisibleIndex = 9;
+            this.gridColumn80.Width = 124;
             // 
             // gridColumn81
             // 
@@ -1487,7 +1489,7 @@
             this.gridColumn81.Name = "gridColumn81";
             this.gridColumn81.Visible = true;
             this.gridColumn81.VisibleIndex = 3;
-            this.gridColumn81.Width = 129;
+            this.gridColumn81.Width = 122;
             // 
             // gridColumn75
             // 
@@ -1495,7 +1497,17 @@
             this.gridColumn75.FieldName = "JobName";
             this.gridColumn75.Name = "gridColumn75";
             this.gridColumn75.Visible = true;
-            this.gridColumn75.VisibleIndex = 6;
+            this.gridColumn75.VisibleIndex = 7;
+            this.gridColumn75.Width = 61;
+            // 
+            // gridColumn103
+            // 
+            this.gridColumn103.Caption = "ЕГРПОУ";
+            this.gridColumn103.FieldName = "OKPO";
+            this.gridColumn103.Name = "gridColumn103";
+            this.gridColumn103.Visible = true;
+            this.gridColumn103.VisibleIndex = 5;
+            this.gridColumn103.Width = 61;
             // 
             // xtraTabControl2
             // 
@@ -2061,6 +2073,19 @@
             this.labelControl5.Size = new System.Drawing.Size(57, 13);
             this.labelControl5.TabIndex = 7;
             this.labelControl5.Text = "Штрих-код";
+            // 
+            // BarCodeEdit
+            // 
+            this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BarCodeEdit.Location = new System.Drawing.Point(841, 11);
+            this.BarCodeEdit.MenuManager = this.barManager1;
+            this.BarCodeEdit.Name = "BarCodeEdit";
+            this.BarCodeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
+            this.BarCodeEdit.Size = new System.Drawing.Size(239, 20);
+            this.BarCodeEdit.TabIndex = 9;
+            this.BarCodeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeEdit_ButtonClick);
+            this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
             // 
             // xtraTabControl1
             // 
@@ -4058,18 +4083,14 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
-            // BarCodeEdit
+            // gridColumn104
             // 
-            this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BarCodeEdit.Location = new System.Drawing.Point(841, 11);
-            this.BarCodeEdit.MenuManager = this.barManager1;
-            this.BarCodeEdit.Name = "BarCodeEdit";
-            this.BarCodeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
-            this.BarCodeEdit.Size = new System.Drawing.Size(239, 20);
-            this.BarCodeEdit.TabIndex = 9;
-            this.BarCodeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeEdit_ButtonClick);
-            this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
+            this.gridColumn104.Caption = "ІПН";
+            this.gridColumn104.FieldName = "INN";
+            this.gridColumn104.Name = "gridColumn104";
+            this.gridColumn104.Visible = true;
+            this.gridColumn104.VisibleIndex = 6;
+            this.gridColumn104.Width = 61;
             // 
             // DirectoriesUserControl
             // 
@@ -4152,6 +4173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
@@ -4261,7 +4283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4616,5 +4637,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn102;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource KagentListSource;
         private DevExpress.XtraEditors.ButtonEdit BarCodeEdit;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
     }
 }

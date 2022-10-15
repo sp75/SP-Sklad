@@ -152,7 +152,7 @@ namespace SP_Sklad.WBForm
 
                     var new_ka = _db.Kagent.Add(new Kagent
                     {
-                        Name = item.RecipientBankName,
+                        Name = item.RecipientAccountName,
                         OKPO = item.RecipientEGRPOU,
                         KaKind = 6,
                         Id = Guid.NewGuid(),
@@ -180,8 +180,9 @@ namespace SP_Sklad.WBForm
            
             item.PayerAccountAccId = payer_account.AccId;
             item.RecipientAccountAccId = recipient_account.AccId;
+            item.IsAcquiringAccount = (item.Reason.IndexOf("cmps:") >= 0 || item.Reason.IndexOf("торг. екв.") >= 0);
 
-            if (item.PaySum > 0  && (item.Reason.IndexOf("cmps:") >= 0 || item.Reason.IndexOf("торг. екв.") >= 0))
+            if (item.PaySum > 0)
             {
                 return 33;
             }
@@ -352,9 +353,6 @@ namespace SP_Sklad.WBForm
 
         private int AddAcquiringPayDoc(BankStatementsDet item)
         {
-            List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.PayerEGRPOU && w.KType != 3).Select(s => s.KaId).ToList();
-            var pay_sum = Math.Round(Math.Abs(item.PaySum.Value) / ka_list.Count(), 2, MidpointRounding.AwayFromZero);
-            var pay_sum_dev = Math.Abs(item.PaySum.Value) - (pay_sum * ka_list.Count());
             try
             {
                 var _pd = _db.PayDoc.Add(new PayDoc
@@ -385,64 +383,71 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
                 _db.SetDocRel(bs.Id, _pd.Id);
 
-            /*    if (item.BankCommission > 0)// Додаткові витрати за комісію банку
-                {
-                    var _pd_additional_costs = new PayDoc 
+                /*    if (item.BankCommission > 0)// Додаткові витрати за комісію банку
                     {
-                        Id = Guid.NewGuid(),
-                        Checked = 1,
-                        DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
-                        OnDate = item.TransactionDate.Value,
-                        Total = item.BankCommission.Value,
-                        CTypeId = item.CTypeId.Value,
-                        WithNDS = 1,// З НДС
-                        PTypeId = 2,// Безнал
-                        AccId = payer_account.AccId,
-                        CashId = null,// Каса 
-                        CurrId = 2, //Валюта по умолчанию
-                        OnValue = 1,//Курс валюти
-                        MPersonId = DBHelper.CurrentUser.KaId,
-                        DocType = -2, //Додаткові витрати, комісія банку
-                        UpdatedBy = UserSession.UserId,
-                        EntId = UserSession.EnterpriseId,
-                        ReportingDate = item.TransactionDate.Value,
-                        OperId = _pd.OperId
-                    };
+                        var _pd_additional_costs = new PayDoc 
+                        {
+                            Id = Guid.NewGuid(),
+                            Checked = 1,
+                            DocNum = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault(),
+                            OnDate = item.TransactionDate.Value,
+                            Total = item.BankCommission.Value,
+                            CTypeId = item.CTypeId.Value,
+                            WithNDS = 1,// З НДС
+                            PTypeId = 2,// Безнал
+                            AccId = payer_account.AccId,
+                            CashId = null,// Каса 
+                            CurrId = 2, //Валюта по умолчанию
+                            OnValue = 1,//Курс валюти
+                            MPersonId = DBHelper.CurrentUser.KaId,
+                            DocType = -2, //Додаткові витрати, комісія банку
+                            UpdatedBy = UserSession.UserId,
+                            EntId = UserSession.EnterpriseId,
+                            ReportingDate = item.TransactionDate.Value,
+                            OperId = _pd.OperId
+                        };
 
-                    _db.SaveChanges();
+                        _db.SaveChanges();
 
-                    _db.SetDocRel(bs.Id, _pd_additional_costs.Id);
-                }*/
+                        _db.SetDocRel(bs.Id, _pd_additional_costs.Id);
+                    }*/
 
-                for (int i = 0; i < ka_list.Count(); i++)  //Списуем борг прибутковими касовими ордерами за товар по кліентах за рахунок надходження з еквайрингу
+                if (item.IsAcquiringAccount.Value)
                 {
-                    var _pd_in = _db.PayDoc.Add(new PayDoc()  
+                    List<int> ka_list = item.KaId.HasValue ? new List<int> { item.KaId.Value } : _db.Kagent.Where(w => w.OKPO == item.PayerEGRPOU && w.KType != 3).Select(s => s.KaId).ToList();
+                    var pay_sum = Math.Round(Math.Abs(item.PaySum.Value) / ka_list.Count(), 2, MidpointRounding.AwayFromZero);
+                    var pay_sum_dev = Math.Abs(item.PaySum.Value) - (pay_sum * ka_list.Count());
+
+                    for (int i = 0; i < ka_list.Count(); i++)  //Списуем борг прибутковими касовими ордерами за товар по кліентах за рахунок надходження з еквайрингу
                     {
-                        Id = Guid.NewGuid(),
-                        DocType = 1,
-                        DocNum = new BaseEntities().GetDocNum("pay_doc_in").FirstOrDefault(), //Номер документа
-                        Total = i == 0 ? pay_sum + pay_sum_dev : pay_sum,
-                        Checked = 1,
-                        OnDate = item.TransactionDate,
-                        WithNDS = 1,  // З НДС
-                        PTypeId = 2,  // Вид оплати Безнал
-                        CashId = null,  // Каса 
-                        AccId = bs.AccId, // Acount
-                        CTypeId = item.CTypeId.Value,
-                        CurrId = 2,  //Валюта по умолчанию
-                        OnValue = 1,  //Курс валюти
-                        MPersonId = bs.PersonId,
-                        KaId = ka_list[i],
-                        UpdatedBy = DBHelper.CurrentUser.UserId,
-                        EntId = item.PayerKAgentAccount.KAId,
-                        ReportingDate = item.TransactionDate,
-                        Reason = item.Reason
-                        // KaAccId = recipient_account.AccId
-                    });
+                        var _pd_in = _db.PayDoc.Add(new PayDoc()
+                        {
+                            Id = Guid.NewGuid(),
+                            DocType = 1,
+                            DocNum = new BaseEntities().GetDocNum("pay_doc_in").FirstOrDefault(), //Номер документа
+                            Total = i == 0 ? pay_sum + pay_sum_dev : pay_sum,
+                            Checked = 1,
+                            OnDate = item.TransactionDate,
+                            WithNDS = 1,  // З НДС
+                            PTypeId = 2,  // Вид оплати Безнал
+                            CashId = null,  // Каса 
+                            AccId = bs.AccId, // Acount
+                            CTypeId = item.CTypeId.Value,
+                            CurrId = 2,  //Валюта по умолчанию
+                            OnValue = 1,  //Курс валюти
+                            MPersonId = bs.PersonId,
+                            KaId = ka_list[i],
+                            UpdatedBy = DBHelper.CurrentUser.UserId,
+                            EntId = UserSession.EnterpriseId,
+                            ReportingDate = item.TransactionDate,
+                            Reason = item.Reason
+                            // KaAccId = recipient_account.AccId
+                        });
 
-                    _db.SaveChanges();
+                        _db.SaveChanges();
 
-                    _db.SetDocRel(bs.Id, _pd_in.Id);
+                        _db.SetDocRel(bs.Id, _pd_in.Id);
+                    }
                 }
             }
             catch
@@ -615,7 +620,7 @@ namespace SP_Sklad.WBForm
                         fs.WriteByte(201); // '101 - Dos 866, а 201 - Win 1251
                         fs.Position = 0;
 
-                        string EGRPOU = "", PayerAccountName = "", Account = "", PayerBankName="";
+                        string EGRPOU = "", PayerAccountName = "", Account = "", PayerBankName="", PayerBankMFO="";
 
                         DbfLoaderCore loader = new DbfLoaderCore(fs, Encoding.GetEncoding(1251));
 
@@ -641,6 +646,12 @@ namespace SP_Sklad.WBForm
                             {
                                 PayerBankName = row["FIELD1"].ToString();
                             }
+
+                            if (row["FIELD0"].ToString() == "МФО банку" && PayerBankMFO == "")
+                            {
+                                PayerBankMFO = row["FIELD1"].ToString();
+                            }
+
 
                             if (int.TryParse(row["FIELD0"].ToString(), out int res))
                             {
@@ -672,7 +683,7 @@ namespace SP_Sklad.WBForm
                                         PayerEGRPOU = EGRPOU,
                                         PayerAccount = Account,
                                         PayerAccountName = PayerAccountName,
-                                        PayerBankMFO = row["FIELD8"].ToString(),
+                                        PayerBankMFO = PayerBankMFO,
                                         Reason = reason,
                                         PaySum = PaySum,
                                         TransactionDate = transaction_date,
@@ -685,7 +696,8 @@ namespace SP_Sklad.WBForm
                                         RecipientAccountName = row["FIELD5"].ToString(),
                                         BankCommission = bank_Commission,
                                         KaId = !string.IsNullOrEmpty(pos_terminal_code) ? _db.Kagent.FirstOrDefault(w => w.POSTerminalCode == pos_terminal_code)?.KaId : null,
-                                        PayerBankName = PayerBankName
+                                        PayerBankName = PayerBankName,
+                                         
                                     });
 
                                     bs_det.DocTypeId = GetDocType(bs_det);
@@ -751,11 +763,6 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
-        }
-
-        private void repositoryItemButtonEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
         }
 
         private void repositoryItemLookUpEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

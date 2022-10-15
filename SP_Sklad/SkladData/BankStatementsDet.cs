@@ -38,6 +38,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DocTypeId { get; set; }
         public Nullable<int> PayerAccountAccId { get; set; }
         public Nullable<int> RecipientAccountAccId { get; set; }
+        public Nullable<bool> IsAcquiringAccount { get; set; }
     
         public virtual BankStatements BankStatements { get; set; }
         public virtual KAgentAccount PayerKAgentAccount { get; set; }
