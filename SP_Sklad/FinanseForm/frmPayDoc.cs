@@ -233,7 +233,7 @@ namespace SP_Sklad.FinanseForm
                     _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
                 }
 
-                _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+            //    _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
                 _db.SetDocRel(row.Id, _pd.Id);
 
                 _db.SaveChanges();
