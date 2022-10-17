@@ -201,7 +201,7 @@ namespace SP_Sklad.FinanseForm
                 KagentComboBox.Enabled = false;
             }
 
-          
+            Text += $" [{DBHelper.Enterprise.Name}]";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -233,12 +233,13 @@ namespace SP_Sklad.FinanseForm
                     _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
                 }
 
-            //    _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
+             //   _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.Id == _pd.Id);
                 _db.SetDocRel(row.Id, _pd.Id);
 
                 _db.SaveChanges();
             }
 
+            _pd.UpdatedBy = UserSession.UserId;
             _db.SaveChanges();
             current_transaction.Commit();
 
@@ -387,26 +388,6 @@ namespace SP_Sklad.FinanseForm
             {
                 CashEditComboBox.EditValue = IHelper.ShowDirectList(CashEditComboBox.EditValue, 4);
             }
-        }
-
-        private void simpleButton6_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void simpleButton7_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-          
         }
 
         private void AccountEdit_EditValueChanged(object sender, EventArgs e)
