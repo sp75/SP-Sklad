@@ -206,6 +206,8 @@ namespace SP_Sklad.FinanseForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            _pd.UpdatedBy = UserSession.UserId;
+
             if (_pd.OnDate.Date <= _db.CommonParams.First().EndCalcPeriod)
             {
                 MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -225,7 +227,9 @@ namespace SP_Sklad.FinanseForm
                 _db.SaveChanges();
             }
 
-           
+            _db.SaveChanges();
+
+
             if (PayDocCheckEdit.Checked && DocListEdit.EditValue != null && row != null)
             {
                 foreach (var item in rl)
@@ -233,14 +237,11 @@ namespace SP_Sklad.FinanseForm
                     _db.DeleteWhere<DocRels>(w => w.OriginatorId == item.Id && w.RelOriginatorId == _pd.Id);
                 }
 
-             //   _pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.Id == _pd.Id);
                 _db.SetDocRel(row.Id, _pd.Id);
 
                 _db.SaveChanges();
             }
 
-            _pd.UpdatedBy = UserSession.UserId;
-            _db.SaveChanges();
             current_transaction.Commit();
 
             Close();
