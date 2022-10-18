@@ -6416,6 +6416,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="DocType" Type="int" />
                 <Property Name="StrPrice" Type="nvarchar" MaxLength="128" />
                 <Property Name="CurrencyPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -10060,15 +10061,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="get_child_node" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_id" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="on_date" Mode="In" Type="DateTime" />
-            <Parameter Name="get_empty" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="PosRemains" EntityType="BaseModel.PosRemains" />
           <AssociationSet Name="FK__POSREMAIN__MATID__2CBDA3B5" Association="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5">
             <End Role="Materials" EntitySet="Materials" />
@@ -10449,6 +10441,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="on_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PosGet" IsComposable="true" ReturnType="Collection(BaseModel.PosGet_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_id" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="get_empty" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -15349,31 +15350,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="SumRemain" Nullable="true" Precision="15" Scale="2" />
           <Property Type="Int32" Name="MId" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="PosGet_Result">
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
-          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="DocType" Nullable="true" />
-          <Property Type="String" Name="StrPrice" Nullable="true" MaxLength="128" />
-          <Property Type="Decimal" Name="CurrencyPrice" Nullable="true" Precision="15" Scale="4" />
-        </ComplexType>
         <EntityType Name="PosRemains">
           <Key>
             <PropertyRef Name="Id" />
@@ -17462,6 +17438,32 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Saldo" Nullable="true" Precision="38" Scale="2" />
           <Property Type="Int32" Name="OriginalId" Nullable="false" />
           <Property Type="String" Name="KaName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PosGet_Result">
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="128" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="SN" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="String" Name="DocNum" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="String" Name="GTD" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="DocType" Nullable="true" />
+          <Property Type="String" Name="StrPrice" Nullable="true" MaxLength="128" />
+          <Property Type="Decimal" Name="CurrencyPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="50" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -20645,35 +20647,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="SN" ColumnName="SN" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GTD" ColumnName="GTD" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="StrPrice" ColumnName="StrPrice" />
-                <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="PosRemains">
             <EntityTypeMapping TypeName="BaseModel.PosRemains">
               <MappingFragment StoreEntitySet="PosRemains">
@@ -22162,6 +22135,36 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
                 <ScalarProperty Name="OriginalId" ColumnName="OriginalId" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PosGet" FunctionName="BaseModel.Store.PosGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.PosGet_Result">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GTD" ColumnName="GTD" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="StrPrice" ColumnName="StrPrice" />
+                <ScalarProperty Name="CurrencyPrice" ColumnName="CurrencyPrice" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

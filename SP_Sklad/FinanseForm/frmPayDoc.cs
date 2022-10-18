@@ -59,23 +59,16 @@ namespace SP_Sklad.FinanseForm
             CurrEdit.Properties.DataSource = DBHelper.Currency;
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
-            RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KType != 3).ToList();/* Select(s => new user_acc
-            {
-                AccId = s.AccId,
-                AccNum = s.AccNum,
-                Name = s.BankName,
-                ExtDocType = 1
-            }).ToList();*/
+      //      RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KType != 3).ToList();
 
-
-/*
-            user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).Select(s => new user_acc
-            {
-                AccId = s.AccId,
-                AccNum = s.AccNum,
-                Name = s.BankName,
-                ExtDocType = 1
-            }).ToList();*/
+            /*
+                        user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == UserSession.EnterpriseId).Select(s => new user_acc
+                        {
+                            AccId = s.AccId,
+                            AccNum = s.AccNum,
+                            Name = s.BankName,
+                            ExtDocType = 1
+                        }).ToList();*/
 
 
             if (_PayDocId == null)
@@ -493,7 +486,12 @@ namespace SP_Sklad.FinanseForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-        
+            if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
+            {
+                var kaid = (int)KagentComboBox.EditValue;
+
+                RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KAId == kaid).ToList();
+            }
 
         }
 

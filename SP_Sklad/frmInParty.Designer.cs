@@ -48,6 +48,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -116,7 +117,8 @@
             this.gridColumn4,
             this.gridColumn6,
             this.gridColumn7,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn8});
             this.InPartyGridView.GridControl = this.InPartyGridControl;
             this.InPartyGridView.GroupCount = 1;
             this.InPartyGridView.Name = "InPartyGridView";
@@ -201,7 +203,7 @@
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 255;
+            this.gridColumn2.Width = 299;
             // 
             // gridColumn3
             // 
@@ -215,8 +217,8 @@
             this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "CurRemain", "{0:0.##}")});
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 3;
-            this.gridColumn3.Width = 122;
+            this.gridColumn3.VisibleIndex = 4;
+            this.gridColumn3.Width = 101;
             // 
             // gridColumn4
             // 
@@ -231,8 +233,8 @@
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 4;
-            this.gridColumn4.Width = 115;
+            this.gridColumn4.VisibleIndex = 5;
+            this.gridColumn4.Width = 94;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -255,8 +257,8 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            this.gridColumn6.Width = 107;
+            this.gridColumn6.VisibleIndex = 6;
+            this.gridColumn6.Width = 78;
             // 
             // gridColumn7
             // 
@@ -266,8 +268,8 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 6;
-            this.gridColumn7.Width = 62;
+            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.Width = 59;
             // 
             // gridColumn5
             // 
@@ -292,11 +294,22 @@
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.imageList1;
             // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Серійний номер";
+            this.gridColumn8.FieldName = "SerialNo";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 3;
+            this.gridColumn8.Width = 142;
+            // 
             // barDockControl1
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
+            this.barDockControl1.Manager = null;
             this.barDockControl1.Size = new System.Drawing.Size(848, 0);
             // 
             // frmInParty
@@ -347,5 +360,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }

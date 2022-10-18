@@ -1989,40 +1989,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<WhMatGet_Result>("[BaseEntities].[WhMatGet](@grp_id, @wid, @ka_id, @on_date, @get_empty, @wh, @show_all_mats, @grp, @user_id, @get_child_node)", grp_idParameter, widParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, show_all_matsParameter, grpParameter, user_idParameter, get_child_nodeParameter);
         }
     
-        [EdmFunction("BaseEntities", "PosGet")]
-        public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> user_id)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var w_idParameter = w_id.HasValue ?
-                new ObjectParameter("w_id", w_id) :
-                new ObjectParameter("w_id", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var on_dateParameter = on_date.HasValue ?
-                new ObjectParameter("on_date", on_date) :
-                new ObjectParameter("on_date", typeof(System.DateTime));
-    
-            var get_emptyParameter = get_empty.HasValue ?
-                new ObjectParameter("get_empty", get_empty) :
-                new ObjectParameter("get_empty", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh, @user_id)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_39")]
         public virtual IQueryable<REP_39_Result> REP_39(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id, Nullable<System.Guid> ka_grp_id)
         {
@@ -2537,6 +2503,40 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("on_date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSaldoDetTree_Result>("GetSaldoDetTree", user_idParameter, idParameter, on_dateParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "PosGet")]
+        public virtual IQueryable<PosGet_Result> PosGet(Nullable<int> mat_id, Nullable<int> w_id, Nullable<int> ka_id, Nullable<System.DateTime> on_date, Nullable<int> get_empty, string wh, Nullable<int> user_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var w_idParameter = w_id.HasValue ?
+                new ObjectParameter("w_id", w_id) :
+                new ObjectParameter("w_id", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var get_emptyParameter = get_empty.HasValue ?
+                new ObjectParameter("get_empty", get_empty) :
+                new ObjectParameter("get_empty", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<PosGet_Result>("[BaseEntities].[PosGet](@mat_id, @w_id, @ka_id, @on_date, @get_empty, @wh, @user_id)", mat_idParameter, w_idParameter, ka_idParameter, on_dateParameter, get_emptyParameter, whParameter, user_idParameter);
         }
     }
 }

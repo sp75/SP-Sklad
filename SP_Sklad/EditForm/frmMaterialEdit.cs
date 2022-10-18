@@ -303,7 +303,10 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            BarCodeEdit.EditValue = NameTextEdit.Text.ToArray().Sum(s=> Convert.ToInt32(s));
+            Random random = new Random();
+            int randomNumber = random.Next(0, 1000000000);
+
+            BarCodeEdit.EditValue = randomNumber.ToString();
             textEdit4.EditValue = NameTextEdit.EditValue;
         }
 
@@ -706,7 +709,24 @@ namespace SP_Sklad.EditForm
 
             IHelper.Print(data_for_report, "BarCode.xlsx");
         }
-            
+
+        private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
+        {
+            if (_db.Materials.Where(w => w.Artikul.Length > 0).Any(a => a.Artikul == ArtikulEdit.Text))
+            {
+                ArtikulEdit.ErrorText = "Товар з таким артикулом вже існує!";
+                e.Cancel = true;
+            }
+        }
+
+        private void BarCodeEdit_Validating(object sender, CancelEventArgs e)
+        {
+            if (_db.Materials.Where(w => w.BarCode.Length > 0).Any(a => a.BarCode == BarCodeEdit.Text))
+            {
+                BarCodeEdit.ErrorText = "Товар з таким штрихкодом вже існує!";
+                e.Cancel = true;
+            }
+        }
     }
 
 

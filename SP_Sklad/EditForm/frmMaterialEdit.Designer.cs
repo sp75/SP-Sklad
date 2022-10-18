@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialEdit));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator2 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -545,10 +545,10 @@
             this.WeightEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "Weight", true));
             this.WeightEdit.Location = new System.Drawing.Point(15, 130);
             this.WeightEdit.Name = "WeightEdit";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.WeightEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.WeightEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.WeightEdit.Properties.ShowCloseButton = true;
             this.WeightEdit.Size = new System.Drawing.Size(139, 24);
@@ -642,6 +642,7 @@
             this.BarCodeEdit.Size = new System.Drawing.Size(250, 22);
             this.BarCodeEdit.StyleController = this.styleController1;
             this.BarCodeEdit.TabIndex = 32;
+            this.BarCodeEdit.Validating += new System.ComponentModel.CancelEventHandler(this.BarCodeEdit_Validating);
             // 
             // labelControl5
             // 
@@ -663,8 +664,8 @@
             this.barCodeControl1.ShowText = false;
             this.barCodeControl1.Size = new System.Drawing.Size(332, 82);
             this.barCodeControl1.StyleController = this.styleController1;
-            code39ExtendedGenerator2.WideNarrowRatio = 3F;
-            this.barCodeControl1.Symbology = code39ExtendedGenerator2;
+            code39ExtendedGenerator1.WideNarrowRatio = 3F;
+            this.barCodeControl1.Symbology = code39ExtendedGenerator1;
             this.barCodeControl1.TabIndex = 30;
             // 
             // panel1
@@ -901,6 +902,7 @@
             this.ArtikulEdit.Size = new System.Drawing.Size(542, 22);
             this.ArtikulEdit.StyleController = this.styleController1;
             this.ArtikulEdit.TabIndex = 29;
+            this.ArtikulEdit.Validating += new System.ComponentModel.CancelEventHandler(this.ArtikulEdit_Validating);
             // 
             // NowDateBtn
             // 
@@ -1067,7 +1069,7 @@
             this.xtraTabPage2.Controls.Add(this.EditPriceBtn);
             this.xtraTabPage2.Controls.Add(this.MatPriceGridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage2.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage2.Text = "Ціноутворення";
             // 
             // AddPriceBtn
@@ -1183,7 +1185,7 @@
             this.xtraTabPage3.Controls.Add(this.labelControl20);
             this.xtraTabPage3.Controls.Add(this.NdsCheckEdit);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage3.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage3.Text = "Оподаткування";
             // 
             // NdsLabel
@@ -1248,7 +1250,7 @@
             this.xtraTabPage4.Controls.Add(this.simpleButton9);
             this.xtraTabPage4.Controls.Add(this.simpleButton10);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage4.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage4.Text = "Взаємозамінність";
             // 
             // MatChangeGridControl
@@ -1371,7 +1373,7 @@
             this.xtraTabPage5.Controls.Add(this.textEdit1);
             this.xtraTabPage5.Controls.Add(this.labelControl13);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage5.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage5.Text = "Посвідчення";
             // 
             // labelControl21
@@ -1478,7 +1480,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.pictureEdit1);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage6.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage6.Text = "Зображення";
             // 
             // pictureEdit1
@@ -1490,7 +1492,7 @@
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(707, 519);
+            this.pictureEdit1.Size = new System.Drawing.Size(702, 519);
             this.pictureEdit1.TabIndex = 2;
             this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
             // 
@@ -1498,7 +1500,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.textEdit8);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage7.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // textEdit8
@@ -1507,7 +1509,7 @@
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(0, 0);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(707, 519);
+            this.textEdit8.Size = new System.Drawing.Size(702, 519);
             this.textEdit8.TabIndex = 35;
             // 
             // xtraTabPage8
@@ -1516,7 +1518,7 @@
             this.xtraTabPage8.Controls.Add(this.PricePanel);
             this.xtraTabPage8.Controls.Add(this.panel4);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage8.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage8.Text = "Ціна";
             // 
             // CommentLabel
@@ -1539,7 +1541,7 @@
             this.PricePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PricePanel.Location = new System.Drawing.Point(0, 45);
             this.PricePanel.Name = "PricePanel";
-            this.PricePanel.Size = new System.Drawing.Size(707, 303);
+            this.PricePanel.Size = new System.Drawing.Size(702, 303);
             this.PricePanel.TabIndex = 45;
             // 
             // CustomPricePanel
@@ -1795,7 +1797,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(707, 45);
+            this.panel4.Size = new System.Drawing.Size(702, 45);
             this.panel4.TabIndex = 46;
             // 
             // DelIdividualMatPriceBtn
@@ -1839,7 +1841,7 @@
             this.xtraTabPage9.Controls.Add(this.simpleButton12);
             this.xtraTabPage9.Controls.Add(this.gridControl1);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(707, 519);
+            this.xtraTabPage9.Size = new System.Drawing.Size(702, 519);
             this.xtraTabPage9.Text = "Одиниці виміру";
             // 
             // simpleButton11
