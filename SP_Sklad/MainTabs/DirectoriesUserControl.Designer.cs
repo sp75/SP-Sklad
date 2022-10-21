@@ -364,6 +364,17 @@
             this.gridColumn76 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn96 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn97 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage35 = new DevExpress.XtraTab.XtraTabPage();
+            this.KAgentAccountGridControl = new DevExpress.XtraGrid.GridControl();
+            this.KAgentAccountBS = new System.Windows.Forms.BindingSource(this.components);
+            this.KAgentAccountGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn107 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn105 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn106 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -541,6 +552,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsGridView)).BeginInit();
+            this.xtraTabPage35.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).BeginInit();
             this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
@@ -1288,6 +1304,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2694,7 +2711,8 @@
             this.xtraTabPage30,
             this.xtraTabPage17,
             this.xtraTabPage32,
-            this.xtraTabPage34});
+            this.xtraTabPage34,
+            this.xtraTabPage35});
             // 
             // xtraTabPage19
             // 
@@ -3688,6 +3706,7 @@
             this.CurrencyGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.CurrencyGridView.OptionsView.EnableAppearanceOddRow = true;
             this.CurrencyGridView.OptionsView.ShowGroupPanel = false;
+            this.CurrencyGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
             // colShortName
             // 
@@ -3917,6 +3936,114 @@
             this.gridColumn97.Visible = true;
             this.gridColumn97.VisibleIndex = 2;
             this.gridColumn97.Width = 419;
+            // 
+            // xtraTabPage35
+            // 
+            this.xtraTabPage35.Controls.Add(this.KAgentAccountGridControl);
+            this.xtraTabPage35.Name = "xtraTabPage35";
+            this.xtraTabPage35.Size = new System.Drawing.Size(1085, 568);
+            this.xtraTabPage35.Text = "Рахунки";
+            // 
+            // KAgentAccountGridControl
+            // 
+            this.KAgentAccountGridControl.DataSource = this.KAgentAccountBS;
+            this.KAgentAccountGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KAgentAccountGridControl.Location = new System.Drawing.Point(0, 0);
+            this.KAgentAccountGridControl.MainView = this.KAgentAccountGridView;
+            this.KAgentAccountGridControl.Name = "KAgentAccountGridControl";
+            this.KAgentAccountGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit13});
+            this.KAgentAccountGridControl.Size = new System.Drawing.Size(1085, 568);
+            this.KAgentAccountGridControl.TabIndex = 6;
+            this.KAgentAccountGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.KAgentAccountGridView});
+            // 
+            // KAgentAccountBS
+            // 
+            this.KAgentAccountBS.DataSource = typeof(SP_Sklad.SkladData.v_KAgentAccount);
+            // 
+            // KAgentAccountGridView
+            // 
+            this.KAgentAccountGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.KAgentAccountGridView.Appearance.Row.Options.UseFont = true;
+            this.KAgentAccountGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn107,
+            this.gridColumn105,
+            this.gridColumn109,
+            this.gridColumn108,
+            this.gridColumn106,
+            this.gridColumn110});
+            this.KAgentAccountGridView.GridControl = this.KAgentAccountGridControl;
+            this.KAgentAccountGridView.Name = "KAgentAccountGridView";
+            this.KAgentAccountGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.KAgentAccountGridView.OptionsBehavior.Editable = false;
+            this.KAgentAccountGridView.OptionsBehavior.ReadOnly = true;
+            this.KAgentAccountGridView.OptionsView.EnableAppearanceEvenRow = true;
+            this.KAgentAccountGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.KAgentAccountGridView.OptionsView.ShowGroupPanel = false;
+            this.KAgentAccountGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
+            // 
+            // gridColumn107
+            // 
+            this.gridColumn107.Caption = "Рахунок";
+            this.gridColumn107.FieldName = "AccNum";
+            this.gridColumn107.Name = "gridColumn107";
+            this.gridColumn107.Visible = true;
+            this.gridColumn107.VisibleIndex = 0;
+            this.gridColumn107.Width = 215;
+            // 
+            // gridColumn105
+            // 
+            this.gridColumn105.Caption = "Назва";
+            this.gridColumn105.FieldName = "AccountName";
+            this.gridColumn105.Name = "gridColumn105";
+            this.gridColumn105.Visible = true;
+            this.gridColumn105.VisibleIndex = 1;
+            this.gridColumn105.Width = 269;
+            // 
+            // gridColumn109
+            // 
+            this.gridColumn109.Caption = "Контрагент";
+            this.gridColumn109.FieldName = "KaName";
+            this.gridColumn109.Name = "gridColumn109";
+            this.gridColumn109.Visible = true;
+            this.gridColumn109.VisibleIndex = 3;
+            this.gridColumn109.Width = 172;
+            // 
+            // gridColumn108
+            // 
+            this.gridColumn108.Caption = "Банк";
+            this.gridColumn108.FieldName = "BankName";
+            this.gridColumn108.Name = "gridColumn108";
+            this.gridColumn108.Visible = true;
+            this.gridColumn108.VisibleIndex = 4;
+            this.gridColumn108.Width = 181;
+            // 
+            // gridColumn106
+            // 
+            this.gridColumn106.Caption = "За змовчуванням";
+            this.gridColumn106.ColumnEdit = this.repositoryItemCheckEdit13;
+            this.gridColumn106.FieldName = "Def";
+            this.gridColumn106.Name = "gridColumn106";
+            this.gridColumn106.Visible = true;
+            this.gridColumn106.VisibleIndex = 5;
+            this.gridColumn106.Width = 78;
+            // 
+            // repositoryItemCheckEdit13
+            // 
+            this.repositoryItemCheckEdit13.AutoHeight = false;
+            this.repositoryItemCheckEdit13.Name = "repositoryItemCheckEdit13";
+            this.repositoryItemCheckEdit13.ValueChecked = 1;
+            this.repositoryItemCheckEdit13.ValueUnchecked = 0;
+            // 
+            // gridColumn110
+            // 
+            this.gridColumn110.Caption = "Тип контрагента";
+            this.gridColumn110.FieldName = "KaTypeName";
+            this.gridColumn110.Name = "gridColumn110";
+            this.gridColumn110.Visible = true;
+            this.gridColumn110.VisibleIndex = 2;
+            this.gridColumn110.Width = 145;
             // 
             // xtraTabPage33
             // 
@@ -4272,6 +4399,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.CarsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsGridView)).EndInit();
+            this.xtraTabPage35.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
             this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
@@ -4639,5 +4771,16 @@
         private DevExpress.XtraEditors.ButtonEdit BarCodeEdit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage35;
+        private DevExpress.XtraGrid.GridControl KAgentAccountGridControl;
+        private System.Windows.Forms.BindingSource KAgentAccountBS;
+        public DevExpress.XtraGrid.Views.Grid.GridView KAgentAccountGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn107;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn105;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn109;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn108;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn106;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
     }
 }

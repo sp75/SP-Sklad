@@ -158,6 +158,7 @@
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn135 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox18 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn199 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
@@ -484,7 +485,6 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn199 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1372,6 +1372,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -2305,6 +2306,15 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 41)});
             this.repositoryItemImageComboBox18.Name = "repositoryItemImageComboBox18";
             this.repositoryItemImageComboBox18.SmallImages = this.GridImageList;
+            // 
+            // gridColumn199
+            // 
+            this.gridColumn199.Caption = "Причина дефекту";
+            this.gridColumn199.FieldName = "DefectsClassifierName";
+            this.gridColumn199.Name = "gridColumn199";
+            this.gridColumn199.Visible = true;
+            this.gridColumn199.VisibleIndex = 9;
+            this.gridColumn199.Width = 168;
             // 
             // repositoryItemCheckEdit3
             // 
@@ -6053,15 +6063,6 @@
             this.bar5.DockCol = 0;
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
-            // 
-            // gridColumn199
-            // 
-            this.gridColumn199.Caption = "Причина дефекту";
-            this.gridColumn199.FieldName = "DefectsClassifierName";
-            this.gridColumn199.Name = "gridColumn199";
-            this.gridColumn199.Visible = true;
-            this.gridColumn199.VisibleIndex = 9;
-            this.gridColumn199.Width = 168;
             // 
             // ManufacturingUserControl
             // 
