@@ -712,7 +712,7 @@ namespace SP_Sklad.EditForm
 
         private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
         {
-            if (_db.Materials.Where(w => w.Artikul.Length > 0 && w.MatId != _mat.MatId).Any(a => a.Artikul == ArtikulEdit.Text))
+            if (_db.Materials.Where(w => w.Artikul.Length > 0).Any(a => a.Artikul == ArtikulEdit.Text))
             {
                 ArtikulEdit.ErrorText = "Товар з таким артикулом вже існує!";
                 e.Cancel = true;
@@ -721,7 +721,7 @@ namespace SP_Sklad.EditForm
 
         private void BarCodeEdit_Validating(object sender, CancelEventArgs e)
         {
-            if (_db.Materials.Where(w => w.BarCode.Length > 0 && w.MatId != _mat.MatId).Any(a => a.BarCode == BarCodeEdit.Text))
+            if (_db.Materials.Where(w => w.BarCode.Length > 0).Any(a => a.BarCode == BarCodeEdit.Text))
             {
                 BarCodeEdit.ErrorText = "Товар з таким штрихкодом вже існує!";
                 e.Cancel = true;
