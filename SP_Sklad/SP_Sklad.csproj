@@ -275,6 +275,12 @@
     <Compile Include="EditForm\frmAttEdit.Designer.cs">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditForm\frmKaAccountEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditForm\frmKaAccountEdit.Designer.cs">
+      <DependentUpon>frmKaAccountEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditForm\frmCurrencyRate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1843,6 +1849,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmAttEdit.resx">
       <DependentUpon>frmAttEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForm\frmKaAccountEdit.resx">
+      <DependentUpon>frmKaAccountEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmCurrencyRate.resx">
       <DependentUpon>frmCurrencyRate.cs</DependentUpon>

@@ -546,6 +546,18 @@ namespace SP_Sklad.Common
                     }
                     break;
 
+                case 17:
+                    using (var f = new frmCatalog(null, 137))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Рахунки";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.KAgentAccountGridView.GetFocusedRow() as v_KAgentAccount).AccId;
+                        }
+                    }
+                    break;
+
             }
 
             return old_id;
