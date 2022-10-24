@@ -353,6 +353,7 @@
             this.AccountEdit.Size = new System.Drawing.Size(204, 24);
             this.AccountEdit.StyleController = this.styleController1;
             this.AccountEdit.TabIndex = 40;
+            this.AccountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AccountEdit_ButtonClick);
             this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
             // 
             // labelControl18
@@ -594,6 +595,7 @@
             this.RecipientAccEdit.Size = new System.Drawing.Size(446, 24);
             this.RecipientAccEdit.StyleController = this.styleController1;
             this.RecipientAccEdit.TabIndex = 41;
+            this.RecipientAccEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RecipientAccEdit_ButtonClick);
             // 
             // labelControl13
             // 

@@ -101,7 +101,6 @@
         <EntityTypeShape EntityType="BaseModel.Banks" Width="1.5" PointX="0.75" PointY="36" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" />
         <AssociationConnector Association="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" />
-        <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="14.75" PointY="0.875" />
         <EntityTypeShape EntityType="BaseModel.Serials" Width="1.5" PointX="9.125" PointY="1" />
         <EntityTypeShape EntityType="BaseModel.WayBillDetAddProps" Width="1.5" PointX="22.625" PointY="8.5" />
         <EntityTypeShape EntityType="BaseModel.v_PriceTypes" Width="1.5" PointX="10.661018370958519" PointY="24.701074656425543" />
@@ -362,6 +361,7 @@
         <EntityTypeShape EntityType="BaseModel.v_BankStatements" Width="1.5" PointX="9.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_PriceListDet" Width="1.5" PointX="0.75" PointY="13.75" />
         <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="13.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

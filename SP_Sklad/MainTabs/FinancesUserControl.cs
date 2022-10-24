@@ -63,8 +63,10 @@ namespace SP_Sklad.MainTabs
                     FinancesTreeList.DataSource = _db.GetFinancesTree(DBHelper.CurrentUser.UserId).ToList();
                     FinancesTreeList.ExpandAll();
 
-                    PayDocTypeEdit.Properties.DataSource = new List<PayDocType>() { new PayDocType { Id = -1, Name = "Усі" } }.Concat(_db.PayDocType.Where(w => w.Id == 6 || w.Id == 3)).ToList();
+                    PayDocTypeEdit.Properties.DataSource = new List<PayDocType>() { new PayDocType { Id = -1, Name = "Усі" } }.Concat(_db.PayDocType.Where(w => w.Id == 6 || w.Id == 3 || w.Id == 11)).ToList();
                     PayDocTypeEdit.EditValue = -1;
+
+                    repositoryItemLookUpEdit1.DataSource = new List<object>() { new { Id = 1, Name = "Проведено" }, new { Id = 0, Name = "Новий" } };
                 }
             }
             
