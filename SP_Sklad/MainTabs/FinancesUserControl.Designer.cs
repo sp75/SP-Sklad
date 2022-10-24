@@ -153,7 +153,6 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.MoneyMoveListInfoBS = new System.Windows.Forms.BindingSource(this.components);
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -259,7 +258,6 @@
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyMoveListInfoBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.xtraTabPage9.SuspendLayout();
@@ -828,7 +826,6 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1637,9 +1634,7 @@
             this.vGridControl1.Name = "vGridControl1";
             this.vGridControl1.OptionsBehavior.Editable = false;
             this.vGridControl1.RecordWidth = 186;
-            this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit1});
-            this.vGridControl1.RowHeaderWidth = 237;
+            this.vGridControl1.RowHeaderWidth = 207;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
             this.row9,
@@ -1655,32 +1650,20 @@
             // 
             this.MoneyMoveListInfoBS.DataSource = typeof(SP_Sklad.SkladData.MoneyMoveList_Result);
             // 
-            // repositoryItemLookUpEdit1
-            // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.DisplayMember = "Name";
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
-            this.repositoryItemLookUpEdit1.ValueMember = "Id";
-            // 
             // row
             // 
-            this.row.Height = 18;
             this.row.Name = "row";
             this.row.Properties.Caption = "Номер документа";
             this.row.Properties.FieldName = "DocNum";
             // 
             // row9
             // 
-            this.row9.Height = 20;
             this.row9.Name = "row9";
             this.row9.Properties.Caption = "Дата";
             this.row9.Properties.FieldName = "OnDate";
             // 
             // row6
             // 
-            this.row6.Height = 18;
             this.row6.Name = "row6";
             this.row6.Properties.Caption = "Тип операції";
             this.row6.Properties.FieldName = "PayTypeName";
@@ -1690,20 +1673,20 @@
             this.category.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row1,
             this.row3});
-            this.category.Height = 22;
+            this.category.Height = 17;
             this.category.Name = "category";
             this.category.Properties.Caption = "Звітки";
             // 
             // row1
             // 
-            this.row1.Height = 21;
+            this.row1.Height = 17;
             this.row1.Name = "row1";
             this.row1.Properties.Caption = "З каси (з рахунку)";
             this.row1.Properties.FieldName = "FromSource";
             // 
             // row3
             // 
-            this.row3.Height = 18;
+            this.row3.Height = 16;
             this.row3.Name = "row3";
             this.row3.Properties.Caption = "Списано";
             this.row3.Properties.FieldName = "FromSumm";
@@ -1718,29 +1701,26 @@
             // 
             // row2
             // 
-            this.row2.Height = 18;
+            this.row2.Height = 16;
             this.row2.Name = "row2";
             this.row2.Properties.Caption = "У касу (на рахунок)";
             this.row2.Properties.FieldName = "ToSource";
             // 
             // row10
             // 
-            this.row10.Height = 19;
             this.row10.Name = "row10";
             this.row10.Properties.Caption = "Зараховано";
             this.row10.Properties.FieldName = "ToSumm";
             // 
             // row4
             // 
-            this.row4.Height = 19;
             this.row4.Name = "row4";
             this.row4.Properties.Caption = "Статус документа";
             this.row4.Properties.FieldName = "Checked";
-            this.row4.Properties.RowEdit = this.repositoryItemLookUpEdit1;
             // 
             // row5
             // 
-            this.row5.Height = 19;
+            this.row5.Height = 16;
             this.row5.Name = "row5";
             this.row5.Properties.Caption = "Підстава";
             this.row5.Properties.FieldName = "Reason";
@@ -2116,7 +2096,6 @@
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyMoveListInfoBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.xtraTabPage9.ResumeLayout(false);
@@ -2311,6 +2290,5 @@
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
     }
 }

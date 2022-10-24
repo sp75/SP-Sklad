@@ -510,21 +510,5 @@ namespace SP_Sklad.FinanseForm
                 ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
             }
         }
-
-        private void AccountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                AccountEdit.EditValue = IHelper.ShowDirectList(AccountEdit.EditValue, 17);
-            }
-        }
-
-        private void RecipientAccEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                RecipientAccEdit.EditValue = IHelper.ShowDirectList(RecipientAccEdit.EditValue, 17);
-            }
-        }
     }
 }

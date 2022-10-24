@@ -391,7 +391,6 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -496,7 +495,7 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(668, 550);
+            this.xtraTabPage6.Size = new System.Drawing.Size(668, 543);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // ReportUserControl

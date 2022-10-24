@@ -97,6 +97,7 @@ namespace SP_Sklad.SkladData
         public DbSet<Commission> Commission { get; set; }
         public DbSet<AccountType> AccountType { get; set; }
         public DbSet<Banks> Banks { get; set; }
+        public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
         public DbSet<Serials> Serials { get; set; }
         public DbSet<WayBillDetAddProps> WayBillDetAddProps { get; set; }
         public DbSet<v_PriceTypes> v_PriceTypes { get; set; }
@@ -205,7 +206,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_PriceListDet> v_PriceListDet { get; set; }
         public DbSet<v_BankStatementsDet> v_BankStatementsDet { get; set; }
         public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
-        public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

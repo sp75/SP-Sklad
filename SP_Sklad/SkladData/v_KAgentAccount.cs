@@ -26,7 +26,5 @@ namespace SP_Sklad.SkladData
         public string KaName { get; set; }
         public int KType { get; set; }
         public string AccountName { get; set; }
-        public string KaTypeName { get; set; }
-        public Nullable<int> Deleted { get; set; }
     }
 }

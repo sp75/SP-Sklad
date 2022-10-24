@@ -308,12 +308,6 @@ namespace SP_Sklad.MainTabs
                             CarsBS.DataSource = _db.Cars.ToList();
                             extDirTabControl.SelectedTabPageIndex = 14;
                             break;
-
-                        case 91:
-                            KAgentAccountBS.DataSource = _db.v_KAgentAccount.ToList();
-                            extDirTabControl.SelectedTabPageIndex = 15;
-                            break;
-
                     }
                     break;
 
@@ -475,10 +469,6 @@ namespace SP_Sklad.MainTabs
                         case 87:
                             result = new frmCarEdit((CarsGridView.GetFocusedRow() as Cars).Id).ShowDialog();
                             break;
-
-                        case 91:
-                            result = new frmKaAccountEdit((KAgentAccountGridView.GetFocusedRow() as v_KAgentAccount).AccId).ShowDialog();
-                            break;
                     }
                     break;
 
@@ -589,10 +579,6 @@ namespace SP_Sklad.MainTabs
 
                         case 87:
                             new frmCarEdit().ShowDialog();
-                            break;
-
-                        case 91:
-                            new frmKaAccountEdit().ShowDialog();
                             break;
 
                     }
@@ -748,11 +734,6 @@ namespace SP_Sklad.MainTabs
                             case 87:
                                 var car = (CarsGridView.GetFocusedRow() as Cars);
                                 db.DeleteWhere<Cars>(w => w.Id == car.Id);
-                                break;
-
-                            case 91:
-                                var acc_id = (KAgentAccountGridView.GetFocusedRow() as v_KAgentAccount).AccId;
-                                db.DeleteWhere<KAgentAccount>(w => w.AccId == acc_id);
                                 break;
                         }
                         break;

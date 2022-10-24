@@ -539,7 +539,6 @@
           <Property Name="AccNum" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Def" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="250" />
-          <Property Name="Deleted" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAdjustment">
           <Key>
@@ -2210,8 +2209,6 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a prima
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="KType" Type="int" Nullable="false" />
           <Property Name="AccountName" Type="nvarchar" MaxLength="250" />
-          <Property Name="KaTypeName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Deleted" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7701,9 +7698,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentAccount].[TypeName] AS [TypeName], 
     [v_KAgentAccount].[KaName] AS [KaName], 
     [v_KAgentAccount].[KType] AS [KType], 
-    [v_KAgentAccount].[AccountName] AS [AccountName], 
-    [v_KAgentAccount].[KaTypeName] AS [KaTypeName], 
-    [v_KAgentAccount].[Deleted] AS [Deleted]
+    [v_KAgentAccount].[AccountName] AS [AccountName]
     FROM [dbo].[v_KAgentAccount] AS [v_KAgentAccount]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAdjustment" EntityType="Self.v_KAgentAdjustment" store:Type="Views" store:Schema="dbo">
@@ -9311,6 +9306,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Banks" EntitySet="Banks" />
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
           </AssociationSet>
+          <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           <EntitySet Name="Serials" EntityType="BaseModel.Serials" />
           <EntitySet Name="WayBillDetAddProps" EntityType="BaseModel.WayBillDetAddProps" />
           <EntitySet Name="v_PriceTypes" EntityType="BaseModel.v_PriceTypes" />
@@ -10455,7 +10451,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11655,7 +11650,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BankStatementsDet" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount" FromRole="KAgentAccount" ToRole="BankStatementsDet" />
           <NavigationProperty Name="BankStatementsDet1" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount1" FromRole="KAgentAccount" ToRole="BankStatementsDet" />
-          <Property Name="Deleted" Type="Int32" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
@@ -12299,6 +12293,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_KAgentAccount">
+          <Key>
+            <PropertyRef Name="AccId" />
+            <PropertyRef Name="KAId" />
+            <PropertyRef Name="TypeId" />
+            <PropertyRef Name="BankId" />
+            <PropertyRef Name="AccNum" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="KType" />
+          </Key>
+          <Property Name="AccId" Type="Int32" Nullable="false" />
+          <Property Name="KAId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="AccNum" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Def" Type="Int32" />
+          <Property Name="MFO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KType" Type="Int32" Nullable="false" />
+          <Property Name="AccountName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Serials">
           <Key>
             <PropertyRef Name="SId" />
@@ -17448,31 +17465,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="CurrencyPrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="v_KAgentAccount">
-          <Key>
-            <PropertyRef Name="AccId" />
-            <PropertyRef Name="KAId" />
-            <PropertyRef Name="TypeId" />
-            <PropertyRef Name="BankId" />
-            <PropertyRef Name="AccNum" />
-            <PropertyRef Name="KaName" />
-            <PropertyRef Name="KType" />
-          </Key>
-          <Property Name="AccId" Type="Int32" Nullable="false" />
-          <Property Name="KAId" Type="Int32" Nullable="false" />
-          <Property Name="TypeId" Type="Int32" Nullable="false" />
-          <Property Name="BankId" Type="Int32" Nullable="false" />
-          <Property Name="AccNum" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="Def" Type="Int32" />
-          <Property Name="MFO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BankName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="TypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="KType" Type="Int32" Nullable="false" />
-          <Property Name="AccountName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="KaTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Deleted" Type="Int32" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18338,7 +18330,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KAgentAccount">
             <EntityTypeMapping TypeName="BaseModel.KAgentAccount">
               <MappingFragment StoreEntitySet="KAgentAccount">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="AccNum" ColumnName="AccNum" />
@@ -18853,6 +18844,24 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MFO" ColumnName="MFO" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_KAgentAccount">
+            <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
+              <MappingFragment StoreEntitySet="v_KAgentAccount">
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="MFO" ColumnName="MFO" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -22159,26 +22168,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="v_KAgentAccount">
-            <EntityTypeMapping TypeName="BaseModel.v_KAgentAccount">
-              <MappingFragment StoreEntitySet="v_KAgentAccount">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="KaTypeName" ColumnName="KaTypeName" />
-                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="MFO" ColumnName="MFO" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-                <ScalarProperty Name="AccId" ColumnName="AccId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
