@@ -2314,6 +2314,40 @@ warning 6002: The table/view 'sp_base.dbo.v_LoginHistory' does not have a primar
           <Property Name="FullName" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Materials">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="MType" />
+            <PropertyRef Name="ShortName" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="WId" Type="int" />
+          <Property Name="Num" Type="int" />
+          <Property Name="MinReserv" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="CId" Type="int" />
+          <Property Name="DemandCat" Type="int" />
+          <Property Name="Weight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MSize" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Producer" Type="nvarchar" MaxLength="255" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="MType" Type="int" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="CName" Type="varchar" MaxLength="128" />
+          <Property Name="Archived" Type="int" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+          <Property Name="DemandGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="DateModified" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_MatRecipe">
           <Key>
@@ -7783,6 +7817,34 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_LoginHistory].[FullName] AS [FullName]
     FROM [dbo].[v_LoginHistory] AS [v_LoginHistory]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_Materials" EntityType="Self.v_Materials" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Materials].[MatId] AS [MatId], 
+    [v_Materials].[Name] AS [Name], 
+    [v_Materials].[Artikul] AS [Artikul], 
+    [v_Materials].[MId] AS [MId], 
+    [v_Materials].[Notes] AS [Notes], 
+    [v_Materials].[GrpId] AS [GrpId], 
+    [v_Materials].[WId] AS [WId], 
+    [v_Materials].[Num] AS [Num], 
+    [v_Materials].[MinReserv] AS [MinReserv], 
+    [v_Materials].[CId] AS [CId], 
+    [v_Materials].[DemandCat] AS [DemandCat], 
+    [v_Materials].[Weight] AS [Weight], 
+    [v_Materials].[MSize] AS [MSize], 
+    [v_Materials].[Producer] AS [Producer], 
+    [v_Materials].[BarCode] AS [BarCode], 
+    [v_Materials].[MType] AS [MType], 
+    [v_Materials].[ShortName] AS [ShortName], 
+    [v_Materials].[CName] AS [CName], 
+    [v_Materials].[Archived] AS [Archived], 
+    [v_Materials].[GrpName] AS [GrpName], 
+    [v_Materials].[WhName] AS [WhName], 
+    [v_Materials].[DemandGroupName] AS [DemandGroupName], 
+    [v_Materials].[DateAdded] AS [DateAdded], 
+    [v_Materials].[DateModified] AS [DateModified]
+    FROM [dbo].[v_Materials] AS [v_Materials]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_MatRecipe" EntityType="Self.v_MatRecipe" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_MatRecipe].[RecId] AS [RecId], 
@@ -10456,6 +10518,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_KAgentAccount" EntityType="BaseModel.v_KAgentAccount" />
+          <EntitySet Name="v_Materials" EntityType="BaseModel.v_Materials" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -17473,6 +17536,38 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Int32" />
         </EntityType>
+        <EntityType Name="v_Materials">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="MType" />
+            <PropertyRef Name="ShortName" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="MinReserv" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CId" Type="Int32" />
+          <Property Name="DemandCat" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MSize" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Producer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MType" Type="Int32" Nullable="false" />
+          <Property Name="ShortName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="CName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Archived" Type="Int32" />
+          <Property Name="GrpName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="WhName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="DemandGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateAdded" Type="DateTime" Precision="3" />
+          <Property Name="DateModified" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -22176,6 +22271,36 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="KAId" ColumnName="KAId" />
                 <ScalarProperty Name="AccId" ColumnName="AccId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Materials">
+            <EntityTypeMapping TypeName="BaseModel.v_Materials">
+              <MappingFragment StoreEntitySet="v_Materials">
+                <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="DemandGroupName" ColumnName="DemandGroupName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="MType" ColumnName="MType" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="MSize" ColumnName="MSize" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="DemandCat" ColumnName="DemandCat" />
+                <ScalarProperty Name="CId" ColumnName="CId" />
+                <ScalarProperty Name="MinReserv" ColumnName="MinReserv" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

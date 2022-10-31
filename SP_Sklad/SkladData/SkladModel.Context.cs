@@ -206,6 +206,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_BankStatementsDet> v_BankStatementsDet { get; set; }
         public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
         public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
+        public DbSet<v_Materials> v_Materials { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

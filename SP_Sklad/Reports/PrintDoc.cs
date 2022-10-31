@@ -199,7 +199,8 @@ namespace SP_Sklad.Reports
                 Num = index + 1,
                 s.Key.MatName,
                 s.Key.MsrName,
-                Amount = s.Sum(sum => sum.Amount)
+                Amount = s.Sum(sum => sum.Amount),
+                Price = s.Average(a=> a.Price)
             }).ToList());
             dataForReport.Add("SummaryField", wb_items.GroupBy(g => new {g.MsrName}).Select(s => new
             {

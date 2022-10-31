@@ -502,6 +502,9 @@
     <Compile Include="SkladData\v_LoginHistory.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Materials.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_PriceListDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -2328,6 +2331,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustmentDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />

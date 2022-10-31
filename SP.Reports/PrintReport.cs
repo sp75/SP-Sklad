@@ -1499,7 +1499,8 @@ FROM            (
         private void REP_44()
         {
             int status = Convert.ToInt32(Status);
-            var doc = _db.GetWayBillList(StartDate, EndDate, DocStr, status, Kagent.KaId, 1, "*", _person_id).OrderByDescending(o => o.OnDate).ToList();
+
+            var doc = _db.GetWayBillList(StartDate, EndDate, DocStr, status, Kagent.KaId, 1, Warehouse.WId, _person_id).OrderByDescending(o => o.OnDate).ToList();
 
             realation.Add(new
             {

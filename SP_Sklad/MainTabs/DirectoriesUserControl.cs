@@ -32,9 +32,9 @@ namespace SP_Sklad.MainTabs
         private int _mat_archived { get; set; }
         private bool _show_rec_archived { get; set; }
 
-        private GetMatList_Result focused_mat
+        private v_Materials focused_mat
         {
-            get { return MatGridView.GetFocusedRow() as GetMatList_Result; }
+            get { return MatGridView.GetFocusedRow() as v_Materials; }
         }
 
         private dynamic focused_kagent
@@ -113,6 +113,9 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        int row = 0;
+        bool restore = false;
+
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var _db = DB.SkladBase();
@@ -145,19 +148,29 @@ namespace SP_Sklad.MainTabs
 
                        KAgentDS.DataSource = ka.Distinct().ToList();*/
 
-                    KaGridControl.DataSource = null;
-
-                    KaGridControl.DataSource = KagentListSource;
+                    row = KaGridView.FocusedRowHandle;
+                    restore = true;
                //     KagentListSource.Refresh();
+
+                    KaGridControl.DataSource = null;
+                    KaGridControl.DataSource = KagentListSource;
+              
 
                     DBHelper.ReloadKagents();
                     break;
 
                 case 2:
-                    top_row = MatGridView.TopRowIndex;
+                    /*  top_row = MatGridView.TopRowIndex;
 
-                    MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
-                    MatGridView.TopRowIndex = top_row;
+                      MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
+                      MatGridView.TopRowIndex = top_row;*/
+
+                    row = MatGridView.FocusedRowHandle;
+                    restore = true;
+
+                    MatGridControl.DataSource = null;
+                    MatGridControl.DataSource = MatListSource;
+
                     break;
 
                 case 3:
@@ -356,10 +369,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-                    if (r != null)
+                    if (focused_mat != null)
                     {
-                        result = new frmMaterialEdit(r.MatId).ShowDialog();
+                        result = new frmMaterialEdit(focused_mat.MatId).ShowDialog();
                     }
                     break;
 
@@ -632,12 +644,11 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-                        if (r != null)
+                        if (focused_mat != null)
                         {
-                            var mat = db.Materials.Find(r.MatId);
-                            var mat_remain = db.v_MatRemains.Where(w => w.MatId == r.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
-                            var mat_recipe = db.MatRecipe.Where(w => w.MatId == r.MatId).Any();
+                            var mat = db.Materials.Find(focused_mat.MatId);
+                            var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                            var mat_recipe = db.MatRecipe.Where(w => w.MatId == focused_mat.MatId).Any();
 
                             if (mat != null && mat_remain == null && !mat_recipe)
                             {
@@ -931,7 +942,30 @@ namespace SP_Sklad.MainTabs
 
         private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = MatGridView.GetFocusedRow() as GetMatList_Result;
+            /*  custom_mat_list.Add(new CustomMatList
+              {
+                  Num = custom_mat_list.Count() + 1,
+                  MatId = focused_mat.MatId,
+                  Name = focused_mat.Name,
+                  Amount = 1,
+                  Price = GetPrice(focused_mat.MatId, wb),
+                  WId = focused_mat.WId != null ? focused_mat.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
+                  BarCode = BarCodeEdit.Text
+              });
+
+              MatListGridView.RefreshData();*/
+
+            AddMatItemToList(focused_mat);
+        }
+
+        private void AddMatItemToList(v_Materials row )
+        {
+            if(row == null)
+            {
+                MessageBox.Show("Товар не знайдено!");
+
+                return;
+            }
 
             custom_mat_list.Add(new CustomMatList
             {
@@ -1113,9 +1147,7 @@ namespace SP_Sklad.MainTabs
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            var f_row = MatGridView.GetFocusedRow() as GetMatList_Result;
-
-            if (f_row == null)
+            if (focused_mat == null)
             {
                 return;
             }
@@ -1124,11 +1156,11 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
                 case 1:
-                    MatListInfoBS.DataSource = f_row;
+                    MatListInfoBS.DataSource = focused_mat;
                     break;
 
                 case 2:
-                    MatPriceGridControl.DataSource = DB.SkladBase().GetMatPriceTypes(f_row.MatId).ToList().Select(s => new
+                    MatPriceGridControl.DataSource = DB.SkladBase().GetMatPriceTypes(focused_mat.MatId).ToList().Select(s => new
                     {
                         s.PTypeId,
                         s.Name,
@@ -1145,11 +1177,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(f_row.MatId).ToList();
+                    MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(focused_mat.MatId).ToList();
                     break;
 
                 case 4:
-                    MatNotesEdit.Text = f_row.Notes;
+                    MatNotesEdit.Text = focused_mat.Notes;
                     break;
             }
         }
@@ -1163,8 +1195,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    var r = MatGridView.GetFocusedRow() as GetMatList_Result;
-                    using (var frm = new frmMaterialEdit(null, null, r.MatId))
+                    using (var frm = new frmMaterialEdit(null, null, focused_mat.MatId))
                     {
                         frm.ShowDialog();
                     }
@@ -1240,27 +1271,48 @@ namespace SP_Sklad.MainTabs
                    var pos = MatListDS.IndexOf(row);
                    MatListDS.Position = pos;*/
 
-                if (FindByBarCode() != null && xtraTabPage14.PageVisible)
+                if (/*FindByBarCode() != null &&*/ xtraTabPage14.PageVisible)
                 {
-                    AddItem.PerformClick();
+                    //   AddItem.PerformClick();
+
+                    var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                    String kod = BarCodeSplit[0];
+
+                    AddMatItemToList(DB.SkladBase().v_Materials.FirstOrDefault(w => w.BarCode == kod));
+                }
+                else
+                {
+                    FindByBarCode();
                 }
 
                 BarCodeEdit.Text = "";
             }
         }
 
-        private GetMatList_Result FindByBarCode()
+        private v_Materials FindByBarCode()
         {
             if (!String.IsNullOrEmpty(BarCodeEdit.Text))
             {
                 var BarCodeSplit = BarCodeEdit.Text.Split('+');
                 String kod = BarCodeSplit[0];
 
+                MatGridView.ClearFindFilter();
+
+                gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"BarCode='{kod}'");
+
+
+       /*         int rowHandle = MatGridView.LocateByValue("BarCode", kod);
+                if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                {
+                    MatGridView.FocusedRowHandle = rowHandle;
+                }
+
+
                 var row = MatListDS.List.OfType<GetMatList_Result>().ToList().Find(f => f.BarCode == kod);
                 var pos = MatListDS.IndexOf(row);
-                MatListDS.Position = pos;
+                MatListDS.Position = pos;*/
 
-                return row;
+                return focused_mat;
             }
 
             return null;
@@ -1525,16 +1577,15 @@ namespace SP_Sklad.MainTabs
 
             var _db = DB.SkladBase();
 
-            /*      var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+            var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
 
-                  var ka = (from k in _db.KagentList
-                            join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                            from subfg in gj.DefaultIfEmpty()
-                            where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
-                            select k
-                                     );*/
+            var ka = (from k in _db.KagentList
+                      join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                      from subfg in gj.DefaultIfEmpty()
+                      where (subfg == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
+                      select k).Distinct();
 
-            var ka = _db.KagentList.Where(w => w.Deleted == 0);
+            //   var ka = _db.KagentList.Where(w => w.Deleted == 0);
 
             if (focused_tree_node.Id != 10)
             {
@@ -1557,6 +1608,69 @@ namespace SP_Sklad.MainTabs
             {
                 FindByBarCode();
             }
+        }
+
+        private void KaGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (!restore)
+            {
+                return;
+            }
+
+            KaGridView.TopRowIndex = row;
+            KaGridView.FocusedRowHandle = row;
+            restore = false;
+        }
+
+        private void MatListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
+            var _db = DB.SkladBase();
+
+            var mat = _db.v_Materials.AsQueryable();
+            if(_mat_archived == 0)
+            {
+                mat = mat.Where(w => w.Archived == 0);
+            }
+
+            var grp_id = focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId;
+
+            if ( grp_id > 0)
+            {
+                if (showChildNodeBtn.Down)
+                {
+                    var grp_list = _db.GetMatGroupTree(grp_id).Select(s => s.GrpId).ToList();
+
+                    if (grp_list.Any())
+                    {
+                        mat = mat.Where(w => grp_list.Contains(w.GrpId));
+                    }
+                }
+                else
+                {
+                    mat = mat.Where(w => w.GrpId == grp_id);
+                }
+            }
+
+            e.QueryableSource = mat;
+
+            e.Tag = _db;
+        }
+
+        private void MatGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (!restore)
+            {
+                return;
+            }
+
+            MatGridView.TopRowIndex = row;
+            MatGridView.FocusedRowHandle = row;
+            restore = false;
         }
     }
 }

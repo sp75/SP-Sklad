@@ -160,7 +160,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
-            this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatListSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.MatGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -173,6 +173,7 @@
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn79 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -388,6 +389,7 @@
             this.repositoryItemCheckEdit12 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridView9 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
+            this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
             this.KAgentDS = new System.Windows.Forms.BindingSource(this.components);
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -448,7 +450,6 @@
             this.splitContainerControl3.Panel2.SuspendLayout();
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
@@ -563,6 +564,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
@@ -1404,6 +1406,7 @@
             this.KaGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.KaGridView_RowCellStyle);
             this.KaGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KaGridView_PopupMenuShowing);
             this.KaGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KaGridView_FocusedRowObjectChanged);
+            this.KaGridView.AsyncCompleted += new System.EventHandler(this.KaGridView_AsyncCompleted);
             this.KaGridView.DoubleClick += new System.EventHandler(this.KaGridView_DoubleClick);
             // 
             // gridColumn1
@@ -1938,7 +1941,7 @@
             // 
             // MatGridControl
             // 
-            this.MatGridControl.DataSource = this.MatListDS;
+            this.MatGridControl.DataSource = this.MatListSource;
             this.MatGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MatGridControl.Location = new System.Drawing.Point(0, 44);
             this.MatGridControl.MainView = this.MatGridView;
@@ -1951,9 +1954,12 @@
             this.MatGridView,
             this.gridView4});
             // 
-            // MatListDS
+            // MatListSource
             // 
-            this.MatListDS.DataSource = typeof(SP_Sklad.SkladData.GetMatList_Result);
+            this.MatListSource.AreSourceRowsThreadSafe = true;
+            this.MatListSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_Materials);
+            this.MatListSource.KeyExpression = "MatId";
+            this.MatListSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.MatListSource_GetQueryable);
             // 
             // MatGridView
             // 
@@ -1969,7 +1975,8 @@
             this.gridColumn78,
             this.gridColumn23,
             this.gridColumn79,
-            this.gridColumn72});
+            this.gridColumn72,
+            this.gridColumn111});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1979,6 +1986,7 @@
             this.MatGridView.OptionsView.ShowGroupPanel = false;
             this.MatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatGridView_PopupMenuShowing);
             this.MatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatGridView_FocusedRowObjectChanged);
+            this.MatGridView.AsyncCompleted += new System.EventHandler(this.MatGridView_AsyncCompleted);
             this.MatGridView.DoubleClick += new System.EventHandler(this.MatGridView_DoubleClick);
             // 
             // gridColumn22
@@ -2029,7 +2037,7 @@
             this.gridColumn28.FieldName = "MinReserv";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 5;
+            this.gridColumn28.VisibleIndex = 6;
             this.gridColumn28.Width = 109;
             // 
             // ArchivedGridColumn
@@ -2052,7 +2060,7 @@
             this.gridColumn78.FieldName = "Weight";
             this.gridColumn78.Name = "gridColumn78";
             this.gridColumn78.Visible = true;
-            this.gridColumn78.VisibleIndex = 4;
+            this.gridColumn78.VisibleIndex = 5;
             // 
             // gridColumn23
             // 
@@ -2060,7 +2068,7 @@
             this.gridColumn23.FieldName = "GrpName";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 6;
+            this.gridColumn23.VisibleIndex = 7;
             // 
             // gridColumn79
             // 
@@ -2074,7 +2082,15 @@
             this.gridColumn72.FieldName = "WhName";
             this.gridColumn72.Name = "gridColumn72";
             this.gridColumn72.Visible = true;
-            this.gridColumn72.VisibleIndex = 7;
+            this.gridColumn72.VisibleIndex = 8;
+            // 
+            // gridColumn111
+            // 
+            this.gridColumn111.Caption = "Штрих код";
+            this.gridColumn111.FieldName = "BarCode";
+            this.gridColumn111.Name = "gridColumn111";
+            this.gridColumn111.Visible = true;
+            this.gridColumn111.VisibleIndex = 4;
             // 
             // gridView4
             // 
@@ -2159,7 +2175,7 @@
             // 
             // MatListInfoBS
             // 
-            this.MatListInfoBS.DataSource = typeof(SP_Sklad.SkladData.GetMatList_Result);
+            this.MatListInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_Materials);
             // 
             // editorRow8
             // 
@@ -4158,6 +4174,10 @@
             this.xtraTabPage11.Size = new System.Drawing.Size(1085, 590);
             this.xtraTabPage11.Text = "Корзиина";
             // 
+            // MatListDS
+            // 
+            this.MatListDS.DataSource = typeof(SP_Sklad.SkladData.GetMatList_Result);
+            // 
             // KAgentDS
             // 
             this.KAgentDS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
@@ -4293,7 +4313,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
@@ -4410,6 +4429,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
@@ -4782,5 +4802,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn106;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource MatListSource;
     }
 }
