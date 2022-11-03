@@ -472,6 +472,9 @@
     <Compile Include="SkladData\GetUserRoles_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetWayBillList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Interfaces.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -635,9 +638,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWayBillDetOut_Result.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\GetWayBillList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetWayBillMakeDet_Result.cs">

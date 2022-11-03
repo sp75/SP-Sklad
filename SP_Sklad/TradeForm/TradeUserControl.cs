@@ -344,7 +344,24 @@ namespace SP_Sklad.MainTabs
 
                                 if (_pd != null)
                                 {
-                                    db.PayDoc.Remove(_pd);
+                                    if (!string.IsNullOrEmpty(_access_token) )
+                                    {
+                                        if (_pd.ReceiptId.HasValue)
+                                        {
+                                            if (!UpdateReceipt(_pd.ReceiptId.Value))
+                                            {
+                                                db.PayDoc.Remove(_pd);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Видаляти заборонено");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            db.PayDoc.Remove(_pd);
+                                        }
+                                    }
                                 }
                                 else
                                 {
@@ -362,6 +379,35 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private bool UpdateReceipt(Guid receipt_id)
+        {
+            var find_receipt = new CheckboxClient(_access_token).GetReceipt(receipt_id);
+            if (find_receipt.error == null)
+            {
+                using (var db = new BaseEntities())
+                {
+                    var receipt =  db.Receipt.Find(receipt_id);
+
+                    receipt.CeatedAt = find_receipt.created_at;
+                    receipt.TotalPayment = find_receipt.total_payment;
+                    receipt.TotalSum = find_receipt.total_sum;
+                    receipt.Status = find_receipt.status;
+                    receipt.ShiftId = find_receipt.shift != null ? (Guid?)find_receipt.shift.id : null;
+                    receipt.BarCode = find_receipt.barcode;
+                    receipt.FiscalCode = find_receipt.fiscal_code;
+                    receipt.FiscalDate = find_receipt.fiscal_date;
+                }
+
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(find_receipt.error.message);
+
+                return false;
+            }
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -988,6 +1034,14 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
            
+        }
+
+        private void barButtonItem12_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            if (wb_focused_row.ReceiptId.HasValue)
+            {
+                UpdateReceipt(wb_focused_row.ReceiptId.Value);
+            }
         }
     }
 }

@@ -270,6 +270,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -2559,8 +2560,9 @@
             this.barButtonItem14,
             this.barSubItem1,
             this.PrintReceiptBtn,
-            this.EditCheckBtn});
-            this.barManager1.MaxItemId = 32;
+            this.EditCheckBtn,
+            this.barButtonItem12});
+            this.barManager1.MaxItemId = 33;
             // 
             // bar1
             // 
@@ -2854,7 +2856,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12)});
             this.DocsPopupMenu.Manager = this.barManager1;
             this.DocsPopupMenu.Name = "DocsPopupMenu";
             this.DocsPopupMenu.Popup += new System.EventHandler(this.DocsPopupMenu_Popup);
@@ -2926,6 +2929,13 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
+            // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Отримати фіксальний номер";
+            this.barButtonItem12.Id = 32;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick_1);
             // 
             // TradeUserControl
             // 
@@ -3269,5 +3279,6 @@
         private DevExpress.XtraEditors.LookUpEdit CashiersComboBox;
         private DevExpress.XtraEditors.LookUpEdit PDCashiersComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
     }
 }

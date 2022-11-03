@@ -49,5 +49,7 @@ namespace SP.Base.Models
         public string KagentGroupName { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public string DocType { get; set; }
+        public string SourceWhName { get; set; }
+        public string DestinationWhName { get; set; }
     }
 }

@@ -62,6 +62,8 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ShipmentDate { get; set; }
         public Nullable<System.DateTime> ReportingDate { get; set; }
         public Nullable<System.Guid> ReceiptId { get; set; }
+        public string SourceWhName { get; set; }
+        public string DestinationWhName { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
     }

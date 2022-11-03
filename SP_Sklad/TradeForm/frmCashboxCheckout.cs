@@ -214,7 +214,6 @@ namespace SP_Sklad.WBForm
             var receipt = CreateReceiptSell(payments);
             if (receipt.is_error)
             {
-                receipt.id = Guid.NewGuid();
                 receipt.created_at = DateTime.Now;
                 receipt.total_payment = 0;
                 receipt.total_sum = 0;
