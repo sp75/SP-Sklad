@@ -22,6 +22,8 @@ namespace SP_Sklad.SkladData
         public decimal Amount { get; set; }
         public int TurnType { get; set; }
         public Nullable<decimal> CalcAmount { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<decimal> Total { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual WaybillList WaybillList { get; set; }

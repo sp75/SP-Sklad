@@ -848,13 +848,15 @@ namespace SP.Reports
             }).ToList());
             data_for_report.Add("_realation_", realation);
         }
+
         private void REP_26()
         {
-            var make = _db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -20).ToList().Concat(_db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -22).ToList());
+            var make = _db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -20, _user_id).ToList().Concat(_db.WBListMake(StartDate, EndDate, 1, Warehouse.WId, MatGroup.GrpId, -22, _user_id).ToList());
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MakedProduct", make.ToList());
         }
+
         private void REP_27()
         {
             var mat = _db.REP_27(StartDate, EndDate, Kagent.KaId, MatGroup.GrpId, Material.MatId, KontragentGroup.Id, (int)Person.KaId).ToList();

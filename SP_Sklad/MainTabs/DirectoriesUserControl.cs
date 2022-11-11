@@ -127,9 +127,9 @@ namespace SP_Sklad.MainTabs
 
                     LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
 
-                    /*   var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
 
-                       var ka = (from k in _db.KagentList
+                   /*    var ka = (from k in _db.KagentList
                                  join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                                  from subfg in gj.DefaultIfEmpty()
                                  where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
@@ -1559,7 +1559,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_tree_node.FunId == 66)
+            if (focused_tree_node.FunId == 66 && focused_tree_node.Id < 0)
             {
                 new frmDiscCardGroupEdit(null, focused_tree_node.GrpId).ShowDialog();
             }

@@ -31,7 +31,7 @@ namespace SP_Sklad.ViewsForm
             var satrt_date = DateTime.Now.AddYears(-100);
             var end_date = DateTime.Now.AddYears(100);
 
-            var list = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), status, "*", 0, -20).ToList();
+            var list = db.WBListMake(satrt_date.Date, end_date.Date.AddDays(1), status, "*", 0, -20, UserSession.UserId).ToList();
 
             if (mat_id != null)
             {

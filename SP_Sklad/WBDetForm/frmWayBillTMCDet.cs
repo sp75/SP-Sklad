@@ -32,7 +32,6 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-
             if (_db.Entry<WayBillTmc>(_wbt).State == EntityState.Detached)
             {
                 _db.WayBillTmc.Add(_wbt);
@@ -46,7 +45,7 @@ namespace SP_Sklad.WBDetForm
             var list_mat = _db.Materials.Where(w => w.TypeId == 4).Select(s => new { s.MatId, s.Name, s.Artikul }).ToList();
 
             MatComboBox.Properties.DataSource = list_mat;
-       //     MatComboBox.EditValue = list_mat.Any() ? list_mat.FirstOrDefault().MatId : MatComboBox.EditValue;
+            //     MatComboBox.EditValue = list_mat.Any() ? list_mat.FirstOrDefault().MatId : MatComboBox.EditValue;
 
             if (_PosId == null)
             {
@@ -58,6 +57,8 @@ namespace SP_Sklad.WBDetForm
                     Num = _db.GetWaybillDetIn(_wb.WbillId).Count() + 1,
                     MatId = list_mat.Any() ? list_mat.FirstOrDefault().MatId : 0
                 };
+
+                _wbt.Price = _db.v_MatRemains.Where(w => w.MatId == _wbt.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault()?.AvgPrice;
             }
             else
             {
@@ -84,6 +85,14 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
+            if(MatComboBox.CanFocus)
+            {
+                dynamic row = MatComboBox.GetSelectedDataRow();
+                int mat_id = row.MatId;
+
+                _wbt.Price = _db.v_MatRemains.Where(w=> w.MatId == mat_id).OrderByDescending(o=> o.OnDate).FirstOrDefault()?.AvgPrice;
+            }
+
             GetOk();
         }
 

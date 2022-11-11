@@ -76,14 +76,20 @@ namespace SP_Sklad.MainTabs
             {
                 _db = new BaseEntities();
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
-                try
+                if (!string.IsNullOrEmpty(user_settings.CashierLoginCheckbox))
                 {
-                    var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
+                    try
+                    {
+                        var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
-                    _access_token = login.access_token;
+                        _access_token = login.access_token;
+                    }
+                    catch (Exception err)
+                    {
+                        while (err.InnerException != null) err = err.InnerException;
+                        MessageBox.Show(err.Message);
+                    }
                 }
-                catch
-                { }
 
                 wbKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.Properties.DataSource = new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(DBHelper.TradingPoints.Select(s => new { s.KaId, s.Name }));
@@ -1040,7 +1046,10 @@ namespace SP_Sklad.MainTabs
         {
             if (wb_focused_row.ReceiptId.HasValue)
             {
-                UpdateReceipt(wb_focused_row.ReceiptId.Value);
+                if (UpdateReceipt(wb_focused_row.ReceiptId.Value))
+                {
+                    RefrechItemBtn.PerformClick();
+                }
             }
         }
     }

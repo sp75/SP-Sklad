@@ -108,7 +108,7 @@ namespace SP_Sklad.MainTabs
                 case 1:
                     FinTreeList.DataSource = new BaseEntities().GetSaldoDetTree(DBHelper.CurrentUser.UserId, focused_tree_node.Id, DateTime.Now).ToList();
                     FinTreeList.FocusedNode = FinTreeList.Nodes.FirstNode;
-                    gridControl1.DataSource = new BaseEntities().MoneyOnDate(DateTime.Now).GroupBy(g => new { g.Currency }).Select(s => new { s.Key.Currency, Saldo = s.Sum(m => m.Saldo) }).ToList();
+                    gridControl1.DataSource = new BaseEntities().MoneyOnDateByUser(DateTime.Now, UserSession.UserId).GroupBy(g => new { g.Currency }).Select(s => new { s.Key.Currency, Saldo = s.Sum(m => m.Saldo) }).ToList();
                     break;
 
                 case 2:
@@ -159,7 +159,7 @@ namespace SP_Sklad.MainTabs
                         break;
                 }
                 MoneyTurnoverBS.DataSource = new BaseEntities()
-                    .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId)
+                    .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId, UserSession.UserId)
                     .ToList();
             }
         }

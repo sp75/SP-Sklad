@@ -720,7 +720,7 @@ namespace SP.Base.Models
         }
 
         public virtual DbSet<WBListMake_Result> WBListMake_Result { get; set; }
-        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type)
+        public virtual ObjectResult<WBListMake_Result> WBListMake(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> is_checked, string wh, Nullable<int> grp_id, Nullable<int> w_type, Nullable<int> user_id)
         {
             var from_dateParameter = from_date.HasValue ?
                 new ObjectParameter("from_date", from_date) :
@@ -746,7 +746,11 @@ namespace SP.Base.Models
                 new ObjectParameter("w_type", w_type) :
                 new ObjectParameter("w_type", typeof(int));
 
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter);
+            var user_idParameter = user_id.HasValue ?
+               new ObjectParameter("user_id", user_id) :
+               new ObjectParameter("user_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter, user_idParameter);
         }
 
         public virtual DbSet<StornoWayBill_Result> StornoWayBill_Result { get; set; }

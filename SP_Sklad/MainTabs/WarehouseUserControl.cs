@@ -1056,11 +1056,6 @@ namespace SP_Sklad.MainTabs
             designer.ShowDialog();
         }
 
-        private void MatListGridView_CellValueChanging(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-
-        }
-
         private void WhMatGridView_CustomSummaryCalculate(object sender, CustomSummaryEventArgs e)
         {
             if (e.SummaryProcess == CustomSummaryProcess.Finalize && wh_mat_list != null)

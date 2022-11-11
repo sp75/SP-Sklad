@@ -283,6 +283,7 @@ namespace SP_Sklad.Common
         {
             using (var f = new frmWhCatalog(1))
             {
+                f.Text = "Залишки на складі";
 
                 f.uc.xtraTabPage4.PageVisible = false;
                 f.uc.xtraTabPage5.PageVisible = false;

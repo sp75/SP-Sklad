@@ -272,7 +272,7 @@ namespace SP_Sklad.WBForm
                 {
                     _db.DeleteWhere<ProductionPlanDet>(w => w.ProductionPlanId == pp.Id);
                     var wh_remain = _db.WhMatGet(0, (int)WHComboBox.EditValue, 0, DateTime.Now, 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
-                    var maked = _db.WBListMake(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), 2, "*", 0, -20).ToList();
+                    var maked = _db.WBListMake(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), 2, "*", 0, -20, UserSession.UserId).ToList();
                     int num = 0;
                     foreach (var item in wh_remain)
                     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,20 @@ namespace SP_Sklad
         [STAThread]
         static void Main()
         {
+            // Create a new object, representing the German culture. 
+        //    CultureInfo culture = CultureInfo.CreateSpecificCulture("uk-UA");
+
+            // The following line provides localization for the application's user interface. 
+         //   Thread.CurrentThread.CurrentUICulture = culture;
+
+            // The following line provides localization for data formats. 
+        //    Thread.CurrentThread.CurrentCulture = culture;
+
+            // Set this culture as the default culture for all threads in this application. 
+            // Note: The following properties are supported in the .NET Framework 4.5+
+       //     CultureInfo.DefaultThreadCurrentCulture = culture;
+        //    CultureInfo.DefaultThreadCurrentUICulture = culture;
+
             // Add the event handler for handling UI thread exceptions to the event.
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
 

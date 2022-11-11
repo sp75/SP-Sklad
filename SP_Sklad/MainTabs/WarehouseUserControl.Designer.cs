@@ -193,9 +193,10 @@
             this.MatListGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.MatListGrid_AmountColumn = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.MatListGridColumnWh = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -204,7 +205,6 @@
             this.gridColumn57 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -361,12 +361,12 @@
             this.MatListTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
             this.xtraTabPage11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -1176,6 +1176,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // whContentTab
@@ -1363,7 +1364,7 @@
             // 
             // bandedGridColumn4
             // 
-            this.bandedGridColumn4.Caption = "Залишок на скаді";
+            this.bandedGridColumn4.Caption = "Залишок на складі";
             this.bandedGridColumn4.FieldName = "Remain";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -1381,7 +1382,7 @@
             // 
             // bandedGridColumn3
             // 
-            this.bandedGridColumn3.Caption = "Вільно на скаді";
+            this.bandedGridColumn3.Caption = "Вільно на складі";
             this.bandedGridColumn3.FieldName = "CurRemain";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
@@ -2192,12 +2193,12 @@
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2,
             this.repositoryItemButtonEdit1,
-            this.repositoryItemCheckEdit4});
+            this.repositoryItemCheckEdit4,
+            this.repositoryItemCalcEdit3});
             this.MatListGridControl.Size = new System.Drawing.Size(1212, 230);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.MatListGridView,
-            this.gridView7});
+            this.MatListGridView});
             // 
             // MatListGridView
             // 
@@ -2205,7 +2206,7 @@
             this.MatListGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn46,
             this.gridColumn47,
-            this.gridColumn48,
+            this.MatListGrid_AmountColumn,
             this.gridColumn49,
             this.MatListGridColumnWh,
             this.gridColumn51,
@@ -2214,7 +2215,6 @@
             this.MatListGridView.GridControl = this.MatListGridControl;
             this.MatListGridView.Name = "MatListGridView";
             this.MatListGridView.OptionsView.ShowGroupPanel = false;
-            this.MatListGridView.CellValueChanging += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.MatListGridView_CellValueChanging);
             // 
             // gridColumn46
             // 
@@ -2236,22 +2236,22 @@
             this.gridColumn47.VisibleIndex = 2;
             this.gridColumn47.Width = 215;
             // 
-            // gridColumn48
+            // MatListGrid_AmountColumn
             // 
-            this.gridColumn48.Caption = "К-сть";
-            this.gridColumn48.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn48.FieldName = "Amount";
-            this.gridColumn48.Name = "gridColumn48";
-            this.gridColumn48.Visible = true;
-            this.gridColumn48.VisibleIndex = 4;
-            this.gridColumn48.Width = 141;
+            this.MatListGrid_AmountColumn.Caption = "К-сть";
+            this.MatListGrid_AmountColumn.ColumnEdit = this.repositoryItemCalcEdit3;
+            this.MatListGrid_AmountColumn.FieldName = "Amount";
+            this.MatListGrid_AmountColumn.Name = "MatListGrid_AmountColumn";
+            this.MatListGrid_AmountColumn.Visible = true;
+            this.MatListGrid_AmountColumn.VisibleIndex = 4;
+            this.MatListGrid_AmountColumn.Width = 141;
             // 
-            // repositoryItemCalcEdit1
+            // repositoryItemCalcEdit3
             // 
-            this.repositoryItemCalcEdit1.AutoHeight = false;
-            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.repositoryItemCalcEdit3.AutoHeight = false;
+            this.repositoryItemCalcEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.repositoryItemCalcEdit3.Name = "repositoryItemCalcEdit3";
             // 
             // gridColumn49
             // 
@@ -2262,6 +2262,13 @@
             this.gridColumn49.Visible = true;
             this.gridColumn49.VisibleIndex = 3;
             this.gridColumn49.Width = 100;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // MatListGridColumnWh
             // 
@@ -2351,11 +2358,6 @@
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
-            // 
-            // gridView7
-            // 
-            this.gridView7.GridControl = this.MatListGridControl;
-            this.gridView7.Name = "gridView7";
             // 
             // xtraTabPage11
             // 
@@ -3511,12 +3513,12 @@
             this.MatListTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatListGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
             this.xtraTabPage11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -3714,10 +3716,9 @@
         private DevExpress.XtraGrid.Views.Grid.GridView MatListGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn48;
+        private DevExpress.XtraGrid.Columns.GridColumn MatListGrid_AmountColumn;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.BarButtonItem DelItem;
@@ -3847,5 +3848,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn18;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit3;
     }
 }

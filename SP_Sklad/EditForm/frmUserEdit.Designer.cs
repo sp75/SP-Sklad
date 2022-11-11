@@ -890,6 +890,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // xtraTabPage3
@@ -897,7 +898,7 @@
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(630, 358);
-            this.xtraTabPage3.Text = "Доступ до сладів";
+            this.xtraTabPage3.Text = "Доступ до залишків на сладах";
             // 
             // UserAccessWhGridControl
             // 

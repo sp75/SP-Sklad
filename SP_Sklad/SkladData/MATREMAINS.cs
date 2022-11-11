@@ -25,6 +25,9 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> InWay { get; set; }
         public Nullable<decimal> Ordered { get; set; }
         public Nullable<decimal> ORsv { get; set; }
+        public int WId { get; set; }
+        public Nullable<decimal> CurRemain { get; set; }
+        public Nullable<decimal> SumRemain { get; set; }
     
         public virtual Materials Materials { get; set; }
     }
