@@ -2561,5 +2561,31 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WBListMake_Result>("WBListMake", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter, grp_idParameter, w_typeParameter, user_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetMatRemain_Ex")]
+        public virtual IQueryable<GetMatRemain_Ex_Result> GetMatRemain_Ex(Nullable<int> wid, Nullable<int> ka_id, Nullable<System.DateTime> on_date, string wh, Nullable<int> user_id)
+        {
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatRemain_Ex_Result>("[BaseEntities].[GetMatRemain_Ex](@wid, @ka_id, @on_date, @wh, @user_id)", widParameter, ka_idParameter, on_dateParameter, whParameter, user_idParameter);
+        }
     }
 }

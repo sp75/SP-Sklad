@@ -182,6 +182,7 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl3 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.MatListInfoBS = new System.Windows.Forms.BindingSource(this.components);
+            this.editorRow10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -2158,7 +2159,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -2166,6 +2167,7 @@
             this.vGridControl3.RecordWidth = 186;
             this.vGridControl3.RowHeaderWidth = 376;
             this.vGridControl3.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.editorRow10,
             this.editorRow8,
             this.row7,
             this.row8,
@@ -2178,35 +2180,47 @@
             // 
             this.MatListInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_Materials);
             // 
+            // editorRow10
+            // 
+            this.editorRow10.Name = "editorRow10";
+            this.editorRow10.Properties.Caption = "Код товару";
+            this.editorRow10.Properties.FieldName = "MatId";
+            this.editorRow10.Properties.ReadOnly = true;
+            // 
             // editorRow8
             // 
             this.editorRow8.Name = "editorRow8";
             this.editorRow8.Properties.Caption = "Найменування";
             this.editorRow8.Properties.FieldName = "Name";
+            this.editorRow8.Properties.ReadOnly = true;
             // 
             // row7
             // 
             this.row7.Name = "row7";
             this.row7.Properties.Caption = "Артикул";
             this.row7.Properties.FieldName = "Artikul";
+            this.row7.Properties.ReadOnly = true;
             // 
             // row8
             // 
             this.row8.Name = "row8";
             this.row8.Properties.Caption = "Група товарів";
             this.row8.Properties.FieldName = "GrpName";
+            this.row8.Properties.ReadOnly = true;
             // 
             // row9
             // 
             this.row9.Name = "row9";
             this.row9.Properties.Caption = "Одиниці виміру";
             this.row9.Properties.FieldName = "ShortName";
+            this.row9.Properties.ReadOnly = true;
             // 
             // row10
             // 
             this.row10.Name = "row10";
             this.row10.Properties.Caption = "Склад використовується за замовчуванням";
             this.row10.Properties.FieldName = "WhName";
+            this.row10.Properties.ReadOnly = true;
             // 
             // xtraTabPage4
             // 
@@ -4805,5 +4819,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource MatListSource;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
     }
 }

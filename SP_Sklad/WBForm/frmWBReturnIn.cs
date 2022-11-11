@@ -45,7 +45,7 @@ namespace SP_Sklad.WBForm
             KagentComboBox.Properties.DataSource = DBHelper.Kagents;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            OutDateEdit.DateTime = DateTime.Now.Date.AddDays(-3);
+           
 
             if (_wbill_id == null)
             {
@@ -91,7 +91,7 @@ namespace SP_Sklad.WBForm
             {
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
-                //   wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                OutDateEdit.DateTime = new[] { wb.OnDate.Date.AddDays(-3), DateTime.Now.Date.AddDays(-3) }.Min();
 
                 TurnDocCheckBox.EditValue = wb.Checked;
 
@@ -173,20 +173,20 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var SummAll = _db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total);
+            var SummAll = (_db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0) + (_db.WayBillTmc.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0);
             wb.UpdatedAt = DateTime.Now;
-            wb.SummAll = SummAll ?? 0;
-            wb.SummInCurr = (wb.SummAll ?? 0) * wb.OnValue;
+            wb.SummAll = SummAll;
+            wb.SummInCurr = SummAll * wb.OnValue;
 
             _db.SaveChanges();
 
             payDocUserControl1.Execute(wb.WbillId);
 
-        //    current_transaction.Commit();
+            //    current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
             {
-               var ex_wb =  _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
                 if (ex_wb.ErrorMessage != "False")
                 {

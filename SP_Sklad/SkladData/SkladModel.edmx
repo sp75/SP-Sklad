@@ -5577,6 +5577,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="wid" Type="int" Mode="In" />
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="GetMatRemain_Ex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wid" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="on_date" Type="datetime" Mode="In" />
+          <Parameter Name="wh" Type="varchar" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="OnDate" Type="datetime" />
+                <Property Name="Remain" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="Rsv" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="2" />
+                <Property Name="MinPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="MaxPrice" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Ordered" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="ORsv" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="CurRemain" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="SumRemain" Type="numeric" Precision="15" Scale="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetMatRsv" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
           <Parameter Name="ka_id" Type="int" Mode="In" />
@@ -10551,6 +10575,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatRemain_Ex" IsComposable="true" ReturnType="Collection(BaseModel.GetMatRemain_Ex_Result)">
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="on_date" Mode="In" Type="DateTime" />
+            <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -17620,6 +17651,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="AdditionalCosts" Nullable="true" Precision="38" Scale="6" />
           <Property Type="Decimal" Name="MatOut" Nullable="true" Precision="15" Scale="2" />
         </ComplexType>
+        <ComplexType Name="GetMatRemain_Ex_Result">
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Ordered" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="ORsv" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="SumRemain" Nullable="true" Precision="15" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -22375,6 +22419,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="AdditionalCostsAmount" ColumnName="AdditionalCostsAmount" />
                 <ScalarProperty Name="AdditionalCosts" ColumnName="AdditionalCosts" />
                 <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatRemain_Ex" FunctionName="BaseModel.Store.GetMatRemain_Ex">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatRemain_Ex_Result">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
+                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="ORsv" ColumnName="ORsv" />
+                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
+                <ScalarProperty Name="SumRemain" ColumnName="SumRemain" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

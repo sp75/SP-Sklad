@@ -1159,11 +1159,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void barSubItem1_Popup(object sender, EventArgs e)
-        {
-
-        }
-
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
