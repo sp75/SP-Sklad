@@ -38,5 +38,6 @@ namespace SP_Sklad.SkladData
         public string DemandGroupName { get; set; }
         public Nullable<System.DateTime> DateAdded { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
+        public bool AutoCalcRecipe { get; set; }
     }
 }

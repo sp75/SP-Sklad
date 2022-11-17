@@ -128,7 +128,7 @@
             // 
             this.barButtonItem1.Caption = "Інформація про товар";
             this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageIndex = 0;
+            this.barButtonItem1.ImageOptions.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -136,7 +136,7 @@
             // 
             this.barButtonItem9.Caption = "Інформація про резерв товару";
             this.barButtonItem9.Id = 9;
-            this.barButtonItem9.ImageIndex = 2;
+            this.barButtonItem9.ImageOptions.ImageIndex = 2;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
@@ -144,7 +144,7 @@
             // 
             this.barButtonItem2.Caption = "Інформація про рух товару";
             this.barButtonItem2.Id = 1;
-            this.barButtonItem2.ImageIndex = 1;
+            this.barButtonItem2.ImageOptions.ImageIndex = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -152,7 +152,7 @@
             // 
             this.barButtonItem10.Caption = "Показати список аналогів";
             this.barButtonItem10.Id = 10;
-            this.barButtonItem10.ImageIndex = 3;
+            this.barButtonItem10.ImageOptions.ImageIndex = 3;
             this.barButtonItem10.Name = "barButtonItem10";
             // 
             // barDockControlTop
@@ -160,6 +160,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(549, 24);
             // 
             // barDockControlBottom
@@ -167,6 +168,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 292);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(549, 0);
             // 
             // barDockControlLeft
@@ -174,6 +176,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 268);
             // 
             // barDockControlRight
@@ -181,6 +184,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(549, 24);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 268);
             // 
             // standaloneBarDockControl1
@@ -189,6 +193,7 @@
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(549, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
@@ -304,8 +309,8 @@
             // MatEditBtn
             // 
             this.MatEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MatEditBtn.Image = ((System.Drawing.Image)(resources.GetObject("MatEditBtn.Image")));
-            this.MatEditBtn.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.MatEditBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("MatEditBtn.ImageOptions.Image")));
+            this.MatEditBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.MatEditBtn.Location = new System.Drawing.Point(506, 38);
             this.MatEditBtn.Name = "MatEditBtn";
             this.MatEditBtn.Size = new System.Drawing.Size(22, 22);
@@ -315,6 +320,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 41);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(45, 16);
@@ -352,8 +358,8 @@
             // 
             // GetPosButton
             // 
-            this.GetPosButton.Image = ((System.Drawing.Image)(resources.GetObject("GetPosButton.Image")));
-            this.GetPosButton.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.GetPosButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GetPosButton.ImageOptions.Image")));
+            this.GetPosButton.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.GetPosButton.Location = new System.Drawing.Point(245, 12);
             this.GetPosButton.Name = "GetPosButton";
             this.GetPosButton.Size = new System.Drawing.Size(22, 22);
@@ -377,6 +383,7 @@
             this.labelControl8.StyleController = this.styleController1;
             this.labelControl8.TabIndex = 19;
             this.labelControl8.Text = "Всього вільно:";
+            this.labelControl8.Visible = false;
             // 
             // labelControl2
             // 
@@ -409,6 +416,7 @@
             this.CurRemainEdit.Size = new System.Drawing.Size(85, 22);
             this.CurRemainEdit.StyleController = this.styleController1;
             this.CurRemainEdit.TabIndex = 12;
+            this.CurRemainEdit.Visible = false;
             // 
             // RsvEdit
             // 
@@ -441,6 +449,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Location = new System.Drawing.Point(12, 15);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(64, 16);

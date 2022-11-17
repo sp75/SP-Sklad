@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using SkladEngine.DBFunction;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
@@ -35,7 +36,7 @@ namespace SP_Sklad.WBDetForm
             _PosId = PosId;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
+            MatComboBox.Properties.DataSource = db.v_Materials.Where(w=> w.Archived == 0).ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
         }
 
@@ -358,26 +359,21 @@ namespace SP_Sklad.WBDetForm
 
         }
 
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-         
-        }
-
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            var row = (v_Materials)MatComboBox.GetSelectedDataRow();
             if (row != null)
             {
                 //   _wbd.Nds = row.NDS;  треба подумати як правильно
                 _wbd.WId = row.WId;
-                labelControl24.Text = row.MeasuresName;
-                labelControl27.Text = row.MeasuresName;
+                labelControl24.Text = row.ShortName;
+                labelControl27.Text = row.ShortName;
 
                 GetRemains();
 
                 if (MatComboBox.ContainsFocus)
                 {
-                    ProducerTextEdit.EditValue = row.Produced;
+                    ProducerTextEdit.EditValue = row.Producer;
                     SetPrice(row.MatId);
                 }
             }
@@ -386,6 +382,15 @@ namespace SP_Sklad.WBDetForm
         }
 
         private void SetPrice(int mat_id)
+        {
+            var get_last_price_result = new GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate);
+
+            _wbd.Price = get_last_price_result.Price / _wb.OnValue;
+            _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(_wbd.Price.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : _wbd.Price.Value;
+
+        }
+
+        private void SetPrice2(int mat_id)
         {
             var get_last_price_result = _db.GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate).FirstOrDefault();
             if (get_last_price_result != null)

@@ -34,8 +34,6 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-          //  MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
-          
         }
 
         private void AmountEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

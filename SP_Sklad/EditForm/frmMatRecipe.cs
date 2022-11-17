@@ -71,7 +71,7 @@ namespace SP_Sklad.EditForm
 
             if (_mr != null)
             {
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
                 MatRecLookUpEdit.Properties.DataSource = MatLookUpEdit.Properties.DataSource;
 
                 MatRecipeBindingSource.DataSource = _mr;
@@ -231,7 +231,7 @@ namespace SP_Sklad.EditForm
                 RecId = _mr.RecId,
                 Amount = 0,
                 Coefficient = 0,
-                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId,
+                MatId = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).Select(s=> s.MatId).FirstOrDefault(),
                 TurnType = _mr.RType == 1 ? -1 : 1
             });
             MatRecDetBS.DataSource = new_det;
@@ -478,11 +478,11 @@ namespace SP_Sklad.EditForm
             }
             else
             {
-                var r = MatRecLookUpEdit.GetSelectedDataRow() as MaterialsList;
+                var r = MatRecLookUpEdit.GetSelectedDataRow() as v_Materials;
 
-                MsrLabel.Text = r.MeasuresName;
+                MsrLabel.Text = r.ShortName;
 
-                textEdit3.Properties.Buttons[1].Enabled = r.AutoCalcRecipe.Value;
+                textEdit3.Properties.Buttons[1].Enabled = r.AutoCalcRecipe;
 
                 if (_mr.RType == 1)
                 {

@@ -12,6 +12,8 @@ using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity;
+using SkladEngine.DBFunction;
+using SkladEngine.DBFunction.Models;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -24,9 +26,9 @@ namespace SP_Sklad.WBDetForm
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
-        private GetActualRemainByWh_Result mat_remain { get; set; }
+        private GetMaterialsOnWh_Result mat_remain { get; set; }
         public int _ka_id { get; set; }
-        private List<MaterialsByWh> _materials_on_wh { get; set; }
+        private List<GetMaterialsOnWh_Result> _materials_on_wh { get; set; }
 
         public frmWBMoveDet(BaseEntities db, int? PosId, WaybillList wb)
         {
@@ -37,7 +39,7 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
             _ka_id = 0;
         }
-
+/*
         public class MaterialsByWh
         {
             public int MatId { get; set; }
@@ -48,7 +50,7 @@ namespace SP_Sklad.WBDetForm
             public decimal Rsv { get; set; }
         }
 
-        private List<MaterialsByWh> GetMaterialsOnWh()
+        private List<MaterialsByWh> GetMaterialsOnWh(int wh_id)
         {
             return _db.Database.SqlQuery<MaterialsByWh>(@"SELECT 
          m.MatId,
@@ -58,12 +60,13 @@ namespace SP_Sklad.WBDetForm
          sum( pr.remain) Remain,
          sum( pr.Rsv ) Rsv 
 		 
-  FROM [sp_base].[dbo].[v_PosRemains] pr
-  inner join [dbo].[Materials] m on m.MatId =pr.MatId
-  inner join [dbo].[Measures] ms on ms.MId = m.MId
-  group by m.MatId, m.Name , ms.ShortName ,pr.WId").ToList();
+  FROM v_PosRemains pr
+  inner join Materials m on m.MatId =pr.MatId
+  inner join Measures ms on ms.MId = m.MId
+  where pr.WId = {0} and pr.Remain > 0
+  group by m.MatId, m.Name , ms.ShortName ,pr.WId", wh_id).ToList();
         }
-
+        */
         private void frmWBMoveDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
@@ -96,19 +99,11 @@ namespace SP_Sklad.WBDetForm
          //       }
             }
 
-            _materials_on_wh = GetMaterialsOnWh();
-
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
-            MatComboBox.Properties.DataSource = _materials_on_wh.Where(w => w.WId == wh_id && w.Remain > 0).GroupBy(g => new { g.MatId, g.Name, g.MsrName }).Select(s => new WhMatGet_Result
-            {
-                MatId = s.Key.MatId,
-                MatName = s.Key.Name,
-                MsrName = s.Key.MsrName,
-                CurRemain = s.Sum(r => r.Remain) - s.Sum(r => r.Rsv),
-                Rsv = s.Sum(r => r.Rsv),
-                Remain = s.Sum(r => r.Remain)
-            }).ToList(); // _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+            _materials_on_wh = new MaterialRemain(UserSession.UserId).GetMaterialsOnWh(wh_id); 
+
+            MatComboBox.Properties.DataSource = _materials_on_wh; 
 
 
             if (_wbd != null)
@@ -142,7 +137,7 @@ namespace SP_Sklad.WBDetForm
         {
             bool recult = (MatComboBox.EditValue != DBNull.Value && Convert.ToInt32(MatComboBox.EditValue) > 0 && WHComboBox.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
-            RSVCheckBox.Checked = (recult  && mat_remain != null  && AmountEdit.Value <= mat_remain.CurRemainInWh /*&& pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value*/);
+            RSVCheckBox.Checked = (recult  && mat_remain != null  && AmountEdit.Value <= mat_remain.CurRemain /*&& pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value*/);
 
             if (RSVCheckBox.Checked)
             {
@@ -166,7 +161,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
+            var row = (GetMaterialsOnWh_Result)MatComboBox.GetSelectedDataRow();
             if (row == null)
             {
                 return;
@@ -191,20 +186,15 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
   
-            var row = (WhMatGet_Result)MatComboBox.GetSelectedDataRow();
+            var row = (GetMaterialsOnWh_Result)MatComboBox.GetSelectedDataRow();
 
-            mat_remain = _materials_on_wh.Where(w => w.WId == _wbd.WId && w.MatId == _wbd.MatId).Select(s => new GetActualRemainByWh_Result
-            {
-                CurRemainInWh = s.Remain - s.Rsv,
-                Rsv = row != null ? row.Rsv : 0,
-                Remain = row != null ? row.Remain : 0
-            }).FirstOrDefault(); // _db.GetActualRemainByWh(_wbd.WId, _wbd.MatId).FirstOrDefault();
+            mat_remain = _materials_on_wh.FirstOrDefault(w => w.MatId == _wbd.MatId);
 
             if (mat_remain != null)
             {
-                RemainWHEdit.EditValue = mat_remain.CurRemainInWh;
-                RsvEdit.EditValue = mat_remain.Rsv;
-                CurRemainEdit.EditValue = mat_remain.Remain;
+                RemainWHEdit.EditValue = row.CurRemain;
+                RsvEdit.EditValue = row.Rsv;
+                CurRemainEdit.EditValue = mat_remain.Remain; // не вірно показує томущо тільки по складу вибираем
             }
         }
 
@@ -228,7 +218,7 @@ namespace SP_Sklad.WBDetForm
             decimal? sum_amount = pos_in.Sum(s => s.Amount);
             decimal? sum_full_remain = pos_in.Sum(s => s.FullRemain);
 
-            if (pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh && sum_amount != AmountEdit.Value)
+            if (pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemain && sum_amount != AmountEdit.Value)
             {
                 sum_amount = AmountEdit.Value;
                 bool stop = false;

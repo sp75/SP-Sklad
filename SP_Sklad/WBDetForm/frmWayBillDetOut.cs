@@ -13,6 +13,8 @@ using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity;
+using SkladEngine.DBFunction.Models;
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -23,7 +25,16 @@ namespace SP_Sklad.WBDetForm
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
-        private GetMatRemain_Result mat_remain { get; set; }
+
+        private List<GetMatRemainByWh_Result> mat_remain { get; set; }
+        private decimal? CurRemainInWh
+        {
+            get
+            {
+                return mat_remain.FirstOrDefault(w => w.WId == _wbd.WId)?.CurRemain;
+            }
+        }
+
         private bool modified_dataset { get; set; }
         private DiscCards _cart { get; set; }
 
@@ -37,8 +48,8 @@ namespace SP_Sklad.WBDetForm
             _cart = cart;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            MatComboBox.Properties.DataSource = db.MaterialsList.ToList();
-            PriceTypesEdit.Properties.DataSource = DB.SkladBase().PriceTypes.ToList();
+            MatComboBox.Properties.DataSource = db.v_Materials.Where(w => w.Archived == 0).ToList();
+            PriceTypesEdit.Properties.DataSource = db.PriceTypes.ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
 
             panel3.Visible = barCheckItem1.Checked;
@@ -149,7 +160,7 @@ namespace SP_Sklad.WBDetForm
 
             OkButton.Enabled = recult;
 
-            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.RemainInWh && pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value);
+            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= CurRemainInWh && pos_in.Sum(s => s.FullRemain) >= AmountEdit.Value);
             if (RSVCheckBox.Checked)
             {
                 foreach (var item in pos_in)
@@ -182,7 +193,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            var row = (v_Materials)MatComboBox.GetSelectedDataRow();
             if (row == null)
             {
                 return;
@@ -190,14 +201,16 @@ namespace SP_Sklad.WBDetForm
 
             if (MatComboBox.ContainsFocus)
             {
+                var mat_nds = _db.GetMatNds(row.MatId).FirstOrDefault();
+
                 _wbd.WId = row.WId;
-                _wbd.Nds = _wb.Nds > 0 ? row.NDS : _wb.Nds;
+                _wbd.Nds = _wb.Nds > 0 ? mat_nds?.NDS : _wb.Nds;
                 _wbd.MatId = row.MatId;
-                ProducerTextEdit.EditValue = row.Produced;
+                ProducerTextEdit.EditValue = row.Producer;
             }
 
-            labelControl24.Text = row.MeasuresName;
-            labelControl27.Text = row.MeasuresName;
+            labelControl24.Text = row.ShortName;
+            labelControl27.Text = row.ShortName;
 
             var sate = _db.Entry(_wbd).State;
             PriceTypesEdit.EditValue = PriceTypesEdit.EditValue == DBNull.Value ? (_db.Entry(_wbd).State == EntityState.Detached ? _db.PriceTypes.First(w => w.Def == 1).PTypeId : PriceTypesEdit.EditValue) : PriceTypesEdit.EditValue;
@@ -237,8 +250,11 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            mat_remain = _db.GetMatRemain(WId, MatId).FirstOrDefault();
-            GetMatRemainBS.DataSource = mat_remain != null ? mat_remain : new GetMatRemain_Result();
+            mat_remain = new MaterialRemain(UserSession.UserId).GetMatRemainByWh(MatId.Value).ToList();
+
+            RemainWHEdit.EditValue = CurRemainInWh;
+            RsvEdit.EditValue = mat_remain.Sum(s => s.Rsv);
+            CurRemainEdit.EditValue = mat_remain.Sum(s => s.CurRemain);
 
             pos_in = _db.GetPosIn(_wb.OnDate, MatId, WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.FullRemain > 0).OrderBy(o => o.OnDate).ToList();
         }
@@ -253,7 +269,7 @@ namespace SP_Sklad.WBDetForm
             decimal? sum_amount = pos_in.Sum(s => s.Amount);
             decimal? sum_full_remain = pos_in.Sum(s => s.FullRemain);
 
-            if (pos_in.Count > 0 && AmountEdit.Value <= mat_remain.RemainInWh && sum_amount != AmountEdit.Value)
+            if (pos_in.Count > 0 && AmountEdit.Value <= CurRemainInWh && sum_amount != AmountEdit.Value)
             {
                 sum_amount = AmountEdit.Value;
                 bool stop = false;

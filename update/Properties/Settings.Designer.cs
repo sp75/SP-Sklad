@@ -49,7 +49,7 @@ namespace update.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://109.207.194.97/websklad/sp_sklad/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://91.207.104.6:5555/")]
         public string NewVersionURL {
             get {
                 return ((string)(this["NewVersionURL"]));

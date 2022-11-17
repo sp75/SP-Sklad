@@ -91,7 +91,7 @@ namespace SP_Sklad.EditForm
                 KTypeLookUpEdit.Properties.DataSource = DB.SkladBase().KAgentTyp.ToList();
                 KaKindLookUpEdit.Properties.DataSource = DB.SkladBase().KAKInd.ToList();
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w=> w.Archived == 0).ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
 
@@ -411,7 +411,7 @@ namespace SP_Sklad.EditForm
                 DiscId = Guid.NewGuid(),
                 KAId = _ka.KaId,
                 OnValue = 0,
-                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId
+                MatId = DB.SkladBase().v_Materials.Where(w=> w.Archived == 0).Select(s=> s.MatId).FirstOrDefault()
             });
             MatDiscountDS.DataSource = mat_disc;
             _db.SaveChanges();

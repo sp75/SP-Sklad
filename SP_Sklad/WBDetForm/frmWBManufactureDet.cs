@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SkladEngine.DBFunction;
+using SkladEngine.DBFunction.Models;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
@@ -23,7 +25,16 @@ namespace SP_Sklad.WBDetForm
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
-        private GetActualRemainByWh_Result mat_remain { get; set; }
+
+        private List<GetMatRemainByWh_Result> mat_remain { get; set; }
+        private decimal? CurRemainInWh
+        {
+            get
+            {
+                return mat_remain.FirstOrDefault(w => w.WId == _wbd.WId)?.CurRemain;
+            }
+        }
+
         public decimal? amount { get; set; }
         public int? mat_id { get; set; }
         public int _ka_id { get; set; }
@@ -43,7 +54,7 @@ namespace SP_Sklad.WBDetForm
         private void frmWriteOffDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            MatComboBox.Properties.DataSource = _db.MaterialsList.AsNoTracking().ToList();
+            MatComboBox.Properties.DataSource = _db.v_Materials.Where(w => w.Archived == 0).ToList(); 
 
             if (_wb.WType == -5 || _wb.WType == -22)
             {
@@ -134,7 +145,7 @@ namespace SP_Sklad.WBDetForm
 
             OkButton.Enabled = recult;
 
-            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh);
+            RSVCheckBox.Checked = (OkButton.Enabled && pos_in != null && mat_remain != null && pos_in.Count > 0 && AmountEdit.Value <= CurRemainInWh);
             if (RSVCheckBox.Checked)
             {
                 foreach (var item in pos_in)
@@ -158,7 +169,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = (MaterialsList)MatComboBox.GetSelectedDataRow();
+            var row = (v_Materials)MatComboBox.GetSelectedDataRow();
             if (row == null)
             {
                 return;
@@ -184,8 +195,8 @@ namespace SP_Sklad.WBDetForm
                 GetContent();
             }
 
-            labelControl24.Text = row.MeasuresName;
-            labelControl27.Text = row.MeasuresName;
+            labelControl24.Text = row.ShortName;
+            labelControl27.Text = row.ShortName;
         }
 
         public void GetContent()
@@ -195,14 +206,12 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            mat_remain = _db.GetActualRemainByWh(_wbd.WId ,_wbd.MatId).FirstOrDefault();
+            mat_remain = new MaterialRemain(UserSession.UserId).GetMatRemainByWh(_wbd.MatId).ToList();
 
-            if (mat_remain != null)
-            {
-                RemainWHEdit.EditValue = mat_remain.CurRemainInWh;
-                RsvEdit.EditValue = mat_remain.Rsv;
-                CurRemainEdit.EditValue = mat_remain.CurRemain;
-            }
+            RemainWHEdit.EditValue = CurRemainInWh;
+            RsvEdit.EditValue = mat_remain.Sum(s => s.Rsv);
+            CurRemainEdit.EditValue = mat_remain.Sum(s => s.CurRemain);
+
 
             GetPos();
 
@@ -237,7 +246,7 @@ namespace SP_Sklad.WBDetForm
             decimal? sum_amount = pos_in.Sum(s => s.Amount);
             decimal? sum_full_remain = pos_in.Sum(s => s.FullRemain);
 
-            if (pos_in.Count > 0 && AmountEdit.Value <= mat_remain.CurRemainInWh && sum_amount != AmountEdit.Value)
+            if (pos_in.Count > 0 && AmountEdit.Value <= CurRemainInWh && sum_amount != AmountEdit.Value)
             {
                 sum_amount = AmountEdit.Value;
                 bool stop = false;

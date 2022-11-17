@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\DBHelper.cs" />
+    <Compile Include="DBFunction\GetLastPrice.cs" />
+    <Compile Include="DBFunction\MaterialRemain.cs" />
+    <Compile Include="DBFunction\Models\GetMaterialsOnWh_Result.cs" />
+    <Compile Include="DBFunction\Models\GetRemainingMaterialInWh_Result.cs" />
+    <Compile Include="DBFunction\Models\GetRemainsOnMaterials_Result.cs" />
+    <Compile Include="DBFunction\Models\GetMatRemainByWh_Result.cs" />
     <Compile Include="ExecuteDoc\ExecuteWayBill.cs" />
     <Compile Include="ModelViews\GetPosOutView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +74,7 @@
       <Name>SP.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1269,7 +1269,7 @@ FROM            (
   join [MatRecDet] on [MatRecDet].RecId = [WayBillMake].RecId 
   join [Materials] rec_mat on rec_mat.MatId = [MatRecDet].MatId
   where [WaybillList].OnDate between {0} and {1} and [WaybillList].WType = -20 
-  and [MatRecDet].MatId not in (select MatId from [sp_base].[dbo].[WaybillDet] where WbillId = [WayBillMake].WbillId)";
+  and [MatRecDet].MatId not in (select MatId from [WaybillDet] where WbillId = [WayBillMake].WbillId)";
 
             var not_use_rec_mat = _db.Database.SqlQuery<not_use_rec_mat>(sql_3, StartDate, EndDate).ToList().OrderBy(o => o.Name).ToList();
 

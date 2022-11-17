@@ -553,7 +553,7 @@
             this.barButtonItem9,
             this.barButtonItem10});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 34;
+            this.barManager1.MaxItemId = 35;
             // 
             // bar1
             // 

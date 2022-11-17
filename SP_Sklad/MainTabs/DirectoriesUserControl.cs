@@ -18,6 +18,7 @@ using SP_Sklad.Properties;
 using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.MainTabs
 {
@@ -962,7 +963,7 @@ namespace SP_Sklad.MainTabs
         {
             if(row == null)
             {
-                MessageBox.Show("Товар не знайдено!");
+        //        MessageBox.Show("Товар не знайдено!");
 
                 return;
             }
@@ -986,11 +987,8 @@ namespace SP_Sklad.MainTabs
             decimal Price = 0;
             if (wb.WType == 1)
             {
-                var get_last_price_result = DB.SkladBase().GetLastPrice(mat_id, wb.KaId, 1, wb.OnDate).FirstOrDefault();
-                if (get_last_price_result != null)
-                {
-                    Price = get_last_price_result.Price ?? 0;
-                }
+                var get_last_price_result = new GetLastPrice(mat_id, wb.KaId, 1, wb.OnDate);
+                Price = get_last_price_result.Price;
             }
             else if (wb.WType == -1 || wb.WType == -16 || wb.WType == 2)
             {

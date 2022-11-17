@@ -20,7 +20,7 @@ using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Designer;
 using DevExpress.Data;
 using System.Data.Entity;
-
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.MainTabs
 {
@@ -771,10 +771,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 7:
-                    var last_price = DB.SkladBase().GetLastPrice(row.MatId, 0, -1, DateTime.Now).FirstOrDefault();
+                    //  var last_price = DB.SkladBase().GetLastPrice(row.MatId, 0, -1, DateTime.Now).FirstOrDefault();
+                    var last_price = new GetLastPrice(row.MatId, 0, -1, DateTime.Now);
                     ExtMatIfoBS.DataSource = new ExtMatIfo
                     {
-                        LastPrice = last_price != null ? last_price.Price : 0,
+                        LastPrice = last_price.Price,
                         MatId = row.MatId
                     };
 
@@ -1196,10 +1197,11 @@ namespace SP_Sklad.MainTabs
                 grp = focused_tree_node.Num.ToString();
             }
 
-           // e.QueryableSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0);
+           e.QueryableSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0);
 
-            var 
+         
 
         }
+
     }
 }

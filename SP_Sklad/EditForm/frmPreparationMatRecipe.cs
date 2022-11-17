@@ -64,7 +64,7 @@ namespace SP_Sklad.EditForm
 
             if (_mr != null)
             {
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().MaterialsList.ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
                 TurnTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Списати" }, new { Id = 1, Name= "Оприходувати"} };
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
 
@@ -205,7 +205,7 @@ namespace SP_Sklad.EditForm
                 RecId = _mr.RecId,
                 Amount = 0,
                 Coefficient = 0,
-                MatId = DB.SkladBase().MaterialsList.FirstOrDefault().MatId
+                MatId = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).Select(s => s.MatId).FirstOrDefault()
             });
             MatRecDetBS.DataSource = new_det;
             _db.SaveChanges();

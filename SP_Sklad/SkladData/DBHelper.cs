@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.SkladData
 {
@@ -595,9 +596,9 @@ order by wbd.ondate desc
          sum( pr.remain) Remain,
          sum( pr.Rsv ) Rsv 
 		 
-  FROM [sp_base].[dbo].[v_PosRemains] pr
-  inner join [dbo].[Materials] m on m.MatId =pr.MatId
-  inner join [dbo].[Measures] ms on ms.MId = m.MId
+  FROM [v_PosRemains] pr
+  inner join [Materials] m on m.MatId =pr.MatId
+  inner join [Measures] ms on ms.MId = m.MId
   where m.MatId = {0} and pr.WId = {1}
   group by m.MatId, m.Name , ms.ShortName ,pr.WId", mat_id, wid).ToList();
         }
@@ -611,10 +612,7 @@ order by wbd.ondate desc
 
             var pos_in = _db.GetPosIn(cur_wbd.OnDate, cur_wbd.MatId, cur_wbd.WId, 0, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
 
-            var mat_remain = DBHelper.GetMaterialOnWh(cur_wbd.MatId, cur_wbd.WId.Value, _db).Select(s => new GetActualRemainByWh_Result
-            {
-                CurRemainInWh = s.Remain - s.Rsv,
-            }).FirstOrDefault();
+            var mat_remain = new MaterialRemain(UserSession.UserId).GetRemainingMaterialInWh(cur_wbd.WId.Value, cur_wbd.MatId);
 
             if (mat_remain == null || pos_in == null)
             {
@@ -624,7 +622,7 @@ order by wbd.ondate desc
             decimal? sum_amount = pos_in.Sum(s => s.Amount);
             decimal? sum_full_remain = pos_in.Sum(s => s.FullRemain);
 
-            if (pos_in.Count > 0 && cur_wbd.Amount <= mat_remain.CurRemainInWh && sum_amount != cur_wbd.Amount)
+            if (pos_in.Count > 0 && cur_wbd.Amount <= mat_remain.CurRemain && sum_amount != cur_wbd.Amount)
             {
                 sum_amount = cur_wbd.Amount;
                 bool stop = false;

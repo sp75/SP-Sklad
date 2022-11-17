@@ -626,19 +626,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdWaybillDetPrice", wbill_idParameter);
         }
     
-        public virtual ObjectResult<GetMatRemain_Result> GetMatRemain(Nullable<int> wid, Nullable<int> mat_id)
-        {
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMatRemain_Result>("GetMatRemain", widParameter, mat_idParameter);
-        }
-    
         public virtual int DeleteAllReservePosition(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -1212,19 +1199,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<OrderedList_Result>("[BaseEntities].[OrderedList](@from_date, @to_date, @mat_id, @ka_id, @w_type, @active, @ka_grp_id)", from_dateParameter, to_dateParameter, mat_idParameter, ka_idParameter, w_typeParameter, activeParameter, ka_grp_idParameter);
-        }
-    
-        public virtual ObjectResult<GetActualRemainByWh_Result> GetActualRemainByWh(Nullable<int> wid, Nullable<int> mat_id)
-        {
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetActualRemainByWh_Result>("GetActualRemainByWh", widParameter, mat_idParameter);
         }
     
         [EdmFunction("BaseEntities", "ProductionPlansList")]

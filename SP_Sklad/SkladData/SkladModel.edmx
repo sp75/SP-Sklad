@@ -2326,6 +2326,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary k
             <PropertyRef Name="MId" />
             <PropertyRef Name="MType" />
             <PropertyRef Name="ShortName" />
+            <PropertyRef Name="AutoCalcRecipe" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
@@ -2351,6 +2352,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary k
           <Property Name="DemandGroupName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateAdded" Type="datetime" />
           <Property Name="DateModified" Type="datetime" />
+          <Property Name="AutoCalcRecipe" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5233,10 +5235,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="GetActualRemainByWh" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="wid" Type="int" Mode="In" />
-          <Parameter Name="mat_id" Type="int" Mode="In" />
-        </Function>
         <Function Name="GetDeboningDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -5572,10 +5570,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </RowType>
             </CollectionType>
           </ReturnType>
-        </Function>
-        <Function Name="GetMatRemain" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="wid" Type="int" Mode="In" />
-          <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
         <Function Name="GetMatRemain_Ex" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wid" Type="int" Mode="In" />
@@ -7894,7 +7888,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Materials].[WhName] AS [WhName], 
     [v_Materials].[DemandGroupName] AS [DemandGroupName], 
     [v_Materials].[DateAdded] AS [DateAdded], 
-    [v_Materials].[DateModified] AS [DateModified]
+    [v_Materials].[DateModified] AS [DateModified], 
+    [v_Materials].[AutoCalcRecipe] AS [AutoCalcRecipe]
     FROM [dbo].[v_Materials] AS [v_Materials]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRecipe" EntityType="Self.v_MatRecipe" store:Type="Views" store:Schema="dbo">
@@ -9154,10 +9149,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Currency" EntitySet="Currency" />
             <End Role="CONTRDET" EntitySet="CONTRDET" />
           </AssociationSet>
-          <FunctionImport Name="GetMatRemain" ReturnType="Collection(BaseModel.GetMatRemain_Result)">
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="CommonParams" EntityType="BaseModel.CommonParams" />
           <FunctionImport Name="DeleteAllReservePosition">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
@@ -9841,10 +9832,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
           <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
-          <FunctionImport Name="GetActualRemainByWh" ReturnType="Collection(BaseModel.GetActualRemainByWh_Result)">
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="v_MatRemains" EntityType="BaseModel.v_MatRemains" />
           <FunctionImport Name="ProductionPlansList" IsComposable="true" ReturnType="Collection(BaseModel.ProductionPlansList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
@@ -10989,15 +10976,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetMatRemain_Result">
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="17" Scale="8" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="15" Scale="8" />
-          <Property Type="Decimal" Name="RemainInWh" Nullable="true" Precision="38" Scale="8" />
-          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="16" Scale="8" />
-        </ComplexType>
         <EntityType Name="CommonParams">
           <Key>
             <PropertyRef Name="Id" />
@@ -14263,18 +14241,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlans_Warehouse" FromRole="ProductionPlans" ToRole="Warehouse" />
           <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK_ProductionPlans_Warehouse1" FromRole="ProductionPlans" ToRole="Warehouse" />
         </EntityType>
-        <ComplexType Name="GetActualRemainByWh_Result">
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="Rsv" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="CurRemain" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="MinPrice" Nullable="true" Precision="38" Scale="10" />
-          <Property Type="Decimal" Name="MaxPrice" Nullable="true" Precision="38" Scale="10" />
-          <Property Type="Decimal" Name="RemainInWh" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="RsvInWh" Nullable="true" Precision="38" Scale="4" />
-          <Property Type="Decimal" Name="CurRemainInWh" Nullable="true" Precision="38" Scale="4" />
-        </ComplexType>
         <EntityType Name="v_MatRemains">
           <Key>
             <PropertyRef Name="MatId" />
@@ -17488,6 +17454,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="MId" />
             <PropertyRef Name="MType" />
             <PropertyRef Name="ShortName" />
+            <PropertyRef Name="AutoCalcRecipe" />
           </Key>
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -17513,6 +17480,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DemandGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateAdded" Type="DateTime" Precision="3" />
           <Property Name="DateModified" Type="DateTime" Precision="3" />
+          <Property Name="AutoCalcRecipe" Type="Boolean" Nullable="false" />
         </EntityType>
         <ComplexType Name="GetWayBillList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -18017,19 +17985,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetMatRemain" FunctionName="BaseModel.Store.GetMatRemain">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatRemain_Result">
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
-                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
-                <ScalarProperty Name="RemainInWh" ColumnName="RemainInWh" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
@@ -19880,22 +19835,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetActualRemainByWh" FunctionName="BaseModel.Store.GetActualRemainByWh">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetActualRemainByWh_Result">
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="CurRemain" ColumnName="CurRemain" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="MinPrice" ColumnName="MinPrice" />
-                <ScalarProperty Name="MaxPrice" ColumnName="MaxPrice" />
-                <ScalarProperty Name="RemainInWh" ColumnName="RemainInWh" />
-                <ScalarProperty Name="RsvInWh" ColumnName="RsvInWh" />
-                <ScalarProperty Name="CurRemainInWh" ColumnName="CurRemainInWh" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="v_MatRemains">
             <EntityTypeMapping TypeName="BaseModel.v_MatRemains">
               <MappingFragment StoreEntitySet="v_MatRemains">
@@ -22242,6 +22181,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Materials">
             <EntityTypeMapping TypeName="BaseModel.v_Materials">
               <MappingFragment StoreEntitySet="v_Materials">
+                <ScalarProperty Name="AutoCalcRecipe" ColumnName="AutoCalcRecipe" />
                 <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
                 <ScalarProperty Name="DemandGroupName" ColumnName="DemandGroupName" />
