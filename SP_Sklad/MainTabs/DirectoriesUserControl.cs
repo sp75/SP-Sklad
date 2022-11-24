@@ -1575,15 +1575,13 @@ namespace SP_Sklad.MainTabs
 
             var _db = DB.SkladBase();
 
-            var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
-
             var ka = (from k in _db.KagentList
-                      join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                      from subfg in gj.DefaultIfEmpty()
-                      where (subfg == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
+                      join ek in _db.EnterpriseWorker on k.KaId equals ek.WorkerId into gj_ek
+                      from subfg in gj_ek.DefaultIfEmpty()
+                      join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
+                      from subfg2 in gj_ew.DefaultIfEmpty()
+                      where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) 
                       select k).Distinct();
-
-            //   var ka = _db.KagentList.Where(w => w.Deleted == 0);
 
             if (focused_tree_node.Id != 10)
             {
