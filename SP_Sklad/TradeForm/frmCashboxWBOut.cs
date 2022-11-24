@@ -49,7 +49,7 @@ namespace SP_Sklad.WBForm
         private string _access_token { get; set; }
         private string CashDesksName { get; set; }
         private EnterpriseWorker Enterprise { get; set; }
-        private KagentList TradingPoint { get; set; }
+        private v_Kagent TradingPoint { get; set; }
 
         public frmCashboxWBOut(string access_token, int? wbill_id = null)
         {

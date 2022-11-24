@@ -22,5 +22,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UserId { get; set; }
         public byte[] ScreenShot { get; set; }
         public string UserName { get; set; }
+        public string Ver { get; set; }
     }
 }

@@ -51,8 +51,8 @@ namespace SP_Sklad.Common
         {
             PageIndex = 0;
 
-            if (_docs_user_control.wbStartDate.DateTime > _on_date) _docs_user_control.wbStartDate.DateTime = _on_date.Date;
-            if (_docs_user_control.wbEndDate.DateTime < _on_date) _docs_user_control.wbEndDate.DateTime = _on_date;
+          /*  if (_docs_user_control.wbStartDate.DateTime > _on_date)*/ _docs_user_control.wbStartDate.DateTime = _on_date.Date;
+           /* if (_docs_user_control.wbEndDate.DateTime < _on_date)*/ _docs_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
             _docs_user_control.wbKagentList.EditValue = 0;
             _docs_user_control.wbStatusList.EditValue = -1;
 
@@ -69,8 +69,8 @@ namespace SP_Sklad.Common
         {
             PageIndex = 0;
 
-            if (_docs_user_control.PDStartDate.DateTime > _on_date) _docs_user_control.PDStartDate.DateTime = _on_date.Date;
-            if (_docs_user_control.PDEndDate.DateTime < _on_date) _docs_user_control.PDEndDate.DateTime = _on_date;
+         /*   if (_docs_user_control.PDStartDate.DateTime > _on_date) */_docs_user_control.PDStartDate.DateTime = _on_date.Date;
+          /*  if (_docs_user_control.PDEndDate.DateTime < _on_date)*/ _docs_user_control.PDEndDate.DateTime = _on_date.Date.SetEndDay(); 
             _docs_user_control.PDKagentList.EditValue = 0;
             _docs_user_control.PDSatusList.EditValue = -1;
 
@@ -87,8 +87,8 @@ namespace SP_Sklad.Common
         {
             PageIndex = 2;
 
-            if (_wh_user_control.wbStartDate.DateTime > _on_date) _wh_user_control.wbStartDate.DateTime = _on_date.Date;
-            if (_wh_user_control.wbEndDate.DateTime < _on_date) _wh_user_control.wbEndDate.DateTime = _on_date;
+         /*   if (_wh_user_control.wbStartDate.DateTime > _on_date)*/ _wh_user_control.wbStartDate.DateTime = _on_date.Date;
+          /*  if (_wh_user_control.wbEndDate.DateTime < _on_date)*/ _wh_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
             _wh_user_control.WhComboBox.EditValue = "*";
             _wh_user_control.wbSatusList.EditValue = -1;
 
@@ -174,8 +174,8 @@ namespace SP_Sklad.Common
                 case -20:
                     PageIndex = 1;
 
-                    if (_manufacturing_user_control.wbStartDate.DateTime > _on_date) _manufacturing_user_control.wbStartDate.DateTime = _on_date.Date;
-                    if (_manufacturing_user_control.wbEndDate.DateTime < _on_date) _manufacturing_user_control.wbEndDate.DateTime = _on_date;
+               /*     if (_manufacturing_user_control.wbStartDate.DateTime > _on_date)*/ _manufacturing_user_control.wbStartDate.DateTime = _on_date.Date;
+                  /*  if (_manufacturing_user_control.wbEndDate.DateTime < _on_date)*/ _manufacturing_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay(); 
                     _manufacturing_user_control.WhComboBox.EditValue = "*";
                     _manufacturing_user_control.wbSatusList.EditValue = -1;
 
@@ -191,8 +191,8 @@ namespace SP_Sklad.Common
                 case -22:
                     PageIndex = 1;
 
-                    if (_manufacturing_user_control.DebStartDate.DateTime > _on_date) _manufacturing_user_control.DebStartDate.DateTime = _on_date.Date;
-                    if (_manufacturing_user_control.DebEndDate.DateTime < _on_date) _manufacturing_user_control.DebEndDate.DateTime = _on_date;
+                /*    if (_manufacturing_user_control.DebStartDate.DateTime > _on_date) */_manufacturing_user_control.DebStartDate.DateTime = _on_date.Date;
+                  /*  if (_manufacturing_user_control.DebEndDate.DateTime < _on_date)*/ _manufacturing_user_control.DebEndDate.DateTime = _on_date.Date.SetEndDay(); 
                     _manufacturing_user_control.DebWhComboBox.EditValue = "*";
                     _manufacturing_user_control.DebSatusList.EditValue = -1;
 
@@ -207,8 +207,8 @@ namespace SP_Sklad.Common
                 case 20:
                     PageIndex = 1;
 
-                    if (_manufacturing_user_control.PlanStartDate.DateTime > _on_date) _manufacturing_user_control.PlanStartDate.DateTime = _on_date.Date;
-                    if (_manufacturing_user_control.PlanEndDate.DateTime < _on_date) _manufacturing_user_control.PlanEndDate.DateTime = _on_date;
+                   /* if (_manufacturing_user_control.PlanStartDate.DateTime > _on_date)*/ _manufacturing_user_control.PlanStartDate.DateTime = _on_date.Date;
+                   /* if (_manufacturing_user_control.PlanEndDate.DateTime < _on_date)*/ _manufacturing_user_control.PlanEndDate.DateTime = _on_date.Date.SetEndDay();
                     _manufacturing_user_control.lookUpEdit2.EditValue = -1;
 
                     _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 116);

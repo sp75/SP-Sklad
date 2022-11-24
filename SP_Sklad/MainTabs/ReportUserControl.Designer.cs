@@ -46,7 +46,6 @@
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.KAgentDS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -64,7 +63,6 @@
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -248,10 +246,6 @@
             // 
             this.ExplorerPopupMenu.Manager = this.barManager1;
             this.ExplorerPopupMenu.Name = "ExplorerPopupMenu";
-            // 
-            // KAgentDS
-            // 
-            this.KAgentDS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
             // 
             // panelControl1
             // 
@@ -520,7 +514,6 @@
             this.Load += new System.EventHandler(this.ReportUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -562,7 +555,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.XtraBars.PopupMenu ExplorerPopupMenu;
-        private System.Windows.Forms.BindingSource KAgentDS;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl7;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;

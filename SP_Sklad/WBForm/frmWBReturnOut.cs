@@ -45,7 +45,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWBReturnOut_Load(object sender, EventArgs e)
         {
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
 
             if (_wbill_id == null && doc_id == null)

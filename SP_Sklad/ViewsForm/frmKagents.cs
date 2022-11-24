@@ -18,11 +18,11 @@ namespace SP_Sklad.ViewsForm
         private BaseEntities _db { get; set; }
         private int _KaKind { get; set; }
         private string _okpo { get; set; }
-        public KagentList focused_row
+        public v_Kagent focused_row
         {
             get
             {
-                return (KontragentGroupGridView.GetFocusedRow() as KagentList);
+                return (KontragentGroupGridView.GetFocusedRow() as v_Kagent);
             }
         }
 
@@ -36,7 +36,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            KontragentBS.DataSource = _db.KagentList.Where(w => (w.KaKind == _KaKind || _KaKind == -1) && (w.OKPO == _okpo || _okpo == "")).ToList();
+            KontragentBS.DataSource = _db.v_Kagent.Where(w => (w.KaKind == _KaKind || _KaKind == -1) && (w.OKPO == _okpo || _okpo == "")).ToList();
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)

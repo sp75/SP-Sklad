@@ -39,13 +39,13 @@ namespace SP_Sklad.Common
             {
                 _serialPort.PortName = Settings.Default.com_port_name;
                 _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed);
-                weighing_scales = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales);
+                weighing_scales = DBHelper.WeighingScales_1;//new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales);
             }
             else if (weigher_index == 2)
             {
                 _serialPort.PortName = Settings.Default.com_port_name_2;
                 _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed_2);
-                weighing_scales = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales_2);
+                weighing_scales = DBHelper.WeighingScales_2;//new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales_2);
             }
 
 

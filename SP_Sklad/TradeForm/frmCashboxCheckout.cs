@@ -268,7 +268,7 @@ namespace SP_Sklad.WBForm
             {
                 id = Guid.NewGuid(),
                 cashier_name = DBHelper.CurrentUser.Name,
-                departament = DBHelper.Kagents.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
+                departament = DBHelper.KagentsWorkerList.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
 
                 goods = wb_det.Select(s => new Good
                 {

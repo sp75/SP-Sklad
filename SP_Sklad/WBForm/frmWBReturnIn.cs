@@ -42,7 +42,7 @@ namespace SP_Sklad.WBForm
 
         private void frmWBReturnIn_Load(object sender, EventArgs e)
         {
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WHComboBox.Properties.DataSource = DBHelper.WhList;
            

@@ -54,7 +54,7 @@ namespace SP_Sklad.FinanseForm
         {
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
             CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
             CurrEdit.Properties.DataSource = DBHelper.Currency;
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;

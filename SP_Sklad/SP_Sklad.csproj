@@ -463,6 +463,9 @@
     <Compile Include="SkladData\DefectsClassifier.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetKagentList_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatRemain_Ex_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -506,6 +509,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingSummary.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_LoginHistory.cs">
@@ -2328,6 +2334,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighing.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Kagent.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustmentDet.datasource" />

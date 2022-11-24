@@ -102,7 +102,7 @@ namespace SP_Sklad.EditForm
             comboBoxEdit2.Text = user_settings.GridFontName;
             comboBoxEdit1.Value = user_settings.GridFontSize;
 
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents.Where(w=> w.KaKind == 5);
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList.Where(w=> w.KaKind == 5);
             KagentComboBox.EditValue = user_settings.DefaultBuyer;
 
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;

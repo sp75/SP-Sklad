@@ -20,5 +20,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> LoginDate { get; set; }
         public string MachineName { get; set; }
         public string UserName { get; set; }
+        public string Ver { get; set; }
     }
 }

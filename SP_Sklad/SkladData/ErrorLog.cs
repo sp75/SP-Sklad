@@ -21,5 +21,6 @@ namespace SP_Sklad.SkladData
         public string StackTrace { get; set; }
         public Nullable<int> UserId { get; set; }
         public byte[] ScreenShot { get; set; }
+        public string Ver { get; set; }
     }
 }

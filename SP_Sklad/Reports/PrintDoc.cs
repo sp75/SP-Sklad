@@ -502,15 +502,16 @@ namespace SP_Sklad.Reports
             var pd = db.v_PayDoc.Where(w => w.Id == id).AsNoTracking().ToList();
             if (pd != null)
             {
+                var p = pd.First();
+
                 var m = new MoneyToStr("UAH", "UKR", "TEXT");
-                 pd.First().CurrName = m.convertValue(pd.First().Total);
+                p.CurrName = m.convertValue(pd.First().Total);
+
+                dataForReport.Add("PayDoc", pd);
+                dataForReport.Add("Enterprise", db.v_Kagent.Where(w => w.KaId == p.EntId).ToList());
             }
-            
-            dataForReport.Add("PayDoc", pd);
-            dataForReport.Add("Enterprise", db.KagentList.Where(w =>  w.KType == 3).Take( 1 ).ToList());
 
             IHelper.Print(dataForReport, template_name);
-
         }
 
         public static void PriseListReport(Guid id, BaseEntities db)

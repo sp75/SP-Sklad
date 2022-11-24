@@ -148,6 +148,9 @@ namespace SP_Sklad.WBDetForm
 
         private void frmTechProcDet_Shown(object sender, EventArgs e)
         {
+            AmountEdit.Properties.Buttons[1].Visible = DBHelper.WeighingScales_1 != null;
+            AmountEdit.Properties.Buttons[2].Visible = DBHelper.WeighingScales_2 != null;
+
             AmountEdit.Focus();
         }
 

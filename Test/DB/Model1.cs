@@ -8,18 +8,29 @@ namespace Test.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model11")
+            : base("name=Model12")
         {
         }
 
-        public virtual DbSet<Tara> Tara { get; set; }
-        public virtual DbSet<TaraGroup> TaraGroup { get; set; }
+        public virtual DbSet<v_Kagent> v_Kagent { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Tara>()
-                .Property(e => e.Weight)
-                .HasPrecision(15, 4);
+            modelBuilder.Entity<v_Kagent>()
+                .Property(e => e.FullUrADDR)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_Kagent>()
+                .Property(e => e.FullFactADDR)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_Kagent>()
+                .Property(e => e.StartSaldo)
+                .HasPrecision(15, 8);
+
+            modelBuilder.Entity<v_Kagent>()
+                .Property(e => e.PriceName)
+                .IsUnicode(false);
         }
     }
 }

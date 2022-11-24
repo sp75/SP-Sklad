@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -159,7 +160,8 @@ namespace SP_Sklad
                         StackTrace = e.ToMessageAndCompleteStacktrace(),
                         Title = title,
                         UserId = DBHelper.CurrentUser.UserId,
-                        ScreenShot = ms.ToArray()
+                        ScreenShot = ms.ToArray(),
+                        Ver = $"v.{ new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime }"
                     });
 
                     db.SaveChanges();

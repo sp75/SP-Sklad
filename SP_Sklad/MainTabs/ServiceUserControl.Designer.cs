@@ -221,6 +221,8 @@
             this.OperLogPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SessionPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -1629,7 +1631,8 @@
             this.gridColumn22,
             this.gridColumn23,
             this.gridColumn18,
-            this.gridColumn26});
+            this.gridColumn26,
+            this.gridColumn32});
             this.ErrorLogGridView.GridControl = this.ErrorLogGridControl;
             this.ErrorLogGridView.Name = "ErrorLogGridView";
             this.ErrorLogGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1777,7 +1780,8 @@
             this.gridColumn29,
             this.gridColumn30,
             this.gridColumn33,
-            this.gridColumn31});
+            this.gridColumn31,
+            this.gridColumn34});
             this.LoginHistoryGridView.GridControl = this.LoginHistoryGridControl;
             this.LoginHistoryGridView.Name = "LoginHistoryGridView";
             this.LoginHistoryGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2466,6 +2470,22 @@
             this.SessionPopupMenu.Manager = this.barManager1;
             this.SessionPopupMenu.Name = "SessionPopupMenu";
             // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "Версія";
+            this.gridColumn32.FieldName = "Ver";
+            this.gridColumn32.Name = "gridColumn32";
+            this.gridColumn32.Visible = true;
+            this.gridColumn32.VisibleIndex = 7;
+            // 
+            // gridColumn34
+            // 
+            this.gridColumn34.Caption = "Версія";
+            this.gridColumn34.FieldName = "Ver";
+            this.gridColumn34.Name = "gridColumn34";
+            this.gridColumn34.Visible = true;
+            this.gridColumn34.VisibleIndex = 6;
+            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2793,5 +2813,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit repositoryItemPictureEdit2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource LoginHistoryIinqInstantFeedbackSource;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
     }
 }

@@ -128,7 +128,7 @@ namespace SP_Sklad.MainTabs
 
                     LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
 
-                       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                //       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
 
                    /*    var ka = (from k in _db.KagentList
                                  join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj

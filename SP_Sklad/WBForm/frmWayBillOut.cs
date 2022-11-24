@@ -53,7 +53,7 @@ namespace SP_Sklad.WBForm
         {
             WaybillDetOutGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmWayBillOut\\WaybillDetOutGridView");
 
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
@@ -312,7 +312,7 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            var row = KagentComboBox.GetSelectedDataRow() as KagentList;
+            var row = KagentComboBox.GetSelectedDataRow() as GetKagentList_Result;
             if (row == null)
             {
                 return;

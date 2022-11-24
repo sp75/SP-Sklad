@@ -24,7 +24,7 @@ namespace SP_Sklad.EditForm
 
             InitializeComponent();
 
-            EntEdit.Properties.DataSource = _db.KagentList.Where(w => w.Archived == 0 || w.Archived == null).Select(s => new { s.KaId, s.Name }).ToList();
+            EntEdit.Properties.DataSource = DBHelper.KagentsWorkerList.Select(s => new { s.KaId, s.Name }).ToList();
             lookUpEdit1.Properties.DataSource = _db.AccountType.Select(s => new { s.TypeId, s.Name }).ToList();
             lookUpEdit2.Properties.DataSource = _db.Banks.Select(s => new { s.BankId, s.Name }).ToList();
         }

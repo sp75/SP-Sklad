@@ -1513,5 +1513,21 @@ namespace SP_Sklad.MainTabs
                 BottomPopupMenu.ShowPopup(p2);
             }
         }
+
+        private void wbStartDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                wbStartDate.EditValue = DBHelper.ServerDateTime().Date;
+            }
+        }
+
+        private void wbEndDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                wbEndDate.EditValue = DBHelper.ServerDateTime().SetEndDay();
+            }
+        }
     }
 }

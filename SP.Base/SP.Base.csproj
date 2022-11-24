@@ -200,6 +200,7 @@
     <Compile Include="Models\TaraGroup.cs" />
     <Compile Include="Models\UserAccessMatGroup.cs" />
     <Compile Include="Models\v_IntermediateWeighing.cs" />
+    <Compile Include="Models\v_Kagent.cs" />
     <Compile Include="Models\WBListMake_Result.cs" />
     <Compile Include="SPBaseModel.cs" />
     <Compile Include="Models\SvcGroup.cs" />

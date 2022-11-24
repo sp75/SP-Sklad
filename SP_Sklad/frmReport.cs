@@ -524,7 +524,7 @@ namespace SP_Sklad
 
                 if (_rep_id == 3)
                 {
-                    KagentComboBox.Properties.DataSource = new List<object>() { new KagentComboBoxItem { KaId = 0, Name = "Усі" } }.Concat( DBHelper.Kagents.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }));
+                    KagentComboBox.Properties.DataSource = new List<object>() { new KagentComboBoxItem { KaId = 0, Name = "Усі" } }.Concat( DBHelper.KagentsWorkerList.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }));
                     // KagentComboBox.EditValue = DBHelper.Kagents.FirstOrDefault().KaId;
                     KagentComboBox.EditValue = 0;
                 }

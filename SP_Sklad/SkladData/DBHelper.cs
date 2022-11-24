@@ -20,8 +20,8 @@ namespace SP_Sklad.SkladData
         private static List<CashDesks> _cash_desks;
         private static List<ChargeType> _charge_type;
         private static LoginUser _current_user;
-        private static List<KagentList> _kagents;
-        private static List<KagentList> _retail_outlets;
+   //     private static List<KagentList> _kagents;
+        private static List<v_Kagent> _retail_outlets;
         private static List<Currency> _currency;
         private static Enterprise _enterprise;
         private static List<Enterprise> _enterprise_list;
@@ -33,6 +33,9 @@ namespace SP_Sklad.SkladData
         private static List<WhList> _wh_list;
         private static Currency _national_currency;
         private static List<UserRoles> _user_roles;
+        private static WeighingScales weighing_scales_1;
+        private static WeighingScales weighing_scales_2;
+        private static List<GetKagentList_Result> _kagents_by_wrker;
 
 
         public static List<UserRoles> UserRolesList
@@ -131,7 +134,7 @@ namespace SP_Sklad.SkladData
             }
         }
 
-        public static List<KagentList> Kagents
+    /*    public static List<KagentList> Kagents
         {
             get
             {
@@ -152,24 +155,41 @@ namespace SP_Sklad.SkladData
                 }
                 return _kagents;
             }
-        }
-        public static void ReloadKagents()
+        }*/
+
+        public static List<GetKagentList_Result> KagentsWorkerList
         {
-            _kagents = null;
+            get
+            {
+                if (_kagents_by_wrker == null)
+                {
+                    using (var _db = DB.SkladBase())
+                    {
+                        _kagents_by_wrker = _db.GetKagentList(CurrentUser.KaId).ToList();
+                    }
+                }
+                return _kagents_by_wrker;
+            }
         }
 
-        public static List<KagentList> TradingPoints
+        public static void ReloadKagents()
+        {
+            _kagents_by_wrker = null;
+            _retail_outlets = null;
+        }
+
+        public static List<v_Kagent> TradingPoints
         {
             get
             {
                 using (var _db = DB.SkladBase())
                 {
-                    return _retail_outlets = (from k in _db.KagentList
+                    return _retail_outlets = (from k in _db.v_Kagent
                                               join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                                               from subfg in gj.DefaultIfEmpty()
-                                              where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.Enterprise.KaId && (k.Archived == 0 || k.Archived == null) && k.Deleted == 0
+                                              where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.Enterprise.KaId && k.Archived == 0
                                               select k
-                             ).Distinct().ToList();
+                             ).ToList();
                 }
             }
         }
@@ -179,7 +199,7 @@ namespace SP_Sklad.SkladData
         {
             get
             {
-                return new List<Kontragent>() { new Kontragent { KaId = 0, Name = "Усі" } }.Concat(Kagents.Select(s => new Kontragent
+                return new List<Kontragent>() { new Kontragent { KaId = 0, Name = "Усі" } }.Concat(KagentsWorkerList.Select(s => new Kontragent
                 {
                     KaId = s.KaId,
                     Name = s.Name
@@ -193,7 +213,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_persons == null)
                 {
-                    _persons = Kagents.Where(w => w.KType == 2).Select(s => new PersonList
+                    _persons = KagentsWorkerList.Where(w => w.KType == 2).Select(s => new PersonList
                     {
                         KaId = s.KaId,
                         Name = s.Name
@@ -209,7 +229,7 @@ namespace SP_Sklad.SkladData
             {
                 if (_cashiers == null)
                 {
-                    _cashiers = Kagents.Where(w => w.JobType == 4).Select(s => new PersonList
+                    _cashiers = KagentsWorkerList.Where(w => w.JobType == 4).Select(s => new PersonList
                     {
                         KaId = s.KaId,
                         Name = s.Name
@@ -398,6 +418,30 @@ namespace SP_Sklad.SkladData
                     _national_currency = Currency.FirstOrDefault(w => w.Def == 1);
                 }
                 return _national_currency;
+            }
+        }
+
+        public static WeighingScales WeighingScales_1
+        {
+            get
+            {
+                if (weighing_scales_1 == null)
+                {
+                    weighing_scales_1 = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales);
+                }
+                return weighing_scales_1;
+            }
+        }
+
+        public static WeighingScales WeighingScales_2
+        {
+            get
+            {
+                if (weighing_scales_2 == null)
+                {
+                    weighing_scales_2 = new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales_2);
+                }
+                return weighing_scales_2;
             }
         }
 

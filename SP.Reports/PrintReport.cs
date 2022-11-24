@@ -322,10 +322,10 @@ namespace SP.Reports
 
             var enterprise_list = EnterpriseList(_person_id).Select(s => (int?)s.KaId);
 
-            var kagents = (from k in _db.KagentList
+            var kagents = (from k in _db.v_Kagent
                            join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                            from subfg in gj.DefaultIfEmpty()
-                           where (subfg.EnterpriseId == null || enterprise_list.Contains(subfg.EnterpriseId))
+                           where (subfg == null || enterprise_list.Contains(subfg.EnterpriseId))
                            select k
                       ).Distinct().ToList().Where(w => w.KaId == Kagent.KaId || Kagent.KaId == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
@@ -353,10 +353,10 @@ namespace SP.Reports
         {
             var mat = _db.REP_4_25(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, Warehouse.WId, "1,", _user_id).ToList();
             var enterprise_list = EnterpriseList(_person_id).Select(s => (int?)s.KaId);
-            var kagents = (from k in _db.KagentList
+            var kagents = (from k in _db.v_Kagent
                            join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                            from subfg in gj.DefaultIfEmpty()
-                           where (subfg.EnterpriseId == null || enterprise_list.Contains(subfg.EnterpriseId))
+                           where (subfg == null || enterprise_list.Contains(subfg.EnterpriseId))
                            select k
                       ).Distinct().ToList().Where(w => w.KaId == Kagent.KaId || Kagent.KaId == 0).Select(s => new { s.KaId, s.Name }).ToList();
 

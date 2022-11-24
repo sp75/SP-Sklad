@@ -19,6 +19,8 @@ using SP_Sklad.IntermediateWeighingInterface;
 using DevExpress.XtraEditors;
 using SP_Sklad.WBForm;
 using SP_Sklad.Properties;
+using System.Reflection;
+using System.IO;
 
 namespace SP_Sklad
 {
@@ -265,7 +267,8 @@ namespace SP_Sklad
                         MachineName = Environment.MachineName,
                         UserName = user_name,
                         UserId = user_id,
-                        LoginDate = DBHelper.ServerDateTime()
+                        LoginDate = DBHelper.ServerDateTime(),
+                        Ver = $"v.{ new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime }"
                     });
 
                     db.SaveChanges();

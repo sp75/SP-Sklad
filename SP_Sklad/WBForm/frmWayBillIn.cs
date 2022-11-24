@@ -95,7 +95,7 @@ namespace SP_Sklad.WBForm
                 GetDocValue(wb);
             }
 
-            KagentComboBox.Properties.DataSource = DBHelper.Kagents;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;

@@ -96,7 +96,7 @@
             // 
             // KontragentBS
             // 
-            this.KontragentBS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
+            this.KontragentBS.DataSource = typeof(SP_Sklad.SkladData.v_Kagent);
             // 
             // KontragentGroupGridView
             // 

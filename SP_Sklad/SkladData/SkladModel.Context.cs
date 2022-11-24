@@ -207,6 +207,7 @@ namespace SP_Sklad.SkladData
         public DbSet<BankStatementsDet> BankStatementsDet { get; set; }
         public DbSet<v_KAgentAccount> v_KAgentAccount { get; set; }
         public DbSet<v_Materials> v_Materials { get; set; }
+        public DbSet<v_Kagent> v_Kagent { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2560,6 +2561,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatRemain_Ex_Result>("[BaseEntities].[GetMatRemain_Ex](@wid, @ka_id, @on_date, @wh, @user_id)", widParameter, ka_idParameter, on_dateParameter, whParameter, user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetKagentList")]
+        public virtual IQueryable<GetKagentList_Result> GetKagentList(Nullable<int> worker_id)
+        {
+            var worker_idParameter = worker_id.HasValue ?
+                new ObjectParameter("worker_id", worker_id) :
+                new ObjectParameter("worker_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKagentList_Result>("[BaseEntities].[GetKagentList](@worker_id)", worker_idParameter);
         }
     }
 }
