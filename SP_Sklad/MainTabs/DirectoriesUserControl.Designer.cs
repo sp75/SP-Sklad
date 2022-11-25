@@ -1586,7 +1586,7 @@
             // 
             // KAgentInfoBS
             // 
-            this.KAgentInfoBS.DataSource = typeof(SP_Sklad.SkladData.KagentList);
+            this.KAgentInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_Kagent);
             // 
             // row1
             // 

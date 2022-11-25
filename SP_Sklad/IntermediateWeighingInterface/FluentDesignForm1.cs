@@ -128,6 +128,8 @@ namespace SP_Sklad.IntermediateWeighingInterface
         }
         private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
+            _db.UndoAllChanges();
+
             sidePanel1.Show();
 
             layoutControlGroup2.Text = focused_row.MatName;
@@ -157,14 +159,15 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            if(det.Amount ==0)
+            if (det.Amount == 0)
             {
                 return;
             }
 
-            det.Total = det.Amount - det.TaraAmount ?? 0;
-            det.TaraTotal = det.TaraAmount ;
+            tileView1.BeginUpdate();
 
+            det.Total = det.Amount - det.TaraAmount ?? 0;
+            det.TaraTotal = det.TaraAmount;
 
             if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
             {
@@ -173,6 +176,8 @@ namespace SP_Sklad.IntermediateWeighingInterface
             _db.SaveChanges();
 
             GetDetail(_wbill_id);
+           
+            tileView1.EndUpdate();
         }
 
         private void GetOk()
@@ -274,8 +279,8 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    AmountEdit.EditValue = frm.AmountEdit.Value;
                     det.Amount = frm.AmountEdit.Value;
+                    AmountEdit.EditValue = frm.AmountEdit.Value;
 
                     GetOk();
                 }

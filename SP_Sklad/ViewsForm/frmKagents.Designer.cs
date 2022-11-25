@@ -56,14 +56,14 @@
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomPanel.Location = new System.Drawing.Point(0, 516);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(1006, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(1176, 52);
             this.BottomPanel.TabIndex = 18;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(784, 10);
+            this.OkButton.Location = new System.Drawing.Point(954, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(894, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(1064, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -88,9 +88,8 @@
             this.KontragentGrid.Name = "KontragentGrid";
             this.KontragentGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.KontragentGrid.Size = new System.Drawing.Size(1006, 516);
+            this.KontragentGrid.Size = new System.Drawing.Size(1176, 516);
             this.KontragentGrid.TabIndex = 19;
-            this.KontragentGrid.UseEmbeddedNavigator = true;
             this.KontragentGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KontragentGroupGridView});
             // 
@@ -113,18 +112,20 @@
             this.KontragentGroupGridView.OptionsBehavior.Editable = false;
             this.KontragentGroupGridView.OptionsBehavior.ReadOnly = true;
             this.KontragentGroupGridView.OptionsFind.AlwaysVisible = true;
+            this.KontragentGroupGridView.OptionsView.ShowAutoFilterRow = true;
+            this.KontragentGroupGridView.OptionsView.ShowDetailButtons = false;
             this.KontragentGroupGridView.OptionsView.ShowGroupPanel = false;
             this.KontragentGroupGridView.DoubleClick += new System.EventHandler(this.KontragentGroupGridView_DoubleClick);
             // 
             // gridColumn2
             // 
+            this.gridColumn2.Caption = "Тип контрагента";
             this.gridColumn2.ColumnEdit = this.repositoryItemImageComboBox1;
             this.gridColumn2.FieldName = "KType";
             this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.ShowCaption = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
-            this.gridColumn2.Width = 29;
+            this.gridColumn2.Width = 260;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -132,10 +133,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Юридичні особи", 0, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фізичні особи", 1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Службовці", 2, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Власні підприємства", 3, 1)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -152,9 +153,10 @@
             this.gridColumn30.Caption = "Назва контрагента";
             this.gridColumn30.FieldName = "Name";
             this.gridColumn30.Name = "gridColumn30";
+            this.gridColumn30.OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.BeginsWith;
             this.gridColumn30.Visible = true;
             this.gridColumn30.VisibleIndex = 1;
-            this.gridColumn30.Width = 550;
+            this.gridColumn30.Width = 636;
             // 
             // gridColumn1
             // 
@@ -163,13 +165,13 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 409;
+            this.gridColumn1.Width = 275;
             // 
             // frmKagents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 568);
+            this.ClientSize = new System.Drawing.Size(1176, 568);
             this.Controls.Add(this.KontragentGrid);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmKagents";

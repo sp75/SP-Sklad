@@ -415,7 +415,7 @@
             // 
             // AmountEdit
             // 
-            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "Amount", true));
+            this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.IntermediateWeighingDetBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountEdit.Location = new System.Drawing.Point(12, 53);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);

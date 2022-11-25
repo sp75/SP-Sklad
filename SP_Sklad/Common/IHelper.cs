@@ -348,13 +348,20 @@ namespace SP_Sklad.Common
             switch (Typ)
             {
                 case 1:
-                    using (var f = new frmCatalog(1))
+                    /* using (var f = new frmCatalog(1))
+                     {
+                         f.uc.isDirectList = true;
+                         f.Text = "Контрагенти";
+                         if (f.ShowDialog() == DialogResult.OK)
+                         {
+                             old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
+                         }
+                     }*/
+                    using (var frm = new frmKagents(-1, ""))
                     {
-                        f.uc.isDirectList = true;
-                        f.Text = "Контрагенти";
-                        if (f.ShowDialog() == DialogResult.OK)
+                        if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
+                            old_id = frm.focused_row?.KaId;
                         }
                     }
 

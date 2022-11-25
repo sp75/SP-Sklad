@@ -1336,26 +1336,28 @@ namespace SP_Sklad.MainTabs
 
         private void GetKontragentDetail()
         {
-            var f_row = KaGridView.GetFocusedRow() as KagentList;
-
-            if(f_row == null)
+            if (focused_kagent == null)
             {
                 return;
             }
 
-            KAgentInfoBS.DataSource = f_row;
-            memoEdit1.Text = f_row.Notes;
-
             using (var db = DB.SkladBase())
             {
-                gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == f_row.KaId).Join(db.Jobs,
+                int KaId = focused_kagent.KaId;
+
+                var kagent = db.v_Kagent.FirstOrDefault(w => w.KaId == KaId);
+
+                KAgentInfoBS.DataSource = kagent;
+                memoEdit1.Text = kagent.Notes;
+
+                gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == KaId).Join(db.Jobs,
                                     person => person.JobType,
                                     job => job.Id,
                                     (person, job) => new { person.Name, person.Notes, person.Phone, person.Email, Post = person.JobType == 0 ? person.Post : job.Name }).ToList();
 
-                gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == f_row.KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
+                gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
 
-                gridControl4.DataSource = db.EnterpriseWorker.Where(w => w.EnterpriseId == f_row.KaId).Join(db.Kagent, p => p.WorkerId, k => k.KaId, (p, k) => new { k.KaId, k.Name }).ToList();
+                gridControl4.DataSource = db.EnterpriseWorker.Where(w => w.EnterpriseId == KaId).Join(db.Kagent, p => p.WorkerId, k => k.KaId, (p, k) => new { k.KaId, k.Name }).ToList();
             }
         }
 
@@ -1581,7 +1583,7 @@ namespace SP_Sklad.MainTabs
                       join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
                       from subfg2 in gj_ew.DefaultIfEmpty()
                       where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) 
-                      select k).Distinct();
+                      select new { k.KaId, k.KType,  k.Archived, k.Name, k.GroupName ,k.PriceName, k.KAgentKind ,k.OKPO , k.INN,k.JobName, k.Login, k.WebUserName, k.Saldo }).Distinct();
 
             if (focused_tree_node.Id != 10)
             {
