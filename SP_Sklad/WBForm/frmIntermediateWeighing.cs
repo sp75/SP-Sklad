@@ -158,6 +158,21 @@ namespace SP_Sklad.WBForm
                 throw new Exception("Не можливо зберегти документ, тільки перегляд.");
             }
 
+            if (TurnDocCheckBox.Checked)
+            {
+                foreach (var item in _db.v_IntermediateWeighingSummary.Where(w => w.IntermediateWeighingId == IntermediateWeighing.Id && w.IntermediateWeighingDetId != null && w.UserId == UserSession.UserId))
+                {
+                    var plan_weighing = Math.Round(Convert.ToDecimal((item.AmountByRecipe * item.IntermediateWeighingAmount) / item.TotalWeightByRecipe), 3);
+                    var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == item.MatId && w.RecId == item.RecId)?.Deviation ?? 1000000;
+
+                    if (!((plan_weighing + deviation) >= item.Total && (plan_weighing - deviation) <= item.Total))
+                    {
+                        new frmMessageBox(@"Помилка в зважуванні", $"Не вірно зважена сировина {item.MatName} !", false).ShowDialog();
+                        TurnDocCheckBox.Checked = false;
+                    }
+                }
+            }
+
 
             //  var wh_list = DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList();
             var group_list = DB.SkladBase().UserAccessMatGroup.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.GrpId).ToList();
@@ -178,6 +193,8 @@ namespace SP_Sklad.WBForm
             _db.SaveChanges();
 
             is_new_record = false;
+
+            _db.SetDocRel(iw.Id, _db.WaybillList.FirstOrDefault(w=> w.WbillId == _wb_id).Id);
 
             _db.ExecuteIntermediateWeighing(iw.WbillId);
         }

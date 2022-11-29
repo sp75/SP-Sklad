@@ -159,70 +159,81 @@ namespace SP_Sklad.Common
 
         static public void ShowMatListByWH(BaseEntities db, WaybillList wb, DiscCards disc_card = null, int? WId = -1)
         {
-            var f = new frmWhCatalog(1, disc_card);
-
-            //   f.uc.xtraTabPage3.PageVisible = false;
-            f.uc.xtraTabPage4.PageVisible = false;
-            f.uc.xtraTabPage5.PageVisible = false;
-            f.uc.xtraTabPage9.PageVisible = false;
-            f.uc.xtraTabPage11.PageVisible = false;
-            f.uc.MatListTabPage.PageVisible = true;
-            f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
-            f.uc.wb = wb;
-            f.uc.isMatList = true;
-            f.uc.wid = WId.Value;
-
-            if (WId != -1)
+            using (var f = new frmWhCatalog(1, disc_card))
             {
-                f.uc.MatListGridColumnWh.Visible = false;
-                f.uc.WhCheckedComboBox.Enabled = false;
-                f.uc.wh_list = WId.Value.ToString();
-                f.uc.ByWhBtn.Enabled = false;
-            }
 
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                var num = wb.WaybillDet.Count();
-                foreach (var item in f.uc.custom_mat_list)
+                //   f.uc.xtraTabPage3.PageVisible = false;
+                f.uc.xtraTabPage4.PageVisible = false;
+                f.uc.xtraTabPage5.PageVisible = false;
+                f.uc.xtraTabPage9.PageVisible = false;
+                f.uc.xtraTabPage11.PageVisible = false;
+                f.uc.xtraTabPage12.PageVisible = false;
+                f.uc.xtraTabPage13.PageVisible = false;
+                f.uc.MatListTabPage.PageVisible = true;
+                f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
+                f.uc.wb = wb;
+                f.uc.isMatList = true;
+                f.uc.wid = WId.Value;
+
+                if (WId != -1)
                 {
-                    var wbd = new WaybillDet
-                    {
-                        WbillId = wb.WbillId,
-                        Num = ++num,
-                        OnDate = wb.OnDate,
-                        MatId = item.MatId,
-                        WId = WId == -1 ? item.WId : WId,
-                        Amount = item.Amount,
-                        Price = item.Price - (item.Price * item.Discount / 100),
-                        PtypeId = item.PTypeId,
-                        Discount = item.Discount,
-                        Nds = wb.Nds,
-                        CurrId = wb.CurrId,
-                        OnValue = wb.OnValue,
-                        BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
-                        PosKind = 0,
-                        PosParent = 0,
-                        DiscountKind = disc_card != null ? 2 : (item.Discount > 0 ? 1 : 0),
-                        WayBillDetAddProps = disc_card != null ? new WayBillDetAddProps { CardId = disc_card.CardId } : null
-                    };
-                    db.WaybillDet.Add(wbd);
-                    db.SaveChanges();
+                    f.Text = $"Залишки на складі: {db.Warehouse.FirstOrDefault(w => w.WId == WId)?.Name}";
 
-                    if (wb.WType == 16)
-                    {
-                        db.WMatTurn.Add(new WMatTurn()
-                        {
-                            SourceId = wbd.PosId,
-                            PosId = wbd.PosId,
-                            WId = wbd.WId.Value,
-                            MatId = wbd.MatId,
-                            OnDate = wbd.OnDate.Value,
-                            TurnType = 3,
-                            Amount = wbd.Amount
-                        });
-                    }
+                    f.uc.MatListGridColumnWh.Visible = false;
+                    f.uc.WhCheckedComboBox.Enabled = false;
+                    f.uc.wh_list = WId.Value.ToString();
+                    f.uc.ByWhBtn.Enabled = false;
                 }
-                db.SaveChanges();
+                else
+                {
+                    f.Text = "Залишки на складах";
+                }
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    var num = wb.WaybillDet.Count();
+                    foreach (var item in f.uc.custom_mat_list)
+                    {
+                        var discount = (item.Price * item.Discount / 100.00m);
+                        var wbd = new WaybillDet
+                        {
+                            WbillId = wb.WbillId,
+                            Num = ++num,
+                            OnDate = wb.OnDate,
+                            MatId = item.MatId,
+                            WId = WId == -1 ? item.WId : WId,
+                            Amount = item.Amount,
+                            Price = Math.Round(Convert.ToDecimal(item.Price - discount), 2),
+                            PtypeId = item.PTypeId,
+                            Discount = item.Discount,
+                            Nds = wb.Nds,
+                            CurrId = wb.CurrId,
+                            OnValue = wb.OnValue,
+                            BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
+                            PosKind = 0,
+                            PosParent = 0,
+                            DiscountKind = disc_card != null ? 2 : (item.Discount > 0 ? 1 : 0),
+                            WayBillDetAddProps = disc_card != null ? new WayBillDetAddProps { CardId = disc_card.CardId } : null
+                        };
+                        db.WaybillDet.Add(wbd);
+                        db.SaveChanges();
+
+                        if (wb.WType == 16)
+                        {
+                            db.WMatTurn.Add(new WMatTurn()
+                            {
+                                SourceId = wbd.PosId,
+                                PosId = wbd.PosId,
+                                WId = wbd.WId.Value,
+                                MatId = wbd.MatId,
+                                OnDate = wbd.OnDate.Value,
+                                TurnType = 3,
+                                Amount = wbd.Amount
+                            });
+                        }
+                    }
+                    db.SaveChanges();
+                }
             }
         }
 

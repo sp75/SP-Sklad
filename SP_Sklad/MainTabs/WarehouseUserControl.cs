@@ -1201,5 +1201,11 @@ namespace SP_Sklad.MainTabs
             e.QueryableSource = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0);
         }
 
+        private void MatPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            RecalcRemainsMatBtn.Enabled = DBHelper.is_admin;
+            DelRemainsMatBtn.Enabled = DBHelper.is_admin;
+            RecalcRemainsAllMatBtn.Enabled = DBHelper.is_admin;
+        }
     }
 }

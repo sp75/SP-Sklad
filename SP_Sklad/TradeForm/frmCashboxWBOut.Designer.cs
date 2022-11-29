@@ -99,7 +99,7 @@
             this.simpleButton17 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton18 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.SetPriceBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
@@ -876,7 +876,7 @@
             this.NumPadPanel.Controls.Add(this.simpleButton17);
             this.NumPadPanel.Controls.Add(this.simpleButton18);
             this.NumPadPanel.Controls.Add(this.simpleButton7);
-            this.NumPadPanel.Controls.Add(this.simpleButton8);
+            this.NumPadPanel.Controls.Add(this.SetPriceBtn);
             this.NumPadPanel.Controls.Add(this.simpleButton9);
             this.NumPadPanel.Controls.Add(this.simpleButton10);
             this.NumPadPanel.Controls.Add(this.simpleButton6);
@@ -1007,17 +1007,18 @@
             this.simpleButton7.Text = "6";
             this.simpleButton7.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
-            // simpleButton8
+            // SetPriceBtn
             // 
-            this.simpleButton8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Location = new System.Drawing.Point(237, 77);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(71, 65);
-            this.simpleButton8.TabIndex = 30;
-            this.simpleButton8.TabStop = false;
-            this.simpleButton8.Text = "Ціна";
+            this.SetPriceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SetPriceBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.SetPriceBtn.Appearance.Options.UseFont = true;
+            this.SetPriceBtn.Location = new System.Drawing.Point(237, 77);
+            this.SetPriceBtn.Name = "SetPriceBtn";
+            this.SetPriceBtn.Size = new System.Drawing.Size(71, 65);
+            this.SetPriceBtn.TabIndex = 30;
+            this.SetPriceBtn.TabStop = false;
+            this.SetPriceBtn.Text = "Ціна";
+            this.SetPriceBtn.Click += new System.EventHandler(this.SetPriceBtn_Click);
             // 
             // simpleButton9
             // 
@@ -1388,7 +1389,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton17;
         private DevExpress.XtraEditors.SimpleButton simpleButton18;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
-        private DevExpress.XtraEditors.SimpleButton simpleButton8;
+        private DevExpress.XtraEditors.SimpleButton SetPriceBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private DevExpress.XtraEditors.SimpleButton simpleButton10;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;

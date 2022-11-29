@@ -270,16 +270,16 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
-            if(_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == _wbill_id && w.Checked == 0 && w.UserId == _user_id && w.IntermediateWeighingDetId == null).Any())
-            {
-                using (var frm = new frmMessageBox(Text, "Не всі позиції зважені, ви дійсно бажаете повернутись до рецептів?", false))
-                {
-                    if (frm.ShowDialog() == DialogResult.Yes)
-                    {
-                        Close();
-                    }
-                }
-            }
+            //    if(_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == _wbill_id && w.Checked == 0 && w.UserId == _user_id && w.IntermediateWeighingDetId == null).Any())
+            //   {
+            //       using (var frm = new frmMessageBox(Text, "Не всі позиції зважені, ви дійсно бажаете повернутись до рецептів?", false))
+            //       {
+            //          if (frm.ShowDialog() == DialogResult.Yes)
+            //           {
+            Close();
+            //           }
+            //        }
+            //     }
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)

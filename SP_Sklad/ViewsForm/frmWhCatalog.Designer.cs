@@ -92,7 +92,7 @@
             this.Name = "frmWhCatalog";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmWhCatalog";
+            this.Text = "Залишки на складах";
             this.Load += new System.EventHandler(this.frmWhCatalog_Load);
             this.Shown += new System.EventHandler(this.frmWhCatalog_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();

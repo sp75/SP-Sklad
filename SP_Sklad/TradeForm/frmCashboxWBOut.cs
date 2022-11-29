@@ -73,6 +73,7 @@ namespace SP_Sklad.WBForm
             user_settings = new UserSettingsRepository(UserSession.UserId, _db);
             Enterprise = _db.EnterpriseWorker.Where(w => w.WorkerId == user_settings.DefaultBuyer).FirstOrDefault();
             TradingPoint = DBHelper.TradingPoints.FirstOrDefault(w => w.KaId == user_settings.DefaultBuyer);
+            SetPriceBtn.Enabled = user_settings.AccessEditPrice;
 
             if (Enterprise == null)
             {
@@ -459,7 +460,7 @@ namespace SP_Sklad.WBForm
                     MatId = mat_id,
                     WId = wb.Kontragent.WId,//remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                     Amount = 1,
-                    Price = price - (price * (discount ?? 0.00m) / 100),
+                    Price = Math.Round(price - (price * (discount ?? 0.00m) / 100), 2),
                     PtypeId = mat_price != null ? mat_price.PType : null,
                     Discount = disc_card != null ? disc_card.OnValue : (discount ?? 0.00m),
                     Nds = wb.Nds,
@@ -490,7 +491,7 @@ namespace SP_Sklad.WBForm
 
             using (var frm = new frmSetDiscountCard(_db, wb))
             {
-                if (frm.ShowDialog() == DialogResult.OK)
+                if (frm.ShowDialog() == DialogResult.OK && frm.cart != null)
                 {
                     disc_card = frm.cart;
                     wb.CustomerId = disc_card.KaId;
@@ -594,6 +595,24 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
+        private void SetPrice(decimal price)
+        {
+            var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
+
+            if (wbd_row.Rsv == 0 && wbd_row.PosType == 0)
+            {
+                wbd.BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2);
+                wbd.PtypeId = null;
+                wbd.Price = Math.Round(price - (price * (wbd.Discount ?? 0.00m) / 100), 2);
+            }
+            _db.SaveChanges();
+
+            IHelper.MapProp(_db.GetWayBillDetOut(_wbill_id).FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
+
+            RefreshDet();
+        }
+
+
         private void WaybillDetOutGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             if (wbd_row == null)
@@ -606,7 +625,7 @@ namespace SP_Sklad.WBForm
             if (wbd_row.PosType == 0)
             {
                 textBox1.Text = wbd_row.MatName;
-                label1.Text = string.Format("{0} Х {1} {2} = {3} грн.", Math.Round(wbd_row.BasePrice.Value, 2), wbd_row.Amount, wbd_row.MsrName, wbd_row.Total);
+                label1.Text = string.Format("{0} Х {1} {2} = {3} грн.", Math.Round(wbd_row.Price.Value, 2), wbd_row.Amount, wbd_row.MsrName, wbd_row.Total);
             }
         }
 
@@ -928,6 +947,8 @@ namespace SP_Sklad.WBForm
 
                 NewWaybill();
             }
+
+            disc_card = null;
         }
 
         private void simpleButton22_Click(object sender, EventArgs e)
@@ -1068,6 +1089,16 @@ namespace SP_Sklad.WBForm
 
                 frm.ShowDialog();
             }
+        }
+
+        private void SetPriceBtn_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(AmountEdit.Text))
+            {
+                SetPrice(Convert.ToDecimal(AmountEdit.Text));
+            }
+
+            AmountEdit.Text = "";
         }
     }
 }

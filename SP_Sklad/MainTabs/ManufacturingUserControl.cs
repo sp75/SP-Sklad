@@ -31,8 +31,10 @@ namespace SP_Sklad.MainTabs
         private v_PlannedCalculation pc_focused_row { get; set; }
         private PreparationRawMaterialsList_Result focused_prep_raw_mat_row { get; set; }
         private v_IntermediateWeighing intermediate_weighing_focused_row { get; set; }
+        private List<GetManufactureTree_Result> manuf_tree { get; set; }
+        private GetManufactureTree_Result intermediate_weighing_access{ get; set; }
 
-        private int _cur_wtype = 0;
+    private int _cur_wtype = 0;
 
         public ManufacturingUserControl()
         {
@@ -89,7 +91,11 @@ namespace SP_Sklad.MainTabs
                 lookUpEdit3.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведений" }, new { Id = 0, Name = "Новий" } };
                 lookUpEdit3.EditValue = -1;
 
-                DocsTreeList.DataSource = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
+                manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
+                intermediate_weighing_access = manuf_tree.FirstOrDefault(w => w.FunId == 83);
+                xtraTabPage19.PageVisible = intermediate_weighing_access?.CanView == 1;
+
+                DocsTreeList.DataSource = manuf_tree;
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
             }
         }
@@ -821,6 +827,10 @@ namespace SP_Sklad.MainTabs
             {
                 row = gridView12.GetFocusedRow() as GetRelDocList_Result;
             }
+            else if (gridView14.Focus())
+            {
+                row = gridView14.GetFocusedRow() as GetRelDocList_Result;
+            }
 
             FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
@@ -846,6 +856,10 @@ namespace SP_Sklad.MainTabs
             {
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
+            else if (gridView14.Focus())
+            {
+                row = gridView14.GetFocusedRow() as GetRelDocList_Result;
+            }
 
             PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
         }
@@ -866,7 +880,7 @@ namespace SP_Sklad.MainTabs
 
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
 
-           AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 /*&& focused_tree_node.CanModify == 1*/);
+            AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanInsert == 1);
            
         }
 
@@ -1200,8 +1214,8 @@ namespace SP_Sklad.MainTabs
         {
             focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
 
-            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0/* && focused_tree_node.CanModify == 1*/) && IntermediateWeighingByWbGridView.DataRowCount > 0);
-            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0/* && focused_tree_node.CanModify == 1*/ && IntermediateWeighingByWbGridView.DataRowCount > 0 );
+            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanDelete == 1) && IntermediateWeighingByWbGridView.DataRowCount > 0);
+            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0 && intermediate_weighing_access?.CanModify == 1 && IntermediateWeighingByWbGridView.DataRowCount > 0 );
         }
 
         private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)
@@ -1336,17 +1350,17 @@ namespace SP_Sklad.MainTabs
         {
             intermediate_weighing_focused_row = e.Row as v_IntermediateWeighing;
 
-            xtraTabControl6_PaddingChanged(sender, null);
+            xtraTabControl6_SelectedPageChanged(sender, null);
 
             DeleteItemBtn.Enabled = (intermediate_weighing_focused_row != null && intermediate_weighing_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1 && intermediate_weighing_focused_row.WbChecked == 0);
-            EditItemBtn.Enabled = (intermediate_weighing_focused_row != null && intermediate_weighing_focused_row.Checked == 0 && focused_tree_node.CanModify == 1 && intermediate_weighing_focused_row.WbChecked == 0);
+            EditItemBtn.Enabled = (intermediate_weighing_focused_row != null && /*intermediate_weighing_focused_row.Checked == 0 &&*/ focused_tree_node.CanModify == 1 && intermediate_weighing_focused_row.WbChecked == 0);
             CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && intermediate_weighing_focused_row != null);
             ExecuteItemBtn.Enabled = (intermediate_weighing_focused_row != null && focused_tree_node.CanPost == 1);
             PrintItemBtn.Enabled = (intermediate_weighing_focused_row != null);
 
         }
 
-        private void xtraTabControl6_PaddingChanged(object sender, EventArgs e)
+        private void xtraTabControl6_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if (intermediate_weighing_focused_row == null)
             {

@@ -2515,7 +2515,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 39),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 41)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -5726,7 +5727,7 @@
             this.xtraTabControl6.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage22,
             this.xtraTabPage27});
-            this.xtraTabControl6.PaddingChanged += new System.EventHandler(this.xtraTabControl6_PaddingChanged);
+            this.xtraTabControl6.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl6_SelectedPageChanged);
             // 
             // xtraTabPage22
             // 
@@ -5920,6 +5921,7 @@
             this.gridView14.OptionsBehavior.Editable = false;
             this.gridView14.OptionsBehavior.ReadOnly = true;
             this.gridView14.OptionsView.ShowGroupPanel = false;
+            this.gridView14.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView3_PopupMenuShowing);
             // 
             // gridColumn212
             // 
@@ -5974,15 +5976,7 @@
             this.repositoryItemImageComboBox31.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox31.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 39),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26)});
             this.repositoryItemImageComboBox31.Name = "repositoryItemImageComboBox31";
             this.repositoryItemImageComboBox31.SmallImages = this.GridImageList;
             // 
