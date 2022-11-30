@@ -154,6 +154,11 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
             focused_tree_node = WHTreeList.GetDataRecordByNode(e.Node) as GetWhTree_Result;
 
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
 
             /*     if (focused_tree_node.GType.Value == 1 && wh_mat_list != null && ByGrpBtn.Down && wh_mat_list.Any())
                  {

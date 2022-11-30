@@ -74,6 +74,11 @@ namespace SP_Sklad.MainTabs
 
         private void FinancesTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
             DeleteItemBtn.Enabled = false;
             ExecuteItemBtn.Enabled = false;
             EditItemBtn.Enabled = false;

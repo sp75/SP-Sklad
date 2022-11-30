@@ -192,6 +192,10 @@ namespace SP_Sklad.MainTabs
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
+            if (focused_tree_node == null)
+            {
+                return;
+            }
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
@@ -956,6 +960,11 @@ namespace SP_Sklad.MainTabs
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             var dr = e.Row as GetWayBillList_Result;
+
+            if(dr == null )
+            {
+                return;
+            }
 
             xtraTabControl2_SelectedPageChanged(sender, null);
 

@@ -177,7 +177,7 @@ namespace SP_Sklad.Common
 
                 if (WId != -1)
                 {
-                    f.Text = $"Залишки на складі: {db.Warehouse.FirstOrDefault(w => w.WId == WId)?.Name}";
+                    f.Text = $"Залишки на складі: [{db.Warehouse.FirstOrDefault(w => w.WId == WId)?.Name}]";
 
                     f.uc.MatListGridColumnWh.Visible = false;
                     f.uc.WhCheckedComboBox.Enabled = false;

@@ -81,6 +81,10 @@ namespace SP_Sklad.MainTabs
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetServiceTree_Result;
+            if (focused_tree_node == null)
+            {
+                return;
+            }
 
             RefrechItemBtn.PerformClick();
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;

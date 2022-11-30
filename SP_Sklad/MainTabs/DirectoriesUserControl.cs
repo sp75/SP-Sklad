@@ -87,6 +87,10 @@ namespace SP_Sklad.MainTabs
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
+            if(focused_tree_node == null)
+            {
+                return;
+            }
 
             NewItemBtn.Enabled = focused_tree_node != null && focused_tree_node.CanInsert == 1;
             DeleteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanDelete == 1);

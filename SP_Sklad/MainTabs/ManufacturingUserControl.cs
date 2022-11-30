@@ -190,6 +190,10 @@ namespace SP_Sklad.MainTabs
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as GetManufactureTree_Result;
+            if (focused_tree_node == null)
+            {
+                return;
+            }
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
             CopyItemBtn.Enabled = false;

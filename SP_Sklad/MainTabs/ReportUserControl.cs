@@ -35,6 +35,11 @@ namespace SP_Sklad.MainTabs
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetReportTree_Result;
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
             using (var db = DB.SkladBase())
             {
                 RepGridControl.DataSource = null;
