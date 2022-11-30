@@ -79,7 +79,11 @@ namespace update
                     string completeFileName = Path.Combine(Application.StartupPath, file.FullName);
                     if (file.Name != "")
                     {
-                        file.ExtractToFile(completeFileName, true);
+                        try
+                        {
+                            file.ExtractToFile(completeFileName, true);
+                        }
+                        catch { }
                     }
                 }
             }
