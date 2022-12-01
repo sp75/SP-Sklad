@@ -20,7 +20,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
     public partial class FluentDesignForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private int _user_id { get; set; }
-        public BaseEntities _db { get; set; }
+ //       public BaseEntities _db { get; set; }
         private IntermediateWeighingDet det { get; set; }
         private make_det focused_row => tileView1.GetFocusedRow() as make_det;
         private int _wbill_id { get; set; }
@@ -31,7 +31,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
             _wbill_id = wbill_id;
             _user_id = user_id;
 
-            _db = new BaseEntities();
+     //       _db = new BaseEntities();
 
             GetDetail(wbill_id);
         }
@@ -41,7 +41,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
         {
             sidePanel1.Hide();
 
-            using (var s = new UserSettingsRepository(UserSession.UserId, _db))
+            using (var s = new UserSettingsRepository())
             {
                 AmountEdit.ReadOnly = !(s.AccessEditWeight == "1");
             }
@@ -92,44 +92,44 @@ namespace SP_Sklad.IntermediateWeighingInterface
                    {
                        tileView1.ColumnSet.GroupColumn = tileViewColumn1;
                    }*/
-
-            var result = _db.v_IntermediateWeighingSummary.Where(w => w.WbillId == wbill_id && w.Checked == 0 && w.UserId == _user_id)
-                .Select(s => new make_det
-                {
-                    IntermediateWeighingId = s.IntermediateWeighingId,
-                    IntermediateWeighingNum = s.IntermediateWeighingNum,
-                    IntermediateWeighingAmount = s.IntermediateWeighingAmount,
-                    MsrName = s.MsrName,
-                    MatName = s.MatName,
-                    MatId = s.MatId,
-                    WbillId = wbill_id,
-                    //       IntermediateWeighingCount = intermediate_det_list.Count(co => co.MatId == wb_make_item.MatId),
-                    RecipeCount = s.RecipeCount, // intermediate_weighing.Count(),
-                                                 //   Rn = rn,
-                    img = s.BMP,
-                    AmountByRecipe = s.AmountByRecipe,
-                    TotalWeightByRecipe = s.TotalWeightByRecipe,
-                    TotalWeighted = s.AmountIntermediateWeighing,
-                    IntermediateWeighingDetId = s.IntermediateWeighingDetId,
-                    IntermediateWeighingDetTotal = s.Total != null ? (SqlFunctions.StringConvert(s.Total,10,3) + s.MsrName): "",
-                    RecId = s.RecId
-                }).OrderBy(o=> o.IntermediateWeighingNum).ToList();
-
-            bindingSource1.DataSource = result;
-
-            if (result.Select(s => s.IntermediateWeighingId).Distinct().Count() > 1)
+            using (var _db = new BaseEntities())
             {
-                tileView1.ColumnSet.GroupColumn = tileViewColumn1;
+                var result = _db.v_IntermediateWeighingSummary.Where(w => w.WbillId == wbill_id && w.Checked == 0 && w.UserId == _user_id)
+                    .Select(s => new make_det
+                    {
+                        IntermediateWeighingId = s.IntermediateWeighingId,
+                        IntermediateWeighingNum = s.IntermediateWeighingNum,
+                        IntermediateWeighingAmount = s.IntermediateWeighingAmount,
+                        MsrName = s.MsrName,
+                        MatName = s.MatName,
+                        MatId = s.MatId,
+                        WbillId = wbill_id,
+                        //       IntermediateWeighingCount = intermediate_det_list.Count(co => co.MatId == wb_make_item.MatId),
+                        RecipeCount = s.RecipeCount, // intermediate_weighing.Count(),
+                                                     //   Rn = rn,
+                        img = s.BMP,
+                        AmountByRecipe = s.AmountByRecipe,
+                        TotalWeightByRecipe = s.TotalWeightByRecipe,
+                        TotalWeighted = s.AmountIntermediateWeighing,
+                        IntermediateWeighingDetId = s.IntermediateWeighingDetId,
+                        IntermediateWeighingDetTotal = s.Total != null ? (SqlFunctions.StringConvert(s.Total, 10, 3) + s.MsrName) : "",
+                        RecId = s.RecId
+                    }).OrderBy(o => o.IntermediateWeighingNum).ToList();
+
+                bindingSource1.DataSource = result;
+
+                if (result.Select(s => s.IntermediateWeighingId).Distinct().Count() > 1)
+                {
+                    tileView1.ColumnSet.GroupColumn = tileViewColumn1;
+                }
+
+                return result;
             }
-
-
-
-            return result;
 
         }
         private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
-            _db.UndoAllChanges();
+           // _db.UndoAllChanges();
 
             sidePanel1.Show();
 
@@ -137,7 +137,10 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
             if (focused_row.IntermediateWeighingDetId != null)
             {
-                det = _db.IntermediateWeighingDet.Find(focused_row.IntermediateWeighingDetId);
+                using (var _db = new BaseEntities())
+                {
+                    det = _db.IntermediateWeighingDet.Find(focused_row.IntermediateWeighingDetId);
+                }
             }
             else
             {
@@ -170,11 +173,24 @@ namespace SP_Sklad.IntermediateWeighingInterface
             det.Total = det.Amount - det.TaraAmount ?? 0;
             det.TaraTotal = det.TaraAmount;
 
-            if (_db.Entry<IntermediateWeighingDet>(det).State == EntityState.Detached)
+            using (var _db = new BaseEntities())
             {
-                _db.IntermediateWeighingDet.Add(det);
+              var iwd =  _db.IntermediateWeighingDet.Find(det.Id);
+
+                if (iwd == null)
+                {
+                    _db.IntermediateWeighingDet.Add(det);
+                }
+                else
+                {
+                    iwd.Amount = det.Amount;
+                    iwd.TaraAmount = det.TaraAmount;
+                    iwd.Total = det.Amount - det.TaraAmount ?? 0;
+                    iwd.TaraTotal = det.TaraAmount;
+                }
+
+                _db.SaveChanges();
             }
-            _db.SaveChanges();
 
             GetDetail(_wbill_id);
            
@@ -187,21 +203,23 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
             if (row != null)
             {
-                var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 3);
+                using (var _db = new BaseEntities())
+                {
+                    var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 3);
 
-            //    ByRecipeEdit.EditValue = row.AmountByRecipe;
-                IntermediateWeighingEdit.EditValue = row.TotalWeighted;
-                TotalEdit.EditValue = row.AmountByRecipe - (row.TotalWeighted ?? 0);
+                    //    ByRecipeEdit.EditValue = row.AmountByRecipe;
+                    IntermediateWeighingEdit.EditValue = row.TotalWeighted;
+                    TotalEdit.EditValue = row.AmountByRecipe - (row.TotalWeighted ?? 0);
 
-                var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId)?.Deviation ?? 1000000;
+                    var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId)?.Deviation ?? 1000000;
 
-                var netto_amount = AmountEdit.Value - TaraCalcEdit.Value ;
+                    var netto_amount = AmountEdit.Value - TaraCalcEdit.Value;
 
-                CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value ;
+                    CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value;
 
+                    OkButton.Enabled = ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount) && AmountEdit.Value > 0;
+                }
 
-                OkButton.Enabled =  ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount) && AmountEdit.Value > 0;
-                
             }
             else
             {
@@ -270,16 +288,22 @@ namespace SP_Sklad.IntermediateWeighingInterface
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
-            //    if(_db.v_IntermediateWeighingSummary.Where(w => w.WbillId == _wbill_id && w.Checked == 0 && w.UserId == _user_id && w.IntermediateWeighingDetId == null).Any())
-            //   {
-            //       using (var frm = new frmMessageBox(Text, "Не всі позиції зважені, ви дійсно бажаете повернутись до рецептів?", false))
-            //       {
-            //          if (frm.ShowDialog() == DialogResult.Yes)
-            //           {
+            using (var _db = new BaseEntities())
+            {
+                foreach (var item in _db.v_IntermediateWeighingSummary.Where(w => w.WbillId == _wbill_id && w.IntermediateWeighingDetId != null && w.UserId == UserSession.UserId))
+                {
+                    var plan_weighing = Math.Round(Convert.ToDecimal((item.AmountByRecipe * item.IntermediateWeighingAmount) / item.TotalWeightByRecipe), 3);
+                    var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == item.MatId && w.RecId == item.RecId)?.Deviation ?? 1000000;
+
+                    if (!((plan_weighing + deviation) >= item.Total && (plan_weighing - deviation) <= item.Total))
+                    {
+                        MessageBox.Show($"Не вірно зважена сировина {item.MatName} !", "Помилка в зважуванні");
+                        return;
+                    }
+                }
+            }
+
             Close();
-            //           }
-            //        }
-            //     }
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
