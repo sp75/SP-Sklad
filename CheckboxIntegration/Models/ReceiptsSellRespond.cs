@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CheckboxIntegration.Models
@@ -170,8 +171,13 @@ namespace CheckboxIntegration.Models
 
         public void WaitingReceiptFiscalCode(string access_token)
         {
+            int interval = 0;
             while (!this.fiscal_date.HasValue)
             {
+                if(interval > 120)
+                {
+                    break;
+                }
                 var receipt = new CheckboxClient(access_token).GetReceipt(this.id);
 
                 if(receipt.error != null)
@@ -181,6 +187,10 @@ namespace CheckboxIntegration.Models
 
                 fiscal_date = receipt.fiscal_date;
                 fiscal_code = receipt.fiscal_code;
+                
+                Thread.Sleep(1000);
+
+                ++interval;
             }
         }
     }

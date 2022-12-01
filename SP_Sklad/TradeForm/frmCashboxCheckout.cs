@@ -249,6 +249,11 @@ namespace SP_Sklad.WBForm
 
                 _db.SaveChanges();
 
+                if (string.IsNullOrEmpty(receipt.fiscal_code))
+                {
+                    MessageBox.Show("Помилка при отриманні фіксального номера!");
+                }
+
                 IHelper.PrintReceiptPng(_access_token, receipt.id);
             }
             else
