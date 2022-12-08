@@ -763,7 +763,7 @@ namespace SP.Reports
         }
         private void REP_22()
         {
-            int person = (int)Person.KaId;
+            int person = (int)Person.KaId; 
 
             var sql_1 = @"
    	            select m.GrpId, m.name Name, wbd.amount Amount, wbd.total Summ, ms.ShortName, wbl.WbillId, person.Name PersonName , person.KaId PersonId , wbl.KaId , ka.Name KontragentName
