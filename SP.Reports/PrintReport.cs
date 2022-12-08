@@ -775,7 +775,7 @@ namespace SP.Reports
 			    join kagent person on person.kaid = wbl.PersonId
                 join kagent ka on ka.kaid = wbl.KaId
 
-                where  wbl.checked = 1 and wbl.WType = -1
+                where  wbl.checked = 1 and wbl.WType in ( -1 , -25 )
                        and wbl.ondate between {0} and {1}
                        and person.KaId = {2}
    
