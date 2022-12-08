@@ -127,7 +127,7 @@
             // 
             this.barButtonItem1.Caption = "Звіт про рух товару";
             this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageIndex = 0;
+            this.barButtonItem1.ImageOptions.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -135,7 +135,7 @@
             // 
             this.barButtonItem2.Caption = "Переглянути  друковану форму локумента";
             this.barButtonItem2.Id = 5;
-            this.barButtonItem2.ImageIndex = 1;
+            this.barButtonItem2.ImageOptions.ImageIndex = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -143,7 +143,7 @@
             // 
             this.barButtonItem5.Caption = "Перейти до документа";
             this.barButtonItem5.Id = 6;
-            this.barButtonItem5.ImageIndex = 2;
+            this.barButtonItem5.ImageOptions.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -152,6 +152,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1139, 24);
             // 
             // barDockControlBottom
@@ -159,6 +160,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 505);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1139, 0);
             // 
             // barDockControlLeft
@@ -166,6 +168,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
             // 
             // barDockControlRight
@@ -173,6 +176,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1139, 24);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
             // 
             // ImageList

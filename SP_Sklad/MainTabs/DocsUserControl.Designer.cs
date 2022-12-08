@@ -983,6 +983,11 @@
             // 
             this.WBGridControl.DataSource = this.GetWayBillListBS;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WBGridControl.Location = new System.Drawing.Point(0, 50);
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
