@@ -1538,5 +1538,28 @@ namespace SP_Sklad.MainTabs
                 wbEndDate.EditValue = DBHelper.ServerDateTime().SetEndDay();
             }
         }
+
+        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
+            switch (PeriodComboBoxEdit.SelectedIndex)
+            {
+                case 1:
+                    wbStartDate.DateTime = DateTime.Now.Date;
+                    break;
+
+                case 2:
+                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
+                    break;
+
+                case 3:
+                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
+                    break;
+
+                case 4:
+                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
+                    break;
+            }
+        }
     }
 }

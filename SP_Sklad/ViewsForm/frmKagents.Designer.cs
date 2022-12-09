@@ -114,7 +114,6 @@
             this.KontragentGroupGridView.OptionsFind.AlwaysVisible = true;
             this.KontragentGroupGridView.OptionsView.ShowAutoFilterRow = true;
             this.KontragentGroupGridView.OptionsView.ShowDetailButtons = false;
-            this.KontragentGroupGridView.OptionsView.ShowGroupPanel = false;
             this.KontragentGroupGridView.DoubleClick += new System.EventHandler(this.KontragentGroupGridView_DoubleClick);
             // 
             // gridColumn2

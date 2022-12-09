@@ -1191,6 +1191,12 @@ namespace SP_Sklad.Common
         {
             return value.Date.AddHours(23).AddMinutes(59).AddSeconds(59);
         }
+
+        public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+        {
+            int diff = (7 + (dt.DayOfWeek - startOfWeek)) % 7;
+            return dt.AddDays(-1 * diff).Date;
+        }
     }
 
 
