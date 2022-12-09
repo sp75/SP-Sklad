@@ -1279,7 +1279,6 @@
             this.WhMatGridView.OptionsBehavior.Editable = false;
             this.WhMatGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.WhMatGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.WhMatGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WhMatGridView.OptionsView.ShowFooter = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
             this.WhMatGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WhMatGridView_RowStyle);

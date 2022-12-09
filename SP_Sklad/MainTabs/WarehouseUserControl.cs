@@ -407,12 +407,12 @@ namespace SP_Sklad.MainTabs
                 grp = focused_tree_node.Num.ToString();
             }
 
-            WhMatGridView.BeginUpdate();
+            WhMatGridView.ShowLoadingPanel();
             int top_row = WhMatGridView.TopRowIndex;
             wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToListAsync();
             WhMatGetBS.DataSource = wh_mat_list;
             WhMatGridView.TopRowIndex = top_row;
-            WhMatGridView.EndUpdate();
+            WhMatGridView.HideLoadingPanel();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
