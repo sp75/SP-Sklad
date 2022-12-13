@@ -339,6 +339,7 @@
         <AssociationConnector Association="BaseModel.FK_BankStatementsDet_KAgentAccount" />
         <AssociationConnector Association="BaseModel.FK_BankStatementsDet_KAgentAccount1" />
         <EntityTypeShape EntityType="BaseModel.v_Kagent" Width="1.5" PointX="31.875" PointY="28.375" />
+        <EntityTypeShape EntityType="BaseModel.RawMaterialType" Width="1.5" PointX="25.625" PointY="12.25" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

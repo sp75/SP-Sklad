@@ -101,6 +101,11 @@ namespace SP_Sklad.IntermediateWeighingInterface
                 return;
             }
 
+            if(IsDoneValue == null)
+            {
+                return;
+            }
+
             bool is_done = (bool)IsDoneValue;
 
             var RecipeCaption = e.Item.GetElementByName("RecipeCaption");

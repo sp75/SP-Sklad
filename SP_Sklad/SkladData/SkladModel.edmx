@@ -528,6 +528,7 @@
           <Property Name="AspNetUserId" Type="nvarchar" MaxLength="128" />
           <Property Name="WId" Type="int" />
           <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CurrentSaldo" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -727,6 +728,7 @@
           <Property Name="DecPlaces" Type="int" Nullable="false" />
           <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RawMaterialTypeId" Type="int" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -1118,6 +1120,13 @@
           <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
           <Property Name="Checked" Type="int" />
           <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RawMaterialType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
@@ -1766,7 +1775,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="ContractType" Type="nvarchar" MaxLength="64" />
           <Property Name="ContractDate" Type="datetime" />
           <Property Name="ContractNum" Type="nvarchar" MaxLength="20" />
-          <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="Saldo" Type="numeric" Precision="15" Scale="4" />
           <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
           <Property Name="GroupId" Type="uniqueidentifier" />
           <Property Name="Login" Type="nvarchar" MaxLength="50" />
@@ -5609,10 +5618,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="WType" Type="int" />
                 <Property Name="OnDate" Type="datetime" />
                 <Property Name="Num" Type="nvarchar" MaxLength="20" />
-                <Property Name="Amount" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="10" />
-                <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="PosId" Type="int" />
                 <Property Name="KAgentName" Type="nvarchar" MaxLength="255" />
                 <Property Name="FromWh" Type="nvarchar" MaxLength="128" />
@@ -5620,13 +5629,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="ToWh" Type="nvarchar" MaxLength="128" />
                 <Property Name="ToWId" Type="int" />
                 <Property Name="DocId" Type="int" />
-                <Property Name="Remain" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="Remain" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="MsrName" Type="varchar" MaxLength="10" />
                 <Property Name="SumIn" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="SumOut" Type="numeric" Precision="15" Scale="2" />
-                <Property Name="AmountIn" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="AmountIn" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="WhName" Type="nvarchar" MaxLength="250" />
                 <Property Name="KAgentGroupId" Type="uniqueidentifier" />
@@ -7470,6 +7479,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ProductionPlanDet" EntityType="Self.ProductionPlanDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionPlans" EntityType="Self.ProductionPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfileDocSetting" EntityType="Self.ProfileDocSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RawMaterialType" EntityType="Self.RawMaterialType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RepLng" EntityType="Self.RepLng" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
@@ -10737,6 +10747,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetKagentList" IsComposable="true" ReturnType="Collection(BaseModel.GetKagentList_Result)">
           <Parameter Name="worker_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="RawMaterialType" EntityType="BaseModel.RawMaterialType" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11763,6 +11774,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="Materials" ToRole="IntermediateWeighingDet" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
+          <Property Name="RawMaterialTypeId" Type="Int32" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -13984,6 +13996,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -16269,7 +16282,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ContractType" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="ContractDate" Type="DateTime" Precision="3" />
           <Property Name="ContractNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Saldo" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="Saldo" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GroupId" Type="Guid" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -17901,6 +17914,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="WId" Nullable="true" />
           <Property Type="String" Name="JobName" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="RawMaterialType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18701,6 +18721,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="BaseModel.Materials">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="RawMaterialTypeId" ColumnName="RawMaterialTypeId" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
                 <ScalarProperty Name="DecPlaces" ColumnName="DecPlaces" />
@@ -20010,6 +20031,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
                 <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
@@ -22751,6 +22773,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="RawMaterialType">
+            <EntityTypeMapping TypeName="BaseModel.RawMaterialType">
+              <MappingFragment StoreEntitySet="RawMaterialType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

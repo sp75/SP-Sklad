@@ -576,7 +576,7 @@
             // 
             // lookUpEdit4
             // 
-            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "DemandCat", true));
+            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "RawMaterialTypeId", true));
             this.lookUpEdit4.Location = new System.Drawing.Point(347, 130);
             this.lookUpEdit4.Name = "lookUpEdit4";
             this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -596,10 +596,10 @@
             // 
             this.labelControl8.Location = new System.Drawing.Point(347, 108);
             this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(129, 16);
+            this.labelControl8.Size = new System.Drawing.Size(81, 16);
             this.labelControl8.StyleController = this.styleController1;
             this.labelControl8.TabIndex = 36;
-            this.labelControl8.Text = "Категорія груп попиту";
+            this.labelControl8.Text = "Тип сировини";
             // 
             // labelControl7
             // 

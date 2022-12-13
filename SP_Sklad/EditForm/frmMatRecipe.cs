@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 
@@ -557,6 +558,11 @@ namespace SP_Sklad.EditForm
             _db.SaveChanges();
 
             RefreshMatRecipeAdditionalCosts();
+        }
+
+        private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintDoc.RecipeReport(_rec_id.Value, _db, "Recipe.xlsx");
         }
     }
 }

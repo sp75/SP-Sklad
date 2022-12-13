@@ -490,6 +490,9 @@
     <Compile Include="SkladData\MoneyOnDateByUser_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\RawMaterialType.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Roles.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

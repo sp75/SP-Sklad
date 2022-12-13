@@ -567,6 +567,11 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(KagentComboBox.EditValue == DBNull.Value || KagentComboBox.EditValue == null)
+            {
+                return;
+            }
+
             IHelper.ShowOrdered((int)KagentComboBox.EditValue, -16, 0);
         }
 

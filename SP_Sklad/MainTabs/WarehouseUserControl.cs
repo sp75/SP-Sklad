@@ -73,8 +73,12 @@ namespace SP_Sklad.MainTabs
             public string Name { get; set; }
             public bool IsChecked { get; set; }
         }
+
+        System.IO.Stream str = new System.IO.MemoryStream();
         private void WarehouseUserControl_Load(object sender, EventArgs e)
         {
+            WhMatGridView.SaveLayoutToStream(str);
+
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WbGridView");
             WhMatGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WhMatGridView");
 
@@ -1211,6 +1215,22 @@ namespace SP_Sklad.MainTabs
             RecalcRemainsMatBtn.Enabled = DBHelper.is_admin;
             DelRemainsMatBtn.Enabled = DBHelper.is_admin;
             RecalcRemainsAllMatBtn.Enabled = DBHelper.is_admin;
+        }
+
+
+        private void WhMatGridView_BeforeLoadLayout(object sender, DevExpress.Utils.LayoutAllowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.PreviousVersion != view.OptionsLayout.LayoutVersion)
+            {
+                e.Allow = false;
+            }
+        }
+
+        private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            str.Seek(0, System.IO.SeekOrigin.Begin);
+            WhMatGridView.RestoreLayoutFromStream(str);
         }
     }
 }

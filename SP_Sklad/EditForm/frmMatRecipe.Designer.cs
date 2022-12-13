@@ -156,6 +156,7 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.PrintBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -237,9 +238,10 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem2,
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.PrintBtn});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 7;
+            this.barManager1.MaxItemId = 8;
             // 
             // bar2
             // 
@@ -251,7 +253,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintBtn, true)});
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -326,6 +329,7 @@
             this.ImageList.Images.SetKeyName(6, "_нформац_я про резерв товару.ico");
             this.ImageList.Images.SetKeyName(7, "_нформац_я про рух товар_в.ico");
             this.ImageList.Images.SetKeyName(8, "ДопРасход.png");
+            this.ImageList.Images.SetKeyName(9, "Попередн_й перегляд.bmp");
             // 
             // barButtonItem3
             // 
@@ -783,7 +787,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(613, 404);
+            this.xtraTabPage4.Size = new System.Drawing.Size(613, 420);
             this.xtraTabPage4.Text = "Рецепт";
             // 
             // groupControl5
@@ -792,7 +796,7 @@
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(613, 404);
+            this.groupControl5.Size = new System.Drawing.Size(613, 420);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             this.groupControl5.Text = "Позиції";
@@ -807,7 +811,7 @@
             this.DiscPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DiscPanel.Location = new System.Drawing.Point(2, 23);
             this.DiscPanel.Name = "DiscPanel";
-            this.DiscPanel.Size = new System.Drawing.Size(609, 379);
+            this.DiscPanel.Size = new System.Drawing.Size(609, 395);
             this.DiscPanel.TabIndex = 44;
             // 
             // simpleButton3
@@ -860,7 +864,7 @@
             this.MatRecDetGridControl.MainView = this.MatRecDetGridView;
             this.MatRecDetGridControl.MenuManager = this.barManager1;
             this.MatRecDetGridControl.Name = "MatRecDetGridControl";
-            this.MatRecDetGridControl.Size = new System.Drawing.Size(580, 315);
+            this.MatRecDetGridControl.Size = new System.Drawing.Size(580, 331);
             this.MatRecDetGridControl.TabIndex = 7;
             this.MatRecDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecDetGridView});
@@ -949,7 +953,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.groupControl6);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(613, 404);
+            this.xtraTabPage14.Size = new System.Drawing.Size(613, 420);
             this.xtraTabPage14.Text = "Сировина";
             // 
             // groupControl6
@@ -961,7 +965,7 @@
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(613, 404);
+            this.groupControl6.Size = new System.Drawing.Size(613, 420);
             this.groupControl6.TabIndex = 17;
             this.groupControl6.Tag = "";
             this.groupControl6.Text = "Сировина";
@@ -1017,7 +1021,7 @@
             this.panelControl7.Controls.Add(this.MatLookUpEdit);
             this.panelControl7.Location = new System.Drawing.Point(20, 69);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(577, 314);
+            this.panelControl7.Size = new System.Drawing.Size(577, 330);
             this.panelControl7.TabIndex = 49;
             // 
             // labelControl18
@@ -1154,7 +1158,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(613, 404);
+            this.xtraTabPage2.Size = new System.Drawing.Size(613, 420);
             this.xtraTabPage2.Text = "Тех процеси";
             // 
             // groupControl1
@@ -1166,7 +1170,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(613, 404);
+            this.groupControl1.Size = new System.Drawing.Size(613, 420);
             this.groupControl1.TabIndex = 15;
             this.groupControl1.Text = "Технологічні процеси";
             // 
@@ -1179,7 +1183,7 @@
             this.MatRecTechProcGridControl.MainView = this.MatRecTechProcGridView;
             this.MatRecTechProcGridControl.MenuManager = this.barManager1;
             this.MatRecTechProcGridControl.Name = "MatRecTechProcGridControl";
-            this.MatRecTechProcGridControl.Size = new System.Drawing.Size(580, 311);
+            this.MatRecTechProcGridControl.Size = new System.Drawing.Size(580, 327);
             this.MatRecTechProcGridControl.TabIndex = 8;
             this.MatRecTechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecTechProcGridView});
@@ -1266,7 +1270,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.groupControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(613, 404);
+            this.xtraTabPage3.Size = new System.Drawing.Size(613, 420);
             this.xtraTabPage3.Text = "Процес";
             // 
             // groupControl3
@@ -1278,7 +1282,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(613, 404);
+            this.groupControl3.Size = new System.Drawing.Size(613, 420);
             this.groupControl3.TabIndex = 18;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Сировина";
@@ -1330,7 +1334,7 @@
             this.panelControl1.Controls.Add(this.TechProcLookUpEdit);
             this.panelControl1.Location = new System.Drawing.Point(20, 69);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(577, 314);
+            this.panelControl1.Size = new System.Drawing.Size(577, 330);
             this.panelControl1.TabIndex = 49;
             // 
             // simpleButton13
@@ -1428,7 +1432,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.groupControl4);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(613, 404);
+            this.xtraTabPage5.Size = new System.Drawing.Size(613, 420);
             this.xtraTabPage5.Text = "Додаткові витрати";
             // 
             // groupControl4
@@ -1439,7 +1443,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(613, 404);
+            this.groupControl4.Size = new System.Drawing.Size(613, 420);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Text = "Додаткові витрати";
             // 
@@ -1453,7 +1457,7 @@
             this.MatRecipeAdditionalCostsGridControl.MainView = this.MatRecipeAdditionalCostsView;
             this.MatRecipeAdditionalCostsGridControl.MenuManager = this.barManager1;
             this.MatRecipeAdditionalCostsGridControl.Name = "MatRecipeAdditionalCostsGridControl";
-            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(580, 311);
+            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(580, 327);
             this.MatRecipeAdditionalCostsGridControl.TabIndex = 8;
             this.MatRecipeAdditionalCostsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecipeAdditionalCostsView});
@@ -1529,6 +1533,14 @@
             this.simpleButton8.TabIndex = 13;
             this.simpleButton8.Text = "Видалити";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
+            // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintBtn.Id = 7;
+            this.PrintBtn.ImageOptions.ImageIndex = 9;
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintBtn_ItemClick);
             // 
             // frmMatRecipe
             // 
@@ -1746,5 +1758,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraEditors.CalcEdit calcEdit10;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
+        private DevExpress.XtraBars.BarButtonItem PrintBtn;
     }
 }

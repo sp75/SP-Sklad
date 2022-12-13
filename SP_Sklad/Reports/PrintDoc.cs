@@ -659,6 +659,31 @@ namespace SP_Sklad.Reports
             IHelper.Print2(dataForReport, template_name);
         }
 
+        public static void RecipeReport(int id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var mr = db.MatRecipe.Where(w=> w.RecId == id).Select(s=> new { s.Materials.Name, s.Amount, s.Out, s.ThermoLossOut, s.Materials.Measures.ShortName}) .ToList();
+            var raw_mat_type = db.RawMaterialType.ToList();
+            var mrd = db.MatRecDet.Where(w=> w.RecId == id).Select(s=> new { s.MatId, s.Materials.Name, s.Amount, s.Materials.RawMaterialTypeId, s.Materials.Measures.ShortName}).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "Id",
+                fk = "RawMaterialTypeId",
+                master_table = "RawMaterialGrp",
+                child_table = "MatRecDet"
+            });
+
+            dataForReport.Add("MatRecipe", mr);
+            dataForReport.Add("MatRecDet", mrd);
+            dataForReport.Add("RawMaterialGrp", raw_mat_type);
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, template_name);
+        }
+
         private class ProductionPlansReportRep
         {
             public string MatName { get; set; }

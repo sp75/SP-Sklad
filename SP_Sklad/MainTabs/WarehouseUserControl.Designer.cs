@@ -93,6 +93,7 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -551,9 +552,10 @@
             this.DelRemainsMatBtn,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barButtonItem7});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 35;
+            this.barManager1.MaxItemId = 36;
             // 
             // bar1
             // 
@@ -1036,6 +1038,13 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem7.Id = 35;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.splitContainerControl1);
@@ -1278,13 +1287,13 @@
             this.WhMatGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WhMatGridView.OptionsBehavior.Editable = false;
             this.WhMatGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
-            this.WhMatGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.WhMatGridView.OptionsView.ShowFooter = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
             this.WhMatGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WhMatGridView_RowStyle);
             this.WhMatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhMatGridView_PopupMenuShowing);
             this.WhMatGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WhMatGridView_CustomSummaryCalculate);
             this.WhMatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WhMatGridView_FocusedRowObjectChanged);
+            this.WhMatGridView.BeforeLoadLayout += new DevExpress.Utils.LayoutAllowEventHandler(this.WhMatGridView_BeforeLoadLayout);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
             // gridBand1
@@ -3308,7 +3317,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DelRemainsMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsAllMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowEmptyItemsCheck, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             this.MatPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.MatPopupMenu_BeforePopup);
@@ -3849,5 +3859,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit3;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage12;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
     }
 }

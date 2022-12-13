@@ -42,7 +42,7 @@ namespace SP_Sklad.EditForm
 
             lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();
             CurrLookUpEdit.Properties.DataSource = DBHelper.Currency;
-            lookUpEdit4.Properties.DataSource = _db.DemandGroup.AsNoTracking().ToList();
+            lookUpEdit4.Properties.DataSource = _db.RawMaterialType.ToList();  // _db.DemandGroup.AsNoTracking().ToList();
             ProducerLookUpEdit.Properties.Items.AddRange(_db.Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
             MatTypeEdit.Properties.DataSource = new List<object>()
             {

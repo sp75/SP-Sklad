@@ -68,6 +68,7 @@
             this.checkEdit5 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit4 = new DevExpress.XtraEditors.CheckEdit();
             this.InDocGroupBox = new System.Windows.Forms.Panel();
+            this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
@@ -127,7 +128,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.checkEdit10 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -155,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).BeginInit();
             this.InDocGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
@@ -197,7 +198,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -211,7 +211,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 1010);
+            this.panelControl2.Location = new System.Drawing.Point(0, 493);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(458, 51);
             this.panelControl2.TabIndex = 29;
@@ -269,7 +269,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(458, 1010);
+            this.mainPanel.Size = new System.Drawing.Size(458, 493);
             this.mainPanel.TabIndex = 31;
             // 
             // KaKindPanel
@@ -597,6 +597,15 @@
             this.InDocGroupBox.Name = "InDocGroupBox";
             this.InDocGroupBox.Size = new System.Drawing.Size(450, 100);
             this.InDocGroupBox.TabIndex = 0;
+            // 
+            // checkEdit10
+            // 
+            this.checkEdit10.Location = new System.Drawing.Point(209, 14);
+            this.checkEdit10.Name = "checkEdit10";
+            this.checkEdit10.Properties.Caption = "Накладна переміщення";
+            this.checkEdit10.Size = new System.Drawing.Size(184, 20);
+            this.checkEdit10.StyleController = this.styleController1;
+            this.checkEdit10.TabIndex = 33;
             // 
             // checkEdit3
             // 
@@ -1307,7 +1316,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 925);
+            this.panel1.Location = new System.Drawing.Point(2, 408);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(454, 83);
             this.panel1.TabIndex = 41;
@@ -1334,20 +1343,11 @@
             this.textEdit1.Size = new System.Drawing.Size(359, 64);
             this.textEdit1.TabIndex = 39;
             // 
-            // checkEdit10
-            // 
-            this.checkEdit10.Location = new System.Drawing.Point(209, 14);
-            this.checkEdit10.Name = "checkEdit10";
-            this.checkEdit10.Properties.Caption = "Накладна переміщення";
-            this.checkEdit10.Size = new System.Drawing.Size(184, 20);
-            this.checkEdit10.StyleController = this.styleController1;
-            this.checkEdit10.TabIndex = 33;
-            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 1061);
+            this.ClientSize = new System.Drawing.Size(458, 544);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -1391,6 +1391,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit4.Properties)).EndInit();
             this.InDocGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
@@ -1448,7 +1449,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEdit10.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
