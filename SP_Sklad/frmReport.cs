@@ -741,7 +741,7 @@ namespace SP_Sklad
             {
                 case 1:
                     StartDateEdit.DateTime = DateTime.Parse("01." + Convert.ToString(MonthEdit.SelectedIndex + 1) + "." + Convert.ToString(YearEdit.Value));
-                    EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(StartDateEdit.DateTime);
+                    EndDateEdit.DateTime = DateTimeDayOfMonthExtensions.LastDayOfMonth(StartDateEdit.DateTime).SetEndDay();
                     break;
 
                 case 2:
