@@ -340,7 +340,7 @@
             // 
             this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
             this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
+            this.ImageList.Images.SetKeyName(0, "_нформац_я про товар.bmp");
             this.ImageList.Images.SetKeyName(1, "Ц_нов_ кат.bmp");
             this.ImageList.Images.SetKeyName(2, "Податки.bmp");
             this.ImageList.Images.SetKeyName(3, "Взаемозам_н_сть.bmp");
