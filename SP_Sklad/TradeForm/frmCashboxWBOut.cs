@@ -218,6 +218,7 @@ namespace SP_Sklad.WBForm
             });
 
             _db.SaveChanges();
+            disc_card = null;
 
             _wbill_id = wb.WbillId;
             wb.Kontragent = _db.Kagent.Find(wb.KaId);
