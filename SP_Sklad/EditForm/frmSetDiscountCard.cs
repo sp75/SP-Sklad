@@ -56,11 +56,6 @@ namespace SP_Sklad.ViewsForm
             cart = DB.SkladBase().DiscCards.FirstOrDefault(w => (w.Num == DiscountCartEdit.Text || (w.KaId != null && w.Kagent.Phone == DiscountCartEdit.Text) ) && w.Deleted == 0 && ( w.ExpireDate >= DateTime.Now || w.ExpireDate == null));
             if (cart != null)
             {
-                if (cart.KaId != null)
-                {
-                    _wb.KaId = cart.KaId;
-                }
-
                 foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId))
                 {
                     var DiscountPrice = item.BasePrice - (item.BasePrice * cart.OnValue / 100);

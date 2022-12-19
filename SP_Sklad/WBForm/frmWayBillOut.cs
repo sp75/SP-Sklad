@@ -693,7 +693,12 @@ namespace SP_Sklad.WBForm
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     disc_card = frm.cart;
-                    KagentComboBox.EditValue = wb.KaId;
+
+                    if (disc_card.KaId != null)
+                    {
+                        wb.KaId = disc_card.KaId;
+                        KagentComboBox.EditValue = disc_card.KaId;
+                    }
 
                     RefreshDet();
                 }
