@@ -398,6 +398,17 @@ namespace SP_Sklad
                     WHGroupBox.Visible = false;
                     GroupKontragentPanel.Visible = true;
                     break;
+
+                case 50:
+                    WHGroupBox.Visible = false;
+                    this.InDocGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.DocTypeGroupBox2.Visible = false;
+                    KontragentPanel.Visible = true;
+                    GroupKontragentPanel.Visible = true;
+                    MatGroupBox.Visible = true;
+                    break;
             }
         }
 

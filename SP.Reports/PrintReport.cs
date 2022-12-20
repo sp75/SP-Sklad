@@ -251,6 +251,10 @@ namespace SP.Reports
                     REP_49();
                     break;
 
+                case 50:
+                    REP_50();
+                    break;
+
                 default:
                     break;
             }
@@ -1759,6 +1763,48 @@ SELECT WaybillList.[WbillId]
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", mat_grp);
             data_for_report.Add("range1", wb_make.ToList());
+            data_for_report.Add("_realation_", realation);
+        }
+
+        private void REP_50()
+        {
+            var mat = _db.REP_50(StartDate, EndDate, Kagent.KaId, KontragentGroup.Id, MatGroup.GrpId, Material.MatId).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+
+            var kagents = mat.GroupBy(g => new
+            {
+                g.KaId,
+                g.KaName
+            }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KaName
+            }).ToList();
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", kagents);
+            data_for_report.Add("MatOutDet", mat);
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                AmountOut = s.Sum(a => a.AmountOut),
+                TotalOut = s.Sum(ss => ss.TotalOut),
+                ReturnAmount = s.Sum(r => r.ReturnAmount),
+                ReturnTotal = s.Sum(r => r.ReturnTotal),
+                OrderedAmount = s.Sum(r => r.OrderedAmount),
+                OrderedTotal = s.Sum(r => r.OrderedTotal)
+            }).ToList());
             data_for_report.Add("_realation_", realation);
         }
 
