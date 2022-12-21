@@ -2421,6 +2421,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary k
           <Property Name="DateAdded" Type="datetime" />
           <Property Name="DateModified" Type="datetime" />
           <Property Name="AutoCalcRecipe" Type="bit" Nullable="false" />
+          <Property Name="RawMaterialTypeName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MatRecipe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8060,7 +8061,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Materials].[DemandGroupName] AS [DemandGroupName], 
     [v_Materials].[DateAdded] AS [DateAdded], 
     [v_Materials].[DateModified] AS [DateModified], 
-    [v_Materials].[AutoCalcRecipe] AS [AutoCalcRecipe]
+    [v_Materials].[AutoCalcRecipe] AS [AutoCalcRecipe], 
+    [v_Materials].[RawMaterialTypeName] AS [RawMaterialTypeName]
     FROM [dbo].[v_Materials] AS [v_Materials]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MatRecipe" EntityType="Self.v_MatRecipe" store:Type="Views" store:Schema="dbo">
@@ -17665,6 +17667,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DateAdded" Type="DateTime" Precision="3" />
           <Property Name="DateModified" Type="DateTime" Precision="3" />
           <Property Name="AutoCalcRecipe" Type="Boolean" Nullable="false" />
+          <Property Name="RawMaterialTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetWayBillList_Result">
           <Property Type="Guid" Name="Id" Nullable="false" />
@@ -22477,6 +22480,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Materials">
             <EntityTypeMapping TypeName="BaseModel.v_Materials">
               <MappingFragment StoreEntitySet="v_Materials">
+                <ScalarProperty Name="RawMaterialTypeName" ColumnName="RawMaterialTypeName" />
                 <ScalarProperty Name="AutoCalcRecipe" ColumnName="AutoCalcRecipe" />
                 <ScalarProperty Name="DateModified" ColumnName="DateModified" />
                 <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />

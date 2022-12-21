@@ -396,6 +396,7 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1978,7 +1979,8 @@
             this.gridColumn23,
             this.gridColumn79,
             this.gridColumn72,
-            this.gridColumn111});
+            this.gridColumn111,
+            this.gridColumn112});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -4254,6 +4256,12 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
+            // gridColumn112
+            // 
+            this.gridColumn112.Caption = "Тип сировини";
+            this.gridColumn112.FieldName = "RawMaterialTypeName";
+            this.gridColumn112.Name = "gridColumn112";
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4820,5 +4828,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource MatListSource;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
     }
 }
