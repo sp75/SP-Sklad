@@ -160,7 +160,7 @@ namespace SP_Sklad.WBDetForm
                 var remain_in_wh = _db.MatRemainByWh(_wbd.MatId, 0, _ka_id, DBHelper.ServerDateTime(), "*", DBHelper.CurrentUser.UserId).ToList();
                 WHComboBox.Properties.DataSource = remain_in_wh;
 
-                if (remain_in_wh != null && WHComboBox.EditValue == DBNull.Value)
+                if (remain_in_wh.Any() && WHComboBox.EditValue == DBNull.Value)
                 {
                     WHComboBox.EditValue = remain_in_wh.First().WId;
                 }

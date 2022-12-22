@@ -1769,7 +1769,9 @@ SELECT WaybillList.[WbillId]
 
         private void REP_50()
         {
-            var mat = _db.REP_50(StartDate, EndDate, Kagent.KaId, KontragentGroup.Id, MatGroup.GrpId, Material.MatId).ToList();
+            var sort_list = GetSortedList(_rep_id);
+
+            var mat = _db.REP_50(StartDate, EndDate, Kagent.KaId, KontragentGroup.Id, MatGroup.GrpId, Material.MatId).OrderBy(sort_list).ToList();
 
             if (!mat.Any())
             {
