@@ -995,8 +995,7 @@ namespace SP.Reports
                   SZP = s.WType == -23 ? s.SummInCurr : null,
                   SZK = s.WType == 23 ? s.SummInCurr : null
               }).OrderBy(o => o.OnDate);*/
-            var start_saldo = _db.Database.SqlQuery<KAgentSaldo>(@"select Saldo from GetKAgentSaldoByReportingDate({0}, DATEADD(day, -1, {1}))", Kagent.KaId, StartDate).First();
-             
+
             var list = _db.Database.SqlQuery<rep_30>(@"
 SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, 
               dbo.DocType.ShortName AS DocShortName, dbo.DocType.Name AS DocTypeName,
@@ -1037,16 +1036,18 @@ FROM            (
 						  where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23) and x.KaId = {0} and x.OnDate between {1} and {2}
                           order by x.OnDate", Kagent.KaId, StartDate, EndDate).OrderBy(o => o.OnDate).ToList();
 
+            if (!list.Any())
+            {
+                return;
+            }
+
+            var start_saldo = _db.Database.SqlQuery<KAgentSaldo>(@"select Saldo from GetKAgentSaldoByReportingDate({0}, DATEADD(day, -1, {1}))", Kagent.KaId, StartDate).First();
+
             list.ForEach(f =>
             {
                 f.CumulativeSaldo = start_saldo.Saldo + f.SummInCurr * f.WType / Math.Abs(f.WType.Value);
                 start_saldo.Saldo = f.CumulativeSaldo;
             });
-
-            if (!list.Any())
-            {
-                return;
-            }
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("KADocList", list.Select((s, index) => new
