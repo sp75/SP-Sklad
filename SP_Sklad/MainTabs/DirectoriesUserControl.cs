@@ -35,13 +35,10 @@ namespace SP_Sklad.MainTabs
 
         private v_Materials focused_mat
         {
-            get { return MatGridView.GetFocusedRow() as v_Materials; }
+            get { return MatGridView.GetFocusedRow() is NotLoadedObject ? null : MatGridView.GetFocusedRow() as v_Materials; }
         }
 
-        private dynamic focused_kagent
-        {
-            get { return KaGridView.GetFocusedRow() as dynamic; }
-        }
+        private dynamic focused_kagent => KaGridView.GetFocusedRow() is NotLoadedObject ? null : KaGridView.GetFocusedRow() as dynamic;
 
         public class PriceTypesView
         {
@@ -376,7 +373,10 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     if (focused_mat != null)
                     {
-                        result = new frmMaterialEdit(focused_mat.MatId).ShowDialog();
+                        using (var mat_edit_frm = new frmMaterialEdit(focused_mat.MatId))
+                        {
+                            result = mat_edit_frm.ShowDialog();
+                        }
                     }
                     break;
 
@@ -522,8 +522,10 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     if (DB.SkladBase().MatGroup.Any())
                     {
-                        var mat_edit = new frmMaterialEdit(null, focused_tree_node.Id < 0 ? focused_tree_node.Id * -1 : DB.SkladBase().MatGroup.First().GrpId);
-                        mat_edit.ShowDialog();
+                        using (var mat_edit = new frmMaterialEdit(null, focused_tree_node.Id < 0 ? focused_tree_node.Id * -1 : DB.SkladBase().MatGroup.First().GrpId))
+                        {
+                            mat_edit.ShowDialog();
+                        }
                     }
                     break;
 

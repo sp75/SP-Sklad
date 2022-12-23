@@ -112,7 +112,10 @@ namespace SP_Sklad.EditForm
 
                 try
                 {
-                    pictureEdit1.EditValue = new Bitmap(new MemoryStream(_mat.BMP));
+                    using (var m = new MemoryStream(_mat.BMP))
+                    {
+                        pictureEdit1.EditValue = new Bitmap(m);
+                    }
                 }
                 catch { }
       

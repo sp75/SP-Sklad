@@ -23,5 +23,6 @@ namespace SP.Base.Models
         public Nullable<decimal> TotalOut { get; set; }
         public Nullable<decimal> ReturnAmount { get; set; }
         public Nullable<decimal> ReturnTotal { get; set; }
+        public string MatGrpName { get; set; }
     }
 }
