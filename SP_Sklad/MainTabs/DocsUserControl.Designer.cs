@@ -913,7 +913,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1109,6 +1109,7 @@
             this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
             this.GridImageList.Images.SetKeyName(44, "CostAnalysis_16x16.png");
             this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
+            this.GridImageList.Images.SetKeyName(46, "management2.png");
             // 
             // gridColumn2
             // 
@@ -1957,7 +1958,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 46)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 

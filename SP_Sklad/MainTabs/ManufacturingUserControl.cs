@@ -20,6 +20,7 @@ using System.IO;
 using System.Diagnostics;
 using SP_Sklad.ViewsForm;
 using static SP_Sklad.WBDetForm.frmIntermediateWeighingDet;
+using DevExpress.Data;
 
 namespace SP_Sklad.MainTabs
 {
@@ -33,8 +34,9 @@ namespace SP_Sklad.MainTabs
         private v_IntermediateWeighing intermediate_weighing_focused_row { get; set; }
         private List<GetManufactureTree_Result> manuf_tree { get; set; }
         private GetManufactureTree_Result intermediate_weighing_access{ get; set; }
+        private v_RawMaterialManagement focused_raw_material_management => RawMaterialManagementGridView.GetFocusedRow() is NotLoadedObject ? null : RawMaterialManagementGridView.GetFocusedRow() as v_RawMaterialManagement;
 
-    private int _cur_wtype = 0;
+        private int _cur_wtype = 0;
 
         public ManufacturingUserControl()
         {
@@ -94,6 +96,12 @@ namespace SP_Sklad.MainTabs
                 manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 intermediate_weighing_access = manuf_tree.FirstOrDefault(w => w.FunId == 83);
                 xtraTabPage19.PageVisible = intermediate_weighing_access?.CanView == 1;
+
+                RawMaterialManagementStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                RawMaterialManagementEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+                RawMaterialManagementStatus.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведений" }, new { Id = 0, Name = "Новий" } };
+                RawMaterialManagementStatus.EditValue = -1;
+
 
                 DocsTreeList.DataSource = manuf_tree;
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
@@ -226,6 +234,8 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        int restore_row = 0;
+        bool restore = false;
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (focused_tree_node == null)
@@ -266,6 +276,13 @@ namespace SP_Sklad.MainTabs
 
                 case 7:
                     GetIntermediateWeighing();
+                    break;
+                case 8:
+                    restore_row = RawMaterialManagementGridView.FocusedRowHandle;
+                    restore = true;
+
+                    RawMaterialManagementGridControl.DataSource = null;
+                    RawMaterialManagementGridControl.DataSource = RawMaterialManagementSource;
                     break;
             }
         }
@@ -328,6 +345,12 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
+                case 8:
+                    using (var rmm_make = new frmRawMaterialManagement(null))
+                    {
+                        rmm_make.ShowDialog();
+                    }
+                    break;
             }
 
             RefrechItemBtn.PerformClick();
@@ -378,6 +401,16 @@ namespace SP_Sklad.MainTabs
                             if (wb_iw.ShowDialog() == DialogResult.OK)
                             {
                                 RefreshIntermediateWeighing();
+                            }
+                        }
+                        break;
+
+                    case 8:
+                        using (var rmm_make = new frmRawMaterialManagement(focused_raw_material_management.Id))
+                        {
+                           if( rmm_make.ShowDialog() == DialogResult.OK)
+                            {
+                                ;
                             }
                         }
                         break;
@@ -565,6 +598,24 @@ namespace SP_Sklad.MainTabs
                         }
 
                         break;
+
+                    case 8:
+                        {
+                            var new_wb_in = ExecuteDocument.ExecuteRawMaterialManagement(focused_raw_material_management.Id, db);
+
+                            if (new_wb_in != Guid.Empty)
+                            {
+                                using (var f = new frmWayBillIn(1))
+                                {
+                                    f.is_new_record = true;
+                                    f.doc_id = new_wb_in;
+                                    f.ShowDialog();
+                                }
+                            }
+
+                            break;
+                        }
+
                 }
             }
 
@@ -573,7 +624,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null && pp_focused_row == null && pc_focused_row == null && focused_prep_raw_mat_row == null && intermediate_weighing_focused_row == null)
+            if (focused_row == null && pp_focused_row == null && pc_focused_row == null && focused_prep_raw_mat_row == null && intermediate_weighing_focused_row == null && focused_raw_material_management == null)
             {
                 return;
             }
@@ -656,6 +707,16 @@ namespace SP_Sklad.MainTabs
                                 }
 
                                 break;
+
+                            case 8:
+                                var rmm_row = db.RawMaterialManagement.FirstOrDefault(w => w.Id == focused_raw_material_management.Id && w.SessionId == null);
+                                if (rmm_row != null)
+                                {
+                                    DB.SkladBase().DeleteWhere<RawMaterialManagement>(w => w.Id == focused_raw_material_management.Id);
+                                }
+
+                                break;
+
                         }
                         db.SaveChanges();
                     }
@@ -835,6 +896,11 @@ namespace SP_Sklad.MainTabs
             {
                 row = gridView14.GetFocusedRow() as GetRelDocList_Result;
             }
+            else if (gridView10.Focus())
+            {
+                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
+            }
+
 
             FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
@@ -1391,6 +1457,105 @@ namespace SP_Sklad.MainTabs
                         gridControl16.DataSource = db.GetRelDocList(intermediate_weighing_focused_row.Id).OrderBy(o => o.OnDate).ToList();
                         break;
                 }
+            }
+        }
+
+        private void RawMaterialManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            /*     if (focused_tree_node == null)
+                 {
+                     return;
+                 }*/
+
+            int status = (int)RawMaterialManagementStatus.EditValue;
+
+            var _db = DB.SkladBase();
+
+            var rmm = _db.v_RawMaterialManagement.Where(w => w.OnDate >= RawMaterialManagementStartDate.DateTime && w.OnDate <= RawMaterialManagementEndDate.DateTime && (w.Checked == status || status == -1));
+
+
+            e.QueryableSource = rmm;
+
+            e.Tag = _db;
+        }
+
+        private void RawMaterialManagementGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (focused_raw_material_management == null)
+            {
+                RawMaterialManagementDetGridControl.DataSource = null;
+                gridControl12.DataSource = null;
+            }
+
+            if (!restore)
+            {
+                return;
+            }
+
+            RawMaterialManagementGridView.TopRowIndex = restore_row;
+            RawMaterialManagementGridView.FocusedRowHandle = restore_row;
+            restore = false;
+        }
+
+        private void RawMaterialManagementGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            xtraTabControl7_SelectedPageChanged(sender, null);
+
+            DeleteItemBtn.Enabled = (focused_raw_material_management != null && focused_tree_node.CanDelete == 1 && focused_raw_material_management.Checked == 0);
+            EditItemBtn.Enabled = (focused_raw_material_management != null && focused_tree_node.CanModify == 1 && focused_raw_material_management.Checked == 0);
+            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_raw_material_management != null);
+            ExecuteItemBtn.Enabled = (focused_raw_material_management != null && focused_tree_node.CanPost == 1 && focused_raw_material_management.Checked == 0);
+            PrintItemBtn.Enabled = (focused_raw_material_management != null);
+        }
+
+        private void GetRawMaterialManagementDetail()
+        {
+            if (focused_raw_material_management == null)
+            {
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                RawMaterialManagementDetGridControl.DataSource = db.v_RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == focused_raw_material_management.Id).ToList();
+            }
+        }
+
+        private void xtraTabControl7_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (focused_raw_material_management == null)
+            {
+                RawMaterialManagementDetGridControl.DataSource = null;
+                gridControl12.DataSource = null;
+
+                return;
+            }
+
+            using (var db = DB.SkladBase())
+            {
+                switch (xtraTabControl7.SelectedTabPageIndex)
+                {
+                    case 0:
+                        var list = DB.SkladBase().v_RawMaterialManagementDet.AsNoTracking()
+                            .Where(w => w.RawMaterialManagementId == focused_raw_material_management.Id)
+                            .OrderBy(o => o.OnDate).ToList();
+
+                        RawMaterialManagementDetGridControl.DataSource = list;
+                        break;
+
+                    case 1:
+                        gridControl12.DataSource = db.GetRelDocList(focused_raw_material_management.Id).OrderBy(o => o.OnDate).ToList();
+                        break;
+                }
+            }
+
+        }
+
+        private void RawMaterialManagementStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (RawMaterialManagementStartDate.ContainsFocus || RawMaterialManagementEndDate.ContainsFocus || RawMaterialManagementStatus.ContainsFocus)
+            {
+                RefrechItemBtn.PerformClick();
             }
         }
     }

@@ -50,7 +50,12 @@ namespace SP_Sklad.MainTabs
                     UserComboBox.EditValue = -1;
 
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
-                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51)).Select(s => new { s.UserTreeView.FunId, s.Name })).ToList();
+                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51 || w.UserTreeView.Functions.FunId == 6))
+                        .Select(s => new
+                        {
+                            s.UserTreeView.FunId,
+                            s.Name
+                        })).ToList();
                     wTypeList.EditValue = -1;
 
                     WeighingScalesLookUpEdit.Properties.DataSource = new BaseEntities().WeighingScales.ToList();
@@ -192,23 +197,24 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     if (xtraTabControl2.SelectedTabPageIndex == 0)
                     {
-                        GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList().Select(s => new GetOperLog_Result
-                        {
-                            OpCode = s.OpCode,
-                            OnDate = s.OnDate,
-                            FunName = s.FunName,
-                            Id = s.Id,
-                            DocNum = s.DocNum,
-                            UserName = s.UserName,
-                            TabId = s.TabId,
-                            DataBefore = IHelper.ConvertLogData(s.DataBefore),
-                            DataAfter = IHelper.ConvertLogData(s.DataAfter),
-                            ClassName = s.ClassName,
-                            DocType = s.DocType,
-                            FunId = s.FunId,
-                            OpId = s.OpId,
-                            UserId = s.UserId
-                        }).ToList();
+                        GetOperLogBS.DataSource = DB.SkladBase().GetOperLog(wbStartDate.DateTime, wbEndDate.DateTime, (int)wTypeList.EditValue, (int)UserComboBox.EditValue).OrderByDescending(o => o.OnDate).ToList()
+                            .Select(s => new GetOperLog_Result
+                            {
+                                OpCode = s.OpCode,
+                                OnDate = s.OnDate,
+                                FunName = s.FunName,
+                                Id = s.Id,
+                                DocNum = s.DocNum,
+                                UserName = s.UserName,
+                                TabId = s.TabId,
+                                DataBefore = IHelper.ConvertLogData(s.DataBefore),
+                                DataAfter = IHelper.ConvertLogData(s.DataAfter),
+                                ClassName = s.ClassName,
+                                DocType = s.DocType,
+                                FunId = s.FunId,
+                                OpId = s.OpId,
+                                UserId = s.UserId
+                            }).ToList();
                     }
                     if (xtraTabControl2.SelectedTabPageIndex == 1)
                     {

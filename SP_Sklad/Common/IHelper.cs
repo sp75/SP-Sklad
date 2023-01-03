@@ -918,6 +918,7 @@ namespace SP_Sklad.Common
         public static String ConvertLogData(String str)
         {
             var res = "";
+
             if (!String.IsNullOrEmpty(str) && str.Split(';').Count() == 5)
             {
                 var split = str.Split(';');
@@ -937,7 +938,7 @@ namespace SP_Sklad.Common
                 res += "Технологічний процес: " + split[5] + System.Environment.NewLine;
             }
 
-            return res;
+            return string.IsNullOrEmpty(res) ? str : res;
         }
 
         /// <summary>

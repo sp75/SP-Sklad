@@ -673,6 +673,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="Ver" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="MatBarCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="MatChange">
           <Key>
             <PropertyRef Name="MatId" />
@@ -729,6 +737,7 @@
           <Property Name="InvNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="RawMaterialTypeId" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
         </EntityType>
         <EntityType Name="MatGroup">
           <Key>
@@ -1120,6 +1129,34 @@
           <Property Name="Suffix" Type="nvarchar" MaxLength="10" />
           <Property Name="Checked" Type="int" />
           <Property Name="Num" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RawMaterialManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="DocType" Type="int" Nullable="false" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="WId" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RawMaterialManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="RawMaterialManagementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="PosId" Type="int" />
         </EntityType>
         <EntityType Name="RawMaterialType">
           <Key>
@@ -2708,6 +2745,40 @@ warning 6002: The table/view 'sp_base.dbo.v_ProductionPlanDet' does not have a p
           <Property Name="TotalOut" Type="numeric" Precision="35" Scale="12" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_RawMaterialManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+            
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="DocType" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="DocType" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_RawMaterialManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RawMaterialManagementId" />
+            <PropertyRef Name="MeasuresName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="RawMaterialManagementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MeasuresName" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Services">
           <Key>
@@ -3955,6 +4026,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MatBarCode_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MatBarCode" Type="Self.MatBarCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MatBarCode">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MATCHANGE_CHANGEID">
           <End Role="Materials" Type="Self.Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -4490,6 +4575,44 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ProductionPlans">
               <PropertyRef Name="ManufId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawMaterialManagementDet_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="RawMaterialManagementDet" Type="Self.RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawMaterialManagementDet_RawMaterialManagement">
+          <End Role="RawMaterialManagement" Type="Self.RawMaterialManagement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RawMaterialManagementDet" Type="Self.RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RawMaterialManagement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="RawMaterialManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawMaterialManagementDet_WaybillDet">
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="0..1" />
+          <End Role="RawMaterialManagementDet" Type="Self.RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="PosId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7448,6 +7571,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Licenses" EntityType="Self.Licenses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MatBarCode" EntityType="Self.MatBarCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatChange" EntityType="Self.MatChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialMeasures" EntityType="Self.MaterialMeasures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
@@ -7480,6 +7604,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ProductionPlanDet" EntityType="Self.ProductionPlanDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionPlans" EntityType="Self.ProductionPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfileDocSetting" EntityType="Self.ProfileDocSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RawMaterialManagement" EntityType="Self.RawMaterialManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RawMaterialManagementDet" EntityType="Self.RawMaterialManagementDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialType" EntityType="Self.RawMaterialType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RepLng" EntityType="Self.RepLng" Schema="dbo" store:Type="Tables" />
@@ -8263,6 +8389,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProductionPlanDet].[TotalOut] AS [TotalOut]
     FROM [dbo].[v_ProductionPlanDet] AS [v_ProductionPlanDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_RawMaterialManagement" EntityType="Self.v_RawMaterialManagement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_RawMaterialManagement].[Id] AS [Id], 
+    [v_RawMaterialManagement].[Num] AS [Num], 
+    [v_RawMaterialManagement].[OnDate] AS [OnDate], 
+    [v_RawMaterialManagement].[Notes] AS [Notes], 
+    [v_RawMaterialManagement].[WhName] AS [WhName], 
+    [v_RawMaterialManagement].[PersonName] AS [PersonName], 
+    [v_RawMaterialManagement].[Checked] AS [Checked], 
+    [v_RawMaterialManagement].[DocType] AS [DocType]
+    FROM [dbo].[v_RawMaterialManagement] AS [v_RawMaterialManagement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_RawMaterialManagementDet" EntityType="Self.v_RawMaterialManagementDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_RawMaterialManagementDet].[Id] AS [Id], 
+    [v_RawMaterialManagementDet].[OnDate] AS [OnDate], 
+    [v_RawMaterialManagementDet].[Amount] AS [Amount], 
+    [v_RawMaterialManagementDet].[BarCode] AS [BarCode], 
+    [v_RawMaterialManagementDet].[MatName] AS [MatName], 
+    [v_RawMaterialManagementDet].[RawMaterialManagementId] AS [RawMaterialManagementId], 
+    [v_RawMaterialManagementDet].[MeasuresName] AS [MeasuresName]
+    FROM [dbo].[v_RawMaterialManagementDet] AS [v_RawMaterialManagementDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_Services].[SvcId] AS [SvcId], 
@@ -8755,6 +8904,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
             <End Role="KAgentAdjustmentDet" EntitySet="KAgentAdjustmentDet" />
           </AssociationSet>
+          <AssociationSet Name="FK_MatBarCode_Materials" Association="Self.FK_MatBarCode_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MatBarCode" EntitySet="MatBarCode" />
+          </AssociationSet>
           <AssociationSet Name="FK_MATCHANGE_CHANGEID" Association="Self.FK_MATCHANGE_CHANGEID">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MatChange" EntitySet="MatChange" />
@@ -8922,6 +9075,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_ProductionPlans_Warehouse1" Association="Self.FK_ProductionPlans_Warehouse1">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawMaterialManagementDet_Materials" Association="Self.FK_RawMaterialManagementDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawMaterialManagementDet_RawMaterialManagement" Association="Self.FK_RawMaterialManagementDet_RawMaterialManagement">
+            <End Role="RawMaterialManagement" EntitySet="RawMaterialManagement" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawMaterialManagementDet_WaybillDet" Association="Self.FK_RawMaterialManagementDet_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
           </AssociationSet>
           <AssociationSet Name="FK_REPLNG_LANGID" Association="Self.FK_REPLNG_LANGID">
             <End Role="Languages" EntitySet="Languages" />
@@ -10750,6 +10915,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="worker_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="RawMaterialType" EntityType="BaseModel.RawMaterialType" />
+          <EntitySet Name="RawMaterialManagement" EntityType="BaseModel.RawMaterialManagement" />
+          <EntitySet Name="RawMaterialManagementDet" EntityType="BaseModel.RawMaterialManagementDet" />
+          <EntitySet Name="v_RawMaterialManagement" EntityType="BaseModel.v_RawMaterialManagement" />
+          <EntitySet Name="v_RawMaterialManagementDet" EntityType="BaseModel.v_RawMaterialManagementDet" />
+          <AssociationSet Name="FK_RawMaterialManagementDet_Materials" Association="BaseModel.FK_RawMaterialManagementDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawMaterialManagementDet_RawMaterialManagement" Association="BaseModel.FK_RawMaterialManagementDet_RawMaterialManagement">
+            <End Role="RawMaterialManagement" EntitySet="RawMaterialManagement" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
+          </AssociationSet>
+          <EntitySet Name="MatBarCode" EntityType="BaseModel.MatBarCode" />
+          <AssociationSet Name="FK_MatBarCode_Materials" Association="BaseModel.FK_MatBarCode_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MatBarCode" EntitySet="MatBarCode" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RawMaterialManagementDet_WaybillDet" Association="BaseModel.FK_RawMaterialManagementDet_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11777,6 +11963,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="Materials" ToRole="IntermediateWeighingDet" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
           <Property Name="RawMaterialTypeId" Type="Int32" />
+          <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_Materials" FromRole="Materials" ToRole="RawMaterialManagementDet" />
+          <NavigationProperty Name="MatBarCode" Relationship="BaseModel.FK_MatBarCode_Materials" FromRole="Materials" ToRole="MatBarCode" />
+          <Property Name="UpdatedBy" Type="Int32" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -13185,6 +13374,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="OrderedRels" Relationship="BaseModel.FK_OrderedRels_WaybillDet" FromRole="WaybillDet" ToRole="OrderedRels" />
           <NavigationProperty Name="OrderedRels1" Relationship="BaseModel.FK_OrderedRels_WaybillDet1" FromRole="WaybillDet" ToRole="OrderedRels" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
+          <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="WaybillDet" ToRole="RawMaterialManagementDet" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -17924,6 +18114,128 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="RawMaterialManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="WId" Type="Int32" />
+          <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_RawMaterialManagement" FromRole="RawMaterialManagement" ToRole="RawMaterialManagementDet" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RawMaterialManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RawMaterialManagementId" Type="Guid" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="PosId" Type="Int32" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_RawMaterialManagementDet_Materials" FromRole="RawMaterialManagementDet" ToRole="Materials" />
+          <NavigationProperty Name="RawMaterialManagement" Relationship="BaseModel.FK_RawMaterialManagementDet_RawMaterialManagement" FromRole="RawMaterialManagementDet" ToRole="RawMaterialManagement" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="RawMaterialManagementDet" ToRole="WaybillDet" />
+        </EntityType>
+        <EntityType Name="v_RawMaterialManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="DocType" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_RawMaterialManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RawMaterialManagementId" />
+            <PropertyRef Name="MeasuresName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RawMaterialManagementId" Type="Guid" Nullable="false" />
+          <Property Name="MeasuresName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_RawMaterialManagementDet_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.RawMaterialManagementDet" Role="RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawMaterialManagementDet_RawMaterialManagement">
+          <End Type="BaseModel.RawMaterialManagement" Role="RawMaterialManagement" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.RawMaterialManagementDet" Role="RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RawMaterialManagement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="RawMaterialManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MatBarCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MatBarCode_Materials" FromRole="MatBarCode" ToRole="Materials" />
+        </EntityType>
+        <Association Name="FK_MatBarCode_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatBarCode" Role="MatBarCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MatBarCode">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RawMaterialManagementDet_WaybillDet">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="0..1" />
+          <End Type="BaseModel.RawMaterialManagementDet" Role="RawMaterialManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="RawMaterialManagementDet">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -18724,6 +19036,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Materials">
             <EntityTypeMapping TypeName="BaseModel.Materials">
               <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="RawMaterialTypeId" ColumnName="RawMaterialTypeId" />
                 <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
                 <ScalarProperty Name="InvNumber" ColumnName="InvNumber" />
@@ -22781,6 +23094,72 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <EntityTypeMapping TypeName="BaseModel.RawMaterialType">
               <MappingFragment StoreEntitySet="RawMaterialType">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RawMaterialManagement">
+            <EntityTypeMapping TypeName="BaseModel.RawMaterialManagement">
+              <MappingFragment StoreEntitySet="RawMaterialManagement">
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RawMaterialManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.RawMaterialManagementDet">
+              <MappingFragment StoreEntitySet="RawMaterialManagementDet">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="RawMaterialManagementId" ColumnName="RawMaterialManagementId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_RawMaterialManagement">
+            <EntityTypeMapping TypeName="BaseModel.v_RawMaterialManagement">
+              <MappingFragment StoreEntitySet="v_RawMaterialManagement">
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_RawMaterialManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.v_RawMaterialManagementDet">
+              <MappingFragment StoreEntitySet="v_RawMaterialManagementDet">
+                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
+                <ScalarProperty Name="RawMaterialManagementId" ColumnName="RawMaterialManagementId" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MatBarCode">
+            <EntityTypeMapping TypeName="BaseModel.MatBarCode">
+              <MappingFragment StoreEntitySet="MatBarCode">
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

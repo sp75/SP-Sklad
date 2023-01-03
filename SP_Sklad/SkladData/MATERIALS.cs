@@ -33,6 +33,8 @@ namespace SP_Sklad.SkladData
             this.MaterialMeasures = new HashSet<MaterialMeasures>();
             this.PosRemains = new HashSet<PosRemains>();
             this.IntermediateWeighingDet = new HashSet<IntermediateWeighingDet>();
+            this.RawMaterialManagementDet = new HashSet<RawMaterialManagementDet>();
+            this.MatBarCode = new HashSet<MatBarCode>();
         }
     
         public int MatId { get; set; }
@@ -69,6 +71,7 @@ namespace SP_Sklad.SkladData
         public string InvNumber { get; set; }
         public string SerialNumber { get; set; }
         public Nullable<int> RawMaterialTypeId { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }
@@ -93,5 +96,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
         public virtual MatGroup MatGroup { get; set; }
+        public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
+        public virtual ICollection<MatBarCode> MatBarCode { get; set; }
     }
 }

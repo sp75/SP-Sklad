@@ -655,11 +655,12 @@ namespace SP_Sklad.MainTabs
                         {
                             var mat = db.Materials.Find(focused_mat.MatId);
                             var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
-                            var mat_recipe = db.MatRecipe.Where(w => w.MatId == focused_mat.MatId).Any();
+                            var mat_recipe = db.MatRecipe.Where(w => w.MatId == focused_mat.MatId && !w.Archived).Any();
 
                             if (mat != null && mat_remain == null && !mat_recipe)
                             {
                                 mat.Deleted = 1;
+                                mat.UpdatedBy = UserSession.UserId;
                             }
                             else
                             {
@@ -1675,6 +1676,16 @@ namespace SP_Sklad.MainTabs
             MatGridView.TopRowIndex = row;
             MatGridView.FocusedRowHandle = row;
             restore = false;
+        }
+
+        private void PrintRecipeBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (MatRecipeGridView.FocusedRowHandle >= 0)
+            {
+                dynamic r_item = MatRecipeGridView.GetFocusedRow();
+
+                SP_Sklad.Reports.PrintDoc.RecipeReport(r_item.RecId, DB.SkladBase(), "Recipe.xlsx");
+            }
         }
     }
 }

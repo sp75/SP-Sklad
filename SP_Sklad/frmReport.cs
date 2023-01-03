@@ -345,7 +345,7 @@ namespace SP_Sklad
                     this.ChargeGroupBox.Visible = false;
                     this.WHGroupBox.Visible = false;
                     this.GroupKontragentPanel.Visible = true;
-                    this.KontragentPanel.Visible = false;
+               //     this.KontragentPanel.Visible = true;
                     break;
 
                 case 44:

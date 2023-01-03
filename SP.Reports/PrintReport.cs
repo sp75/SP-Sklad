@@ -1455,8 +1455,8 @@ FROM            (
   inner join Measures ms on ms.MId = m.MId
   left outer join KontragentGroup kag on kag.Id = ka.GroupId
   
-  where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate between {2} and {3}
-  order by wbl.OnDate", Material.MatId, KontragentGroup.Id, StartDate.Date, EndDate.Date.AddDays(1)).ToList();
+  where tmc.[MatId] = {0} and (ka.GroupId = {1} or wbl.KaId = {4}) and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate between {2} and {3}
+  order by wbl.OnDate", Material.MatId, KontragentGroup.Id, StartDate.Date, EndDate.Date.AddDays(1), Kagent.KaId).ToList();
 
             var list2 = _db.Database.SqlQuery<rep_43>(@"  
   SELECT ka.KaId, ka.Name KaName, sum(tmc.CalcAmount) TurnAmount
@@ -1464,8 +1464,8 @@ FROM            (
   inner join WaybillList wbl on wbl.WbillId = tmc.[WbillId]
   inner join Kagent ka on ka.KaId = wbl.KaId 
   left outer join KontragentGroup kag on kag.Id = ka.GroupId
-  where tmc.[MatId] = {0} and ka.GroupId = {1} and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate < {2} 
-  group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date).ToList();
+  where tmc.[MatId] = {0} and (ka.GroupId = {1} or ka.KaId = {3}) and wbl.WType in (-1, 6) and wbl.Checked = 1 and wbl.OnDate < {2} 
+  group by ka.KaId, ka.Name", Material.MatId, KontragentGroup.Id, StartDate.Date, Kagent.KaId).ToList();
 
             list2 = list2.Concat(list.Where(w => !list2.Any(a => a.KaId == w.KaId)).GroupBy(g => new { g.KaId, g.KaName }).Select(s => new rep_43
             {

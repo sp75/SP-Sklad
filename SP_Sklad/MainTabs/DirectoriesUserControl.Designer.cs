@@ -87,6 +87,7 @@
             this.ShowRecipeArchiveRecordsbarCheckItem = new DevExpress.XtraBars.BarCheckItem();
             this.btnMoveUp = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoveDown = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintRecipeBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -174,6 +175,7 @@
             this.gridColumn79 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -396,7 +398,6 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -703,8 +704,9 @@
             this.btnMoveUp,
             this.btnMoveDown,
             this.barButtonItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 45;
+            this.barButtonItem2,
+            this.PrintRecipeBtn});
+            this.barManager1.MaxItemId = 46;
             // 
             // bar1
             // 
@@ -1019,6 +1021,7 @@
             this.BarImageList.Images.SetKeyName(16, "tree.png");
             this.BarImageList.Images.SetKeyName(17, "tara.png");
             this.BarImageList.Images.SetKeyName(18, "Дисконтна картка.bmp");
+            this.BarImageList.Images.SetKeyName(19, "Попередн_й перегляд.bmp");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -1157,6 +1160,14 @@
             this.btnMoveDown.ImageOptions.ImageIndex = 8;
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMoveDown_ItemClick);
+            // 
+            // PrintRecipeBtn
+            // 
+            this.PrintRecipeBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintRecipeBtn.Id = 45;
+            this.PrintRecipeBtn.ImageOptions.ImageIndex = 19;
+            this.PrintRecipeBtn.Name = "PrintRecipeBtn";
+            this.PrintRecipeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintRecipeBtn_ItemClick);
             // 
             // panelControl1
             // 
@@ -1309,7 +1320,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (5).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -1568,7 +1579,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -2095,6 +2106,12 @@
             this.gridColumn111.Name = "gridColumn111";
             this.gridColumn111.Visible = true;
             this.gridColumn111.VisibleIndex = 4;
+            // 
+            // gridColumn112
+            // 
+            this.gridColumn112.Caption = "Тип сировини";
+            this.gridColumn112.FieldName = "RawMaterialTypeName";
+            this.gridColumn112.Name = "gridColumn112";
             // 
             // gridView4
             // 
@@ -4251,16 +4268,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintRecipeBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveToRecipeArchiveBarBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowRecipeArchiveRecordsbarCheckItem)});
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
-            // 
-            // gridColumn112
-            // 
-            this.gridColumn112.Caption = "Тип сировини";
-            this.gridColumn112.FieldName = "RawMaterialTypeName";
-            this.gridColumn112.Name = "gridColumn112";
             // 
             // DirectoriesUserControl
             // 
@@ -4829,5 +4841,6 @@
         private DevExpress.Data.Linq.LinqInstantFeedbackSource MatListSource;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
+        private DevExpress.XtraBars.BarButtonItem PrintRecipeBtn;
     }
 }

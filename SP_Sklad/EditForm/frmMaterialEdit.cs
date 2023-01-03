@@ -15,6 +15,7 @@ using DevExpress.XtraEditors;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.SkladData.ViewModels;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.EditForm
 {
@@ -70,9 +71,11 @@ namespace SP_Sklad.EditForm
             TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Додаткові одиниці виміру", ImgIdx = 12, TabIdx = 8 });
             TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
             TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
-            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
-            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
-            TreeListBS.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Штрих-коди", ImgIdx = 19, TabIdx = 9 });
+            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
+            TreeListBS.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
+            TreeListBS.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+
 
             if (_copy_mat_id != null)
             {
@@ -90,7 +93,8 @@ namespace SP_Sklad.EditForm
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
                     NDS = 0,
                     GrpId = _mat_grp,
-                    DecPlaces = 4
+                    DecPlaces = 4,
+                    UpdatedBy = UserSession.UserId
                 });
                 _db.SaveChanges();
                 _mat_id = _mat.MatId;
@@ -99,6 +103,7 @@ namespace SP_Sklad.EditForm
             {
                 _mat = _db.Materials.Find(_mat_id);
                 _mat.DateModified = DateTime.Now;
+                _mat.UpdatedBy = UserSession.UserId;
             }
 
             if (_mat != null)
@@ -123,6 +128,8 @@ namespace SP_Sklad.EditForm
                 GetTreeMatPrices();
                 GetMatChange();
                 GetMatMeasures();
+
+                MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
             }
 
             #region Init
@@ -301,7 +308,7 @@ namespace SP_Sklad.EditForm
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
 
-            MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+          
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -546,7 +553,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
+          
         }
 
         private void GetMatChange()
@@ -729,6 +736,66 @@ namespace SP_Sklad.EditForm
                 BarCodeEdit.ErrorText = "Товар з таким штрихкодом вже існує!";
                 e.Cancel = true;
             }
+        }
+
+        private void MatBarCodeBS_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            e.NewObject = _db.MatBarCode.Add(new MatBarCode{  MatId = _mat_id.Value });
+        }
+
+        private void MatBarCodeGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            _db.MatBarCode.Remove((e.Row as MatBarCode));
+        }
+
+        private void CIdLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+
+            }
+        }
+
+  
+        private void MsrComboBox_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+            }
+        }
+
+        private void WIdLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
+            }
+        }
+
+        private void simpleButton4_Click_1(object sender, EventArgs e)
+        {
+            MatBarCodeGridView.AddNewRow();
+            MatBarCodeGridView.ShowEditForm();
+
+         /*   using (var frm = new frmBarCode())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+ 
+                    MatBarCodeBS.Add(_db.MatBarCode.Add(new MatBarCode
+                    {
+                        MatId = _mat_id.Value,
+                        BarCode = frm.BarCodeEdit.Text
+                    }));
+
+                }
+            }*/
+        }
+
+        private void simpleButton5_Click_1(object sender, EventArgs e)
+        {
+            MatBarCodeGridView.DeleteSelectedRows();
         }
     }
 

@@ -30,12 +30,28 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaterialEdit));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator2 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.ImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -43,7 +59,6 @@
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.TreeListBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -55,7 +70,6 @@
             this.CIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.ProducerLookUpEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.calcEdit4 = new DevExpress.XtraEditors.CalcEdit();
@@ -84,12 +98,10 @@
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.MatTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.WIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.ArtikulEdit = new DevExpress.XtraEditors.TextEdit();
-            this.NowDateBtn = new DevExpress.XtraEditors.SimpleButton();
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.MinSizeEdit = new DevExpress.XtraEditors.CalcEdit();
@@ -181,6 +193,15 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.MatBarCodeGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatBarCodeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.MatBarCodeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -263,7 +284,36 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaterialMeasuresBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
+            this.xtraTabPage10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.Images.SetKeyName(0, "інформація про товар.png");
+            this.ImageList.Images.SetKeyName(1, "Цінові кат.png");
+            this.ImageList.Images.SetKeyName(2, "Податки.png");
+            this.ImageList.Images.SetKeyName(3, "взаємозамінність.png");
+            this.ImageList.Images.SetKeyName(4, "посвідчення якості.png");
+            this.ImageList.Images.SetKeyName(5, "insertimage_16x16.png");
+            this.ImageList.Images.SetKeyName(6, "edit.png");
+            this.ImageList.Images.SetKeyName(7, "інформація про резерв товару.png");
+            this.ImageList.Images.SetKeyName(8, "Рух товарів.png");
+            this.ImageList.Images.SetKeyName(9, "down.png");
+            this.ImageList.Images.SetKeyName(10, "up.png");
+            this.ImageList.Images.SetKeyName(11, "Цінові кат.png");
+            this.ImageList.Images.SetKeyName(12, "Одиниці виміру.png");
+            this.ImageList.Images.SetKeyName(13, "Країни.png");
+            this.ImageList.Images.SetKeyName(14, "Right.png");
+            this.ImageList.Images.SetKeyName(15, "Right_gray.png");
+            this.ImageList.Images.SetKeyName(16, "Склади.png");
+            this.ImageList.Images.SetKeyName(17, "open_16x16.png");
+            this.ImageList.Images.SetKeyName(18, "removepivotfield_16x16.png");
+            this.ImageList.Images.SetKeyName(19, "barcode_16x16.png");
             // 
             // panelControl2
             // 
@@ -336,30 +386,6 @@
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
             // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.ImageList.Images.SetKeyName(1, "Ц_нов_ кат.bmp");
-            this.ImageList.Images.SetKeyName(2, "Податки.bmp");
-            this.ImageList.Images.SetKeyName(3, "Взаемозам_н_сть.bmp");
-            this.ImageList.Images.SetKeyName(4, "Посв_дчення якост_.bmp");
-            this.ImageList.Images.SetKeyName(5, "image.bmp");
-            this.ImageList.Images.SetKeyName(6, "edit.bmp");
-            this.ImageList.Images.SetKeyName(7, "_нформац_я про резерв товару.bmp");
-            this.ImageList.Images.SetKeyName(8, "Рух товар_в.bmp");
-            this.ImageList.Images.SetKeyName(9, "down.bmp");
-            this.ImageList.Images.SetKeyName(10, "Up.bmp");
-            this.ImageList.Images.SetKeyName(11, "Ц_нов_ кат.bmp");
-            this.ImageList.Images.SetKeyName(12, "Одиниц_ вим_ру.bmp");
-            this.ImageList.Images.SetKeyName(13, "Країни.bmp");
-            this.ImageList.Images.SetKeyName(14, "Right.bmp");
-            this.ImageList.Images.SetKeyName(15, "Right_gray.png");
-            this.ImageList.Images.SetKeyName(16, "Склади.bmp");
-            this.ImageList.Images.SetKeyName(17, "CloseFolder.bmp");
-            this.ImageList.Images.SetKeyName(18, "Delete.bmp");
-            // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -378,7 +404,8 @@
             this.xtraTabPage6,
             this.xtraTabPage7,
             this.xtraTabPage8,
-            this.xtraTabPage9});
+            this.xtraTabPage9,
+            this.xtraTabPage10});
             // 
             // xtraTabPage1
             // 
@@ -405,7 +432,6 @@
             this.groupControl3.Controls.Add(this.CIdLookUpEdit);
             this.groupControl3.Controls.Add(this.labelControl24);
             this.groupControl3.Controls.Add(this.labelControl10);
-            this.groupControl3.Controls.Add(this.simpleButton4);
             this.groupControl3.Controls.Add(this.labelControl11);
             this.groupControl3.Controls.Add(this.ProducerLookUpEdit);
             this.groupControl3.Controls.Add(this.calcEdit4);
@@ -431,7 +457,6 @@
             // simpleButton7
             // 
             this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
-            this.simpleButton7.ImageOptions.ImageList = this.ImageList;
             this.simpleButton7.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton7.Location = new System.Drawing.Point(299, 194);
             this.simpleButton7.Name = "simpleButton7";
@@ -464,8 +489,11 @@
             this.CIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "CId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.CIdLookUpEdit.Location = new System.Drawing.Point(347, 60);
             this.CIdLookUpEdit.Name = "CIdLookUpEdit";
+            editorButtonImageOptions4.ImageIndex = 13;
+            editorButtonImageOptions4.ImageList = this.ImageList;
             this.CIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CIdLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CIdLookUpEdit.Properties.DisplayMember = "Name";
@@ -473,9 +501,10 @@
             this.CIdLookUpEdit.Properties.ShowHeader = false;
             this.CIdLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.CIdLookUpEdit.Properties.ValueMember = "CId";
-            this.CIdLookUpEdit.Size = new System.Drawing.Size(305, 22);
+            this.CIdLookUpEdit.Size = new System.Drawing.Size(332, 24);
             this.CIdLookUpEdit.StyleController = this.styleController1;
             this.CIdLookUpEdit.TabIndex = 49;
+            this.CIdLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CIdLookUpEdit_ButtonClick);
             // 
             // labelControl24
             // 
@@ -494,16 +523,6 @@
             this.labelControl10.StyleController = this.styleController1;
             this.labelControl10.TabIndex = 47;
             this.labelControl10.Text = "Країна:";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.ImageOptions.ImageIndex = 13;
-            this.simpleButton4.ImageOptions.ImageList = this.ImageList;
-            this.simpleButton4.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(658, 60);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton4.TabIndex = 46;
             // 
             // labelControl11
             // 
@@ -664,8 +683,8 @@
             this.barCodeControl1.ShowText = false;
             this.barCodeControl1.Size = new System.Drawing.Size(332, 82);
             this.barCodeControl1.StyleController = this.styleController1;
-            code39ExtendedGenerator1.WideNarrowRatio = 3F;
-            this.barCodeControl1.Symbology = code39ExtendedGenerator1;
+            code39ExtendedGenerator2.WideNarrowRatio = 3F;
+            this.barCodeControl1.Symbology = code39ExtendedGenerator2;
             this.barCodeControl1.TabIndex = 30;
             // 
             // panel1
@@ -684,12 +703,10 @@
             this.panelControl1.Controls.Add(this.labelControl23);
             this.panelControl1.Controls.Add(this.labelControl12);
             this.panelControl1.Controls.Add(this.MatTypeEdit);
-            this.panelControl1.Controls.Add(this.simpleButton5);
             this.panelControl1.Controls.Add(this.WIdLookUpEdit);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.ArtikulEdit);
-            this.panelControl1.Controls.Add(this.NowDateBtn);
             this.panelControl1.Controls.Add(this.NameTextEdit);
             this.panelControl1.Controls.Add(this.labelControl22);
             this.panelControl1.Controls.Add(this.MinSizeEdit);
@@ -845,24 +862,16 @@
             this.MatTypeEdit.TabIndex = 50;
             this.MatTypeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit5_ButtonClick);
             // 
-            // simpleButton5
-            // 
-            this.simpleButton5.ImageOptions.ImageIndex = 16;
-            this.simpleButton5.ImageOptions.ImageList = this.ImageList;
-            this.simpleButton5.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton5.Location = new System.Drawing.Point(299, 170);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton5.TabIndex = 39;
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
             // WIdLookUpEdit
             // 
             this.WIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WIdLookUpEdit.Location = new System.Drawing.Point(109, 170);
             this.WIdLookUpEdit.Name = "WIdLookUpEdit";
+            editorButtonImageOptions5.ImageIndex = 16;
+            editorButtonImageOptions5.ImageList = this.ImageList;
             this.WIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.WIdLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WIdLookUpEdit.Properties.DisplayMember = "Name";
@@ -870,9 +879,10 @@
             this.WIdLookUpEdit.Properties.ShowHeader = false;
             this.WIdLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WIdLookUpEdit.Properties.ValueMember = "WId";
-            this.WIdLookUpEdit.Size = new System.Drawing.Size(184, 22);
+            this.WIdLookUpEdit.Size = new System.Drawing.Size(211, 24);
             this.WIdLookUpEdit.StyleController = this.styleController1;
             this.WIdLookUpEdit.TabIndex = 35;
+            this.WIdLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WIdLookUpEdit_ButtonClick);
             // 
             // labelControl4
             // 
@@ -903,17 +913,6 @@
             this.ArtikulEdit.StyleController = this.styleController1;
             this.ArtikulEdit.TabIndex = 29;
             this.ArtikulEdit.Validating += new System.ComponentModel.CancelEventHandler(this.ArtikulEdit_Validating);
-            // 
-            // NowDateBtn
-            // 
-            this.NowDateBtn.ImageOptions.ImageIndex = 12;
-            this.NowDateBtn.ImageOptions.ImageList = this.ImageList;
-            this.NowDateBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.NowDateBtn.Location = new System.Drawing.Point(299, 134);
-            this.NowDateBtn.Name = "NowDateBtn";
-            this.NowDateBtn.Size = new System.Drawing.Size(22, 22);
-            this.NowDateBtn.TabIndex = 28;
-            this.NowDateBtn.Click += new System.EventHandler(this.NowDateBtn_Click);
             // 
             // NameTextEdit
             // 
@@ -984,8 +983,11 @@
             this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "MId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MsrComboBox.Location = new System.Drawing.Point(109, 134);
             this.MsrComboBox.Name = "MsrComboBox";
+            editorButtonImageOptions3.ImageIndex = 12;
+            editorButtonImageOptions3.ImageList = this.ImageList;
             this.MsrComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.MsrComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.MsrComboBox.Properties.DisplayMember = "Name";
@@ -993,7 +995,8 @@
             this.MsrComboBox.Properties.ShowHeader = false;
             this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MsrComboBox.Properties.ValueMember = "MId";
-            this.MsrComboBox.Size = new System.Drawing.Size(184, 22);
+            this.MsrComboBox.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MsrComboBox_Properties_ButtonClick);
+            this.MsrComboBox.Size = new System.Drawing.Size(211, 24);
             this.MsrComboBox.StyleController = this.styleController1;
             this.MsrComboBox.TabIndex = 17;
             // 
@@ -1048,7 +1051,6 @@
             this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowVertLines = false;
             this.treeListLookUpEdit1TreeList.ParentFieldName = "PId";
-            this.treeListLookUpEdit1TreeList.SelectImageList = this.ImageList;
             this.treeListLookUpEdit1TreeList.Size = new System.Drawing.Size(400, 200);
             this.treeListLookUpEdit1TreeList.TabIndex = 0;
             // 
@@ -1200,7 +1202,6 @@
             // simpleButton6
             // 
             this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
-            this.simpleButton6.ImageOptions.ImageList = this.ImageList;
             this.simpleButton6.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton6.Location = new System.Drawing.Point(301, 71);
             this.simpleButton6.Name = "simpleButton6";
@@ -1803,7 +1804,6 @@
             // DelIdividualMatPriceBtn
             // 
             this.DelIdividualMatPriceBtn.ImageOptions.ImageIndex = 18;
-            this.DelIdividualMatPriceBtn.ImageOptions.ImageList = this.ImageList;
             this.DelIdividualMatPriceBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
             this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
@@ -1815,7 +1815,6 @@
             // GoTopMatPricesBtn
             // 
             this.GoTopMatPricesBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GoTopMatPricesBtn.ImageOptions.Image")));
-            this.GoTopMatPricesBtn.ImageOptions.ImageList = this.ImageList;
             this.GoTopMatPricesBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.GoTopMatPricesBtn.Location = new System.Drawing.Point(535, 11);
             this.GoTopMatPricesBtn.Name = "GoTopMatPricesBtn";
@@ -1859,7 +1858,7 @@
             this.simpleButton12.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton12.ImageOptions.Image")));
             this.simpleButton12.Location = new System.Drawing.Point(125, 18);
             this.simpleButton12.Name = "simpleButton12";
-            this.simpleButton12.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton12.Size = new System.Drawing.Size(106, 23);
             this.simpleButton12.TabIndex = 16;
             this.simpleButton12.Text = "Видалити";
             this.simpleButton12.Click += new System.EventHandler(this.simpleButton12_Click);
@@ -1923,6 +1922,84 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
+            // xtraTabPage10
+            // 
+            this.xtraTabPage10.Controls.Add(this.simpleButton4);
+            this.xtraTabPage10.Controls.Add(this.simpleButton5);
+            this.xtraTabPage10.Controls.Add(this.MatBarCodeGridControl);
+            this.xtraTabPage10.Name = "xtraTabPage10";
+            this.xtraTabPage10.Size = new System.Drawing.Size(702, 519);
+            this.xtraTabPage10.Text = "Штрих-коди";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.simpleButton4.Location = new System.Drawing.Point(13, 18);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton4.TabIndex = 19;
+            this.simpleButton4.Text = "Додати...";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click_1);
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(125, 18);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton5.TabIndex = 18;
+            this.simpleButton5.Text = "Видалити";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click_1);
+            // 
+            // MatBarCodeGridControl
+            // 
+            this.MatBarCodeGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MatBarCodeGridControl.DataSource = this.MatBarCodeBS;
+            this.MatBarCodeGridControl.Location = new System.Drawing.Point(13, 47);
+            this.MatBarCodeGridControl.MainView = this.MatBarCodeGridView;
+            this.MatBarCodeGridControl.MenuManager = this.barManager1;
+            this.MatBarCodeGridControl.Name = "MatBarCodeGridControl";
+            this.MatBarCodeGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCalcEdit2});
+            this.MatBarCodeGridControl.Size = new System.Drawing.Size(678, 455);
+            this.MatBarCodeGridControl.TabIndex = 16;
+            this.MatBarCodeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.MatBarCodeGridView});
+            // 
+            // MatBarCodeBS
+            // 
+            this.MatBarCodeBS.DataSource = typeof(SP_Sklad.SkladData.MatBarCode);
+            this.MatBarCodeBS.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.MatBarCodeBS_AddingNew);
+            // 
+            // MatBarCodeGridView
+            // 
+            this.MatBarCodeGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn10});
+            this.MatBarCodeGridView.GridControl = this.MatBarCodeGridControl;
+            this.MatBarCodeGridView.Name = "MatBarCodeGridView";
+            this.MatBarCodeGridView.OptionsBehavior.EditingMode = DevExpress.XtraGrid.Views.Grid.GridEditingMode.EditForm;
+            this.MatBarCodeGridView.OptionsEditForm.PopupEditFormWidth = 500;
+            this.MatBarCodeGridView.OptionsView.ShowGroupPanel = false;
+            this.MatBarCodeGridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.MatBarCodeGridView_RowDeleted);
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Штрих-код";
+            this.gridColumn10.FieldName = "BarCode";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 0;
+            this.gridColumn10.Width = 100;
+            // 
+            // repositoryItemCalcEdit2
+            // 
+            this.repositoryItemCalcEdit2.AutoHeight = false;
+            this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
+            // 
             // frmMaterialEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1944,6 +2021,7 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMaterialEdit_FormClosed);
             this.Load += new System.EventHandler(this.frmMaterialEdit_Load);
             this.Shown += new System.EventHandler(this.frmMaterialEdit_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
@@ -2033,6 +2111,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaterialMeasuresBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
+            this.xtraTabPage10.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatBarCodeGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2050,7 +2133,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.PanelControl panelControl1;
-        private DevExpress.XtraEditors.SimpleButton NowDateBtn;
         private DevExpress.XtraEditors.TextEdit NameTextEdit;
         private DevExpress.XtraEditors.LabelControl labelControl22;
         private DevExpress.XtraEditors.CalcEdit MinSizeEdit;
@@ -2060,7 +2142,6 @@
         private DevExpress.XtraEditors.LookUpEdit MsrComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        public System.Windows.Forms.ImageList ImageList;
         private DevExpress.XtraTreeList.TreeList DirTreeList;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
@@ -2144,10 +2225,8 @@
         private DevExpress.XtraEditors.CalcEdit WeightEdit;
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.LookUpEdit CIdLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.ComboBoxEdit ProducerLookUpEdit;
         private DevExpress.XtraEditors.CalcEdit NdsEdit;
@@ -2185,5 +2264,14 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraEditors.SimpleButton DelIdividualMatPriceBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
+        private DevExpress.XtraGrid.GridControl MatBarCodeGridControl;
+        private System.Windows.Forms.BindingSource MatBarCodeBS;
+        private DevExpress.XtraGrid.Views.Grid.GridView MatBarCodeGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
+        private DevExpress.Utils.ImageCollection ImageList;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

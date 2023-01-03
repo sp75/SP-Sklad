@@ -340,6 +340,15 @@
         <AssociationConnector Association="BaseModel.FK_BankStatementsDet_KAgentAccount1" />
         <EntityTypeShape EntityType="BaseModel.v_Kagent" Width="1.5" PointX="31.875" PointY="28.375" />
         <EntityTypeShape EntityType="BaseModel.RawMaterialType" Width="1.5" PointX="25.625" PointY="12.25" />
+        <EntityTypeShape EntityType="BaseModel.RawMaterialManagement" Width="1.5" PointX="27.25" PointY="37.25" />
+        <EntityTypeShape EntityType="BaseModel.RawMaterialManagementDet" Width="1.5" PointX="29.5" PointY="33.125" />
+        <EntityTypeShape EntityType="BaseModel.v_RawMaterialManagement" Width="1.5" PointX="33" PointY="4.375" />
+        <EntityTypeShape EntityType="BaseModel.v_RawMaterialManagementDet" Width="1.5" PointX="34" PointY="1.375" />
+        <AssociationConnector Association="BaseModel.FK_RawMaterialManagementDet_Materials" />
+        <AssociationConnector Association="BaseModel.FK_RawMaterialManagementDet_RawMaterialManagement" />
+        <EntityTypeShape EntityType="BaseModel.MatBarCode" Width="1.5" PointX="18.875" PointY="34" />
+        <AssociationConnector Association="BaseModel.FK_MatBarCode_Materials" />
+        <AssociationConnector Association="BaseModel.FK_RawMaterialManagementDet_WaybillDet" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
