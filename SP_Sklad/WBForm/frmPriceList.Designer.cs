@@ -642,10 +642,10 @@
             // 
             this.labelControl5.Location = new System.Drawing.Point(12, 56);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(172, 16);
+            this.labelControl5.Size = new System.Drawing.Size(167, 16);
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 50;
-            this.labelControl5.Text = "Як шаблон для контрагентів:";
+            this.labelControl5.Text = "Як шаблон для замовлення:";
             // 
             // checkedComboBoxEdit1
             // 

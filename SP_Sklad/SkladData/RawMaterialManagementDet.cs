@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
         public System.Guid RawMaterialManagementId { get; set; }
         public int MatId { get; set; }
         public Nullable<int> PosId { get; set; }
+        public Nullable<decimal> LastAmount { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual RawMaterialManagement RawMaterialManagement { get; set; }

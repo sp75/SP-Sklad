@@ -120,6 +120,9 @@
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>31, 18</value>
   </metadata>
+  <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>557, 23</value>
+  </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>150, 19</value>
   </metadata>
@@ -128,7 +131,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABM
-        QAAAAk1TRnQBSQFMAgEBEQEAAdABBwHQAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        QAAAAk1TRnQBSQFMAgEBEQEAAeABBwHgAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8AogAB5wHOAcYBrQFSASkBrQFSARgBrQFSASkB5wHWAc6xAAGtAVIBKQHe
         AoQB3gKEAd4ChAGtAVIBKbEAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFCtAABCAGcAQgBYwH/
         AZQBCAGlARC3AAEIAZwBCAFjAf8BlAEIAaUBELcAAQgBIQGMARgBQgGcAQABawE5twABCAEQAbUBKQE5
@@ -405,14 +408,29 @@
         Af8B4AE/AgAB+QH/AecB/wHxAf8BwAGDCw==
 </value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        ////////////////////////////va2tjFpaxrW1////////////////////////////////////////
+        ////////////jFJK3r2EnHNahFJSvaWl////////////////////AGsAAGsAY5xj////////pWNj58aM
+        77WM98aM58aEtYxjhEpKrYyM////////GIwhWveMUu+EIZw5AGsAjGta1q1777WE3oRz54x755yE77WM
+        572MhEJC////MZQxWu+MKb1CQt5jUu+EWu+EtVpa986U3oxz97WM3pR73ntz3oRz54x7lEpKWrVaSt5z
+        Qt5rIbUxIbUxIb05Mc5KxmNj1ntz/86U/86c/86c/8aU56WE1ntzpVJSEKUYUu97Ib05Y/+UY/+UQtZj
+        GJRKMSGlrYSc/86c/86c/86c/86c/86c3pR7zpSUCKUIIb0xWveMY/+cY/+cWu+cCErOAK3vADnOMTGt
+        tYSU97WM97WM3ox71pSU////AJwAQt5jY/+UY/+UY/eUGGPOAN7/AL3/AOf/AM73AFLWMSm1pWOE1oyM
+        ////////AJwIKcZCSudrSudzIYS1AL3/AMb/AGv/AJT/AK3/AN7/AM7/ACHW////////////////a8Zr
+        GKUYEK0YADn/AMb/AHv/AJz/AGv/AFr/AHP/AIz/ACHn////////////////////////////ADH/AGv/
+        AK3/ANb/AM7/AK3/AHP/AEr/ACn3////////////////////////////ADH/AIT/AL3/ALX/AK3/AKX/
+        AJz/AFL/a4T/////////////////////////////ADH/AGv/AJT/AJT/AIz/AIT/AFL/Wnv/////////
+        ////////////////////////////c4z/EEL/AEr/AGP/AEr/Wnv/////////////////////////////
+        ////////////////////nK33OWP/UnP/////////////////////////
+</value>
+  </data>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>260, 21</value>
   </metadata>
-  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>399, 21</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="WhInComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////va2tjFpaxrW1////////////////////////////////////////
@@ -430,25 +448,7 @@
         ////////////////////nK33OWP/UnP/////////////////////////
 </value>
   </data>
-  <data name="WhOutComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////va2tjFpaxrW1////////////////////////////////////////
-        ////////////jFJK3r2EnHNahFJSvaWl////////////////////AGsAAGsAY5xj////////pWNj58aM
-        77WM98aM58aEtYxjhEpKrYyM////////GIwhWveMUu+EIZw5AGsAjGta1q1777WE3oRz54x755yE77WM
-        572MhEJC////MZQxWu+MKb1CQt5jUu+EWu+EtVpa986U3oxz97WM3pR73ntz3oRz54x7lEpKWrVaSt5z
-        Qt5rIbUxIbUxIb05Mc5KxmNj1ntz/86U/86c/86c/8aU56WE1ntzpVJSEKUYUu97Ib05Y/+UY/+UQtZj
-        GJRKMSGlrYSc/86c/86c/86c/86c/86c3pR7zpSUCKUIIb0xWveMY/+cY/+cWu+cCErOAK3vADnOMTGt
-        tYSU97WM97WM3ox71pSU////AJwAQt5jY/+UY/+UY/eUGGPOAN7/AL3/AOf/AM73AFLWMSm1pWOE1oyM
-        ////////AJwIKcZCSudrSudzIYS1AL3/AMb/AGv/AJT/AK3/AN7/AM7/ACHW////////////////a8Zr
-        GKUYEK0YADn/AMb/AHv/AJz/AGv/AFr/AHP/AIz/ACHn////////////////////////////ADH/AGv/
-        AK3/ANb/AM7/AK3/AHP/AEr/ACn3////////////////////////////ADH/AIT/AL3/ALX/AK3/AKX/
-        AJz/AFL/a4T/////////////////////////////ADH/AGv/AJT/AJT/AIz/AIT/AFL/Wnv/////////
-        ////////////////////////////c4z/EEL/AEr/AGP/AEr/Wnv/////////////////////////////
-        ////////////////////nK33OWP/UnP/////////////////////////
-</value>
-  </data>
-  <data name="OnDateDBEdit.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABZ0RVh0VGl0
         bGUAVGltZTtDbG9jaztXYXRjaG+IOKgAAAN+SURBVDhPTVN/UNNlGH8J6vyR/VXnqYe0AZKaqWSXFgnB
@@ -469,7 +469,7 @@
         3wLCE7PMY74fcfTppUxATDQhmv0D9AU3u1gF9awAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="PersonInComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -487,7 +487,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="KagentComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -505,7 +505,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="PersonOutComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -523,10 +523,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>557, 23</value>
-  </metadata>
-  <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>150, 19</value>
+  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>399, 21</value>
   </metadata>
 </root>

@@ -21,5 +21,6 @@ namespace SP_Sklad.SkladData
         public string MatName { get; set; }
         public System.Guid RawMaterialManagementId { get; set; }
         public string MeasuresName { get; set; }
+        public Nullable<decimal> LastAmount { get; set; }
     }
 }

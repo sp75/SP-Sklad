@@ -79,5 +79,69 @@ namespace SP_Sklad.Common
 
             return wb.Id;
         }
+
+        public static int? ExecuteRawMaterialManagementMove(Guid id, BaseEntities _db)
+        {
+            var _rmm = _db.RawMaterialManagement.Find(id);
+
+            if (_rmm.Checked != 0)
+            {
+                return null;
+            }
+
+            var wb = _db.WaybillList.Add(new WaybillList()
+            {
+                Id = Guid.NewGuid(),
+                WType = 4,
+                OnDate = DBHelper.ServerDateTime(),
+                Num = new BaseEntities().GetDocNum("wb_move").FirstOrDefault(),
+                CurrId = 2,
+                OnValue = 1,
+                PersonId = DBHelper.CurrentUser.KaId,
+                WaybillMove = new WaybillMove { SourceWid = _rmm.WId.Value },
+                UpdatedBy = DBHelper.CurrentUser.UserId,
+                EntId = DBHelper.Enterprise.KaId
+            });
+
+            _db.SetDocRel(id, wb.Id);
+            _db.SaveChanges();
+
+            var list_det = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.PosId != null);
+
+            var num = 0;
+            foreach (var item in list_det)
+            {
+                var wbd = _db.WaybillDet.Add(new WaybillDet()
+                {
+                    WbillId = wb.WbillId,
+                    Price = item.WaybillDet.Price * item.WaybillDet.OnValue,
+                    BasePrice = item.WaybillDet.BasePrice * item.WaybillDet.OnValue,
+                    Nds = 0,
+                    CurrId = wb.CurrId,
+                    OnDate = wb.OnDate,
+                    WId = _rmm.WId,
+                    Num = ++num,
+                    Amount = item.Amount.Value,
+                    MatId = item.MatId,
+                    OnValue = wb.OnValue
+
+                });
+
+                wbd.WMatTurn1.Add(new WMatTurn
+                {
+                    PosId = item.PosId.Value,
+                    WId = _rmm.WId.Value,
+                    MatId = item.MatId,
+                    OnDate = wb.OnDate,
+                    TurnType = 2,
+                    Amount = Convert.ToDecimal(item.Amount),
+                });
+            }
+            _rmm.Checked = 1;
+
+            _db.SaveChanges();
+
+            return wb.WbillId;
+        }
     }
 }

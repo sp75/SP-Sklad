@@ -601,17 +601,35 @@ namespace SP_Sklad.MainTabs
 
                     case 8:
                         {
-                            var new_wb_in = ExecuteDocument.ExecuteRawMaterialManagement(focused_raw_material_management.Id, db);
-
-                            if (new_wb_in != Guid.Empty)
+                            if (focused_raw_material_management.DocType == 1)
                             {
-                                using (var f = new frmWayBillIn(1))
+                                var new_wb_in = ExecuteDocument.ExecuteRawMaterialManagement(focused_raw_material_management.Id, db);
+
+                                if (new_wb_in != Guid.Empty)
                                 {
-                                    f.is_new_record = true;
-                                    f.doc_id = new_wb_in;
-                                    f.ShowDialog();
+                                    using (var f = new frmWayBillIn(1))
+                                    {
+                                        f.is_new_record = true;
+                                        f.doc_id = new_wb_in;
+                                        f.ShowDialog();
+                                    }
                                 }
                             }
+                            if(focused_raw_material_management.DocType == -1)
+                            {
+                                var new_wb_move = ExecuteDocument.ExecuteRawMaterialManagementMove(focused_raw_material_management.Id, db);
+
+                                if(new_wb_move != null)
+                                {
+                                    using (var m_f = new frmWayBillMove(new_wb_move))
+                                    {
+                                        m_f.is_new_record = true;
+                                        m_f.ShowDialog();
+                                    }
+                                }
+                            }
+
+
 
                             break;
                         }
@@ -1471,7 +1489,9 @@ namespace SP_Sklad.MainTabs
 
             var _db = DB.SkladBase();
 
-            var rmm = _db.v_RawMaterialManagement.Where(w => w.OnDate >= RawMaterialManagementStartDate.DateTime && w.OnDate <= RawMaterialManagementEndDate.DateTime && (w.Checked == status || status == -1));
+            var rmm = _db.v_RawMaterialManagement
+                .Where(w => w.OnDate >= RawMaterialManagementStartDate.DateTime && w.OnDate <= RawMaterialManagementEndDate.DateTime && (w.Checked == status || status == -1))
+                .OrderByDescending(o=> o.OnDate);
 
 
             e.QueryableSource = rmm;
@@ -1546,9 +1566,38 @@ namespace SP_Sklad.MainTabs
                     case 1:
                         gridControl12.DataSource = db.GetRelDocList(focused_raw_material_management.Id).OrderBy(o => o.OnDate).ToList();
                         break;
+                    case 2:
+                        gridControl10.DataSource = db.Database.SqlQuery<pos_rmmd>(@"select x.*, pos.ActualRemain, pos.OnDate, wbd.Amount Total, wb.Num
+from
+(   
+   SELECT 
+     rd.PosId,
+     rd.BarCode, 
+	 sum(case when rmm.DocType = 1 then rd.Amount else 0 end) AmountIn, 
+	 sum(case when rmm.DocType = -1 then rd.Amount else 0 end) AmountOut
+  FROM RawMaterialManagementDet rd
+  join RawMaterialManagement rmm on rmm.Id = rd.RawMaterialManagementId
+  where rd.PosId in ( select PosId from RawMaterialManagementDet where RawMaterialManagementId = {0} )
+  group by rd.PosId, rd.BarCode
+)x
+join v_PosRemains pos on pos.PosId = x.PosId
+join WaybillDet wbd on wbd.PosId = x.PosId
+join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_management.Id).ToList();
+                        break;
+
                 }
             }
 
+        }
+        public class pos_rmmd
+        {
+            public string BarCode { get; set; }
+            public decimal AmountIn { get; set; }
+            public decimal AmountOut { get; set; }
+            public decimal ActualRemain { get; set; }
+            public DateTime OnDate { get; set; }
+            public decimal Total { get; set; }
+            public string Num { get; set; }
         }
 
         private void RawMaterialManagementStartDate_EditValueChanged(object sender, EventArgs e)

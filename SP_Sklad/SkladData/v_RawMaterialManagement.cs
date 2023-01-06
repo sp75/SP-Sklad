@@ -22,5 +22,7 @@ namespace SP_Sklad.SkladData
         public string PersonName { get; set; }
         public int Checked { get; set; }
         public int DocType { get; set; }
+        public string DocTypeName { get; set; }
+        public Nullable<decimal> Total { get; set; }
     }
 }

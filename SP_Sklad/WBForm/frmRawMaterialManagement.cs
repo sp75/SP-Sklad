@@ -51,8 +51,8 @@ namespace SP_Sklad.WBForm
         {
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
-            lookUpEdit1.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Зважування сировини" }, new { Id = -1, Name = "Переміщення на обвалку" } };
-            lookUpEdit1.EditValue = 0;
+            DocTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Зважування сировини" }, new { Id = -1, Name = "Переміщення на обвалку" } };
+            DocTypeEdit.EditValue = 0;
 
             if (_doc_id == null)
             {
@@ -100,16 +100,13 @@ namespace SP_Sklad.WBForm
 
         private void GetOk()
         {
+            WhComboBox.Enabled = RawMaterialManagementDetBS.Count == 0;
+            DocTypeEdit.Enabled = RawMaterialManagementDetBS.Count == 0;
+            barButtonItem2.Enabled = WhComboBox.EditValue != DBNull.Value;
 
-      //      barButtonItem2.Enabled = AmountEdit.Value > 0;
+            OkButton.Enabled = WhComboBox.EditValue != DBNull.Value && RawMaterialManagementDetBS.Count > 0;
 
-       //     AmountEdit.Enabled = IntermediateWeighingDetBS.Count == 0;
-     //       ManufLookUpEdit.Enabled = IntermediateWeighingDetBS.Count == 0;
-
-            /*     OkButton.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && ProductionPlanDetBS.Count > 0;
-                 barSubItem1.Enabled = ManufactoryEdit.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value;
-                 EditMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;
-                 DelMaterialBtn.Enabled = ProductionPlanDetBS.Count > 0;*/
+            DelMaterialBtn.Enabled = RawMaterialManagementDetBS.Count > 0;
         }
 
         private void RefreshDet()
@@ -125,19 +122,7 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          /*  if (iw_det_row != null && _db.GetWayBillMakeDet(iw_det_row.WbillId).Any(a => a.MatId == iw_det_row.MatId && a.Rsv == 0))
-            {
-                using (var f = new frmIntermediateWeighingDet(_db, iw_det_row.Id, iw))
-                {
-                    f.ShowDialog();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Редагувати заборонено, сировина вже зарезервована");
-            }
 
-            RefreshDet();*/
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -148,73 +133,6 @@ namespace SP_Sklad.WBForm
 
             is_new_record = false;
         }
-
-        private Guid ExecuteRawMaterialManagement(Guid id)
-        {
-            var _rmm = _db.RawMaterialManagement.Find(id);
-
-            var wb = _db.WaybillList.Add(new WaybillList()
-            {
-                Id = Guid.NewGuid(),
-                WType = 1,
-                OnDate = DBHelper.ServerDateTime(),
-                Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault(),
-                CurrId = 2,
-                OnValue = 1,
-                PersonId = DBHelper.CurrentUser.KaId,
-                Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
-                UpdatedBy = DBHelper.CurrentUser.UserId,
-                EntId = DBHelper.Enterprise.KaId,
-                PTypeId = 1,
-                Reason = $"Зважування напівтуш №{_rmm.Num}"
-            });
-
-            _db.SetDocRel(id, wb.Id);
-            _db.SaveChanges();
-
-            var list_det = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.PosId == null)
-                .GroupBy(g => new { g.MatId }).Select(s => new
-                {
-                    s.Key.MatId,
-                    Amount = s.Sum(ss => ss.Amount)
-                }).ToList();
-
-            var num = 0;
-            foreach (var item in list_det)
-            {
-                var wbd = _db.WaybillDet.Add(new WaybillDet
-                {
-                    WbillId = wb.WbillId,
-                    MatId = item.MatId,
-                    WId = _rmm.WId,
-                    Amount = item.Amount.Value,
-                    Price = 0,
-                    Discount = 0,
-                    Nds = wb.Nds,
-                    CurrId = 2,
-                    OnDate = wb.OnDate,
-                    Num = ++num,
-                    Checked = 0,
-                    OnValue = 1,
-                    Total = 0,
-                    BasePrice = 0,
-                });
-                _db.SaveChanges();
-
-                foreach (var rmm_det in _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.MatId == item.MatId))
-                {
-                    rmm_det.PosId = wbd.PosId;
-                }
-            }
-
-            _rmm.Checked = 1;
-
-            _db.SaveChanges();
-
-            return wb.Id;
-        }
-
-
 
         private void frmIntermediateWeighing_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -240,23 +158,9 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          /*  if (iw_det_row != null &&   _db.GetWayBillMakeDet(iw_det_row.WbillId).Any(a => a.MatId == iw_det_row.MatId && a.Rsv == 0))
-            {
-                var det = _db.IntermediateWeighingDet.Find(iw_det_row.Id);
-                if (det != null)
-                {
-                    _db.IntermediateWeighingDet.Remove(det);
-                }
-                _db.SaveChanges();
+            _db.DeleteWhere<RawMaterialManagementDet>(w => w.Id == rmm_det_row.Id);
 
-                WaybillDetInGridView.DeleteSelectedRows();
-            }
-            else
-            {
-                MessageBox.Show("Видаляти заборонено, сировина вже зарезервована");
-            }
-
-            GetOk();*/
+            RefreshDet();
         }
 
         private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -274,7 +178,7 @@ namespace SP_Sklad.WBForm
             }
 
             _db.SaveChanges();
-            RefreshDet();*/
+            ;*/
         }
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
@@ -308,65 +212,73 @@ namespace SP_Sklad.WBForm
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    if (rmm.DocType == 1)
+                    var mat = _db.MatBarCode.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
+
+                    if (mat == null)
                     {
+                        MessageBox.Show("Штрих-код не знайдено!");
+                        return;
+                    }
 
-                        var mat = _db.MatBarCode.FirstOrDefault(w => w.BarCode == frm.BarCodeEdit.Text);
+                    var last_doc_type = GetLastMoveBarCode(frm.BarCodeEdit.Text);
 
-                        if (mat != null)
+                    if (rmm.DocType == last_doc_type?.DocType)
+                    {
+                        MessageBox.Show("Штрих-код вже використовується!");
+                        return;
+                    }
+
+                    if (rmm.DocType == -1 && (last_doc_type?.PosId == null || last_doc_type?.WId != rmm.WId) )
+                    {
+                        MessageBox.Show("Штрих-код не використовується!");
+                        return;
+                    }
+
+                    using (var frm2 = new frmWeightEdit(mat.Materials.Name))
+                    {
+                        if (frm2.ShowDialog() == DialogResult.OK)
                         {
-                            using (var frm2 = new frmWeightEdit(mat.Materials.Name))
+                            _db.RawMaterialManagementDet.Add(new RawMaterialManagementDet
                             {
-                                if (frm2.ShowDialog() == DialogResult.OK)
-                                {
-                                    _db.RawMaterialManagementDet.Add(new RawMaterialManagementDet
-                                    {
-                                        Id = Guid.NewGuid(),
-                                        BarCode = mat.BarCode,
-                                        Amount = frm2.AmountEdit.Value,
-                                        MatId = mat.MatId,
-                                        OnDate = DBHelper.ServerDateTime(),
-                                        RawMaterialManagementId = rmm.Id
-                                    });
+                                Id = Guid.NewGuid(),
+                                BarCode = mat.BarCode,
+                                Amount = frm2.AmountEdit.Value,
+                                MatId = mat.MatId,
+                                OnDate = DBHelper.ServerDateTime(),
+                                RawMaterialManagementId = rmm.Id,
+                                LastAmount = rmm.DocType == -1 ? last_doc_type.Amount : null,
+                                PosId = rmm.DocType == -1 ? last_doc_type.PosId : null,
+                            });
 
-                                    _db.SaveChanges();
-                                }
-                            }
+                            _db.SaveChanges();
                         }
                     }
 
-                    if (rmm.DocType == -1)
-                    {
-                        var list = GetMatMove(frm.BarCodeEdit.Text);
-                        if(list.Any())
-                        {
-                            using (var frm2 = new frmWeightEdit(list.FirstOrDefault().MatName))
-                            {
-                                if (frm2.ShowDialog() == DialogResult.OK)
-                                {
-                                    var pos = list.FirstOrDefault(w => w.ActualRemain >= frm2.AmountEdit.Value);
-                                    if (pos != null)
-                                    {
-                                        _db.RawMaterialManagementDet.Add(new RawMaterialManagementDet
-                                        {
-                                            Id = Guid.NewGuid(),
-                                            BarCode = frm.BarCodeEdit.Text,
-                                            Amount = frm2.AmountEdit.Value,
-                                            MatId = pos.MatId,
-                                            OnDate = DBHelper.ServerDateTime(),
-                                            RawMaterialManagementId = rmm.Id
-                                        });
-
-                                        _db.SaveChanges();
-                                    }
-                                }
-                            }
-                        }
-                    }
                 }
             }
 
             RefreshDet();
+        }
+
+        private LastMoveBarCode GetLastMoveBarCode(string bar_code)
+        {
+            return _db.RawMaterialManagementDet.Where(w => w.BarCode == bar_code).OrderByDescending(o => o.OnDate)
+                .Select(s => new LastMoveBarCode
+                {
+                    DocType = s.RawMaterialManagement.DocType,
+                    Amount = s.Amount,
+                    PosId = s.PosId,
+                    WId = s.RawMaterialManagement.WId
+                }).FirstOrDefault();
+        }
+
+        private class LastMoveBarCode
+        {
+            public int DocType { get; set; }
+            public decimal? Amount { get; set; }
+            public int? PosId { get; set; }
+            public int? WId { get; set; }
+
         }
 
         private List<mat_move> GetMatMove(string bar_code)
@@ -374,8 +286,7 @@ namespace SP_Sklad.WBForm
             var mat = from rmmd in _db.RawMaterialManagementDet
                       join pr in _db.v_PosRemains on rmmd.PosId equals pr.PosId
                       join m in _db.Materials on rmmd.MatId equals m.MatId
-
-                      where pr.ActualRemain > 0 && rmmd.BarCode == bar_code
+                      where rmmd.BarCode == bar_code
                       select new mat_move
                       {
                           MatId = rmmd.MatId,
@@ -415,6 +326,11 @@ namespace SP_Sklad.WBForm
                 ;
             }
 
+        }
+
+        private void WhComboBox_EditValueChanged_1(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }
