@@ -615,25 +615,37 @@ namespace SP_Sklad.MainTabs
                                     }
                                 }
                             }
-                            if(focused_raw_material_management.DocType == -1)
+
+                            if (focused_raw_material_management.DocType == -1)
                             {
                                 var new_wb_move = ExecuteDocument.ExecuteRawMaterialManagementMove(focused_raw_material_management.Id, db);
 
-                                if(new_wb_move != null)
+                                if (new_wb_move != null)
                                 {
                                     using (var m_f = new frmWayBillMove(new_wb_move))
                                     {
                                         m_f.is_new_record = true;
-                                        m_f.ShowDialog();
+                                        if (m_f.ShowDialog() == DialogResult.OK)
+                                        {
+                                            var new_write_of = ExecuteDocument.ExecuteRawMaterialManagementWBWriteOff(focused_raw_material_management.Id, db);
+
+                                            if (new_write_of != Guid.Empty)
+                                            {
+                                                using (var f = new frmWBWriteOff())
+                                                {
+                                                    f.doc_id = new_write_of;
+                                                    f.TurnDocCheckBox.Checked = true;
+                                                    f.is_new_record = true;
+                                                    f.ShowDialog();
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
 
-
-
                             break;
                         }
-
                 }
             }
 
@@ -1489,10 +1501,7 @@ namespace SP_Sklad.MainTabs
 
             var _db = DB.SkladBase();
 
-            var rmm = _db.v_RawMaterialManagement
-                .Where(w => w.OnDate >= RawMaterialManagementStartDate.DateTime && w.OnDate <= RawMaterialManagementEndDate.DateTime && (w.Checked == status || status == -1))
-                .OrderByDescending(o=> o.OnDate);
-
+            var rmm = _db.v_RawMaterialManagement.Where(w => w.OnDate >= RawMaterialManagementStartDate.DateTime && w.OnDate <= RawMaterialManagementEndDate.DateTime && (w.Checked == status || status == -1));
 
             e.QueryableSource = rmm;
 
@@ -1574,7 +1583,10 @@ from
      rd.PosId,
      rd.BarCode, 
 	 sum(case when rmm.DocType = 1 then rd.Amount else 0 end) AmountIn, 
-	 sum(case when rmm.DocType = -1 then rd.Amount else 0 end) AmountOut
+	 sum(case when rmm.DocType = -1 then rd.Amount else 0 end) AmountOut,
+	 sum(case when rmm.DocType = 1 then 1 else 0 end) CountIn, 
+	 sum(case when rmm.DocType = -1 then 1 else 0 end) CountOut
+
   FROM RawMaterialManagementDet rd
   join RawMaterialManagement rmm on rmm.Id = rd.RawMaterialManagementId
   where rd.PosId in ( select PosId from RawMaterialManagementDet where RawMaterialManagementId = {0} )
@@ -1598,6 +1610,8 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
             public DateTime OnDate { get; set; }
             public decimal Total { get; set; }
             public string Num { get; set; }
+            public int CountIn { get; set; }
+            public int CountOut { get; set; }
         }
 
         private void RawMaterialManagementStartDate_EditValueChanged(object sender, EventArgs e)

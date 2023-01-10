@@ -120,7 +120,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
-            this.bar1.OptionsBar.MultiLine = true;
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DisableClose = true;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Main menu";
             // 
@@ -265,9 +266,9 @@
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва")});
             this.MatComboBox.Properties.DisplayMember = "MatName";
+            this.MatComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
-            this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
             this.MatComboBox.Size = new System.Drawing.Size(399, 22);
             this.MatComboBox.StyleController = this.styleController1;

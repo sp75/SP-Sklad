@@ -143,5 +143,94 @@ namespace SP_Sklad.Common
 
             return wb.WbillId;
         }
+
+        public static Guid ExecuteRawMaterialManagementWBWriteOff(Guid id, BaseEntities _db)
+        {
+            var _rmm = _db.RawMaterialManagement.Find(id);
+
+            var wb = _db.WaybillList.Add(new WaybillList()
+            {
+                Id = Guid.NewGuid(),
+                WType = -5,
+                DefNum = 1,
+                OnDate = DBHelper.ServerDateTime(),
+                Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
+                CurrId = 2,
+                OnValue = 1,
+                PersonId = DBHelper.CurrentUser.KaId,
+                WaybillMove = new WaybillMove { SourceWid = _rmm.WId.Value },
+                Nds = 0,
+                UpdatedBy = DBHelper.CurrentUser.UserId,
+                EntId = DBHelper.Enterprise.KaId,
+                Commission = new List<Commission>() { new Commission { KaId = DBHelper.CurrentUser.KaId } }
+            });
+
+          //  _db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
+            _db.SetDocRel(id, wb.Id);
+            _db.SaveChanges();
+
+
+            var pos_list = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id).Select(s => s.PosId).Distinct().ToList();
+            foreach (var pos_item in pos_list)
+            {
+                var pos_info = _db.RawMaterialManagementDet.Where(w => w.PosId == pos_item).GroupBy(g => g.PosId)
+                    .Select(s => new
+                    {
+                        PosId = s.Key,
+                        CountIn = s.Sum(si => si.RawMaterialManagement.DocType == 1 ? 1 : 0),
+                        CountOut = s.Sum(si => si.RawMaterialManagement.DocType == -1 ? 1 : 0)
+                    }).ToList();
+
+                foreach (var pos_info_item in pos_info)
+                {
+                    if (pos_info_item.CountIn == pos_info_item.CountOut)
+                    {
+                        var remain = _db.v_PosRemains.FirstOrDefault(w => w.PosId == pos_info_item.PosId);
+                        if (remain != null && remain.ActualRemain > 0)
+                        {
+                            var wbd = _db.WaybillDet.Add(new WaybillDet
+                            {
+                                WbillId = wb.WbillId,
+                                OnDate = wb.OnDate,
+                                MatId = remain.MatId,
+                                WId = _rmm.WId.Value,
+                                Amount = remain.ActualRemain.Value,
+                                Price = remain.AvgPrice,
+                                Discount = 0,
+                                Nds = wb.Nds,
+                                CurrId = wb.CurrId,
+                                OnValue = wb.OnValue,
+                                BasePrice = remain.AvgPrice,
+                                PosKind = 0,
+                                PosParent = 0,
+                                DiscountKind = 0
+                            });
+
+                            wbd.WMatTurn1.Add(new WMatTurn
+                            {
+                                PosId = remain.PosId,
+                                WId = _rmm.WId.Value,
+                                MatId = remain.MatId,
+                                OnDate = wb.OnDate,
+                                TurnType = 2,
+                                Amount = remain.ActualRemain.Value,
+                            });
+
+                            _db.SaveChanges();
+                        }
+                    }
+                }
+            }
+
+            if (!wb.WaybillDet.Any())
+            {
+                _db.WaybillList.Remove(wb);
+                _db.SaveChanges();
+
+                return Guid.Empty;
+            }
+
+            return wb.Id;
+        }
     }
 }

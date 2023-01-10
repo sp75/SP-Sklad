@@ -94,25 +94,27 @@ namespace SP_Sklad.WBDetForm
                     var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                       // _db.WMatTurn.RemoveRange(w_mat_turn);
-                     //   _db.SaveChanges();
-
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
 
                         GetContent();
 
                         foreach (var item in w_mat_turn)
                         {
-                            if (pos_in.Any(a => a.PosId == item.PosId))
+                            var pos = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
+                            if (pos != null)
                             {
-                                pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                                pos.Amount = item.Amount;
+
+                                if (item.Amount == pos.FullRemain)
+                                {
+                                    pos.GetAll = 1;
+                                }
                             }
                         }
                     }
                 }
             }
 
-            GetContent();
             GetOk();
         }
 
@@ -156,6 +158,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.MatId = row.MatId;
                 GetContent();
+                SetAmount();
             }
 
             labelControl24.Text = row.ShortName;
@@ -184,8 +187,6 @@ namespace SP_Sklad.WBDetForm
                 _wbd.BasePrice = pos_in.First().BasePrice * pos_in.First().OnValue;
                 _wbd.Nds = pos_in.First().Nds;
             }
-
-            SetAmount();
         }
 
         private void GetPos()
@@ -320,6 +321,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.WId = (int)WHComboBox.EditValue;
                 GetContent();
+                SetAmount();
             }
         }
 
@@ -366,6 +368,7 @@ namespace SP_Sklad.WBDetForm
                     _wbd.MatId = f.uc.focused_wh_mat.MatId;
                     MatComboBox.EditValue = _wbd.MatId;
                     GetContent();
+                    SetAmount();
                 }
             }
           
@@ -378,6 +381,7 @@ namespace SP_Sklad.WBDetForm
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
 
                 GetContent();
+                SetAmount();
             }
 
             if (e.Button.Index == 2)
@@ -386,6 +390,7 @@ namespace SP_Sklad.WBDetForm
                 WHComboBox.EditValue = result.wid;
 
                 GetContent();
+                SetAmount();
             }
         }
 
