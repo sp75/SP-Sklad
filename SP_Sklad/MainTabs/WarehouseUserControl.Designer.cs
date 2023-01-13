@@ -69,6 +69,7 @@
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.DelItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddItem = new DevExpress.XtraBars.BarButtonItem();
+            this.AddGrpItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -305,7 +306,6 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
-            this.AddGrpItemBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -796,7 +796,7 @@
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.DelItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddGrpItemBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddGrpItemBtn, true)});
             this.bar4.OptionsBar.AllowQuickCustomization = false;
             this.bar4.OptionsBar.DrawDragBorder = false;
             this.bar4.OptionsBar.UseWholeRow = true;
@@ -818,6 +818,15 @@
             this.AddItem.ImageOptions.ImageIndex = 16;
             this.AddItem.Name = "AddItem";
             this.AddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddItem_ItemClick);
+            // 
+            // AddGrpItemBtn
+            // 
+            this.AddGrpItemBtn.Caption = "Додати групу товарів в список";
+            this.AddGrpItemBtn.Id = 36;
+            this.AddGrpItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddGrpItemBtn.ImageOptions.Image")));
+            this.AddGrpItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("AddGrpItemBtn.ImageOptions.LargeImage")));
+            this.AddGrpItemBtn.Name = "AddGrpItemBtn";
+            this.AddGrpItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGrpItemBtn_ItemClick);
             // 
             // standaloneBarDockControl7
             // 
@@ -3451,13 +3460,6 @@
             this.WhMatGetSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.WhMatGet_Result);
             this.WhMatGetSource.KeyExpression = "MatId";
             this.WhMatGetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_GetQueryable);
-            // 
-            // AddGrpItemBtn
-            // 
-            this.AddGrpItemBtn.Caption = "Додати групу товарів в список";
-            this.AddGrpItemBtn.Id = 36;
-            this.AddGrpItemBtn.Name = "AddGrpItemBtn";
-            this.AddGrpItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGrpItemBtn_ItemClick);
             // 
             // WarehouseUserControl
             // 
