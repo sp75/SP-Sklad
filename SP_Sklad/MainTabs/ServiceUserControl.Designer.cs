@@ -1814,6 +1814,7 @@
             this.gridColumn28.FieldName = "LoginDate";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.OptionsColumn.ReadOnly = true;
+            this.gridColumn28.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn28.Visible = true;
             this.gridColumn28.VisibleIndex = 1;
             this.gridColumn28.Width = 130;
