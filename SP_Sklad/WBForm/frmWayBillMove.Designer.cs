@@ -943,6 +943,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmWayBillMove.IconOptions.Image")));
             this.Name = "frmWayBillMove";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

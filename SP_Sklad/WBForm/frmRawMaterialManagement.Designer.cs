@@ -497,10 +497,10 @@
             // 
             this.labelControl5.Location = new System.Drawing.Point(13, 67);
             this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(27, 16);
+            this.labelControl5.Size = new System.Drawing.Size(67, 16);
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 36;
-            this.labelControl5.Text = "Цех:";
+            this.labelControl5.Text = "Склад\\Цех:";
             // 
             // OnDateDBEdit
             // 
@@ -754,6 +754,7 @@
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmRawMaterialManagement.IconOptions.Image")));
             this.Name = "frmRawMaterialManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Проміжкове зважування";

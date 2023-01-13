@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>24, 15</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>74</value>
+  </metadata>
+  <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>673, 16</value>
+  </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 20</value>
   </metadata>
@@ -125,7 +134,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABM
-        QAAAAk1TRnQBSQFMAgEBEQEAASABBwEgAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        QAAAAk1TRnQBSQFMAgEBEQEAASgBBwEoAQcBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPP8AogAB5wHOAcYBrQFSASkBrQFSARgBrQFSASkB5wHWAc6xAAGtAVIBKQHe
         AoQB3gKEAd4ChAGtAVIBKbEAAbUBYwFCAVoBrQFKAVoBvQFjAVoBrQFKAbUBYwFCtAABCAGcAQgBYwH/
         AZQBCAGlARC3AAEIAZwBCAFjAf8BlAEIAaUBELcAAQgBIQGMARgBQgGcAQABawE5twABCAEQAbUBKQE5
@@ -406,7 +415,7 @@
     <value>249, 18</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="WhBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="WhBtn.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////va2tjFpaxrW1////////////////////////////////////////
@@ -424,7 +433,7 @@
         ////////////////////nK33OWP/UnP/////////////////////////
 </value>
   </data>
-  <data name="NowDateBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="NowDateBtn.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAWdEVYdFRpdGxlAFRpbWU7Q2xvY2s7V2F0Y2hviDio
@@ -437,7 +446,7 @@
   <metadata name="CommissionBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>535, 16</value>
   </metadata>
-  <data name="lookUpEdit3.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -455,7 +464,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="PersonComboBox.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -473,7 +482,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="lookUpEdit2.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -491,7 +500,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="lookUpEdit1.Properties.Buttons" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
         ////////////////////////////////////////////////////////////////////////////////
@@ -509,15 +518,18 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>673, 16</value>
-  </metadata>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>24, 15</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>74</value>
-  </metadata>
+  <data name="frmWBWriteOff.IconOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAF+SURBVDhPhVEhkIMwEIxEVmIrXyJrkchKLDIysrYSiYxFIpFYJDISi0Qi97MHodD+9G9mB7js
+        7i0X9V5l1eP57HbkdYGruWE7/l4UOIcTuZsdSlciNvF3E10PMKbGPL8ZuA7d0u4m8cPgXg2oWrfyoqzB
+        zY7Q/YSisGKATGEpbkDf42IiJNWK+BlBaQU7LdDDjEgPUJnpkJQOxjfzvPxIwGIvIEk0Wv/kQCYRgqRo
+        JqTZQ0jWrmgayE4I9kcfjgaVm2WoiFlJ3kgjSiyYqHfTfjiXxqvUCextx0rVdQcm4C8I+hGJblcjrT/E
+        03XF4yc9xPdLzN2CdIA8acQpJGL0+Yn0smL77mMFZwooxuY2uYNgQoRJJHNQEIZ3GjSRWlNwB3HR+Wty
+        u9FusE0Voi8x8r2TAYsG93bC1U5iRMJ/BtZ/bu2XARMQJBBBLMLDO6efDPgbYaFF5w38DZAUhJJkS0NQ
+        TM4mf9XRiAQSaRQShcl/io8lRv6GgskRL7FSv9dR8Yxnf/ZEAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>378, 16</value>
   </metadata>

@@ -452,6 +452,18 @@
     </Compile>
     <Compile Include="IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
     <Compile Include="IntermediateWeighingInterface\Views\make_det.cs" />
+    <Compile Include="RawMaterialManagementInterface\frmRawMatDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterialManagementInterface\frmRawMatDet.Designer.cs">
+      <DependentUpon>frmRawMatDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
+      <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\BanksProvidingStatements.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1971,6 +1983,12 @@
     <EmbeddedResource Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
       <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterialManagementInterface\frmRawMatDet.resx">
+      <DependentUpon>frmRawMatDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
+      <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmCashboxSettings.resx">
       <DependentUpon>frmCashboxSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -2261,6 +2279,7 @@
     <EmbeddedResource Include="WBForm\frmWBWriteOn.resx">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.EditForm.frmMatRecipe+MatRecDetList.datasource" />

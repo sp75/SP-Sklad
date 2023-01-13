@@ -113,6 +113,11 @@ namespace SP_Sklad.WBDetForm
                         }
                     }
                 }
+                else
+                {
+                    GetContent();
+                    SetAmount();
+                }
             }
 
             GetOk();
@@ -163,6 +168,7 @@ namespace SP_Sklad.WBDetForm
 
             labelControl24.Text = row.ShortName;
             labelControl27.Text = row.ShortName;
+
         }
 
         public void GetContent()

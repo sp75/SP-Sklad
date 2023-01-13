@@ -70,8 +70,6 @@ namespace SP_Sklad.WBDetForm
         private void frmWBMoveDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            var w_mat_turn = new List<WMatTurn>();
-
 
             if (_PosId == null)
             {
@@ -89,14 +87,6 @@ namespace SP_Sklad.WBDetForm
             else
             {
                 _wbd = _db.WaybillDet.Find(_PosId);
-
-           //     w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
-          //      if (w_mat_turn.Count > 0)
-          //      {
-                    //    _db.WMatTurn.RemoveRange(w_mat_turn);
-                    //     _db.SaveChanges();
-                    _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
-         //       }
             }
 
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
@@ -112,8 +102,11 @@ namespace SP_Sklad.WBDetForm
 
                 if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
                 {
-                    GetContent();
+                    var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
 
+                    _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
+
+                    GetContent();
                     GetPos();
                     foreach (var item in w_mat_turn)
                     {

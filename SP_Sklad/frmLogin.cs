@@ -21,6 +21,7 @@ using SP_Sklad.WBForm;
 using SP_Sklad.Properties;
 using System.Reflection;
 using System.IO;
+using SP_Sklad.RawMaterialManagementInterface;
 
 namespace SP_Sklad
 {
@@ -51,7 +52,7 @@ namespace SP_Sklad
                 MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
             }
 
-            InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.ToList();
+            InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.Where(w=> w.Visible == true).ToList();
 
             CheckTrial();
 
@@ -301,6 +302,14 @@ namespace SP_Sklad
                                 MessageBox.Show(_ex.Message);
                                 Application.Exit();
                             }
+                            break;
+
+                        case 4:
+                            WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                            WindowsFormsSettings.TouchScaleFactor = 2;
+                            frmMainRawMaterialManagement.main_form = new frmMainRawMaterialManagement();
+                            frmMainRawMaterialManagement.main_form.Show();
+
                             break;
 
                         default:

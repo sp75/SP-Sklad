@@ -16,5 +16,6 @@ namespace SP_Sklad.SkladData
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public Nullable<bool> Visible { get; set; }
     }
 }

@@ -424,6 +424,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Visible" Type="bit" />
         </EntityType>
         <EntityType Name="IntermediateWeighing">
           <Key>
@@ -17474,6 +17475,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Visible" Type="Boolean" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingInterface">
           <Key>
@@ -22517,6 +22519,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Interfaces">
             <EntityTypeMapping TypeName="BaseModel.Interfaces">
               <MappingFragment StoreEntitySet="Interfaces">
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

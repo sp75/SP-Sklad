@@ -305,6 +305,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
+            this.AddGrpItemBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -553,9 +554,10 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barButtonItem7});
+            this.barButtonItem7,
+            this.AddGrpItemBtn});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 36;
+            this.barManager1.MaxItemId = 37;
             // 
             // bar1
             // 
@@ -793,7 +795,8 @@
             this.bar4.FloatLocation = new System.Drawing.Point(392, 559);
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.DelItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddItem)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddGrpItemBtn)});
             this.bar4.OptionsBar.AllowQuickCustomization = false;
             this.bar4.OptionsBar.DrawDragBorder = false;
             this.bar4.OptionsBar.UseWholeRow = true;
@@ -802,7 +805,7 @@
             // 
             // DelItem
             // 
-            this.DelItem.Caption = "Видалити помічені";
+            this.DelItem.Caption = "Видалити помічені товари";
             this.DelItem.Id = 16;
             this.DelItem.ImageOptions.ImageIndex = 17;
             this.DelItem.Name = "DelItem";
@@ -810,7 +813,7 @@
             // 
             // AddItem
             // 
-            this.AddItem.Caption = "Додати";
+            this.AddItem.Caption = "Додати товар в список";
             this.AddItem.Id = 17;
             this.AddItem.ImageOptions.ImageIndex = 16;
             this.AddItem.Name = "AddItem";
@@ -3449,6 +3452,13 @@
             this.WhMatGetSource.KeyExpression = "MatId";
             this.WhMatGetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_GetQueryable);
             // 
+            // AddGrpItemBtn
+            // 
+            this.AddGrpItemBtn.Caption = "Додати групу товарів в список";
+            this.AddGrpItemBtn.Id = 36;
+            this.AddGrpItemBtn.Name = "AddGrpItemBtn";
+            this.AddGrpItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGrpItemBtn_ItemClick);
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3861,5 +3871,6 @@
         public DevExpress.XtraTab.XtraTabPage xtraTabPage12;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem AddGrpItemBtn;
     }
 }
