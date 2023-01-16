@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SP_Sklad.Common
 {
@@ -13,7 +14,7 @@ namespace SP_Sklad.Common
         {
             var _rmm = _db.RawMaterialManagement.Find(id);
 
-            if(_rmm.Checked != 0)
+            if (_rmm.Checked != 0 || !_rmm.KaId.HasValue || _rmm.RawMaterialManagementDet.Any(a => (a.Price ?? 0) == 0))
             {
                 return Guid.Empty;
             }
@@ -32,16 +33,18 @@ namespace SP_Sklad.Common
                 UpdatedBy = DBHelper.CurrentUser.UserId,
                 EntId = DBHelper.Enterprise.KaId,
                 PTypeId = 1,
-                Reason = $"Зважування напівтуш №{_rmm.Num}"
+                Reason = $"Зважування напівтуш №{_rmm.Num}",
+                KaId = _rmm.KaId
             });
 
             _db.SetDocRel(id, wb.Id);
             _db.SaveChanges();
 
             var list_det = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.PosId == null)
-                .GroupBy(g => new { g.MatId }).Select(s => new
+                .GroupBy(g => new { g.MatId, g.Price }).Select(s => new
                 {
                     s.Key.MatId,
+                    s.Key.Price,
                     Amount = s.Sum(ss => ss.Amount)
                 }).ToList();
 
@@ -54,7 +57,7 @@ namespace SP_Sklad.Common
                     MatId = item.MatId,
                     WId = _rmm.WId,
                     Amount = item.Amount.Value,
-                    Price = 0,
+                    Price = item.Price,
                     Discount = 0,
                     Nds = wb.Nds,
                     CurrId = 2,
@@ -62,8 +65,8 @@ namespace SP_Sklad.Common
                     Num = ++num,
                     Checked = 0,
                     OnValue = 1,
-                    Total = 0,
-                    BasePrice = 0,
+                    Total = item.Amount.Value * item.Price,
+                    BasePrice = item.Price,
                 });
                 _db.SaveChanges();
 
@@ -71,6 +74,13 @@ namespace SP_Sklad.Common
                 {
                     rmm_det.PosId = wbd.PosId;
                 }
+            }
+            
+            var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+            if (ex_wb.ErrorMessage != "False")
+            {
+                MessageBox.Show(ex_wb.ErrorMessage);
+                return Guid.Empty;
             }
 
             _rmm.Checked = 1;

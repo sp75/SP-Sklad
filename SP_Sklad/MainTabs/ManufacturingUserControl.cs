@@ -607,12 +607,17 @@ namespace SP_Sklad.MainTabs
 
                                 if (new_wb_in != Guid.Empty)
                                 {
-                                    using (var f = new frmWayBillIn(1))
+                                    ;
+                                   /* using (var f = new frmWayBillIn(1))
                                     {
                                         f.is_new_record = true;
                                         f.doc_id = new_wb_in;
                                         f.ShowDialog();
-                                    }
+                                    }*/
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Не можливо провести документ, одна із причин, не вказаний постачальник або ціна товара!");
                                 }
                             }
 

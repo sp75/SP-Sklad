@@ -29,7 +29,7 @@ namespace SP_Sklad.RawMaterialManagementInterface
 
         public BaseEntities _db { get; set; }
 
-   //     private v_RawMaterialManagement intermediate_weighing_focused_row => layoutView1.GetFocusedRow() is NotLoadedObject ? null : layoutView1.GetFocusedRow() as v_RawMaterialManagement;
+        private v_RawMaterialManagement rmm_focused_row => tileView1.GetFocusedRow() is NotLoadedObject ? null : tileView1.GetFocusedRow() as v_RawMaterialManagement;
 
         public frmMainRawMaterialManagement()
             :this (UserSession.UserId)
@@ -119,6 +119,21 @@ namespace SP_Sklad.RawMaterialManagementInterface
 
             e.Tag = _db;
         }
-      
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            if(rmm_focused_row == null)
+            {
+                return;
+            }
+
+            using (var frm = new frmRawMatDet(rmm_focused_row.Id))
+            {
+                frm.labelControl1.Text = rmm_focused_row.DocTypeName + " №" + rmm_focused_row.Num;
+                frm.ShowDialog();
+            }
+
+            RawMaterialManagementSource.Refresh();
+        }
     }
 }

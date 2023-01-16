@@ -31,6 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public int DocType { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public Nullable<int> KaId { get; set; }
     
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
     }

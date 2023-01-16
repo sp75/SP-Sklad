@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public int DocType { get; set; }
         public string DocTypeName { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public string KaName { get; set; }
     }
 }

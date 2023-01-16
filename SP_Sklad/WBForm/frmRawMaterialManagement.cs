@@ -54,6 +54,8 @@ namespace SP_Sklad.WBForm
             DocTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Зважування сировини" }, new { Id = -1, Name = "Переміщення на обвалку" } };
             DocTypeEdit.EditValue = 0;
 
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
+
             if (_doc_id == null)
             {
                 is_new_record = true;
@@ -75,6 +77,7 @@ namespace SP_Sklad.WBForm
             else
             {
                 rmm = _db.RawMaterialManagement.FirstOrDefault(f => f.Id == _doc_id );
+
             }
 
             if (rmm != null)
@@ -104,7 +107,7 @@ namespace SP_Sklad.WBForm
             DocTypeEdit.Enabled = RawMaterialManagementDetBS.Count == 0;
             barButtonItem2.Enabled = WhComboBox.EditValue != DBNull.Value;
 
-            OkButton.Enabled = WhComboBox.EditValue != DBNull.Value && RawMaterialManagementDetBS.Count > 0;
+            OkButton.Enabled = WhComboBox.EditValue != DBNull.Value && RawMaterialManagementDetBS.Count > 0 && !(KagentComboBox.EditValue == DBNull.Value && rmm.DocType == 1);
 
             DelMaterialBtn.Enabled = RawMaterialManagementDetBS.Count > 0;
         }
@@ -122,7 +125,7 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            WaybillDetInGridView.ShowEditForm();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -165,20 +168,15 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-         /*   var row = WaybillDetInGridView.GetFocusedRow() as v_IntermediateWeighingDet;
-            var wbd = _db.IntermediateWeighingDet.Find(row.Id);
-            if (e.Column.FieldName == "Amount")
+            if (e.Column.FieldName == "Price")
             {
+                foreach (var item in _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == rmm.Id && w.MatId == rmm_det_row.MatId))
+                {
+                    item.Price = (decimal)e.Value;
+                }
 
+                _db.SaveChanges();
             }
-
-            if (e.Column.FieldName == "Total")
-            {
-               
-            }
-
-            _db.SaveChanges();
-            ;*/
         }
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
@@ -192,10 +190,6 @@ namespace SP_Sklad.WBForm
             GetOk();
         }
 
-        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
 
         private void OnDateDBEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -314,11 +308,6 @@ namespace SP_Sklad.WBForm
             DelMaterialBtn.Enabled = rmm_det_row != null;
         }
 
-        private void AmountEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            GetOk();
-        }
-
         private void WhComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if(e.Button.Index == 1)
@@ -328,9 +317,34 @@ namespace SP_Sklad.WBForm
 
         }
 
-        private void WhComboBox_EditValueChanged_1(object sender, EventArgs e)
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            GetOk();
+            if (e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+                if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
+                {
+                    rmm.KaId = Convert.ToInt32(KagentComboBox.EditValue);
+                }
+
+                GetOk();
+            }
+        }
+
+        private void WaybillDetInGridView_EditFormHidden(object sender, DevExpress.XtraGrid.Views.Grid.EditFormHiddenEventArgs e)
+        {
+            RefreshDet();
+        }
+
+        private void DocTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if(rmm == null)
+            {
+                return;
+            }
+
+            KagentComboBox.Enabled = (int)DocTypeEdit.EditValue == 1;
+            PriceGridColumn.Visible = (int)DocTypeEdit.EditValue == 1;
         }
     }
 }

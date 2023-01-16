@@ -1147,6 +1147,7 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="KaId" Type="int" />
         </EntityType>
         <EntityType Name="RawMaterialManagementDet">
           <Key>
@@ -1160,6 +1161,7 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="PosId" Type="int" />
           <Property Name="LastAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="RawMaterialType">
           <Key>
@@ -2359,7 +2361,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -2767,6 +2769,7 @@ warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagement' does not have
           <Property Name="DocType" Type="int" Nullable="false" />
           <Property Name="DocTypeName" Type="varchar" MaxLength="22" Nullable="false" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2775,6 +2778,7 @@ warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not h
             <PropertyRef Name="Id" />
             <PropertyRef Name="RawMaterialManagementId" />
             <PropertyRef Name="MeasuresName" />
+            <PropertyRef Name="MatId" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
@@ -2784,6 +2788,8 @@ warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not h
           <Property Name="RawMaterialManagementId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="LastAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8407,7 +8413,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_RawMaterialManagement].[Checked] AS [Checked], 
     [v_RawMaterialManagement].[DocType] AS [DocType], 
     [v_RawMaterialManagement].[DocTypeName] AS [DocTypeName], 
-    [v_RawMaterialManagement].[Total] AS [Total]
+    [v_RawMaterialManagement].[Total] AS [Total], 
+    [v_RawMaterialManagement].[KaName] AS [KaName]
     FROM [dbo].[v_RawMaterialManagement] AS [v_RawMaterialManagement]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_RawMaterialManagementDet" EntityType="Self.v_RawMaterialManagementDet" store:Type="Views" store:Schema="dbo">
@@ -8419,7 +8426,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_RawMaterialManagementDet].[MatName] AS [MatName], 
     [v_RawMaterialManagementDet].[RawMaterialManagementId] AS [RawMaterialManagementId], 
     [v_RawMaterialManagementDet].[MeasuresName] AS [MeasuresName], 
-    [v_RawMaterialManagementDet].[LastAmount] AS [LastAmount]
+    [v_RawMaterialManagementDet].[LastAmount] AS [LastAmount], 
+    [v_RawMaterialManagementDet].[Price] AS [Price], 
+    [v_RawMaterialManagementDet].[MatId] AS [MatId]
     FROM [dbo].[v_RawMaterialManagementDet] AS [v_RawMaterialManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
@@ -16218,7 +16227,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -18142,6 +18151,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
           <Property Name="DocType" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="KaId" Type="Int32" />
         </EntityType>
         <EntityType Name="RawMaterialManagementDet">
           <Key>
@@ -18158,6 +18168,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="RawMaterialManagement" Relationship="BaseModel.FK_RawMaterialManagementDet_RawMaterialManagement" FromRole="RawMaterialManagementDet" ToRole="RawMaterialManagement" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="RawMaterialManagementDet" ToRole="WaybillDet" />
           <Property Name="LastAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="v_RawMaterialManagement">
           <Key>
@@ -18176,12 +18187,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocType" Type="Int32" Nullable="false" />
           <Property Name="DocTypeName" Type="String" Nullable="false" MaxLength="22" FixedLength="false" Unicode="false" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_RawMaterialManagementDet">
           <Key>
             <PropertyRef Name="Id" />
             <PropertyRef Name="RawMaterialManagementId" />
             <PropertyRef Name="MeasuresName" />
+            <PropertyRef Name="MatId" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
@@ -18191,6 +18204,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RawMaterialManagementId" Type="Guid" Nullable="false" />
           <Property Name="MeasuresName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="LastAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_RawMaterialManagementDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -23119,6 +23134,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="RawMaterialManagement">
             <EntityTypeMapping TypeName="BaseModel.RawMaterialManagement">
               <MappingFragment StoreEntitySet="RawMaterialManagement">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
@@ -23137,6 +23153,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="RawMaterialManagementDet">
             <EntityTypeMapping TypeName="BaseModel.RawMaterialManagementDet">
               <MappingFragment StoreEntitySet="RawMaterialManagementDet">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="LastAmount" ColumnName="LastAmount" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
@@ -23151,6 +23168,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_RawMaterialManagement">
             <EntityTypeMapping TypeName="BaseModel.v_RawMaterialManagement">
               <MappingFragment StoreEntitySet="v_RawMaterialManagement">
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
@@ -23167,6 +23185,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_RawMaterialManagementDet">
             <EntityTypeMapping TypeName="BaseModel.v_RawMaterialManagementDet">
               <MappingFragment StoreEntitySet="v_RawMaterialManagementDet">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="LastAmount" ColumnName="LastAmount" />
                 <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
                 <ScalarProperty Name="RawMaterialManagementId" ColumnName="RawMaterialManagementId" />

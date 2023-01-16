@@ -201,6 +201,8 @@ namespace SP_Sklad.WBDetForm
             {
                 AmountEdit.Enabled = false;
                 pos_in = db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.CurRemain > 0).AsNoTracking().OrderBy(o => o.OnDate).ToList();
+                AmountEdit.Properties.Buttons[1].Enabled = pos_in.Any();
+
                 AmountEdit.Enabled = true;
             }
         }
@@ -402,6 +404,12 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
+            if (pos_in == null || !pos_in.Any())
+            {
+                return;
+            }
+
+
             if (e.Button.Index == 1)
             {
                 using (var pos = new frmInParty(pos_in))
