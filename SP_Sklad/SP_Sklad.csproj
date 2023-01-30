@@ -1665,6 +1665,12 @@
     <Compile Include="TradeForm\frmWBSalesDetOut.Designer.cs">
       <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmWayBillDetEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmWayBillDetEdit.Designer.cs">
+      <DependentUpon>frmWayBillDetEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmWBMoveDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2167,6 +2173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmWBSalesDetOut.resx">
       <DependentUpon>frmWBSalesDetOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmWayBillDetEdit.resx">
+      <DependentUpon>frmWayBillDetEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmWBMoveDet.resx">
       <DependentUpon>frmWBMoveDet.cs</DependentUpon>

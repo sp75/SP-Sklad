@@ -21,6 +21,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Coefficient { get; set; }
         public int TurnType { get; set; }
         public decimal Deviation { get; set; }
+        public string Note { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual MatRecipe MatRecipe { get; set; }

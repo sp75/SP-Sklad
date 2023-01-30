@@ -40,6 +40,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -102,6 +103,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
@@ -156,7 +158,8 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.PrintBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -221,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -283,6 +287,14 @@
             this.barButtonItem5.ImageOptions.ImageIndex = 6;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
+            // PrintBtn
+            // 
+            this.PrintBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintBtn.Id = 7;
+            this.PrintBtn.ImageOptions.ImageIndex = 9;
+            this.PrintBtn.Name = "PrintBtn";
+            this.PrintBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintBtn_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -881,7 +893,8 @@
             this.gridColumn4,
             this.gridColumn1,
             this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn15});
             this.MatRecDetGridView.GridControl = this.MatRecDetGridControl;
             this.MatRecDetGridView.GroupCount = 1;
             this.MatRecDetGridView.Name = "MatRecDetGridView";
@@ -908,7 +921,7 @@
             this.gridColumn3.FieldName = "Amount";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
+            this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 61;
             // 
             // gridColumn4
@@ -918,7 +931,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 66;
             // 
             // gridColumn1
@@ -928,7 +941,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
+            this.gridColumn1.VisibleIndex = 4;
             this.gridColumn1.Width = 82;
             // 
             // gridColumn9
@@ -937,7 +950,7 @@
             this.gridColumn9.FieldName = "Deviation";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 4;
+            this.gridColumn9.VisibleIndex = 5;
             this.gridColumn9.Width = 57;
             // 
             // gridColumn10
@@ -948,6 +961,14 @@
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
             this.gridColumn10.Width = 106;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Примітка";
+            this.gridColumn15.FieldName = "Note";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 1;
             // 
             // xtraTabPage14
             // 
@@ -1008,6 +1029,8 @@
             this.panelControl7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl7.Controls.Add(this.memoEdit1);
+            this.panelControl7.Controls.Add(this.labelControl21);
             this.panelControl7.Controls.Add(this.labelControl18);
             this.panelControl7.Controls.Add(this.calcEdit9);
             this.panelControl7.Controls.Add(this.labelControl19);
@@ -1534,13 +1557,25 @@
             this.simpleButton8.Text = "Видалити";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
-            // PrintBtn
+            // labelControl21
             // 
-            this.PrintBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintBtn.Id = 7;
-            this.PrintBtn.ImageOptions.ImageIndex = 9;
-            this.PrintBtn.Name = "PrintBtn";
-            this.PrintBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintBtn_ItemClick);
+            this.labelControl21.Location = new System.Drawing.Point(23, 173);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(57, 16);
+            this.labelControl21.StyleController = this.styleController1;
+            this.labelControl21.TabIndex = 66;
+            this.labelControl21.Text = "Примітка:";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Note", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Notes", true));
+            this.memoEdit1.Location = new System.Drawing.Point(99, 173);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(432, 61);
+            this.memoEdit1.TabIndex = 67;
             // 
             // frmMatRecipe
             // 
@@ -1630,6 +1665,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1759,5 +1795,8 @@
         private DevExpress.XtraEditors.CalcEdit calcEdit10;
         private DevExpress.XtraEditors.CheckEdit checkEdit2;
         private DevExpress.XtraBars.BarButtonItem PrintBtn;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
     }
 }

@@ -791,6 +791,7 @@
           <Property Name="Coefficient" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TurnType" Type="int" Nullable="false" />
           <Property Name="Deviation" Type="numeric" Precision="15" Scale="6" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="MatRecipe">
           <Key>
@@ -2177,6 +2178,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingDet' does not ha
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="VizokName" Type="nvarchar" MaxLength="255" />
           <Property Name="VizokWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MatRecDetNote" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingInterface' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4114,6 +4116,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="MaterialMeasures">
               <PropertyRef Name="MId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_RawMaterialType">
+          <End Role="RawMaterialType" Type="Self.RawMaterialType" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RawMaterialType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="RawMaterialTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7027,11 +7041,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -7983,7 +7997,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_IntermediateWeighingDet].[TaraAmount] AS [TaraAmount], 
     [v_IntermediateWeighingDet].[Total] AS [Total], 
     [v_IntermediateWeighingDet].[VizokName] AS [VizokName], 
-    [v_IntermediateWeighingDet].[VizokWeight] AS [VizokWeight]
+    [v_IntermediateWeighingDet].[VizokWeight] AS [VizokWeight], 
+    [v_IntermediateWeighingDet].[MatRecDetNote] AS [MatRecDetNote]
     FROM [dbo].[v_IntermediateWeighingDet] AS [v_IntermediateWeighingDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_IntermediateWeighingInterface" EntityType="Self.v_IntermediateWeighingInterface" store:Type="Views" store:Schema="dbo">
@@ -8946,6 +8961,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_MaterialMeasures_Measures" Association="Self.FK_MaterialMeasures_Measures">
             <End Role="Measures" EntitySet="Measures" />
             <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materials_RawMaterialType" Association="Self.FK_Materials_RawMaterialType">
+            <End Role="RawMaterialType" EntitySet="RawMaterialType" />
+            <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="Self.FK_MATPRICES_PPTYPEID">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
@@ -10955,6 +10974,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillDet" EntitySet="WaybillDet" />
             <End Role="RawMaterialManagementDet" EntitySet="RawMaterialManagementDet" />
           </AssociationSet>
+          <AssociationSet Name="FK_Materials_RawMaterialType" Association="BaseModel.FK_Materials_RawMaterialType">
+            <End Role="RawMaterialType" EntitySet="RawMaterialType" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11985,6 +12008,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_Materials" FromRole="Materials" ToRole="RawMaterialManagementDet" />
           <NavigationProperty Name="MatBarCode" Relationship="BaseModel.FK_MatBarCode_Materials" FromRole="Materials" ToRole="MatBarCode" />
           <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="RawMaterialType" Relationship="BaseModel.FK_Materials_RawMaterialType" FromRole="Materials" ToRole="RawMaterialType" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -12247,6 +12271,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecDet" ToRole="MatRecipe" />
           <Property Name="TurnType" Type="Int32" Nullable="false" />
           <Property Name="Deviation" Type="Decimal" Nullable="false" Precision="15" Scale="6" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_MatRecDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -13400,7 +13425,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WbillId" />
           </Key>
           <Property Type="Int32" Name="WbillId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="KaId" />
           <Property Type="Int32" Name="CurrId" />
@@ -17394,6 +17419,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="VizokName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="VizokWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MatRecDetNote" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_WaybillDet">
           <Key>
@@ -18133,6 +18159,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_Materials_RawMaterialType" FromRole="RawMaterialType" ToRole="Materials" />
         </EntityType>
         <EntityType Name="RawMaterialManagement">
           <Key>
@@ -18265,6 +18292,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="RawMaterialManagementDet">
               <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_RawMaterialType">
+          <End Type="BaseModel.RawMaterialType" Role="RawMaterialType" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RawMaterialType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="RawMaterialTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -19207,6 +19246,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MatRecDet">
             <EntityTypeMapping TypeName="BaseModel.MatRecDet">
               <MappingFragment StoreEntitySet="MatRecDet">
+                <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="Deviation" ColumnName="Deviation" />
                 <ScalarProperty Name="TurnType" ColumnName="TurnType" />
                 <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
@@ -22445,6 +22485,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_IntermediateWeighingDet">
             <EntityTypeMapping TypeName="BaseModel.v_IntermediateWeighingDet">
               <MappingFragment StoreEntitySet="v_IntermediateWeighingDet">
+                <ScalarProperty Name="MatRecDetNote" ColumnName="MatRecDetNote" />
                 <ScalarProperty Name="VizokWeight" ColumnName="VizokWeight" />
                 <ScalarProperty Name="VizokName" ColumnName="VizokName" />
                 <ScalarProperty Name="Total" ColumnName="Total" />

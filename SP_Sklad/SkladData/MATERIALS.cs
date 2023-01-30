@@ -98,5 +98,6 @@ namespace SP_Sklad.SkladData
         public virtual MatGroup MatGroup { get; set; }
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
         public virtual ICollection<MatBarCode> MatBarCode { get; set; }
+        public virtual RawMaterialType RawMaterialType { get; set; }
     }
 }

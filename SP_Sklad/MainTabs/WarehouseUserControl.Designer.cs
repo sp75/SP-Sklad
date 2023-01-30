@@ -95,6 +95,13 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.WBDetPropBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -249,8 +256,8 @@
             this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.WaybillDetGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -306,6 +313,7 @@
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
+            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -402,8 +410,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
@@ -427,6 +435,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // GridImageList
@@ -555,9 +564,16 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem7,
-            this.AddGrpItemBtn});
+            this.AddGrpItemBtn,
+            this.WBDetPropBtn,
+            this.barButtonItem11,
+            this.barButtonItem12,
+            this.barButtonItem13,
+            this.barButtonItem14,
+            this.barButtonItem15,
+            this.barButtonItem16});
             this.barManager1.MainMenu = this.bar3;
-            this.barManager1.MaxItemId = 37;
+            this.barManager1.MaxItemId = 44;
             // 
             // bar1
             // 
@@ -1056,6 +1072,62 @@
             this.barButtonItem7.Id = 35;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
+            // 
+            // WBDetPropBtn
+            // 
+            this.WBDetPropBtn.Caption = "Властивості позиції";
+            this.WBDetPropBtn.Id = 37;
+            this.WBDetPropBtn.ImageOptions.ImageIndex = 2;
+            this.WBDetPropBtn.Name = "WBDetPropBtn";
+            this.WBDetPropBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WBDetPropBtn_ItemClick);
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Інформація про товар";
+            this.barButtonItem11.Id = 38;
+            this.barButtonItem11.ImageOptions.ImageIndex = 10;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Інформація про рух товару";
+            this.barButtonItem12.Id = 39;
+            this.barButtonItem12.ImageOptions.ImageIndex = 11;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
+            // barButtonItem13
+            // 
+            this.barButtonItem13.Caption = "Інформація про резерв товару";
+            this.barButtonItem13.Id = 40;
+            this.barButtonItem13.ImageOptions.ImageIndex = 12;
+            this.barButtonItem13.Name = "barButtonItem13";
+            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Інформація про виробництво товару";
+            this.barButtonItem14.Id = 41;
+            this.barButtonItem14.ImageOptions.ImageIndex = 21;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
+            // barButtonItem15
+            // 
+            this.barButtonItem15.Caption = "Знайти на складі...";
+            this.barButtonItem15.Id = 42;
+            this.barButtonItem15.ImageOptions.ImageIndex = 7;
+            this.barButtonItem15.Name = "barButtonItem15";
+            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
+            // 
+            // barButtonItem16
+            // 
+            this.barButtonItem16.Caption = "Знайти в довіднику товарів...";
+            this.barButtonItem16.Id = 43;
+            this.barButtonItem16.ImageOptions.ImageIndex = 8;
+            this.barButtonItem16.Name = "barButtonItem16";
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
             // panelControl1
             // 
@@ -2841,38 +2913,39 @@
             // 
             // xtraTabPage15
             // 
-            this.xtraTabPage15.Controls.Add(this.gridControl2);
+            this.xtraTabPage15.Controls.Add(this.WaybillDetGridControl);
             this.xtraTabPage15.ImageOptions.ImageIndex = 0;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1212, 222);
             this.xtraTabPage15.Text = "Позиції";
             // 
-            // gridControl2
+            // WaybillDetGridControl
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(0, 0);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WaybillDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WaybillDetGridControl.Location = new System.Drawing.Point(0, 0);
+            this.WaybillDetGridControl.MainView = this.WaybillDetGridView;
+            this.WaybillDetGridControl.Name = "WaybillDetGridControl";
+            this.WaybillDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit2});
-            this.gridControl2.Size = new System.Drawing.Size(1212, 222);
-            this.gridControl2.TabIndex = 0;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.WaybillDetGridControl.Size = new System.Drawing.Size(1212, 222);
+            this.WaybillDetGridControl.TabIndex = 0;
+            this.WaybillDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WaybillDetGridView});
             // 
-            // gridView2
+            // WaybillDetGridView
             // 
-            this.gridView2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.WaybillDetGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.WaybillDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn50});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetGridView.GridControl = this.WaybillDetGridControl;
+            this.WaybillDetGridView.Name = "WaybillDetGridView";
+            this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView2_PopupMenuShowing);
             // 
             // gridColumn9
             // 
@@ -3461,6 +3534,19 @@
             this.WhMatGetSource.KeyExpression = "MatId";
             this.WhMatGetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_GetQueryable);
             // 
+            // WbDetPopupMenu
+            // 
+            this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WBDetPropBtn, true)});
+            this.WbDetPopupMenu.Manager = this.barManager1;
+            this.WbDetPopupMenu.Name = "WbDetPopupMenu";
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3577,8 +3663,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
@@ -3603,6 +3689,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3648,8 +3735,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl WaybillDetGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
@@ -3874,5 +3961,13 @@
         public DevExpress.XtraTab.XtraTabPage xtraTabPage13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem AddGrpItemBtn;
+        private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem WBDetPropBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
     }
 }

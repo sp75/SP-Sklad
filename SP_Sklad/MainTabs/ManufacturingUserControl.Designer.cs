@@ -73,6 +73,7 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DocsTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -144,8 +145,8 @@
             this.gridColumn80 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn81 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.WayBillMakeDetGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WayBillMakeDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -547,6 +548,7 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -594,8 +596,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AttributeGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttributeGridView)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeDetGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
@@ -815,6 +817,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -956,8 +959,9 @@
             this.AddIntermediateWeighing,
             this.EditIntermediateWeighing,
             this.DelIntermediateWeighing,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 23;
+            this.barButtonItem8,
+            this.barButtonItem9});
+            this.barManager1.MaxItemId = 24;
             // 
             // bar1
             // 
@@ -1332,6 +1336,14 @@
             this.barButtonItem2.ImageOptions.ImageIndex = 6;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Властивості позиції";
+            this.barButtonItem9.Id = 23;
+            this.barButtonItem9.ImageOptions.ImageIndex = 2;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
             // panelControl1
             // 
@@ -2225,30 +2237,30 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.gridControl2);
+            this.xtraTabPage1.Controls.Add(this.WayBillMakeDetGridControl);
             this.xtraTabPage1.ImageOptions.ImageIndex = 0;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1047, 216);
             this.xtraTabPage1.Text = "Використана сировина";
             // 
-            // gridControl2
+            // WayBillMakeDetGridControl
             // 
-            this.gridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl2.Location = new System.Drawing.Point(0, 0);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WayBillMakeDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WayBillMakeDetGridControl.Location = new System.Drawing.Point(0, 0);
+            this.WayBillMakeDetGridControl.MainView = this.WayBillMakeDetGridView;
+            this.WayBillMakeDetGridControl.Name = "WayBillMakeDetGridControl";
+            this.WayBillMakeDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox17,
             this.repositoryItemCheckEdit3,
             this.repositoryItemImageComboBox18});
-            this.gridControl2.Size = new System.Drawing.Size(1047, 216);
-            this.gridControl2.TabIndex = 1;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
+            this.WayBillMakeDetGridControl.Size = new System.Drawing.Size(1047, 216);
+            this.WayBillMakeDetGridControl.TabIndex = 1;
+            this.WayBillMakeDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WayBillMakeDetGridView});
             // 
-            // gridView2
+            // WayBillMakeDetGridView
             // 
-            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.WayBillMakeDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
             this.gridColumn10,
             this.gridColumn11,
@@ -2260,15 +2272,16 @@
             this.gridColumn134,
             this.gridColumn135,
             this.gridColumn199});
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.GroupCount = 1;
-            this.gridView2.Images = this.GridImageList;
-            this.gridView2.Name = "gridView2";
-            this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsBehavior.ReadOnly = true;
-            this.gridView2.OptionsView.ShowGroupPanel = false;
-            this.gridView2.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            this.WayBillMakeDetGridView.GridControl = this.WayBillMakeDetGridControl;
+            this.WayBillMakeDetGridView.GroupCount = 1;
+            this.WayBillMakeDetGridView.Images = this.GridImageList;
+            this.WayBillMakeDetGridView.Name = "WayBillMakeDetGridView";
+            this.WayBillMakeDetGridView.OptionsBehavior.Editable = false;
+            this.WayBillMakeDetGridView.OptionsBehavior.ReadOnly = true;
+            this.WayBillMakeDetGridView.OptionsView.ShowGroupPanel = false;
+            this.WayBillMakeDetGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn75, DevExpress.Data.ColumnSortOrder.Ascending)});
+            this.WayBillMakeDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WayBillMakeDetGridView_PopupMenuShowing);
             // 
             // gridColumn9
             // 
@@ -2646,6 +2659,7 @@
             this.ManufacturedPosGridView.OptionsBehavior.ReadOnly = true;
             this.ManufacturedPosGridView.OptionsView.ShowFooter = true;
             this.ManufacturedPosGridView.OptionsView.ShowGroupPanel = false;
+            this.ManufacturedPosGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WayBillMakeDetGridView_PopupMenuShowing);
             // 
             // gridColumn66
             // 
@@ -6897,6 +6911,13 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
+            // WbDetPopupMenu
+            // 
+            this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            this.WbDetPopupMenu.Manager = this.barManager1;
+            this.WbDetPopupMenu.Name = "WbDetPopupMenu";
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6966,8 +6987,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AttributeGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttributeGridView)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeDetGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WayBillMakeDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
@@ -7195,6 +7216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7282,8 +7304,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
-        private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.GridControl WayBillMakeDetGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView WayBillMakeDetGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
@@ -7718,5 +7740,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn234;
+        private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }

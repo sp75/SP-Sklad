@@ -1115,7 +1115,7 @@ namespace SP_Sklad.MainTabs
             if (focused_row == null)
             {
                 TechProcDetBS.DataSource = null;
-                gridControl2.DataSource = null;
+                WayBillMakeDetGridControl.DataSource = null;
                 gridControl3.DataSource = null;
                 ManufacturedPosGridControl.DataSource = null;
                 IntermediateWeighingByWBBS.DataSource = null;
@@ -1135,8 +1135,8 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        gridControl2.DataSource = db.GetWayBillMakeDet(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
-                        gridView2.ExpandAllGroups();
+                        WayBillMakeDetGridControl.DataSource = db.GetWayBillMakeDet(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
+                        WayBillMakeDetGridView.ExpandAllGroups();
                         break;
 
                     case 3:
@@ -1624,6 +1624,37 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
             if (RawMaterialManagementStartDate.ContainsFocus || RawMaterialManagementEndDate.ContainsFocus || RawMaterialManagementStatus.ContainsFocus)
             {
                 RefrechItemBtn.PerformClick();
+            }
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int pos_id=0;
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 2:
+                    var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+                    pos_id = row.PosId;
+                    break;
+
+                case 4:
+                    var row2 = ManufacturedPosGridView.GetFocusedRow() as GetManufacturedPos_Result;
+                    pos_id = row2.PosId;
+                    break;
+            }
+
+            var can_modify = (focused_tree_node.CanModify == 1 && focused_tree_node.CanPost == 1);
+            IHelper.ShowWayBillDetInfo(pos_id, can_modify);
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void WayBillMakeDetGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                WbDetPopupMenu.ShowPopup(p2);
             }
         }
     }

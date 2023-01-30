@@ -73,12 +73,19 @@ namespace SP_Sklad.EditForm
 
         private void DriversLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if(DriversLookUpEdit.ContainsFocus)
+            if (DriversLookUpEdit.ContainsFocus)
             {
-                var row = DriversLookUpEdit.GetSelectedDataRow() as Kontragent;
-                var car = _db.Cars.FirstOrDefault(w => w.DriverId == row.KaId);
+                if (DriversLookUpEdit.EditValue != null)
+                {
+                    var row = DriversLookUpEdit.GetSelectedDataRow() as Kontragent;
+                    var car = _db.Cars.FirstOrDefault(w => w.DriverId == row.KaId);
 
-                r.CarId = car != null ? (Guid?)car.Id : null;
+                    r.CarId = car != null ? (Guid?)car.Id : null;
+                }
+                else
+                {
+                    r.CarId = null;
+                }
             }
         }
     }

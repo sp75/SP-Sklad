@@ -14,7 +14,14 @@ namespace SP_Sklad.SkladData
     
     public partial class RawMaterialType
     {
+        public RawMaterialType()
+        {
+            this.Materials = new HashSet<Materials>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
+    
+        public virtual ICollection<Materials> Materials { get; set; }
     }
 }

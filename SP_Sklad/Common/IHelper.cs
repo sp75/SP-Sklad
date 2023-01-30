@@ -22,6 +22,7 @@ using SP_Sklad.EditForm;
 using SP_Sklad.Properties;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
+using SP_Sklad.WBDetForm;
 using SpreadsheetReportBuilder;
 
 namespace SP_Sklad.Common
@@ -724,6 +725,15 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public void ShowWayBillDetInfo(int PosId, bool can_modify)
+        {
+            using (var frm = new frmWayBillDetEdit(PosId))
+            {
+                frm.OkButton.Visible = can_modify;
+                frm.ShowDialog();
+            }
+        }
+
         static public void ShowOrdered(int ka_id, int w_type, int mat_id)
         {
             using (var f = new frmOrderedList(ka_id, w_type, mat_id))
@@ -747,13 +757,17 @@ namespace SP_Sklad.Common
 
         static public bool FindMatInDir(int? mat_id)
         {
-            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 5;
+            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 6;
 
             var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
             mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);
 
             var rowHandle = mainForm.main_form.DirUserControl.MatGridView.LocateByValue("MatId", mat_id);
-            mainForm.main_form.DirUserControl.MatGridView.FocusedRowHandle = rowHandle;
+            //  mainForm.main_form.DirUserControl.MatGridView.FocusedRowHandle = rowHandle;
+            mainForm.main_form.DirUserControl.MatGridView.ClearFindFilter();
+
+         //   mainForm.main_form.DirUserControl.MatGridView.fin FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{mat_id}'");
+
 
             return rowHandle != GridControl.InvalidRowHandle;
         }

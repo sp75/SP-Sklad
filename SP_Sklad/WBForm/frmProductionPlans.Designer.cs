@@ -222,6 +222,7 @@
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageOptions.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
             // MatInfoBtn
             // 

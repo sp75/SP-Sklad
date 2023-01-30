@@ -21,6 +21,7 @@ using DevExpress.XtraCharts.Designer;
 using DevExpress.Data;
 using System.Data.Entity;
 using SkladEngine.DBFunction;
+using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -45,6 +46,11 @@ namespace SP_Sklad.MainTabs
         public GetWayBillListWh_Result focused_wb
         {
             get { return WbGridView.GetFocusedRow() as GetWayBillListWh_Result; }
+        }
+
+        public GetWaybillDetIn_Result wb_det_focused_row
+        {
+            get { return WaybillDetGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
         }
 
         public DiscCards disc_card { get; set; }
@@ -966,13 +972,13 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl2.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
+                    WaybillDetGridControl.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
                     gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
                 }
             }
             else
             {
-                gridControl2.DataSource = null;
+                WaybillDetGridControl.DataSource = null;
                 gridControl3.DataSource = null;
             }
 
@@ -1237,6 +1243,60 @@ namespace SP_Sklad.MainTabs
                 var amount = wb.WType != 7 ? 1 : item.CurRemain.Value;
 
                 AddMatToCustomList(amount, item);
+            }
+        }
+
+        private void gridView2_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void WBDetPropBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var  can_modify = (focused_tree_node.CanModify == 1 && focused_tree_node.CanPost == 1);
+
+            IHelper.ShowWayBillDetInfo(wb_det_focused_row.PosId.Value, can_modify);
+
+            RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(wb_det_focused_row.MatId);
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(wb_det_focused_row.MatId);
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(wb_det_focused_row.MatId, DB.SkladBase());
+        }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
+        }
+
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!IHelper.FindMatInWH(wb_det_focused_row.MatId))
+            {
+                MessageBox.Show(string.Format("На даний час товар <{0}> на складі вдсутній!", wb_det_focused_row.MatName));
+            }
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!IHelper.FindMatInDir(wb_det_focused_row.MatId))
+            {
+                MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", wb_det_focused_row.MatName));
             }
         }
     }

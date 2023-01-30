@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Total { get; set; }
         public string VizokName { get; set; }
         public Nullable<decimal> VizokWeight { get; set; }
+        public string MatRecDetNote { get; set; }
     }
 }

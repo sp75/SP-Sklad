@@ -631,12 +631,14 @@ namespace SP_Sklad.Reports
                 {
                     g.MatId,
                     g.Materials.Name,
-                    g.Materials.Measures.ShortName
+                    g.Materials.Measures.ShortName,
+                    RawMatTypeName = g.Materials.RawMaterialType.Name
                 }).Select(s => new
                 {
                     s.Key.MatId,
                     MatName = s.Key.Name,
                     MsrName = s.Key.ShortName,
+                    RawMatTypeName = s.Key.RawMatTypeName,
                     TotalAmount = s.Sum(su => su.Amount)
                 }).ToList().Select((s, index) => new
                 {
@@ -644,19 +646,36 @@ namespace SP_Sklad.Reports
                     s.MatId,
                     s.MatName,
                     s.MsrName,
+                    RawMatTypeName = s.RawMatTypeName ?? "Не визначено",
                     s.TotalAmount
                 }).ToList();
+
+            var raw_mat_grp = item.Select(s => new { s.RawMatTypeName }).Distinct().ToList();
 
             dataForReport.Add("WayBillList", wb);
             dataForReport.Add("WayBillItems", wb_items);
             dataForReport.Add("WayBillItems2", item);
+            dataForReport.Add("RawMatGrp", raw_mat_grp);
+            
             dataForReport.Add("SummaryField", wb_items.GroupBy(g => new { g.MsrName }).Select(s => new
             {
                 s.Key.MsrName,
                 Total = s.Sum(a => a.Total),
             }).ToList());
 
-            IHelper.Print2(dataForReport, template_name);
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "RawMatTypeName",
+                fk = "RawMatTypeName",
+                master_table = "RawMatGrp",
+                child_table = "WayBillItems2"
+            });
+
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, template_name);
         }
 
         public static void RecipeReport(int id, BaseEntities db, string template_name)

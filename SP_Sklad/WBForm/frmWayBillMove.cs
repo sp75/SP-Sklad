@@ -271,7 +271,11 @@ namespace SP_Sklad.WBForm
 
             if (r.Value != null)
             {
+                var focused_wbd = _db.WaybillDet.Find(focused_dr.PosId);
                 focused_dr.Rsv = (int)r.Value;
+                focused_dr.Price = focused_wbd.Price;
+                focused_dr.Total = focused_wbd.Total;
+
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
 

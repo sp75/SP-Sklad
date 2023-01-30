@@ -102,6 +102,7 @@ namespace SP_Sklad.EditForm
             public decimal? Coefficient { get; set; }
             public decimal Deviation { get; set; }
             public string MatGroupName { get; set; }
+            public string Note { get; set; }
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -135,7 +136,8 @@ namespace SP_Sklad.EditForm
                     Amount = s.Amount,
                     Coefficient = s.Coefficient,
                     Deviation = s.Deviation,
-                    MatGroupName = s.Materials.MatGroup.Name
+                    MatGroupName = s.Materials.MatGroup.Name,
+                    Note = s.Note
                 }).ToList();
                 MatRecDetGridView.ExpandAllGroups();
             }
