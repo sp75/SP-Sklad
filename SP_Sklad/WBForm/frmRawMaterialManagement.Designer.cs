@@ -820,7 +820,7 @@
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmRawMaterialManagement.IconOptions.Image")));
             this.Name = "frmRawMaterialManagement";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Проміжкове зважування";
+            this.Text = "Зважування напівтуш";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmIntermediateWeighing_FormClosed);
             this.Load += new System.EventHandler(this.frmIntermediateWeighing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();

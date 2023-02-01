@@ -80,6 +80,7 @@ namespace SP_Sklad
             whUserControl.SaveGridLayouts();
             manufacturingUserControl1.SaveGridLayouts();
             tradeUserControl1.SaveGridLayouts();
+            financesUserControl1.SaveGridLayouts();
 
             using (var db = new BaseEntities())
             {

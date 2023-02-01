@@ -37,6 +37,8 @@ namespace SP_Sklad.MainTabs
 
         private void FinancesUserControl_Load(object sender, EventArgs e)
         {
+            MoneyMoveGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
+
             if (!DesignMode)
             {
                 using (var _db = new BaseEntities())
@@ -70,6 +72,11 @@ namespace SP_Sklad.MainTabs
                 }
             }
             
+        }
+
+        public void SaveGridLayouts()
+        {
+            MoneyMoveGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
         }
 
         private void FinancesTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -375,6 +382,11 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(MoneyMoveGridControl);
         }
     }
 }

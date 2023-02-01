@@ -241,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ComPortHelper.cs" />
+    <Compile Include="Common\CustomSyntaxHighlightService.cs" />
     <Compile Include="Common\DocEdit.cs" />
     <Compile Include="Common\EAN13.cs" />
     <Compile Include="Common\EFAuditingHelperMethods.cs" />
@@ -2288,7 +2289,6 @@
     <EmbeddedResource Include="WBForm\frmWBWriteOn.resx">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SkladEngine.ModelViews.GetPosOutView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.EditForm.frmMatRecipe+MatRecDetList.datasource" />

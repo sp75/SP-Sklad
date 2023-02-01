@@ -52,7 +52,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             WhComboBox.Properties.DataSource = DBHelper.WhList;
             DocTypeEdit.Properties.DataSource = new List<object>() { new { Id = 1, Name = "Зважування сировини" }, new { Id = -1, Name = "Переміщення на обвалку" } };
-            DocTypeEdit.EditValue = 0;
+           // DocTypeEdit.EditValue = 1;
 
             KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
 
@@ -77,7 +77,6 @@ namespace SP_Sklad.WBForm
             else
             {
                 rmm = _db.RawMaterialManagement.FirstOrDefault(f => f.Id == _doc_id );
-
             }
 
             if (rmm != null)
@@ -338,7 +337,7 @@ namespace SP_Sklad.WBForm
 
         private void DocTypeEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if(rmm == null)
+            if(rmm == null || DocTypeEdit.EditValue == DBNull.Value)
             {
                 return;
             }
