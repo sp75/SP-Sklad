@@ -568,7 +568,8 @@
             this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar4.FloatLocation = new System.Drawing.Point(273, 190);
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn)});
             this.bar4.OptionsBar.AllowQuickCustomization = false;
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl23;
@@ -2708,7 +2709,7 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "txt files (*.txt)|*.txt|SQL files (*.sql)|*.sql";
+            this.openFileDialog1.Filter = "txt files (*.txt)|*.txt|sql files (*.sql)|*.sql";
             // 
             // saveFileDialog1
             // 
