@@ -135,6 +135,7 @@ namespace SP_Sklad.MainTabs
                 PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
+                repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
             }
 
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -1560,6 +1561,23 @@ namespace SP_Sklad.MainTabs
                     wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
                     break;
             }
+        }
+
+        private void repositoryItemLookUpEdit5_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!EditItemBtn.Enabled)
+            {
+                return;
+            }
+
+            var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+
+            wb.EntId = EntId;
+            _db.SaveChanges();
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

@@ -89,26 +89,23 @@ namespace SP_Sklad.WBDetForm
                 WHComboBox.DataBindings.Add(new Binding("EditValue", _wbd, "WId", true, DataSourceUpdateMode.OnPropertyChanged));
                 AmountEdit.DataBindings.Add(new Binding("EditValue", _wbd, "Amount"));
 
-                if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
+                var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
+                if (w_mat_turn.Count > 0)
                 {
-                    var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
-                    if (w_mat_turn.Count > 0)
+                    _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
+
+                    GetContent();
+
+                    foreach (var item in w_mat_turn)
                     {
-                        _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
-
-                        GetContent();
-
-                        foreach (var item in w_mat_turn)
+                        var pos = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
+                        if (pos != null)
                         {
-                            var pos = pos_in.FirstOrDefault(a => a.PosId == item.PosId);
-                            if (pos != null)
-                            {
-                                pos.Amount = item.Amount;
+                            pos.Amount = item.Amount;
 
-                                if (item.Amount == pos.FullRemain)
-                                {
-                                    pos.GetAll = 1;
-                                }
+                            if (item.Amount == pos.FullRemain)
+                            {
+                                pos.GetAll = 1;
                             }
                         }
                     }
