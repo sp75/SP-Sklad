@@ -13,6 +13,8 @@ using SP_Sklad.Reports;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
 using System.Drawing;
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
@@ -129,6 +131,8 @@ namespace SP_Sklad.WBForm
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInBS.Count > 0);
 
             AddMaterialBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
+            TMCBtnItem.Enabled = KagentComboBox.EditValue != DBNull.Value;
+
 
             EditMaterialBtn.Enabled = WaybillDetInBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
@@ -302,41 +306,6 @@ namespace SP_Sklad.WBForm
             if (IHelper.isRowDublClick(sender)) EditMaterialBtn.PerformClick();
         }
 
-        private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13 && AddMaterialBtn.Enabled && !String.IsNullOrEmpty(BarCodeEdit.Text))
-            {
-                var BarCodeText = BarCodeEdit.Text.Split('+');
-                string kod = BarCodeText[0];
-                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
-
-                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -1))
-                {
-                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
-                        if (mat_row != null)
-                        {
-                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
-                            {
-                                pos_out_list = frm.pos_out_list,
-                                outPosId = mat_row.PosId
-                            })
-                            {
-
-                                if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                                {
-                                    RefreshDet();
-                                }
-                            }
-                        }
-                    }
-                }
-   
-                BarCodeEdit.Text = "";
-            }
-        }
-
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _db.SaveChanges();
@@ -425,5 +394,47 @@ namespace SP_Sklad.WBForm
 
             }
         }
+
+        private void BarCodeEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            var textEdit = sender as TextEdit;
+
+            if (e.KeyCode == Keys.Enter && AddMaterialBtn.Enabled && !string.IsNullOrEmpty(textEdit.Text))
+            {
+                var BarCodeText = textEdit.Text.Split('+');
+                string kod = BarCodeText[0];
+                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+
+                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -1))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+                        if (mat_row != null)
+                        {
+                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
+                            {
+                                pos_out_list = frm.pos_out_list,
+                                outPosId = mat_row.PosId
+                            })
+                            {
+                                if (df.ShowDialog() == DialogResult.OK)
+                                {
+                                    RefreshDet();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                barEditItem1.EditValue = "";
+
+                e.Handled = true;
+            //    (barEditItem1.Links[0] as BarEditItemLink).PostEditor();
+
+                barEditItem1.Links[0].Focus();
+            }
+        }
+
     }
 }
