@@ -121,7 +121,6 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
@@ -847,8 +846,7 @@
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn8,
-            this.gridColumn9,
-            this.gridColumn7});
+            this.gridColumn9});
             this.WBDetReInGridView.GridControl = this.WBDetReInGridControl;
             this.WBDetReInGridView.Images = this.WBImgList;
             this.WBDetReInGridView.Name = "WBDetReInGridView";
@@ -964,14 +962,6 @@
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 5;
             this.gridColumn9.Width = 205;
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "gridColumn7";
-            this.gridColumn7.FieldName = "PosType";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
             // 
             // repositoryItemImageComboBox2
             // 
@@ -1135,7 +1125,6 @@
         private MainTabs.PayDocUserControl payDocUserControl4;
         private MainTabs.PayDocUserControl payDocUserControl3;
         private MainTabs.PayDocUserControl payDocUserControl2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit BarCodeEdit;
     }

@@ -634,9 +634,9 @@ namespace SP_Sklad.MainTabs
                 {
                     case 1:
                         int KaId = focused_kagent.KaId;
-                        decimal Saldo = focused_kagent.Saldo;
+                        decimal? Saldo = focused_kagent.Saldo;
 
-                        if (Saldo != 0)
+                        if ((Saldo ?? 0) != 0)
                         {
                             MessageBox.Show("Не можливо видяляти, є залишок по контрагенту");
                             break;
