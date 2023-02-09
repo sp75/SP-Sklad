@@ -105,6 +105,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(24, 13);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
@@ -156,7 +157,7 @@
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MeasuresDS, "Def", true));
             this.DefCheckBox.Location = new System.Drawing.Point(24, 207);
             this.DefCheckBox.Name = "DefCheckBox";
-            this.DefCheckBox.Properties.Caption = "Основний склад (використовувати за змовчуванням)";
+            this.DefCheckBox.Properties.Caption = "Використовувати за змовчуванням";
             this.DefCheckBox.Properties.ValueChecked = 1;
             this.DefCheckBox.Properties.ValueUnchecked = 0;
             this.DefCheckBox.Size = new System.Drawing.Size(382, 20);

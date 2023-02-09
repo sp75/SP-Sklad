@@ -118,7 +118,6 @@ namespace SP_Sklad.MainTabs
                     set_tree_node = null;
                 }
 
-
                 DocsTreeList.ExpandAll();
 
                 WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
@@ -274,6 +273,16 @@ namespace SP_Sklad.MainTabs
                         }
 
                     }
+
+                    if (cur_wtype == 29)  //Акти наданих послуг
+                    {
+                        using (var wb_in = new frmActServicesProvided(cur_wtype, null))
+                        {
+                            wb_in.ShowDialog();
+                        }
+                    }
+
+                    
                     break;
 
                 case 4:
@@ -725,9 +734,19 @@ namespace SP_Sklad.MainTabs
                         }
 
                     }
+
                     if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
+                        {
+                            wb_in.is_new_record = true;
+                            wb_in.ShowDialog();
+                        }
+                    }
+
+                    if (cur_wtype == 29)  //Акт надання послуг
+                    {
+                        using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
                         {
                             wb_in.is_new_record = true;
                             wb_in.ShowDialog();
@@ -879,7 +898,7 @@ namespace SP_Sklad.MainTabs
             }
 
             int? doc_type;
-            if (new[] { 26, 57, 108 }.Any(a => a == focused_tree_node.Id))
+            if (new[] { 26, 57, 108, 140 }.Any(a => a == focused_tree_node.Id))
             {
                 doc_type = -1;
             }
@@ -1505,9 +1524,7 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     gridControl13.DataSource = _db.GetRelDocList(bank_statements_row.Id).OrderBy(o => o.OnDate).ToList();
                     break;
-                
             }
-
         }
 
         private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
@@ -1579,5 +1596,8 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
         }
+
+
+
     }
 }

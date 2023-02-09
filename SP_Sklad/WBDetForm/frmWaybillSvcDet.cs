@@ -44,7 +44,17 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWaybillSvcDet_Load(object sender, EventArgs e)
         {
-            SvcComboBox.Properties.DataSource = DB.SkladBase().v_Services.Select(s => new { s.SvcId, s.Name, s.MeasuresName, s.Price, IsNormed = s.IsNormed == 1 ? true : false, s.Norm }).ToList();
+            SvcComboBox.Properties.DataSource = DB.SkladBase().v_Services.Select(s => new
+            {
+                s.SvcId,
+                s.Name,
+                s.MeasuresName,
+                s.Price,
+                IsNormed = s.IsNormed == 1 ? true : false,
+                s.Norm,
+                s.MsrShortName
+            }).ToList();
+
             PersonComboBox.Properties.DataSource = DBHelper.Persons; ;
 
             if (_PosId == null)
@@ -130,6 +140,8 @@ namespace SP_Sklad.WBDetForm
                     _wbs.Norm = 1;
                 }
                 NormEdit.EditValue = _wbs.Norm;
+
+                labelControl24.Text = row.MsrShortName;
             }
         }
 

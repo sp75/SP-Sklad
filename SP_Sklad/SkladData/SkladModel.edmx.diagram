@@ -80,7 +80,7 @@
         <EntityTypeShape EntityType="BaseModel.Languages" Width="1.5" PointX="19.375" PointY="7.75" />
         <EntityTypeShape EntityType="BaseModel.SvcGroup" Width="1.5" PointX="6.4937014926661281" PointY="20.54977826240928" />
         <EntityTypeShape EntityType="BaseModel.v_Services" Width="1.5" PointX="8.9153784443230268" PointY="8.815120179585703" />
-        <EntityTypeShape EntityType="BaseModel.WayBillSvc" Width="1.5" PointX="2.5795977630557481" PointY="20.695075491766946" />
+        <EntityTypeShape EntityType="BaseModel.WayBillSvc" Width="1.5" PointX="0.875" PointY="21.375" />
         <AssociationConnector Association="BaseModel.FK_WBS_CURRID" />
         <EntityTypeShape EntityType="BaseModel.PriceListDet" Width="1.5" PointX="19" PointY="29.25" />
         <EntityTypeShape EntityType="BaseModel.Tables" Width="1.5" PointX="9.3817213742908656" PointY="16.80379786379812" />

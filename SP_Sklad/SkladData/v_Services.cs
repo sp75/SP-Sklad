@@ -28,5 +28,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> MId { get; set; }
         public string MeasuresName { get; set; }
         public string SvcGroupName { get; set; }
+        public string MsrShortName { get; set; }
     }
 }

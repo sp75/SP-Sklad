@@ -66,7 +66,10 @@ namespace SP_Sklad.MainTabs
             {
                 _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 89); // Видаткові касові ордера
             }
-          
+            else if (_wb.WType == 29) // Повернення
+            {
+                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 94); // Акти наданих послуг
+            }
 
             panelControl1.Visible = _user_Access.CanView == 1;
 
@@ -157,7 +160,10 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            SumEdit.EditValue = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+            var sum_wbd = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+            var sum_wbs = _db.WayBillSvc.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total);
+            SumEdit.EditValue = (sum_wbd ?? 0) + (sum_wbs ?? 0);
+
             if (NumEdit.EditValue == null)
             {
                 NumEdit.EditValue = new BaseEntities().GetDocNum("pay_doc").FirstOrDefault();
@@ -217,7 +223,7 @@ namespace SP_Sklad.MainTabs
                         ReportingDate = _wb.OnDate
                     });
 
-                    if (new int[] { 1, 6, 16, 25 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
+                    if (new int[] { 1, 6, 16, 25, 29 }.Contains(_wb.WType)) _pd.DocType = -1;   // Вихідний платіж
                     if (new int[] { -1, -6, 2, -16, -25 }.Contains(_wb.WType)) _pd.DocType = 1;  // Вхідний платіж
 
                     if (fiscalization_checkEdit.Checked)

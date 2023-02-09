@@ -108,6 +108,11 @@ namespace SP_Sklad.Reports
                 case 25:
                     WayBillReport(id, db, TemlateList.re_cust);
                     break;
+
+                case 29:
+                    WayBillInReport(id, db, TemlateList.wb_act_service);
+                    break;
+                    
             }
 
             using (var _db = DB.SkladBase())

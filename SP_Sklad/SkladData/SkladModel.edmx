@@ -1612,7 +1612,7 @@
             <PropertyRef Name="WbillId" />
           </Key>
           <Property Name="WbillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="KaId" Type="int" />
           <Property Name="CurrId" Type="int" />
@@ -1700,7 +1700,7 @@
           <Property Name="PersonId" Type="int" />
           <Property Name="SvcToPrice" Type="int" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="WayBillTmc">
           <Key>
@@ -2136,7 +2136,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighing' does not have 
           <Property Name="WbillId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WbChecked" Type="int" Nullable="false" />
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
@@ -2228,7 +2228,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2363,7 +2363,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -2645,7 +2645,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PosRemains' does not have a primary 
           <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="OrderedRsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -2818,6 +2818,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary ke
           <Property Name="MId" Type="int" />
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="64" />
           <Property Name="SvcGroupName" Type="nvarchar" MaxLength="64" />
+          <Property Name="MsrShortName" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2929,7 +2930,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="WbillId" Type="int" Nullable="false" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="CurrId" Type="int" />
           <Property Name="Reason" Type="nvarchar" MaxLength="255" />
@@ -7041,11 +7042,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="MatName" Type="nvarchar" MaxLength="255" />
                 <Property Name="GrpId" Type="int" />
                 <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
-                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOrd" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOrd" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
                 <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
-                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
                 <Property Name="TotalOut" Type="numeric" Precision="38" Scale="2" />
               </RowType>
             </CollectionType>
@@ -8461,7 +8462,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Services].[Norm] AS [Norm], 
     [v_Services].[MId] AS [MId], 
     [v_Services].[MeasuresName] AS [MeasuresName], 
-    [v_Services].[SvcGroupName] AS [SvcGroupName]
+    [v_Services].[SvcGroupName] AS [SvcGroupName], 
+    [v_Services].[MsrShortName] AS [MsrShortName]
     FROM [dbo].[v_Services] AS [v_Services]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_TechProcDet" EntityType="Self.v_TechProcDet" store:Type="Views" store:Schema="dbo">
@@ -12451,6 +12453,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="MId" />
           <Property Type="String" Name="MeasuresName" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="SvcGroupName" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MsrShortName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="WayBillSvc">
           <Key>
@@ -12471,7 +12474,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="SvcToPrice" />
           <Property Type="Decimal" Name="Total" Precision="15" Scale="2" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_WBS_CURRID" FromRole="WayBillSvc" ToRole="Currency" />
-          <Property Type="String" Name="Notes" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Notes" MaxLength="1000" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Services" Relationship="BaseModel.FK_WBS_SVCID" FromRole="WayBillSvc" ToRole="Services" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WBS_WBILLID" FromRole="WayBillSvc" ToRole="WaybillList" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="WayBillSvc" ToRole="Kagent" />
@@ -13818,7 +13821,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
           <Property Type="Int32" Name="CurrId" />
           <Property Type="String" Name="Reason" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -15577,7 +15580,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Ordered" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="OrderedRsv" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="ActualRemain" Precision="17" Scale="4" />
-          <Property Type="String" Name="Num" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="PayDoc">
@@ -16252,7 +16255,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -17379,7 +17382,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbillId" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WbChecked" Type="Int32" Nullable="false" />
           <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -17486,7 +17489,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -19405,6 +19408,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Services">
             <EntityTypeMapping TypeName="BaseModel.v_Services">
               <MappingFragment StoreEntitySet="v_Services">
+                <ScalarProperty Name="MsrShortName" ColumnName="MsrShortName" />
                 <ScalarProperty Name="SvcGroupName" ColumnName="SvcGroupName" />
                 <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
                 <ScalarProperty Name="MId" ColumnName="MId" />

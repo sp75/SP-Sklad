@@ -106,6 +106,7 @@
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn94 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
@@ -917,6 +918,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1058,7 +1060,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 29, 47)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -1113,6 +1116,7 @@
             this.GridImageList.Images.SetKeyName(44, "CostAnalysis_16x16.png");
             this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
             this.GridImageList.Images.SetKeyName(46, "management2.png");
+            this.GridImageList.Images.SetKeyName(47, "ActServices.png");
             // 
             // gridColumn2
             // 
@@ -1501,7 +1505,8 @@
             this.gridColumn115,
             this.gridColumn41,
             this.gridColumn50,
-            this.gridColumn94});
+            this.gridColumn94,
+            this.gridColumn119});
             this.WaybillDetGridView.GridControl = this.gridControl2;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1519,7 +1524,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 53;
+            this.gridColumn9.Width = 50;
             // 
             // gridColumn10
             // 
@@ -1528,7 +1533,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 283;
+            this.gridColumn10.Width = 233;
             // 
             // gridColumn11
             // 
@@ -1539,8 +1544,8 @@
             this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 4;
-            this.gridColumn11.Width = 81;
+            this.gridColumn11.VisibleIndex = 5;
+            this.gridColumn11.Width = 64;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -1556,7 +1561,8 @@
             this.gridColumn12.FieldName = "MsrName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 5;
+            this.gridColumn12.VisibleIndex = 6;
+            this.gridColumn12.Width = 59;
             // 
             // gridColumn13
             // 
@@ -1566,8 +1572,8 @@
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 6;
-            this.gridColumn13.Width = 83;
+            this.gridColumn13.VisibleIndex = 7;
+            this.gridColumn13.Width = 66;
             // 
             // gridColumn37
             // 
@@ -1577,8 +1583,8 @@
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 8;
-            this.gridColumn37.Width = 94;
+            this.gridColumn37.VisibleIndex = 9;
+            this.gridColumn37.Width = 74;
             // 
             // gridColumn39
             // 
@@ -1586,8 +1592,8 @@
             this.gridColumn39.FieldName = "WhName";
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 3;
-            this.gridColumn39.Width = 217;
+            this.gridColumn39.VisibleIndex = 4;
+            this.gridColumn39.Width = 174;
             // 
             // gridColumn115
             // 
@@ -1595,7 +1601,8 @@
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 7;
+            this.gridColumn115.VisibleIndex = 8;
+            this.gridColumn115.Width = 59;
             // 
             // gridColumn41
             // 
@@ -1615,8 +1622,8 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 9;
-            this.gridColumn50.Width = 104;
+            this.gridColumn50.VisibleIndex = 10;
+            this.gridColumn50.Width = 96;
             // 
             // gridColumn94
             // 
@@ -1633,7 +1640,7 @@
             this.gridColumn94.OptionsColumn.ShowInCustomizationForm = false;
             this.gridColumn94.Visible = true;
             this.gridColumn94.VisibleIndex = 0;
-            this.gridColumn94.Width = 25;
+            this.gridColumn94.Width = 23;
             // 
             // repositoryItemImageComboBox33
             // 
@@ -1644,6 +1651,15 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 43)});
             this.repositoryItemImageComboBox33.Name = "repositoryItemImageComboBox33";
             this.repositoryItemImageComboBox33.SmallImages = this.GridImageList;
+            // 
+            // gridColumn119
+            // 
+            this.gridColumn119.Caption = "Опис";
+            this.gridColumn119.FieldName = "Notes";
+            this.gridColumn119.Name = "gridColumn119";
+            this.gridColumn119.Visible = true;
+            this.gridColumn119.VisibleIndex = 3;
+            this.gridColumn119.Width = 215;
             // 
             // xtraTabPage1
             // 
@@ -7149,5 +7165,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn21;
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
     }
 }

@@ -1816,6 +1816,12 @@
     <Compile Include="WBForm\frmProductionPlans.Designer.cs">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmActServicesProvided.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmActServicesProvided.Designer.cs">
+      <DependentUpon>frmActServicesProvided.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWayBillIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2249,6 +2255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmProductionPlans.resx">
       <DependentUpon>frmProductionPlans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmActServicesProvided.resx">
+      <DependentUpon>frmActServicesProvided.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillIn.resx">
       <DependentUpon>frmWayBillIn.cs</DependentUpon>

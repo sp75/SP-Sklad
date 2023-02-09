@@ -162,7 +162,7 @@ namespace SP_Sklad.FinanseForm
                     Text = "Властивості вихідного платежу";
                 }
 
-                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16 || w.Id == 25 || w.Id == 27).ToList();
+                TypDocsEdit.Properties.DataSource = DBHelper.DocTypeList.Where(w => w.Id == 1 || w.Id == 6 || w.Id == 16 || w.Id == 25 || w.Id == 27 || w.Id == 29).ToList();
                 if (TypDocsEdit.EditValue == null)
                 {
                     TypDocsEdit.EditValue = 1;

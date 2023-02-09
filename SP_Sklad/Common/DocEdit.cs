@@ -110,6 +110,14 @@ namespace SP_Sklad.Common
                             wbs_out.ShowDialog();
                         }
                     }
+
+                    if (w_type == 29)
+                    {
+                        using (var wb_in = new frmActServicesProvided(w_type, wb.WbillId))
+                        {
+                            wb_in.ShowDialog();
+                        }
+                    }
                 }
 
                 catch (EntityCommandExecutionException exception)
