@@ -35,6 +35,7 @@
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement1 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement2 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement3 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
@@ -43,11 +44,14 @@
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement6 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement7 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement8 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement9 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
+            DevExpress.XtraGrid.Views.Tile.TileViewItemElement tileViewItemElement10 = new DevExpress.XtraGrid.Views.Tile.TileViewItemElement();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainRawMaterialManagement));
             this.tileViewColumn1 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn2 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn4 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -69,6 +73,7 @@
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.rgViewType = new DevExpress.XtraEditors.RadioGroup();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -81,8 +86,9 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
@@ -112,8 +118,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumn1
@@ -147,6 +154,14 @@
             this.tileViewColumn5.Name = "tileViewColumn5";
             this.tileViewColumn5.Visible = true;
             this.tileViewColumn5.VisibleIndex = 3;
+            // 
+            // tileViewColumn3
+            // 
+            this.tileViewColumn3.Caption = "#";
+            this.tileViewColumn3.FieldName = "Num";
+            this.tileViewColumn3.Name = "tileViewColumn3";
+            this.tileViewColumn3.Visible = true;
+            this.tileViewColumn3.VisibleIndex = 4;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -303,7 +318,8 @@
             this.tileViewColumn1,
             this.tileViewColumn2,
             this.tileViewColumn4,
-            this.tileViewColumn5});
+            this.tileViewColumn5,
+            this.tileViewColumn3});
             this.tileView1.GridControl = this.gridControl1;
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsBehavior.ReadOnly = true;
@@ -311,7 +327,7 @@
             this.tileView1.OptionsTiles.IndentBetweenGroups = 0;
             this.tileView1.OptionsTiles.IndentBetweenItems = 0;
             this.tileView1.OptionsTiles.ItemPadding = new System.Windows.Forms.Padding(6);
-            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(526, 155);
+            this.tileView1.OptionsTiles.ItemSize = new System.Drawing.Size(526, 203);
             this.tileView1.OptionsTiles.LayoutMode = DevExpress.XtraGrid.Views.Tile.TileViewLayoutMode.List;
             this.tileView1.OptionsTiles.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileView1.OptionsTiles.Padding = new System.Windows.Forms.Padding(6);
@@ -324,10 +340,12 @@
             tableRowDefinition2.Length.Value = 35D;
             tableRowDefinition3.Length.Value = 33D;
             tableRowDefinition4.Length.Value = 33D;
+            tableRowDefinition5.Length.Value = 40D;
             this.tileView1.TileRows.Add(tableRowDefinition1);
             this.tileView1.TileRows.Add(tableRowDefinition2);
             this.tileView1.TileRows.Add(tableRowDefinition3);
             this.tileView1.TileRows.Add(tableRowDefinition4);
+            this.tileView1.TileRows.Add(tableRowDefinition5);
             tileViewItemElement1.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
             tileViewItemElement1.Appearance.Normal.Options.UseFont = true;
             tileViewItemElement1.Column = this.tileViewColumn1;
@@ -390,6 +408,22 @@
             tileViewItemElement8.RowIndex = 3;
             tileViewItemElement8.Text = "Склад:";
             tileViewItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement9.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
+            tileViewItemElement9.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement9.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement9.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement9.RowIndex = 4;
+            tileViewItemElement9.Text = "Номер:";
+            tileViewItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            tileViewItemElement10.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
+            tileViewItemElement10.Appearance.Normal.Options.UseFont = true;
+            tileViewItemElement10.Column = this.tileViewColumn3;
+            tileViewItemElement10.ColumnIndex = 1;
+            tileViewItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            tileViewItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
+            tileViewItemElement10.RowIndex = 4;
+            tileViewItemElement10.Text = "tileViewColumn3";
+            tileViewItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
             this.tileView1.TileTemplate.Add(tileViewItemElement1);
             this.tileView1.TileTemplate.Add(tileViewItemElement2);
             this.tileView1.TileTemplate.Add(tileViewItemElement3);
@@ -398,6 +432,8 @@
             this.tileView1.TileTemplate.Add(tileViewItemElement6);
             this.tileView1.TileTemplate.Add(tileViewItemElement7);
             this.tileView1.TileTemplate.Add(tileViewItemElement8);
+            this.tileView1.TileTemplate.Add(tileViewItemElement9);
+            this.tileView1.TileTemplate.Add(tileViewItemElement10);
             // 
             // sidePanel1
             // 
@@ -433,6 +469,7 @@
             // layoutControl1
             // 
             this.layoutControl1.AllowCustomization = false;
+            this.layoutControl1.Controls.Add(this.simpleButton5);
             this.layoutControl1.Controls.Add(this.simpleButton3);
             this.layoutControl1.Controls.Add(this.rgViewType);
             this.layoutControl1.Controls.Add(this.simpleButton1);
@@ -447,11 +484,23 @@
             this.layoutControl1.TabIndex = 8;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(2, 298);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Padding = new System.Windows.Forms.Padding(10);
+            this.simpleButton5.Size = new System.Drawing.Size(402, 56);
+            this.simpleButton5.StyleController = this.layoutControl1;
+            this.simpleButton5.TabIndex = 16;
+            this.simpleButton5.Text = "Обновити";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // simpleButton3
             // 
-            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.PowderBlue;
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
             this.simpleButton3.Location = new System.Drawing.Point(2, 238);
@@ -548,8 +597,9 @@
             this.layoutControlItem2,
             this.layoutControlItem5,
             this.layoutControlGroup6,
+            this.layoutControlItem4,
             this.emptySpaceItem1,
-            this.layoutControlItem4});
+            this.layoutControlItem7});
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(406, 532);
             this.layoutControlGroup1.TextVisible = false;
@@ -620,14 +670,6 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 296);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(406, 176);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.simpleButton3;
@@ -636,6 +678,23 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(406, 60);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
+            // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 356);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(406, 116);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.simpleButton5;
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 296);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(406, 60);
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
             // 
             // bar1
             // 
@@ -699,8 +758,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -748,6 +808,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn3;
     }
 }
 

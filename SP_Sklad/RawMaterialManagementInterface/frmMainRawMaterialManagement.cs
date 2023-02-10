@@ -135,5 +135,10 @@ namespace SP_Sklad.RawMaterialManagementInterface
 
             RawMaterialManagementSource.Refresh();
         }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            RawMaterialManagementSource.Refresh();
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace SP_Sklad.RawMaterialManagementInterface
         private RawMaterialManagement rmm { get; set; }
         private v_RawMaterialManagementDet focused_row => tileView1.GetFocusedRow() as v_RawMaterialManagementDet;
         private Guid _id { get; set; }
+        private Tara tara { get; set; }
 
         public frmRawMatDet(Guid id)
         {
@@ -46,6 +47,8 @@ namespace SP_Sklad.RawMaterialManagementInterface
             using (var _db = new BaseEntities())
             {
                 rmm = _db.RawMaterialManagement.Find(_id);
+
+                tara = _db.Tara.FirstOrDefault(w => w.TypeId == 7);
             }
 
         }
@@ -247,11 +250,13 @@ namespace SP_Sklad.RawMaterialManagementInterface
                     {
                         if (frm2.ShowDialog() == DialogResult.OK)
                         {
+                            var tara_weight = tara != null ? tara.Weight ?? 0 : 0;
+
                             _db.RawMaterialManagementDet.Add(new RawMaterialManagementDet
                             {
                                 Id = Guid.NewGuid(),
                                 BarCode = mat.BarCode,
-                                Amount = frm2.AmountEdit.Value,
+                                Amount = frm2.AmountEdit.Value - tara_weight,
                                 MatId = mat.MatId,
                                 OnDate = DBHelper.ServerDateTime(),
                                 RawMaterialManagementId = rmm.Id,

@@ -159,7 +159,7 @@
             // 
             this.barButtonItem1.Caption = "Звіт по контрагенту";
             this.barButtonItem1.Id = 0;
-            this.barButtonItem1.ImageIndex = 0;
+            this.barButtonItem1.ImageOptions.ImageIndex = 0;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -167,7 +167,7 @@
             // 
             this.barButtonItem2.Caption = "Переглянути  друковану форму локумента";
             this.barButtonItem2.Id = 5;
-            this.barButtonItem2.ImageIndex = 1;
+            this.barButtonItem2.ImageOptions.ImageIndex = 1;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -175,7 +175,7 @@
             // 
             this.barButtonItem5.Caption = "Перейти до документа";
             this.barButtonItem5.Id = 6;
-            this.barButtonItem5.ImageIndex = 2;
+            this.barButtonItem5.ImageOptions.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -184,6 +184,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1176, 24);
             // 
             // barDockControlBottom
@@ -191,6 +192,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 462);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1176, 0);
             // 
             // barDockControlLeft
@@ -198,6 +200,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 438);
             // 
             // barDockControlRight
@@ -205,6 +208,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1176, 24);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
             // 
             // popupMenu1
@@ -264,7 +268,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 634;
+            this.gridBand1.Width = 700;
             // 
             // colWType
             // 
@@ -351,7 +355,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 47;
+            this.bandedGridColumn1.Width = 46;
             // 
             // colNum
             // 
@@ -359,7 +363,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 44;
+            this.colNum.Width = 74;
             // 
             // colOnDate
             // 
@@ -369,7 +373,7 @@
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 115;
+            this.colOnDate.Width = 117;
             // 
             // colKaName
             // 
@@ -377,7 +381,7 @@
             this.colKaName.FieldName = "KaName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 408;
+            this.colKaName.Width = 443;
             // 
             // gridBand2
             // 
@@ -389,7 +393,7 @@
             this.gridBand2.Columns.Add(this.colSaldo);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 421;
+            this.gridBand2.Width = 451;
             // 
             // colSummAll
             // 
@@ -398,7 +402,7 @@
             this.colSummAll.FieldName = "SummAll";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 95;
+            this.colSummAll.Width = 97;
             // 
             // colOnValue
             // 
@@ -408,7 +412,7 @@
             this.colOnValue.FieldName = "OnValue";
             this.colOnValue.Name = "colOnValue";
             this.colOnValue.Visible = true;
-            this.colOnValue.Width = 66;
+            this.colOnValue.Width = 67;
             // 
             // colCurrName
             // 
@@ -416,7 +420,7 @@
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 57;
+            this.colCurrName.Width = 60;
             // 
             // colSummInCurr
             // 
@@ -428,7 +432,7 @@
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 108;
+            this.colSummInCurr.Width = 119;
             // 
             // colSaldo
             // 
@@ -440,7 +444,7 @@
             this.colSaldo.FieldName = "Saldo";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 95;
+            this.colSaldo.Width = 108;
             // 
             // panelControl1
             // 

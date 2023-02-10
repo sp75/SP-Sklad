@@ -31,7 +31,8 @@ namespace SP_Sklad.EditForm
                 new { Id = 1, Name = "Рама" },
                 new { Id = 2, Name = "Вішало" },
                 new { Id = 5, Name = "Візок" },
-                new { Id = 6, Name = "Шприць" }
+                new { Id = 6, Name = "Шприць" },
+                new { Id = 7, Name = "Гачок" }
             };
         }
 
