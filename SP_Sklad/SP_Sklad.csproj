@@ -439,11 +439,11 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\FluentDesignForm1.cs">
+    <Compile Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\FluentDesignForm1.Designer.cs">
-      <DependentUpon>FluentDesignForm1.cs</DependentUpon>
+    <Compile Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.Designer.cs">
+      <DependentUpon>MainIntermediateWeighingDet.cs</DependentUpon>
     </Compile>
     <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.cs">
       <SubType>Form</SubType>
@@ -1990,8 +1990,8 @@
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IntermediateWeighingInterface\FluentDesignForm1.resx">
-      <DependentUpon>FluentDesignForm1.cs</DependentUpon>
+    <EmbeddedResource Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.resx">
+      <DependentUpon>MainIntermediateWeighingDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
       <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>

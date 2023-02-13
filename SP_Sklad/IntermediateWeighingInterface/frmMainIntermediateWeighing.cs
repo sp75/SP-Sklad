@@ -159,7 +159,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
             }
 
 
-            using (var frm = new FluentDesignForm1(intermediate_weighing_focused_row.WbillId, _user_id))
+            using (var frm = new MainIntermediateWeighingDet(intermediate_weighing_focused_row.WbillId, _user_id))
             {
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
                 if (intermediate_weighing_focused_row.BMP != null)

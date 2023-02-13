@@ -17,7 +17,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.IntermediateWeighingInterface
 {
-    public partial class FluentDesignForm1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class MainIntermediateWeighingDet : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private int _user_id { get; set; }
  //       public BaseEntities _db { get; set; }
@@ -25,7 +25,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
         private make_det focused_row => tileView1.GetFocusedRow() as make_det;
         private int _wbill_id { get; set; }
 
-        public FluentDesignForm1(int wbill_id, int user_id)
+        public MainIntermediateWeighingDet(int wbill_id, int user_id)
         {
             InitializeComponent();
             _wbill_id = wbill_id;
