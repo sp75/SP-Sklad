@@ -65,12 +65,8 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
@@ -212,10 +208,7 @@
             this.barManager1.Images = this.barManagerImgList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItem1,
-            this.barButtonItem2,
             this.barSubItem2,
-            this.barEditItem1,
-            this.barEditItem2,
             this.CurDateEditBarItem,
             this.barButtonItem3,
             this.barButtonItem4,
@@ -225,7 +218,6 @@
             this.AddManufacturingBtn,
             this.AddDeboningBtn,
             this.barSubItem4,
-            this.barSubItem5,
             this.barEditItem3,
             this.barSubItem6,
             this.barButtonItem9,
@@ -424,7 +416,7 @@
             // CurDateEditBarItem
             // 
             this.CurDateEditBarItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.CurDateEditBarItem.Caption = "CurDateEditItem";
+            this.CurDateEditBarItem.Caption = "Поточна дата";
             this.CurDateEditBarItem.Edit = this.repositoryItemDateEdit;
             this.CurDateEditBarItem.EditWidth = 120;
             this.CurDateEditBarItem.Id = 6;
@@ -543,19 +535,6 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Тема";
-            this.barButtonItem2.Id = 2;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barEditItem1
-            // 
-            this.barEditItem1.Caption = "barEditItem1";
-            this.barEditItem1.Edit = this.repositoryItemTimeEdit1;
-            this.barEditItem1.Id = 4;
-            this.barEditItem1.Name = "barEditItem1";
-            // 
             // repositoryItemTimeEdit1
             // 
             this.repositoryItemTimeEdit1.AutoHeight = false;
@@ -563,26 +542,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
             // 
-            // barEditItem2
-            // 
-            this.barEditItem2.Caption = "barEditItem2";
-            this.barEditItem2.Edit = this.repositoryItemCalcEdit1;
-            this.barEditItem2.EditWidth = 150;
-            this.barEditItem2.Id = 5;
-            this.barEditItem2.Name = "barEditItem2";
-            // 
             // repositoryItemCalcEdit1
             // 
             this.repositoryItemCalcEdit1.AutoHeight = false;
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
-            // 
-            // barSubItem5
-            // 
-            this.barSubItem5.Caption = "Підприємство";
-            this.barSubItem5.Id = 15;
-            this.barSubItem5.Name = "barSubItem5";
             // 
             // gridSplitContainer1
             // 
@@ -906,11 +871,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
-        private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraBars.BarEditItem CurDateEditBarItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit;
@@ -937,7 +899,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem4;
         private DevExpress.XtraBars.BarEditItem barEditItem3;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraBars.BarSubItem barSubItem5;
         private DevExpress.XtraBars.BarSubItem barSubItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         public DevExpress.XtraTab.XtraTabControl xtraTabControl1;

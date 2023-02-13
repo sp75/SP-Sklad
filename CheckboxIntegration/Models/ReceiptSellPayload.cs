@@ -12,7 +12,7 @@ namespace CheckboxIntegration.Models
         public Guid id { get; set; }
         public string cashier_name { get; set; }
         public string departament { get; set; }
-        public List<Good> goods { get; set; }
+        public List<Goods> goods { get; set; }
         public DeliveryPayload delivery { get; set; }
         public List<object> discounts { get; set; }
         public List<Payment> payments { get; set; }

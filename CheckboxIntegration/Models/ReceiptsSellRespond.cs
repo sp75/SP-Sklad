@@ -26,7 +26,7 @@ namespace CheckboxIntegration.Models
         public string previous_hash { get; set; }
     }
 
-    public class Good2
+    public class Good
     {
         public string code { get; set; }
         public string barcode { get; set; }
@@ -38,15 +38,15 @@ namespace CheckboxIntegration.Models
         public int price { get; set; }
     }
 
-    public class Good
+    public class Goods
     {
-        public Good2 good { get; set; }
+        public Good good { get; set; }
    //     public object good_id { get; set; }
    //     public int sum { get; set; }
         public int quantity { get; set; }
         public bool is_return { get; set; }
      //   public List<object> taxes { get; set; }
-        public List<object> discounts { get; set; }
+        public List<Discount> discounts { get; set; }
     }
 
     public class Payment
@@ -139,7 +139,7 @@ namespace CheckboxIntegration.Models
         public Transaction transaction { get; set; }
         public int serial { get; set; }
         public string status { get; set; }
-        public List<Good> goods { get; set; }
+        public List<Goods> goods { get; set; }
         public List<Payment> payments { get; set; }
         public int total_sum { get; set; }
         public int sum { get; set; }

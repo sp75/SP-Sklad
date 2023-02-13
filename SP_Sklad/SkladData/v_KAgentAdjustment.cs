@@ -28,5 +28,9 @@ namespace SP_Sklad.SkladData
         public int WType { get; set; }
         public string WriteOffTypeName { get; set; }
         public string OperationTypeName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Fax { get; set; }
+        public string www { get; set; }
     }
 }

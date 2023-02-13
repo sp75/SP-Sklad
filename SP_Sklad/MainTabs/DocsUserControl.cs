@@ -1421,12 +1421,12 @@ namespace SP_Sklad.MainTabs
             {
                 gridControl5.DataSource = null;
                 gridControl6.DataSource = null;
-          //      WayBillListInfoBS.DataSource = null;
+                KAgentAdjustmentInfoBS.DataSource = null;
 
                 return;
             }
 
-            switch (xtraTabControl2.SelectedTabPageIndex)
+            switch (xtraTabControl4.SelectedTabPageIndex)
             {
                 case 0:
 
@@ -1434,7 +1434,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 1:
-             //       WayBillListInfoBS.DataSource = dr;
+                    KAgentAdjustmentInfoBS.DataSource = dr;
                     break;
 
                 case 2:

@@ -2353,6 +2353,10 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustment' does not have a pr
           <Property Name="WType" Type="int" Nullable="false" />
           <Property Name="WriteOffTypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="OperationTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="32" />
+          <Property Name="www" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8127,7 +8131,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentAdjustment].[Notes] AS [Notes], 
     [v_KAgentAdjustment].[WType] AS [WType], 
     [v_KAgentAdjustment].[WriteOffTypeName] AS [WriteOffTypeName], 
-    [v_KAgentAdjustment].[OperationTypeName] AS [OperationTypeName]
+    [v_KAgentAdjustment].[OperationTypeName] AS [OperationTypeName], 
+    [v_KAgentAdjustment].[Phone] AS [Phone], 
+    [v_KAgentAdjustment].[Email] AS [Email], 
+    [v_KAgentAdjustment].[Fax] AS [Fax], 
+    [v_KAgentAdjustment].[www] AS [www]
     FROM [dbo].[v_KAgentAdjustment] AS [v_KAgentAdjustment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAdjustmentDet" EntityType="Self.v_KAgentAdjustmentDet" store:Type="Views" store:Schema="dbo">
@@ -16163,6 +16171,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WType" Type="Int32" Nullable="false" />
           <Property Name="WriteOffTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OperationTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_KAgentAdjustment_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -21620,6 +21632,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KAgentAdjustment">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentAdjustment">
               <MappingFragment StoreEntitySet="v_KAgentAdjustment">
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="OperationTypeName" ColumnName="OperationTypeName" />
                 <ScalarProperty Name="WriteOffTypeName" ColumnName="WriteOffTypeName" />
                 <ScalarProperty Name="WType" ColumnName="WType" />

@@ -357,11 +357,11 @@
             this.colSaldo = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl3 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.KAgentAdjustmentInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.repositoryItemImageComboBox18 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.editorRow8 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.categoryRow2 = new DevExpress.XtraVerticalGrid.Rows.CategoryRow();
             this.editorRow9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow13 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -372,7 +372,6 @@
             this.editorRow18 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow19 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow20 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.editorRow21 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl6 = new DevExpress.XtraGrid.GridControl();
             this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -694,6 +693,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox22)).BeginInit();
             this.xtraTabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentInfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
             this.xtraTabPage18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl6)).BeginInit();
@@ -4347,8 +4347,8 @@
             // vGridControl3
             // 
             this.vGridControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeWE;
-            this.vGridControl3.DataSource = this.WayBillListInfoBS;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl3.DataSource = this.KAgentAdjustmentInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
             this.vGridControl3.Name = "vGridControl3";
@@ -4364,10 +4364,13 @@
             this.editorRow17,
             this.editorRow18,
             this.editorRow19,
-            this.editorRow20,
-            this.editorRow21});
+            this.editorRow20});
             this.vGridControl3.Size = new System.Drawing.Size(1136, 273);
             this.vGridControl3.TabIndex = 0;
+            // 
+            // KAgentAdjustmentInfoBS
+            // 
+            this.KAgentAdjustmentInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_KAgentAdjustment);
             // 
             // repositoryItemImageComboBox18
             // 
@@ -4392,7 +4395,6 @@
             // 
             this.categoryRow2.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow9,
-            this.editorRow10,
             this.editorRow11,
             this.editorRow12,
             this.editorRow13,
@@ -4405,21 +4407,14 @@
             // 
             this.editorRow9.Name = "editorRow9";
             this.editorRow9.Properties.Caption = "П.І.Б";
-            this.editorRow9.Properties.FieldName = "KaName";
-            // 
-            // editorRow10
-            // 
-            this.editorRow10.Height = 16;
-            this.editorRow10.Name = "editorRow10";
-            this.editorRow10.Properties.Caption = "Адреса";
-            this.editorRow10.Properties.FieldName = "Address";
+            this.editorRow9.Properties.FieldName = "DebtKaName";
             // 
             // editorRow11
             // 
             this.editorRow11.Height = 16;
             this.editorRow11.Name = "editorRow11";
             this.editorRow11.Properties.Caption = "Тел.";
-            this.editorRow11.Properties.FieldName = "KaPhone";
+            this.editorRow11.Properties.FieldName = "Phone";
             // 
             // editorRow12
             // 
@@ -4477,12 +4472,6 @@
             this.editorRow20.Properties.Caption = "Статус";
             this.editorRow20.Properties.FieldName = "Checked";
             this.editorRow20.Properties.RowEdit = this.repositoryItemImageComboBox18;
-            // 
-            // editorRow21
-            // 
-            this.editorRow21.Name = "editorRow21";
-            this.editorRow21.Properties.Caption = "Номер в системі";
-            this.editorRow21.Properties.FieldName = "WbillId";
             // 
             // xtraTabPage18
             // 
@@ -5183,7 +5172,7 @@
             // vGridControl4
             // 
             this.vGridControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl4.DataSource = this.WayBillListInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -6586,6 +6575,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox22)).EndInit();
             this.xtraTabPage17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentInfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
             this.xtraTabPage18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl6)).EndInit();
@@ -6923,7 +6913,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow8;
         private DevExpress.XtraVerticalGrid.Rows.CategoryRow categoryRow2;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow9;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow13;
@@ -6934,7 +6923,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow18;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow19;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow20;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow21;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage18;
         private DevExpress.XtraGrid.GridControl gridControl6;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
@@ -7166,5 +7154,6 @@
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
+        private System.Windows.Forms.BindingSource KAgentAdjustmentInfoBS;
     }
 }

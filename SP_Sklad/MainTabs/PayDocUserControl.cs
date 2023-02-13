@@ -380,17 +380,17 @@ namespace SP_Sklad.MainTabs
                 id = Guid.NewGuid(),
                 cashier_name = DBHelper.CurrentUser.Name,
                 departament = DBHelper.KagentsWorkerList.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
-                goods = wb_det.Select(s => new Good
+                goods = wb_det.Select(s => new Goods
                 {
                     quantity = Convert.ToInt32(s.Amount * 1000),
-                    good = new Good2
+                    good = new Good
                     {
                         code = s.MatId.ToString(),
                         //   barcode = s.BarCode,
                         name = s.MatName,
                         price = Convert.ToInt32(s.Price * 100)
                     },
-                    discounts = new List<object>(),
+                    discounts = new List<Discount>(),
                     is_return = return_receipt
 
                 }).ToList(),

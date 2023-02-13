@@ -275,19 +275,18 @@ namespace SP_Sklad.WBForm
                 cashier_name = DBHelper.CurrentUser.Name,
                 departament = DBHelper.KagentsWorkerList.FirstOrDefault(w => w.KaId == _wb.KaId).Name,
 
-                goods = wb_det.Select(s => new Good
+                goods = wb_det.Select(s => new Goods
                 {
                     quantity = Convert.ToInt32(s.Amount * 1000),
-                    good = new Good2
+                    good = new Good
                     {
                         code = s.MatId.ToString(),
                         barcode = s.BarCode,
                         name = s.MatName,
-                        price = Convert.ToInt32(s.Price * 100)
+                        price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = new List<object>(),
+                    discounts = new List<Discount>() { new Discount {  mode = DiscountModes.PERCENT, type = DiscountTypes.DISCOUNT, value = s.Discount??0 } },
                     is_return = false
-
                 }).ToList(),
                 payments = payments,
                 discounts = new List<object>(),
