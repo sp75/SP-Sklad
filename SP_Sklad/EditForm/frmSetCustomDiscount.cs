@@ -55,7 +55,7 @@ namespace SP_Sklad.ViewsForm
                 if (item.DiscountKind != 2)
                 {
                     var DiscountPrice = item.BasePrice - (item.BasePrice * AmountEdit.Value / 100);
-                    item.Price = Math.Round(DiscountPrice.Value * 100 / (100 + item.Nds.Value), 2);
+                    item.Price = DiscountPrice.Value * 100 / (100 + item.Nds.Value);
                     item.Discount = AmountEdit.Value;
                     item.DiscountKind = 1;
                 }

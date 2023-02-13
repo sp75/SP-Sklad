@@ -55,9 +55,9 @@
     <Compile Include="Models\CashRegisterModel.cs" />
     <Compile Include="Models\CreateShiftRespond.cs" />
     <Compile Include="Models\DeliveryPayload.cs" />
-    <Compile Include="Models\Discount.cs" />
-    <Compile Include="Models\DiscountModes.cs" />
-    <Compile Include="Models\DiscountTypes.cs" />
+    <Compile Include="Models\DiscountPayload.cs" />
+    <Compile Include="Models\DiscountMode.cs" />
+    <Compile Include="Models\DiscountType.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\ReceiptSellPayload.cs" />
     <Compile Include="Models\ReceiptServicePayload.cs" />

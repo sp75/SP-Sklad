@@ -390,7 +390,7 @@ namespace SP_Sklad.MainTabs
                         name = s.MatName,
                         price = Convert.ToInt32(s.Price * 100)
                     },
-                    discounts = new List<Discount>(),
+                    discounts = new List<DiscountPayload>(),
                     is_return = return_receipt
 
                 }).ToList(),

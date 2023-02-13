@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace CheckboxIntegration.Models
 {
-    public enum DiscountModes
+    public enum DiscountType
     {
-        PERCENT,
-        VALUE
+        DISCOUNT,
+        EXTRA_CHARGE
     }
+
 }

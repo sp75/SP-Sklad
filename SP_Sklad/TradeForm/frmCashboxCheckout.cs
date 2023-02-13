@@ -285,7 +285,7 @@ namespace SP_Sklad.WBForm
                         name = s.MatName,
                         price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = new List<Discount>() { new Discount {  mode = DiscountModes.PERCENT, type = DiscountTypes.DISCOUNT, value = s.Discount??0 } },
+                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload {  mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value =  s.Discount??0 } } : new List<DiscountPayload>() ,
                     is_return = false
                 }).ToList(),
                 payments = payments,

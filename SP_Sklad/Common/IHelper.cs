@@ -195,6 +195,8 @@ namespace SP_Sklad.Common
                     var num = wb.WaybillDet.Count();
                     foreach (var item in f.uc.custom_mat_list)
                     {
+                        item.Price = Math.Round(item.Price ?? 0, 2);
+
                         var discount = (item.Price * item.Discount / 100.00m);
                         var wbd = new WaybillDet
                         {
@@ -204,7 +206,7 @@ namespace SP_Sklad.Common
                             MatId = item.MatId,
                             WId = WId == -1 ? item.WId : WId,
                             Amount = item.Amount,
-                            Price = Math.Round(Convert.ToDecimal(item.Price - discount), 2),
+                            Price = item.Price - discount,
                             PtypeId = item.PTypeId,
                             Discount = item.Discount,
                             Nds = wb.Nds,

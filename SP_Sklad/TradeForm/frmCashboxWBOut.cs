@@ -450,7 +450,7 @@ namespace SP_Sklad.WBForm
 
                 var discount = _db.GetDiscount(wb.KaId, mat_id).FirstOrDefault();
                 //    var remain_in_wh = _db.MatRemainByWh(mat_id, wb.Kontragent.WId, 0, DateTime.Now, "*", DBHelper.CurrentUser.UserId).ToList();
-                var price = mat_price != null ? (mat_price.Price ?? 0) : 0;
+                var price = mat_price != null ? Math.Round((mat_price.Price ?? 0),2) : 0;
 
                 var num = wb.WaybillDet.Count();
                 var wbd = new WaybillDet
@@ -461,7 +461,7 @@ namespace SP_Sklad.WBForm
                     MatId = mat_id,
                     WId = wb.Kontragent.WId,//remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                     Amount = 1,
-                    Price = Math.Round(price - (price * (discount ?? 0.00m) / 100), 2),
+                    Price = price - (price * (discount ?? 0.00m) / 100),
                     PtypeId = mat_price != null ? mat_price.PType : null,
                     Discount = disc_card != null ? disc_card.OnValue : (discount ?? 0.00m),
                     Nds = wb.Nds,
@@ -604,7 +604,7 @@ namespace SP_Sklad.WBForm
             {
                 wbd.BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2);
                 wbd.PtypeId = null;
-                wbd.Price = Math.Round(price - (price * (wbd.Discount ?? 0.00m) / 100), 2);
+                wbd.Price = price - (price * (wbd.Discount ?? 0.00m) / 100);
             }
             _db.SaveChanges();
 

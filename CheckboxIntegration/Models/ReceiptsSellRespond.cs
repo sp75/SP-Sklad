@@ -46,7 +46,7 @@ namespace CheckboxIntegration.Models
         public int quantity { get; set; }
         public bool is_return { get; set; }
      //   public List<object> taxes { get; set; }
-        public List<Discount> discounts { get; set; }
+        public List<DiscountPayload> discounts { get; set; }
     }
 
     public class Payment
