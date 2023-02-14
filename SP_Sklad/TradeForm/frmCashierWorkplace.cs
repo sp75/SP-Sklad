@@ -2,6 +2,7 @@
 using CheckboxIntegration.Models;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraPrintingLinks;
+using Newtonsoft.Json;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.TradeForm;
@@ -40,6 +41,11 @@ namespace SP_Sklad.WBForm
                     var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
                     _access_token = login.access_token;
+
+                    if(login.error != null )
+                    {
+                        MessageBox.Show(JsonConvert.SerializeObject(login.error));
+                    }
                 }
                 catch { }
 

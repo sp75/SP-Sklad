@@ -184,7 +184,7 @@ namespace SP_Sklad.WBDetForm
         {
             BotAmountEdit.Text = AmountEdit.Text;
 
-            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
+            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - Math.Round((BasePriceEdit.Value * DiscountEdit.Value / 100),2);
             else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
 
             PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);

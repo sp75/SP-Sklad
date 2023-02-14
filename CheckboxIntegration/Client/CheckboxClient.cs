@@ -14,7 +14,7 @@ namespace CheckboxIntegration.Client
     public class CheckboxClient
     {
 
-        private const string BASE_ADDRESS = " https://api.checkbox.ua/api/v1/";
+        private const string BASE_ADDRESS = "https://api.checkbox.ua/api/v1/";
         private readonly HttpClient _client;
         private string _access_token { get; set; }
 

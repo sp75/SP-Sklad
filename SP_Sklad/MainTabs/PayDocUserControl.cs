@@ -388,9 +388,9 @@ namespace SP_Sklad.MainTabs
                         code = s.MatId.ToString(),
                         //   barcode = s.BarCode,
                         name = s.MatName,
-                        price = Convert.ToInt32(s.Price * 100)
+                        price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = new List<DiscountPayload>(),
+                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload { mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value = s.Discount ?? 0 } } : new List<DiscountPayload>(),
                     is_return = return_receipt
 
                 }).ToList(),
@@ -407,26 +407,28 @@ namespace SP_Sklad.MainTabs
 
             string _access_token = login.access_token;
 
-            var return_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
+            var receipt = new CheckboxClient(_access_token).CreateReceipt(req);
 
-            if (return_receipts.id != Guid.Empty)
+            if (receipt.id != Guid.Empty)
             {
                 _db.Receipt.Add(new Receipt
                 {
-                    Id = return_receipts.id,
-                    CeatedAt = return_receipts.created_at,
-                    TotalPayment = return_receipts.total_payment,
-                    TotalSum = return_receipts.total_sum,
-                    Status = return_receipts.status,
-                    ShiftId = return_receipts.shift.id,
-                    BarCode = return_receipts.barcode,
-                    FiscalCode = return_receipts.fiscal_code,
-                    FiscalDate = return_receipts.fiscal_date
+                    Id = receipt.id,
+                    CeatedAt = receipt.created_at,
+                    TotalPayment = receipt.total_payment,
+                    TotalSum = receipt.total_sum,
+                    Status = receipt.status,
+                    ShiftId = receipt.shift != null ? (Guid?)receipt.shift.id : null,
+                    BarCode = receipt.barcode,
+                    FiscalCode = receipt.fiscal_code,
+                    FiscalDate = receipt.fiscal_date,
+                    ErrorMessage = receipt.is_error ? receipt.error.message : ""
                 });
+
                 _db.SaveChanges();
             }
 
-            return return_receipts;
+            return receipt;
         }
 
 

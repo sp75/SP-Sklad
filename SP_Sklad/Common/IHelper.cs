@@ -197,7 +197,7 @@ namespace SP_Sklad.Common
                     {
                         item.Price = Math.Round(item.Price ?? 0, 2);
 
-                        var discount = (item.Price * item.Discount / 100.00m);
+                        var discount = Math.Round(Convert.ToDecimal(item.Price * item.Discount / 100.00m), 2);
                         var wbd = new WaybillDet
                         {
                             WbillId = wb.WbillId,
@@ -1061,6 +1061,11 @@ namespace SP_Sklad.Common
         public static void PrintReceiptPng(string access_token, Guid receipt_id)
         {
             var png_data = new CheckboxClient(access_token).GetReceiptPng(receipt_id);
+
+            if (png_data == null)
+            {
+                return;
+            }
 
             var ms = new MemoryStream(png_data) { Position = 0 };
             Image i = Image.FromStream(ms);
