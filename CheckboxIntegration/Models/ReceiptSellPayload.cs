@@ -14,7 +14,7 @@ namespace CheckboxIntegration.Models
         public string departament { get; set; }
         public List<Goods> goods { get; set; }
         public DeliveryPayload delivery { get; set; }
-        public List<object> discounts { get; set; }
+        public List<DiscountPayload> discounts { get; set; }
         public List<Payment> payments { get; set; }
         public bool rounding { get; set; }
         public string header { get; set; }

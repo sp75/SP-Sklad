@@ -395,7 +395,7 @@ namespace SP_Sklad.MainTabs
 
                 }).ToList(),
                 payments = payments,
-                discounts = new List<object>(),
+                discounts = new List<DiscountPayload>(),
                 technical_return = return_receipt,
                 rounding = false,
               //  barcode = _wb.WbillId.ToString()

@@ -428,10 +428,7 @@ namespace SP_Sklad.WBForm
                 }
 
                 barEditItem1.EditValue = "";
-
                 e.Handled = true;
-            //    (barEditItem1.Links[0] as BarEditItemLink).PostEditor();
-
                 barEditItem1.Links[0].Focus();
             }
         }

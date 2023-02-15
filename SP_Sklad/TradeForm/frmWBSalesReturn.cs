@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using CheckboxIntegration.Models;
 using CheckboxIntegration.Client;
 using SP_Sklad.ViewsForm;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
@@ -314,37 +315,7 @@ namespace SP_Sklad.WBForm
 
         private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13 && AddMaterialBtn.Enabled && !String.IsNullOrEmpty(BarCodeEdit.Text))
-            {
-                var BarCodeText = BarCodeEdit.Text.Split('+');
-                string kod = BarCodeText[0];
-                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
-
-                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -25))
-                {
-                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
-                        if (mat_row != null)
-                        {
-                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
-                            {
-                                pos_out_list = frm.pos_out_list,
-                                outPosId = mat_row.PosId
-                            })
-                            {
-
-                                if (df.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                                {
-                                    RefreshDet();
-                                }
-                            }
-                        }
-                    }
-                }
-   
-                BarCodeEdit.Text = "";
-            }
+            
         }
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -424,6 +395,44 @@ namespace SP_Sklad.WBForm
                     e.Cancel = true;
                 }
 
+            }
+        }
+
+        private void BarCodeEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            var textEdit = sender as TextEdit;
+
+            if (e.KeyCode == Keys.Enter && AddMaterialBtn.Enabled && !string.IsNullOrEmpty(textEdit.Text))
+            {
+                var BarCodeText = textEdit.Text.Split('+');
+                string kod = BarCodeText[0];
+                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+
+                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -1))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+                        if (mat_row != null)
+                        {
+                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
+                            {
+                                pos_out_list = frm.pos_out_list,
+                                outPosId = mat_row.PosId
+                            })
+                            {
+                                if (df.ShowDialog() == DialogResult.OK)
+                                {
+                                    RefreshDet();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                barEditItem1.EditValue = "";
+                e.Handled = true;
+                barEditItem1.Links[0].Focus();
             }
         }
     }

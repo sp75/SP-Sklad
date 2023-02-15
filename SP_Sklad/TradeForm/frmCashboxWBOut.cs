@@ -1064,8 +1064,6 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton11_Click(object sender, EventArgs e)
         {
-          
-
             using (var frm = new frmCustomInfo())
             {
                 frm.Text = $"Інформація про активну зміну касира: {DBHelper.CurrentUser.Name}";

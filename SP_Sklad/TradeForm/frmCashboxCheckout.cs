@@ -289,7 +289,7 @@ namespace SP_Sklad.WBForm
                     is_return = false
                 }).ToList(),
                 payments = payments,
-                discounts = new List<object>(),
+                discounts = new List<DiscountPayload>(),
                 technical_return = false,
                 rounding = false,
               //  barcode = _wb.WbillId.ToString()
