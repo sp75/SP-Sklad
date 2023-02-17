@@ -14,14 +14,19 @@ namespace RichEditSyntaxSample
         readonly Document document;
 
         Regex _keywords;
+        Regex _function;
         Regex _quotedString = new Regex(@"'([^']|'')*'");
-        Regex _commentedString = new Regex(@"(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)");
+        Regex _commentedString = new Regex(@"/\*(.*?)\*/");
 
         public CustomSyntaxHighlightService(Document document)
         {
             this.document = document;
-            string[] keywords = { "INSERT", "SELECT", "CREATE", "TABLE", "USE", "IDENTITY", "ON", "OFF", "NOT", "NULL", "WITH", "SET", "GO", "DECLARE", "EXECUTE", "NVARCHAR", "FROM", "INTO", "VALUES", "WHERE", "AND" };
-            this._keywords = new Regex(@"\b(" + string.Join("|", keywords.Select(w => Regex.Escape(w))) + @")\b");
+            string[] keywords = { "INSERT", "SELECT", "CREATE", "TABLE", "USE", "IDENTITY", "ON", "OFF", "NOT", "NULL", "WITH", "SET", "GO", "DECLARE", "EXECUTE", "NVARCHAR", "FROM", "INTO", "VALUES", "WHERE", "AND", "AS" };
+            this._keywords = new Regex(@"\b(" + string.Join("|", keywords.Select(w => Regex.Escape(w))) + @")\b", RegexOptions.IgnoreCase);
+
+            string[] function = { "sum", "coalesce", "avg", "max", "min", "cast" };
+            this._function = new Regex(@"\b(" + string.Join("|", function.Select(w => Regex.Escape(w))) + @")\b", RegexOptions.IgnoreCase);
+
         }
         public void ForceExecute()
         {
@@ -37,12 +42,23 @@ namespace RichEditSyntaxSample
         {
             List<SyntaxHighlightToken> tokens = new List<SyntaxHighlightToken>();
 
+
+            //Find all comments 
+            DocumentRange[] ranges = document.FindAll(_commentedString).GetAsFrozen() as DocumentRange[];
+            for (int j = 0; j < ranges.Length; j++)
+            {
+                if (!IsRangeInTokens(ranges[j], tokens))
+                    tokens.Add(CreateToken(ranges[j].Start.ToInt(), ranges[j].End.ToInt(), Color.Green));
+            }
+
             // search for quoted strings
-            DocumentRange[] ranges = document.FindAll(_quotedString).GetAsFrozen() as DocumentRange[];
+             ranges = document.FindAll(_quotedString).GetAsFrozen() as DocumentRange[];
             for (int i = 0; i < ranges.Length; i++)
             {
                 tokens.Add(CreateToken(ranges[i].Start.ToInt(),ranges[i].End.ToInt(), Color.Red));
             }
+
+          
 
             //Extract all keywords
             ranges = document.FindAll(_keywords).GetAsFrozen() as DocumentRange[];
@@ -52,13 +68,26 @@ namespace RichEditSyntaxSample
                     tokens.Add(CreateToken(ranges[j].Start.ToInt(), ranges[j].End.ToInt(), Color.Blue));
             }
 
-            //Find all comments
-            ranges = document.FindAll(_commentedString).GetAsFrozen() as DocumentRange[];
+            //Extract all keywords2
+            string[] keywords2 = { "JOIN", "INNER", "OUTER",};
+            var _keywords2 = new Regex(@"\b(" + string.Join("|", keywords2.Select(w => Regex.Escape(w))) + @")\b", RegexOptions.IgnoreCase);
+            ranges = document.FindAll(_keywords2).GetAsFrozen() as DocumentRange[];
             for (int j = 0; j < ranges.Length; j++)
             {
                 if (!IsRangeInTokens(ranges[j], tokens))
-                    tokens.Add(CreateToken(ranges[j].Start.ToInt(), ranges[j].End.ToInt(), Color.Green));
+                    tokens.Add(CreateToken(ranges[j].Start.ToInt(), ranges[j].End.ToInt(), Color.Gray));
             }
+
+
+            //Extract all function
+            ranges = document.FindAll(_function).GetAsFrozen() as DocumentRange[];
+            for (int j = 0; j < ranges.Length; j++)
+            {
+                if (!IsRangeInTokens(ranges[j], tokens))
+                    tokens.Add(CreateToken(ranges[j].Start.ToInt(), ranges[j].End.ToInt(), Color.Magenta));
+            }
+
+          
             
             // order tokens by their start position
             tokens.Sort(new SyntaxHighlightTokenComparer());

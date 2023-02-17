@@ -507,6 +507,12 @@
     <Compile Include="SkladData\MoneyOnDateByUser_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ProjectManagement.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ProjectManagementDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\RawMaterialManagement.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -547,6 +553,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_PriceListDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_ProjectManagement.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_ProjectManagementDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_RawMaterialManagement.cs">
@@ -1093,6 +1105,12 @@
     </Compile>
     <Compile Include="ViewsForm\frmFinancesView.Designer.cs">
       <DependentUpon>frmFinancesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmDocumentViews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmDocumentViews.Designer.cs">
+      <DependentUpon>frmDocumentViews.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmKagents.cs">
       <SubType>Form</SubType>
@@ -1762,6 +1780,12 @@
     <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmProjectManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmProjectManagement.Designer.cs">
+      <DependentUpon>frmProjectManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmRawMaterialManagement.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2044,6 +2068,9 @@
     <EmbeddedResource Include="ViewsForm\frmFinancesView.resx">
       <DependentUpon>frmFinancesView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmDocumentViews.resx">
+      <DependentUpon>frmDocumentViews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKagents.resx">
       <DependentUpon>frmKagents.cs</DependentUpon>
     </EmbeddedResource>
@@ -2229,6 +2256,9 @@
     <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmProjectManagement.resx">
+      <DependentUpon>frmProjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmRawMaterialManagement.resx">
       <DependentUpon>frmRawMaterialManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -2379,6 +2409,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlans.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ProductionPlansList_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ProjectManagement.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.RawMaterialManagement.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ReportSortedFields.datasource" />
@@ -2413,6 +2444,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceListDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionPlanDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProjectManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />

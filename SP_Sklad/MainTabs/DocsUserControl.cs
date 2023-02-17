@@ -63,6 +63,7 @@ namespace SP_Sklad.MainTabs
         }
 
         private v_BankStatements bank_statements_row => BankStatementsGridView.GetFocusedRow() as v_BankStatements;
+        private v_ProjectManagement project_management_row => ProjectManagementGridView.GetFocusedRow() as v_ProjectManagement;
 
         public DocsUserControl()
         {
@@ -93,6 +94,9 @@ namespace SP_Sklad.MainTabs
                 lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 lookUpEdit2.EditValue = -1;
 
+                lookUpEdit3.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                lookUpEdit3.EditValue = -1;
+
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
@@ -104,6 +108,9 @@ namespace SP_Sklad.MainTabs
 
                 BSStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
                 BSEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+
+                dateEdit6.EditValue = DateTime.Now.Date.FirstDayOfMonth();
+                dateEdit5.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -331,6 +338,10 @@ namespace SP_Sklad.MainTabs
                     new frmBankStatements().ShowDialog();
                     break;
 
+                case 11:
+                    new frmProjectManagement().ShowDialog();
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -361,7 +372,7 @@ namespace SP_Sklad.MainTabs
 
                         break;
 
-                     case 8:
+                    case 8:
                         var kaa_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
                         using (var kaa_frm = new frmKAgentAdjustment(kaa_row.Id))
                         {
@@ -376,6 +387,12 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
 
+                    case 11:
+                        using (var bs_frm = new frmProjectManagement(project_management_row.Id))
+                        {
+                            bs_frm.ShowDialog();
+                        }
+                        break;
                 }
             }
 
@@ -549,6 +566,15 @@ namespace SP_Sklad.MainTabs
                     BankStatementsGridView.TopRowIndex = rIndex;
 
                     BankStatementsGridView_FocusedRowObjectChanged(sender, null);
+                    break;
+
+                case 11:
+
+                    int rIndex2 = ProjectManagementGridView.GetVisibleIndex(ProjectManagementGridView.FocusedRowHandle);
+                    ProjectManagementSource.QueryableSource = new BaseEntities().v_ProjectManagement.AsNoTracking().Where(w => w.OnDate >= dateEdit6.DateTime && w.OnDate < dateEdit5.DateTime && ((int)lookUpEdit3.EditValue == -1 || w.Checked == (int)lookUpEdit3.EditValue));
+                    ProjectManagementGridView.TopRowIndex = rIndex2;
+
+                    ProjectManagementGridView_FocusedRowObjectChanged(sender, null);
                     break;
             }
 
@@ -1438,7 +1464,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                    gridControl6.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
                     break;
             }
 
@@ -1597,7 +1623,38 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
+        private void ProjectManagementGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            var dr = project_management_row;
 
+            xtraTabControl7_SelectedPageChanged(sender, null);
 
+            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
+            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
+            PrintItemBtn.Enabled = (dr != null);
+        }
+
+        private void xtraTabControl7_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (project_management_row == null)
+            {
+                gridControl12.DataSource = null;
+                gridControl14.DataSource = null;
+                return;
+            }
+
+            switch (xtraTabControl7.SelectedTabPageIndex)
+            {
+                case 0:
+                    gridControl12.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == project_management_row.Id).OrderBy(o => o.Idx).ToList();
+                    break;
+
+                case 2:
+                    gridControl14.DataSource = _db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
+                    break;
+            }
+        }
     }
 }

@@ -398,6 +398,7 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.editorRow11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -1666,7 +1667,8 @@
             this.editorRow7,
             this.row17,
             this.row18,
-            this.row19});
+            this.row19,
+            this.editorRow11});
             this.vGridControl4.Size = new System.Drawing.Size(1083, 197);
             this.vGridControl4.TabIndex = 1;
             // 
@@ -4276,6 +4278,12 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
+            // editorRow11
+            // 
+            this.editorRow11.Name = "editorRow11";
+            this.editorRow11.Properties.Caption = "Номер в системі";
+            this.editorRow11.Properties.FieldName = "KaId";
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4844,5 +4852,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
         private DevExpress.XtraBars.BarButtonItem PrintRecipeBtn;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
     }
 }

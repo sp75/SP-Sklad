@@ -1132,6 +1132,40 @@
           <Property Name="Checked" Type="int" />
           <Property Name="Num" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProjectManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="DocType" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="EntId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="ProjectManagementId" Type="uniqueidentifier" />
+          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="RawMaterialManagement">
           <Key>
             <PropertyRef Name="Id" />
@@ -2754,6 +2788,52 @@ warning 6002: The table/view 'sp_base.dbo.v_ProductionPlanDet' does not have a p
           <Property Name="RecipeAmount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="ResipeOut" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="TotalOut" Type="numeric" Precision="35" Scale="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ProjectManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ProjectManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="DocType" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="EntName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocType" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ProjectManagementDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ProjectManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" />
+          <Property Name="ProjectManagementId" Type="uniqueidentifier" />
+          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="WType" Type="int" />
+          <Property Name="Expr1" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="SummPay" Type="numeric" Precision="33" Scale="8" />
+          <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+          <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4607,6 +4687,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="ProductionPlans">
               <PropertyRef Name="ManufId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectManagementDet_ProjectManagement">
+          <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProjectManagementDet" Type="Self.ProjectManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectManagement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectManagementDet">
+              <PropertyRef Name="ProjectManagementId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7636,6 +7730,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="ProductionPlanDet" EntityType="Self.ProductionPlanDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductionPlans" EntityType="Self.ProductionPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfileDocSetting" EntityType="Self.ProfileDocSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectManagement" EntityType="Self.ProjectManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectManagementDet" EntityType="Self.ProjectManagementDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialManagement" EntityType="Self.RawMaterialManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialManagementDet" EntityType="Self.RawMaterialManagementDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RawMaterialType" EntityType="Self.RawMaterialType" Schema="dbo" store:Type="Tables" />
@@ -8426,6 +8522,41 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProductionPlanDet].[TotalOut] AS [TotalOut]
     FROM [dbo].[v_ProductionPlanDet] AS [v_ProductionPlanDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_ProjectManagement" EntityType="Self.v_ProjectManagement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ProjectManagement].[Id] AS [Id], 
+    [v_ProjectManagement].[OnDate] AS [OnDate], 
+    [v_ProjectManagement].[Reason] AS [Reason], 
+    [v_ProjectManagement].[Checked] AS [Checked], 
+    [v_ProjectManagement].[SummAll] AS [SummAll], 
+    [v_ProjectManagement].[Notes] AS [Notes], 
+    [v_ProjectManagement].[PersonName] AS [PersonName], 
+    [v_ProjectManagement].[DocType] AS [DocType], 
+    [v_ProjectManagement].[Num] AS [Num], 
+    [v_ProjectManagement].[KaName] AS [KaName], 
+    [v_ProjectManagement].[EntName] AS [EntName]
+    FROM [dbo].[v_ProjectManagement] AS [v_ProjectManagement]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ProjectManagementDet" EntityType="Self.v_ProjectManagementDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ProjectManagementDet].[Id] AS [Id], 
+    [v_ProjectManagementDet].[Num] AS [Num], 
+    [v_ProjectManagementDet].[ProjectManagementId] AS [ProjectManagementId], 
+    [v_ProjectManagementDet].[DocId] AS [DocId], 
+    [v_ProjectManagementDet].[WType] AS [WType], 
+    [v_ProjectManagementDet].[Expr1] AS [Expr1], 
+    [v_ProjectManagementDet].[OnDate] AS [OnDate], 
+    [v_ProjectManagementDet].[Name] AS [Name], 
+    [v_ProjectManagementDet].[SummAll] AS [SummAll], 
+    [v_ProjectManagementDet].[SummInCurr] AS [SummInCurr], 
+    [v_ProjectManagementDet].[SummPay] AS [SummPay], 
+    [v_ProjectManagementDet].[OnValue] AS [OnValue], 
+    [v_ProjectManagementDet].[CurrName] AS [CurrName], 
+    [v_ProjectManagementDet].[DocShortName] AS [DocShortName], 
+    [v_ProjectManagementDet].[DocTypeName] AS [DocTypeName], 
+    [v_ProjectManagementDet].[Notes] AS [Notes]
+    FROM [dbo].[v_ProjectManagementDet] AS [v_ProjectManagementDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_RawMaterialManagement" EntityType="Self.v_RawMaterialManagement" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_RawMaterialManagement].[Id] AS [Id], 
@@ -9123,6 +9254,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_ProductionPlans_Warehouse1" Association="Self.FK_ProductionPlans_Warehouse1">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectManagementDet_ProjectManagement" Association="Self.FK_ProjectManagementDet_ProjectManagement">
+            <End Role="ProjectManagement" EntitySet="ProjectManagement" />
+            <End Role="ProjectManagementDet" EntitySet="ProjectManagementDet" />
           </AssociationSet>
           <AssociationSet Name="FK_RawMaterialManagementDet_Materials" Association="Self.FK_RawMaterialManagementDet_Materials">
             <End Role="Materials" EntitySet="Materials" />
@@ -10988,6 +11123,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="RawMaterialType" EntitySet="RawMaterialType" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
+          <EntitySet Name="ProjectManagement" EntityType="BaseModel.ProjectManagement" />
+          <EntitySet Name="ProjectManagementDet" EntityType="BaseModel.ProjectManagementDet" />
+          <AssociationSet Name="FK_ProjectManagementDet_ProjectManagement" Association="BaseModel.FK_ProjectManagementDet_ProjectManagement">
+            <End Role="ProjectManagement" EntitySet="ProjectManagement" />
+            <End Role="ProjectManagementDet" EntitySet="ProjectManagementDet" />
+          </AssociationSet>
+          <EntitySet Name="v_ProjectManagement" EntityType="BaseModel.v_ProjectManagement" />
+          <EntitySet Name="v_ProjectManagementDet" EntityType="BaseModel.v_ProjectManagementDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -18322,6 +18465,98 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ProjectManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="ProjectManagementDet" Relationship="BaseModel.FK_ProjectManagementDet_ProjectManagement" FromRole="ProjectManagement" ToRole="ProjectManagementDet" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="EntId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="ProjectManagementId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectManagement" Relationship="BaseModel.FK_ProjectManagementDet_ProjectManagement" FromRole="ProjectManagementDet" ToRole="ProjectManagement" />
+        </EntityType>
+        <Association Name="FK_ProjectManagementDet_ProjectManagement">
+          <End Type="BaseModel.ProjectManagement" Role="ProjectManagement" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ProjectManagementDet" Role="ProjectManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectManagement">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectManagementDet">
+              <PropertyRef Name="ProjectManagementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_ProjectManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="DocType" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="EntName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_ProjectManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="ProjectManagementId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="WType" Type="Int32" />
+          <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="SummPay" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -23264,6 +23499,81 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <MappingFragment StoreEntitySet="MatBarCode">
                 <ScalarProperty Name="BarCode" ColumnName="BarCode" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagement">
+            <EntityTypeMapping TypeName="BaseModel.ProjectManagement">
+              <MappingFragment StoreEntitySet="ProjectManagement">
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.ProjectManagementDet">
+              <MappingFragment StoreEntitySet="ProjectManagementDet">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="ProjectManagementId" ColumnName="ProjectManagementId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ProjectManagement">
+            <EntityTypeMapping TypeName="BaseModel.v_ProjectManagement">
+              <MappingFragment StoreEntitySet="v_ProjectManagement">
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ProjectManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.v_ProjectManagementDet">
+              <MappingFragment StoreEntitySet="v_ProjectManagementDet">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="ProjectManagementId" ColumnName="ProjectManagementId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -534,6 +534,62 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
+            this.splitContainerControl8 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.ProjectManagementGridControl = new DevExpress.XtraGrid.GridControl();
+            this.ProjectManagementGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn122 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox39 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn123 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox40 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn124 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn126 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn128 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn137 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn138 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn139 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
+            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit5 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit6 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabControl7 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl12 = new DevExpress.XtraGrid.GridControl();
+            this.bandedGridView2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand8 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn22 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn23 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemImageComboBox41 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.bandedGridColumn24 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn25 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn26 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn27 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand9 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn28 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn29 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn30 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn31 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn32 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
+            this.gridControl14 = new DevExpress.XtraGrid.GridControl();
+            this.gridView11 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn140 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox43 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn141 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox44 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn142 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox45 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn143 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn144 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn145 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn146 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn147 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ProjectManagementSource = new DevExpress.Data.Linq.LinqServerModeSource();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -775,6 +831,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).BeginInit();
+            this.xtraTabPage29.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
+            this.splitContainerControl8.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel2)).BeginInit();
+            this.splitContainerControl8.Panel2.SuspendLayout();
+            this.splitContainerControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox39)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox40)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
+            this.panelControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).BeginInit();
+            this.xtraTabControl7.SuspendLayout();
+            this.xtraTabPage30.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox41)).BeginInit();
+            this.xtraTabPage32.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -942,7 +1029,8 @@
             this.xtraTabPage13,
             this.xtraTabPage3,
             this.xtraTabPage19,
-            this.xtraTabPage25});
+            this.xtraTabPage25,
+            this.xtraTabPage29});
             // 
             // xtraTabPage7
             // 
@@ -4347,7 +4435,7 @@
             // vGridControl3
             // 
             this.vGridControl3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl3.DataSource = this.KAgentAdjustmentInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -6398,6 +6486,701 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // xtraTabPage29
+            // 
+            this.xtraTabPage29.Controls.Add(this.splitContainerControl8);
+            this.xtraTabPage29.Name = "xtraTabPage29";
+            this.xtraTabPage29.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage29.Text = "Управління проектами";
+            // 
+            // splitContainerControl8
+            // 
+            this.splitContainerControl8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerControl8.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
+            this.splitContainerControl8.Horizontal = false;
+            this.splitContainerControl8.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl8.Name = "splitContainerControl8";
+            // 
+            // splitContainerControl8.Panel1
+            // 
+            this.splitContainerControl8.Panel1.Controls.Add(this.ProjectManagementGridControl);
+            this.splitContainerControl8.Panel1.Controls.Add(this.panelControl8);
+            this.splitContainerControl8.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl8.Panel2
+            // 
+            this.splitContainerControl8.Panel2.Controls.Add(this.xtraTabControl7);
+            this.splitContainerControl8.Panel2.Text = "Panel2";
+            this.splitContainerControl8.Size = new System.Drawing.Size(1138, 695);
+            this.splitContainerControl8.SplitterPosition = 301;
+            this.splitContainerControl8.TabIndex = 2;
+            this.splitContainerControl8.Text = "splitContainerControl8";
+            // 
+            // ProjectManagementGridControl
+            // 
+            this.ProjectManagementGridControl.DataSource = this.ProjectManagementSource;
+            this.ProjectManagementGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ProjectManagementGridControl.Location = new System.Drawing.Point(0, 50);
+            this.ProjectManagementGridControl.MainView = this.ProjectManagementGridView;
+            this.ProjectManagementGridControl.Name = "ProjectManagementGridControl";
+            this.ProjectManagementGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox39,
+            this.repositoryItemImageComboBox40});
+            this.ProjectManagementGridControl.Size = new System.Drawing.Size(1138, 334);
+            this.ProjectManagementGridControl.TabIndex = 0;
+            this.ProjectManagementGridControl.UseEmbeddedNavigator = true;
+            this.ProjectManagementGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.ProjectManagementGridView});
+            // 
+            // ProjectManagementGridView
+            // 
+            this.ProjectManagementGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ProjectManagementGridView.Appearance.Row.Options.UseFont = true;
+            this.ProjectManagementGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn122,
+            this.gridColumn123,
+            this.gridColumn124,
+            this.gridColumn125,
+            this.gridColumn126,
+            this.gridColumn127,
+            this.gridColumn128,
+            this.gridColumn137,
+            this.gridColumn138,
+            this.gridColumn139});
+            this.ProjectManagementGridView.GridControl = this.ProjectManagementGridControl;
+            this.ProjectManagementGridView.Name = "ProjectManagementGridView";
+            this.ProjectManagementGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.ProjectManagementGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.ProjectManagementGridView.OptionsBehavior.ReadOnly = true;
+            this.ProjectManagementGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.ProjectManagementGridView.OptionsView.ShowGroupPanel = false;
+            this.ProjectManagementGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.ProjectManagementGridView_FocusedRowObjectChanged);
+            // 
+            // gridColumn122
+            // 
+            this.gridColumn122.ColumnEdit = this.repositoryItemImageComboBox39;
+            this.gridColumn122.FieldName = "WType";
+            this.gridColumn122.Name = "gridColumn122";
+            this.gridColumn122.OptionsColumn.AllowFocus = false;
+            this.gridColumn122.OptionsColumn.AllowSize = false;
+            this.gridColumn122.OptionsColumn.FixedWidth = true;
+            this.gridColumn122.OptionsColumn.ShowCaption = false;
+            this.gridColumn122.Visible = true;
+            this.gridColumn122.VisibleIndex = 0;
+            this.gridColumn122.Width = 25;
+            // 
+            // repositoryItemImageComboBox39
+            // 
+            this.repositoryItemImageComboBox39.AutoHeight = false;
+            this.repositoryItemImageComboBox39.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox39.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 41),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 42)});
+            this.repositoryItemImageComboBox39.Name = "repositoryItemImageComboBox39";
+            this.repositoryItemImageComboBox39.SmallImages = this.GridImageList;
+            // 
+            // gridColumn123
+            // 
+            this.gridColumn123.Caption = " ";
+            this.gridColumn123.ColumnEdit = this.repositoryItemImageComboBox40;
+            this.gridColumn123.FieldName = "Checked";
+            this.gridColumn123.Name = "gridColumn123";
+            this.gridColumn123.OptionsColumn.AllowFocus = false;
+            this.gridColumn123.OptionsColumn.AllowSize = false;
+            this.gridColumn123.OptionsColumn.FixedWidth = true;
+            this.gridColumn123.OptionsColumn.ShowCaption = false;
+            this.gridColumn123.Visible = true;
+            this.gridColumn123.VisibleIndex = 1;
+            this.gridColumn123.Width = 25;
+            // 
+            // repositoryItemImageComboBox40
+            // 
+            this.repositoryItemImageComboBox40.AutoHeight = false;
+            this.repositoryItemImageComboBox40.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox40.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22)});
+            this.repositoryItemImageComboBox40.Name = "repositoryItemImageComboBox40";
+            this.repositoryItemImageComboBox40.SmallImages = this.GridImageList;
+            // 
+            // gridColumn124
+            // 
+            this.gridColumn124.Caption = "№";
+            this.gridColumn124.FieldName = "Num";
+            this.gridColumn124.Name = "gridColumn124";
+            this.gridColumn124.Visible = true;
+            this.gridColumn124.VisibleIndex = 2;
+            this.gridColumn124.Width = 73;
+            // 
+            // gridColumn125
+            // 
+            this.gridColumn125.Caption = "Дата";
+            this.gridColumn125.DisplayFormat.FormatString = "g";
+            this.gridColumn125.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn125.FieldName = "OnDate";
+            this.gridColumn125.Name = "gridColumn125";
+            this.gridColumn125.Visible = true;
+            this.gridColumn125.VisibleIndex = 3;
+            this.gridColumn125.Width = 99;
+            // 
+            // gridColumn126
+            // 
+            this.gridColumn126.Caption = "Контрагент";
+            this.gridColumn126.FieldName = "DebtKaName";
+            this.gridColumn126.Name = "gridColumn126";
+            this.gridColumn126.Visible = true;
+            this.gridColumn126.VisibleIndex = 5;
+            this.gridColumn126.Width = 288;
+            // 
+            // gridColumn127
+            // 
+            this.gridColumn127.Caption = "Сума";
+            this.gridColumn127.FieldName = "SummAll";
+            this.gridColumn127.Name = "gridColumn127";
+            this.gridColumn127.Visible = true;
+            this.gridColumn127.VisibleIndex = 6;
+            this.gridColumn127.Width = 105;
+            // 
+            // gridColumn128
+            // 
+            this.gridColumn128.Caption = "Примітка";
+            this.gridColumn128.FieldName = "Notes";
+            this.gridColumn128.Name = "gridColumn128";
+            this.gridColumn128.Width = 119;
+            // 
+            // gridColumn137
+            // 
+            this.gridColumn137.Caption = "Сума у нац. валюті";
+            this.gridColumn137.FieldName = "SummInCurr";
+            this.gridColumn137.Name = "gridColumn137";
+            this.gridColumn137.Visible = true;
+            this.gridColumn137.VisibleIndex = 8;
+            this.gridColumn137.Width = 129;
+            // 
+            // gridColumn138
+            // 
+            this.gridColumn138.Caption = "Валюта";
+            this.gridColumn138.FieldName = "CurrName";
+            this.gridColumn138.Name = "gridColumn138";
+            this.gridColumn138.Visible = true;
+            this.gridColumn138.VisibleIndex = 7;
+            this.gridColumn138.Width = 58;
+            // 
+            // gridColumn139
+            // 
+            this.gridColumn139.Caption = "Тип";
+            this.gridColumn139.FieldName = "WriteOffTypeName";
+            this.gridColumn139.Name = "gridColumn139";
+            this.gridColumn139.Visible = true;
+            this.gridColumn139.VisibleIndex = 4;
+            this.gridColumn139.Width = 217;
+            // 
+            // panelControl8
+            // 
+            this.panelControl8.Controls.Add(this.lookUpEdit3);
+            this.panelControl8.Controls.Add(this.labelControl1);
+            this.panelControl8.Controls.Add(this.dateEdit5);
+            this.panelControl8.Controls.Add(this.labelControl2);
+            this.panelControl8.Controls.Add(this.dateEdit6);
+            this.panelControl8.Controls.Add(this.labelControl20);
+            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl8.Location = new System.Drawing.Point(0, 0);
+            this.panelControl8.Name = "panelControl8";
+            this.panelControl8.Size = new System.Drawing.Size(1138, 50);
+            this.panelControl8.TabIndex = 1;
+            // 
+            // lookUpEdit3
+            // 
+            this.lookUpEdit3.Location = new System.Drawing.Point(491, 15);
+            this.lookUpEdit3.Name = "lookUpEdit3";
+            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.lookUpEdit3.Properties.DisplayMember = "Name";
+            this.lookUpEdit3.Properties.ShowHeader = false;
+            this.lookUpEdit3.Properties.ValueMember = "Id";
+            this.lookUpEdit3.Size = new System.Drawing.Size(164, 22);
+            this.lookUpEdit3.StyleController = this.styleController1;
+            this.lookUpEdit3.TabIndex = 8;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(446, 18);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(39, 16);
+            this.labelControl1.StyleController = this.styleController1;
+            this.labelControl1.TabIndex = 7;
+            this.labelControl1.Text = "Статус";
+            // 
+            // dateEdit5
+            // 
+            this.dateEdit5.EditValue = null;
+            this.dateEdit5.Location = new System.Drawing.Point(237, 15);
+            this.dateEdit5.Name = "dateEdit5";
+            this.dateEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit5.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEdit5.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit5.Properties.DisplayFormat.FormatString = "";
+            this.dateEdit5.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit5.Properties.EditFormat.FormatString = "";
+            this.dateEdit5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit5.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdit5.Properties.MaskSettings.Set("mask", "g");
+            this.dateEdit5.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+            this.dateEdit5.Size = new System.Drawing.Size(140, 22);
+            this.dateEdit5.StyleController = this.styleController1;
+            this.dateEdit5.TabIndex = 3;
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(217, 18);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(14, 16);
+            this.labelControl2.StyleController = this.styleController1;
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "по";
+            // 
+            // dateEdit6
+            // 
+            this.dateEdit6.EditValue = null;
+            this.dateEdit6.Location = new System.Drawing.Point(71, 15);
+            this.dateEdit6.Name = "dateEdit6";
+            this.dateEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit6.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.dateEdit6.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit6.Properties.DisplayFormat.FormatString = "";
+            this.dateEdit6.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit6.Properties.EditFormat.FormatString = "";
+            this.dateEdit6.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dateEdit6.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdit6.Properties.MaskSettings.Set("mask", "g");
+            this.dateEdit6.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+            this.dateEdit6.Size = new System.Drawing.Size(140, 22);
+            this.dateEdit6.StyleController = this.styleController1;
+            this.dateEdit6.TabIndex = 1;
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(16, 18);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(49, 16);
+            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.TabIndex = 0;
+            this.labelControl20.Text = "Період з";
+            // 
+            // xtraTabControl7
+            // 
+            this.xtraTabControl7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl7.Images = this.PageImageList;
+            this.xtraTabControl7.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl7.Name = "xtraTabControl7";
+            this.xtraTabControl7.SelectedTabPage = this.xtraTabPage30;
+            this.xtraTabControl7.Size = new System.Drawing.Size(1138, 301);
+            this.xtraTabControl7.TabIndex = 0;
+            this.xtraTabControl7.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage30,
+            this.xtraTabPage32});
+            this.xtraTabControl7.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl7_SelectedPageChanged);
+            // 
+            // xtraTabPage30
+            // 
+            this.xtraTabPage30.Controls.Add(this.gridControl12);
+            this.xtraTabPage30.ImageOptions.ImageIndex = 0;
+            this.xtraTabPage30.Name = "xtraTabPage30";
+            this.xtraTabPage30.Size = new System.Drawing.Size(1136, 273);
+            this.xtraTabPage30.Text = "Позиції";
+            // 
+            // gridControl12
+            // 
+            this.gridControl12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl12.Location = new System.Drawing.Point(0, 0);
+            this.gridControl12.MainView = this.bandedGridView2;
+            this.gridControl12.MenuManager = this.barManager1;
+            this.gridControl12.Name = "gridControl12";
+            this.gridControl12.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox41});
+            this.gridControl12.Size = new System.Drawing.Size(1136, 273);
+            this.gridControl12.TabIndex = 39;
+            this.gridControl12.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.bandedGridView2});
+            // 
+            // bandedGridView2
+            // 
+            this.bandedGridView2.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand8,
+            this.gridBand9});
+            this.bandedGridView2.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.bandedGridColumn23,
+            this.bandedGridColumn26,
+            this.bandedGridColumn27,
+            this.bandedGridColumn25,
+            this.bandedGridColumn29,
+            this.bandedGridColumn30,
+            this.bandedGridColumn28,
+            this.bandedGridColumn31,
+            this.bandedGridColumn32,
+            this.bandedGridColumn24,
+            this.bandedGridColumn22});
+            this.bandedGridView2.GridControl = this.gridControl12;
+            this.bandedGridView2.Name = "bandedGridView2";
+            this.bandedGridView2.OptionsBehavior.AllowIncrementalSearch = true;
+            this.bandedGridView2.OptionsBehavior.Editable = false;
+            this.bandedGridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridBand8
+            // 
+            this.gridBand8.Caption = "Документ";
+            this.gridBand8.Columns.Add(this.bandedGridColumn22);
+            this.gridBand8.Columns.Add(this.bandedGridColumn23);
+            this.gridBand8.Columns.Add(this.bandedGridColumn24);
+            this.gridBand8.Columns.Add(this.bandedGridColumn25);
+            this.gridBand8.Columns.Add(this.bandedGridColumn26);
+            this.gridBand8.Columns.Add(this.bandedGridColumn27);
+            this.gridBand8.Name = "gridBand8";
+            this.gridBand8.VisibleIndex = 0;
+            this.gridBand8.Width = 561;
+            // 
+            // bandedGridColumn22
+            // 
+            this.bandedGridColumn22.Caption = "#";
+            this.bandedGridColumn22.FieldName = "Idx";
+            this.bandedGridColumn22.Name = "bandedGridColumn22";
+            this.bandedGridColumn22.Visible = true;
+            this.bandedGridColumn22.Width = 34;
+            // 
+            // bandedGridColumn23
+            // 
+            this.bandedGridColumn23.ColumnEdit = this.repositoryItemImageComboBox41;
+            this.bandedGridColumn23.FieldName = "WType";
+            this.bandedGridColumn23.Name = "bandedGridColumn23";
+            this.bandedGridColumn23.OptionsColumn.AllowEdit = false;
+            this.bandedGridColumn23.OptionsColumn.AllowIncrementalSearch = false;
+            this.bandedGridColumn23.OptionsColumn.AllowMove = false;
+            this.bandedGridColumn23.OptionsColumn.AllowSize = false;
+            this.bandedGridColumn23.OptionsColumn.ReadOnly = true;
+            this.bandedGridColumn23.OptionsColumn.ShowCaption = false;
+            this.bandedGridColumn23.OptionsColumn.ShowInCustomizationForm = false;
+            this.bandedGridColumn23.Visible = true;
+            this.bandedGridColumn23.Width = 21;
+            // 
+            // repositoryItemImageComboBox41
+            // 
+            this.repositoryItemImageComboBox41.AutoHeight = false;
+            this.repositoryItemImageComboBox41.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox41.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 42),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 41)});
+            this.repositoryItemImageComboBox41.Name = "repositoryItemImageComboBox41";
+            this.repositoryItemImageComboBox41.SmallImages = this.GridImageList;
+            // 
+            // bandedGridColumn24
+            // 
+            this.bandedGridColumn24.Caption = "bandedGridColumn1";
+            this.bandedGridColumn24.FieldName = "DocShortName";
+            this.bandedGridColumn24.Name = "bandedGridColumn24";
+            this.bandedGridColumn24.OptionsColumn.ShowCaption = false;
+            this.bandedGridColumn24.Width = 53;
+            // 
+            // bandedGridColumn25
+            // 
+            this.bandedGridColumn25.Caption = "Тип документа";
+            this.bandedGridColumn25.FieldName = "DocTypeName";
+            this.bandedGridColumn25.Name = "bandedGridColumn25";
+            this.bandedGridColumn25.Visible = true;
+            this.bandedGridColumn25.Width = 331;
+            // 
+            // bandedGridColumn26
+            // 
+            this.bandedGridColumn26.Caption = "№";
+            this.bandedGridColumn26.FieldName = "Num";
+            this.bandedGridColumn26.Name = "bandedGridColumn26";
+            this.bandedGridColumn26.Visible = true;
+            this.bandedGridColumn26.Width = 50;
+            // 
+            // bandedGridColumn27
+            // 
+            this.bandedGridColumn27.Caption = "Дата";
+            this.bandedGridColumn27.DisplayFormat.FormatString = "g";
+            this.bandedGridColumn27.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.bandedGridColumn27.FieldName = "OnDate";
+            this.bandedGridColumn27.Name = "bandedGridColumn27";
+            this.bandedGridColumn27.Visible = true;
+            this.bandedGridColumn27.Width = 125;
+            // 
+            // gridBand9
+            // 
+            this.gridBand9.Caption = "Разом по дукументу";
+            this.gridBand9.Columns.Add(this.bandedGridColumn28);
+            this.gridBand9.Columns.Add(this.bandedGridColumn29);
+            this.gridBand9.Columns.Add(this.bandedGridColumn30);
+            this.gridBand9.Columns.Add(this.bandedGridColumn31);
+            this.gridBand9.Columns.Add(this.bandedGridColumn32);
+            this.gridBand9.Name = "gridBand9";
+            this.gridBand9.VisibleIndex = 1;
+            this.gridBand9.Width = 504;
+            // 
+            // bandedGridColumn28
+            // 
+            this.bandedGridColumn28.Caption = "Сума в валюті";
+            this.bandedGridColumn28.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn28.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn28.FieldName = "SummAll";
+            this.bandedGridColumn28.Name = "bandedGridColumn28";
+            this.bandedGridColumn28.Visible = true;
+            this.bandedGridColumn28.Width = 108;
+            // 
+            // bandedGridColumn29
+            // 
+            this.bandedGridColumn29.Caption = "Курс";
+            this.bandedGridColumn29.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn29.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn29.FieldName = "OnValue";
+            this.bandedGridColumn29.Name = "bandedGridColumn29";
+            this.bandedGridColumn29.Visible = true;
+            this.bandedGridColumn29.Width = 52;
+            // 
+            // bandedGridColumn30
+            // 
+            this.bandedGridColumn30.Caption = "Валюта";
+            this.bandedGridColumn30.FieldName = "CurrName";
+            this.bandedGridColumn30.Name = "bandedGridColumn30";
+            this.bandedGridColumn30.Visible = true;
+            this.bandedGridColumn30.Width = 65;
+            // 
+            // bandedGridColumn31
+            // 
+            this.bandedGridColumn31.Caption = "Сума в облік. валюті";
+            this.bandedGridColumn31.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn31.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn31.FieldName = "SummInCurr";
+            this.bandedGridColumn31.Name = "bandedGridColumn31";
+            this.bandedGridColumn31.Visible = true;
+            this.bandedGridColumn31.Width = 132;
+            // 
+            // bandedGridColumn32
+            // 
+            this.bandedGridColumn32.AppearanceCell.BackColor = System.Drawing.Color.MistyRose;
+            this.bandedGridColumn32.AppearanceCell.Options.UseBackColor = true;
+            this.bandedGridColumn32.Caption = "Заборгованість";
+            this.bandedGridColumn32.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn32.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn32.FieldName = "Saldo";
+            this.bandedGridColumn32.Name = "bandedGridColumn32";
+            this.bandedGridColumn32.Visible = true;
+            this.bandedGridColumn32.Width = 147;
+            // 
+            // xtraTabPage32
+            // 
+            this.xtraTabPage32.Controls.Add(this.gridControl14);
+            this.xtraTabPage32.ImageOptions.ImageIndex = 2;
+            this.xtraTabPage32.Name = "xtraTabPage32";
+            this.xtraTabPage32.Size = new System.Drawing.Size(1136, 273);
+            this.xtraTabPage32.Text = "Зв\'язані документи";
+            // 
+            // gridControl14
+            // 
+            this.gridControl14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl14.Location = new System.Drawing.Point(0, 0);
+            this.gridControl14.MainView = this.gridView11;
+            this.gridControl14.Name = "gridControl14";
+            this.gridControl14.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox45,
+            this.repositoryItemImageComboBox44,
+            this.repositoryItemImageComboBox43});
+            this.gridControl14.Size = new System.Drawing.Size(1136, 273);
+            this.gridControl14.TabIndex = 0;
+            this.gridControl14.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView11});
+            // 
+            // gridView11
+            // 
+            this.gridView11.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView11.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn140,
+            this.gridColumn141,
+            this.gridColumn142,
+            this.gridColumn143,
+            this.gridColumn144,
+            this.gridColumn145,
+            this.gridColumn146,
+            this.gridColumn147});
+            this.gridView11.GridControl = this.gridControl14;
+            this.gridView11.Name = "gridView11";
+            this.gridView11.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView11.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.gridView11.OptionsBehavior.ReadOnly = true;
+            this.gridView11.OptionsView.ShowGroupPanel = false;
+            // 
+            // gridColumn140
+            // 
+            this.gridColumn140.Caption = "gridColumn14";
+            this.gridColumn140.ColumnEdit = this.repositoryItemImageComboBox43;
+            this.gridColumn140.FieldName = "RelType";
+            this.gridColumn140.Name = "gridColumn140";
+            this.gridColumn140.OptionsColumn.AllowEdit = false;
+            this.gridColumn140.OptionsColumn.AllowFocus = false;
+            this.gridColumn140.OptionsColumn.AllowMove = false;
+            this.gridColumn140.OptionsColumn.AllowSize = false;
+            this.gridColumn140.OptionsColumn.FixedWidth = true;
+            this.gridColumn140.OptionsColumn.ReadOnly = true;
+            this.gridColumn140.OptionsColumn.ShowCaption = false;
+            this.gridColumn140.OptionsColumn.TabStop = false;
+            this.gridColumn140.Visible = true;
+            this.gridColumn140.VisibleIndex = 0;
+            this.gridColumn140.Width = 25;
+            // 
+            // repositoryItemImageComboBox43
+            // 
+            this.repositoryItemImageComboBox43.AutoHeight = false;
+            this.repositoryItemImageComboBox43.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox43.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 37),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 38)});
+            this.repositoryItemImageComboBox43.Name = "repositoryItemImageComboBox43";
+            this.repositoryItemImageComboBox43.SmallImages = this.GridImageList;
+            // 
+            // gridColumn141
+            // 
+            this.gridColumn141.Caption = "gridColumn15";
+            this.gridColumn141.ColumnEdit = this.repositoryItemImageComboBox44;
+            this.gridColumn141.FieldName = "DocType";
+            this.gridColumn141.Name = "gridColumn141";
+            this.gridColumn141.OptionsColumn.AllowEdit = false;
+            this.gridColumn141.OptionsColumn.AllowFocus = false;
+            this.gridColumn141.OptionsColumn.AllowMove = false;
+            this.gridColumn141.OptionsColumn.AllowSize = false;
+            this.gridColumn141.OptionsColumn.FixedWidth = true;
+            this.gridColumn141.OptionsColumn.ReadOnly = true;
+            this.gridColumn141.OptionsColumn.ShowCaption = false;
+            this.gridColumn141.OptionsColumn.TabStop = false;
+            this.gridColumn141.Visible = true;
+            this.gridColumn141.VisibleIndex = 1;
+            this.gridColumn141.Width = 25;
+            // 
+            // repositoryItemImageComboBox44
+            // 
+            this.repositoryItemImageComboBox44.AutoHeight = false;
+            this.repositoryItemImageComboBox44.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox44.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40)});
+            this.repositoryItemImageComboBox44.Name = "repositoryItemImageComboBox44";
+            this.repositoryItemImageComboBox44.SmallImages = this.GridImageList;
+            // 
+            // gridColumn142
+            // 
+            this.gridColumn142.Caption = "gridColumn16";
+            this.gridColumn142.ColumnEdit = this.repositoryItemImageComboBox45;
+            this.gridColumn142.FieldName = "Checked";
+            this.gridColumn142.Name = "gridColumn142";
+            this.gridColumn142.OptionsColumn.AllowEdit = false;
+            this.gridColumn142.OptionsColumn.AllowFocus = false;
+            this.gridColumn142.OptionsColumn.AllowMove = false;
+            this.gridColumn142.OptionsColumn.AllowSize = false;
+            this.gridColumn142.OptionsColumn.FixedWidth = true;
+            this.gridColumn142.OptionsColumn.ReadOnly = true;
+            this.gridColumn142.OptionsColumn.ShowCaption = false;
+            this.gridColumn142.OptionsColumn.TabStop = false;
+            this.gridColumn142.Visible = true;
+            this.gridColumn142.VisibleIndex = 2;
+            this.gridColumn142.Width = 25;
+            // 
+            // repositoryItemImageComboBox45
+            // 
+            this.repositoryItemImageComboBox45.AutoHeight = false;
+            this.repositoryItemImageComboBox45.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox45.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            this.repositoryItemImageComboBox45.Name = "repositoryItemImageComboBox45";
+            this.repositoryItemImageComboBox45.SmallImages = this.GridImageList;
+            // 
+            // gridColumn143
+            // 
+            this.gridColumn143.Caption = "Номер";
+            this.gridColumn143.FieldName = "Num";
+            this.gridColumn143.Name = "gridColumn143";
+            this.gridColumn143.Visible = true;
+            this.gridColumn143.VisibleIndex = 3;
+            this.gridColumn143.Width = 71;
+            // 
+            // gridColumn144
+            // 
+            this.gridColumn144.Caption = "Дата";
+            this.gridColumn144.DisplayFormat.FormatString = "g";
+            this.gridColumn144.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn144.FieldName = "OnDate";
+            this.gridColumn144.Name = "gridColumn144";
+            this.gridColumn144.Visible = true;
+            this.gridColumn144.VisibleIndex = 4;
+            this.gridColumn144.Width = 151;
+            // 
+            // gridColumn145
+            // 
+            this.gridColumn145.Caption = "Тип документу";
+            this.gridColumn145.FieldName = "DocTypeName";
+            this.gridColumn145.Name = "gridColumn145";
+            this.gridColumn145.Visible = true;
+            this.gridColumn145.VisibleIndex = 5;
+            this.gridColumn145.Width = 218;
+            // 
+            // gridColumn146
+            // 
+            this.gridColumn146.Caption = "Сума";
+            this.gridColumn146.DisplayFormat.FormatString = "0.00";
+            this.gridColumn146.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn146.FieldName = "Summ";
+            this.gridColumn146.Name = "gridColumn146";
+            this.gridColumn146.Visible = true;
+            this.gridColumn146.VisibleIndex = 6;
+            this.gridColumn146.Width = 116;
+            // 
+            // gridColumn147
+            // 
+            this.gridColumn147.Caption = "Валюта";
+            this.gridColumn147.FieldName = "CurrencyName";
+            this.gridColumn147.Name = "gridColumn147";
+            this.gridColumn147.Visible = true;
+            this.gridColumn147.VisibleIndex = 7;
+            this.gridColumn147.Width = 110;
+            // 
+            // ProjectManagementSource
+            // 
+            this.ProjectManagementSource.DefaultSorting = "OnDate";
+            this.ProjectManagementSource.ElementType = typeof(SP_Sklad.SkladData.v_ProjectManagement);
+            this.ProjectManagementSource.KeyExpression = "Id";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6659,6 +7442,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).EndInit();
+            this.xtraTabPage29.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).EndInit();
+            this.splitContainerControl8.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel2)).EndInit();
+            this.splitContainerControl8.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).EndInit();
+            this.splitContainerControl8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox39)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox40)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
+            this.panelControl8.ResumeLayout(false);
+            this.panelControl8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).EndInit();
+            this.xtraTabControl7.ResumeLayout(false);
+            this.xtraTabPage30.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox41)).EndInit();
+            this.xtraTabPage32.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7155,5 +7970,61 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private System.Windows.Forms.BindingSource KAgentAdjustmentInfoBS;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage29;
+        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl8;
+        public DevExpress.XtraGrid.GridControl ProjectManagementGridControl;
+        public DevExpress.XtraGrid.Views.Grid.GridView ProjectManagementGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn122;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox39;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn123;
+        public DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn124;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn125;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn126;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn127;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn128;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn137;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn138;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn139;
+        private DevExpress.XtraEditors.PanelControl panelControl8;
+        public DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        public DevExpress.XtraEditors.DateEdit dateEdit5;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        public DevExpress.XtraEditors.DateEdit dateEdit6;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl7;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage30;
+        private DevExpress.XtraGrid.GridControl gridControl12;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand8;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn22;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn23;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox41;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn24;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn25;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn26;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn27;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand9;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn28;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn29;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn30;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn31;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn32;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage32;
+        private DevExpress.XtraGrid.GridControl gridControl14;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn140;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn141;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox44;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn142;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox45;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn143;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn144;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn145;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn146;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn147;
+        private DevExpress.Data.Linq.LinqServerModeSource ProjectManagementSource;
     }
 }
