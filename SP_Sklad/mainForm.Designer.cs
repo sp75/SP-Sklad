@@ -40,7 +40,7 @@
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddDeboningBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.CashierWorkplaceBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
@@ -83,7 +83,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -105,7 +105,7 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
-            this.xtraTabPage8.SuspendLayout();
+            this.TradeTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
@@ -228,7 +228,7 @@
             this.NextBtn,
             this.barButtonItem1,
             this.barButtonItem10,
-            this.barButtonItem11,
+            this.CashierWorkplaceBtn,
             this.barButtonItem13});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 31;
@@ -252,7 +252,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.Text = "Tools";
@@ -308,14 +308,14 @@
             this.AddDeboningBtn.Name = "AddDeboningBtn";
             this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
-            // barButtonItem11
+            // CashierWorkplaceBtn
             // 
-            this.barButtonItem11.Caption = "Робоче місце касира";
-            this.barButtonItem11.Id = 28;
-            this.barButtonItem11.ImageOptions.ImageIndex = 34;
-            this.barButtonItem11.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
-            this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            this.CashierWorkplaceBtn.Caption = "Робоче місце касира";
+            this.CashierWorkplaceBtn.Id = 28;
+            this.CashierWorkplaceBtn.ImageOptions.ImageIndex = 34;
+            this.CashierWorkplaceBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
+            this.CashierWorkplaceBtn.Name = "CashierWorkplaceBtn";
+            this.CashierWorkplaceBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -447,7 +447,7 @@
             this.barSubItem4.Caption = "Сервіс";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
@@ -706,21 +706,21 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage8,
+            this.TradeTabPage,
             this.xtraTabPage4,
             this.xtraTabPage5,
             this.xtraTabPage6,
             this.xtraTabPage7});
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
-            // xtraTabPage8
+            // TradeTabPage
             // 
-            this.xtraTabPage8.Controls.Add(this.tradeUserControl1);
-            this.xtraTabPage8.ImageOptions.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
-            this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1186, 586);
-            this.xtraTabPage8.TabPageWidth = 120;
-            this.xtraTabPage8.Text = "Продажі";
+            this.TradeTabPage.Controls.Add(this.tradeUserControl1);
+            this.TradeTabPage.ImageOptions.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
+            this.TradeTabPage.Name = "TradeTabPage";
+            this.TradeTabPage.Size = new System.Drawing.Size(1186, 586);
+            this.TradeTabPage.TabPageWidth = 120;
+            this.TradeTabPage.Text = "Продажі";
             // 
             // tradeUserControl1
             // 
@@ -813,6 +813,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm
@@ -852,7 +853,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
-            this.xtraTabPage8.ResumeLayout(false);
+            this.TradeTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
@@ -913,10 +914,10 @@
         private DevExpress.XtraBars.BarButtonItem NextBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem CashierWorkplaceBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
+        private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
     }
 }

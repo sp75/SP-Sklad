@@ -51,6 +51,9 @@ namespace SP_Sklad
                 Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Rep"));
             }
 
+            var sta = new AppSettingRepository().ShowTradeApp;
+            TradeTabPage.PageVisible = sta;
+            CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher;
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

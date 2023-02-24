@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,8 +12,6 @@ using DevExpress.XtraGrid;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
-using SP_Sklad.WBDetForm;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace SP_Sklad.WBForm
 {
@@ -64,7 +61,9 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     Deleted = 0,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.Enterprise.KaId,
+                    DocType = 30
+
                 });
 
                 _db.SaveChanges();
@@ -96,8 +95,8 @@ namespace SP_Sklad.WBForm
 
         private void GetOk()
         {
-            OkButton.Enabled =  ProjectManagementDetBS.Count > 0;
-            
+            OkButton.Enabled = ProjectManagementDetBS.Count > 0;
+
             EditMaterialBtn.Enabled = ProjectManagementDetBS.Count > 0;
             DelMaterialBtn.Enabled = ProjectManagementDetBS.Count > 0;
 
@@ -106,20 +105,13 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            var list = _db.v_ProjectManagementDet.AsNoTracking().Where(w => w.ProjectManagementId == _doc_id).OrderBy(o => o.OnDate).ToList();
+            var list = _db.v_ProjectManagementDet.AsNoTracking().Where(w => w.ProjectManagementId == _doc_id).OrderBy(o => o.Num).ToList();
 
             int top_row = ProjectManagementDetGridView.TopRowIndex;
             ProjectManagementDetBS.DataSource = list;
             ProjectManagementDetGridView.TopRowIndex = top_row;
 
             GetOk();
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //  new frmProductionPlanDet(_db, Guid.NewGuid(), pp).ShowDialog();
-
-            RefreshDet();
         }
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -131,6 +123,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            RecaldDocSum();
             pm.UpdatedAt = DateTime.Now;
 
             var ProductionPlan = _db.ProductionPlans.Find(_doc_id);
@@ -141,7 +134,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                pm.SummAll = pm.SummInCurr;
+              
             }
 
             _db.SaveChanges();
@@ -176,17 +169,41 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.KAgentAdjustmentDet.RemoveRange(_db.KAgentAdjustmentDet.Where(w=> w.KAgentAdjustmentId == pm.Id).ToList()); //DeleteWhere<KAgentAdjustmentDet>(w => w.KAgentAdjustmentId == pp.Id);
+            _db.ProjectManagementDet.Remove(_db.ProjectManagementDet.Find(pm_det_row.Id));
             _db.SaveChanges();
+
+            RecaldDocSum();
 
             RefreshDet();
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var frm = new frmDocumentViews();
+            using (var frm = new frmDocumentViews(new List<int?> { -1, 1, -3, 3, -5, 29, -2 }))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _db.ProjectManagementDet.Add(new ProjectManagementDet
+                    {
+                        Id = Guid.NewGuid(),
+                        DocId = frm.focused_row.Id,
+                        ProjectManagementId = pm.Id,
+                        Num = _db.ProjectManagementDet.Count(w => w.ProjectManagementId == pm.Id) + 1,
 
-            frm.ShowDialog();
+                    });
+
+                    _db.SaveChanges();
+
+                    RecaldDocSum();
+
+                    RefreshDet();
+                }
+            }
+        }
+
+        public void RecaldDocSum()
+        {
+            pm.SummInCurr = _db.v_ProjectManagementDet.Sum(s => s.SummPay);
         }
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)
@@ -199,7 +216,7 @@ namespace SP_Sklad.WBForm
             ProjectManagementDetGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
 
-      
+
         private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
@@ -219,6 +236,36 @@ namespace SP_Sklad.WBForm
                 {
                     e.TotalValue = e.FieldValue;
                 }
+            }
+        }
+
+        private void ProjectManagementDetGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FindDoc.Find(pm_det_row.Id, pm_det_row.WType, pm_det_row.OnDate);
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ;
+        }
+
+        private void ProjectManagementDetGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var pmd = _db.ProjectManagementDet.FirstOrDefault(w => w.Id == pm_det_row.Id);
+            if (e.Column.FieldName == "Notes")
+            {
+                pmd.Notes = e.Value.ToString();
+
+                _db.SaveChanges();
             }
         }
     }

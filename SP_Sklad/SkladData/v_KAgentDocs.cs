@@ -31,5 +31,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> SummPay { get; set; }
         public string DocShortName { get; set; }
         public string DocTypeName { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }

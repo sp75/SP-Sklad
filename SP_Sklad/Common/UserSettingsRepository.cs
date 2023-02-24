@@ -215,6 +215,17 @@ namespace SP_Sklad.Common
             set { Set("CASHIER_PASS_RMK", value); }
         }
 
+        public bool RoundingCheckboxReceipt
+        {
+            get
+            {
+                var v = Get("ROUNDING_CHECKBOX_RECEIPT");
+                return string.IsNullOrEmpty(v) ? false : Convert.ToBoolean(v);
+            }
+            set { Set("ROUNDING_CHECKBOX_RECEIPT", value); }
+        }
+
+
         /// <summary>
         /// not show message copy documents
         /// </summary>

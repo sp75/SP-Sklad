@@ -350,9 +350,10 @@
         <AssociationConnector Association="BaseModel.FK_MatBarCode_Materials" />
         <AssociationConnector Association="BaseModel.FK_RawMaterialManagementDet_WaybillDet" />
         <AssociationConnector Association="BaseModel.FK_Materials_RawMaterialType" />
-        <EntityTypeShape EntityType="BaseModel.ProjectManagement" Width="1.5" PointX="11.75" PointY="34.75" />
         <EntityTypeShape EntityType="BaseModel.ProjectManagementDet" Width="1.5" PointX="14" PointY="35.75" />
+        <EntityTypeShape EntityType="BaseModel.ProjectManagement" Width="1.5" PointX="12" PointY="34.875" />
         <AssociationConnector Association="BaseModel.FK_ProjectManagementDet_ProjectManagement" />
+        <EntityTypeShape EntityType="BaseModel.SettingApp" Width="1.5" PointX="33.375" PointY="22.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -378,8 +379,8 @@
         <EntityTypeShape EntityType="BaseModel.v_BankStatementsDet" Width="1.5" PointX="11.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_KAgentAccount" Width="1.5" PointX="13.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_Materials" Width="1.5" PointX="3.375" PointY="13.75" />
-        <EntityTypeShape EntityType="BaseModel.v_ProjectManagement" Width="1.5" PointX="5.375" PointY="14.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagementDet" Width="1.5" PointX="15.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BaseModel.v_ProjectManagement" Width="1.5" PointX="5.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

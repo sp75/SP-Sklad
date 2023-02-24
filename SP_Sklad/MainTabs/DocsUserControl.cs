@@ -1640,7 +1640,7 @@ namespace SP_Sklad.MainTabs
         {
             if (project_management_row == null)
             {
-                gridControl12.DataSource = null;
+                ProjectManagementDetGridControl.DataSource = null;
                 gridControl14.DataSource = null;
                 return;
             }
@@ -1648,13 +1648,18 @@ namespace SP_Sklad.MainTabs
             switch (xtraTabControl7.SelectedTabPageIndex)
             {
                 case 0:
-                    gridControl12.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == project_management_row.Id).OrderBy(o => o.Idx).ToList();
+                    ProjectManagementDetGridControl.DataSource = _db.v_ProjectManagementDet.Where(w => w.ProjectManagementId == project_management_row.Id).OrderBy(o => o.Num).ToList();
                     break;
 
                 case 2:
                     gridControl14.DataSource = _db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
                     break;
             }
+        }
+
+        private void ProjectManagementGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
     }
 }

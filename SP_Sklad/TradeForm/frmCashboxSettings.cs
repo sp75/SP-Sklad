@@ -58,6 +58,7 @@ namespace SP_Sklad.TradeForm
             }
 
             comboInstalledPrinters.Text = Settings.Default.receipt_printer;
+            RroundingCheckBox.Checked = user_settings.RoundingCheckboxReceipt;
         }
 
         private void ChargeTypesEdit_EditValueChanged(object sender, EventArgs e)
@@ -90,6 +91,11 @@ namespace SP_Sklad.TradeForm
 
             _db.Dispose();
             current_transaction.Dispose();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            user_settings.RoundingCheckboxReceipt = RroundingCheckBox.Checked;
         }
     }
 }

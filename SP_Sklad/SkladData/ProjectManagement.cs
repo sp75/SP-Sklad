@@ -22,11 +22,11 @@ namespace SP_Sklad.SkladData
         public System.Guid Id { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
-        public int DocType { get; set; }
-        public string Reason { get; set; }
         public int Checked { get; set; }
+        public int DocType { get; set; }
+        public Nullable<int> KaId { get; set; }
+        public string Reason { get; set; }
         public int Deleted { get; set; }
-        public Nullable<decimal> SummAll { get; set; }
         public Nullable<int> PersonId { get; set; }
         public string Notes { get; set; }
         public Nullable<int> CurrId { get; set; }
@@ -35,8 +35,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
-        public Nullable<int> KaId { get; set; }
         public int EntId { get; set; }
+        public Nullable<decimal> ProjectCost { get; set; }
     
         public virtual ICollection<ProjectManagementDet> ProjectManagementDet { get; set; }
     }

@@ -19,7 +19,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> ProjectManagementId { get; set; }
         public Nullable<System.Guid> DocId { get; set; }
         public Nullable<int> WType { get; set; }
-        public string Expr1 { get; set; }
+        public string DocNum { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> SummAll { get; set; }
@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public string DocShortName { get; set; }
         public string DocTypeName { get; set; }
         public string Notes { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }

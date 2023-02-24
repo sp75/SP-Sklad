@@ -55,6 +55,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.comboInstalledPrinters = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.RroundingCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
@@ -70,14 +71,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 299);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(426, 52);
+            this.panelControl2.Size = new System.Drawing.Size(669, 52);
             this.panelControl2.TabIndex = 15;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(204, 10);
+            this.OkButton.Location = new System.Drawing.Point(447, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -88,7 +89,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(314, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(557, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -106,8 +107,6 @@
             // 
             // CashEditComboBox
             // 
-            this.CashEditComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.CashEditComboBox.Location = new System.Drawing.Point(12, 98);
             this.CashEditComboBox.Name = "CashEditComboBox";
             this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -129,8 +128,6 @@
             // 
             // AccountEdit
             // 
-            this.AccountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.AccountEdit.Location = new System.Drawing.Point(12, 159);
             this.AccountEdit.Name = "AccountEdit";
             this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -162,8 +159,6 @@
             // 
             // ChargeTypesEdit
             // 
-            this.ChargeTypesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.ChargeTypesEdit.Location = new System.Drawing.Point(12, 34);
             this.ChargeTypesEdit.Name = "ChargeTypesEdit";
             this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -214,11 +209,23 @@
             this.comboInstalledPrinters.Size = new System.Drawing.Size(348, 22);
             this.comboInstalledPrinters.TabIndex = 89;
             // 
+            // RroundingCheckBox
+            // 
+            this.RroundingCheckBox.AutoSize = true;
+            this.RroundingCheckBox.Location = new System.Drawing.Point(442, 39);
+            this.RroundingCheckBox.Name = "RroundingCheckBox";
+            this.RroundingCheckBox.Size = new System.Drawing.Size(215, 17);
+            this.RroundingCheckBox.TabIndex = 90;
+            this.RroundingCheckBox.Text = "Заокруглення суми за чек згідно НБУ";
+            this.RroundingCheckBox.UseVisualStyleBackColor = true;
+            this.RroundingCheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // frmCashboxSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 351);
+            this.ClientSize = new System.Drawing.Size(669, 351);
+            this.Controls.Add(this.RroundingCheckBox);
             this.Controls.Add(this.comboInstalledPrinters);
             this.Controls.Add(this.labelControl16);
             this.Controls.Add(this.labelControl5);
@@ -258,5 +265,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl7;
         private DevExpress.XtraEditors.LabelControl labelControl16;
         private DevExpress.XtraEditors.ComboBoxEdit comboInstalledPrinters;
+        private System.Windows.Forms.CheckBox RroundingCheckBox;
     }
 }

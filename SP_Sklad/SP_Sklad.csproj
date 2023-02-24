@@ -253,6 +253,7 @@
     <Compile Include="Common\ManufDocEdit.cs" />
     <Compile Include="Common\UniqueID.cs" />
     <Compile Include="Common\UserSession.cs" />
+    <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WayBills\WayBillsController.cs" />
     <Compile Include="Common\WBForm.cs">
@@ -523,6 +524,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Roles.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\SettingApp.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserRoles.cs">

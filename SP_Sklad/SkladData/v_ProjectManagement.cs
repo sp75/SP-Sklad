@@ -18,12 +18,14 @@ namespace SP_Sklad.SkladData
         public System.DateTime OnDate { get; set; }
         public string Reason { get; set; }
         public int Checked { get; set; }
-        public Nullable<decimal> SummAll { get; set; }
         public string Notes { get; set; }
         public string PersonName { get; set; }
         public int DocType { get; set; }
         public string Num { get; set; }
         public string KaName { get; set; }
         public string EntName { get; set; }
+        public Nullable<decimal> ProjectCost { get; set; }
+        public Nullable<decimal> SummInCurr { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }

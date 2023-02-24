@@ -37,15 +37,14 @@
             this.KagentListSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.DocumentGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colWType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOnDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummInCurr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummPay = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDocTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).BeginInit();
@@ -96,6 +95,7 @@
             this.DocumentGridControl.TabIndex = 19;
             this.DocumentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DocumentGridView});
+            this.DocumentGridControl.Click += new System.EventHandler(this.DocumentGridControl_Click);
             // 
             // KagentListSource
             // 
@@ -118,11 +118,9 @@
             this.colName,
             this.colSummAll,
             this.colSummInCurr,
-            this.colSummPay,
-            this.colDocTypeName});
+            this.colSummPay});
             this.DocumentGridView.GridControl = this.DocumentGridControl;
             this.DocumentGridView.Name = "DocumentGridView";
-            this.DocumentGridView.OptionsBehavior.Editable = false;
             this.DocumentGridView.OptionsBehavior.ReadOnly = true;
             this.DocumentGridView.OptionsFind.AlwaysVisible = true;
             this.DocumentGridView.OptionsView.ShowAutoFilterRow = true;
@@ -131,11 +129,51 @@
             // 
             // colWType
             // 
+            this.colWType.Caption = "Тип документа";
+            this.colWType.ColumnEdit = this.repositoryItemImageComboBox1;
             this.colWType.FieldName = "WType";
             this.colWType.Name = "colWType";
+            this.colWType.OptionsColumn.AllowEdit = false;
             this.colWType.Visible = true;
             this.colWType.VisibleIndex = 0;
-            this.colWType.Width = 95;
+            this.colWType.Width = 259;
+            // 
+            // repositoryItemImageComboBox1
+            // 
+            this.repositoryItemImageComboBox1.AutoHeight = false;
+            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видаткова накладна", -1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибуткова накладна", 1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибутковий касовий ордер", 3, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видатковий касовий ордер", -3, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Рахунок", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Додаткові витрати", -2, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 14)});
+            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.White;
+            this.imageList1.Images.SetKeyName(0, "ПриходНакл.bmp");
+            this.imageList1.Images.SetKeyName(1, "Счета.bmp");
+            this.imageList1.Images.SetKeyName(2, "РасходНакл.bmp");
+            this.imageList1.Images.SetKeyName(3, "Счет-фактуры.bmp");
+            this.imageList1.Images.SetKeyName(4, "ВходПлатежи.bmp");
+            this.imageList1.Images.SetKeyName(5, "ИсходПлатежи.bmp");
+            this.imageList1.Images.SetKeyName(6, "ДопРасход.bmp");
+            this.imageList1.Images.SetKeyName(7, "Возврат Поставщику.bmp");
+            this.imageList1.Images.SetKeyName(8, "Возврат от клиетна.bmp");
+            this.imageList1.Images.SetKeyName(9, "Введення залишк_в товар_в.bmp");
+            this.imageList1.Images.SetKeyName(10, "Акти списання товару.bmp");
+            this.imageList1.Images.SetKeyName(11, "Накладн_ перем_щення.bmp");
+            this.imageList1.Images.SetKeyName(12, "Бази даних.bmp");
+            this.imageList1.Images.SetKeyName(13, "Акти iнвентаризацiї.bmp");
+            this.imageList1.Images.SetKeyName(14, "ActServices.png");
             // 
             // colNum
             // 
@@ -143,8 +181,8 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.VisibleIndex = 2;
-            this.colNum.Width = 188;
+            this.colNum.VisibleIndex = 1;
+            this.colNum.Width = 163;
             // 
             // colOnDate
             // 
@@ -153,17 +191,18 @@
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.colOnDate.Visible = true;
-            this.colOnDate.VisibleIndex = 3;
-            this.colOnDate.Width = 193;
+            this.colOnDate.VisibleIndex = 2;
+            this.colOnDate.Width = 198;
             // 
             // colName
             // 
             this.colName.Caption = "Контрагент";
             this.colName.FieldName = "Name";
             this.colName.Name = "colName";
+            this.colName.OptionsColumn.AllowEdit = false;
             this.colName.Visible = true;
-            this.colName.VisibleIndex = 4;
-            this.colName.Width = 344;
+            this.colName.VisibleIndex = 3;
+            this.colName.Width = 377;
             // 
             // colSummAll
             // 
@@ -175,50 +214,26 @@
             // colSummInCurr
             // 
             this.colSummInCurr.Caption = "Сума в нац. валюті";
+            this.colSummInCurr.DisplayFormat.FormatString = "0.00";
+            this.colSummInCurr.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
+            this.colSummInCurr.OptionsColumn.AllowEdit = false;
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.VisibleIndex = 5;
-            this.colSummInCurr.Width = 173;
+            this.colSummInCurr.VisibleIndex = 4;
+            this.colSummInCurr.Width = 156;
             // 
             // colSummPay
             // 
             this.colSummPay.Caption = "Сума оплати";
+            this.colSummPay.DisplayFormat.FormatString = "0.00";
+            this.colSummPay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSummPay.FieldName = "SummPay";
             this.colSummPay.Name = "colSummPay";
+            this.colSummPay.OptionsColumn.AllowEdit = false;
             this.colSummPay.Visible = true;
-            this.colSummPay.VisibleIndex = 6;
-            this.colSummPay.Width = 151;
-            // 
-            // colDocTypeName
-            // 
-            this.colDocTypeName.Caption = "Тип документа";
-            this.colDocTypeName.FieldName = "DocTypeName";
-            this.colDocTypeName.Name = "colDocTypeName";
-            this.colDocTypeName.Visible = true;
-            this.colDocTypeName.VisibleIndex = 1;
-            this.colDocTypeName.Width = 203;
-            // 
-            // repositoryItemImageComboBox1
-            // 
-            this.repositoryItemImageComboBox1.AutoHeight = false;
-            this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Юридичні особи", 0, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фізичні особи", 1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Службовці", 2, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Власні підприємства", 3, 1)});
-            this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
-            // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(2, "Службовц_.bmp");
+            this.colSummPay.VisibleIndex = 5;
+            this.colSummPay.Width = 194;
             // 
             // frmDocumentViews
             // 
@@ -250,7 +265,6 @@
         private DevExpress.XtraGrid.GridControl DocumentGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView DocumentGridView;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
-        public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource KagentListSource;
         private DevExpress.XtraGrid.Columns.GridColumn colWType;
         private DevExpress.XtraGrid.Columns.GridColumn colNum;
@@ -259,6 +273,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSummAll;
         private DevExpress.XtraGrid.Columns.GridColumn colSummInCurr;
         private DevExpress.XtraGrid.Columns.GridColumn colSummPay;
-        private DevExpress.XtraGrid.Columns.GridColumn colDocTypeName;
+        public System.Windows.Forms.ImageList imageList1;
     }
 }

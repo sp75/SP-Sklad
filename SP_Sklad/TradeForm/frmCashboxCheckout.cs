@@ -291,7 +291,7 @@ namespace SP_Sklad.WBForm
                 payments = payments,
                 discounts = new List<DiscountPayload>(),
                 technical_return = false,
-                rounding = false,
+                rounding = user_settings.RoundingCheckboxReceipt,
               //  barcode = _wb.WbillId.ToString()
             };
 
