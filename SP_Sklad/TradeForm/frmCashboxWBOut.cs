@@ -444,14 +444,16 @@ namespace SP_Sklad.WBForm
             var mat = _db.WaybillDet.FirstOrDefault(w => w.MatId == mat_id && w.WbillId == wb.WbillId);
             if (mat == null)
             {
-
+                var amount = 1;
                 var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
                 var mat_price = DB.SkladBase().GetListMatPrices(mat_id, wb.CurrId, p_type).FirstOrDefault();
+                var base_price = mat_price != null ? Math.Round((mat_price.Price ?? 0), 2) : 0;
 
-                var discount = disc_card != null ? disc_card.OnValue : (_db.GetDiscount(wb.KaId, mat_id).FirstOrDefault() ?? 0.00m);
-                //    var remain_in_wh = _db.MatRemainByWh(mat_id, wb.Kontragent.WId, 0, DateTime.Now, "*", DBHelper.CurrentUser.UserId).ToList();
-                var price = mat_price != null ? Math.Round((mat_price.Price ?? 0), 2) : 0;
-                var discount_price = Math.Round((price * discount / 100), 2);
+                var discount_value = disc_card != null ? disc_card.OnValue : (_db.GetDiscount(wb.KaId, mat_id).FirstOrDefault() ?? 0.00m);
+
+                var total = Math.Round(base_price * amount, 2);
+                var discount = Math.Round((total * discount_value / 100), 2);
+                var total_discount = total - discount;
 
                 var num = wb.WaybillDet.Count();
                 var wbd = new WaybillDet
@@ -461,14 +463,14 @@ namespace SP_Sklad.WBForm
                     OnDate = wb.OnDate,
                     MatId = mat_id,
                     WId = wb.Kontragent.WId,//remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
-                    Amount = 1,
-                    Price = price - discount_price,
+                    Amount = amount,
+                    Price = discount_value > 0 ? (total_discount / amount) : base_price,
                     PtypeId = mat_price != null ? mat_price.PType : null,
-                    Discount = discount,
+                    Discount = discount_value,
                     Nds = wb.Nds,
                     CurrId = wb.CurrId,
                     OnValue = wb.OnValue,
-                    BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
+                    BasePrice = base_price + Math.Round(base_price * (wb.Nds ?? 0) / 100, 2),
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = disc_card != null ? 2 : 0,
@@ -597,15 +599,22 @@ namespace SP_Sklad.WBForm
             RefreshDet();
         }
 
-        private void SetPrice(decimal price)
+        private void SetPrice(decimal base_price)
         {
+            base_price = Math.Round(base_price, 2);
+
             var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == wbd_row.PosId);
 
             if (wbd_row.Rsv == 0 && wbd_row.PosType == 0)
             {
-                wbd.BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2);
+                wbd.BasePrice = base_price;
                 wbd.PtypeId = null;
-                wbd.Price = price - (price * (wbd.Discount ?? 0.00m) / 100);
+
+                var total = Math.Round(base_price * wbd.Amount, 2);
+                var discount = Math.Round((total * (wbd.Discount ?? 0) / 100), 2);
+                var total_discount = total - discount;
+
+                wbd.Price = wbd.Discount > 0 && wbd.Amount > 0 ? (total_discount / wbd.Amount) : base_price;
             }
             _db.SaveChanges();
 

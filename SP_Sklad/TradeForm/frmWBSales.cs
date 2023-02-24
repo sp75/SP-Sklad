@@ -317,7 +317,7 @@ namespace SP_Sklad.WBForm
             {
                 if (wbd_row.PosType == 0)
                 {
-                    using (var df = new frmWayBillDetOut(_db, wbd_row.PosId, wb, disc_card))
+                    using (var df = new frmWBSalesDetOut(_db, wbd_row.PosId, wb, disc_card, wb.Kontragent.WId.Value))
                     {
                         df.ShowDialog();
                     }

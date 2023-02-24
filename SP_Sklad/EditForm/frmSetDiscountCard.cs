@@ -58,8 +58,12 @@ namespace SP_Sklad.ViewsForm
             {
                 foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId))
                 {
-                    var DiscountPrice = Math.Round(Convert.ToDecimal(item.BasePrice * cart.OnValue / 100), 2);
-                    item.Price = (item.BasePrice - DiscountPrice) * (100 / (100 + item.Nds.Value));
+                    var base_price = Math.Round(item.BasePrice ?? 0, 2);
+                    var total = Math.Round(base_price * item.Amount, 2);
+                    var discount = Math.Round((total * cart.OnValue / 100), 2);
+                    var total_discount = total - discount;
+
+                    item.Price = cart.OnValue > 0 && item.Amount > 0 ? (total_discount / item.Amount) : base_price;
                     item.Discount = cart.OnValue;
                     item.DiscountKind = 2;
 

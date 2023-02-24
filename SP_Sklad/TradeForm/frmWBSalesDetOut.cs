@@ -183,14 +183,24 @@ namespace SP_Sklad.WBDetForm
         private void CalcPrice()
         {
             BotAmountEdit.Text = AmountEdit.Text;
+            var total = Math.Round(BasePriceEdit.Value * AmountEdit.Value, 2);
+            var discount = Math.Round((total * DiscountEdit.Value / 100), 2);
+            var total_discount = total - discount;
+            var nds = Math.Round(total_discount * (_wbd.Nds ?? 0) / 100, 2);
 
-            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - Math.Round((BasePriceEdit.Value * DiscountEdit.Value / 100),2);
-            else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+            if (DiscountCheckBox.Checked && AmountEdit.Value > 0)
+            {
+                DiscountPriceEdit.EditValue = total_discount / AmountEdit.Value;
+            }
+            else
+            {
+                DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+            }
 
-            PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
-            TotalSumEdit.EditValue = AmountEdit.Value * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-            SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
-            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            PriceNotNDSEdit.EditValue = DiscountPriceEdit.EditValue;
+            TotalSumEdit.EditValue = total_discount;
+            TotalNdsEdit.EditValue = nds;
+            SummAllEdit.EditValue = total_discount + nds;
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -335,7 +345,7 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            _wbd.Price =  Math.Round(Convert.ToDecimal(PriceNotNDSEdit.EditValue), 2);
+            _wbd.Price = Convert.ToDecimal(PriceNotNDSEdit.EditValue);
 
             try
             {
@@ -532,7 +542,7 @@ namespace SP_Sklad.WBDetForm
                 Settings.Default.wb_out_discount = ch;
             }
 
-            if (ItemIndex == 2)
+            if (ItemIndex == 1)
             {
                 panel5.Visible = ch;
                 if (ch) Height += panel5.Height;

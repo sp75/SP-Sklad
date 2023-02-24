@@ -59,7 +59,6 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItem3 = new DevExpress.XtraBars.BarCheckItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -74,6 +73,7 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItem2 = new DevExpress.XtraBars.BarCheckItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -124,7 +124,7 @@
             this.labelControl29 = new DevExpress.XtraEditors.LabelControl();
             this.TotalNdsEdit = new DevExpress.XtraEditors.TextEdit();
             this.TotalSumEdit = new DevExpress.XtraEditors.TextEdit();
-            this.PriceNotNDSEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PriceNotNDSEdit = new DevExpress.XtraEditors.CalcEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -266,7 +266,6 @@
             this.barSubItem2.ImageOptions.ImageIndex = 5;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem3)});
             this.barSubItem2.Name = "barSubItem2";
             this.barSubItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -281,17 +280,6 @@
             this.barCheckItem1.Name = "barCheckItem1";
             this.barCheckItem1.Tag = 0;
             this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
-            // 
-            // barCheckItem2
-            // 
-            this.barCheckItem2.BindableChecked = true;
-            this.barCheckItem2.Caption = "Інтервал цін та сертифікат";
-            this.barCheckItem2.Checked = global::SP_Sklad.Properties.Settings.Default.wb_out_certificat;
-            this.barCheckItem2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "wb_out_certificat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.barCheckItem2.Id = 14;
-            this.barCheckItem2.Name = "barCheckItem2";
-            this.barCheckItem2.Tag = 1;
-            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // barCheckItem3
             // 
@@ -412,6 +400,17 @@
             this.barButtonItem8.Caption = "Послуги списком";
             this.barButtonItem8.Id = 8;
             this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barCheckItem2
+            // 
+            this.barCheckItem2.BindableChecked = true;
+            this.barCheckItem2.Caption = "Інтервал цін та сертифікат";
+            this.barCheckItem2.Checked = global::SP_Sklad.Properties.Settings.Default.wb_out_certificat;
+            this.barCheckItem2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "wb_out_certificat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.barCheckItem2.Id = 14;
+            this.barCheckItem2.Name = "barCheckItem2";
+            this.barCheckItem2.Tag = 1;
+            this.barCheckItem2.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // styleController1
             // 
@@ -768,7 +767,6 @@
             this.DiscountPriceEdit.Location = new System.Drawing.Point(453, 62);
             this.DiscountPriceEdit.MenuManager = this.barManager1;
             this.DiscountPriceEdit.Name = "DiscountPriceEdit";
-            this.DiscountPriceEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.DiscountPriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.DiscountPriceEdit.Size = new System.Drawing.Size(172, 22);
             this.DiscountPriceEdit.StyleController = this.styleController1;
@@ -854,7 +852,7 @@
             // 
             // labelControl11
             // 
-            this.labelControl11.Location = new System.Drawing.Point(366, 35);
+            this.labelControl11.Location = new System.Drawing.Point(399, 35);
             this.labelControl11.Name = "labelControl11";
             this.labelControl11.Size = new System.Drawing.Size(48, 16);
             this.labelControl11.StyleController = this.styleController1;
@@ -875,7 +873,7 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(366, 65);
+            this.labelControl12.Location = new System.Drawing.Point(370, 65);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(77, 16);
             this.labelControl12.StyleController = this.styleController1;
@@ -992,21 +990,21 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(378, 53);
+            this.labelControl17.Location = new System.Drawing.Point(360, 53);
             this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(86, 16);
+            this.labelControl17.Size = new System.Drawing.Size(104, 16);
             this.labelControl17.StyleController = this.styleController1;
             this.labelControl17.TabIndex = 24;
-            this.labelControl17.Text = "Сума без ПДВ:";
+            this.labelControl17.Text = "Сума зі знижкою:";
             // 
             // labelControl29
             // 
-            this.labelControl29.Location = new System.Drawing.Point(381, 32);
+            this.labelControl29.Location = new System.Drawing.Point(363, 32);
             this.labelControl29.Name = "labelControl29";
-            this.labelControl29.Size = new System.Drawing.Size(83, 16);
+            this.labelControl29.Size = new System.Drawing.Size(101, 16);
             this.labelControl29.StyleController = this.styleController1;
             this.labelControl29.TabIndex = 23;
-            this.labelControl29.Text = "Ціна без ПДВ:";
+            this.labelControl29.Text = "Ціна зі знижкою:";
             // 
             // TotalNdsEdit
             // 
@@ -1044,8 +1042,8 @@
             this.PriceNotNDSEdit.Location = new System.Drawing.Point(470, 29);
             this.PriceNotNDSEdit.MenuManager = this.barManager1;
             this.PriceNotNDSEdit.Name = "PriceNotNDSEdit";
-            this.PriceNotNDSEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.PriceNotNDSEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.PriceNotNDSEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PriceNotNDSEdit.Size = new System.Drawing.Size(109, 22);
             this.PriceNotNDSEdit.StyleController = this.styleController1;
             this.PriceNotNDSEdit.TabIndex = 20;
@@ -1218,7 +1216,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl29;
         private DevExpress.XtraEditors.TextEdit TotalNdsEdit;
         private DevExpress.XtraEditors.TextEdit TotalSumEdit;
-        private DevExpress.XtraEditors.TextEdit PriceNotNDSEdit;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
@@ -1231,5 +1228,6 @@
         private System.Windows.Forms.BindingSource WaybillDetBS;
         private System.Windows.Forms.BindingSource WayBillDetAddPropsBS;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraEditors.CalcEdit PriceNotNDSEdit;
     }
 }

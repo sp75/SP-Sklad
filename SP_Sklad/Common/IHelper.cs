@@ -195,9 +195,12 @@ namespace SP_Sklad.Common
                     var num = wb.WaybillDet.Count();
                     foreach (var item in f.uc.custom_mat_list)
                     {
-                        item.Price = Math.Round(item.Price ?? 0, 2);
-
-                        var discount = Math.Round(Convert.ToDecimal(item.Price * item.Discount / 100.00m), 2);
+                        var base_price = Math.Round(item.Price ?? 0, 2);
+                        var total = Math.Round(base_price * item.Amount, 2);
+                        var discount = Math.Round((total * (item.Discount ??0) / 100), 2);
+                        var total_discount = total - discount;
+                   //     var nds = Math.Round(total_discount * (wb.Nds ?? 0) / 100, 2);
+                      
                         var wbd = new WaybillDet
                         {
                             WbillId = wb.WbillId,
@@ -206,13 +209,13 @@ namespace SP_Sklad.Common
                             MatId = item.MatId,
                             WId = WId == -1 ? item.WId : WId,
                             Amount = item.Amount,
-                            Price = item.Price - discount,
+                            Price = item.Discount > 0 && item.Amount > 0 ? (total_discount / item.Amount) : base_price,
                             PtypeId = item.PTypeId,
                             Discount = item.Discount,
                             Nds = wb.Nds,
                             CurrId = wb.CurrId,
                             OnValue = wb.OnValue,
-                            BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2),
+                            BasePrice = base_price + Math.Round(base_price * (wb.Nds ?? 0) / 100, 2),
                             PosKind = 0,
                             PosParent = 0,
                             DiscountKind = disc_card != null ? 2 : (item.Discount > 0 ? 1 : 0),

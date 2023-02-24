@@ -40,7 +40,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmSetDiscountCard_Shown(object sender, EventArgs e)
         {
-            AmountEdit.Focus();
+            DiscountEdit.Focus();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -54,9 +54,14 @@ namespace SP_Sklad.ViewsForm
             {
                 if (item.DiscountKind != 2)
                 {
-                    var DiscountPrice = Math.Round(Convert.ToDecimal(item.BasePrice * AmountEdit.Value / 100), 2);
-                    item.Price = (item.BasePrice - DiscountPrice) * (100 / (100 + item.Nds.Value));
-                    item.Discount = AmountEdit.Value;
+                    var base_price = Math.Round(item.BasePrice ?? 0, 2);
+                    var total = Math.Round(base_price * item.Amount, 2);
+                    var discount = Math.Round((total * DiscountEdit.Value / 100), 2);
+                    var total_discount = total - discount;
+
+                    var DiscountPrice = Math.Round((item.BasePrice ?? 0) * DiscountEdit.Value / 100, 2);
+                    item.Price = DiscountEdit.Value > 0 && item.Amount > 0 ? (total_discount / item.Amount) : base_price;
+                    item.Discount = DiscountEdit.Value;
                     item.DiscountKind = 1;
                 }
             }
