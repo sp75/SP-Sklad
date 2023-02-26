@@ -47,6 +47,7 @@ namespace SP_Sklad.WBForm
         private readonly RawInput _rawinput;
 
         private string _access_token { get; set; }
+        public bool is_authorization { get; set; }
         private string CashDesksName { get; set; }
         private EnterpriseWorker Enterprise { get; set; }
         private v_Kagent TradingPoint { get; set; }
@@ -54,6 +55,7 @@ namespace SP_Sklad.WBForm
         public frmCashboxWBOut(string access_token, int? wbill_id = null)
         {
             _access_token = access_token;
+            is_authorization = !string.IsNullOrEmpty(_access_token);
             _wbill_id = wbill_id;
 
             InitializeComponent();
@@ -697,12 +699,10 @@ namespace SP_Sklad.WBForm
                 textBox1.Text = "Налаштуйте сканер штрихкодів, Сервіс->Налаштування->Торгове обладнання";
             }
 
-            if (string.IsNullOrEmpty(_access_token))
-            {
-                error_autch_label.Visible = true;
-                simpleButton19.Enabled = false;
-                simpleButton20.Enabled = false;
-            }
+            error_autch_label.Visible = !is_authorization;
+            RefundCheckBtn.Enabled = is_authorization;
+            simpleButton19.Enabled = is_authorization;
+            simpleButton20.Enabled = is_authorization;
         }
 
         private void SetFormTitle()
@@ -1042,16 +1042,18 @@ namespace SP_Sklad.WBForm
                                     WbillId = return_wb.WbillId,
                                     Amount = item.Remain.Value,
                                     Price = pos_out_row.Price,
-                                    BasePrice = pos_out_row.Price + pos_out_row.Price * pos_out_row.Nds / 100,
+                                    BasePrice = pos_out_row.BasePrice,
                                     Nds = pos_out_row.Nds,
+                                    Discount = pos_out_row.Discount,
                                     CurrId = pos_out_row.CurrId,
                                     OnValue = pos_out_row.OnValue,
                                     OnDate = pos_out_row.OnDate,
                                     WId = wid,
                                     MatId = pos_out_row.MatId,
-                                    Num = ++num
+                                    Num = ++num,
+                                    Checked = 1
                                 });
-
+                                
                                 _db.SaveChanges();
 
                                 _db.ReturnRel.Add(new ReturnRel
@@ -1062,10 +1064,14 @@ namespace SP_Sklad.WBForm
                                 });
                             }
                         }
-
                         _db.SaveChanges();
 
-                        DocEdit.WBEdit(return_wb.WbillId, 25);
+                        //DocEdit.WBEdit(return_wb.WbillId, 25);
+                        new frmCashboxRefund(_db, return_wb, _access_token).ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Всі товари по чеку вже повернуто!");
                     }
                 }
             }
@@ -1077,7 +1083,7 @@ namespace SP_Sklad.WBForm
             {
                 frm.Text = $"Інформація про активну зміну касира: {DBHelper.CurrentUser.Name}";
 
-                if (!string.IsNullOrEmpty(_access_token))
+                if (is_authorization)
                 {
                     var new_receipts = new CheckboxClient(_access_token).GetCashierShift();
                     if (new_receipts.error == null)

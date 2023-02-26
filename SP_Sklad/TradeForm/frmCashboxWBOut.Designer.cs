@@ -39,8 +39,8 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.WhListBtn = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton11 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton23 = new DevExpress.XtraEditors.SimpleButton();
+            this.CashboxBtn = new DevExpress.XtraEditors.SimpleButton();
+            this.RefundCheckBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton22 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton21 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton20 = new DevExpress.XtraEditors.SimpleButton();
@@ -238,8 +238,8 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton11);
-            this.panelControl2.Controls.Add(this.simpleButton23);
+            this.panelControl2.Controls.Add(this.CashboxBtn);
+            this.panelControl2.Controls.Add(this.RefundCheckBtn);
             this.panelControl2.Controls.Add(this.simpleButton22);
             this.panelControl2.Controls.Add(this.simpleButton21);
             this.panelControl2.Controls.Add(this.simpleButton20);
@@ -257,30 +257,30 @@
             this.panelControl2.Size = new System.Drawing.Size(1441, 60);
             this.panelControl2.TabIndex = 15;
             // 
-            // simpleButton11
+            // CashboxBtn
             // 
-            this.simpleButton11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton11.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton11.Appearance.Options.UseFont = true;
-            this.simpleButton11.Location = new System.Drawing.Point(5, 6);
-            this.simpleButton11.Name = "simpleButton11";
-            this.simpleButton11.Size = new System.Drawing.Size(71, 49);
-            this.simpleButton11.TabIndex = 47;
-            this.simpleButton11.TabStop = false;
-            this.simpleButton11.Text = "Каса";
-            this.simpleButton11.Click += new System.EventHandler(this.simpleButton11_Click);
+            this.CashboxBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CashboxBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CashboxBtn.Appearance.Options.UseFont = true;
+            this.CashboxBtn.Location = new System.Drawing.Point(5, 6);
+            this.CashboxBtn.Name = "CashboxBtn";
+            this.CashboxBtn.Size = new System.Drawing.Size(71, 49);
+            this.CashboxBtn.TabIndex = 47;
+            this.CashboxBtn.TabStop = false;
+            this.CashboxBtn.Text = "Каса";
+            this.CashboxBtn.Click += new System.EventHandler(this.simpleButton11_Click);
             // 
-            // simpleButton23
+            // RefundCheckBtn
             // 
-            this.simpleButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton23.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton23.Appearance.Options.UseFont = true;
-            this.simpleButton23.Location = new System.Drawing.Point(1030, 6);
-            this.simpleButton23.Name = "simpleButton23";
-            this.simpleButton23.Size = new System.Drawing.Size(91, 49);
-            this.simpleButton23.TabIndex = 32;
-            this.simpleButton23.Text = "Повернення\r\nтовара";
-            this.simpleButton23.Click += new System.EventHandler(this.simpleButton23_Click);
+            this.RefundCheckBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RefundCheckBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.RefundCheckBtn.Appearance.Options.UseFont = true;
+            this.RefundCheckBtn.Location = new System.Drawing.Point(1030, 6);
+            this.RefundCheckBtn.Name = "RefundCheckBtn";
+            this.RefundCheckBtn.Size = new System.Drawing.Size(91, 49);
+            this.RefundCheckBtn.TabIndex = 32;
+            this.RefundCheckBtn.Text = "Повернення\r\nтовара";
+            this.RefundCheckBtn.Click += new System.EventHandler(this.simpleButton23_Click);
             // 
             // simpleButton22
             // 
@@ -1443,8 +1443,8 @@
         private System.Windows.Forms.Label error_autch_label;
         private DevExpress.XtraEditors.SimpleButton simpleButton21;
         private DevExpress.XtraEditors.SimpleButton simpleButton22;
-        private DevExpress.XtraEditors.SimpleButton simpleButton23;
-        private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.XtraEditors.SimpleButton RefundCheckBtn;
+        private DevExpress.XtraEditors.SimpleButton CashboxBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }

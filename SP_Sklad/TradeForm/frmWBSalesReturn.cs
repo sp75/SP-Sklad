@@ -201,12 +201,12 @@ namespace SP_Sklad.WBForm
                 }
             }
 
-            is_new_record = false;
-
             if (MessageBox.Show("Розрукувати документ ?", "Накладна на повернення №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 PrintDoc.Show(wb.Id, wb.WType, _db);
             }
+
+            is_new_record = false;
 
             Close();
         }

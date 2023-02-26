@@ -39,7 +39,7 @@
             this.PutCashSumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.PayWithoutCheckBtn = new DevExpress.XtraEditors.SimpleButton();
             this.PayBtn = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -187,7 +187,6 @@
             this.PutCashSumEdit.TabIndex = 46;
             this.PutCashSumEdit.TabStop = false;
             this.PutCashSumEdit.EditValueChanged += new System.EventHandler(this.PutSumEdit_EditValueChanged);
-            this.PutCashSumEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PutSumEdit_KeyPress);
             // 
             // labelControl4
             // 
@@ -201,7 +200,7 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton1);
+            this.panelControl2.Controls.Add(this.PayWithoutCheckBtn);
             this.panelControl2.Controls.Add(this.PayBtn);
             this.panelControl2.Controls.Add(this.simpleButton5);
             this.panelControl2.Controls.Add(this.panel2);
@@ -211,25 +210,24 @@
             this.panelControl2.Size = new System.Drawing.Size(462, 292);
             this.panelControl2.TabIndex = 72;
             // 
-            // simpleButton1
+            // PayWithoutCheckBtn
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.simpleButton1.Location = new System.Drawing.Point(9, 76);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(211, 65);
-            this.simpleButton1.TabIndex = 84;
-            this.simpleButton1.Text = "Сплатити без чеку";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.PayWithoutCheckBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PayWithoutCheckBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.PayWithoutCheckBtn.Appearance.Options.UseFont = true;
+            this.PayWithoutCheckBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.PayWithoutCheckBtn.Location = new System.Drawing.Point(9, 76);
+            this.PayWithoutCheckBtn.Name = "PayWithoutCheckBtn";
+            this.PayWithoutCheckBtn.Size = new System.Drawing.Size(211, 65);
+            this.PayWithoutCheckBtn.TabIndex = 84;
+            this.PayWithoutCheckBtn.Text = "Сплатити без чеку";
+            this.PayWithoutCheckBtn.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // PayBtn
             // 
             this.PayBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PayBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.PayBtn.Appearance.Options.UseFont = true;
-            this.PayBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.PayBtn.Location = new System.Drawing.Point(9, 6);
             this.PayBtn.Name = "PayBtn";
             this.PayBtn.Size = new System.Drawing.Size(211, 65);
@@ -485,6 +483,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.CalcEdit PutCashlessSumEdit;
         public DevExpress.XtraEditors.SimpleButton PayBtn;
-        public DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.XtraEditors.SimpleButton PayWithoutCheckBtn;
     }
 }

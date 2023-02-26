@@ -1503,7 +1503,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 45)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 45),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 44)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -2226,7 +2227,7 @@
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl2.DataSource = this.PayDocListInfoBS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
@@ -2451,7 +2452,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 45),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 44)});
             this.repositoryItemImageComboBox9.Name = "repositoryItemImageComboBox9";
             this.repositoryItemImageComboBox9.SmallImages = this.GridImageList;
             // 

@@ -22,14 +22,19 @@ using System.Windows.Forms;
 
 namespace SP_Sklad.WBForm
 {
-    public partial class frmCashboxCheckout : DevExpress.XtraEditors.XtraForm
+    public partial class frmCashboxRefund : DevExpress.XtraEditors.XtraForm
     {
         BaseEntities _db { get; set; }
         private WaybillList _wb { get; set; }
-     //   private GetUserAccessTree_Result _user_Access { get; set; }
+        //   private GetUserAccessTree_Result _user_Access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
         private string _access_token { get; set; }
         public bool is_authorization { get; set; }
+        public bool is_new_record { get; set; }
+        private GetWaybillDetIn_Result focused_dr
+        {
+            get { return WBDetReInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
+        }
 
         private class user_acc
         {
@@ -40,7 +45,7 @@ namespace SP_Sklad.WBForm
         }
         private List<user_acc> user_acc_list { get; set; }
 
-        public frmCashboxCheckout(BaseEntities db, WaybillList wb, string access_token)
+        public frmCashboxRefund(BaseEntities db, WaybillList wb, string access_token)
         {
             InitializeComponent();
 
@@ -53,20 +58,13 @@ namespace SP_Sklad.WBForm
         private void frmCashboxCheckoutcs_Load(object sender, EventArgs e)
         {
             user_settings = new UserSettingsRepository(UserSession.UserId, _db);
+            var list = _db.GetWaybillDetIn(_wb.WbillId).ToList();
 
-        /*    var user_access_tree = _db.GetUserAccessTree(DBHelper.CurrentUser.UserId).ToList();
-
-          if (_wb.WType == -25) // Чек  
-            {
-                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 88); // Прибуткові касові ордера
-            }
-            else if (_wb.WType == 25) // Повернення
-            {
-                _user_Access = user_access_tree.FirstOrDefault(w => w.FunId == 89); // Видаткові касові ордера
-            }*/
-
-            SumAllEdit.Value = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue).Value;
+            SumAllEdit.EditValue = list.Sum(s => s.Total);
             PutCashSumEdit.Value = SumAllEdit.Value;
+            WaybillDetInBS.DataSource = list;
+            is_new_record = true;
+
         }
 
         private void PayDoc(int PType, decimal total, ReceiptsSellRespond receipt = null)
@@ -113,15 +111,10 @@ namespace SP_Sklad.WBForm
         private void PutSumEdit_EditValueChanged(object sender, EventArgs e)
         {
             var put_cash_sum = string.IsNullOrEmpty(PutCashSumEdit.Text) ? 0 : Convert.ToDecimal(PutCashSumEdit.Text);
-            var put_cashless_sum = PutCashlessSumEdit.Value;
-            var put_sum = put_cash_sum + put_cashless_sum;
+            PutCashlessSumEdit.Value = (SumAllEdit.Value - put_cash_sum) > 0 ? (SumAllEdit.Value - put_cash_sum) : 0;
+            var put_sum = put_cash_sum + PutCashlessSumEdit.Value;
 
-            if (put_sum - SumAllEdit.Value >= 0)
-            {
-                RemainderEdit.Value = put_sum - SumAllEdit.Value;
-            }
-
-            PayBtn.Enabled = put_sum >= SumAllEdit.Value && PutCashlessSumEdit.Value <= SumAllEdit.Value;
+            PayBtn.Enabled = (put_sum == SumAllEdit.Value) && (SumAllEdit.Value > 0);
         }
 
         private void frmCashboxCheckout_Shown(object sender, EventArgs e)
@@ -130,24 +123,6 @@ namespace SP_Sklad.WBForm
             PutCashlessSumEdit.Enabled = user_settings.AccountDefaultRMK != 0;
 
             PutCashSumEdit.Focus();
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-            PutCashSumEdit.Text += ((SimpleButton)sender).Text;
-        }
-
-        private void simpleButton12_Click(object sender, EventArgs e)
-        {
-            PutCashSumEdit.Text = "";
-        }
-
-        private void simpleButton13_Click(object sender, EventArgs e)
-        {
-            if (!PutCashSumEdit.Text.Any(a => a == ','))
-            {
-                PutCashSumEdit.Text += ",";
-            }
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -162,23 +137,19 @@ namespace SP_Sklad.WBForm
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void simpleButton5_Click(object sender, EventArgs e)
-        {
-            using (var frm = new frmSetWBNote(_wb))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    PrintDoc.Show(_wb.Id, _wb.WType, _db);
-                }
-            }
-        }
-
         private void PayBtn_Click(object sender, EventArgs e)
         {
             if (is_authorization)
             {
-                List<Payment> payments = new List<Payment>();
+                _db.DeleteWhere<WaybillDet>(w => w.Checked != 1 && w.WbillId == _wb.WbillId);
 
+                var SummAll = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total) ?? 0;
+                _wb.UpdatedAt = DateTime.Now;
+                _wb.SummAll = SummAll;
+                _wb.SummInCurr = SummAll * _wb.OnValue;
+                _db.SaveChanges();
+
+                List<Payment> payments = new List<Payment>();
                 if (PutCashSumEdit.Value > 0)
                 {
                     payments.Add(new Payment
@@ -202,16 +173,20 @@ namespace SP_Sklad.WBForm
                 var receipt = CreateReceiptSell(payments);
                 if (receipt.is_error)
                 {
-                    receipt.created_at = DateTime.Now;
-                    receipt.total_payment = 0;
-                    receipt.total_sum = 0;
-
                     MessageBox.Show($@"Помилка при отриманні фіксального номера! {(receipt.is_error ? receipt.error.message : "")}");
-
                     return;
                 }
                 else
                 {
+                    _wb.ReceiptId = receipt.id;
+
+                    var ex_wb = _db.ExecuteWayBill(_wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
+
+                    if (ex_wb.ErrorMessage != "False")
+                    {
+                        MessageBox.Show(ex_wb.ErrorMessage);
+                    }
+
                     if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
                     {
                         PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value, receipt);
@@ -236,19 +211,18 @@ namespace SP_Sklad.WBForm
                         ErrorMessage = receipt.is_error ? receipt.error.message : ""
                     });
 
-                    _wb.ReceiptId = receipt.id;
-
                     _db.SaveChanges();
 
                     IHelper.PrintReceiptPng(_access_token, receipt.id);
                 }
+
+                is_new_record = false;
+                DialogResult = DialogResult.OK;
             }
             else
             {
-                PayWithoutCheckBtn.PerformClick();
+                DialogResult = DialogResult.Cancel;
             }
-
-            DialogResult = DialogResult.OK;
         }
 
         private ReceiptsSellRespond CreateReceiptSell(List<Payment> payments)
@@ -271,14 +245,13 @@ namespace SP_Sklad.WBForm
                         name = s.MatName,
                         price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload {  mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value =  s.Discount??0 } } : new List<DiscountPayload>() ,
-                    is_return = false
+                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload { mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value = s.Discount ?? 0 } } : new List<DiscountPayload>(),
+                    is_return = true
                 }).ToList(),
                 payments = payments,
                 discounts = new List<DiscountPayload>(),
-                technical_return = false,
+                technical_return = true,
                 rounding = user_settings.RoundingCheckboxReceipt,
-              //  barcode = _wb.WbillId.ToString()
             };
 
             var new_receipts = new CheckboxClient(_access_token).CreateReceipt(req);
@@ -286,22 +259,35 @@ namespace SP_Sklad.WBForm
             return new_receipts;
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void frmCashboxRefund_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if ((SumAllEdit.Value - PutCashlessSumEdit.Value) > 0)
-            {
-                PayDoc(1, SumAllEdit.Value - PutCashlessSumEdit.Value);
-            }
+          //  DBHelper.UpdateSessionWaybill(_wbill_id.Value, true);
 
-            if (PutCashlessSumEdit.Value > 0)
+            if (is_new_record)
             {
-                PayDoc(2, PutCashlessSumEdit.Value);
+                _db.DeleteWhere<WaybillList>(w => w.WbillId == _wb.WbillId);
             }
+        }
 
-            if (MessageBox.Show("Відкрити документ ?", "Видаткова накладна №" + _wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                PrintDoc.Show(_wb.Id, _wb.WType, _db);
-            }
+        private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckEdit edit = sender as CheckEdit;
+            var wbd = _db.WaybillDet.FirstOrDefault(w => w.PosId == focused_dr.PosId);
+            wbd.Checked = edit.Checked ? 1 : 0;
+            _db.SaveChanges();
+
+            var list = _db.GetWaybillDetIn(_wb.WbillId).ToList();
+
+            SumAllEdit.EditValue = _db.WaybillDet.Where(w=> w.WbillId == _wb.WbillId && w.Checked == 1).Sum(s => s.Total);
+            PutCashSumEdit.Value = SumAllEdit.Value;
+        }
+
+        private void PutCashlessSumEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            PutCashSumEdit.Value = (SumAllEdit.Value - PutCashlessSumEdit.Value) > 0 ? (SumAllEdit.Value - PutCashlessSumEdit.Value) : 0;
+            var put_sum = PutCashSumEdit.Value + PutCashlessSumEdit.Value;
+
+            PayBtn.Enabled = (put_sum == SumAllEdit.Value) && (SumAllEdit.Value > 0);
         }
     }
 }

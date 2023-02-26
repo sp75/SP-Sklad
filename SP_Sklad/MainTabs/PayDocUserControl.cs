@@ -229,16 +229,31 @@ namespace SP_Sklad.MainTabs
                     if (fiscalization_checkEdit.Checked)
                     {
                         var receipt = CreateReceiptSell(_pd.DocType == -1);
-                        _pd.ReceiptId = receipt.id;
-                        _wb.ReceiptId = receipt.id;
+
+                        if (!receipt.is_error)
+                        {
+                            _pd.ReceiptId = receipt.id;
+                            _wb.ReceiptId = receipt.id;
+                            _db.Receipt.Add(new Receipt
+                            {
+                                Id = receipt.id,
+                                CeatedAt = receipt.created_at,
+                                TotalPayment = receipt.total_payment,
+                                TotalSum = receipt.total_sum,
+                                Status = receipt.status,
+                                ShiftId = receipt.shift != null ? (Guid?)receipt.shift.id : null,
+                                BarCode = receipt.barcode,
+                                FiscalCode = receipt.fiscal_code,
+                                FiscalDate = receipt.fiscal_date,
+                                ErrorMessage = receipt.is_error ? receipt.error.message : ""
+                            });
+                        }
+                        else
+                        {
+                            _db.PayDoc.Remove(_pd);
+                            MessageBox.Show($@"Помилка при отриманні фіксального номера! {(receipt.is_error ? receipt.error.message : "")}");
+                        }
                     }
-
-                    /*   if ((int)PTypeComboBox.EditValue == 2)
-                       {
-                           var acc = AccountEdit.GetSelectedDataRow() as user_acc;
-                           _pd.DocType = _pd.DocType * acc.ExtDocType;
-                       }*/
-
                     _db.SaveChanges();
 
                     var new_pd = _db.PayDoc.AsNoTracking().FirstOrDefault(w => w.PayDocId == _pd.PayDocId);
@@ -352,9 +367,9 @@ namespace SP_Sklad.MainTabs
             var user_settings = new UserSettingsRepository(/*DBHelper.CurrentUser.UserId*/cashier_id.Value, _db);
 
             List<Payment> payments = new List<Payment>();
-       //     var total = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue);
+
             var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
-            var total = wb_det.Sum(s => s.TotalInCurrency);
+            var total = SumEdit.Value; //wb_det.Sum(s => s.TotalInCurrency);
 
             int PType = (int)PTypeComboBox.EditValue;
             if (PType == 1)
@@ -410,25 +425,15 @@ namespace SP_Sklad.MainTabs
             string _access_token = login.access_token;
 
             var receipt = new CheckboxClient(_access_token).CreateReceipt(req);
-
-            if (receipt.id != Guid.Empty)
+            if (receipt.is_error)
             {
-                _db.Receipt.Add(new Receipt
-                {
-                    Id = receipt.id,
-                    CeatedAt = receipt.created_at,
-                    TotalPayment = receipt.total_payment,
-                    TotalSum = receipt.total_sum,
-                    Status = receipt.status,
-                    ShiftId = receipt.shift != null ? (Guid?)receipt.shift.id : null,
-                    BarCode = receipt.barcode,
-                    FiscalCode = receipt.fiscal_code,
-                    FiscalDate = receipt.fiscal_date,
-                    ErrorMessage = receipt.is_error ? receipt.error.message : ""
-                });
-
-                _db.SaveChanges();
+                receipt.created_at = DateTime.Now;
+                receipt.total_payment = 0;
+                receipt.total_sum = 0;
             }
+
+               
+          
 
             return receipt;
         }
