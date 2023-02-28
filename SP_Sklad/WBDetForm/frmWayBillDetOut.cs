@@ -180,15 +180,36 @@ namespace SP_Sklad.WBDetForm
 
         private void CalcPrice()
         {
-            BotAmountEdit.Text = AmountEdit.Text;
+            /*   BotAmountEdit.Text = AmountEdit.Text;
 
-            if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
-            else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+               if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
+               else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+
+               PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
+               TotalSumEdit.EditValue = AmountEdit.Value * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
+               SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
+               TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);*/
+
+            BotAmountEdit.Text = AmountEdit.Text;
+            var discount_value = DiscountCheckBox.Checked ? DiscountEdit.Value : 0;
+
+            var total = Math.Round(BasePriceEdit.Value * AmountEdit.Value, 2);
+            var discount = Math.Round((total * discount_value / 100), 2);
+            var total_discount = total - discount;
+
+            if (DiscountCheckBox.Checked && AmountEdit.Value > 0)
+            {
+                DiscountPriceEdit.EditValue = total_discount / AmountEdit.Value;
+            }
+            else
+            {
+                DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+            }
 
             PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
-            TotalSumEdit.EditValue = AmountEdit.Value * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-            SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
-            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbd.Nds);
+            TotalNdsEdit.EditValue = total_discount - (decimal)TotalSumEdit.EditValue;
+            SummAllEdit.EditValue = total_discount;
         }
 
         private void MatComboBox_EditValueChanged(object sender, EventArgs e)
@@ -309,6 +330,12 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
+            if (!AmountEdit.ContainsFocus)
+            {
+                return;
+            }
+
+            _wbd.Amount = AmountEdit.Value;
             SetAmount();
             GetOk();
         }
@@ -333,7 +360,7 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            _wbd.Price = Math.Round(Convert.ToDecimal(PriceNotNDSEdit.EditValue), 2);
+            _wbd.Price = DiscountPriceEdit.Value;
 
             try
             {
@@ -376,7 +403,7 @@ namespace SP_Sklad.WBDetForm
         {
             if (WHComboBox.EditValue == DBNull.Value || !WHComboBox.ContainsFocus) return;
 
-            //   _wbd.WId = (int)WHComboBox.EditValue;
+            _wbd.WId = (int)WHComboBox.EditValue;
             GetContent((int?)WHComboBox.EditValue, (int?)MatComboBox.EditValue);
             SetAmount();
             GetOk();
@@ -452,10 +479,13 @@ namespace SP_Sklad.WBDetForm
 
         private void DiscountEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (DiscountEdit.ContainsFocus)
+            if (!DiscountEdit.ContainsFocus)
             {
-                GetOk();
+                return;
             }
+
+            _wbd.Discount = DiscountEdit.Value;
+            GetOk();
         }
 
         private void frmWayBillDetOut_FormClosed(object sender, FormClosedEventArgs e)

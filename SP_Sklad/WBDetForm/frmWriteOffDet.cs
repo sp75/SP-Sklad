@@ -141,9 +141,8 @@ namespace SP_Sklad.WBDetForm
 
             BotAmountEdit.Text = AmountEdit.Text;
 
-            decimal summ = Convert.ToDecimal(_wbd.Price) * Convert.ToDecimal(AmountEdit.EditValue);
-            decimal summ_nds = (Convert.ToDecimal(_wbd.BasePrice) - (Convert.ToDecimal(_wbd.BasePrice) * 100 / (100 + Convert.ToDecimal(_wbd.Nds)))) * Convert.ToDecimal(AmountEdit.EditValue);
-            SummAllEdit.EditValue = summ + summ_nds;
+            decimal summ = (_wbd.Price ?? 0) * AmountEdit.Value;
+            SummAllEdit.EditValue = summ;
 
             return recult;
         }

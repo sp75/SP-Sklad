@@ -60,7 +60,8 @@ namespace SP_Sklad.MainTabs
             public decimal? Discount { get; set; }
             public int? PTypeId { get; set; }
             public decimal? AvgPrice { get; set; }
-        }
+            public decimal AccountingAmount { get; set; }
+    }
 
         GetWhTree_Result focused_tree_node { get; set; }
         GetWayBillListWh_Result focused_row { get; set; }
@@ -1138,7 +1139,8 @@ namespace SP_Sklad.MainTabs
                     WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                     PTypeId = mat_price != null ? mat_price.PType : null,
                     Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, wh_mat.MatId).FirstOrDefault() ?? 0.00m),
-                    AvgPrice = wh_mat.AvgPrice
+                    AvgPrice = wh_mat.AvgPrice,
+                    AccountingAmount = amount
                 });
             }
             else if (wb.WType != 7)

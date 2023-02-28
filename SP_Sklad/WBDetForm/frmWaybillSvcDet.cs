@@ -31,8 +31,11 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (!DiscountCheckBox.Checked) _wbs.Discount = 0;
-            _wbs.Price = (decimal)PriceNotNDSEdit.EditValue;
+            if (!DiscountCheckBox.Checked)
+            {
+                _wbs.Discount = 0;
+            }
+            _wbs.Price = DiscountPriceEdit.Value;
 
             if (_db.Entry<WayBillSvc>(_wbs).State == EntityState.Detached)
             {
@@ -84,7 +87,7 @@ namespace SP_Sklad.WBDetForm
 
                 //            cxDBCalcEdit3->Enabled = cxDBCheckBox2->Checked;
 
-                PriceEdit.Value = Math.Round((decimal)_wbs.BasePrice * 100 / (100 + (decimal)_wb.Nds), 2);
+                BasePriceEdit.Value = _wbs.BasePrice ?? 0;
 
                 GetOk();
             }
@@ -98,7 +101,7 @@ namespace SP_Sklad.WBDetForm
             bool recult = (SvcComboBox.EditValue != null && SvcComboBox.EditValue != DBNull.Value && (int)SvcComboBox.EditValue > 0 && AmountEdit.EditValue != null && AmountEdit.EditValue != DBNull.Value && (decimal)AmountEdit.EditValue > 0);
 
             OkButton.Enabled = recult;
-
+            /*
             BotAmountEdit.Text = AmountEdit.Text;
 
             if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = _wbs.BasePrice - (_wbs.BasePrice * _wbs.Discount / 100);
@@ -112,7 +115,33 @@ namespace SP_Sklad.WBDetForm
             PriceNotNDSEdit.EditValue = Convert.ToDecimal(DiscountPriceEdit.EditValue) * 100 / (100 + _wbs.Nds);
             TotalSumEdit.EditValue = AmountEdit.EditValue == DBNull.Value ? 0 : (Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue));
             SummAllEdit.EditValue = AmountEdit.EditValue == DBNull.Value ? 0 : Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(DiscountPriceEdit.EditValue);
-            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);*/
+
+            BotAmountEdit.Text = AmountEdit.Text;
+            var discount_value = DiscountCheckBox.Checked ? DiscountEdit.Value : 0;
+
+            var total = Math.Round(BasePriceEdit.Value * AmountEdit.Value, 2);
+            var discount = Math.Round((total * discount_value / 100), 2);
+            var total_discount = total - discount;
+
+            if (DiscountCheckBox.Checked && AmountEdit.Value > 0)
+            {
+                DiscountPriceEdit.EditValue = total_discount / AmountEdit.Value;
+            }
+            else
+            {
+                DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+            }
+
+            decimal price;
+            if (NormCheckBox.Checked) price = DiscountPriceEdit.Value * NormEdit.Value;
+            else price = DiscountPriceEdit.Value;
+
+            PriceNotNDSEdit.EditValue = price * 100 / (100 + _wbs.Nds);
+            TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbs.Nds);
+            TotalNdsEdit.EditValue = total_discount - (decimal)TotalSumEdit.EditValue;
+            SummAllEdit.EditValue = total_discount;
+
 
             return recult;
 
@@ -126,9 +155,9 @@ namespace SP_Sklad.WBDetForm
                 labelControl5.Visible = row.IsNormed;
                 NormEdit.Visible = row.IsNormed;
 
-                PriceEdit.EditValue = row.Price;
+                BasePriceEdit.EditValue = row.Price;
                 _wbs.Price = row.Price;
-                _wbs.BasePrice = Math.Round(row.Price + (row.Price * _wb.Nds / 100), 2);
+                _wbs.BasePrice =row.Price ;
 
                 NormEdit.Enabled = NormCheckBox.Checked;
                 if (NormCheckBox.Checked)
@@ -159,13 +188,7 @@ namespace SP_Sklad.WBDetForm
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-           // if( PriceEdit.)
-         //   {
-                _wbs.BasePrice = ( PriceEdit.Value + (PriceEdit.Value * _wb.Nds /100));
-          //  }
-
-
-                GetOk();
+            GetOk();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)

@@ -472,7 +472,7 @@ namespace SP_Sklad.WBForm
                     Nds = wb.Nds,
                     CurrId = wb.CurrId,
                     OnValue = wb.OnValue,
-                    BasePrice = base_price + Math.Round(base_price * (wb.Nds ?? 0) / 100, 2),
+                    BasePrice = base_price ,
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = disc_card != null ? 2 : 0,
@@ -539,8 +539,7 @@ namespace SP_Sklad.WBForm
                     {
                         if (item.DiscountKind == 2)
                         {
-                            var DiscountPrice = item.BasePrice;
-                            item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
+                            item.Price = item.BasePrice;
                             item.Discount = 0;
                             item.DiscountKind = 0;
                             if (item.WayBillDetAddProps != null)

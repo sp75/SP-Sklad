@@ -84,6 +84,8 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            _wbd.Price = _wbd.BasePrice;
+
             if (wbdp != null && _db.Entry<WayBillDetAddProps>(wbdp).State == EntityState.Detached)
             {
                 wbdp.PosId = _wbd.PosId;
@@ -125,31 +127,27 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
+            PriceEdit.Value = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
+
             GetOk();
-
-            if (!BasePriceEdit.ContainsFocus || PriceEdit.ContainsFocus)
-            {
-                return;
-            }
-
-            _wbd.Price = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
         }
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GetOk();
-
-            if (!PriceEdit.ContainsFocus || BasePriceEdit.ContainsFocus)
+            if (!PriceEdit.ContainsFocus)
             {
                 return;
             }
 
             _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : PriceEdit.Value;
+            BasePriceEdit.EditValue = _wbd.BasePrice;
+
+            GetOk();
         }
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != DBNull.Value && !String.IsNullOrEmpty(MatComboBox.Text) && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value > 0 && PriceEdit.Value > 0 && AmountEdit.Value > 0 );
+            bool recult = (MatComboBox.EditValue != DBNull.Value && !String.IsNullOrEmpty(MatComboBox.Text) && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value > 0 && PriceEdit.Value > 0 && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
 

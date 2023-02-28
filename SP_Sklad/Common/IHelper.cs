@@ -115,7 +115,7 @@ namespace SP_Sklad.Common
                         CurrId = wb.CurrId,
                         OnDate = wb.OnDate,
                         OnValue = wb.OnValue,
-                        BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
+                        BasePrice = price,
                         PosKind = 0,
                         PosParent = 0,
                         DiscountKind = 0
@@ -126,8 +126,8 @@ namespace SP_Sklad.Common
                     {
                         var dis = db.GetDiscount(wb.KaId, item.MatId).FirstOrDefault() ?? 0.00m;
                         wbd.Discount = dis;
-                        wbd.Price = item.Price - Math.Round((item.Price.Value * dis / 100), 2);
-                        wbd.BasePrice = item.Price + Math.Round(item.Price.Value * wb.Nds.Value / 100, 2);
+                        wbd.Price = item.Price - (item.Price * dis / 100);
+                        wbd.BasePrice = item.Price;
                     }
                     db.SaveChanges();
 
@@ -197,9 +197,8 @@ namespace SP_Sklad.Common
                     {
                         var base_price = Math.Round(item.Price ?? 0, 2);
                         var total = Math.Round(base_price * item.Amount, 2);
-                        var discount = Math.Round((total * (item.Discount ??0) / 100), 2);
+                        var discount = Math.Round((total * (item.Discount ?? 0) / 100), 2);
                         var total_discount = total - discount;
-                   //     var nds = Math.Round(total_discount * (wb.Nds ?? 0) / 100, 2);
                       
                         var wbd = new WaybillDet
                         {
@@ -209,13 +208,13 @@ namespace SP_Sklad.Common
                             MatId = item.MatId,
                             WId = WId == -1 ? item.WId : WId,
                             Amount = item.Amount,
-                            Price = item.Discount > 0 && item.Amount > 0 ? (total_discount / item.Amount) : base_price,
+                            Price = base_price - (base_price * (item.Discount ?? 0) / 100), //item.Discount > 0 && item.Amount > 0 ? (total_discount / item.Amount) : base_price,
                             PtypeId = item.PTypeId,
                             Discount = item.Discount,
                             Nds = wb.Nds,
                             CurrId = wb.CurrId,
                             OnValue = wb.OnValue,
-                            BasePrice = base_price + Math.Round(base_price * (wb.Nds ?? 0) / 100, 2),
+                            BasePrice = base_price ,
                             PosKind = 0,
                             PosParent = 0,
                             DiscountKind = disc_card != null ? 2 : (item.Discount > 0 ? 1 : 0),
@@ -342,7 +341,7 @@ namespace SP_Sklad.Common
                             OnDate = wb.OnDate,
                             MatId = item.MatId,
                             WId = (WID != "*") ? Convert.ToInt32(WID) : item.WId,
-                            Amount = item.Amount,
+                            Amount = wb.WType == 7 ? item.AccountingAmount : item.Amount,
                             Price = item.AvgPrice,// item.Price ,
                             Discount = (wb.WType == -20 || wb.WType == 7) ? item.Amount : 0,
                             Nds = wb.WType == 7 ? item.AvgPrice : wb.Nds,

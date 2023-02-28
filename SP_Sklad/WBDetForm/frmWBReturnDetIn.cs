@@ -112,7 +112,7 @@ namespace SP_Sklad.WBDetForm
 
                 _wbd.Price = row.Price;
                 BotPriceEdit.EditValue = row.Price;
-                _wbd.BasePrice = row.Price + row.Price * row.Nds / 100;
+                _wbd.BasePrice = row.Price ;
                 _wbd.Nds = row.Nds;
                 _wbd.CurrId = row.CurrId;
                 _wbd.OnValue = row.OnValue;
@@ -153,7 +153,7 @@ namespace SP_Sklad.WBDetForm
 
                         WbillId = _wb.WbillId,
                         Price = pos_out_row.Price,
-                        BasePrice = pos_out_row.Price + pos_out_row.Price * pos_out_row.Nds / 100,
+                        BasePrice = pos_out_row.Price,
                         Nds = pos_out_row.Nds,
                         CurrId = pos_out_row.CurrId,
                         OnValue = pos_out_row.OnValue,

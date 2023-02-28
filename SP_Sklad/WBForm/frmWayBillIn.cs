@@ -68,7 +68,6 @@ namespace SP_Sklad.WBForm
                     CurrId = 2,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId,
                     PTypeId = 1
@@ -418,9 +417,14 @@ namespace SP_Sklad.WBForm
 
         private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (!KagentComboBox.ContainsFocus || KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value) return;
+            var row = KagentComboBox.GetSelectedDataRow() as GetKagentList_Result;
+            if (!KagentComboBox.ContainsFocus || row == null)
+            {
+                return;
+            }
 
             wb.KaId = (int?)KagentComboBox.EditValue;
+            wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
             GetOk();
         }
 

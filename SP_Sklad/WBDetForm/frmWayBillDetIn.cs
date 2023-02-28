@@ -128,6 +128,8 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            _wbd.Price = _wbd.BasePrice;
+
             try
             {
                 if (!modified_dataset)
@@ -222,12 +224,6 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GetOk();
-
-            if (!BasePriceEdit.ContainsFocus || PriceEdit.ContainsFocus)
-            {
-                return;
-            }
 
             _wbd.Price = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
         }
@@ -246,7 +242,6 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
-            bool recult = (MatComboBox.EditValue != DBNull.Value && !String.IsNullOrEmpty(MatComboBox.Text) && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value > 0 && PriceEdit.Value > 0 && AmountEdit.Value > 0 );
 
             OkButton.Enabled = recult;
 
@@ -386,23 +381,7 @@ namespace SP_Sklad.WBDetForm
             var get_last_price_result = new GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate);
 
             _wbd.Price = get_last_price_result.Price / _wb.OnValue;
-            _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(_wbd.Price.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : _wbd.Price.Value;
 
-        }
-
-        private void SetPrice2(int mat_id)
-        {
-            var get_last_price_result = _db.GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate).FirstOrDefault();
-            if (get_last_price_result != null)
-            {
-                _wbd.Price = (get_last_price_result.Price ?? 0) / _wb.OnValue;
-                _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(_wbd.Price.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : _wbd.Price.Value;
-            }
-            else
-            {
-                _wbd.Price = 0;
-                _wbd.BasePrice = 0;
-            }
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)

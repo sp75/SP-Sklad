@@ -409,7 +409,7 @@ order by  ma.ondate desc */
                             CurrId = wb.CurrId,
                             OnDate = wb.OnDate,
                             OnValue = wb.OnValue,
-                            BasePrice = price + Math.Round(price * wb.Nds.Value / 100, 2),
+                            BasePrice = price ,
                             PosKind = 0,
                             PosParent = 0,
                             DiscountKind = 0

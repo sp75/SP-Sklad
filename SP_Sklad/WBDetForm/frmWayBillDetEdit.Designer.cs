@@ -760,7 +760,6 @@
             // 
             // PriceEdit
             // 
-            this.PriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PriceEdit.Location = new System.Drawing.Point(101, 75);
             this.PriceEdit.MenuManager = this.barManager1;
             this.PriceEdit.Name = "PriceEdit";

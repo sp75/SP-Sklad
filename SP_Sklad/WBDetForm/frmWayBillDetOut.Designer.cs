@@ -800,6 +800,7 @@
             // 
             // DiscountPriceEdit
             // 
+            this.DiscountPriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DiscountPriceEdit.Enabled = false;
             this.DiscountPriceEdit.Location = new System.Drawing.Point(453, 62);
             this.DiscountPriceEdit.MenuManager = this.barManager1;
@@ -860,7 +861,7 @@
             // 
             // DiscountEdit
             // 
-            this.DiscountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Discount", true));
+            this.DiscountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Discount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DiscountEdit.Location = new System.Drawing.Point(170, 62);
             this.DiscountEdit.MenuManager = this.barManager1;
             this.DiscountEdit.Name = "DiscountEdit";

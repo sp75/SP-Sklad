@@ -345,7 +345,7 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            _wbd.Price = Convert.ToDecimal(PriceNotNDSEdit.EditValue);
+            _wbd.Price = DiscountPriceEdit.Value;
 
             try
             {

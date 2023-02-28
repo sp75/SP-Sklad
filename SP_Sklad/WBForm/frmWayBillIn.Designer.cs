@@ -979,8 +979,7 @@
             // 
             // gridColumn6
             // 
-            this.gridColumn6.Caption = "Ціна без ПДВ";
-            this.gridColumn6.DisplayFormat.FormatString = "0.00";
+            this.gridColumn6.Caption = "Ціна з ПДВ";
             this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn6.FieldName = "Price";
             this.gridColumn6.Name = "gridColumn6";

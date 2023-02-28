@@ -74,7 +74,8 @@ namespace SP_Sklad.WBForm
                     EntId = DBHelper.Enterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     ShipmentDate = DBHelper.ServerDateTime().Date.AddHours(8),
-                    PTypeId = 1
+                    PTypeId = 1,
+                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                 });
 
                 _db.SaveChanges();
@@ -282,7 +283,7 @@ namespace SP_Sklad.WBForm
                         if (item.DiscountKind == 2)
                         {
                             var DiscountPrice = item.BasePrice;
-                            item.Price = DiscountPrice * 100 / (100 + item.Nds.Value);
+                            item.Price = DiscountPrice;
                             item.Discount = 0;
                             item.DiscountKind = 0;
                             if (item.WayBillDetAddProps != null)
@@ -322,8 +323,6 @@ namespace SP_Sklad.WBForm
                 return;
             }
             wb.KaId = row.KaId;
-
-            wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
 
             if (row.RouteId.HasValue && wb.WType == -1)
             {

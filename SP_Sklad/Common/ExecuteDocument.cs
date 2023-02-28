@@ -29,7 +29,7 @@ namespace SP_Sklad.Common
                 CurrId = 2,
                 OnValue = 1,
                 PersonId = DBHelper.CurrentUser.KaId,
-                Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
+                Nds = _db.Kagent.Find(_rmm.KaId)?.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                 UpdatedBy = DBHelper.CurrentUser.UserId,
                 EntId = DBHelper.Enterprise.KaId,
                 PTypeId = 1,
