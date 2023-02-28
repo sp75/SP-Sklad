@@ -224,24 +224,27 @@ namespace SP_Sklad.WBDetForm
 
         private void BasePriceEdit_EditValueChanged(object sender, EventArgs e)
         {
+            PriceEdit.Value = _wbd.Nds > 0 ? Math.Round(BasePriceEdit.Value * 100 / (100 + (_wbd.Nds ?? 0)), 4) : BasePriceEdit.Value;
 
-            _wbd.Price = _wbd.Nds > 0 ? Math.Round((BasePriceEdit.Value * 100 / (100 + Convert.ToDecimal(_wbd.Nds))), 2) : BasePriceEdit.Value;
+            GetOk();
         }
 
         private void PriceEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GetOk();
-
-            if (!PriceEdit.ContainsFocus || BasePriceEdit.ContainsFocus)
+            if (!PriceEdit.ContainsFocus )
             {
                 return;
             }
 
-            _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(PriceEdit.Value + (PriceEdit.Value * Convert.ToDecimal(_wbd.Nds) / 100), 2) : PriceEdit.Value;
+            _wbd.BasePrice = _wbd.Nds > 0 ? Math.Round(PriceEdit.Value + (PriceEdit.Value * (_wbd.Nds ?? 0) / 100), 4) : PriceEdit.Value;
+            BasePriceEdit.EditValue = _wbd.BasePrice;
+
+            GetOk();
         }
 
         bool GetOk()
         {
+            bool recult = (MatComboBox.EditValue != DBNull.Value && !String.IsNullOrEmpty(MatComboBox.Text) && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value > 0 && PriceEdit.Value > 0 && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
 
@@ -381,6 +384,7 @@ namespace SP_Sklad.WBDetForm
             var get_last_price_result = new GetLastPrice(mat_id, _wb.KaId, 1, _wb.OnDate);
 
             _wbd.Price = get_last_price_result.Price / _wb.OnValue;
+            _wbd.BasePrice = get_last_price_result.Price;
 
         }
 
