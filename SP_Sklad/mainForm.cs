@@ -17,6 +17,7 @@ using System.Reflection;
 using System.Data.Entity.Infrastructure;
 using System.Collections;
 using SP_Sklad.ViewsForm;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad
 {
@@ -64,9 +65,7 @@ namespace SP_Sklad
 
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //   using (var frm = new frmMessageBox(@"Закрити програму", @"Ви дійсно хочете вийти з програми?", false))
-            //   {
-            var want_to_exit = MessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo) == DialogResult.Yes;/*frm.ShowDialog() == DialogResult.Yes;*/
+            var want_to_exit = XtraMessageBox.Show(@"Ви дійсно хочете вийти з програми?", @"Закрити програму", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
 
             if (want_to_exit)
             {
@@ -74,7 +73,6 @@ namespace SP_Sklad
             }
 
             e.Cancel = !want_to_exit;
-            //    }
         }
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)

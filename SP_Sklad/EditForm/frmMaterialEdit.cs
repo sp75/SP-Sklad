@@ -33,6 +33,7 @@ namespace SP_Sklad.EditForm
         public frmMaterialEdit(int? MatId = null, int? MatGrp = null, int? CopyMatId = null)
         {
             InitializeComponent();
+
             _mat_id = MatId;
             _mat_grp = MatGrp;
             _copy_mat_id = CopyMatId;
@@ -263,6 +264,9 @@ namespace SP_Sklad.EditForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            //DialogResult = XtraMessageBox.Show("Close Main Form?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+           // DialogResult = DialogResult.None;
+
             _db.SaveChanges();
             current_transaction.Commit();
         }
@@ -280,7 +284,7 @@ namespace SP_Sklad.EditForm
 
         private void frmMaterialEdit_Shown(object sender, EventArgs e)
         {
-            
+            NameTextEdit.Focus();
         }
 
         private void NameTextEdit_EditValueChanged(object sender, EventArgs e)
@@ -722,6 +726,12 @@ namespace SP_Sklad.EditForm
 
         private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
         {
+            if(string.IsNullOrEmpty( ArtikulEdit.Text))
+            {
+                ArtikulEdit.ErrorText = "Артикул не може бути пустим!";
+                e.Cancel = true;
+            }
+
             if (_db.Materials.Where(w => w.Artikul.Length > 0 && w.MatId != _mat.MatId).Any(a => a.Artikul == ArtikulEdit.Text))
             {
                 ArtikulEdit.ErrorText = "Товар з таким артикулом вже існує!";
@@ -777,26 +787,64 @@ namespace SP_Sklad.EditForm
         {
             MatBarCodeGridView.AddNewRow();
             MatBarCodeGridView.ShowEditForm();
-
-         /*   using (var frm = new frmBarCode())
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
- 
-                    MatBarCodeBS.Add(_db.MatBarCode.Add(new MatBarCode
-                    {
-                        MatId = _mat_id.Value,
-                        BarCode = frm.BarCodeEdit.Text
-                    }));
-
-                }
-            }*/
         }
 
         private void simpleButton5_Click_1(object sender, EventArgs e)
         {
             MatBarCodeGridView.DeleteSelectedRows();
         }
+
+        private void NameTextEdit_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(NameTextEdit.Text))
+            {
+                ArtikulEdit.ErrorText = "Назва товара не може бути пустою!";
+                e.Cancel = true;
+            }
+        }
+
+
+        private void NewBarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 && !String.IsNullOrEmpty(NewBarCodeEdit.Text))
+            {
+                if (!_db.MatBarCode.Any(a => a.BarCode == NewBarCodeEdit.Text))
+                {
+                    _db.MatBarCode.Add(new MatBarCode
+                    {
+                        MatId = _mat_id.Value,
+                        BarCode = NewBarCodeEdit.Text
+                    });
+
+                    _db.SaveChanges();
+
+                    MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
+                }
+
+                NewBarCodeEdit.EditValue = null;
+            }
+        }
+
+        private void NewBarCodeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 0)
+            {
+                if (!_db.MatBarCode.Any(a => a.BarCode == NewBarCodeEdit.Text))
+                {
+                    _db.MatBarCode.Add(new MatBarCode
+                    {
+                        MatId = _mat_id.Value,
+                        BarCode = NewBarCodeEdit.Text
+                    });
+
+                    _db.SaveChanges();
+
+                    MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
+                }
+            }
+        }
+
+
     }
 
 

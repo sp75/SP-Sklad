@@ -415,6 +415,7 @@ namespace SP_Sklad.WBDetForm
             {
                 return;
             }
+            _wbd.PtypeId = (int)PriceTypesEdit.EditValue;
 
             GetMatPrice();
             GetOk();
