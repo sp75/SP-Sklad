@@ -11,5 +11,6 @@ namespace SP_Sklad.Common
         public static Guid SessionId { get; set; }
         public static int UserId { get; set; }
         public static int EnterpriseId { get; set; }
+        public static frmLogin login_form { get; set; }
     }
 }

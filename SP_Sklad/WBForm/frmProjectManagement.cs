@@ -203,7 +203,7 @@ namespace SP_Sklad.WBForm
 
         public void RecaldDocSum()
         {
-            pm.SummInCurr = _db.v_ProjectManagementDet.Sum(s => s.SummPay);
+            pm.SummInCurr = _db.v_ProjectManagementDet.Where(w=>w.ProjectManagementId == _doc_id).Sum(s => s.SummPay);
         }
 
         private void WaybillDetInGridView_DoubleClick(object sender, EventArgs e)

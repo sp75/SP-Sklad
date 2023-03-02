@@ -37,6 +37,30 @@ namespace SP_Sklad.SkladData
         private static WeighingScales weighing_scales_2;
         private static List<GetKagentList_Result> _kagents_by_wrker;
 
+        public static void ClearDBHelper()
+        {
+            _persons = null;
+            _cashiers = null;
+            _pay_type = null;
+            _cash_desks = null;
+            _charge_type = null;
+            _current_user = null;
+            _retail_outlets = null;
+            _currency = null;
+            _enterprise = null;
+            _enterprise_list = null;
+            _common_param = null;
+            _measures = null;
+            _counters = null;
+            _doc_type = null;
+            _packaging = null;
+            _wh_list = null;
+            _national_currency = null;
+            _user_roles = null;
+            weighing_scales_1 = null;
+            weighing_scales_2 = null;
+            _kagents_by_wrker = null;
+        }
 
         public static List<UserRoles> UserRolesList
         {

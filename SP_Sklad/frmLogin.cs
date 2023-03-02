@@ -250,9 +250,12 @@ namespace SP_Sklad
                 return;
             }
 
+            DBHelper.ClearDBHelper();
+
             UserSession.UserId = user_id;
             UserSession.SessionId = Guid.NewGuid();
             UserSession.EnterpriseId  = Settings.Default.ent_id;
+            UserSession.login_form = this;
 
             using (var db = new BaseEntities())
             {
@@ -321,6 +324,8 @@ namespace SP_Sklad
                 {
                     label1.Visible = true;
                 }
+
+                passtextEdit.Text = "";
             }
         }
 

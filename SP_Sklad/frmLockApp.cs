@@ -14,7 +14,7 @@ namespace SP_Sklad
 {
     public partial class frmLockApp : DevExpress.XtraEditors.XtraForm
     {
-        public static Users _users { get; set; }
+        private Users _users { get; set; }
         private bool is_close { get; set; }
 
         public frmLockApp()

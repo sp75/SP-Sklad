@@ -24,7 +24,6 @@ namespace SP_Sklad
     public partial class mainForm : DevExpress.XtraEditors.XtraForm
     {
         private int user_id { get; set; }
-      //  public static int enterprise_id { get; set; }
         public static mainForm main_form { get; set; }
 
         public mainForm() : this(UserSession.UserId) { }
@@ -162,7 +161,9 @@ namespace SP_Sklad
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Application.Exit();
+            Close();
+
+       //     Application.Exit();
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -278,7 +279,8 @@ namespace SP_Sklad
                 var update = Path.Combine(Application.StartupPath, "update.exe");
                 if (File.Exists(update))
                 {
-                    Application.Exit();
+                    // Application.Exit();
+                    Close();
                     Process.Start(update);
                 }
             }
@@ -290,7 +292,9 @@ namespace SP_Sklad
 
         private void barButtonItem10_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Application.Restart();
+            mainForm.main_form.Dispose();
+            UserSession.login_form.Show();
+            //Close();
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -310,8 +314,8 @@ namespace SP_Sklad
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //           Process.Start("http://178.136.7.248/web-sklad/sp_sklad/SP_Sklad.rar");
-            Application.Exit();
+            //    Application.Exit();
+            Close();
 
             var update = Path.Combine(Application.StartupPath, "update.exe");
 
