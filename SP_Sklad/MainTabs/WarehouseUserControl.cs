@@ -1301,5 +1301,19 @@ namespace SP_Sklad.MainTabs
                 MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", wb_det_focused_row.MatName));
             }
         }
+
+        private void barButtonItem17_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            switch (focused_tree_node.GType)
+            {
+                case 1:
+                    IHelper.ExportToXlsx(WhMatGridControl);
+                    break;
+
+                case 2:
+                    IHelper.ExportToXlsx(WBGridControl);
+                    break;
+            }
+        }
     }
 }
