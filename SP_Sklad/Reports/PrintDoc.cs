@@ -396,7 +396,7 @@ namespace SP_Sklad.Reports
             var dataForReport = new Dictionary<string, IList>();
             var wbl = db.WaybillList.Where(w => w.Id == id).Select(s => new { s.OnDate, s.WbillId }).First();
             var wb = db.WBListMake(wbl.OnDate, wbl.OnDate, -1, "*", 0, -20, UserSession.UserId).Where(w=> w.Id == id).ToList();
-            var item = db.GetWayBillDetOut(wbl.WbillId).ToList().OrderBy(o => o.Num).Select((s, index) => new
+            var item = db.GetWayBillMakeDet(wbl.WbillId).ToList().OrderBy(o => o.Num).Select((s, index) => new
             {
                 Num = index + 1,
                 s.Amount,
@@ -405,13 +405,24 @@ namespace SP_Sklad.Reports
                 s.WhName,
                 s.MsrName,
                 s.GrpId,
-                GrpName = s.GroupName
+                GrpName = s.GroupName,
+                s.RawMaterialTypeName,
+                s.RawMaterialTypeId
+
             }).ToList();
 
-            var grp = item.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+            /*    var grp = item.GroupBy(g => new { g.GrpName, g.GrpId }).Select(s => new
+                {
+                    s.Key.GrpId,
+                    s.Key.GrpName,
+                    Amount = s.Sum(sa => sa.Amount),
+                    Summ = s.Sum(sum => sum.Amount * sum.Price)
+                }).ToList();*/
+
+            var grp = item.GroupBy(g => new { g.RawMaterialTypeName, g.RawMaterialTypeId }).Select(s => new
             {
-                s.Key.GrpId,
-                s.Key.GrpName,
+                GrpId = s.Key.RawMaterialTypeId,
+                GrpName =  s.Key.RawMaterialTypeName,
                 Amount = s.Sum(sa => sa.Amount),
                 Summ = s.Sum(sum => sum.Amount * sum.Price)
             }).ToList();
@@ -430,7 +441,7 @@ namespace SP_Sklad.Reports
             rel.Add(new
             {
                 pk = "GrpId",
-                fk = "GrpId",
+                fk = "RawMaterialTypeId",
                 master_table = "MGRP",
                 child_table = "WayBillItems"
             });
@@ -534,7 +545,8 @@ namespace SP_Sklad.Reports
                 s.GrpId,
                 s.Discount,
                 s.MsrName,
-                s.Notes
+                s.Notes,
+                s.Artikul
             }).ToList();
 
             var mat_grp = pl_d.GroupBy(g => new { g.GrpName }).Select(s => new

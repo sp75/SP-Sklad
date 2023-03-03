@@ -142,7 +142,7 @@ namespace SP_Sklad.WBForm
             MatInfoBtn.Enabled = EditMaterialBtn.Enabled;
             OrdInfoBtn.Enabled = EditMaterialBtn.Enabled;
 
-            KagentComboBox.Enabled = WaybillDetInBS.Count == 0 && DBHelper.is_main_cacher && !payDocUserControl1.IsPayDoc();
+            KagentComboBox.Enabled = WaybillDetInBS.Count == 0 && (DBHelper.is_main_cacher || DBHelper.is_admin) && !payDocUserControl1.IsPayDoc();
             KagBalBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
             OkButton.Enabled = recult;

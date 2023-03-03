@@ -111,10 +111,10 @@ namespace SP_Sklad.MainTabs
                     PDCashiersComboBox.EditValue = 0;
                     PDKagentList.EditValue = 0;
                 }
-                wbKagentList.Enabled = DBHelper.is_main_cacher;
-                CashiersComboBox.Enabled = DBHelper.is_main_cacher;
-                PDKagentList.Enabled = DBHelper.is_main_cacher;
-                PDCashiersComboBox.Enabled = DBHelper.is_main_cacher;
+                wbKagentList.Enabled = DBHelper.is_main_cacher || DBHelper.is_admin;
+                CashiersComboBox.Enabled = DBHelper.is_main_cacher || DBHelper.is_admin;
+                PDKagentList.Enabled = DBHelper.is_main_cacher || DBHelper.is_admin;
+                PDCashiersComboBox.Enabled = DBHelper.is_main_cacher || DBHelper.is_admin;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;

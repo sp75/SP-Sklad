@@ -148,7 +148,6 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             NumEdit.Enabled = user_settings.AccessEditDocNum;
-            WeighBtn.Enabled = DBHelper.WeighingScales_1 != null;
 
             if (TurnDocCheckBox.Checked)
             {
@@ -409,7 +408,7 @@ namespace SP_Sklad.WBForm
             DelRsvBarBtn.Enabled = (wbd_row.Rsv == 1 && wbd_row.PosId > 0);
             RsvAllBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
             DelAllRsvBarBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
-            WeighBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0);
+            WeighBtn.Enabled = (WaybillDetOutGridView.FocusedRowHandle >= 0) && DBHelper.WeighingScales_1 != null;
         }
 
         private void RsvAllBarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

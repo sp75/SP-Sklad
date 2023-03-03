@@ -99,7 +99,7 @@ namespace SP_Sklad.WBForm
                 payDocUserControl1.OnLoad(_db, wb, true);
                 KagentComboBox.Enabled = !payDocUserControl1.IsPayDoc();
             }
-            KagentComboBox.Enabled = DBHelper.is_main_cacher;
+            KagentComboBox.Enabled = DBHelper.is_main_cacher || DBHelper.is_admin;
 
             RefreshDet();
         }

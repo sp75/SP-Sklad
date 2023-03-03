@@ -53,7 +53,7 @@ namespace SP_Sklad
 
             var sta = new AppSettingRepository().ShowTradeApp;
             TradeTabPage.PageVisible = sta;
-            CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher;
+            CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher || DBHelper.is_cacher;
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

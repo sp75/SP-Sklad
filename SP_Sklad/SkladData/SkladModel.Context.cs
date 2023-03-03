@@ -2364,16 +2364,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillMakeDet")]
-        public virtual IQueryable<GetWayBillMakeDet_Result> GetWayBillMakeDet(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
-        }
-    
         public virtual ObjectResult<GetSaldoDetTree_Result> GetSaldoDetTree(Nullable<int> user_id, Nullable<int> id, Nullable<System.DateTime> on_date)
         {
             var user_idParameter = user_id.HasValue ?
@@ -2582,6 +2572,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("worker_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKagentList_Result>("[BaseEntities].[GetKagentList](@worker_id)", worker_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillMakeDet")]
+        public virtual IQueryable<GetWayBillMakeDet_Result> GetWayBillMakeDet(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
         }
     }
 }

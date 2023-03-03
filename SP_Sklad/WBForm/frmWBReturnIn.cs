@@ -268,7 +268,7 @@ namespace SP_Sklad.WBForm
                 }
 
 
-                if (dr.PosType == 3)
+                if (dr.PosType == 2)
                 {
                     using (var df = new frmWayBillTMCDet(_db, dr.PosId, wb))
                     {
@@ -292,7 +292,7 @@ namespace SP_Sklad.WBForm
                     _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
                 }
 
-                if (dr.PosType == 3)
+                if (dr.PosType == 2)
                 {
                     _db.DeleteWhere<WayBillTmc>(w => w.PosId == dr.PosId);
                 }

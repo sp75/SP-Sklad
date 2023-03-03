@@ -1940,7 +1940,6 @@
             // 
             // NewBarCodeEdit
             // 
-            this.NewBarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NewBarCodeEdit.Location = new System.Drawing.Point(13, 17);
             this.NewBarCodeEdit.MenuManager = this.barManager1;
             this.NewBarCodeEdit.Name = "NewBarCodeEdit";
@@ -1965,9 +1964,10 @@
             // simpleButton5
             // 
             this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(199, 18);
+            this.simpleButton5.Location = new System.Drawing.Point(199, 17);
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(106, 23);
+            this.simpleButton5.Size = new System.Drawing.Size(103, 24);
+            this.simpleButton5.StyleController = this.styleController1;
             this.simpleButton5.TabIndex = 18;
             this.simpleButton5.Text = "Видалити";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click_1);

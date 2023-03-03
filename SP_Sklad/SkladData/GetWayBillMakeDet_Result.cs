@@ -37,5 +37,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> MatDefWId { get; set; }
         public Nullable<int> DefectsClassifierId { get; set; }
         public string DefectsClassifierName { get; set; }
+        public Nullable<int> RawMaterialTypeId { get; set; }
+        public string RawMaterialTypeName { get; set; }
     }
 }

@@ -152,7 +152,9 @@ namespace SP_Sklad.WBDetForm
             dynamic row = SvcComboBox.GetSelectedDataRow();
             if (row != null)
             {
-                labelControl5.Visible = row.IsNormed;
+                _wbs.SvcId = row.SvcId;
+
+               labelControl5.Visible = row.IsNormed;
                 NormEdit.Visible = row.IsNormed;
 
                 BasePriceEdit.EditValue = row.Price;

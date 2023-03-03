@@ -73,7 +73,8 @@ namespace SP_Sklad.SkladData
                 return _user_roles;
             }
         }
-        public static bool is_main_cacher => UserRolesList.Any(a => a.RoleId == 1 || a.RoleId == 2);
+        public static bool is_main_cacher => UserRolesList.Any(a => a.RoleId == 2);
+        public static bool is_cacher => UserRolesList.Any(a => a.RoleId == 3);
         public static bool is_admin => UserRolesList.Any(a => a.RoleId == 1 );
 
         public static List<Countries> CountersList
