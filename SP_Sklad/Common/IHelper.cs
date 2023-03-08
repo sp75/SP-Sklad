@@ -975,7 +975,7 @@ namespace SP_Sklad.Common
             foreach (var sourceProp in sourceProprties)
             {
                 object osourceVal = sourceProp.GetValue(sourceObj, null);
-                int entIndex = Array.IndexOf(targetProprties, sourceProp);
+                int entIndex = Array.IndexOf(targetProprties.Select(s=> s.Name).ToArray(), sourceProp.Name);
                 if (entIndex >= 0)
                 {
                     var targetProp = targetProprties[entIndex];

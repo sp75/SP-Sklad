@@ -75,23 +75,23 @@ namespace SP_Sklad.WBDetForm
                 WhEditBtn.Enabled = false;
             }
 
+            _wbd = new Tmp_MWaybillDet
+            {
+                WbillId = _wb.WbillId,
+                Amount = 0,
+                OnValue = _wb.OnValue,
+                WId = _wb.WaybillMove != null ? (int?)_wb.WaybillMove.SourceWid : null,
+                Discount = 0,
+                Nds = _wb.Nds
+            };
+
             if (_PosId == null)
             {
-                _wbd = new Tmp_MWaybillDet
-                {
-                    WbillId = _wb.WbillId,
-                    Amount = 0,
-                    OnValue = _wb.OnValue,
-                    WId = _wb.WaybillMove != null ? (int?)_wb.WaybillMove.SourceWid : null,
-                    Discount = 0,
-                    Nds = _wb.Nds
-                };
-
                 modified_dataset = false;
             }
             else
             {
-                IHelper.MapProp(_wbd, _db.WaybillDet.Find(_PosId));
+                IHelper.MapProp( _db.WaybillDet.Find(_PosId), _wbd);
      
                 modified_dataset = true;
             }
@@ -256,10 +256,9 @@ namespace SP_Sklad.WBDetForm
             {
                 if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                 {
-                    var sate = _db.Entry<WaybillDet>(_wbd).State;
-                    if (sate == EntityState.Modified || sate == EntityState.Unchanged)
+                    if (_PosId != null)
                     {
-                        _db.WaybillDet.Remove(_wbd);
+                        _db.DeleteWhere<WaybillDet>(w => w.PosId == _PosId);
                     }
 
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
@@ -320,10 +319,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetOut_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
-            {
-                _db.Entry<WaybillDet>(_wbd).Reload();
-            }
+
         }
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
