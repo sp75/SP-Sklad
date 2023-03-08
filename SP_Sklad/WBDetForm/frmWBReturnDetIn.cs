@@ -110,15 +110,18 @@ namespace SP_Sklad.WBDetForm
 
                 var wid = _def_wid != null ? _def_wid.Value : row.WID;
 
+                PriceNotNDSEdit.EditValue = row.Price;
+
                 _wbd.Price = row.Price;
-                BotPriceEdit.EditValue = row.Price;
-                _wbd.BasePrice = row.Price ;
+                _wbd.BasePrice = row.BasePrice;
                 _wbd.Nds = row.Nds;
                 _wbd.CurrId = row.CurrId;
                 _wbd.OnValue = row.OnValue;
                 _wbd.OnDate = row.OnDate;
                 _wbd.WId = wid;
                 _wbd.MatId = row.MatId;
+                _wbd.Discount = row.Discount;
+               // _wbd.DiscountKind = row.DiscountKind;
 
                 ordered_in_list = _db.GetShippedPosIn(row.PosId).ToList();
 
@@ -153,13 +156,15 @@ namespace SP_Sklad.WBDetForm
 
                         WbillId = _wb.WbillId,
                         Price = pos_out_row.Price,
-                        BasePrice = pos_out_row.Price,
+                        BasePrice = pos_out_row.BasePrice,
                         Nds = pos_out_row.Nds,
                         CurrId = pos_out_row.CurrId,
                         OnValue = pos_out_row.OnValue,
                         OnDate = pos_out_row.OnDate,
                         WId = _wbd.WId,
                         MatId = item.MatId,
+                        Discount = pos_out_row.Discount,
+
                         Num = ++num
                     });
 
@@ -204,9 +209,19 @@ namespace SP_Sklad.WBDetForm
 
             OkButton.Enabled = recult;
 
-            TotalSumEdit.EditValue = (AmountEdit.EditValue != DBNull.Value ? Convert.ToDecimal(AmountEdit.EditValue) : 0) * _wbd.Price;
-            SummAllEdit.EditValue = (AmountEdit.EditValue != DBNull.Value ? Convert.ToDecimal(AmountEdit.EditValue) : 0) * _wbd.BasePrice;
-            TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            /*   TotalSumEdit.EditValue = (AmountEdit.EditValue != DBNull.Value ? Convert.ToDecimal(AmountEdit.EditValue) : 0) * _wbd.Price;
+               SummAllEdit.EditValue = (AmountEdit.EditValue != DBNull.Value ? Convert.ToDecimal(AmountEdit.EditValue) : 0) * _wbd.BasePrice;
+               TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);*/
+
+
+
+            var discount_price = BasePriceEdit.Value - (BasePriceEdit.Value * (_wbd.Discount ?? 0) / 100);
+            var total_discount = Math.Round(discount_price * AmountEdit.Value, 2);
+
+            PriceNotNDSEdit.EditValue = discount_price * 100 / (100 + _wbd.Nds);
+            TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbd.Nds);
+            TotalNdsEdit.EditValue = total_discount - (decimal)TotalSumEdit.EditValue;
+            SummAllEdit.EditValue = total_discount;
 
             return recult;
         }

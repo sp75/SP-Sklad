@@ -180,8 +180,9 @@ namespace SP_Sklad.WBDetForm
 
         private void CalcPrice()
         {
-            /*   BotAmountEdit.Text = AmountEdit.Text;
+            BotAmountEdit.Text = AmountEdit.Text;
 
+            /*   
                if (DiscountCheckBox.Checked) DiscountPriceEdit.EditValue = BasePriceEdit.Value - (BasePriceEdit.Value * DiscountEdit.Value / 100);
                else DiscountPriceEdit.EditValue = BasePriceEdit.Value;
 
@@ -190,21 +191,32 @@ namespace SP_Sklad.WBDetForm
                SummAllEdit.EditValue = AmountEdit.Value * DiscountPriceEdit.Value;
                TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);*/
 
-            BotAmountEdit.Text = AmountEdit.Text;
+
+            /*   var discount_value = DiscountCheckBox.Checked ? DiscountEdit.Value : 0;
+               var amount = AmountEdit.Value == 0 ? 1 : AmountEdit.Value;
+
+               var total = Math.Round(BasePriceEdit.Value * amount, 2);
+               var discount = Math.Round((total * discount_value / 100), 2);
+               var total_discount = total - discount;
+
+               if (DiscountCheckBox.Checked)
+               {
+                   DiscountPriceEdit.EditValue = total_discount / amount;
+               }
+               else
+               {
+                   DiscountPriceEdit.EditValue = BasePriceEdit.Value;
+               }
+
+               PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
+               TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbd.Nds);
+               TotalNdsEdit.EditValue = total_discount - (decimal)TotalSumEdit.EditValue;
+               SummAllEdit.EditValue = total_discount;*/
+
             var discount_value = DiscountCheckBox.Checked ? DiscountEdit.Value : 0;
 
-            var total = Math.Round(BasePriceEdit.Value * AmountEdit.Value, 2);
-            var discount = Math.Round((total * discount_value / 100), 2);
-            var total_discount = total - discount;
-
-            if (DiscountCheckBox.Checked && AmountEdit.Value > 0)
-            {
-                DiscountPriceEdit.EditValue = total_discount / AmountEdit.Value;
-            }
-            else
-            {
-                DiscountPriceEdit.EditValue = BasePriceEdit.Value;
-            }
+            DiscountPriceEdit.Value = BasePriceEdit.Value - (BasePriceEdit.Value * discount_value / 100);
+            var total_discount = Math.Round(DiscountPriceEdit.Value * AmountEdit.Value, 2);
 
             PriceNotNDSEdit.EditValue = DiscountPriceEdit.Value * 100 / (100 + _wbd.Nds);
             TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbd.Nds);
@@ -428,10 +440,10 @@ namespace SP_Sklad.WBDetForm
                 return;
             }
 
-            var list_price = _db.GetListMatPrices((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
+            var list_price = _db.GetMatPrice((int)MatComboBox.EditValue, _wb.CurrId, (int?)PriceTypesEdit.EditValue).FirstOrDefault();
             if (list_price != null)
             {
-                _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
+                _wbd.BasePrice = list_price.Price ?? 0;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
             }
         }
@@ -497,22 +509,6 @@ namespace SP_Sklad.WBDetForm
             }
 
             Settings.Default.Save();
-        }
-
-        private void PosInfoBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnShowRemainByWH_Click(object sender, EventArgs e)
-        {
-           
-
         }
 
         private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

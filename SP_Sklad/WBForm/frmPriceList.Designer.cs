@@ -111,6 +111,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.BarCodeEdit = new DevExpress.XtraEditors.TextEdit();
             this.MatTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -876,7 +877,8 @@
             this.gridColumn5,
             this.gridColumn6,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.gridColumn9});
             this.PriceListGrid.GridControl = this.gridControl1;
             this.PriceListGrid.GroupCount = 1;
             this.PriceListGrid.Name = "PriceListGrid";
@@ -924,7 +926,7 @@
             this.colMatId.FieldName = "Name";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.VisibleIndex = 2;
+            this.colMatId.VisibleIndex = 3;
             this.colMatId.Width = 162;
             // 
             // colPrice
@@ -935,7 +937,7 @@
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 5;
+            this.colPrice.VisibleIndex = 6;
             this.colPrice.Width = 84;
             // 
             // gridColumn3
@@ -944,7 +946,7 @@
             this.gridColumn3.FieldName = "Discount";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 6;
+            this.gridColumn3.VisibleIndex = 7;
             this.gridColumn3.Width = 45;
             // 
             // gridColumn1
@@ -953,7 +955,7 @@
             this.gridColumn1.FieldName = "MsrName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 4;
+            this.gridColumn1.VisibleIndex = 5;
             this.gridColumn1.Width = 62;
             // 
             // gridColumn2
@@ -970,7 +972,7 @@
             this.gridColumn4.FieldName = "Artikul";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.VisibleIndex = 4;
             this.gridColumn4.Width = 59;
             // 
             // gridColumn5
@@ -988,7 +990,7 @@
             this.gridColumn6.FieldName = "Notes";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 9;
+            this.gridColumn6.VisibleIndex = 10;
             // 
             // gridColumn7
             // 
@@ -997,7 +999,7 @@
             this.gridColumn7.FieldName = "WId";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 7;
+            this.gridColumn7.VisibleIndex = 8;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -1018,7 +1020,17 @@
             this.gridColumn8.FieldName = "LastInPrice";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
+            this.gridColumn8.VisibleIndex = 9;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "# Групи";
+            this.gridColumn9.DisplayFormat.FormatString = "0";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn9.FieldName = "GrpNum";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 2;
             // 
             // BarCodeEdit
             // 
@@ -1282,5 +1294,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

@@ -46,7 +46,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.AddNewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -174,7 +174,7 @@
             this.PrevievBtn,
             this.EditMaterialBtn,
             this.DelMaterialBtn,
-            this.barButtonItem2,
+            this.AddNewItemBtn,
             this.barButtonItem1,
             this.barButtonItem3});
             this.barManager1.MainMenu = this.bar2;
@@ -212,7 +212,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddNewItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -221,14 +221,14 @@
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl5;
             this.bar1.Text = "Custom 2";
             // 
-            // barButtonItem2
+            // AddNewItemBtn
             // 
-            this.barButtonItem2.Caption = "Додати документ";
-            this.barButtonItem2.Id = 17;
-            this.barButtonItem2.ImageOptions.ImageIndex = 3;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.AddNewItemBtn.Caption = "Додати документ";
+            this.AddNewItemBtn.Id = 17;
+            this.AddNewItemBtn.ImageOptions.ImageIndex = 3;
+            this.AddNewItemBtn.Name = "AddNewItemBtn";
+            this.AddNewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.AddNewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -357,7 +357,7 @@
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddNewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.WbDetPopupMenu.Manager = this.barManager1;
@@ -567,6 +567,7 @@
             this.KagentComboBox.Size = new System.Drawing.Size(412, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 12;
+            this.KagentComboBox.EditValueChanged += new System.EventHandler(this.KagentComboBox_EditValueChanged);
             // 
             // TurnDocCheckBox
             // 
@@ -685,6 +686,7 @@
             this.ProjectManagementDetGridView.OptionsView.ShowGroupPanel = false;
             this.ProjectManagementDetGridView.PreviewFieldName = "Notes";
             this.ProjectManagementDetGridView.PreviewLineCount = 3;
+            this.ProjectManagementDetGridView.RowHeight = 40;
             this.ProjectManagementDetGridView.RowSeparatorHeight = 2;
             this.ProjectManagementDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.ProjectManagementDetGridView_PopupMenuShowing);
             this.ProjectManagementDetGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.KAgentAdjustmentDetGridView_CustomSummaryCalculate);
@@ -954,7 +956,7 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
         private DevExpress.XtraBars.Bar bar1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem AddNewItemBtn;
         private DevExpress.XtraBars.BarButtonItem EditMaterialBtn;
         private DevExpress.XtraBars.BarButtonItem DelMaterialBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;

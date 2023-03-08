@@ -149,6 +149,7 @@
             this.WayBillMakeDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn236 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -549,7 +550,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn236 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1489,6 +1489,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -2305,6 +2306,14 @@
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 3;
             this.gridColumn10.Width = 212;
+            // 
+            // gridColumn236
+            // 
+            this.gridColumn236.Caption = "Тип сировини";
+            this.gridColumn236.FieldName = "RawMaterialTypeName";
+            this.gridColumn236.Name = "gridColumn236";
+            this.gridColumn236.Visible = true;
+            this.gridColumn236.VisibleIndex = 11;
             // 
             // gridColumn11
             // 
@@ -6922,14 +6931,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // gridColumn236
-            // 
-            this.gridColumn236.Caption = "Тип сировини";
-            this.gridColumn236.FieldName = "RawMaterialTypeName";
-            this.gridColumn236.Name = "gridColumn236";
-            this.gridColumn236.Visible = true;
-            this.gridColumn236.VisibleIndex = 11;
             // 
             // ManufacturingUserControl
             // 

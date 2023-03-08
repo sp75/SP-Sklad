@@ -1498,36 +1498,47 @@ namespace SP_Sklad.MainTabs
 
         private void MoveMatgroup(bool isDown)
         {
+            DirTreeList.SetNodeIndex(DirTreeList.FocusedNode, DirTreeList.GetNodeIndex(DirTreeList.FocusedNode) + (isDown ? 1 : -1));
+
+            var nodes = DirTreeList.GetNodeList().Where(w => (DirTreeList.GetDataRecordByNode(w) as GetDirTree_Result).GType == focused_tree_node.GType);
+
             using (var db = DB.SkladBase())
             {
-                DirTreeList.SetNodeIndex(DirTreeList.FocusedNode, DirTreeList.GetNodeIndex(DirTreeList.FocusedNode) + (isDown ? 1 : -1));
-
                 int idx = 0;
-                foreach (TreeListNode item in DirTreeList.FocusedNode.ParentNode.Nodes)
+                foreach (TreeListNode item in /*DirTreeList.FocusedNode.ParentNode.Nodes*/nodes)
                 {
+
                     var node = DirTreeList.GetDataRecordByNode(item) as GetDirTree_Result;
                     if (focused_tree_node.GType == 2)
                     {
                         var mg = db.MatGroup.Find(node.GrpId);
-                        mg.Num = ++idx;
+                        if (mg != null)
+                        {
+                            mg.Num = ++idx;
+                        }
                     }
 
                     if (focused_tree_node.GType == 3)
                     {
                         var mgs = db.SvcGroup.Find(node.GrpId);
-                        mgs.Num = ++idx;
+                        if (mgs != null)
+                        {
+                            mgs.Num = ++idx;
+                        }
                     }
 
                     if (focused_tree_node.GType == 5)
                     {
-                        var mgs = db.TaraGroup.Find(node.GrpId);
-                        mgs.Num = ++idx;
+                        var mgt = db.TaraGroup.Find(node.GrpId);
+                        if (mgt != null)
+                        {
+                            mgt.Num = ++idx;
+                        }
                     }
 
                 }
 
                 db.SaveChanges();
-
             }
         }
 

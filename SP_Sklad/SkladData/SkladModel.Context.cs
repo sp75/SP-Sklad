@@ -2355,15 +2355,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserRoles_Result>("[BaseEntities].[GetUserRoles](@user_id)", user_idParameter);
         }
     
-        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
-        {
-            var pl_idParameter = pl_id.HasValue ?
-                new ObjectParameter("pl_id", pl_id) :
-                new ObjectParameter("pl_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
-        }
-    
         public virtual ObjectResult<GetSaldoDetTree_Result> GetSaldoDetTree(Nullable<int> user_id, Nullable<int> id, Nullable<System.DateTime> on_date)
         {
             var user_idParameter = user_id.HasValue ?
@@ -2582,6 +2573,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillMakeDet_Result>("[BaseEntities].[GetWayBillMakeDet](@wbill_id)", wbill_idParameter);
+        }
+    
+        public virtual ObjectResult<GetPriceListDet_Result> GetPriceListDet(Nullable<int> pl_id)
+        {
+            var pl_idParameter = pl_id.HasValue ?
+                new ObjectParameter("pl_id", pl_id) :
+                new ObjectParameter("pl_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
         }
     }
 }

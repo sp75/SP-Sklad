@@ -95,7 +95,8 @@ namespace SP_Sklad.WBForm
 
         private void GetOk()
         {
-            OkButton.Enabled = ProjectManagementDetBS.Count > 0;
+            OkButton.Enabled = ProjectManagementDetBS.Count > 0 && KagentComboBox.EditValue != null;
+            AddNewItemBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
             EditMaterialBtn.Enabled = ProjectManagementDetBS.Count > 0;
             DelMaterialBtn.Enabled = ProjectManagementDetBS.Count > 0;
@@ -267,6 +268,11 @@ namespace SP_Sklad.WBForm
 
                 _db.SaveChanges();
             }
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
         }
     }
 }

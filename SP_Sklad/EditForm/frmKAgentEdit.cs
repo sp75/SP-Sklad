@@ -91,7 +91,7 @@ namespace SP_Sklad.EditForm
                 KTypeLookUpEdit.Properties.DataSource = DB.SkladBase().KAgentTyp.ToList();
                 KaKindLookUpEdit.Properties.DataSource = DB.SkladBase().KAKInd.ToList();
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w=> w.Archived == 0).ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
 
@@ -146,12 +146,12 @@ namespace SP_Sklad.EditForm
                 }
 
                 var _enterprise_list = new BaseEntities().Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).Select(s => new
-                 {
-                     KaId = s.KaId,
-                     Name = s.Name,
-                     IsWork = s.EnterpriseWorker.Any(a => a.WorkerId == _ka_id)
+                {
+                    KaId = s.KaId,
+                    Name = s.Name,
+                    IsWork = s.EnterpriseWorker.Any(a => a.WorkerId == _ka_id)
 
-                 }).ToList();
+                }).ToList();
 
                 foreach (var item in _enterprise_list)
                 {
@@ -165,8 +165,9 @@ namespace SP_Sklad.EditForm
                     WId = s.WId,
                     Name = s.Name,
                     Def = s.Def
-                }).ToList(); 
+                }).ToList();
 
+                lookUpEdit4.Properties.DataSource = DBHelper.KagentsWorkerList.Where(w => w.KType == 1);
 
                 GetAccounts();
                 GetPersons();
@@ -232,6 +233,7 @@ namespace SP_Sklad.EditForm
             {
                 case 0: xtraTabControl2.SelectedTabPageIndex = 0;
                     if (_ka.KaKind == 3 || _ka.KaKind == 4 || _ka.KaKind == 0) _ka.KaKind = 0;
+                    panel3.Visible = true;
                     break;
                 case 1: xtraTabControl2.SelectedTabPageIndex = 1;
                     if (_ka.KaKind == 3 || _ka.KaKind == 4 || _ka.KaKind == 0) _ka.KaKind = 0;
@@ -242,6 +244,12 @@ namespace SP_Sklad.EditForm
                     break;
                 case 3: xtraTabControl2.SelectedTabPageIndex = 0;
                     _ka.KaKind = 4;
+                    KaKindLookUpEdit.Enabled = false;
+                    panel3.Visible = true;
+                    break;
+                case 4:
+                    xtraTabControl2.SelectedTabPageIndex = 3;
+                    _ka.KaKind = 5;
                     KaKindLookUpEdit.Enabled = false;
                     break;
             }

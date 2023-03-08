@@ -530,6 +530,7 @@
           <Property Name="WId" Type="int" />
           <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentSaldo" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="FOPId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -2839,13 +2840,13 @@ warning 6002: The table/view 'sp_base.dbo.v_ProjectManagementDet' does not have 
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
           <Property Name="SummInCurr" Type="numeric" Precision="33" Scale="8" />
-          <Property Name="SummPay" Type="numeric" Precision="33" Scale="8" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" />
           <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
           <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="Notes" Type="nvarchar" MaxLength="500" />
           <Property Name="Balans" Type="numeric" Precision="35" Scale="8" />
+          <Property Name="SummPay" Type="numeric" Precision="35" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8567,13 +8568,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProjectManagementDet].[Name] AS [Name], 
     [v_ProjectManagementDet].[SummAll] AS [SummAll], 
     [v_ProjectManagementDet].[SummInCurr] AS [SummInCurr], 
-    [v_ProjectManagementDet].[SummPay] AS [SummPay], 
     [v_ProjectManagementDet].[OnValue] AS [OnValue], 
     [v_ProjectManagementDet].[CurrName] AS [CurrName], 
     [v_ProjectManagementDet].[DocShortName] AS [DocShortName], 
     [v_ProjectManagementDet].[DocTypeName] AS [DocTypeName], 
     [v_ProjectManagementDet].[Notes] AS [Notes], 
-    [v_ProjectManagementDet].[Balans] AS [Balans]
+    [v_ProjectManagementDet].[Balans] AS [Balans], 
+    [v_ProjectManagementDet].[SummPay] AS [SummPay]
     FROM [dbo].[v_ProjectManagementDet] AS [v_ProjectManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_RawMaterialManagement" EntityType="Self.v_RawMaterialManagement" store:Type="Views" store:Schema="dbo">
@@ -11018,9 +11019,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_IntermediateWeighingSummary" EntityType="BaseModel.v_IntermediateWeighingSummary" />
           <EntitySet Name="Interfaces" EntityType="BaseModel.Interfaces" />
           <EntitySet Name="v_IntermediateWeighingInterface" EntityType="BaseModel.v_IntermediateWeighingInterface" />
-          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
-          <Parameter Name="pl_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="BanksProvidingStatements" EntityType="BaseModel.BanksProvidingStatements" />
           <EntitySet Name="v_BankStatements" EntityType="BaseModel.v_BankStatements" />
           <EntitySet Name="BankStatements" EntityType="BaseModel.BankStatements" />
@@ -11149,7 +11147,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="SettingApp" EntityType="BaseModel.SettingApp" />
           <FunctionImport Name="GetWayBillMakeDet" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillMakeDet_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
+            <Parameter Name="pl_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -14407,6 +14408,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
           <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="FOPId" Type="Int32" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -17711,24 +17713,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Amount" Type="Decimal" Precision="38" Scale="4" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
-        <ComplexType Name="GetPriceListDet_Result">
-          <Property Type="Int32" Name="PlDetId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PlDetType" Nullable="true" />
-          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="MatId" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Num" Nullable="true" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
-          <Property Type="Int32" Name="WId" Nullable="true" />
-          <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="LastOutPrice" Nullable="true" Precision="15" Scale="4" />
-        </ComplexType>
         <EntityType Name="BanksProvidingStatements">
           <Key>
             <PropertyRef Name="Id" />
@@ -18486,7 +18470,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
           <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
-          <Property Name="SummPay" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="SummPay" Type="Decimal" Precision="35" Scale="8" />
           <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -18590,6 +18574,25 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="DefectsClassifierName" Nullable="true" MaxLength="200" />
           <Property Type="Int32" Name="RawMaterialTypeId" Nullable="true" />
           <Property Type="String" Name="RawMaterialTypeName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetPriceListDet_Result">
+          <Property Type="Int32" Name="PlDetId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PlDetType" Nullable="true" />
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="80" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="Decimal" Name="LastInPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="LastOutPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="GrpNum" Nullable="true" Precision="5" Scale="1" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -20704,6 +20707,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="FOPId" ColumnName="FOPId" />
                 <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
                 <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
@@ -22888,28 +22892,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
-                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
-                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="LastInPrice" ColumnName="LastInPrice" />
-                <ScalarProperty Name="LastOutPrice" ColumnName="LastOutPrice" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="BanksProvidingStatements">
             <EntityTypeMapping TypeName="BaseModel.BanksProvidingStatements">
               <MappingFragment StoreEntitySet="BanksProvidingStatements">
@@ -23624,6 +23606,29 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="DefectsClassifierName" ColumnName="DefectsClassifierName" />
                 <ScalarProperty Name="RawMaterialTypeId" ColumnName="RawMaterialTypeId" />
                 <ScalarProperty Name="RawMaterialTypeName" ColumnName="RawMaterialTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPriceListDet" FunctionName="BaseModel.Store.GetPriceListDet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetPriceListDet_Result">
+                <ScalarProperty Name="PlDetId" ColumnName="PlDetId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlDetType" ColumnName="PlDetType" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="LastInPrice" ColumnName="LastInPrice" />
+                <ScalarProperty Name="LastOutPrice" ColumnName="LastOutPrice" />
+                <ScalarProperty Name="GrpNum" ColumnName="GrpNum" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

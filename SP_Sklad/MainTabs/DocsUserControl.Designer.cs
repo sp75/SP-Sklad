@@ -263,6 +263,7 @@
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -542,6 +543,7 @@
             this.gridColumn128 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn137 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn138 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn139 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -588,7 +590,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.gridColumn139 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn149 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1006,6 +1008,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -3364,7 +3367,9 @@
             this.colPlDetType,
             this.colMatId,
             this.colPrice,
-            this.gridColumn38});
+            this.gridColumn38,
+            this.gridColumn148,
+            this.gridColumn149});
             this.gridView4.GridControl = this.gridControl1;
             this.gridView4.Name = "gridView4";
             // 
@@ -3398,8 +3403,8 @@
             this.colMatId.FieldName = "Name";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.VisibleIndex = 1;
-            this.colMatId.Width = 222;
+            this.colMatId.VisibleIndex = 2;
+            this.colMatId.Width = 333;
             // 
             // colPrice
             // 
@@ -3408,8 +3413,8 @@
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.VisibleIndex = 3;
-            this.colPrice.Width = 97;
+            this.colPrice.VisibleIndex = 5;
+            this.colPrice.Width = 300;
             // 
             // gridColumn38
             // 
@@ -3417,8 +3422,17 @@
             this.gridColumn38.FieldName = "MsrName";
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Visible = true;
-            this.gridColumn38.VisibleIndex = 2;
+            this.gridColumn38.VisibleIndex = 3;
             this.gridColumn38.Width = 87;
+            // 
+            // gridColumn148
+            // 
+            this.gridColumn148.Caption = "#";
+            this.gridColumn148.FieldName = "Num";
+            this.gridColumn148.Name = "gridColumn148";
+            this.gridColumn148.Visible = true;
+            this.gridColumn148.VisibleIndex = 1;
+            this.gridColumn148.Width = 51;
             // 
             // barManager1
             // 
@@ -6561,6 +6575,15 @@
             this.gridColumn138.VisibleIndex = 8;
             this.gridColumn138.Width = 112;
             // 
+            // gridColumn139
+            // 
+            this.gridColumn139.Caption = "Підприємство";
+            this.gridColumn139.FieldName = "EntName";
+            this.gridColumn139.Name = "gridColumn139";
+            this.gridColumn139.Visible = true;
+            this.gridColumn139.VisibleIndex = 5;
+            this.gridColumn139.Width = 209;
+            // 
             // panelControl8
             // 
             this.panelControl8.Controls.Add(this.lookUpEdit3);
@@ -7158,14 +7181,14 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
-            // gridColumn139
+            // gridColumn149
             // 
-            this.gridColumn139.Caption = "Підприємство";
-            this.gridColumn139.FieldName = "EntName";
-            this.gridColumn139.Name = "gridColumn139";
-            this.gridColumn139.Visible = true;
-            this.gridColumn139.VisibleIndex = 5;
-            this.gridColumn139.Width = 209;
+            this.gridColumn149.Caption = "Група";
+            this.gridColumn149.FieldName = "GrpName";
+            this.gridColumn149.Name = "gridColumn149";
+            this.gridColumn149.Visible = true;
+            this.gridColumn149.VisibleIndex = 4;
+            this.gridColumn149.Width = 315;
             // 
             // DocsUserControl
             // 
@@ -8011,5 +8034,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn31;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn138;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn139;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn148;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn149;
     }
 }

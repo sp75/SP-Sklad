@@ -135,7 +135,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Юридичні особи", 0, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фізичні особи", 1, 2),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Службовці", 2, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Власні підприємства", 3, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Власні підприємства", 3, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Торгові точки", 4, 3)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -146,6 +147,7 @@
             this.GridImageList.Images.SetKeyName(0, "Товари.bmp");
             this.GridImageList.Images.SetKeyName(1, "Конрагент.bmp");
             this.GridImageList.Images.SetKeyName(2, "Службовц_.bmp");
+            this.GridImageList.Images.SetKeyName(3, "free-icon-payment-terminal-3777466.png");
             // 
             // gridColumn30
             // 

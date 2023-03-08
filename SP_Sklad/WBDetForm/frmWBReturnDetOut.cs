@@ -21,7 +21,7 @@ namespace SP_Sklad.WBDetForm
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
-        private WaybillDet _wbd { get; set; }
+        private Tmp_MWaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private List<GetMatRemainByWh_Result> mat_remain { get; set; }
         private decimal? CurRemainInWh
@@ -33,6 +33,22 @@ namespace SP_Sklad.WBDetForm
         }
 
         public int _ka_id { get; set; }
+        private bool modified_dataset { get; set; }
+
+        public class Tmp_MWaybillDet
+        {
+            public int PosId { get; set; }
+            public int WbillId { get; set; }
+            public int MatId { get; set; }
+            public Nullable<int> WId { get; set; }
+            public decimal Amount { get; set; }
+            public Nullable<decimal> Price { get; set; }
+            public Nullable<decimal> Discount { get; set; }
+            public Nullable<decimal> Nds { get; set; }
+            public Nullable<int> CurrId { get; set; }
+            public Nullable<decimal> OnValue { get; set; }
+            public Nullable<decimal> BasePrice { get; set; }
+        }
 
         public frmWBReturnDetOut(BaseEntities db, int? PosId, WaybillList wb, int ka_id)
         {
@@ -61,7 +77,7 @@ namespace SP_Sklad.WBDetForm
 
             if (_PosId == null)
             {
-                _wbd = new WaybillDet()
+                _wbd = new Tmp_MWaybillDet
                 {
                     WbillId = _wb.WbillId,
                     Amount = 0,
@@ -70,23 +86,25 @@ namespace SP_Sklad.WBDetForm
                     Discount = 0,
                     Nds = _wb.Nds
                 };
+
+                modified_dataset = false;
             }
             else
             {
-                _wbd = _db.WaybillDet.Find(_PosId);
+                IHelper.MapProp(_wbd, _db.WaybillDet.Find(_PosId));
+     
+                modified_dataset = true;
             }
 
             if (_wbd != null)
             {
                 WaybillDetBS.DataSource = _wbd;
 
-                if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Unchanged)
+                if (modified_dataset)
                 {
                     var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
-                        //  _db.WMatTurn.RemoveRange(w_mat_turn);
-                        //  _db.SaveChanges();
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
                     }
 
@@ -107,6 +125,11 @@ namespace SP_Sklad.WBDetForm
 
         bool GetOk()
         {
+            if (pos_in != null && pos_in.Any())
+            {
+                BasePriceEdit.EditValue = pos_in.Where(w => w.Amount > 0).Select(s => s.BasePrice * s.OnValue).Average();
+            }
+
             bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
 
             OkButton.Enabled = recult;
@@ -125,12 +148,12 @@ namespace SP_Sklad.WBDetForm
             }
 
             BotAmountEdit.Text = AmountEdit.Text;
+            var total = Math.Round(BasePriceEdit.Value * AmountEdit.Value, 2);
 
-
-      //      PriceNotNDSEdit.EditValue = BasePriceEdit.Value;
-     //       TotalSumEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(PriceNotNDSEdit.EditValue);
-     //       SummAllEdit.EditValue = Convert.ToDecimal(AmountEdit.EditValue) * Convert.ToDecimal(DiscountPriceEdit.EditValue);
-     //       TotalNdsEdit.EditValue = Convert.ToDecimal(SummAllEdit.EditValue) - Convert.ToDecimal(TotalSumEdit.EditValue);
+            PriceNotNDSEdit.EditValue = BasePriceEdit.Value * 100 / (100 + _wb.Nds);
+            TotalSumEdit.EditValue = total * 100 / (100 + _wb.Nds);
+            TotalNdsEdit.EditValue = total - (decimal)TotalSumEdit.EditValue;
+            SummAllEdit.EditValue = total;
 
             return recult;
         }
@@ -179,16 +202,6 @@ namespace SP_Sklad.WBDetForm
 
 
             pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderByDescending(o => o.OnDate).ToList();
-
-            if (pos_in.Any())
-            {
-                _wbd.Price = pos_in.First().Price * pos_in.First().OnValue;
-
-                _wbd.BasePrice = pos_in.First().BasePrice * pos_in.First().OnValue;
-                BasePriceEdit.EditValue = _wbd.BasePrice;
-
-                _wbd.Nds = pos_in.First().Nds;
-            }
 
             SetAmount();
         }
@@ -293,6 +306,7 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
+        //    _wbd.Amount = AmountEdit.Value;
             SetAmount();
         }
 

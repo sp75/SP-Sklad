@@ -92,6 +92,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WId { get; set; }
         public string POSTerminalCode { get; set; }
         public Nullable<decimal> CurrentSaldo { get; set; }
+        public Nullable<int> FOPId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }

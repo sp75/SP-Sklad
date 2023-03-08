@@ -537,6 +537,8 @@ namespace SP_Sklad.Reports
             var pl = db.PriceList.Where(w => w.Id == id).AsNoTracking().ToList();
             var pl_d = db.GetPriceListDet(pl.FirstOrDefault().PlId).ToList().Select(s => new
             {
+                s.GrpNum,
+                s.Num,
                 s.BarCode,
                 s.GrpName,
                 s.Name,
@@ -547,12 +549,13 @@ namespace SP_Sklad.Reports
                 s.MsrName,
                 s.Notes,
                 s.Artikul
-            }).ToList();
+            }).OrderBy(o => o.Num).ToList();
 
-            var mat_grp = pl_d.GroupBy(g => new { g.GrpName }).Select(s => new
+            var mat_grp = pl_d.GroupBy(g => new {g.GrpNum, g.GrpName }).Select(s => new
             {
                 s.Key.GrpName,
-            }).OrderBy(o => o.GrpName).ToList();
+                s.Key.GrpNum
+            }).OrderBy(o => o.GrpNum).ToList();
 
             List<object> realation = new List<object>();
             realation.Add(new
