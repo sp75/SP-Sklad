@@ -21,7 +21,7 @@ namespace SP_Sklad.WBDetForm
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
-        private Tmp_MWaybillDet _wbd { get; set; }
+        private WaybillDet _wbd { get; set; }
         private List<GetPosIn_Result> pos_in { get; set; }
         private List<GetMatRemainByWh_Result> mat_remain { get; set; }
         private decimal? CurRemainInWh
@@ -34,21 +34,7 @@ namespace SP_Sklad.WBDetForm
 
         public int _ka_id { get; set; }
         private bool modified_dataset { get; set; }
-
-        public class Tmp_MWaybillDet
-        {
-            public int PosId { get; set; }
-            public int WbillId { get; set; }
-            public int MatId { get; set; }
-            public Nullable<int> WId { get; set; }
-            public decimal Amount { get; set; }
-            public Nullable<decimal> Price { get; set; }
-            public Nullable<decimal> Discount { get; set; }
-            public Nullable<decimal> Nds { get; set; }
-            public Nullable<int> CurrId { get; set; }
-            public Nullable<decimal> OnValue { get; set; }
-            public Nullable<decimal> BasePrice { get; set; }
-        }
+      
 
         public frmWBReturnDetOut(BaseEntities db, int? PosId, WaybillList wb, int ka_id)
         {
@@ -75,7 +61,7 @@ namespace SP_Sklad.WBDetForm
                 WhEditBtn.Enabled = false;
             }
 
-            _wbd = new Tmp_MWaybillDet
+            _wbd = new WaybillDet
             {
                 WbillId = _wb.WbillId,
                 Amount = 0,
@@ -91,7 +77,7 @@ namespace SP_Sklad.WBDetForm
             }
             else
             {
-                IHelper.MapProp( _db.WaybillDet.Find(_PosId), _wbd);
+                IHelper.MapProp(_db.WaybillDet.Find(_PosId), _wbd);
      
                 modified_dataset = true;
             }
@@ -102,19 +88,19 @@ namespace SP_Sklad.WBDetForm
 
                 if (modified_dataset)
                 {
-                    var w_mat_turn = _db.WMatTurn.Where(w => w.SourceId == _wbd.PosId).ToList();
+                    var w_mat_turn = _db.WMatTurn.AsNoTracking().Where(w => w.SourceId == _wbd.PosId).ToList();
                     if (w_mat_turn.Count > 0)
                     {
                         _db.DeleteWhere<WMatTurn>(w => w.SourceId == _wbd.PosId);
-                    }
 
-                    GetContent();
+                        GetContent();
 
-                    foreach (var item in w_mat_turn)
-                    {
-                        if (pos_in.Any(a => a.PosId == item.PosId))
+                        foreach (var item in w_mat_turn)
                         {
-                            pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                            if (pos_in.Any(a => a.PosId == item.PosId))
+                            {
+                                pos_in.FirstOrDefault(a => a.PosId == item.PosId).Amount = item.Amount;
+                            }
                         }
                     }
                 }
@@ -169,11 +155,14 @@ namespace SP_Sklad.WBDetForm
             if (MatComboBox.ContainsFocus)
             {
                 _wbd.MatId = row.MatId;
-                GetContent();
+              
             }
 
             labelControl24.Text = row.MsrName;
             labelControl27.Text = row.MsrName;
+
+            GetContent();
+            SetAmount();
         }
 
         private void GetContent()
@@ -202,8 +191,6 @@ namespace SP_Sklad.WBDetForm
 
 
             pos_in = _db.GetPosIn(_wb.OnDate, _wbd.MatId, _wbd.WId, _ka_id, DBHelper.CurrentUser.UserId).OrderByDescending(o => o.OnDate).ToList();
-
-            SetAmount();
         }
 
         private void SetAmount()
@@ -331,6 +318,7 @@ namespace SP_Sklad.WBDetForm
             _wbd.WId = (int)WHComboBox.EditValue;
 
             GetContent();
+            SetAmount();
             GetOk();
         }
 
@@ -369,6 +357,7 @@ namespace SP_Sklad.WBDetForm
                 _wbd.MatId = f.uc.focused_wh_mat.MatId;
                 MatComboBox.EditValue = _wbd.MatId;
                 GetContent();
+                SetAmount();
             }
         }
 
@@ -377,6 +366,7 @@ namespace SP_Sklad.WBDetForm
             WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
 
             GetContent();
+            SetAmount();
             GetOk();
         }
 

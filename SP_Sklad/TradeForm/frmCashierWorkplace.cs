@@ -1,5 +1,6 @@
 ﻿using CheckboxIntegration.Client;
 using CheckboxIntegration.Models;
+using DevExpress.XtraEditors;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraPrintingLinks;
 using Newtonsoft.Json;
@@ -44,7 +45,7 @@ namespace SP_Sklad.WBForm
 
                     if(login.error != null )
                     {
-                        MessageBox.Show(JsonConvert.SerializeObject(login.error));
+                        XtraMessageBox.Show(JsonConvert.SerializeObject(login.error));
                     }
                 }
                 catch { }

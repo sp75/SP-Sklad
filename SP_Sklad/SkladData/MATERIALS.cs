@@ -35,6 +35,7 @@ namespace SP_Sklad.SkladData
             this.IntermediateWeighingDet = new HashSet<IntermediateWeighingDet>();
             this.RawMaterialManagementDet = new HashSet<RawMaterialManagementDet>();
             this.MatBarCode = new HashSet<MatBarCode>();
+            this.WaybillTemplateDet = new HashSet<WaybillTemplateDet>();
         }
     
         public int MatId { get; set; }
@@ -99,5 +100,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
         public virtual ICollection<MatBarCode> MatBarCode { get; set; }
         public virtual RawMaterialType RawMaterialType { get; set; }
+        public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
     }
 }

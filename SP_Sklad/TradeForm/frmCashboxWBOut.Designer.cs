@@ -1130,7 +1130,7 @@
             this.simpleButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton24.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton24.Appearance.Options.UseFont = true;
-            this.simpleButton24.Location = new System.Drawing.Point(1190, 78);
+            this.simpleButton24.Location = new System.Drawing.Point(1190, 79);
             this.simpleButton24.Name = "simpleButton24";
             this.simpleButton24.Size = new System.Drawing.Size(97, 39);
             this.simpleButton24.TabIndex = 46;

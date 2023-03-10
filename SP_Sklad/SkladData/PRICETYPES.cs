@@ -22,6 +22,7 @@ namespace SP_Sklad.SkladData
             this.MatPrices1 = new HashSet<MatPrices>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.PriceList = new HashSet<PriceList>();
+            this.WaybillTemplate = new HashSet<WaybillTemplate>();
         }
     
         public int PTypeId { get; set; }
@@ -34,6 +35,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ExtraType { get; set; }
         public Nullable<int> RoundUpTo { get; set; }
         public Nullable<int> RoundingMethod { get; set; }
+        public int TypeValue { get; set; }
     
         public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
         public virtual ICollection<MatGroupPrices> MatGroupPrices1 { get; set; }
@@ -41,5 +43,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatPrices> MatPrices1 { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
+        public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
     }
 }

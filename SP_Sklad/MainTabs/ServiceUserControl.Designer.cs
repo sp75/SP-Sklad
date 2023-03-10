@@ -2716,7 +2716,7 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.Filter = "SQL files (*.sql)|*.sql";
+            this.saveFileDialog1.Filter = "txt files (*.txt)|*.txt|sql files (*.sql)|*.sql";
             // 
             // ServiceUserControl
             // 

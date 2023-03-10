@@ -324,5 +324,10 @@ namespace SP_Sklad
                 Process.Start(update, "true");
             }
         }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmWaybillTemplate().ShowDialog();
+        }
     }
 }

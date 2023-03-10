@@ -86,6 +86,7 @@
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -229,9 +230,10 @@
             this.barButtonItem1,
             this.barButtonItem10,
             this.CashierWorkplaceBtn,
-            this.barButtonItem13});
+            this.barButtonItem13,
+            this.barButtonItem2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 31;
+            this.barManager1.MaxItemId = 32;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -253,7 +255,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.Text = "Tools";
             this.bar1.Visible = global::SP_Sklad.Properties.Settings.Default.main_toolbar;
@@ -814,7 +817,15 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ParentControl = this;
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 31;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // mainForm
             // 
@@ -919,6 +930,7 @@
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
 

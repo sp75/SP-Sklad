@@ -218,8 +218,8 @@ namespace SP_Sklad.WBDetForm
             var discount_price = BasePriceEdit.Value - (BasePriceEdit.Value * (_wbd.Discount ?? 0) / 100);
             var total_discount = Math.Round(discount_price * AmountEdit.Value, 2);
 
-            PriceNotNDSEdit.EditValue = discount_price * 100 / (100 + _wbd.Nds);
-            TotalSumEdit.EditValue = total_discount * 100 / (100 + _wbd.Nds);
+            PriceNotNDSEdit.EditValue = discount_price * 100 / (100 + (_wbd.Nds ?? 0));
+            TotalSumEdit.EditValue = total_discount * 100 / (100 + (_wbd.Nds ?? 0));
             TotalNdsEdit.EditValue = total_discount - (decimal)TotalSumEdit.EditValue;
             SummAllEdit.EditValue = total_discount;
 

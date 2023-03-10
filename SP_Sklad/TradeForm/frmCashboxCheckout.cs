@@ -66,7 +66,7 @@ namespace SP_Sklad.WBForm
             }*/
 
             SumAllEdit.Value = _db.WaybillDet.Where(w => w.WbillId == _wb.WbillId).Sum(s => s.Total * s.OnValue).Value;
-            PutCashSumEdit.Value = SumAllEdit.Value;
+            PutCashSumEdit.Value = user_settings.RoundingCheckboxReceipt ? Math.Round(SumAllEdit.Value, 1) : SumAllEdit.Value;
         }
 
         private void PayDoc(int PType, decimal total, ReceiptsSellRespond receipt = null)

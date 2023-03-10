@@ -354,6 +354,12 @@
         <EntityTypeShape EntityType="BaseModel.ProjectManagement" Width="1.5" PointX="12" PointY="34.875" />
         <AssociationConnector Association="BaseModel.FK_ProjectManagementDet_ProjectManagement" />
         <EntityTypeShape EntityType="BaseModel.SettingApp" Width="1.5" PointX="33.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.WaybillTemplate" Width="1.5" PointX="16" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.WaybillTemplateDet" Width="1.5" PointX="27.5" PointY="2" />
+        <AssociationConnector Association="BaseModel.FK_WaybillTemplate_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_Materials" />
+        <AssociationConnector Association="BaseModel.FK_WaybillTemplate_PriceTypes" />
+        <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

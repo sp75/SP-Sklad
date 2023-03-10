@@ -713,7 +713,7 @@ namespace SP_Sklad.WBForm
         {
             if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
             {
-                var m_recult = MessageBox.Show(Resources.save_wb, "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                var m_recult = XtraMessageBox.Show(Resources.save_wb, "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
                 if (m_recult == DialogResult.Yes)
                 {
@@ -937,7 +937,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton21_Click(object sender, EventArgs e)
         {
-            var m_recult = MessageBox.Show("Відкласти поточний чек?", "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+            var m_recult = XtraMessageBox.Show("Відкласти поточний чек?", "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
             if (m_recult == DialogResult.Yes)
             {
@@ -968,7 +968,7 @@ namespace SP_Sklad.WBForm
                 frm.Text = "Відкладені чеки";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    var m_recult = MessageBox.Show("Відкласти поточний чек?", "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+                    var m_recult = XtraMessageBox.Show("Відкласти поточний чек?", "Реалізація товарів №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
 
                     if (m_recult == DialogResult.Yes)
                     {
@@ -1070,7 +1070,7 @@ namespace SP_Sklad.WBForm
                     }
                     else
                     {
-                        MessageBox.Show("Всі товари по чеку вже повернуто!");
+                        XtraMessageBox.Show("Всі товари по чеку вже повернуто!");
                     }
                 }
             }

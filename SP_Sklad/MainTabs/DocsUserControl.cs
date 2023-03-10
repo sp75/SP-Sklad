@@ -670,6 +670,43 @@ namespace SP_Sklad.MainTabs
                             MessageBox.Show(string.Format("Документ #{0} не знайдено", kadjustment_row.Num));
                         }
                         break;
+
+                    case 11:
+                        {
+                            if (project_management_row == null)
+                            {
+                                return;
+                            }
+
+                            var pm = db.ProjectManagement.Find(project_management_row.Id);
+
+                            if (pm == null)
+                            {
+                                MessageBox.Show(Resources.not_find_wb);
+                                return;
+                            }
+                            if (pm.SessionId != null)
+                            {
+                                MessageBox.Show(Resources.deadlock);
+                                return;
+                            }
+
+                            var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
+                            if (rel.Any())
+                            {
+                                MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
+
+                            if (pm.Checked == 1)
+                            {
+                                pm.Checked = 0;
+                            }
+
+                            db.SaveChanges();
+                            break;
+                  
+                        }
                 }
             }
 

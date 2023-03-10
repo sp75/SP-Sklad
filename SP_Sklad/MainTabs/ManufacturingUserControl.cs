@@ -651,6 +651,11 @@ namespace SP_Sklad.MainTabs
 
                             break;
                         }
+                    case 9:
+                        {
+
+                            break;
+                        }
                 }
             }
 
