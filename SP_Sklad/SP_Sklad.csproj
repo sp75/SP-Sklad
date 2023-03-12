@@ -574,6 +574,9 @@
     <Compile Include="SkladData\v_WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WaybillTemplateDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WaybillTemplate.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1061,6 +1064,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WaybillTemplateUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
+      <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
@@ -2063,6 +2072,9 @@
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
+      <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>
     </EmbeddedResource>
@@ -2477,6 +2489,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Users.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillTemplateDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />

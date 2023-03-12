@@ -327,7 +327,7 @@ namespace SP_Sklad
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmWaybillTemplate().ShowDialog();
+            new frmWaybillTemplate(new Guid("36FA79EA-C651-4911-ADD9-B91C2266F56B")).ShowDialog();
         }
     }
 }

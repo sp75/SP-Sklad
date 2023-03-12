@@ -8,7 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Data;
+using DevExpress.Utils.DragDrop;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
@@ -25,9 +28,12 @@ namespace SP_Sklad.WBForm
         private DbContextTransaction current_transaction { get; set; }
         private WaybillTemplate wbt { get; set; }
 
+        private v_WaybillTemplateDet focused_dr => WaybillTemplateDetGrid.GetFocusedRow() as v_WaybillTemplateDet;
+
         public frmWaybillTemplate(Guid? wbt_id = null)
         {
             InitializeComponent();
+
 
             _wbt_id = wbt_id;
 
@@ -35,6 +41,7 @@ namespace SP_Sklad.WBForm
             current_transaction = _db.Database.BeginTransaction();
         }
 
+          
         private void frmPriceList_Load(object sender, EventArgs e)
         {
             PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
@@ -64,6 +71,8 @@ namespace SP_Sklad.WBForm
 
             GetDetail();
             GetMatTree();
+
+            MatGridView.ExpandAllGroups();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -113,18 +122,13 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void treeList1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             Point p2 = Control.MousePosition;
             TreePopupMenu.ShowPopup(p2);
         }
 
-        void AddMat(GetMatTree_Result row)
-        {
-            
-        }
-
-
+  
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -132,10 +136,10 @@ namespace SP_Sklad.WBForm
 
         void GetDetail()
         {
-            int top_row = PriceListGrid.TopRowIndex;
-            WaybillTemplateDetBS.DataSource = _db.WaybillTemplateDet.Where(w=> w.WaybillTemplateId == _wbt_id).ToList();
-            PriceListGrid.ExpandAllGroups();
-            PriceListGrid.TopRowIndex = top_row;
+            int top_row = WaybillTemplateDetGrid.TopRowIndex;
+            WaybillTemplateDetBS.DataSource = _db.v_WaybillTemplateDet.AsNoTracking().Where(w=> w.WaybillTemplateId == _wbt_id).ToList();
+            WaybillTemplateDetGrid.ExpandAllGroups();
+            WaybillTemplateDetGrid.TopRowIndex = top_row;
         }
 
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -145,6 +149,9 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            _db.WaybillTemplateDet.Remove(_db.WaybillTemplateDet.FirstOrDefault(w => w.Id == focused_dr.Id));
+            _db.SaveChanges();
+            GetDetail();
 
         }
 
@@ -165,7 +172,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
+            var dr = WaybillTemplateDetGrid.GetFocusedRow() as GetPriceListDet_Result;
             IHelper.ShowMatInfo(dr.MatId);
         }
 
@@ -177,12 +184,49 @@ namespace SP_Sklad.WBForm
              
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+            var mat_id = IHelper.ShowDirectList(null, 5);
+            if (mat_id != null)
+            {
+                var id = Convert.ToInt32(mat_id);
+                var mat = _db.Materials.Find(id);
+                if (!_db.WaybillTemplateDet.Where(w => w.MatId == id && w.WaybillTemplateId == _wbt_id.Value).Any())
+                {
+                    _db.WaybillTemplateDet.Add(new WaybillTemplateDet
+                    {
+                        Id = Guid.NewGuid(),
+                        MatId = mat.MatId,
+                        WaybillTemplateId = _wbt_id.Value
+                    });
+
+                    _db.SaveChanges();
+                    GetDetail();
+                }
+            }
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          
+            var mat_id = IHelper.ShowDirectList(null, 5);
+            if (mat_id != null)
+            {
+                var id = Convert.ToInt32(mat_id);
+                var mat = _db.Materials.Find(id);
+                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId).ToList())
+                {
+
+                    if (!_db.WaybillTemplateDet.Where(w => w.MatId == id && w.WaybillTemplateId == _wbt_id.Value).Any())
+                    {
+                        _db.WaybillTemplateDet.Add(new WaybillTemplateDet
+                        {
+                            Id = Guid.NewGuid(),
+                            MatId = item.MatId,
+                            WaybillTemplateId = _wbt_id.Value
+                        });
+                    }
+                }
+                _db.SaveChanges();
+                GetDetail();
+            }
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -197,7 +241,20 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            for (int i = 0; WaybillTemplateDetGrid.RowCount > i; i++)
+            {
+                var row = WaybillTemplateDetGrid.GetRow(i) as v_WaybillTemplateDet;
+                if (row != null)
+                {
+                    var wbd = _db.WaybillTemplateDet.Find(row.Id);
 
+                    wbd.Num = i + 1;
+                }
+            }
+
+            _db.SaveChanges();
+
+            GetDetail();
         }
 
         private void PriceListGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -205,7 +262,7 @@ namespace SP_Sklad.WBForm
             if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
-                this.PriceListPopupMenu.ShowPopup(p2);
+                this.TemplateListPopupMenu.ShowPopup(p2);
             }
         }
 
@@ -227,7 +284,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var wh_row = PriceListGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
+            var wh_row = WaybillTemplateDetGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
 
             if (wh_row != null && wh_row.Price < Math.Max(wh_row.LastInPrice ?? 0, wh_row.LastOutPrice ?? 0))
             {
@@ -253,6 +310,76 @@ namespace SP_Sklad.WBForm
             var mat = _db.v_Materials.Where(w=> w.Archived == 0).AsQueryable();
 
             e.QueryableSource = mat;
+        }
+
+        private void dragDropEvents1_DragDrop(object sender, DragDropEventArgs e)
+        {
+            ;
+        }
+
+
+        private void AddbarBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Int32[] selectedRowHandles = MatGridView.GetSelectedRows();
+            AddSelectedRow(selectedRowHandles);
+            GetDetail();
+        }
+
+        private void AddSelectedRow(Int32[] selectedRowHandles)
+        {
+            for (int i = 0; i < selectedRowHandles.Length; i++)
+            {
+                int selectedRowHandle = selectedRowHandles[i];
+                if (selectedRowHandle >= 0)
+                {
+                    while (MatGridView.GetRow(selectedRowHandle) is NotLoadedObject)
+                    {
+                        Application.DoEvents();
+                    }
+
+                    var mat = MatGridView.GetRow(selectedRowHandle) as v_Materials;
+                    if (!_db.WaybillTemplateDet.Where(w => w.MatId == mat.MatId && w.WaybillTemplateId == _wbt_id.Value).Any())
+                    {
+                        _db.WaybillTemplateDet.Add(new WaybillTemplateDet
+                        {
+                            Id = Guid.NewGuid(),
+                            MatId = mat.MatId,
+                            WaybillTemplateId = _wbt_id.Value
+                        });
+                    }
+                }
+            }
+
+            MatGridView.ClearSelection();
+
+            _db.SaveChanges();
+        }
+
+
+        private void dragDropEvents2_DragOver(object sender, DragOverEventArgs e)
+        {
+      //      var args = DragOverGridEventArgs.GetDragOverGridEventArgs(e);
+         /*   e.InsertType = args.InsertType;
+            e.InsertIndicatorLocation = args.InsertIndicatorLocation;
+            e.Action = args.Action;
+            Cursor.Current = args.Cursor;
+            */
+            e.Handled = true;
+        }
+
+        private void dragDropEvents2_DragDrop(object sender, DragDropEventArgs e)
+        {
+            AddSelectedRow((int[])e.Data);
+            GetDetail();
+        }
+
+        private void MatGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.TreePopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

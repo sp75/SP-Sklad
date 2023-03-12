@@ -2292,7 +2292,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2431,7 +2431,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -3107,6 +3107,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
           <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillTemplateDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Num" Type="int" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpNum" Type="numeric" Precision="5" Scale="1" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="WaybillTemplateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6523,7 +6538,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
                 <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
-                <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
                 <Property Name="UpdateAt" Type="datetime" />
                 <Property Name="TotalInCurrency" Type="numeric" Precision="31" Scale="6" />
                 <Property Name="MId" Type="int" />
@@ -8835,6 +8850,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillList].[Balans] AS [Balans]
     FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WaybillTemplateDet" EntityType="Self.v_WaybillTemplateDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillTemplateDet].[Num] AS [Num], 
+    [v_WaybillTemplateDet].[MatName] AS [MatName], 
+    [v_WaybillTemplateDet].[GrpName] AS [GrpName], 
+    [v_WaybillTemplateDet].[GrpNum] AS [GrpNum], 
+    [v_WaybillTemplateDet].[Artikul] AS [Artikul], 
+    [v_WaybillTemplateDet].[WaybillTemplateId] AS [WaybillTemplateId], 
+    [v_WaybillTemplateDet].[Id] AS [Id], 
+    [v_WaybillTemplateDet].[MatId] AS [MatId]
+    FROM [dbo].[v_WaybillTemplateDet] AS [v_WaybillTemplateDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WorkDate].[OnDate] AS [OnDate]
@@ -9792,7 +9819,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="in_CurrId" Mode="In" Type="Int32" />
             <Parameter Name="OnValue" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <EntitySet Name="PriceTypes" EntityType="BaseModel.PriceTypes" />
           <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(Decimal)">
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -10070,22 +10096,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
             <End Role="MatPrices" EntitySet="MatPrices" />
           </AssociationSet>
-          <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.FK_MGP_PPTYPEID">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.FK__MATPRICES__PTYPE__72910220">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="MatPrices" EntitySet="MatPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.FK_MATPRICES_PPTYPEID">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="MatPrices" EntitySet="MatPrices" />
-          </AssociationSet>
           <FunctionImport Name="GetMatPriceTypes" IsComposable="true" ReturnType="Collection(BaseModel.GetMatPriceTypes_Result)">
           <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -10196,10 +10206,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL">
             <End Role="Materials" EntitySet="Materials" />
-            <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
           </AssociationSet>
           <AssociationSet Name="FK_RETREL_DPOSID" Association="BaseModel.FK_RETREL_DPOSID">
@@ -11010,10 +11016,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="PriceList" EntitySet="PriceList" />
             <End Role="PlannedCalculation" EntitySet="PlannedCalculation" />
           </AssociationSet>
-          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="PriceList" EntitySet="PriceList" />
-          </AssociationSet>
           <AssociationSet Name="FK_PRICELISTDET_PRICELIST" Association="BaseModel.FK_PRICELISTDET_PRICELIST">
             <End Role="PriceList" EntitySet="PriceList" />
             <End Role="PriceListDet" EntitySet="PriceListDet" />
@@ -11251,14 +11253,40 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
           </AssociationSet>
-          <AssociationSet Name="FK_WaybillTemplate_PriceTypes" Association="BaseModel.FK_WaybillTemplate_PriceTypes">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
-          </AssociationSet>
           <AssociationSet Name="FK_WaybillTemplateDet_WaybillTemplate" Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate">
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
           </AssociationSet>
+          <EntitySet Name="PriceTypes" EntityType="BaseModel.PriceTypes" />
+          <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MGP_PPTYPEID" Association="BaseModel.FK_MGP_PPTYPEID">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATPRICES__PTYPE__72910220" Association="BaseModel.FK__MATPRICES__PTYPE__72910220">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MatPrices" EntitySet="MatPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="BaseModel.FK_MATPRICES_PPTYPEID">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="MatPrices" EntitySet="MatPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRICELIST_REFERENCE_PRICETYP" Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillTemplate_PriceTypes" Association="BaseModel.FK_WaybillTemplate_PriceTypes">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+          </AssociationSet>
+          <EntitySet Name="v_WaybillTemplateDet" EntityType="BaseModel.v_WaybillTemplateDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -11685,29 +11713,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="CurrId" Nullable="true" />
           <Property Type="String" Name="CurrName" Nullable="true" MaxLength="24" />
         </ComplexType>
-        <EntityType Name="PriceTypes">
-          <Key>
-            <PropertyRef Name="PTypeId" />
-          </Key>
-          <Property Type="Int32" Name="PTypeId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="Def" Nullable="false" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="Int32" Name="PPTypeId" />
-          <Property Type="Int32" Name="ExtraType" />
-          <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PriceTypes" ToRole="MatGroupPrices" />
-          <NavigationProperty Name="MatGroupPrices1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MatGroupPrices" />
-          <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MatPrices" />
-          <NavigationProperty Name="MatPrices1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MatPrices" />
-          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
-          <Property Name="RoundUpTo" Type="Int32" />
-          <Property Name="RoundingMethod" Type="Int32" />
-          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PriceList" />
-          <Property Name="TypeValue" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="PriceTypes" ToRole="WaybillTemplate" />
-        </EntityType>
         <EntityType Name="ReturnRel">
           <Key>
             <PropertyRef Name="Id" />
@@ -13210,9 +13215,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WithNds" Type="Int32" />
           <Property Name="Dis" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="MatGroupPrices" ToRole="Currency" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroupPrices" ToRole="MatGroup" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MatGroupPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MatGroupPrices" ToRole="PriceTypes" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroupPrices" ToRole="MatGroup" />
         </EntityType>
         <EntityType Name="MatPrices">
           <Key>
@@ -13231,7 +13236,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MP_MATID" FromRole="MatPrices" ToRole="Materials" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="MatPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="MatPrices" ToRole="PriceTypes" />
-        </EntityType>
+          </EntityType>
         <Association Name="FK__MATGROUPP__CURRI__6EC0713C">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="0..1" />
           <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
@@ -13267,54 +13272,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="MatPrices">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
-          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="MatGroupPrices">
-              <PropertyRef Name="PTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MGP_PPTYPEID">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="MatGroupPrices">
-              <PropertyRef Name="PPTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MATPRICES__PTYPE__72910220">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
-          <End Type="BaseModel.MatPrices" Role="MatPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="MatPrices">
-              <PropertyRef Name="PTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MATPRICES_PPTYPEID">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.MatPrices" Role="MatPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="MatPrices">
-              <PropertyRef Name="PPTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -13685,7 +13642,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="ExtRel" Relationship="BaseModel.FK_EXTREL_EXTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
           <NavigationProperty Name="ExtRel1" Relationship="BaseModel.FK_EXTREL_INTPOSID" FromRole="WaybillDet" ToRole="ExtRel" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" FromRole="WaybillDet" ToRole="Materials" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
           <NavigationProperty Name="ReturnRel" Relationship="BaseModel.FK_RETREL_DPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel1" Relationship="BaseModel.FK_RETREL_OUTPOSID" FromRole="WaybillDet" ToRole="ReturnRel" />
           <NavigationProperty Name="ReturnRel2" Relationship="BaseModel.FK_RETREL_POSID" FromRole="WaybillDet" ToRole="ReturnRel" />
@@ -13704,6 +13660,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="OrderedRels1" Relationship="BaseModel.FK_OrderedRels_WaybillDet1" FromRole="WaybillDet" ToRole="OrderedRels" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
           <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="WaybillDet" ToRole="RawMaterialManagementDet" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -13849,18 +13806,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="WaybillDet">
-              <PropertyRef Name="PtypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -16544,7 +16489,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -17204,9 +17149,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PriceList" ToRole="Currency" />
           <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_PlannedCalculation_PriceList" FromRole="PriceList" ToRole="PlannedCalculation" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.PriceListKagent" FromRole="PriceList" ToRole="Kagent" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
         </EntityType>
         <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
@@ -17229,18 +17174,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="PlannedCalculation">
               <PropertyRef Name="PlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="PriceList">
-              <PropertyRef Name="PTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -17778,7 +17711,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -18715,9 +18648,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PTypeId" Type="Int32" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WaybillTemplate_Kagent" FromRole="WaybillTemplate" ToRole="Kagent" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="WaybillTemplate" ToRole="PriceTypes" />
           <NavigationProperty Name="WaybillTemplateDet" Relationship="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" FromRole="WaybillTemplate" ToRole="WaybillTemplateDet" />
           <Property Name="Num" Type="Int32" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="WaybillTemplate" ToRole="PriceTypes" />
         </EntityType>
         <EntityType Name="WaybillTemplateDet">
           <Key>
@@ -18754,18 +18687,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WaybillTemplate_PriceTypes">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="WaybillTemplate">
-              <PropertyRef Name="PTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WaybillTemplateDet_WaybillTemplate">
           <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -18780,6 +18701,126 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PriceTypes">
+          <Key>
+            <PropertyRef Name="PTypeId" />
+          </Key>
+          <Property Name="PTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Num" Type="Int32" Nullable="false" />
+          <Property Name="Def" Type="Int32" Nullable="false" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="PPTypeId" Type="Int32" />
+          <Property Name="ExtraType" Type="Int32" />
+          <Property Name="RoundUpTo" Type="Int32" />
+          <Property Name="RoundingMethod" Type="Int32" />
+          <Property Name="TypeValue" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PriceTypes" ToRole="MatGroupPrices" />
+          <NavigationProperty Name="MatGroupPrices1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MatGroupPrices" />
+          <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MatPrices" />
+          <NavigationProperty Name="MatPrices1" Relationship="BaseModel.FK_MATPRICES_PPTYPEID" FromRole="PriceTypes" ToRole="MatPrices" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="PriceList" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="PriceTypes" ToRole="WaybillDet" />
+          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="PriceTypes" ToRole="WaybillTemplate" />
+        </EntityType>
+        <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
+          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MatGroupPrices">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MGP_PPTYPEID">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MatGroupPrices">
+              <PropertyRef Name="PPTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATPRICES__PTYPE__72910220">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
+          <End Type="BaseModel.MatPrices" Role="MatPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MatPrices">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MATPRICES_PPTYPEID">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.MatPrices" Role="MatPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="MatPrices">
+              <PropertyRef Name="PPTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRICELIST_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="PriceList">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLD_REFERENCE_PRICETYP">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillDet">
+              <PropertyRef Name="PtypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillTemplate_PriceTypes">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillTemplate">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_WaybillTemplateDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Num" Type="Int32" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillTemplateId" Type="Guid" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -19160,23 +19201,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="PriceTypes">
-            <EntityTypeMapping TypeName="BaseModel.PriceTypes">
-              <MappingFragment StoreEntitySet="PriceTypes">
-                <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
-                <ScalarProperty Name="RoundingMethod" ColumnName="RoundingMethod" />
-                <ScalarProperty Name="RoundUpTo" ColumnName="RoundUpTo" />
-                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
-                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetDiscount" FunctionName="BaseModel.Store.GetDiscount" />
           <EntitySetMapping Name="ReturnRel">
             <EntityTypeMapping TypeName="BaseModel.ReturnRel">
@@ -23838,6 +23862,37 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="WaybillTemplateId" ColumnName="WaybillTemplateId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceTypes">
+            <EntityTypeMapping TypeName="BaseModel.PriceTypes">
+              <MappingFragment StoreEntitySet="PriceTypes">
+                <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
+                <ScalarProperty Name="RoundingMethod" ColumnName="RoundingMethod" />
+                <ScalarProperty Name="RoundUpTo" ColumnName="RoundUpTo" />
+                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
+                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillTemplateDet">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillTemplateDet">
+              <MappingFragment StoreEntitySet="v_WaybillTemplateDet">
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WaybillTemplateId" ColumnName="WaybillTemplateId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="GrpNum" ColumnName="GrpNum" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

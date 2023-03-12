@@ -27,7 +27,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Num { get; set; }
     
         public virtual Kagent Kagent { get; set; }
-        public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
     }
 }

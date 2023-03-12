@@ -48,7 +48,6 @@ namespace SP_Sklad.SkladData
         public DbSet<ChargeType> ChargeType { get; set; }
         public DbSet<Currency> Currency { get; set; }
         public DbSet<CommonParams> CommonParams { get; set; }
-        public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<ReturnRel> ReturnRel { get; set; }
         public DbSet<CityType> CityType { get; set; }
         public DbSet<KaAddr> KaAddr { get; set; }
@@ -221,6 +220,8 @@ namespace SP_Sklad.SkladData
         public DbSet<SettingApp> SettingApp { get; set; }
         public DbSet<WaybillTemplate> WaybillTemplate { get; set; }
         public DbSet<WaybillTemplateDet> WaybillTemplateDet { get; set; }
+        public DbSet<PriceTypes> PriceTypes { get; set; }
+        public DbSet<v_WaybillTemplateDet> v_WaybillTemplateDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

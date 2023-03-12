@@ -25,8 +25,8 @@ namespace SP_Sklad.SkladData
         public int Dis { get; set; }
     
         public virtual Currency Currency { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual PriceTypes PriceTypes1 { get; set; }
-        public virtual MatGroup MatGroup { get; set; }
     }
 }

@@ -36,8 +36,8 @@ namespace SP_Sklad.SkladData
     
         public virtual Currency Currency { get; set; }
         public virtual ICollection<PlannedCalculation> PlannedCalculation { get; set; }
-        public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<PriceListDet> PriceListDet { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
     }
 }

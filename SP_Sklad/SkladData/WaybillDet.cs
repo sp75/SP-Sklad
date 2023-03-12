@@ -63,7 +63,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<ExtRel> ExtRel { get; set; }
         public virtual ICollection<ExtRel> ExtRel1 { get; set; }
         public virtual Materials Materials { get; set; }
-        public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel1 { get; set; }
         public virtual ICollection<ReturnRel> ReturnRel2 { get; set; }
@@ -81,5 +80,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<OrderedRels> OrderedRels1 { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
     }
 }

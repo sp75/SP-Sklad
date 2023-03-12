@@ -23,7 +23,6 @@
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_CONTRDET_REFERENCE_CURRENCY" />
         <EntityTypeShape EntityType="BaseModel.CommonParams" Width="1.5" PointX="18.875" PointY="25.5" />
-        <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.6907472259787597" PointY="24.052519019717593" />
         <EntityTypeShape EntityType="BaseModel.ReturnRel" Width="1.5" PointX="0.30251608430525107" PointY="2.8423101170185534" />
         <EntityTypeShape EntityType="BaseModel.CityType" Width="1.5" PointX="6" PointY="12.5" />
         <EntityTypeShape EntityType="BaseModel.KaAddr" Width="1.5" PointX="11.764847153688244" PointY="23.276982437482562" />
@@ -112,10 +111,6 @@
         <AssociationConnector Association="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__CURRI__74794A92" />
         <AssociationConnector Association="BaseModel.FK_MP_MATID" />
-        <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
-        <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
-        <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
-        <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
         <EntityTypeShape EntityType="BaseModel.DemandGroup" Width="1.5" PointX="12" PointY="5.5" />
         <EntityTypeShape EntityType="BaseModel.MatChange" Width="1.5" PointX="8.25" PointY="30.25" />
         <AssociationConnector Association="BaseModel.FK_MATCHANGE_CHANGEID" />
@@ -147,7 +142,6 @@
         <AssociationConnector Association="BaseModel.FK_EXTREL_EXTPOSID" />
         <AssociationConnector Association="BaseModel.FK_EXTREL_INTPOSID" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_FK_WBDET__MATERIAL" />
-        <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_RETREL_DPOSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_OUTPOSID" />
         <AssociationConnector Association="BaseModel.FK_RETREL_POSID" />
@@ -304,7 +298,6 @@
         <EntityTypeShape EntityType="BaseModel.PriceList" Width="1.5" PointX="23.75" PointY="0.625" />
         <AssociationConnector Association="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" />
         <AssociationConnector Association="BaseModel.FK_PlannedCalculation_PriceList" />
-        <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_PRICELISTDET_PRICELIST" />
         <AssociationConnector Association="BaseModel.PriceListKagent" />
         <AssociationConnector Association="BaseModel.FK_Cars_Kagent" />
@@ -358,8 +351,15 @@
         <EntityTypeShape EntityType="BaseModel.WaybillTemplateDet" Width="1.5" PointX="27.5" PointY="2" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplate_Kagent" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_Materials" />
-        <AssociationConnector Association="BaseModel.FK_WaybillTemplate_PriceTypes" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" />
+        <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.75" PointY="14.375" />
+        <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
+        <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
+        <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
+        <AssociationConnector Association="BaseModel.FK_MATPRICES_PPTYPEID" />
+        <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
+        <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
+        <AssociationConnector Association="BaseModel.FK_WaybillTemplate_PriceTypes" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -387,6 +387,7 @@
         <EntityTypeShape EntityType="BaseModel.v_Materials" Width="1.5" PointX="3.375" PointY="13.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagementDet" Width="1.5" PointX="15.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagement" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillTemplateDet" Width="1.5" PointX="7.25" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
