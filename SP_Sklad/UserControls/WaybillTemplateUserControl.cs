@@ -25,7 +25,10 @@ namespace SP_Sklad.UserControls
 
         private void WaybillTemplateUserControl_Load(object sender, EventArgs e)
         {
-            WaybillTemplateBS.DataSource = DB.SkladBase().WaybillTemplate.ToList();
+            if (!DesignMode)
+            {
+                WaybillTemplateBS.DataSource = DB.SkladBase().WaybillTemplate.ToList();
+            }
         }
     }
 }
