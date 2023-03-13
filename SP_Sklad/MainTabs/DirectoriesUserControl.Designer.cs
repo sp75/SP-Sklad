@@ -399,6 +399,8 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
+            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -574,6 +576,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
+            this.xtraTabPage36.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1328,6 +1331,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2776,7 +2780,8 @@
             this.xtraTabPage17,
             this.xtraTabPage32,
             this.xtraTabPage34,
-            this.xtraTabPage35});
+            this.xtraTabPage35,
+            this.xtraTabPage36});
             // 
             // xtraTabPage19
             // 
@@ -4288,6 +4293,21 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
+            // xtraTabPage36
+            // 
+            this.xtraTabPage36.Controls.Add(this.waybillTemplateUserControl1);
+            this.xtraTabPage36.Name = "xtraTabPage36";
+            this.xtraTabPage36.Size = new System.Drawing.Size(1085, 568);
+            this.xtraTabPage36.Text = "Шаблони";
+            // 
+            // waybillTemplateUserControl1
+            // 
+            this.waybillTemplateUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waybillTemplateUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
+            this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1085, 568);
+            this.waybillTemplateUserControl1.TabIndex = 0;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4484,6 +4504,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
+            this.xtraTabPage36.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4857,5 +4878,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
         private DevExpress.XtraBars.BarButtonItem PrintRecipeBtn;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
+        private UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
     }
 }

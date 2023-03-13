@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_Sklad.SkladData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,11 @@ namespace SP_Sklad.UserControls
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void WaybillTemplateUserControl_Load(object sender, EventArgs e)
+        {
+            WaybillTemplateBS.DataSource = DB.SkladBase().WaybillTemplate.ToList();
         }
     }
 }

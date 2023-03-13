@@ -390,6 +390,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab

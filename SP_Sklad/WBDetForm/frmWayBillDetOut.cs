@@ -453,7 +453,6 @@ namespace SP_Sklad.WBDetForm
             _wbd.BasePrice = BasePriceEdit.Value;
             //     _wbd.PtypeId = null;
             PriceTypesEdit.EditValue = null;
-
             GetDiscount(_wbd.MatId, _wbd.BasePrice ?? 0);
             GetOk();
         }

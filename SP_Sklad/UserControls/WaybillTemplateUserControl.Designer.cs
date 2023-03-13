@@ -428,6 +428,7 @@ namespace SP_Sklad.UserControls
             // 
             // PriceListGridControl
             // 
+            this.PriceListGridControl.DataSource = this.WaybillTemplateBS;
             this.PriceListGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PriceListGridControl.Location = new System.Drawing.Point(0, 0);
             this.PriceListGridControl.MainView = this.PriceListGridView;
@@ -447,8 +448,8 @@ namespace SP_Sklad.UserControls
             this.PriceListGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.PriceListGridView.Appearance.Row.Options.UseFont = true;
             this.PriceListGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn46,
             this.gridColumn47,
+            this.gridColumn46,
             this.gridColumn48,
             this.gridColumn49,
             this.gridColumn112});
@@ -471,8 +472,8 @@ namespace SP_Sklad.UserControls
             // 
             // gridColumn47
             // 
-            this.gridColumn47.Caption = "Дата";
-            this.gridColumn47.FieldName = "OnDate";
+            this.gridColumn47.Caption = "#";
+            this.gridColumn47.FieldName = "Num";
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 1;
@@ -489,8 +490,8 @@ namespace SP_Sklad.UserControls
             // 
             // gridColumn49
             // 
-            this.gridColumn49.Caption = "Валюта";
-            this.gridColumn49.FieldName = "CurrName";
+            this.gridColumn49.Caption = "Контрагент";
+            this.gridColumn49.FieldName = "Kagent.Name";
             this.gridColumn49.Name = "gridColumn49";
             this.gridColumn49.Visible = true;
             this.gridColumn49.VisibleIndex = 4;
@@ -499,7 +500,7 @@ namespace SP_Sklad.UserControls
             // gridColumn112
             // 
             this.gridColumn112.Caption = "Категорія цін";
-            this.gridColumn112.FieldName = "PriceTypeName";
+            this.gridColumn112.FieldName = "PriceTypes.Name";
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 3;
@@ -676,6 +677,7 @@ namespace SP_Sklad.UserControls
             this.Controls.Add(this.barDockControlTop);
             this.Name = "WaybillTemplateUserControl";
             this.Size = new System.Drawing.Size(1053, 521);
+            this.Load += new System.EventHandler(this.WaybillTemplateUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();
             this.splitContainerControl4.Panel1.ResumeLayout(false);
