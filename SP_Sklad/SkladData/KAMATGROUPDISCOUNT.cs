@@ -18,6 +18,7 @@ namespace SP_Sklad.SkladData
         public int KAId { get; set; }
         public int GrpId { get; set; }
         public decimal OnValue { get; set; }
+        public int DiscountType { get; set; }
     
         public virtual Kagent Kagent { get; set; }
         public virtual MatGroup MatGroup { get; set; }

@@ -22,7 +22,6 @@ namespace SP_Sklad.SkladData
             this.WMatTurn = new HashSet<WMatTurn>();
             this.MatRecipe = new HashSet<MatRecipe>();
             this.TAXWBDET = new HashSet<TAXWBDET>();
-            this.KAMatDiscount = new HashSet<KAMatDiscount>();
             this.MatRecDet = new HashSet<MatRecDet>();
             this.MatPrices = new HashSet<MatPrices>();
             this.MatChange = new HashSet<MatChange>();
@@ -36,6 +35,7 @@ namespace SP_Sklad.SkladData
             this.RawMaterialManagementDet = new HashSet<RawMaterialManagementDet>();
             this.MatBarCode = new HashSet<MatBarCode>();
             this.WaybillTemplateDet = new HashSet<WaybillTemplateDet>();
+            this.KAMatDiscount = new HashSet<KAMatDiscount>();
         }
     
         public int MatId { get; set; }
@@ -85,7 +85,6 @@ namespace SP_Sklad.SkladData
         public virtual Measures Measures { get; set; }
         public virtual ICollection<MatRecipe> MatRecipe { get; set; }
         public virtual ICollection<TAXWBDET> TAXWBDET { get; set; }
-        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
         public virtual ICollection<MatRecDet> MatRecDet { get; set; }
         public virtual ICollection<MatPrices> MatPrices { get; set; }
         public virtual ICollection<MatChange> MatChange { get; set; }
@@ -101,5 +100,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MatBarCode> MatBarCode { get; set; }
         public virtual RawMaterialType RawMaterialType { get; set; }
         public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
+        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
     }
 }

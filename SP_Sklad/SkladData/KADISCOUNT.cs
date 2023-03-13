@@ -18,6 +18,7 @@ namespace SP_Sklad.SkladData
         public int DiscForAll { get; set; }
         public decimal OnValue { get; set; }
         public int DiscCustom { get; set; }
+        public int DiscountType { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

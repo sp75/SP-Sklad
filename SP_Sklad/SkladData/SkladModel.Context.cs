@@ -74,9 +74,6 @@ namespace SP_Sklad.SkladData
         public DbSet<KAKInd> KAKInd { get; set; }
         public DbSet<KAgentAccount> KAgentAccount { get; set; }
         public DbSet<KAgentPersons> KAgentPersons { get; set; }
-        public DbSet<KADiscount> KADiscount { get; set; }
-        public DbSet<KAMatDiscount> KAMatDiscount { get; set; }
-        public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public DbSet<KAgentDoc> KAgentDoc { get; set; }
         public DbSet<MatRecDet> MatRecDet { get; set; }
         public DbSet<PrintLog> PrintLog { get; set; }
@@ -220,8 +217,11 @@ namespace SP_Sklad.SkladData
         public DbSet<SettingApp> SettingApp { get; set; }
         public DbSet<WaybillTemplate> WaybillTemplate { get; set; }
         public DbSet<WaybillTemplateDet> WaybillTemplateDet { get; set; }
-        public DbSet<PriceTypes> PriceTypes { get; set; }
         public DbSet<v_WaybillTemplateDet> v_WaybillTemplateDet { get; set; }
+        public DbSet<PriceTypes> PriceTypes { get; set; }
+        public DbSet<KADiscount> KADiscount { get; set; }
+        public DbSet<KAMatDiscount> KAMatDiscount { get; set; }
+        public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -680,20 +680,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatExtra_Result>("[BaseEntities].[GetMatExtra](@MatId, @PTypeId, @OnDate, @Price, @in_CurrId, @OnValue)", matIdParameter, pTypeIdParameter, onDateParameter, priceParameter, in_CurrIdParameter, onValueParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetDiscount")]
-        public virtual IQueryable<Nullable<decimal>> GetDiscount(Nullable<int> ka_id, Nullable<int> mat_id)
-        {
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetDiscount](@ka_id, @mat_id)", ka_idParameter, mat_idParameter);
-        }
-    
         public virtual ObjectResult<GetOrderedInSuppliers_Result> GetOrderedInSuppliers(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -760,15 +746,6 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("root_cat_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatGroupTree_Result>("[BaseEntities].[GetMatGroupTree](@root_cat_id)", root_cat_idParameter);
-        }
-    
-        public virtual ObjectResult<DiscountList_Result> DiscountList(Nullable<int> ka_id)
-        {
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DiscountList_Result>("DiscountList", ka_idParameter);
         }
     
         public virtual ObjectResult<GetReportTree_Result> GetReportTree(Nullable<int> user_id)
@@ -2585,6 +2562,29 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pl_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPriceListDet_Result>("GetPriceListDet", pl_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetDiscount")]
+        public virtual IQueryable<GetDiscount_Result> GetDiscount(Nullable<int> ka_id, Nullable<int> mat_id)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDiscount_Result>("[BaseEntities].[GetDiscount](@ka_id, @mat_id)", ka_idParameter, mat_idParameter);
+        }
+    
+        public virtual ObjectResult<DiscountList_Result> DiscountList(Nullable<int> ka_id)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DiscountList_Result>("DiscountList", ka_idParameter);
         }
     }
 }

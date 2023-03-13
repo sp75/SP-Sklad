@@ -35,7 +35,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ExtraType { get; set; }
         public Nullable<int> RoundUpTo { get; set; }
         public Nullable<int> RoundingMethod { get; set; }
-        public int TypeValue { get; set; }
     
         public virtual ICollection<MatGroupPrices> MatGroupPrices { get; set; }
         public virtual ICollection<MatGroupPrices> MatGroupPrices1 { get; set; }

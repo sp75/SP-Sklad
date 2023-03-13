@@ -169,10 +169,14 @@ namespace SP_Sklad.EditForm
 
                 lookUpEdit4.Properties.DataSource = DBHelper.KagentsWorkerList.Where(w => w.KType == 1);
 
+                lookUpEdit5.Properties.DataSource = new List<object>() { new { Id = 0, Name = "%" }, new { Id = 1, Name = "грн." } };
+                lookUpEdit6.Properties.DataSource = lookUpEdit5.Properties.DataSource;
+                lookUpEdit7.Properties.DataSource = lookUpEdit5.Properties.DataSource;
+                repositoryItemLookUpEdit1.DataSource = lookUpEdit5.Properties.DataSource;
+
                 GetAccounts();
                 GetPersons();
                 GetDiscountList();
-
             }
         }
 

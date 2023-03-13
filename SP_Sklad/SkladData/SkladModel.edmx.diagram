@@ -66,10 +66,6 @@
         <EntityTypeShape EntityType="BaseModel.KAKInd" Width="1.5" PointX="6.2121934640278074" PointY="25.742894378371023" />
         <EntityTypeShape EntityType="BaseModel.KAgentAccount" Width="1.5" PointX="2.875" PointY="0.5" />
         <EntityTypeShape EntityType="BaseModel.KAgentPersons" Width="1.5" PointX="2.7761008715145756" PointY="28.186123771679647" />
-        <EntityTypeShape EntityType="BaseModel.KADiscount" Width="1.5" PointX="10.337791710317969" PointY="24.720574882217019" />
-        <EntityTypeShape EntityType="BaseModel.KAMatDiscount" Width="1.5" PointX="2.9017272158068268" PointY="12.329462563772436" />
-        <EntityTypeShape EntityType="BaseModel.KAMatGroupDiscount" Width="1.5" PointX="16.875" PointY="4.25" />
-        <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
         <EntityTypeShape EntityType="BaseModel.KAgentDoc" Width="1.5" PointX="21.375" PointY="5.25" />
         <EntityTypeShape EntityType="BaseModel.MatRecDet" Width="1.5" PointX="4.3067367618469223" PointY="20.215099657054573" />
         <AssociationConnector Association="BaseModel.FK_MatRecDet_Materials" />
@@ -183,9 +179,6 @@
         <AssociationConnector Association="BaseModel.FK_DISCCARDS_KAID" />
         <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
         <AssociationConnector Association="BaseModel.FK_KAADDR_KAID" />
-        <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
-        <AssociationConnector Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC" />
-        <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
         <AssociationConnector Association="BaseModel.FK__TAXWB__PERSONID__019E3B86" />
         <AssociationConnector Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" />
         <AssociationConnector Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" />
@@ -324,7 +317,6 @@
         <EntityTypeShape EntityType="BaseModel.BankStatements" Width="1.5" PointX="31.375" PointY="23" />
         <EntityTypeShape EntityType="BaseModel.DefectsClassifier" Width="1.5" PointX="33" PointY="10.75" />
         <EntityTypeShape EntityType="BaseModel.MatGroup" Width="1.5" PointX="0.75" PointY="16.75" />
-        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
         <EntityTypeShape EntityType="BaseModel.BankStatementsDet" Width="2.375" PointX="36.625" PointY="9.375" />
@@ -352,7 +344,7 @@
         <AssociationConnector Association="BaseModel.FK_WaybillTemplate_Kagent" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_Materials" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" />
-        <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.75" PointY="14.375" />
+        <EntityTypeShape EntityType="BaseModel.PriceTypes" Width="1.5" PointX="0.75" PointY="14.25" />
         <AssociationConnector Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" />
         <AssociationConnector Association="BaseModel.FK_MGP_PPTYPEID" />
         <AssociationConnector Association="BaseModel.FK__MATPRICES__PTYPE__72910220" />
@@ -360,6 +352,14 @@
         <AssociationConnector Association="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplate_PriceTypes" />
+        <EntityTypeShape EntityType="BaseModel.KADiscount" Width="1.5" PointX="16.125" PointY="42.625" />
+        <EntityTypeShape EntityType="BaseModel.KAMatDiscount" Width="1.5" PointX="27.625" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.KAMatGroupDiscount" Width="1.5" PointX="16.125" PointY="8.75" />
+        <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
+        <AssociationConnector Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC" />
+        <AssociationConnector Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" />
+        <AssociationConnector Association="BaseModel.FK__KAMATDISC__MATID__32AB8735" />
+        <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

@@ -478,6 +478,9 @@
     <Compile Include="SkladData\DefectsClassifier.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetDiscount_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetKagentList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

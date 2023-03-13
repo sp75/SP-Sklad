@@ -19,5 +19,6 @@ namespace SP_Sklad.SkladData
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal OnValue { get; set; }
+        public int DiscountType { get; set; }
     }
 }

@@ -10,17 +10,10 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class KAMatDiscount
+    public partial class GetDiscount_Result
     {
-        public System.Guid DiscId { get; set; }
-        public int KAId { get; set; }
-        public int MatId { get; set; }
-        public decimal OnValue { get; set; }
-        public int DiscountType { get; set; }
-    
-        public virtual Kagent Kagent { get; set; }
-        public virtual Materials Materials { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<int> DiscountType { get; set; }
     }
 }

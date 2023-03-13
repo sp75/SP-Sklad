@@ -34,13 +34,10 @@ namespace SP_Sklad.WBForm
         {
             InitializeComponent();
 
-
             _wbt_id = wbt_id;
-
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction();
         }
-
           
         private void frmPriceList_Load(object sender, EventArgs e)
         {
@@ -70,7 +67,6 @@ namespace SP_Sklad.WBForm
             }
 
             GetDetail();
-            GetMatTree();
 
             MatGridView.ExpandAllGroups();
         }
@@ -93,42 +89,7 @@ namespace SP_Sklad.WBForm
             _db.Dispose();
             current_transaction.Dispose();
         }
-
-        private void GetMatTree()
-        {
-
-        }
-
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            GetMatTree();
-        }
-
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void treeList1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                TreeList treeList = sender as TreeList;
-                TreeListHitInfo info = treeList.CalcHitInfo(e.Location);
-                if (info.Node != null)
-                {
-                    treeList.FocusedNode = info.Node;
-                }
-            }
-        }
-
-        private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            Point p2 = Control.MousePosition;
-            TreePopupMenu.ShowPopup(p2);
-        }
-
-  
+ 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
@@ -155,10 +116,6 @@ namespace SP_Sklad.WBForm
 
         }
 
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -227,16 +184,6 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
                 GetDetail();
             }
-        }
-
-        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -310,11 +257,6 @@ namespace SP_Sklad.WBForm
             var mat = _db.v_Materials.Where(w=> w.Archived == 0).AsQueryable();
 
             e.QueryableSource = mat;
-        }
-
-        private void dragDropEvents1_DragDrop(object sender, DragDropEventArgs e)
-        {
-            ;
         }
 
 

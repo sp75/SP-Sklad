@@ -26,8 +26,6 @@ namespace SP_Sklad.SkladData
             this.DiscCards = new HashSet<DiscCards>();
             this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
             this.KaAddr = new HashSet<KaAddr>();
-            this.KAMatDiscount = new HashSet<KAMatDiscount>();
-            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillMove = new HashSet<WaybillMove>();
@@ -52,6 +50,8 @@ namespace SP_Sklad.SkladData
             this.PriceList = new HashSet<PriceList>();
             this.Cars = new HashSet<Cars>();
             this.WaybillTemplate = new HashSet<WaybillTemplate>();
+            this.KAMatDiscount = new HashSet<KAMatDiscount>();
+            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
         }
     
         public int KaId { get; set; }
@@ -105,9 +105,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<DiscCards> DiscCards { get; set; }
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
-        public virtual KADiscount KADiscount { get; set; }
-        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
-        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
@@ -136,5 +133,8 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Cars> Cars { get; set; }
         public virtual Users Users { get; set; }
         public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
+        public virtual KADiscount KADiscount { get; set; }
+        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
+        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
     }
 }

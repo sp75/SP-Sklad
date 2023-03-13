@@ -486,6 +486,7 @@
           <Property Name="DiscForAll" Type="int" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="8" Nullable="false" />
           <Property Name="DiscCustom" Type="int" Nullable="false" />
+          <Property Name="DiscountType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Kagent">
           <Key>
@@ -626,6 +627,7 @@
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="DiscountType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="KAMatGroupDiscount">
           <Key>
@@ -635,6 +637,7 @@
           <Property Name="KAId" Type="int" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="OnValue" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="DiscountType" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="KontragentGroup">
           <Key>
@@ -1075,7 +1078,6 @@
           <Property Name="ExtraType" Type="int" />
           <Property Name="RoundUpTo" Type="int" />
           <Property Name="RoundingMethod" Type="int" />
-          <Property Name="TypeValue" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PrintLog">
           <Key>
@@ -2292,7 +2294,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2431,7 +2433,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -3112,7 +3114,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
 warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WaybillTemplateDet">
           <Key>
+            
+            
             <PropertyRef Name="Id" />
+            
           </Key>
           <Property Name="Num" Type="int" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
@@ -5666,6 +5671,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <CollectionType>
               <RowType>
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
+                <Property Name="DiscountType" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -6538,7 +6544,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
                 <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
-                <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="100" />
                 <Property Name="UpdateAt" Type="datetime" />
                 <Property Name="TotalInCurrency" Type="numeric" Precision="31" Scale="6" />
                 <Property Name="MId" Type="int" />
@@ -9819,10 +9825,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="in_CurrId" Mode="In" Type="Int32" />
             <Parameter Name="OnValue" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(Decimal)">
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="ReturnRel" EntityType="BaseModel.ReturnRel" />
           <FunctionImport Name="GetOrderedInSuppliers" ReturnType="Collection(BaseModel.GetOrderedInSuppliers_Result)">
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
@@ -9947,16 +9949,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="KAKInd" EntityType="BaseModel.KAKInd" />
           <EntitySet Name="KAgentAccount" EntityType="BaseModel.KAgentAccount" />
           <EntitySet Name="KAgentPersons" EntityType="BaseModel.KAgentPersons" />
-          <EntitySet Name="KADiscount" EntityType="BaseModel.KADiscount" />
-          <EntitySet Name="KAMatDiscount" EntityType="BaseModel.KAMatDiscount" />
-          <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.KAMatGroupDiscount" />
-          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
-            <End Role="Materials" EntitySet="Materials" />
-            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
-          </AssociationSet>
-          <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
-          <Parameter Name="ka_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="KAgentDoc" EntityType="BaseModel.KAgentDoc" />
           <EntitySet Name="MatRecDet" EntityType="BaseModel.MatRecDet" />
           <AssociationSet Name="FK_MatRecDet_Materials" Association="BaseModel.FK_MatRecDet_Materials">
@@ -10389,18 +10381,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KaAddr" EntitySet="KaAddr" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.FK_KADiscount_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KADiscount" EntitySet="KADiscount" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
           </AssociationSet>
           <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="BaseModel.FK__TAXWB__PERSONID__019E3B86">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -11115,10 +11095,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="BankStatements" EntityType="BaseModel.BankStatements" />
           <EntitySet Name="DefectsClassifier" EntityType="BaseModel.DefectsClassifier" />
           <EntitySet Name="MatGroup" EntityType="BaseModel.MatGroup" />
-          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
-          </AssociationSet>
           <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.FK__MATERIALS__GRPID__58D1301D">
             <End Role="MatGroup" EntitySet="MatGroup" />
             <End Role="Materials" EntitySet="Materials" />
@@ -11257,6 +11233,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
           </AssociationSet>
+          <EntitySet Name="v_WaybillTemplateDet" EntityType="BaseModel.v_WaybillTemplateDet" />
           <EntitySet Name="PriceTypes" EntityType="BaseModel.PriceTypes" />
           <AssociationSet Name="FK__MATGROUPP__PTYPE__6DCC4D03" Association="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
@@ -11286,7 +11263,36 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
           </AssociationSet>
-          <EntitySet Name="v_WaybillTemplateDet" EntityType="BaseModel.v_WaybillTemplateDet" />
+          <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(BaseModel.GetDiscount_Result)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="KADiscount" EntityType="BaseModel.KADiscount" />
+          <EntitySet Name="KAMatDiscount" EntityType="BaseModel.KAMatDiscount" />
+          <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.KAMatGroupDiscount" />
+          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.FK_KADiscount_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12277,7 +12283,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MATERIAL_REFERENCE_MEASURES" FromRole="Materials" ToRole="Measures" />
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="Materials" ToRole="MatRecipe" />
           <NavigationProperty Name="TAXWBDET" Relationship="BaseModel.FK_TAXWBDET_REFERENCE_MATERIAL" FromRole="Materials" ToRole="TAXWBDET" />
-          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MatRecDet_Materials" FromRole="Materials" ToRole="MatRecDet" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK_MP_MATID" FromRole="Materials" ToRole="MatPrices" />
           <NavigationProperty Name="MatChange" Relationship="BaseModel.FK_MATCHANGE_CHANGEID" FromRole="Materials" ToRole="MatChange" />
@@ -12298,6 +12303,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedBy" Type="Int32" />
           <NavigationProperty Name="RawMaterialType" Relationship="BaseModel.FK_Materials_RawMaterialType" FromRole="Materials" ToRole="RawMaterialType" />
           <NavigationProperty Name="WaybillTemplateDet" Relationship="BaseModel.FK_WaybillTemplateDet_Materials" FromRole="Materials" ToRole="WaybillTemplateDet" />
+          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -12481,60 +12487,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="JobType" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AP_KAID" FromRole="KAgentPersons" ToRole="Kagent" />
         </EntityType>
-        <EntityType Name="KADiscount">
-          <Key>
-            <PropertyRef Name="KAId" />
-          </Key>
-          <Property Type="Int32" Name="KAId" Nullable="false" />
-          <Property Type="Int32" Name="DiscForAll" Nullable="false" />
-          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="8" />
-          <Property Type="Int32" Name="DiscCustom" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="KADiscount" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="KAMatDiscount">
-          <Key>
-            <PropertyRef Name="DiscId" />
-          </Key>
-          <Property Type="Guid" Name="DiscId" Nullable="false" />
-          <Property Type="Int32" Name="KAId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMatDiscount" ToRole="Materials" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMatDiscount" ToRole="Kagent" />
-        </EntityType>
-        <EntityType Name="KAMatGroupDiscount">
-          <Key>
-            <PropertyRef Name="DiscId" />
-          </Key>
-          <Property Type="Guid" Name="DiscId" Nullable="false" />
-          <Property Type="Int32" Name="KAId" Nullable="false" />
-          <Property Type="Int32" Name="GrpId" Nullable="false" />
-          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
-        </EntityType>
-        <Association Name="FK__KAMATDISC__MATID__32AB8735">
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materials">
-              <PropertyRef Name="MatId" />
-            </Principal>
-            <Dependent Role="KAMatDiscount">
-              <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="DiscountList_Result">
-          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
-          <Property Type="Guid" Name="DiscId" Nullable="false" />
-          <Property Type="Int32" Name="KAId" Nullable="false" />
-          <Property Type="Int32" Name="Id" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
-          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
-        </ComplexType>
         <EntityType Name="KAgentDoc">
           <Key>
             <PropertyRef Name="KAId" />
@@ -13218,7 +13170,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroupPrices" ToRole="MatGroup" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MatGroupPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MatGroupPrices" ToRole="PriceTypes" />
-        </EntityType>
+          </EntityType>
         <EntityType Name="MatPrices">
           <Key>
             <PropertyRef Name="Id" />
@@ -14426,9 +14378,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
           <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
           <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
-          <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
-          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
-          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
           <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
           <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
@@ -14465,6 +14414,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="FOPId" Type="Int32" />
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplate_Kagent" FromRole="Kagent" ToRole="WaybillTemplate" />
+          <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
+          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -14587,48 +14539,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="KaAddr">
               <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KADiscount_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KADiscount" Role="KADiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KADiscount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMatDiscount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMatGroupDiscount">
-              <PropertyRef Name="KAId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -16489,7 +16399,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -17711,7 +17621,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -17823,24 +17733,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Nds" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Num" Type="Decimal" Precision="5" Scale="1" />
-          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MatGroup" ToRole="Materials" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroup" ToRole="MatGroupPrices" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
         </EntityType>
-        <Association Name="FK__KAMATGROU__GRPID__395884C4">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="KAMatGroupDiscount">
-              <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__MATERIALS__GRPID__58D1301D">
           <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="0..1" />
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
@@ -18701,6 +18597,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_WaybillTemplateDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Num" Type="Int32" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillTemplateId" Type="Guid" Nullable="false" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="PriceTypes">
           <Key>
             <PropertyRef Name="PTypeId" />
@@ -18715,7 +18624,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ExtraType" Type="Int32" />
           <Property Name="RoundUpTo" Type="Int32" />
           <Property Name="RoundingMethod" Type="Int32" />
-          <Property Name="TypeValue" Type="Int32" Nullable="false" />
           <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="PriceTypes" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatGroupPrices1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="PriceTypes" ToRole="MatGroupPrices" />
           <NavigationProperty Name="MatPrices" Relationship="BaseModel.FK__MATPRICES__PTYPE__72910220" FromRole="PriceTypes" ToRole="MatPrices" />
@@ -18808,19 +18716,124 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="v_WaybillTemplateDet">
+        <ComplexType Name="GetDiscount_Result">
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="DiscountType" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="KADiscount">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="KAId" />
           </Key>
-          <Property Name="Num" Type="Int32" />
-          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
-          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WaybillTemplateId" Type="Guid" Nullable="false" />
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="KAId" Type="Int32" Nullable="false" />
+          <Property Name="DiscForAll" Type="Int32" Nullable="false" />
+          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="DiscCustom" Type="Int32" Nullable="false" />
+          <Property Name="DiscountType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="KADiscount" ToRole="Kagent" />
         </EntityType>
+        <EntityType Name="KAMatDiscount">
+          <Key>
+            <PropertyRef Name="DiscId" />
+          </Key>
+          <Property Name="DiscId" Type="Guid" Nullable="false" />
+          <Property Name="KAId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="DiscountType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMatDiscount" ToRole="Kagent" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMatDiscount" ToRole="Materials" />
+        </EntityType>
+        <EntityType Name="KAMatGroupDiscount">
+          <Key>
+            <PropertyRef Name="DiscId" />
+          </Key>
+          <Property Name="DiscId" Type="Guid" Nullable="false" />
+          <Property Name="KAId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="DiscountType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
+        </EntityType>
+        <Association Name="FK_KADiscount_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KADiscount" Role="KADiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KADiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISC__MATID__32AB8735">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROU__GRPID__395884C4">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="DiscountList_Result">
+          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
+          <Property Type="Guid" Name="DiscId" Nullable="false" />
+          <Property Type="Int32" Name="KAId" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="DiscountType" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -19201,7 +19214,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetDiscount" FunctionName="BaseModel.Store.GetDiscount" />
           <EntitySetMapping Name="ReturnRel">
             <EntityTypeMapping TypeName="BaseModel.ReturnRel">
               <MappingFragment StoreEntitySet="ReturnRel">
@@ -19687,48 +19699,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KADiscount">
-            <EntityTypeMapping TypeName="BaseModel.KADiscount">
-              <MappingFragment StoreEntitySet="KADiscount">
-                <ScalarProperty Name="DiscCustom" ColumnName="DiscCustom" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="DiscForAll" ColumnName="DiscForAll" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAMatDiscount">
-            <EntityTypeMapping TypeName="BaseModel.KAMatDiscount">
-              <MappingFragment StoreEntitySet="KAMatDiscount">
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KAMatGroupDiscount">
-            <EntityTypeMapping TypeName="BaseModel.KAMatGroupDiscount">
-              <MappingFragment StoreEntitySet="KAMatGroupDiscount">
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="DiscountList" FunctionName="BaseModel.Store.DiscountList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.DiscountList_Result">
-                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
-                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
-                <ScalarProperty Name="KAId" ColumnName="KAId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="KAgentDoc">
             <EntityTypeMapping TypeName="BaseModel.KAgentDoc">
               <MappingFragment StoreEntitySet="KAgentDoc">
@@ -23865,23 +23835,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PriceTypes">
-            <EntityTypeMapping TypeName="BaseModel.PriceTypes">
-              <MappingFragment StoreEntitySet="PriceTypes">
-                <ScalarProperty Name="TypeValue" ColumnName="TypeValue" />
-                <ScalarProperty Name="RoundingMethod" ColumnName="RoundingMethod" />
-                <ScalarProperty Name="RoundUpTo" ColumnName="RoundUpTo" />
-                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
-                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_WaybillTemplateDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillTemplateDet">
               <MappingFragment StoreEntitySet="v_WaybillTemplateDet">
@@ -23896,6 +23849,76 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PriceTypes">
+            <EntityTypeMapping TypeName="BaseModel.PriceTypes">
+              <MappingFragment StoreEntitySet="PriceTypes">
+                <ScalarProperty Name="RoundingMethod" ColumnName="RoundingMethod" />
+                <ScalarProperty Name="RoundUpTo" ColumnName="RoundUpTo" />
+                <ScalarProperty Name="ExtraType" ColumnName="ExtraType" />
+                <ScalarProperty Name="PPTypeId" ColumnName="PPTypeId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetDiscount" FunctionName="BaseModel.Store.GetDiscount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetDiscount_Result">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="KADiscount">
+            <EntityTypeMapping TypeName="BaseModel.KADiscount">
+              <MappingFragment StoreEntitySet="KADiscount">
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+                <ScalarProperty Name="DiscCustom" ColumnName="DiscCustom" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DiscForAll" ColumnName="DiscForAll" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAMatDiscount">
+            <EntityTypeMapping TypeName="BaseModel.KAMatDiscount">
+              <MappingFragment StoreEntitySet="KAMatDiscount">
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KAMatGroupDiscount">
+            <EntityTypeMapping TypeName="BaseModel.KAMatGroupDiscount">
+              <MappingFragment StoreEntitySet="KAMatGroupDiscount">
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DiscountList" FunctionName="BaseModel.Store.DiscountList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.DiscountList_Result">
+                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
+                <ScalarProperty Name="DiscId" ColumnName="DiscId" />
+                <ScalarProperty Name="KAId" ColumnName="KAId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="DiscountType" ColumnName="DiscountType" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -61,7 +61,8 @@ namespace SP_Sklad.MainTabs
             public int? PTypeId { get; set; }
             public decimal? AvgPrice { get; set; }
             public decimal AccountingAmount { get; set; }
-    }
+            public int? DiscountType { get; set; }
+        }
 
         GetWhTree_Result focused_tree_node { get; set; }
         GetWayBillListWh_Result focused_row { get; set; }
@@ -580,6 +581,7 @@ namespace SP_Sklad.MainTabs
                             {
                                 var wh_row = WhRemainGridView.GetFocusedRow() as MatRemainByWh_Result;
 
+                                var discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault();
                                 custom_mat_list.Add(new CustomMatListWH
                                 {
                                     Num = custom_mat_list.Count() + 1,
@@ -589,7 +591,8 @@ namespace SP_Sklad.MainTabs
                                     Price = price,
                                     WId = wh_row != null ? wh_row.WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                                     PTypeId = null,
-                                    Discount = DB.SkladBase().GetDiscount(wb.KaId, row.MatId).FirstOrDefault() ?? 0.00m
+                                    Discount = discount.Discount,
+                                    DiscountType = discount.DiscountType
                                 });
 
                                 MatListGridView.RefreshData();
@@ -1124,11 +1127,14 @@ namespace SP_Sklad.MainTabs
 
             var remain_in_wh = DB.SkladBase().MatRemainByWh(wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
-            var mat_price = DB.SkladBase().GetListMatPrices(wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
+            var mat_price = DB.SkladBase().GetMatPrice(wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
 
             var item = custom_mat_list.FirstOrDefault(w => w.MatId == wh_mat.MatId);
             if (item == null)
             {
+                var dis = DB.SkladBase().GetDiscount(wb.KaId, wh_mat.MatId).FirstOrDefault();
+                var discount = dis.DiscountType == 0 ? (dis.Discount??0) : ((dis.Discount ?? 0) / (mat_price.Price ?? 0) * 100);
+
                 custom_mat_list.Add(new CustomMatListWH
                 {
                     Num = custom_mat_list.Count() + 1,
@@ -1138,9 +1144,10 @@ namespace SP_Sklad.MainTabs
                     Price = mat_price != null ? (mat_price.Price ?? 0) : 0,
                     WId = remain_in_wh.Any() ? remain_in_wh.First().WId : (DBHelper.WhList.Any(w => w.Def == 1) ? DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId : DBHelper.WhList.FirstOrDefault().WId),
                     PTypeId = mat_price != null ? mat_price.PType : null,
-                    Discount = disc_card != null ? disc_card.OnValue : (DB.SkladBase().GetDiscount(wb.KaId, wh_mat.MatId).FirstOrDefault() ?? 0.00m),
+                    Discount = disc_card != null ? disc_card.OnValue : discount,
                     AvgPrice = wh_mat.AvgPrice,
-                    AccountingAmount = amount
+                    AccountingAmount = amount,
+                    DiscountType = disc_card != null ? 0 : dis.DiscountType
                 });
             }
             else if (wb.WType != 7)

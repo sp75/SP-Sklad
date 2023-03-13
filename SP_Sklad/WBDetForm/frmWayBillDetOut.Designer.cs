@@ -82,8 +82,8 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.RSVCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -156,8 +156,8 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RSVCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).BeginInit();
             this.panel2.SuspendLayout();
@@ -476,6 +476,10 @@
             this.panelControl1.Size = new System.Drawing.Size(636, 102);
             this.panelControl1.TabIndex = 0;
             // 
+            // WaybillDetBS
+            // 
+            this.WaybillDetBS.DataSource = typeof(SP_Sklad.SkladData.WaybillDet);
+            // 
             // WHComboBox
             // 
             this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -497,10 +501,6 @@
             this.WHComboBox.TabIndex = 21;
             this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
             this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
-            // 
-            // WaybillDetBS
-            // 
-            this.WaybillDetBS.DataSource = typeof(SP_Sklad.SkladData.WaybillDet);
             // 
             // RSVCheckBox
             // 
@@ -624,7 +624,7 @@
             this.PriceTypesEdit.Properties.ShowHeader = false;
             this.PriceTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.PriceTypesEdit.Properties.ValueMember = "PTypeId";
-            this.PriceTypesEdit.Size = new System.Drawing.Size(138, 24);
+            this.PriceTypesEdit.Size = new System.Drawing.Size(216, 24);
             this.PriceTypesEdit.StyleController = this.styleController1;
             this.PriceTypesEdit.TabIndex = 28;
             this.PriceTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PriceTypesEdit_ButtonClick);
@@ -1347,8 +1347,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RSVCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatComboBox.Properties)).EndInit();
             this.panel2.ResumeLayout(false);

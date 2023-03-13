@@ -90,7 +90,7 @@ namespace SP_Sklad.WBDetForm
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = _cart != null ? 2 : 0,
-                    PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId,
+                    PtypeId = _db.Kagent.Find(_wb.KaId).PTypeId ?? _db.PriceTypes.First(w => w.Def == 1).PTypeId,
                     WayBillDetAddProps = new WayBillDetAddProps { CardId = _cart != null ? (int?)_cart.CardId : null },
                     WId = _wid
                 };
@@ -215,17 +215,8 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.Nds = _wb.Nds > 0 ? row.NDS : _wb.Nds;
                 _wbd.MatId = row.MatId;
-            }
 
-            labelControl24.Text = row.MsrName;
-            labelControl27.Text = row.MsrName;
-
-            var sate = _db.Entry(_wbd).State;
-            PriceTypesEdit.EditValue = PriceTypesEdit.EditValue == DBNull.Value ? (_db.Entry(_wbd).State == EntityState.Detached ? _db.PriceTypes.First(w => w.Def == 1).PTypeId : PriceTypesEdit.EditValue) : PriceTypesEdit.EditValue;
-
-            if (PriceTypesEdit.EditValue != DBNull.Value)
-            {
-                var list_price = _db.GetListMatPrices(row.MatId, _wb.CurrId, (int)PriceTypesEdit.EditValue).FirstOrDefault();
+                var list_price = _db.GetMatPrice(row.MatId, _wb.CurrId, _wbd.PtypeId).FirstOrDefault();
                 if (list_price != null)
                 {
                     _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
@@ -233,21 +224,27 @@ namespace SP_Sklad.WBDetForm
                 }
             }
 
-            GetDiscount(row.MatId);
+            labelControl24.Text = row.MsrName;
+            labelControl27.Text = row.MsrName;
+
+            GetDiscount(row.MatId, _wbd.BasePrice ?? 0);
             GetContent(_wbd.WId, row.MatId);
             SetAmount();
             GetOk();
         }
 
-        private void GetDiscount(int? MatId)
-        {
-            var disc = DB.SkladBase().GetDiscount(_wb.KaId, MatId).FirstOrDefault();
-            DiscountCheckBox.Checked = (disc > 0 || _wbd.Discount > 0);
 
-            if (_wbd.DiscountKind == 0)
+        private void GetDiscount(int? MatId, decimal price)
+        {
+            var dis = DB.SkladBase().GetDiscount(_wb.KaId, MatId).FirstOrDefault();
+            var discount = dis.DiscountType == 0 ? dis.Discount : (price > 0 ? (dis.Discount / price * 100) : 0);
+
+            DiscountCheckBox.Checked = (discount > 0 || _wbd.Discount > 0);
+
+            if (DiscountCheckBox.Checked)//    if (_wbd.DiscountKind == 0)
             {
-                DiscountEdit.EditValue = disc;
-                _wbd.Discount = disc;
+                DiscountEdit.EditValue = discount;
+                _wbd.Discount = discount;
             }
         }
 
@@ -428,7 +425,7 @@ namespace SP_Sklad.WBDetForm
             _wbd.BasePrice = BasePriceEdit.Value;
             //     _wbd.PtypeId = null;
             PriceTypesEdit.EditValue = null;
-
+            GetDiscount(_wbd.MatId, _wbd.BasePrice ?? 0);
             GetOk();
         }
 
@@ -457,7 +454,7 @@ namespace SP_Sklad.WBDetForm
 
             if (!CheckCustomEdit.Checked && CheckCustomEdit.ContainsFocus)
             {
-                GetDiscount(Convert.ToInt32(MatComboBox.EditValue));
+                GetDiscount(Convert.ToInt32(MatComboBox.EditValue), _wbd.BasePrice ?? 0);
             }
         }
 
