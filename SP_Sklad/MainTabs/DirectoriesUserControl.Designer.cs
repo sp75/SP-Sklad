@@ -380,6 +380,8 @@
             this.gridColumn106 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
+            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -399,8 +401,6 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
-            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -564,6 +564,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).BeginInit();
+            this.xtraTabPage36.SuspendLayout();
             this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
@@ -576,7 +577,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
-            this.xtraTabPage36.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -4114,6 +4114,21 @@
             this.gridColumn110.VisibleIndex = 2;
             this.gridColumn110.Width = 145;
             // 
+            // xtraTabPage36
+            // 
+            this.xtraTabPage36.Controls.Add(this.waybillTemplateUserControl1);
+            this.xtraTabPage36.Name = "xtraTabPage36";
+            this.xtraTabPage36.Size = new System.Drawing.Size(1085, 568);
+            this.xtraTabPage36.Text = "Шаблони";
+            // 
+            // waybillTemplateUserControl1
+            // 
+            this.waybillTemplateUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waybillTemplateUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
+            this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1085, 568);
+            this.waybillTemplateUserControl1.TabIndex = 0;
+            // 
             // xtraTabPage33
             // 
             this.xtraTabPage33.Controls.Add(this.TaraGridControl);
@@ -4292,21 +4307,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowRecipeArchiveRecordsbarCheckItem)});
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
-            // 
-            // xtraTabPage36
-            // 
-            this.xtraTabPage36.Controls.Add(this.waybillTemplateUserControl1);
-            this.xtraTabPage36.Name = "xtraTabPage36";
-            this.xtraTabPage36.Size = new System.Drawing.Size(1085, 568);
-            this.xtraTabPage36.Text = "Шаблони";
-            // 
-            // waybillTemplateUserControl1
-            // 
-            this.waybillTemplateUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.waybillTemplateUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
-            this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1085, 568);
-            this.waybillTemplateUserControl1.TabIndex = 0;
             // 
             // DirectoriesUserControl
             // 
@@ -4492,6 +4492,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAccountGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
+            this.xtraTabPage36.ResumeLayout(false);
             this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
@@ -4504,7 +4505,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
-            this.xtraTabPage36.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4879,6 +4879,6 @@
         private DevExpress.XtraBars.BarButtonItem PrintRecipeBtn;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
-        private UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
+        public UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
     }
 }

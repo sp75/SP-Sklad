@@ -584,6 +584,18 @@ namespace SP_Sklad.Common
                     }
                     break;
 
+                case 18:
+                    using (var f = new frmCatalog(null, 143))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Шаблони";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = f.uc.waybillTemplateUserControl1.wbt_row.Id;
+                        }
+                    }
+                    break;
+
             }
 
             return old_id;

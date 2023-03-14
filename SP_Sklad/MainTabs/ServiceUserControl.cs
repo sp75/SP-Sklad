@@ -277,7 +277,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно бажаєте відалити цей запис з довідника?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
+            if (MessageBox.Show("Ви дійсно бажаєте видалити вибрані записи ?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
             {
                 return;
             }
@@ -292,15 +292,31 @@ namespace SP_Sklad.MainTabs
                     }
                     break;
 
-                //case 3: SkladData->DBList->Delete(); break ;
-                case 5: //if(cxGrid4->ActiveLevel->Index == 0 ) OperLog->Delete();
-                    //if(cxGrid4->ActiveLevel->Index == 1) PrintLog->Delete();
+                case 5:
+
                     if (xtraTabControl2.SelectedTabPageIndex == 2)
                     {
-                        var er = ErrorLogGridView.GetFocusedRow() as v_ErrorLog;
-                        using (var db = DB.SkladBase())
+                        if(ErrorLogGridView.SelectedRowsCount >0)
                         {
-                            db.DeleteWhere<ErrorLog>(w => w.Id == er.Id);
+                            Int32[] selectedRowHandles = ErrorLogGridView.GetSelectedRows();
+
+                            for (int i = 0; i < selectedRowHandles.Length; i++)
+                            {
+                                int selectedRowHandle = selectedRowHandles[i];
+                                if (selectedRowHandle >= 0)
+                                {
+                                    var log_item = ErrorLogGridView.GetRow(selectedRowHandle) as v_ErrorLog;
+                                    DB.SkladBase().DeleteWhere<ErrorLog>(w => w.Id == log_item.Id);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var er = ErrorLogGridView.GetFocusedRow() as v_ErrorLog;
+                            using (var db = DB.SkladBase())
+                            {
+                                db.DeleteWhere<ErrorLog>(w => w.Id == er.Id);
+                            }
                         }
                     }
 

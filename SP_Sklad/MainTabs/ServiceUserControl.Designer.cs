@@ -252,7 +252,6 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).BeginInit();
             this.mainContentTab.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
@@ -1858,6 +1857,8 @@
             this.ErrorLogGridView.GridControl = this.ErrorLogGridControl;
             this.ErrorLogGridView.Name = "ErrorLogGridView";
             this.ErrorLogGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.ErrorLogGridView.OptionsSelection.MultiSelect = true;
+            this.ErrorLogGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.ErrorLogGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn19
@@ -1867,7 +1868,7 @@
             this.gridColumn19.Name = "gridColumn19";
             this.gridColumn19.OptionsColumn.ReadOnly = true;
             this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 0;
+            this.gridColumn19.VisibleIndex = 1;
             this.gridColumn19.Width = 56;
             // 
             // gridColumn20
@@ -1879,7 +1880,7 @@
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.OptionsColumn.ReadOnly = true;
             this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 1;
+            this.gridColumn20.VisibleIndex = 2;
             this.gridColumn20.Width = 130;
             // 
             // gridColumn21
@@ -1889,7 +1890,7 @@
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.OptionsColumn.ReadOnly = true;
             this.gridColumn21.Visible = true;
-            this.gridColumn21.VisibleIndex = 2;
+            this.gridColumn21.VisibleIndex = 3;
             this.gridColumn21.Width = 128;
             // 
             // gridColumn22
@@ -1899,7 +1900,7 @@
             this.gridColumn22.Name = "gridColumn22";
             this.gridColumn22.OptionsColumn.ReadOnly = true;
             this.gridColumn22.Visible = true;
-            this.gridColumn22.VisibleIndex = 4;
+            this.gridColumn22.VisibleIndex = 5;
             this.gridColumn22.Width = 223;
             // 
             // gridColumn23
@@ -1910,7 +1911,7 @@
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.OptionsColumn.ReadOnly = true;
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 5;
+            this.gridColumn23.VisibleIndex = 6;
             this.gridColumn23.Width = 139;
             // 
             // repositoryItemMemoExEdit1
@@ -1927,7 +1928,7 @@
             this.gridColumn18.FieldName = "ScreenShot";
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
-            this.gridColumn18.VisibleIndex = 6;
+            this.gridColumn18.VisibleIndex = 7;
             this.gridColumn18.Width = 89;
             // 
             // repositoryItemImageEdit1
@@ -1943,7 +1944,7 @@
             this.gridColumn26.FieldName = "UserName";
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
-            this.gridColumn26.VisibleIndex = 3;
+            this.gridColumn26.VisibleIndex = 4;
             this.gridColumn26.Width = 174;
             // 
             // gridColumn32
@@ -1952,7 +1953,7 @@
             this.gridColumn32.FieldName = "Ver";
             this.gridColumn32.Name = "gridColumn32";
             this.gridColumn32.Visible = true;
-            this.gridColumn32.VisibleIndex = 7;
+            this.gridColumn32.VisibleIndex = 8;
             // 
             // repositoryItemImageComboBox7
             // 
@@ -2750,7 +2751,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).EndInit();
             this.mainContentTab.ResumeLayout(false);

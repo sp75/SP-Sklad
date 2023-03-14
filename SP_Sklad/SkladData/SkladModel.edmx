@@ -1755,7 +1755,6 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Num" Type="int" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
-          <Property Name="KaId" Type="int" />
           <Property Name="PTypeId" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="250" />
         </EntityType>
@@ -1767,6 +1766,14 @@
           <Property Name="Num" Type="int" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="WaybillTemplateId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WaybillTemplateKagent">
+          <Key>
+            <PropertyRef Name="WaybillTemplateId" />
+            <PropertyRef Name="KagentId" />
+          </Key>
+          <Property Name="WaybillTemplateId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KagentId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="WayBillTmc">
           <Key>
@@ -5404,18 +5411,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_WaybillTemplate_Kagent">
-          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
-          <End Role="WaybillTemplate" Type="Self.WaybillTemplate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillTemplate">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WaybillTemplate_PriceTypes">
           <End Role="PriceTypes" Type="Self.PriceTypes" Multiplicity="0..1" />
           <End Role="WaybillTemplate" Type="Self.WaybillTemplate" Multiplicity="*" />
@@ -5450,6 +5445,32 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="WaybillTemplateDet">
+              <PropertyRef Name="WaybillTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillTemplateKagent_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="WaybillTemplateKagent" Type="Self.WaybillTemplateKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillTemplateKagent">
+              <PropertyRef Name="KagentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillTemplateKagent_WaybillTemplate">
+          <End Role="WaybillTemplate" Type="Self.WaybillTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WaybillTemplateKagent" Type="Self.WaybillTemplateKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillTemplateKagent">
               <PropertyRef Name="WaybillTemplateId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7886,6 +7907,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="WayBillSvc" EntityType="Self.WayBillSvc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WaybillTemplate" EntityType="Self.WaybillTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WaybillTemplateDet" EntityType="Self.WaybillTemplateDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaybillTemplateKagent" EntityType="Self.WaybillTemplateKagent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillTmc" EntityType="Self.WayBillTmc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WeighingScales" EntityType="Self.WeighingScales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WMatTurn" EntityType="Self.WMatTurn" Schema="dbo" store:Type="Tables" />
@@ -9589,10 +9611,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
           </AssociationSet>
-          <AssociationSet Name="FK_WaybillTemplate_Kagent" Association="Self.FK_WaybillTemplate_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
-          </AssociationSet>
           <AssociationSet Name="FK_WaybillTemplate_PriceTypes" Association="Self.FK_WaybillTemplate_PriceTypes">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
@@ -9604,6 +9622,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_WaybillTemplateDet_WaybillTemplate" Association="Self.FK_WaybillTemplateDet_WaybillTemplate">
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillTemplateKagent_Kagent" Association="Self.FK_WaybillTemplateKagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillTemplateKagent" EntitySet="WaybillTemplateKagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillTemplateKagent_WaybillTemplate" Association="Self.FK_WaybillTemplateKagent_WaybillTemplate">
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+            <End Role="WaybillTemplateKagent" EntitySet="WaybillTemplateKagent" />
           </AssociationSet>
           <AssociationSet Name="FK_WBDAP_CARDID" Association="Self.FK_WBDAP_CARDID">
             <End Role="DiscCards" EntitySet="DiscCards" />
@@ -11219,18 +11245,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetPriceListDet" ReturnType="Collection(BaseModel.GetPriceListDet_Result)">
           <Parameter Name="pl_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="WaybillTemplate" EntityType="BaseModel.WaybillTemplate" />
           <EntitySet Name="WaybillTemplateDet" EntityType="BaseModel.WaybillTemplateDet" />
-          <AssociationSet Name="FK_WaybillTemplate_Kagent" Association="BaseModel.FK_WaybillTemplate_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
-          </AssociationSet>
           <AssociationSet Name="FK_WaybillTemplateDet_Materials" Association="BaseModel.FK_WaybillTemplateDet_Materials">
             <End Role="Materials" EntitySet="Materials" />
-            <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WaybillTemplateDet_WaybillTemplate" Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate">
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
           </AssociationSet>
           <EntitySet Name="v_WaybillTemplateDet" EntityType="BaseModel.v_WaybillTemplateDet" />
@@ -11258,10 +11275,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_WAYBILLD_REFERENCE_PRICETYP" Association="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="WaybillDet" EntitySet="WaybillDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WaybillTemplate_PriceTypes" Association="BaseModel.FK_WaybillTemplate_PriceTypes">
-            <End Role="PriceTypes" EntitySet="PriceTypes" />
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
           </AssociationSet>
           <FunctionImport Name="GetDiscount" IsComposable="true" ReturnType="Collection(BaseModel.GetDiscount_Result)">
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
@@ -11291,8 +11304,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
           </AssociationSet>
           <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+          <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="WaybillTemplate" EntityType="BaseModel.WaybillTemplate" />
+          <AssociationSet Name="FK_WaybillTemplate_PriceTypes" Association="BaseModel.FK_WaybillTemplate_PriceTypes">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillTemplateDet_WaybillTemplate" Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate">
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+            <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
+          </AssociationSet>
+          <AssociationSet Name="WaybillTemplateKagent" Association="BaseModel.WaybillTemplateKagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -14413,10 +14439,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="FOPId" Type="Int32" />
-          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplate_Kagent" FromRole="Kagent" ToRole="WaybillTemplate" />
           <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
           <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
+          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -18534,20 +18560,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="LastOutPrice" Nullable="true" Precision="15" Scale="4" />
           <Property Type="Decimal" Name="GrpNum" Nullable="true" Precision="5" Scale="1" />
         </ComplexType>
-        <EntityType Name="WaybillTemplate">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="KaId" Type="Int32" />
-          <Property Name="PTypeId" Type="Int32" />
-          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WaybillTemplate_Kagent" FromRole="WaybillTemplate" ToRole="Kagent" />
-          <NavigationProperty Name="WaybillTemplateDet" Relationship="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" FromRole="WaybillTemplate" ToRole="WaybillTemplateDet" />
-          <Property Name="Num" Type="Int32" />
-          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="WaybillTemplate" ToRole="PriceTypes" />
-        </EntityType>
         <EntityType Name="WaybillTemplateDet">
           <Key>
             <PropertyRef Name="Id" />
@@ -18556,21 +18568,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WaybillTemplateId" Type="Guid" Nullable="false" />
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WaybillTemplateDet_Materials" FromRole="WaybillTemplateDet" ToRole="Materials" />
-          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" FromRole="WaybillTemplateDet" ToRole="WaybillTemplate" />
           <Property Name="Num" Type="Int32" />
+          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" FromRole="WaybillTemplateDet" ToRole="WaybillTemplate" />
         </EntityType>
-        <Association Name="FK_WaybillTemplate_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillTemplate">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_WaybillTemplateDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
           <End Type="BaseModel.WaybillTemplateDet" Role="WaybillTemplateDet" Multiplicity="*" />
@@ -18580,20 +18580,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="WaybillTemplateDet">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WaybillTemplateDet_WaybillTemplate">
-          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.WaybillTemplateDet" Role="WaybillTemplateDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WaybillTemplate">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="WaybillTemplateDet">
-              <PropertyRef Name="WaybillTemplateId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -18701,18 +18687,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="WaybillDet">
               <PropertyRef Name="PtypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WaybillTemplate_PriceTypes">
-          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PriceTypes">
-              <PropertyRef Name="PTypeId" />
-            </Principal>
-            <Dependent Role="WaybillTemplate">
-              <PropertyRef Name="PTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -18834,6 +18808,49 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="OnValue" Nullable="false" Precision="15" Scale="4" />
           <Property Type="Int32" Name="DiscountType" Nullable="false" />
         </ComplexType>
+        <EntityType Name="WaybillTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PTypeId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="WaybillTemplate" ToRole="PriceTypes" />
+          <NavigationProperty Name="WaybillTemplateDet" Relationship="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" FromRole="WaybillTemplate" ToRole="WaybillTemplateDet" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.WaybillTemplateKagent" FromRole="WaybillTemplate" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_WaybillTemplate_PriceTypes">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="WaybillTemplate">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillTemplateDet_WaybillTemplate">
+          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WaybillTemplateDet" Role="WaybillTemplateDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillTemplateDet">
+              <PropertyRef Name="WaybillTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="WaybillTemplateKagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -23813,18 +23830,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="WaybillTemplate">
-            <EntityTypeMapping TypeName="BaseModel.WaybillTemplate">
-              <MappingFragment StoreEntitySet="WaybillTemplate">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="WaybillTemplateDet">
             <EntityTypeMapping TypeName="BaseModel.WaybillTemplateDet">
               <MappingFragment StoreEntitySet="WaybillTemplateDet">
@@ -23919,6 +23924,25 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="WaybillTemplate">
+            <EntityTypeMapping TypeName="BaseModel.WaybillTemplate">
+              <MappingFragment StoreEntitySet="WaybillTemplate">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="WaybillTemplateKagent" TypeName="BaseModel.WaybillTemplateKagent" StoreEntitySet="WaybillTemplateKagent">
+            <EndProperty Name="WaybillTemplate">
+              <ScalarProperty Name="Id" ColumnName="WaybillTemplateId" />
+            </EndProperty>
+            <EndProperty Name="Kagent">
+              <ScalarProperty Name="KaId" ColumnName="KagentId" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

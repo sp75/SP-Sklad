@@ -66,6 +66,17 @@ namespace SP_Sklad.WBForm
                 WaybillTemplateBS.DataSource = wbt;
             }
 
+            foreach (var item in _db.Kagent.Where(w => w.Deleted == 0 && (w.Archived == 0 || w.Archived == null)).OrderBy(o => o.Name).Select(s => new
+            {
+                s.KaId,
+                s.Name,
+                IsWork = s.WaybillTemplate.Any(a => a.Id == _wbt_id),
+                s.PriceList
+            }))
+            {
+                checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
+            }
+
             GetDetail();
 
             MatGridView.ExpandAllGroups();
@@ -73,6 +84,14 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            var wbt = _db.WaybillTemplate.Find(_wbt_id);
+            wbt.Kagent.Clear();
+
+            foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+            {
+                var kaid = (int)item.Value;
+                wbt.Kagent.Add(_db.Kagent.Find(kaid));
+            }
 
             _db.SaveChanges();
             current_transaction.Commit();
@@ -323,5 +342,6 @@ namespace SP_Sklad.WBForm
                 this.TreePopupMenu.ShowPopup(p2);
             }
         }
+     
     }
 }

@@ -329,6 +329,11 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 15;
                             break;
 
+                        case 96:
+                            waybillTemplateUserControl1.GetDataList();
+                            extDirTabControl.SelectedTabPageIndex = 16;
+                            break;
+
                     }
                     break;
 
@@ -496,6 +501,10 @@ namespace SP_Sklad.MainTabs
                         case 91:
                             result = new frmKaAccountEdit((KAgentAccountGridView.GetFocusedRow() as v_KAgentAccount).AccId).ShowDialog();
                             break;
+
+                        case 96:
+                            result = waybillTemplateUserControl1.EditFocusedRow();
+                            break;
                     }
                     break;
 
@@ -612,6 +621,10 @@ namespace SP_Sklad.MainTabs
 
                         case 91:
                             new frmKaAccountEdit().ShowDialog();
+                            break;
+
+                        case 96:
+                            waybillTemplateUserControl1.AddNewItem();
                             break;
 
                     }
@@ -773,6 +786,11 @@ namespace SP_Sklad.MainTabs
                                 var acc_id = (KAgentAccountGridView.GetFocusedRow() as v_KAgentAccount).AccId;
                                 db.DeleteWhere<KAgentAccount>(w => w.AccId == acc_id);
                                 break;
+
+                            case 96:
+                                waybillTemplateUserControl1.DeleteFocusedRow();
+                                break;
+
                         }
                         break;
 

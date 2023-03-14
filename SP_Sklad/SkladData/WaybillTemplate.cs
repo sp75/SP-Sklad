@@ -17,17 +17,17 @@ namespace SP_Sklad.SkladData
         public WaybillTemplate()
         {
             this.WaybillTemplateDet = new HashSet<WaybillTemplateDet>();
+            this.Kagent = new HashSet<Kagent>();
         }
     
         public System.Guid Id { get; set; }
+        public Nullable<int> Num { get; set; }
         public string Name { get; set; }
-        public Nullable<int> KaId { get; set; }
         public Nullable<int> PTypeId { get; set; }
         public string Notes { get; set; }
-        public Nullable<int> Num { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
-        public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
+        public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

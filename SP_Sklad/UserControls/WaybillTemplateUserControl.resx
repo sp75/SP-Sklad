@@ -120,12 +120,6 @@
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>62</value>
-  </metadata>
-  <metadata name="WaybillTemplateBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>139, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="barButtonItem14.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -182,6 +176,48 @@
         xHJ3y1XdW3SiBa981oyC8ibkftKIzH82IOPYNaQeqcd6MmVWGHshlntDsAh/5CuA9IKEkJ6Q+SBhRmLy
         FL/Qr6fNi+TyMyEotxzPbSxDYMZH8E89jtmJRzFj3WFMXfM+nozZj988vRRPzliORx4PqOCzN60C7yJB
         vgtqzpAfk5948VMvfjYE+bv07uCv4f8HjPkfuSUW+69b9DwAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAjlJREFUOE+N
+        Ul9I02EU/WaB1aMYSUIFqdBLCpmErJdenCx6MKxGf2BFBYPMyB5UiNyL2MgkGP3DRTOhpVHhiMSHFSZq
+        LBvWaDSz1fq3tmpMWinaaefut8qw8sLl+7bfd84999yr/gx3xIXG91VoCR0G768+haB9ml8s68xBuacI
+        Wx+WYZd/IwxDJdjWX4GWEdv8iAobBrG41gaT04Tl9XlY2ZqLNY58FFzPA8n17dZ/E21oGoHa3Y8zfWEY
+        7QFUnu3GIstOLKnJhe7AA0nt6dxRcuIRSk/5UeN+C/twFK6xBMrt4/JfhsDY7EX7nbHZRJmKBF7wfYD7
+        dRKOx3FY78dQceml5NJar6hjkcIjA1hYdfsXyYqGUdx8MYF7sUmp2ub9jKN9EWx3heVkEkgQv4/j+2wC
+        6e2cklztLIa554mAKZ9KLj9NYJ/zGZTxFjzRbwhOzyC7suu3NlLSCLZPmsVxktT3PgenYu0JIjA1IydB
+        jXej8jtNoFVlZtl0QtAcN8no1p5cj6H4O3giSZFddzWAbL1DfGILvAsBAU2xatnAujebcShkwP7gJtmB
+        ouPFYio9IVCtOy+tkYB3xap8zK1jcgO3eEvlJOGCY1nYceW0TIMEnFRHIAH/1+k0AR9QQWtyjyTvXGUq
+        KusuEAX0ggQcLYH0IsfQCf3eG2kCdTDlgZYkYGV6QPDAx4i47vsy9dMDAc4ZKYIMWGdeBUvHMHrDE7Bc
+        9P0HmAlNBSu3dQ0iv/qa9Pl3oFI/AFCw6DgtgoYhAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>62</value>
+  </metadata>
+  <metadata name="WaybillTemplateBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>139, 17</value>
+  </metadata>
+  <metadata name="WaybillTemplateDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>308, 16</value>
+  </metadata>
+  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
+        ////////////////////////////////////////////////////////////////OTmcGBiU////////
+        ////////////////////////////////WlqcEBB7nJzOCBilACnvCCneMTmc////////////////////
+        ////////rbXOEBiUAAilnJy1ISGlUpz/GFr/ADH/CCHGa2ut////////////////////SkqcABCtABC9
+        c3ut////////GDGtc9b/GFL/ADH/CBitpaXG////////paW9CBiUIUrnCCnOUlKU////////////////
+        KUq9hN7/IVr/CDn/CBClra3OOUKUABi9KWv/IVLvMTGM////////////////////////MVrGhOf/KWv/
+        EEL/CBitCDHvOYT/OXP3GCGM////////////////////////////////OWPGjO//OXv/IVL/QoT/Upz/
+        ECGc////////////////////////////////hITGECnGSoz/jPf/UpT/Qoz/ECGt////////////////
+        ////////////////MTm9MVrvSoT/Qnv/Y6X/lPf/a73/KVLvOUKc////////////////////c3vWKUrW
+        WpT/Y5z/WpT/e87/jOf/OWPee87/hN7/OWvvQkql////////////////OUrGWpT/c63/c63/lO//jN7/
+        QnPva2vGjIzGUozelPf/UpT3SlKl////////////////OUrGa6X/nPf/hNb/Woz3QlK9////////////
+        Qlq9c8b3e9b/Umu1////////////////QmPOe7X/c63/OULO////////////////////jIzOMVK9Y63v
+        QlKt////////////////OUrGMULO////////////////////////////////lJTGMTmtvb3O////////
+        ////////////////////////////////////////////////////////
 </value>
   </data>
 </root>
