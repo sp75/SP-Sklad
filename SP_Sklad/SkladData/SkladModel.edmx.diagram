@@ -360,6 +360,11 @@
         <AssociationConnector Association="BaseModel.FK_WaybillTemplate_PriceTypes" />
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" />
         <AssociationConnector Association="BaseModel.WaybillTemplateKagent" />
+        <EntityTypeShape EntityType="BaseModel.MaterialType" Width="1.5" PointX="33.375" PointY="25.75" />
+        <EntityTypeShape EntityType="BaseModel.KAgentMatPrices" Width="1.5" PointX="38.5" PointY="1" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_Materials" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_PriceTypes" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

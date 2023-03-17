@@ -19,6 +19,7 @@ using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using SkladEngine.DBFunction;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -1228,56 +1229,35 @@ namespace SP_Sklad.MainTabs
                 case 3:
                     break;
 
-                    /*  case 4: switch (focused_tree_node.Id)
-                          {
-                              case 25:
-                                  new frmWarehouseEdit().ShowDialog();
-                                  break;
+                case 4:
+                    switch (focused_tree_node.FunId)
+                    {
+                        case 96:
+                            using (var _db = DB.SkladBase())
+                            {
+                                var source_template = _db.WaybillTemplate.Find(waybillTemplateUserControl1.wbt_row.Id);
 
-                              case 11: new frmBanksEdit().ShowDialog();
-                                  break;
+                                var new_template = _db.WaybillTemplate.Add(new WaybillTemplate
+                                {
+                                    Id = Guid.NewGuid(),
+                                    Name = "Copy_" + source_template.Name,
+                                    Num = _db.WaybillTemplate.Count() + 1,
+                                    Notes = source_template.Notes,
+                                    WaybillTemplateDet = _db.WaybillTemplateDet.Where(w => w.WaybillTemplateId == waybillTemplateUserControl1.wbt_row.Id).ToList()
+                                    .Select(s => new WaybillTemplateDet
+                                    {
+                                        Id = Guid.NewGuid(),
+                                        MatId = s.MatId,
+                                        Num = s.Num
+                                    }).ToList()
+                                });
+                                _db.SaveChanges();
 
-                              case 2:
-                                  new frmMeasuresEdit().ShowDialog();
-                                  break;
-
-                              case 40:
-                                  new frmPricetypesEdit().ShowDialog();
-                                  break;
-
-                              case 12:
-                                  new frmAccountTypeEdit().ShowDialog();
-                                  break;
-
-                              case 43:
-                                  new frmCountriesEdit().ShowDialog();
-                                  break;
-
-                              case 102:
-                                  new frmChargeTypeEdit().ShowDialog();
-                                  break;
-
-                              case 64: new frmCashdesksEdit().ShowDialog();
-                                  break;
-
-                              case 42:
-                                  new frmMatRecipe(2).ShowDialog();
-                                  break;
-
-                              case 53:
-                                  new frmMatRecipe(1).ShowDialog();
-                                  break;
-
-                              case 112:
-                                  new frmTechProcessEdit().ShowDialog();
-                                  break;
-
-                              case 115:
-                                  new frmRouteEdit().ShowDialog();
-                                  break;
-
-                          }
-                          break;*/
+                                new frmWaybillTemplate(new_template.Id).ShowDialog();
+                            }
+                            break;
+                    }
+                    break;
             }
 
             RefrechItemBtn.PerformClick();

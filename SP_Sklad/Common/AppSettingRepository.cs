@@ -81,6 +81,28 @@ namespace SP_Sklad.Common
         }
         #endregion
 
+        public int WBOutRoundingMethod
+        {
+            get
+            {
+                var v = Get("WBOutRoundingMethod");
+                return string.IsNullOrEmpty(v) ? 0 : Convert.ToInt32(v);
+            }
+            set { Set("WBOutRoundingMethod", value); }
+        }
+
+        public int WBOutPriceRoundUpTo
+        {
+            get
+            {
+                var v = Get("WBOutPriceRoundUpTo");
+                return string.IsNullOrEmpty(v) ? 0 : Convert.ToInt32(v);
+            }
+            set { Set("WBOutPriceRoundUpTo", value); }
+        }
+
+        
+
 
         #region Validation
 

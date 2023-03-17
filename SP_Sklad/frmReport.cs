@@ -436,11 +436,11 @@ namespace SP_Sklad
             {
                 Height += OnDateGroupBox.Height;
             }
- 
+
             if (MatGroupBox.Visible)
             {
-      Height += MatGroupBox.Height;
-               
+                Height += MatGroupBox.Height;
+
 
                 if (_rep_id == 9 || _rep_id == 19 || _rep_id == 15)
                 {

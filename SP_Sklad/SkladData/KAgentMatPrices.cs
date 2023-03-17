@@ -12,15 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WaybillTemplateDet
+    public partial class KAgentMatPrices
     {
-        public System.Guid Id { get; set; }
-        public System.Guid WaybillTemplateId { get; set; }
+        public int KaId { get; set; }
         public int MatId { get; set; }
-        public Nullable<int> Num { get; set; }
-        public string Notes { get; set; }
+        public decimal OnValue { get; set; }
+        public int PricingType { get; set; }
+        public int ValueType { get; set; }
+        public int PTypeId { get; set; }
     
+        public virtual Kagent Kagent { get; set; }
         public virtual Materials Materials { get; set; }
-        public virtual WaybillTemplate WaybillTemplate { get; set; }
+        public virtual PriceTypes PriceTypes { get; set; }
     }
 }

@@ -40,5 +40,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> DateModified { get; set; }
         public bool AutoCalcRecipe { get; set; }
         public string RawMaterialTypeName { get; set; }
+        public Nullable<int> TypeId { get; set; }
+        public string TypeName { get; set; }
     }
 }

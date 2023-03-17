@@ -723,6 +723,36 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
+        public static void PrintWaybillTemplate(Guid id, BaseEntities db, string template_name)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var pl = db.WaybillTemplate.Where(w => w.Id == id).AsNoTracking().ToList();
+            var pl_d = db.v_WaybillTemplateDet.Where(w => w.WaybillTemplateId == id).OrderBy(o => o.Num).ToList();
+
+            var mat_grp = pl_d.GroupBy(g => new { g.GrpNum, g.GrpName }).Select(s => new
+            {
+                s.Key.GrpName,
+                s.Key.GrpNum
+            }).OrderBy(o => o.GrpNum).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "GrpName",
+                fk = "GrpName",
+                master_table = "MatGroup",
+                child_table = "PriceListDet"
+            });
+
+            dataForReport.Add("PriceList", pl);
+            dataForReport.Add("PriceListDet", pl_d);
+            dataForReport.Add("MatGroup", mat_grp);
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, template_name);
+        }
+
         private class ProductionPlansReportRep
         {
             public string MatName { get; set; }

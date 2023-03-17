@@ -1127,7 +1127,7 @@ namespace SP_Sklad.MainTabs
 
             var remain_in_wh = DB.SkladBase().MatRemainByWh(wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
-            var mat_price = DB.SkladBase().GetMatPrice(wh_mat.MatId, wb.CurrId, p_type).FirstOrDefault();
+            var mat_price = DB.SkladBase().GetMatPrice(wh_mat.MatId, wb.CurrId, p_type, wb.KaId).FirstOrDefault();
 
             var item = custom_mat_list.FirstOrDefault(w => w.MatId == wh_mat.MatId);
             if (item == null)

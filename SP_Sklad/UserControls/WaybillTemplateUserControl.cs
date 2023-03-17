@@ -1,4 +1,5 @@
-﻿using SP_Sklad.Common;
+﻿using DevExpress.XtraEditors;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBForm;
 using System;
@@ -47,7 +48,7 @@ namespace SP_Sklad.UserControls
 
         public void GetDataList()
         {
-            WaybillTemplateBS.DataSource = DB.SkladBase().WaybillTemplate.OrderBy(o=> o.Num).ToList();
+            WaybillTemplateBS.DataSource = DB.SkladBase().WaybillTemplate.AsNoTracking().OrderBy(o=> o.Num).ToList();
         }
 
         public DialogResult EditFocusedRow()
@@ -77,7 +78,10 @@ namespace SP_Sklad.UserControls
 
         private void PriceListGridView_DoubleClick(object sender, EventArgs e)
         {
-            EditFocusedRow();
+          if(  EditFocusedRow() == DialogResult.OK)
+            {
+                GetDataList();
+            }
         }
 
         private void WaybillTemplateGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -131,7 +135,7 @@ namespace SP_Sklad.UserControls
                     ++wb_count;
                 }
 
-                MessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
+                XtraMessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
             }
         }
     }

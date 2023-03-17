@@ -692,7 +692,7 @@ namespace SP_Sklad.WBForm
                 {
                     disc_card = frm.cart;
 
-                    if (disc_card.KaId != null)
+                    if (disc_card?.KaId != null)
                     {
                         wb.KaId = disc_card.KaId;
                         KagentComboBox.EditValue = disc_card.KaId;
@@ -789,13 +789,14 @@ namespace SP_Sklad.WBForm
                     e.TotalValue = Math.Round( amount_sum + ext_sum , 2);
                 }
             }
-            
         }
 
         private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
             {
+                KagentComboBox.ClosePopup();
+
                 KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             }
         }
@@ -843,43 +844,6 @@ namespace SP_Sklad.WBForm
             if (wb_template != null)
             {
                 ExecuteDocument.ExecuteWaybillTemplate(wb_template.Value, wb, _db);
-
-                /*  var p_type = _db.Kagent.Find(wb.KaId).PTypeId ?? _db.PriceTypes.First(w => w.Def == 1).PTypeId;
-
-                  var list = _db.WaybillTemplateDet.Where(w => w.WaybillTemplateId == wb_template).OrderBy(o => o.Num).ToList();
-                  var num = wb.WaybillDet.Count();
-                  foreach (var item in list)
-                  {
-                      var mat_price = DB.SkladBase().GetMatPrice(item.MatId, wb.CurrId, p_type).FirstOrDefault();
-                      var base_price = mat_price?.Price != null ? Math.Round(mat_price.Price ?? 0, 4) : 0;
-
-                      var dis = DB.SkladBase().GetDiscount(wb.KaId, item.MatId).FirstOrDefault();
-                      var discount = dis.DiscountType == 0 ? dis.Discount : (base_price > 0 ? (dis.Discount / base_price * 100) : 0);
-
-                      var wbd = new WaybillDet
-                      {
-                          WbillId = wb.WbillId,
-                          Num = ++num,
-                          OnDate = wb.OnDate,
-                          MatId = item.MatId,
-                          WId = item.Materials.WId,
-                          Amount = 0,
-                          Price = base_price - (base_price * (discount ?? 0) / 100),
-                          PtypeId = p_type,
-                          Discount = discount,
-                          Nds = wb.Nds,
-                          CurrId = wb.CurrId,
-                          OnValue = wb.OnValue,
-                          BasePrice = base_price,
-                          PosKind = 0,
-                          PosParent = 0,
-                          DiscountKind = disc_card != null ? 2 : (discount > 0 ? 1 : 0),
-                          WayBillDetAddProps = disc_card != null ? new WayBillDetAddProps { CardId = disc_card.CardId } : null
-                      };
-                      _db.WaybillDet.Add(wbd);
-
-                  }
-                  _db.SaveChanges();*/
 
                 RefreshDet();
             }

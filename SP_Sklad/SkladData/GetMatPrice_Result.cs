@@ -17,6 +17,5 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Price { get; set; }
         public Nullable<int> CurrId { get; set; }
         public string CurrName { get; set; }
-        public Nullable<double> Dis { get; set; }
     }
 }

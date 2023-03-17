@@ -325,9 +325,12 @@ namespace SP_Sklad
             }
         }
 
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmWaybillTemplate(new Guid("36FA79EA-C651-4911-ADD9-B91C2266F56B")).ShowDialog();
+            using (var wb_in = new frmWayBillOut(-16, null))
+            {
+                wb_in.ShowDialog();
+            }
         }
     }
 }

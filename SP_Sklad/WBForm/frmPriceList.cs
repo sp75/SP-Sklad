@@ -316,7 +316,7 @@ namespace SP_Sklad.WBForm
         private decimal GetPrice(int? mat_id)
         {
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
-            var mat_price = _db.GetMatPrice(mat_id, pl.CurrId, p_type).FirstOrDefault();
+            var mat_price = _db.GetMatPrice(mat_id, pl.CurrId, p_type, -1).FirstOrDefault();
 
             return mat_price != null ? (mat_price.Price != null ? mat_price.Price.Value : 0.00m) : 0.00m;
         }

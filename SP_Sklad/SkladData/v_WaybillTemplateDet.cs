@@ -22,5 +22,7 @@ namespace SP_Sklad.SkladData
         public System.Guid WaybillTemplateId { get; set; }
         public System.Guid Id { get; set; }
         public int MatId { get; set; }
+        public string MsrName { get; set; }
+        public string Notes { get; set; }
     }
 }

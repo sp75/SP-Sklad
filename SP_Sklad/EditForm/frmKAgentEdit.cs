@@ -39,14 +39,15 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Договір", ImgIdx = 10, TabIdx = 12 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Додаткова інформація", ImgIdx = 0, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Документ", ImgIdx = 5, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Додаткова інформація", ImgIdx = 0, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Ціноутворення", ImgIdx = 16, TabIdx = 13 });
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Знижки", ImgIdx = 1, TabIdx = 3 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Контактна інформація", ImgIdx = 2, TabIdx = 4 });
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 5, Text = "Контактні особи", ImgIdx = 2, TabIdx = 5 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Рахунки", ImgIdx = 3, TabIdx = 6 });
-            tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
+            tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Договір", ImgIdx = 10, TabIdx = 12 });
+            tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
             TreeListBS.DataSource = tree;
 
 
@@ -174,10 +175,21 @@ namespace SP_Sklad.EditForm
                 lookUpEdit7.Properties.DataSource = lookUpEdit5.Properties.DataSource;
                 repositoryItemLookUpEdit1.DataSource = lookUpEdit5.Properties.DataSource;
 
+                repositoryItemLookUpEdit4.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).Select(s=> new { s.MatId, s.Name}).ToList();
+                repositoryItemLookUpEdit3.DataSource = new List<object>() { new { Id = 0, Name = "Націнка" }, new { Id = 1, Name = "Знижка" }, new { Id = 2, Name = "Фіксована ціна" } };
+                repositoryItemLookUpEdit2.DataSource = lookUpEdit5.Properties.DataSource;
+                repositoryItemLookUpEdit5.DataSource = PTypeEdit.Properties.DataSource;
+
                 GetAccounts();
                 GetPersons();
                 GetDiscountList();
+                GetMatPrices();
             }
+        }
+
+        private void GetMatPrices()
+        {
+            KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.Where(w => w.KaId == _ka.KaId).ToList();
         }
 
         private void GetPersons()
@@ -430,21 +442,6 @@ namespace SP_Sklad.EditForm
             GetDiscountList();
 
             DirTreeList.FocusedNode = DirTreeList.FindNodeByFieldValue("DataSetId", mat_disc.DiscId);
-
-            /*   DiscountList->Append();
-               DiscountListIMG_IDX->Value = 0;
-               MemTableEh1->Append();
-               MemTableEh1ImgIdx->Value = 7;
-               MemTableEh1Parent_ID->Value = 3;
-               //	  MemTableEh1Text->Value = "("+DiscountListONVALUE->AsString+"%) "+DiscountListNAME->Value ;
-               MemTableEh1TabIdx->Value = 10;
-               MemTableEh1DataSetID->Value = DiscountListDISCID->Value;
-               MemTableEh1->Post();*/
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void checkEdit5_CheckedChanged(object sender, EventArgs e)
@@ -844,21 +841,49 @@ namespace SP_Sklad.EditForm
                 AspNetUserLookUpEdit.EditValue = null;
             }
         }
+
+        private void simpleButton17_Click_1(object sender, EventArgs e)
+        {
+            KAgentMatPricesGridView.AddNewRow();
+            KAgentMatPricesGridView.ShowEditForm();
+        }
+
+        private void simpleButton11_Click_1(object sender, EventArgs e)
+        {
+            KAgentMatPricesGridView.ShowEditForm();
+        }
+
+        private void simpleButton4_Click_2(object sender, EventArgs e)
+        {
+            KAgentMatPricesGridView.DeleteRow(KAgentMatPricesGridView.FocusedRowHandle);
+        }
+
+        private void KAgentMatPricesBS_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            e.NewObject = _db.KAgentMatPrices.Add(new KAgentMatPrices { KaId = _ka_id.Value });
+        }
+
+        private void KAgentMatPricesGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            _db.KAgentMatPrices.Remove((e.Row as KAgentMatPrices));
+        }
+
+
         /*
-       private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
-       {
-           if (checkedComboBoxEdit2.ContainsFocus)
-           {
-               _db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
+private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+{
+if (checkedComboBoxEdit2.ContainsFocus)
+{
+_db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
 
-               foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
-               {
-                   _db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
-               }
+foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+{
+_db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
+}
 
-               _db.SaveChanges();
-           }
-       }*/
+_db.SaveChanges();
+}
+}*/
 
     }
 }

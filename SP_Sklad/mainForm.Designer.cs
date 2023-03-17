@@ -233,7 +233,7 @@
             this.barButtonItem13,
             this.barButtonItem2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 32;
+            this.barManager1.MaxItemId = 33;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -250,13 +250,13 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.Text = "Tools";
             this.bar1.Visible = global::SP_Sklad.Properties.Settings.Default.main_toolbar;
@@ -439,6 +439,7 @@
             this.barSubItem3.Caption = "Створити документ";
             this.barSubItem3.Id = 9;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
@@ -818,14 +819,16 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 31;
+            this.barButtonItem2.Caption = "Замовлення від кліента";
+            this.barButtonItem2.Id = 32;
+            this.barButtonItem2.ImageOptions.ImageIndex = 14;
             this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
             // 
             // mainForm
             // 

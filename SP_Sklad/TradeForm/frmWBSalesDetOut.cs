@@ -216,11 +216,12 @@ namespace SP_Sklad.WBDetForm
                 _wbd.Nds = _wb.Nds > 0 ? row.NDS : _wb.Nds;
                 _wbd.MatId = row.MatId;
 
-                var list_price = _db.GetMatPrice(row.MatId, _wb.CurrId, _wbd.PtypeId).FirstOrDefault();
+                var list_price = _db.GetMatPrice(row.MatId, _wb.CurrId, _wbd.PtypeId, _wb.KaId).FirstOrDefault();
                 if (list_price != null)
                 {
                     _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
                     BasePriceEdit.Value = _wbd.BasePrice.Value;
+                    PriceTypesEdit.EditValue = list_price.PType;
                 }
             }
 
@@ -413,6 +414,7 @@ namespace SP_Sklad.WBDetForm
             {
                 _wbd.BasePrice = list_price.Price != null ? Math.Round(list_price.Price.Value, 4) : 0;
                 BasePriceEdit.EditValue = _wbd.BasePrice;
+                PriceTypesEdit.EditValue = list_price.PType;
             }
         }
 

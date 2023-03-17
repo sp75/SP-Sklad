@@ -143,7 +143,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            PrintDoc.PrintWaybillTemplate(_wbt_id.Value, _db, "WaybillTemplate.xlsx");
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -273,7 +273,7 @@ namespace SP_Sklad.WBForm
 
         private void MatListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var mat = _db.v_Materials.Where(w=> w.Archived == 0).AsQueryable();
+            var mat = _db.v_Materials.Where(w=> w.Archived == 0 &&  w.TypeId == 1).AsQueryable();
 
             e.QueryableSource = mat;
         }
@@ -342,6 +342,16 @@ namespace SP_Sklad.WBForm
                 this.TreePopupMenu.ShowPopup(p2);
             }
         }
-     
+
+        private void WaybillTemplateDetGrid_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var wbtd = _db.WaybillTemplateDet.Find(focused_dr.Id);
+
+            if (e.Column.FieldName == "Notes")
+            {
+                wbtd.Notes = Convert.ToString(e.Value);
+            }
+            _db.SaveChanges();
+        }
     }
 }

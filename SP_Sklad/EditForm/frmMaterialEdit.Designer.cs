@@ -206,6 +206,7 @@
             this.MatBarCodeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -705,6 +706,7 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.labelControl25);
             this.panelControl1.Controls.Add(this.spinEdit1);
             this.panelControl1.Controls.Add(this.labelControl23);
             this.panelControl1.Controls.Add(this.labelControl12);
@@ -747,7 +749,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Size = new System.Drawing.Size(167, 22);
+            this.spinEdit1.Size = new System.Drawing.Size(86, 22);
             this.spinEdit1.StyleController = this.styleController1;
             this.spinEdit1.TabIndex = 54;
             // 
@@ -832,12 +834,12 @@
             // 
             // labelControl23
             // 
-            this.labelControl23.Location = new System.Drawing.Point(379, 85);
+            this.labelControl23.Location = new System.Drawing.Point(354, 85);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(100, 16);
+            this.labelControl23.Size = new System.Drawing.Size(125, 16);
             this.labelControl23.StyleController = this.styleController1;
             this.labelControl23.TabIndex = 52;
-            this.labelControl23.Text = "Десяткові знаки:";
+            this.labelControl23.Text = "Точність к-сті товару";
             // 
             // labelControl12
             // 
@@ -2021,6 +2023,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
             // 
+            // labelControl25
+            // 
+            this.labelControl25.Location = new System.Drawing.Point(577, 85);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(102, 16);
+            this.labelControl25.StyleController = this.styleController1;
+            this.labelControl25.TabIndex = 55;
+            this.labelControl25.Text = "знаків після коми";
+            // 
             // frmMaterialEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2295,5 +2306,6 @@
         private DevExpress.Utils.ImageCollection ImageList;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private DevExpress.XtraEditors.ButtonEdit NewBarCodeEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl25;
     }
 }

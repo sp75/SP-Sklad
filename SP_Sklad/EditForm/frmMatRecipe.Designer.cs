@@ -110,9 +110,11 @@
             this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.MatRecDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit9 = new DevExpress.XtraEditors.CalcEdit();
-            this.MatRecDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
@@ -158,8 +160,6 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeBindingSource)).BeginInit();
@@ -199,8 +199,9 @@
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
             this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).BeginInit();
@@ -224,7 +225,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -1047,6 +1047,30 @@
             this.panelControl7.Size = new System.Drawing.Size(577, 330);
             this.panelControl7.TabIndex = 49;
             // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Note", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Notes", true));
+            this.memoEdit1.Location = new System.Drawing.Point(99, 173);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(432, 61);
+            this.memoEdit1.TabIndex = 67;
+            // 
+            // MatRecDetBS
+            // 
+            this.MatRecDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecDet);
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(23, 173);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(57, 16);
+            this.labelControl21.StyleController = this.styleController1;
+            this.labelControl21.TabIndex = 66;
+            this.labelControl21.Text = "Примітка:";
+            // 
             // labelControl18
             // 
             this.labelControl18.Location = new System.Drawing.Point(254, 95);
@@ -1067,10 +1091,6 @@
             this.calcEdit9.Size = new System.Drawing.Size(149, 22);
             this.calcEdit9.StyleController = this.styleController1;
             this.calcEdit9.TabIndex = 64;
-            // 
-            // MatRecDetBS
-            // 
-            this.MatRecDetBS.DataSource = typeof(SP_Sklad.SkladData.MatRecDet);
             // 
             // labelControl19
             // 
@@ -1557,26 +1577,6 @@
             this.simpleButton8.Text = "Видалити";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(23, 173);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(57, 16);
-            this.labelControl21.StyleController = this.styleController1;
-            this.labelControl21.TabIndex = 66;
-            this.labelControl21.Text = "Примітка:";
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecDetBS, "Note", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Notes", true));
-            this.memoEdit1.Location = new System.Drawing.Point(99, 173);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(432, 61);
-            this.memoEdit1.TabIndex = 67;
-            // 
             // frmMatRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1639,8 +1639,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
             this.panelControl7.ResumeLayout(false);
             this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatLookUpEdit.Properties)).EndInit();
@@ -1665,7 +1666,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeAdditionalCostsView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

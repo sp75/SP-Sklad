@@ -36,6 +36,7 @@ namespace SP_Sklad.SkladData
             this.MatBarCode = new HashSet<MatBarCode>();
             this.WaybillTemplateDet = new HashSet<WaybillTemplateDet>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
+            this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
         }
     
         public int MatId { get; set; }
@@ -101,5 +102,6 @@ namespace SP_Sklad.SkladData
         public virtual RawMaterialType RawMaterialType { get; set; }
         public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
+        public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
     }
 }

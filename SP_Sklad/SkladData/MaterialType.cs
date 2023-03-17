@@ -12,15 +12,9 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class WaybillTemplateDet
+    public partial class MaterialType
     {
-        public System.Guid Id { get; set; }
-        public System.Guid WaybillTemplateId { get; set; }
-        public int MatId { get; set; }
-        public Nullable<int> Num { get; set; }
-        public string Notes { get; set; }
-    
-        public virtual Materials Materials { get; set; }
-        public virtual WaybillTemplate WaybillTemplate { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

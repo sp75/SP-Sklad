@@ -401,6 +401,7 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
@@ -2009,7 +2010,8 @@
             this.gridColumn79,
             this.gridColumn72,
             this.gridColumn111,
-            this.gridColumn112});
+            this.gridColumn112,
+            this.gridColumn113});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -2070,7 +2072,7 @@
             this.gridColumn28.FieldName = "MinReserv";
             this.gridColumn28.Name = "gridColumn28";
             this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 6;
+            this.gridColumn28.VisibleIndex = 7;
             this.gridColumn28.Width = 109;
             // 
             // ArchivedGridColumn
@@ -2093,7 +2095,7 @@
             this.gridColumn78.FieldName = "Weight";
             this.gridColumn78.Name = "gridColumn78";
             this.gridColumn78.Visible = true;
-            this.gridColumn78.VisibleIndex = 5;
+            this.gridColumn78.VisibleIndex = 6;
             // 
             // gridColumn23
             // 
@@ -2101,7 +2103,7 @@
             this.gridColumn23.FieldName = "GrpName";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 7;
+            this.gridColumn23.VisibleIndex = 8;
             // 
             // gridColumn79
             // 
@@ -2115,7 +2117,7 @@
             this.gridColumn72.FieldName = "WhName";
             this.gridColumn72.Name = "gridColumn72";
             this.gridColumn72.Visible = true;
-            this.gridColumn72.VisibleIndex = 8;
+            this.gridColumn72.VisibleIndex = 9;
             // 
             // gridColumn111
             // 
@@ -2123,7 +2125,7 @@
             this.gridColumn111.FieldName = "BarCode";
             this.gridColumn111.Name = "gridColumn111";
             this.gridColumn111.Visible = true;
-            this.gridColumn111.VisibleIndex = 4;
+            this.gridColumn111.VisibleIndex = 5;
             // 
             // gridColumn112
             // 
@@ -4308,6 +4310,14 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
+            // gridColumn113
+            // 
+            this.gridColumn113.Caption = "Тип матеріалу";
+            this.gridColumn113.FieldName = "TypeName";
+            this.gridColumn113.Name = "gridColumn113";
+            this.gridColumn113.Visible = true;
+            this.gridColumn113.VisibleIndex = 4;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4880,5 +4890,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
         public UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
     }
 }

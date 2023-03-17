@@ -251,7 +251,7 @@ namespace SP_Sklad.Common
             var num = wb.WaybillDet.Count();
             foreach (var item in list)
             {
-                var mat_price = _db.GetMatPrice(item.MatId, wb.CurrId, p_type).FirstOrDefault();
+                var mat_price = _db.GetMatPrice(item.MatId, wb.CurrId, p_type, wb.KaId).FirstOrDefault();
                 var base_price = mat_price?.Price != null ? Math.Round(mat_price.Price ?? 0, 4) : 0;
 
                 var dis = _db.GetDiscount(wb.KaId, item.MatId).FirstOrDefault();
@@ -266,7 +266,7 @@ namespace SP_Sklad.Common
                     WId = item.Materials.WId,
                     Amount = 0,
                     Price = base_price - (base_price * (discount ?? 0) / 100),
-                    PtypeId = p_type,
+                    PtypeId = mat_price.PType,
                     Discount = discount,
                     Nds = wb.Nds,
                     CurrId = wb.CurrId,
@@ -275,10 +275,10 @@ namespace SP_Sklad.Common
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = (discount > 0 ? 1 : 0),
-                    WayBillDetAddProps = null
+                    WayBillDetAddProps = null,
+                    Notes = item.Notes
                 };
                 _db.WaybillDet.Add(wbd);
-
             }
             _db.SaveChanges();
         }

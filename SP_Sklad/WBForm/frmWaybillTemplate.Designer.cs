@@ -65,10 +65,11 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.WaybillTemplateBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
+            this.WaybillTemplateBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.PTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
@@ -84,6 +85,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
@@ -103,7 +105,6 @@
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents2 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
-            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -112,8 +113,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotAmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
@@ -138,7 +140,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -333,6 +334,7 @@
             this.AddbarBtn.Id = 33;
             this.AddbarBtn.ImageOptions.ImageIndex = 2;
             this.AddbarBtn.Name = "AddbarBtn";
+            this.AddbarBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.AddbarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddbarBtn_ItemClick);
             // 
             // standaloneBarDockControl3
@@ -466,22 +468,31 @@
             this.panelControl1.Size = new System.Drawing.Size(1248, 123);
             this.panelControl1.TabIndex = 0;
             // 
+            // checkedComboBoxEdit1
+            // 
+            this.checkedComboBoxEdit1.EditValue = "";
+            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(520, 26);
+            this.checkedComboBoxEdit1.MenuManager = this.barManager1;
+            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
+            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.checkedComboBoxEdit1.Properties.IncrementalSearch = true;
+            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(360, 22);
+            this.checkedComboBoxEdit1.StyleController = this.styleController1;
+            this.checkedComboBoxEdit1.TabIndex = 57;
+            // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(12, 5);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(9, 16);
+            this.labelControl2.Size = new System.Drawing.Size(37, 16);
             this.labelControl2.StyleController = this.styleController1;
             this.labelControl2.TabIndex = 56;
-            this.labelControl2.Text = "#";
-            // 
-            // WaybillTemplateBS
-            // 
-            this.WaybillTemplateBS.DataSource = typeof(SP_Sklad.SkladData.WaybillTemplate);
+            this.labelControl2.Text = "Номер";
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(428, 5);
+            this.labelControl1.Location = new System.Drawing.Point(520, 5);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(119, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -496,9 +507,13 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.DisplayFormat.FormatString = "0.0000";
             this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(397, 22);
+            this.textEdit1.Size = new System.Drawing.Size(479, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 52;
+            // 
+            // WaybillTemplateBS
+            // 
+            this.WaybillTemplateBS.DataSource = typeof(SP_Sklad.SkladData.WaybillTemplate);
             // 
             // labelControl7
             // 
@@ -512,7 +527,8 @@
             // PTypeEdit
             // 
             this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillTemplateBS, "PTypeId", true));
-            this.PTypeEdit.Location = new System.Drawing.Point(428, 86);
+            this.PTypeEdit.Enabled = false;
+            this.PTypeEdit.Location = new System.Drawing.Point(520, 86);
             this.PTypeEdit.Name = "PTypeEdit";
             this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -530,7 +546,8 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(428, 64);
+            this.labelControl6.Enabled = false;
+            this.labelControl6.Location = new System.Drawing.Point(520, 64);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(77, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -540,12 +557,12 @@
             // BotAmountEdit
             // 
             this.BotAmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillTemplateBS, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.BotAmountEdit.Location = new System.Drawing.Point(124, 27);
+            this.BotAmountEdit.Location = new System.Drawing.Point(102, 27);
             this.BotAmountEdit.MenuManager = this.barManager1;
             this.BotAmountEdit.Name = "BotAmountEdit";
             this.BotAmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
             this.BotAmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.BotAmountEdit.Size = new System.Drawing.Size(285, 22);
+            this.BotAmountEdit.Size = new System.Drawing.Size(389, 22);
             this.BotAmountEdit.StyleController = this.styleController1;
             this.BotAmountEdit.TabIndex = 29;
             // 
@@ -553,7 +570,7 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(124, 3);
+            this.labelControl3.Location = new System.Drawing.Point(102, 5);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(45, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -570,7 +587,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.textEdit2.Properties.DisplayFormat.FormatString = "0";
             this.textEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit2.Size = new System.Drawing.Size(90, 22);
+            this.textEdit2.Size = new System.Drawing.Size(70, 22);
             this.textEdit2.StyleController = this.styleController1;
             this.textEdit2.TabIndex = 55;
             // 
@@ -625,11 +642,11 @@
             this.gridColumn2,
             this.gridColumn4,
             this.gridColumn5,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn3});
             this.WaybillTemplateDetGrid.GridControl = this.WaybillTemplateDetGridControl;
             this.WaybillTemplateDetGrid.Name = "WaybillTemplateDetGrid";
             this.WaybillTemplateDetGrid.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.WaybillTemplateDetGrid.OptionsBehavior.Editable = false;
             this.WaybillTemplateDetGrid.OptionsClipboard.AllowHtmlFormat = DevExpress.Utils.DefaultBoolean.True;
             this.WaybillTemplateDetGrid.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
             this.WaybillTemplateDetGrid.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.Append;
@@ -638,33 +655,37 @@
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.WaybillTemplateDetGrid.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.PriceListGrid_RowStyle);
             this.WaybillTemplateDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceListGrid_PopupMenuShowing);
+            this.WaybillTemplateDetGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillTemplateDetGrid_CellValueChanged);
             // 
             // colMatId
             // 
             this.colMatId.Caption = "Назва товару";
             this.colMatId.FieldName = "MatName";
             this.colMatId.Name = "colMatId";
+            this.colMatId.OptionsColumn.AllowEdit = false;
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 1;
-            this.colMatId.Width = 323;
+            this.colMatId.Width = 297;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Група";
             this.gridColumn2.FieldName = "GrpName";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 148;
+            this.gridColumn2.Width = 110;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Артикул";
             this.gridColumn4.FieldName = "Artikul";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 101;
+            this.gridColumn4.Width = 93;
             // 
             // gridColumn5
             // 
@@ -673,18 +694,29 @@
             this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn5.FieldName = "GrpNum";
             this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.OptionsColumn.AllowEdit = false;
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 70;
+            this.gridColumn5.Width = 64;
             // 
             // gridColumn1
             // 
             this.gridColumn1.Caption = "#";
             this.gridColumn1.FieldName = "Num";
             this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 0;
-            this.gridColumn1.Width = 37;
+            this.gridColumn1.Width = 34;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Примітка";
+            this.gridColumn3.FieldName = "Notes";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.Width = 97;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -857,19 +889,6 @@
             this.dragDropEvents2.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents2_DragOver);
             this.dragDropEvents2.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents2_DragDrop);
             // 
-            // checkedComboBoxEdit1
-            // 
-            this.checkedComboBoxEdit1.EditValue = "";
-            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(428, 26);
-            this.checkedComboBoxEdit1.MenuManager = this.barManager1;
-            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
-            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit1.Properties.IncrementalSearch = true;
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(360, 22);
-            this.checkedComboBoxEdit1.StyleController = this.styleController1;
-            this.checkedComboBoxEdit1.TabIndex = 57;
-            // 
             // frmWaybillTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,8 +918,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotAmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
@@ -927,7 +947,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1004,5 +1023,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.CalcEdit textEdit2;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

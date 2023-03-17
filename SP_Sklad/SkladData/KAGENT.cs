@@ -52,6 +52,7 @@ namespace SP_Sklad.SkladData
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
             this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
             this.WaybillTemplate = new HashSet<WaybillTemplate>();
+            this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
         }
     
         public int KaId { get; set; }
@@ -136,5 +137,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
         public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
+        public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
     }
 }
