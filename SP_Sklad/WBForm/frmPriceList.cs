@@ -38,8 +38,8 @@ namespace SP_Sklad.WBForm
         private void frmPriceList_Load(object sender, EventArgs e)
         {
             PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
-            PriceListlookUp.Properties.DataSource = DB.SkladBase().PriceList.Select(s => new { s.PlId, s.Name }).ToList();
             repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
 
             if (_pl_id == null)
             {
@@ -316,7 +316,8 @@ namespace SP_Sklad.WBForm
         private decimal GetPrice(int? mat_id)
         {
             int? p_type = PTypeEdit.EditValue == null || PTypeEdit.EditValue == DBNull.Value ? null : (int?)PTypeEdit.EditValue;
-            var mat_price = _db.GetMatPrice(mat_id, pl.CurrId, p_type, -1).FirstOrDefault();
+            int? ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? null : (int?)KagentComboBox.EditValue;
+            var mat_price = _db.GetMatPrice(mat_id, pl.CurrId, p_type, ka_id).FirstOrDefault();
 
             return mat_price != null ? (mat_price.Price != null ? mat_price.Price.Value : 0.00m) : 0.00m;
         }
@@ -414,14 +415,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            var f = _db.PriceListDet.Where(w => w.PlId == _pl_id && w.PlDetType == 0).ToList();
-            foreach (var item in f)
-            {
-                item.Price = GetPrice(item.MatId.Value);
-            }
 
-            _db.SaveChanges();
-            GetDetail();
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -600,22 +594,7 @@ namespace SP_Sklad.WBForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            int? PlId = PriceListlookUp.EditValue == null || PriceListlookUp.EditValue == DBNull.Value ? null : (int?)PriceListlookUp.EditValue;
-            if(PlId == null)
-            {
-                return;
-            }
 
-            foreach(var item in _db.PriceListDet.Where(w=> w.PlId == PlId))
-            {
-                var pld = _db.PriceListDet.Where(w => w.MatId == item.MatId && w.PlDetType == 0 && w.PlId == _pl_id).FirstOrDefault();
-                if(pld != null)
-                {
-                    pld.Price = item.Price;
-                }
-            }
-            _db.SaveChanges();
-            GetDetail();
         }
 
         private void PriceListGrid_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
@@ -651,6 +630,39 @@ namespace SP_Sklad.WBForm
             }
             _db.SaveChanges();
             GetDetail();
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var f = _db.PriceListDet.Where(w => w.PlId == _pl_id && w.PlDetType == 0).ToList();
+            int? ka_id = KagentComboBox.EditValue == null || KagentComboBox.EditValue == DBNull.Value ? null : (int?)KagentComboBox.EditValue;
+            foreach (var item in f)
+            {
+                item.Price = GetPrice(item.MatId.Value);
+                var dis = DB.SkladBase().GetDiscount(ka_id, item.MatId).FirstOrDefault();
+                var discount = dis.DiscountType == 0 ? dis.Discount : (item.Price > 0 ? (dis.Discount / item.Price * 100) : 0);
+                item.Discount = discount;
+            }
+
+            _db.SaveChanges();
+            GetDetail();
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = null;
+            }
+        }
+
+        private void KagentComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            var k = KagentComboBox.GetSelectedDataRow() as GetKagentList_Result;
+            if (k != null)
+            {
+                PTypeEdit.EditValue = k.PTypeId;
+            }
         }
     }
 }

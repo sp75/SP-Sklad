@@ -23,6 +23,7 @@ namespace SP_Sklad.SkladData
             this.PriceList = new HashSet<PriceList>();
             this.WaybillDet = new HashSet<WaybillDet>();
             this.WaybillTemplate = new HashSet<WaybillTemplate>();
+            this.KAgentMatGroupPrices = new HashSet<KAgentMatGroupPrices>();
             this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
         }
     
@@ -44,6 +45,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PriceList> PriceList { get; set; }
         public virtual ICollection<WaybillDet> WaybillDet { get; set; }
         public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
+        public virtual ICollection<KAgentMatGroupPrices> KAgentMatGroupPrices { get; set; }
         public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
     }
 }

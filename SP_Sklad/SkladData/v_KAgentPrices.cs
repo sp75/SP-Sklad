@@ -12,18 +12,17 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class KAgentMatPrices
+    public partial class v_KAgentPrices
     {
-        public System.Guid Id { get; set; }
-        public int KaId { get; set; }
-        public int MatId { get; set; }
+        public int EntityTyp { get; set; }
+        public int EntityId { get; set; }
         public decimal OnValue { get; set; }
         public int PricingType { get; set; }
         public int ValueType { get; set; }
         public int PTypeId { get; set; }
-    
-        public virtual Kagent Kagent { get; set; }
-        public virtual Materials Materials { get; set; }
-        public virtual PriceTypes PriceTypes { get; set; }
+        public int KaId { get; set; }
+        public string Name { get; set; }
+        public string PriceTypeName { get; set; }
+        public System.Guid Id { get; set; }
     }
 }

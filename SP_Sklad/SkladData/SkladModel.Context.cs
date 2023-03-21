@@ -223,6 +223,8 @@ namespace SP_Sklad.SkladData
         public DbSet<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public DbSet<WaybillTemplate> WaybillTemplate { get; set; }
         public DbSet<MaterialType> MaterialType { get; set; }
+        public DbSet<v_KAgentPrices> v_KAgentPrices { get; set; }
+        public DbSet<KAgentMatGroupPrices> KAgentMatGroupPrices { get; set; }
         public DbSet<KAgentMatPrices> KAgentMatPrices { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]

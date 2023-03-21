@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace SP_Sklad.Common
 {
-   public class ExecuteDocument
+    public class ExecuteDocument
     {
         public static Guid ExecuteRawMaterialManagement(Guid id, BaseEntities _db)
         {
@@ -75,7 +75,7 @@ namespace SP_Sklad.Common
                     rmm_det.PosId = wbd.PosId;
                 }
             }
-            
+
             var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
             if (ex_wb.ErrorMessage != "False")
             {
@@ -175,7 +175,7 @@ namespace SP_Sklad.Common
                 Commission = new List<Commission>() { new Commission { KaId = DBHelper.CurrentUser.KaId } }
             });
 
-          //  _db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
+            //  _db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
             _db.SetDocRel(id, wb.Id);
             _db.SaveChanges();
 
@@ -263,7 +263,7 @@ namespace SP_Sklad.Common
                     Num = ++num,
                     OnDate = wb.OnDate,
                     MatId = item.MatId,
-                    WId = item.Materials.WId,
+                    WId = item.WId ?? item.Materials.WId,
                     Amount = 0,
                     Price = base_price - (base_price * (discount ?? 0) / 100),
                     PtypeId = mat_price.PType,

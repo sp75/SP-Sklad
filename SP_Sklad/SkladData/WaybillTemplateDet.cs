@@ -19,6 +19,7 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public Nullable<int> Num { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> WId { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual WaybillTemplate WaybillTemplate { get; set; }

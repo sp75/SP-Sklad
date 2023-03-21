@@ -23,6 +23,7 @@ namespace SP_Sklad.EditForm
         private KADiscount k_discount { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private List<CatalogTreeList> tree { get; set; }
+        private v_KAgentPrices ka_price_row => KAgentPricesGridView.GetFocusedRow() as v_KAgentPrices;
 
         public frmKAgentEdit(int? KType =null, int? KaId = null)
         {
@@ -175,21 +176,27 @@ namespace SP_Sklad.EditForm
                 lookUpEdit7.Properties.DataSource = lookUpEdit5.Properties.DataSource;
                 repositoryItemLookUpEdit1.DataSource = lookUpEdit5.Properties.DataSource;
 
-                repositoryItemLookUpEdit4.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).Select(s=> new { s.MatId, s.Name}).ToList();
                 repositoryItemLookUpEdit3.DataSource = new List<object>() { new { Id = 0, Name = "Націнка" }, new { Id = 1, Name = "Знижка" }, new { Id = 2, Name = "Фіксована ціна" } };
                 repositoryItemLookUpEdit2.DataSource = lookUpEdit5.Properties.DataSource;
-                repositoryItemLookUpEdit5.DataSource = PTypeEdit.Properties.DataSource;
+
+                lookUpEdit12.Properties.DataSource = PTypeEdit.Properties.DataSource;
+                lookUpEdit10.Properties.DataSource = PTypeEdit.Properties.DataSource;
+                lookUpEdit13.Properties.DataSource = repositoryItemLookUpEdit3.DataSource;
+                lookUpEdit14.Properties.DataSource = lookUpEdit13.Properties.DataSource;
+                lookUpEdit8.Properties.DataSource = lookUpEdit5.Properties.DataSource;
+                lookUpEdit15.Properties.DataSource = lookUpEdit5.Properties.DataSource;
+                lookUpEdit9.Properties.DataSource = MatLookUpEdit.Properties.DataSource;
+                lookUpEdit11.Properties.DataSource = GroupLookUpEdit.Properties.DataSource;
 
                 GetAccounts();
                 GetPersons();
                 GetDiscountList();
-                GetMatPrices();
             }
         }
 
         private void GetMatPrices()
         {
-            KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.Where(w => w.KaId == _ka.KaId).ToList();
+            v_KAgentPricesBS.DataSource = _db.v_KAgentPrices.Where(w => w.KaId == _ka.KaId).AsNoTracking().ToList();
         }
 
         private void GetPersons()
@@ -278,7 +285,12 @@ namespace SP_Sklad.EditForm
             
             var focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as CatalogTreeList;
 
-            if (_ka != null && focused_tree_node.Id == 4)
+            if (focused_tree_node.Id == 3)
+            {
+                GetMatPrices();
+            }
+
+                if (_ka != null && focused_tree_node.Id == 4)
             {
                 DiscountGridControl.DataSource  = _db.DiscountList(_ka.KaId).ToList();
             }
@@ -844,46 +856,108 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton17_Click_1(object sender, EventArgs e)
         {
-            KAgentMatPricesGridView.AddNewRow();
-            KAgentMatPricesGridView.ShowEditForm();
+            KAgentPricesGridView.AddNewRow();
+            KAgentPricesGridView.ShowEditForm();
         }
 
         private void simpleButton11_Click_1(object sender, EventArgs e)
         {
-            KAgentMatPricesGridView.ShowEditForm();
+//            KAgentPricesGridView.ShowEditForm();
+
+            if(ka_price_row.EntityTyp == 0)
+            {
+                KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.FirstOrDefault(w=> w.KaId == _ka_id.Value && w.MatId == ka_price_row.EntityId);
+                xtraTabControl1.SelectedTabPageIndex = 14;
+            }
+
+            if (ka_price_row.EntityTyp == 1)
+            {
+                KAgentMatGroupPricesBS.DataSource = _db.KAgentMatGroupPrices.FirstOrDefault(w => w.KaId == _ka_id.Value && w.MatGrpId == ka_price_row.EntityId);
+                xtraTabControl1.SelectedTabPageIndex = 15;
+            }
         }
 
         private void simpleButton4_Click_2(object sender, EventArgs e)
         {
-            KAgentMatPricesGridView.DeleteRow(KAgentMatPricesGridView.FocusedRowHandle);
-        }
-
-        private void KAgentMatPricesBS_AddingNew(object sender, AddingNewEventArgs e)
-        {
-            e.NewObject = _db.KAgentMatPrices.Add(new KAgentMatPrices { KaId = _ka_id.Value });
+            KAgentPricesGridView.DeleteRow(KAgentPricesGridView.FocusedRowHandle);
         }
 
         private void KAgentMatPricesGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            _db.KAgentMatPrices.Remove((e.Row as KAgentMatPrices));
+            var row = (e.Row as v_KAgentPrices);
+            if (row.EntityTyp == 0)
+            {
+                _db.KAgentMatPrices.Remove(_db.KAgentMatPrices.Find(row.Id));
+            }
+            if (row.EntityTyp ==1)
+            {
+                _db.KAgentMatGroupPrices.Remove(_db.KAgentMatGroupPrices.Find(row.Id));
+            }
+            _db.SaveChanges();
+        }
+  
+
+        private void simpleButton21_Click(object sender, EventArgs e)
+        {
+            _db.SaveChanges();
+            GetMatPrices();
+            xtraTabControl1.SelectedTabPageIndex = 13;
         }
 
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 14;
+            var itemIds = _db.v_KAgentPrices.Where(w => w.KaId == _ka_id.Value && w.EntityTyp == 0).Select(s => s.EntityId).ToList();
 
-        /*
-private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
-{
-if (checkedComboBoxEdit2.ContainsFocus)
-{
-_db.EnterpriseKagent.RemoveRange(_db.EnterpriseKagent.Where(w => w.KaId == _ka_id));
+            KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.Add(new KAgentMatPrices
+            {
+                Id = Guid.NewGuid(),
+                OnValue = 0,
+                MatId = DB.SkladBase().v_Materials.Where(w => w.Archived == 0 && !itemIds.Contains(w.MatId)).Select(s => s.MatId).FirstOrDefault(),
+                KaId = _ka_id.Value,
+                ValueType = 0,
+                PricingType = 0,
+                PTypeId = DB.SkladBase().PriceTypes.Select(s => s.PTypeId).FirstOrDefault()
+            });
 
-foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
-{
-_db.EnterpriseKagent.Add(new EnterpriseKagent { EnterpriseId = (int)item.Value, KaId = _ka_id.Value });
-}
+            _db.SaveChanges();
+        }
 
-_db.SaveChanges();
-}
-}*/
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xtraTabControl1.SelectedTabPageIndex = 15;
+            var itemIds = _db.v_KAgentPrices.Where(w => w.KaId == _ka_id.Value && w.EntityTyp == 1).Select(s => s.EntityId).ToList();
+
+            KAgentMatGroupPricesBS.DataSource = _db.KAgentMatGroupPrices.Add(new KAgentMatGroupPrices
+            {
+                Id = Guid.NewGuid(),
+                OnValue = 0,
+                MatGrpId = DB.SkladBase().MatGroup.Where(w => !itemIds.Contains(w.GrpId)).Select(s => s.GrpId).FirstOrDefault(),
+                KaId = _ka_id.Value,
+                ValueType = 0,
+                PricingType = 0,
+                PTypeId = DB.SkladBase().PriceTypes.Select(s => s.PTypeId).FirstOrDefault()
+            });
+
+            _db.SaveChanges();
+        }
+
+        private void KAgentPricesGridView_DoubleClick(object sender, EventArgs e)
+        {
+            simpleButton11.PerformClick();
+        }
+
+        private void simpleButton22_Click(object sender, EventArgs e)
+        {
+            KAgentPricesGridView.DeleteRow(KAgentPricesGridView.FocusedRowHandle);
+            simpleButton21.PerformClick();
+        }
+
+        private void simpleButton24_Click(object sender, EventArgs e)
+        {
+            KAgentPricesGridView.DeleteRow(KAgentPricesGridView.FocusedRowHandle);
+            simpleButton23.PerformClick();
+        }
 
     }
 }

@@ -42,8 +42,7 @@ namespace SP_Sklad.WBForm
         private void frmPriceList_Load(object sender, EventArgs e)
         {
             PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
-
-            repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
+            repositoryItemLookUpEdit2.DataSource = new BaseEntities().Warehouse.AsNoTracking().ToList();
 
             if (_wbt_id == null)
             {
@@ -351,6 +350,12 @@ namespace SP_Sklad.WBForm
             {
                 wbtd.Notes = Convert.ToString(e.Value);
             }
+
+            if (e.Column.FieldName == "WId")
+            {
+                wbtd.WId = Convert.ToInt32(e.Value);
+            }
+
             _db.SaveChanges();
         }
     }

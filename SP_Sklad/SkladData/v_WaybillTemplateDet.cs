@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public string MsrName { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> WId { get; set; }
     }
 }

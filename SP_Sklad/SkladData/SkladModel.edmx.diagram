@@ -361,8 +361,13 @@
         <AssociationConnector Association="BaseModel.FK_WaybillTemplateDet_WaybillTemplate" />
         <AssociationConnector Association="BaseModel.WaybillTemplateKagent" />
         <EntityTypeShape EntityType="BaseModel.MaterialType" Width="1.5" PointX="33.375" PointY="25.75" />
-        <EntityTypeShape EntityType="BaseModel.KAgentMatPrices" Width="1.5" PointX="38.5" PointY="1" />
+        <EntityTypeShape EntityType="BaseModel.v_KAgentPrices" Width="1.5" PointX="34.375" PointY="28.875" />
+        <EntityTypeShape EntityType="BaseModel.KAgentMatGroupPrices" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.KAgentMatPrices" Width="1.5" PointX="18.875" PointY="0.75" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatGroupPrices_Kagent" />
         <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatGroupPrices_MatGroup" />
+        <AssociationConnector Association="BaseModel.FK_KAgentMatGroupPrices_PriceTypes" />
         <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_Materials" />
         <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_PriceTypes" />
         </Diagram>

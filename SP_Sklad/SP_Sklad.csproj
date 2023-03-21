@@ -502,6 +502,9 @@
     <Compile Include="SkladData\Interfaces.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\KAgentMatGroupPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\KAgentMatPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -557,6 +560,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_Kagent.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_KAgentPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_LoginHistory.cs">
@@ -2431,6 +2437,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentDoc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KagentList.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentMatGroupPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentMatPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAgentPersons.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KAMatDiscount.datasource" />
@@ -2487,6 +2494,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAccount.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustment.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentAdjustmentDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_KAgentPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Materials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_MatRecipe.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculation.datasource" />
