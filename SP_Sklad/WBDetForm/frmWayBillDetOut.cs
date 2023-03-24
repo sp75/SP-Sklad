@@ -266,7 +266,7 @@ namespace SP_Sklad.WBDetForm
 
             DiscountCheckBox.Checked = (discount > 0 || _wbd.Discount > 0);
 
-            if (DiscountCheckBox.Checked)//    if (_wbd.DiscountKind == 0)
+            if (_wbd.DiscountKind == 0 ) // якщо знижка встановлена автоматично то змінюємо знижку
             {
                 DiscountEdit.EditValue = discount;
                 _wbd.Discount = discount;
@@ -354,7 +354,7 @@ namespace SP_Sklad.WBDetForm
             if (!DiscountCheckBox.Checked)
             {
                 _wbd.Discount = 0;
-                _wbd.DiscountKind = 0;
+                _wbd.DiscountKind = null;
 
                 if (_wbd.WayBillDetAddProps != null)
                 {
