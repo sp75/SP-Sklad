@@ -475,7 +475,7 @@ namespace SP_Sklad.WBForm
                     Nds = wb.Nds,
                     CurrId = wb.CurrId,
                     OnValue = wb.OnValue,
-                    BasePrice = base_price ,
+                    BasePrice = base_price,
                     PosKind = 0,
                     PosParent = 0,
                     DiscountKind = disc_card != null ? 2 : 0,

@@ -126,7 +126,6 @@ namespace SP_Sklad.Common
                     {
                         var dis = db.GetDiscount(wb.KaId, item.MatId).FirstOrDefault();
                         var discount = dis.DiscountType == 0 ? dis.Discount : (dis.Discount / item.Price * 100);
-
                         wbd.Discount = dis.Discount;
                         wbd.Price =  item.Price - (item.Price * discount / 100) ;
                         wbd.BasePrice = item.Price;

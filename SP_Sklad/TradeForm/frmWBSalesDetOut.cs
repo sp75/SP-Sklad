@@ -242,7 +242,7 @@ namespace SP_Sklad.WBDetForm
 
             DiscountCheckBox.Checked = (discount > 0 || _wbd.Discount > 0);
 
-            if (DiscountCheckBox.Checked)//    if (_wbd.DiscountKind == 0)
+            if (_wbd.DiscountKind == 0)
             {
                 DiscountEdit.EditValue = discount;
                 _wbd.Discount = discount;

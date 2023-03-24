@@ -271,14 +271,14 @@ namespace SP_Sklad.WBForm
                         name = s.MatName,
                         price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload {  mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value =  s.Discount??0 } } : new List<DiscountPayload>() ,
+                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload { mode = DiscountMode.VALUE, type = DiscountType.DISCOUNT, value = Math.Round((s.DiscountTotal ?? 0), 2) * 100 } } : new List<DiscountPayload>(),
                     is_return = false
                 }).ToList(),
                 payments = payments,
                 discounts = new List<DiscountPayload>(),
                 technical_return = false,
                 rounding = user_settings.RoundingCheckboxReceipt,
-              //  barcode = _wb.WbillId.ToString()
+                //  barcode = _wb.WbillId.ToString()
             };
 
             var new_receipts = new CheckboxClient(_access_token).CreateReceipt(req);

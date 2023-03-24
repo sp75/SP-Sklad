@@ -274,7 +274,7 @@ namespace SP_Sklad.Common
                     BasePrice = base_price,
                     PosKind = 0,
                     PosParent = 0,
-                    DiscountKind = (discount > 0 ? 1 : 0),
+                    DiscountKind = 0,
                     WayBillDetAddProps = null,
                     Notes = item.Notes
                 };

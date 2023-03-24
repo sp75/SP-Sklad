@@ -2131,16 +2131,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PreparationRawMaterialsList_Result>("PreparationRawMaterialsList", from_dateParameter, to_dateParameter, is_checkedParameter, whParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
-        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "GetTaraList")]
         public virtual IQueryable<GetTaraList_Result> GetTaraList(Nullable<int> grp, Nullable<int> get_child_node)
         {
@@ -2593,6 +2583,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[BaseEntities].[GetMatPrice](@mat_id, @curr_id, @p_type, @ka_id)", mat_idParameter, curr_idParameter, p_typeParameter, ka_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWayBillDetOut")]
+        public virtual IQueryable<GetWayBillDetOut_Result> GetWayBillDetOut(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
     }
 }

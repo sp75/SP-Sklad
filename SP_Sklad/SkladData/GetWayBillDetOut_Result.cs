@@ -57,5 +57,6 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public Nullable<decimal> AvgInPrice { get; set; }
+        public Nullable<decimal> DiscountTotal { get; set; }
     }
 }
