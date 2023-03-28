@@ -695,41 +695,73 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 11:
+
+                        if (project_management_row == null)
                         {
-                            if (project_management_row == null)
-                            {
-                                return;
-                            }
-
-                            var pm = db.ProjectManagement.Find(project_management_row.Id);
-
-                            if (pm == null)
-                            {
-                                MessageBox.Show(Resources.not_find_wb);
-                                return;
-                            }
-                            if (pm.SessionId != null)
-                            {
-                                MessageBox.Show(Resources.deadlock);
-                                return;
-                            }
-
-                            var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
-                            if (rel.Any())
-                            {
-                                MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
-                            }
-
-                            if (pm.Checked == 1)
-                            {
-                                pm.Checked = 0;
-                            }
-
-                            db.SaveChanges();
-                            break;
-                  
+                            return;
                         }
+
+                        var pm = db.ProjectManagement.Find(project_management_row.Id);
+
+                        if (pm == null)
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (pm.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+                        var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
+                        if (rel.Any())
+                        {
+                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+
+                        if (pm.Checked == 1)
+                        {
+                            pm.Checked = 0;
+                        }
+
+                        db.SaveChanges();
+                        break;
+
+                    case 12:
+                        if (settingMaterialPricesUserControl1.row_smp.Id == null)
+                        {
+                            return;
+                        }
+
+                        var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
+
+                        if (smp == null)
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (smp.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+                     /*   var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
+                        if (rel.Any())
+                        {
+                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }*/
+
+                        if (smp.Checked == 1)
+                        {
+                            smp.Checked = 0;
+                        }
+
+                        db.SaveChanges();
+                        break;
                 }
             }
 
