@@ -252,6 +252,7 @@
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).BeginInit();
             this.mainContentTab.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
@@ -1138,6 +1139,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2751,6 +2753,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).EndInit();
             this.mainContentTab.ResumeLayout(false);

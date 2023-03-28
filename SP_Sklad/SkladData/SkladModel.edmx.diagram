@@ -370,6 +370,13 @@
         <AssociationConnector Association="BaseModel.FK_KAgentMatGroupPrices_PriceTypes" />
         <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_Materials" />
         <AssociationConnector Association="BaseModel.FK_KAgentMatPrices_PriceTypes" />
+        <EntityTypeShape EntityType="BaseModel.SettingMaterialPrices" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.SettingMaterialPricesDet" Width="1.5" PointX="18" PointY="41.75" />
+        <EntityTypeShape EntityType="BaseModel.v_SettingMaterialPrices" Width="1.5" PointX="34.75" PointY="37.5" />
+        <AssociationConnector Association="BaseModel.FK_SettingMaterialPrices_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_SettingMaterialPrices_PriceTypes" />
+        <AssociationConnector Association="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" />
+        <EntityTypeShape EntityType="BaseModel.v_SettingMaterialPricesDet" Width="1.5" PointX="34.375" PointY="32.75" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

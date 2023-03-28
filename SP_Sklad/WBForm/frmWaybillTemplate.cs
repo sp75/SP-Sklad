@@ -41,7 +41,6 @@ namespace SP_Sklad.WBForm
           
         private void frmPriceList_Load(object sender, EventArgs e)
         {
-            PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
             repositoryItemLookUpEdit2.DataSource = new BaseEntities().Warehouse.AsNoTracking().ToList();
 
             if (_wbt_id == null)
@@ -189,7 +188,7 @@ namespace SP_Sklad.WBForm
                 foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId).ToList())
                 {
 
-                    if (!_db.WaybillTemplateDet.Where(w => w.MatId == id && w.WaybillTemplateId == _wbt_id.Value).Any())
+                    if (!_db.WaybillTemplateDet.Where(w => w.MatId == item.MatId && w.WaybillTemplateId == _wbt_id.Value).Any())
                     {
                         _db.WaybillTemplateDet.Add(new WaybillTemplateDet
                         {
@@ -257,14 +256,7 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void PTypeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if(e.Button.Index == 1)
-            {
-                PTypeEdit.EditValue = null;
-            }
-        }
-
+  
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
            

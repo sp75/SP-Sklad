@@ -541,6 +541,12 @@
     <Compile Include="SkladData\SettingApp.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\SettingMaterialPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\SettingMaterialPricesDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\UserRoles.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -584,6 +590,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_RawMaterialManagementDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_SettingMaterialPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_SettingMaterialPricesDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
@@ -1079,6 +1091,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SettingMaterialPricesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SettingMaterialPricesUserControl.Designer.cs">
+      <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WaybillTemplateUserControl.cs">
       <SubType>UserControl</SubType>
@@ -1820,6 +1838,12 @@
     <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmSettingMaterialPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmSettingMaterialPrices.Designer.cs">
+      <DependentUpon>frmSettingMaterialPrices.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWaybillTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2087,6 +2111,9 @@
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SettingMaterialPricesUserControl.resx">
+      <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2308,6 +2335,9 @@
     <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmSettingMaterialPrices.resx">
+      <DependentUpon>frmSettingMaterialPrices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWaybillTemplate.resx">
       <DependentUpon>frmWaybillTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -2475,6 +2505,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.SettingMaterialPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Tara.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TaraGroup.datasource" />
@@ -2505,6 +2536,8 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProjectManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Services.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_SettingMaterialPrices.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_SettingMaterialPricesDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillTemplateDet.datasource" />

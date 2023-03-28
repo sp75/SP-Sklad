@@ -59,7 +59,6 @@ namespace SP_Sklad.UserControls
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox16 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -328,8 +327,7 @@ namespace SP_Sklad.UserControls
             this.WaybillTemplateGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn47,
             this.gridColumn46,
-            this.gridColumn48,
-            this.gridColumn112});
+            this.gridColumn48});
             this.WaybillTemplateGridView.GridControl = this.WaybillTemplateGridControl;
             this.WaybillTemplateGridView.Name = "WaybillTemplateGridView";
             this.WaybillTemplateGridView.OptionsBehavior.Editable = false;
@@ -366,15 +364,6 @@ namespace SP_Sklad.UserControls
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 2;
             this.gridColumn48.Width = 276;
-            // 
-            // gridColumn112
-            // 
-            this.gridColumn112.Caption = "Категорія цін";
-            this.gridColumn112.FieldName = "PriceTypes.Name";
-            this.gridColumn112.Name = "gridColumn112";
-            this.gridColumn112.Visible = true;
-            this.gridColumn112.VisibleIndex = 3;
-            this.gridColumn112.Width = 170;
             // 
             // repositoryItemImageEdit3
             // 
@@ -734,7 +723,6 @@ namespace SP_Sklad.UserControls
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn48;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn112;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit3;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox16;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox15;

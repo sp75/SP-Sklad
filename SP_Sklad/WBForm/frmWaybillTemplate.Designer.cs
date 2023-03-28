@@ -71,8 +71,6 @@
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.WaybillTemplateBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.PTypeEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.BotAmountEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit2 = new DevExpress.XtraEditors.CalcEdit();
@@ -116,7 +114,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotAmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -456,8 +453,6 @@
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Controls.Add(this.labelControl7);
-            this.panelControl1.Controls.Add(this.PTypeEdit);
-            this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.BotAmountEdit);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.textEdit2);
@@ -522,36 +517,6 @@
             this.labelControl7.StyleController = this.styleController1;
             this.labelControl7.TabIndex = 51;
             this.labelControl7.Text = "Примітка";
-            // 
-            // PTypeEdit
-            // 
-            this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillTemplateBS, "PTypeId", true));
-            this.PTypeEdit.Enabled = false;
-            this.PTypeEdit.Location = new System.Drawing.Point(520, 86);
-            this.PTypeEdit.Name = "PTypeEdit";
-            this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
-            this.PTypeEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.PTypeEdit.Properties.DisplayMember = "Name";
-            this.PTypeEdit.Properties.ShowFooter = false;
-            this.PTypeEdit.Properties.ShowHeader = false;
-            this.PTypeEdit.Properties.ValueMember = "PTypeId";
-            this.PTypeEdit.Size = new System.Drawing.Size(360, 22);
-            this.PTypeEdit.StyleController = this.styleController1;
-            this.PTypeEdit.TabIndex = 34;
-            this.PTypeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PTypeEdit_ButtonClick);
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Enabled = false;
-            this.labelControl6.Location = new System.Drawing.Point(520, 64);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(77, 16);
-            this.labelControl6.StyleController = this.styleController1;
-            this.labelControl6.TabIndex = 33;
-            this.labelControl6.Text = "Категорія цін";
             // 
             // BotAmountEdit
             // 
@@ -920,7 +885,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PTypeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BotAmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -973,8 +937,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit BotAmountEdit;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraEditors.LookUpEdit PTypeEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;

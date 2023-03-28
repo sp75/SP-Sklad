@@ -1491,6 +1491,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab

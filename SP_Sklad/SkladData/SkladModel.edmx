@@ -1354,6 +1354,32 @@
           <Property Name="SValue" Type="nvarchar" MaxLength="500" />
           <Property Name="ProfileId" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="SettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="PTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SettingMaterialPricesDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="SettingMaterialPricesId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Shift">
           <Key>
             <PropertyRef Name="Id" />
@@ -3006,6 +3032,45 @@ warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary ke
           <Property Name="MeasuresName" Type="nvarchar" MaxLength="64" />
           <Property Name="SvcGroupName" Type="nvarchar" MaxLength="64" />
           <Property Name="MsrShortName" Type="nvarchar" MaxLength="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_SettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="PriceTypeName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="PTypeId" Type="int" Nullable="false" />
+          <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_SettingMaterialPricesDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="SettingMaterialPricesId" />
+            <PropertyRef Name="GrpName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="SettingMaterialPricesId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5078,6 +5143,44 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="Services">
               <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPrices_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="SettingMaterialPrices" Type="Self.SettingMaterialPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="SettingMaterialPrices">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPrices_PriceTypes">
+          <End Role="PriceTypes" Type="Self.PriceTypes" Multiplicity="1" />
+          <End Role="SettingMaterialPrices" Type="Self.SettingMaterialPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="SettingMaterialPrices">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPricesDet_SettingMaterialPrices">
+          <End Role="SettingMaterialPrices" Type="Self.SettingMaterialPrices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SettingMaterialPricesDet" Type="Self.SettingMaterialPricesDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettingMaterialPrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SettingMaterialPricesDet">
+              <PropertyRef Name="SettingMaterialPricesId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8018,6 +8121,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Serials" EntityType="Self.Serials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Services" EntityType="Self.Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SettingApp" EntityType="Self.SettingApp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettingMaterialPrices" EntityType="Self.SettingMaterialPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SettingMaterialPricesDet" EntityType="Self.SettingMaterialPricesDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shift" EntityType="Self.Shift" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SvcGroup" EntityType="Self.SvcGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tables" EntityType="Self.Tables" Schema="dbo" store:Type="Tables" />
@@ -8901,6 +9006,31 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Services].[MsrShortName] AS [MsrShortName]
     FROM [dbo].[v_Services] AS [v_Services]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_SettingMaterialPrices" EntityType="Self.v_SettingMaterialPrices" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_SettingMaterialPrices].[Id] AS [Id], 
+    [v_SettingMaterialPrices].[Num] AS [Num], 
+    [v_SettingMaterialPrices].[OnDate] AS [OnDate], 
+    [v_SettingMaterialPrices].[Checked] AS [Checked], 
+    [v_SettingMaterialPrices].[Notes] AS [Notes], 
+    [v_SettingMaterialPrices].[PersonId] AS [PersonId], 
+    [v_SettingMaterialPrices].[DocType] AS [DocType], 
+    [v_SettingMaterialPrices].[PTypeId] AS [PTypeId], 
+    [v_SettingMaterialPrices].[PriceTypeName] AS [PriceTypeName]
+    FROM [dbo].[v_SettingMaterialPrices] AS [v_SettingMaterialPrices]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_SettingMaterialPricesDet" EntityType="Self.v_SettingMaterialPricesDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_SettingMaterialPricesDet].[Id] AS [Id], 
+    [v_SettingMaterialPricesDet].[CreatedAt] AS [CreatedAt], 
+    [v_SettingMaterialPricesDet].[MatId] AS [MatId], 
+    [v_SettingMaterialPricesDet].[Price] AS [Price], 
+    [v_SettingMaterialPricesDet].[SettingMaterialPricesId] AS [SettingMaterialPricesId], 
+    [v_SettingMaterialPricesDet].[MatName] AS [MatName], 
+    [v_SettingMaterialPricesDet].[GrpName] AS [GrpName], 
+    [v_SettingMaterialPricesDet].[GrpId] AS [GrpId]
+    FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_TechProcDet" EntityType="Self.v_TechProcDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_TechProcDet].[DetId] AS [DetId], 
@@ -9649,6 +9779,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_SERVICES_1" Association="Self.FK_SERVICES_1">
             <End Role="SvcGroup" EntitySet="SvcGroup" />
             <End Role="Services" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPrices_Kagent" Association="Self.FK_SettingMaterialPrices_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPrices_PriceTypes" Association="Self.FK_SettingMaterialPrices_PriceTypes">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPricesDet_SettingMaterialPrices" Association="Self.FK_SettingMaterialPricesDet_SettingMaterialPrices">
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+            <End Role="SettingMaterialPricesDet" EntitySet="SettingMaterialPricesDet" />
           </AssociationSet>
           <AssociationSet Name="FK_SVC_CURRID" Association="Self.FK_SVC_CURRID">
             <End Role="Currency" EntitySet="Currency" />
@@ -11533,8 +11675,24 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="KAgentMatPrices" EntitySet="KAgentMatPrices" />
           </AssociationSet>
           <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
-            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="SettingMaterialPrices" EntityType="BaseModel.SettingMaterialPrices" />
+          <EntitySet Name="SettingMaterialPricesDet" EntityType="BaseModel.SettingMaterialPricesDet" />
+          <EntitySet Name="v_SettingMaterialPrices" EntityType="BaseModel.v_SettingMaterialPrices" />
+          <AssociationSet Name="FK_SettingMaterialPrices_Kagent" Association="BaseModel.FK_SettingMaterialPrices_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPrices_PriceTypes" Association="BaseModel.FK_SettingMaterialPrices_PriceTypes">
+            <End Role="PriceTypes" EntitySet="PriceTypes" />
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPricesDet_SettingMaterialPrices" Association="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices">
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+            <End Role="SettingMaterialPricesDet" EntitySet="SettingMaterialPricesDet" />
+          </AssociationSet>
+          <EntitySet Name="v_SettingMaterialPricesDet" EntityType="BaseModel.v_SettingMaterialPricesDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -14662,6 +14820,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
           <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatGroupPrices" />
           <NavigationProperty Name="KAgentMatPrices" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatPrices" />
+          <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="Kagent" ToRole="SettingMaterialPrices" />
         </EntityType>
         <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -18794,6 +18953,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.FK_WaybillTemplate_PriceTypes" FromRole="PriceTypes" ToRole="WaybillTemplate" />
           <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_PriceTypes" FromRole="PriceTypes" ToRole="KAgentMatGroupPrices" />
           <NavigationProperty Name="KAgentMatPrices" Relationship="BaseModel.FK_KAgentMatPrices_PriceTypes" FromRole="PriceTypes" ToRole="KAgentMatPrices" />
+          <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPrices_PriceTypes" FromRole="PriceTypes" ToRole="SettingMaterialPrices" />
         </EntityType>
         <Association Name="FK__MATGROUPP__PTYPE__6DCC4D03">
           <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
@@ -19209,6 +19369,109 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="AvgInPrice" Nullable="true" Precision="38" Scale="6" />
           <Property Type="Decimal" Name="DiscountTotal" Nullable="true" Precision="32" Scale="8" />
         </ComplexType>
+        <EntityType Name="SettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="PTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="SettingMaterialPrices" ToRole="Kagent" />
+          <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_SettingMaterialPrices_PriceTypes" FromRole="SettingMaterialPrices" ToRole="PriceTypes" />
+          <NavigationProperty Name="SettingMaterialPricesDet" Relationship="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" FromRole="SettingMaterialPrices" ToRole="SettingMaterialPricesDet" />
+        </EntityType>
+        <EntityType Name="SettingMaterialPricesDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="SettingMaterialPricesId" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" FromRole="SettingMaterialPricesDet" ToRole="SettingMaterialPrices" />
+        </EntityType>
+        <EntityType Name="v_SettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="PriceTypeName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="PTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_SettingMaterialPrices_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="SettingMaterialPrices">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPrices_PriceTypes">
+          <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
+          <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PriceTypes">
+              <PropertyRef Name="PTypeId" />
+            </Principal>
+            <Dependent Role="SettingMaterialPrices">
+              <PropertyRef Name="PTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPricesDet_SettingMaterialPrices">
+          <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.SettingMaterialPricesDet" Role="SettingMaterialPricesDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SettingMaterialPrices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SettingMaterialPricesDet">
+              <PropertyRef Name="SettingMaterialPricesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_SettingMaterialPricesDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="SettingMaterialPricesId" />
+            <PropertyRef Name="GrpName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="SettingMaterialPricesId" Type="Guid" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpId" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24358,6 +24621,63 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="SettingMaterialPrices">
+            <EntityTypeMapping TypeName="BaseModel.SettingMaterialPrices">
+              <MappingFragment StoreEntitySet="SettingMaterialPrices">
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SettingMaterialPricesDet">
+            <EntityTypeMapping TypeName="BaseModel.SettingMaterialPricesDet">
+              <MappingFragment StoreEntitySet="SettingMaterialPricesDet">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SettingMaterialPricesId" ColumnName="SettingMaterialPricesId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_SettingMaterialPrices">
+            <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPrices">
+              <MappingFragment StoreEntitySet="v_SettingMaterialPrices">
+                <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_SettingMaterialPricesDet">
+            <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
+              <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="SettingMaterialPricesId" ColumnName="SettingMaterialPricesId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

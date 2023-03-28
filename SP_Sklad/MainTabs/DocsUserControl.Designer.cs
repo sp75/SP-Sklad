@@ -584,6 +584,8 @@
             this.gridColumn145 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn146 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn147 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
+            this.settingMaterialPricesUserControl1 = new SP_Sklad.UserControls.SettingMaterialPricesUserControl();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -859,6 +861,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox43)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox45)).BeginInit();
+            this.xtraTabPage31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -1011,6 +1014,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1035,7 +1039,8 @@
             this.xtraTabPage3,
             this.xtraTabPage19,
             this.xtraTabPage25,
-            this.xtraTabPage29});
+            this.xtraTabPage29,
+            this.xtraTabPage31});
             // 
             // xtraTabPage7
             // 
@@ -7087,6 +7092,26 @@
             this.gridColumn147.VisibleIndex = 7;
             this.gridColumn147.Width = 110;
             // 
+            // xtraTabPage31
+            // 
+            this.xtraTabPage31.Controls.Add(this.settingMaterialPricesUserControl1);
+            this.xtraTabPage31.Name = "xtraTabPage31";
+            this.xtraTabPage31.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage31.Text = "Установка цін номенклатури";
+            // 
+            // settingMaterialPricesUserControl1
+            // 
+            this.settingMaterialPricesUserControl1.CopyBtn = this.CopyItemBtn;
+            this.settingMaterialPricesUserControl1.DeleteBtn = this.DeleteItemBtn;
+            this.settingMaterialPricesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.settingMaterialPricesUserControl1.EditBtn = this.EditItemBtn;
+            this.settingMaterialPricesUserControl1.ExecuteBtn = this.ExecuteItemBtn;
+            this.settingMaterialPricesUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.settingMaterialPricesUserControl1.Name = "settingMaterialPricesUserControl1";
+            this.settingMaterialPricesUserControl1.PrintBtn = this.PrintItemBtn;
+            this.settingMaterialPricesUserControl1.Size = new System.Drawing.Size(1138, 695);
+            this.settingMaterialPricesUserControl1.TabIndex = 0;
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -7489,6 +7514,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox43)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox45)).EndInit();
+            this.xtraTabPage31.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -8048,5 +8074,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn148;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn149;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage31;
+        private UserControls.SettingMaterialPricesUserControl settingMaterialPricesUserControl1;
     }
 }

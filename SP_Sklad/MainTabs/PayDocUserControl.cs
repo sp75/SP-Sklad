@@ -368,7 +368,7 @@ namespace SP_Sklad.MainTabs
 
             List<Payment> payments = new List<Payment>();
 
-            var wb_det = _db.GetWaybillDetIn(_wb.WbillId).ToList();
+            var wb_det = _db.GetWayBillDetOut(_wb.WbillId).ToList();
             var total = SumEdit.Value; //wb_det.Sum(s => s.TotalInCurrency);
 
             int PType = (int)PTypeComboBox.EditValue;
@@ -408,7 +408,7 @@ namespace SP_Sklad.MainTabs
                         name = s.MatName,
                         price = Convert.ToInt32(s.BasePrice * 100)
                     },
-                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload { mode = DiscountMode.PERCENT, type = DiscountType.DISCOUNT, value = s.Discount ?? 0 } } : new List<DiscountPayload>(),
+                    discounts = s.Discount > 0 ? new List<DiscountPayload> { new DiscountPayload { mode = DiscountMode.VALUE, type = DiscountType.DISCOUNT, value = Math.Round((s.DiscountTotal ?? 0), 2) * 100  } } : new List<DiscountPayload>(),
                     is_return = return_receipt
 
                 }).ToList(),

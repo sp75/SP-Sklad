@@ -206,10 +206,10 @@ namespace SP_Sklad.MainTabs
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
-            DeleteItemBtn.Enabled = false;
-            ExecuteItemBtn.Enabled = false;
-            EditItemBtn.Enabled = false;
-            CopyItemBtn.Enabled = false;
+            DeleteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1); 
+            CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1); 
             PrintItemBtn.Enabled = false;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
@@ -289,7 +289,7 @@ namespace SP_Sklad.MainTabs
                         }
                     }
 
-                    
+
                     break;
 
                 case 4:
@@ -342,6 +342,10 @@ namespace SP_Sklad.MainTabs
                     new frmProjectManagement().ShowDialog();
                     break;
 
+                case 12:
+                    new frmSettingMaterialPrices().ShowDialog();
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -391,6 +395,13 @@ namespace SP_Sklad.MainTabs
                         using (var bs_frm = new frmProjectManagement(project_management_row.Id))
                         {
                             bs_frm.ShowDialog();
+                        }
+                        break;
+
+                    case 12:
+                        using (var smp_frm = new frmSettingMaterialPrices(settingMaterialPricesUserControl1.row_smp.Id))
+                        {
+                            smp_frm.ShowDialog();
                         }
                         break;
                 }
@@ -491,6 +502,14 @@ namespace SP_Sklad.MainTabs
                                     MessageBox.Show(string.Format("Документ #{0} не знайдено", bank_statements_row.Num));
                                 }
                                 break;
+
+                            case 12:
+                                var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
+                                if(smp != null)
+                                {
+                                    db.SettingMaterialPrices.Remove(smp);
+                                }
+                                break;
                         }
                         db.SaveChanges();
                     }
@@ -575,6 +594,10 @@ namespace SP_Sklad.MainTabs
                     ProjectManagementGridView.TopRowIndex = rIndex2;
 
                     ProjectManagementGridView_FocusedRowObjectChanged(sender, null);
+                    break;
+
+                case 12:
+                    settingMaterialPricesUserControl1.GetData();
                     break;
             }
 
