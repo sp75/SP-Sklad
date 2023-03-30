@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using DevExpress.XtraBars;
+using SP_Sklad.Common;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad.UserControls
 {
     public partial class SettingMaterialPricesUserControl : DevExpress.XtraEditors.XtraUserControl
     {
+        BaseEntities _db { get; set; }
         public BarButtonItem EditBtn { get; set; }
         public BarButtonItem DeleteBtn { get; set; }
         public BarButtonItem ExecuteBtn { get; set; }
@@ -21,6 +24,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem PrintBtn { get; set; }
 
         public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
+        private UserAccess user_access { get; set; }
 
         public SettingMaterialPricesUserControl()
         {
@@ -38,18 +42,13 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            DeleteBtn.Enabled = DeleteBtn.Enabled  ? (row_smp != null && row_smp.Checked == 0 ): DeleteBtn.Enabled;
-            ExecuteBtn.Enabled = ExecuteBtn.Enabled ? (row_smp != null ): ExecuteBtn.Enabled;
-            EditBtn.Enabled = EditBtn.Enabled ? (row_smp != null && row_smp.Checked == 0): EditBtn.Enabled;
-            CopyBtn.Enabled = CopyBtn.Enabled ?(row_smp != null ): CopyBtn.Enabled; 
+            DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
+            EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
+            CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1); 
             PrintBtn.Enabled = (row_smp != null);
 
             GetDetData();
-        }
-
-        private void xtraTabControl3_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            
         }
 
         private void GetDetData()
@@ -62,6 +61,20 @@ namespace SP_Sklad.UserControls
             {
                 SettingMaterialPricesDetBS.DataSource = null;
             }
+        }
+
+        private void SettingMaterialPricesUserControl_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+                _db = new BaseEntities();
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 97 && w.UserId == UserSession.UserId);
+            }
+        }
+
+        private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditBtn.PerformClick();
         }
     }
 }

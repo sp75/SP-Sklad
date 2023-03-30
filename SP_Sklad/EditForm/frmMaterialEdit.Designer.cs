@@ -91,6 +91,7 @@
             this.barCodeControl1 = new DevExpress.XtraEditors.BarCodeControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -206,7 +207,6 @@
             this.MatBarCodeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.labelControl25 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -730,6 +730,15 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(692, 206);
             this.panelControl1.TabIndex = 1;
+            // 
+            // labelControl25
+            // 
+            this.labelControl25.Location = new System.Drawing.Point(577, 85);
+            this.labelControl25.Name = "labelControl25";
+            this.labelControl25.Size = new System.Drawing.Size(102, 16);
+            this.labelControl25.StyleController = this.styleController1;
+            this.labelControl25.TabIndex = 55;
+            this.labelControl25.Text = "знаків після коми";
             // 
             // spinEdit1
             // 
@@ -1813,6 +1822,7 @@
             // DelIdividualMatPriceBtn
             // 
             this.DelIdividualMatPriceBtn.ImageOptions.ImageIndex = 18;
+            this.DelIdividualMatPriceBtn.ImageOptions.ImageList = this.ImageList;
             this.DelIdividualMatPriceBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.DelIdividualMatPriceBtn.Location = new System.Drawing.Point(563, 11);
             this.DelIdividualMatPriceBtn.Name = "DelIdividualMatPriceBtn";
@@ -2022,15 +2032,6 @@
             this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
-            // 
-            // labelControl25
-            // 
-            this.labelControl25.Location = new System.Drawing.Point(577, 85);
-            this.labelControl25.Name = "labelControl25";
-            this.labelControl25.Size = new System.Drawing.Size(102, 16);
-            this.labelControl25.StyleController = this.styleController1;
-            this.labelControl25.TabIndex = 55;
-            this.labelControl25.Text = "знаків після коми";
             // 
             // frmMaterialEdit
             // 

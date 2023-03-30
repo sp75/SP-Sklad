@@ -661,7 +661,7 @@ namespace SP_Sklad.WBForm
         private void WeighBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            if (wbd_row == null || wbd_row.PosType != 0)
+            if (wbd_row == null || wbd_row.PosType != 0 || DBHelper.WeighingScales_1 == null)
             {
                 return;
             }

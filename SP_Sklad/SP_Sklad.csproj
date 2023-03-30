@@ -598,6 +598,9 @@
     <Compile Include="SkladData\v_SettingMaterialPricesDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_SummarySettingMaterialPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

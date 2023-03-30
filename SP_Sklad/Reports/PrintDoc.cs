@@ -753,6 +753,36 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
+        public static void SettingMaterialPricesReport(int PTypeId, BaseEntities db)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var pl = db.SettingMaterialPrices.Where(w => w.PTypeId == PTypeId).OrderByDescending(o=> o.OnDate).Take(1).Select(s=> new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num}) .ToList();
+            var pl_d = db.v_SummarySettingMaterialPrices.Where(w => w.PTypeId == PTypeId).ToList();
+
+            var mat_grp = pl_d.GroupBy(g => new { g.GrpNum, g.GrpName }).Select(s => new
+            {
+                s.Key.GrpName,
+                s.Key.GrpNum
+            }).OrderBy(o => o.GrpNum).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "GrpName",
+                fk = "GrpName",
+                master_table = "MatGroup",
+                child_table = "PriceListDet"
+            });
+
+            dataForReport.Add("PriceList", pl);
+            dataForReport.Add("PriceListDet", pl_d);
+            dataForReport.Add("MatGroup", mat_grp);
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, TemlateList.setting_material_prices);
+        }
+
         private class ProductionPlansReportRep
         {
             public string MatName { get; set; }

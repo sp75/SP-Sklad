@@ -219,8 +219,8 @@ namespace SP_Sklad.MainTabs
                                 Name = s.Name,
                                 Def = s.Def,
                                 TypeName = s.TypeName,
-                                Summary = (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3)
-                                                ? ((s.PPTypeId == null) ? s.OnValue.ToString("0.00") + "% на ціну прихода" : (s.ExtraType == 2) ? s.OnValue.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) ? s.OnValue.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
+                                Summary = (s.PPTypeId == null || s.ExtraType == 2 || s.ExtraType == 3 || s.ExtraType == 4)
+                                                ? ((s.PPTypeId == null) ? (s.ExtraType == 4 ? $"{s.OnValue.ToString("0.00")}% на встановлену ціну" : $"{s.OnValue.ToString("0.00")}% на ціну прихода") : (s.ExtraType == 2) ? s.OnValue.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3) ? s.OnValue.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
                                                 : s.OnValue.ToString("0.00") + "% від " + s.PtName
 
                             });

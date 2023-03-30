@@ -31,7 +31,8 @@ namespace SP_Sklad.Reports
         public static String wb_prod_plan { get { return "ProductionPlans.xlsx"; } }
         public static String wb_prep_raw_mat { get { return "PreparationRawMatDoc.xlsx"; } }
         public static String wb_act_service { get { return "ActServicesProvided_In.xlsx"; } }
-        
+        public static String setting_material_prices { get { return "SettingMaterialPrices.xlsx"; } }
+
 
         public static String rep_1 { get { return "MatInShort(1).xlsx"; } }
         public static String rep_2 { get { return "MatOutShort(2).xlsx"; } }

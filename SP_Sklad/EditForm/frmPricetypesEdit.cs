@@ -24,7 +24,7 @@ namespace SP_Sklad.EditForm
             _PTypeId = PTypeId;
             _db = DB.SkladBase();
 
-            ExtraTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "На ціну приходу" }, new { Id = 1, Name = "На встановлену ціну" }, new { Id = 2, Name = "На категорію" }, new { Id = 3, Name = "Прайс-лист" } };
+            ExtraTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "На ціну приходу" }, new { Id = 4, Name = "На встановлену ціну" }, new { Id = 2, Name = "На категорію" }, new { Id = 3, Name = "Прайс-лист" } };
             RoundingMethodEdit.Properties.DataSource = new List<object>() { new { Id = 0, Name = "По арифметичним правилам" }, /*new { Id = 1, Name = "Завжди в більшу сторону" },*/ new { Id = 2, Name = "Завжди в меншу сторону" } };
 
             lookUpEdit1.Properties.DataSource = _db.PriceList.Select(s => new { s.PlId, s.Name }).ToList();

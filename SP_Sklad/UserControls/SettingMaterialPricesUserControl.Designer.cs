@@ -190,6 +190,7 @@
             this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.SettingMaterialPricesGridView.OptionsView.ShowGroupPanel = false;
             this.SettingMaterialPricesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);
+            this.SettingMaterialPricesGridView.DoubleClick += new System.EventHandler(this.SettingMaterialPricesGridView_DoubleClick);
             // 
             // gridColumn47
             // 
@@ -216,7 +217,7 @@
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 3;
-            this.gridColumn48.Width = 438;
+            this.gridColumn48.Width = 439;
             // 
             // gridColumn112
             // 
@@ -225,7 +226,7 @@
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 4;
-            this.gridColumn112.Width = 292;
+            this.gridColumn112.Width = 294;
             // 
             // gridColumn3
             // 
@@ -239,7 +240,7 @@
             this.gridColumn3.OptionsColumn.ShowCaption = false;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 33;
+            this.gridColumn3.Width = 25;
             // 
             // repositoryItemImageComboBox15
             // 
@@ -256,7 +257,7 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection1.Images.SetKeyName(0, "new.bmp");
+            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
             this.imageCollection1.Images.SetKeyName(1, "execute.png");
             // 
             // xtraTabControl3
@@ -269,7 +270,6 @@
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage14});
-            this.xtraTabControl3.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl3_SelectedPageChanged);
             // 
             // xtraTabPage14
             // 
@@ -307,8 +307,6 @@
             this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
             this.SettingMaterialPricesDetGrid.OptionsBehavior.Editable = false;
             this.SettingMaterialPricesDetGrid.OptionsView.ShowGroupPanel = false;
-            this.SettingMaterialPricesDetGrid.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
             // colMatId
             // 
@@ -371,6 +369,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "SettingMaterialPricesUserControl";
             this.Size = new System.Drawing.Size(1248, 628);
+            this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();
             this.splitContainerControl4.Panel1.ResumeLayout(false);
             this.splitContainerControl4.Panel1.PerformLayout();

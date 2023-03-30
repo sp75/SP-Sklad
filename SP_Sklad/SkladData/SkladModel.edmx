@@ -3073,6 +3073,25 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="GrpId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_SummarySettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="PTypeId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpId" Type="int" Nullable="false" />
+          <Property Name="GrpNum" Type="numeric" Precision="5" Scale="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_TechProcDet">
           <Key>
@@ -9031,6 +9050,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[GrpId] AS [GrpId]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_SummarySettingMaterialPrices].[MatId] AS [MatId], 
+    [v_SummarySettingMaterialPrices].[PTypeId] AS [PTypeId], 
+    [v_SummarySettingMaterialPrices].[Name] AS [Name], 
+    [v_SummarySettingMaterialPrices].[MsrName] AS [MsrName], 
+    [v_SummarySettingMaterialPrices].[Price] AS [Price], 
+    [v_SummarySettingMaterialPrices].[GrpName] AS [GrpName], 
+    [v_SummarySettingMaterialPrices].[GrpId] AS [GrpId], 
+    [v_SummarySettingMaterialPrices].[GrpNum] AS [GrpNum]
+    FROM [dbo].[v_SummarySettingMaterialPrices] AS [v_SummarySettingMaterialPrices]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_TechProcDet" EntityType="Self.v_TechProcDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_TechProcDet].[DetId] AS [DetId], 
@@ -11693,6 +11724,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="SettingMaterialPricesDet" EntitySet="SettingMaterialPricesDet" />
           </AssociationSet>
           <EntitySet Name="v_SettingMaterialPricesDet" EntityType="BaseModel.v_SettingMaterialPricesDet" />
+          <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="BaseModel.v_SummarySettingMaterialPrices" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19472,6 +19504,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GrpId" Type="Int32" />
         </EntityType>
+        <EntityType Name="v_SummarySettingMaterialPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="PTypeId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="PTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpId" Type="Int32" Nullable="false" />
+          <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24675,6 +24724,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_SummarySettingMaterialPrices">
+            <EntityTypeMapping TypeName="BaseModel.v_SummarySettingMaterialPrices">
+              <MappingFragment StoreEntitySet="v_SummarySettingMaterialPrices">
+                <ScalarProperty Name="GrpNum" ColumnName="GrpNum" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -114,7 +114,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.PrintWaybillTemplate(_wbt_id.Value, _db, "WaybillTemplate.xlsx");
+            PrintDoc.SettingMaterialPricesReport(wbt.PTypeId, _db);
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -206,10 +206,10 @@ namespace SP_Sklad.MainTabs
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
-            DeleteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1); 
-            CopyItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanModify == 1); 
+            DeleteItemBtn.Enabled = false;
+            ExecuteItemBtn.Enabled = false;
+            EditItemBtn.Enabled = false; 
+            CopyItemBtn.Enabled = false; 
             PrintItemBtn.Enabled = false;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
@@ -813,11 +813,11 @@ namespace SP_Sklad.MainTabs
                 case 5:
                     var p_l = PriceListGridView.GetFocusedRow() as v_PriceList;
                     PrintDoc.Show(p_l.Id, 10, _db);
-
                     break;
 
-                    //      case 6: frmReportModule->PrintWB(ContractsListDOCID->AsVariant, ContractsListDOCTYPE->Value * 8, DocPAnelTransaction);
-                    //      case 7: frmReportModule->PrintWB(TaxWBListDOCID->AsVariant, -7, DocPAnelTransaction);
+                case 12:
+                    PrintDoc.SettingMaterialPricesReport(settingMaterialPricesUserControl1.row_smp.PTypeId, _db);
+                    break;
             }
         }
 

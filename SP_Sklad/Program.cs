@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -14,6 +15,7 @@ using System.Windows.Forms;
 using DevExpress.Data.Filtering;
 using DevExpress.Skins;
 using DevExpress.UserSkins;
+using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
@@ -26,19 +28,21 @@ namespace SP_Sklad
         [STAThread]
         static void Main()
         {
+            CheckUserSettings();
+
             // Create a new object, representing the German culture. 
-        //    CultureInfo culture = CultureInfo.CreateSpecificCulture("uk-UA");
+            //    CultureInfo culture = CultureInfo.CreateSpecificCulture("uk-UA");
 
             // The following line provides localization for the application's user interface. 
-         //   Thread.CurrentThread.CurrentUICulture = culture;
+            //   Thread.CurrentThread.CurrentUICulture = culture;
 
             // The following line provides localization for data formats. 
-        //    Thread.CurrentThread.CurrentCulture = culture;
+            //    Thread.CurrentThread.CurrentCulture = culture;
 
             // Set this culture as the default culture for all threads in this application. 
             // Note: The following properties are supported in the .NET Framework 4.5+
-       //     CultureInfo.DefaultThreadCurrentCulture = culture;
-        //    CultureInfo.DefaultThreadCurrentUICulture = culture;
+            //     CultureInfo.DefaultThreadCurrentCulture = culture;
+            //    CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             // Add the event handler for handling UI thread exceptions to the event.
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
@@ -90,6 +94,35 @@ namespace SP_Sklad
             if (result == DialogResult.Abort)
                 Application.Exit();
 
+        }
+
+        private static void CheckUserSettings()
+        {
+            string configPathBackup;
+            try
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+                configPathBackup = config.FilePath + ".bak";
+                config.SaveAs(configPathBackup, ConfigurationSaveMode.Full);
+
+                Properties.Settings.Default.Reload();
+            }
+            catch (ConfigurationErrorsException ex)
+            {
+                string filename = ex.Filename;
+                configPathBackup = filename + ".bak";
+
+                if (File.Exists(filename) == true)
+                {
+                    File.Delete(filename);
+
+                    if (!string.IsNullOrEmpty(configPathBackup) && File.Exists(configPathBackup))
+                    {
+                        File.Copy(configPathBackup, filename, true);
+                    }
+                }
+                Properties.Settings.Default.Reload();
+            }
         }
 
         // All exceptions thrown by additional threads are handled in this method

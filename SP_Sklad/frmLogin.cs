@@ -22,6 +22,7 @@ using SP_Sklad.Properties;
 using System.Reflection;
 using System.IO;
 using SP_Sklad.RawMaterialManagementInterface;
+using System.Configuration;
 
 namespace SP_Sklad
 {
