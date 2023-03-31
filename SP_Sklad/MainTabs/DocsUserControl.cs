@@ -109,8 +109,8 @@ namespace SP_Sklad.MainTabs
                 BSStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
                 BSEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                dateEdit6.EditValue = DateTime.Now.Date.FirstDayOfMonth();
-                dateEdit5.EditValue = DateTime.Now.Date.SetEndDay();
+                ProjectManagementStartDateEdit.EditValue = null;// DateTime.Now.Date.FirstDayOfMonth();
+                ProjectManagementEndDateEdit.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -590,7 +590,7 @@ namespace SP_Sklad.MainTabs
                 case 11:
 
                     int rIndex2 = ProjectManagementGridView.GetVisibleIndex(ProjectManagementGridView.FocusedRowHandle);
-                    ProjectManagementSource.QueryableSource = new BaseEntities().v_ProjectManagement.AsNoTracking().Where(w => w.OnDate >= dateEdit6.DateTime && w.OnDate < dateEdit5.DateTime && ((int)lookUpEdit3.EditValue == -1 || w.Checked == (int)lookUpEdit3.EditValue));
+                    ProjectManagementSource.QueryableSource = new BaseEntities().v_ProjectManagement.AsNoTracking().Where(w => w.OnDate >= ProjectManagementStartDateEdit.DateTime && w.OnDate < ProjectManagementEndDateEdit.DateTime && ((int)lookUpEdit3.EditValue == -1 || w.Checked == (int)lookUpEdit3.EditValue));
                     ProjectManagementGridView.TopRowIndex = rIndex2;
 
                     ProjectManagementGridView_FocusedRowObjectChanged(sender, null);

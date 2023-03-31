@@ -549,9 +549,9 @@
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit5 = new DevExpress.XtraEditors.DateEdit();
+            this.ProjectManagementEndDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.dateEdit6 = new DevExpress.XtraEditors.DateEdit();
+            this.ProjectManagementStartDateEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl7 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
@@ -845,10 +845,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).BeginInit();
             this.xtraTabControl7.SuspendLayout();
             this.xtraTabPage30.SuspendLayout();
@@ -6613,9 +6613,9 @@
             // 
             this.panelControl8.Controls.Add(this.lookUpEdit3);
             this.panelControl8.Controls.Add(this.labelControl1);
-            this.panelControl8.Controls.Add(this.dateEdit5);
+            this.panelControl8.Controls.Add(this.ProjectManagementEndDateEdit);
             this.panelControl8.Controls.Add(this.labelControl2);
-            this.panelControl8.Controls.Add(this.dateEdit6);
+            this.panelControl8.Controls.Add(this.ProjectManagementStartDateEdit);
             this.panelControl8.Controls.Add(this.labelControl20);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl8.Location = new System.Drawing.Point(0, 0);
@@ -6647,26 +6647,26 @@
             this.labelControl1.TabIndex = 7;
             this.labelControl1.Text = "Статус";
             // 
-            // dateEdit5
+            // ProjectManagementEndDateEdit
             // 
-            this.dateEdit5.EditValue = null;
-            this.dateEdit5.Location = new System.Drawing.Point(237, 15);
-            this.dateEdit5.Name = "dateEdit5";
-            this.dateEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ProjectManagementEndDateEdit.EditValue = null;
+            this.ProjectManagementEndDateEdit.Location = new System.Drawing.Point(237, 15);
+            this.ProjectManagementEndDateEdit.Name = "ProjectManagementEndDateEdit";
+            this.ProjectManagementEndDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit5.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEdit5.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ProjectManagementEndDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit5.Properties.DisplayFormat.FormatString = "";
-            this.dateEdit5.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit5.Properties.EditFormat.FormatString = "";
-            this.dateEdit5.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit5.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdit5.Properties.MaskSettings.Set("mask", "g");
-            this.dateEdit5.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.dateEdit5.Size = new System.Drawing.Size(140, 22);
-            this.dateEdit5.StyleController = this.styleController1;
-            this.dateEdit5.TabIndex = 3;
+            this.ProjectManagementEndDateEdit.Properties.DisplayFormat.FormatString = "";
+            this.ProjectManagementEndDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ProjectManagementEndDateEdit.Properties.EditFormat.FormatString = "";
+            this.ProjectManagementEndDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ProjectManagementEndDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.ProjectManagementEndDateEdit.Properties.MaskSettings.Set("mask", "g");
+            this.ProjectManagementEndDateEdit.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+            this.ProjectManagementEndDateEdit.Size = new System.Drawing.Size(140, 22);
+            this.ProjectManagementEndDateEdit.StyleController = this.styleController1;
+            this.ProjectManagementEndDateEdit.TabIndex = 3;
             // 
             // labelControl2
             // 
@@ -6677,26 +6677,26 @@
             this.labelControl2.TabIndex = 2;
             this.labelControl2.Text = "по";
             // 
-            // dateEdit6
+            // ProjectManagementStartDateEdit
             // 
-            this.dateEdit6.EditValue = null;
-            this.dateEdit6.Location = new System.Drawing.Point(71, 15);
-            this.dateEdit6.Name = "dateEdit6";
-            this.dateEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ProjectManagementStartDateEdit.EditValue = null;
+            this.ProjectManagementStartDateEdit.Location = new System.Drawing.Point(71, 15);
+            this.ProjectManagementStartDateEdit.Name = "ProjectManagementStartDateEdit";
+            this.ProjectManagementStartDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit6.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.dateEdit6.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.ProjectManagementStartDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.dateEdit6.Properties.DisplayFormat.FormatString = "";
-            this.dateEdit6.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit6.Properties.EditFormat.FormatString = "";
-            this.dateEdit6.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.dateEdit6.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.dateEdit6.Properties.MaskSettings.Set("mask", "g");
-            this.dateEdit6.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.dateEdit6.Size = new System.Drawing.Size(140, 22);
-            this.dateEdit6.StyleController = this.styleController1;
-            this.dateEdit6.TabIndex = 1;
+            this.ProjectManagementStartDateEdit.Properties.DisplayFormat.FormatString = "";
+            this.ProjectManagementStartDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ProjectManagementStartDateEdit.Properties.EditFormat.FormatString = "";
+            this.ProjectManagementStartDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.ProjectManagementStartDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.ProjectManagementStartDateEdit.Properties.MaskSettings.Set("mask", "g");
+            this.ProjectManagementStartDateEdit.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
+            this.ProjectManagementStartDateEdit.Size = new System.Drawing.Size(140, 22);
+            this.ProjectManagementStartDateEdit.StyleController = this.styleController1;
+            this.ProjectManagementStartDateEdit.TabIndex = 1;
             // 
             // labelControl20
             // 
@@ -7498,10 +7498,10 @@
             this.panelControl8.ResumeLayout(false);
             this.panelControl8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit5.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateEdit6.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).EndInit();
             this.xtraTabControl7.ResumeLayout(false);
             this.xtraTabPage30.ResumeLayout(false);
@@ -8033,9 +8033,9 @@
         private DevExpress.XtraEditors.PanelControl panelControl8;
         public DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        public DevExpress.XtraEditors.DateEdit dateEdit5;
+        public DevExpress.XtraEditors.DateEdit ProjectManagementEndDateEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        public DevExpress.XtraEditors.DateEdit dateEdit6;
+        public DevExpress.XtraEditors.DateEdit ProjectManagementStartDateEdit;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage30;
