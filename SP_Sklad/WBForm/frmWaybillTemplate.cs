@@ -146,8 +146,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillTemplateDetGrid.GetFocusedRow() as GetPriceListDet_Result;
-            IHelper.ShowMatInfo(dr.MatId);
+            IHelper.ShowMatInfo(focused_dr.MatId);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -230,10 +229,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
 
         private void PriceListPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {

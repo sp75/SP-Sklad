@@ -159,7 +159,7 @@ namespace SP_Sklad.WBForm
             {
                 var id = Convert.ToInt32(mat_id);
                 var mat = _db.Materials.Find(id);
-                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId).ToList())
+                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
 
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())

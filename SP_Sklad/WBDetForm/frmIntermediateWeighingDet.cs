@@ -50,7 +50,7 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
-        private void frmPlannedCalculationDetDet_Load(object sender, EventArgs e)
+        private void frmIntermediateWeighingDet_Load(object sender, EventArgs e)
         {
             det = _db.IntermediateWeighingDet.Find(_id);
 

@@ -409,7 +409,7 @@
             this.Name = "frmIntermediateWeighingDet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Додати/Редагувати товар";
-            this.Load += new System.EventHandler(this.frmPlannedCalculationDetDet_Load);
+            this.Load += new System.EventHandler(this.frmIntermediateWeighingDet_Load);
             this.Shown += new System.EventHandler(this.frmIntermediateWeighingDet_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);

@@ -11,6 +11,7 @@ using SP_Sklad.SkladData;
 using DevExpress.XtraBars;
 using SP_Sklad.Common;
 using SP_Sklad.WBForm;
+using DevExpress.Data;
 
 namespace SP_Sklad.UserControls
 {
@@ -23,9 +24,12 @@ namespace SP_Sklad.UserControls
         public BarButtonItem CopyBtn { get; set; }
         public BarButtonItem PrintBtn { get; set; }
 
-        public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
+        public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() is NotLoadedObject ? null : SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
+
         private UserAccess user_access { get; set; }
 
+        int row = 0;
+        bool restore = false;
         public SettingMaterialPricesUserControl()
         {
             InitializeComponent();
@@ -33,9 +37,14 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
-            int rIndex2 = SettingMaterialPricesGridView.GetVisibleIndex(SettingMaterialPricesGridView.FocusedRowHandle);
-            SettingMaterialPricesBS.DataSource = DB.SkladBase().v_SettingMaterialPrices.ToList();
-            SettingMaterialPricesGridView.TopRowIndex = rIndex2;
+            /*   int rIndex2 = SettingMaterialPricesGridView.GetVisibleIndex(SettingMaterialPricesGridView.FocusedRowHandle);
+               SettingMaterialPricesBS.DataSource = DB.SkladBase().v_SettingMaterialPrices.ToList();
+               SettingMaterialPricesGridView.TopRowIndex = rIndex2;*/
+            row = SettingMaterialPricesGridView.FocusedRowHandle;
+            restore = true;
+
+            SettingMaterialPricesGridControl.DataSource = null;
+            SettingMaterialPricesGridControl.DataSource = SettingMaterialPricesSource;
 
             GetDetData();
         }
@@ -75,6 +84,24 @@ namespace SP_Sklad.UserControls
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
         {
             EditBtn.PerformClick();
+        }
+
+        private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            var list = DB.SkladBase().v_SettingMaterialPrices.AsQueryable();
+            e.QueryableSource = list;
+        }
+
+        private void SettingMaterialPricesGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (!restore)
+            {
+                return;
+            }
+
+            SettingMaterialPricesGridView.TopRowIndex = row;
+            SettingMaterialPricesGridView.FocusedRowHandle = row;
+            restore = false;
         }
     }
 }

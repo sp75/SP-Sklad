@@ -840,13 +840,17 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var wb_template = (Guid?)IHelper.ShowDirectList(null, 18);
-            if (wb_template != null)
+            using (var v_form = new frmWaybillTemplateView())
             {
-                ExecuteDocument.ExecuteWaybillTemplate(wb_template.Value, wb, _db);
+                if(v_form.ShowDialog() == DialogResult.OK)
+                {
+                    ExecuteDocument.ExecuteWaybillTemplate(v_form.waybillTemplateUserControl1.wbt_row.Id, wb, _db);
 
-                RefreshDet();
+                    RefreshDet();
+                }
             }
+
+            
         }
     }
 }

@@ -25,6 +25,8 @@ namespace SP_Sklad.EditForm
 
         private void frmCatalog_Load(object sender, EventArgs e)
         {
+            BottomPanel.Visible = uc.isDirectList;
+
             var q = (List<GetDirTree_Result>)uc.DirTreeBS.DataSource;
             uc.DirTreeBS.DataSource = (_id == null ? q.Where(w => w.GType == _gtype).ToList() : q.Where(w => w.Id == _id).ToList());
         }

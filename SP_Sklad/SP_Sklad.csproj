@@ -1107,6 +1107,12 @@
     <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmWaybillTemplateView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmWaybillTemplateView.Designer.cs">
+      <DependentUpon>frmWaybillTemplateView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2119,6 +2125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmWaybillTemplateView.resx">
+      <DependentUpon>frmWaybillTemplateView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmCatalog.resx">
       <DependentUpon>frmCatalog.cs</DependentUpon>

@@ -36,6 +36,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -86,7 +87,7 @@
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -231,9 +232,10 @@
             this.barButtonItem10,
             this.CashierWorkplaceBtn,
             this.barButtonItem13,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 33;
+            this.barManager1.MaxItemId = 34;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -250,7 +252,8 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
@@ -278,6 +281,14 @@
             this.NextBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.LargeImage")));
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Замовлення від кліента";
+            this.barButtonItem2.Id = 32;
+            this.barButtonItem2.ImageOptions.ImageIndex = 14;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
             // 
             // AddWBInBtn
             // 
@@ -820,15 +831,17 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "free-icon-payment-terminal-3777466.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
-            // barButtonItem2
+            // barButtonItem5
             // 
-            this.barButtonItem2.Caption = "Замовлення від кліента";
-            this.barButtonItem2.Id = 32;
-            this.barButtonItem2.ImageOptions.ImageIndex = 14;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            this.barButtonItem5.Caption = "Шаблони";
+            this.barButtonItem5.Id = 33;
+            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
             // mainForm
             // 
@@ -934,6 +947,7 @@
         private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }
 

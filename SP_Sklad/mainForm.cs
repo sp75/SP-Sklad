@@ -39,14 +39,14 @@ namespace SP_Sklad
             CurDateEditBarItem.EditValue = DateTime.Now;
             repositoryItemLookUpEdit1.DataSource = DBHelper.EnterpriseList;
 
-            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value || (barEditItem3.EditValue != null && barEditItem3.EditValue != DBNull.Value && !DBHelper.EnterpriseList.Any(a=> a.KaId == Convert.ToInt32(barEditItem3.EditValue)) ))
+            if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value || (barEditItem3.EditValue != null && barEditItem3.EditValue != DBNull.Value && !DBHelper.EnterpriseList.Any(a => a.KaId == Convert.ToInt32(barEditItem3.EditValue))))
             {
                 barEditItem3.EditValue = DBHelper.EnterpriseList.Select(s => s.KaId).FirstOrDefault();
             }
 
             History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
 
-            if(!Directory.Exists(Path.Combine(Application.StartupPath, "Rep")))
+            if (!Directory.Exists(Path.Combine(Application.StartupPath, "Rep")))
             {
                 Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Rep"));
             }
@@ -125,9 +125,9 @@ namespace SP_Sklad
             GetMainHeder();
 
             var user_acc = DB.SkladBase().UserAccess.Where(w => w.UserId == DBHelper.CurrentUser.UserId).ToList();
-            AddDeboningBtn.Enabled = user_acc.Any(w =>  w.FunId == 72 && w.CanInsert == 1);
-            AddManufacturingBtn.Enabled = user_acc.Any(w =>  w.FunId == 68 && w.CanInsert == 1);
-            AddWBOutBtn.Enabled = user_acc.Any(w =>  w.FunId == 23 && w.CanInsert == 1);
+            AddDeboningBtn.Enabled = user_acc.Any(w => w.FunId == 72 && w.CanInsert == 1);
+            AddManufacturingBtn.Enabled = user_acc.Any(w => w.FunId == 68 && w.CanInsert == 1);
+            AddWBOutBtn.Enabled = user_acc.Any(w => w.FunId == 23 && w.CanInsert == 1);
             AddWBInBtn.Enabled = user_acc.Any(w => w.FunId == 21 && w.CanInsert == 1);
 
             xtraTabControl1.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
@@ -135,7 +135,7 @@ namespace SP_Sklad
             {
                 FunId = Properties.Settings.Default.LastFunId,
                 MainTabs = Properties.Settings.Default.LastTabPage
-            } );
+            });
         }
 
         private void barEditItem3_EditValueChanged(object sender, EventArgs e)
@@ -163,12 +163,12 @@ namespace SP_Sklad
         {
             Close();
 
-       //     Application.Exit();
+            //     Application.Exit();
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -213,7 +213,7 @@ namespace SP_Sklad
         private void PrevBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var p = History.Previous();
-            if(p!= null)
+            if (p != null)
             {
                 History.is_enable = false;
                 xtraTabControl1.SelectedTabPageIndex = p.MainTabs;
@@ -268,7 +268,7 @@ namespace SP_Sklad
                     serviceUserControl1.DirTreeList.FocusedNode = serviceUserControl1.DirTreeList.FindNodeByFieldValue("FunId", e.FunId);
                     break;
             }
- 
+
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -331,6 +331,11 @@ namespace SP_Sklad
             {
                 wb_in.ShowDialog();
             }
+        }
+
+        private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowDirectList(null, 18);
         }
     }
 }

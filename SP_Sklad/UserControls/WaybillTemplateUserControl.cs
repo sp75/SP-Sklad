@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using SP_Sklad.Common;
+using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBForm;
 using System;
@@ -14,8 +15,10 @@ using System.Windows.Forms;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class WaybillTemplateUserControl : UserControl
+    public partial class WaybillTemplateUserControl : DevExpress.XtraEditors.XtraUserControl
     {
+        public frmWaybillTemplateView view_frm { get; set; }
+
         public WaybillTemplate wbt_row
         {
             get
@@ -78,7 +81,11 @@ namespace SP_Sklad.UserControls
 
         private void PriceListGridView_DoubleClick(object sender, EventArgs e)
         {
-          if(  EditFocusedRow() == DialogResult.OK)
+            if (view_frm != null)
+            {
+                view_frm.OkButton.PerformClick();
+            }
+            else if (EditFocusedRow() == DialogResult.OK)
             {
                 GetDataList();
             }

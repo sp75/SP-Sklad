@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.EditForm
 {
-    partial class frmCatalog
+    partial class frmWaybillTemplateView
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.uc = new SP_Sklad.MainTabs.DirectoriesUserControl();
+            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -66,30 +66,27 @@
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // uc
+            // waybillTemplateUserControl1
             // 
-            this.uc.custom_mat_list = null;
-            this.uc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc.isDirectList = false;
-            this.uc.isMatList = false;
-            this.uc.Location = new System.Drawing.Point(0, 0);
-            this.uc.Name = "uc";
-            this.uc.Size = new System.Drawing.Size(1296, 624);
-            this.uc.TabIndex = 16;
-            this.uc.wb = null;
+            this.waybillTemplateUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.waybillTemplateUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
+            this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1296, 624);
+            this.waybillTemplateUserControl1.TabIndex = 16;
+            this.waybillTemplateUserControl1.view_frm = null;
             // 
-            // frmCatalog
+            // frmWaybillTemplateView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1296, 676);
-            this.Controls.Add(this.uc);
+            this.Controls.Add(this.waybillTemplateUserControl1);
             this.Controls.Add(this.BottomPanel);
-            this.Name = "frmCatalog";
+            this.Name = "frmWaybillTemplateView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список товарів";
-            this.Load += new System.EventHandler(this.frmCatalog_Load);
+            this.Text = "Список шаблонів";
+            this.Load += new System.EventHandler(this.frmWaybillTemplateView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -97,9 +94,10 @@
         }
 
         #endregion
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        public MainTabs.DirectoriesUserControl uc;
-        public DevExpress.XtraEditors.SimpleButton OkButton;
+
         private DevExpress.XtraEditors.PanelControl BottomPanel;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        public DevExpress.XtraEditors.SimpleButton OkButton;
+        public UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
     }
 }

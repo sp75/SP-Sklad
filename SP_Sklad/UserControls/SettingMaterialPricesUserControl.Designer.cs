@@ -38,7 +38,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.SettingMaterialPricesGridControl = new DevExpress.XtraGrid.GridControl();
-            this.SettingMaterialPricesBS = new System.Windows.Forms.BindingSource(this.components);
             this.SettingMaterialPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,6 +56,7 @@
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.SettingMaterialPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -65,7 +65,6 @@
             this.splitContainerControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -156,7 +155,6 @@
             // 
             // SettingMaterialPricesGridControl
             // 
-            this.SettingMaterialPricesGridControl.DataSource = this.SettingMaterialPricesBS;
             this.SettingMaterialPricesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SettingMaterialPricesGridControl.Location = new System.Drawing.Point(0, 0);
             this.SettingMaterialPricesGridControl.MainView = this.SettingMaterialPricesGridView;
@@ -167,10 +165,6 @@
             this.SettingMaterialPricesGridControl.TabIndex = 0;
             this.SettingMaterialPricesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.SettingMaterialPricesGridView});
-            // 
-            // SettingMaterialPricesBS
-            // 
-            this.SettingMaterialPricesBS.DataSource = typeof(SP_Sklad.SkladData.v_SettingMaterialPrices);
             // 
             // SettingMaterialPricesGridView
             // 
@@ -190,6 +184,7 @@
             this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.SettingMaterialPricesGridView.OptionsView.ShowGroupPanel = false;
             this.SettingMaterialPricesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);
+            this.SettingMaterialPricesGridView.AsyncCompleted += new System.EventHandler(this.SettingMaterialPricesGridView_AsyncCompleted);
             this.SettingMaterialPricesGridView.DoubleClick += new System.EventHandler(this.SettingMaterialPricesGridView_DoubleClick);
             // 
             // gridColumn47
@@ -206,6 +201,7 @@
             this.gridColumn46.Caption = "Дата";
             this.gridColumn46.FieldName = "OnDate";
             this.gridColumn46.Name = "gridColumn46";
+            this.gridColumn46.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 2;
             this.gridColumn46.Width = 337;
@@ -358,6 +354,13 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
+            // SettingMaterialPricesSource
+            // 
+            this.SettingMaterialPricesSource.AreSourceRowsThreadSafe = true;
+            this.SettingMaterialPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_SettingMaterialPrices);
+            this.SettingMaterialPricesSource.KeyExpression = "Id";
+            this.SettingMaterialPricesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
+            // 
             // SettingMaterialPricesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,7 +382,6 @@
             this.splitContainerControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
@@ -421,9 +423,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.BindingSource SettingMaterialPricesBS;
         private System.Windows.Forms.BindingSource SettingMaterialPricesDetBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource SettingMaterialPricesSource;
     }
 }
