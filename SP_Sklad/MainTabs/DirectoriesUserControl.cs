@@ -817,13 +817,18 @@ namespace SP_Sklad.MainTabs
 
         private void KaGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            KAgentPopupMenu.ShowPopup(Control.MousePosition);
+            if (e.HitInfo.InRow)
+            {
+                KAgentPopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void DirTreeList_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {
-            Point p2 = Control.MousePosition;
-            ExplorerPopupMenu.ShowPopup(p2);
+            if (e.HitInfo.InRow)
+            {
+                ExplorerPopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void DirTreeList_MouseDown(object sender, MouseEventArgs e)
@@ -1033,7 +1038,10 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            MatPopupMenu.ShowPopup(Control.MousePosition);
+            if (e.HitInfo.InRow)
+            {
+                MatPopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1398,7 +1406,10 @@ namespace SP_Sklad.MainTabs
 
         private void MatRecipeGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            RecipePopupMenu.ShowPopup(Control.MousePosition);
+            if (e.HitInfo.InRow)
+            {
+                RecipePopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void barCheckItem2_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

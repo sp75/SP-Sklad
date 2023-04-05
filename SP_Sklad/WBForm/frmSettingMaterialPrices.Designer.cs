@@ -90,11 +90,13 @@
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.WaybillTemplateDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.SettingMaterialPricesDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
@@ -121,6 +123,7 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).BeginInit();
@@ -583,7 +586,8 @@
             this.gridColumn5,
             this.gridColumn1,
             this.gridColumn3,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn7});
             this.WaybillTemplateDetGrid.GridControl = this.WaybillTemplateDetGridControl;
             this.WaybillTemplateDetGrid.Name = "WaybillTemplateDetGrid";
             this.WaybillTemplateDetGrid.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
@@ -602,7 +606,7 @@
             this.colMatId.OptionsColumn.AllowEdit = false;
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 0;
-            this.colMatId.Width = 414;
+            this.colMatId.Width = 325;
             // 
             // gridColumn2
             // 
@@ -611,17 +615,25 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 130;
+            this.gridColumn2.VisibleIndex = 4;
+            this.gridColumn2.Width = 211;
             // 
             // gridColumn4
             // 
             this.gridColumn4.Caption = "Ціна";
+            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.FieldName = "Price";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 198;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 97;
+            // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5
             // 
@@ -640,8 +652,8 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.OptionsColumn.AllowEdit = false;
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 121;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 126;
             // 
             // gridColumn3
             // 
@@ -671,6 +683,16 @@
             this.repositoryItemLookUpEdit2.ShowHeader = false;
             this.repositoryItemLookUpEdit2.ValueMember = "WId";
             // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Артикул";
+            this.gridColumn7.FieldName = "Artikul";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 1;
+            this.gridColumn7.Width = 104;
+            // 
             // WaybillTemplateDetGridControl
             // 
             this.WaybillTemplateDetGridControl.DataSource = this.SettingMaterialPricesDetBS;
@@ -680,7 +702,8 @@
             this.WaybillTemplateDetGridControl.MenuManager = this.barManager1;
             this.WaybillTemplateDetGridControl.Name = "WaybillTemplateDetGridControl";
             this.WaybillTemplateDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit2});
+            this.repositoryItemLookUpEdit2,
+            this.repositoryItemCalcEdit1});
             this.WaybillTemplateDetGridControl.Size = new System.Drawing.Size(888, 440);
             this.WaybillTemplateDetGridControl.TabIndex = 31;
             this.WaybillTemplateDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -750,6 +773,7 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).EndInit();
@@ -814,5 +838,7 @@
         private System.Windows.Forms.BindingSource SettingMaterialPricesDetBS;
         private DevExpress.XtraEditors.LookUpEdit PTypeEdit;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
     }
 }

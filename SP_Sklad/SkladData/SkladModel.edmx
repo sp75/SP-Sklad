@@ -3062,6 +3062,8 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
             <PropertyRef Name="Price" />
             <PropertyRef Name="SettingMaterialPricesId" />
             <PropertyRef Name="GrpName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
@@ -3071,6 +3073,9 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpId" Type="int" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9047,7 +9052,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[SettingMaterialPricesId] AS [SettingMaterialPricesId], 
     [v_SettingMaterialPricesDet].[MatName] AS [MatName], 
     [v_SettingMaterialPricesDet].[GrpName] AS [GrpName], 
-    [v_SettingMaterialPricesDet].[GrpId] AS [GrpId]
+    [v_SettingMaterialPricesDet].[GrpId] AS [GrpId], 
+    [v_SettingMaterialPricesDet].[OnDate] AS [OnDate], 
+    [v_SettingMaterialPricesDet].[Checked] AS [Checked], 
+    [v_SettingMaterialPricesDet].[Artikul] AS [Artikul]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
@@ -19494,6 +19502,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="Price" />
             <PropertyRef Name="SettingMaterialPricesId" />
             <PropertyRef Name="GrpName" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
@@ -19503,6 +19513,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="GrpId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_SummarySettingMaterialPrices">
           <Key>
@@ -24716,6 +24729,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="GrpName" ColumnName="GrpName" />
                 <ScalarProperty Name="MatName" ColumnName="MatName" />

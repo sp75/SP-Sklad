@@ -471,6 +471,7 @@
             this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.checkedComboBoxEdit1.Properties.IncrementalSearch = true;
+            this.checkedComboBoxEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.checkedComboBoxEdit1.Size = new System.Drawing.Size(360, 22);
             this.checkedComboBoxEdit1.StyleController = this.styleController1;
             this.checkedComboBoxEdit1.TabIndex = 57;

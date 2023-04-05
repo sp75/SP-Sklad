@@ -22,5 +22,8 @@ namespace SP_Sklad.SkladData
         public string MatName { get; set; }
         public string GrpName { get; set; }
         public Nullable<int> GrpId { get; set; }
+        public System.DateTime OnDate { get; set; }
+        public int Checked { get; set; }
+        public string Artikul { get; set; }
     }
 }

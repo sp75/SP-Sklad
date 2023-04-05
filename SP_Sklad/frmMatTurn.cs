@@ -76,7 +76,10 @@ namespace SP_Sklad
 
         private void bandedGridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            popupMenu1.ShowPopup(Control.MousePosition);
+            if (e.HitInfo.InRow)
+            {
+                popupMenu1.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)

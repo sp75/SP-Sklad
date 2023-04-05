@@ -231,11 +231,7 @@ namespace SP_Sklad.WBForm
 
         private void WaybillDetOutGridView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            GridHitInfo info = view.CalcHitInfo(pt);
-
-            if (info.InRow || info.InRowCell)
+            if (IHelper.isRowDublClick(sender))
             {
                 EditMaterialBtn.PerformClick();
             }

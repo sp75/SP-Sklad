@@ -101,6 +101,11 @@ namespace SP_Sklad.UserControls
             WaybillTemplateDetBS.DataSource = DB.SkladBase().v_WaybillTemplateDet.AsNoTracking().Where(w => w.WaybillTemplateId == wbt_row.Id).OrderBy(o=> o.Num).ToList();
             WaybillTemplateDetGrid.ExpandAllGroups();
 
+            GetKagentList();
+        }
+
+        private void  GetKagentList()
+        {
             ka_template_list = DB.SkladBase().WaybillTemplate.FirstOrDefault(w => w.Id == wbt_row.Id).Kagent.Select(s => new KaTemplateList
             {
                 Check = true,
@@ -143,6 +148,43 @@ namespace SP_Sklad.UserControls
                 }
 
                 XtraMessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var ka_id = IHelper.ShowDirectList(null, 1);
+            if(ka_id != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    var ka = db.Kagent.Find((int)ka_id);
+                    ka.WaybillTemplate.Add(db.WaybillTemplate.Find(wbt_row.Id));
+                    db.SaveChanges();
+                }
+
+                GetKagentList();
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (XtraMessageBox.Show("Ви дійсно бажаете видалити привязку з контрагентом ?", "Видалити запис", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+
+                var row = KaTemplateListGridView.GetFocusedRow() as KaTemplateList;
+
+                if (row != null)
+                {
+                    using (var db = DB.SkladBase())
+                    {
+                        var ka = db.Kagent.Find(row.KaId);
+                        ka.WaybillTemplate.Remove(db.WaybillTemplate.Find(wbt_row.Id));
+                        db.SaveChanges();
+                    }
+
+                    GetKagentList();
+                }
             }
         }
     }

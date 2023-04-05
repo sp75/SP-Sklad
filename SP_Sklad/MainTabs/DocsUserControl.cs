@@ -343,7 +343,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 12:
-                    new frmSettingMaterialPrices().ShowDialog();
+                    settingMaterialPricesUserControl1.NewItem();
                     break;
 
             }
@@ -758,6 +758,10 @@ namespace SP_Sklad.MainTabs
                         if (smp.Checked == 1)
                         {
                             smp.Checked = 0;
+                        }
+                        else
+                        {
+                            smp.Checked = 1;
                         }
 
                         db.SaveChanges();

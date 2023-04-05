@@ -1107,6 +1107,12 @@
     <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmMaterialPriceHIstory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmMaterialPriceHIstory.Designer.cs">
+      <DependentUpon>frmMaterialPriceHIstory.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillTemplateView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2126,6 +2132,9 @@
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmMaterialPriceHIstory.resx">
+      <DependentUpon>frmMaterialPriceHIstory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillTemplateView.resx">
       <DependentUpon>frmWaybillTemplateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -2518,6 +2527,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Services.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SettingMaterialPrices.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.SettingMaterialPricesDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SvcGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Tara.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TaraGroup.datasource" />
@@ -2688,7 +2698,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BMP\PNG\finance32.png" />
     <None Include="BMP\1\currencyexchange.png" />
     <None Include="BMP\PNG\Банки.png" />
     <Content Include="main_ico.ico" />

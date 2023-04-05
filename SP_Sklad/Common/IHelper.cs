@@ -732,7 +732,7 @@ namespace SP_Sklad.Common
                 {
                     using (var f = new frmMaterialEdit(mat_id))
                     {
-                        f.OkButton.Visible = false;
+                        f.OkButton.Visible = db.UserAccess.FirstOrDefault(w=> w.UserId == UserSession.UserId && w.FunId == 6)?.CanModify == 1;
                         f.ShowDialog();
                     }
                 }

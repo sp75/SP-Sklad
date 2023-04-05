@@ -155,8 +155,11 @@ namespace SP_Sklad.WBForm
 
         private void treeList1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
-            Point p2 = Control.MousePosition;
-            TreePopupMenu.ShowPopup(p2);
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                TreePopupMenu.ShowPopup(p2);
+            }
         }
 
         void AddMat(GetMatTree_Result row)

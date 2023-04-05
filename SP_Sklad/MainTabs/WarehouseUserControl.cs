@@ -350,11 +350,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
-            GridView view = (GridView)sender;
-            Point pt = view.GridControl.PointToClient(Control.MousePosition);
-            GridHitInfo info = view.CalcHitInfo(pt);
-
-            if (info.InRow || info.InRowCell)
+            if (IHelper.isRowDublClick(sender))
             {
                 EditItemBtn.PerformClick();
             }
@@ -630,7 +626,10 @@ namespace SP_Sklad.MainTabs
 
         private void WhMatGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
-            MatPopupMenu.ShowPopup(Control.MousePosition);
+            if (e.HitInfo.InRow)
+            {
+                MatPopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void MatTurnInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

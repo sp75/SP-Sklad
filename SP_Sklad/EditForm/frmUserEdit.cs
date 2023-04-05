@@ -199,8 +199,10 @@ namespace SP_Sklad.EditForm
 
         private void treeList1_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {
-            Point p2 = Control.MousePosition;
-            AccessPopupMenu.ShowPopup(p2);
+            if (e.HitInfo.InRow)
+            {
+                AccessPopupMenu.ShowPopup(Control.MousePosition);
+            }
         }
 
         private void treeList1_MouseDown(object sender, MouseEventArgs e)

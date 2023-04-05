@@ -37,6 +37,27 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.MatIfoBtnItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+            this.HistoryBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.SettingMaterialPricesGridControl = new DevExpress.XtraGrid.GridControl();
             this.SettingMaterialPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -45,7 +66,6 @@
             this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.SettingMaterialPricesDetGridControl = new DevExpress.XtraGrid.GridControl();
@@ -54,9 +74,12 @@
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
+            this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -64,10 +87,10 @@
             this.splitContainerControl4.Panel2.SuspendLayout();
             this.splitContainerControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).BeginInit();
             this.xtraTabControl3.SuspendLayout();
             this.xtraTabPage14.SuspendLayout();
@@ -76,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl4
@@ -117,8 +142,30 @@
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl3);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
+            this.barManager1.Images = this.imageCollection1;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.NewItemBtn,
+            this.CopyItemBtn,
+            this.EditItemBtn,
+            this.DeleteItemBtn,
+            this.RefrechItemBtn,
+            this.ExecuteItemBtn,
+            this.PrintItemBtn,
+            this.barButtonItem2,
+            this.MatIfoBtnItem,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8,
+            this.barButtonItem9,
+            this.barButtonItem10,
+            this.barButtonItem14,
+            this.barButtonItem16,
+            this.HistoryBtnItem});
             this.barManager1.MaxItemId = 30;
             // 
             // barDockControlTop
@@ -153,6 +200,183 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 628);
             // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1248, 0);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // standaloneBarDockControl3
+            // 
+            this.standaloneBarDockControl3.AutoSize = true;
+            this.standaloneBarDockControl3.CausesValidation = false;
+            this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl3.Manager = this.barManager1;
+            this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1248, 0);
+            this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
+            this.imageCollection1.Images.SetKeyName(1, "execute.png");
+            this.imageCollection1.Images.SetKeyName(2, "edit.png");
+            this.imageCollection1.Images.SetKeyName(3, "інформація про товар.png");
+            this.imageCollection1.Images.SetKeyName(4, "Add.png");
+            this.imageCollection1.Images.SetKeyName(5, "Рух товарів.png");
+            this.imageCollection1.Images.SetKeyName(6, "Провести документ.bmp");
+            this.imageCollection1.Images.SetKeyName(7, "інформація про резерв товару.png");
+            this.imageCollection1.Images.SetKeyName(8, "Попередн_й перегляд.bmp");
+            this.imageCollection1.Images.SetKeyName(9, "Delete.bmp");
+            this.imageCollection1.Images.SetKeyName(10, "Copy.bmp");
+            this.imageCollection1.Images.SetKeyName(11, "refresh.bmp");
+            this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
+            // 
+            // NewItemBtn
+            // 
+            this.NewItemBtn.Caption = "Додати";
+            this.NewItemBtn.Id = 0;
+            this.NewItemBtn.ImageOptions.ImageIndex = 4;
+            this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
+            this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
+            // 
+            // CopyItemBtn
+            // 
+            this.CopyItemBtn.Caption = "Копію документа";
+            this.CopyItemBtn.Id = 1;
+            this.CopyItemBtn.ImageOptions.ImageIndex = 10;
+            this.CopyItemBtn.Name = "CopyItemBtn";
+            // 
+            // EditItemBtn
+            // 
+            this.EditItemBtn.Caption = "Властивості";
+            this.EditItemBtn.Id = 2;
+            this.EditItemBtn.ImageOptions.ImageIndex = 2;
+            this.EditItemBtn.Name = "EditItemBtn";
+            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
+            // 
+            // DeleteItemBtn
+            // 
+            this.DeleteItemBtn.Caption = "Видалити";
+            this.DeleteItemBtn.Id = 3;
+            this.DeleteItemBtn.ImageOptions.ImageIndex = 9;
+            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
+            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
+            // 
+            // RefrechItemBtn
+            // 
+            this.RefrechItemBtn.Caption = "Обновити";
+            this.RefrechItemBtn.Id = 4;
+            this.RefrechItemBtn.ImageOptions.ImageIndex = 11;
+            this.RefrechItemBtn.Name = "RefrechItemBtn";
+            this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
+            // 
+            // ExecuteItemBtn
+            // 
+            this.ExecuteItemBtn.Caption = "Провести";
+            this.ExecuteItemBtn.Id = 5;
+            this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
+            this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
+            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
+            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 8;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Перейти до документа";
+            this.barButtonItem2.Id = 12;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // MatIfoBtnItem
+            // 
+            this.MatIfoBtnItem.Caption = "Інформація про товар";
+            this.MatIfoBtnItem.Id = 14;
+            this.MatIfoBtnItem.ImageOptions.ImageIndex = 3;
+            this.MatIfoBtnItem.Name = "MatIfoBtnItem";
+            this.MatIfoBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatIfoBtnItem_ItemClick);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Інформація про рух товару";
+            this.barButtonItem5.Id = 15;
+            this.barButtonItem5.ImageOptions.ImageIndex = 5;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Інформація про резерв товару";
+            this.barButtonItem6.Id = 16;
+            this.barButtonItem6.ImageOptions.ImageIndex = 7;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Показати список аналогів";
+            this.barButtonItem7.Id = 17;
+            this.barButtonItem7.ImageOptions.ImageIndex = 14;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Знайти на складі...";
+            this.barButtonItem8.Id = 18;
+            this.barButtonItem8.Name = "barButtonItem8";
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Знайти в довіднику товарів...";
+            this.barButtonItem9.Id = 19;
+            this.barButtonItem9.Name = "barButtonItem9";
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Властивості позиції";
+            this.barButtonItem10.Id = 20;
+            this.barButtonItem10.ImageOptions.ImageIndex = 2;
+            this.barButtonItem10.Name = "barButtonItem10";
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Експорт списка";
+            this.barButtonItem14.Id = 25;
+            this.barButtonItem14.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
+            this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
+            this.barButtonItem14.Name = "barButtonItem14";
+            // 
+            // barButtonItem16
+            // 
+            this.barButtonItem16.Caption = "Інформація про виробництво товару";
+            this.barButtonItem16.Id = 28;
+            this.barButtonItem16.ImageOptions.ImageIndex = 19;
+            this.barButtonItem16.Name = "barButtonItem16";
+            // 
+            // HistoryBtnItem
+            // 
+            this.HistoryBtnItem.Caption = "Історія зміни ціни";
+            this.HistoryBtnItem.Id = 29;
+            this.HistoryBtnItem.ImageOptions.ImageIndex = 12;
+            this.HistoryBtnItem.Name = "HistoryBtnItem";
+            this.HistoryBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.HistoryBtnItem_ItemClick);
+            // 
             // SettingMaterialPricesGridControl
             // 
             this.SettingMaterialPricesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -183,6 +407,7 @@
             this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.SettingMaterialPricesGridView.OptionsView.ShowGroupPanel = false;
+            this.SettingMaterialPricesGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesGridView_PopupMenuShowing);
             this.SettingMaterialPricesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);
             this.SettingMaterialPricesGridView.AsyncCompleted += new System.EventHandler(this.SettingMaterialPricesGridView_AsyncCompleted);
             this.SettingMaterialPricesGridView.DoubleClick += new System.EventHandler(this.SettingMaterialPricesGridView_DoubleClick);
@@ -199,6 +424,8 @@
             // gridColumn46
             // 
             this.gridColumn46.Caption = "Дата";
+            this.gridColumn46.DisplayFormat.FormatString = "g";
+            this.gridColumn46.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn46.FieldName = "OnDate";
             this.gridColumn46.Name = "gridColumn46";
             this.gridColumn46.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
@@ -249,13 +476,6 @@
             this.repositoryItemImageComboBox15.Name = "repositoryItemImageComboBox15";
             this.repositoryItemImageComboBox15.SmallImages = this.imageCollection1;
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
-            this.imageCollection1.Images.SetKeyName(1, "execute.png");
-            // 
             // xtraTabControl3
             // 
             this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -298,11 +518,13 @@
             this.SettingMaterialPricesDetGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMatId,
             this.gridColumn2,
-            this.gridColumn4});
+            this.gridColumn4,
+            this.gridColumn1});
             this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
             this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
-            this.SettingMaterialPricesDetGrid.OptionsBehavior.Editable = false;
+            this.SettingMaterialPricesDetGrid.OptionsBehavior.ReadOnly = true;
             this.SettingMaterialPricesDetGrid.OptionsView.ShowGroupPanel = false;
+            this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
             // 
             // colMatId
             // 
@@ -311,7 +533,7 @@
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 0;
-            this.colMatId.Width = 323;
+            this.colMatId.Width = 609;
             // 
             // gridColumn2
             // 
@@ -319,8 +541,8 @@
             this.gridColumn2.FieldName = "GrpName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 2;
-            this.gridColumn2.Width = 148;
+            this.gridColumn2.VisibleIndex = 3;
+            this.gridColumn2.Width = 332;
             // 
             // gridColumn4
             // 
@@ -328,8 +550,17 @@
             this.gridColumn4.FieldName = "Price";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 1;
-            this.gridColumn4.Width = 101;
+            this.gridColumn4.VisibleIndex = 2;
+            this.gridColumn4.Width = 109;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Артикул";
+            this.gridColumn1.FieldName = "Artikul";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 1;
+            this.gridColumn1.Width = 171;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -357,14 +588,40 @@
             // SettingMaterialPricesSource
             // 
             this.SettingMaterialPricesSource.AreSourceRowsThreadSafe = true;
+            this.SettingMaterialPricesSource.DefaultSorting = "OnDate DESC";
             this.SettingMaterialPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_SettingMaterialPrices);
             this.SettingMaterialPricesSource.KeyExpression = "Id";
             this.SettingMaterialPricesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
+            // 
+            // SettingMaterialPricesPopupMenu
+            // 
+            this.SettingMaterialPricesPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.SettingMaterialPricesPopupMenu.Manager = this.barManager1;
+            this.SettingMaterialPricesPopupMenu.Name = "SettingMaterialPricesPopupMenu";
+            // 
+            // SettingMaterialPricesDetPopupMenu
+            // 
+            this.SettingMaterialPricesDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatIfoBtnItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.HistoryBtnItem, true)});
+            this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
+            this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
             // 
             // SettingMaterialPricesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.standaloneBarDockControl1);
+            this.Controls.Add(this.standaloneBarDockControl3);
             this.Controls.Add(this.splitContainerControl4);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -381,10 +638,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).EndInit();
             this.splitContainerControl4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).EndInit();
             this.xtraTabControl3.ResumeLayout(false);
             this.xtraTabPage14.ResumeLayout(false);
@@ -393,6 +650,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,14 +677,37 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
-        private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.BarDockControl barDockControlTop;
-        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
-        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
-        private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.BindingSource SettingMaterialPricesDetBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource SettingMaterialPricesSource;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarButtonItem NewItemBtn;
+        private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
+        private DevExpress.XtraBars.BarButtonItem EditItemBtn;
+        private DevExpress.XtraBars.BarButtonItem DeleteItemBtn;
+        public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
+        private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
+        private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem MatIfoBtnItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
+        private DevExpress.XtraBars.PopupMenu SettingMaterialPricesPopupMenu;
+        private DevExpress.XtraBars.PopupMenu SettingMaterialPricesDetPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem HistoryBtnItem;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

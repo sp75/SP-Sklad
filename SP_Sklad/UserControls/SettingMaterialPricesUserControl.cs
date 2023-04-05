@@ -12,6 +12,7 @@ using DevExpress.XtraBars;
 using SP_Sklad.Common;
 using SP_Sklad.WBForm;
 using DevExpress.Data;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.UserControls
 {
@@ -25,6 +26,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem PrintBtn { get; set; }
 
         public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() is NotLoadedObject ? null : SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
+        public v_SettingMaterialPricesDet row_smp_det => SettingMaterialPricesDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
 
         private UserAccess user_access { get; set; }
 
@@ -37,16 +39,21 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
-            /*   int rIndex2 = SettingMaterialPricesGridView.GetVisibleIndex(SettingMaterialPricesGridView.FocusedRowHandle);
-               SettingMaterialPricesBS.DataSource = DB.SkladBase().v_SettingMaterialPrices.ToList();
-               SettingMaterialPricesGridView.TopRowIndex = rIndex2;*/
             row = SettingMaterialPricesGridView.FocusedRowHandle;
             restore = true;
 
             SettingMaterialPricesGridControl.DataSource = null;
             SettingMaterialPricesGridControl.DataSource = SettingMaterialPricesSource;
 
-            GetDetData();
+            GetDetailData();
+        }
+
+        public void NewItem()
+        {
+            using (var frm = new frmSettingMaterialPrices())
+            {
+                frm.ShowDialog();
+            }
         }
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -57,10 +64,11 @@ namespace SP_Sklad.UserControls
             CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1); 
             PrintBtn.Enabled = (row_smp != null);
 
-            GetDetData();
+            GetDetailData();
         }
 
-        private void GetDetData()
+
+        private void GetDetailData()
         {
             if (row_smp != null)
             {
@@ -102,6 +110,77 @@ namespace SP_Sklad.UserControls
             SettingMaterialPricesGridView.TopRowIndex = row;
             SettingMaterialPricesGridView.FocusedRowHandle = row;
             restore = false;
+        }
+
+        private void NewItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            NewItem();
+        }
+
+        private void SettingMaterialPricesGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                SettingMaterialPricesPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void DeleteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            DeleteBtn.PerformClick();
+        }
+
+        private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            GetData();
+        }
+
+        private void ExecuteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExecuteBtn.PerformClick();
+        }
+
+        private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            PrintBtn.PerformClick();
+        }
+
+        private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            EditBtn.PerformClick();
+        }
+
+        private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                SettingMaterialPricesDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void HistoryBtnItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (row_smp_det != null)
+            {
+                new frmMaterialPriceHIstory(row_smp_det.MatId).ShowDialog();
+            }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(row_smp_det.MatId);
+        }
+
+        private void MatIfoBtnItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(row_smp_det.MatId);
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatRSV(row_smp_det.MatId, DB.SkladBase());
         }
     }
 }

@@ -80,8 +80,8 @@ namespace CheckboxIntegration.Models
         public string type { get; set; }
         public int serial { get; set; }
         public string status { get; set; }
-        public DateTime request_signed_at { get; set; }
-        public DateTime request_received_at { get; set; }
+        public DateTime? request_signed_at { get; set; }
+        public DateTime? request_received_at { get; set; }
         public string response_status { get; set; }
         public object response_error_message { get; set; }
         public string response_id { get; set; }
