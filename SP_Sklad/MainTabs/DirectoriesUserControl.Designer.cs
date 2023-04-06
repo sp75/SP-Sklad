@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox8 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -401,8 +402,8 @@
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
@@ -578,7 +579,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -594,6 +594,16 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 3)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.Images.SetKeyName(0, "Товари.png");
+            this.GridImageList.Images.SetKeyName(1, "Конрагент.png");
+            this.GridImageList.Images.SetKeyName(2, "юзер.png");
+            this.GridImageList.Images.SetKeyName(3, "store-2017.png");
+            this.GridImageList.Images.SetKeyName(4, "Послуги.png");
             // 
             // repositoryItemImageComboBox2
             // 
@@ -1326,8 +1336,6 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2799,9 +2807,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3070,6 +3078,7 @@
             // 
             // gridColumn54
             // 
+            this.gridColumn54.Caption = "За змавчуванням";
             this.gridColumn54.FieldName = "Def";
             this.gridColumn54.Name = "gridColumn54";
             this.gridColumn54.Visible = true;
@@ -3184,7 +3193,7 @@
             this.gridColumn56.Name = "gridColumn56";
             this.gridColumn56.Visible = true;
             this.gridColumn56.VisibleIndex = 0;
-            this.gridColumn56.Width = 257;
+            this.gridColumn56.Width = 327;
             // 
             // gridColumn57
             // 
@@ -3193,7 +3202,7 @@
             this.gridColumn57.Name = "gridColumn57";
             this.gridColumn57.Visible = true;
             this.gridColumn57.VisibleIndex = 2;
-            this.gridColumn57.Width = 374;
+            this.gridColumn57.Width = 429;
             // 
             // gridColumn58
             // 
@@ -3202,16 +3211,17 @@
             this.gridColumn58.Name = "gridColumn58";
             this.gridColumn58.Visible = true;
             this.gridColumn58.VisibleIndex = 1;
-            this.gridColumn58.Width = 155;
+            this.gridColumn58.Width = 197;
             // 
             // gridColumn59
             // 
+            this.gridColumn59.Caption = "За змавчуванням";
             this.gridColumn59.ColumnEdit = this.repositoryItemCheckEdit1;
             this.gridColumn59.FieldName = "Def";
             this.gridColumn59.Name = "gridColumn59";
             this.gridColumn59.Visible = true;
             this.gridColumn59.VisibleIndex = 3;
-            this.gridColumn59.Width = 49;
+            this.gridColumn59.Width = 110;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -3808,10 +3818,11 @@
             // 
             // colDeleted
             // 
+            this.colDeleted.Caption = "Видалена";
             this.colDeleted.FieldName = "Deleted";
             this.colDeleted.Name = "colDeleted";
             this.colDeleted.Visible = true;
-            this.colDeleted.VisibleIndex = 2;
+            this.colDeleted.VisibleIndex = 4;
             // 
             // colRepShortName
             // 
@@ -3819,7 +3830,7 @@
             this.colRepShortName.FieldName = "RepShortName";
             this.colRepShortName.Name = "colRepShortName";
             this.colRepShortName.Visible = true;
-            this.colRepShortName.VisibleIndex = 3;
+            this.colRepShortName.VisibleIndex = 2;
             // 
             // colRepFracName
             // 
@@ -3827,7 +3838,7 @@
             this.colRepFracName.FieldName = "RepFracName";
             this.colRepFracName.Name = "colRepFracName";
             this.colRepFracName.Visible = true;
-            this.colRepFracName.VisibleIndex = 4;
+            this.colRepFracName.VisibleIndex = 3;
             // 
             // xtraTabPage32
             // 
@@ -3839,9 +3850,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -4314,16 +4325,6 @@
             this.RecipePopupMenu.Manager = this.barManager1;
             this.RecipePopupMenu.Name = "RecipePopupMenu";
             // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.GridImageList.Images.SetKeyName(0, "Товари.png");
-            this.GridImageList.Images.SetKeyName(1, "Конрагент.png");
-            this.GridImageList.Images.SetKeyName(2, "юзер.png");
-            this.GridImageList.Images.SetKeyName(3, "store-2017.png");
-            this.GridImageList.Images.SetKeyName(4, "Послуги.png");
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4342,6 +4343,7 @@
             this.Size = new System.Drawing.Size(1424, 643);
             this.Load += new System.EventHandler(this.DirectoriesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
@@ -4521,7 +4523,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

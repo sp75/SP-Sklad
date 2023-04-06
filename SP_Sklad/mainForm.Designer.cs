@@ -88,6 +88,7 @@
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -110,6 +111,7 @@
             this.TradeTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // barManagerImgList
@@ -278,7 +280,6 @@
             this.NextBtn.Caption = "Перейти вперед";
             this.NextBtn.Id = 25;
             this.NextBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.Image")));
-            this.NextBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.LargeImage")));
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
             // 
@@ -585,6 +586,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
             this.xtraTabPage7.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
+            this.xtraTabPage7.ImageOptions.ImageIndex = 8;
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage7.TabPageWidth = 120;
@@ -602,6 +604,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
             this.xtraTabPage6.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
+            this.xtraTabPage6.ImageOptions.ImageIndex = 6;
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage6.TabPageWidth = 120;
@@ -623,6 +626,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
             this.xtraTabPage5.ImageOptions.Image = global::SP_Sklad.Properties.Resources.company;
+            this.xtraTabPage5.ImageOptions.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage5.TabPageWidth = 120;
@@ -640,6 +644,7 @@
             // 
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
             this.xtraTabPage4.ImageOptions.Image = global::SP_Sklad.Properties.Resources.bank;
+            this.xtraTabPage4.ImageOptions.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage4.TabPageWidth = 120;
@@ -658,6 +663,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.whUserControl);
             this.xtraTabPage3.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
+            this.xtraTabPage3.ImageOptions.ImageIndex = 2;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage3.TabPageWidth = 120;
@@ -683,6 +689,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
             this.xtraTabPage2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.factory;
+            this.xtraTabPage2.ImageOptions.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage2.TabPageWidth = 120;
@@ -700,6 +707,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
             this.xtraTabPage1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.administration;
+            this.xtraTabPage1.ImageOptions.ImageIndex = 0;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1186, 586);
             this.xtraTabPage1.TabPageWidth = 120;
@@ -721,6 +729,7 @@
             this.xtraTabControl1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Tahoma", 10F);
             this.xtraTabControl1.AppearancePage.HeaderActive.Options.UseFont = true;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl1.Images = this.TabImageCollection;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 45);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
@@ -741,6 +750,7 @@
             // 
             this.TradeTabPage.Controls.Add(this.tradeUserControl1);
             this.TradeTabPage.ImageOptions.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
+            this.TradeTabPage.ImageOptions.ImageIndex = 3;
             this.TradeTabPage.Name = "TradeTabPage";
             this.TradeTabPage.Size = new System.Drawing.Size(1186, 586);
             this.TradeTabPage.TabPageWidth = 120;
@@ -841,9 +851,25 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
+            // 
+            // TabImageCollection
+            // 
+            this.TabImageCollection.ImageSize = new System.Drawing.Size(32, 32);
+            this.TabImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TabImageCollection.ImageStream")));
+            this.TabImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TabImageCollection.Images.SetKeyName(0, "projectdirectory_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(1, "technology_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(2, "packageproduct_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(3, "bosale_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
+            this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(6, "article_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(7, "bosaleitem_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(8, "editrangepermission_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(9, "ide_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
             // 
             // mainForm
             // 
@@ -885,6 +911,7 @@
             this.TradeTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -950,6 +977,7 @@
         private MainTabs.TradeUserControl tradeUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.Utils.ImageCollection TabImageCollection;
     }
 }
 

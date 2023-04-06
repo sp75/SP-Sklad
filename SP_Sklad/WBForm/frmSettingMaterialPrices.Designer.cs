@@ -79,7 +79,7 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.NumEdit = new DevExpress.XtraEditors.TextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
@@ -116,7 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -374,7 +374,7 @@
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.textEdit1);
             this.panelControl1.Controls.Add(this.labelControl7);
-            this.panelControl1.Controls.Add(this.textEdit2);
+            this.panelControl1.Controls.Add(this.NumEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
@@ -384,7 +384,7 @@
             // PTypeEdit
             // 
             this.PTypeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SettingMaterialPricesBS, "PTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PTypeEdit.Location = new System.Drawing.Point(557, 48);
+            this.PTypeEdit.Location = new System.Drawing.Point(587, 48);
             this.PTypeEdit.Name = "PTypeEdit";
             this.PTypeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -394,7 +394,7 @@
             this.PTypeEdit.Properties.ShowFooter = false;
             this.PTypeEdit.Properties.ShowHeader = false;
             this.PTypeEdit.Properties.ValueMember = "PTypeId";
-            this.PTypeEdit.Size = new System.Drawing.Size(303, 22);
+            this.PTypeEdit.Size = new System.Drawing.Size(273, 22);
             this.PTypeEdit.StyleController = this.styleController1;
             this.PTypeEdit.TabIndex = 63;
             // 
@@ -404,7 +404,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(474, 51);
+            this.labelControl6.Location = new System.Drawing.Point(504, 52);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(77, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -413,7 +413,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(503, 91);
+            this.labelControl10.Location = new System.Drawing.Point(533, 91);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(48, 16);
             this.labelControl10.StyleController = this.styleController1;
@@ -423,7 +423,7 @@
             // PersonComboBox
             // 
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SettingMaterialPricesBS, "PersonId", true));
-            this.PersonComboBox.Location = new System.Drawing.Point(557, 87);
+            this.PersonComboBox.Location = new System.Drawing.Point(587, 87);
             this.PersonComboBox.Name = "PersonComboBox";
             editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -435,7 +435,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(303, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(273, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 60;
             // 
@@ -449,16 +449,19 @@
             editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.OnDateDBEdit.Properties.MaskSettings.Set("mask", "g");
             this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.OnDateDBEdit.Size = new System.Drawing.Size(169, 24);
+            this.OnDateDBEdit.Size = new System.Drawing.Size(202, 24);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 59;
+            this.OnDateDBEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.OnDateDBEdit_ButtonClick);
+            this.OnDateDBEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
+            this.OnDateDBEdit.Validating += new System.ComponentModel.CancelEventHandler(this.OnDateDBEdit_Validating);
             // 
             // labelControl1
             // 
@@ -498,7 +501,7 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.DisplayFormat.FormatString = "0.0000";
             this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit1.Size = new System.Drawing.Size(365, 22);
+            this.textEdit1.Size = new System.Drawing.Size(398, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 52;
             // 
@@ -511,17 +514,17 @@
             this.labelControl7.TabIndex = 51;
             this.labelControl7.Text = "Примітка";
             // 
-            // textEdit2
+            // NumEdit
             // 
-            this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SettingMaterialPricesBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit2.Location = new System.Drawing.Point(70, 51);
-            this.textEdit2.MenuManager = this.barManager1;
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.DisplayFormat.FormatString = "0";
-            this.textEdit2.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.textEdit2.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.textEdit2.Size = new System.Drawing.Size(118, 20);
-            this.textEdit2.TabIndex = 55;
+            this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SettingMaterialPricesBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.NumEdit.Location = new System.Drawing.Point(70, 51);
+            this.NumEdit.MenuManager = this.barManager1;
+            this.NumEdit.Name = "NumEdit";
+            this.NumEdit.Properties.DisplayFormat.FormatString = "0";
+            this.NumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.NumEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.NumEdit.Size = new System.Drawing.Size(118, 20);
+            this.NumEdit.TabIndex = 55;
             // 
             // repositoryItemTextEdit2
             // 
@@ -750,6 +753,7 @@
             this.Text = "Документ на встановлення ціни";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmPriceList_FormClosed);
             this.Load += new System.EventHandler(this.frmPriceList_Load);
+            this.Shown += new System.EventHandler(this.frmSettingMaterialPrices_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -766,7 +770,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -829,7 +833,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
+        private DevExpress.XtraEditors.TextEdit NumEdit;
         private DevExpress.XtraEditors.CheckEdit TurnDocCheckBox;
         private DevExpress.XtraEditors.DateEdit OnDateDBEdit;
         private DevExpress.XtraEditors.LabelControl labelControl1;

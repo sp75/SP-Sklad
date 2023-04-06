@@ -111,7 +111,6 @@ namespace SP_Sklad.WBForm
 
         }
 
-
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PrintDoc.SettingMaterialPricesReport(wbt.PTypeId, _db);
@@ -200,6 +199,42 @@ namespace SP_Sklad.WBForm
             }
 
             _db.SaveChanges();
+        }
+
+        private void OnDateDBEdit_Validating(object sender, CancelEventArgs e)
+        {
+            if (OnDateDBEdit.DateTime.Date < DBHelper.ServerDateTime().Date)
+            {
+                OnDateDBEdit.ErrorText = "Дата документа повина бути в межах поточного дня!";
+                e.Cancel = true;
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index ==1)
+            {
+                OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
+        bool GetOk()
+        {
+            bool recult = OnDateDBEdit.DateTime.Date >= DBHelper.ServerDateTime().Date;
+
+            OkButton.Enabled = recult;
+
+            return recult;
+        }
+
+        private void OnDateDBEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetOk();
+        }
+
+        private void frmSettingMaterialPrices_Shown(object sender, EventArgs e)
+        {
+            OnDateDBEdit.Focus();
+            NumEdit.Focus();
         }
     }
 }

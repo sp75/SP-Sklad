@@ -626,12 +626,12 @@ namespace SP_Sklad.MainTabs
                         var wb = db.WaybillList.Find(dr.WbillId);
                         if (wb == null)
                         {
-                            MessageBox.Show(Resources.not_find_wb);
+                            XtraMessageBox.Show(Resources.not_find_wb);
                             return;
                         }
                         if (wb.SessionId != null)
                         {
-                            MessageBox.Show(Resources.deadlock);
+                            XtraMessageBox.Show(Resources.deadlock);
                             return;
                         }
 
@@ -663,12 +663,12 @@ namespace SP_Sklad.MainTabs
                             }
                             else
                             {
-                                MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         else
                         {
-                            MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                            XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
                         }
                         break;
 
@@ -685,12 +685,12 @@ namespace SP_Sklad.MainTabs
                             }
                             else
                             {
-                                MessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення корегуючого документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення корегуючого документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         else
                         {
-                            MessageBox.Show(string.Format("Документ #{0} не знайдено", kadjustment_row.Num));
+                            XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", kadjustment_row.Num));
                         }
                         break;
 
@@ -710,14 +710,14 @@ namespace SP_Sklad.MainTabs
                         }
                         if (pm.SessionId != null)
                         {
-                            MessageBox.Show(Resources.deadlock);
+                            XtraMessageBox.Show(Resources.deadlock);
                             return;
                         }
 
                         var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
                         if (rel.Any())
                         {
-                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            XtraMessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
                         }
 
@@ -748,12 +748,12 @@ namespace SP_Sklad.MainTabs
                             return;
                         }
 
-                     /*   var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
-                        if (rel.Any())
+                        
+                        if (smp.OnDate.Date < DBHelper.ServerDateTime().Date)
                         {
-                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            XtraMessageBox.Show("Проводити та сторнувати цей документ заборонено", "Провести документ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             return;
-                        }*/
+                        }
 
                         if (smp.Checked == 1)
                         {

@@ -466,6 +466,12 @@
     <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmReport51.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmReport51.Designer.cs">
+      <DependentUpon>frmReport51.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\BanksProvidingStatements.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -533,6 +539,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\RawMaterialType.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\REP_51_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\Roles.cs">
@@ -2111,6 +2120,9 @@
     <EmbeddedResource Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReport51.resx">
+      <DependentUpon>frmReport51.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmCashboxRefund.resx">
       <DependentUpon>frmCashboxRefund.cs</DependentUpon>
     </EmbeddedResource>
@@ -2522,6 +2534,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.RawMaterialManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ReportSortedFields.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.REP_15_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.REP_51_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Routes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.SchedulingOrders.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Serials.datasource" />

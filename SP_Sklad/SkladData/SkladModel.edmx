@@ -7726,6 +7726,61 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="REP_51" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="year" Type="int" Mode="In" />
+          <Parameter Name="ka_ids" Type="varchar" Mode="In" />
+          <Parameter Name="ka_grp_ids" Type="varchar" Mode="In" />
+          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="Name" Type="nvarchar" MaxLength="255" />
+                <Property Name="AmountOut1" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut2" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut3" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut4" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut5" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut6" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut7" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut8" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut9" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut10" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut11" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountOut12" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+                <Property Name="AmountIn1" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn2" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn3" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn4" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn5" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn6" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn7" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn8" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn9" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn10" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn11" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AmountIn12" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="AvgPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="AvgOutPrice" Type="numeric" Precision="38" Scale="6" />
+                <Property Name="GrpId" Type="int" />
+                <Property Name="TotalAmountOut1" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut2" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut3" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut4" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut5" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut6" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut7" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut8" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut9" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut10" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut11" Type="numeric" Precision="38" Scale="4" />
+                <Property Name="TotalAmountOut12" Type="numeric" Precision="38" Scale="4" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="ReservedAllPosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
           <Parameter Name="user_id" Type="int" Mode="In" />
@@ -11733,6 +11788,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="v_SettingMaterialPricesDet" EntityType="BaseModel.v_SettingMaterialPricesDet" />
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="BaseModel.v_SummarySettingMaterialPrices" />
+          <FunctionImport Name="REP_51" IsComposable="true" ReturnType="Collection(BaseModel.REP_51_Result)">
+            <Parameter Name="year" Mode="In" Type="Int32" />
+            <Parameter Name="ka_ids" Mode="In" Type="String" />
+            <Parameter Name="ka_grp_ids" Mode="In" Type="String" />
+            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19534,6 +19595,51 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="GrpId" Type="Int32" Nullable="false" />
           <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
         </EntityType>
+        <ComplexType Name="REP_51_Result">
+          <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="AmountOut1" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut4" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut5" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut6" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut7" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut8" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut9" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut10" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut11" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut12" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="Decimal" Name="AmountIn1" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn4" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn5" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn6" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn7" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn8" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn9" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn10" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn11" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AmountIn12" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="AvgOutPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="Decimal" Name="TotalAmountOut1" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut4" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut5" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut6" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut7" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut8" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut9" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut10" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut11" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="TotalAmountOut12" Nullable="true" Precision="38" Scale="4" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24757,6 +24863,55 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="REP_51" FunctionName="BaseModel.Store.REP_51">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.REP_51_Result">
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AmountOut1" ColumnName="AmountOut1" />
+                <ScalarProperty Name="AmountOut2" ColumnName="AmountOut2" />
+                <ScalarProperty Name="AmountOut3" ColumnName="AmountOut3" />
+                <ScalarProperty Name="AmountOut4" ColumnName="AmountOut4" />
+                <ScalarProperty Name="AmountOut5" ColumnName="AmountOut5" />
+                <ScalarProperty Name="AmountOut6" ColumnName="AmountOut6" />
+                <ScalarProperty Name="AmountOut7" ColumnName="AmountOut7" />
+                <ScalarProperty Name="AmountOut8" ColumnName="AmountOut8" />
+                <ScalarProperty Name="AmountOut9" ColumnName="AmountOut9" />
+                <ScalarProperty Name="AmountOut10" ColumnName="AmountOut10" />
+                <ScalarProperty Name="AmountOut11" ColumnName="AmountOut11" />
+                <ScalarProperty Name="AmountOut12" ColumnName="AmountOut12" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="AmountIn1" ColumnName="AmountIn1" />
+                <ScalarProperty Name="AmountIn2" ColumnName="AmountIn2" />
+                <ScalarProperty Name="AmountIn3" ColumnName="AmountIn3" />
+                <ScalarProperty Name="AmountIn4" ColumnName="AmountIn4" />
+                <ScalarProperty Name="AmountIn5" ColumnName="AmountIn5" />
+                <ScalarProperty Name="AmountIn6" ColumnName="AmountIn6" />
+                <ScalarProperty Name="AmountIn7" ColumnName="AmountIn7" />
+                <ScalarProperty Name="AmountIn8" ColumnName="AmountIn8" />
+                <ScalarProperty Name="AmountIn9" ColumnName="AmountIn9" />
+                <ScalarProperty Name="AmountIn10" ColumnName="AmountIn10" />
+                <ScalarProperty Name="AmountIn11" ColumnName="AmountIn11" />
+                <ScalarProperty Name="AmountIn12" ColumnName="AmountIn12" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="AvgOutPrice" ColumnName="AvgOutPrice" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="TotalAmountOut1" ColumnName="TotalAmountOut1" />
+                <ScalarProperty Name="TotalAmountOut2" ColumnName="TotalAmountOut2" />
+                <ScalarProperty Name="TotalAmountOut3" ColumnName="TotalAmountOut3" />
+                <ScalarProperty Name="TotalAmountOut4" ColumnName="TotalAmountOut4" />
+                <ScalarProperty Name="TotalAmountOut5" ColumnName="TotalAmountOut5" />
+                <ScalarProperty Name="TotalAmountOut6" ColumnName="TotalAmountOut6" />
+                <ScalarProperty Name="TotalAmountOut7" ColumnName="TotalAmountOut7" />
+                <ScalarProperty Name="TotalAmountOut8" ColumnName="TotalAmountOut8" />
+                <ScalarProperty Name="TotalAmountOut9" ColumnName="TotalAmountOut9" />
+                <ScalarProperty Name="TotalAmountOut10" ColumnName="TotalAmountOut10" />
+                <ScalarProperty Name="TotalAmountOut11" ColumnName="TotalAmountOut11" />
+                <ScalarProperty Name="TotalAmountOut12" ColumnName="TotalAmountOut12" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

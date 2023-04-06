@@ -2599,5 +2599,27 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "REP_51")]
+        public virtual IQueryable<REP_51_Result> REP_51(Nullable<int> year, string ka_ids, string ka_grp_ids, Nullable<int> grp_id)
+        {
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var ka_idsParameter = ka_ids != null ?
+                new ObjectParameter("ka_ids", ka_ids) :
+                new ObjectParameter("ka_ids", typeof(string));
+    
+            var ka_grp_idsParameter = ka_grp_ids != null ?
+                new ObjectParameter("ka_grp_ids", ka_grp_ids) :
+                new ObjectParameter("ka_grp_ids", typeof(string));
+    
+            var grp_idParameter = grp_id.HasValue ?
+                new ObjectParameter("grp_id", grp_id) :
+                new ObjectParameter("grp_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_51_Result>("[BaseEntities].[REP_51](@year, @ka_ids, @ka_grp_ids, @grp_id)", yearParameter, ka_idsParameter, ka_grp_idsParameter, grp_idParameter);
+        }
     }
 }

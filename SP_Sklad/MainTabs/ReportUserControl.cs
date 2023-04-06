@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -438,6 +439,11 @@ namespace SP_Sklad.MainTabs
         private void RepGridView_DoubleClick(object sender, EventArgs e)
         {
             RepBtn.PerformClick();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmReport51().ShowDialog();
         }
     }
 }
