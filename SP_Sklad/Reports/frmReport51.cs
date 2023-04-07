@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using DevExpress.XtraGrid.Views.Grid;
 using System.IO;
 using SP.Reports.Models.Views;
+using DevExpress.XtraCharts.Designer;
 
 namespace SP_Sklad.ViewsForm
 {
@@ -44,17 +45,11 @@ namespace SP_Sklad.ViewsForm
             {
                 checkedComboBoxEdit2.Properties.Items.Add(item.Id, item.Name, CheckState.Unchecked, true);
             }
-            
-
-       //     Text += " " + mat.Name;
-         //   chartControl1.Titles[0].Text = Text;
-      
-
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            chartControl1.ShowRibbonPrintPreview();
+
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -63,7 +58,19 @@ namespace SP_Sklad.ViewsForm
             var ka_ids = string.Join(",", checkedComboBoxEdit1.Properties.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
             var ka_grp_ids = string.Join(",", checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
 
+            chartControl1.Titles[1].Text = checkedComboBoxEdit2.Text;
+
             REP_51BS.DataSource = _db.REP_51((int)YearEdit3.Value, ka_ids, ka_grp_ids, grp_id);
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
