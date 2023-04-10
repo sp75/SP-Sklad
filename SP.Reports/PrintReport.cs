@@ -21,7 +21,7 @@ namespace SP.Reports
         public DateTime OnDate { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public GrpComboBoxItem MatGroup { get; set; }
+        public MatGrpComboBoxItem MatGroup { get; set; }
         public KagentComboBoxItem Kagent { get; set; }
         public WhComboBoxItem Warehouse { get; set; }
         public MatComboBoxItem Material { get; set; }
@@ -1778,6 +1778,20 @@ SELECT WaybillList.[WbillId]
                 return;
             }
 
+            var mat_grp = mat.GroupBy(g => new { g.KaId, g.MatGrpId,g.MatGrpName }).Select(s => new
+            {
+                s.Key.KaId,
+                s.Key.MatGrpId,
+                s.Key.MatGrpName,
+                OrderedAmount = s.Sum(s1 => s1.OrderedAmount),
+                OrderedTotal = s.Sum(s1 => s1.OrderedTotal),
+                AmountOut = s.Sum(s1 => s1.AmountOut),
+                TotalOut = s.Sum(s1 => s1.TotalOut),
+                ReturnAmount = s.Sum(s1 => s1.ReturnAmount),
+                ReturnTotal = s.Sum(s1 => s1.ReturnTotal),
+
+            }).ToList();
+
             var kagents = mat.GroupBy(g => new
             {
                 g.KaId,
@@ -1808,6 +1822,17 @@ SELECT WaybillList.[WbillId]
                 OrderedAmount = s.Sum(r => r.OrderedAmount),
                 OrderedTotal = s.Sum(r => r.OrderedTotal)
             }).ToList());
+
+            data_for_report.Add("MatGrp2", mat_grp);
+            data_for_report.Add("KagentsGrp", kagents);
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "KagentsGrp",
+                child_table = "MatGrp2"
+            });
+
             data_for_report.Add("_realation_", realation);
         }
 

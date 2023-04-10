@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SP.Reports.Models.Views
 {
-    public class GrpComboBoxItem
+    public class MatGrpComboBoxItem
     {
         public int GrpId { get; set; }
         public string Name { get; set; }

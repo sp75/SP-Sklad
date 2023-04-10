@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 
@@ -443,7 +444,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmReport51().ShowDialog();
+            new frmReport52().ShowDialog();
         }
     }
 }

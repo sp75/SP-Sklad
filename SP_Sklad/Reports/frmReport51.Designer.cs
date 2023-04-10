@@ -46,7 +46,6 @@
             DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport51));
             DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn chartControlCommandGalleryItemGroup2DColumn1 = new DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DColumn();
             DevExpress.XtraCharts.UI.CreateBarChartItem createBarChartItem1 = new DevExpress.XtraCharts.UI.CreateBarChartItem();
             DevExpress.XtraCharts.UI.CreateFullStackedBarChartItem createFullStackedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateFullStackedBarChartItem();
@@ -105,6 +104,7 @@
             DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DBar chartControlCommandGalleryItemGroup2DBar1 = new DevExpress.XtraCharts.UI.ChartControlCommandGalleryItemGroup2DBar();
             DevExpress.XtraCharts.UI.CreateRotatedBarChartItem createRotatedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateRotatedBarChartItem();
             DevExpress.XtraCharts.UI.CreateRotatedFullStackedBarChartItem createRotatedFullStackedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateRotatedFullStackedBarChartItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport51));
             DevExpress.XtraCharts.UI.CreateRotatedSideBySideFullStackedBarChartItem createRotatedSideBySideFullStackedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateRotatedSideBySideFullStackedBarChartItem();
             DevExpress.XtraCharts.UI.CreateRotatedSideBySideStackedBarChartItem createRotatedSideBySideStackedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateRotatedSideBySideStackedBarChartItem();
             DevExpress.XtraCharts.UI.CreateRotatedStackedBarChartItem createRotatedStackedBarChartItem1 = new DevExpress.XtraCharts.UI.CreateRotatedStackedBarChartItem();
@@ -385,17 +385,7 @@
             DevExpress.Skins.SkinPaddingEdges skinPaddingEdges6 = new DevExpress.Skins.SkinPaddingEdges();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.REP_51BS = new System.Windows.Forms.BindingSource(this.components);
-            this.PerYearPanel = new System.Windows.Forms.Panel();
-            this.checkedComboBoxEdit2 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.checkedComboBoxEdit1 = new DevExpress.XtraEditors.CheckedComboBoxEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.GrpComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
-            this.YearEdit3 = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.commandBarGalleryDropDown1 = new DevExpress.XtraBars.Commands.CommandBarGalleryDropDown(this.components);
             this.commandBarGalleryDropDown2 = new DevExpress.XtraBars.Commands.CommandBarGalleryDropDown(this.components);
             this.commandBarGalleryDropDown3 = new DevExpress.XtraBars.Commands.CommandBarGalleryDropDown(this.components);
@@ -458,10 +448,22 @@
             this.exportToPNGChartItem1 = new DevExpress.XtraCharts.UI.ExportToPNGChartItem();
             this.exportToTIFFChartItem1 = new DevExpress.XtraCharts.UI.ExportToTIFFChartItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemSpinEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
-            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.YearSpinEdit = new DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit();
+            this.MatGrpEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.MatGroupLookUpEdit = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.KagentEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemCheckedComboBoxEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.MatEditItem = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.chartRibbonPageCategory1 = new DevExpress.XtraCharts.UI.ChartRibbonPageCategory();
+            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.createChartRibbonPage2 = new DevExpress.XtraCharts.UI.CreateChartRibbonPage();
             this.chartTypeRibbonPageGroup2 = new DevExpress.XtraCharts.UI.ChartTypeRibbonPageGroup();
             this.chartAppearanceRibbonPageGroup2 = new DevExpress.XtraCharts.UI.ChartAppearanceRibbonPageGroup();
@@ -470,16 +472,6 @@
             this.chartTemplatesRibbonPageGroup2 = new DevExpress.XtraCharts.UI.ChartTemplatesRibbonPageGroup();
             this.chartPrintExportRibbonPageGroup2 = new DevExpress.XtraCharts.UI.ChartPrintExportRibbonPageGroup();
             this.chartBarController1 = new DevExpress.XtraCharts.UI.ChartBarController(this.components);
-            this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemCheckedComboBoxEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.barEditItem4 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemCheckedComboBoxEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
@@ -497,12 +489,7 @@
             ((System.ComponentModel.ISupportInitialize)(series12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_51BS)).BeginInit();
-            this.PerYearPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrpComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown3)).BeginInit();
@@ -527,11 +514,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown23)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBarController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YearSpinEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatGroupLookUpEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartBarController1)).BeginInit();
             this.SuspendLayout();
             // 
             // chartControl1
@@ -546,7 +534,7 @@
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
-            this.chartControl1.Location = new System.Drawing.Point(0, 283);
+            this.chartControl1.Location = new System.Drawing.Point(0, 150);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.OptionsPrint.SizeMode = DevExpress.XtraCharts.Printing.PrintSizeMode.Stretch;
             series1.ArgumentDataMember = "Name";
@@ -617,7 +605,7 @@
         series11,
         series12};
             this.chartControl1.SeriesTemplate.View = lineSeriesView1;
-            this.chartControl1.Size = new System.Drawing.Size(1008, 289);
+            this.chartControl1.Size = new System.Drawing.Size(1008, 422);
             this.chartControl1.TabIndex = 19;
             chartTitle1.Font = new System.Drawing.Font("Tahoma", 15F);
             chartTitle1.Text = "Динамика прожу товарів";
@@ -631,133 +619,10 @@
             // 
             this.REP_51BS.DataSource = typeof(SP_Sklad.SkladData.REP_51_Result);
             // 
-            // PerYearPanel
-            // 
-            this.PerYearPanel.Controls.Add(this.checkedComboBoxEdit2);
-            this.PerYearPanel.Controls.Add(this.labelControl2);
-            this.PerYearPanel.Controls.Add(this.checkedComboBoxEdit1);
-            this.PerYearPanel.Controls.Add(this.labelControl1);
-            this.PerYearPanel.Controls.Add(this.simpleButton2);
-            this.PerYearPanel.Controls.Add(this.GrpComboBox);
-            this.PerYearPanel.Controls.Add(this.labelControl11);
-            this.PerYearPanel.Controls.Add(this.YearEdit3);
-            this.PerYearPanel.Controls.Add(this.labelControl9);
-            this.PerYearPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PerYearPanel.Location = new System.Drawing.Point(0, 150);
-            this.PerYearPanel.Name = "PerYearPanel";
-            this.PerYearPanel.Size = new System.Drawing.Size(1008, 133);
-            this.PerYearPanel.TabIndex = 38;
-            // 
-            // checkedComboBoxEdit2
-            // 
-            this.checkedComboBoxEdit2.EditValue = "";
-            this.checkedComboBoxEdit2.Location = new System.Drawing.Point(12, 96);
-            this.checkedComboBoxEdit2.Name = "checkedComboBoxEdit2";
-            this.checkedComboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit2.Properties.IncrementalSearch = true;
-            this.checkedComboBoxEdit2.Size = new System.Drawing.Size(445, 22);
-            this.checkedComboBoxEdit2.StyleController = this.styleController1;
-            this.checkedComboBoxEdit2.TabIndex = 61;
-            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(12, 75);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(122, 16);
-            this.labelControl2.StyleController = this.styleController1;
-            this.labelControl2.TabIndex = 60;
-            this.labelControl2.Text = "Групи контрагентів: ";
-            // 
-            // checkedComboBoxEdit1
-            // 
-            this.checkedComboBoxEdit1.EditValue = "";
-            this.checkedComboBoxEdit1.Location = new System.Drawing.Point(483, 36);
-            this.checkedComboBoxEdit1.Name = "checkedComboBoxEdit1";
-            this.checkedComboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.checkedComboBoxEdit1.Properties.IncrementalSearch = true;
-            this.checkedComboBoxEdit1.Size = new System.Drawing.Size(336, 22);
-            this.checkedComboBoxEdit1.StyleController = this.styleController1;
-            this.checkedComboBoxEdit1.TabIndex = 59;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(483, 15);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(78, 16);
-            this.labelControl1.StyleController = this.styleController1;
-            this.labelControl1.TabIndex = 58;
-            this.labelControl1.Text = "Контрагенти:";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(483, 88);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(125, 30);
-            this.simpleButton2.TabIndex = 36;
-            this.simpleButton2.Text = "Сформувати звіт";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // GrpComboBox
-            // 
-            this.GrpComboBox.Location = new System.Drawing.Point(137, 36);
-            this.GrpComboBox.Name = "GrpComboBox";
-            this.GrpComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.GrpComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.GrpComboBox.Properties.DisplayMember = "Name";
-            this.GrpComboBox.Properties.ShowFooter = false;
-            this.GrpComboBox.Properties.ShowHeader = false;
-            this.GrpComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.GrpComboBox.Properties.ValueMember = "GrpId";
-            this.GrpComboBox.Size = new System.Drawing.Size(320, 22);
-            this.GrpComboBox.StyleController = this.styleController1;
-            this.GrpComboBox.TabIndex = 35;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Location = new System.Drawing.Point(137, 14);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(87, 16);
-            this.labelControl11.StyleController = this.styleController1;
-            this.labelControl11.TabIndex = 34;
-            this.labelControl11.Text = "Група товарів:";
-            // 
-            // YearEdit3
-            // 
-            this.YearEdit3.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.YearEdit3.Location = new System.Drawing.Point(12, 36);
-            this.YearEdit3.Name = "YearEdit3";
-            this.YearEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.YearEdit3.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.YearEdit3.Properties.IsFloatValue = false;
-            this.YearEdit3.Properties.MaskSettings.Set("mask", "N00");
-            this.YearEdit3.Size = new System.Drawing.Size(90, 22);
-            this.YearEdit3.StyleController = this.styleController1;
-            this.YearEdit3.TabIndex = 33;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(12, 14);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(21, 16);
-            this.labelControl9.StyleController = this.styleController1;
-            this.labelControl9.TabIndex = 32;
-            this.labelControl9.Text = "Рік:";
             // 
             // commandBarGalleryDropDown1
             // 
@@ -2224,20 +2089,22 @@
             this.exportToTIFFChartItem1,
             this.createExportToImageBaseItem1,
             this.barEditItem1,
-            this.barEditItem2,
-            this.barEditItem3,
+            this.MatGrpEditItem,
+            this.KagentEditItem,
             this.barEditItem4,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.MatEditItem});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 33;
+            this.ribbonControl1.MaxItemId = 34;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.chartRibbonPageCategory1});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemSpinEdit1,
-            this.repositoryItemLookUpEdit1,
+            this.YearSpinEdit,
+            this.MatGroupLookUpEdit,
             this.repositoryItemCheckedComboBoxEdit1,
-            this.repositoryItemCheckedComboBoxEdit2});
+            this.repositoryItemCheckedComboBoxEdit2,
+            this.repositoryItemLookUpEdit2});
             this.ribbonControl1.Size = new System.Drawing.Size(1008, 150);
             // 
             // createBarBaseItem1
@@ -2659,33 +2526,116 @@
             // 
             this.barEditItem1.Caption = "Рік";
             this.barEditItem1.CaptionToEditorIndent = 10;
-            this.barEditItem1.Edit = this.repositoryItemSpinEdit1;
+            this.barEditItem1.Edit = this.YearSpinEdit;
+            this.barEditItem1.EditValue = "2023";
             this.barEditItem1.EditWidth = 100;
             this.barEditItem1.Id = 27;
             this.barEditItem1.Name = "barEditItem1";
             // 
-            // repositoryItemSpinEdit1
+            // YearSpinEdit
             // 
-            this.repositoryItemSpinEdit1.AutoHeight = false;
-            this.repositoryItemSpinEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.YearSpinEdit.AutoHeight = false;
+            this.YearSpinEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemSpinEdit1.Name = "repositoryItemSpinEdit1";
+            this.YearSpinEdit.IsFloatValue = false;
+            this.YearSpinEdit.MaskSettings.Set("autoHideDecimalSeparator", null);
+            this.YearSpinEdit.MaskSettings.Set("mask", "");
+            this.YearSpinEdit.MaxValue = new decimal(new int[] {
+            2050,
+            0,
+            0,
+            0});
+            this.YearSpinEdit.MinValue = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.YearSpinEdit.Name = "YearSpinEdit";
             // 
-            // barEditItem2
+            // MatGrpEditItem
             // 
-            this.barEditItem2.Caption = "Група товарів:";
-            this.barEditItem2.CaptionToEditorIndent = 10;
-            this.barEditItem2.Edit = this.repositoryItemLookUpEdit1;
-            this.barEditItem2.EditWidth = 200;
-            this.barEditItem2.Id = 29;
-            this.barEditItem2.Name = "barEditItem2";
+            this.MatGrpEditItem.Caption = "Група товарів:";
+            this.MatGrpEditItem.CaptionToEditorIndent = 10;
+            this.MatGrpEditItem.Edit = this.MatGroupLookUpEdit;
+            this.MatGrpEditItem.EditWidth = 200;
+            this.MatGrpEditItem.Id = 29;
+            this.MatGrpEditItem.Name = "MatGrpEditItem";
             // 
-            // repositoryItemLookUpEdit1
+            // MatGroupLookUpEdit
             // 
-            this.repositoryItemLookUpEdit1.AutoHeight = false;
-            this.repositoryItemLookUpEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.MatGroupLookUpEdit.AutoHeight = false;
+            this.MatGroupLookUpEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit1.Name = "repositoryItemLookUpEdit1";
+            this.MatGroupLookUpEdit.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.MatGroupLookUpEdit.DisplayMember = "Name";
+            this.MatGroupLookUpEdit.Name = "MatGroupLookUpEdit";
+            this.MatGroupLookUpEdit.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+            this.MatGroupLookUpEdit.ShowFooter = false;
+            this.MatGroupLookUpEdit.ShowHeader = false;
+            this.MatGroupLookUpEdit.ValueMember = "GrpId";
+            // 
+            // KagentEditItem
+            // 
+            this.KagentEditItem.Caption = "Контрагенти:";
+            this.KagentEditItem.Edit = this.repositoryItemCheckedComboBoxEdit1;
+            this.KagentEditItem.EditWidth = 200;
+            this.KagentEditItem.Id = 30;
+            this.KagentEditItem.Name = "KagentEditItem";
+            // 
+            // repositoryItemCheckedComboBoxEdit1
+            // 
+            this.repositoryItemCheckedComboBoxEdit1.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit1.Name = "repositoryItemCheckedComboBoxEdit1";
+            // 
+            // barEditItem4
+            // 
+            this.barEditItem4.Caption = "Групи контрагентів: ";
+            this.barEditItem4.CaptionToEditorIndent = 10;
+            this.barEditItem4.Edit = this.repositoryItemCheckedComboBoxEdit2;
+            this.barEditItem4.EditWidth = 200;
+            this.barEditItem4.Id = 31;
+            this.barEditItem4.Name = "barEditItem4";
+            // 
+            // repositoryItemCheckedComboBoxEdit2
+            // 
+            this.repositoryItemCheckedComboBoxEdit2.AutoHeight = false;
+            this.repositoryItemCheckedComboBoxEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCheckedComboBoxEdit2.Name = "repositoryItemCheckedComboBoxEdit2";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Сформувати звіт";
+            this.barButtonItem1.Id = 32;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // MatEditItem
+            // 
+            this.MatEditItem.Caption = "Товар";
+            this.MatEditItem.Edit = this.repositoryItemLookUpEdit2;
+            this.MatEditItem.EditWidth = 200;
+            this.MatEditItem.Id = 33;
+            this.MatEditItem.Name = "MatEditItem";
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name2")});
+            this.repositoryItemLookUpEdit2.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+            this.repositoryItemLookUpEdit2.ShowFooter = false;
+            this.repositoryItemLookUpEdit2.ShowHeader = false;
+            this.repositoryItemLookUpEdit2.ValueMember = "MatId";
             // 
             // chartRibbonPageCategory1
             // 
@@ -2695,6 +2645,42 @@
             this.ribbonPage4,
             this.createChartRibbonPage2,
             this.createChartOtherRibbonPage2});
+            // 
+            // ribbonPage4
+            // 
+            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup5,
+            this.ribbonPageGroup6,
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup4});
+            this.ribbonPage4.Name = "ribbonPage4";
+            this.ribbonPage4.Text = "Дані для звіту";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.barEditItem1);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "Період";
+            // 
+            // ribbonPageGroup6
+            // 
+            this.ribbonPageGroup6.ItemLinks.Add(this.MatEditItem);
+            this.ribbonPageGroup6.ItemLinks.Add(this.MatGrpEditItem);
+            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.Text = "Товари";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.KagentEditItem);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barEditItem4);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Контрагенти";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
             // 
             // createChartRibbonPage2
             // 
@@ -2780,85 +2766,12 @@
             this.chartBarController1.BarItems.Add(this.createExportBaseItem1);
             this.chartBarController1.Control = this.chartControl1;
             // 
-            // ribbonPage4
-            // 
-            this.ribbonPage4.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup5,
-            this.ribbonPageGroup6,
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup4});
-            this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Дані для звіту";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.barEditItem1);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "Період";
-            // 
-            // ribbonPageGroup6
-            // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.barEditItem2);
-            this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Товари";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.barEditItem3);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barEditItem4);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Контрагенти";
-            // 
-            // barEditItem3
-            // 
-            this.barEditItem3.Caption = "Контрагенти:";
-            this.barEditItem3.Edit = this.repositoryItemCheckedComboBoxEdit1;
-            this.barEditItem3.EditWidth = 200;
-            this.barEditItem3.Id = 30;
-            this.barEditItem3.Name = "barEditItem3";
-            // 
-            // repositoryItemCheckedComboBoxEdit1
-            // 
-            this.repositoryItemCheckedComboBoxEdit1.AutoHeight = false;
-            this.repositoryItemCheckedComboBoxEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCheckedComboBoxEdit1.Name = "repositoryItemCheckedComboBoxEdit1";
-            // 
-            // barEditItem4
-            // 
-            this.barEditItem4.Caption = "Групи контрагентів: ";
-            this.barEditItem4.CaptionToEditorIndent = 10;
-            this.barEditItem4.Edit = this.repositoryItemCheckedComboBoxEdit2;
-            this.barEditItem4.EditWidth = 200;
-            this.barEditItem4.Id = 31;
-            this.barEditItem4.Name = "barEditItem4";
-            // 
-            // repositoryItemCheckedComboBoxEdit2
-            // 
-            this.repositoryItemCheckedComboBoxEdit2.AutoHeight = false;
-            this.repositoryItemCheckedComboBoxEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCheckedComboBoxEdit2.Name = "repositoryItemCheckedComboBoxEdit2";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "ribbonPageGroup4";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Сформувати звіт";
-            this.barButtonItem1.Id = 32;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // frmReport51
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 572);
             this.Controls.Add(this.chartControl1);
-            this.Controls.Add(this.PerYearPanel);
             this.Controls.Add(this.ribbonControl1);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmReport51.IconOptions.Image")));
             this.Name = "frmReport51";
@@ -2883,13 +2796,7 @@
             ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_51BS)).EndInit();
-            this.PerYearPanel.ResumeLayout(false);
-            this.PerYearPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedComboBoxEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GrpComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown3)).EndInit();
@@ -2914,11 +2821,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commandBarGalleryDropDown23)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartBarController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.YearSpinEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatGroupLookUpEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartBarController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2927,17 +2835,7 @@
         #endregion
         private System.Windows.Forms.BindingSource REP_51BS;
         private DevExpress.XtraCharts.ChartControl chartControl1;
-        private System.Windows.Forms.Panel PerYearPanel;
-        private DevExpress.XtraEditors.SpinEdit YearEdit3;
-        private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.StyleController styleController1;
-        public DevExpress.XtraEditors.LookUpEdit GrpComboBox;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
-        public DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit1;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit2;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraBars.Commands.CommandBarGalleryDropDown commandBarGalleryDropDown1;
         private DevExpress.XtraBars.Commands.CommandBarGalleryDropDown commandBarGalleryDropDown2;
         private DevExpress.XtraBars.Commands.CommandBarGalleryDropDown commandBarGalleryDropDown3;
@@ -3009,10 +2907,10 @@
         private DevExpress.XtraCharts.UI.ChartPrintExportRibbonPageGroup chartPrintExportRibbonPageGroup2;
         private DevExpress.XtraCharts.UI.ChartBarController chartBarController1;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit repositoryItemSpinEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem2;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
-        private DevExpress.XtraBars.BarEditItem barEditItem3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemSpinEdit YearSpinEdit;
+        private DevExpress.XtraBars.BarEditItem MatGrpEditItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit MatGroupLookUpEdit;
+        private DevExpress.XtraBars.BarEditItem KagentEditItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit1;
         private DevExpress.XtraBars.BarEditItem barEditItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckedComboBoxEdit repositoryItemCheckedComboBoxEdit2;
@@ -3022,5 +2920,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
+        private DevExpress.XtraBars.BarEditItem MatEditItem;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
     }
 }

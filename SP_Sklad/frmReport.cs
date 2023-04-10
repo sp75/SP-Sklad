@@ -525,7 +525,7 @@ namespace SP_Sklad
             {
                 Height += GRPGroupBox.Height;
 
-                GrpComboBox.Properties.DataSource = new List<GrpComboBoxItem>() { new GrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new GrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
+                GrpComboBox.Properties.DataSource = new List<MatGrpComboBoxItem>() { new MatGrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new MatGrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
                 GrpComboBox.EditValue = 0;
             }
 
@@ -708,7 +708,7 @@ namespace SP_Sklad
                        OnDate = OnDateDBEdit.DateTime,
                        StartDate = StartDateEdit.DateTime,
                        EndDate = EndDateEdit.DateTime,
-                       MatGroup = GrpComboBox.GetSelectedDataRow() as GrpComboBoxItem,
+                       MatGroup = GrpComboBox.GetSelectedDataRow() as MatGrpComboBoxItem,
                        Kagent = KagentComboBox.GetSelectedDataRow() as KagentComboBoxItem,
                        Warehouse = WhComboBox.GetSelectedDataRow() as WhComboBoxItem,
                        Material = MatComboBox.GetSelectedDataRow() as MatComboBoxItem,

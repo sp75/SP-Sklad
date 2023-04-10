@@ -7730,7 +7730,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="year" Type="int" Mode="In" />
           <Parameter Name="ka_ids" Type="varchar" Mode="In" />
           <Parameter Name="ka_grp_ids" Type="varchar" Mode="In" />
-          <Parameter Name="grp_id" Type="int" Mode="In" />
+          <Parameter Name="mat_grp_id" Type="int" Mode="In" />
+          <Parameter Name="mat_id" Type="int" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -11792,7 +11793,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="year" Mode="In" Type="Int32" />
             <Parameter Name="ka_ids" Mode="In" Type="String" />
             <Parameter Name="ka_grp_ids" Mode="In" Type="String" />
-            <Parameter Name="grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_grp_id" Mode="In" Type="Int32" />
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">

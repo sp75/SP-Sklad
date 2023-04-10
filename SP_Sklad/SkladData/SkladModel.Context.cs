@@ -2601,7 +2601,7 @@ namespace SP_Sklad.SkladData
         }
     
         [EdmFunction("BaseEntities", "REP_51")]
-        public virtual IQueryable<REP_51_Result> REP_51(Nullable<int> year, string ka_ids, string ka_grp_ids, Nullable<int> grp_id)
+        public virtual IQueryable<REP_51_Result> REP_51(Nullable<int> year, string ka_ids, string ka_grp_ids, Nullable<int> mat_grp_id, Nullable<int> mat_id)
         {
             var yearParameter = year.HasValue ?
                 new ObjectParameter("year", year) :
@@ -2615,11 +2615,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("ka_grp_ids", ka_grp_ids) :
                 new ObjectParameter("ka_grp_ids", typeof(string));
     
-            var grp_idParameter = grp_id.HasValue ?
-                new ObjectParameter("grp_id", grp_id) :
-                new ObjectParameter("grp_id", typeof(int));
+            var mat_grp_idParameter = mat_grp_id.HasValue ?
+                new ObjectParameter("mat_grp_id", mat_grp_id) :
+                new ObjectParameter("mat_grp_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_51_Result>("[BaseEntities].[REP_51](@year, @ka_ids, @ka_grp_ids, @grp_id)", yearParameter, ka_idsParameter, ka_grp_idsParameter, grp_idParameter);
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_51_Result>("[BaseEntities].[REP_51](@year, @ka_ids, @ka_grp_ids, @mat_grp_id, @mat_id)", yearParameter, ka_idsParameter, ka_grp_idsParameter, mat_grp_idParameter, mat_idParameter);
         }
     }
 }
