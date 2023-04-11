@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public System.DateTime OnDate { get; set; }
         public int Checked { get; set; }
         public string Artikul { get; set; }
+        public Nullable<decimal> LastPrice { get; set; }
     }
 }

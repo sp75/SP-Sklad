@@ -240,12 +240,10 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Artikul", "Name8")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Artikul", "Артикул", 5, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.MatComboBox.Properties.DisplayMember = "Name";
             this.MatComboBox.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.MatComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
-            this.MatComboBox.Properties.ShowFooter = false;
-            this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.ValueMember = "MatId";
             this.MatComboBox.Size = new System.Drawing.Size(422, 22);
             this.MatComboBox.StyleController = this.styleController1;

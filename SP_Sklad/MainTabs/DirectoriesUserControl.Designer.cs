@@ -88,6 +88,7 @@
             this.btnMoveUp = new DevExpress.XtraBars.BarButtonItem();
             this.btnMoveDown = new DevExpress.XtraBars.BarButtonItem();
             this.PrintRecipeBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -713,8 +714,9 @@
             this.btnMoveDown,
             this.barButtonItem1,
             this.barButtonItem2,
-            this.PrintRecipeBtn});
-            this.barManager1.MaxItemId = 46;
+            this.PrintRecipeBtn,
+            this.barButtonItem7});
+            this.barManager1.MaxItemId = 47;
             // 
             // bar1
             // 
@@ -1030,6 +1032,7 @@
             this.BarImageList.Images.SetKeyName(17, "tara.png");
             this.BarImageList.Images.SetKeyName(18, "Дисконтна картка.bmp");
             this.BarImageList.Images.SetKeyName(19, "Попередн_й перегляд.bmp");
+            this.BarImageList.Images.SetKeyName(20, "Прайс лист.bmp");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -1176,6 +1179,14 @@
             this.PrintRecipeBtn.ImageOptions.ImageIndex = 19;
             this.PrintRecipeBtn.Name = "PrintRecipeBtn";
             this.PrintRecipeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintRecipeBtn_ItemClick);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Створити прайс-лист";
+            this.barButtonItem7.Id = 46;
+            this.barButtonItem7.ImageOptions.ImageIndex = 20;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
             // 
             // panelControl1
             // 
@@ -4289,6 +4300,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
@@ -4899,5 +4911,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.Utils.ImageCollection GridImageList;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
     }
 }

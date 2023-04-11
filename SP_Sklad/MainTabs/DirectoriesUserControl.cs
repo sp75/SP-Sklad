@@ -1610,7 +1610,23 @@ namespace SP_Sklad.MainTabs
                       join ew in _db.EnterpriseWorker on subfg.EnterpriseId equals ew.EnterpriseId into gj_ew
                       from subfg2 in gj_ew.DefaultIfEmpty()
                       where (subfg == null || subfg2.WorkerId == DBHelper.CurrentUser.KaId) 
-                      select new { k.KaId, k.KType,  k.Archived, k.Name, k.GroupName ,k.PriceName, k.KAgentKind ,k.OKPO , k.INN,k.JobName, k.Login, k.WebUserName, k.Saldo }).Distinct();
+                      select new
+                      {
+                          k.KaId,
+                          k.KType,
+                          k.Archived,
+                          k.Name,
+                          k.GroupName,
+                          k.PriceName,
+                          k.KAgentKind,
+                          k.OKPO,
+                          k.INN,
+                          k.JobName,
+                          k.Login,
+                          k.WebUserName,
+                          k.Saldo,
+                          k.PTypeId 
+                      }).Distinct();
 
             if (focused_tree_node.Id != 10)
             {
@@ -1705,6 +1721,57 @@ namespace SP_Sklad.MainTabs
                 dynamic r_item = MatRecipeGridView.GetFocusedRow();
 
                 SP_Sklad.Reports.PrintDoc.RecipeReport(r_item.RecId, DB.SkladBase(), "Recipe.xlsx");
+            }
+        }
+
+        private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        { 
+            using (var _db =  DB.SkladBase())
+            {
+                int? p_type = focused_kagent.PTypeId;
+                int? ka_id = focused_kagent.KaId;
+
+                var pl = _db.PriceList.Add(new PriceList
+                {
+                    Id = Guid.NewGuid(),
+                    Deleted = 0,
+                    UseLogo = 0,
+                    CurrId = 2,
+                    OnDate = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    UpdatedBy = DBHelper.CurrentUser.UserId,
+                    PTypeId = p_type,
+                    Name = $"ПЛ-{focused_kagent.Name}"
+                });
+                _db.SaveChanges();
+
+                foreach (var mat_item in _db.v_Materials.Where(w => w.TypeId == 1 && w.Archived == 0).ToList())
+                {
+                    var mat_price = _db.GetMatPrice(mat_item.MatId, pl.CurrId, p_type, ka_id).FirstOrDefault();
+                    var dis = _db.GetDiscount(ka_id, mat_item.MatId).FirstOrDefault();
+                    var discount = dis.DiscountType == 0 ? dis.Discount : (mat_price?.Price > 0 ? (dis.Discount / mat_price.Price * 100) : 0);
+
+                    _db.PriceListDet.Add(new PriceListDet
+                    {
+                        PlId = pl.PlId,
+                        MatId = mat_item.MatId,
+                        Price = mat_price?.Price ?? 0,
+                        GrpId = mat_item.GrpId,
+                        PlDetType = 0,
+                        Discount = discount,
+                    });
+                }
+                _db.SaveChanges();
+
+                using (var frm = new frmPriceList(pl.PlId))
+                {
+                    frm.KagentComboBox.EditValue = ka_id;
+                    if (frm.ShowDialog() != DialogResult.OK)
+                    {
+                        _db.PriceList.Remove(pl);
+                        _db.SaveChanges();
+                    }
+                }
             }
         }
     }
