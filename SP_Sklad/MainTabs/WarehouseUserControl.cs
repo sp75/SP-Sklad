@@ -1226,6 +1226,7 @@ namespace SP_Sklad.MainTabs
             RecalcRemainsMatBtn.Enabled = DBHelper.is_admin;
             DelRemainsMatBtn.Enabled = DBHelper.is_admin;
             RecalcRemainsAllMatBtn.Enabled = DBHelper.is_admin;
+            SetPriceBtnItem.Enabled = IHelper.GetUserAccess(97)?.CanInsert == 1;
         }
 
 
@@ -1319,6 +1320,17 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     IHelper.ExportToXlsx(WBGridControl);
                     break;
+            }
+        }
+
+        private void barButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_wh_mat != null)
+            {
+                using (var frm = new frmSettingMaterialPrices(mat_id: focused_wh_mat.MatId))
+                {
+                    frm.ShowDialog();
+                }
             }
         }
     }

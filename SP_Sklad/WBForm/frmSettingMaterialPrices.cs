@@ -26,14 +26,18 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }
         private SettingMaterialPrices wbt { get; set; }
+        private int?  _PTypeId { get; set; }
+        private int? _mat_id { get; set; }
 
         private v_SettingMaterialPricesDet focused_dr => WaybillTemplateDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
 
-        public frmSettingMaterialPrices(Guid? wbt_id = null)
+        public frmSettingMaterialPrices(Guid? wbt_id = null, int? PTypeId = null, int? mat_id = null )
         {
             InitializeComponent();
 
             _wbt_id = wbt_id;
+            _PTypeId = PTypeId;
+            _mat_id = mat_id;
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction();
         }
@@ -52,13 +56,12 @@ namespace SP_Sklad.WBForm
                     Checked = 0,
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
-                    PTypeId = _db.PriceTypes.FirstOrDefault().PTypeId,
+                    PTypeId = _PTypeId ?? _db.PriceTypes.FirstOrDefault().PTypeId,
                     Num = new BaseEntities().GetDocNum("setting_material_prices").FirstOrDefault()
 
                 });
 
                 _db.SaveChanges();
-
                 _wbt_id = wbt.Id;
             }
             else
@@ -69,6 +72,11 @@ namespace SP_Sklad.WBForm
             if (wbt != null)
             {
                 SettingMaterialPricesBS.DataSource = wbt;
+            }
+
+            if (_mat_id.HasValue)
+            {
+                AddNewMaterial(_mat_id.Value);
             }
 
             GetDetail();
@@ -133,21 +141,40 @@ namespace SP_Sklad.WBForm
             if (mat_id != null)
             {
                 var id = Convert.ToInt32(mat_id);
-                var mat = _db.Materials.Find(id);
-                if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
-                {
-                    _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
-                    {
-                        Id = Guid.NewGuid(),
-                        MatId = mat.MatId,
-                        SettingMaterialPricesId = _wbt_id.Value,
-                         CreatedAt = DBHelper.ServerDateTime(),
-                          Price =0
-                    });
+                AddNewMaterial(id);
+                GetDetail();
+                /* var mat = _db.Materials.Find(id);
+                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
+                 {
+                     _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
+                     {
+                         Id = Guid.NewGuid(),
+                         MatId = mat.MatId,
+                         SettingMaterialPricesId = _wbt_id.Value,
+                          CreatedAt = DBHelper.ServerDateTime(),
+                           Price =0
+                     });
 
-                    _db.SaveChanges();
-                    GetDetail();
-                }
+                     _db.SaveChanges();
+                     GetDetail();
+                 }*/
+            }
+        }
+
+        private void AddNewMaterial( int mat_id)
+        {
+            if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == mat_id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
+            {
+                _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
+                {
+                    Id = Guid.NewGuid(),
+                    MatId = mat_id,
+                    SettingMaterialPricesId = _wbt_id.Value,
+                    CreatedAt = DBHelper.ServerDateTime(),
+                    Price = 0
+                });
+
+                _db.SaveChanges();
             }
         }
 
@@ -205,7 +232,7 @@ namespace SP_Sklad.WBForm
         {
             if (OnDateDBEdit.DateTime.Date < DBHelper.ServerDateTime().Date)
             {
-                OnDateDBEdit.ErrorText = "Дата документа повина бути в межах поточного дня!";
+                OnDateDBEdit.ErrorText = "Дата документа повина бути в межах поточного дня або більшою!";
                 e.Cancel = true;
             }
         }
@@ -235,6 +262,17 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Focus();
             NumEdit.Focus();
+        }
+
+        private void PTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (PTypeEdit.ContainsFocus)
+            {
+                wbt.PTypeId = (int)PTypeEdit.EditValue;
+                _db.SaveChanges();
+
+                GetDetail();
+            }
         }
     }
 }

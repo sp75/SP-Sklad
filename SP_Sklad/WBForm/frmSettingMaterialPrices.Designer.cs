@@ -398,6 +398,7 @@
             this.PTypeEdit.Size = new System.Drawing.Size(273, 22);
             this.PTypeEdit.StyleController = this.styleController1;
             this.PTypeEdit.TabIndex = 63;
+            this.PTypeEdit.EditValueChanged += new System.EventHandler(this.PTypeEdit_EditValueChanged);
             // 
             // SettingMaterialPricesBS
             // 
@@ -522,9 +523,6 @@
             this.NumEdit.Location = new System.Drawing.Point(70, 51);
             this.NumEdit.MenuManager = this.barManager1;
             this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Properties.DisplayFormat.FormatString = "0";
-            this.NumEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.NumEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.NumEdit.Size = new System.Drawing.Size(118, 20);
             this.NumEdit.TabIndex = 55;
             // 

@@ -2625,5 +2625,36 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_51_Result>("[BaseEntities].[REP_51](@year, @ka_ids, @ka_grp_ids, @mat_grp_id, @mat_id)", yearParameter, ka_idsParameter, ka_grp_idsParameter, mat_grp_idParameter, mat_idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetKagentPricesByWBTemplate")]
+        public virtual IQueryable<GetKagentPricesByWBTemplate_Result> GetKagentPricesByWBTemplate(Nullable<int> p_type, Nullable<int> ka_id, Nullable<System.Guid> wb_template_id)
+        {
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var wb_template_idParameter = wb_template_id.HasValue ?
+                new ObjectParameter("wb_template_id", wb_template_id) :
+                new ObjectParameter("wb_template_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetKagentPricesByWBTemplate_Result>("[BaseEntities].[GetKagentPricesByWBTemplate](@p_type, @ka_id, @wb_template_id)", p_typeParameter, ka_idParameter, wb_template_idParameter);
+        }
+    
+        public virtual int CreateOrderByWBTemplate(Nullable<int> wbillId, Nullable<System.Guid> wb_template_id)
+        {
+            var wbillIdParameter = wbillId.HasValue ?
+                new ObjectParameter("WbillId", wbillId) :
+                new ObjectParameter("WbillId", typeof(int));
+    
+            var wb_template_idParameter = wb_template_id.HasValue ?
+                new ObjectParameter("wb_template_id", wb_template_id) :
+                new ObjectParameter("wb_template_id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateOrderByWBTemplate", wbillIdParameter, wb_template_idParameter);
+        }
     }
 }

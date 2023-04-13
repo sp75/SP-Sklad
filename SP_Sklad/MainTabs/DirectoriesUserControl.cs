@@ -1745,7 +1745,7 @@ namespace SP_Sklad.MainTabs
                 });
                 _db.SaveChanges();
 
-                foreach (var mat_item in _db.v_Materials.Where(w => w.TypeId == 1 && w.Archived == 0).ToList())
+                foreach (var mat_item in _db.v_Materials.Where(w => (w.TypeId == 1 || w.TypeId == 5) && w.Archived == 0).Select(s => new { s.MatId, s.GrpId, s.WId }).ToList())
                 {
                     var mat_price = _db.GetMatPrice(mat_item.MatId, pl.CurrId, p_type, ka_id).FirstOrDefault();
                     var dis = _db.GetDiscount(ka_id, mat_item.MatId).FirstOrDefault();
@@ -1759,6 +1759,7 @@ namespace SP_Sklad.MainTabs
                         GrpId = mat_item.GrpId,
                         PlDetType = 0,
                         Discount = discount,
+                        WId = mat_item.WId
                     });
                 }
                 _db.SaveChanges();
@@ -1773,6 +1774,31 @@ namespace SP_Sklad.MainTabs
                     }
                 }
             }
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = PriceTypesGridView.GetFocusedRow() as PriceTypesView;
+            if (row != null)
+            {
+                using (var frm = new frmSettingMaterialPrices(PTypeId: row.PTypeId))
+                {
+                    frm.ShowDialog();
+                }
+            }
+        }
+
+        private void PriceTypesGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                PriceTypesPopupMenu.ShowPopup(Control.MousePosition);
+            }
+        }
+
+        private void PriceTypesPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            SetPriceBtnItem.Enabled = IHelper.GetUserAccess(97)?.CanInsert == 1;
         }
     }
 }

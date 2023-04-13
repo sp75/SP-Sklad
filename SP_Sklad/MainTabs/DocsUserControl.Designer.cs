@@ -1671,7 +1671,7 @@
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 8;
+            this.gridColumn13.VisibleIndex = 9;
             this.gridColumn13.Width = 66;
             // 
             // gridColumn37
@@ -1700,7 +1700,7 @@
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 9;
+            this.gridColumn115.VisibleIndex = 7;
             this.gridColumn115.Width = 59;
             // 
             // gridColumn41
@@ -1766,7 +1766,7 @@
             this.gridColumn150.FieldName = "Discount";
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
-            this.gridColumn150.VisibleIndex = 7;
+            this.gridColumn150.VisibleIndex = 8;
             // 
             // xtraTabPage1
             // 

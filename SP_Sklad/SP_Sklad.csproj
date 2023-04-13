@@ -496,6 +496,9 @@
     <Compile Include="SkladData\GetKagentList_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetKagentPricesByWBTemplate_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetMatRemain_Ex_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

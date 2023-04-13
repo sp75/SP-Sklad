@@ -246,9 +246,9 @@ namespace SP_Sklad.Common
         public static void ExecuteWaybillTemplate(Guid id, WaybillList wb, BaseEntities _db)
         {
             var p_type = _db.Kagent.Find(wb.KaId).PTypeId ?? _db.PriceTypes.First(w => w.Def == 1).PTypeId;
+            var num = wb.WaybillDet.Count();
 
             var list = _db.WaybillTemplateDet.Where(w => w.WaybillTemplateId == id).OrderBy(o => o.Num).ToList();
-            var num = wb.WaybillDet.Count();
             foreach (var item in list)
             {
                 var mat_price = _db.GetMatPrice(item.MatId, wb.CurrId, p_type, wb.KaId).FirstOrDefault();

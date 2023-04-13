@@ -844,7 +844,9 @@ namespace SP_Sklad.WBForm
             {
                 if(v_form.ShowDialog() == DialogResult.OK)
                 {
-                    ExecuteDocument.ExecuteWaybillTemplate(v_form.waybillTemplateUserControl1.wbt_row.Id, wb, _db);
+                    _db.SaveChanges();
+                    //  ExecuteDocument.ExecuteWaybillTemplate(v_form.waybillTemplateUserControl1.wbt_row.Id, wb, _db);
+                    _db.CreateOrderByWBTemplate(wb.WbillId, v_form.waybillTemplateUserControl1.wbt_row.Id);
 
                     RefreshDet();
                 }

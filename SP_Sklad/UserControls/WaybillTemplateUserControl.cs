@@ -136,13 +136,14 @@ namespace SP_Sklad.UserControls
                         PersonId = DBHelper.CurrentUser.KaId,
                         EntId = DBHelper.Enterprise.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
-                        Nds = 0,
+                        Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                         KaId = kagent.KaId,
-
                     });
                     db.SaveChanges();
 
-                    ExecuteDocument.ExecuteWaybillTemplate(wbt_row.Id, _wb, db);
+                    //       ExecuteDocument.ExecuteWaybillTemplate(wbt_row.Id, _wb, db);
+
+                    db.CreateOrderByWBTemplate (_wb.WbillId, wbt_row.Id);
 
                     ++wb_count;
                 }

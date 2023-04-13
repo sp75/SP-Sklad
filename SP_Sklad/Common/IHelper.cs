@@ -743,6 +743,14 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public UserAccess GetUserAccess(int FunId)
+        {
+            using (var db = DB.SkladBase())
+            {
+                return db.UserAccess.AsNoTracking().FirstOrDefault(w => w.UserId == UserSession.UserId && w.FunId == FunId);
+            }
+        }
+
         static public void ShowWayBillDetInfo(int PosId, bool can_modify)
         {
             using (var frm = new frmWayBillDetEdit(PosId))

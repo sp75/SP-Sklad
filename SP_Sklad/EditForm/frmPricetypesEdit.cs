@@ -76,7 +76,8 @@ namespace SP_Sklad.EditForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if ((int)ExtraTypeLookUpEdit.EditValue == 0 && checkEdit3.Checked)
+            int extra_type_id = (int)ExtraTypeLookUpEdit.EditValue;
+            if ((extra_type_id == 0 || extra_type_id == 4) && checkEdit3.Checked)
             {
                 pt.PPTypeId = null;
             }
@@ -113,6 +114,9 @@ namespace SP_Sklad.EditForm
 
             if (checkEdit4.Checked)
             {
+                ExtraTypeLookUpEdit.EditValue = 0;
+                pt.ExtraType = 0;
+
                 calcEdit1.Enabled = false;
                 ExtraTypeLookUpEdit.Enabled = false;
                 lookUpEdit3.Enabled = false;

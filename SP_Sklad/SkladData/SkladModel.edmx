@@ -5907,6 +5907,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="WbillId" Type="int" Mode="In" />
           <Parameter Name="PlId" Type="int" Mode="In" />
         </Function>
+        <Function Name="CreateOrderByWBTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WbillId" Type="int" Mode="In" />
+          <Parameter Name="wb_template_id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="DeleteAllReservePosition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -6050,6 +6054,25 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="RouteId" Type="int" />
                 <Property Name="WId" Type="int" />
                 <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetKagentPricesByWBTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_type" Type="int" Mode="In" />
+          <Parameter Name="ka_id" Type="int" Mode="In" />
+          <Parameter Name="wb_template_id" Type="uniqueidentifier" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="Num" Type="int" />
+                <Property Name="MatId" Type="int" Nullable="false" />
+                <Property Name="WId" Type="int" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="150" />
+                <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="PType" Type="int" />
+                <Property Name="Discount" Type="numeric" Precision="38" Scale="15" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -11797,6 +11820,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_grp_ids" Mode="In" Type="String" />
             <Parameter Name="mat_grp_id" Mode="In" Type="Int32" />
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetKagentPricesByWBTemplate" IsComposable="true" ReturnType="Collection(BaseModel.GetKagentPricesByWBTemplate_Result)">
+            <Parameter Name="p_type" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="wb_template_id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="CreateOrderByWBTemplate">
+            <Parameter Name="WbillId" Mode="In" Type="Int32" />
+            <Parameter Name="wb_template_id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -19645,6 +19677,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="TotalAmountOut11" Nullable="true" Precision="38" Scale="4" />
           <Property Type="Decimal" Name="TotalAmountOut12" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <ComplexType Name="GetKagentPricesByWBTemplate_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Num" Nullable="true" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="WId" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="150" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="8" />
+          <Property Type="Int32" Name="PType" Nullable="true" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="38" Scale="15" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24918,6 +24960,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetKagentPricesByWBTemplate" FunctionName="BaseModel.Store.GetKagentPricesByWBTemplate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetKagentPricesByWBTemplate_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PType" ColumnName="PType" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreateOrderByWBTemplate" FunctionName="BaseModel.Store.CreateOrderByWBTemplate" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

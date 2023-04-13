@@ -48,6 +48,7 @@ namespace SP_Sklad.WBForm
                 wbt = _db.WaybillTemplate.Add(new WaybillTemplate
                 {
                     Id = Guid.NewGuid(),
+                    Num = _db.WaybillTemplate.Count()
                 });
 
                 _db.SaveChanges();
