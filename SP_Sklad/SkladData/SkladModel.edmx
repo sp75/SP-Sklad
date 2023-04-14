@@ -2542,6 +2542,19 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentDocs' does not have a primary 
           <Property Name="Balans" Type="numeric" Precision="35" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_KagentMaterilPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
+          <Property Name="Discount" Type="numeric" Precision="38" Scale="15" />
+          <Property Name="PTypeId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_KAgentPrices">
           <Key>
@@ -6058,25 +6071,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
-        <Function Name="GetKagentPricesByWBTemplate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="p_type" Type="int" Mode="In" />
-          <Parameter Name="ka_id" Type="int" Mode="In" />
-          <Parameter Name="wb_template_id" Type="uniqueidentifier" Mode="In" />
-          <ReturnType>
-            <CollectionType>
-              <RowType>
-                <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-                <Property Name="Num" Type="int" />
-                <Property Name="MatId" Type="int" Nullable="false" />
-                <Property Name="WId" Type="int" />
-                <Property Name="Notes" Type="nvarchar" MaxLength="150" />
-                <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
-                <Property Name="PType" Type="int" />
-                <Property Name="Discount" Type="numeric" Precision="38" Scale="15" />
-              </RowType>
-            </CollectionType>
-          </ReturnType>
-        </Function>
         <Function Name="GetKAgentSaldo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ka_id" Type="int" Mode="In" />
           <Parameter Name="on_date" Type="datetime" Mode="In" />
@@ -8760,6 +8754,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentDocs].[DocTypeName] AS [DocTypeName], 
     [v_KAgentDocs].[Balans] AS [Balans]
     FROM [dbo].[v_KAgentDocs] AS [v_KAgentDocs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_KagentMaterilPrices" EntityType="Self.v_KagentMaterilPrices" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_KagentMaterilPrices].[MatId] AS [MatId], 
+    [v_KagentMaterilPrices].[KaId] AS [KaId], 
+    [v_KagentMaterilPrices].[Price] AS [Price], 
+    [v_KagentMaterilPrices].[Discount] AS [Discount], 
+    [v_KagentMaterilPrices].[PTypeId] AS [PTypeId]
+    FROM [dbo].[v_KagentMaterilPrices] AS [v_KagentMaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentPrices" EntityType="Self.v_KAgentPrices" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -11830,6 +11833,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="WbillId" Mode="In" Type="Int32" />
             <Parameter Name="wb_template_id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="v_KagentMaterilPrices" EntityType="BaseModel.v_KagentMaterilPrices" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19687,6 +19691,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="PType" Nullable="true" />
           <Property Type="Decimal" Name="Discount" Nullable="true" Precision="38" Scale="15" />
         </ComplexType>
+        <EntityType Name="v_KagentMaterilPrices">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="KaId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="Discount" Type="Decimal" Precision="38" Scale="15" />
+          <Property Name="PTypeId" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24960,21 +24975,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetKagentPricesByWBTemplate" FunctionName="BaseModel.Store.GetKagentPricesByWBTemplate">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetKagentPricesByWBTemplate_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="PType" ColumnName="PType" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CreateOrderByWBTemplate" FunctionName="BaseModel.Store.CreateOrderByWBTemplate" />
+          <EntitySetMapping Name="v_KagentMaterilPrices">
+            <EntityTypeMapping TypeName="BaseModel.v_KagentMaterilPrices">
+              <MappingFragment StoreEntitySet="v_KagentMaterilPrices">
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

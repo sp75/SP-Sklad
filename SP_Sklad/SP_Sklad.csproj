@@ -586,6 +586,9 @@
     <Compile Include="SkladData\v_Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_KagentMaterilPrices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_KAgentPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

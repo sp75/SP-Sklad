@@ -185,6 +185,7 @@ namespace SP.Base.Models
         public virtual DbSet<UserAccessMatGroup> UserAccessMatGroup { get; set; }
         public virtual DbSet<LoginHistory> LoginHistory { get; set; }
         public virtual DbSet<v_Kagent> v_Kagent { get; set; }
+        public DbSet<v_KagentMaterilPrices> v_KagentMaterilPrices { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {
@@ -546,6 +547,44 @@ namespace SP.Base.Models
                 new ObjectParameter("mat_id", typeof(int));
 
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_15_Result>("[SPBaseModel].[REP_15](@from_date, @to_date, @ka_id, @mat_id)", from_dateParameter, to_dateParameter, ka_idParameter, mat_idParameter);
+        }
+
+        public virtual DbSet<GetMatPrice_Result> GetMatPrice_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetMatPrice")]
+        public virtual IQueryable<GetMatPrice_Result> GetMatPrice(Nullable<int> mat_id, Nullable<int> curr_id, Nullable<int> p_type, Nullable<int> ka_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+
+            var curr_idParameter = curr_id.HasValue ?
+                new ObjectParameter("curr_id", curr_id) :
+                new ObjectParameter("curr_id", typeof(int));
+
+            var p_typeParameter = p_type.HasValue ?
+                new ObjectParameter("p_type", p_type) :
+                new ObjectParameter("p_type", typeof(int));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatPrice_Result>("[SPBaseModel].[GetMatPrice](@mat_id, @curr_id, @p_type, @ka_id)", mat_idParameter, curr_idParameter, p_typeParameter, ka_idParameter);
+        }
+
+        public virtual DbSet<GetDiscount_Result> GetDiscount_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetDiscount")]
+        public virtual IQueryable<GetDiscount_Result> GetDiscount(Nullable<int> ka_id, Nullable<int> mat_id)
+        {
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDiscount_Result>("[SPBaseModel].[GetDiscount](@ka_id, @mat_id)", ka_idParameter, mat_idParameter);
         }
 
         public virtual DbSet<REP_16_Result> REP_16_Result { get; set; }

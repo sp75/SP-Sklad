@@ -378,6 +378,7 @@
         <AssociationConnector Association="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" />
         <EntityTypeShape EntityType="BaseModel.v_SettingMaterialPricesDet" Width="1.5" PointX="34.375" PointY="32.75" />
         <EntityTypeShape EntityType="BaseModel.v_SummarySettingMaterialPrices" Width="1.5" PointX="3.625" PointY="35.875" />
+        <EntityTypeShape EntityType="BaseModel.v_KagentMaterilPrices" Width="1.5" PointX="35.375" PointY="6.375" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

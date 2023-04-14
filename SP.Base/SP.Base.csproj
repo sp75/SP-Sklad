@@ -94,6 +94,8 @@
     <Compile Include="Models\ExecuteWayBill_Result.cs" />
     <Compile Include="Models\ExtRel.cs" />
     <Compile Include="Models\Functions.cs" />
+    <Compile Include="Models\GetDiscount_Result.cs" />
+    <Compile Include="Models\GetMatPrice_Result.cs" />
     <Compile Include="Models\GetOrderedInSuppliers_Result.cs" />
     <Compile Include="Models\GetPayDocList_Result.cs" />
     <Compile Include="Models\GetUsedMaterials_Result.cs" />
@@ -202,6 +204,7 @@
     <Compile Include="Models\UserAccessMatGroup.cs" />
     <Compile Include="Models\v_IntermediateWeighing.cs" />
     <Compile Include="Models\v_Kagent.cs" />
+    <Compile Include="Models\v_KagentMaterilPrices.cs" />
     <Compile Include="Models\WBListMake_Result.cs" />
     <Compile Include="SPBaseModel.cs" />
     <Compile Include="Models\SvcGroup.cs" />
