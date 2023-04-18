@@ -1371,7 +1371,7 @@
             // 
             // lookUpEdit4
             // 
-            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "FOPId", true));
+            this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "ParentKagentId", true));
             this.lookUpEdit4.Location = new System.Drawing.Point(15, 170);
             this.lookUpEdit4.Name = "lookUpEdit4";
             this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

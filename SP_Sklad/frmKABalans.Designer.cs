@@ -300,7 +300,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 40),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 39)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -347,6 +349,8 @@
             this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
             this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
+            this.GridImageList.Images.SetKeyName(39, "Без имени-2.png");
+            this.GridImageList.Images.SetKeyName(40, "free-icon-payment-terminal-3777466.png");
             // 
             // bandedGridColumn1
             // 

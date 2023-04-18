@@ -363,9 +363,10 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6)});
-            this.bar2.OptionsBar.MultiLine = true;
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
+            this.bar2.Text = "Головне меню";
             // 
             // barSubItem2
             // 

@@ -79,7 +79,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
         public virtual ICollection<AdditionalCostsDet> AdditionalCostsDet { get; set; }
         public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
+        public virtual Kagent Kontragent { get; set; }
         public virtual Kagent Kagent2 { get; set; }
     }
 }

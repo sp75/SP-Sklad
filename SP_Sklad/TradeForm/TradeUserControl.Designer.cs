@@ -519,6 +519,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -689,7 +691,7 @@
             this.GridImageList.Images.SetKeyName(41, "Debt adjustment.png");
             this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
             this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
-            this.GridImageList.Images.SetKeyName(44, "free-icon-point-of-sale-313166.png");
+            this.GridImageList.Images.SetKeyName(44, "free-icon-payment-terminal-3777466.png");
             this.GridImageList.Images.SetKeyName(45, "Без имени-2.png");
             // 
             // gridColumn2

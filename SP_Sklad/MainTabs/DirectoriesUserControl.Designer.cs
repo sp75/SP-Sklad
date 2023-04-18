@@ -1196,8 +1196,8 @@
             // 
             this.SetPriceBtnItem.Caption = "Встановити ціни";
             this.SetPriceBtnItem.Id = 47;
-            this.SetPriceBtnItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
-            this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
+            this.SetPriceBtnItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.Image")));
+            this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
             this.SetPriceBtnItem.Name = "SetPriceBtnItem";
             this.SetPriceBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
@@ -1360,6 +1360,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab

@@ -14230,7 +14230,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ShipmentDate" Type="DateTime" Precision="3" />
           <Property Name="ReceiptId" Type="Guid" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
