@@ -16,6 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public Kagent()
         {
+            this.Cars = new HashSet<Cars>();
             this.Commission = new HashSet<Commission>();
             this.Commission1 = new HashSet<Commission>();
             this.Commission2 = new HashSet<Commission>();
@@ -25,13 +26,26 @@ namespace SP_Sklad.SkladData
             this.Customers = new HashSet<Customers>();
             this.DiscCards = new HashSet<DiscCards>();
             this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
+            this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
             this.KaAddr = new HashSet<KaAddr>();
+            this.KAMatDiscount = new HashSet<KAMatDiscount>();
+            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
+            this.PayDoc = new HashSet<PayDoc>();
+            this.PayDoc1 = new HashSet<PayDoc>();
             this.TAXWB = new HashSet<TAXWB>();
             this.WaybillList = new HashSet<WaybillList>();
             this.WaybillMove = new HashSet<WaybillMove>();
             this.KAgentAccount = new HashSet<KAgentAccount>();
             this.KAgentPersons = new HashSet<KAgentPersons>();
+            this.KAgentAdjustment = new HashSet<KAgentAdjustment>();
+            this.KAgentAdjustment1 = new HashSet<KAgentAdjustment>();
+            this.KAgentAdjustment2 = new HashSet<KAgentAdjustment>();
+            this.KAgentMatGroupPrices = new HashSet<KAgentMatGroupPrices>();
+            this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
+            this.ProductionPlans = new HashSet<ProductionPlans>();
+            this.ProductionPlans1 = new HashSet<ProductionPlans>();
             this.Routes1 = new HashSet<Routes>();
+            this.SettingMaterialPrices = new HashSet<SettingMaterialPrices>();
             this.TAXWB1 = new HashSet<TAXWB>();
             this.TechProcDet = new HashSet<TechProcDet>();
             this.WaybillList1 = new HashSet<WaybillList>();
@@ -39,22 +53,8 @@ namespace SP_Sklad.SkladData
             this.WayBillMakeProps = new HashSet<WayBillMakeProps>();
             this.WaybillList2 = new HashSet<WaybillList>();
             this.WayBillSvc = new HashSet<WayBillSvc>();
-            this.PayDoc = new HashSet<PayDoc>();
-            this.PayDoc1 = new HashSet<PayDoc>();
-            this.ProductionPlans = new HashSet<ProductionPlans>();
-            this.ProductionPlans1 = new HashSet<ProductionPlans>();
-            this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
-            this.KAgentAdjustment = new HashSet<KAgentAdjustment>();
-            this.KAgentAdjustment1 = new HashSet<KAgentAdjustment>();
-            this.KAgentAdjustment2 = new HashSet<KAgentAdjustment>();
             this.PriceList = new HashSet<PriceList>();
-            this.Cars = new HashSet<Cars>();
-            this.KAMatDiscount = new HashSet<KAMatDiscount>();
-            this.KAMatGroupDiscount = new HashSet<KAMatGroupDiscount>();
             this.WaybillTemplate = new HashSet<WaybillTemplate>();
-            this.KAgentMatGroupPrices = new HashSet<KAgentMatGroupPrices>();
-            this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
-            this.SettingMaterialPrices = new HashSet<SettingMaterialPrices>();
         }
     
         public int KaId { get; set; }
@@ -96,8 +96,9 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WId { get; set; }
         public string POSTerminalCode { get; set; }
         public Nullable<decimal> CurrentSaldo { get; set; }
-        public Nullable<int> FOPId { get; set; }
+        public Nullable<int> ParentKagentId { get; set; }
     
+        public virtual ICollection<Cars> Cars { get; set; }
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual ICollection<Commission> Commission1 { get; set; }
         public virtual ICollection<Commission> Commission2 { get; set; }
@@ -107,7 +108,13 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<DiscCards> DiscCards { get; set; }
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
+        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
+        public virtual KADiscount KADiscount { get; set; }
+        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
+        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
+        public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
         public virtual ICollection<TAXWB> TAXWB { get; set; }
         public virtual ICollection<WaybillList> WaybillList { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }
@@ -116,7 +123,16 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentPersons> KAgentPersons { get; set; }
         public virtual KontragentGroup KontragentGroup { get; set; }
         public virtual Routes Routes { get; set; }
+        public virtual Users Users { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment1 { get; set; }
+        public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
+        public virtual ICollection<KAgentMatGroupPrices> KAgentMatGroupPrices { get; set; }
+        public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
+        public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
+        public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
         public virtual ICollection<Routes> Routes1 { get; set; }
+        public virtual ICollection<SettingMaterialPrices> SettingMaterialPrices { get; set; }
         public virtual ICollection<TAXWB> TAXWB1 { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
         public virtual ICollection<WaybillList> WaybillList1 { get; set; }
@@ -124,23 +140,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
         public virtual ICollection<WaybillList> WaybillList2 { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
-        public virtual ICollection<PayDoc> PayDoc { get; set; }
-        public virtual ICollection<PayDoc> PayDoc1 { get; set; }
-        public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
-        public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
-        public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
-        public virtual ICollection<KAgentAdjustment> KAgentAdjustment { get; set; }
-        public virtual ICollection<KAgentAdjustment> KAgentAdjustment1 { get; set; }
-        public virtual ICollection<KAgentAdjustment> KAgentAdjustment2 { get; set; }
         public virtual ICollection<PriceList> PriceList { get; set; }
-        public virtual ICollection<Cars> Cars { get; set; }
-        public virtual Users Users { get; set; }
-        public virtual KADiscount KADiscount { get; set; }
-        public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
-        public virtual ICollection<KAMatGroupDiscount> KAMatGroupDiscount { get; set; }
         public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
-        public virtual ICollection<KAgentMatGroupPrices> KAgentMatGroupPrices { get; set; }
-        public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
-        public virtual ICollection<SettingMaterialPrices> SettingMaterialPrices { get; set; }
     }
 }

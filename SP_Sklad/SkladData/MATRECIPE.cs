@@ -18,10 +18,10 @@ namespace SP_Sklad.SkladData
         {
             this.WayBillMake = new HashSet<WayBillMake>();
             this.MatRecDet = new HashSet<MatRecDet>();
-            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
             this.ProductionPlanDet = new HashSet<ProductionPlanDet>();
             this.SchedulingOrders = new HashSet<SchedulingOrders>();
             this.PlannedCalculationDet = new HashSet<PlannedCalculationDet>();
+            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
         }
     
         public int RecId { get; set; }
@@ -44,10 +44,10 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WayBillMake> WayBillMake { get; set; }
         public virtual Materials Materials { get; set; }
         public virtual ICollection<MatRecDet> MatRecDet { get; set; }
-        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
         public virtual ICollection<ProductionPlanDet> ProductionPlanDet { get; set; }
         public virtual ICollection<SchedulingOrders> SchedulingOrders { get; set; }
         public virtual ICollection<PlannedCalculationDet> PlannedCalculationDet { get; set; }
         public virtual Measures Measures { get; set; }
+        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
     }
 }

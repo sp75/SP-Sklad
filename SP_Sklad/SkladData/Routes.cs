@@ -24,8 +24,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> DriverId { get; set; }
         public Nullable<System.Guid> CarId { get; set; }
     
+        public virtual Cars Cars { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual Kagent Kagent1 { get; set; }
-        public virtual Cars Cars { get; set; }
     }
 }

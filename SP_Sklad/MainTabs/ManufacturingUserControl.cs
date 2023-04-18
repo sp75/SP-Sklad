@@ -1662,5 +1662,10 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
                 WbDetPopupMenu.ShowPopup(p2);
             }
         }
+
+        private void barButtonItem10_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmProductionMonitor().ShowDialog();
+        }
     }
 }

@@ -43,6 +43,7 @@
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -961,8 +962,9 @@
             this.EditIntermediateWeighing,
             this.DelIntermediateWeighing,
             this.barButtonItem8,
-            this.barButtonItem9});
-            this.barManager1.MaxItemId = 24;
+            this.barButtonItem9,
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 25;
             // 
             // bar1
             // 
@@ -979,7 +981,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
@@ -1042,6 +1045,16 @@
             this.PrintItemBtn.ImageOptions.ImageIndex = 6;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Монітор виробництва";
+            this.barButtonItem10.Id = 24;
+            this.barButtonItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.Image")));
+            this.barButtonItem10.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.LargeImage")));
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick_1);
             // 
             // barButtonItem7
             // 
@@ -7761,5 +7774,6 @@
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn236;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
     }
 }

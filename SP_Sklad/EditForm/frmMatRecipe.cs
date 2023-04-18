@@ -80,6 +80,8 @@ namespace SP_Sklad.EditForm
                 GetTechProcDetail();
                 RefreshMatRecipeAdditionalCosts();
             }
+
+          
         }
 
         private void frmMatRecipe_FormClosed(object sender, FormClosedEventArgs e)
@@ -123,7 +125,9 @@ namespace SP_Sklad.EditForm
 
             if (focused_tree_node.ParentId == 1)
             {
-                MatRecipeTechProcDetBS.DataSource = _db.MatRecipeTechProcDet.Find(focused_tree_node.DataSetId);
+                var mrtpd = _db.MatRecipeTechProcDet.Find(focused_tree_node.DataSetId);
+                MatRecipeTechProcDetBS.DataSource = mrtpd;
+                textEdit4.TimeSpan = new TimeSpan(mrtpd.Duration ?? 0);
             }
 
             if (focused_tree_node.Id == 0)
@@ -565,6 +569,14 @@ namespace SP_Sklad.EditForm
         private void PrintBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PrintDoc.RecipeReport(_rec_id.Value, _db, "Recipe.xlsx");
+        }
+
+        private void textEdit4_EditValueChanged(object sender, EventArgs e)
+        {
+            var rd = MatRecipeTechProcDetBS.DataSource as MatRecipeTechProcDet;
+            rd.Duration = textEdit4.TimeSpan.Ticks;
+            _db.SaveChanges();
+           
         }
     }
 }

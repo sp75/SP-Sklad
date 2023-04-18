@@ -31,8 +31,8 @@ namespace SP_Sklad.SkladData
         public int WbillId { get; set; }
         public Nullable<decimal> Amount { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual WaybillList WaybillList { get; set; }
         public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

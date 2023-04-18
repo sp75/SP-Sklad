@@ -85,10 +85,10 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -108,10 +108,10 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.TradeTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // barManagerImgList
@@ -746,6 +746,40 @@
             this.xtraTabPage7});
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
+            // TabImageCollection
+            // 
+            this.TabImageCollection.ImageSize = new System.Drawing.Size(32, 32);
+            this.TabImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TabImageCollection.ImageStream")));
+            this.TabImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TabImageCollection.Images.SetKeyName(0, "article_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(1, "technology_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(2, "packageproduct_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(3, "bosale_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
+            this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(6, "projectdirectory_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(7, "editrangepermission_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(8, "ide_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534381_findjob, "_1324534381_findjob", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.TabImageCollection.Images.SetKeyName(12, "_1324534381_findjob");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534473_police, "_1324534473_police", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.TabImageCollection.Images.SetKeyName(13, "_1324534473_police");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534557_mine_копия, "_1324534557_mine_копия", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.TabImageCollection.Images.SetKeyName(14, "_1324534557_mine_копия");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.administration, "administration", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.TabImageCollection.Images.SetKeyName(15, "administration");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.TabImageCollection.Images.SetKeyName(16, "bank");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.company, "company", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.TabImageCollection.Images.SetKeyName(17, "company");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.currencyexchange, "currencyexchange", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.TabImageCollection.Images.SetKeyName(18, "currencyexchange");
+            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.factory, "factory", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.TabImageCollection.Images.SetKeyName(19, "factory");
+            // 
             // TradeTabPage
             // 
             this.TradeTabPage.Controls.Add(this.tradeUserControl1);
@@ -851,25 +885,9 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
-            // 
-            // TabImageCollection
-            // 
-            this.TabImageCollection.ImageSize = new System.Drawing.Size(32, 32);
-            this.TabImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TabImageCollection.ImageStream")));
-            this.TabImageCollection.TransparentColor = System.Drawing.Color.Transparent;
-            this.TabImageCollection.Images.SetKeyName(0, "projectdirectory_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(1, "technology_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(2, "packageproduct_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(3, "bosale_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
-            this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(6, "article_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(7, "bosaleitem_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(8, "editrangepermission_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(9, "ide_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
             // 
             // mainForm
             // 
@@ -908,10 +926,10 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.TradeTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

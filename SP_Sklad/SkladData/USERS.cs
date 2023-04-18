@@ -16,7 +16,6 @@ namespace SP_Sklad.SkladData
     {
         public Users()
         {
-            this.Kagent = new HashSet<Kagent>();
             this.OperLog = new HashSet<OperLog>();
             this.PrintLog = new HashSet<PrintLog>();
             this.UserAccess = new HashSet<UserAccess>();
@@ -24,6 +23,7 @@ namespace SP_Sklad.SkladData
             this.UserAccessWh = new HashSet<UserAccessWh>();
             this.UserRoles = new HashSet<UserRoles>();
             this.UserSettings = new HashSet<UserSettings>();
+            this.Kagent = new HashSet<Kagent>();
         }
     
         public int UserId { get; set; }
@@ -42,7 +42,6 @@ namespace SP_Sklad.SkladData
         public bool IsWorking { get; set; }
         public string WorkSpace { get; set; }
     
-        public virtual ICollection<Kagent> Kagent { get; set; }
         public virtual ICollection<OperLog> OperLog { get; set; }
         public virtual ICollection<PrintLog> PrintLog { get; set; }
         public virtual ICollection<UserAccess> UserAccess { get; set; }
@@ -51,5 +50,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<UserRoles> UserRoles { get; set; }
         public virtual UsersGroup UsersGroup { get; set; }
         public virtual ICollection<UserSettings> UserSettings { get; set; }
+        public virtual ICollection<Kagent> Kagent { get; set; }
     }
 }

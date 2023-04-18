@@ -19,6 +19,7 @@ namespace SP_Sklad.SkladData
         public int ProcId { get; set; }
         public Nullable<int> Num { get; set; }
         public Nullable<decimal> ExpectedOut { get; set; }
+        public Nullable<long> Duration { get; set; }
     
         public virtual MatRecipe MatRecipe { get; set; }
         public virtual TechProcess TechProcess { get; set; }

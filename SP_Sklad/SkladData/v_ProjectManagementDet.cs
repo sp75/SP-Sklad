@@ -24,12 +24,12 @@ namespace SP_Sklad.SkladData
         public string Name { get; set; }
         public Nullable<decimal> SummAll { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
-        public Nullable<decimal> SummPay { get; set; }
         public Nullable<decimal> OnValue { get; set; }
         public string CurrName { get; set; }
         public string DocShortName { get; set; }
         public string DocTypeName { get; set; }
         public string Notes { get; set; }
         public Nullable<decimal> Balans { get; set; }
+        public Nullable<decimal> SummPay { get; set; }
     }
 }

@@ -601,6 +601,9 @@
     <Compile Include="SkladData\v_PriceListDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_ProductionMonitor.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_ProjectManagement.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1127,6 +1130,12 @@
     </Compile>
     <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsForm\frmProductionMonitor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmProductionMonitor.Designer.cs">
+      <DependentUpon>frmProductionMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsForm\frmMaterialPriceHIstory.cs">
       <SubType>Form</SubType>
@@ -2159,6 +2168,9 @@
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmProductionMonitor.resx">
+      <DependentUpon>frmProductionMonitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmMaterialPriceHIstory.resx">
       <DependentUpon>frmMaterialPriceHIstory.cs</DependentUpon>
     </EmbeddedResource>
@@ -2582,6 +2594,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PlannedCalculationDetDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceList.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_PriceListDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionMonitor.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProductionPlanDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ProjectManagementDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_RawMaterialManagementDet.datasource" />

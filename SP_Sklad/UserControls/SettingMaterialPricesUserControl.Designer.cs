@@ -59,6 +59,7 @@
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.HistoryBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.SettingMaterialPricesGridControl = new DevExpress.XtraGrid.GridControl();
+            this.SettingMaterialPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.SettingMaterialPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,6 +67,7 @@
             this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.SettingMaterialPricesDetGridControl = new DevExpress.XtraGrid.GridControl();
@@ -77,7 +79,6 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.SettingMaterialPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
@@ -379,6 +380,7 @@
             // 
             // SettingMaterialPricesGridControl
             // 
+            this.SettingMaterialPricesGridControl.DataSource = this.SettingMaterialPricesSource;
             this.SettingMaterialPricesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SettingMaterialPricesGridControl.Location = new System.Drawing.Point(0, 0);
             this.SettingMaterialPricesGridControl.MainView = this.SettingMaterialPricesGridView;
@@ -390,6 +392,14 @@
             this.SettingMaterialPricesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.SettingMaterialPricesGridView});
             // 
+            // SettingMaterialPricesSource
+            // 
+            this.SettingMaterialPricesSource.AreSourceRowsThreadSafe = true;
+            this.SettingMaterialPricesSource.DefaultSorting = "OnDate DESC";
+            this.SettingMaterialPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_SettingMaterialPrices);
+            this.SettingMaterialPricesSource.KeyExpression = "Id";
+            this.SettingMaterialPricesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
+            // 
             // SettingMaterialPricesGridView
             // 
             this.SettingMaterialPricesGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -399,7 +409,8 @@
             this.gridColumn46,
             this.gridColumn48,
             this.gridColumn112,
-            this.gridColumn3});
+            this.gridColumn3,
+            this.gridColumn5});
             this.SettingMaterialPricesGridView.GridControl = this.SettingMaterialPricesGridControl;
             this.SettingMaterialPricesGridView.Name = "SettingMaterialPricesGridView";
             this.SettingMaterialPricesGridView.OptionsBehavior.Editable = false;
@@ -419,7 +430,7 @@
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 1;
-            this.gridColumn47.Width = 123;
+            this.gridColumn47.Width = 116;
             // 
             // gridColumn46
             // 
@@ -431,7 +442,7 @@
             this.gridColumn46.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 2;
-            this.gridColumn46.Width = 337;
+            this.gridColumn46.Width = 318;
             // 
             // gridColumn48
             // 
@@ -439,8 +450,8 @@
             this.gridColumn48.FieldName = "Notes";
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
-            this.gridColumn48.VisibleIndex = 3;
-            this.gridColumn48.Width = 439;
+            this.gridColumn48.VisibleIndex = 5;
+            this.gridColumn48.Width = 279;
             // 
             // gridColumn112
             // 
@@ -449,7 +460,7 @@
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 4;
-            this.gridColumn112.Width = 294;
+            this.gridColumn112.Width = 228;
             // 
             // gridColumn3
             // 
@@ -475,6 +486,15 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1)});
             this.repositoryItemImageComboBox15.Name = "repositoryItemImageComboBox15";
             this.repositoryItemImageComboBox15.SmallImages = this.imageCollection1;
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Відповідальний";
+            this.gridColumn5.FieldName = "PersonName";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 3;
+            this.gridColumn5.Width = 257;
             // 
             // xtraTabControl3
             // 
@@ -584,14 +604,6 @@
             this.repositoryItemLookUpEdit1.ShowFooter = false;
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
-            // 
-            // SettingMaterialPricesSource
-            // 
-            this.SettingMaterialPricesSource.AreSourceRowsThreadSafe = true;
-            this.SettingMaterialPricesSource.DefaultSorting = "OnDate DESC";
-            this.SettingMaterialPricesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_SettingMaterialPrices);
-            this.SettingMaterialPricesSource.KeyExpression = "Id";
-            this.SettingMaterialPricesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
             // 
             // SettingMaterialPricesPopupMenu
             // 
@@ -709,5 +721,6 @@
         private DevExpress.XtraBars.PopupMenu SettingMaterialPricesDetPopupMenu;
         private DevExpress.XtraBars.BarButtonItem HistoryBtnItem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

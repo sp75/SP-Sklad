@@ -331,7 +331,7 @@
             this.labelControl35 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
-            this.groupControl18 = new DevExpress.XtraEditors.GroupControl();
+            this.KAgentPricesGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.groupControl17 = new DevExpress.XtraEditors.GroupControl();
             this.KAgentPricesGridControl = new DevExpress.XtraGrid.GridControl();
             this.v_KAgentPricesBS = new System.Windows.Forms.BindingSource(this.components);
@@ -573,8 +573,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             this.xtraTabPage18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl18)).BeginInit();
-            this.groupControl18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentPricesGroupControl)).BeginInit();
+            this.KAgentPricesGroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl17)).BeginInit();
             this.groupControl17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPricesGridControl)).BeginInit();
@@ -3926,23 +3926,23 @@
             // 
             // xtraTabPage18
             // 
-            this.xtraTabPage18.Controls.Add(this.groupControl18);
+            this.xtraTabPage18.Controls.Add(this.KAgentPricesGroupControl);
             this.xtraTabPage18.Name = "xtraTabPage18";
             this.xtraTabPage18.Size = new System.Drawing.Size(677, 607);
             this.xtraTabPage18.Text = "Ціноутворення";
             // 
-            // groupControl18
+            // KAgentPricesGroupControl
             // 
-            this.groupControl18.Controls.Add(this.groupControl17);
-            this.groupControl18.Controls.Add(this.labelControl23);
-            this.groupControl18.Controls.Add(this.PTypeEdit);
-            this.groupControl18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl18.Location = new System.Drawing.Point(0, 0);
-            this.groupControl18.Name = "groupControl18";
-            this.groupControl18.Padding = new System.Windows.Forms.Padding(15, 0, 15, 10);
-            this.groupControl18.Size = new System.Drawing.Size(677, 607);
-            this.groupControl18.TabIndex = 52;
-            this.groupControl18.Text = "Ціноутворення";
+            this.KAgentPricesGroupControl.Controls.Add(this.groupControl17);
+            this.KAgentPricesGroupControl.Controls.Add(this.labelControl23);
+            this.KAgentPricesGroupControl.Controls.Add(this.PTypeEdit);
+            this.KAgentPricesGroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KAgentPricesGroupControl.Location = new System.Drawing.Point(0, 0);
+            this.KAgentPricesGroupControl.Name = "KAgentPricesGroupControl";
+            this.KAgentPricesGroupControl.Padding = new System.Windows.Forms.Padding(15, 0, 15, 10);
+            this.KAgentPricesGroupControl.Size = new System.Drawing.Size(677, 607);
+            this.KAgentPricesGroupControl.TabIndex = 52;
+            this.KAgentPricesGroupControl.Text = "Ціноутворення";
             // 
             // groupControl17
             // 
@@ -4611,9 +4611,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             this.xtraTabPage18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl18)).EndInit();
-            this.groupControl18.ResumeLayout(false);
-            this.groupControl18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentPricesGroupControl)).EndInit();
+            this.KAgentPricesGroupControl.ResumeLayout(false);
+            this.KAgentPricesGroupControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl17)).EndInit();
             this.groupControl17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.KAgentPricesGridControl)).EndInit();
@@ -4959,7 +4959,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.PopupMenu popupMenu2;
-        private DevExpress.XtraEditors.GroupControl groupControl18;
+        private DevExpress.XtraEditors.GroupControl KAgentPricesGroupControl;
         private DevExpress.XtraEditors.GroupControl groupControl17;
         private DevExpress.XtraGrid.GridControl KAgentPricesGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView KAgentPricesGridView;

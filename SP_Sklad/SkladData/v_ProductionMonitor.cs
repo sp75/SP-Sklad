@@ -12,17 +12,20 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_SettingMaterialPrices
+    public partial class v_ProductionMonitor
     {
-        public System.Guid Id { get; set; }
+        public int WbillId { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
-        public int Checked { get; set; }
-        public string Notes { get; set; }
-        public Nullable<int> PersonId { get; set; }
-        public Nullable<int> DocType { get; set; }
-        public int PTypeId { get; set; }
-        public string PriceTypeName { get; set; }
-        public string PersonName { get; set; }
+        public string Reason { get; set; }
+        public Nullable<decimal> SummAll { get; set; }
+        public System.Guid Id { get; set; }
+        public string TechProcessName { get; set; }
+        public System.DateTime TechProcessStartDate { get; set; }
+        public Nullable<long> Duration { get; set; }
+        public string MatName { get; set; }
+        public string WhName { get; set; }
+        public Nullable<System.DateTime> TechProcessEndDate { get; set; }
+        public Nullable<decimal> Pct { get; set; }
     }
 }

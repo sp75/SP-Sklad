@@ -20,7 +20,7 @@ namespace SP_Sklad.SkladData
         public decimal OnValue { get; set; }
         public int DiscountType { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual Materials Materials { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

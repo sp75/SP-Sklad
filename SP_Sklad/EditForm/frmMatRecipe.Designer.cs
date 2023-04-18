@@ -141,6 +141,7 @@
             this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton13 = new DevExpress.XtraEditors.SimpleButton();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
             this.MatRecipeTechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
@@ -149,6 +150,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.TechProcLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.textEdit4 = new DevExpress.XtraEditors.TimeSpanEdit();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.MatRecipeAdditionalCostsGridControl = new DevExpress.XtraGrid.GridControl();
@@ -219,6 +221,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
@@ -1368,6 +1371,7 @@
             this.panelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelControl1.Controls.Add(this.labelControl22);
             this.panelControl1.Controls.Add(this.simpleButton13);
             this.panelControl1.Controls.Add(this.calcEdit3);
             this.panelControl1.Controls.Add(this.labelControl5);
@@ -1375,10 +1379,20 @@
             this.panelControl1.Controls.Add(this.labelControl7);
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.TechProcLookUpEdit);
+            this.panelControl1.Controls.Add(this.textEdit4);
             this.panelControl1.Location = new System.Drawing.Point(20, 69);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(577, 330);
             this.panelControl1.TabIndex = 49;
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Location = new System.Drawing.Point(23, 101);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(65, 16);
+            this.labelControl22.StyleController = this.styleController1;
+            this.labelControl22.TabIndex = 55;
+            this.labelControl22.Text = "Тривалість";
             // 
             // simpleButton13
             // 
@@ -1396,11 +1410,10 @@
             // calcEdit3
             // 
             this.calcEdit3.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.calcEdit3.Location = new System.Drawing.Point(79, 24);
+            this.calcEdit3.Location = new System.Drawing.Point(94, 24);
             this.calcEdit3.Name = "calcEdit3";
             this.calcEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.calcEdit3.Size = new System.Drawing.Size(74, 22);
             this.calcEdit3.StyleController = this.styleController1;
             this.calcEdit3.TabIndex = 48;
@@ -1421,7 +1434,7 @@
             // calcEdit4
             // 
             this.calcEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "ExpectedOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.calcEdit4.Location = new System.Drawing.Point(79, 98);
+            this.calcEdit4.Location = new System.Drawing.Point(373, 98);
             this.calcEdit4.Name = "calcEdit4";
             this.calcEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1432,7 +1445,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(23, 101);
+            this.labelControl7.Location = new System.Drawing.Point(317, 101);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(50, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -1453,7 +1466,7 @@
             this.TechProcLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TechProcLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "ProcId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TechProcLookUpEdit.Location = new System.Drawing.Point(79, 60);
+            this.TechProcLookUpEdit.Location = new System.Drawing.Point(94, 60);
             this.TechProcLookUpEdit.Name = "TechProcLookUpEdit";
             this.TechProcLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1466,10 +1479,26 @@
             this.TechProcLookUpEdit.Properties.ShowHeader = false;
             this.TechProcLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.TechProcLookUpEdit.Properties.ValueMember = "ProcId";
-            this.TechProcLookUpEdit.Size = new System.Drawing.Size(452, 22);
+            this.TechProcLookUpEdit.Size = new System.Drawing.Size(437, 22);
             this.TechProcLookUpEdit.StyleController = this.styleController1;
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
+            // 
+            // textEdit4
+            // 
+            this.textEdit4.EditValue = null;
+            this.textEdit4.Location = new System.Drawing.Point(94, 100);
+            this.textEdit4.MenuManager = this.barManager1;
+            this.textEdit4.Name = "textEdit4";
+            this.textEdit4.Properties.BeepOnError = false;
+            this.textEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEdit4.Properties.MaskSettings.Set("mask", "dd DD hh HH mm MM");
+            this.textEdit4.Properties.MaxValue = System.TimeSpan.Parse("30.00:00:00");
+            this.textEdit4.Properties.MinValue = System.TimeSpan.Parse("00:00:00");
+            this.textEdit4.Size = new System.Drawing.Size(178, 20);
+            this.textEdit4.TabIndex = 54;
+            this.textEdit4.EditValueChanged += new System.EventHandler(this.textEdit4_EditValueChanged);
             // 
             // xtraTabPage5
             // 
@@ -1660,6 +1689,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatRecipeTechProcDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit4.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit4.Properties)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
@@ -1798,5 +1828,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraEditors.TimeSpanEdit textEdit4;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
     }
 }

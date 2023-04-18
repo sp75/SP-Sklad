@@ -40,11 +40,11 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> SummInCurr { get; set; }
         public int WType { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kagent1 { get; set; }
-        public virtual Kagent Kagent2 { get; set; }
         public virtual OperationTypes OperationTypes { get; set; }
         public virtual WriteOffTypes WriteOffTypes { get; set; }
         public virtual ICollection<KAgentAdjustmentDet> KAgentAdjustmentDet { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
+        public virtual Kagent Kagent2 { get; set; }
     }
 }

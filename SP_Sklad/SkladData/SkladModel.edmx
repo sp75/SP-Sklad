@@ -531,7 +531,7 @@
           <Property Name="WId" Type="int" />
           <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentSaldo" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="FOPId" Type="int" />
+          <Property Name="ParentKagentId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -867,6 +867,7 @@
           <Property Name="ProcId" Type="int" Nullable="false" />
           <Property Name="Num" Type="int" />
           <Property Name="ExpectedOut" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Duration" Type="bigint" />
         </EntityType>
         <EntityType Name="MatRemains">
           <Key>
@@ -2901,6 +2902,31 @@ warning 6002: The table/view 'sp_base.dbo.v_PriceTypes' does not have a primary 
           <Property Name="TypeName" Type="varchar" MaxLength="7" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ProductionMonitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ProductionMonitor">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TechProcessStartDate" />
+            <PropertyRef Name="WhName" />
+          </Key>
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TechProcessName" Type="nvarchar" MaxLength="128" />
+          <Property Name="TechProcessStartDate" Type="datetime" Nullable="false" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="TechProcessEndDate" Type="datetime" />
+          <Property Name="Pct" Type="numeric" Precision="26" Scale="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ProductionPlanDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_ProductionPlanDet">
           <Key>
@@ -3065,6 +3091,7 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPrices' does not have
           <Property Name="DocType" Type="int" />
           <Property Name="PTypeId" Type="int" Nullable="false" />
           <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9009,6 +9036,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PriceTypes].[TypeName] AS [TypeName]
     FROM [dbo].[v_PriceTypes] AS [v_PriceTypes]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_ProductionMonitor" EntityType="Self.v_ProductionMonitor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ProductionMonitor].[WbillId] AS [WbillId], 
+    [v_ProductionMonitor].[Num] AS [Num], 
+    [v_ProductionMonitor].[OnDate] AS [OnDate], 
+    [v_ProductionMonitor].[Reason] AS [Reason], 
+    [v_ProductionMonitor].[SummAll] AS [SummAll], 
+    [v_ProductionMonitor].[Id] AS [Id], 
+    [v_ProductionMonitor].[TechProcessName] AS [TechProcessName], 
+    [v_ProductionMonitor].[TechProcessStartDate] AS [TechProcessStartDate], 
+    [v_ProductionMonitor].[Duration] AS [Duration], 
+    [v_ProductionMonitor].[MatName] AS [MatName], 
+    [v_ProductionMonitor].[WhName] AS [WhName], 
+    [v_ProductionMonitor].[TechProcessEndDate] AS [TechProcessEndDate], 
+    [v_ProductionMonitor].[Pct] AS [Pct]
+    FROM [dbo].[v_ProductionMonitor] AS [v_ProductionMonitor]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_ProductionPlanDet" EntityType="Self.v_ProductionPlanDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_ProductionPlanDet].[Id] AS [Id], 
@@ -9123,7 +9167,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPrices].[PersonId] AS [PersonId], 
     [v_SettingMaterialPrices].[DocType] AS [DocType], 
     [v_SettingMaterialPrices].[PTypeId] AS [PTypeId], 
-    [v_SettingMaterialPrices].[PriceTypeName] AS [PriceTypeName]
+    [v_SettingMaterialPrices].[PriceTypeName] AS [PriceTypeName], 
+    [v_SettingMaterialPrices].[PersonName] AS [PersonName]
     FROM [dbo].[v_SettingMaterialPrices] AS [v_SettingMaterialPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SettingMaterialPricesDet" EntityType="Self.v_SettingMaterialPricesDet" store:Type="Views" store:Schema="dbo">
@@ -10608,11 +10653,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="TAXES" EntitySet="TAXES" />
             <End Role="WayBillDetTaxes" EntitySet="WayBillDetTaxes" />
           </AssociationSet>
-          <EntitySet Name="MatRecipeTechProcDet" EntityType="BaseModel.MatRecipeTechProcDet" />
-          <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe">
-            <End Role="MatRecipe" EntitySet="MatRecipe" />
-            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
-          </AssociationSet>
           <EntitySet Name="TechProcDet" EntityType="BaseModel.TechProcDet" />
           <EntitySet Name="Services" EntityType="BaseModel.Services" />
           <AssociationSet Name="FK_SVC_CURRID" Association="BaseModel.FK_SVC_CURRID">
@@ -10819,111 +10859,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.EnterpriseWorker" />
-          <EntitySet Name="Kagent" EntityType="BaseModel.Kagent" />
-          <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_1" Association="BaseModel.FK_COMMISSION_1">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_2" Association="BaseModel.FK_COMMISSION_2">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_COMMISSION_3" Association="BaseModel.FK_COMMISSION_3">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Commission" EntitySet="Commission" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REF_CONTR_KAGENT" Association="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CONTRACT_REFERENCE_KAGENT" Association="BaseModel.FK_CONTRACT_REFERENCE_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Customers_Kagent" Association="BaseModel.FK_Customers_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Customers" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.FK_DISCCARDS_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="DiscCards" EntitySet="DiscCards" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.FK_EnterpriseWorker_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KaAddr" EntitySet="KaAddr" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="BaseModel.FK__TAXWB__PERSONID__019E3B86">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="TAXWB" EntitySet="TAXWB" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillMove" EntitySet="WaybillMove" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentPersons" EntitySet="KAgentPersons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kagent_KontragentGroup" Association="BaseModel.FK_Kagent_KontragentGroup">
-            <End Role="KontragentGroup" EntitySet="KontragentGroup" />
-            <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.FK_Kagent_Routes">
-            <End Role="Routes" EntitySet="Routes" />
-            <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Routes_Kagent" Association="BaseModel.FK_Routes_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Routes" EntitySet="Routes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="TAXWB" EntitySet="TAXWB" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TECHPROCDET_KAGENT" Association="BaseModel.FK_TECHPROCDET_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="TechProcDet" EntitySet="TechProcDet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WAYBILLMAKE_KAGENT" Association="BaseModel.FK_WAYBILLMAKE_KAGENT">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WayBillMake" EntitySet="WayBillMake" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WayBillMakeProps_Kagent" Association="BaseModel.FK_WayBillMakeProps_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillList" EntitySet="WaybillList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_WBS_PERSONID" Association="BaseModel.FK_WBS_PERSONID">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
-          </AssociationSet>
           <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
           <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
@@ -11189,14 +11124,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Currency" EntitySet="Currency" />
             <End Role="PayDoc" EntitySet="PayDoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__PAYDOC__KAID__19AACF41" Association="BaseModel.FK__PAYDOC__KAID__19AACF41">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PAYDOC__MPERSONI__22401542" Association="BaseModel.FK__PAYDOC__MPERSONI__22401542">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="PayDoc" EntitySet="PayDoc" />
-          </AssociationSet>
           <AssociationSet Name="FK_PD_ACCID" Association="BaseModel.FK_PD_ACCID">
             <End Role="KAgentAccount" EntitySet="KAgentAccount" />
             <End Role="PayDoc" EntitySet="PayDoc" />
@@ -11265,14 +11192,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="PosRemains" EntitySet="PosRemains" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductionPlans_Kagent" Association="BaseModel.FK_ProductionPlans_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductionPlans_Kagent1" Association="BaseModel.FK_ProductionPlans_Kagent1">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
-          </AssociationSet>
           <AssociationSet Name="FK_ProductionPlans_Warehouse" Association="BaseModel.FK_ProductionPlans_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="ProductionPlans" EntitySet="ProductionPlans" />
@@ -11292,10 +11211,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="IntermediateWeighing" EntityType="BaseModel.IntermediateWeighing" />
-          <AssociationSet Name="FK_IntermediateWeighing_Kagent" Association="BaseModel.FK_IntermediateWeighing_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
-          </AssociationSet>
           <AssociationSet Name="FK_IntermediateWeighing_WaybillList" Association="BaseModel.FK_IntermediateWeighing_WaybillList">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
@@ -11330,18 +11245,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="OperationTypes" EntityType="BaseModel.OperationTypes" />
           <EntitySet Name="WriteOffTypes" EntityType="BaseModel.WriteOffTypes" />
           <EntitySet Name="v_KAgentAdjustment" EntityType="BaseModel.v_KAgentAdjustment" />
-          <AssociationSet Name="FK_KAgentAdjustment_Kagent" Association="BaseModel.FK_KAgentAdjustment_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAgentAdjustment_Kagent1" Association="BaseModel.FK_KAgentAdjustment_Kagent1">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAgentAdjustment_Kagent2" Association="BaseModel.FK_KAgentAdjustment_Kagent2">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
-          </AssociationSet>
           <AssociationSet Name="FK_KAgentAdjustment_OperationTypes" Association="BaseModel.FK_KAgentAdjustment_OperationTypes">
             <End Role="OperationTypes" EntitySet="OperationTypes" />
             <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
@@ -11368,10 +11271,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="TechProcess" EntityType="BaseModel.TechProcess" />
-          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess">
-            <End Role="TechProcess" EntitySet="TechProcess" />
-            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
-          </AssociationSet>
           <AssociationSet Name="FK_TECHPROCDET_TECHPROCESS" Association="BaseModel.FK_TECHPROCDET_TECHPROCESS">
             <End Role="TechProcess" EntitySet="TechProcess" />
             <End Role="TechProcDet" EntitySet="TechProcDet" />
@@ -11475,14 +11374,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="PriceList" EntitySet="PriceList" />
             <End Role="PriceListDet" EntitySet="PriceListDet" />
           </AssociationSet>
-          <AssociationSet Name="PriceListKagent" Association="BaseModel.PriceListKagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="PriceList" EntitySet="PriceList" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cars_Kagent" Association="BaseModel.FK_Cars_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="Cars" EntitySet="Cars" />
-          </AssociationSet>
           <EntitySet Name="Receipt" EntityType="BaseModel.Receipt" />
           <FunctionImport Name="GetRelDocList" IsComposable="true" ReturnType="Collection(BaseModel.GetRelDocList_Result)">
           <Parameter Name="originator_id" Mode="In" Type="Guid" />
@@ -11514,10 +11405,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="Roles" EntityType="BaseModel.Roles" />
           <EntitySet Name="UserRoles" EntityType="BaseModel.UserRoles" />
           <EntitySet Name="Users" EntityType="BaseModel.Users" />
-          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Kagent" EntitySet="Kagent" />
-          </AssociationSet>
           <AssociationSet Name="FK_OperLog_Users" Association="BaseModel.FK_OperLog_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="OperLog" EntitySet="OperLog" />
@@ -11675,7 +11562,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <EntitySet Name="ProjectManagementDet" EntityType="BaseModel.ProjectManagementDet" />
-          <EntitySet Name="v_ProjectManagementDet" EntityType="BaseModel.v_ProjectManagementDet" />
           <EntitySet Name="v_ProjectManagement" EntityType="BaseModel.v_ProjectManagement" />
           <EntitySet Name="ProjectManagement" EntityType="BaseModel.ProjectManagement" />
           <AssociationSet Name="FK_ProjectManagementDet_ProjectManagement" Association="BaseModel.FK_ProjectManagementDet_ProjectManagement">
@@ -11727,18 +11613,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="KADiscount" EntityType="BaseModel.KADiscount" />
           <EntitySet Name="KAMatDiscount" EntityType="BaseModel.KAMatDiscount" />
           <EntitySet Name="KAMatGroupDiscount" EntityType="BaseModel.KAMatGroupDiscount" />
-          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.FK_KADiscount_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KADiscount" EntitySet="KADiscount" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
-          </AssociationSet>
-          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
-          </AssociationSet>
           <AssociationSet Name="FK__KAMATDISC__MATID__32AB8735" Association="BaseModel.FK__KAMATDISC__MATID__32AB8735">
             <End Role="Materials" EntitySet="Materials" />
             <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
@@ -11759,10 +11633,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
             <End Role="WaybillTemplateDet" EntitySet="WaybillTemplateDet" />
           </AssociationSet>
-          <AssociationSet Name="WaybillTemplateKagent" Association="BaseModel.WaybillTemplateKagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
-          </AssociationSet>
           <EntitySet Name="MaterialType" EntityType="BaseModel.MaterialType" />
           <FunctionImport Name="GetMatPrice" IsComposable="true" ReturnType="Collection(BaseModel.GetMatPrice_Result)">
             <Parameter Name="mat_id" Mode="In" Type="Int32" />
@@ -11773,14 +11643,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_KAgentPrices" EntityType="BaseModel.v_KAgentPrices" />
           <EntitySet Name="KAgentMatGroupPrices" EntityType="BaseModel.KAgentMatGroupPrices" />
           <EntitySet Name="KAgentMatPrices" EntityType="BaseModel.KAgentMatPrices" />
-          <AssociationSet Name="FK_KAgentMatGroupPrices_Kagent" Association="BaseModel.FK_KAgentMatGroupPrices_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KAgentMatPrices_Kagent" Association="BaseModel.FK_KAgentMatPrices_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="KAgentMatPrices" EntitySet="KAgentMatPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK_KAgentMatGroupPrices_MatGroup" Association="BaseModel.FK_KAgentMatGroupPrices_MatGroup">
             <End Role="MatGroup" EntitySet="MatGroup" />
             <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
@@ -11803,10 +11665,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="SettingMaterialPrices" EntityType="BaseModel.SettingMaterialPrices" />
           <EntitySet Name="SettingMaterialPricesDet" EntityType="BaseModel.SettingMaterialPricesDet" />
           <EntitySet Name="v_SettingMaterialPrices" EntityType="BaseModel.v_SettingMaterialPrices" />
-          <AssociationSet Name="FK_SettingMaterialPrices_Kagent" Association="BaseModel.FK_SettingMaterialPrices_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK_SettingMaterialPrices_PriceTypes" Association="BaseModel.FK_SettingMaterialPrices_PriceTypes">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
@@ -11834,6 +11692,194 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wb_template_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="v_KagentMaterilPrices" EntityType="BaseModel.v_KagentMaterilPrices" />
+          <EntitySet Name="v_ProjectManagementDet" EntityType="BaseModel.v_ProjectManagementDet" />
+          <EntitySet Name="MatRecipeTechProcDet" EntityType="BaseModel.MatRecipeTechProcDet" />
+          <AssociationSet Name="FK_MatRecipeTechProcDet_MatRecipe" Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe">
+            <End Role="MatRecipe" EntitySet="MatRecipe" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MatRecipeTechProcDet_TechProcess" Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess">
+            <End Role="TechProcess" EntitySet="TechProcess" />
+            <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
+          </AssociationSet>
+          <EntitySet Name="v_ProductionMonitor" EntityType="BaseModel.v_ProductionMonitor" />
+          <EntitySet Name="Kagent" EntityType="BaseModel.Kagent" />
+          <AssociationSet Name="FK_Cars_Kagent" Association="BaseModel.FK_Cars_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Cars" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSI_REFERENCE_KAGENT" Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_1" Association="BaseModel.FK_COMMISSION_1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_2" Association="BaseModel.FK_COMMISSION_2">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMISSION_3" Association="BaseModel.FK_COMMISSION_3">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Commission" EntitySet="Commission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRACT_REF_CONTR_KAGENT" Association="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CONTRACT_REFERENCE_KAGENT" Association="BaseModel.FK_CONTRACT_REFERENCE_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="CONTRACTS" EntitySet="CONTRACTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Kagent" Association="BaseModel.FK_Customers_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DISCCARDS_KAID" Association="BaseModel.FK_DISCCARDS_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="DiscCards" EntitySet="DiscCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.FK_EnterpriseWorker_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntermediateWeighing_Kagent" Association="BaseModel.FK_IntermediateWeighing_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAADDR_KAID" Association="BaseModel.FK_KAADDR_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KaAddr" EntitySet="KaAddr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KADiscount_Kagent" Association="BaseModel.FK_KADiscount_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATDISCO__KAID__31B762FC" Association="BaseModel.FK__KAMATDISCO__KAID__31B762FC">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROUP__KAID__3A4CA8FD" Association="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYDOC__KAID__19AACF41" Association="BaseModel.FK__PAYDOC__KAID__19AACF41">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PayDoc" EntitySet="PayDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PAYDOC__MPERSONI__22401542" Association="BaseModel.FK__PAYDOC__MPERSONI__22401542">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PayDoc" EntitySet="PayDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAXWB__PERSONID__019E3B86" Association="BaseModel.FK__TAXWB__PERSONID__019E3B86">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="TAXWB" EntitySet="TAXWB" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WAYBILLLI__PERSO__6E01572D" Association="BaseModel.FK__WAYBILLLI__PERSO__6E01572D">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WAYBILLMO__PERSO__314D4EA8" Association="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillMove" EntitySet="WaybillMove" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AACC_KAID" Association="BaseModel.FK_AACC_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAccount" EntitySet="KAgentAccount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADOC_KAID" Association="BaseModel.FK_ADOC_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentDoc" EntitySet="KAgentDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AP_KAID" Association="BaseModel.FK_AP_KAID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentPersons" EntitySet="KAgentPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kagent_KontragentGroup" Association="BaseModel.FK_Kagent_KontragentGroup">
+            <End Role="KontragentGroup" EntitySet="KontragentGroup" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kagent_Routes" Association="BaseModel.FK_Kagent_Routes">
+            <End Role="Routes" EntitySet="Routes" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kagent_Users" Association="BaseModel.FK_Kagent_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Kagent" EntitySet="Kagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent" Association="BaseModel.FK_KAgentAdjustment_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent1" Association="BaseModel.FK_KAgentAdjustment_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentAdjustment_Kagent2" Association="BaseModel.FK_KAgentAdjustment_Kagent2">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentAdjustment" EntitySet="KAgentAdjustment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentMatGroupPrices_Kagent" Association="BaseModel.FK_KAgentMatGroupPrices_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KAgentMatPrices_Kagent" Association="BaseModel.FK_KAgentMatPrices_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="KAgentMatPrices" EntitySet="KAgentMatPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent" Association="BaseModel.FK_ProductionPlans_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductionPlans_Kagent1" Association="BaseModel.FK_ProductionPlans_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="ProductionPlans" EntitySet="ProductionPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Routes_Kagent" Association="BaseModel.FK_Routes_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Routes" EntitySet="Routes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SettingMaterialPrices_Kagent" Association="BaseModel.FK_SettingMaterialPrices_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="SettingMaterialPrices" EntitySet="SettingMaterialPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TAXWB_REFERENCE_KAGENT" Association="BaseModel.FK_TAXWB_REFERENCE_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="TAXWB" EntitySet="TAXWB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TECHPROCDET_KAGENT" Association="BaseModel.FK_TECHPROCDET_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="TechProcDet" EntitySet="TechProcDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLL_FK_WBLIST_KAGENT" Association="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WAYBILLMAKE_KAGENT" Association="BaseModel.FK_WAYBILLMAKE_KAGENT">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WayBillMake" EntitySet="WayBillMake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WayBillMakeProps_Kagent" Association="BaseModel.FK_WayBillMakeProps_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WayBillMakeProps" EntitySet="WayBillMakeProps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBL_ENTID" Association="BaseModel.FK_WBL_ENTID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WBS_PERSONID" Association="BaseModel.FK_WBS_PERSONID">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WayBillSvc" EntitySet="WayBillSvc" />
+          </AssociationSet>
+          <AssociationSet Name="PriceListKagent" Association="BaseModel.PriceListKagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="PriceList" EntitySet="PriceList" />
+          </AssociationSet>
+          <AssociationSet Name="WaybillTemplateKagent" Association="BaseModel.WaybillTemplateKagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12614,7 +12660,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="MatRecipe" ToRole="WayBillMake" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MATRECIPE_1" FromRole="MatRecipe" ToRole="Materials" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MATRECDET_MATRECIPE" FromRole="MatRecipe" ToRole="MatRecDet" />
-          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipe" ToRole="MatRecipeTechProcDet" />
           <Property Type="Decimal" Name="Out" Nullable="false" Precision="15" Scale="4" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_MatRecipe" FromRole="MatRecipe" ToRole="ProductionPlanDet" />
           <NavigationProperty Name="SchedulingOrders" Relationship="BaseModel.FK_SchedulingOrders_MatRecipe" FromRole="MatRecipe" ToRole="SchedulingOrders" />
@@ -12627,6 +12672,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MatRecipe_MeasureId" FromRole="MatRecipe" ToRole="Measures" />
           <Property Name="TimeNorm" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="IndustrialProcessing" Type="Boolean" />
+          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipe" ToRole="MatRecipeTechProcDet" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -12640,11 +12686,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_WAYBILLMAKE_MATRECIPE" FromRole="WayBillMake" ToRole="MatRecipe" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_WAYBILLMAKE_WAREHOUSE" FromRole="WayBillMake" ToRole="Warehouse" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WAYBILLMAKE_WAYBILLLIST" FromRole="WayBillMake" ToRole="WaybillList" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="WayBillMake" ToRole="Kagent" />
           <Property Name="AmountByRecipe" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="Int32" />
           <Property Name="EndProductionDate" Type="DateTime" Precision="3" />
           <Property Name="ShippedAmount" Type="Decimal" Precision="15" Scale="4" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="WayBillMake" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_WAYBILLMAKE_MATRECIPE">
           <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="0..1" />
@@ -13008,12 +13054,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MoneySaldo" Relationship="BaseModel.FK_MS_ACCID" FromRole="KAgentAccount" ToRole="MoneySaldo" />
           <NavigationProperty Name="AccountType" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_ACCOUNTT" FromRole="KAgentAccount" ToRole="AccountType" />
           <NavigationProperty Name="Banks" Relationship="BaseModel.FK_AGENTACC_FK_AGENTA_BANKS" FromRole="KAgentAccount" ToRole="Banks" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
           <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK_PD_ACCID" FromRole="KAgentAccount" ToRole="PayDoc" />
           <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BankStatementsDet" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount" FromRole="KAgentAccount" ToRole="BankStatementsDet" />
           <NavigationProperty Name="BankStatementsDet1" Relationship="BaseModel.FK_BankStatementsDet_KAgentAccount1" FromRole="KAgentAccount" ToRole="BankStatementsDet" />
           <Property Name="Deleted" Type="Int32" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AACC_KAID" FromRole="KAgentAccount" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="KAgentPersons">
           <Key>
@@ -13903,32 +13949,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="MatRecipeTechProcDet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="RecId" Nullable="false" />
-          <Property Type="Int32" Name="ProcId" Nullable="false" />
-          <Property Type="Int32" Name="Num" />
-          <Property Type="Decimal" Name="ExpectedOut" Precision="15" Scale="2" />
-          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipeTechProcDet" ToRole="MatRecipe" />
-          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="MatRecipeTechProcDet" ToRole="TechProcess" />
-        </EntityType>
-        <Association Name="FK_MatRecipeTechProcDet_MatRecipe">
-          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatRecipe">
-              <PropertyRef Name="RecId" />
-            </Principal>
-            <Dependent Role="MatRecipeTechProcDet">
-              <PropertyRef Name="RecId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="TechProcDet">
           <Key>
             <PropertyRef Name="DetId" />
@@ -13948,11 +13968,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="ExtMat2Id" />
           <Property Type="Int32" Name="ExtMat2Amount" />
           <Property Type="Decimal" Name="TareWeight" Precision="15" Scale="4" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
           <Property Type="Decimal" Name="OutNetto" Precision="15" Scale="4" />
           <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcDet" ToRole="TechProcess" />
           <Property Name="TareMatId" Type="Int32" />
           <Property Name="SausageSyringeId" Type="Int32" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="TechProcDet" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="Services">
           <Key>
@@ -14030,10 +14050,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="DriverId" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Routes" ToRole="Kagent" />
           <Property Name="CarId" Type="Guid" />
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Routes_Cars" FromRole="Routes" ToRole="Cars" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Routes" ToRole="Kagent" />
           </EntityType>
         <EntityType Name="Jobs">
           <Key>
@@ -14197,9 +14217,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Guid" Name="SessionId" />
           <Property Type="Guid" Name="Id" Nullable="false" />
           <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_WaybillList" FromRole="WaybillList" ToRole="WayBillMakeProps" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="WayBillTmc" Relationship="BaseModel.FK_MoveInventories_WaybillList" FromRole="WaybillList" ToRole="WayBillTmc" />
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="WaybillList" ToRole="IntermediateWeighing" />
           <Property Name="WebUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
@@ -14212,6 +14229,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
           <Property Name="ShipmentDate" Type="DateTime" Precision="3" />
           <Property Name="ReceiptId" Type="Guid" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -14874,417 +14894,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="WorkerId" Nullable="false" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="EnterpriseWorker" ToRole="Kagent" />
         </EntityType>
-        <EntityType Name="Kagent">
-          <Key>
-            <PropertyRef Name="KaId" />
-          </Key>
-          <Property Type="Int32" Name="KaId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="FullName" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="INN" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="OKPO" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CertNum" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="www" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Fax" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Deleted" Nullable="false" />
-          <Property Type="String" Name="Notes" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="KPP" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="NdsPayer" Nullable="false" />
-          <Property Type="DateTime" Name="BirthDate" Precision="3" />
-          <Property Type="Int32" Name="KType" Nullable="false" />
-          <Property Type="Int32" Name="KaKind" Nullable="false" />
-          <Property Type="String" Name="Job" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="StartSaldo" Precision="15" Scale="8" />
-          <Property Type="DateTime" Name="StartSaldoDate" Precision="3" />
-          <Property Type="Int32" Name="PTypeId" />
-          <Property Type="Int32" Name="JobType" />
-          <Property Type="Int32" Name="Def" />
-          <Property Type="Int32" Name="UserId" />
-          <Property Type="Int32" Name="Archived" />
-          <Property Type="String" Name="KAU" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="ContractType" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Type="DateTime" Name="ContractDate" Precision="3" />
-          <Property Type="String" Name="ContractNum" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="RouteId" />
-          <Property Type="Guid" Name="GroupId" />
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="Commission3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Kagent" ToRole="Commission" />
-          <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
-          <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
-          <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
-          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
-          <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
-          <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
-          <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
-          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
-          <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
-          <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
-          <NavigationProperty Name="KontragentGroup" Relationship="BaseModel.FK_Kagent_KontragentGroup" FromRole="Kagent" ToRole="KontragentGroup" />
-          <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
-          <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
-          <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
-          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
-          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
-          <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="Kagent" ToRole="WayBillMakeProps" />
-          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
-          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
-          <Property Type="Int32" Name="PayTypeId" />
-          <Property Type="Int32" Name="CashDeskId" />
-          <Property Type="String" Name="Declaration" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="AspNetUserId" MaxLength="128" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
-          <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
-          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="Kagent" ToRole="ProductionPlans" />
-          <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="Kagent" ToRole="ProductionPlans" />
-          <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="Kagent" ToRole="IntermediateWeighing" />
-          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="Kagent" ToRole="KAgentAdjustment" />
-          <NavigationProperty Name="KAgentAdjustment1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="Kagent" ToRole="KAgentAdjustment" />
-          <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
-          <Property Name="WId" Type="Int32" />
-          <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
-          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
-          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
-          <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="FOPId" Type="Int32" />
-          <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
-          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
-          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
-          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
-          <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatGroupPrices" />
-          <NavigationProperty Name="KAgentMatPrices" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatPrices" />
-          <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="Kagent" ToRole="SettingMaterialPrices" />
-        </EntityType>
-        <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_1">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="FirstKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_2">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="SecondKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_COMMISSION_3">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Commission">
-              <PropertyRef Name="ThirdKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CONTRACT_REFERENCE_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="CONTRACTS">
-              <PropertyRef Name="PERSONID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Customers_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Customers" Role="Customers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Customers">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_DISCCARDS_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="DiscCards">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnterpriseWorker_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="EnterpriseWorker">
-              <PropertyRef Name="EnterpriseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAADDR_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KaAddr" Role="KaAddr" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KaAddr">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TAXWB__PERSONID__019E3B86">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="TAXWB">
-              <PropertyRef Name="PERSONID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillMove">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AACC_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentAccount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ADOC_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentDoc" Role="KAgentDoc" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentDoc">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_AP_KAID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentPersons" Role="KAgentPersons" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentPersons">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Kagent_KontragentGroup">
-          <End Type="BaseModel.KontragentGroup" Role="KontragentGroup" Multiplicity="0..1" />
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KontragentGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Kagent">
-              <PropertyRef Name="GroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Kagent_Routes">
-          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="0..1" />
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Routes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Kagent">
-              <PropertyRef Name="RouteId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Routes_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Routes">
-              <PropertyRef Name="DriverId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TAXWB_REFERENCE_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="TAXWB">
-              <PropertyRef Name="KAID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TECHPROCDET_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="TechProcDet">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WAYBILLMAKE_KAGENT">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WayBillMake">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WayBillMakeProps_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.WayBillMakeProps" Role="WayBillMakeProps" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WayBillMakeProps">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBL_ENTID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WaybillList">
-              <PropertyRef Name="EntId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_WBS_PERSONID">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="WayBillSvc">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -15339,10 +14948,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Int32" Name="WhId" />
           <Property Type="Int32" Name="ManufId" />
           <NavigationProperty Name="ProductionPlanDet" Relationship="BaseModel.FK_ProductionPlanDet_ProductionPlans" FromRole="ProductionPlans" ToRole="ProductionPlanDet" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="ProductionPlans" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="ProductionPlans" ToRole="Kagent" />
           <NavigationProperty Name="Warehouse" Relationship="BaseModel.FK_ProductionPlans_Warehouse" FromRole="ProductionPlans" ToRole="Warehouse" />
           <NavigationProperty Name="Warehouse1" Relationship="BaseModel.FK_ProductionPlans_Warehouse1" FromRole="ProductionPlans" ToRole="Warehouse" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="ProductionPlans" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="ProductionPlans" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="v_MatRemains">
           <Key>
@@ -16299,8 +15908,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_PD_CASHID" FromRole="PayDoc" ToRole="CashDesks" />
           <NavigationProperty Name="ChargeType" Relationship="BaseModel.FK__PAYDOC__CTYPEID__2334397B" FromRole="PayDoc" ToRole="ChargeType" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__PAYDOC__CURRID__214BF109" FromRole="PayDoc" ToRole="Currency" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="PayDoc" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="PayDoc" ToRole="Kagent" />
           <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_PD_ACCID" FromRole="PayDoc" ToRole="KAgentAccount" />
           <NavigationProperty Name="PayType" Relationship="BaseModel.FK__PAYDOC__PTYPEID__2057CCD0" FromRole="PayDoc" ToRole="PayType" />
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
@@ -16309,6 +15916,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ReceiptId" Type="Guid" />
           <Property Name="KaAccId" Type="Int32" />
           <Property Name="BankCommission" Type="Decimal" Precision="15" Scale="2" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="PayDoc" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="PayDoc" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_PD_CASHID">
           <End Type="BaseModel.CashDesks" Role="CashDesks" Multiplicity="0..1" />
@@ -16343,30 +15952,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="PayDoc">
               <PropertyRef Name="CurrId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAYDOC__KAID__19AACF41">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PAYDOC__MPERSONI__22401542">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="PayDoc">
-              <PropertyRef Name="MPersonId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -16574,30 +16159,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductionPlans_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="ProductionPlans">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductionPlans_Kagent1">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="ProductionPlans">
-              <PropertyRef Name="EntId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ProductionPlans_Warehouse">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
           <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
@@ -16651,23 +16212,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="SessionId" Type="Guid" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="IntermediateWeighing" ToRole="Kagent" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_IntermediateWeighing_WaybillList" FromRole="IntermediateWeighing" ToRole="WaybillList" />
           <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_IntermediateWeighing" FromRole="IntermediateWeighing" ToRole="IntermediateWeighingDet" />
           <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="IntermediateWeighing" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_IntermediateWeighing_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="IntermediateWeighing">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_IntermediateWeighing_WaybillList">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -16804,12 +16353,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="OperationType" Type="Int32" Nullable="false" />
           <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="WType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="KAgentAdjustment" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="KAgentAdjustment" ToRole="Kagent" />
-          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="KAgentAdjustment" ToRole="Kagent" />
           <NavigationProperty Name="OperationTypes" Relationship="BaseModel.FK_KAgentAdjustment_OperationTypes" FromRole="KAgentAdjustment" ToRole="OperationTypes" />
           <NavigationProperty Name="WriteOffTypes" Relationship="BaseModel.FK_KAgentAdjustment_WriteOffTypes" FromRole="KAgentAdjustment" ToRole="WriteOffTypes" />
           <NavigationProperty Name="KAgentAdjustmentDet" Relationship="BaseModel.FK_KAgentAdjustmentDet_KAgentAdjustment" FromRole="KAgentAdjustment" ToRole="KAgentAdjustmentDet" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="KAgentAdjustment" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="KAgentAdjustment" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="KAgentAdjustment" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="OperationTypes">
           <Key>
@@ -16852,42 +16401,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_KAgentAdjustment_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentAdjustment">
-              <PropertyRef Name="DebtKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAgentAdjustment_Kagent1">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentAdjustment">
-              <PropertyRef Name="CreditKaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAgentAdjustment_Kagent2">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentAdjustment">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_KAgentAdjustment_OperationTypes">
           <End Type="BaseModel.OperationTypes" Role="OperationTypes" Multiplicity="1" />
           <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
@@ -17026,23 +16539,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Kod" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Num" Type="Int32" />
-          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
           <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_TECHPROCESS" FromRole="TechProcess" ToRole="TechProcDet" />
+          <NavigationProperty Name="MatRecipeTechProcDet" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="TechProcess" ToRole="MatRecipeTechProcDet" />
         </EntityType>
-        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
-          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TechProcess">
-              <PropertyRef Name="ProcId" />
-            </Principal>
-            <Dependent Role="MatRecipeTechProcDet">
-              <PropertyRef Name="ProcId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TECHPROCDET_TECHPROCESS">
           <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1" />
           <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
@@ -17559,8 +17058,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK_PRICELIS_REFERENCE_CURRENCY" FromRole="PriceList" ToRole="Currency" />
           <NavigationProperty Name="PlannedCalculation" Relationship="BaseModel.FK_PlannedCalculation_PriceList" FromRole="PriceList" ToRole="PlannedCalculation" />
           <NavigationProperty Name="PriceListDet" Relationship="BaseModel.FK_PRICELISTDET_PRICELIST" FromRole="PriceList" ToRole="PriceListDet" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.PriceListKagent" FromRole="PriceList" ToRole="Kagent" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_PRICELIST_REFERENCE_PRICETYP" FromRole="PriceList" ToRole="PriceTypes" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.PriceListKagent" FromRole="PriceList" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_PRICELIS_REFERENCE_CURRENCY">
           <End Type="BaseModel.Currency" Role="Currency" Multiplicity="1" />
@@ -17597,24 +17096,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="PriceListDet">
               <PropertyRef Name="PlId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="PriceListKagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
-        </Association>
-        <Association Name="FK_Cars_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="Cars">
-              <PropertyRef Name="DriverId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -17832,7 +17313,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="InternalEditor" Type="Boolean" />
           <Property Name="IsWorking" Type="Boolean" Nullable="false" />
           <Property Name="WorkSpace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
           <NavigationProperty Name="OperLog" Relationship="BaseModel.FK_OperLog_Users" FromRole="Users" ToRole="OperLog" />
           <NavigationProperty Name="PrintLog" Relationship="BaseModel.FK_PRINTLOG_2" FromRole="Users" ToRole="PrintLog" />
           <NavigationProperty Name="UserAccess" Relationship="BaseModel.FK_USERACCESS_1" FromRole="Users" ToRole="UserAccess" />
@@ -17841,19 +17321,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="UserRoles" Relationship="BaseModel.FK_UserRoles_Users" FromRole="Users" ToRole="UserRoles" />
           <NavigationProperty Name="UsersGroup" Relationship="BaseModel.FK_Users_UsersGroup" FromRole="Users" ToRole="UsersGroup" />
           <NavigationProperty Name="UserSettings" Relationship="BaseModel.FK_UserSettings_Users" FromRole="Users" ToRole="UserSettings" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Users" FromRole="Users" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_Kagent_Users">
-          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Kagent">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_OperLog_Users">
           <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -18891,28 +18360,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ProjectManagement" Relationship="BaseModel.FK_ProjectManagementDet_ProjectManagement" FromRole="ProjectManagementDet" ToRole="ProjectManagement" />
         </EntityType>
-        <EntityType Name="v_ProjectManagementDet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Num" Type="Int32" />
-          <Property Name="ProjectManagementId" Type="Guid" />
-          <Property Name="DocId" Type="Guid" />
-          <Property Name="WType" Type="Int32" />
-          <Property Name="DocNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Precision="3" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
-          <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
-          <Property Name="SummPay" Type="Decimal" Precision="35" Scale="8" />
-          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
-          <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Balans" Type="Decimal" Precision="35" Scale="8" />
-        </EntityType>
         <EntityType Name="v_ProjectManagement">
           <Key>
             <PropertyRef Name="Id" />
@@ -19192,8 +18639,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
           <Property Name="DiscountType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMatDiscount" ToRole="Kagent" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="KAMatDiscount" ToRole="Materials" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="KAMatDiscount" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="KAMatGroupDiscount">
           <Key>
@@ -19204,51 +18651,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="GrpId" Type="Int32" Nullable="false" />
           <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
           <Property Name="DiscountType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_KADiscount_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KADiscount" Role="KADiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KADiscount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMatDiscount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAMatGroupDiscount">
-              <PropertyRef Name="KAId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__KAMATDISC__MATID__32AB8735">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -19325,10 +18730,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="WaybillTemplateKagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
-          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
-        </Association>
         <EntityType Name="MaterialType">
           <Key>
             <PropertyRef Name="Id" />
@@ -19368,9 +18769,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PricingType" Type="Int32" Nullable="false" />
           <Property Name="ValueType" Type="Int32" Nullable="false" />
           <Property Name="PTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="KAgentMatGroupPrices" ToRole="Kagent" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_KAgentMatGroupPrices_MatGroup" FromRole="KAgentMatGroupPrices" ToRole="MatGroup" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_KAgentMatGroupPrices_PriceTypes" FromRole="KAgentMatGroupPrices" ToRole="PriceTypes" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="KAgentMatGroupPrices" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="KAgentMatPrices">
           <Key>
@@ -19383,36 +18784,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PricingType" Type="Int32" Nullable="false" />
           <Property Name="ValueType" Type="Int32" Nullable="false" />
           <Property Name="PTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="KAgentMatPrices" ToRole="Kagent" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_KAgentMatPrices_Materials" FromRole="KAgentMatPrices" ToRole="Materials" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_KAgentMatPrices_PriceTypes" FromRole="KAgentMatPrices" ToRole="PriceTypes" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="KAgentMatPrices" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_KAgentMatGroupPrices_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentMatGroupPrices">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KAgentMatPrices_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAgentMatPrices" Role="KAgentMatPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="KAgentMatPrices">
-              <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_KAgentMatGroupPrices_MatGroup">
           <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1" />
           <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
@@ -19525,9 +18900,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocType" Type="Int32" />
           <Property Name="SessionId" Type="Guid" />
           <Property Name="PTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="SettingMaterialPrices" ToRole="Kagent" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_SettingMaterialPrices_PriceTypes" FromRole="SettingMaterialPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="SettingMaterialPricesDet" Relationship="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" FromRole="SettingMaterialPrices" ToRole="SettingMaterialPricesDet" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="SettingMaterialPrices" ToRole="Kagent" />
         </EntityType>
         <EntityType Name="SettingMaterialPricesDet">
           <Key>
@@ -19557,19 +18932,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocType" Type="Int32" />
           <Property Name="PTypeId" Type="Int32" Nullable="false" />
           <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_SettingMaterialPrices_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
-          <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="SettingMaterialPrices">
-              <PropertyRef Name="PersonId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SettingMaterialPrices_PriceTypes">
           <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
           <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="*" />
@@ -19702,6 +19066,713 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Discount" Type="Decimal" Precision="38" Scale="15" />
           <Property Name="PTypeId" Type="Int32" />
         </EntityType>
+        <EntityType Name="v_ProjectManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="ProjectManagementId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="WType" Type="Int32" />
+          <Property Name="DocNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="33" Scale="8" />
+          <Property Name="OnValue" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Balans" Type="Decimal" Precision="35" Scale="8" />
+          <Property Name="SummPay" Type="Decimal" Precision="35" Scale="8" />
+        </EntityType>
+        <EntityType Name="MatRecipeTechProcDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="ProcId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="ExpectedOut" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Duration" Type="Int64" />
+          <NavigationProperty Name="MatRecipe" Relationship="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" FromRole="MatRecipeTechProcDet" ToRole="MatRecipe" />
+          <NavigationProperty Name="TechProcess" Relationship="BaseModel.FK_MatRecipeTechProcDet_TechProcess" FromRole="MatRecipeTechProcDet" ToRole="TechProcess" />
+        </EntityType>
+        <Association Name="FK_MatRecipeTechProcDet_MatRecipe">
+          <End Type="BaseModel.MatRecipe" Role="MatRecipe" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatRecipe">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MatRecipeTechProcDet_TechProcess">
+          <End Type="BaseModel.TechProcess" Role="TechProcess" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatRecipeTechProcDet" Role="MatRecipeTechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TechProcess">
+              <PropertyRef Name="ProcId" />
+            </Principal>
+            <Dependent Role="MatRecipeTechProcDet">
+              <PropertyRef Name="ProcId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_ProductionMonitor">
+          <Key>
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TechProcessStartDate" />
+            <PropertyRef Name="WhName" />
+          </Key>
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TechProcessName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TechProcessStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="TechProcessEndDate" Type="DateTime" Precision="3" />
+          <Property Name="Pct" Type="Decimal" Precision="26" Scale="12" />
+        </EntityType>
+        <EntityType Name="Kagent">
+          <Key>
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Name="KaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="INN" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="OKPO" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CertNum" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KPP" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="NdsPayer" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="KType" Type="Int32" Nullable="false" />
+          <Property Name="KaKind" Type="Int32" Nullable="false" />
+          <Property Name="Job" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="StartSaldo" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="StartSaldoDate" Type="DateTime" Precision="3" />
+          <Property Name="PTypeId" Type="Int32" />
+          <Property Name="JobType" Type="Int32" />
+          <Property Name="Def" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Archived" Type="Int32" />
+          <Property Name="KAU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ContractType" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ContractDate" Type="DateTime" Precision="3" />
+          <Property Name="ContractNum" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RouteId" Type="Int32" />
+          <Property Name="GroupId" Type="Guid" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="PayTypeId" Type="Int32" />
+          <Property Name="CashDeskId" Type="Int32" />
+          <Property Name="Declaration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AspNetUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="POSTerminalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CurrentSaldo" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="ParentKagentId" Type="Int32" />
+          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Kagent" ToRole="Cars" />
+          <NavigationProperty Name="Commission" Relationship="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission1" Relationship="BaseModel.FK_COMMISSION_1" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission2" Relationship="BaseModel.FK_COMMISSION_2" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="Commission3" Relationship="BaseModel.FK_COMMISSION_3" FromRole="Kagent" ToRole="Commission" />
+          <NavigationProperty Name="CONTRACTS" Relationship="BaseModel.FK_CONTRACT_REF_CONTR_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
+          <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
+          <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
+          <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
+          <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
+          <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="Kagent" ToRole="IntermediateWeighing" />
+          <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
+          <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
+          <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISCO__KAID__31B762FC" FromRole="Kagent" ToRole="KAMatDiscount" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="Kagent" ToRole="KAMatGroupDiscount" />
+          <NavigationProperty Name="PayDoc" Relationship="BaseModel.FK__PAYDOC__KAID__19AACF41" FromRole="Kagent" ToRole="PayDoc" />
+          <NavigationProperty Name="PayDoc1" Relationship="BaseModel.FK__PAYDOC__MPERSONI__22401542" FromRole="Kagent" ToRole="PayDoc" />
+          <NavigationProperty Name="TAXWB" Relationship="BaseModel.FK__TAXWB__PERSONID__019E3B86" FromRole="Kagent" ToRole="TAXWB" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WaybillMove" Relationship="BaseModel.FK__WAYBILLMO__PERSO__314D4EA8" FromRole="Kagent" ToRole="WaybillMove" />
+          <NavigationProperty Name="KAgentAccount" Relationship="BaseModel.FK_AACC_KAID" FromRole="Kagent" ToRole="KAgentAccount" />
+          <NavigationProperty Name="KAgentDoc" Relationship="BaseModel.FK_ADOC_KAID" FromRole="Kagent" ToRole="KAgentDoc" />
+          <NavigationProperty Name="KAgentPersons" Relationship="BaseModel.FK_AP_KAID" FromRole="Kagent" ToRole="KAgentPersons" />
+          <NavigationProperty Name="KontragentGroup" Relationship="BaseModel.FK_Kagent_KontragentGroup" FromRole="Kagent" ToRole="KontragentGroup" />
+          <NavigationProperty Name="Routes" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Kagent" ToRole="Routes" />
+          <NavigationProperty Name="Users" Relationship="BaseModel.FK_Kagent_Users" FromRole="Kagent" ToRole="Users" />
+          <NavigationProperty Name="KAgentAdjustment" Relationship="BaseModel.FK_KAgentAdjustment_Kagent" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="KAgentAdjustment1" Relationship="BaseModel.FK_KAgentAdjustment_Kagent1" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="KAgentAdjustment2" Relationship="BaseModel.FK_KAgentAdjustment_Kagent2" FromRole="Kagent" ToRole="KAgentAdjustment" />
+          <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatGroupPrices" />
+          <NavigationProperty Name="KAgentMatPrices" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="Kagent" ToRole="KAgentMatPrices" />
+          <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Kagent" FromRole="Kagent" ToRole="ProductionPlans" />
+          <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Kagent1" FromRole="Kagent" ToRole="ProductionPlans" />
+          <NavigationProperty Name="Routes1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Kagent" ToRole="Routes" />
+          <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPrices_Kagent" FromRole="Kagent" ToRole="SettingMaterialPrices" />
+          <NavigationProperty Name="TAXWB1" Relationship="BaseModel.FK_TAXWB_REFERENCE_KAGENT" FromRole="Kagent" ToRole="TAXWB" />
+          <NavigationProperty Name="TechProcDet" Relationship="BaseModel.FK_TECHPROCDET_KAGENT" FromRole="Kagent" ToRole="TechProcDet" />
+          <NavigationProperty Name="WaybillList1" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WayBillMake" Relationship="BaseModel.FK_WAYBILLMAKE_KAGENT" FromRole="Kagent" ToRole="WayBillMake" />
+          <NavigationProperty Name="WayBillMakeProps" Relationship="BaseModel.FK_WayBillMakeProps_Kagent" FromRole="Kagent" ToRole="WayBillMakeProps" />
+          <NavigationProperty Name="WaybillList2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="Kagent" ToRole="WaybillList" />
+          <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
+          <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
+          <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
+        </EntityType>
+        <Association Name="FK_Cars_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Cars">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSI_REFERENCE_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="FirstKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_2">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="SecondKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMISSION_3">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Commission" Role="Commission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Commission">
+              <PropertyRef Name="ThirdKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRACT_REF_CONTR_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="CONTRACTS">
+              <PropertyRef Name="KAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CONTRACT_REFERENCE_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.CONTRACTS" Role="CONTRACTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="CONTRACTS">
+              <PropertyRef Name="PERSONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.Customers" Role="Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DISCCARDS_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.DiscCards" Role="DiscCards" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="DiscCards">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterpriseWorker_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntermediateWeighing_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.IntermediateWeighing" Role="IntermediateWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="IntermediateWeighing">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAADDR_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KaAddr" Role="KaAddr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KaAddr">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KADiscount_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KADiscount" Role="KADiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KADiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATDISCO__KAID__31B762FC">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatDiscount" Role="KAMatDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROUP__KAID__3A4CA8FD">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYDOC__KAID__19AACF41">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="PayDoc">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PAYDOC__MPERSONI__22401542">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.PayDoc" Role="PayDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="PayDoc">
+              <PropertyRef Name="MPersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAXWB__PERSONID__019E3B86">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="TAXWB">
+              <PropertyRef Name="PERSONID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WAYBILLLI__PERSO__6E01572D">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WAYBILLMO__PERSO__314D4EA8">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillMove" Role="WaybillMove" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillMove">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AACC_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentAccount" Role="KAgentAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAccount">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADOC_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentDoc" Role="KAgentDoc" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentDoc">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AP_KAID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentPersons" Role="KAgentPersons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentPersons">
+              <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kagent_KontragentGroup">
+          <End Type="BaseModel.KontragentGroup" Role="KontragentGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KontragentGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kagent_Routes">
+          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Routes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kagent_Users">
+          <End Type="BaseModel.Users" Role="Users" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Kagent">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="DebtKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="CreditKaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentAdjustment_Kagent2">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.KAgentAdjustment" Role="KAgentAdjustment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentAdjustment">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentMatGroupPrices_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentMatGroupPrices">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KAgentMatPrices_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAgentMatPrices" Role="KAgentMatPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="KAgentMatPrices">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductionPlans_Kagent1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.ProductionPlans" Role="ProductionPlans" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="ProductionPlans">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Routes_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Routes" Role="Routes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Routes">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SettingMaterialPrices_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.SettingMaterialPrices" Role="SettingMaterialPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="SettingMaterialPrices">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TAXWB_REFERENCE_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.TAXWB" Role="TAXWB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="TAXWB">
+              <PropertyRef Name="KAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TECHPROCDET_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.TechProcDet" Role="TechProcDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="TechProcDet">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLL_FK_WBLIST_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WAYBILLMAKE_KAGENT">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillMake" Role="WayBillMake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WayBillMake">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WayBillMakeProps_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.WayBillMakeProps" Role="WayBillMakeProps" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WayBillMakeProps">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBL_ENTID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="EntId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WBS_PERSONID">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.WayBillSvc" Role="WayBillSvc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="WayBillSvc">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PriceListKagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <End Type="BaseModel.PriceList" Role="PriceList" Multiplicity="*" />
+        </Association>
+        <Association Name="WaybillTemplateKagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -21234,17 +21305,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MatRecipeTechProcDet">
-            <EntityTypeMapping TypeName="BaseModel.MatRecipeTechProcDet">
-              <MappingFragment StoreEntitySet="MatRecipeTechProcDet">
-                <ScalarProperty Name="ExpectedOut" ColumnName="ExpectedOut" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
-                <ScalarProperty Name="RecId" ColumnName="RecId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TechProcDet">
             <EntityTypeMapping TypeName="BaseModel.TechProcDet">
               <MappingFragment StoreEntitySet="TechProcDet">
@@ -21750,52 +21810,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <MappingFragment StoreEntitySet="EnterpriseWorker">
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kagent">
-            <EntityTypeMapping TypeName="BaseModel.Kagent">
-              <MappingFragment StoreEntitySet="Kagent">
-                <ScalarProperty Name="FOPId" ColumnName="FOPId" />
-                <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
-                <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
-                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
-                <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
-                <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
-                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
-                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
-                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
-                <ScalarProperty Name="KAU" ColumnName="KAU" />
-                <ScalarProperty Name="Archived" ColumnName="Archived" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Def" ColumnName="Def" />
-                <ScalarProperty Name="JobType" ColumnName="JobType" />
-                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
-                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
-                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
-                <ScalarProperty Name="KType" ColumnName="KType" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
-                <ScalarProperty Name="KPP" ColumnName="KPP" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="www" ColumnName="www" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
-                <ScalarProperty Name="INN" ColumnName="INN" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -23541,14 +23555,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="PriceListKagent" TypeName="BaseModel.PriceListKagent" StoreEntitySet="PriceListKagent">
-            <EndProperty Name="PriceList">
-              <ScalarProperty Name="PlId" ColumnName="PriceListId" />
-            </EndProperty>
-            <EndProperty Name="Kagent">
-              <ScalarProperty Name="KaId" ColumnName="KagentId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="Receipt">
             <EntityTypeMapping TypeName="BaseModel.Receipt">
               <MappingFragment StoreEntitySet="Receipt">
@@ -24492,29 +24498,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="v_ProjectManagementDet">
-            <EntityTypeMapping TypeName="BaseModel.v_ProjectManagementDet">
-              <MappingFragment StoreEntitySet="v_ProjectManagementDet">
-                <ScalarProperty Name="Balans" ColumnName="Balans" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="ProjectManagementId" ColumnName="ProjectManagementId" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_ProjectManagement">
             <EntityTypeMapping TypeName="BaseModel.v_ProjectManagement">
               <MappingFragment StoreEntitySet="v_ProjectManagement">
@@ -24732,14 +24715,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="WaybillTemplateKagent" TypeName="BaseModel.WaybillTemplateKagent" StoreEntitySet="WaybillTemplateKagent">
-            <EndProperty Name="WaybillTemplate">
-              <ScalarProperty Name="Id" ColumnName="WaybillTemplateId" />
-            </EndProperty>
-            <EndProperty Name="Kagent">
-              <ScalarProperty Name="KaId" ColumnName="KagentId" />
-            </EndProperty>
-          </AssociationSetMapping>
           <EntitySetMapping Name="MaterialType">
             <EntityTypeMapping TypeName="BaseModel.MaterialType">
               <MappingFragment StoreEntitySet="MaterialType">
@@ -24882,6 +24857,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPrices">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPrices">
               <MappingFragment StoreEntitySet="v_SettingMaterialPrices">
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
@@ -24987,6 +24963,122 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="v_ProjectManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.v_ProjectManagementDet">
+              <MappingFragment StoreEntitySet="v_ProjectManagementDet">
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="ProjectManagementId" ColumnName="ProjectManagementId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MatRecipeTechProcDet">
+            <EntityTypeMapping TypeName="BaseModel.MatRecipeTechProcDet">
+              <MappingFragment StoreEntitySet="MatRecipeTechProcDet">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ExpectedOut" ColumnName="ExpectedOut" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ProcId" ColumnName="ProcId" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ProductionMonitor">
+            <EntityTypeMapping TypeName="BaseModel.v_ProductionMonitor">
+              <MappingFragment StoreEntitySet="v_ProductionMonitor">
+                <ScalarProperty Name="Pct" ColumnName="Pct" />
+                <ScalarProperty Name="TechProcessEndDate" ColumnName="TechProcessEndDate" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="TechProcessStartDate" ColumnName="TechProcessStartDate" />
+                <ScalarProperty Name="TechProcessName" ColumnName="TechProcessName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kagent">
+            <EntityTypeMapping TypeName="BaseModel.Kagent">
+              <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="ParentKagentId" ColumnName="ParentKagentId" />
+                <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
+                <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+                <ScalarProperty Name="Declaration" ColumnName="Declaration" />
+                <ScalarProperty Name="CashDeskId" ColumnName="CashDeskId" />
+                <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="ContractNum" ColumnName="ContractNum" />
+                <ScalarProperty Name="ContractDate" ColumnName="ContractDate" />
+                <ScalarProperty Name="ContractType" ColumnName="ContractType" />
+                <ScalarProperty Name="KAU" ColumnName="KAU" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="StartSaldoDate" ColumnName="StartSaldoDate" />
+                <ScalarProperty Name="StartSaldo" ColumnName="StartSaldo" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="KaKind" ColumnName="KaKind" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="NdsPayer" ColumnName="NdsPayer" />
+                <ScalarProperty Name="KPP" ColumnName="KPP" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="OKPO" ColumnName="OKPO" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PriceListKagent" TypeName="BaseModel.PriceListKagent" StoreEntitySet="PriceListKagent">
+            <EndProperty Name="PriceList">
+              <ScalarProperty Name="PlId" ColumnName="PriceListId" />
+            </EndProperty>
+            <EndProperty Name="Kagent">
+              <ScalarProperty Name="KaId" ColumnName="KagentId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WaybillTemplateKagent" TypeName="BaseModel.WaybillTemplateKagent" StoreEntitySet="WaybillTemplateKagent">
+            <EndProperty Name="WaybillTemplate">
+              <ScalarProperty Name="Id" ColumnName="WaybillTemplateId" />
+            </EndProperty>
+            <EndProperty Name="Kagent">
+              <ScalarProperty Name="KaId" ColumnName="KagentId" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

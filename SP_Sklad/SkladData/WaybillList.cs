@@ -75,11 +75,11 @@ namespace SP_Sklad.SkladData
         public virtual WaybillMove WaybillMove { get; set; }
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
-        public virtual Kagent Kagent { get; set; }
-        public virtual Kagent Kontragent { get; set; }
-        public virtual Kagent Kagent2 { get; set; }
         public virtual ICollection<WayBillTmc> WayBillTmc { get; set; }
         public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
         public virtual ICollection<AdditionalCostsDet> AdditionalCostsDet { get; set; }
+        public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
+        public virtual Kagent Kagent2 { get; set; }
     }
 }

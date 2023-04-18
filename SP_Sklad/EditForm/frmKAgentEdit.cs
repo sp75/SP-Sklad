@@ -51,6 +51,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
             TreeListBS.DataSource = tree;
 
+            KAgentPricesGroupControl.Enabled = (IHelper.GetUserAccess(31)?.CanModify == 1);
 
             if (_ka_id == null)
             {

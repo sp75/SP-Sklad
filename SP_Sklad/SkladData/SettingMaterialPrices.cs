@@ -31,8 +31,8 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> SessionId { get; set; }
         public int PTypeId { get; set; }
     
-        public virtual Kagent Kagent { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
         public virtual ICollection<SettingMaterialPricesDet> SettingMaterialPricesDet { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

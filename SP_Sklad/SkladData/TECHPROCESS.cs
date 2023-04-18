@@ -16,8 +16,8 @@ namespace SP_Sklad.SkladData
     {
         public TechProcess()
         {
-            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
             this.TechProcDet = new HashSet<TechProcDet>();
+            this.MatRecipeTechProcDet = new HashSet<MatRecipeTechProcDet>();
         }
     
         public int ProcId { get; set; }
@@ -25,7 +25,7 @@ namespace SP_Sklad.SkladData
         public string Kod { get; set; }
         public Nullable<int> Num { get; set; }
     
-        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
         public virtual ICollection<TechProcDet> TechProcDet { get; set; }
+        public virtual ICollection<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
     }
 }
