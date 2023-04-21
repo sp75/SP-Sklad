@@ -53,12 +53,11 @@ namespace SP_Sklad.WBForm
                 {
                     Id = Guid.NewGuid(),
                     DocType = 31,
-                    Checked = 0,
+                    Checked = 1,
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
                     PTypeId = _PTypeId ?? _db.PriceTypes.FirstOrDefault().PTypeId,
                     Num = new BaseEntities().GetDocNum("setting_material_prices").FirstOrDefault()
-
                 });
 
                 _db.SaveChanges();

@@ -36,7 +36,7 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -235,7 +235,7 @@
             this.CashierWorkplaceBtn,
             this.barButtonItem13,
             this.barButtonItem2,
-            this.barButtonItem5});
+            this.WbMatTemplateBtn});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 34;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -254,7 +254,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
@@ -283,14 +283,14 @@
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
             // 
-            // barButtonItem5
+            // WbMatTemplateBtn
             // 
-            this.barButtonItem5.Caption = "Шаблони";
-            this.barButtonItem5.Id = 33;
-            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
+            this.WbMatTemplateBtn.Caption = "Шаблони";
+            this.WbMatTemplateBtn.Id = 33;
+            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
+            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
+            this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
             // barButtonItem2
             // 
@@ -995,7 +995,7 @@
         private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem WbMatTemplateBtn;
         private DevExpress.Utils.ImageCollection TabImageCollection;
     }
 }

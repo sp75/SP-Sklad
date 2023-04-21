@@ -88,9 +88,8 @@ namespace SP_Sklad.EditForm
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
                     NDS = 0,
                     GrpId = _mat_grp,
-                    DecPlaces = 4,
-                    UpdatedBy = UserSession.UserId
-                });
+                    DecPlaces = 4
+                  });
                 _db.SaveChanges();
                 _mat_id = _mat.MatId;
             }
@@ -98,11 +97,12 @@ namespace SP_Sklad.EditForm
             {
                 _mat = _db.Materials.Find(_mat_id);
                 _mat.DateModified = DateTime.Now;
-                _mat.UpdatedBy = UserSession.UserId;
             }
 
             if (_mat != null)
             {
+                _mat.UpdatedBy = UserSession.UserId;
+
                 GrpIdEdit.Properties.TreeList.DataSource = DB.SkladBase().MatGroup.Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 17 }).ToList();
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
                 WIdLookUpEdit.Properties.DataSource = DBHelper.WhList;

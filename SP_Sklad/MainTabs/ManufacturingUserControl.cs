@@ -1665,7 +1665,16 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
 
         private void barButtonItem10_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmProductionMonitor().ShowDialog();
+            if (UserSession.production_monitor_frm == null)
+            {
+                UserSession.production_monitor_frm = new frmProductionMonitor();
+                UserSession.production_monitor_frm.Show();
+            }
+            else
+            {
+                UserSession.production_monitor_frm.Activate();
+            }
+
         }
     }
 }

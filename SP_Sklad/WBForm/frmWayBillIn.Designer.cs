@@ -190,7 +190,6 @@
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem9});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 15;
             // 
             // bar2
@@ -276,6 +275,8 @@
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
             this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.MultiLine = true;
+            this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 2";
             // 
@@ -671,7 +672,6 @@
             this.KagentComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
-            this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KagentComboBox.Properties.ValueMember = "KaId";
             this.KagentComboBox.Size = new System.Drawing.Size(467, 24);
             this.KagentComboBox.StyleController = this.styleController1;

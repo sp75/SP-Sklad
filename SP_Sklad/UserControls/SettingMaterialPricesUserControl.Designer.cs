@@ -33,6 +33,8 @@
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -108,7 +110,7 @@
             // 
             this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl4.Horizontal = false;
-            this.splitContainerControl4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerControl4.Location = new System.Drawing.Point(0, 24);
             this.splitContainerControl4.Name = "splitContainerControl4";
             // 
             // splitContainerControl4.Panel1
@@ -121,7 +123,7 @@
             // 
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 628);
+            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 604);
             this.splitContainerControl4.SplitterPosition = 354;
             this.splitContainerControl4.TabIndex = 9;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -139,6 +141,8 @@
             // 
             // barManager1
             // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -166,8 +170,30 @@
             this.barButtonItem10,
             this.barButtonItem14,
             this.barButtonItem16,
-            this.HistoryBtnItem});
-            this.barManager1.MaxItemId = 30;
+            this.HistoryBtnItem,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 31;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 1";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 1";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Актуальні ціни по контрагентах";
+            this.barButtonItem1.Id = 30;
+            this.barButtonItem1.ImageOptions.ImageIndex = 13;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -175,7 +201,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1248, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(1248, 24);
             // 
             // barDockControlBottom
             // 
@@ -189,24 +215,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 628);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 604);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1248, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(1248, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 628);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 604);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1248, 0);
@@ -217,7 +243,7 @@
             this.standaloneBarDockControl3.AutoSize = true;
             this.standaloneBarDockControl3.CausesValidation = false;
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
             this.standaloneBarDockControl3.Size = new System.Drawing.Size(1248, 0);
@@ -240,6 +266,8 @@
             this.imageCollection1.Images.SetKeyName(10, "Copy.bmp");
             this.imageCollection1.Images.SetKeyName(11, "refresh.bmp");
             this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.Images.SetKeyName(13, "financial_16x16");
             // 
             // NewItemBtn
             // 
@@ -502,7 +530,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 264);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 240);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage14});
@@ -511,7 +539,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.SettingMaterialPricesDetGridControl);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 239);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 215);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // SettingMaterialPricesDetGridControl
@@ -524,7 +552,7 @@
             this.SettingMaterialPricesDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1});
-            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 239);
+            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 215);
             this.SettingMaterialPricesDetGridControl.TabIndex = 2;
             this.SettingMaterialPricesDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.SettingMaterialPricesDetGrid});
@@ -614,7 +642,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
             this.SettingMaterialPricesPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesPopupMenu.Name = "SettingMaterialPricesPopupMenu";
             // 
@@ -722,5 +751,7 @@
         private DevExpress.XtraBars.BarButtonItem HistoryBtnItem;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Bar bar1;
     }
 }

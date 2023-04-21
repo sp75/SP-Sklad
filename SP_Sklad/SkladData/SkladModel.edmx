@@ -531,6 +531,7 @@
           <Property Name="WId" Type="int" />
           <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentSaldo" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="FOPId" Type="int" />
           <Property Name="ParentKagentId" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
@@ -2548,12 +2549,18 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
           <Key>
             <PropertyRef Name="MatId" />
             <PropertyRef Name="KaId" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="MatGrpName" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="8" />
           <Property Name="Discount" Type="numeric" Precision="38" Scale="15" />
           <Property Name="PTypeId" Type="int" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MatGrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2906,11 +2913,10 @@ warning 6002: The table/view 'sp_base.dbo.v_ProductionMonitor' does not have a p
         <EntityType Name="v_ProductionMonitor">
           <Key>
             <PropertyRef Name="WbillId" />
-            <PropertyRef Name="Num" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="TechProcessStartDate" />
-            <PropertyRef Name="WhName" />
+            
+            
+            
+            
           </Key>
           <Property Name="WbillId" Type="int" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -2919,11 +2925,12 @@ warning 6002: The table/view 'sp_base.dbo.v_ProductionMonitor' does not have a p
           <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="TechProcessName" Type="nvarchar" MaxLength="128" />
-          <Property Name="TechProcessStartDate" Type="datetime" Nullable="false" />
+          <Property Name="TechProcessStartDate" Type="datetime" />
           <Property Name="Duration" Type="bigint" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="TechProcessEndDate" Type="datetime" />
+          <Property Name="RamaName" Type="nvarchar" MaxLength="255" />
           <Property Name="Pct" Type="numeric" Precision="26" Scale="12" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -8788,7 +8795,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KagentMaterilPrices].[KaId] AS [KaId], 
     [v_KagentMaterilPrices].[Price] AS [Price], 
     [v_KagentMaterilPrices].[Discount] AS [Discount], 
-    [v_KagentMaterilPrices].[PTypeId] AS [PTypeId]
+    [v_KagentMaterilPrices].[PTypeId] AS [PTypeId], 
+    [v_KagentMaterilPrices].[MatName] AS [MatName], 
+    [v_KagentMaterilPrices].[KaName] AS [KaName], 
+    [v_KagentMaterilPrices].[MatGrpName] AS [MatGrpName], 
+    [v_KagentMaterilPrices].[KaGrpName] AS [KaGrpName]
     FROM [dbo].[v_KagentMaterilPrices] AS [v_KagentMaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentPrices" EntityType="Self.v_KAgentPrices" store:Type="Views" store:Schema="dbo">
@@ -9050,6 +9061,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ProductionMonitor].[MatName] AS [MatName], 
     [v_ProductionMonitor].[WhName] AS [WhName], 
     [v_ProductionMonitor].[TechProcessEndDate] AS [TechProcessEndDate], 
+    [v_ProductionMonitor].[RamaName] AS [RamaName], 
     [v_ProductionMonitor].[Pct] AS [Pct]
     FROM [dbo].[v_ProductionMonitor] AS [v_ProductionMonitor]</DefiningQuery>
           </EntitySet>
@@ -11702,7 +11714,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="TechProcess" EntitySet="TechProcess" />
             <End Role="MatRecipeTechProcDet" EntitySet="MatRecipeTechProcDet" />
           </AssociationSet>
-          <EntitySet Name="v_ProductionMonitor" EntityType="BaseModel.v_ProductionMonitor" />
           <EntitySet Name="Kagent" EntityType="BaseModel.Kagent" />
           <AssociationSet Name="FK_Cars_Kagent" Association="BaseModel.FK_Cars_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -11880,6 +11891,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
           </AssociationSet>
+          <EntitySet Name="v_ProductionMonitor" EntityType="BaseModel.v_ProductionMonitor" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19059,12 +19071,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Key>
             <PropertyRef Name="MatId" />
             <PropertyRef Name="KaId" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="MatGrpName" />
           </Key>
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="KaId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="8" />
           <Property Name="Discount" Type="Decimal" Precision="38" Scale="15" />
           <Property Name="PTypeId" Type="Int32" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MatGrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_ProjectManagementDet">
           <Key>
@@ -19129,29 +19147,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="v_ProductionMonitor">
-          <Key>
-            <PropertyRef Name="WbillId" />
-            <PropertyRef Name="Num" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="TechProcessStartDate" />
-            <PropertyRef Name="WhName" />
-          </Key>
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="TechProcessName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="TechProcessStartDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Duration" Type="Int64" />
-          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="TechProcessEndDate" Type="DateTime" Precision="3" />
-          <Property Name="Pct" Type="Decimal" Precision="26" Scale="12" />
-        </EntityType>
         <EntityType Name="Kagent">
           <Key>
             <PropertyRef Name="KaId" />
@@ -19240,6 +19235,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
+          <Property Name="FOPId" Type="Int32" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -19773,6 +19769,25 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
           <End Type="BaseModel.WaybillTemplate" Role="WaybillTemplate" Multiplicity="*" />
         </Association>
+        <EntityType Name="v_ProductionMonitor">
+          <Key>
+            <PropertyRef Name="WbillId" />
+          </Key>
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="TechProcessName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="TechProcessStartDate" Type="DateTime" Precision="3" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="TechProcessEndDate" Type="DateTime" Precision="3" />
+          <Property Name="RamaName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Pct" Type="Decimal" Precision="26" Scale="12" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24955,6 +24970,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KagentMaterilPrices">
             <EntityTypeMapping TypeName="BaseModel.v_KagentMaterilPrices">
               <MappingFragment StoreEntitySet="v_KagentMaterilPrices">
+                <ScalarProperty Name="KaGrpName" ColumnName="KaGrpName" />
+                <ScalarProperty Name="MatGrpName" ColumnName="MatGrpName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
                 <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -24998,28 +25017,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="v_ProductionMonitor">
-            <EntityTypeMapping TypeName="BaseModel.v_ProductionMonitor">
-              <MappingFragment StoreEntitySet="v_ProductionMonitor">
-                <ScalarProperty Name="Pct" ColumnName="Pct" />
-                <ScalarProperty Name="TechProcessEndDate" ColumnName="TechProcessEndDate" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="TechProcessStartDate" ColumnName="TechProcessStartDate" />
-                <ScalarProperty Name="TechProcessName" ColumnName="TechProcessName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
+                <ScalarProperty Name="FOPId" ColumnName="FOPId" />
                 <ScalarProperty Name="ParentKagentId" ColumnName="ParentKagentId" />
                 <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
                 <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
@@ -25079,6 +25080,26 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <ScalarProperty Name="KaId" ColumnName="KagentId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="v_ProductionMonitor">
+            <EntityTypeMapping TypeName="BaseModel.v_ProductionMonitor">
+              <MappingFragment StoreEntitySet="v_ProductionMonitor">
+                <ScalarProperty Name="Pct" ColumnName="Pct" />
+                <ScalarProperty Name="RamaName" ColumnName="RamaName" />
+                <ScalarProperty Name="TechProcessEndDate" ColumnName="TechProcessEndDate" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="TechProcessStartDate" ColumnName="TechProcessStartDate" />
+                <ScalarProperty Name="TechProcessName" ColumnName="TechProcessName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

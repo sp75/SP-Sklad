@@ -21,11 +21,12 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> SummAll { get; set; }
         public System.Guid Id { get; set; }
         public string TechProcessName { get; set; }
-        public System.DateTime TechProcessStartDate { get; set; }
+        public Nullable<System.DateTime> TechProcessStartDate { get; set; }
         public Nullable<long> Duration { get; set; }
         public string MatName { get; set; }
         public string WhName { get; set; }
         public Nullable<System.DateTime> TechProcessEndDate { get; set; }
+        public string RamaName { get; set; }
         public Nullable<decimal> Pct { get; set; }
     }
 }

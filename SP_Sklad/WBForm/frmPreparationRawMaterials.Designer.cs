@@ -189,7 +189,6 @@
             this.DelRsvBarBtn,
             this.DelAllRsvBarBtn,
             this.ByRecipeBtn});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 18;
             // 
             // bar2

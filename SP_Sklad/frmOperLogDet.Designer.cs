@@ -97,7 +97,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
             this.HistoryBtn});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 13;
             // 
             // bar2

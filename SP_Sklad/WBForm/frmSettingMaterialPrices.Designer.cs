@@ -166,7 +166,6 @@
             this.barButtonItem6,
             this.MatInfoBtn,
             this.barButtonItem5});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 34;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
@@ -189,7 +188,7 @@
             // 
             // PrevievBtn
             // 
-            this.PrevievBtn.Caption = "Переглянути друковану форму накладної";
+            this.PrevievBtn.Caption = "Переглянути друковану форму документа";
             this.PrevievBtn.Id = 0;
             this.PrevievBtn.ImageOptions.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";

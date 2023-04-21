@@ -43,6 +43,7 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).BeginInit();
@@ -59,7 +60,7 @@
             this.ProductionMonitorGrid.Name = "ProductionMonitorGrid";
             this.ProductionMonitorGrid.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
-            this.ProductionMonitorGrid.Size = new System.Drawing.Size(1458, 580);
+            this.ProductionMonitorGrid.Size = new System.Drawing.Size(1485, 580);
             this.ProductionMonitorGrid.TabIndex = 19;
             this.ProductionMonitorGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ProductionMonitorGridView});
@@ -67,7 +68,6 @@
             // ProductionMonitorBS
             // 
             this.ProductionMonitorBS.DataSource = typeof(SP_Sklad.SkladData.v_ProductionMonitor);
-            this.ProductionMonitorBS.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.KontragentGroupBS_AddingNew);
             // 
             // ProductionMonitorGridView
             // 
@@ -86,7 +86,8 @@
             this.colMatName,
             this.colWhName,
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn3});
             this.ProductionMonitorGridView.GridControl = this.ProductionMonitorGrid;
             this.ProductionMonitorGridView.Name = "ProductionMonitorGridView";
             this.ProductionMonitorGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -99,7 +100,7 @@
             this.ProductionMonitorGridView.OptionsView.ShowGroupPanel = false;
             this.ProductionMonitorGridView.RowHeight = 25;
             this.ProductionMonitorGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.ProductionMonitorGridView_CustomDrawCell);
-            this.ProductionMonitorGridView.RowDeleted += new DevExpress.Data.RowDeletedEventHandler(this.WhRemainGridView_RowDeleted);
+            this.ProductionMonitorGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.ProductionMonitorGridView_RowStyle);
             // 
             // colNum
             // 
@@ -108,17 +109,18 @@
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
             this.colNum.VisibleIndex = 0;
-            this.colNum.Width = 97;
+            this.colNum.Width = 144;
             // 
             // colOnDate
             // 
             this.colOnDate.Caption = "Дата виробництва";
-            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatString = "d";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
             this.colOnDate.VisibleIndex = 1;
-            this.colOnDate.Width = 129;
+            this.colOnDate.Width = 138;
             // 
             // colTechProcessName
             // 
@@ -126,28 +128,30 @@
             this.colTechProcessName.FieldName = "TechProcessName";
             this.colTechProcessName.Name = "colTechProcessName";
             this.colTechProcessName.Visible = true;
-            this.colTechProcessName.VisibleIndex = 7;
-            this.colTechProcessName.Width = 167;
+            this.colTechProcessName.VisibleIndex = 6;
+            this.colTechProcessName.Width = 219;
             // 
             // colTechProcessStartDate
             // 
             this.colTechProcessStartDate.Caption = "Початок техпроцесу";
-            this.colTechProcessStartDate.DisplayFormat.FormatString = "g";
+            this.colTechProcessStartDate.DisplayFormat.FormatString = "t";
+            this.colTechProcessStartDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colTechProcessStartDate.FieldName = "TechProcessStartDate";
             this.colTechProcessStartDate.Name = "colTechProcessStartDate";
             this.colTechProcessStartDate.Visible = true;
-            this.colTechProcessStartDate.VisibleIndex = 4;
-            this.colTechProcessStartDate.Width = 132;
+            this.colTechProcessStartDate.VisibleIndex = 3;
+            this.colTechProcessStartDate.Width = 109;
             // 
             // colManufacturingTime
             // 
             this.colManufacturingTime.Caption = "Закінчення техпроцесу";
-            this.colManufacturingTime.DisplayFormat.FormatString = "g";
+            this.colManufacturingTime.DisplayFormat.FormatString = "t";
+            this.colManufacturingTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colManufacturingTime.FieldName = "TechProcessEndDate";
             this.colManufacturingTime.Name = "colManufacturingTime";
             this.colManufacturingTime.Visible = true;
-            this.colManufacturingTime.VisibleIndex = 5;
-            this.colManufacturingTime.Width = 130;
+            this.colManufacturingTime.VisibleIndex = 4;
+            this.colManufacturingTime.Width = 109;
             // 
             // colMatName
             // 
@@ -156,16 +160,14 @@
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
             this.colMatName.VisibleIndex = 2;
-            this.colMatName.Width = 194;
+            this.colMatName.Width = 365;
             // 
             // colWhName
             // 
             this.colWhName.Caption = "Цех";
             this.colWhName.FieldName = "WhName";
             this.colWhName.Name = "colWhName";
-            this.colWhName.Visible = true;
-            this.colWhName.VisibleIndex = 3;
-            this.colWhName.Width = 232;
+            this.colWhName.Width = 215;
             // 
             // gridColumn1
             // 
@@ -175,13 +177,11 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 8;
-            this.gridColumn1.Width = 254;
+            this.gridColumn1.Width = 215;
             // 
             // repositoryItemProgressBar1
             // 
             this.repositoryItemProgressBar1.EndColor = System.Drawing.Color.Empty;
-            this.repositoryItemProgressBar1.LookAndFeel.SkinName = "The Bezier";
-            this.repositoryItemProgressBar1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
             this.repositoryItemProgressBar1.ShowTitle = true;
             this.repositoryItemProgressBar1.StartColor = System.Drawing.Color.Empty;
@@ -195,8 +195,17 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.UnboundDataType = typeof(System.TimeSpan);
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 6;
-            this.gridColumn2.Width = 98;
+            this.gridColumn2.VisibleIndex = 5;
+            this.gridColumn2.Width = 87;
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Рама";
+            this.gridColumn3.FieldName = "RamaName";
+            this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Visible = true;
+            this.gridColumn3.VisibleIndex = 7;
+            this.gridColumn3.Width = 74;
             // 
             // timer1
             // 
@@ -208,14 +217,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1458, 580);
+            this.ClientSize = new System.Drawing.Size(1485, 580);
             this.Controls.Add(this.ProductionMonitorGrid);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmProductionMonitor.IconOptions.Image")));
             this.Name = "frmProductionMonitor";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Монітор виробництва";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmKaGroup_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmProductionMonitor_FormClosed);
             this.Load += new System.EventHandler(this.frmKaGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).EndInit();
@@ -240,5 +248,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }

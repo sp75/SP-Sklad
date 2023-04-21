@@ -124,7 +124,6 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Images = this.ImageList;
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 3;
             // 
             // bar2

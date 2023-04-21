@@ -1131,6 +1131,12 @@
     <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmKagentMaterilPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmKagentMaterilPrices.Designer.cs">
+      <DependentUpon>frmKagentMaterilPrices.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmProductionMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2168,6 +2174,9 @@
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmKagentMaterilPrices.resx">
+      <DependentUpon>frmKagentMaterilPrices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmProductionMonitor.resx">
       <DependentUpon>frmProductionMonitor.cs</DependentUpon>
     </EmbeddedResource>
@@ -2742,6 +2751,7 @@
     <None Include="BMP\1\currencyexchange.png" />
     <None Include="BMP\PNG\Банки.png" />
     <Content Include="main_ico.ico" />
+    <None Include="Resources\financial_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

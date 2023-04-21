@@ -775,7 +775,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 3;
             // 
             // bar2

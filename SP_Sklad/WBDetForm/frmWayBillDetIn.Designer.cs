@@ -320,7 +320,6 @@
             this.barCheckItem1,
             this.barCheckItem2,
             this.barCheckItem3});
-            this.barManager1.MainMenu = this.bar1;
             this.barManager1.MaxItemId = 16;
             // 
             // bar1

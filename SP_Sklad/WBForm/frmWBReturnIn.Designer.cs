@@ -188,7 +188,6 @@
             this.barSubItem1,
             this.TMCBtnItem,
             this.barEditItem1});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 25;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.BarCodeEdit});

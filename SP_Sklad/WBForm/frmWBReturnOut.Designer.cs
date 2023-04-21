@@ -160,7 +160,6 @@
             this.DelRsvBarBtn,
             this.DelAllRsvBarBtn,
             this.MarkBtn});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 17;
             // 
             // bar2

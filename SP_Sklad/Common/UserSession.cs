@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SP_Sklad.ViewsForm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,5 +13,6 @@ namespace SP_Sklad.Common
         public static int UserId { get; set; }
         public static int EnterpriseId { get; set; }
         public static frmLogin login_form { get; set; }
+        public static frmProductionMonitor production_monitor_frm { get; set; }
     }
 }

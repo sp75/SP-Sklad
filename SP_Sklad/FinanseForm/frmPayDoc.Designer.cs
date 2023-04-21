@@ -202,7 +202,6 @@
             this.PrevievBtn,
             this.KagBalBtn,
             this.barButtonItem4});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 13;
             // 
             // bar2

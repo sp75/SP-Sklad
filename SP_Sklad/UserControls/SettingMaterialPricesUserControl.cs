@@ -182,5 +182,10 @@ namespace SP_Sklad.UserControls
         {
             IHelper.ShowMatRSV(row_smp_det.MatId, DB.SkladBase());
         }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            new frmKagentMaterilPrices().ShowDialog();
+        }
     }
 }

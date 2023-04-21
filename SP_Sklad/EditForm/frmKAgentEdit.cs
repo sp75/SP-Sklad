@@ -863,11 +863,14 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton11_Click_1(object sender, EventArgs e)
         {
-//            KAgentPricesGridView.ShowEditForm();
-
-            if(ka_price_row.EntityTyp == 0)
+            if (ka_price_row == null)
             {
-                KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.FirstOrDefault(w=> w.KaId == _ka_id.Value && w.MatId == ka_price_row.EntityId);
+                return;
+            }
+
+            if (ka_price_row.EntityTyp == 0)
+            {
+                KAgentMatPricesBS.DataSource = _db.KAgentMatPrices.FirstOrDefault(w => w.KaId == _ka_id.Value && w.MatId == ka_price_row.EntityId);
                 xtraTabControl1.SelectedTabPageIndex = 14;
             }
 

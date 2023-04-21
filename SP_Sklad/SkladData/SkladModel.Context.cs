@@ -231,8 +231,8 @@ namespace SP_Sklad.SkladData
         public DbSet<v_KagentMaterilPrices> v_KagentMaterilPrices { get; set; }
         public DbSet<v_ProjectManagementDet> v_ProjectManagementDet { get; set; }
         public DbSet<MatRecipeTechProcDet> MatRecipeTechProcDet { get; set; }
-        public DbSet<v_ProductionMonitor> v_ProductionMonitor { get; set; }
         public DbSet<Kagent> Kagent { get; set; }
+        public DbSet<v_ProductionMonitor> v_ProductionMonitor { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

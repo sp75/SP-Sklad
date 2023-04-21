@@ -139,7 +139,6 @@
             this.RsvInfoBtn,
             this.MatInfoBtn,
             this.barButtonItem1});
-            this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 18;
             // 
             // bar2
