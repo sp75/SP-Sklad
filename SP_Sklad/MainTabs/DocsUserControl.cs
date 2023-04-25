@@ -1103,18 +1103,23 @@ namespace SP_Sklad.MainTabs
         {
             var dr = e.Row as GetWayBillList_Result;
 
-            if(dr == null )
+            SetWBEditorBarBtn(dr);
+        }
+
+        private void SetWBEditorBarBtn(GetWayBillList_Result row)
+        {
+          /*  if (row == null)
             {
                 return;
-            }
+            }*/
 
-            xtraTabControl2_SelectedPageChanged(sender, null);
+            xtraTabControl2_SelectedPageChanged(null, null);
 
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && dr.WType != 2 && dr.WType != -16 && dr.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && (dr.Checked == 0 || dr.Checked == 1));
-            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            PrintItemBtn.Enabled = (dr != null);
+            DeleteItemBtn.Enabled = (row != null && row.Checked == 0 && focused_tree_node.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (row != null && row.WType != 2 && row.WType != -16 && row.WType != 16 && focused_tree_node.CanPost == 1);
+            EditItemBtn.Enabled = (row != null && focused_tree_node.CanModify == 1 && (row.Checked == 0 || row.Checked == 1));
+            CopyItemBtn.Enabled = (row != null && focused_tree_node.CanModify == 1);
+            PrintItemBtn.Enabled = (row != null);
         }
 
         private void PayDocGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -1756,6 +1761,11 @@ namespace SP_Sklad.MainTabs
         private void ProjectManagementGridView_DoubleClick(object sender, EventArgs e)
         {
             if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
+        }
+
+        private void WbGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            SetWBEditorBarBtn(wb_focused_row);
         }
     }
 }

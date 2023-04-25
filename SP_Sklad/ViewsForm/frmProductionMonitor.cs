@@ -56,14 +56,16 @@ namespace SP_Sklad.ViewsForm
             var pm_row = ProductionMonitorGridView.GetRow(e.RowHandle) as v_ProductionMonitor;
 
 
-            if (pm_row != null && pm_row.Pct > 50 )
+            if (pm_row != null && pm_row.Pct > 80 )
             {
-                e.Appearance.ForeColor = Color.Red;
+                e.Appearance.ForeColor = Color.Orange;
+              //e.Appearance.BackColor = Color.Orange;
             }
 
             if (pm_row != null && pm_row.Pct > 99)
             {
-                e.Appearance.ForeColor = Color.Green;
+                   e.Appearance.ForeColor = Color.Green;
+             //   e.Appearance.BackColor = Color.Green;
             }
         }
 

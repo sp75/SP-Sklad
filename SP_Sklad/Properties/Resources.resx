@@ -121,14 +121,11 @@
   <data name="company" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\company.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="deadlock" xml:space="preserve">
-    <value>Не можливо переглянути властивості, документ вже відкрито на одній із робочих станцій!</value>
-  </data>
   <data name="Товари" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Товари.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wb_copy" xml:space="preserve">
-    <value>Ви дійсно бажаєте зробити копію документа ?</value>
+  <data name="financial_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\financial_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Валюта1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Валюта.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,17 +133,20 @@
   <data name="1324534557_mine копия" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\1324534557_mine копия.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="gaugestylehalfcircular_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gaugestylehalfcircular_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Країни1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Країни.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Ц_нов_ кат" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Ц_нов_ кат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Конрагент" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Конрагент.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="technology_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\technology_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editing_not_allowed" xml:space="preserve">
-    <value>Редагувати заборонено !</value>
+  <data name="projectdirectory_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\projectdirectory_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,11 +169,17 @@
   <data name="finance32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\PNG\finance32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Каси1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Каси.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="administration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\1\administration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="not_storno_wb" xml:space="preserve">
     <value>Відмінити проводку документа не можливо поки він зв'язаний з другими документами.</value>
   </data>
-  <data name="Банки2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\PNG\Банки.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Податки1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Податки.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Валюта" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Валюта.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,17 +190,11 @@
   <data name="Склади1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Склади.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Основн_ дов" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Країни" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Країни.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Банки" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Банки.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\1\factory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Одиниц_ вим_ру1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Одиниц_ вим_ру.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +226,8 @@
   <data name="Каси" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Каси.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="administration" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\1\administration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="deadlock" xml:space="preserve">
+    <value>Не можливо переглянути властивості, документ вже відкрито на одній із робочих станцій!</value>
   </data>
   <data name="delete_wb" xml:space="preserve">
     <value>Ви дійсно бажаєте видалити цей документ ?</value>
@@ -235,40 +235,55 @@
   <data name="save_wb" xml:space="preserve">
     <value>Зберегти зміни в документі?</value>
   </data>
-  <data name="Товари1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Товари.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edit_info" xml:space="preserve">
+    <value>Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?</value>
+  </data>
+  <data name="technology_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\technology_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="editing_not_allowed" xml:space="preserve">
+    <value>Редагувати заборонено !</value>
   </data>
   <data name="Службовц_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Службовц_.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Каси1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Каси.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Основн_ дов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="edit_info" xml:space="preserve">
-    <value>Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?</value>
+  <data name="factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\1\factory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Банки1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Банки.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Товари1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Товари.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Ц_нов_ кат1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Ц_нов_ кат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Податки1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Податки.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wb_copy" xml:space="preserve">
+    <value>Ви дійсно бажаєте зробити копію документа ?</value>
+  </data>
+  <data name="Конрагент" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Конрагент.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Основн_ дов1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Типи рахунк_в1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Типи рахунк_в.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Службовц_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Службовц_.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Типи рахунк_в1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Типи рахунк_в.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Банки2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\PNG\Банки.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Склади" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Склади.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="financial_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\financial_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="technology_16x162" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\technology_16x162.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

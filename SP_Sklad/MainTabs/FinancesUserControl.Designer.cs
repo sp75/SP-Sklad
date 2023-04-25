@@ -30,20 +30,20 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FinancesUserControl));
-            DevExpress.XtraCharts.XYDiagram xyDiagram5 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series25 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView29 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series26 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView30 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series27 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView31 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series28 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView32 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series29 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView33 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.Series series30 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView34 = new DevExpress.XtraCharts.LineSeriesView();
-            DevExpress.XtraCharts.LineSeriesView lineSeriesView35 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram9 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series49 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView57 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series50 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView58 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series51 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView59 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series52 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView60 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series53 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView61 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.Series series54 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView62 = new DevExpress.XtraCharts.LineSeriesView();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView63 = new DevExpress.XtraCharts.LineSeriesView();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -278,20 +278,20 @@
             this.xtraTabControl4.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series25)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series26)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series27)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView31)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series28)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView32)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series29)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series30)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView34)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView35)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series50)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series51)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series52)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series53)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series54)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView62)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView63)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
             this.panelControl5.SuspendLayout();
@@ -846,12 +846,11 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.projectdirectory_16x16, "projectdirectory_16x16", typeof(global::SP_Sklad.Properties.Resources), 76);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1940,52 +1939,52 @@
             // chartControl1
             // 
             this.chartControl1.DataSource = this.ActivesBS;
-            xyDiagram5.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
-            xyDiagram5.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram5.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram5;
+            xyDiagram9.AxisX.Visibility = DevExpress.Utils.DefaultBoolean.True;
+            xyDiagram9.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram9.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram9;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series25.ArgumentDataMember = "OnDate";
-            series25.Name = "Активи";
-            series25.ValueDataMembersSerializable = "Active";
-            series25.View = lineSeriesView29;
-            series26.ArgumentDataMember = "OnDate";
-            series26.Name = "Собівартість складу";
-            series26.ValueDataMembersSerializable = "WhSumm";
-            lineSeriesView30.Color = System.Drawing.Color.Gold;
-            series26.View = lineSeriesView30;
-            series27.ArgumentDataMember = "OnDate";
-            series27.Name = "Готівка";
-            series27.ValueDataMembersSerializable = "Cash";
-            lineSeriesView31.Color = System.Drawing.Color.OliveDrab;
-            series27.View = lineSeriesView31;
-            series28.ArgumentDataMember = "OnDate";
-            series28.Name = "Безготівкові гроші";
-            series28.ValueDataMembersSerializable = "CashLess";
-            series28.View = lineSeriesView32;
-            series29.ArgumentDataMember = "OnDate";
-            series29.Name = "Дебітори";
-            series29.ValueDataMembersSerializable = "Debitors";
-            lineSeriesView33.Color = System.Drawing.Color.Red;
-            series29.View = lineSeriesView33;
-            series30.ArgumentDataMember = "OnDate";
-            series30.Name = "Кредитори";
-            series30.ValueDataMembersSerializable = "Creditors";
-            lineSeriesView34.Color = System.Drawing.Color.Blue;
-            series30.View = lineSeriesView34;
+            series49.ArgumentDataMember = "OnDate";
+            series49.Name = "Активи";
+            series49.ValueDataMembersSerializable = "Active";
+            series49.View = lineSeriesView57;
+            series50.ArgumentDataMember = "OnDate";
+            series50.Name = "Собівартість складу";
+            series50.ValueDataMembersSerializable = "WhSumm";
+            lineSeriesView58.Color = System.Drawing.Color.Gold;
+            series50.View = lineSeriesView58;
+            series51.ArgumentDataMember = "OnDate";
+            series51.Name = "Готівка";
+            series51.ValueDataMembersSerializable = "Cash";
+            lineSeriesView59.Color = System.Drawing.Color.OliveDrab;
+            series51.View = lineSeriesView59;
+            series52.ArgumentDataMember = "OnDate";
+            series52.Name = "Безготівкові гроші";
+            series52.ValueDataMembersSerializable = "CashLess";
+            series52.View = lineSeriesView60;
+            series53.ArgumentDataMember = "OnDate";
+            series53.Name = "Дебітори";
+            series53.ValueDataMembersSerializable = "Debitors";
+            lineSeriesView61.Color = System.Drawing.Color.Red;
+            series53.View = lineSeriesView61;
+            series54.ArgumentDataMember = "OnDate";
+            series54.Name = "Кредитори";
+            series54.ValueDataMembersSerializable = "Creditors";
+            lineSeriesView62.Color = System.Drawing.Color.Blue;
+            series54.View = lineSeriesView62;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series25,
-        series26,
-        series27,
-        series28,
-        series29,
-        series30};
-            this.chartControl1.SeriesTemplate.View = lineSeriesView35;
+        series49,
+        series50,
+        series51,
+        series52,
+        series53,
+        series54};
+            this.chartControl1.SeriesTemplate.View = lineSeriesView63;
             this.chartControl1.Size = new System.Drawing.Size(1138, 221);
             this.chartControl1.TabIndex = 0;
             // 
@@ -2173,20 +2172,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).EndInit();
             this.xtraTabControl4.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series25)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series26)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView31)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series27)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView32)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series28)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series29)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView34)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series30)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(lineSeriesView35)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series50)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series51)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series52)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series53)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView62)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series54)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView63)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).EndInit();

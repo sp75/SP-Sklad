@@ -207,6 +207,16 @@ namespace SP_Sklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gaugestylehalfcircular_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("gaugestylehalfcircular_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Провести документ не можливо. Не всі позіціх зарезервовано. .
         /// </summary>
         internal static string not_execute_wb {
@@ -234,11 +244,51 @@ namespace SP_Sklad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap projectdirectory_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("projectdirectory_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Зберегти зміни в документі?.
         /// </summary>
         internal static string save_wb {
             get {
                 return ResourceManager.GetString("save_wb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap technology_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("technology_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap technology_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("technology_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap technology_16x162 {
+            get {
+                object obj = ResourceManager.GetObject("technology_16x162", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

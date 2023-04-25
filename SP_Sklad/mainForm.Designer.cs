@@ -287,8 +287,8 @@
             // 
             this.WbMatTemplateBtn.Caption = "Шаблони";
             this.WbMatTemplateBtn.Id = 33;
-            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.Image")));
+            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.LargeImage")));
             this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
             this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
             // 
@@ -882,12 +882,11 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.projectdirectory_16x16, "projectdirectory_16x16", typeof(global::SP_Sklad.Properties.Resources), 76);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "store4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "shopping_basket_full_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainForm

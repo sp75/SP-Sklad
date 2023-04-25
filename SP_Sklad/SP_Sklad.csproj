@@ -2752,6 +2752,11 @@
     <None Include="BMP\PNG\Банки.png" />
     <Content Include="main_ico.ico" />
     <None Include="Resources\financial_16x16.png" />
+    <None Include="Resources\technology_16x16.png" />
+    <None Include="Resources\technology_16x161.png" />
+    <None Include="Resources\projectdirectory_16x16.png" />
+    <None Include="Resources\gaugestylehalfcircular_16x16.png" />
+    <None Include="Resources\technology_16x162.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
