@@ -20,5 +20,6 @@ namespace SP.Base.Models
         [Key]
         [Column(Order = 2)]
         public Nullable<int> KaId { get; set; }
+        public string KaGrpName { get; set; }
     }
 }

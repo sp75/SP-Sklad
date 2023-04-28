@@ -213,13 +213,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 493);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(458, 51);
+            this.panelControl2.Size = new System.Drawing.Size(452, 51);
             this.panelControl2.TabIndex = 29;
             // 
             // simpleButton4
             // 
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.Location = new System.Drawing.Point(15, 10);
+            this.simpleButton4.Location = new System.Drawing.Point(9, 10);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(92, 30);
             this.simpleButton4.TabIndex = 4;
@@ -229,7 +229,7 @@
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(240, 10);
+            this.OkButton.Location = new System.Drawing.Point(234, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
@@ -240,7 +240,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(347, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(341, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
@@ -269,7 +269,7 @@
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(458, 493);
+            this.mainPanel.Size = new System.Drawing.Size(452, 493);
             this.mainPanel.TabIndex = 31;
             // 
             // KaKindPanel
@@ -280,7 +280,7 @@
             this.KaKindPanel.Location = new System.Drawing.Point(2, 1095);
             this.KaKindPanel.Name = "KaKindPanel";
             this.KaKindPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.KaKindPanel.Size = new System.Drawing.Size(454, 47);
+            this.KaKindPanel.Size = new System.Drawing.Size(448, 47);
             this.KaKindPanel.TabIndex = 49;
             this.KaKindPanel.Visible = false;
             // 
@@ -318,7 +318,7 @@
             this.DriverPanel.Location = new System.Drawing.Point(2, 1048);
             this.DriverPanel.Name = "DriverPanel";
             this.DriverPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.DriverPanel.Size = new System.Drawing.Size(454, 47);
+            this.DriverPanel.Size = new System.Drawing.Size(448, 47);
             this.DriverPanel.TabIndex = 48;
             this.DriverPanel.Visible = false;
             // 
@@ -358,7 +358,7 @@
             this.CarPanel.Location = new System.Drawing.Point(2, 1001);
             this.CarPanel.Name = "CarPanel";
             this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.CarPanel.Size = new System.Drawing.Size(454, 47);
+            this.CarPanel.Size = new System.Drawing.Size(448, 47);
             this.CarPanel.TabIndex = 47;
             this.CarPanel.Visible = false;
             // 
@@ -397,7 +397,7 @@
             this.CashDesksPanel.Location = new System.Drawing.Point(2, 954);
             this.CashDesksPanel.Name = "CashDesksPanel";
             this.CashDesksPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.CashDesksPanel.Size = new System.Drawing.Size(454, 47);
+            this.CashDesksPanel.Size = new System.Drawing.Size(448, 47);
             this.CashDesksPanel.TabIndex = 46;
             this.CashDesksPanel.Visible = false;
             // 
@@ -437,7 +437,7 @@
             this.wmatturnStatusPanel.Location = new System.Drawing.Point(2, 907);
             this.wmatturnStatusPanel.Name = "wmatturnStatusPanel";
             this.wmatturnStatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.wmatturnStatusPanel.Size = new System.Drawing.Size(454, 47);
+            this.wmatturnStatusPanel.Size = new System.Drawing.Size(448, 47);
             this.wmatturnStatusPanel.TabIndex = 45;
             this.wmatturnStatusPanel.Visible = false;
             // 
@@ -475,7 +475,7 @@
             this.PersonPanel.Location = new System.Drawing.Point(2, 860);
             this.PersonPanel.Name = "PersonPanel";
             this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.PersonPanel.Size = new System.Drawing.Size(454, 47);
+            this.PersonPanel.Size = new System.Drawing.Size(448, 47);
             this.PersonPanel.TabIndex = 44;
             this.PersonPanel.Visible = false;
             // 
@@ -513,7 +513,7 @@
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 635);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
-            this.DocTypeGroupBox2.Size = new System.Drawing.Size(454, 225);
+            this.DocTypeGroupBox2.Size = new System.Drawing.Size(448, 225);
             this.DocTypeGroupBox2.TabIndex = 38;
             this.DocTypeGroupBox2.Text = "Типи документів";
             this.DocTypeGroupBox2.Visible = false;
@@ -529,7 +529,7 @@
             this.OutDocGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.OutDocGroupBox.Location = new System.Drawing.Point(2, 123);
             this.OutDocGroupBox.Name = "OutDocGroupBox";
-            this.OutDocGroupBox.Size = new System.Drawing.Size(450, 100);
+            this.OutDocGroupBox.Size = new System.Drawing.Size(444, 100);
             this.OutDocGroupBox.TabIndex = 1;
             // 
             // checkEdit9
@@ -595,7 +595,7 @@
             this.InDocGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.InDocGroupBox.Location = new System.Drawing.Point(2, 23);
             this.InDocGroupBox.Name = "InDocGroupBox";
-            this.InDocGroupBox.Size = new System.Drawing.Size(450, 100);
+            this.InDocGroupBox.Size = new System.Drawing.Size(444, 100);
             this.InDocGroupBox.TabIndex = 0;
             // 
             // checkEdit10
@@ -642,7 +642,7 @@
             this.StatusPanel.Location = new System.Drawing.Point(2, 588);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.StatusPanel.Size = new System.Drawing.Size(454, 47);
+            this.StatusPanel.Size = new System.Drawing.Size(448, 47);
             this.StatusPanel.TabIndex = 42;
             this.StatusPanel.Visible = false;
             // 
@@ -680,7 +680,7 @@
             this.DocTypeGroupBox.Location = new System.Drawing.Point(2, 541);
             this.DocTypeGroupBox.Name = "DocTypeGroupBox";
             this.DocTypeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.DocTypeGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.DocTypeGroupBox.Size = new System.Drawing.Size(448, 47);
             this.DocTypeGroupBox.TabIndex = 37;
             // 
             // DocTypeEdit
@@ -717,7 +717,7 @@
             this.ChargeGroupBox.Location = new System.Drawing.Point(2, 494);
             this.ChargeGroupBox.Name = "ChargeGroupBox";
             this.ChargeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.ChargeGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.ChargeGroupBox.Size = new System.Drawing.Size(448, 47);
             this.ChargeGroupBox.TabIndex = 36;
             // 
             // ChTypeEdit
@@ -755,7 +755,7 @@
             this.GroupKontragentPanel.Location = new System.Drawing.Point(2, 447);
             this.GroupKontragentPanel.Name = "GroupKontragentPanel";
             this.GroupKontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.GroupKontragentPanel.Size = new System.Drawing.Size(454, 47);
+            this.GroupKontragentPanel.Size = new System.Drawing.Size(448, 47);
             this.GroupKontragentPanel.TabIndex = 43;
             this.GroupKontragentPanel.Visible = false;
             // 
@@ -794,7 +794,7 @@
             this.KontragentPanel.Location = new System.Drawing.Point(2, 400);
             this.KontragentPanel.Name = "KontragentPanel";
             this.KontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.KontragentPanel.Size = new System.Drawing.Size(454, 47);
+            this.KontragentPanel.Size = new System.Drawing.Size(448, 47);
             this.KontragentPanel.TabIndex = 34;
             // 
             // simpleButton3
@@ -842,7 +842,7 @@
             this.MatGroupBox.Location = new System.Drawing.Point(2, 353);
             this.MatGroupBox.Name = "MatGroupBox";
             this.MatGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.MatGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.MatGroupBox.Size = new System.Drawing.Size(448, 47);
             this.MatGroupBox.TabIndex = 35;
             // 
             // labelControl13
@@ -890,7 +890,7 @@
             this.GRPGroupBox.Location = new System.Drawing.Point(2, 306);
             this.GRPGroupBox.Name = "GRPGroupBox";
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.GRPGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.GRPGroupBox.Size = new System.Drawing.Size(448, 47);
             this.GRPGroupBox.TabIndex = 33;
             // 
             // ChildGroupCheckEdit
@@ -904,7 +904,7 @@
             // 
             // GrpComboBox
             // 
-            this.GrpComboBox.Location = new System.Drawing.Point(79, 12);
+            this.GrpComboBox.Location = new System.Drawing.Point(119, 12);
             this.GrpComboBox.Name = "GrpComboBox";
             this.GrpComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -915,7 +915,7 @@
             this.GrpComboBox.Properties.ShowHeader = false;
             this.GrpComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.GrpComboBox.Properties.ValueMember = "GrpId";
-            this.GrpComboBox.Size = new System.Drawing.Size(251, 22);
+            this.GrpComboBox.Size = new System.Drawing.Size(211, 22);
             this.GrpComboBox.StyleController = this.styleController1;
             this.GrpComboBox.TabIndex = 28;
             // 
@@ -923,10 +923,10 @@
             // 
             this.labelControl11.Location = new System.Drawing.Point(8, 15);
             this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(39, 16);
+            this.labelControl11.Size = new System.Drawing.Size(105, 16);
             this.labelControl11.StyleController = this.styleController1;
             this.labelControl11.TabIndex = 27;
-            this.labelControl11.Text = "Група:";
+            this.labelControl11.Text = "Група матеріалів:";
             // 
             // WHGroupBox
             // 
@@ -937,7 +937,7 @@
             this.WHGroupBox.Location = new System.Drawing.Point(2, 259);
             this.WHGroupBox.Name = "WHGroupBox";
             this.WHGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.WHGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.WHGroupBox.Size = new System.Drawing.Size(448, 47);
             this.WHGroupBox.TabIndex = 32;
             // 
             // WhBtn
@@ -987,7 +987,7 @@
             this.PeriodGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.PeriodGroupBox.Location = new System.Drawing.Point(2, 49);
             this.PeriodGroupBox.Name = "PeriodGroupBox";
-            this.PeriodGroupBox.Size = new System.Drawing.Size(454, 210);
+            this.PeriodGroupBox.Size = new System.Drawing.Size(448, 210);
             this.PeriodGroupBox.TabIndex = 31;
             // 
             // PerYearPanel
@@ -997,7 +997,7 @@
             this.PerYearPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PerYearPanel.Location = new System.Drawing.Point(0, 168);
             this.PerYearPanel.Name = "PerYearPanel";
-            this.PerYearPanel.Size = new System.Drawing.Size(454, 42);
+            this.PerYearPanel.Size = new System.Drawing.Size(448, 42);
             this.PerYearPanel.TabIndex = 37;
             this.PerYearPanel.Visible = false;
             // 
@@ -1038,7 +1038,7 @@
             this.PerQuarterPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PerQuarterPanel.Location = new System.Drawing.Point(0, 126);
             this.PerQuarterPanel.Name = "PerQuarterPanel";
-            this.PerQuarterPanel.Size = new System.Drawing.Size(454, 42);
+            this.PerQuarterPanel.Size = new System.Drawing.Size(448, 42);
             this.PerQuarterPanel.TabIndex = 36;
             this.PerQuarterPanel.Visible = false;
             // 
@@ -1104,7 +1104,7 @@
             this.PerMonthPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.PerMonthPanel.Location = new System.Drawing.Point(0, 84);
             this.PerMonthPanel.Name = "PerMonthPanel";
-            this.PerMonthPanel.Size = new System.Drawing.Size(454, 42);
+            this.PerMonthPanel.Size = new System.Drawing.Size(448, 42);
             this.PerMonthPanel.TabIndex = 35;
             this.PerMonthPanel.Visible = false;
             // 
@@ -1178,7 +1178,7 @@
             this.CustomPeriodPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.CustomPeriodPanel.Location = new System.Drawing.Point(0, 42);
             this.CustomPeriodPanel.Name = "CustomPeriodPanel";
-            this.CustomPeriodPanel.Size = new System.Drawing.Size(454, 42);
+            this.CustomPeriodPanel.Size = new System.Drawing.Size(448, 42);
             this.CustomPeriodPanel.TabIndex = 34;
             // 
             // EndDateEdit
@@ -1240,7 +1240,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 42);
+            this.panel2.Size = new System.Drawing.Size(448, 42);
             this.panel2.TabIndex = 38;
             // 
             // labelControl2
@@ -1279,7 +1279,7 @@
             this.OnDateGroupBox.Location = new System.Drawing.Point(2, 2);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.OnDateGroupBox.Size = new System.Drawing.Size(454, 47);
+            this.OnDateGroupBox.Size = new System.Drawing.Size(448, 47);
             this.OnDateGroupBox.TabIndex = 25;
             this.OnDateGroupBox.Visible = false;
             // 
@@ -1318,7 +1318,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(2, 408);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(454, 83);
+            this.panel1.Size = new System.Drawing.Size(448, 83);
             this.panel1.TabIndex = 41;
             // 
             // pictureBox1
@@ -1340,14 +1340,14 @@
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(359, 64);
+            this.textEdit1.Size = new System.Drawing.Size(353, 64);
             this.textEdit1.TabIndex = 39;
             // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 544);
+            this.ClientSize = new System.Drawing.Size(452, 544);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;

@@ -418,7 +418,8 @@ namespace SP_Sklad
                     this.DocTypeGroupBox2.Visible = false;
                     KontragentPanel.Visible = true;
                     GroupKontragentPanel.Visible = true;
-                    MatGroupBox.Visible = true;
+                    MatGroupBox.Visible = false;
+                    
                     break;
             }
         }
