@@ -255,6 +255,10 @@ namespace SP.Reports
                     REP_50();
                     break;
 
+                case 52:
+                    REP_52();
+                    break;
+
                 default:
                     break;
             }
@@ -1546,66 +1550,6 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
             data_for_report.Add("Kagent", kagents.ToList());
         }
 
-        public class rep_49
-        {
-            public int KaId { get; set; }
-            public string KagentName { get; set; }
-            public int GrpId { get; set; }
-            public string GrpName { get; set; }
-            public decimal? Amount { get; set; }
-        }
-
-        private void REP_49()
-        {
-            var mat = _db.Database.SqlQuery<rep_49>(@"select * from (
-    select 
-       ka.KaId, 
-	   m.GrpId,
-       mg.Name GrpName,
-	   ka.Name KagentName,
-	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
-    from materials m
-    join waybilldet wbd on m.matid=wbd.matid
-    join waybilllist wbl on wbl.wbillid=wbd.wbillid
-    join measures ms on ms.mid=m.mid
-	join MatGroup mg on m.GrpId = mg.GrpId
-    left outer join kagent ka on ka.kaid=wbl.kaid
-
-    where  wbl.WType = -16 and wbl.checked = 0
-           and wbl.ondate between {0} and {1}
-           and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
-           and {3} in (ka.kaid , 0 )
-           and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
-    group by mg.Name , m.GrpId, ka.kaid, ka.Name
-    )x
-    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr).ToList();
-
-            if (!mat.Any())
-            {
-                return;
-            }
-
-            var ka_grp = mat.GroupBy(g => new { g.KaId, g.KagentName }).Select(s => new
-            {
-                s.Key.KaId,
-                Name = s.Key.KagentName,
-                Summ = s.Sum(xs => xs.Amount)
-            }).OrderBy(o => o.Name).ToList();
-
-            realation.Add(new
-            {
-                pk = "KaId",
-                fk = "KaId",
-                master_table = "MatGroup",
-                child_table = "MatOutDet"
-            });
-
-            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
-            data_for_report.Add("MatGroup", ka_grp);
-            data_for_report.Add("MatOutDet", mat);
-            data_for_report.Add("_realation_", realation);
-        }
-
         public class rep_46
         {
             public string Num { get; set; }
@@ -1766,6 +1710,65 @@ SELECT WaybillList.[WbillId]
             data_for_report.Add("range1", wb_make.ToList());
             data_for_report.Add("_realation_", realation);
         }
+        public class rep_49
+        {
+            public int KaId { get; set; }
+            public string KagentName { get; set; }
+            public int GrpId { get; set; }
+            public string GrpName { get; set; }
+            public decimal? Amount { get; set; }
+        }
+
+        private void REP_49()
+        {
+            var mat = _db.Database.SqlQuery<rep_49>(@"select * from (
+    select 
+       ka.KaId, 
+	   m.GrpId,
+       mg.Name GrpName,
+	   ka.Name KagentName,
+	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
+    from materials m
+    join waybilldet wbd on m.matid=wbd.matid
+    join waybilllist wbl on wbl.wbillid=wbd.wbillid
+    join measures ms on ms.mid=m.mid
+	join MatGroup mg on m.GrpId = mg.GrpId
+    left outer join kagent ka on ka.kaid=wbl.kaid
+
+    where  wbl.WType = -16 
+           and wbl.ondate between {0} and {1}
+           and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
+           and {3} in (ka.kaid , 0 )
+           and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
+    group by mg.Name , m.GrpId, ka.kaid, ka.Name
+    )x
+    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+
+            var ka_grp = mat.GroupBy(g => new { g.KaId, g.KagentName }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KagentName,
+                Summ = s.Sum(xs => xs.Amount)
+            }).OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatOutDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", ka_grp);
+            data_for_report.Add("MatOutDet", mat);
+            data_for_report.Add("_realation_", realation);
+        }
 
         private void REP_50()
         {
@@ -1833,6 +1836,31 @@ SELECT WaybillList.[WbillId]
                 child_table = "MatGrp2"
             });
 
+            data_for_report.Add("_realation_", realation);
+        }
+
+        private void REP_52()
+        {
+            var mat = _db.REP_52(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).ToList();
+
+            var mat_grp = mat.GroupBy(g => new { g.KaId, g.KaName }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KaName,
+                Summ = s.Sum(xs => xs.SummTotal)
+            }).OrderBy(o => o.Name).ToList();
+
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "MatGroup",
+                child_table = "MatInDet"
+            });
+
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+            data_for_report.Add("MatGroup", mat_grp);
+            data_for_report.Add("MatInDet", mat);
             data_for_report.Add("_realation_", realation);
         }
 

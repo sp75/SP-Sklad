@@ -186,6 +186,7 @@
     <Compile Include="Models\ReportModels\REP_3_14_Result.cs" />
     <Compile Include="Models\ReportModels\GetMatMove_Result.cs" />
     <Compile Include="Models\ReportModels\REP_50_Result.cs" />
+    <Compile Include="Models\ReportModels\REP_52_Result.cs" />
     <Compile Include="Models\ReportModels\WhMatGet_Result.cs" />
     <Compile Include="Models\ReportModels\REP_2_Result.cs" />
     <Compile Include="Models\Reports.cs" />

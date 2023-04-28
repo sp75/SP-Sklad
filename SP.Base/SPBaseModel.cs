@@ -1139,6 +1139,33 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_41_Result>("[SPBaseModel].[REP_41](@from_date, @ka_grp_id)", from_dateParameter, ka_grp_idParameter);
         }
 
+        public virtual DbSet<REP_52_Result> REP_52_Result { get; set; }
+        [DbFunction("SPBaseModel", "REP_52")]
+        public virtual IQueryable<REP_52_Result> REP_52(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_grp_id, Nullable<int> ka_id, Nullable<System.Guid> ka_grp_id)
+        {
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+
+            var mat_grp_idParameter = mat_grp_id.HasValue ?
+                new ObjectParameter("mat_grp_id", mat_grp_id) :
+                new ObjectParameter("mat_grp_id", typeof(int));
+
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_52_Result>("[SPBaseModel].[REP_52](@from_date, @to_date, @mat_grp_id, @ka_id, @ka_grp_id)", from_dateParameter, to_dateParameter, mat_grp_idParameter, ka_idParameter, ka_grp_idParameter);
+        }
+
         public virtual DbSet<GetUsedMaterials_Result> GetUsedMaterials_Result { get; set; }
         [DbFunction("SPBaseModel", "GetUsedMaterials")]
         public virtual IQueryable<GetUsedMaterials_Result> GetUsedMaterials(Nullable<int> mat_id, Nullable<System.DateTime> on_date, Nullable<int> ka_id)

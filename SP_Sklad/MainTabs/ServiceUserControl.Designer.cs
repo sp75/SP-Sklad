@@ -1525,6 +1525,13 @@
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsMenu.EnableGroupRowMenu = true;
+            this.gridView1.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.gridView1.OptionsMenu.ShowFooterItem = true;
+            this.gridView1.OptionsMenu.ShowGroupSummaryEditorItem = true;
+            this.gridView1.OptionsMenu.ShowSummaryItemMode = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.OptionsView.GroupFooterShowMode = DevExpress.XtraGrid.Views.Grid.GroupFooterShowMode.VisibleAlways;
             this.gridView1.OptionsView.ShowFooter = true;
             // 
             // repositoryItemImageComboBox5
