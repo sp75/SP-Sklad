@@ -1672,6 +1672,7 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
             }
             else
             {
+                UserSession.production_monitor_frm.WindowState = FormWindowState.Normal;
                 UserSession.production_monitor_frm.Activate();
             }
 

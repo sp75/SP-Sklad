@@ -262,8 +262,8 @@
             this.bar1.FloatLocation = new System.Drawing.Point(49, 383);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
             this.bar1.OptionsBar.DrawDragBorder = false;

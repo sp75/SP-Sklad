@@ -1056,7 +1056,7 @@ namespace SP.Base.Models
 
         public virtual DbSet<REP_39_Result> REP_39_Result { get; set; }
         [DbFunction("SPBaseModel", "REP_39")]
-        public virtual IQueryable<REP_39_Result> REP_39(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, string wh, string doc_types, Nullable<int> user_id, Nullable<System.Guid> ka_grp_id)
+        public virtual IQueryable<REP_39_Result> REP_39(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> grp_id, Nullable<int> ka_id, Nullable<System.Guid> ka_grp_id)
         {
             var from_dateParameter = from_date.HasValue ?
                 new ObjectParameter("from_date", from_date) :
@@ -1074,23 +1074,11 @@ namespace SP.Base.Models
                 new ObjectParameter("ka_id", ka_id) :
                 new ObjectParameter("ka_id", typeof(int));
 
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-
-            var doc_typesParameter = doc_types != null ?
-                new ObjectParameter("doc_types", doc_types) :
-                new ObjectParameter("doc_types", typeof(string));
-
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-
             var ka_grp_idParameter = ka_grp_id.HasValue ?
                 new ObjectParameter("ka_grp_id", ka_grp_id) :
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
 
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_39_Result>("[SPBaseModel].[REP_39](@from_date, @to_date, @grp_id, @ka_id, @wh, @doc_types, @user_id, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, whParameter, doc_typesParameter, user_idParameter, ka_grp_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_39_Result>("[SPBaseModel].[REP_39](@from_date, @to_date, @grp_id, @ka_id, @ka_grp_id)", from_dateParameter, to_dateParameter, grp_idParameter, ka_idParameter, ka_grp_idParameter);
         }
 
         public virtual DbSet<REP_50_Result> REP_50_Result { get; set; }
@@ -1141,7 +1129,7 @@ namespace SP.Base.Models
 
         public virtual DbSet<REP_52_Result> REP_52_Result { get; set; }
         [DbFunction("SPBaseModel", "REP_52")]
-        public virtual IQueryable<REP_52_Result> REP_52(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_grp_id, Nullable<int> ka_id, Nullable<System.Guid> ka_grp_id)
+        public virtual IQueryable<REP_52_Result> REP_52(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> mat_grp_id, Nullable<int> ka_id, Nullable<System.Guid> ka_grp_id, Nullable<int> doc_type)
         {
             var from_dateParameter = from_date.HasValue ?
                 new ObjectParameter("from_date", from_date) :
@@ -1163,7 +1151,12 @@ namespace SP.Base.Models
                 new ObjectParameter("ka_grp_id", ka_grp_id) :
                 new ObjectParameter("ka_grp_id", typeof(System.Guid));
 
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_52_Result>("[SPBaseModel].[REP_52](@from_date, @to_date, @mat_grp_id, @ka_id, @ka_grp_id)", from_dateParameter, to_dateParameter, mat_grp_idParameter, ka_idParameter, ka_grp_idParameter);
+            var doc_typeParameter = doc_type.HasValue ?
+                new ObjectParameter("doc_type", doc_type) :
+                new ObjectParameter("doc_type", typeof(int));
+            
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<REP_52_Result>("[SPBaseModel].[REP_52](@from_date, @to_date, @mat_grp_id, @ka_id, @ka_grp_id, @doc_type)", from_dateParameter, to_dateParameter, mat_grp_idParameter, ka_idParameter, ka_grp_idParameter, doc_typeParameter);
         }
 
         public virtual DbSet<GetUsedMaterials_Result> GetUsedMaterials_Result { get; set; }

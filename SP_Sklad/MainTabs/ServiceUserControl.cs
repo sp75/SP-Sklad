@@ -572,5 +572,18 @@ namespace SP_Sklad.MainTabs
         {
             gridView1.PrintDialog();
         }
+
+        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow == DevExpress.Utils.DefaultBoolean.Default)
+            {
+                gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            }
+            else
+            {
+                gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.Default;
+            }
+        }
+        
     }
 }

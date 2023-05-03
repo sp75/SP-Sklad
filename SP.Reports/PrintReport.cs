@@ -1300,11 +1300,10 @@ FROM            (
         private void REP_39()
         {
             int grp = Convert.ToInt32(MatGroup.GrpId);
-            string wh = Convert.ToString(Warehouse.WId);
             int kid = Convert.ToInt32(Kagent.KaId);
             Guid grp_kg = KontragentGroup.Id;
             var sort_list = GetSortedList(_rep_id);
-            var mat = _db.REP_39(StartDate, EndDate, grp, kid, wh, "-1,", _user_id, grp_kg).OrderBy(sort_list).ToList();
+            var mat = _db.REP_39(StartDate, EndDate, grp, kid, grp_kg).OrderBy(sort_list).ToList();
 
             if (!mat.Any())
             {
@@ -1841,7 +1840,7 @@ SELECT WaybillList.[WbillId]
 
         private void REP_52()
         {
-            var mat = _db.REP_52(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).ToList();
+            var mat = _db.REP_52(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id, 6).ToList();
 
             var mat_grp = mat.GroupBy(g => new { g.KaId, g.KaName }).Select(s => new
             {

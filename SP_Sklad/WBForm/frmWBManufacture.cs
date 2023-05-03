@@ -153,6 +153,7 @@ namespace SP_Sklad.WBForm
 
             RecipeComboBox.Enabled = GetWayBillMakeDetBS.Count == 0;
             ReceptBtn.Enabled = RecipeComboBox.Enabled;
+            ByRecipeBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
             WhInBtn.Enabled = RecipeComboBox.Enabled;
             AmountMakeEdit.Enabled = RecipeComboBox.Enabled;

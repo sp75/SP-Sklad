@@ -45,10 +45,13 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductionMonitorGrid
@@ -213,6 +216,19 @@
             this.timer1.Interval = 60000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // toastNotificationsManager1
+            // 
+            this.toastNotificationsManager1.ApplicationId = "6e72351a-d7e6-4b1a-9073-cf2f678a2e68";
+            this.toastNotificationsManager1.ApplicationName = "SP-Sklad";
+            this.toastNotificationsManager1.Notifications.AddRange(new DevExpress.XtraBars.ToastNotifications.IToastNotificationProperties[] {
+            new DevExpress.XtraBars.ToastNotifications.ToastNotification("1a7e37b8-6aba-4e9c-9a03-28d08312b44e", global::SP_Sklad.Properties.Resources.info_32x32, "Інтенсивка", "Тест", "Тест", DevExpress.XtraBars.ToastNotifications.ToastNotificationSound.Reminder, DevExpress.XtraBars.ToastNotifications.ToastNotificationDuration.Default, DevExpress.XtraBars.ToastNotifications.ToastNotificationTemplate.ImageAndText04)});
+            // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 600000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // frmProductionMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +266,7 @@
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager toastNotificationsManager1;
+        private System.Windows.Forms.Timer timer2;
     }
 }

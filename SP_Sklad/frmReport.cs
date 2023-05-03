@@ -45,7 +45,6 @@ namespace SP_Sklad
                     this.DocTypeGroupBox2.Visible = true;
                     break;
 
-                case 39:
                 case 3:
                     this.InDocGroupBox.Visible = false;
                     this.MatGroupBox.Visible = false;
@@ -290,6 +289,15 @@ namespace SP_Sklad
                     this.MatGroupBox.Visible = false;
                     this.DocTypeGroupBox.Visible = false;
                     this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    break;
+
+                case 39:
+                    this.InDocGroupBox.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.GroupKontragentPanel.Visible = true;
                     this.WHGroupBox.Visible = false;
                     break;
 

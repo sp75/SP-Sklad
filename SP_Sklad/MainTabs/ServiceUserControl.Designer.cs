@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUserControl));
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -54,6 +56,8 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.barCheckItem1 = new DevExpress.XtraBars.BarCheckItem();
             this.standaloneBarDockControl25 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -240,6 +244,8 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tab1 = new DevExpress.XtraVerticalGrid.Tab();
+            this.tab2 = new DevExpress.XtraVerticalGrid.Tab();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -414,8 +420,10 @@
             this.barSubItem2,
             this.barButtonItem11,
             this.barButtonItem9,
-            this.barButtonItem12});
-            this.barManager1.MaxItemId = 52;
+            this.barButtonItem12,
+            this.barSubItem3,
+            this.barCheckItem1});
+            this.barManager1.MaxItemId = 57;
             // 
             // bar1
             // 
@@ -620,7 +628,8 @@
             this.bar6.FloatLocation = new System.Drawing.Point(295, 373);
             this.bar6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3, true)});
             this.bar6.OptionsBar.AllowQuickCustomization = false;
             this.bar6.OptionsBar.DisableCustomization = true;
             this.bar6.OptionsBar.UseWholeRow = true;
@@ -666,6 +675,28 @@
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
+            // barSubItem3
+            // 
+            this.barSubItem3.Caption = "Налаштування";
+            this.barSubItem3.Id = 54;
+            this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
+            this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
+            this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1)});
+            this.barSubItem3.Name = "barSubItem3";
+            this.barSubItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barCheckItem1
+            // 
+            this.barCheckItem1.Caption = "Підсумки групи перемістити в рядок групи";
+            this.barCheckItem1.Id = 55;
+            this.barCheckItem1.Name = "barCheckItem1";
+            toolTipItem3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem3.Text = resources.GetString("toolTipItem3.Text");
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barCheckItem1.SuperTip = superToolTip3;
+            this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // standaloneBarDockControl25
             // 
@@ -1523,6 +1554,7 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsMenu.EnableGroupRowMenu = true;
@@ -2730,6 +2762,16 @@
             // 
             this.saveFileDialog1.Filter = "txt files (*.txt)|*.txt|sql files (*.sql)|*.sql";
             // 
+            // tab1
+            // 
+            this.tab1.Caption = "Tab 1";
+            this.tab1.Name = "tab1";
+            // 
+            // tab2
+            // 
+            this.tab2.Caption = "Tab 2";
+            this.tab2.Name = "tab2";
+            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3079,5 +3121,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl25;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarSubItem barSubItem3;
+        private DevExpress.XtraBars.BarCheckItem barCheckItem1;
+        private DevExpress.XtraVerticalGrid.Tab tab1;
+        private DevExpress.XtraVerticalGrid.Tab tab2;
     }
 }

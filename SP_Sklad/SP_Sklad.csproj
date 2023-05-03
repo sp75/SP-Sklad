@@ -2757,6 +2757,9 @@
     <None Include="Resources\projectdirectory_16x16.png" />
     <None Include="Resources\gaugestylehalfcircular_16x16.png" />
     <None Include="Resources\technology_16x162.png" />
+    <None Include="Resources\boorderitem_16x16.png" />
+    <None Include="Resources\info_32x32.png" />
+    <None Include="Resources\info_32x321.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

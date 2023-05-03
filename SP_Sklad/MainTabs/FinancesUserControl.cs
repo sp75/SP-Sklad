@@ -12,6 +12,7 @@ using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using DevExpress.XtraEditors;
+using System.Data.Entity;
 
 namespace SP_Sklad.MainTabs
 {
@@ -129,7 +130,10 @@ namespace SP_Sklad.MainTabs
                     RefreshBtnBar();
                     break;
                 case 3:
-                    CurActivesBS.DataSource = new BaseEntities().GetActives(DateTime.Now.Date,DateTime.Now.Date).OrderByDescending(o=> o.OnDate).FirstOrDefault();  //v_Actives.Where(w => w.OnDate == d).ToList();
+                    // CurActivesBS.DataSource = new BaseEntities().GetActives(DateTime.Now.Date,DateTime.Now.Date).OrderByDescending(o=> o.OnDate).FirstOrDefault();  //v_Actives.Where(w => w.OnDate == d).ToList();
+
+                    var result = GetActives();
+
                     break;
 
                 case 4:
@@ -138,6 +142,11 @@ namespace SP_Sklad.MainTabs
                     docsUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
                     break;
             }
+        }
+
+        private async Task GetActives()
+        {
+            CurActivesBS.DataSource = await new BaseEntities().v_Actives.OrderByDescending(o => o.OnDate).Take(1).ToListAsync();
         }
 
         void GetMoneyTurnover()
@@ -333,7 +342,6 @@ namespace SP_Sklad.MainTabs
                 var d = items.FirstOrDefault().OnDate;
                 CurActivesBS.DataSource = new BaseEntities().v_Actives.Where(o => o.OnDate == d).ToList();
             }
-           
         }
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -388,5 +396,6 @@ namespace SP_Sklad.MainTabs
         {
             IHelper.ExportToXlsx(MoneyMoveGridControl);
         }
-    }
+
+     }
 }
