@@ -132,7 +132,7 @@
             this.colTechProcessName.Name = "colTechProcessName";
             this.colTechProcessName.Visible = true;
             this.colTechProcessName.VisibleIndex = 6;
-            this.colTechProcessName.Width = 219;
+            this.colTechProcessName.Width = 211;
             // 
             // colTechProcessStartDate
             // 
@@ -143,7 +143,7 @@
             this.colTechProcessStartDate.Name = "colTechProcessStartDate";
             this.colTechProcessStartDate.Visible = true;
             this.colTechProcessStartDate.VisibleIndex = 3;
-            this.colTechProcessStartDate.Width = 109;
+            this.colTechProcessStartDate.Width = 110;
             // 
             // colManufacturingTime
             // 
@@ -154,7 +154,7 @@
             this.colManufacturingTime.Name = "colManufacturingTime";
             this.colManufacturingTime.Visible = true;
             this.colManufacturingTime.VisibleIndex = 4;
-            this.colManufacturingTime.Width = 109;
+            this.colManufacturingTime.Width = 110;
             // 
             // colMatName
             // 
@@ -163,7 +163,7 @@
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
             this.colMatName.VisibleIndex = 2;
-            this.colMatName.Width = 365;
+            this.colMatName.Width = 353;
             // 
             // colWhName
             // 
@@ -180,7 +180,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 8;
-            this.gridColumn1.Width = 215;
+            this.gridColumn1.Width = 211;
             // 
             // repositoryItemProgressBar1
             // 
@@ -199,7 +199,7 @@
             this.gridColumn2.UnboundDataType = typeof(System.TimeSpan);
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 87;
+            this.gridColumn2.Width = 112;
             // 
             // gridColumn3
             // 
@@ -208,7 +208,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 7;
-            this.gridColumn3.Width = 74;
+            this.gridColumn3.Width = 71;
             // 
             // timer1
             // 

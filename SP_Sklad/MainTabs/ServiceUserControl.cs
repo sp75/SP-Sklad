@@ -360,6 +360,8 @@ namespace SP_Sklad.MainTabs
             }
 
             gridView1.Columns.Clear();
+            gridView1.GroupSummary.Clear();
+
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["SPBaseModel"].ConnectionString))
             {
                 SqlCommand command = new SqlCommand(richEditControl1.Text, connection);

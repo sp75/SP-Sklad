@@ -234,9 +234,16 @@ namespace SP_Sklad.WBForm
         private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var dr = WaybillDetInGridView.GetRow(e.RowHandle) as GetWaybillDetIn_Result;
-            var wbs = _db.WayBillSvc.Find(dr.PosId);
-            wbs.Amount = Convert.ToDecimal(e.Value);
-            
+            var wbs = _db.WayBillSvc.Find(dr.PosId*-1);
+            if (e.Column.FieldName == "Amount")
+            {
+                wbs.Amount = Convert.ToDecimal(e.Value);
+            }
+            if (e.Column.FieldName == "Notes")
+            {
+                wbs.Notes = Convert.ToString(e.Value);
+            }
+
             _db.SaveChanges();
 
             IHelper.MapProp(_db.GetWaybillDetIn(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
