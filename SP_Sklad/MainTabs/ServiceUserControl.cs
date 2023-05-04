@@ -20,6 +20,9 @@ using RichEditSyntaxSample;
 using DevExpress.Office.Utils;
 using System.IO;
 using System.Text.RegularExpressions;
+using DevExpress.XtraGrid;
+using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace SP_Sklad.MainTabs
 {
@@ -586,6 +589,14 @@ namespace SP_Sklad.MainTabs
                 gridView1.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.Default;
             }
         }
-        
+
+        private void gridView1_CustomSummaryExists(object sender, DevExpress.Data.CustomSummaryExistEventArgs e)
+        {
+            GridSummaryItem item = e.Item as GridSummaryItem;
+            if (item == null) return;
+            GridColumn col = ((ColumnView)sender).Columns[item.FieldName];
+            if (col == null) return;
+            item.DisplayFormat = "{0:" + col.DisplayFormat.FormatString + "}";
+        }
     }
 }
