@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using DevExpress.Data;
+using DevExpress.XtraCharts.Designer;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TableLayout;
 using DevExpress.XtraGrid.Views.Tile;
@@ -89,6 +90,12 @@ namespace SP_Sklad.Reports
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             IHelper.ExportToXlsx(RepGridControl);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            ChartDesigner designer = new ChartDesigner(chartControl1);
+            designer.ShowDialog();
         }
     }
 }
