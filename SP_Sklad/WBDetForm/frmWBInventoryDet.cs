@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SkladEngine.ModelViews;
 using SP_Sklad.Common;
 using SP_Sklad.EditForm;
 using SP_Sklad.SkladData;
@@ -21,10 +20,6 @@ namespace SP_Sklad.WBDetForm
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
         private WaybillDet _wbd { get; set; }
-        public List<GetPosOutView> pos_out_list { get; set; }
-        private ReturnRel _temp_return_rel { get; set; }
-        private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
-        public int? outPosId { get; set; }
 
         public frmWBInventoryDet(BaseEntities db, int? PosId, WaybillList wb)
         {
@@ -34,11 +29,6 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-        }
-
-        private void AmountEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
         }
 
         private void frmWBInventoryDet_Load(object sender, EventArgs e)
@@ -61,7 +51,7 @@ namespace SP_Sklad.WBDetForm
             
             WaybillDetBS.DataSource = _wbd;
 
-            MatComboBox.Properties.DataSource = _db.WhMatGet(0, _wbd.WId, 0, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
+            MatComboBox.Properties.DataSource = _db.WhMatGet(0, _wbd.WId, 0, DBHelper.ServerDateTime(), 1, "*", 1, "", DBHelper.CurrentUser.UserId, 0).ToList();
 
             GetOk();
         }
@@ -150,11 +140,11 @@ namespace SP_Sklad.WBDetForm
             var item = MatComboBox.GetSelectedDataRow() as WhMatGet_Result;
 
             _wbd.MatId = item.MatId;
-            _wbd.Amount = item.Remain.Value;
-            _wbd.Price = item.AvgPrice;
-            _wbd.Discount = item.Remain;
-            _wbd.Nds = item.AvgPrice;
-            _wbd.BasePrice = item.AvgPrice;
+            _wbd.Amount = item.Remain ?? 0;
+            _wbd.Price = item.AvgPrice ?? 0;
+            _wbd.Discount = item.Remain ?? 0;
+            _wbd.Nds = item.AvgPrice ?? 0;
+            _wbd.BasePrice = item.AvgPrice ?? 0;
 
             WaybillDetBS.DataSource = _wbd;
         }
