@@ -7163,6 +7163,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="CashdName" Type="nvarchar" MaxLength="128" />
                 <Property Name="AccNum" Type="varchar" MaxLength="64" />
                 <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+                <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
                 <Property Name="ImgIdx" Type="int" Nullable="false" />
                 <Property Name="FromSumm" Type="numeric" Precision="17" Scale="2" />
                 <Property Name="ToSumm" Type="numeric" Precision="15" Scale="2" />
@@ -7719,9 +7720,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="to_date" Type="datetime" Mode="In" />
           <Parameter Name="grp_id" Type="int" Mode="In" />
           <Parameter Name="ka_id" Type="int" Mode="In" />
-          <Parameter Name="wh" Type="varchar" Mode="In" />
-          <Parameter Name="doc_types" Type="varchar" Mode="In" />
-          <Parameter Name="user_id" Type="int" Mode="In" />
           <Parameter Name="ka_grp_id" Type="uniqueidentifier" Mode="In" />
           <ReturnType>
             <CollectionType>
@@ -7739,6 +7737,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
                 <Property Name="KaId" Type="int" />
                 <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+                <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
+                <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -11217,9 +11217,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
             <Parameter Name="grp_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="doc_types" Mode="In" Type="String" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="IntermediateWeighing" EntityType="BaseModel.IntermediateWeighing" />
@@ -11240,13 +11237,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="wbill_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="ReportSortedFields" EntityType="BaseModel.ReportSortedFields" />
-          <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
-            <Parameter Name="doc_type" Mode="In" Type="Int32" />
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="is_checked" Mode="In" Type="Int32" />
-            <Parameter Name="person_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="GetMatGroupPriceTypes" IsComposable="true" ReturnType="Collection(BaseModel.GetMatGroupPriceTypes_Result)">
           <Parameter Name="grp_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -11892,6 +11882,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillTemplate" EntitySet="WaybillTemplate" />
           </AssociationSet>
           <EntitySet Name="v_ProductionMonitor" EntityType="BaseModel.v_ProductionMonitor" />
+          <FunctionImport Name="MoneyMoveList" IsComposable="true" ReturnType="Collection(BaseModel.MoneyMoveList_Result)">
+            <Parameter Name="doc_type" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="is_checked" Mode="In" Type="Int32" />
+            <Parameter Name="person_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -16296,32 +16293,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="OrderDirection" Type="Int32" />
           <Property Name="RepId" Type="Int32" />
         </EntityType>
-        <ComplexType Name="MoneyMoveList_Result">
-          <Property Type="Guid" Name="Id" Nullable="false" />
-          <Property Type="Int32" Name="PayDocId" Nullable="false" />
-          <Property Type="Int32" Name="DocType" Nullable="false" />
-          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
-          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="Checked" Nullable="false" />
-          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="AccId" Nullable="true" />
-          <Property Type="Int32" Name="CashId" Nullable="true" />
-          <Property Type="Guid" Name="OperId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
-          <Property Type="Decimal" Name="FromSumm" Nullable="true" Precision="17" Scale="2" />
-          <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
-        </ComplexType>
         <ComplexType Name="GetMatGroupPriceTypes_Result">
           <Property Type="Int32" Name="PTypeId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
@@ -19788,6 +19759,33 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RamaName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Pct" Type="Decimal" Precision="26" Scale="12" />
         </EntityType>
+        <ComplexType Name="MoneyMoveList_Result">
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="PayDocId" Nullable="false" />
+          <Property Type="Int32" Name="DocType" Nullable="false" />
+          <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="15" Scale="2" />
+          <Property Type="String" Name="DocNum" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Checked" Nullable="false" />
+          <Property Type="String" Name="Reason" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="AccId" Nullable="true" />
+          <Property Type="Int32" Name="CashId" Nullable="true" />
+          <Property Type="Guid" Name="OperId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="String" Name="PayTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CashdName" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="AccNum" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="DocTypeName" Nullable="true" MaxLength="64" />
+          <Property Type="Decimal" Name="SummInCurr" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="ImgIdx" Nullable="false" />
+          <Property Type="Decimal" Name="FromSumm" Nullable="true" Precision="17" Scale="2" />
+          <Property Type="Decimal" Name="ToSumm" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -22881,36 +22879,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="AccId" ColumnName="AccId" />
-                <ScalarProperty Name="CashId" ColumnName="CashId" />
-                <ScalarProperty Name="OperId" ColumnName="OperId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
-                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
-                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
-                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
-                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
-                <ScalarProperty Name="FromSumm" ColumnName="FromSumm" />
-                <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
-                <ScalarProperty Name="FromSource" ColumnName="FromSource" />
-                <ScalarProperty Name="ToSource" ColumnName="ToSource" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetMatGroupPriceTypes" FunctionName="BaseModel.Store.GetMatGroupPriceTypes">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetMatGroupPriceTypes_Result">
@@ -25100,6 +25068,37 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="MoneyMoveList" FunctionName="BaseModel.Store.MoneyMoveList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.MoneyMoveList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="DocNum" ColumnName="DocNum" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="AccId" ColumnName="AccId" />
+                <ScalarProperty Name="CashId" ColumnName="CashId" />
+                <ScalarProperty Name="OperId" ColumnName="OperId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="PayTypeName" ColumnName="PayTypeName" />
+                <ScalarProperty Name="CashdName" ColumnName="CashdName" />
+                <ScalarProperty Name="AccNum" ColumnName="AccNum" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="ImgIdx" ColumnName="ImgIdx" />
+                <ScalarProperty Name="FromSumm" ColumnName="FromSumm" />
+                <ScalarProperty Name="ToSumm" ColumnName="ToSumm" />
+                <ScalarProperty Name="FromSource" ColumnName="FromSource" />
+                <ScalarProperty Name="ToSource" ColumnName="ToSource" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

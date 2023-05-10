@@ -32,6 +32,7 @@ namespace SP_Sklad.SkladData
         public string CashdName { get; set; }
         public string AccNum { get; set; }
         public string DocTypeName { get; set; }
+        public Nullable<decimal> SummInCurr { get; set; }
         public int ImgIdx { get; set; }
         public Nullable<decimal> FromSumm { get; set; }
         public Nullable<decimal> ToSumm { get; set; }

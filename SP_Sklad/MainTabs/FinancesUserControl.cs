@@ -38,7 +38,7 @@ namespace SP_Sklad.MainTabs
 
         private void FinancesUserControl_Load(object sender, EventArgs e)
         {
-            MoneyMoveGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
+    //        MoneyMoveGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
 
             if (!DesignMode)
             {

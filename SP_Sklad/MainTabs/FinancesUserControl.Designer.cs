@@ -134,12 +134,16 @@
             this.gridColumn14 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn15 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn16 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
@@ -168,6 +172,8 @@
             this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
@@ -1341,7 +1347,8 @@
             this.MoneyMoveGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand1,
             this.gridBand2,
-            this.gridBand3});
+            this.gridBand3,
+            this.gridBand4});
             this.MoneyMoveGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.gridColumn6,
             this.gridColumn7,
@@ -1354,7 +1361,10 @@
             this.bandedGridColumn3,
             this.bandedGridColumn4,
             this.bandedGridColumn5,
-            this.bandedGridColumn6});
+            this.bandedGridColumn6,
+            this.bandedGridColumn7,
+            this.bandedGridColumn8,
+            this.bandedGridColumn9});
             this.MoneyMoveGridView.GridControl = this.MoneyMoveGridControl;
             this.MoneyMoveGridView.Name = "MoneyMoveGridView";
             this.MoneyMoveGridView.OptionsBehavior.Editable = false;
@@ -1374,9 +1384,10 @@
             this.gridBand1.Columns.Add(this.gridColumn14);
             this.gridBand1.Columns.Add(this.gridColumn15);
             this.gridBand1.Columns.Add(this.gridColumn16);
+            this.gridBand1.Columns.Add(this.bandedGridColumn8);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 581;
+            this.gridBand1.Width = 642;
             // 
             // gridColumn6
             // 
@@ -1436,7 +1447,7 @@
             this.gridColumn8.FieldName = "DocNum";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.Width = 67;
+            this.gridColumn8.Width = 62;
             // 
             // gridColumn14
             // 
@@ -1446,7 +1457,7 @@
             this.gridColumn14.FieldName = "OnDate";
             this.gridColumn14.Name = "gridColumn14";
             this.gridColumn14.Visible = true;
-            this.gridColumn14.Width = 143;
+            this.gridColumn14.Width = 135;
             // 
             // gridColumn15
             // 
@@ -1454,7 +1465,7 @@
             this.gridColumn15.FieldName = "DocTypeName";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.Visible = true;
-            this.gridColumn15.Width = 187;
+            this.gridColumn15.Width = 177;
             // 
             // gridColumn16
             // 
@@ -1462,7 +1473,15 @@
             this.gridColumn16.FieldName = "PayTypeName";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
-            this.gridColumn16.Width = 134;
+            this.gridColumn16.Width = 126;
+            // 
+            // bandedGridColumn8
+            // 
+            this.bandedGridColumn8.Caption = "Сума в нац. валюті";
+            this.bandedGridColumn8.FieldName = "SummInCurr";
+            this.bandedGridColumn8.Name = "bandedGridColumn8";
+            this.bandedGridColumn8.Visible = true;
+            this.bandedGridColumn8.Width = 92;
             // 
             // gridBand2
             // 
@@ -1471,7 +1490,7 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn2);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 210;
+            this.gridBand2.Width = 192;
             // 
             // bandedGridColumn1
             // 
@@ -1479,7 +1498,7 @@
             this.bandedGridColumn1.FieldName = "FromSource";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 115;
+            this.bandedGridColumn1.Width = 102;
             // 
             // bandedGridColumn2
             // 
@@ -1487,7 +1506,7 @@
             this.bandedGridColumn2.FieldName = "FromSumm";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 95;
+            this.bandedGridColumn2.Width = 90;
             // 
             // gridBand3
             // 
@@ -1496,7 +1515,7 @@
             this.gridBand3.Columns.Add(this.bandedGridColumn4);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 221;
+            this.gridBand3.Width = 206;
             // 
             // bandedGridColumn3
             // 
@@ -1504,7 +1523,7 @@
             this.bandedGridColumn3.FieldName = "ToSource";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 122;
+            this.bandedGridColumn3.Width = 110;
             // 
             // bandedGridColumn4
             // 
@@ -1512,7 +1531,30 @@
             this.bandedGridColumn4.FieldName = "ToSumm";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 99;
+            this.bandedGridColumn4.Width = 96;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Валюта";
+            this.gridBand4.Columns.Add(this.bandedGridColumn7);
+            this.gridBand4.Columns.Add(this.bandedGridColumn9);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 3;
+            this.gridBand4.Width = 150;
+            // 
+            // bandedGridColumn7
+            // 
+            this.bandedGridColumn7.Caption = "Тип";
+            this.bandedGridColumn7.FieldName = "CurrName";
+            this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Visible = true;
+            // 
+            // bandedGridColumn9
+            // 
+            this.bandedGridColumn9.Caption = "Курс";
+            this.bandedGridColumn9.FieldName = "OnValue";
+            this.bandedGridColumn9.Name = "bandedGridColumn9";
+            this.bandedGridColumn9.Visible = true;
             // 
             // bandedGridColumn5
             // 
@@ -1687,7 +1729,9 @@
             this.category,
             this.category1,
             this.row4,
-            this.row5});
+            this.row5,
+            this.row11,
+            this.row12});
             this.vGridControl1.Size = new System.Drawing.Size(1138, 236);
             this.vGridControl1.TabIndex = 0;
             // 
@@ -1784,6 +1828,18 @@
             this.row5.Name = "row5";
             this.row5.Properties.Caption = "Підстава";
             this.row5.Properties.FieldName = "Reason";
+            // 
+            // row11
+            // 
+            this.row11.Name = "row11";
+            this.row11.Properties.Caption = "Курс";
+            this.row11.Properties.FieldName = "OnValue";
+            // 
+            // row12
+            // 
+            this.row12.Name = "row12";
+            this.row12.Properties.Caption = "Валюта";
+            this.row12.Properties.FieldName = "CurrName";
             // 
             // xtraTabPage3
             // 
@@ -2269,7 +2325,6 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl4;
         private DevExpress.XtraGrid.GridControl MoneyMoveGridControl;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView MoneyMoveGridView;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn6;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn7;
@@ -2278,10 +2333,8 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn14;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn15;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn16;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
         private DevExpress.XtraEditors.PanelControl panelControl4;
@@ -2355,5 +2408,14 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn8;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row11;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row12;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn9;
     }
 }
