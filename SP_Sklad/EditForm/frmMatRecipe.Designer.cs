@@ -304,7 +304,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(810, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(827, 24);
             // 
             // barDockControlBottom
             // 
@@ -312,7 +312,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 520);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(810, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(827, 0);
             // 
             // barDockControlLeft
             // 
@@ -326,7 +326,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(810, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(827, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 496);
             // 
@@ -373,14 +373,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 466);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(810, 54);
+            this.panelControl2.Size = new System.Drawing.Size(827, 54);
             this.panelControl2.TabIndex = 32;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(592, 13);
+            this.OkButton.Location = new System.Drawing.Point(609, 13);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
@@ -391,7 +391,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(699, 13);
+            this.simpleButton1.Location = new System.Drawing.Point(716, 13);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
@@ -416,7 +416,7 @@
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "ParentId";
             this.DirTreeList.SelectImageList = this.ImageList;
-            this.DirTreeList.Size = new System.Drawing.Size(187, 442);
+            this.DirTreeList.Size = new System.Drawing.Size(229, 442);
             this.DirTreeList.TabIndex = 34;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
             // 
@@ -431,7 +431,7 @@
             // 
             // splitterControl1
             // 
-            this.splitterControl1.Location = new System.Drawing.Point(187, 24);
+            this.splitterControl1.Location = new System.Drawing.Point(229, 24);
             this.splitterControl1.Name = "splitterControl1";
             this.splitterControl1.Size = new System.Drawing.Size(10, 442);
             this.splitterControl1.TabIndex = 35;
@@ -442,12 +442,12 @@
             this.xtraTabControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.BorderStylePage = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Location = new System.Drawing.Point(197, 24);
+            this.xtraTabControl1.Location = new System.Drawing.Point(239, 24);
             this.xtraTabControl1.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.xtraTabControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(613, 442);
+            this.xtraTabControl1.Size = new System.Drawing.Size(588, 442);
             this.xtraTabControl1.TabIndex = 36;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
@@ -461,7 +461,7 @@
             // 
             this.xtraTabPage1.Controls.Add(this.panel1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage1.Size = new System.Drawing.Size(588, 420);
             this.xtraTabPage1.Text = "Інформація";
             // 
             // panel1
@@ -470,7 +470,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(613, 420);
+            this.panel1.Size = new System.Drawing.Size(588, 420);
             this.panel1.TabIndex = 29;
             // 
             // groupControl2
@@ -504,7 +504,7 @@
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(613, 420);
+            this.groupControl2.Size = new System.Drawing.Size(588, 420);
             this.groupControl2.TabIndex = 17;
             this.groupControl2.Tag = "";
             this.groupControl2.Text = " Основна інформація ";
@@ -543,18 +543,21 @@
             // 
             // calcEdit7
             // 
+            this.calcEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calcEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossDeviation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit7.Location = new System.Drawing.Point(458, 259);
             this.calcEdit7.Name = "calcEdit7";
             this.calcEdit7.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit7.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit7.Size = new System.Drawing.Size(132, 22);
+            this.calcEdit7.Size = new System.Drawing.Size(102, 22);
             this.calcEdit7.StyleController = this.styleController1;
             this.calcEdit7.TabIndex = 68;
             // 
             // labelControl16
             // 
+            this.labelControl16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl16.Location = new System.Drawing.Point(281, 262);
             this.labelControl16.Name = "labelControl16";
             this.labelControl16.Size = new System.Drawing.Size(171, 16);
@@ -564,6 +567,8 @@
             // 
             // labelControl17
             // 
+            this.labelControl17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl17.Location = new System.Drawing.Point(316, 223);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(136, 16);
@@ -573,30 +578,34 @@
             // 
             // calcEdit8
             // 
+            this.calcEdit8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calcEdit8.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "ThermoLossOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit8.Location = new System.Drawing.Point(458, 220);
             this.calcEdit8.Name = "calcEdit8";
             this.calcEdit8.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit8.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit8.Size = new System.Drawing.Size(132, 22);
+            this.calcEdit8.Size = new System.Drawing.Size(102, 22);
             this.calcEdit8.StyleController = this.styleController1;
             this.calcEdit8.TabIndex = 65;
             // 
             // calcEdit6
             // 
+            this.calcEdit6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calcEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "Deviation", true));
             this.calcEdit6.Location = new System.Drawing.Point(458, 181);
             this.calcEdit6.Name = "calcEdit6";
             this.calcEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit6.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit6.Size = new System.Drawing.Size(132, 22);
+            this.calcEdit6.Size = new System.Drawing.Size(102, 22);
             this.calcEdit6.StyleController = this.styleController1;
             this.calcEdit6.TabIndex = 64;
             // 
             // labelControl15
             // 
+            this.labelControl15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl15.Location = new System.Drawing.Point(362, 184);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(90, 16);
@@ -626,6 +635,8 @@
             // 
             // labelControl13
             // 
+            this.labelControl13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl13.Location = new System.Drawing.Point(397, 146);
             this.labelControl13.Name = "labelControl13";
             this.labelControl13.Size = new System.Drawing.Size(55, 16);
@@ -635,13 +646,14 @@
             // 
             // calcEdit5
             // 
+            this.calcEdit5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calcEdit5.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "Out", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit5.Location = new System.Drawing.Point(458, 143);
             this.calcEdit5.Name = "calcEdit5";
             this.calcEdit5.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit5.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit5.Size = new System.Drawing.Size(132, 22);
+            this.calcEdit5.Size = new System.Drawing.Size(102, 22);
             this.calcEdit5.StyleController = this.styleController1;
             this.calcEdit5.TabIndex = 59;
             // 
@@ -668,7 +680,7 @@
             this.dateEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeBindingSource, "OnDate", true));
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(453, 31);
+            this.dateEdit1.Location = new System.Drawing.Point(428, 31);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -686,7 +698,7 @@
             this.simpleButton2.ImageOptions.ImageIndex = 3;
             this.simpleButton2.ImageOptions.ImageList = this.ImageList;
             this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(563, 104);
+            this.simpleButton2.Location = new System.Drawing.Point(538, 104);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(22, 22);
             this.simpleButton2.TabIndex = 55;
@@ -711,7 +723,7 @@
             this.MatRecLookUpEdit.Properties.ShowHeader = false;
             this.MatRecLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatRecLookUpEdit.Properties.ValueMember = "MatId";
-            this.MatRecLookUpEdit.Size = new System.Drawing.Size(468, 22);
+            this.MatRecLookUpEdit.Size = new System.Drawing.Size(443, 22);
             this.MatRecLookUpEdit.StyleController = this.styleController1;
             this.MatRecLookUpEdit.TabIndex = 54;
             this.MatRecLookUpEdit.EditValueChanged += new System.EventHandler(this.MatRecLookUpEdit_EditValueChanged);
@@ -737,7 +749,7 @@
             // labelControl1
             // 
             this.labelControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl1.Location = new System.Drawing.Point(413, 34);
+            this.labelControl1.Location = new System.Drawing.Point(388, 34);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(34, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -751,7 +763,7 @@
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Name", true));
             this.textEdit1.Location = new System.Drawing.Point(89, 67);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(496, 22);
+            this.textEdit1.Size = new System.Drawing.Size(471, 22);
             this.textEdit1.StyleController = this.styleController1;
             this.textEdit1.TabIndex = 40;
             // 
@@ -794,14 +806,14 @@
             this.textEdit2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Notes", true));
             this.textEdit2.Location = new System.Drawing.Point(89, 297);
             this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Size = new System.Drawing.Size(496, 61);
+            this.textEdit2.Size = new System.Drawing.Size(471, 61);
             this.textEdit2.TabIndex = 41;
             // 
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.groupControl5);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage4.Size = new System.Drawing.Size(592, 420);
             this.xtraTabPage4.Text = "Рецепт";
             // 
             // groupControl5
@@ -810,7 +822,7 @@
             this.groupControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl5.Location = new System.Drawing.Point(0, 0);
             this.groupControl5.Name = "groupControl5";
-            this.groupControl5.Size = new System.Drawing.Size(613, 420);
+            this.groupControl5.Size = new System.Drawing.Size(592, 420);
             this.groupControl5.TabIndex = 16;
             this.groupControl5.Tag = "";
             this.groupControl5.Text = "Позиції";
@@ -825,15 +837,16 @@
             this.DiscPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DiscPanel.Location = new System.Drawing.Point(2, 23);
             this.DiscPanel.Name = "DiscPanel";
-            this.DiscPanel.Size = new System.Drawing.Size(609, 395);
+            this.DiscPanel.Size = new System.Drawing.Size(588, 395);
             this.DiscPanel.TabIndex = 44;
             // 
             // simpleButton3
             // 
+            this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(497, 11);
+            this.simpleButton3.Location = new System.Drawing.Point(479, 11);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(101, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(98, 23);
             this.simpleButton3.TabIndex = 12;
             this.simpleButton3.Text = "Перегляд";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -878,7 +891,7 @@
             this.MatRecDetGridControl.MainView = this.MatRecDetGridView;
             this.MatRecDetGridControl.MenuManager = this.barManager1;
             this.MatRecDetGridControl.Name = "MatRecDetGridControl";
-            this.MatRecDetGridControl.Size = new System.Drawing.Size(580, 331);
+            this.MatRecDetGridControl.Size = new System.Drawing.Size(559, 331);
             this.MatRecDetGridControl.TabIndex = 7;
             this.MatRecDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecDetGridView});
@@ -976,7 +989,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.groupControl6);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage14.Size = new System.Drawing.Size(592, 420);
             this.xtraTabPage14.Text = "Сировина";
             // 
             // groupControl6
@@ -988,7 +1001,7 @@
             this.groupControl6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl6.Location = new System.Drawing.Point(0, 0);
             this.groupControl6.Name = "groupControl6";
-            this.groupControl6.Size = new System.Drawing.Size(613, 420);
+            this.groupControl6.Size = new System.Drawing.Size(592, 420);
             this.groupControl6.TabIndex = 17;
             this.groupControl6.Tag = "";
             this.groupControl6.Text = "Сировина";
@@ -999,7 +1012,7 @@
             this.simpleButton11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.ImageOptions.Image")));
             this.simpleButton11.ImageOptions.ImageList = this.ImageList;
             this.simpleButton11.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton11.Location = new System.Drawing.Point(576, 32);
+            this.simpleButton11.Location = new System.Drawing.Point(555, 32);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(21, 22);
             this.simpleButton11.TabIndex = 52;
@@ -1046,7 +1059,7 @@
             this.panelControl7.Controls.Add(this.MatLookUpEdit);
             this.panelControl7.Location = new System.Drawing.Point(20, 69);
             this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(577, 330);
+            this.panelControl7.Size = new System.Drawing.Size(556, 330);
             this.panelControl7.TabIndex = 49;
             // 
             // memoEdit1
@@ -1057,7 +1070,7 @@
             this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.MatRecipeBindingSource, "Notes", true));
             this.memoEdit1.Location = new System.Drawing.Point(99, 173);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(432, 61);
+            this.memoEdit1.Size = new System.Drawing.Size(411, 61);
             this.memoEdit1.TabIndex = 67;
             // 
             // MatRecDetBS
@@ -1118,7 +1131,7 @@
             this.simpleButton4.ImageOptions.ImageIndex = 3;
             this.simpleButton4.ImageOptions.ImageList = this.ImageList;
             this.simpleButton4.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton4.Location = new System.Drawing.Point(537, 19);
+            this.simpleButton4.Location = new System.Drawing.Point(516, 19);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(22, 22);
             this.simpleButton4.TabIndex = 53;
@@ -1194,7 +1207,7 @@
             this.MatLookUpEdit.Properties.ShowHeader = false;
             this.MatLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatLookUpEdit.Properties.ValueMember = "MatId";
-            this.MatLookUpEdit.Size = new System.Drawing.Size(432, 22);
+            this.MatLookUpEdit.Size = new System.Drawing.Size(411, 22);
             this.MatLookUpEdit.StyleController = this.styleController1;
             this.MatLookUpEdit.TabIndex = 37;
             this.MatLookUpEdit.EditValueChanged += new System.EventHandler(this.MatLookUpEdit_EditValueChanged);
@@ -1203,7 +1216,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.groupControl1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage2.Size = new System.Drawing.Size(592, 420);
             this.xtraTabPage2.Text = "Тех процеси";
             // 
             // groupControl1
@@ -1215,7 +1228,7 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(613, 420);
+            this.groupControl1.Size = new System.Drawing.Size(592, 420);
             this.groupControl1.TabIndex = 15;
             this.groupControl1.Text = "Технологічні процеси";
             // 
@@ -1228,7 +1241,7 @@
             this.MatRecTechProcGridControl.MainView = this.MatRecTechProcGridView;
             this.MatRecTechProcGridControl.MenuManager = this.barManager1;
             this.MatRecTechProcGridControl.Name = "MatRecTechProcGridControl";
-            this.MatRecTechProcGridControl.Size = new System.Drawing.Size(580, 327);
+            this.MatRecTechProcGridControl.Size = new System.Drawing.Size(559, 327);
             this.MatRecTechProcGridControl.TabIndex = 8;
             this.MatRecTechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecTechProcGridView});
@@ -1315,7 +1328,7 @@
             // 
             this.xtraTabPage3.Controls.Add(this.groupControl3);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage3.Size = new System.Drawing.Size(592, 420);
             this.xtraTabPage3.Text = "Процес";
             // 
             // groupControl3
@@ -1327,7 +1340,7 @@
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl3.Location = new System.Drawing.Point(0, 0);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(613, 420);
+            this.groupControl3.Size = new System.Drawing.Size(592, 420);
             this.groupControl3.TabIndex = 18;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Сировина";
@@ -1338,7 +1351,7 @@
             this.simpleButton9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.ImageOptions.Image")));
             this.simpleButton9.ImageOptions.ImageList = this.ImageList;
             this.simpleButton9.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton9.Location = new System.Drawing.Point(576, 32);
+            this.simpleButton9.Location = new System.Drawing.Point(555, 32);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(21, 22);
             this.simpleButton9.TabIndex = 52;
@@ -1381,7 +1394,7 @@
             this.panelControl1.Controls.Add(this.textEdit4);
             this.panelControl1.Location = new System.Drawing.Point(20, 69);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(577, 330);
+            this.panelControl1.Size = new System.Drawing.Size(556, 330);
             this.panelControl1.TabIndex = 49;
             // 
             // labelControl22
@@ -1399,7 +1412,7 @@
             this.simpleButton13.ImageOptions.ImageIndex = 7;
             this.simpleButton13.ImageOptions.ImageList = this.ImageList;
             this.simpleButton13.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton13.Location = new System.Drawing.Point(537, 60);
+            this.simpleButton13.Location = new System.Drawing.Point(516, 60);
             this.simpleButton13.Name = "simpleButton13";
             this.simpleButton13.Size = new System.Drawing.Size(22, 22);
             this.simpleButton13.TabIndex = 53;
@@ -1432,13 +1445,14 @@
             // 
             // calcEdit4
             // 
+            this.calcEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.calcEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MatRecipeTechProcDetBS, "ExpectedOut", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.calcEdit4.Location = new System.Drawing.Point(373, 98);
             this.calcEdit4.Name = "calcEdit4";
             this.calcEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.calcEdit4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.calcEdit4.Size = new System.Drawing.Size(158, 22);
+            this.calcEdit4.Size = new System.Drawing.Size(137, 22);
             this.calcEdit4.StyleController = this.styleController1;
             this.calcEdit4.TabIndex = 46;
             // 
@@ -1478,7 +1492,7 @@
             this.TechProcLookUpEdit.Properties.ShowHeader = false;
             this.TechProcLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.TechProcLookUpEdit.Properties.ValueMember = "ProcId";
-            this.TechProcLookUpEdit.Size = new System.Drawing.Size(437, 22);
+            this.TechProcLookUpEdit.Size = new System.Drawing.Size(416, 22);
             this.TechProcLookUpEdit.StyleController = this.styleController1;
             this.TechProcLookUpEdit.TabIndex = 37;
             this.TechProcLookUpEdit.EditValueChanged += new System.EventHandler(this.TechProcLookUpEdit_EditValueChanged);
@@ -1503,7 +1517,7 @@
             // 
             this.xtraTabPage5.Controls.Add(this.groupControl4);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(613, 420);
+            this.xtraTabPage5.Size = new System.Drawing.Size(592, 420);
             this.xtraTabPage5.Text = "Додаткові витрати";
             // 
             // groupControl4
@@ -1514,7 +1528,7 @@
             this.groupControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl4.Location = new System.Drawing.Point(0, 0);
             this.groupControl4.Name = "groupControl4";
-            this.groupControl4.Size = new System.Drawing.Size(613, 420);
+            this.groupControl4.Size = new System.Drawing.Size(592, 420);
             this.groupControl4.TabIndex = 16;
             this.groupControl4.Text = "Додаткові витрати";
             // 
@@ -1528,7 +1542,7 @@
             this.MatRecipeAdditionalCostsGridControl.MainView = this.MatRecipeAdditionalCostsView;
             this.MatRecipeAdditionalCostsGridControl.MenuManager = this.barManager1;
             this.MatRecipeAdditionalCostsGridControl.Name = "MatRecipeAdditionalCostsGridControl";
-            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(580, 327);
+            this.MatRecipeAdditionalCostsGridControl.Size = new System.Drawing.Size(559, 327);
             this.MatRecipeAdditionalCostsGridControl.TabIndex = 8;
             this.MatRecipeAdditionalCostsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatRecipeAdditionalCostsView});
@@ -1609,7 +1623,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(810, 520);
+            this.ClientSize = new System.Drawing.Size(827, 520);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.splitterControl1);
             this.Controls.Add(this.DirTreeList);
@@ -1618,7 +1632,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmMatRecipe";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

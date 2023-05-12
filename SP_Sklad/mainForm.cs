@@ -18,6 +18,7 @@ using System.Data.Entity.Infrastructure;
 using System.Collections;
 using SP_Sklad.ViewsForm;
 using DevExpress.XtraEditors;
+using SP_Sklad.EditForm;
 
 namespace SP_Sklad
 {
@@ -336,7 +337,15 @@ namespace SP_Sklad
 
         private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowDirectList(null, 18);
+            //   IHelper.ShowDirectList(null, 18);
+
+            using (var f = new frmCatalog(null, 143))
+            {
+                f.uc.isDirectList = false;
+                f.uc.splitContainerControl1.Collapsed = true;
+                f.Text = "Шаблони";
+                f.ShowDialog();
+            }
         }
     }
 }

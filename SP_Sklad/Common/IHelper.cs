@@ -95,6 +95,7 @@ namespace SP_Sklad.Common
             f.uc.xtraTabPage14.PageVisible = true;
             f.uc.wb = wb;
             f.uc.isMatList = true;
+            f.uc.isDirectList = true;
 
             if (f.ShowDialog() == DialogResult.OK)
             {
@@ -586,7 +587,7 @@ namespace SP_Sklad.Common
                 case 18:
                     using (var f = new frmCatalog(null, 143))
                     {
-                        f.uc.isDirectList = false;
+                        f.uc.isDirectList = true;
                         f.uc.splitContainerControl1.Collapsed = true;
                         f.Text = "Шаблони";
                         if (f.ShowDialog() == DialogResult.OK)

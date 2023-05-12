@@ -840,19 +840,26 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var v_form = new frmWaybillTemplateView())
-            {
-                if(v_form.ShowDialog() == DialogResult.OK)
-                {
-                    _db.SaveChanges();
-                    //  ExecuteDocument.ExecuteWaybillTemplate(v_form.waybillTemplateUserControl1.wbt_row.Id, wb, _db);
-                    _db.CreateOrderByWBTemplate(wb.WbillId, v_form.waybillTemplateUserControl1.wbt_row.Id);
+            /*  using (var v_form = new frmWaybillTemplateView())
+              {
+                  if(v_form.ShowDialog() == DialogResult.OK)
+                  {
+                      _db.SaveChanges();
+                      //  ExecuteDocument.ExecuteWaybillTemplate(v_form.waybillTemplateUserControl1.wbt_row.Id, wb, _db);
+                      _db.CreateOrderByWBTemplate(wb.WbillId, v_form.waybillTemplateUserControl1.wbt_row.Id);
 
-                    RefreshDet();
-                }
+                      RefreshDet();
+                  }
+              }*/
+
+            var result = IHelper.ShowDirectList(null, 18);
+            if(result != null)
+            {
+                _db.SaveChanges();
+                _db.CreateOrderByWBTemplate(wb.WbillId, (Guid)result);
+                RefreshDet();
             }
 
-            
         }
     }
 }

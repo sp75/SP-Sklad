@@ -289,7 +289,7 @@
             this.MatComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true));
-            this.MatComboBox.Location = new System.Drawing.Point(101, 14);
+            this.MatComboBox.Location = new System.Drawing.Point(63, 14);
             this.MatComboBox.Name = "MatComboBox";
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -300,7 +300,7 @@
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Size = new System.Drawing.Size(434, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(472, 22);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 20;
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
@@ -308,7 +308,7 @@
             // WHComboBox
             // 
             this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true));
-            this.WHComboBox.Location = new System.Drawing.Point(101, 44);
+            this.WHComboBox.Location = new System.Drawing.Point(63, 44);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -320,7 +320,7 @@
             this.WHComboBox.Properties.ShowHeader = false;
             this.WHComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WHComboBox.Properties.ValueMember = "WId";
-            this.WHComboBox.Size = new System.Drawing.Size(218, 22);
+            this.WHComboBox.Size = new System.Drawing.Size(303, 22);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 17;
             // 
@@ -422,13 +422,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PriceEdit.Enabled = false;
-            this.PriceEdit.Location = new System.Drawing.Point(428, 46);
+            this.PriceEdit.Location = new System.Drawing.Point(427, 46);
             this.PriceEdit.MenuManager = this.barManager1;
             this.PriceEdit.Name = "PriceEdit";
             this.PriceEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.PriceEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PriceEdit.Properties.ReadOnly = true;
-            this.PriceEdit.Size = new System.Drawing.Size(135, 22);
+            this.PriceEdit.Size = new System.Drawing.Size(136, 22);
             this.PriceEdit.StyleController = this.styleController1;
             this.PriceEdit.TabIndex = 34;
             // 
@@ -443,7 +443,7 @@
             this.SummEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SummEdit.Properties.ReadOnly = true;
-            this.SummEdit.Size = new System.Drawing.Size(135, 22);
+            this.SummEdit.Size = new System.Drawing.Size(136, 22);
             this.SummEdit.StyleController = this.styleController1;
             this.SummEdit.TabIndex = 33;
             // 
@@ -486,7 +486,7 @@
             this.NdsEdit.Name = "NdsEdit";
             this.NdsEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.NdsEdit.Size = new System.Drawing.Size(135, 22);
+            this.NdsEdit.Size = new System.Drawing.Size(136, 22);
             this.NdsEdit.StyleController = this.styleController1;
             this.NdsEdit.TabIndex = 28;
             this.NdsEdit.EditValueChanged += new System.EventHandler(this.calcEdit2_EditValueChanged);
@@ -592,7 +592,7 @@
             // labelControl28
             // 
             this.labelControl28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl28.Location = new System.Drawing.Point(569, 95);
+            this.labelControl28.Location = new System.Drawing.Point(569, 99);
             this.labelControl28.Name = "labelControl28";
             this.labelControl28.Size = new System.Drawing.Size(23, 16);
             this.labelControl28.StyleController = this.styleController1;
@@ -601,7 +601,7 @@
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(256, 95);
+            this.labelControl18.Location = new System.Drawing.Point(264, 99);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(157, 16);
             this.labelControl18.StyleController = this.styleController1;
@@ -613,18 +613,18 @@
             this.SummAllEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SummAllEdit.Enabled = false;
-            this.SummAllEdit.Location = new System.Drawing.Point(420, 92);
+            this.SummAllEdit.Location = new System.Drawing.Point(427, 96);
             this.SummAllEdit.MenuManager = this.barManager1;
             this.SummAllEdit.Name = "SummAllEdit";
             this.SummAllEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummAllEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SummAllEdit.Size = new System.Drawing.Size(143, 22);
+            this.SummAllEdit.Size = new System.Drawing.Size(136, 22);
             this.SummAllEdit.StyleController = this.styleController1;
             this.SummAllEdit.TabIndex = 26;
             // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(322, 67);
+            this.labelControl15.Location = new System.Drawing.Point(330, 66);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(91, 16);
             this.labelControl15.StyleController = this.styleController1;
@@ -633,7 +633,7 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(322, 31);
+            this.labelControl17.Location = new System.Drawing.Point(329, 32);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(92, 16);
             this.labelControl17.StyleController = this.styleController1;
@@ -645,12 +645,12 @@
             this.SummFactEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SummFactEdit.Enabled = false;
-            this.SummFactEdit.Location = new System.Drawing.Point(420, 64);
+            this.SummFactEdit.Location = new System.Drawing.Point(427, 63);
             this.SummFactEdit.MenuManager = this.barManager1;
             this.SummFactEdit.Name = "SummFactEdit";
             this.SummFactEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummFactEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SummFactEdit.Size = new System.Drawing.Size(143, 22);
+            this.SummFactEdit.Size = new System.Drawing.Size(136, 22);
             this.SummFactEdit.StyleController = this.styleController1;
             this.SummFactEdit.TabIndex = 22;
             // 
@@ -660,12 +660,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SummOblicEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "Price", true));
             this.SummOblicEdit.Enabled = false;
-            this.SummOblicEdit.Location = new System.Drawing.Point(420, 29);
+            this.SummOblicEdit.Location = new System.Drawing.Point(427, 29);
             this.SummOblicEdit.MenuManager = this.barManager1;
             this.SummOblicEdit.Name = "SummOblicEdit";
             this.SummOblicEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.SummOblicEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.SummOblicEdit.Size = new System.Drawing.Size(143, 22);
+            this.SummOblicEdit.Size = new System.Drawing.Size(136, 22);
             this.SummOblicEdit.StyleController = this.styleController1;
             this.SummOblicEdit.TabIndex = 20;
             // 

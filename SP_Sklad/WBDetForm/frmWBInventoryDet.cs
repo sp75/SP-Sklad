@@ -139,6 +139,11 @@ namespace SP_Sklad.WBDetForm
         {
             var item = MatComboBox.GetSelectedDataRow() as WhMatGet_Result;
 
+            if (item == null)
+            {
+                return;
+            }
+
             _wbd.MatId = item.MatId;
             _wbd.Amount = item.Remain ?? 0;
             _wbd.Price = item.AvgPrice ?? 0;
