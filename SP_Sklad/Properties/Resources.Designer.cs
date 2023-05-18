@@ -334,6 +334,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap weightedpies_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("weightedpies_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Банки {
             get {
                 object obj = ResourceManager.GetObject("Банки", resourceCulture);

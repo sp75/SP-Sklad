@@ -623,28 +623,41 @@ namespace SP_Sklad.MainTabs
 
                             if (focused_raw_material_management.DocType == -1)
                             {
-                                var new_wb_move = ExecuteDocument.ExecuteRawMaterialManagementMove(focused_raw_material_management.Id, db);
-
-                                if (new_wb_move != null)
+                                int? new_wb_move = null;
+                                Guid new_write_of = Guid.Empty;
+                                try
                                 {
-                                    using (var m_f = new frmWayBillMove(new_wb_move))
-                                    {
-                                        m_f.is_new_record = true;
-                                        if (m_f.ShowDialog() == DialogResult.OK)
-                                        {
-                                            var new_write_of = ExecuteDocument.ExecuteRawMaterialManagementWBWriteOff(focused_raw_material_management.Id, db);
+                                    new_wb_move = ExecuteDocument.ExecuteRawMaterialManagementMove(focused_raw_material_management.Id, db);
 
-                                            if (new_write_of != Guid.Empty)
+                                    if (new_wb_move != null)
+                                    {
+                                        using (var m_f = new frmWayBillMove(new_wb_move))
+                                        {
+                                            m_f.is_new_record = true;
+                                            if (m_f.ShowDialog() == DialogResult.OK)
                                             {
-                                                using (var f = new frmWBWriteOff())
+                                                new_write_of = ExecuteDocument.ExecuteRawMaterialManagementWBWriteOff(focused_raw_material_management.Id, db);
+
+                                                if (new_write_of != Guid.Empty)
                                                 {
-                                                    f.doc_id = new_write_of;
-                                                    f.TurnDocCheckBox.Checked = true;
-                                                    f.is_new_record = true;
-                                                    f.ShowDialog();
+                                                    using (var f = new frmWBWriteOff())
+                                                    {
+                                                        f.doc_id = new_write_of;
+                                                        f.TurnDocCheckBox.Checked = true;
+                                                        f.is_new_record = true;
+                                                        f.ShowDialog();
+                                                    }
                                                 }
                                             }
                                         }
+                                    }
+                                }
+                                catch
+                                {
+                                    if (new_wb_move.HasValue)
+                                    {
+                                        db.DeleteWhere<WaybillList>(w => w.WbillId == new_wb_move);
+                                        db.DeleteWhere<WaybillList>(w => w.Id == new_write_of);
                                     }
                                 }
                             }
@@ -1208,18 +1221,7 @@ namespace SP_Sklad.MainTabs
                 switch (xtraTabControl1.SelectedTabPageIndex)
                 {
                     case 0:
-                        DeboningDetGridControl.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
-                        {
-                            DebId = s.DebId,
-                            WBillId = s.WBillId,
-                            MatId = s.MatId,
-                            Amount = s.Amount,
-                            Price = s.Price,
-                            WId = s.WId,
-                            MatName = s.Materials.Name,
-                            Total = s.Amount * s.Price,
-                            WhName = s.Warehouse.Name
-                        }).ToList();
+                        DeboningDetGridControl.DataSource = db.v_DeboningDet.Where(w => w.WBillId == focused_row.WbillId).ToList();
                         break;
 
                     case 1:
@@ -1383,18 +1385,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 1:
-                        gridControl15.DataSource = db.DeboningDet.Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).Select(s => new SP_Sklad.WBForm.frmWBDeboning.DeboningDetList
-                        {
-                            DebId = s.DebId,
-                            WBillId = s.WBillId,
-                            MatId = s.MatId,
-                            Amount = s.Amount,
-                            Price = s.Price,
-                            WId = s.WId,
-                            MatName = s.Materials.Name,
-                            Total = s.Amount * s.Price,
-                            WhName = s.Warehouse.Name
-                        }).ToList();
+                        gridControl15.DataSource = db.v_DeboningDet.Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).ToList();
                         break;
 
                     case 2:

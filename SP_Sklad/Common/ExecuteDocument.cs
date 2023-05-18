@@ -116,7 +116,13 @@ namespace SP_Sklad.Common
             _db.SetDocRel(id, wb.Id);
             _db.SaveChanges();
 
-            var list_det = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.PosId != null);
+            var list_det = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id && w.PosId != null).GroupBy(g=> new { g.MatId, g.PosId}).Select(s=> new
+            {
+                s.Key.MatId,
+                s.Key.PosId,
+                Amount = s.Sum(a=> a.Amount),
+                Price = s.Average(av=> av.WaybillDet.Price * av.WaybillDet.OnValue)
+            }).ToList();
 
             var num = 0;
             foreach (var item in list_det)
@@ -124,8 +130,8 @@ namespace SP_Sklad.Common
                 var wbd = _db.WaybillDet.Add(new WaybillDet()
                 {
                     WbillId = wb.WbillId,
-                    Price = item.WaybillDet.Price * item.WaybillDet.OnValue,
-                    BasePrice = item.WaybillDet.BasePrice * item.WaybillDet.OnValue,
+                    Price = item.Price,
+                    BasePrice = item.Price,
                     Nds = 0,
                     CurrId = wb.CurrId,
                     OnDate = wb.OnDate,
@@ -175,7 +181,6 @@ namespace SP_Sklad.Common
                 Commission = new List<Commission>() { new Commission { KaId = DBHelper.CurrentUser.KaId } }
             });
 
-            //  _db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
             _db.SetDocRel(id, wb.Id);
             _db.SaveChanges();
 

@@ -260,6 +260,20 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="DeboningWeighingInterface\frmDeboningWeighing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeboningWeighingInterface\frmDeboningWeighing.Designer.cs">
+      <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeboningWeighingInterface\frmDeboningWeighingDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeboningWeighingInterface\frmDeboningWeighingDet.Designer.cs">
+      <DependentUpon>frmDeboningWeighingDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeboningWeighingInterface\Views\DeboningDetView.cs" />
+    <Compile Include="DeboningWeighingInterface\Views\WayBillMakeView.cs" />
     <Compile Include="EditForm\frmAccountTypeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -487,6 +501,9 @@
     <Compile Include="SkladData\BankStatementsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\DeboningWeighing.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\DefectsClassifier.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -574,6 +591,9 @@
     <Compile Include="SkladData\v_BankStatementsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_DeboningDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -626,6 +646,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillMake.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillTemplateDet.cs">
@@ -2045,6 +2068,12 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DeboningWeighingInterface\frmDeboningWeighing.resx">
+      <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeboningWeighingInterface\frmDeboningWeighingDet.resx">
+      <DependentUpon>frmDeboningWeighingDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmAccountTypeEdit.resx">
       <DependentUpon>frmAccountTypeEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -2760,6 +2789,7 @@
     <None Include="Resources\boorderitem_16x16.png" />
     <None Include="Resources\info_32x32.png" />
     <None Include="Resources\info_32x321.png" />
+    <None Include="Resources\weightedpies_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

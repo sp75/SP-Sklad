@@ -37,6 +37,7 @@ namespace SP_Sklad.SkladData
             this.WaybillTemplateDet = new HashSet<WaybillTemplateDet>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
             this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
+            this.DeboningWeighing = new HashSet<DeboningWeighing>();
         }
     
         public int MatId { get; set; }
@@ -103,5 +104,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillTemplateDet> WaybillTemplateDet { get; set; }
         public virtual ICollection<KAMatDiscount> KAMatDiscount { get; set; }
         public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
+        public virtual ICollection<DeboningWeighing> DeboningWeighing { get; set; }
     }
 }

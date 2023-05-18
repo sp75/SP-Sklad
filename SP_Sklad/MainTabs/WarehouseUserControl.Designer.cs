@@ -479,6 +479,7 @@
             this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "purchasing (8).png");
+            this.GridImageList.Images.SetKeyName(40, "management2.png");
             // 
             // PageImageList
             // 
@@ -3211,7 +3212,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 40)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 

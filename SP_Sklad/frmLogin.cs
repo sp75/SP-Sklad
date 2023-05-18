@@ -23,6 +23,7 @@ using System.Reflection;
 using System.IO;
 using SP_Sklad.RawMaterialManagementInterface;
 using System.Configuration;
+using SP_Sklad.DeboningWeighingInterface;
 
 namespace SP_Sklad
 {
@@ -314,6 +315,15 @@ namespace SP_Sklad
                             frmMainRawMaterialManagement.main_form = new frmMainRawMaterialManagement();
                             frmMainRawMaterialManagement.main_form.Show();
 
+                            break;
+
+
+                        case 5:
+                            WindowsFormsSettings.ForceDirectXPaint();
+                            WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                            WindowsFormsSettings.TouchScaleFactor = 2;
+                            frmDeboningWeighing.main_form = new frmDeboningWeighing();
+                            frmDeboningWeighing.main_form.Show();
                             break;
 
                         default:

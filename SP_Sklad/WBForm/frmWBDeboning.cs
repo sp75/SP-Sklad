@@ -288,7 +288,7 @@ namespace SP_Sklad.WBForm
 
                 case 1:
                     {
-                        var dr = DeboningDetGridView.GetFocusedRow() as DeboningDetList;
+                        var dr = DeboningDetGridView.GetFocusedRow() as v_DeboningDet;
 
                         if (MessageBox.Show($"Ви дійсно бажаєте видалити {dr.MatName} з документа?", "Обвалка сировини №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
@@ -366,7 +366,7 @@ namespace SP_Sklad.WBForm
                 xtraTabControl1.SelectedTabPageIndex = 1;
             }
         }
-
+/*
         public class DeboningDetList
         {
             public int DebId { get; set; }
@@ -378,7 +378,7 @@ namespace SP_Sklad.WBForm
             public string MatName { get; set; }
             public decimal Total { get; set; }
             public string WhName { get; set; }
-        }
+        }*/
 
         private void RefreshDeboningDet(bool reset = false)
         {
@@ -387,17 +387,7 @@ namespace SP_Sklad.WBForm
                 _db.GetDeboningDet(_wbill_id);
             }
 
-            DeboningDetGridControl.DataSource = _db.DeboningDet.Where(w => w.WBillId == _wbill_id).Select(s => new DeboningDetList
-            {
-                DebId = s.DebId,
-                WBillId = s.WBillId,
-                MatId = s.MatId,
-                Amount = s.Amount,
-                Price = s.Price,
-                WId = s.WId,
-                MatName = s.Materials.Name,
-                Total = s.Amount * s.Price
-            }).ToList();
+            DeboningDetGridControl.DataSource = _db.v_DeboningDet.AsNoTracking().Where(w => w.WBillId == _wbill_id).ToList();
         }
 
         private void checkEdit2_CheckedChanged(object sender, EventArgs e)
@@ -436,7 +426,8 @@ namespace SP_Sklad.WBForm
 
         private void DeboningGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var dr = DeboningDetGridView.GetRow(e.RowHandle) as DeboningDetList;
+            var dr = DeboningDetGridView.GetRow(e.RowHandle) as v_DeboningDet;
+
             var dd = _db.DeboningDet.Find(dr.DebId);
             if (e.Column.FieldName == "Amount")
             {

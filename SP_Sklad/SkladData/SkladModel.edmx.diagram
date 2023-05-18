@@ -379,6 +379,10 @@
         <AssociationConnector Association="BaseModel.FK_WBS_PERSONID" />
         <AssociationConnector Association="BaseModel.PriceListKagent" />
         <AssociationConnector Association="BaseModel.WaybillTemplateKagent" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillMake" Width="1.5" PointX="21.375" PointY="29.75" />
+        <EntityTypeShape EntityType="BaseModel.DeboningWeighing" Width="1.5" PointX="13.375" PointY="12.75" />
+        <AssociationConnector Association="BaseModel.FK_DeboningWeighing_Materials" />
+        <AssociationConnector Association="BaseModel.FK_DeboningWeighing_WaybillList" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -408,6 +412,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WaybillTemplateDet" Width="1.5" PointX="7.25" PointY="14.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagementDet" Width="2.375" PointX="15.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProductionMonitor" Width="1.5" PointX="13.375" PointY="17.75" />
+        <EntityTypeShape EntityType="BaseModel.v_DeboningDet" Width="1.5" PointX="15.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -298,6 +298,16 @@
           <Property Name="Price" Type="numeric" Precision="15" Scale="8" Nullable="false" />
           <Property Name="WId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DeboningWeighing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="DefectsClassifier">
           <Key>
             <PropertyRef Name="Id" />
@@ -2093,6 +2103,31 @@ warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary ke
           <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_DeboningDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_DeboningDet">
+          <Key>
+            <PropertyRef Name="DebId" />
+            
+            
+            
+            
+            
+            
+            <PropertyRef Name="MsrName" />
+          </Key>
+          <Property Name="DebId" Type="int" Nullable="false" />
+          <Property Name="WBillId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="15" Scale="8" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Total" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="TotalWeighing" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DiscCards">
           <Key>
@@ -3315,6 +3350,75 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WayBillMake' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WayBillMake">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+            <PropertyRef Name="MatRecipeOut" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="DocStatus" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocId" Type="int" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+          <Property Name="CurrRate" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="Received" Type="nvarchar" MaxLength="64" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="DefNum" Type="int" Nullable="false" />
+          <Property Name="RecipeName" Type="varchar" MaxLength="255" />
+          <Property Name="MatRecipeOut" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="AmountIn" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MakedPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="OnDateOut" Type="datetime" />
+          <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="WriteOnDate" Type="datetime" />
+          <Property Name="FromWh" Type="nvarchar" MaxLength="64" />
+          <Property Name="FromWId" Type="int" />
+          <Property Name="DocStatus" Type="varchar" MaxLength="21" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="ShippedAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Tara" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="SaldoShipped" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="RecipeCount" Type="int" />
+          <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="AdditionalCostsAmount" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="AdditionalCosts" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="MatOut" Type="numeric" Precision="15" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WaybillTemplateDet">
           <Key>
@@ -4133,6 +4237,32 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="DeboningDet">
               <PropertyRef Name="WBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeboningWeighing_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="DeboningWeighing" Type="Self.DeboningWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DeboningWeighing">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeboningWeighing_WaybillList">
+          <End Role="WaybillList" Type="Self.WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeboningWeighing" Type="Self.DeboningWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="DeboningWeighing">
+              <PropertyRef Name="WbillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8170,6 +8300,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="CurrencyRate" EntityType="Self.CurrencyRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeboningDet" EntityType="Self.DeboningDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeboningWeighing" EntityType="Self.DeboningWeighing" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DefectsClassifier" EntityType="Self.DefectsClassifier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DemandGroup" EntityType="Self.DemandGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscCardGrp" EntityType="Self.DiscCardGrp" Schema="dbo" store:Type="Tables" />
@@ -8455,6 +8586,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_BarCodes].[MatId] AS [MatId], 
     [v_BarCodes].[BarCode] AS [BarCode]
     FROM [dbo].[v_BarCodes] AS [v_BarCodes]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_DeboningDet" EntityType="Self.v_DeboningDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_DeboningDet].[DebId] AS [DebId], 
+    [v_DeboningDet].[WBillId] AS [WBillId], 
+    [v_DeboningDet].[MatId] AS [MatId], 
+    [v_DeboningDet].[Amount] AS [Amount], 
+    [v_DeboningDet].[Price] AS [Price], 
+    [v_DeboningDet].[WId] AS [WId], 
+    [v_DeboningDet].[MatName] AS [MatName], 
+    [v_DeboningDet].[WhName] AS [WhName], 
+    [v_DeboningDet].[Total] AS [Total], 
+    [v_DeboningDet].[TotalWeighing] AS [TotalWeighing], 
+    [v_DeboningDet].[MsrName] AS [MsrName]
+    FROM [dbo].[v_DeboningDet] AS [v_DeboningDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="Self.v_DiscCards" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -9348,6 +9494,60 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillList].[Balans] AS [Balans]
     FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WayBillMake" EntityType="Self.v_WayBillMake" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WayBillMake].[Id] AS [Id], 
+    [v_WayBillMake].[WbillId] AS [WbillId], 
+    [v_WayBillMake].[Num] AS [Num], 
+    [v_WayBillMake].[OnDate] AS [OnDate], 
+    [v_WayBillMake].[CurrId] AS [CurrId], 
+    [v_WayBillMake].[Reason] AS [Reason], 
+    [v_WayBillMake].[Checked] AS [Checked], 
+    [v_WayBillMake].[SummAll] AS [SummAll], 
+    [v_WayBillMake].[WType] AS [WType], 
+    [v_WayBillMake].[Nds] AS [Nds], 
+    [v_WayBillMake].[PersonId] AS [PersonId], 
+    [v_WayBillMake].[Notes] AS [Notes], 
+    [v_WayBillMake].[DocId] AS [DocId], 
+    [v_WayBillMake].[SummInCurr] AS [SummInCurr], 
+    [v_WayBillMake].[CurrName] AS [CurrName], 
+    [v_WayBillMake].[CurrRate] AS [CurrRate], 
+    [v_WayBillMake].[PersonName] AS [PersonName], 
+    [v_WayBillMake].[AttNum] AS [AttNum], 
+    [v_WayBillMake].[AttDate] AS [AttDate], 
+    [v_WayBillMake].[Received] AS [Received], 
+    [v_WayBillMake].[ToDate] AS [ToDate], 
+    [v_WayBillMake].[DefNum] AS [DefNum], 
+    [v_WayBillMake].[RecipeName] AS [RecipeName], 
+    [v_WayBillMake].[MatRecipeOut] AS [MatRecipeOut], 
+    [v_WayBillMake].[Deviation] AS [Deviation], 
+    [v_WayBillMake].[MatName] AS [MatName], 
+    [v_WayBillMake].[AmountIn] AS [AmountIn], 
+    [v_WayBillMake].[MatId] AS [MatId], 
+    [v_WayBillMake].[MsrName] AS [MsrName], 
+    [v_WayBillMake].[KaName] AS [KaName], 
+    [v_WayBillMake].[MakedPerson] AS [MakedPerson], 
+    [v_WayBillMake].[MId] AS [MId], 
+    [v_WayBillMake].[OnDateOut] AS [OnDateOut], 
+    [v_WayBillMake].[AmountOut] AS [AmountOut], 
+    [v_WayBillMake].[AmountBrutto] AS [AmountBrutto], 
+    [v_WayBillMake].[WriteOnDate] AS [WriteOnDate], 
+    [v_WayBillMake].[FromWh] AS [FromWh], 
+    [v_WayBillMake].[FromWId] AS [FromWId], 
+    [v_WayBillMake].[DocStatus] AS [DocStatus], 
+    [v_WayBillMake].[Price] AS [Price], 
+    [v_WayBillMake].[ShippedAmount] AS [ShippedAmount], 
+    [v_WayBillMake].[Tara] AS [Tara], 
+    [v_WayBillMake].[SaldoShipped] AS [SaldoShipped], 
+    [v_WayBillMake].[Artikul] AS [Artikul], 
+    [v_WayBillMake].[RecipeCount] AS [RecipeCount], 
+    [v_WayBillMake].[AmountByRecipe] AS [AmountByRecipe], 
+    [v_WayBillMake].[AdditionalCostsAmount] AS [AdditionalCostsAmount], 
+    [v_WayBillMake].[AdditionalCosts] AS [AdditionalCosts], 
+    [v_WayBillMake].[GrpId] AS [GrpId], 
+    [v_WayBillMake].[MatOut] AS [MatOut]
+    FROM [dbo].[v_WayBillMake] AS [v_WayBillMake]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WaybillTemplateDet" EntityType="Self.v_WaybillTemplateDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WaybillTemplateDet].[Num] AS [Num], 
@@ -9619,6 +9819,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_DEBONINGDET_WAYBILLLIST" Association="Self.FK_DEBONINGDET_WAYBILLLIST">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="DeboningDet" EntitySet="DeboningDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeboningWeighing_Materials" Association="Self.FK_DeboningWeighing_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeboningWeighing_WaybillList" Association="Self.FK_DeboningWeighing_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
           </AssociationSet>
           <AssociationSet Name="FK_DISCCARDS_GRPID" Association="Self.FK_DISCCARDS_GRPID">
             <End Role="DiscCardGrp" EntitySet="DiscCardGrp" />
@@ -11889,6 +12097,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="is_checked" Mode="In" Type="Int32" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_WayBillMake" EntityType="BaseModel.v_WayBillMake" />
+          <EntitySet Name="v_DeboningDet" EntityType="BaseModel.v_DeboningDet" />
+          <EntitySet Name="DeboningWeighing" EntityType="BaseModel.DeboningWeighing" />
+          <AssociationSet Name="FK_DeboningWeighing_Materials" Association="BaseModel.FK_DeboningWeighing_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeboningWeighing_WaybillList" Association="BaseModel.FK_DeboningWeighing_WaybillList">
+            <End Role="WaybillList" EntitySet="WaybillList" />
+            <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12901,6 +13120,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillTemplateDet" Relationship="BaseModel.FK_WaybillTemplateDet_Materials" FromRole="Materials" ToRole="WaybillTemplateDet" />
           <NavigationProperty Name="KAMatDiscount" Relationship="BaseModel.FK__KAMATDISC__MATID__32AB8735" FromRole="Materials" ToRole="KAMatDiscount" />
           <NavigationProperty Name="KAgentMatPrices" Relationship="BaseModel.FK_KAgentMatPrices_Materials" FromRole="Materials" ToRole="KAgentMatPrices" />
+          <NavigationProperty Name="DeboningWeighing" Relationship="BaseModel.FK_DeboningWeighing_Materials" FromRole="Materials" ToRole="DeboningWeighing" />
         </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -14241,6 +14461,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__WAYBILLLI__PERSO__6E01572D" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kontragent" Relationship="BaseModel.FK_WAYBILLL_FK_WBLIST_KAGENT" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
+          <NavigationProperty Name="DeboningWeighing" Relationship="BaseModel.FK_DeboningWeighing_WaybillList" FromRole="WaybillList" ToRole="DeboningWeighing" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -19786,6 +20007,128 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="FromSource" Nullable="true" MaxLength="128" />
           <Property Type="String" Name="ToSource" Nullable="true" MaxLength="128" />
         </ComplexType>
+        <EntityType Name="v_WayBillMake">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+            <PropertyRef Name="MatRecipeOut" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="DocStatus" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DocId" Type="Int32" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CurrRate" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="Received" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="DefNum" Type="Int32" Nullable="false" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MatRecipeOut" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Deviation" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AmountIn" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MakedPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="OnDateOut" Type="DateTime" Precision="3" />
+          <Property Name="AmountOut" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="AmountBrutto" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="WriteOnDate" Type="DateTime" Precision="3" />
+          <Property Name="FromWh" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="FromWId" Type="Int32" />
+          <Property Name="DocStatus" Type="String" Nullable="false" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="ShippedAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="Tara" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="SaldoShipped" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="AmountByRecipe" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="AdditionalCostsAmount" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="AdditionalCosts" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="MatOut" Type="Decimal" Precision="15" Scale="2" />
+        </EntityType>
+        <EntityType Name="v_DeboningDet">
+          <Key>
+            <PropertyRef Name="DebId" />
+            <PropertyRef Name="MsrName" />
+          </Key>
+          <Property Name="DebId" Type="Int32" Nullable="false" />
+          <Property Name="WBillId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="8" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="TotalWeighing" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DeboningWeighing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DeboningWeighing_Materials" FromRole="DeboningWeighing" ToRole="Materials" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_DeboningWeighing_WaybillList" FromRole="DeboningWeighing" ToRole="WaybillList" />
+        </EntityType>
+        <Association Name="FK_DeboningWeighing_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.DeboningWeighing" Role="DeboningWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DeboningWeighing">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeboningWeighing_WaybillList">
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.DeboningWeighing" Role="DeboningWeighing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillList">
+              <PropertyRef Name="WbillId" />
+            </Principal>
+            <Dependent Role="DeboningWeighing">
+              <PropertyRef Name="WbillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -25099,6 +25442,90 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="v_WayBillMake">
+            <EntityTypeMapping TypeName="BaseModel.v_WayBillMake">
+              <MappingFragment StoreEntitySet="v_WayBillMake">
+                <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="AdditionalCosts" ColumnName="AdditionalCosts" />
+                <ScalarProperty Name="AdditionalCostsAmount" ColumnName="AdditionalCostsAmount" />
+                <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+                <ScalarProperty Name="MatRecipeOut" ColumnName="MatRecipeOut" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_DeboningDet">
+            <EntityTypeMapping TypeName="BaseModel.v_DeboningDet">
+              <MappingFragment StoreEntitySet="v_DeboningDet">
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="TotalWeighing" ColumnName="TotalWeighing" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="DebId" ColumnName="DebId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeboningWeighing">
+            <EntityTypeMapping TypeName="BaseModel.DeboningWeighing">
+              <MappingFragment StoreEntitySet="DeboningWeighing">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
