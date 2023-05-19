@@ -1625,7 +1625,8 @@ namespace SP_Sklad.MainTabs
                           k.Login,
                           k.WebUserName,
                           k.Saldo,
-                          k.PTypeId 
+                          k.PTypeId,
+                          k.RouteName
                       }).Distinct();
 
             if (focused_tree_node.Id != 10)

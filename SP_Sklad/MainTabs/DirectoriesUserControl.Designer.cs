@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -405,6 +405,7 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -1447,14 +1448,14 @@
             this.gridColumn81,
             this.gridColumn75,
             this.gridColumn103,
-            this.gridColumn104});
+            this.gridColumn104,
+            this.gridColumn114});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.KaGridView.OptionsBehavior.Editable = false;
             this.KaGridView.OptionsBehavior.ReadOnly = true;
-            this.KaGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.KaGridView.OptionsView.EnableAppearanceOddRow = true;
+            this.KaGridView.OptionsCustomization.CustomizationFormSnapMode = DevExpress.Utils.Controls.SnapMode.None;
             this.KaGridView.OptionsView.ShowFooter = true;
             this.KaGridView.OptionsView.ShowGroupPanel = false;
             this.KaGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.KaGridView_RowCellStyle);
@@ -2832,9 +2833,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3876,9 +3877,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -4362,6 +4363,12 @@
             this.PriceTypesPopupMenu.Manager = this.barManager1;
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
+            // 
+            // gridColumn114
+            // 
+            this.gridColumn114.Caption = "Маршрут";
+            this.gridColumn114.FieldName = "RouteName";
+            this.gridColumn114.Name = "gridColumn114";
             // 
             // DirectoriesUserControl
             // 
@@ -4941,5 +4948,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem SetPriceBtnItem;
         private DevExpress.XtraBars.PopupMenu PriceTypesPopupMenu;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
     }
 }

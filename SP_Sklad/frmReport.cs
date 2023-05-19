@@ -649,6 +649,13 @@ namespace SP_Sklad
                 KaKindLookUpEdit.Properties.DataSource = new List<object>() { new KAKIndComboBoxItem { Id = -1, Name = "Усі" } }.Concat(new BaseEntities().KAKInd.Select(s=> new KAKIndComboBoxItem {  Id = s.Id, Name = s.Name}).ToList());
                 KaKindLookUpEdit.EditValue = -1;
             }
+
+            if(RoutePanel.Visible)
+            {
+                Height += RoutePanel.Height;
+                RouteLookUpEdit.Properties.DataSource = new List<object>() { new RouteList { Id = -1, Name = "Усі" } }.Concat(new BaseEntities().Routes.Select(s => new RouteList { Id = s.Id, Name = s.Name }).ToList());
+                RouteLookUpEdit.EditValue = -1;
+            }
         }
 
         private void frmReport_Shown(object sender, EventArgs e)
