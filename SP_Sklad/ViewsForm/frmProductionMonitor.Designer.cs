@@ -47,11 +47,32 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.EditTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DelTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductionMonitorGrid
@@ -104,6 +125,7 @@
             this.ProductionMonitorGridView.RowHeight = 25;
             this.ProductionMonitorGridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.ProductionMonitorGridView_CustomDrawCell);
             this.ProductionMonitorGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.ProductionMonitorGridView_RowStyle);
+            this.ProductionMonitorGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.ProductionMonitorGridView_PopupMenuShowing);
             // 
             // colNum
             // 
@@ -229,12 +251,220 @@
             this.timer2.Interval = 600000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // barManager1
+            // 
+            this.barManager1.DockControls.Add(this.barDockControlTop);
+            this.barManager1.DockControls.Add(this.barDockControlBottom);
+            this.barManager1.DockControls.Add(this.barDockControlLeft);
+            this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl3);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl4);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl5);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl6);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl7);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl8);
+            this.barManager1.Form = this;
+            this.barManager1.Images = this.BarImageList;
+            this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.PrintItemBtn,
+            this.EditTechProcBtn,
+            this.DelTechProcBtn,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 26;
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
+            this.barDockControlTop.Size = new System.Drawing.Size(1485, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 580);
+            this.barDockControlBottom.Manager = this.barManager1;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1485, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 580);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1485, 0);
+            this.barDockControlRight.Manager = this.barManager1;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 580);
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // standaloneBarDockControl2
+            // 
+            this.standaloneBarDockControl2.AutoSize = true;
+            this.standaloneBarDockControl2.CausesValidation = false;
+            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl2.Manager = this.barManager1;
+            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
+            // 
+            // standaloneBarDockControl3
+            // 
+            this.standaloneBarDockControl3.AutoSize = true;
+            this.standaloneBarDockControl3.CausesValidation = false;
+            this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl3.Manager = this.barManager1;
+            this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
+            // 
+            // standaloneBarDockControl4
+            // 
+            this.standaloneBarDockControl4.AutoSize = true;
+            this.standaloneBarDockControl4.CausesValidation = false;
+            this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl4.Manager = this.barManager1;
+            this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
+            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
+            // 
+            // standaloneBarDockControl5
+            // 
+            this.standaloneBarDockControl5.AutoSize = true;
+            this.standaloneBarDockControl5.CausesValidation = false;
+            this.standaloneBarDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl5.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl5.Manager = this.barManager1;
+            this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
+            this.standaloneBarDockControl5.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
+            // 
+            // standaloneBarDockControl6
+            // 
+            this.standaloneBarDockControl6.AutoSize = true;
+            this.standaloneBarDockControl6.CausesValidation = false;
+            this.standaloneBarDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl6.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl6.Manager = this.barManager1;
+            this.standaloneBarDockControl6.Name = "standaloneBarDockControl6";
+            this.standaloneBarDockControl6.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl6.Text = "standaloneBarDockControl6";
+            // 
+            // standaloneBarDockControl7
+            // 
+            this.standaloneBarDockControl7.AutoSize = true;
+            this.standaloneBarDockControl7.CausesValidation = false;
+            this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 23);
+            this.standaloneBarDockControl7.Manager = this.barManager1;
+            this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1485, 0);
+            this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
+            // 
+            // standaloneBarDockControl8
+            // 
+            this.standaloneBarDockControl8.CausesValidation = false;
+            this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl8.Manager = this.barManager1;
+            this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
+            this.standaloneBarDockControl8.Size = new System.Drawing.Size(1485, 23);
+            this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 6;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
+            // EditTechProcBtn
+            // 
+            this.EditTechProcBtn.Caption = "Властивості";
+            this.EditTechProcBtn.Id = 8;
+            this.EditTechProcBtn.ImageOptions.ImageIndex = 2;
+            this.EditTechProcBtn.Name = "EditTechProcBtn";
+            // 
+            // DelTechProcBtn
+            // 
+            this.DelTechProcBtn.Caption = "Видалити ";
+            this.DelTechProcBtn.Id = 9;
+            this.DelTechProcBtn.ImageOptions.ImageIndex = 3;
+            this.DelTechProcBtn.Name = "DelTechProcBtn";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Перейти до документа";
+            this.barButtonItem1.Id = 12;
+            this.barButtonItem1.ImageOptions.ImageIndex = 9;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // BottomPopupMenu
+            // 
+            this.BottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
+            this.BottomPopupMenu.Manager = this.barManager1;
+            this.BottomPopupMenu.Name = "BottomPopupMenu";
+            // 
+            // BarImageList
+            // 
+            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.White;
+            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
+            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
+            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
+            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
+            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
+            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
+            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
+            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
+            this.BarImageList.Images.SetKeyName(8, "Замовлене кл_єнтами.bmp");
+            this.BarImageList.Images.SetKeyName(9, "Перейти до  документа.bmp");
+            this.BarImageList.Images.SetKeyName(10, "weighing-scale.png");
+            // 
             // frmProductionMonitor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 580);
+            this.Controls.Add(this.standaloneBarDockControl1);
+            this.Controls.Add(this.standaloneBarDockControl2);
+            this.Controls.Add(this.standaloneBarDockControl3);
+            this.Controls.Add(this.standaloneBarDockControl4);
+            this.Controls.Add(this.standaloneBarDockControl5);
+            this.Controls.Add(this.standaloneBarDockControl6);
+            this.Controls.Add(this.standaloneBarDockControl7);
+            this.Controls.Add(this.standaloneBarDockControl8);
             this.Controls.Add(this.ProductionMonitorGrid);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmProductionMonitor.IconOptions.Image")));
             this.Name = "frmProductionMonitor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -246,7 +476,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -268,5 +501,24 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager toastNotificationsManager1;
         private System.Windows.Forms.Timer timer2;
+        private DevExpress.XtraBars.BarManager barManager1;
+        private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
+        private DevExpress.XtraBars.BarButtonItem EditTechProcBtn;
+        private DevExpress.XtraBars.BarButtonItem DelTechProcBtn;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl6;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl7;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
+        public System.Windows.Forms.ImageList BarImageList;
     }
 }

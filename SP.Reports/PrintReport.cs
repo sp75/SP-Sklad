@@ -37,6 +37,7 @@ namespace SP.Reports
         public CarList Car { get; set; }
         public KagentComboBoxItem Driver { get; set; }
         public KAKIndComboBoxItem KontragentTyp { get; set; }
+        public RouteComboBoxItem RouteId { get; set; }
 
         private int? _person_id { get; set; }
         private int _user_id { get; set; }
@@ -1739,9 +1740,10 @@ SELECT WaybillList.[WbillId]
            and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
            and {3} in (ka.kaid , 0 )
            and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
+           and {6}  in (-1, wbl.RouteId) 
     group by mg.Name , m.GrpId, ka.kaid, ka.Name
     )x
-    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr).ToList();
+    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr, RouteId.Id).ToList();
 
             if (!mat.Any())
             {

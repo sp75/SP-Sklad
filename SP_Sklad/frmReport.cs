@@ -405,6 +405,7 @@ namespace SP_Sklad
                     KontragentPanel.Visible = true;
                     WHGroupBox.Visible = false;
                     GroupKontragentPanel.Visible = true;
+                    RoutePanel.Visible = true;
                     break;
 
                 case 50:
@@ -653,7 +654,7 @@ namespace SP_Sklad
             if(RoutePanel.Visible)
             {
                 Height += RoutePanel.Height;
-                RouteLookUpEdit.Properties.DataSource = new List<object>() { new RouteList { Id = -1, Name = "Усі" } }.Concat(new BaseEntities().Routes.Select(s => new RouteList { Id = s.Id, Name = s.Name }).ToList());
+                RouteLookUpEdit.Properties.DataSource = new List<object>() { new RouteComboBoxItem { Id = -1, Name = "Усі" } }.Concat(new BaseEntities().Routes.Select(s => new RouteComboBoxItem { Id = s.Id, Name = s.Name }).ToList());
                 RouteLookUpEdit.EditValue = -1;
             }
         }
@@ -750,7 +751,8 @@ namespace SP_Sklad
                        CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList,
                        Car = CarsLookUpEdit.GetSelectedDataRow() as CarList,
                        Driver = DriversLookUpEdit.GetSelectedDataRow() as KagentComboBoxItem,
-                       KontragentTyp = KaKindLookUpEdit.GetSelectedDataRow() as KAKIndComboBoxItem
+                       KontragentTyp = KaKindLookUpEdit.GetSelectedDataRow() as KAKIndComboBoxItem,
+                       RouteId = RouteLookUpEdit.GetSelectedDataRow() as RouteComboBoxItem
                    };
 
                    var template_name = pr2.GetTemlate(_rep_id);

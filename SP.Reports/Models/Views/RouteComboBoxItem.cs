@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SP.Reports.Models.Views
 {
-    public class RouteList
+    public class RouteComboBoxItem
     {
         public int Id { get; set; }
         public string Name { get; set; }

@@ -323,7 +323,7 @@ namespace SP_Sklad.WBForm
             }
             wb.KaId = row.KaId;
 
-            if (row.RouteId.HasValue && wb.WType == -1)
+            if (row.RouteId.HasValue /*&& wb.WType == -1*/)
             {
                 var r = _db.Routes.FirstOrDefault(w => w.Id == row.RouteId.Value);
 

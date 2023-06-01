@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.Common;
 using DevExpress.Data;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.ViewsForm
 {
@@ -112,6 +113,29 @@ namespace SP_Sklad.ViewsForm
         private void timer2_Tick(object sender, EventArgs e)
         {
             ShowNotification();
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = ProductionMonitorGridView.GetFocusedRow() as v_ProductionMonitor;
+
+            FindDoc.Find(row.Id, -20, row.OnDate);
+        }
+
+        private void ProductionMonitorGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                BottomPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = ProductionMonitorGridView.GetFocusedRow() as v_ProductionMonitor;
+
+            PrintDoc.Show(row.Id, -20, DB.SkladBase());
         }
     }
 }
