@@ -38,6 +38,7 @@
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -84,11 +85,13 @@
             this.manufacturingUserControl1 = new SP_Sklad.MainTabs.ManufacturingUserControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.mainTabControl = new DevExpress.XtraTab.XtraTabControl();
             this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -106,8 +109,8 @@
             this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainTabControl)).BeginInit();
+            this.mainTabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.TradeTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
@@ -235,9 +238,12 @@
             this.CashierWorkplaceBtn,
             this.barButtonItem13,
             this.barButtonItem2,
-            this.WbMatTemplateBtn});
+            this.WbMatTemplateBtn,
+            this.barButtonItem5,
+            this.barButtonItem6,
+            this.barButtonItem7});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 34;
+            this.barManager1.MaxItemId = 37;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -256,8 +262,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn, true),
@@ -299,6 +308,14 @@
             this.barButtonItem2.ImageOptions.ImageIndex = 13;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Введення залишків товарів";
+            this.barButtonItem5.Id = 34;
+            this.barButtonItem5.ImageOptions.ImageIndex = 20;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_2);
             // 
             // AddWBInBtn
             // 
@@ -462,8 +479,11 @@
             this.barSubItem3.Id = 9;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn)});
             this.barSubItem3.Name = "barSubItem3";
@@ -723,20 +743,20 @@
             this.docsUserControl1.Size = new System.Drawing.Size(1186, 586);
             this.docsUserControl1.TabIndex = 0;
             // 
-            // xtraTabControl1
+            // mainTabControl
             // 
-            this.xtraTabControl1.AppearancePage.Header.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.xtraTabControl1.AppearancePage.Header.Options.UseFont = true;
-            this.xtraTabControl1.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.xtraTabControl1.AppearancePage.HeaderActive.Options.UseFont = true;
-            this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Images = this.TabImageCollection;
-            this.xtraTabControl1.Location = new System.Drawing.Point(0, 45);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1188, 635);
-            this.xtraTabControl1.TabIndex = 0;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.mainTabControl.AppearancePage.Header.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.mainTabControl.AppearancePage.Header.Options.UseFont = true;
+            this.mainTabControl.AppearancePage.HeaderActive.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.mainTabControl.AppearancePage.HeaderActive.Options.UseFont = true;
+            this.mainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainTabControl.Images = this.TabImageCollection;
+            this.mainTabControl.Location = new System.Drawing.Point(0, 45);
+            this.mainTabControl.Name = "mainTabControl";
+            this.mainTabControl.SelectedTabPage = this.xtraTabPage1;
+            this.mainTabControl.Size = new System.Drawing.Size(1188, 635);
+            this.mainTabControl.TabIndex = 0;
+            this.mainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
@@ -745,7 +765,7 @@
             this.xtraTabPage5,
             this.xtraTabPage6,
             this.xtraTabPage7});
-            this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
+            this.mainTabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
             // 
             // TabImageCollection
             // 
@@ -889,12 +909,28 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "Накладна переміщення";
+            this.barButtonItem6.Id = 35;
+            this.barButtonItem6.ImageOptions.ImageIndex = 19;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick_1);
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Акти списання товару";
+            this.barButtonItem7.Id = 36;
+            this.barButtonItem7.ImageOptions.ImageIndex = 21;
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1188, 700);
-            this.Controls.Add(this.xtraTabControl1);
+            this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
@@ -924,8 +960,8 @@
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainTabControl)).EndInit();
+            this.mainTabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.TradeTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
@@ -976,7 +1012,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraBars.BarSubItem barSubItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        public DevExpress.XtraTab.XtraTabControl xtraTabControl1;
+        public DevExpress.XtraTab.XtraTabControl mainTabControl;
         public MainTabs.DocsUserControl docsUserControl1;
         public MainTabs.ManufacturingUserControl manufacturingUserControl1;
         public MainTabs.WarehouseUserControl whUserControl;
@@ -996,6 +1032,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem WbMatTemplateBtn;
         private DevExpress.Utils.ImageCollection TabImageCollection;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
     }
 }
 

@@ -27,13 +27,15 @@ namespace SP_Sklad.WBDetForm
         private Serials serials { get; set; }
         private int? _PosId { get; set; }
         private bool modified_dataset { get; set; }
+        private int? _wid { get; set; }
 
-        public frmWayBillDetIn(BaseEntities db, int? PosId, WaybillList wb)
+        public frmWayBillDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid =null)
         {
             InitializeComponent();
             _db = db;
             _wb = wb;
             _PosId = PosId;
+            _wid = wid;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
             MatComboBox.Properties.DataSource = db.v_Materials.Where(w=> w.Archived == 0).ToList();
@@ -363,7 +365,7 @@ namespace SP_Sklad.WBDetForm
             if (row != null)
             {
                 //   _wbd.Nds = row.NDS;  треба подумати як правильно
-                _wbd.WId = row.WId;
+                _wbd.WId = _wid.HasValue ? _wid : row.WId;
                 labelControl24.Text = row.ShortName;
                 labelControl27.Text = row.ShortName;
 

@@ -16,7 +16,7 @@ namespace SP_Sklad.Common
         {
             set
             {
-                mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = value;
+                mainForm.main_form.mainTabControl.SelectedTabPageIndex = value;
             }
         }
 

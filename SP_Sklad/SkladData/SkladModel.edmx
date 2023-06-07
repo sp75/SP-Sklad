@@ -3087,6 +3087,7 @@ warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not h
           <Property Name="LastAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="4" />
           <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="PosId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9295,7 +9296,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_RawMaterialManagementDet].[MeasuresName] AS [MeasuresName], 
     [v_RawMaterialManagementDet].[LastAmount] AS [LastAmount], 
     [v_RawMaterialManagementDet].[Price] AS [Price], 
-    [v_RawMaterialManagementDet].[MatId] AS [MatId]
+    [v_RawMaterialManagementDet].[MatId] AS [MatId], 
+    [v_RawMaterialManagementDet].[PosId] AS [PosId]
     FROM [dbo].[v_RawMaterialManagementDet] AS [v_RawMaterialManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
@@ -18481,6 +18483,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="LastAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="PosId" Type="Int32" />
         </EntityType>
         <Association Name="FK_RawMaterialManagementDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
@@ -24794,6 +24797,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_RawMaterialManagementDet">
             <EntityTypeMapping TypeName="BaseModel.v_RawMaterialManagementDet">
               <MappingFragment StoreEntitySet="v_RawMaterialManagementDet">
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="LastAmount" ColumnName="LastAmount" />

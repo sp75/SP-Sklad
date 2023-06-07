@@ -30,6 +30,8 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         public Guid? doc_id { get; set; }
         private WaybillList wb { get; set; }
+        private int? _wid { get; set; }
+
         private GetWaybillDetIn_Result wbd_row
         {
             get
@@ -40,11 +42,12 @@ namespace SP_Sklad.WBForm
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWayBillIn(int wtype, int? wbill_id = null)
+        public frmWayBillIn(int wtype, int? wbill_id = null, int? wid = null)
         {
             is_new_record = false;
             _wtype = wtype;
             _wbill_id = wbill_id;
+            _wid = wid;
             _db = new BaseEntities();
             user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
@@ -101,7 +104,7 @@ namespace SP_Sklad.WBForm
 
             var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
-            WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
+            WHComboBox.EditValue = _wid; //? WHComboBox.EditValue = _wid : wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
             RefreshDet();
         }
@@ -235,7 +238,7 @@ namespace SP_Sklad.WBForm
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var df = new frmWayBillDetIn(_db, null, wb))
+            using (var df = new frmWayBillDetIn(_db, null, wb, wid: _wid))
             {
                 if (df.ShowDialog() == DialogResult.OK)
                 {
@@ -325,6 +328,8 @@ namespace SP_Sklad.WBForm
             {
                 return;
             }
+
+            _wid = Convert.ToInt32(WHComboBox.EditValue);
             UpdateWh();
         }
 
@@ -405,7 +410,7 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                IHelper.ShowMatList(_db, wb);
+                IHelper.ShowMatList(_db, wb, wid: _wid);
             }
 
             RefreshDet();

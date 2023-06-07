@@ -30,6 +30,7 @@ namespace SP_Sklad.WBForm
         private WaybillList wb { get; set; }
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         public bool is_new_record { get; set; }
+        private int? _wid { get; set; }
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
@@ -37,10 +38,11 @@ namespace SP_Sklad.WBForm
 
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWayBillMove(int? wbill_id = null)
+        public frmWayBillMove(int? wbill_id = null, int? wid = null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
+            _wid = wid;
             _db = new BaseEntities();
             user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
@@ -53,7 +55,7 @@ namespace SP_Sklad.WBForm
             PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
             PersonInComboBox.Properties.DataSource = DBHelper.Persons;
             WhOutComboBox.Properties.DataSource = DBHelper.WhList;
-            WhInComboBox.Properties.DataSource = DBHelper.WhList;
+             WhInComboBox.Properties.DataSource = DBHelper.WhList;
 
             if (_wbill_id == null)
             {
@@ -68,7 +70,7 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
+                    WaybillMove = new WaybillMove { SourceWid = _wid.HasValue ? _wid.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId
                 });

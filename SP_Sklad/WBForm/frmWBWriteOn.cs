@@ -32,6 +32,7 @@ namespace SP_Sklad.WBForm
         private GetWaybillDetIn_Result wbd_row { get; set; }
         private List<GetWaybillDetIn_Result> wbd_list { get; set; }
         private List<GetRelDocList_Result> rdl  { get; set; }
+        private int? _wid { get; set; }
         private GetWaybillDetIn_Result focused_dr
         {
             get { return WaybillDetInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
@@ -39,10 +40,11 @@ namespace SP_Sklad.WBForm
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWBWriteOn(int? wbill_id = null)
+        public frmWBWriteOn(int? wbill_id = null, int? wid = null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
+            _wid = wid;
             _db = new BaseEntities();
             user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
@@ -54,7 +56,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             var wh_list = DBHelper.WhList;
             WHComboBox.Properties.DataSource = wh_list;
-            WHComboBox.EditValue = wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
+            WHComboBox.EditValue = _wid;// wh_list.Where(w => w.Def == 1).Select(s => s.WId).FirstOrDefault();
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -224,7 +226,7 @@ order by  ma.ondate desc */
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillDetIn(_db, null, wb);
+            var df = new frmWayBillDetIn(_db, null, wb, wid: _wid);
             if (df.ShowDialog() == DialogResult.OK)
             {
                 RefreshDet();
@@ -281,10 +283,13 @@ order by  ma.ondate desc */
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (WHComboBox.Focused)
+            if (!WHComboBox.Focused)
             {
-                UpdateWh();
+                return;
             }
+
+            _wid = Convert.ToInt32(WHComboBox.EditValue);
+            UpdateWh();
         }
 
         private void UpdateWh()
@@ -335,7 +340,7 @@ order by  ma.ondate desc */
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowMatList(_db, wb);
+            IHelper.ShowMatList(_db, wb, wid: _wid);
             RefreshDet();
         }
 

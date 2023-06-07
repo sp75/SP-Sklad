@@ -83,7 +83,7 @@ namespace SP_Sklad.Common
             else return false;
         }
 
-        static public void ShowMatList(BaseEntities db, WaybillList wb)
+        static public void ShowMatList(BaseEntities db, WaybillList wb, int? wid = null)
         {
             var f = new frmCatalog(2);
 
@@ -108,7 +108,7 @@ namespace SP_Sklad.Common
                         WbillId = wb.WbillId,
                         Num = wb.WaybillDet.Count(),
                         MatId = item.MatId,
-                        WId = item.WId,
+                        WId = wid.HasValue ? wid : item.WId,
                         Amount = item.Amount,
                         Price = price,
                         Discount = 0,
@@ -771,7 +771,7 @@ namespace SP_Sklad.Common
 
         static public bool FindMatInWH(int? mat_id)
         {
-            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 2;
+            mainForm.main_form.mainTabControl.SelectedTabPageIndex = 2;
 
             var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
             mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
@@ -784,7 +784,7 @@ namespace SP_Sklad.Common
 
         static public bool FindMatInDir(int? mat_id)
         {
-            mainForm.main_form.xtraTabControl1.SelectedTabPageIndex = 6;
+            mainForm.main_form.mainTabControl.SelectedTabPageIndex = 6;
 
             var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
             mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);

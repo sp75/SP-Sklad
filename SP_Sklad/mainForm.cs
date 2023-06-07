@@ -27,6 +27,9 @@ namespace SP_Sklad
         private int user_id { get; set; }
         public static mainForm main_form { get; set; }
 
+        private int? _wid => (mainTabControl.SelectedTabPageIndex == 2 && whUserControl.ByWhBtn.Down) ? (int?)whUserControl.wid : null;
+
+
         public mainForm() : this(UserSession.UserId) { }
 
         public mainForm(int UserId)
@@ -45,7 +48,7 @@ namespace SP_Sklad
                 barEditItem3.EditValue = DBHelper.EnterpriseList.Select(s => s.KaId).FirstOrDefault();
             }
 
-            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = mainTabControl.SelectedTabPageIndex });
 
             if (!Directory.Exists(Path.Combine(Application.StartupPath, "Rep")))
             {
@@ -132,7 +135,7 @@ namespace SP_Sklad
             AddWBOutBtn.Enabled = user_acc.Any(w => w.FunId == 23 && w.CanInsert == 1);
             AddWBInBtn.Enabled = user_acc.Any(w => w.FunId == 21 && w.CanInsert == 1);
 
-            xtraTabControl1.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
+            mainTabControl.SelectedTabPageIndex = Properties.Settings.Default.LastTabPage;
             SetNode(new HistoryEntity
             {
                 FunId = Properties.Settings.Default.LastFunId,
@@ -183,7 +186,7 @@ namespace SP_Sklad
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var wb_in = new frmWayBillIn(1, null))
+            using (var wb_in = new frmWayBillIn(1, wid: _wid))
             {
                 wb_in.ShowDialog();
             }
@@ -207,9 +210,9 @@ namespace SP_Sklad
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = xtraTabControl1.SelectedTabPageIndex });
+            History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = mainTabControl.SelectedTabPageIndex });
 
-            Properties.Settings.Default.LastTabPage = xtraTabControl1.SelectedTabPageIndex;
+            Properties.Settings.Default.LastTabPage = mainTabControl.SelectedTabPageIndex;
         }
 
         private void PrevBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -218,7 +221,7 @@ namespace SP_Sklad
             if (p != null)
             {
                 History.is_enable = false;
-                xtraTabControl1.SelectedTabPageIndex = p.MainTabs;
+                mainTabControl.SelectedTabPageIndex = p.MainTabs;
                 SetNode(p);
                 History.is_enable = true;
             }
@@ -231,7 +234,7 @@ namespace SP_Sklad
             if (n != null)
             {
                 History.is_enable = false;
-                xtraTabControl1.SelectedTabPageIndex = n.MainTabs;
+                mainTabControl.SelectedTabPageIndex = n.MainTabs;
                 SetNode(n);
                 History.is_enable = true;
             }
@@ -345,6 +348,30 @@ namespace SP_Sklad
                 f.uc.splitContainerControl1.Collapsed = true;
                 f.Text = "Шаблони";
                 f.ShowDialog();
+            }
+        }
+
+        private void barButtonItem5_ItemClick_2(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_in = new frmWBWriteOn(wid: _wid))
+            {
+                wb_in.ShowDialog();
+            }
+        }
+
+        private void barButtonItem6_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_move = new frmWayBillMove(wid: _wid))
+            {
+                wb_move.ShowDialog();
+            }
+        }
+
+        private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_on = new frmWBWriteOff(wid: _wid))
+            {
+                wb_on.ShowDialog();
             }
         }
     }

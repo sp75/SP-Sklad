@@ -25,6 +25,7 @@ namespace SP_Sklad.WBForm
         public Guid? doc_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
+        private int? _wid { get; set; }
 
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         private GetWayBillDetOut_Result focused_dr
@@ -33,10 +34,11 @@ namespace SP_Sklad.WBForm
         }
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWBWriteOff(int? wbill_id=null)
+        public frmWBWriteOff(int? wbill_id=null, int? wid = null)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
+            _wid = wid;
             _db = new BaseEntities();
             user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
@@ -65,7 +67,7 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    WaybillMove = new WaybillMove { SourceWid = DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
+                    WaybillMove = new WaybillMove { SourceWid = _wid.HasValue ? _wid.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     Nds = 0,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.Enterprise.KaId

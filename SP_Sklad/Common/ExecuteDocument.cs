@@ -185,20 +185,22 @@ namespace SP_Sklad.Common
             _db.SaveChanges();
 
 
-            var pos_list = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id).Select(s => s.PosId).Distinct().ToList();
-            foreach (var pos_item in pos_list)
-            {
-                var pos_info = _db.RawMaterialManagementDet.Where(w => w.PosId == pos_item).GroupBy(g => g.PosId)
+         //   var pos_list = _db.RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id).Select(s => s.PosId).Distinct().ToList();
+      //      foreach (var pos_item in pos_list)
+       //     {
+                var pos_info = _db.v_RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id).GroupBy(g => g.PosId)
                     .Select(s => new
                     {
                         PosId = s.Key,
-                        CountIn = s.Sum(si => si.RawMaterialManagement.DocType == 1 ? 1 : 0),
-                        CountOut = s.Sum(si => si.RawMaterialManagement.DocType == -1 ? 1 : 0)
+                        //  CountIn = s.Sum(si => si.RawMaterialManagement.DocType == 1 ? 1 : 0),
+                        //  CountOut = s.Sum(si => si.RawMaterialManagement.DocType == -1 ? 1 : 0)
+                        Difference = s.Sum(si=> si.LastAmount - si.Amount)
                     }).ToList();
 
                 foreach (var pos_info_item in pos_info)
                 {
-                    if (pos_info_item.CountIn == pos_info_item.CountOut)
+                  //  if (pos_info_item.CountIn == pos_info_item.CountOut)
+                  if(pos_info_item.Difference > 0)
                     {
                         var remain = _db.v_PosRemains.FirstOrDefault(w => w.PosId == pos_info_item.PosId);
                         if (remain != null && remain.ActualRemain > 0)
@@ -209,7 +211,8 @@ namespace SP_Sklad.Common
                                 OnDate = wb.OnDate,
                                 MatId = remain.MatId,
                                 WId = _rmm.WId.Value,
-                                Amount = remain.ActualRemain.Value,
+                                //  Amount = remain.ActualRemain.Value,
+                                Amount = pos_info_item.Difference.Value,
                                 Price = remain.AvgPrice,
                                 Discount = 0,
                                 Nds = wb.Nds,
@@ -228,13 +231,14 @@ namespace SP_Sklad.Common
                                 MatId = remain.MatId,
                                 OnDate = wb.OnDate,
                                 TurnType = 2,
-                                Amount = remain.ActualRemain.Value,
+                                //  Amount = remain.ActualRemain.Value,
+                                Amount = pos_info_item.Difference.Value,
                             });
 
                             _db.SaveChanges();
                         }
                     }
-                }
+          //      }
             }
 
             if (!wb.WaybillDet.Any())
