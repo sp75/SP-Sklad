@@ -29,18 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
+            this.RoutePanel = new System.Windows.Forms.Panel();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.KaKindPanel = new System.Windows.Forms.Panel();
             this.KaKindLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl23 = new DevExpress.XtraEditors.LabelControl();
@@ -128,14 +132,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.RoutePanel = new System.Windows.Forms.Panel();
-            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
             this.mainPanel.SuspendLayout();
+            this.RoutePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.KaKindPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).BeginInit();
             this.DriverPanel.SuspendLayout();
@@ -201,8 +204,6 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            this.RoutePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -212,6 +213,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton5);
             this.panelControl2.Controls.Add(this.simpleButton4);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
@@ -221,12 +223,24 @@
             this.panelControl2.Size = new System.Drawing.Size(452, 51);
             this.panelControl2.TabIndex = 29;
             // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton5.ImageOptions.Image = global::SP_Sklad.Properties.Resources.table_16x16;
+            this.simpleButton5.Location = new System.Drawing.Point(116, 10);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(127, 30);
+            this.simpleButton5.TabIndex = 5;
+            this.simpleButton5.Text = "Показати списком";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
             // simpleButton4
             // 
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
             this.simpleButton4.Location = new System.Drawing.Point(9, 10);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(92, 30);
+            this.simpleButton4.Size = new System.Drawing.Size(101, 30);
             this.simpleButton4.TabIndex = 4;
             this.simpleButton4.Text = "Сортування";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -234,9 +248,9 @@
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(234, 10);
+            this.OkButton.Location = new System.Drawing.Point(259, 10);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(98, 30);
+            this.OkButton.Size = new System.Drawing.Size(84, 30);
             this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Застосувати";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -245,7 +259,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(341, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(349, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
@@ -277,6 +291,44 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(452, 568);
             this.mainPanel.TabIndex = 31;
+            // 
+            // RoutePanel
+            // 
+            this.RoutePanel.Controls.Add(this.RouteLookUpEdit);
+            this.RoutePanel.Controls.Add(this.labelControl24);
+            this.RoutePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.RoutePanel.Location = new System.Drawing.Point(2, 1142);
+            this.RoutePanel.Name = "RoutePanel";
+            this.RoutePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.RoutePanel.Size = new System.Drawing.Size(448, 47);
+            this.RoutePanel.TabIndex = 37;
+            this.RoutePanel.Visible = false;
+            // 
+            // RouteLookUpEdit
+            // 
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(79, 12);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ShowHeader = false;
+            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(330, 22);
+            this.RouteLookUpEdit.StyleController = this.styleController1;
+            this.RouteLookUpEdit.TabIndex = 30;
+            // 
+            // labelControl24
+            // 
+            this.labelControl24.Location = new System.Drawing.Point(10, 15);
+            this.labelControl24.Name = "labelControl24";
+            this.labelControl24.Size = new System.Drawing.Size(58, 16);
+            this.labelControl24.StyleController = this.styleController1;
+            this.labelControl24.TabIndex = 29;
+            this.labelControl24.Text = "Маршрут:";
             // 
             // KaKindPanel
             // 
@@ -1349,44 +1401,6 @@
             this.textEdit1.Size = new System.Drawing.Size(353, 64);
             this.textEdit1.TabIndex = 39;
             // 
-            // RoutePanel
-            // 
-            this.RoutePanel.Controls.Add(this.RouteLookUpEdit);
-            this.RoutePanel.Controls.Add(this.labelControl24);
-            this.RoutePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RoutePanel.Location = new System.Drawing.Point(2, 1142);
-            this.RoutePanel.Name = "RoutePanel";
-            this.RoutePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.RoutePanel.Size = new System.Drawing.Size(448, 47);
-            this.RoutePanel.TabIndex = 37;
-            this.RoutePanel.Visible = false;
-            // 
-            // RouteLookUpEdit
-            // 
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(79, 12);
-            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
-            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
-            this.RouteLookUpEdit.Properties.ShowFooter = false;
-            this.RouteLookUpEdit.Properties.ShowHeader = false;
-            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.RouteLookUpEdit.Properties.ValueMember = "Id";
-            this.RouteLookUpEdit.Size = new System.Drawing.Size(330, 22);
-            this.RouteLookUpEdit.StyleController = this.styleController1;
-            this.RouteLookUpEdit.TabIndex = 30;
-            // 
-            // labelControl24
-            // 
-            this.labelControl24.Location = new System.Drawing.Point(10, 15);
-            this.labelControl24.Name = "labelControl24";
-            this.labelControl24.Size = new System.Drawing.Size(58, 16);
-            this.labelControl24.StyleController = this.styleController1;
-            this.labelControl24.TabIndex = 29;
-            this.labelControl24.Text = "Маршрут:";
-            // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1407,6 +1421,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            this.RoutePanel.ResumeLayout(false);
+            this.RoutePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.KaKindPanel.ResumeLayout(false);
             this.KaKindPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.KaKindLookUpEdit.Properties)).EndInit();
@@ -1493,9 +1510,6 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            this.RoutePanel.ResumeLayout(false);
-            this.RoutePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1598,5 +1612,6 @@
         public System.Windows.Forms.Panel RoutePanel;
         private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl24;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

@@ -74,6 +74,7 @@ namespace SP.Reports
         private Dictionary<string, IList> data_for_report { get; set; }
         private List<object> realation { get; set; }
         private int _rep_id { get; set; }
+        public string report_name => _db.RepLng.Where(w => w.LangId == 2 && w.RepId == _rep_id).Select(s => s.Name).FirstOrDefault();
 
         public PrintReportv2(int rep_id, int? person_id, int user_id)
         {
@@ -83,6 +84,34 @@ namespace SP.Reports
 
             data_for_report = new Dictionary<string, IList>();
             realation = new List<object>();
+        }
+
+        public object GetReportDate()
+        {
+            switch (_rep_id)
+            {
+                case 39:
+                    var sort_list = GetSortedList(_rep_id);
+
+                    return _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s=> new
+                    {
+                        ГрупаКонтрагентів = s.KaGrpName,
+                        Контрагент = s.KaName,
+                        ГрупаТоварів = s.GrpName,
+                        Товар = s.Name,
+                        ОдВиміру = s.ShortName,
+                        Артикул = s.Artikul,
+                        Штрихкод = s.BarCode,
+                        ВиданоКсть = s.Amount,
+                        ВиданоСума = s.Summ,
+                        ПовернутоКсть = s.ReturnAmountIn,
+                        ПовернутоСума = s.ReturnSummIn,
+                        ВсьогоКсть = s.Amount - s.ReturnAmountIn
+                    }).ToList();
+
+                default:
+                    return null;
+            }
         }
 
         public byte[] CreateReport(string template_file, string file_format)

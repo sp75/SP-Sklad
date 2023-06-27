@@ -1172,6 +1172,12 @@
     <Compile Include="ViewsForm\frmMaterialPriceHIstory.Designer.cs">
       <DependentUpon>frmMaterialPriceHIstory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmGridView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmGridView.Designer.cs">
+      <DependentUpon>frmGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillTemplateView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2212,6 +2218,9 @@
     <EmbeddedResource Include="ViewsForm\frmMaterialPriceHIstory.resx">
       <DependentUpon>frmMaterialPriceHIstory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmGridView.resx">
+      <DependentUpon>frmGridView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillTemplateView.resx">
       <DependentUpon>frmWaybillTemplateView.cs</DependentUpon>
     </EmbeddedResource>
@@ -2790,6 +2799,7 @@
     <None Include="Resources\info_32x32.png" />
     <None Include="Resources\info_32x321.png" />
     <None Include="Resources\weightedpies_16x16.png" />
+    <None Include="Resources\table_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

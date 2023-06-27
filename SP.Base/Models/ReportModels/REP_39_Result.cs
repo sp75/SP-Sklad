@@ -24,5 +24,7 @@ namespace SP.Base.Models
         public Nullable<decimal> ReturnSummIn { get; set; }
         public string TypeName { get; set; }
         public string KaName { get; set; }
+        public string KaGrpName { get; set; }
+        public string GrpName { get; set; }
     }
 }

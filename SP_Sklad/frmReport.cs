@@ -692,8 +692,7 @@ namespace SP_Sklad
             }
 
         }
-
-        private void OkButton_Click(object sender, EventArgs e)
+        private PrintReportv2 GetReport()
         {
             String str = "";
             if (checkEdit2.Checked) str += "1";
@@ -711,68 +710,55 @@ namespace SP_Sklad
 
             int grp = ChildGroupCheckEdit.Checked ? Convert.ToInt32((GrpComboBox.GetSelectedDataRow() as dynamic).GrpId) : 0;
 
-        /*    var pr = new PrintReport
+            var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
             {
                 OnDate = OnDateDBEdit.DateTime,
                 StartDate = StartDateEdit.DateTime,
                 EndDate = EndDateEdit.DateTime,
-                MatGroup = GrpComboBox.GetSelectedDataRow(),
-                Kagent = KagentComboBox.GetSelectedDataRow(),
-                Warehouse = WhComboBox.GetSelectedDataRow(),
-                Material = MatComboBox.GetSelectedDataRow(),
+                MatGroup = GrpComboBox.GetSelectedDataRow() as MatGrpComboBoxItem,
+                Kagent = KagentComboBox.GetSelectedDataRow() as KagentComboBoxItem,
+                Warehouse = WhComboBox.GetSelectedDataRow() as WhComboBoxItem,
+                Material = MatComboBox.GetSelectedDataRow() as MatComboBoxItem,
                 DocStr = str,
                 DocType = DocTypeEdit.EditValue,
-                ChType = ChTypeEdit.GetSelectedDataRow(),
+                ChType = ChTypeEdit.GetSelectedDataRow() as ChTypeComboBoxItem,
                 Status = wbStatusList.EditValue,
-                KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow(),
+                KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
                 GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
-                Person = PersonLookUpEdit.GetSelectedDataRow()
+                Person = PersonLookUpEdit.GetSelectedDataRow(),
+                RsvStatus = wmatturnStatus.EditValue,
+                CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList,
+                Car = CarsLookUpEdit.GetSelectedDataRow() as CarList,
+                Driver = DriversLookUpEdit.GetSelectedDataRow() as KagentComboBoxItem,
+                KontragentTyp = KaKindLookUpEdit.GetSelectedDataRow() as KAKIndComboBoxItem,
+                RouteId = RouteLookUpEdit.GetSelectedDataRow() as RouteComboBoxItem
             };
 
-           pr.CreateReport(_rep_id);*/
+            return pr2;
+        }
 
-                   var pr2 = new PrintReportv2(_rep_id, DBHelper.CurrentUser.KaId, DBHelper.CurrentUser.UserId)
-                   {
-                       OnDate = OnDateDBEdit.DateTime,
-                       StartDate = StartDateEdit.DateTime,
-                       EndDate = EndDateEdit.DateTime,
-                       MatGroup = GrpComboBox.GetSelectedDataRow() as MatGrpComboBoxItem,
-                       Kagent = KagentComboBox.GetSelectedDataRow() as KagentComboBoxItem,
-                       Warehouse = WhComboBox.GetSelectedDataRow() as WhComboBoxItem,
-                       Material = MatComboBox.GetSelectedDataRow() as MatComboBoxItem,
-                       DocStr = str,
-                       DocType = DocTypeEdit.EditValue,
-                       ChType = ChTypeEdit.GetSelectedDataRow() as ChTypeComboBoxItem,
-                       Status = wbStatusList.EditValue,
-                       KontragentGroup = GrpKagentLookUpEdit.GetSelectedDataRow() as GrpKagentComboBoxItem,
-                       GrpStr = ChildGroupCheckEdit.Checked ? String.Join(",", new BaseEntities().GetMatGroupTree(grp).ToList().Select(s => Convert.ToString(s.GrpId))) : "",
-                       Person = PersonLookUpEdit.GetSelectedDataRow(),
-                       RsvStatus = wmatturnStatus.EditValue,
-                       CashDesk = CashEditComboBox.GetSelectedDataRow() as CashDesksList,
-                       Car = CarsLookUpEdit.GetSelectedDataRow() as CarList,
-                       Driver = DriversLookUpEdit.GetSelectedDataRow() as KagentComboBoxItem,
-                       KontragentTyp = KaKindLookUpEdit.GetSelectedDataRow() as KAKIndComboBoxItem,
-                       RouteId = RouteLookUpEdit.GetSelectedDataRow() as RouteComboBoxItem
-                   };
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            var pr2 = GetReport();
 
-                   var template_name = pr2.GetTemlate(_rep_id);
-                   var template_file = Path.Combine(IHelper.template_path, template_name);
-                   if (File.Exists(template_file))
-                   {
-                       var report_data = pr2.CreateReport( template_file, DBHelper.CurrentUser.ReportFormat);
-                       if (report_data != null)
-                       {
-                           IHelper.ShowReport(report_data, template_name);
-                       }
-                       else
-                       {
-                           MessageBox.Show("За обраний період звіт не містить даних !");
-                       }
-                   }
-                   else
-                   {
-                       MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
-                   }
+            var template_name = pr2.GetTemlate(_rep_id);
+            var template_file = Path.Combine(IHelper.template_path, template_name);
+            if (File.Exists(template_file))
+            {
+                var report_data = pr2.CreateReport(template_file, DBHelper.CurrentUser.ReportFormat);
+                if (report_data != null)
+                {
+                    IHelper.ShowReport(report_data, template_name);
+                }
+                else
+                {
+                    MessageBox.Show("За обраний період звіт не містить даних !");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Шлях до шаблонів " + template_file + " не знайдено!");
+            }
         }
 
         private void SetDate()
@@ -845,6 +831,13 @@ namespace SP_Sklad
         private void DriversLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
 
+        }
+
+        private void simpleButton5_Click(object sender, EventArgs e)
+        {
+            var pr2 = GetReport();
+
+            new frmGridView(pr2.report_name, pr2.GetReportDate()).ShowDialog();
         }
     }
 }
