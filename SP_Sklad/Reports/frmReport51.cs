@@ -2,40 +2,50 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Drawing;
-using System.Text;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using SP_Sklad.SkladData;
-using DevExpress.XtraGrid.Views.Grid;
-using System.IO;
-using SP.Reports.Models.Views;
+using System.Windows.Media.Imaging;
+using DevExpress.Data;
 using DevExpress.XtraCharts.Designer;
-using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.TableLayout;
+using DevExpress.XtraGrid.Views.Tile;
+using DevExpress.XtraGrid.Views.Tile.ViewInfo;
+using SP.Reports.Models.Views;
+using SP_Sklad.Common;
+using SP_Sklad.IntermediateWeighingInterface.Views;
+using SP_Sklad.SkladData;
+using SP_Sklad.WBDetForm;
 
-namespace SP_Sklad.ViewsForm
+namespace SP_Sklad.Reports
 {
     public partial class frmReport51 : DevExpress.XtraEditors.XtraForm
     {
-        private BaseEntities _db { get; set; }
+        private int _user_id { get; set; }
+
+        public BaseEntities _db { get; set; }
 
         public frmReport51()
         {
             InitializeComponent();
-            _db = DB.SkladBase();
+            _db = new BaseEntities();
         }
 
-        private void frmMaterialPriceHIstory_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            barEditItem1.EditValue = DateTime.Now.Year;
+            spinEdit1.EditValue = DateTime.Now.Year;
 
-            MatGroupLookUpEdit.DataSource = new List<MatGrpComboBoxItem>() { new MatGrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new MatGrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
-            MatGrpEditItem.EditValue = 0;
 
-            repositoryItemLookUpEdit2.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name, }).ToList());
-            MatEditItem.EditValue = 0;
+            MatLookUpEdit.Properties.DataSource = new List<object>() { new MatComboBoxItem { MatId = 0, Name = "Усі" } }.Concat(new BaseEntities().Materials.Where(w => w.Deleted == 0).Select(s => new MatComboBoxItem { MatId = s.MatId, Name = s.Name, }).ToList());
+            MatLookUpEdit.EditValue = 0;
+            MatGroupLookUpEdit.Properties.DataSource = new List<MatGrpComboBoxItem>() { new MatGrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new MatGrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
+            MatGroupLookUpEdit.EditValue = 0;
+
 
             foreach (var item in _db.Kagent.Where(w => w.Deleted == 0 && (w.Archived == 0 || w.Archived == null)).OrderBy(o => o.Name).Select(s => new
             {
@@ -43,28 +53,49 @@ namespace SP_Sklad.ViewsForm
                 s.Name,
             }))
             {
-                repositoryItemCheckedComboBoxEdit1.Items.Add(item.KaId, item.Name, CheckState.Unchecked, true);
+                comboBoxEdit3.Properties.Items.Add(item.KaId, item.Name, CheckState.Unchecked, true);
             }
 
             foreach (var item in _db.KontragentGroup.OrderBy(o => o.Name))
             {
-                repositoryItemCheckedComboBoxEdit2.Items.Add(item.Id, item.Name, CheckState.Unchecked, true);
+                comboBoxEdit31.Properties.Items.Add(item.Id, item.Name, CheckState.Unchecked, true);
             }
-
         }
 
 
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        private void frmMainIntermediateWeighing_FormClosed(object sender, FormClosedEventArgs e)
         {
-            int mat_id = (repositoryItemLookUpEdit2.GetDataSourceRowByKeyValue(MatEditItem.EditValue) as MatComboBoxItem).MatId;
-            int grp_id = (MatGroupLookUpEdit.GetDataSourceRowByKeyValue(MatGrpEditItem.EditValue) as MatGrpComboBoxItem).GrpId;
-            var ka_ids = string.Join(",", repositoryItemCheckedComboBoxEdit1.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
-            var ka_grp_ids = string.Join(",", repositoryItemCheckedComboBoxEdit2.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
 
-           
-            //chartControl1.Titles[1].Text = repositoryItemCheckedComboBoxEdit2  as string;
+        }
 
-            REP_51BS.DataSource = _db.REP_51(Convert.ToInt32(barEditItem1.EditValue), ka_ids, ka_grp_ids, grp_id, mat_id);
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            int mat_id = (MatLookUpEdit.GetSelectedDataRow() as MatComboBoxItem).MatId;
+            int grp_id = (MatGroupLookUpEdit.GetSelectedDataRow() as MatGrpComboBoxItem).GrpId;
+            var ka_ids = string.Join(",", comboBoxEdit3.Properties.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
+            var ka_grp_ids = string.Join(",", comboBoxEdit31.Properties.Items.Where(w => w.CheckState == CheckState.Checked).Select(s => Convert.ToString(s.Value)).ToList());
+
+             chartControl1.Titles[1].Text = comboBoxEdit31.Text;
+
+            REP_51BS.DataSource = _db.REP_51(Convert.ToInt32(spinEdit1.EditValue), ka_ids, ka_grp_ids, grp_id, mat_id);
+
+            RepGridView.ExpandAllGroups();
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            chartControl1.ShowRibbonPrintPreview();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            IHelper.ExportToXlsx(RepGridControl);
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            ChartDesigner designer = new ChartDesigner(chartControl1);
+            designer.ShowDialog();
         }
     }
 }

@@ -19,6 +19,42 @@ namespace SP.Reports
             data_for_report = new Dictionary<string, IList>();
         }
 
+        public byte[] CreateCustomReport(Guid id, string template_file , int pl_id)
+        {
+            var wb = _db.v_WaybillList.Where(w => w.Id == id).AsNoTracking().ToList();
+
+            var ent_id = wb.First().EntId;
+            var wb_det = _db.GetWayBillDetOut(wb.First().WbillId).ToList().OrderBy(o => o.Num).ToList();
+
+            var custom_pl = _db.PriceListDet.Where(w => w.PlId == pl_id).ToList();
+            foreach(var item in wb_det)
+            {
+                item.BasePrice = custom_pl.FirstOrDefault(w => w.MatId == item.MatId)?.Price ?? 0;
+                item.Price = item.BasePrice - (item.BasePrice * item.Discount / 100);
+                item.Total = Math.Round(item.Amount * item.Price ?? 0, 2);
+            }
+
+            if (wb != null)
+            {
+                var m = new MoneyToStr("UAH", "UKR", "TEXT");
+                wb.First().www = m.convertValue(wb_det.Sum(s=> s.Total.Value));
+            }
+
+            data_for_report.Add("EntAccount", _db.EnterpriseAccount.Where(w => w.KaId == ent_id && w.Def == 1).ToList());
+            data_for_report.Add("WayBillList", wb);
+            data_for_report.Add("range1", wb_det);
+
+            var summary = wb_det.Where(w => w.PosType != 2).GroupBy(g => g.MsrName).Select(s => new
+            {
+                MsrName = s.Key,
+                Amount = s.Sum(sum => sum.Amount)
+            });
+
+            data_for_report.Add("Summary", summary.ToList());
+
+            return ReportBuilder.GenerateReport(data_for_report, template_file, false, "xlsx").ToArray();
+        }
+
         public byte[] CreateReport(Guid id, int doc_type, string template_file)
         {
             switch (doc_type)

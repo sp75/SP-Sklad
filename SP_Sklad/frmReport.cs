@@ -299,6 +299,7 @@ namespace SP_Sklad
                     this.ChargeGroupBox.Visible = false;
                     this.GroupKontragentPanel.Visible = true;
                     this.WHGroupBox.Visible = false;
+                    btnShowGrid.Visible = true;
                     break;
 
                 case 22:
@@ -431,6 +432,8 @@ namespace SP_Sklad
                     
                     break;
             }
+
+            btnSortColumn.Visible =  DB.SkladBase().ReportSortedFields.Any(w => w.RepId == rep_id);
         }
 
         private void frmReport_Load(object sender, EventArgs e)

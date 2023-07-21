@@ -27,5 +27,6 @@ namespace SP.Base.Models
         public decimal? CurRemain { get; set; }
         public decimal? SumRemain { get; set; }
         public int MId { get; set; }
+        public decimal? GrpNum { get; set; }
     }
 }

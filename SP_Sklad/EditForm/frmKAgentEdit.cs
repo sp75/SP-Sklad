@@ -76,6 +76,8 @@ namespace SP_Sklad.EditForm
 
             if (_ka != null)
             {
+                _ka.UpdatedBy = UserSession.UserId;
+
                 var k_saldo = _db.v_KAgentSaldo.Where(w => w.KaId == _ka.KaId).OrderBy(d => d.OnDate).Take(2).ToList();// FirstOrDefault();
                 KASaldoEdit.EditValue = _ka.StartSaldo != null ? Math.Abs(_ka.StartSaldo.Value) : KASaldoEdit.EditValue;
                 if (_ka.StartSaldo != null)

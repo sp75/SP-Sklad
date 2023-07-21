@@ -114,7 +114,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                         IntermediateWeighingDetId = s.IntermediateWeighingDetId,
                         IntermediateWeighingDetTotal = s.Total != null ? (SqlFunctions.StringConvert(s.Total, 10, 3) + s.MsrName) : "",
                         RecId = s.RecId
-                    }).OrderBy(o => o.IntermediateWeighingNum).ToList();
+                    }).OrderBy(o => new { o.IntermediateWeighingNum, o.MatName }).ToList();
 
                 bindingSource1.DataSource = result;
 

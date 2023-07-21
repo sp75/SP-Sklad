@@ -116,6 +116,7 @@
             this.gridColumn75 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -405,7 +406,6 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -1362,6 +1362,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "truck.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -1592,6 +1593,12 @@
             this.gridColumn104.Visible = true;
             this.gridColumn104.VisibleIndex = 6;
             this.gridColumn104.Width = 61;
+            // 
+            // gridColumn114
+            // 
+            this.gridColumn114.Caption = "Маршрут";
+            this.gridColumn114.FieldName = "RouteName";
+            this.gridColumn114.Name = "gridColumn114";
             // 
             // xtraTabControl2
             // 
@@ -4363,12 +4370,6 @@
             this.PriceTypesPopupMenu.Manager = this.barManager1;
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
-            // 
-            // gridColumn114
-            // 
-            this.gridColumn114.Caption = "Маршрут";
-            this.gridColumn114.FieldName = "RouteName";
-            this.gridColumn114.Name = "gridColumn114";
             // 
             // DirectoriesUserControl
             // 

@@ -117,276 +117,131 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="REP_51BS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="barManager2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>230, 14</value>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>70</value>
   </metadata>
-  <data name="createRotatedFullStackedBarChartItem1.Description" xml:space="preserve">
-    <value>Displays horizontal rectangles to compare the percentage each value contributes to a total across categories.
-
-Use it when the series point values contain durations or when the category text is long.</value>
-  </data>
-  <data name="createRotatedFullStackedBarChartItem1.Hint" xml:space="preserve">
-    <value>Displays horizontal rectangles to compare the percentage each value contributes to a total across categories.
-
-Use it when the series point values contain durations or when the category text is long.</value>
-  </data>
-  <data name="createArea3DChartItem1.Description" xml:space="preserve">
-    <value>Displays data as filled areas on a diagram, with each data point displayed as a peak or hollow in the area.
-
-Use it when you need to show trends for several series on the same diagram, and also show the relationship of the parts to the whole.</value>
-  </data>
-  <data name="createArea3DChartItem1.Hint" xml:space="preserve">
-    <value>Displays data as filled areas on a diagram, with each data point displayed as a peak or hollow in the area.
-
-Use it when you need to show trends for several series on the same diagram, and also show the relationship of the parts to the whole.</value>
-  </data>
-  <data name="createFullStackedArea3DChartItem1.Description" xml:space="preserve">
-    <value>Displays data as areas on a diagram, so that the value of each data point is stacked with all the other corresponding data points' values.
-
-Use it for comparing the percentage values of several series for the same point arguments.</value>
-  </data>
-  <data name="createFullStackedArea3DChartItem1.Hint" xml:space="preserve">
-    <value>Displays data as areas on a diagram, so that the value of each data point is stacked with all the other corresponding data points' values.
-
-Use it for comparing the percentage values of several series for the same point arguments.</value>
-  </data>
-  <data name="createFunnelChartItem1.Description" xml:space="preserve">
-    <value>Displays a wide area that indicates the total point value at the top. Other areas are proportionally smaller.
-
-Use it to display stages in a sales process, show the amount of potential revenue for each stage, or identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnelChartItem1.Hint" xml:space="preserve">
-    <value>Displays a wide area that indicates the total point value at the top. Other areas are proportionally smaller.
-
-Use it to display stages in a sales process, show the amount of potential revenue for each stage, or identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnel3DChartItem1.Description" xml:space="preserve">
-    <value>Displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
-
-Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnel3DChartItem1.Hint" xml:space="preserve">
-    <value>Displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
-
-Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createStockChartItem1.Description" xml:space="preserve">
-    <value>Show variation in stock prices over the course of a day. The Open and Close prices are represented by left and right lines on each point, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createStockChartItem1.Hint" xml:space="preserve">
-    <value>Show variation in stock prices over the course of a day. The Open and Close prices are represented by left and right lines on each point, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createCandleStickChartItem1.Description" xml:space="preserve">
-    <value>Show the variation in the price of stock over the course of a day. The Open and Close prices are represented by a filled rectangle, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createCandleStickChartItem1.Hint" xml:space="preserve">
-    <value>Show the variation in the price of stock over the course of a day. The Open and Close prices are represented by a filled rectangle, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createRadarRangeAreaChartItem1.Description" xml:space="preserve">
-    <value>Displays series on a circular diagram on the basis of angles as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRadarRangeAreaChartItem1.Hint" xml:space="preserve">
-    <value>Displays series on a circular diagram on the basis of angles as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createScatterRadarLineChartItem1.Description" xml:space="preserve">
-    <value>Displays data as a line on a circular grid that has multiple axis along which data can be plotted. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createScatterRadarLineChartItem1.Hint" xml:space="preserve">
-    <value>Displays data as a line on a circular grid that has multiple axis along which data can be plotted. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createPolarRangeAreaChartItem1.Description" xml:space="preserve">
-    <value>Displays series on a circular diagram as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createPolarRangeAreaChartItem1.Hint" xml:space="preserve">
-    <value>Displays series on a circular diagram as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createScatterPolarLineChartItem1.Description" xml:space="preserve">
-    <value>Show trends for several series and compare their values for the same point arguments on a circular diagram on the basis of angles. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createScatterPolarLineChartItem1.Hint" xml:space="preserve">
-    <value>Show trends for several series and compare their values for the same point arguments on a circular diagram on the basis of angles. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createRangeAreaChartItem1.Description" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeAreaChartItem1.Hint" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeArea3DChartItem1.Description" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeArea3DChartItem1.Hint" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createSideBySideGanttChartItem1.Description" xml:space="preserve">
-    <value>Displays horizontal bars along the time axis. Each bar represents a separate event with the start and end values, hence these charts are used to track different activities during the time frame.
-
-Use it when it's necessary to show activity bars from different series one above another, to compare their duration.</value>
-  </data>
-  <data name="createSideBySideGanttChartItem1.Hint" xml:space="preserve">
-    <value>Displays horizontal bars along the time axis. Each bar represents a separate event with the start and end values, hence these charts are used to track different activities during the time frame.
-
-Use it when it's necessary to show activity bars from different series one above another, to compare their duration.</value>
-  </data>
-  <data name="createBoxPlotChartItem1.Description" xml:space="preserve">
-    <value>The Box Plot  chart is used to analyze statistic-driven data points. To draw a Box Plot point, pass the Min, Quartile1, Median, Quartile3, and Max parameters. You can also display a set of Outliers and a Mean value.</value>
-  </data>
-  <data name="createBoxPlotChartItem1.Hint" xml:space="preserve">
-    <value>The Box Plot  chart is used to analyze statistic-driven data points. To draw a Box Plot point, pass the Min, Quartile1, Median, Quartile3, and Max parameters. You can also display a set of Outliers and a Mean value.</value>
-  </data>
-  <data name="createRotatedFullStackedBarChartItem2.Description" xml:space="preserve">
-    <value>Displays horizontal rectangles to compare the percentage each value contributes to a total across categories.
-
-Use it when the series point values contain durations or when the category text is long.</value>
-  </data>
-  <data name="createRotatedFullStackedBarChartItem2.Hint" xml:space="preserve">
-    <value>Displays horizontal rectangles to compare the percentage each value contributes to a total across categories.
-
-Use it when the series point values contain durations or when the category text is long.</value>
-  </data>
-  <data name="createArea3DChartItem2.Description" xml:space="preserve">
-    <value>Displays data as filled areas on a diagram, with each data point displayed as a peak or hollow in the area.
-
-Use it when you need to show trends for several series on the same diagram, and also show the relationship of the parts to the whole.</value>
-  </data>
-  <data name="createArea3DChartItem2.Hint" xml:space="preserve">
-    <value>Displays data as filled areas on a diagram, with each data point displayed as a peak or hollow in the area.
-
-Use it when you need to show trends for several series on the same diagram, and also show the relationship of the parts to the whole.</value>
-  </data>
-  <data name="createFullStackedArea3DChartItem2.Description" xml:space="preserve">
-    <value>Displays data as areas on a diagram, so that the value of each data point is stacked with all the other corresponding data points' values.
-
-Use it for comparing the percentage values of several series for the same point arguments.</value>
-  </data>
-  <data name="createFullStackedArea3DChartItem2.Hint" xml:space="preserve">
-    <value>Displays data as areas on a diagram, so that the value of each data point is stacked with all the other corresponding data points' values.
-
-Use it for comparing the percentage values of several series for the same point arguments.</value>
-  </data>
-  <data name="createFunnelChartItem2.Description" xml:space="preserve">
-    <value>Displays a wide area that indicates the total point value at the top. Other areas are proportionally smaller.
-
-Use it to display stages in a sales process, show the amount of potential revenue for each stage, or identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnelChartItem2.Hint" xml:space="preserve">
-    <value>Displays a wide area that indicates the total point value at the top. Other areas are proportionally smaller.
-
-Use it to display stages in a sales process, show the amount of potential revenue for each stage, or identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnel3DChartItem2.Description" xml:space="preserve">
-    <value>Displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
-
-Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createFunnel3DChartItem2.Hint" xml:space="preserve">
-    <value>Displays a wide area at the top, indicating the total points' value, while other areas are proportionally smaller.
-
-Use it when it is necessary to represent stages in a sales process, show the amount of potential revenue for each stage, as well as identify potential problem areas in an organization's sales processes.</value>
-  </data>
-  <data name="createStockChartItem2.Description" xml:space="preserve">
-    <value>Show variation in stock prices over the course of a day. The Open and Close prices are represented by left and right lines on each point, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createStockChartItem2.Hint" xml:space="preserve">
-    <value>Show variation in stock prices over the course of a day. The Open and Close prices are represented by left and right lines on each point, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createCandleStickChartItem2.Description" xml:space="preserve">
-    <value>Show the variation in the price of stock over the course of a day. The Open and Close prices are represented by a filled rectangle, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createCandleStickChartItem2.Hint" xml:space="preserve">
-    <value>Show the variation in the price of stock over the course of a day. The Open and Close prices are represented by a filled rectangle, and the Low and High prices are represented by the bottom and top values of the vertical line which is shown at each point.</value>
-  </data>
-  <data name="createRadarRangeAreaChartItem2.Description" xml:space="preserve">
-    <value>Displays series on a circular diagram on the basis of angles as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRadarRangeAreaChartItem2.Hint" xml:space="preserve">
-    <value>Displays series on a circular diagram on the basis of angles as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createScatterRadarLineChartItem2.Description" xml:space="preserve">
-    <value>Displays data as a line on a circular grid that has multiple axis along which data can be plotted. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createScatterRadarLineChartItem2.Hint" xml:space="preserve">
-    <value>Displays data as a line on a circular grid that has multiple axis along which data can be plotted. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createPolarRangeAreaChartItem2.Description" xml:space="preserve">
-    <value>Displays series on a circular diagram as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createPolarRangeAreaChartItem2.Hint" xml:space="preserve">
-    <value>Displays series on a circular diagram as filled areas, defined by data points with two values that are minimum and maximum limits. Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createScatterPolarLineChartItem2.Description" xml:space="preserve">
-    <value>Show trends for several series and compare their values for the same point arguments on a circular diagram on the basis of angles. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createScatterPolarLineChartItem2.Hint" xml:space="preserve">
-    <value>Show trends for several series and compare their values for the same point arguments on a circular diagram on the basis of angles. The series points are drawn in the circular grid in the same order that they have in the series point collection.</value>
-  </data>
-  <data name="createRangeAreaChartItem2.Description" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeAreaChartItem2.Hint" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeArea3DChartItem2.Description" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createRangeArea3DChartItem2.Hint" xml:space="preserve">
-    <value>Displays series as filled areas on a diagram, defined by data points with two values that are minimum and maximum limits.
-
-Use it when you need to accentuate the delta between the start and end values.</value>
-  </data>
-  <data name="createSideBySideGanttChartItem2.Description" xml:space="preserve">
-    <value>Displays horizontal bars along the time axis. Each bar represents a separate event with the start and end values, hence these charts are used to track different activities during the time frame.
-
-Use it when it's necessary to show activity bars from different series one above another, to compare their duration.</value>
-  </data>
-  <data name="createSideBySideGanttChartItem2.Hint" xml:space="preserve">
-    <value>Displays horizontal bars along the time axis. Each bar represents a separate event with the start and end values, hence these charts are used to track different activities during the time frame.
-
-Use it when it's necessary to show activity bars from different series one above another, to compare their duration.</value>
-  </data>
-  <data name="createBoxPlotChartItem2.Description" xml:space="preserve">
-    <value>The Box Plot  chart is used to analyze statistic-driven data points. To draw a Box Plot point, pass the Min, Quartile1, Median, Quartile3, and Max parameters. You can also display a set of Outliers and a Mean value.</value>
-  </data>
-  <data name="createBoxPlotChartItem2.Hint" xml:space="preserve">
-    <value>The Box Plot  chart is used to analyze statistic-driven data points. To draw a Box Plot point, pass the Min, Quartile1, Median, Quartile3, and Max parameters. You can also display a set of Outliers and a Mean value.</value>
-  </data>
+  <metadata name="REP_51BS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>134, 20</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="xtraTabPage2.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAANdEVYdFRpdGxlAFJlcG9ydDsMcqUZAAACnklEQVQ4
-        T6WTW0iTYRyHV57KPFSaXXdRpmFpRis7oSAdCQuynNMUO0gnD3Npo2VbxUzSgko06EJqOg0sU+c2nVs6
-        M5s34QEssfIwN7d5dlOn/Hpf9UK+uuvi+eDj/Z7n/+eFjwXgv1h6sFirCE4EZ4ILhSeWSXgPyhGTnC8h
-        724roOermQEn/atz2t46MTIfyZB2X4abQil+DI4h+nIeLvFeIym9CB0VWdDknmwi37syAy5thWexYPuF
-        LFERCt5o0dreD12nEe8bupDzsgrRcXx0tCmgzTlGBXdmwLX1eRTmJ7vQ+PYWhJJinIgRg32Uj4gzAiSn
-        56FAeB5fFY+hEkVSwYMZcPucfwoOSzPaS2IxYDBC26LHx1o1PlTXQdnQjArJafRoBJALI6jgyQysacw9
-        jjmTBm0vwuGYX8Dg8Dh6+k34/tuE7p9DUIgOYkiXCbngMBW8mIG1moeRmDUooX96ZDFgmZyBcdSGAfME
-        +khMLdoPiy4DNfwDVFjPDLjXZ4fD3leJL08OYdaxgOEJO0zjS5FB6xS02WxYdSmoSmNTYQMz4KEkq9l7
-        y9AsCYN9bh6mMTuMhKFRig2au3sw+ukaKm+EUmEjM+Ap54dhursYjeJ9mJpxkMl2GIhoGCEbjExDnbUb
-        I+orqLgaTAUfZsCrKpWNqc5CaO/txYTNsSguylZyDwQVbxcsqkS8Swqigi8z4F15PRST355BLQiF+k4I
-        6m+HoC4jGKr0YChTd0KREgRLLRdlFwOp4PdXgK42rpfAqkyARUGJh7k2DhY5F2Y5B8M1HJirY1Aa6//P
-        wLpibkBTeeIOlCUQ4gMhiw9Aadx2lHL9UcLxh5SzDdILW1EQtaWFDmQG6J/oQfAh+BI2LeO3zOYVeBOc
-        lwJg/QFRnWJuTEx6zQAAAABJRU5ErkJggg==
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAARdEVYdFRpdGxlAExpbmU7Q2hhcnQ7Tc9OnwAAAWNJ
+        REFUOE+V0b0vQ2EUx/FrQiPM/QNsxGiy2Ax2SQeJQSIxNJV0ESqGDl4WAxIhomnEYBCDhoE0rCpEUpHI
+        04tBGyISgxj4/m6ee3PbFDV87jnnec557puT3F6Jw9iouhHBjAolil+I2vw3EahXudFFp5WQxzOyWIQO
+        TqALI1hFAe9QvwvvCcI6oCH/DmouYgvj6EUzgpkgqeG/ow6rtx+ou/gfzstpIg5jo+pGBDMqlCi6NjqD
+        s7k4jKK/VuPRRqOLmu7xim7oANWKZbQot6LYgHp1Q+8JfDEtzq+tDzD0BhcFFIfS+33sTeAJc2iDNxc+
+        wHk4Sc5cH059jC7sDvtrmexSirXPi1zKFA5SPeF+qSq4287xXvqKXEq4xO3N0WSMvU3coV+9vvDwGM6n
+        lzMR6gqaUEar9oV9vV4JZ/A+shb1xbVYQadt/vHX0tOuXpsb7wJFHaLYiOA3VxWobfxDzvkGhQIe78KP
+        oz0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="barButtonItem1.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="simpleButton4.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        sf8C09SJczIFVUEAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="simpleButton3.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="simpleButton2.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAAfdEVYdFRpdGxlAEV4cG9ydDtYc2x0O0V4cG9ydFRv
+        WHNsdDsT1nubAAABNUlEQVRYR+WQPQ7CMAyFOV+PwgE4QdcOiIGpMxNiZGJAYuIOnZA4BAzhPYRRcJ02
+        paH8PemTa9dpPhg5596KORwSczgk5nBIzCHJ89x15AAywLM1rDuIOSQ4hBIf7hdFcS7LMkOrv/XQ+5jD
+        G51CgaqqTIlWgcli7vrAyD9mSVAAezX4LrkAoyWiBBirkuV+e+2Z0K4vwNwkTpSIFpCLpGfVz9LrXS3A
+        iATeZdhrFpAPsrJnWK131i4FGjhir1mAkQ9Lz+ojM0bvNoUS2GsX0JXxn/1fbO2GEiXQh7Z8hYD1Mlla
+        BWbjVQ0eShnrDozTCaymO15yhZFnHzXfoE0ngDN3Qr1Ub/4nAqE58jqBUNTeawRiQX5QICbe7ocLxMLg
+        TFqBJ/gMgS6kFlgD86IA67vA+3CjC4yA0LudSp2BAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="simpleButton1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAANdEVYdFRpdGxlAFJlcG9ydDsMcqUZAAAIlklEQVRY
@@ -429,27 +284,11 @@ Use it when it's necessary to show activity bars from different series one above
         jgnRE//X/REDnkzwwww3zU+FfwF54L95HSFyN25dPPY/yWUJNrs17CkAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="chartBarController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>367, 14</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>58</value>
-  </metadata>
-  <data name="frmReport51.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="frmReport52.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAoVJREFUOE+VkmtIk2EUx5d5yQ2vZR/qQxekrMjQUlillmOVl+FCC0tMW5kmWN4v
-        DTc0FZGZVEqIVpZlzlJJxJTWXl9t2vI6pxX1xQ99iIwKobJs/HvPuwVZH9IDh8PvcP7/9zzv8wj+E8u4
-        tONyua0SLynsCltMjKp1CspmUy/HZLSksFfen4ThrQUFLWYQW9uLD4f85gm0vfqJ3HsmMnCwthcfDpmN
-        Y9BOzSP99igZOHFJW5AR1X/+CTXonDRA1TGtYQSN49+Ren2YDITmUzL2ZZIc5pMy1ja3IOxLmyRsuVaK
-        krsSGhAm1z1H3cgckmqNZODyQhEFi64VU4my3xstCMeSplC8+dCO4jv7eIGiZhBXB78hsXqA2G0yIQLz
-        DRpMxocTryDRn2dyUt8KwuC0BoU399KAa9zlflSyXxBb1Ufsbj5+AHPXimCKlRI7C0Yro9iJKjmGKyJp
-        ZVFBfSD0r9XIq93FfzFGw6JUN4voCobYYyx6P75qcjAqD7EajFdEANNtGCo7yAsya3ag05yB81d8eUFU
-        uQ7Krs+QlT0m9hyJ3INZdQqGwsTEQoGxRAKMlcKgCqaGe+olH2iNCqRoNvOCsOIeZD/8iEPF3cQrjdKd
-        +JQVh2cSf2KRoP+CGJaBHOiz+JU9FGXrcYM9goSL63iBRNWFtAczCOUqx6sMIb6YSZbjadB2q4Eu3Q8/
-        mDN4dHYbNTzjitaiuiccx1RreINgZSeSm98jKL+T2Ktv91a8OyFFr3iL1aBd4fOk4/QmtMR767mGS0ye
-        l/5owWoczvYkdg3M0DLi3A4EnNMyHLt1+29kmABvdPltIOav0ZFLZ1ul10ePQ2ir/NX+xSQSWavA7hcQ
-        nTEB4jmKwgAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABJ0RVh0VGl0
+        bGUAU2FsZXM7R3JhcGg74zhHWAAAAElJREFUOE9j+P//P0UYqyApGKsgKRirIC7s27TjPzIGiWFViAvT
+        1wB0xUBMQwPQJYB4EBpQtnw6HQ24kexCmQHYFNPWAPLxfwYAVyqy4isnOosAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

@@ -480,11 +480,11 @@
     <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\frmReport52.cs">
+    <Compile Include="Reports\frmReport53.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\frmReport52.Designer.cs">
-      <DependentUpon>frmReport52.cs</DependentUpon>
+    <Compile Include="Reports\frmReport53.Designer.cs">
+      <DependentUpon>frmReport53.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmReport51.cs">
       <SubType>Form</SubType>
@@ -1141,6 +1141,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExpeditionUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ExpeditionUserControl.Designer.cs">
+      <DependentUpon>ExpeditionUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SettingMaterialPricesUserControl.cs">
       <SubType>UserControl</SubType>
@@ -2182,8 +2188,8 @@
     <EmbeddedResource Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\frmReport52.resx">
-      <DependentUpon>frmReport52.cs</DependentUpon>
+    <EmbeddedResource Include="Reports\frmReport53.resx">
+      <DependentUpon>frmReport53.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReport51.resx">
       <DependentUpon>frmReport51.cs</DependentUpon>
@@ -2202,6 +2208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ExpeditionUserControl.resx">
+      <DependentUpon>ExpeditionUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SettingMaterialPricesUserControl.resx">
       <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>

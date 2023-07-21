@@ -462,14 +462,16 @@ namespace SP.Reports
                 s.AvgPrice,
                 s.OutGrpId,
                 s.GrpName,
+                s.GrpNum
             }).OrderBy(o => o.MatName).ToList();
 
-            var mat_grp = mat.GroupBy(g => new { g.GrpName, g.OutGrpId }).Select(s => new
+            var mat_grp = mat.GroupBy(g => new { g.GrpName, g.OutGrpId, g.GrpNum }).Select(s => new
             {
                 s.Key.OutGrpId,
+                s.Key.GrpNum,
                 Name = s.Key.GrpName,
                 Total = s.Sum(xs => (xs.AvgPrice * xs.Remain)),
-            }).OrderBy(o => o.Name).ToList();
+            }).OrderBy(o => o.GrpNum).ToList();
 
             realation.Add(new
             {

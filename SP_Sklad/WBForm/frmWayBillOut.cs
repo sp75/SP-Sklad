@@ -28,6 +28,7 @@ namespace SP_Sklad.WBForm
         public Guid? doc_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
+        private bool is_update_record { get; set; }
         private GetWayBillDetOut_Result wbd_row
         {
             get
@@ -38,6 +39,9 @@ namespace SP_Sklad.WBForm
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         private UserSettingsRepository user_settings { get; set; }
         private DiscCards disc_card { get; set; }
+        private List<WaybillDet> tmp_WaybillDet { get; set; }
+        private List<WaybillDet> tmp_rsv_WaybillDet { get; set; }
+        private WaybillList tmp_wb { get; set; }
 
         public frmWayBillOut(int wtype, int? wbill_id)
         {
@@ -107,6 +111,12 @@ namespace SP_Sklad.WBForm
                     }
                     //     wb.PersonId = DBHelper.CurrentUser.KaId;
                 }
+                else
+                {
+                    tmp_wb = _db.WaybillList.Where(w => w.WbillId == wb.WbillId).AsNoTracking().FirstOrDefault();
+                    tmp_WaybillDet = _db.WaybillDet.Where(w => w.WbillId == wb.WbillId).AsNoTracking().ToList();
+                    tmp_rsv_WaybillDet = _db.WaybillDet.Where(w => w.WbillId == wb.WbillId && w.WMatTurn1.Any()).AsNoTracking().ToList();
+                }
 
                 WaybillListBS.DataSource = wb;
                 checkEdit2.Checked = (wb.ToDate != null);
@@ -116,6 +126,8 @@ namespace SP_Sklad.WBForm
             }
 
             RefreshDet();
+
+            is_update_record = false;
         }
 
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -191,6 +203,7 @@ namespace SP_Sklad.WBForm
             }
 
             is_new_record = false;
+            is_update_record = false;
 
             Close();
         }
@@ -374,6 +387,45 @@ namespace SP_Sklad.WBForm
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void CancelUpdate()
+        {
+            if (is_new_record)
+            {
+                return;
+            }
+
+            wb.Num = tmp_wb.Num;
+            wb.KaId = tmp_wb.KaId;
+            wb.OnDate = tmp_wb.OnDate;
+            wb.OnDate = tmp_wb.OnDate;
+            wb.Notes = tmp_wb.Notes;
+            wb.Reason = tmp_wb.Reason;
+            wb.PersonId = tmp_wb.PersonId;
+            wb.PTypeId = tmp_wb.PTypeId;
+            wb.RouteId = tmp_wb.RouteId;
+            wb.Received = tmp_wb.Received;
+            wb.AttNum = tmp_wb.AttNum;
+            wb.AttDate = tmp_wb.AttDate;
+            wb.ShipmentDate = tmp_wb.ShipmentDate;
+
+            if (tmp_WaybillDet.Any())
+            {
+                _db.DeleteWhere<WaybillDet>(w => w.WbillId == wb.WbillId);
+                _db.WaybillDet.AddRange(tmp_WaybillDet);
+            }
+
+            _db.SaveChanges();
+
+            foreach(var item in tmp_rsv_WaybillDet)
+            {
+                var r = new ObjectParameter("RSV", typeof(Int32));
+
+                _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
+            }
+
+            is_update_record = false;
         }
 
         private void WaybillDetInGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -600,6 +652,8 @@ namespace SP_Sklad.WBForm
             _db.SaveChanges();
 
            IHelper.MapProp(_db.GetWayBillDetOut(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
+
+            is_update_record = true;
         }
 
         private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -748,13 +802,21 @@ namespace SP_Sklad.WBForm
 
         private void frmWayBillOut_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
+            //if ((is_new_record || _db.IsAnyChanges()) && OkButton.Enabled)
+            if (is_new_record || is_update_record)
             {
-                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №"+wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-            
+                var m_recult = MessageBox.Show(Resources.save_wb, "Видаткова накладна №" + wb.Num, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
+
                 if (m_recult == DialogResult.Yes)
                 {
-                    OkButton.PerformClick();
+                    if (OkButton.Enabled)
+                    {
+                        OkButton.PerformClick();
+                    }
+                    else
+                    {
+                        e.Cancel = true;
+                    }
                 }
 
                 if (m_recult == DialogResult.Cancel)
@@ -762,6 +824,10 @@ namespace SP_Sklad.WBForm
                     e.Cancel = true;
                 }
 
+                if (m_recult == DialogResult.No)
+                {
+                    CancelUpdate();
+                }
             }
         }
 
@@ -860,6 +926,17 @@ namespace SP_Sklad.WBForm
                 RefreshDet();
             }
 
+        }
+
+
+        private void WaybillListBS_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            is_update_record = true; 
+        }
+
+        private void WaybillDetOutBS_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
+        {
+            is_update_record = true;
         }
     }
 }

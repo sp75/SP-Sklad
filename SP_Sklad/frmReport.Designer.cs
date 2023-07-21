@@ -37,8 +37,8 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnShowGrid = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSortColumn = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.mainPanel = new DevExpress.XtraEditors.PanelControl();
@@ -213,8 +213,8 @@
             // 
             // panelControl2
             // 
-            this.panelControl2.Controls.Add(this.simpleButton5);
-            this.panelControl2.Controls.Add(this.simpleButton4);
+            this.panelControl2.Controls.Add(this.btnShowGrid);
+            this.panelControl2.Controls.Add(this.btnSortColumn);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -223,27 +223,28 @@
             this.panelControl2.Size = new System.Drawing.Size(452, 51);
             this.panelControl2.TabIndex = 29;
             // 
-            // simpleButton5
+            // btnShowGrid
             // 
-            this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton5.ImageOptions.Image = global::SP_Sklad.Properties.Resources.table_16x16;
-            this.simpleButton5.Location = new System.Drawing.Point(116, 10);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(127, 30);
-            this.simpleButton5.TabIndex = 5;
-            this.simpleButton5.Text = "Показати списком";
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            this.btnShowGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnShowGrid.ImageOptions.Image = global::SP_Sklad.Properties.Resources.table_16x16;
+            this.btnShowGrid.Location = new System.Drawing.Point(116, 10);
+            this.btnShowGrid.Name = "btnShowGrid";
+            this.btnShowGrid.Size = new System.Drawing.Size(127, 30);
+            this.btnShowGrid.TabIndex = 5;
+            this.btnShowGrid.Text = "Показати списком";
+            this.btnShowGrid.Visible = false;
+            this.btnShowGrid.Click += new System.EventHandler(this.simpleButton5_Click);
             // 
-            // simpleButton4
+            // btnSortColumn
             // 
-            this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.simpleButton4.Location = new System.Drawing.Point(9, 10);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(101, 30);
-            this.simpleButton4.TabIndex = 4;
-            this.simpleButton4.Text = "Сортування";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            this.btnSortColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSortColumn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
+            this.btnSortColumn.Location = new System.Drawing.Point(9, 10);
+            this.btnSortColumn.Name = "btnSortColumn";
+            this.btnSortColumn.Size = new System.Drawing.Size(101, 30);
+            this.btnSortColumn.TabIndex = 4;
+            this.btnSortColumn.Text = "Сортування";
+            this.btnSortColumn.Click += new System.EventHandler(this.simpleButton4_Click);
             // 
             // OkButton
             // 
@@ -1586,7 +1587,7 @@
         public System.Windows.Forms.Panel PersonPanel;
         private DevExpress.XtraEditors.LookUpEdit PersonLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl18;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton btnSortColumn;
         private DevExpress.XtraEditors.CheckEdit checkEdit9;
         public System.Windows.Forms.Panel wmatturnStatusPanel;
         public DevExpress.XtraEditors.LookUpEdit wmatturnStatus;
@@ -1612,6 +1613,6 @@
         public System.Windows.Forms.Panel RoutePanel;
         private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl24;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
+        private DevExpress.XtraEditors.SimpleButton btnShowGrid;
     }
 }

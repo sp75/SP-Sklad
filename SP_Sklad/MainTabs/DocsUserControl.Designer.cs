@@ -594,6 +594,8 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
+            this.expeditionUserControl1 = new SP_Sklad.UserControls.ExpeditionUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -867,6 +869,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).BeginInit();
+            this.xtraTabPage33.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -1016,6 +1019,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "truck.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1041,7 +1045,8 @@
             this.xtraTabPage19,
             this.xtraTabPage25,
             this.xtraTabPage29,
-            this.xtraTabPage31});
+            this.xtraTabPage31,
+            this.xtraTabPage33});
             // 
             // xtraTabPage7
             // 
@@ -7233,6 +7238,26 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // xtraTabPage33
+            // 
+            this.xtraTabPage33.Controls.Add(this.expeditionUserControl1);
+            this.xtraTabPage33.Name = "xtraTabPage33";
+            this.xtraTabPage33.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage33.Text = "Екпедиція";
+            // 
+            // expeditionUserControl1
+            // 
+            this.expeditionUserControl1.CopyBtn = null;
+            this.expeditionUserControl1.DeleteBtn = null;
+            this.expeditionUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expeditionUserControl1.EditBtn = null;
+            this.expeditionUserControl1.ExecuteBtn = null;
+            this.expeditionUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.expeditionUserControl1.Name = "expeditionUserControl1";
+            this.expeditionUserControl1.PrintBtn = null;
+            this.expeditionUserControl1.Size = new System.Drawing.Size(1138, 695);
+            this.expeditionUserControl1.TabIndex = 0;
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7527,6 +7552,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).EndInit();
+            this.xtraTabPage33.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -8083,5 +8109,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage31;
         private UserControls.SettingMaterialPricesUserControl settingMaterialPricesUserControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
+        private UserControls.ExpeditionUserControl expeditionUserControl1;
     }
 }

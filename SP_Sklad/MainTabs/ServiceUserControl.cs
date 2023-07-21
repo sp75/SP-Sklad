@@ -69,7 +69,7 @@ namespace SP_Sklad.MainTabs
                     UserComboBox.EditValue = -1;
 
                     wTypeList.Properties.DataSource = new List<object>() { new { FunId = (int?)-1, Name = "Усі" } }
-                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51 || w.UserTreeView.Functions.FunId == 6))
+                        .Concat(new BaseEntities().ViewLng.Where(w => w.LangId == 2 && (w.UserTreeView.Functions.TabId == 24 || w.UserTreeView.Functions.TabId == 27 || w.UserTreeView.Functions.TabId == 51 || w.UserTreeView.Functions.FunId == 6 || w.UserTreeView.Id == 10))
                         .Select(s => new
                         {
                             s.UserTreeView.FunId,

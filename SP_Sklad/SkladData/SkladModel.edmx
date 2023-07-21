@@ -541,8 +541,8 @@
           <Property Name="WId" Type="int" />
           <Property Name="POSTerminalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="CurrentSaldo" Type="numeric" Precision="15" Scale="4" />
-          <Property Name="FOPId" Type="int" />
           <Property Name="ParentKagentId" Type="int" />
+          <Property Name="UpdatedBy" Type="int" />
         </EntityType>
         <EntityType Name="KAgentAccount">
           <Key>
@@ -19433,7 +19433,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WayBillSvc" Relationship="BaseModel.FK_WBS_PERSONID" FromRole="Kagent" ToRole="WayBillSvc" />
           <NavigationProperty Name="PriceList" Relationship="BaseModel.PriceListKagent" FromRole="Kagent" ToRole="PriceList" />
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
-          <Property Name="FOPId" Type="Int32" />
+          <Property Name="UpdatedBy" Type="Int32" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -25339,7 +25339,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Kagent">
             <EntityTypeMapping TypeName="BaseModel.Kagent">
               <MappingFragment StoreEntitySet="Kagent">
-                <ScalarProperty Name="FOPId" ColumnName="FOPId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="ParentKagentId" ColumnName="ParentKagentId" />
                 <ScalarProperty Name="CurrentSaldo" ColumnName="CurrentSaldo" />
                 <ScalarProperty Name="POSTerminalCode" ColumnName="POSTerminalCode" />
