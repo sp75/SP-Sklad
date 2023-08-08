@@ -383,6 +383,10 @@
         <EntityTypeShape EntityType="BaseModel.DeboningWeighing" Width="1.5" PointX="13.375" PointY="12.75" />
         <AssociationConnector Association="BaseModel.FK_DeboningWeighing_Materials" />
         <AssociationConnector Association="BaseModel.FK_DeboningWeighing_WaybillList" />
+        <EntityTypeShape EntityType="BaseModel.Expedition" Width="1.5" PointX="30.625" PointY="39.5" />
+        <EntityTypeShape EntityType="BaseModel.ExpeditionDet" Width="1.5" PointX="13.375" PointY="17.125" />
+        <EntityTypeShape EntityType="BaseModel.v_ExpeditionDet" Width="1.5" PointX="18.375" PointY="37.125" />
+        <AssociationConnector Association="BaseModel.FK_Expedition_Cars" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -413,6 +417,7 @@
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagementDet" Width="2.375" PointX="15.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProductionMonitor" Width="1.5" PointX="13.375" PointY="17.75" />
         <EntityTypeShape EntityType="BaseModel.v_DeboningDet" Width="1.5" PointX="15.375" PointY="17.75" />
+        <EntityTypeShape EntityType="BaseModel.v_Expedition" Width="1.5" PointX="17.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

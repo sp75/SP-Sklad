@@ -98,6 +98,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> CurrentSaldo { get; set; }
         public Nullable<int> ParentKagentId { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<int> FOPId { get; set; }
     
         public virtual ICollection<Cars> Cars { get; set; }
         public virtual ICollection<Commission> Commission { get; set; }
