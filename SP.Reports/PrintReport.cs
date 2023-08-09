@@ -93,7 +93,7 @@ namespace SP.Reports
                 case 39:
                     var sort_list = GetSortedList(_rep_id);
 
-                    return _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s=> new
+                    return _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s => new
                     {
                         ГрупаКонтрагентів = s.KaGrpName,
                         Контрагент = s.KaName,
@@ -106,7 +106,7 @@ namespace SP.Reports
                         ВиданоСума = s.Summ,
                         ПовернутоКсть = s.ReturnAmountIn,
                         ПовернутоСума = s.ReturnSummIn,
-                        ВсьогоКсть = s.Amount - s.ReturnAmountIn
+                        ВсьогоКсть = (s.Amount ?? 0) - (s.ReturnAmountIn ?? 0)
                     }).ToList();
 
                 default:

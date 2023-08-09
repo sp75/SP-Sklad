@@ -12,21 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Cars
+    public partial class ExpeditionDet
     {
-        public Cars()
-        {
-            this.Routes = new HashSet<Routes>();
-            this.Expedition = new HashSet<Expedition>();
-        }
-    
         public System.Guid Id { get; set; }
-        public string Name { get; set; }
-        public string Number { get; set; }
-        public Nullable<int> DriverId { get; set; }
-    
-        public virtual ICollection<Routes> Routes { get; set; }
-        public virtual Kagent Kagent { get; set; }
-        public virtual ICollection<Expedition> Expedition { get; set; }
+        public System.Guid ExpeditionId { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public int WbillId { get; set; }
+        public int MId { get; set; }
+        public Nullable<System.DateTime> CreatedAt { get; set; }
     }
 }

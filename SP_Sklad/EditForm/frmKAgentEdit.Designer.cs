@@ -1363,10 +1363,10 @@
             // 
             this.labelControl69.Location = new System.Drawing.Point(15, 148);
             this.labelControl69.Name = "labelControl69";
-            this.labelControl69.Size = new System.Drawing.Size(90, 16);
+            this.labelControl69.Size = new System.Drawing.Size(139, 16);
             this.labelControl69.StyleController = this.styleController1;
             this.labelControl69.TabIndex = 42;
-            this.labelControl69.Text = "Належить ФОП";
+            this.labelControl69.Text = "Належить контрагенту:";
             // 
             // lookUpEdit4
             // 

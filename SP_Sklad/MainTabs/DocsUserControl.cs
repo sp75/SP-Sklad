@@ -346,6 +346,10 @@ namespace SP_Sklad.MainTabs
                     settingMaterialPricesUserControl1.NewItem();
                     break;
 
+                case 13:
+                    expeditionUserControl1.NewItem();
+                    break;
+
             }
 
             RefrechItemBtn.PerformClick();
@@ -402,6 +406,13 @@ namespace SP_Sklad.MainTabs
                         using (var smp_frm = new frmSettingMaterialPrices(settingMaterialPricesUserControl1.row_smp.Id))
                         {
                             smp_frm.ShowDialog();
+                        }
+                        break;
+
+                    case 13:
+                        using (var ex_frm = new frmExpedition(expeditionUserControl1.row_exp.Id))
+                        {
+                            ex_frm.ShowDialog();
                         }
                         break;
                 }
@@ -598,6 +609,10 @@ namespace SP_Sklad.MainTabs
 
                 case 12:
                     settingMaterialPricesUserControl1.GetData();
+                    break;
+
+                case 13:
+                    expeditionUserControl1.GetData();
                     break;
             }
 

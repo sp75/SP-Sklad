@@ -25,8 +25,8 @@ namespace SP_Sklad.UserControls
         public BarButtonItem CopyBtn { get; set; }
         public BarButtonItem PrintBtn { get; set; }
 
-        public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() is NotLoadedObject ? null : SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
-        public v_SettingMaterialPricesDet row_smp_det => SettingMaterialPricesDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
+        public v_Expedition row_exp => ExpeditionsGridView.GetFocusedRow() is NotLoadedObject ? null : ExpeditionsGridView.GetFocusedRow() as v_Expedition;
+        public v_ExpeditionDet row_smp_det => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
 
         private UserAccess user_access { get; set; }
 
@@ -39,18 +39,18 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
-            row = SettingMaterialPricesGridView.FocusedRowHandle;
+            row = ExpeditionsGridView.FocusedRowHandle;
             restore = true;
 
-            SettingMaterialPricesGridControl.DataSource = null;
-            SettingMaterialPricesGridControl.DataSource = SettingMaterialPricesSource;
+            ExpeditionsGridControl.DataSource = null;
+            ExpeditionsGridControl.DataSource = ExpeditionsSource;
 
             GetDetailData();
         }
 
         public void NewItem()
         {
-            using (var frm = new frmSettingMaterialPrices())
+            using (var frm = new frmExpedition())
             {
                 frm.ShowDialog();
             }
@@ -58,11 +58,11 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
-            ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
-            EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
-            CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1); 
-            PrintBtn.Enabled = (row_smp != null);
+            DeleteBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
+            ExecuteBtn.Enabled = (row_exp != null && user_access.CanPost == 1);
+            EditBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanModify == 1);
+            CopyBtn.Enabled = (row_exp != null && user_access.CanModify == 1); 
+            PrintBtn.Enabled = (row_exp != null);
 
             GetDetailData();
         }
@@ -70,13 +70,13 @@ namespace SP_Sklad.UserControls
 
         private void GetDetailData()
         {
-            if (row_smp != null)
+            if (row_exp != null)
             {
-                SettingMaterialPricesDetBS.DataSource = DB.SkladBase().v_SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == row_smp.Id).ToList();
+                ExpeditionDetBS.DataSource = DB.SkladBase().v_ExpeditionDet.Where(w => w.ExpeditionId == row_exp.Id).ToList();
             }
             else
             {
-                SettingMaterialPricesDetBS.DataSource = null;
+                ExpeditionDetBS.DataSource = null;
             }
         }
 
@@ -96,7 +96,7 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var list = DB.SkladBase().v_SettingMaterialPrices.AsQueryable();
+            var list = DB.SkladBase().v_Expedition.AsQueryable();
             e.QueryableSource = list;
         }
 
@@ -107,8 +107,8 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            SettingMaterialPricesGridView.TopRowIndex = row;
-            SettingMaterialPricesGridView.FocusedRowHandle = row;
+            ExpeditionsGridView.TopRowIndex = row;
+            ExpeditionsGridView.FocusedRowHandle = row;
             restore = false;
         }
 
@@ -160,32 +160,6 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void HistoryBtnItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (row_smp_det != null)
-            {
-                new frmMaterialPriceHIstory(row_smp_det.MatId).ShowDialog();
-            }
-        }
-
-        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowTurnMaterial(row_smp_det.MatId);
-        }
-
-        private void MatIfoBtnItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowMatInfo(row_smp_det.MatId);
-        }
-
-        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowMatRSV(row_smp_det.MatId, DB.SkladBase());
-        }
-
-        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            new frmKagentMaterilPrices().ShowDialog();
-        }
+  
     }
 }

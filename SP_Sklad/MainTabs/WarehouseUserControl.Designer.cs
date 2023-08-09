@@ -828,7 +828,7 @@
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl7;
             this.bar4.Text = "Custom 5";
-            this.bar4.Visible = false;
+            this.bar4.Visible = true;
             // 
             // DelItem
             // 

@@ -507,6 +507,12 @@
     <Compile Include="SkladData\DefectsClassifier.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\Expedition.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ExpeditionDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetDiscount_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -592,6 +598,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_DeboningDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_Expedition.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_ExpeditionDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
@@ -1924,6 +1936,12 @@
     <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmExpedition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmExpedition.Designer.cs">
+      <DependentUpon>frmExpedition.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmSettingMaterialPrices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2451,6 +2469,9 @@
     <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmExpedition.resx">
+      <DependentUpon>frmExpedition.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmSettingMaterialPrices.resx">
       <DependentUpon>frmSettingMaterialPrices.cs</DependentUpon>
     </EmbeddedResource>
@@ -2551,6 +2572,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CurrencyRate.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DefectsClassifier.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.Expedition.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
@@ -2637,6 +2659,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BankStatementsDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighing.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Kagent.datasource" />
