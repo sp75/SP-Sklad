@@ -403,24 +403,28 @@ namespace SP_Sklad.WBForm
             {
                 var BarCodeText = textEdit.Text.Split('+');
                 string kod = BarCodeText[0];
-                var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
+               // var item = _db.Materials.Where(w => w.BarCode == kod).Select(s => s.MatId).FirstOrDefault();
 
-                using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, item, wb.KaId.Value, -1))
+                var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
+                if (bc != null)
                 {
-                    if (frm.ShowDialog() == DialogResult.OK)
+                    using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, bc.MatId, wb.KaId.Value, -1))
                     {
-                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
-                        if (mat_row != null)
+                        if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
+                            var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+                            if (mat_row != null)
                             {
-                                pos_out_list = frm.pos_out_list,
-                                outPosId = mat_row.PosId
-                            })
-                            {
-                                if (df.ShowDialog() == DialogResult.OK)
+                                using (var df = new frmWBReturnDetIn(_db, null, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime)
                                 {
-                                    RefreshDet();
+                                    pos_out_list = frm.pos_out_list,
+                                    outPosId = mat_row.PosId
+                                })
+                                {
+                                    if (df.ShowDialog() == DialogResult.OK)
+                                    {
+                                        RefreshDet();
+                                    }
                                 }
                             }
                         }

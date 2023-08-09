@@ -406,6 +406,7 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -2047,7 +2048,8 @@
             this.gridColumn72,
             this.gridColumn111,
             this.gridColumn112,
-            this.gridColumn113});
+            this.gridColumn113,
+            this.colMatId});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -4371,6 +4373,12 @@
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
             // 
+            // colMatId
+            // 
+            this.colMatId.Caption = "Код товару";
+            this.colMatId.FieldName = "MatId";
+            this.colMatId.Name = "colMatId";
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4950,5 +4958,6 @@
         private DevExpress.XtraBars.BarButtonItem SetPriceBtnItem;
         private DevExpress.XtraBars.PopupMenu PriceTypesPopupMenu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
+        private DevExpress.XtraGrid.Columns.GridColumn colMatId;
     }
 }

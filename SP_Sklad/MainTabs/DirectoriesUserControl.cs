@@ -1288,8 +1288,11 @@ namespace SP_Sklad.MainTabs
 
                     var BarCodeSplit = BarCodeEdit.Text.Split('+');
                     String kod = BarCodeSplit[0];
-
-                    AddMatItemToList(DB.SkladBase().v_Materials.FirstOrDefault(w => w.BarCode == kod));
+                    var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
+                    if (bc != null)
+                    {
+                        AddMatItemToList(DB.SkladBase().v_Materials.FirstOrDefault(w => w.MatId == bc.MatId));
+                    }
                 }
                 else
                 {
@@ -1306,22 +1309,25 @@ namespace SP_Sklad.MainTabs
             {
                 var BarCodeSplit = BarCodeEdit.Text.Split('+');
                 String kod = BarCodeSplit[0];
+                var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
 
                 MatGridView.ClearFindFilter();
-
-                gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"BarCode='{kod}'");
-
-
-       /*         int rowHandle = MatGridView.LocateByValue("BarCode", kod);
-                if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                if (bc != null)
                 {
-                    MatGridView.FocusedRowHandle = rowHandle;
+                    gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{bc.MatId}'");
                 }
 
 
-                var row = MatListDS.List.OfType<GetMatList_Result>().ToList().Find(f => f.BarCode == kod);
-                var pos = MatListDS.IndexOf(row);
-                MatListDS.Position = pos;*/
+                /*         int rowHandle = MatGridView.LocateByValue("BarCode", kod);
+                         if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+                         {
+                             MatGridView.FocusedRowHandle = rowHandle;
+                         }
+
+
+                         var row = MatListDS.List.OfType<GetMatList_Result>().ToList().Find(f => f.BarCode == kod);
+                         var pos = MatListDS.IndexOf(row);
+                         MatListDS.Position = pos;*/
 
                 return focused_mat;
             }
