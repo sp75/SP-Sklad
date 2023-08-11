@@ -51,9 +51,10 @@ namespace SP.Base.Models
             WaybillList2 = new HashSet<WaybillList>();
             WayBillSvc = new HashSet<WayBillSvc>();
             PriceList = new HashSet<PriceList>();
-        }
+            Kagent1 = new HashSet<Kagent>();
+    }
 
-        [Key]
+    [Key]
         public int KaId { get; set; }
 
         [Required]
@@ -143,6 +144,23 @@ namespace SP.Base.Models
 
         [StringLength(128)]
         public string AspNetUserId { get; set; }
+
+        public int? WId { get; set; }
+
+        [StringLength(50)]
+        public string POSTerminalCode { get; set; }
+
+        [Column(TypeName = "numeric")]
+        public decimal? CurrentSaldo { get; set; }
+
+        public int? ParentKagentId { get; set; }
+
+        public int? UpdatedBy { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kagent> Kagent1 { get; set; }
+
+        public virtual Kagent Kagent2 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }

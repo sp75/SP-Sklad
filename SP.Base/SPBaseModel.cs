@@ -1638,6 +1638,11 @@ namespace SP.Base.Models
               .WithMany(e => e.Kagent)
               .Map(m => m.ToTable("PriceListKagent").MapLeftKey("KagentId").MapRightKey("PriceListId"));
 
+            modelBuilder.Entity<Kagent>()
+                           .HasMany(e => e.Kagent1)
+                           .WithOptional(e => e.Kagent2)
+                           .HasForeignKey(e => e.ParentKagentId);
+
             modelBuilder.Entity<KAgentAccount>()
                 .Property(e => e.AccNum)
                 .IsUnicode(false);

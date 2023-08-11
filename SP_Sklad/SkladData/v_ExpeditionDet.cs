@@ -18,12 +18,14 @@ namespace SP_Sklad.SkladData
         public System.Guid ExpeditionId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public int WbillId { get; set; }
-        public int MId { get; set; }
         public System.DateTime OnDate { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
         public string KaName { get; set; }
-        public string MeasuresName { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string WbNum { get; set; }
+        public Nullable<decimal> TareQuantity { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
+        public Nullable<int> MId { get; set; }
+        public string MeasuresName { get; set; }
     }
 }

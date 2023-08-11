@@ -17,6 +17,8 @@ using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
+using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.WBForm
 {
@@ -106,13 +108,14 @@ namespace SP_Sklad.WBForm
         {
             int top_row = ExpeditionDetGridView.TopRowIndex;
             ExpeditionDetBS.DataSource = _db.v_ExpeditionDet.AsNoTracking().Where(w=> w.ExpeditionId == _exp_id).ToList();
-            ExpeditionDetGridView.ExpandAllGroups();
             ExpeditionDetGridView.TopRowIndex = top_row;
+
+            GetOk();
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.SettingMaterialPricesDet.Remove(_db.SettingMaterialPricesDet.FirstOrDefault(w => w.Id == focused_dr.Id));
+            _db.ExpeditionDet.Remove(_db.ExpeditionDet.FirstOrDefault(w => w.Id == focused_dr.Id));
             _db.SaveChanges();
             GetDetail();
 
@@ -135,45 +138,12 @@ namespace SP_Sklad.WBForm
              
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var mat_id = IHelper.ShowDirectList(null, 5);
-            if (mat_id != null)
-            {
-                var id = Convert.ToInt32(mat_id);
-                AddNewMaterial(id);
-                GetDetail();
-                /* var mat = _db.Materials.Find(id);
-                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
-                 {
-                     _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
-                     {
-                         Id = Guid.NewGuid(),
-                         MatId = mat.MatId,
-                         SettingMaterialPricesId = _wbt_id.Value,
-                          CreatedAt = DBHelper.ServerDateTime(),
-                           Price =0
-                     });
-
-                     _db.SaveChanges();
-                     GetDetail();
-                 }*/
-            }
+           
         }
 
         private void AddNewMaterial( int mat_id)
         {
-        /*    if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == mat_id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
-            {
-                _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
-                {
-                    Id = Guid.NewGuid(),
-                    MatId = mat_id,
-                    SettingMaterialPricesId = _wbt_id.Value,
-                    CreatedAt = DBHelper.ServerDateTime(),
-                    Price = 0
-                });
 
-                _db.SaveChanges();
-            }*/
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -216,23 +186,19 @@ namespace SP_Sklad.WBForm
 
         private void WaybillTemplateDetGrid_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
+          /*  var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
 
             if (e.Column.FieldName == "Price")
             {
                 wbtd.Price = Convert.ToDecimal(e.Value);
             }
 
-            _db.SaveChanges();
+            _db.SaveChanges();*/
         }
 
         private void OnDateDBEdit_Validating(object sender, CancelEventArgs e)
         {
-            if (OnDateDBEdit.DateTime.Date < DBHelper.ServerDateTime().Date)
-            {
-                OnDateDBEdit.ErrorText = "Дата документа повина бути в межах поточного дня або більшою!";
-                e.Cancel = true;
-            }
+  
         }
 
         private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -244,7 +210,7 @@ namespace SP_Sklad.WBForm
         }
         bool GetOk()
         {
-            bool recult = OnDateDBEdit.DateTime.Date >= DBHelper.ServerDateTime().Date;
+            bool recult = ExpeditionDetBS.List.Count > 0;
 
             OkButton.Enabled = recult;
 
@@ -262,14 +228,28 @@ namespace SP_Sklad.WBForm
             NumEdit.Focus();
         }
 
-        private void PTypeEdit_EditValueChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
 
+        }
+
+        private void AddDocBtnItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmBarCode())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
+                    if (_db.WaybillList.Any(w => w.WbillId == wbill_id))
+                    {
+                        new frmExpeditionDet(_db, null, exp, wbill_id).ShowDialog();
+
+                        GetDetail();
+                    }
+
+                }
+            }
         }
     }
 }

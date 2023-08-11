@@ -434,8 +434,10 @@
           <Property Name="ExpeditionId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="WbillId" Type="int" Nullable="false" />
-          <Property Name="MId" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="TareQuantity" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MId" Type="int" />
         </EntityType>
         <EntityType Name="ExtRel">
           <Key>
@@ -2129,7 +2131,7 @@ warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary ke
             <PropertyRef Name="MatId" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
-          <Property Name="BarCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DeboningDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2250,7 +2252,12 @@ warning 6002: The table/view 'sp_base.dbo.v_ErrorLog' does not have a primary ke
 warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Expedition">
           <Key>
+            
             <PropertyRef Name="Id" />
+            
+            
+            
+            
           </Key>
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
           <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
@@ -2274,22 +2281,22 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
             <PropertyRef Name="Id" />
             <PropertyRef Name="ExpeditionId" />
             <PropertyRef Name="WbillId" />
-            <PropertyRef Name="MId" />
             <PropertyRef Name="OnDate" />
-            <PropertyRef Name="MeasuresName" />
             <PropertyRef Name="WbNum" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ExpeditionId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="WbillId" Type="int" Nullable="false" />
-          <Property Name="MId" Type="int" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MeasuresName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TareQuantity" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MId" Type="int" />
+          <Property Name="MeasuresName" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4492,6 +4499,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="KADiscount">
               <PropertyRef Name="KAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kagent_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="Kagent1" Type="Self.Kagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Kagent1">
+              <PropertyRef Name="ParentKagentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8784,13 +8803,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[ExpeditionId] AS [ExpeditionId], 
     [v_ExpeditionDet].[Amount] AS [Amount], 
     [v_ExpeditionDet].[WbillId] AS [WbillId], 
-    [v_ExpeditionDet].[MId] AS [MId], 
     [v_ExpeditionDet].[OnDate] AS [OnDate], 
     [v_ExpeditionDet].[SummInCurr] AS [SummInCurr], 
     [v_ExpeditionDet].[KaName] AS [KaName], 
-    [v_ExpeditionDet].[MeasuresName] AS [MeasuresName], 
     [v_ExpeditionDet].[CreatedAt] AS [CreatedAt], 
-    [v_ExpeditionDet].[WbNum] AS [WbNum]
+    [v_ExpeditionDet].[WbNum] AS [WbNum], 
+    [v_ExpeditionDet].[TareQuantity] AS [TareQuantity], 
+    [v_ExpeditionDet].[TareWeight] AS [TareWeight], 
+    [v_ExpeditionDet].[MId] AS [MId], 
+    [v_ExpeditionDet].[MeasuresName] AS [MeasuresName]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_GetDocsTree" EntityType="Self.v_GetDocsTree" store:Type="Views" store:Schema="dbo">
@@ -10000,6 +10021,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_KADiscount_Kagent" Association="Self.FK_KADiscount_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KADiscount" EntitySet="KADiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kagent_Kagent" Association="Self.FK_Kagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Kagent1" EntitySet="Kagent" />
           </AssociationSet>
           <AssociationSet Name="FK_Kagent_KontragentGroup" Association="Self.FK_Kagent_KontragentGroup">
             <End Role="KontragentGroup" EntitySet="KontragentGroup" />
@@ -12238,13 +12263,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
           </AssociationSet>
           <EntitySet Name="Expedition" EntityType="BaseModel.Expedition" />
-          <EntitySet Name="ExpeditionDet" EntityType="BaseModel.ExpeditionDet" />
-          <EntitySet Name="v_ExpeditionDet" EntityType="BaseModel.v_ExpeditionDet" />
           <AssociationSet Name="FK_Expedition_Cars" Association="BaseModel.FK_Expedition_Cars">
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Expedition" EntitySet="Expedition" />
           </AssociationSet>
           <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
+          <AssociationSet Name="FK_Kagent_Kagent" Association="BaseModel.FK_Kagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Kagent1" EntitySet="Kagent" />
+          </AssociationSet>
+          <EntitySet Name="v_ExpeditionDet" EntityType="BaseModel.v_ExpeditionDet" />
+          <EntitySet Name="ExpeditionDet" EntityType="BaseModel.ExpeditionDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -17322,7 +17351,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="MatId" />
           </Key>
           <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="BarCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_GetRetailTree">
           <Key>
@@ -19569,6 +19598,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillTemplate" Relationship="BaseModel.WaybillTemplateKagent" FromRole="Kagent" ToRole="WaybillTemplate" />
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="FOPId" Type="Int32" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Kagent_Kagent" FromRole="Kagent" ToRole="Kagent1" />
+          <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_Kagent_Kagent" FromRole="Kagent1" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -20287,39 +20318,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Expedition" ToRole="Cars" />
           <Property Name="DocType" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="ExpeditionDet">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="MId" Type="Int32" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="v_ExpeditionDet">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="ExpeditionId" />
-            <PropertyRef Name="WbillId" />
-            <PropertyRef Name="MId" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="MeasuresName" />
-            <PropertyRef Name="WbNum" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="MId" Type="Int32" Nullable="false" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MeasuresName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <Association Name="FK_Expedition_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="1" />
           <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="*" />
@@ -20350,6 +20348,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="SessionId" Type="Guid" />
           <Property Name="CarId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Kagent_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.Kagent" Role="Kagent1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="Kagent1">
+              <PropertyRef Name="ParentKagentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_ExpeditionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ExpeditionId" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="WbNum" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TareQuantity" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MId" Type="Int32" />
+          <Property Name="MeasuresName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExpeditionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="TareQuantity" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MId" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -25768,35 +25813,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ExpeditionDet">
-            <EntityTypeMapping TypeName="BaseModel.ExpeditionDet">
-              <MappingFragment StoreEntitySet="ExpeditionDet">
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ExpeditionId" ColumnName="ExpeditionId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="v_ExpeditionDet">
-            <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
-              <MappingFragment StoreEntitySet="v_ExpeditionDet">
-                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="MId" ColumnName="MId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ExpeditionId" ColumnName="ExpeditionId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_Expedition">
             <EntityTypeMapping TypeName="BaseModel.v_Expedition">
               <MappingFragment StoreEntitySet="v_Expedition">
@@ -25814,6 +25830,39 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ExpeditionDet">
+            <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
+              <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="MeasuresName" ColumnName="MeasuresName" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
+                <ScalarProperty Name="TareQuantity" ColumnName="TareQuantity" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpeditionId" ColumnName="ExpeditionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpeditionDet">
+            <EntityTypeMapping TypeName="BaseModel.ExpeditionDet">
+              <MappingFragment StoreEntitySet="ExpeditionDet">
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
+                <ScalarProperty Name="TareQuantity" ColumnName="TareQuantity" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpeditionId" ColumnName="ExpeditionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

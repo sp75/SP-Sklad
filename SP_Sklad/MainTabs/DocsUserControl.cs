@@ -25,6 +25,8 @@ using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using System.Diagnostics;
 using DevExpress.XtraEditors;
+using System.Data.Entity.SqlServer;
+using System.Data.Entity;
 
 namespace SP_Sklad.MainTabs
 {
@@ -208,8 +210,8 @@ namespace SP_Sklad.MainTabs
 
             DeleteItemBtn.Enabled = false;
             ExecuteItemBtn.Enabled = false;
-            EditItemBtn.Enabled = false; 
-            CopyItemBtn.Enabled = false; 
+            EditItemBtn.Enabled = false;
+            CopyItemBtn.Enabled = false;
             PrintItemBtn.Enabled = false;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
@@ -516,7 +518,7 @@ namespace SP_Sklad.MainTabs
 
                             case 12:
                                 var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
-                                if(smp != null)
+                                if (smp != null)
                                 {
                                     db.SettingMaterialPrices.Remove(smp);
                                 }
@@ -763,7 +765,7 @@ namespace SP_Sklad.MainTabs
                             return;
                         }
 
-                        
+
                         if (smp.OnDate.Date < DBHelper.ServerDateTime().Date)
                         {
                             XtraMessageBox.Show("Проводити та сторнувати цей документ заборонено", "Провести документ", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1106,7 +1108,7 @@ namespace SP_Sklad.MainTabs
             {
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
-            else if(gridView10.Focus())
+            else if (gridView10.Focus())
             {
                 row = gridView10.GetFocusedRow() as GetRelDocList_Result;
             }
@@ -1123,10 +1125,10 @@ namespace SP_Sklad.MainTabs
 
         private void SetWBEditorBarBtn(GetWayBillList_Result row)
         {
-          /*  if (row == null)
-            {
-                return;
-            }*/
+            /*  if (row == null)
+              {
+                  return;
+              }*/
 
             xtraTabControl2_SelectedPageChanged(null, null);
 
@@ -1165,7 +1167,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = new BaseEntities())
                 {
-                    PriceListDetBS.DataSource = db.v_PriceListDet.AsNoTracking().Where(w => w.PlId == pl_dr.PlId).OrderBy(o=> o.Num).ToList();
+                    PriceListDetBS.DataSource = db.v_PriceListDet.AsNoTracking().Where(w => w.PlId == pl_dr.PlId).OrderBy(o => o.Num).ToList();
                     ka_template_list = db.PriceList.FirstOrDefault(w => w.PlId == pl_dr.PlId).Kagent.Select(s => new KaTemplateList
                     {
                         Check = true,
@@ -1258,20 +1260,20 @@ namespace SP_Sklad.MainTabs
                         foreach (var wid in wb_det.GroupBy(g => g.WId).Select(s => s.Key).ToList())
                         {
                             var wb = db.WaybillList.Add(new WaybillList()
-                               {
-                                   Id = Guid.NewGuid(),
-                                   WType = -5,
-                                   DefNum = 1,
-                                   OnDate = DBHelper.ServerDateTime(),
-                                   Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
-                                   CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
-                                   OnValue = 1,
-                                   PersonId = DBHelper.CurrentUser.KaId,
-                                   WaybillMove = new WaybillMove { SourceWid = wid.Value },
-                                   Nds = 0,
-                                   UpdatedBy = DBHelper.CurrentUser.UserId,
-                                   EntId = DBHelper.Enterprise.KaId
-                               });
+                            {
+                                Id = Guid.NewGuid(),
+                                WType = -5,
+                                DefNum = 1,
+                                OnDate = DBHelper.ServerDateTime(),
+                                Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
+                                CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                                OnValue = 1,
+                                PersonId = DBHelper.CurrentUser.KaId,
+                                WaybillMove = new WaybillMove { SourceWid = wid.Value },
+                                Nds = 0,
+                                UpdatedBy = DBHelper.CurrentUser.UserId,
+                                EntId = DBHelper.Enterprise.KaId
+                            });
 
                             db.SaveChanges();
                             _wbill_ids.Add(wb.WbillId);
@@ -1333,7 +1335,7 @@ namespace SP_Sklad.MainTabs
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-          
+
             if (dr == null)
             {
                 gridControl2.DataSource = null;
@@ -1359,11 +1361,11 @@ namespace SP_Sklad.MainTabs
                     gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
                     break;
                 case 3:
-                    gridControl10.DataSource = _db.DocRels.Where(w=> w.OriginatorId == dr.Id)
+                    gridControl10.DataSource = _db.DocRels.Where(w => w.OriginatorId == dr.Id)
                         .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
                     break;
             }
-          
+
         }
 
         private void PriceListGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -1383,7 +1385,7 @@ namespace SP_Sklad.MainTabs
             using (var db = DB.SkladBase())
             {
                 int wb_count = 0;
-                foreach (var kagent in ka_template_list.Where(w=> w.Check) )
+                foreach (var kagent in ka_template_list.Where(w => w.Check))
                 {
                     var _wb = db.WaybillList.Add(new WaybillList()
                     {
@@ -1398,7 +1400,7 @@ namespace SP_Sklad.MainTabs
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         Nds = 0,
                         KaId = kagent.KaId,
-                         
+
                     });
                     db.SaveChanges();
 
@@ -1407,7 +1409,7 @@ namespace SP_Sklad.MainTabs
                     ++wb_count;
                 }
 
-                MessageBox.Show(string.Format( "Створено {0} замовлень !", wb_count));
+                MessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
             }
         }
 
@@ -1572,7 +1574,7 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
 
-                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w=> w.KAgentAdjustmentId == dr.Id).OrderBy(o => o.Idx).ToList();
+                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == dr.Id).OrderBy(o => o.Idx).ToList();
                     break;
 
                 case 1:
@@ -1613,14 +1615,14 @@ namespace SP_Sklad.MainTabs
 
         private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
         {
-            if(!EditItemBtn.Enabled)
+            if (!EditItemBtn.Enabled)
             {
                 return;
             }
 
             var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
 
-            var wb =_db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
             wb.PTypeId = PTypeId;
             _db.SaveChanges();
@@ -1631,7 +1633,7 @@ namespace SP_Sklad.MainTabs
         private void BankStatementsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             var dr = bank_statements_row;
-            
+
             xtraTabControl6_SelectedPageChanged(sender, null);
 
             DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -1647,7 +1649,7 @@ namespace SP_Sklad.MainTabs
             {
                 BankStatementsDetGridControl.DataSource = null;
                 gridControl13.DataSource = null;
-             
+
 
                 return;
             }
@@ -1656,12 +1658,12 @@ namespace SP_Sklad.MainTabs
             {
                 case 0:
 
-                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == bank_statements_row.Id).ToList(); 
+                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == bank_statements_row.Id).ToList();
                     break;
 
-           //     case 1:
-              //      WayBillListInfoBS.DataSource = dr;
-             //       break;
+                //     case 1:
+                //      WayBillListInfoBS.DataSource = dr;
+                //       break;
 
                 case 2:
                     gridControl13.DataSource = _db.GetRelDocList(bank_statements_row.Id).OrderBy(o => o.OnDate).ToList();
@@ -1685,7 +1687,7 @@ namespace SP_Sklad.MainTabs
 
         private void wbStartDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if(e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
                 wbStartDate.EditValue = DBHelper.ServerDateTime().Date;
             }
@@ -1781,6 +1783,23 @@ namespace SP_Sklad.MainTabs
         private void WbGridView_ColumnFilterChanged(object sender, EventArgs e)
         {
             SetWBEditorBarBtn(wb_focused_row);
+        }
+
+        private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (var frm = new frmBarCode())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
+                    var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id);
+                    if(wb !=null)
+                    {
+                        FindDoc.Find(wb.Id, wb.WType, wb.OnDate);
+                    }
+
+                }
+            }
         }
     }
 }

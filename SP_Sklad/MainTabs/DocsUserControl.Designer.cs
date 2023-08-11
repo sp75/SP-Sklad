@@ -276,6 +276,7 @@
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
@@ -3506,8 +3507,9 @@
             this.barButtonItem13,
             this.barButtonItem14,
             this.barButtonItem15,
-            this.barButtonItem16});
-            this.barManager1.MaxItemId = 29;
+            this.barButtonItem16,
+            this.barButtonItem17});
+            this.barManager1.MaxItemId = 30;
             // 
             // bar1
             // 
@@ -3524,7 +3526,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17)});
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
@@ -3597,6 +3600,15 @@
             this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
+            // barButtonItem17
+            // 
+            this.barButtonItem17.Caption = "Пошук документа";
+            this.barButtonItem17.Id = 29;
+            this.barButtonItem17.ImageOptions.Image = global::SP_Sklad.Properties.Resources.findbyid_16x161;
+            this.barButtonItem17.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.findbyid_32x321;
+            this.barButtonItem17.Name = "barButtonItem17";
+            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
             // standaloneBarDockControl1
             // 
@@ -3699,6 +3711,7 @@
             this.BarImageList.Images.SetKeyName(17, "printer (1).png");
             this.BarImageList.Images.SetKeyName(18, "Заказ от клиента.png");
             this.BarImageList.Images.SetKeyName(19, "exec16.png");
+            this.BarImageList.Images.SetKeyName(20, "magnifier.png");
             // 
             // ExecuteInvBtn
             // 
@@ -8111,5 +8124,6 @@
         private UserControls.SettingMaterialPricesUserControl settingMaterialPricesUserControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
         private UserControls.ExpeditionUserControl expeditionUserControl1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem17;
     }
 }

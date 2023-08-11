@@ -1822,6 +1822,12 @@
     <Compile Include="ViewsForm\frmManufacturing.Designer.cs">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBDetForm\frmExpeditionDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBDetForm\frmExpeditionDet.Designer.cs">
+      <DependentUpon>frmExpeditionDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBDetForm\frmIntermediateWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2412,6 +2418,9 @@
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBDetForm\frmExpeditionDet.resx">
+      <DependentUpon>frmExpeditionDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBDetForm\frmIntermediateWeighingDet.resx">
       <DependentUpon>frmIntermediateWeighingDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -2573,6 +2582,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DefectsClassifier.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Expedition.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ExpeditionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
@@ -2832,6 +2842,16 @@
     <None Include="Resources\info_32x321.png" />
     <None Include="Resources\weightedpies_16x16.png" />
     <None Include="Resources\table_16x16.png" />
+    <None Include="Resources\findbyid_16x16.png" />
+    <None Include="Resources\findbyid_32x32.png" />
+    <None Include="Resources\barcode_16x16.png" />
+    <None Include="Resources\barcode_32x32.png" />
+    <None Include="Resources\find_16x16.png" />
+    <None Include="Resources\find_32x32.png" />
+    <None Include="Resources\find_16x161.png" />
+    <None Include="Resources\find_32x321.png" />
+    <None Include="Resources\findbyid_16x161.png" />
+    <None Include="Resources\findbyid_32x321.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

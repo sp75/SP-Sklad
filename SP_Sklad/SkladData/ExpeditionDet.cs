@@ -18,7 +18,9 @@ namespace SP_Sklad.SkladData
         public System.Guid ExpeditionId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public int WbillId { get; set; }
-        public int MId { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
+        public Nullable<decimal> TareQuantity { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
+        public Nullable<int> MId { get; set; }
     }
 }
