@@ -839,6 +839,10 @@ namespace SP_Sklad.MainTabs
                 case 12:
                     PrintDoc.SettingMaterialPricesReport(settingMaterialPricesUserControl1.row_smp.PTypeId, _db);
                     break;
+
+                case 13:
+                    PrintDoc.ExpeditionReport(expeditionUserControl1.row_exp.Id, _db);
+                    break;
             }
         }
 

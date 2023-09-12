@@ -24,8 +24,16 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> CreatedAt { get; set; }
         public string WbNum { get; set; }
         public Nullable<decimal> TareQuantity { get; set; }
-        public Nullable<decimal> TareWeight { get; set; }
         public Nullable<int> MId { get; set; }
         public string MeasuresName { get; set; }
+        public Nullable<decimal> TareQuantity1 { get; set; }
+        public Nullable<decimal> TareQuantity2 { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
+        public Nullable<int> Tare { get; set; }
+        public Nullable<int> Tare1 { get; set; }
+        public Nullable<int> Tare2 { get; set; }
+        public Nullable<int> Checked { get; set; }
+        public Nullable<decimal> TotalTareQuantity { get; set; }
+        public Nullable<decimal> WbAmount { get; set; }
     }
 }

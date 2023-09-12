@@ -659,6 +659,7 @@ namespace SP_Sklad.MainTabs
                         var item = db.Kagent.Find(KaId);
                         if (item != null)
                         {
+                            item.UserId = null;
                             item.Deleted = 1;
                         }
 
@@ -1806,6 +1807,13 @@ namespace SP_Sklad.MainTabs
         private void PriceTypesPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
             SetPriceBtnItem.Enabled = IHelper.GetUserAccess(97)?.CanInsert == 1;
+        }
+
+        private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DB.SkladBase().RecalcKaSaldo(focused_kagent.KaId);
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

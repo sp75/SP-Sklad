@@ -41,6 +41,7 @@ namespace SP_Sklad.EditForm
         private void frmMatRecipe_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            WIdLookUpEdit.Properties.DataSource = DBHelper.WhList;
 
             tree.Add(new CatalogTreeList { Id = -2, ParentId = -255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -255, Text = "Позиції", ImgIdx = 1, TabIdx = 1 });
@@ -105,6 +106,7 @@ namespace SP_Sklad.EditForm
             public decimal Deviation { get; set; }
             public string MatGroupName { get; set; }
             public string Note { get; set; }
+            public string WhName { get; set; }
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
@@ -141,7 +143,8 @@ namespace SP_Sklad.EditForm
                     Coefficient = s.Coefficient,
                     Deviation = s.Deviation,
                     MatGroupName = s.Materials.MatGroup.Name,
-                    Note = s.Note
+                    Note = s.Note,
+                    WhName = s.Warehouse.Name
                 }).ToList();
                 MatRecDetGridView.ExpandAllGroups();
             }
@@ -172,7 +175,8 @@ namespace SP_Sklad.EditForm
                 Amount = s.Amount,
                 Coefficient = s.Coefficient,
                 Deviation = s.Deviation,
-                MatGroupName = s.Materials.MatGroup.Name
+                MatGroupName = s.Materials.MatGroup.Name,
+                WhName = s.Warehouse.Name
 
             }).ToList();
             MatRecDetListBS.DataSource = list;

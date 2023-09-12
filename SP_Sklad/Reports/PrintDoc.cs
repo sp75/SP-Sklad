@@ -783,6 +783,20 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.setting_material_prices);
         }
 
+        public static void ExpeditionReport(Guid ex_id , BaseEntities db)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var exp = db.v_Expedition.Where(w => w.Id == ex_id).ToList();
+            var exp_id = db.v_ExpeditionDet.Where(w => w.ExpeditionId == ex_id).Where(w=> w.Checked == 1).ToList();
+
+
+            dataForReport.Add("Expedition", exp);
+            dataForReport.Add("DocList", exp_id);
+
+            IHelper.Print(dataForReport, TemlateList.expedition_tmplate);
+        }
+
         private class ProductionPlansReportRep
         {
             public string MatName { get; set; }

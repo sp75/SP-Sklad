@@ -194,5 +194,13 @@ namespace SP_Sklad.WBDetForm
         {
             ValidateForm();
         }
+
+        private void TareMatEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                TareMatEdit.EditValue = null;
+            }
+        }
     }
 }

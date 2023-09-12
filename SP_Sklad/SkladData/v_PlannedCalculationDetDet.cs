@@ -32,5 +32,6 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public string MatGroupName { get; set; }
         public int GrpId { get; set; }
+        public string Artikul { get; set; }
     }
 }

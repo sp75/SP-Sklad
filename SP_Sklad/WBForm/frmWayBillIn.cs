@@ -20,6 +20,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Common.WayBills;
 using SP_Sklad.Properties;
 using SP_Sklad.EditForm;
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.WBForm
 {
@@ -404,14 +405,14 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (_wtype == 16)
+        /*    if (_wtype == 16)
             {
                 IHelper.ShowMatListByWH(_db, wb);
             }
-            else
-            {
+            else*/
+       //     {
                 IHelper.ShowMatList(_db, wb, wid: _wid);
-            }
+        //    }
 
             RefreshDet();
         }
@@ -631,8 +632,60 @@ namespace SP_Sklad.WBForm
                         }
                     }
                 }
-                
+            }
+        }
 
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmSuppliersSales(_db, DateTime.Now.AddDays(-30), DateTime.Now, wb.KaId.Value))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var num = wb.WaybillDet.Count();
+                    foreach (var item in frm.pos_out_list)
+                    {
+                        var get_last_price_result = new GetLastPrice(item.MatId, wb.KaId, 1, wb.OnDate);
+                        var base_price = Math.Round(get_last_price_result.Price , 2);
+
+                        var wbd = new WaybillDet
+                        {
+                            WbillId = wb.WbillId,
+                            Num = ++num,
+                            OnDate = wb.OnDate,
+                            MatId = item.MatId,
+                            WId = item.WId,
+                            Amount = item.Amount,
+                            Price = base_price , 
+                            Discount = 0,
+                            Nds = wb.Nds,
+                            CurrId = wb.CurrId,
+                            OnValue = wb.OnValue,
+                            BasePrice = base_price,
+                            PosKind = 0,
+                            PosParent = 0,
+                            DiscountKind = 0,
+                        };
+                        _db.WaybillDet.Add(wbd);
+                        _db.SaveChanges();
+
+                        if (wb.WType == 16)
+                        {
+                            _db.WMatTurn.Add(new WMatTurn()
+                            {
+                                SourceId = wbd.PosId,
+                                PosId = wbd.PosId,
+                                WId = wbd.WId.Value,
+                                MatId = wbd.MatId,
+                                OnDate = wbd.OnDate.Value,
+                                TurnType = 3,
+                                Amount = wbd.Amount
+                            });
+                        }
+                    }
+                    _db.SaveChanges();
+
+                    RefreshDet();
+                }
             }
         }
     }

@@ -411,7 +411,7 @@ namespace SP_Sklad.WBForm
                 var bc = _db.v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
                 if (bc != null)
                 {
-                    using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, bc.MatId, wb.KaId.Value, -1))
+                    using (var frm = new frmOutMatList(_db, OutDateEdit.DateTime, wb.OnDate, bc.MatId, wb.KaId.Value, -25))
                     {
                         if (frm.ShowDialog() == DialogResult.OK)
                         {

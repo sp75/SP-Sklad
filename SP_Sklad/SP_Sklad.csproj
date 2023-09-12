@@ -454,6 +454,12 @@
     <Compile Include="frmLockApp.Designer.cs">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSuppliersSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuppliersSales.Designer.cs">
+      <DependentUpon>frmSuppliersSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,6 +517,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\ExpeditionDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\ExpeditionMaterialsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\GetDiscount_Result.cs">
@@ -588,9 +597,11 @@
     <Compile Include="SkladData\SettingMaterialPricesDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\TableFunctions\funGetSalesOfSuppliers.cs" />
     <Compile Include="SkladData\UserRoles.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\ViewModels\GetSalesOfSuppliersView.cs" />
     <Compile Include="SkladData\v_BankStatements.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -604,6 +615,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_ExpeditionDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_ExpeditionWBMaterialsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_IntermediateWeighingDet.cs">
@@ -2200,6 +2214,9 @@
     <EmbeddedResource Include="frmLockApp.resx">
       <DependentUpon>frmLockApp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSuppliersSales.resx">
+      <DependentUpon>frmSuppliersSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.resx">
       <DependentUpon>MainIntermediateWeighingDet.cs</DependentUpon>
     </EmbeddedResource>
@@ -2583,6 +2600,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Expedition.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ExpeditionDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ExpeditionMaterialsDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetActives_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDirTree_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetDocList_Result.datasource" />
@@ -2665,11 +2683,13 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.GetSalesOfSuppliersView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.MaterialMeasuresView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BankStatementsDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionWBMaterialsDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighing.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_IntermediateWeighingDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Kagent.datasource" />
@@ -2852,6 +2872,9 @@
     <None Include="Resources\find_32x321.png" />
     <None Include="Resources\findbyid_16x161.png" />
     <None Include="Resources\findbyid_32x321.png" />
+    <None Include="Resources\calculatesheet_16x16.png" />
+    <None Include="Resources\calculatesheet_32x32.png" />
+    <None Include="Resources\weightedpies_16x161.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

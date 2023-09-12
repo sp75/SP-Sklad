@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.OnDateGroupBox = new System.Windows.Forms.Panel();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
@@ -37,7 +38,8 @@
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.OnDateGroupBox.SuspendLayout();
@@ -47,6 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -54,10 +57,20 @@
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 116);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 203);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(436, 52);
             this.BottomPanel.TabIndex = 18;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(12, 10);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(83, 30);
+            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.Text = "Таблиця";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // OkButton
             // 
@@ -71,6 +84,8 @@
             // 
             // OnDateGroupBox
             // 
+            this.OnDateGroupBox.Controls.Add(this.WhComboBox);
+            this.OnDateGroupBox.Controls.Add(this.labelControl10);
             this.OnDateGroupBox.Controls.Add(this.dateEdit2);
             this.OnDateGroupBox.Controls.Add(this.dateEdit1);
             this.OnDateGroupBox.Controls.Add(this.labelControl2);
@@ -81,7 +96,7 @@
             this.OnDateGroupBox.Location = new System.Drawing.Point(0, 0);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.OnDateGroupBox.Size = new System.Drawing.Size(436, 116);
+            this.OnDateGroupBox.Size = new System.Drawing.Size(436, 203);
             this.OnDateGroupBox.TabIndex = 26;
             // 
             // dateEdit2
@@ -168,21 +183,39 @@
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Залишки на складах на дату:";
             // 
-            // simpleButton1
+            // WhComboBox
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(12, 10);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(83, 30);
-            this.simpleButton1.TabIndex = 2;
-            this.simpleButton1.Text = "Таблиця";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.WhComboBox.Location = new System.Drawing.Point(186, 120);
+            this.WhComboBox.Name = "WhComboBox";
+            this.WhComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WhComboBox.Properties.Appearance.Options.UseFont = true;
+            this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.ShowFooter = false;
+            this.WhComboBox.Properties.ShowHeader = false;
+            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.WhComboBox.Properties.ValueMember = "WId";
+            this.WhComboBox.Size = new System.Drawing.Size(238, 22);
+            this.WhComboBox.TabIndex = 28;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Location = new System.Drawing.Point(8, 123);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(40, 16);
+            this.labelControl10.TabIndex = 27;
+            this.labelControl10.Text = "Склад:";
             // 
             // frmReport53
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 168);
+            this.ClientSize = new System.Drawing.Size(436, 255);
             this.Controls.Add(this.OnDateGroupBox);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmReport53";
@@ -201,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,5 +251,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         public DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.LookUpEdit WhComboBox;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }

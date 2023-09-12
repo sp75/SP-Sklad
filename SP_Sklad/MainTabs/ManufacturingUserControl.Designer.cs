@@ -561,6 +561,7 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn245 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -4129,7 +4130,8 @@
             this.gridColumn105,
             this.gridColumn106,
             this.gridColumn107,
-            this.gridColumn92});
+            this.gridColumn92,
+            this.gridColumn245});
             this.gridView6.GridControl = this.gridControl6;
             this.gridView6.Name = "gridView6";
             this.gridView6.OptionsView.ShowGroupPanel = false;
@@ -4141,7 +4143,7 @@
             this.gridColumn102.Name = "gridColumn102";
             this.gridColumn102.Visible = true;
             this.gridColumn102.VisibleIndex = 0;
-            this.gridColumn102.Width = 66;
+            this.gridColumn102.Width = 61;
             // 
             // gridColumn103
             // 
@@ -4150,7 +4152,7 @@
             this.gridColumn103.Name = "gridColumn103";
             this.gridColumn103.Visible = true;
             this.gridColumn103.VisibleIndex = 1;
-            this.gridColumn103.Width = 249;
+            this.gridColumn103.Width = 231;
             // 
             // gridColumn104
             // 
@@ -4159,8 +4161,8 @@
             this.gridColumn104.FieldName = "Amount";
             this.gridColumn104.Name = "gridColumn104";
             this.gridColumn104.Visible = true;
-            this.gridColumn104.VisibleIndex = 4;
-            this.gridColumn104.Width = 115;
+            this.gridColumn104.VisibleIndex = 5;
+            this.gridColumn104.Width = 101;
             // 
             // repositoryItemCalcEdit2
             // 
@@ -4176,8 +4178,8 @@
             this.gridColumn105.FieldName = "MsrName";
             this.gridColumn105.Name = "gridColumn105";
             this.gridColumn105.Visible = true;
-            this.gridColumn105.VisibleIndex = 2;
-            this.gridColumn105.Width = 126;
+            this.gridColumn105.VisibleIndex = 3;
+            this.gridColumn105.Width = 111;
             // 
             // gridColumn106
             // 
@@ -4185,8 +4187,8 @@
             this.gridColumn106.FieldName = "Total";
             this.gridColumn106.Name = "gridColumn106";
             this.gridColumn106.Visible = true;
-            this.gridColumn106.VisibleIndex = 6;
-            this.gridColumn106.Width = 127;
+            this.gridColumn106.VisibleIndex = 7;
+            this.gridColumn106.Width = 119;
             // 
             // gridColumn107
             // 
@@ -4194,8 +4196,8 @@
             this.gridColumn107.FieldName = "WhName";
             this.gridColumn107.Name = "gridColumn107";
             this.gridColumn107.Visible = true;
-            this.gridColumn107.VisibleIndex = 3;
-            this.gridColumn107.Width = 225;
+            this.gridColumn107.VisibleIndex = 4;
+            this.gridColumn107.Width = 199;
             // 
             // gridColumn92
             // 
@@ -4203,8 +4205,8 @@
             this.gridColumn92.FieldName = "Remain";
             this.gridColumn92.Name = "gridColumn92";
             this.gridColumn92.Visible = true;
-            this.gridColumn92.VisibleIndex = 5;
-            this.gridColumn92.Width = 120;
+            this.gridColumn92.VisibleIndex = 6;
+            this.gridColumn92.Width = 106;
             // 
             // xtraTabPage14
             // 
@@ -7083,6 +7085,15 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // gridColumn245
+            // 
+            this.gridColumn245.Caption = "Артикул";
+            this.gridColumn245.FieldName = "Artikul";
+            this.gridColumn245.Name = "gridColumn245";
+            this.gridColumn245.Visible = true;
+            this.gridColumn245.VisibleIndex = 2;
+            this.gridColumn245.Width = 96;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7918,5 +7929,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn242;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn243;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn244;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn245;
     }
 }

@@ -30,18 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnShowGrid = new DevExpress.XtraEditors.SimpleButton();
             this.btnSortColumn = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.mainPanel = new DevExpress.XtraEditors.PanelControl();
             this.RoutePanel = new System.Windows.Forms.Panel();
             this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
@@ -65,6 +64,7 @@
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
             this.DocTypeGroupBox2 = new DevExpress.XtraEditors.GroupControl();
             this.OutDocGroupBox = new System.Windows.Forms.Panel();
+            this.checkEdit11 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit9 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
@@ -76,6 +76,9 @@
             this.checkEdit3 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit2 = new DevExpress.XtraEditors.CheckEdit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.StatusPanel = new System.Windows.Forms.Panel();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
@@ -129,14 +132,10 @@
             this.OnDateGroupBox = new System.Windows.Forms.Panel();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.xtraScrollableControl1 = new DevExpress.XtraEditors.XtraScrollableControl();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).BeginInit();
-            this.mainPanel.SuspendLayout();
             this.RoutePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.KaKindPanel.SuspendLayout();
@@ -154,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).BeginInit();
             this.DocTypeGroupBox2.SuspendLayout();
             this.OutDocGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
@@ -165,6 +165,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.StatusPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
             this.DocTypeGroupBox.SuspendLayout();
@@ -201,9 +204,7 @@
             this.OnDateGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            this.xtraScrollableControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // styleController1
@@ -218,16 +219,16 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 568);
+            this.panelControl2.Location = new System.Drawing.Point(0, 529);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(452, 51);
+            this.panelControl2.Size = new System.Drawing.Size(481, 51);
             this.panelControl2.TabIndex = 29;
             // 
             // btnShowGrid
             // 
             this.btnShowGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShowGrid.ImageOptions.Image = global::SP_Sklad.Properties.Resources.table_16x16;
-            this.btnShowGrid.Location = new System.Drawing.Point(116, 10);
+            this.btnShowGrid.Location = new System.Drawing.Point(119, 10);
             this.btnShowGrid.Name = "btnShowGrid";
             this.btnShowGrid.Size = new System.Drawing.Size(127, 30);
             this.btnShowGrid.TabIndex = 5;
@@ -238,8 +239,8 @@
             // btnSortColumn
             // 
             this.btnSortColumn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSortColumn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
-            this.btnSortColumn.Location = new System.Drawing.Point(9, 10);
+            this.btnSortColumn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSortColumn.ImageOptions.Image")));
+            this.btnSortColumn.Location = new System.Drawing.Point(8, 10);
             this.btnSortColumn.Name = "btnSortColumn";
             this.btnSortColumn.Size = new System.Drawing.Size(101, 30);
             this.btnSortColumn.TabIndex = 4;
@@ -249,7 +250,7 @@
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(259, 10);
+            this.OkButton.Location = new System.Drawing.Point(288, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(84, 30);
             this.OkButton.TabIndex = 3;
@@ -260,48 +261,21 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(349, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(378, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.Controls.Add(this.RoutePanel);
-            this.mainPanel.Controls.Add(this.KaKindPanel);
-            this.mainPanel.Controls.Add(this.DriverPanel);
-            this.mainPanel.Controls.Add(this.CarPanel);
-            this.mainPanel.Controls.Add(this.CashDesksPanel);
-            this.mainPanel.Controls.Add(this.wmatturnStatusPanel);
-            this.mainPanel.Controls.Add(this.PersonPanel);
-            this.mainPanel.Controls.Add(this.DocTypeGroupBox2);
-            this.mainPanel.Controls.Add(this.StatusPanel);
-            this.mainPanel.Controls.Add(this.DocTypeGroupBox);
-            this.mainPanel.Controls.Add(this.ChargeGroupBox);
-            this.mainPanel.Controls.Add(this.GroupKontragentPanel);
-            this.mainPanel.Controls.Add(this.KontragentPanel);
-            this.mainPanel.Controls.Add(this.MatGroupBox);
-            this.mainPanel.Controls.Add(this.GRPGroupBox);
-            this.mainPanel.Controls.Add(this.WHGroupBox);
-            this.mainPanel.Controls.Add(this.PeriodGroupBox);
-            this.mainPanel.Controls.Add(this.OnDateGroupBox);
-            this.mainPanel.Controls.Add(this.panel1);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(452, 568);
-            this.mainPanel.TabIndex = 31;
             // 
             // RoutePanel
             // 
             this.RoutePanel.Controls.Add(this.RouteLookUpEdit);
             this.RoutePanel.Controls.Add(this.labelControl24);
             this.RoutePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RoutePanel.Location = new System.Drawing.Point(2, 1142);
+            this.RoutePanel.Location = new System.Drawing.Point(0, 544);
             this.RoutePanel.Name = "RoutePanel";
             this.RoutePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.RoutePanel.Size = new System.Drawing.Size(448, 47);
+            this.RoutePanel.Size = new System.Drawing.Size(464, 47);
             this.RoutePanel.TabIndex = 37;
             this.RoutePanel.Visible = false;
             // 
@@ -336,10 +310,10 @@
             this.KaKindPanel.Controls.Add(this.KaKindLookUpEdit);
             this.KaKindPanel.Controls.Add(this.labelControl23);
             this.KaKindPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KaKindPanel.Location = new System.Drawing.Point(2, 1095);
+            this.KaKindPanel.Location = new System.Drawing.Point(0, 215);
             this.KaKindPanel.Name = "KaKindPanel";
             this.KaKindPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.KaKindPanel.Size = new System.Drawing.Size(448, 47);
+            this.KaKindPanel.Size = new System.Drawing.Size(464, 47);
             this.KaKindPanel.TabIndex = 49;
             this.KaKindPanel.Visible = false;
             // 
@@ -374,10 +348,10 @@
             this.DriverPanel.Controls.Add(this.DriversLookUpEdit);
             this.DriverPanel.Controls.Add(this.labelControl22);
             this.DriverPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DriverPanel.Location = new System.Drawing.Point(2, 1048);
+            this.DriverPanel.Location = new System.Drawing.Point(0, 732);
             this.DriverPanel.Name = "DriverPanel";
             this.DriverPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.DriverPanel.Size = new System.Drawing.Size(448, 47);
+            this.DriverPanel.Size = new System.Drawing.Size(464, 47);
             this.DriverPanel.TabIndex = 48;
             this.DriverPanel.Visible = false;
             // 
@@ -414,10 +388,10 @@
             this.CarPanel.Controls.Add(this.CarsLookUpEdit);
             this.CarPanel.Controls.Add(this.labelControl21);
             this.CarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CarPanel.Location = new System.Drawing.Point(2, 1001);
+            this.CarPanel.Location = new System.Drawing.Point(0, 685);
             this.CarPanel.Name = "CarPanel";
             this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.CarPanel.Size = new System.Drawing.Size(448, 47);
+            this.CarPanel.Size = new System.Drawing.Size(464, 47);
             this.CarPanel.TabIndex = 47;
             this.CarPanel.Visible = false;
             // 
@@ -453,10 +427,10 @@
             this.CashDesksPanel.Controls.Add(this.CashEditComboBox);
             this.CashDesksPanel.Controls.Add(this.labelControl20);
             this.CashDesksPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CashDesksPanel.Location = new System.Drawing.Point(2, 954);
+            this.CashDesksPanel.Location = new System.Drawing.Point(0, 638);
             this.CashDesksPanel.Name = "CashDesksPanel";
             this.CashDesksPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.CashDesksPanel.Size = new System.Drawing.Size(448, 47);
+            this.CashDesksPanel.Size = new System.Drawing.Size(464, 47);
             this.CashDesksPanel.TabIndex = 46;
             this.CashDesksPanel.Visible = false;
             // 
@@ -464,10 +438,10 @@
             // 
             this.CashEditComboBox.Location = new System.Drawing.Point(79, 12);
             this.CashEditComboBox.Name = "CashEditComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CashEditComboBox.Properties.DisplayMember = "Name";
@@ -493,10 +467,10 @@
             this.wmatturnStatusPanel.Controls.Add(this.wmatturnStatus);
             this.wmatturnStatusPanel.Controls.Add(this.labelControl19);
             this.wmatturnStatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.wmatturnStatusPanel.Location = new System.Drawing.Point(2, 907);
+            this.wmatturnStatusPanel.Location = new System.Drawing.Point(0, 873);
             this.wmatturnStatusPanel.Name = "wmatturnStatusPanel";
             this.wmatturnStatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.wmatturnStatusPanel.Size = new System.Drawing.Size(448, 47);
+            this.wmatturnStatusPanel.Size = new System.Drawing.Size(464, 47);
             this.wmatturnStatusPanel.TabIndex = 45;
             this.wmatturnStatusPanel.Visible = false;
             // 
@@ -531,11 +505,11 @@
             this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
             this.PersonPanel.Controls.Add(this.labelControl18);
             this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PersonPanel.Location = new System.Drawing.Point(2, 860);
+            this.PersonPanel.Location = new System.Drawing.Point(0, 591);
             this.PersonPanel.Name = "PersonPanel";
             this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.PersonPanel.Size = new System.Drawing.Size(448, 47);
-            this.PersonPanel.TabIndex = 44;
+            this.PersonPanel.Size = new System.Drawing.Size(464, 47);
+            this.PersonPanel.TabIndex = 18;
             this.PersonPanel.Visible = false;
             // 
             // PersonLookUpEdit
@@ -570,15 +544,16 @@
             this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
             this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(2, 635);
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(0, 920);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
-            this.DocTypeGroupBox2.Size = new System.Drawing.Size(448, 225);
+            this.DocTypeGroupBox2.Size = new System.Drawing.Size(464, 258);
             this.DocTypeGroupBox2.TabIndex = 38;
             this.DocTypeGroupBox2.Text = "Типи документів";
             this.DocTypeGroupBox2.Visible = false;
             // 
             // OutDocGroupBox
             // 
+            this.OutDocGroupBox.Controls.Add(this.checkEdit11);
             this.OutDocGroupBox.Controls.Add(this.checkEdit9);
             this.OutDocGroupBox.Controls.Add(this.checkEdit8);
             this.OutDocGroupBox.Controls.Add(this.checkEdit7);
@@ -588,8 +563,17 @@
             this.OutDocGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.OutDocGroupBox.Location = new System.Drawing.Point(2, 123);
             this.OutDocGroupBox.Name = "OutDocGroupBox";
-            this.OutDocGroupBox.Size = new System.Drawing.Size(444, 100);
+            this.OutDocGroupBox.Size = new System.Drawing.Size(460, 133);
             this.OutDocGroupBox.TabIndex = 1;
+            // 
+            // checkEdit11
+            // 
+            this.checkEdit11.Location = new System.Drawing.Point(6, 92);
+            this.checkEdit11.Name = "checkEdit11";
+            this.checkEdit11.Properties.Caption = "Роздрібні продажі";
+            this.checkEdit11.Size = new System.Drawing.Size(154, 20);
+            this.checkEdit11.StyleController = this.styleController1;
+            this.checkEdit11.TabIndex = 37;
             // 
             // checkEdit9
             // 
@@ -654,7 +638,7 @@
             this.InDocGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.InDocGroupBox.Location = new System.Drawing.Point(2, 23);
             this.InDocGroupBox.Name = "InDocGroupBox";
-            this.InDocGroupBox.Size = new System.Drawing.Size(444, 100);
+            this.InDocGroupBox.Size = new System.Drawing.Size(460, 100);
             this.InDocGroupBox.TabIndex = 0;
             // 
             // checkEdit10
@@ -693,15 +677,47 @@
             this.checkEdit2.StyleController = this.styleController1;
             this.checkEdit2.TabIndex = 30;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.textEdit1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 1178);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(464, 83);
+            this.panel1.TabIndex = 41;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 40;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit1.Location = new System.Drawing.Point(87, 10);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.textEdit1.Properties.ReadOnly = true;
+            this.textEdit1.Size = new System.Drawing.Size(369, 64);
+            this.textEdit1.TabIndex = 39;
+            // 
             // StatusPanel
             // 
             this.StatusPanel.Controls.Add(this.wbStatusList);
             this.StatusPanel.Controls.Add(this.labelControl16);
             this.StatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StatusPanel.Location = new System.Drawing.Point(2, 588);
+            this.StatusPanel.Location = new System.Drawing.Point(0, 497);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.StatusPanel.Size = new System.Drawing.Size(448, 47);
+            this.StatusPanel.Size = new System.Drawing.Size(464, 47);
             this.StatusPanel.TabIndex = 42;
             this.StatusPanel.Visible = false;
             // 
@@ -736,10 +752,10 @@
             this.DocTypeGroupBox.Controls.Add(this.DocTypeEdit);
             this.DocTypeGroupBox.Controls.Add(this.labelControl15);
             this.DocTypeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox.Location = new System.Drawing.Point(2, 541);
+            this.DocTypeGroupBox.Location = new System.Drawing.Point(0, 779);
             this.DocTypeGroupBox.Name = "DocTypeGroupBox";
             this.DocTypeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.DocTypeGroupBox.Size = new System.Drawing.Size(448, 47);
+            this.DocTypeGroupBox.Size = new System.Drawing.Size(464, 47);
             this.DocTypeGroupBox.TabIndex = 37;
             // 
             // DocTypeEdit
@@ -773,10 +789,10 @@
             this.ChargeGroupBox.Controls.Add(this.ChTypeEdit);
             this.ChargeGroupBox.Controls.Add(this.labelControl14);
             this.ChargeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChargeGroupBox.Location = new System.Drawing.Point(2, 494);
+            this.ChargeGroupBox.Location = new System.Drawing.Point(0, 826);
             this.ChargeGroupBox.Name = "ChargeGroupBox";
             this.ChargeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.ChargeGroupBox.Size = new System.Drawing.Size(448, 47);
+            this.ChargeGroupBox.Size = new System.Drawing.Size(464, 47);
             this.ChargeGroupBox.TabIndex = 36;
             // 
             // ChTypeEdit
@@ -811,10 +827,10 @@
             this.GroupKontragentPanel.Controls.Add(this.GrpKagentLookUpEdit);
             this.GroupKontragentPanel.Controls.Add(this.labelControl17);
             this.GroupKontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupKontragentPanel.Location = new System.Drawing.Point(2, 447);
+            this.GroupKontragentPanel.Location = new System.Drawing.Point(0, 262);
             this.GroupKontragentPanel.Name = "GroupKontragentPanel";
             this.GroupKontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.GroupKontragentPanel.Size = new System.Drawing.Size(448, 47);
+            this.GroupKontragentPanel.Size = new System.Drawing.Size(464, 47);
             this.GroupKontragentPanel.TabIndex = 43;
             this.GroupKontragentPanel.Visible = false;
             // 
@@ -850,10 +866,10 @@
             this.KontragentPanel.Controls.Add(this.KagentComboBox);
             this.KontragentPanel.Controls.Add(this.labelControl12);
             this.KontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KontragentPanel.Location = new System.Drawing.Point(2, 400);
+            this.KontragentPanel.Location = new System.Drawing.Point(0, 309);
             this.KontragentPanel.Name = "KontragentPanel";
             this.KontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.KontragentPanel.Size = new System.Drawing.Size(448, 47);
+            this.KontragentPanel.Size = new System.Drawing.Size(464, 47);
             this.KontragentPanel.TabIndex = 34;
             // 
             // simpleButton3
@@ -898,11 +914,11 @@
             this.MatGroupBox.Controls.Add(this.MatComboBox);
             this.MatGroupBox.Controls.Add(this.simpleButton2);
             this.MatGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MatGroupBox.Location = new System.Drawing.Point(2, 353);
+            this.MatGroupBox.Location = new System.Drawing.Point(0, 356);
             this.MatGroupBox.Name = "MatGroupBox";
             this.MatGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.MatGroupBox.Size = new System.Drawing.Size(448, 47);
-            this.MatGroupBox.TabIndex = 35;
+            this.MatGroupBox.Size = new System.Drawing.Size(464, 47);
+            this.MatGroupBox.TabIndex = 3;
             // 
             // labelControl13
             // 
@@ -946,10 +962,10 @@
             this.GRPGroupBox.Controls.Add(this.GrpComboBox);
             this.GRPGroupBox.Controls.Add(this.labelControl11);
             this.GRPGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GRPGroupBox.Location = new System.Drawing.Point(2, 306);
+            this.GRPGroupBox.Location = new System.Drawing.Point(0, 450);
             this.GRPGroupBox.Name = "GRPGroupBox";
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.GRPGroupBox.Size = new System.Drawing.Size(448, 47);
+            this.GRPGroupBox.Size = new System.Drawing.Size(464, 47);
             this.GRPGroupBox.TabIndex = 33;
             // 
             // ChildGroupCheckEdit
@@ -993,10 +1009,10 @@
             this.WHGroupBox.Controls.Add(this.WhComboBox);
             this.WHGroupBox.Controls.Add(this.labelControl10);
             this.WHGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WHGroupBox.Location = new System.Drawing.Point(2, 259);
+            this.WHGroupBox.Location = new System.Drawing.Point(0, 403);
             this.WHGroupBox.Name = "WHGroupBox";
             this.WHGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.WHGroupBox.Size = new System.Drawing.Size(448, 47);
+            this.WHGroupBox.Size = new System.Drawing.Size(464, 47);
             this.WHGroupBox.TabIndex = 32;
             // 
             // WhBtn
@@ -1038,15 +1054,15 @@
             // PeriodGroupBox
             // 
             this.PeriodGroupBox.AutoSize = true;
-            this.PeriodGroupBox.Controls.Add(this.PerYearPanel);
             this.PeriodGroupBox.Controls.Add(this.PerQuarterPanel);
             this.PeriodGroupBox.Controls.Add(this.PerMonthPanel);
             this.PeriodGroupBox.Controls.Add(this.CustomPeriodPanel);
+            this.PeriodGroupBox.Controls.Add(this.PerYearPanel);
             this.PeriodGroupBox.Controls.Add(this.panel2);
             this.PeriodGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PeriodGroupBox.Location = new System.Drawing.Point(2, 49);
+            this.PeriodGroupBox.Location = new System.Drawing.Point(0, 5);
             this.PeriodGroupBox.Name = "PeriodGroupBox";
-            this.PeriodGroupBox.Size = new System.Drawing.Size(448, 210);
+            this.PeriodGroupBox.Size = new System.Drawing.Size(464, 210);
             this.PeriodGroupBox.TabIndex = 31;
             // 
             // PerYearPanel
@@ -1054,10 +1070,10 @@
             this.PerYearPanel.Controls.Add(this.YearEdit3);
             this.PerYearPanel.Controls.Add(this.labelControl9);
             this.PerYearPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PerYearPanel.Location = new System.Drawing.Point(0, 168);
+            this.PerYearPanel.Location = new System.Drawing.Point(0, 42);
             this.PerYearPanel.Name = "PerYearPanel";
-            this.PerYearPanel.Size = new System.Drawing.Size(448, 42);
-            this.PerYearPanel.TabIndex = 37;
+            this.PerYearPanel.Size = new System.Drawing.Size(464, 42);
+            this.PerYearPanel.TabIndex = 0;
             this.PerYearPanel.Visible = false;
             // 
             // YearEdit3
@@ -1095,9 +1111,9 @@
             this.PerQuarterPanel.Controls.Add(this.labelControl8);
             this.PerQuarterPanel.Controls.Add(this.comboBoxEdit3);
             this.PerQuarterPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PerQuarterPanel.Location = new System.Drawing.Point(0, 126);
+            this.PerQuarterPanel.Location = new System.Drawing.Point(0, 168);
             this.PerQuarterPanel.Name = "PerQuarterPanel";
-            this.PerQuarterPanel.Size = new System.Drawing.Size(448, 42);
+            this.PerQuarterPanel.Size = new System.Drawing.Size(464, 42);
             this.PerQuarterPanel.TabIndex = 36;
             this.PerQuarterPanel.Visible = false;
             // 
@@ -1161,10 +1177,10 @@
             this.PerMonthPanel.Controls.Add(this.labelControl5);
             this.PerMonthPanel.Controls.Add(this.MonthEdit);
             this.PerMonthPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PerMonthPanel.Location = new System.Drawing.Point(0, 84);
+            this.PerMonthPanel.Location = new System.Drawing.Point(0, 126);
             this.PerMonthPanel.Name = "PerMonthPanel";
-            this.PerMonthPanel.Size = new System.Drawing.Size(448, 42);
-            this.PerMonthPanel.TabIndex = 35;
+            this.PerMonthPanel.Size = new System.Drawing.Size(464, 42);
+            this.PerMonthPanel.TabIndex = 3;
             this.PerMonthPanel.Visible = false;
             // 
             // YearEdit
@@ -1235,10 +1251,10 @@
             this.CustomPeriodPanel.Controls.Add(this.labelControl1);
             this.CustomPeriodPanel.Controls.Add(this.StartDateEdit);
             this.CustomPeriodPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CustomPeriodPanel.Location = new System.Drawing.Point(0, 42);
+            this.CustomPeriodPanel.Location = new System.Drawing.Point(0, 84);
             this.CustomPeriodPanel.Name = "CustomPeriodPanel";
-            this.CustomPeriodPanel.Size = new System.Drawing.Size(448, 42);
-            this.CustomPeriodPanel.TabIndex = 34;
+            this.CustomPeriodPanel.Size = new System.Drawing.Size(464, 42);
+            this.CustomPeriodPanel.TabIndex = 0;
             // 
             // EndDateEdit
             // 
@@ -1299,8 +1315,8 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(448, 42);
-            this.panel2.TabIndex = 38;
+            this.panel2.Size = new System.Drawing.Size(464, 42);
+            this.panel2.TabIndex = 0;
             // 
             // labelControl2
             // 
@@ -1335,11 +1351,11 @@
             this.OnDateGroupBox.Controls.Add(this.OnDateDBEdit);
             this.OnDateGroupBox.Controls.Add(this.labelControl3);
             this.OnDateGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OnDateGroupBox.Location = new System.Drawing.Point(2, 2);
+            this.OnDateGroupBox.Location = new System.Drawing.Point(0, -42);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.OnDateGroupBox.Size = new System.Drawing.Size(448, 47);
-            this.OnDateGroupBox.TabIndex = 25;
+            this.OnDateGroupBox.Size = new System.Drawing.Size(464, 47);
+            this.OnDateGroupBox.TabIndex = 15;
             this.OnDateGroupBox.Visible = false;
             // 
             // OnDateDBEdit
@@ -1370,44 +1386,39 @@
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "На дату:";
             // 
-            // panel1
+            // xtraScrollableControl1
             // 
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.textEdit1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 483);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(448, 83);
-            this.panel1.TabIndex = 41;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 40;
-            this.pictureBox1.TabStop = false;
-            // 
-            // textEdit1
-            // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.Location = new System.Drawing.Point(87, 10);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(353, 64);
-            this.textEdit1.TabIndex = 39;
+            this.xtraScrollableControl1.Controls.Add(this.DocTypeGroupBox2);
+            this.xtraScrollableControl1.Controls.Add(this.wmatturnStatusPanel);
+            this.xtraScrollableControl1.Controls.Add(this.ChargeGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.DocTypeGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.DriverPanel);
+            this.xtraScrollableControl1.Controls.Add(this.CarPanel);
+            this.xtraScrollableControl1.Controls.Add(this.CashDesksPanel);
+            this.xtraScrollableControl1.Controls.Add(this.PersonPanel);
+            this.xtraScrollableControl1.Controls.Add(this.RoutePanel);
+            this.xtraScrollableControl1.Controls.Add(this.StatusPanel);
+            this.xtraScrollableControl1.Controls.Add(this.GRPGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.WHGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.MatGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.KontragentPanel);
+            this.xtraScrollableControl1.Controls.Add(this.GroupKontragentPanel);
+            this.xtraScrollableControl1.Controls.Add(this.KaKindPanel);
+            this.xtraScrollableControl1.Controls.Add(this.panel1);
+            this.xtraScrollableControl1.Controls.Add(this.PeriodGroupBox);
+            this.xtraScrollableControl1.Controls.Add(this.OnDateGroupBox);
+            this.xtraScrollableControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraScrollableControl1.Location = new System.Drawing.Point(0, 0);
+            this.xtraScrollableControl1.Name = "xtraScrollableControl1";
+            this.xtraScrollableControl1.Size = new System.Drawing.Size(481, 529);
+            this.xtraScrollableControl1.TabIndex = 32;
             // 
             // frmReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(452, 619);
-            this.Controls.Add(this.mainPanel);
+            this.ClientSize = new System.Drawing.Size(481, 580);
+            this.Controls.Add(this.xtraScrollableControl1);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "frmReport";
@@ -1419,9 +1430,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mainPanel)).EndInit();
-            this.mainPanel.ResumeLayout(false);
-            this.mainPanel.PerformLayout();
             this.RoutePanel.ResumeLayout(false);
             this.RoutePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
@@ -1446,6 +1454,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeGroupBox2)).EndInit();
             this.DocTypeGroupBox2.ResumeLayout(false);
             this.OutDocGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit11.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
@@ -1457,6 +1466,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit2.Properties)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             this.StatusPanel.ResumeLayout(false);
             this.StatusPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
@@ -1507,10 +1520,8 @@
             this.OnDateGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            this.xtraScrollableControl1.ResumeLayout(false);
+            this.xtraScrollableControl1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1521,7 +1532,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.PanelControl mainPanel;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.DateEdit EndDateEdit;
         private DevExpress.XtraEditors.LabelControl labelControl1;
@@ -1614,5 +1624,7 @@
         private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.SimpleButton btnShowGrid;
+        private DevExpress.XtraEditors.CheckEdit checkEdit11;
+        private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControl1;
     }
 }

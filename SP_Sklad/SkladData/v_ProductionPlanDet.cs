@@ -28,5 +28,6 @@ namespace SP_Sklad.SkladData
         public decimal RecipeAmount { get; set; }
         public decimal ResipeOut { get; set; }
         public Nullable<decimal> TotalOut { get; set; }
+        public string Artikul { get; set; }
     }
 }

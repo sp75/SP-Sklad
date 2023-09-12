@@ -12,20 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class MatRecDet
+    public partial class ExpeditionMaterialsDet
     {
-        public int DetId { get; set; }
-        public int RecId { get; set; }
+        public System.Guid Id { get; set; }
+        public System.Guid ExpeditionDetId { get; set; }
         public int MatId { get; set; }
         public decimal Amount { get; set; }
-        public Nullable<decimal> Coefficient { get; set; }
-        public int TurnType { get; set; }
-        public decimal Deviation { get; set; }
-        public string Note { get; set; }
-        public Nullable<int> WId { get; set; }
     
+        public virtual ExpeditionDet ExpeditionDet { get; set; }
         public virtual Materials Materials { get; set; }
-        public virtual MatRecipe MatRecipe { get; set; }
-        public virtual Warehouse Warehouse { get; set; }
     }
 }

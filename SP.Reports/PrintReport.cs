@@ -1748,6 +1748,10 @@ SELECT WaybillList.[WbillId]
             public int GrpId { get; set; }
             public string GrpName { get; set; }
             public decimal? Amount { get; set; }
+            public int Mid { get; set; }
+            public string MatName { get; set; }
+            public int MatId { get; set; }
+            public string MeasuresShortName { get; set; }
         }
 
         private void REP_49()
@@ -1758,7 +1762,12 @@ SELECT WaybillList.[WbillId]
 	   m.GrpId,
        mg.Name GrpName,
 	   ka.Name KagentName,
-	   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
+       wbd.Amount,
+       m.Mid,
+       m.Name MatName,
+       m.MatId,
+       ms.ShortName MeasuresShortName
+	--   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
     from materials m
     join waybilldet wbd on m.matid=wbd.matid
     join waybilllist wbl on wbl.wbillid=wbd.wbillid
@@ -1772,7 +1781,7 @@ SELECT WaybillList.[WbillId]
            and {3} in (ka.kaid , 0 )
            and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
            and {6}  in (-1, wbl.RouteId) 
-    group by mg.Name , m.GrpId, ka.kaid, ka.Name
+ --   group by mg.Name , m.GrpId, ka.kaid, ka.Name
     )x
     where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr, RouteId.Id).ToList();
 
@@ -1796,10 +1805,23 @@ SELECT WaybillList.[WbillId]
                 child_table = "MatOutDet"
             });
 
+            realation.Add(new
+            {
+                pk = "KaId",
+                fk = "KaId",
+                master_table = "KaGroup",
+                child_table = "MatOutDet2"
+            });
+
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", ka_grp);
-            data_for_report.Add("MatOutDet", mat);
-            data_for_report.Add("_realation_", realation);
+            data_for_report.Add("MatOutDet", mat.GroupBy(g=> new { g.GrpName, g.GrpId, g.KaId,g.KagentName}).Select(s=> new {s.Key.GrpId, s.Key.KaId, s.Key.GrpName, Amount = s.Sum(ss=> ss.Mid == 2 ? ss.Amount :0)}).ToList());
+
+            data_for_report.Add("KaGroup", ka_grp);
+            data_for_report.Add("MatOutDet2", mat);
+
+
+          data_for_report.Add("_realation_", realation);
         }
 
         private void REP_50()

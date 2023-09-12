@@ -14,6 +14,7 @@ using System.Collections;
 using SP.Reports;
 using System.IO;
 using SP_Sklad.Common;
+using SP.Reports.Models.Views;
 
 namespace SP_Sklad.ViewsForm
 {
@@ -33,12 +34,15 @@ namespace SP_Sklad.ViewsForm
             public string OnDate { get; set; }
             public string OnDate1 { get; set; }
             public string OnDate2 { get; set; }
+            public string WhName { get; set; }
         }
 
         private List<XLRPARAM> XLR_PARAMS
         {
             get
             {
+                var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
+
                 var obj = new List<XLRPARAM>
                 {
                     new XLRPARAM
@@ -46,6 +50,7 @@ namespace SP_Sklad.ViewsForm
                         OnDate = OnDateDBEdit.DateTime.ToShortDateString(),
                         OnDate1 = dateEdit1.DateTime.ToShortDateString(),
                         OnDate2 = dateEdit2.DateTime.ToShortDateString(),
+                        WhName = wh_row.Name
                     }
                 };
 
@@ -58,11 +63,16 @@ namespace SP_Sklad.ViewsForm
             OnDateDBEdit.DateTime = DateTime.Now;
             dateEdit1.DateTime = DateTime.Now;
             dateEdit2.DateTime = DateTime.Now;
-        }
 
-        private void WhRemainGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
-        {
+            var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId, s.Name, s.Def }).ToList();
 
+            WhComboBox.Properties.DataSource = new List<object>() { new  { WId = 0, Name = "Усі" } }.Concat(wh.Select(s => new 
+            {
+                 s.WId,
+                 s.Name
+            }).ToList());
+
+            WhComboBox.EditValue = 0;
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)
@@ -87,8 +97,10 @@ namespace SP_Sklad.ViewsForm
             public string Artikul { get; set; }
             public string MsrName { get; set; }
         }
-        private List<rep_53> GetDsata()
+        private List<rep_53> GetData()
         {
+            var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
+            int wid = wh_row.WId;
 
             return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
@@ -108,19 +120,20 @@ from
 					     where ondate <= {0}
 					     group by [PosId]
 						) x on x.PosId = pr.PosId and pr.OnDate = x.OnDate
-        where  (pr.remain > 0 or Ordered > 0) 
+        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {3} or {3} = 0 )
         group by  pr.MatId
 
 		)x
 		inner join Materials m on m.MatId = x.MatId  and m.TypeId in (1,5)
 		inner join MatGroup mg on mg.GrpId = m.GrpId 
-        inner join Measures on Measures.MId = m.MId  ", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date).ToList();
+        inner join Measures on Measures.MId = m.MId
+        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, wid).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
         {
             string template_name = "ProductionPlanning(53).xlsx";
-            var mat = GetDsata();
+            var mat = GetData();
 
             if (!mat.Any())
             {
@@ -170,7 +183,7 @@ from
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            new frmGridView(Text, GetDsata()).ShowDialog();
+            new frmGridView(Text, GetData()).ShowDialog();
         }
     }
 }

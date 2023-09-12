@@ -27,6 +27,7 @@ namespace SP_Sklad.SkladData
             this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
             this.AdditionalCostsDet = new HashSet<AdditionalCostsDet>();
             this.DeboningWeighing = new HashSet<DeboningWeighing>();
+            this.ExpeditionDet = new HashSet<ExpeditionDet>();
         }
     
         public int WbillId { get; set; }
@@ -83,5 +84,6 @@ namespace SP_Sklad.SkladData
         public virtual Kagent Kontragent { get; set; }
         public virtual Kagent Kagent2 { get; set; }
         public virtual ICollection<DeboningWeighing> DeboningWeighing { get; set; }
+        public virtual ICollection<ExpeditionDet> ExpeditionDet { get; set; }
     }
 }

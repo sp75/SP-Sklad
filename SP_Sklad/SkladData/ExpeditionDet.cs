@@ -14,13 +14,28 @@ namespace SP_Sklad.SkladData
     
     public partial class ExpeditionDet
     {
+        public ExpeditionDet()
+        {
+            this.ExpeditionMaterialsDet = new HashSet<ExpeditionMaterialsDet>();
+        }
+    
         public System.Guid Id { get; set; }
         public System.Guid ExpeditionId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public int WbillId { get; set; }
         public Nullable<System.DateTime> CreatedAt { get; set; }
-        public Nullable<decimal> TareQuantity { get; set; }
-        public Nullable<decimal> TareWeight { get; set; }
         public Nullable<int> MId { get; set; }
+        public Nullable<decimal> TareQuantity { get; set; }
+        public Nullable<decimal> TareQuantity1 { get; set; }
+        public Nullable<decimal> TareQuantity2 { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
+        public Nullable<int> Tare { get; set; }
+        public Nullable<int> Tare1 { get; set; }
+        public Nullable<int> Tare2 { get; set; }
+        public Nullable<int> Checked { get; set; }
+        public Nullable<decimal> WbAmount { get; set; }
+    
+        public virtual ICollection<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
+        public virtual WaybillList WaybillList { get; set; }
     }
 }

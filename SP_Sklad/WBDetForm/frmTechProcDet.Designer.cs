@@ -29,31 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTechProcDet));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.TareMatEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.TareMatEdit6 = new DevExpress.XtraEditors.LookUpEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.TareMatEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.calcEdit3 = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
@@ -82,14 +89,13 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.TareMatEdit6 = new DevExpress.XtraEditors.LookUpEdit();
             this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).BeginInit();
@@ -105,7 +111,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,6 +160,39 @@
             this.panelControl1.Size = new System.Drawing.Size(505, 503);
             this.panelControl1.TabIndex = 0;
             // 
+            // TareMatEdit6
+            // 
+            this.TareMatEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "SausageSyringeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TareMatEdit6.Location = new System.Drawing.Point(17, 345);
+            this.TareMatEdit6.Name = "TareMatEdit6";
+            this.TareMatEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.TareMatEdit6.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.TareMatEdit6.Properties.DisplayMember = "Name";
+            this.TareMatEdit6.Properties.ShowFooter = false;
+            this.TareMatEdit6.Properties.ShowHeader = false;
+            this.TareMatEdit6.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.TareMatEdit6.Properties.ValueMember = "MatId";
+            this.TareMatEdit6.Size = new System.Drawing.Size(297, 22);
+            this.TareMatEdit6.StyleController = this.styleController1;
+            this.TareMatEdit6.TabIndex = 53;
+            this.TareMatEdit6.EditValueChanged += new System.EventHandler(this.TareMatEdit6_EditValueChanged);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // labelControl13
+            // 
+            this.labelControl13.Location = new System.Drawing.Point(17, 323);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(40, 16);
+            this.labelControl13.StyleController = this.styleController1;
+            this.labelControl13.TabIndex = 51;
+            this.labelControl13.Text = "Шприц";
+            // 
             // TareMatEdit
             // 
             this.TareMatEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "TareMatId", true));
@@ -174,11 +212,7 @@
             this.TareMatEdit.Size = new System.Drawing.Size(299, 22);
             this.TareMatEdit.StyleController = this.styleController1;
             this.TareMatEdit.TabIndex = 50;
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
+            this.TareMatEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TareMatEdit_ButtonClick);
             // 
             // labelControl12
             // 
@@ -384,9 +418,10 @@
             this.OnDateEdit.EditValue = null;
             this.OnDateEdit.Location = new System.Drawing.Point(132, 37);
             this.OnDateEdit.Name = "OnDateEdit";
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.OnDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("OnDateEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.OnDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateEdit.Properties.DisplayFormat.FormatString = "";
@@ -395,7 +430,8 @@
             this.OnDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.OnDateEdit.Properties.Mask.EditMask = "";
             this.OnDateEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.OnDateEdit.Size = new System.Drawing.Size(182, 22);
+            this.OnDateEdit.Properties.MaskSettings.Set("mask", "");
+            this.OnDateEdit.Size = new System.Drawing.Size(182, 24);
             this.OnDateEdit.StyleController = this.styleController1;
             this.OnDateEdit.TabIndex = 26;
             this.OnDateEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.OnDateEdit_ButtonClick);
@@ -406,13 +442,15 @@
             this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "Out", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.AmountEdit.Location = new System.Drawing.Point(333, 37);
             this.AmountEdit.Name = "AmountEdit";
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F11), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, true),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("AmountEdit.Properties.Buttons1"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F11), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.F12), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(157, 22);
+            this.AmountEdit.Size = new System.Drawing.Size(157, 24);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 24;
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
@@ -442,9 +480,10 @@
             this.TechProcessCB.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "ProcId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.TechProcessCB.Location = new System.Drawing.Point(12, 105);
             this.TechProcessCB.Name = "TechProcessCB";
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
             this.TechProcessCB.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("TechProcessCB.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.TechProcessCB.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.TechProcessCB.Properties.DisplayMember = "Name";
@@ -452,7 +491,7 @@
             this.TechProcessCB.Properties.ShowHeader = false;
             this.TechProcessCB.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.TechProcessCB.Properties.ValueMember = "ProcId";
-            this.TechProcessCB.Size = new System.Drawing.Size(302, 22);
+            this.TechProcessCB.Size = new System.Drawing.Size(302, 24);
             this.TechProcessCB.StyleController = this.styleController1;
             this.TechProcessCB.TabIndex = 19;
             this.TechProcessCB.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.TechProcessCB_ButtonClick);
@@ -464,9 +503,10 @@
             this.PersonComboBox.Enabled = false;
             this.PersonComboBox.Location = new System.Drawing.Point(15, 400);
             this.PersonComboBox.Name = "PersonComboBox";
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PersonComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
@@ -474,7 +514,7 @@
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(475, 22);
+            this.PersonComboBox.Size = new System.Drawing.Size(475, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 17;
             this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);
@@ -482,6 +522,7 @@
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl6.Appearance.Options.UseFont = true;
             this.labelControl6.Location = new System.Drawing.Point(333, 15);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(39, 16);
@@ -492,6 +533,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 83);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(55, 16);
@@ -530,34 +572,6 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
-            // labelControl13
-            // 
-            this.labelControl13.Location = new System.Drawing.Point(17, 323);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(40, 16);
-            this.labelControl13.StyleController = this.styleController1;
-            this.labelControl13.TabIndex = 51;
-            this.labelControl13.Text = "Шприц";
-            // 
-            // TareMatEdit6
-            // 
-            this.TareMatEdit6.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.TechProcDetBS, "SausageSyringeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TareMatEdit6.Location = new System.Drawing.Point(17, 345);
-            this.TareMatEdit6.Name = "TareMatEdit6";
-            this.TareMatEdit6.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.TareMatEdit6.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.TareMatEdit6.Properties.DisplayMember = "Name";
-            this.TareMatEdit6.Properties.ShowFooter = false;
-            this.TareMatEdit6.Properties.ShowHeader = false;
-            this.TareMatEdit6.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.TareMatEdit6.Properties.ValueMember = "MatId";
-            this.TareMatEdit6.Size = new System.Drawing.Size(297, 22);
-            this.TareMatEdit6.StyleController = this.styleController1;
-            this.TareMatEdit6.TabIndex = 53;
-            this.TareMatEdit6.EditValueChanged += new System.EventHandler(this.TareMatEdit6_EditValueChanged);
-            // 
             // TechProcDetBS
             // 
             this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.TechProcDet);
@@ -570,8 +584,8 @@
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.IconOptions.ShowIcon = false;
             this.Name = "frmTechProcDet";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Властивості технолгічного процесу";
@@ -582,8 +596,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatComboBox2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit2.Properties)).EndInit();
@@ -599,7 +614,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TareMatEdit6.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
             this.ResumeLayout(false);
 

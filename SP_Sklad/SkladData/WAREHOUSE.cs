@@ -30,6 +30,7 @@ namespace SP_Sklad.SkladData
             this.PosRemains = new HashSet<PosRemains>();
             this.ProductionPlans = new HashSet<ProductionPlans>();
             this.ProductionPlans1 = new HashSet<ProductionPlans>();
+            this.MatRecDet = new HashSet<MatRecDet>();
         }
     
         public int WId { get; set; }
@@ -53,5 +54,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans { get; set; }
         public virtual ICollection<ProductionPlans> ProductionPlans1 { get; set; }
+        public virtual ICollection<MatRecDet> MatRecDet { get; set; }
     }
 }

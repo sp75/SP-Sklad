@@ -90,6 +90,7 @@
             this.PrintRecipeBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.SetPriceBtnItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -181,6 +182,7 @@
             this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
@@ -406,7 +408,6 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -721,8 +722,9 @@
             this.barButtonItem2,
             this.PrintRecipeBtn,
             this.barButtonItem7,
-            this.SetPriceBtnItem});
-            this.barManager1.MaxItemId = 48;
+            this.SetPriceBtnItem,
+            this.barButtonItem9});
+            this.barManager1.MaxItemId = 49;
             // 
             // bar1
             // 
@@ -1202,6 +1204,15 @@
             this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
             this.SetPriceBtnItem.Name = "SetPriceBtnItem";
             this.SetPriceBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Перерахувати баланс";
+            this.barButtonItem9.Id = 48;
+            this.barButtonItem9.ImageOptions.Image = global::SP_Sklad.Properties.Resources.calculatesheet_16x16;
+            this.barButtonItem9.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.calculatesheet_32x32;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick_1);
             // 
             // panelControl1
             // 
@@ -2178,6 +2189,12 @@
             this.gridColumn113.Name = "gridColumn113";
             this.gridColumn113.Visible = true;
             this.gridColumn113.VisibleIndex = 4;
+            // 
+            // colMatId
+            // 
+            this.colMatId.Caption = "Код товару";
+            this.colMatId.FieldName = "MatId";
+            this.colMatId.Name = "colMatId";
             // 
             // gridView4
             // 
@@ -4325,7 +4342,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
@@ -4372,12 +4390,6 @@
             this.PriceTypesPopupMenu.Manager = this.barManager1;
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
-            // 
-            // colMatId
-            // 
-            this.colMatId.Caption = "Код товару";
-            this.colMatId.FieldName = "MatId";
-            this.colMatId.Name = "colMatId";
             // 
             // DirectoriesUserControl
             // 
@@ -4959,5 +4971,6 @@
         private DevExpress.XtraBars.PopupMenu PriceTypesPopupMenu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
         private DevExpress.XtraGrid.Columns.GridColumn colMatId;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }

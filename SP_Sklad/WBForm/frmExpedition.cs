@@ -251,5 +251,15 @@ namespace SP_Sklad.WBForm
                 }
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmExpeditionDet(_db, focused_dr.Id, exp, null))
+            {
+                frm.ShowDialog();
+            }
+
+            GetDetail();
+        }
     }
 }

@@ -62,6 +62,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -189,8 +190,9 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem9});
-            this.barManager1.MaxItemId = 15;
+            this.barButtonItem9,
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 16;
             // 
             // bar2
             // 
@@ -288,6 +290,7 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
             this.barSubItem1.Name = "barSubItem1";
@@ -308,6 +311,14 @@
             this.barButtonItem6.ImageOptions.ImageIndex = 9;
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Твари постачальника списком";
+            this.barButtonItem10.Id = 15;
+            this.barButtonItem10.ImageOptions.ImageIndex = 9;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -1203,5 +1214,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraEditors.LookUpEdit PTypeComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
     }
 }
