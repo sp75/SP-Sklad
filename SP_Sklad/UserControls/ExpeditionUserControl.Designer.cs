@@ -70,10 +70,17 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -91,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).BeginInit();
@@ -352,7 +360,8 @@
             this.gridColumn48,
             this.gridColumn112,
             this.gridColumn3,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn11});
             this.ExpeditionsGridView.GridControl = this.ExpeditionsGridControl;
             this.ExpeditionsGridView.Name = "ExpeditionsGridView";
             this.ExpeditionsGridView.OptionsBehavior.Editable = false;
@@ -465,7 +474,8 @@
             this.ExpeditionDetGridControl.Name = "ExpeditionDetGridControl";
             this.ExpeditionDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemCheckEdit1});
             this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 219);
             this.ExpeditionDetGridControl.TabIndex = 2;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -481,7 +491,12 @@
             this.colMatId,
             this.gridColumn2,
             this.gridColumn4,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn6,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn9,
+            this.gridColumn10});
             this.ExpeditionDetGridView.GridControl = this.ExpeditionDetGridControl;
             this.ExpeditionDetGridView.Name = "ExpeditionDetGridView";
             this.ExpeditionDetGridView.OptionsBehavior.ReadOnly = true;
@@ -494,17 +509,19 @@
             this.colMatId.FieldName = "KaName";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.VisibleIndex = 0;
-            this.colMatId.Width = 601;
+            this.colMatId.VisibleIndex = 3;
+            this.colMatId.Width = 384;
             // 
             // gridColumn2
             // 
-            this.gridColumn2.Caption = "Дата";
+            this.gridColumn2.Caption = "Дата перевірки";
+            this.gridColumn2.DisplayFormat.FormatString = "g";
+            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn2.FieldName = "CreatedAt";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 247;
+            this.gridColumn2.VisibleIndex = 5;
+            this.gridColumn2.Width = 144;
             // 
             // gridColumn4
             // 
@@ -512,8 +529,8 @@
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 202;
+            this.gridColumn4.VisibleIndex = 7;
+            this.gridColumn4.Width = 69;
             // 
             // gridColumn1
             // 
@@ -521,8 +538,63 @@
             this.gridColumn1.FieldName = "MeasuresName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 171;
+            this.gridColumn1.VisibleIndex = 6;
+            this.gridColumn1.Width = 98;
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "К-сть  по документу";
+            this.gridColumn6.FieldName = "WbAmount";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 4;
+            this.gridColumn6.Width = 138;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Ріниця";
+            this.gridColumn7.FieldName = "TotalWeight";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.Width = 103;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Статус";
+            this.gridColumn8.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.gridColumn8.FieldName = "Checked";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 0;
+            this.gridColumn8.Width = 76;
+            // 
+            // repositoryItemCheckEdit1
+            // 
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            this.repositoryItemCheckEdit1.ValueChecked = 1;
+            this.repositoryItemCheckEdit1.ValueUnchecked = 0;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Дата документа";
+            this.gridColumn9.DisplayFormat.FormatString = "g";
+            this.gridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn9.FieldName = "OnDate";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 2;
+            this.gridColumn9.Width = 111;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Номер";
+            this.gridColumn10.FieldName = "WbNum";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.Width = 98;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -565,6 +637,14 @@
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
             // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Всього, кг.";
+            this.gridColumn11.FieldName = "TotalKilograms";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 6;
+            // 
             // ExpeditionUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -597,6 +677,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).EndInit();
@@ -652,5 +733,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
     }
 }

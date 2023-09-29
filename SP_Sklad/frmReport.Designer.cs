@@ -108,9 +108,6 @@
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.PeriodGroupBox = new System.Windows.Forms.Panel();
-            this.PerYearPanel = new System.Windows.Forms.Panel();
-            this.YearEdit3 = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.PerQuarterPanel = new System.Windows.Forms.Panel();
             this.YearEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -126,6 +123,9 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.StartDateEdit = new DevExpress.XtraEditors.DateEdit();
+            this.PerYearPanel = new System.Windows.Forms.Panel();
+            this.YearEdit3 = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -186,8 +186,6 @@
             this.WHGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
             this.PeriodGroupBox.SuspendLayout();
-            this.PerYearPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).BeginInit();
             this.PerQuarterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit3.Properties)).BeginInit();
@@ -199,6 +197,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.EndDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartDateEdit.Properties)).BeginInit();
+            this.PerYearPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
             this.OnDateGroupBox.SuspendLayout();
@@ -272,7 +272,7 @@
             this.RoutePanel.Controls.Add(this.RouteLookUpEdit);
             this.RoutePanel.Controls.Add(this.labelControl24);
             this.RoutePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RoutePanel.Location = new System.Drawing.Point(0, 544);
+            this.RoutePanel.Location = new System.Drawing.Point(0, 586);
             this.RoutePanel.Name = "RoutePanel";
             this.RoutePanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.RoutePanel.Size = new System.Drawing.Size(464, 47);
@@ -310,7 +310,7 @@
             this.KaKindPanel.Controls.Add(this.KaKindLookUpEdit);
             this.KaKindPanel.Controls.Add(this.labelControl23);
             this.KaKindPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KaKindPanel.Location = new System.Drawing.Point(0, 215);
+            this.KaKindPanel.Location = new System.Drawing.Point(0, 257);
             this.KaKindPanel.Name = "KaKindPanel";
             this.KaKindPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.KaKindPanel.Size = new System.Drawing.Size(464, 47);
@@ -348,7 +348,7 @@
             this.DriverPanel.Controls.Add(this.DriversLookUpEdit);
             this.DriverPanel.Controls.Add(this.labelControl22);
             this.DriverPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DriverPanel.Location = new System.Drawing.Point(0, 732);
+            this.DriverPanel.Location = new System.Drawing.Point(0, 774);
             this.DriverPanel.Name = "DriverPanel";
             this.DriverPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.DriverPanel.Size = new System.Drawing.Size(464, 47);
@@ -388,7 +388,7 @@
             this.CarPanel.Controls.Add(this.CarsLookUpEdit);
             this.CarPanel.Controls.Add(this.labelControl21);
             this.CarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CarPanel.Location = new System.Drawing.Point(0, 685);
+            this.CarPanel.Location = new System.Drawing.Point(0, 727);
             this.CarPanel.Name = "CarPanel";
             this.CarPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.CarPanel.Size = new System.Drawing.Size(464, 47);
@@ -427,7 +427,7 @@
             this.CashDesksPanel.Controls.Add(this.CashEditComboBox);
             this.CashDesksPanel.Controls.Add(this.labelControl20);
             this.CashDesksPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CashDesksPanel.Location = new System.Drawing.Point(0, 638);
+            this.CashDesksPanel.Location = new System.Drawing.Point(0, 680);
             this.CashDesksPanel.Name = "CashDesksPanel";
             this.CashDesksPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.CashDesksPanel.Size = new System.Drawing.Size(464, 47);
@@ -467,7 +467,7 @@
             this.wmatturnStatusPanel.Controls.Add(this.wmatturnStatus);
             this.wmatturnStatusPanel.Controls.Add(this.labelControl19);
             this.wmatturnStatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.wmatturnStatusPanel.Location = new System.Drawing.Point(0, 873);
+            this.wmatturnStatusPanel.Location = new System.Drawing.Point(0, 915);
             this.wmatturnStatusPanel.Name = "wmatturnStatusPanel";
             this.wmatturnStatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.wmatturnStatusPanel.Size = new System.Drawing.Size(464, 47);
@@ -505,7 +505,7 @@
             this.PersonPanel.Controls.Add(this.PersonLookUpEdit);
             this.PersonPanel.Controls.Add(this.labelControl18);
             this.PersonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PersonPanel.Location = new System.Drawing.Point(0, 591);
+            this.PersonPanel.Location = new System.Drawing.Point(0, 633);
             this.PersonPanel.Name = "PersonPanel";
             this.PersonPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.PersonPanel.Size = new System.Drawing.Size(464, 47);
@@ -544,7 +544,7 @@
             this.DocTypeGroupBox2.Controls.Add(this.OutDocGroupBox);
             this.DocTypeGroupBox2.Controls.Add(this.InDocGroupBox);
             this.DocTypeGroupBox2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox2.Location = new System.Drawing.Point(0, 920);
+            this.DocTypeGroupBox2.Location = new System.Drawing.Point(0, 962);
             this.DocTypeGroupBox2.Name = "DocTypeGroupBox2";
             this.DocTypeGroupBox2.Size = new System.Drawing.Size(464, 258);
             this.DocTypeGroupBox2.TabIndex = 38;
@@ -682,7 +682,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.textEdit1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1178);
+            this.panel1.Location = new System.Drawing.Point(0, 1220);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(464, 83);
             this.panel1.TabIndex = 41;
@@ -714,7 +714,7 @@
             this.StatusPanel.Controls.Add(this.wbStatusList);
             this.StatusPanel.Controls.Add(this.labelControl16);
             this.StatusPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.StatusPanel.Location = new System.Drawing.Point(0, 497);
+            this.StatusPanel.Location = new System.Drawing.Point(0, 539);
             this.StatusPanel.Name = "StatusPanel";
             this.StatusPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.StatusPanel.Size = new System.Drawing.Size(464, 47);
@@ -752,7 +752,7 @@
             this.DocTypeGroupBox.Controls.Add(this.DocTypeEdit);
             this.DocTypeGroupBox.Controls.Add(this.labelControl15);
             this.DocTypeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DocTypeGroupBox.Location = new System.Drawing.Point(0, 779);
+            this.DocTypeGroupBox.Location = new System.Drawing.Point(0, 821);
             this.DocTypeGroupBox.Name = "DocTypeGroupBox";
             this.DocTypeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.DocTypeGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -789,7 +789,7 @@
             this.ChargeGroupBox.Controls.Add(this.ChTypeEdit);
             this.ChargeGroupBox.Controls.Add(this.labelControl14);
             this.ChargeGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ChargeGroupBox.Location = new System.Drawing.Point(0, 826);
+            this.ChargeGroupBox.Location = new System.Drawing.Point(0, 868);
             this.ChargeGroupBox.Name = "ChargeGroupBox";
             this.ChargeGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.ChargeGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -827,7 +827,7 @@
             this.GroupKontragentPanel.Controls.Add(this.GrpKagentLookUpEdit);
             this.GroupKontragentPanel.Controls.Add(this.labelControl17);
             this.GroupKontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GroupKontragentPanel.Location = new System.Drawing.Point(0, 262);
+            this.GroupKontragentPanel.Location = new System.Drawing.Point(0, 304);
             this.GroupKontragentPanel.Name = "GroupKontragentPanel";
             this.GroupKontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GroupKontragentPanel.Size = new System.Drawing.Size(464, 47);
@@ -866,7 +866,7 @@
             this.KontragentPanel.Controls.Add(this.KagentComboBox);
             this.KontragentPanel.Controls.Add(this.labelControl12);
             this.KontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.KontragentPanel.Location = new System.Drawing.Point(0, 309);
+            this.KontragentPanel.Location = new System.Drawing.Point(0, 351);
             this.KontragentPanel.Name = "KontragentPanel";
             this.KontragentPanel.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.KontragentPanel.Size = new System.Drawing.Size(464, 47);
@@ -914,7 +914,7 @@
             this.MatGroupBox.Controls.Add(this.MatComboBox);
             this.MatGroupBox.Controls.Add(this.simpleButton2);
             this.MatGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MatGroupBox.Location = new System.Drawing.Point(0, 356);
+            this.MatGroupBox.Location = new System.Drawing.Point(0, 398);
             this.MatGroupBox.Name = "MatGroupBox";
             this.MatGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.MatGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -962,7 +962,7 @@
             this.GRPGroupBox.Controls.Add(this.GrpComboBox);
             this.GRPGroupBox.Controls.Add(this.labelControl11);
             this.GRPGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.GRPGroupBox.Location = new System.Drawing.Point(0, 450);
+            this.GRPGroupBox.Location = new System.Drawing.Point(0, 492);
             this.GRPGroupBox.Name = "GRPGroupBox";
             this.GRPGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.GRPGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1009,7 +1009,7 @@
             this.WHGroupBox.Controls.Add(this.WhComboBox);
             this.WHGroupBox.Controls.Add(this.labelControl10);
             this.WHGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.WHGroupBox.Location = new System.Drawing.Point(0, 403);
+            this.WHGroupBox.Location = new System.Drawing.Point(0, 445);
             this.WHGroupBox.Name = "WHGroupBox";
             this.WHGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.WHGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1060,49 +1060,10 @@
             this.PeriodGroupBox.Controls.Add(this.PerYearPanel);
             this.PeriodGroupBox.Controls.Add(this.panel2);
             this.PeriodGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PeriodGroupBox.Location = new System.Drawing.Point(0, 5);
+            this.PeriodGroupBox.Location = new System.Drawing.Point(0, 47);
             this.PeriodGroupBox.Name = "PeriodGroupBox";
             this.PeriodGroupBox.Size = new System.Drawing.Size(464, 210);
             this.PeriodGroupBox.TabIndex = 31;
-            // 
-            // PerYearPanel
-            // 
-            this.PerYearPanel.Controls.Add(this.YearEdit3);
-            this.PerYearPanel.Controls.Add(this.labelControl9);
-            this.PerYearPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PerYearPanel.Location = new System.Drawing.Point(0, 42);
-            this.PerYearPanel.Name = "PerYearPanel";
-            this.PerYearPanel.Size = new System.Drawing.Size(464, 42);
-            this.PerYearPanel.TabIndex = 0;
-            this.PerYearPanel.Visible = false;
-            // 
-            // YearEdit3
-            // 
-            this.YearEdit3.EditValue = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.YearEdit3.Location = new System.Drawing.Point(79, 11);
-            this.YearEdit3.Name = "YearEdit3";
-            this.YearEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.YearEdit3.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
-            this.YearEdit3.Properties.IsFloatValue = false;
-            this.YearEdit3.Properties.Mask.EditMask = "N00";
-            this.YearEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.YearEdit3.Size = new System.Drawing.Size(152, 22);
-            this.YearEdit3.StyleController = this.styleController1;
-            this.YearEdit3.TabIndex = 33;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Location = new System.Drawing.Point(8, 14);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(21, 16);
-            this.labelControl9.StyleController = this.styleController1;
-            this.labelControl9.TabIndex = 32;
-            this.labelControl9.Text = "Рік:";
             // 
             // PerQuarterPanel
             // 
@@ -1308,6 +1269,45 @@
             this.StartDateEdit.StyleController = this.styleController1;
             this.StartDateEdit.TabIndex = 25;
             // 
+            // PerYearPanel
+            // 
+            this.PerYearPanel.Controls.Add(this.YearEdit3);
+            this.PerYearPanel.Controls.Add(this.labelControl9);
+            this.PerYearPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PerYearPanel.Location = new System.Drawing.Point(0, 42);
+            this.PerYearPanel.Name = "PerYearPanel";
+            this.PerYearPanel.Size = new System.Drawing.Size(464, 42);
+            this.PerYearPanel.TabIndex = 0;
+            this.PerYearPanel.Visible = false;
+            // 
+            // YearEdit3
+            // 
+            this.YearEdit3.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.YearEdit3.Location = new System.Drawing.Point(79, 11);
+            this.YearEdit3.Name = "YearEdit3";
+            this.YearEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.YearEdit3.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
+            this.YearEdit3.Properties.IsFloatValue = false;
+            this.YearEdit3.Properties.Mask.EditMask = "N00";
+            this.YearEdit3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.YearEdit3.Size = new System.Drawing.Size(152, 22);
+            this.YearEdit3.StyleController = this.styleController1;
+            this.YearEdit3.TabIndex = 33;
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Location = new System.Drawing.Point(8, 14);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(21, 16);
+            this.labelControl9.StyleController = this.styleController1;
+            this.labelControl9.TabIndex = 32;
+            this.labelControl9.Text = "Рік:";
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.labelControl2);
@@ -1351,7 +1351,7 @@
             this.OnDateGroupBox.Controls.Add(this.OnDateDBEdit);
             this.OnDateGroupBox.Controls.Add(this.labelControl3);
             this.OnDateGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.OnDateGroupBox.Location = new System.Drawing.Point(0, -42);
+            this.OnDateGroupBox.Location = new System.Drawing.Point(0, 0);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.OnDateGroupBox.Size = new System.Drawing.Size(464, 47);
@@ -1363,14 +1363,18 @@
             this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
             this.OnDateDBEdit.Location = new System.Drawing.Point(79, 12);
             this.OnDateDBEdit.Name = "OnDateDBEdit";
+            this.OnDateDBEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.Mask.EditMask = "g";
+            this.OnDateDBEdit.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.ClassicNew;
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.OnDateDBEdit.Properties.MaskSettings.Set("mask", "g");
             this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.OnDateDBEdit.Properties.ShowOk = DevExpress.Utils.DefaultBoolean.True;
+            this.OnDateDBEdit.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
+            this.OnDateDBEdit.Properties.Popup += new System.EventHandler(this.OnDateDBEdit_Properties_Popup);
             this.OnDateDBEdit.Size = new System.Drawing.Size(152, 22);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 9;
@@ -1496,9 +1500,6 @@
             this.WHGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
             this.PeriodGroupBox.ResumeLayout(false);
-            this.PerYearPanel.ResumeLayout(false);
-            this.PerYearPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).EndInit();
             this.PerQuarterPanel.ResumeLayout(false);
             this.PerQuarterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.YearEdit2.Properties)).EndInit();
@@ -1513,6 +1514,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.EndDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StartDateEdit.Properties)).EndInit();
+            this.PerYearPanel.ResumeLayout(false);
+            this.PerYearPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.YearEdit3.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();

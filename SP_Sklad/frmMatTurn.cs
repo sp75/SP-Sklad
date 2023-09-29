@@ -32,8 +32,8 @@ namespace SP_Sklad
         {
             wTypeList.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(new BaseEntities().DocType.Select(s => new { s.Id, s.Name })).ToList();
             wTypeList.EditValue = 0;
-            KAgentEdit.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Select(s => new { s.KaId, s.Name }));
-            KAgentEdit.EditValue = 0;
+            KagentComboBox.Properties.DataSource =  DBHelper.KagentsList;
+            KagentComboBox.EditValue = 0;
 
             wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
             wbEndDate.DateTime = DateTime.Now.AddDays(1);
@@ -52,7 +52,7 @@ namespace SP_Sklad
             var start_date = wbStartDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MinValue.Value : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MaxValue.Value : wbEndDate.DateTime.SetEndDay();
 
-            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, start_date, end_date, 0, (int)KAgentEdit.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList().OrderBy(o=> o.OnDate).ToList();
+            DocListBindingSource.DataSource = DB.SkladBase().GetMatMove(_mat_id, start_date, end_date, 0, (int)KagentComboBox.EditValue, (int)wTypeList.EditValue, "*", Guid.Empty, DBHelper.CurrentUser.UserId).ToList().OrderBy(o=> o.OnDate).ToList();
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

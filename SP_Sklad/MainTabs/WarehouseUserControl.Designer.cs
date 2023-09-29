@@ -828,7 +828,6 @@
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl7;
             this.bar4.Text = "Custom 5";
-            this.bar4.Visible = true;
             // 
             // DelItem
             // 
@@ -1537,7 +1536,7 @@
             // 
             // bandedGridColumn11
             // 
-            this.bandedGridColumn11.Caption = "Залишок";
+            this.bandedGridColumn11.Caption = "Замовлено";
             this.bandedGridColumn11.FieldName = "Ordered";
             this.bandedGridColumn11.Name = "bandedGridColumn11";
             this.bandedGridColumn11.Visible = true;

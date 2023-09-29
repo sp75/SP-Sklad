@@ -16,6 +16,6 @@ namespace SP_Sklad.SkladData.ViewModels
         public decimal? CurRemain { get; set; }
         public string MeasureName { get; set; }
         public int WId { get; set; }
-
+        public string WhName { get; set; }
     }
 }

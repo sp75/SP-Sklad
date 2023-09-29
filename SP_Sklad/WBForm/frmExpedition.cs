@@ -107,7 +107,7 @@ namespace SP_Sklad.WBForm
         void GetDetail()
         {
             int top_row = ExpeditionDetGridView.TopRowIndex;
-            ExpeditionDetBS.DataSource = _db.v_ExpeditionDet.AsNoTracking().Where(w=> w.ExpeditionId == _exp_id).ToList();
+            ExpeditionDetBS.DataSource = _db.v_ExpeditionDet.AsNoTracking().Where(w=> w.ExpeditionId == _exp_id).OrderBy(o=> o.CreatedAt).ToList();
             ExpeditionDetGridView.TopRowIndex = top_row;
 
             GetOk();
@@ -254,7 +254,7 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var frm = new frmExpeditionDet(_db, focused_dr.Id, exp, null))
+            using (var frm = new frmExpeditionDet(_db, focused_dr.Id, exp, focused_dr.WbillId))
             {
                 frm.ShowDialog();
             }

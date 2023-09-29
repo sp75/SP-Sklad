@@ -22,5 +22,12 @@ namespace SP_Sklad.SkladData
         public System.Guid Id { get; set; }
         public int PosId { get; set; }
         public Nullable<System.Guid> ExpeditionMaterialsDetId { get; set; }
+        public decimal WbDetAmount { get; set; }
+        public int MId { get; set; }
+        public Nullable<decimal> PacksQuantity { get; set; }
+        public Nullable<decimal> KilogramsQuantity { get; set; }
+        public Nullable<int> Checked { get; set; }
+        public Nullable<decimal> ExpeditionAmount { get; set; }
+        public System.Guid ExpeditionId { get; set; }
     }
 }

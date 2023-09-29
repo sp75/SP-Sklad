@@ -28,5 +28,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
         public System.Guid CarId { get; set; }
+        public Nullable<decimal> TotalKilograms { get; set; }
     }
 }

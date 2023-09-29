@@ -1794,7 +1794,7 @@ SELECT WaybillList.[WbillId]
             {
                 s.Key.KaId,
                 Name = s.Key.KagentName,
-                Summ = s.Sum(xs => xs.Amount)
+                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0)
             }).OrderBy(o => o.Name).ToList();
 
             realation.Add(new
@@ -1820,8 +1820,13 @@ SELECT WaybillList.[WbillId]
             data_for_report.Add("KaGroup", ka_grp);
             data_for_report.Add("MatOutDet2", mat);
 
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                AmountOut = s.Sum(ss =>  ss.Mid == 2 ? ss.Amount : 0)
+            }).ToList());
 
-          data_for_report.Add("_realation_", realation);
+
+            data_for_report.Add("_realation_", realation);
         }
 
         private void REP_50()

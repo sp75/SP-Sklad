@@ -2269,12 +2269,12 @@ warning 6002: The table/view 'sp_base.dbo.v_ErrorLog' does not have a primary ke
 warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Expedition">
           <Key>
-            
+            <PropertyRef Name="PersonName" />
             <PropertyRef Name="Id" />
-            
-            
-            
-            
+            <PropertyRef Name="DocType" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="CarId" />
           </Key>
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
           <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
@@ -2290,6 +2290,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary 
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
           <Property Name="CarId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TotalKilograms" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2322,6 +2323,8 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
           <Property Name="Checked" Type="int" />
           <Property Name="TotalTareQuantity" Type="numeric" Precision="17" Scale="4" />
           <Property Name="WbAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="PacksQuantity" Type="numeric" Precision="38" Scale="8" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2331,6 +2334,9 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not h
             <PropertyRef Name="WbillId" />
             <PropertyRef Name="Id" />
             <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbDetAmount" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="ExpeditionId" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
@@ -2340,6 +2346,13 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not h
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PosId" Type="int" Nullable="false" />
           <Property Name="ExpeditionMaterialsDetId" Type="uniqueidentifier" />
+          <Property Name="WbDetAmount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="PacksQuantity" Type="numeric" Precision="31" Scale="8" />
+          <Property Name="KilogramsQuantity" Type="numeric" Precision="31" Scale="8" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="ExpeditionAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="ExpeditionId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_GetDocsTree' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8894,7 +8907,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Expedition].[UpdatedAt] AS [UpdatedAt], 
     [v_Expedition].[UpdatedBy] AS [UpdatedBy], 
     [v_Expedition].[SessionId] AS [SessionId], 
-    [v_Expedition].[CarId] AS [CarId]
+    [v_Expedition].[CarId] AS [CarId], 
+    [v_Expedition].[TotalKilograms] AS [TotalKilograms]
     FROM [dbo].[v_Expedition] AS [v_Expedition]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionDet" EntityType="Self.v_ExpeditionDet" store:Type="Views" store:Schema="dbo">
@@ -8919,7 +8933,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[Tare2] AS [Tare2], 
     [v_ExpeditionDet].[Checked] AS [Checked], 
     [v_ExpeditionDet].[TotalTareQuantity] AS [TotalTareQuantity], 
-    [v_ExpeditionDet].[WbAmount] AS [WbAmount]
+    [v_ExpeditionDet].[WbAmount] AS [WbAmount], 
+    [v_ExpeditionDet].[KaFullName] AS [KaFullName], 
+    [v_ExpeditionDet].[PacksQuantity] AS [PacksQuantity]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="Self.v_ExpeditionWBMaterialsDet" store:Type="Views" store:Schema="dbo">
@@ -8931,7 +8947,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionWBMaterialsDet].[Amount] AS [Amount], 
     [v_ExpeditionWBMaterialsDet].[Id] AS [Id], 
     [v_ExpeditionWBMaterialsDet].[PosId] AS [PosId], 
-    [v_ExpeditionWBMaterialsDet].[ExpeditionMaterialsDetId] AS [ExpeditionMaterialsDetId]
+    [v_ExpeditionWBMaterialsDet].[ExpeditionMaterialsDetId] AS [ExpeditionMaterialsDetId], 
+    [v_ExpeditionWBMaterialsDet].[WbDetAmount] AS [WbDetAmount], 
+    [v_ExpeditionWBMaterialsDet].[MId] AS [MId], 
+    [v_ExpeditionWBMaterialsDet].[PacksQuantity] AS [PacksQuantity], 
+    [v_ExpeditionWBMaterialsDet].[KilogramsQuantity] AS [KilogramsQuantity], 
+    [v_ExpeditionWBMaterialsDet].[Checked] AS [Checked], 
+    [v_ExpeditionWBMaterialsDet].[ExpeditionAmount] AS [ExpeditionAmount], 
+    [v_ExpeditionWBMaterialsDet].[ExpeditionId] AS [ExpeditionId]
     FROM [dbo].[v_ExpeditionWBMaterialsDet] AS [v_ExpeditionWBMaterialsDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_GetDocsTree" EntityType="Self.v_GetDocsTree" store:Type="Views" store:Schema="dbo">
@@ -12394,7 +12417,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Expedition" EntitySet="Expedition" />
           </AssociationSet>
-          <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
           <AssociationSet Name="FK_Kagent_Kagent" Association="BaseModel.FK_Kagent_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Kagent1" EntitySet="Kagent" />
@@ -12428,11 +12450,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
             <End Role="ExpeditionMaterialsDet" EntitySet="ExpeditionMaterialsDet" />
           </AssociationSet>
-          <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="BaseModel.v_ExpeditionWBMaterialsDet" />
           <AssociationSet Name="FK_ExpeditionDet_WaybillList" Association="BaseModel.FK_ExpeditionDet_WaybillList">
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
           </AssociationSet>
+          <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="BaseModel.v_ExpeditionWBMaterialsDet" />
+          <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -20468,25 +20491,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="v_Expedition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="DocType" Type="Int32" Nullable="false" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="SessionId" Type="Guid" />
-          <Property Name="CarId" Type="Guid" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Kagent_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.Kagent" Role="Kagent1" Multiplicity="*" />
@@ -20550,6 +20554,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Checked" Type="Int32" />
           <Property Name="TotalTareQuantity" Type="Decimal" Precision="17" Scale="4" />
           <Property Name="WbAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="KaFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PacksQuantity" Type="Decimal" Precision="38" Scale="8" />
         </EntityType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -20629,22 +20635,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="v_ExpeditionWBMaterialsDet">
-          <Key>
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="WbillId" />
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="PosId" />
-          </Key>
-          <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbillId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="PosId" Type="Int32" Nullable="false" />
-          <Property Name="ExpeditionMaterialsDetId" Type="Guid" />
-        </EntityType>
         <Association Name="FK_ExpeditionDet_WaybillList">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1" />
           <End Type="BaseModel.ExpeditionDet" Role="ExpeditionDet" Multiplicity="*" />
@@ -20657,6 +20647,57 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_ExpeditionWBMaterialsDet">
+          <Key>
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbDetAmount" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="ExpeditionId" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="ExpeditionMaterialsDetId" Type="Guid" />
+          <Property Name="WbDetAmount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="PacksQuantity" Type="Decimal" Precision="31" Scale="8" />
+          <Property Name="KilogramsQuantity" Type="Decimal" Precision="31" Scale="8" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="ExpeditionAmount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_Expedition">
+          <Key>
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DocType" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="CarId" />
+          </Key>
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="CarId" Type="Guid" Nullable="false" />
+          <Property Name="TotalKilograms" Type="Decimal" Precision="38" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -26045,26 +26086,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="v_Expedition">
-            <EntityTypeMapping TypeName="BaseModel.v_Expedition">
-              <MappingFragment StoreEntitySet="v_Expedition">
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
-                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
-                <ScalarProperty Name="CarName" ColumnName="CarName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.ExpeditionDet">
               <MappingFragment StoreEntitySet="ExpeditionDet">
@@ -26089,6 +26110,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
               <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="PacksQuantity" ColumnName="PacksQuantity" />
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
                 <ScalarProperty Name="WbAmount" ColumnName="WbAmount" />
                 <ScalarProperty Name="TotalTareQuantity" ColumnName="TotalTareQuantity" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
@@ -26160,6 +26183,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionWBMaterialsDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionWBMaterialsDet">
               <MappingFragment StoreEntitySet="v_ExpeditionWBMaterialsDet">
+                <ScalarProperty Name="ExpeditionId" ColumnName="ExpeditionId" />
+                <ScalarProperty Name="ExpeditionAmount" ColumnName="ExpeditionAmount" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="KilogramsQuantity" ColumnName="KilogramsQuantity" />
+                <ScalarProperty Name="PacksQuantity" ColumnName="PacksQuantity" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="WbDetAmount" ColumnName="WbDetAmount" />
                 <ScalarProperty Name="ExpeditionMaterialsDetId" ColumnName="ExpeditionMaterialsDetId" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -26168,6 +26198,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Artikul" ColumnName="Artikul" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Expedition">
+            <EntityTypeMapping TypeName="BaseModel.v_Expedition">
+              <MappingFragment StoreEntitySet="v_Expedition">
+                <ScalarProperty Name="TotalKilograms" ColumnName="TotalKilograms" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SkladEngine.ModelViews;
+using SP.Reports.Models.Views;
 using SP_Sklad.Common;
 using SP_Sklad.Common.WayBills;
 using SP_Sklad.SkladData;
@@ -36,6 +37,14 @@ namespace SP_Sklad
 
         private void frmOutMatList_Load(object sender, EventArgs e)
         {
+            WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(_db.Warehouse.Select(s => new
+            {
+                s.WId,
+                s.Name
+            }).ToList());
+
+            WhComboBox.EditValue = -1;
+
             whKagentList.Properties.DataSource = DBHelper.KagentsList;
             whKagentList.EditValue = _SupplierId;
 
@@ -54,7 +63,7 @@ namespace SP_Sklad
                 return;
             }
 
-            pos_out_list = _db.GetSalesOfSuppliers(StartDate.DateTime.Date, EndDate.DateTime, (int)whKagentList.EditValue).ToList();
+            pos_out_list = _db.GetSalesOfSuppliers(StartDate.DateTime.Date, EndDate.DateTime, (int)whKagentList.EditValue, (int)WhComboBox.EditValue).ToList();
             
             GetPosOutBS.DataSource = pos_out_list;
 
@@ -63,7 +72,7 @@ namespace SP_Sklad
 
         private void StartDate_EditValueChanged(object sender, EventArgs e)
         {
-            if (StartDate.ContainsFocus || EndDate.ContainsFocus || whKagentList.ContainsFocus)
+            if (StartDate.ContainsFocus || EndDate.ContainsFocus || whKagentList.ContainsFocus || WhComboBox.ContainsFocus)
             {
                 GetData();
             }

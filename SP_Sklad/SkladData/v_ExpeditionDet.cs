@@ -35,5 +35,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Checked { get; set; }
         public Nullable<decimal> TotalTareQuantity { get; set; }
         public Nullable<decimal> WbAmount { get; set; }
+        public string KaFullName { get; set; }
+        public Nullable<decimal> PacksQuantity { get; set; }
     }
 }

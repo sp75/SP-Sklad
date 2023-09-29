@@ -9,25 +9,26 @@ namespace SP_Sklad.SkladData
 {
     public static class funGetSalesOfSuppliers
     {
-        public static List<GetSalesOfSuppliersView> GetSalesOfSuppliers(this BaseEntities db, DateTime? from_date, DateTime? to_date, int SupplierId)
+        public static List<GetSalesOfSuppliersView> GetSalesOfSuppliers(this BaseEntities db, DateTime? from_date, DateTime? to_date, int SupplierId, int wh_id)
         {
-            var sql = @"   SELECT  m.MatId, m.Name MatName, WMatTurn.SupplierId, k.Name SupplierName, ABS( sum([CalcAmount])) Amount, m.WId,
+            var sql = @"   SELECT  m.MatId, m.Name MatName, WMatTurn.SupplierId, k.Name SupplierName, ABS( sum([CalcAmount])) Amount, WMatTurn.WId,
        ( SELECT sum( pr.remain) Remain
          FROM PosRemains pr
 		 WHERE pr.matid = m.MatId and pr.SupplierId = WMatTurn.SupplierId
                and pr.ondate = (select max(ondate) from posremains where posid = pr.posid  )
-               and (pr.remain > 0 or Ordered > 0) ) CurRemain , ms.ShortName MeasureName
+               and (pr.remain > 0 or Ordered > 0) ) CurRemain , ms.ShortName MeasureName, w.Name WhName
   FROM [WMatTurn]
   inner join WaybillDet wbd on wbd.PosId = [WMatTurn].SourceId
   inner join WaybillList on WaybillList.WbillId = wbd.WbillId
   inner join Materials m on m.MatId = WMatTurn.MatId
   inner join Kagent k on k.KaId = WMatTurn.SupplierId
   inner join Measures ms on ms.MId = m.MId
-  where  WaybillList.WType in (-1,-25,6,25) and WaybillList.OnDate between {0} and {1} and WMatTurn.[SupplierId] = {2}
-  group by WMatTurn.[SupplierId], m.MatId, m.Name , k.Name, ms.ShortName, m.WId
+  inner join Warehouse w on w.WId = WMatTurn.WId
+  where  WaybillList.WType in (-1,-25,6,25) and WaybillList.OnDate between {0} and {1} and WMatTurn.[SupplierId] = {2} and  ({3} = -1 or WMatTurn.WId = {3})
+  group by WMatTurn.[SupplierId], m.MatId, m.Name , k.Name, ms.ShortName, WMatTurn.WId,  w.Name
   having sum([CalcAmount]) < 0";
 
-            return db.Database.SqlQuery<GetSalesOfSuppliersView>(sql, from_date, to_date, SupplierId).ToList();
+            return db.Database.SqlQuery<GetSalesOfSuppliersView>(sql, from_date, to_date, SupplierId, wh_id).ToList();
         }
     }
 }

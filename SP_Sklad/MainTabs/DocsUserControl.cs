@@ -144,6 +144,8 @@ namespace SP_Sklad.MainTabs
 
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
                 repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
+
+                gridColumn111.Caption = $"К-сть всього, {DBHelper.MeasuresList?.FirstOrDefault(w => w.Def == 1)?.ShortName}";
             }
 
             //    WbGridView.SaveLayoutToXml(@"D:\Program RES\AVK\t.xml");
@@ -523,6 +525,14 @@ namespace SP_Sklad.MainTabs
                                     db.SettingMaterialPrices.Remove(smp);
                                 }
                                 break;
+
+                            case 13:
+                                var exp = db.Expedition.Find(expeditionUserControl1.row_exp.Id);
+                                if (exp != null)
+                                {
+                                    db.Expedition.Remove(exp);
+                                }
+                                break;
                         }
                         db.SaveChanges();
                     }
@@ -779,6 +789,38 @@ namespace SP_Sklad.MainTabs
                         else
                         {
                             smp.Checked = 1;
+                        }
+
+                        db.SaveChanges();
+                        break;
+
+
+                    case 13:
+                        if (expeditionUserControl1.row_exp == null)
+                        {
+                            return;
+                        }
+
+                        var exp = db.Expedition.Find(expeditionUserControl1.row_exp?.Id);
+
+                        if (exp == null)
+                        {
+                            MessageBox.Show(Resources.not_find_wb);
+                            return;
+                        }
+                        if (exp.SessionId != null)
+                        {
+                            MessageBox.Show(Resources.deadlock);
+                            return;
+                        }
+
+                        if (exp.Checked == 1)
+                        {
+                            exp.Checked = 0;
+                        }
+                        else
+                        {
+                            exp.Checked = 1;
                         }
 
                         db.SaveChanges();

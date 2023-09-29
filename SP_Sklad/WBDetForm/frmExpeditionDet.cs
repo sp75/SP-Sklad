@@ -39,10 +39,10 @@ namespace SP_Sklad.WBDetForm
 
         private void frmIntermediateWeighingDet_Load(object sender, EventArgs e)
         {
-            MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
-            TareMatEdit.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 8).ToList();
-            TareMatEdit1.Properties.DataSource = TareMatEdit.Properties.DataSource;
-            TareMatEdit2.Properties.DataSource = TareMatEdit.Properties.DataSource;
+          var msr_list =   _db.WaybillDet.Where(w => w.WbillId == _wb_id).Select(s => s.Materials.Measures).Distinct().ToList();
+        //    TareMatEdit.Properties.DataSource = _db.Tara.Where(w => w.TypeId == 8).ToList();
+        //    TareMatEdit1.Properties.DataSource = TareMatEdit.Properties.DataSource;
+        //    TareMatEdit2.Properties.DataSource = TareMatEdit.Properties.DataSource;
         //    repositoryItemLookUpEdit1.DataSource = DBHelper.
 
 
@@ -50,26 +50,31 @@ namespace SP_Sklad.WBDetForm
             {
                 _id = Guid.NewGuid();
 
-                det = new ExpeditionDet
+                det = _db.ExpeditionDet.Add( new ExpeditionDet
                 {
                     Id = _id.Value,
                     Amount = 0,
                     ExpeditionId = _ex.Id,
                     CreatedAt = DBHelper.ServerDateTime(),
                     WbillId = _wb_id.Value,
-                    MId = 2
-                };
+                    MId = msr_list.FirstOrDefault()?.MId
+                });
 
                 isNewRecord = true;
             }
             else
             {
                 det = _db.ExpeditionDet.Find(_id);
+
+                _wb_id = det.WbillId;
             }
 
+            _db.SaveChanges();
+
+            MsrComboBox.Properties.DataSource = msr_list;
             ExpeditionDetBS.DataSource = det;
 
-            GetMatDet();
+       //     GetMatDet();
 
             GetOk();
         }
@@ -105,10 +110,12 @@ namespace SP_Sklad.WBDetForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            if (_db.Entry<ExpeditionDet>(det).State == EntityState.Detached)
-            {
-                _db.ExpeditionDet.Add(det);
-            }
+            isNewRecord = false;
+
+            //    if (_db.Entry<ExpeditionDet>(det).State == EntityState.Detached)
+            //     {
+            //        _db.ExpeditionDet.Add(det);
+            //     }
             _db.SaveChanges();
         }
 
@@ -123,7 +130,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -149,46 +156,15 @@ namespace SP_Sklad.WBDetForm
             ((CalcEdit)sender).SelectAll();
         }
 
-
         private void frmIntermediateWeighingDet_Shown(object sender, EventArgs e)
         {
             AmountEdit.Properties.Buttons[1].Visible = DBHelper.WeighingScales_1 != null;
             AmountEdit.Focus();
         }
-
-        private void AmountEdit_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-
-        }
-
  
         private void MsrComboBox_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
 
-        }
-
-        private void TareMatEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                TareMatEdit.EditValue = null;
-            }
-        }
-
-        private void TareMatEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                TareMatEdit1.EditValue = null;
-            }
-        }
-
-        private void TareMatEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                TareMatEdit2.EditValue = null;
-            }
         }
 
         private void MsrComboBox_EditValueChanged(object sender, EventArgs e)
@@ -200,9 +176,20 @@ namespace SP_Sklad.WBDetForm
             }
             det.MId = r.MId;
 
-            textEdit1.EditValue = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == r.MId).Select(s => s.Amount).ToList().Sum();
+            det.WbAmount = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == r.MId).Select(s => s.Amount).ToList().Sum();
+            textEdit1.EditValue = det.WbAmount;
+
+            TareWeightEdit.EditValue = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+
+            det.TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount).ToList().Sum();
+            calcEdit1.EditValue = det.TareQuantity;
+
+            _db.SaveChanges();
+
+            ExpeditionWBMaterialsDetBS.DataSource = _db.v_ExpeditionWBMaterialsDet.AsNoTracking().Where(w => w.Id == det.Id && w.MId == r.MId).ToList();
 
             labelControl9.Text = MsrComboBox.Text;
+            gridColumn1.Caption = "По документу, "+MsrComboBox.Text;
 
             GetTotalWeight();
         }
@@ -211,28 +198,16 @@ namespace SP_Sklad.WBDetForm
         {
             var msr = MsrComboBox.GetSelectedDataRow() as Measures;
 
-            var t = TareMatEdit.GetSelectedDataRow() as Tara;
-            var t1 = TareMatEdit1.GetSelectedDataRow() as Tara;
-            var t2 = TareMatEdit2.GetSelectedDataRow() as Tara;
+       //     var t = TareMatEdit.GetSelectedDataRow() as Tara;
+     //       var t1 = TareMatEdit1.GetSelectedDataRow() as Tara;
+      //      var t2 = TareMatEdit2.GetSelectedDataRow() as Tara;
 
-            var total_tare_weight = ((t?.Weight ?? 0) * calcEdit1.Value) + ((t1?.Weight ?? 0) * calcEdit2.Value) + ((t2?.Weight ?? 0) * calcEdit3.Value);
+      //      var total_tare_weight = ((t?.Weight ?? 0) * calcEdit1.Value) + ((t1?.Weight ?? 0) * calcEdit2.Value) + ((t2?.Weight ?? 0) * calcEdit3.Value);
 
-            var total = msr?.MId == 2 ? AmountEdit.Value - total_tare_weight : AmountEdit.Value;
+            var verified_weight_without_tare = msr?.MId == 2 ? AmountEdit.Value - TareWeightEdit.Value : AmountEdit.Value;
 
-            calcEdit4.EditValue = total;
-
-            det.TotalWeight = textEdit1.Value - total;
+            det.TotalWeight = verified_weight_without_tare - textEdit1.Value;
             TotalDoc.EditValue = det.TotalWeight;
-        }
-
-        private void GetMatDet()
-        {
-            ExpeditionWBMaterialsDetBS.DataSource = _db.v_ExpeditionWBMaterialsDet.AsNoTracking().Where(w => w.Id == det.Id).ToList();
-        }
-
-        private void calcEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-            GetTotalWeight();
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
@@ -240,20 +215,6 @@ namespace SP_Sklad.WBDetForm
             GetTotalWeight();
         }
 
-        private void calcEdit1_EditValueChanged_1(object sender, EventArgs e)
-        {
-            GetTotalWeight();
-        }
-
-        private void calcEdit2_EditValueChanged(object sender, EventArgs e)
-        {
-            GetTotalWeight();
-        }
-
-        private void calcEdit3_EditValueChanged(object sender, EventArgs e)
-        {
-            GetTotalWeight();
-        }
 
         private void MatChangeGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
@@ -279,6 +240,20 @@ namespace SP_Sklad.WBDetForm
                     row.ExpeditionMaterialsDetId = new_r.Id;
                 }
             }
+        }
+
+        private void frmExpeditionDet_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(isNewRecord)
+            {
+                _db.ExpeditionDet.Remove(det);
+                _db.SaveChanges();
+            }
+        }
+
+        private void TareWeightEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            GetTotalWeight();
         }
     }
 }

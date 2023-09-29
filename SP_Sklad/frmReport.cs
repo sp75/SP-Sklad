@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Utils.Win;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.Popup;
 using SP.Reports;
 using SP.Reports.Models.Views;
 using SP_Sklad.Common;
@@ -842,6 +845,18 @@ namespace SP_Sklad
             var pr2 = GetReport();
 
             new frmGridView(pr2.report_name, pr2.GetReportDate()).ShowDialog();
+        }
+
+        private void OnDateDBEdit_Properties_Popup(object sender, EventArgs e)
+        {
+            PopupDateEditForm form = ((IPopupControl)sender).PopupWindow as PopupDateEditForm;
+
+            if(form != null)
+            {
+                form.Calendar.InactiveDaysVisibility = CalendarInactiveDaysVisibility.Hidden;
+
+               
+            }
         }
     }
 }

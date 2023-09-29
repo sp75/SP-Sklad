@@ -408,6 +408,7 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -586,6 +587,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -3073,6 +3075,8 @@
             this.MeasuresGridControl.Location = new System.Drawing.Point(0, 0);
             this.MeasuresGridControl.MainView = this.MeasuresGridView;
             this.MeasuresGridControl.Name = "MeasuresGridControl";
+            this.MeasuresGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemCheckEdit14});
             this.MeasuresGridControl.Size = new System.Drawing.Size(1088, 568);
             this.MeasuresGridControl.TabIndex = 2;
             this.MeasuresGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -3131,6 +3135,7 @@
             // gridColumn54
             // 
             this.gridColumn54.Caption = "За змавчуванням";
+            this.gridColumn54.ColumnEdit = this.repositoryItemCheckEdit14;
             this.gridColumn54.FieldName = "Def";
             this.gridColumn54.Name = "gridColumn54";
             this.gridColumn54.Visible = true;
@@ -4391,6 +4396,13 @@
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
             // 
+            // repositoryItemCheckEdit14
+            // 
+            this.repositoryItemCheckEdit14.AutoHeight = false;
+            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
+            this.repositoryItemCheckEdit14.ValueChecked = 1;
+            this.repositoryItemCheckEdit14.ValueUnchecked = 0;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4590,6 +4602,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4972,5 +4985,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
         private DevExpress.XtraGrid.Columns.GridColumn colMatId;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit14;
     }
 }

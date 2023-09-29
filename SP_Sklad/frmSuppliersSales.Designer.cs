@@ -33,6 +33,8 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.GetPosOutBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.whKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.EndDate = new DevExpress.XtraEditors.DateEdit();
@@ -47,6 +49,7 @@
             this.colAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.bandedGridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -55,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.GetPosOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whKagentList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDate.Properties)).BeginInit();
@@ -79,6 +83,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.WhComboBox);
+            this.panelControl1.Controls.Add(this.labelControl10);
             this.panelControl1.Controls.Add(this.whKagentList);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.EndDate);
@@ -88,8 +94,35 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1024, 44);
+            this.panelControl1.Size = new System.Drawing.Size(1110, 44);
             this.panelControl1.TabIndex = 44;
+            // 
+            // WhComboBox
+            // 
+            this.WhComboBox.Location = new System.Drawing.Point(832, 8);
+            this.WhComboBox.Name = "WhComboBox";
+            this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.ShowFooter = false;
+            this.WhComboBox.Properties.ShowHeader = false;
+            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.WhComboBox.Properties.ValueMember = "WId";
+            this.WhComboBox.Size = new System.Drawing.Size(266, 22);
+            this.WhComboBox.StyleController = this.styleController1;
+            this.WhComboBox.TabIndex = 28;
+            this.WhComboBox.EditValueChanged += new System.EventHandler(this.StartDate_EditValueChanged);
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Location = new System.Drawing.Point(786, 11);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(40, 16);
+            this.labelControl10.StyleController = this.styleController1;
+            this.labelControl10.TabIndex = 27;
+            this.labelControl10.Text = "Склад:";
             // 
             // whKagentList
             // 
@@ -102,14 +135,14 @@
             this.whKagentList.Properties.DisplayMember = "Name";
             this.whKagentList.Properties.ShowHeader = false;
             this.whKagentList.Properties.ValueMember = "KaId";
-            this.whKagentList.Size = new System.Drawing.Size(408, 22);
+            this.whKagentList.Size = new System.Drawing.Size(332, 22);
             this.whKagentList.StyleController = this.styleController1;
             this.whKagentList.TabIndex = 16;
             this.whKagentList.EditValueChanged += new System.EventHandler(this.StartDate_EditValueChanged);
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(338, 12);
+            this.labelControl6.Location = new System.Drawing.Point(338, 11);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(83, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -119,19 +152,19 @@
             // EndDate
             // 
             this.EndDate.EditValue = null;
-            this.EndDate.Location = new System.Drawing.Point(185, 11);
+            this.EndDate.Location = new System.Drawing.Point(198, 11);
             this.EndDate.Name = "EndDate";
             this.EndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.EndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.EndDate.Size = new System.Drawing.Size(100, 20);
+            this.EndDate.Size = new System.Drawing.Size(115, 20);
             this.EndDate.TabIndex = 3;
             this.EndDate.EditValueChanged += new System.EventHandler(this.StartDate_EditValueChanged);
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(167, 14);
+            this.labelControl2.Location = new System.Drawing.Point(180, 14);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(12, 13);
             this.labelControl2.TabIndex = 2;
@@ -146,7 +179,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.StartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.StartDate.Size = new System.Drawing.Size(100, 20);
+            this.StartDate.Size = new System.Drawing.Size(113, 20);
             this.StartDate.TabIndex = 1;
             this.StartDate.EditValueChanged += new System.EventHandler(this.StartDate_EditValueChanged);
             // 
@@ -164,14 +197,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 503);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1024, 54);
+            this.panelControl2.Size = new System.Drawing.Size(1110, 54);
             this.panelControl2.TabIndex = 45;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(909, 12);
+            this.OkButton.Location = new System.Drawing.Point(995, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(103, 30);
             this.OkButton.TabIndex = 3;
@@ -187,7 +220,7 @@
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemImageComboBox2});
-            this.gridControl1.Size = new System.Drawing.Size(1024, 459);
+            this.gridControl1.Size = new System.Drawing.Size(1110, 459);
             this.gridControl1.TabIndex = 46;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -198,7 +231,8 @@
             this.bandedGridColumn4,
             this.colAmount,
             this.bandedGridColumn6,
-            this.bandedGridColumn8});
+            this.bandedGridColumn8,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
@@ -212,7 +246,7 @@
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.VisibleIndex = 0;
-            this.bandedGridColumn4.Width = 600;
+            this.bandedGridColumn4.Width = 332;
             // 
             // colAmount
             // 
@@ -222,8 +256,8 @@
             this.colAmount.FieldName = "Amount";
             this.colAmount.Name = "colAmount";
             this.colAmount.Visible = true;
-            this.colAmount.VisibleIndex = 2;
-            this.colAmount.Width = 203;
+            this.colAmount.VisibleIndex = 3;
+            this.colAmount.Width = 110;
             // 
             // bandedGridColumn6
             // 
@@ -232,7 +266,7 @@
             this.bandedGridColumn6.Name = "bandedGridColumn6";
             this.bandedGridColumn6.Visible = true;
             this.bandedGridColumn6.VisibleIndex = 1;
-            this.bandedGridColumn6.Width = 122;
+            this.bandedGridColumn6.Width = 143;
             // 
             // bandedGridColumn8
             // 
@@ -242,8 +276,17 @@
             this.bandedGridColumn8.FieldName = "CurRemain";
             this.bandedGridColumn8.Name = "bandedGridColumn8";
             this.bandedGridColumn8.Visible = true;
-            this.bandedGridColumn8.VisibleIndex = 3;
-            this.bandedGridColumn8.Width = 161;
+            this.bandedGridColumn8.VisibleIndex = 4;
+            this.bandedGridColumn8.Width = 133;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Склад";
+            this.gridColumn1.FieldName = "WhName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 281;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -283,7 +326,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 557);
+            this.ClientSize = new System.Drawing.Size(1110, 557);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -297,6 +340,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whKagentList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndDate.Properties)).EndInit();
@@ -335,5 +379,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAmount;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn bandedGridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.LookUpEdit WhComboBox;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
     }
 }

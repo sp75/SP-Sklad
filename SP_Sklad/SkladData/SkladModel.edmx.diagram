@@ -422,9 +422,9 @@
         <EntityTypeShape EntityType="BaseModel.v_ProjectManagementDet" Width="2.375" PointX="15.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_ProductionMonitor" Width="1.5" PointX="13.375" PointY="17.75" />
         <EntityTypeShape EntityType="BaseModel.v_DeboningDet" Width="1.5" PointX="15.375" PointY="17.75" />
-        <EntityTypeShape EntityType="BaseModel.v_Expedition" Width="1.5" PointX="17.375" PointY="17.75" />
         <EntityTypeShape EntityType="BaseModel.v_ExpeditionDet" Width="1.5" PointX="0.75" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_ExpeditionWBMaterialsDet" Width="1.5" PointX="7.375" PointY="18.75" />
+        <EntityTypeShape EntityType="BaseModel.v_Expedition" Width="1.5" PointX="17.375" PointY="17.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
