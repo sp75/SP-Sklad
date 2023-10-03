@@ -37,10 +37,12 @@
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.NewCustomerOrder = new DevExpress.XtraBars.BarButtonItem();
+            this.NewWBWriteOnItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.NewWayBillMoveBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.NewWBWriteOffBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddDeboningBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CashierWorkplaceBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -90,8 +92,6 @@
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -237,11 +237,11 @@
             this.barButtonItem10,
             this.CashierWorkplaceBtn,
             this.barButtonItem13,
-            this.barButtonItem2,
+            this.NewCustomerOrder,
             this.WbMatTemplateBtn,
-            this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7});
+            this.NewWBWriteOnItem,
+            this.NewWayBillMoveBtn,
+            this.NewWBWriteOffBtn});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 37;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -261,12 +261,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewCustomerOrder),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOnItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWayBillMoveBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOffBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn, true),
@@ -299,23 +299,23 @@
             this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.Image")));
             this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.LargeImage")));
             this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
-            this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_1);
+            this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbMatTemplateBtn_ItemClick);
             // 
-            // barButtonItem2
+            // NewCustomerOrder
             // 
-            this.barButtonItem2.Caption = "Замовлення від кліента";
-            this.barButtonItem2.Id = 32;
-            this.barButtonItem2.ImageOptions.ImageIndex = 13;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick_1);
+            this.NewCustomerOrder.Caption = "Замовлення від кліента";
+            this.NewCustomerOrder.Id = 32;
+            this.NewCustomerOrder.ImageOptions.ImageIndex = 13;
+            this.NewCustomerOrder.Name = "NewCustomerOrder";
+            this.NewCustomerOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewCustomerOrder_ItemClick);
             // 
-            // barButtonItem5
+            // NewWBWriteOnItem
             // 
-            this.barButtonItem5.Caption = "Введення залишків товарів";
-            this.barButtonItem5.Id = 34;
-            this.barButtonItem5.ImageOptions.ImageIndex = 20;
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick_2);
+            this.NewWBWriteOnItem.Caption = "Введення залишків товарів";
+            this.NewWBWriteOnItem.Id = 34;
+            this.NewWBWriteOnItem.ImageOptions.ImageIndex = 20;
+            this.NewWBWriteOnItem.Name = "NewWBWriteOnItem";
+            this.NewWBWriteOnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOnItem_ItemClick);
             // 
             // AddWBInBtn
             // 
@@ -323,7 +323,7 @@
             this.AddWBInBtn.Id = 11;
             this.AddWBInBtn.ImageOptions.ImageIndex = 31;
             this.AddWBInBtn.Name = "AddWBInBtn";
-            this.AddWBInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            this.AddWBInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddWBInBtn_ItemClick);
             // 
             // AddWBOutBtn
             // 
@@ -331,7 +331,23 @@
             this.AddWBOutBtn.Id = 10;
             this.AddWBOutBtn.ImageOptions.ImageIndex = 32;
             this.AddWBOutBtn.Name = "AddWBOutBtn";
-            this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddWBOutBtn_ItemClick);
+            // 
+            // NewWayBillMoveBtn
+            // 
+            this.NewWayBillMoveBtn.Caption = "Накладна переміщення";
+            this.NewWayBillMoveBtn.Id = 35;
+            this.NewWayBillMoveBtn.ImageOptions.ImageIndex = 19;
+            this.NewWayBillMoveBtn.Name = "NewWayBillMoveBtn";
+            this.NewWayBillMoveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWayBillMoveBtn_ItemClick);
+            // 
+            // NewWBWriteOffBtn
+            // 
+            this.NewWBWriteOffBtn.Caption = "Акти списання товару";
+            this.NewWBWriteOffBtn.Id = 36;
+            this.NewWBWriteOffBtn.ImageOptions.ImageIndex = 21;
+            this.NewWBWriteOffBtn.Name = "NewWBWriteOffBtn";
+            this.NewWBWriteOffBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOffBtn_ItemClick);
             // 
             // AddManufacturingBtn
             // 
@@ -339,7 +355,7 @@
             this.AddManufacturingBtn.Id = 12;
             this.AddManufacturingBtn.ImageOptions.ImageIndex = 30;
             this.AddManufacturingBtn.Name = "AddManufacturingBtn";
-            this.AddManufacturingBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            this.AddManufacturingBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddManufacturingBtn_ItemClick);
             // 
             // AddDeboningBtn
             // 
@@ -347,7 +363,7 @@
             this.AddDeboningBtn.Id = 13;
             this.AddDeboningBtn.ImageOptions.ImageIndex = 29;
             this.AddDeboningBtn.Name = "AddDeboningBtn";
-            this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddDeboningBtn_ItemClick);
             // 
             // CashierWorkplaceBtn
             // 
@@ -356,7 +372,7 @@
             this.CashierWorkplaceBtn.ImageOptions.ImageIndex = 34;
             this.CashierWorkplaceBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.CashierWorkplaceBtn.Name = "CashierWorkplaceBtn";
-            this.CashierWorkplaceBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+            this.CashierWorkplaceBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CashierWorkplaceBtn_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -478,12 +494,12 @@
             this.barSubItem3.Caption = "Створити документ";
             this.barSubItem3.Id = 9;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewCustomerOrder),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOnItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWayBillMoveBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOffBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn)});
             this.barSubItem3.Name = "barSubItem3";
@@ -907,23 +923,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "truck.png");
             this.UserTreeImgList.ParentControl = this;
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Накладна переміщення";
-            this.barButtonItem6.Id = 35;
-            this.barButtonItem6.ImageOptions.ImageIndex = 19;
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick_1);
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Акти списання товару";
-            this.barButtonItem7.Id = 36;
-            this.barButtonItem7.ImageOptions.ImageIndex = 21;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
             // 
             // mainForm
             // 
@@ -1029,12 +1030,12 @@
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem NewCustomerOrder;
         private DevExpress.XtraBars.BarButtonItem WbMatTemplateBtn;
         private DevExpress.Utils.ImageCollection TabImageCollection;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem NewWBWriteOnItem;
+        private DevExpress.XtraBars.BarButtonItem NewWayBillMoveBtn;
+        private DevExpress.XtraBars.BarButtonItem NewWBWriteOffBtn;
     }
 }
 

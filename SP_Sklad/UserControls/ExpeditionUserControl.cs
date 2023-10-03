@@ -72,7 +72,7 @@ namespace SP_Sklad.UserControls
         {
             if (row_exp != null)
             {
-                ExpeditionDetBS.DataSource = DB.SkladBase().v_ExpeditionDet.Where(w => w.ExpeditionId == row_exp.Id).ToList();
+                ExpeditionDetBS.DataSource = DB.SkladBase().v_ExpeditionDet.Where(w => w.ExpeditionId == row_exp.Id).OrderBy(o => o.CreatedAt).ToList();
             }
             else
             {
@@ -160,6 +160,9 @@ namespace SP_Sklad.UserControls
             }
         }
 
-  
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FindDoc.Find(row_smp_det.WaybillListId, -1, row_smp_det.OnDate);
+        }
     }
 }

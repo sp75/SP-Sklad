@@ -2301,6 +2301,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
             <PropertyRef Name="WbillId" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WaybillListId" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ExpeditionId" Type="uniqueidentifier" Nullable="false" />
@@ -2325,6 +2326,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
           <Property Name="WbAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="PacksQuantity" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4451,6 +4453,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="Expedition">
               <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpeditionDet_Expedition">
+          <End Role="Expedition" Type="Self.Expedition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ExpeditionDet" Type="Self.ExpeditionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expedition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExpeditionDet">
+              <PropertyRef Name="ExpeditionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8935,7 +8951,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[TotalTareQuantity] AS [TotalTareQuantity], 
     [v_ExpeditionDet].[WbAmount] AS [WbAmount], 
     [v_ExpeditionDet].[KaFullName] AS [KaFullName], 
-    [v_ExpeditionDet].[PacksQuantity] AS [PacksQuantity]
+    [v_ExpeditionDet].[PacksQuantity] AS [PacksQuantity], 
+    [v_ExpeditionDet].[WaybillListId] AS [WaybillListId]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="Self.v_ExpeditionWBMaterialsDet" store:Type="Views" store:Schema="dbo">
@@ -10134,6 +10151,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_Expedition_Cars" Association="Self.FK_Expedition_Cars">
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Expedition" EntitySet="Expedition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpeditionDet_Expedition" Association="Self.FK_ExpeditionDet_Expedition">
+            <End Role="Expedition" EntitySet="Expedition" />
+            <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
           </AssociationSet>
           <AssociationSet Name="FK_ExpeditionDet_WaybillList" Association="Self.FK_ExpeditionDet_WaybillList">
             <End Role="WaybillList" EntitySet="WaybillList" />
@@ -12456,6 +12477,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="BaseModel.v_ExpeditionWBMaterialsDet" />
           <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
+          <AssociationSet Name="FK_ExpeditionDet_Expedition" Association="BaseModel.FK_ExpeditionDet_Expedition">
+            <End Role="Expedition" EntitySet="Expedition" />
+            <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -20478,6 +20503,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CarId" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Expedition" ToRole="Cars" />
           <Property Name="DocType" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="Expedition" ToRole="ExpeditionDet" />
         </EntityType>
         <Association Name="FK_Expedition_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="1" />
@@ -20524,6 +20550,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbAmount" Type="Decimal" Precision="15" Scale="4" />
           <NavigationProperty Name="ExpeditionMaterialsDet" Relationship="BaseModel.FK_ExpeditionMaterialsDet_ExpeditionDet" FromRole="ExpeditionDet" ToRole="ExpeditionMaterialsDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_ExpeditionDet_WaybillList" FromRole="ExpeditionDet" ToRole="WaybillList" />
+          <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="ExpeditionDet" ToRole="Expedition" />
         </EntityType>
         <EntityType Name="v_ExpeditionDet">
           <Key>
@@ -20532,6 +20559,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WbillId" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WaybillListId" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
@@ -20556,6 +20584,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="KaFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="PacksQuantity" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="WaybillListId" Type="Guid" Nullable="false" />
         </EntityType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -20698,6 +20727,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CarId" Type="Guid" Nullable="false" />
           <Property Name="TotalKilograms" Type="Decimal" Precision="38" Scale="4" />
         </EntityType>
+        <Association Name="FK_ExpeditionDet_Expedition">
+          <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ExpeditionDet" Role="ExpeditionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expedition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExpeditionDet">
+              <PropertyRef Name="ExpeditionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -26110,6 +26153,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
               <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
                 <ScalarProperty Name="PacksQuantity" ColumnName="PacksQuantity" />
                 <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
                 <ScalarProperty Name="WbAmount" ColumnName="WbAmount" />

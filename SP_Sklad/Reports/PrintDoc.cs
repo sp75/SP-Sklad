@@ -787,8 +787,8 @@ namespace SP_Sklad.Reports
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var exp = db.v_Expedition.Where(w => w.Id == ex_id).OrderBy(o=> o.OnDate).ToList();
-            var exp_id = db.v_ExpeditionDet.Where(w => w.ExpeditionId == ex_id).Where(w=> w.Checked == 1).ToList();
+            var exp = db.v_Expedition.Where(w => w.Id == ex_id).ToList();
+            var exp_id = db.v_ExpeditionDet.Where(w => w.ExpeditionId == ex_id).Where(w=> w.Checked == 1).OrderBy(o=> o.CreatedAt).ToList();
 
             dataForReport.Add("Expedition", exp);
             dataForReport.Add("DocList", exp_id);

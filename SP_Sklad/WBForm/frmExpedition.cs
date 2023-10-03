@@ -123,7 +123,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           // PrintDoc.SettingMaterialPricesReport(wbt.PTypeId, _db);
+            PrintDoc.ExpeditionReport(_exp_id.Value, _db);
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -48,9 +48,9 @@
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ExpeditionsGridControl = new DevExpress.XtraGrid.GridControl();
             this.ExpeditionsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.ExpeditionsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -61,6 +61,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.ExpeditionDetGridControl = new DevExpress.XtraGrid.GridControl();
@@ -80,7 +81,6 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -159,10 +159,10 @@
             this.RefrechItemBtn,
             this.ExecuteItemBtn,
             this.PrintItemBtn,
-            this.barButtonItem2,
             this.barButtonItem10,
-            this.barButtonItem14});
-            this.barManager1.MaxItemId = 31;
+            this.barButtonItem14,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 32;
             // 
             // bar1
             // 
@@ -248,6 +248,7 @@
             this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "financial_16x16");
+            this.imageCollection1.Images.SetKeyName(14, "Перейти до  документа.bmp");
             // 
             // NewItemBtn
             // 
@@ -307,12 +308,6 @@
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Перейти до документа";
-            this.barButtonItem2.Id = 12;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // barButtonItem10
             // 
             this.barButtonItem10.Caption = "Властивості позиції";
@@ -327,6 +322,14 @@
             this.barButtonItem14.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
             this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
             this.barButtonItem14.Name = "barButtonItem14";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Перейти до документа";
+            this.barButtonItem1.Id = 31;
+            this.barButtonItem1.ImageOptions.ImageIndex = 14;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // ExpeditionsGridControl
             // 
@@ -446,6 +449,14 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
             this.gridColumn5.Width = 257;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "Всього, кг.";
+            this.gridColumn11.FieldName = "TotalKilograms";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 6;
             // 
             // xtraTabControl3
             // 
@@ -634,16 +645,10 @@
             // 
             // SettingMaterialPricesDetPopupMenu
             // 
+            this.SettingMaterialPricesDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Всього, кг.";
-            this.gridColumn11.FieldName = "TotalKilograms";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 6;
             // 
             // ExpeditionUserControl
             // 
@@ -726,7 +731,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.PopupMenu SettingMaterialPricesPopupMenu;
         private DevExpress.XtraBars.PopupMenu SettingMaterialPricesDetPopupMenu;
@@ -740,5 +744,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

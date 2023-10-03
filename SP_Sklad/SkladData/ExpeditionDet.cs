@@ -37,5 +37,6 @@ namespace SP_Sklad.SkladData
     
         public virtual ICollection<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
         public virtual WaybillList WaybillList { get; set; }
+        public virtual Expedition Expedition { get; set; }
     }
 }

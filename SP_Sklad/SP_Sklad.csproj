@@ -486,6 +486,12 @@
     <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmReport54.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmReport54.Designer.cs">
+      <DependentUpon>frmReport54.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmReport53.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2228,6 +2234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReport54.resx">
+      <DependentUpon>frmReport54.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReport53.resx">
       <DependentUpon>frmReport53.cs</DependentUpon>

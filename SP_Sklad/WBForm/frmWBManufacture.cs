@@ -110,6 +110,11 @@ namespace SP_Sklad.WBForm
 
                 WaybillListBS.DataSource = wb;
                 WayBillMakeBS.DataSource = wb.WayBillMake;
+
+                if(!DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1 && w.RecId == wb.WayBillMake.RecId).Any())
+                {
+                    MessageBox.Show("Рецепт або товар перенесоно до архіву!");
+                }
             }
 
             RefreshDet();
@@ -293,6 +298,11 @@ namespace SP_Sklad.WBForm
         {
             var rec = RecipeComboBox.GetSelectedDataRow() as RecipeList;
 
+            if(rec == null)
+            {
+                return;
+            }
+
             using (var frm = new frmWBManufactureDet(_db, null, wb, rec.IndustrialProcessing))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -307,7 +317,7 @@ namespace SP_Sklad.WBForm
             var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillMakeDet_Result;
             var rec = RecipeComboBox.GetSelectedDataRow() as RecipeList;
 
-            if (dr != null)
+            if (dr != null && rec !=null)
             {
                 using (var frm = new frmWBManufactureDet(_db, dr.PosId, wb, rec.IndustrialProcessing))
                 {

@@ -58,7 +58,17 @@ namespace SP_Sklad
             var sta = new AppSettingRepository().ShowTradeApp;
             TradeTabPage.PageVisible = sta;
             CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher || DBHelper.is_cacher;
+
             WbMatTemplateBtn.Enabled = IHelper.GetUserAccess(96)?.CanView == 1;
+            NewCustomerOrder.Enabled = IHelper.GetUserAccess(64)?.CanInsert == 1;
+            NewWBWriteOnItem.Enabled = IHelper.GetUserAccess(44)?.CanInsert == 1;
+            AddWBInBtn.Enabled = IHelper.GetUserAccess(21)?.CanInsert == 1;
+            AddWBOutBtn.Enabled = IHelper.GetUserAccess(23)?.CanInsert == 1;
+            NewWayBillMoveBtn.Enabled = IHelper.GetUserAccess(36)?.CanInsert == 1;
+            NewWBWriteOffBtn.Enabled = IHelper.GetUserAccess(41)?.CanInsert == 1;
+            AddManufacturingBtn.Enabled = IHelper.GetUserAccess(68)?.CanInsert == 1;
+            AddDeboningBtn.Enabled = IHelper.GetUserAccess(72)?.CanInsert == 1;
+            
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -171,43 +181,6 @@ namespace SP_Sklad
             //     Application.Exit();
         }
 
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (var wb_in = new frmWayBillOut(-1, null))
-            {
-                wb_in.ShowDialog();
-            }
-        }
-
-        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (var wb_in = new frmWayBillIn(1, wid: _wid))
-            {
-                wb_in.ShowDialog();
-            }
-        }
-
-        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (var wb_make = new frmWBManufacture(null))
-            {
-                wb_make.ShowDialog();
-            }
-        }
-
-        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (var wb_make = new frmWBDeboning(null))
-            {
-                wb_make.ShowDialog();
-            }
-        }
-
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             History.AddEntry(new HistoryEntity { FunId = 0, MainTabs = mainTabControl.SelectedTabPageIndex });
@@ -302,16 +275,6 @@ namespace SP_Sklad
             //Close();
         }
 
-        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (var frm = new frmCashierWorkplace())
-            {
-                frm.ShowDialog();
-
-                docsUserControl1.RefrechItemBtn.PerformClick();
-            }
-        }
-
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new frmAboutAs().ShowDialog();
@@ -330,18 +293,16 @@ namespace SP_Sklad
             }
         }
 
-        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void AddWBOutBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var wb_in = new frmWayBillOut(-16, null))
+            using (var wb_in = new frmWayBillOut(-1, null))
             {
                 wb_in.ShowDialog();
             }
         }
 
-        private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void WbMatTemplateBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //   IHelper.ShowDirectList(null, 18);
-
             using (var f = new frmCatalog(null, 143))
             {
                 f.uc.isDirectList = false;
@@ -351,7 +312,49 @@ namespace SP_Sklad
             }
         }
 
-        private void barButtonItem5_ItemClick_2(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void AddWBInBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_in = new frmWayBillIn(1, wid: _wid))
+            {
+                wb_in.ShowDialog();
+            }
+        }
+
+        private void AddManufacturingBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_make = new frmWBManufacture(null))
+            {
+                wb_make.ShowDialog();
+            }
+        }
+
+        private void AddDeboningBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_make = new frmWBDeboning(null))
+            {
+                wb_make.ShowDialog();
+            }
+        }
+
+        private void CashierWorkplaceBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmCashierWorkplace())
+            {
+                frm.ShowDialog();
+
+                docsUserControl1.RefrechItemBtn.PerformClick();
+            }
+        }
+
+        private void NewCustomerOrder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var wb_in = new frmWayBillOut(-16, null))
+            {
+                wb_in.ShowDialog();
+            }
+        }
+
+        private void NewWBWriteOnItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (var wb_in = new frmWBWriteOn(wid: _wid))
             {
@@ -359,7 +362,7 @@ namespace SP_Sklad
             }
         }
 
-        private void barButtonItem6_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void NewWayBillMoveBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (var wb_move = new frmWayBillMove(wid: _wid))
             {
@@ -367,7 +370,7 @@ namespace SP_Sklad
             }
         }
 
-        private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void NewWBWriteOffBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             using (var wb_on = new frmWBWriteOff(wid: _wid))
             {

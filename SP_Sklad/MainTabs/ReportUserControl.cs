@@ -73,6 +73,10 @@ namespace SP_Sklad.MainTabs
             {
                 new frmReport53().ShowDialog();
             }
+            else if ((int)row.RepId == 54)
+            {
+                new frmReport54().ShowDialog();
+            }
             else
             {
 

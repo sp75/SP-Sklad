@@ -14,6 +14,11 @@ namespace SP_Sklad.SkladData
     
     public partial class Expedition
     {
+        public Expedition()
+        {
+            this.ExpeditionDet = new HashSet<ExpeditionDet>();
+        }
+    
         public System.Guid Id { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
@@ -27,5 +32,6 @@ namespace SP_Sklad.SkladData
         public int DocType { get; set; }
     
         public virtual Cars Cars { get; set; }
+        public virtual ICollection<ExpeditionDet> ExpeditionDet { get; set; }
     }
 }
