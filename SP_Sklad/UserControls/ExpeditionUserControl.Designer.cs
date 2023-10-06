@@ -77,6 +77,7 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -507,7 +508,8 @@
             this.gridColumn7,
             this.gridColumn8,
             this.gridColumn9,
-            this.gridColumn10});
+            this.gridColumn10,
+            this.gridColumn12});
             this.ExpeditionDetGridView.GridControl = this.ExpeditionDetGridControl;
             this.ExpeditionDetGridView.Name = "ExpeditionDetGridView";
             this.ExpeditionDetGridView.OptionsBehavior.ReadOnly = true;
@@ -521,7 +523,7 @@
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 3;
-            this.colMatId.Width = 384;
+            this.colMatId.Width = 413;
             // 
             // gridColumn2
             // 
@@ -532,7 +534,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 5;
-            this.gridColumn2.Width = 144;
+            this.gridColumn2.Width = 111;
             // 
             // gridColumn4
             // 
@@ -541,7 +543,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 7;
-            this.gridColumn4.Width = 69;
+            this.gridColumn4.Width = 67;
             // 
             // gridColumn1
             // 
@@ -550,7 +552,7 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 6;
-            this.gridColumn1.Width = 98;
+            this.gridColumn1.Width = 90;
             // 
             // gridColumn6
             // 
@@ -559,7 +561,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 138;
+            this.gridColumn6.Width = 114;
             // 
             // gridColumn7
             // 
@@ -568,7 +570,6 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 8;
-            this.gridColumn7.Width = 103;
             // 
             // gridColumn8
             // 
@@ -578,7 +579,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
-            this.gridColumn8.Width = 76;
+            this.gridColumn8.Width = 71;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -596,7 +597,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 2;
-            this.gridColumn9.Width = 111;
+            this.gridColumn9.Width = 104;
             // 
             // gridColumn10
             // 
@@ -605,7 +606,16 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 1;
-            this.gridColumn10.Width = 98;
+            this.gridColumn10.Width = 92;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Примітка";
+            this.gridColumn12.FieldName = "WbNotes";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.Width = 84;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -745,5 +755,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
     }
 }

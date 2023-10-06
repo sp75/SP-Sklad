@@ -127,12 +127,6 @@ namespace SP_Sklad.WBDetForm
               }*/
         }
 
-
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
              if (e.Button.Index == 1)
@@ -148,7 +142,6 @@ namespace SP_Sklad.WBDetForm
                       }
                   }
               }
-
         }
 
         private void AmountEdit_MouseUp(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -162,11 +155,6 @@ namespace SP_Sklad.WBDetForm
             AmountEdit.Focus();
         }
  
-        private void MsrComboBox_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
-        }
-
         private void MsrComboBox_EditValueChanged(object sender, EventArgs e)
         {
             var r = MsrComboBox.GetSelectedDataRow() as Measures;

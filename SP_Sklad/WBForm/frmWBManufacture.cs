@@ -111,7 +111,7 @@ namespace SP_Sklad.WBForm
                 WaybillListBS.DataSource = wb;
                 WayBillMakeBS.DataSource = wb.WayBillMake;
 
-                if(!DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1 && w.RecId == wb.WayBillMake.RecId).Any())
+                if (!is_new_record && !DB.SkladBase().MatRecipe.AsNoTracking().Where(w => w.RType == 1 && !w.Archived && w.Materials.Archived != 1 && w.RecId == wb.WayBillMake.RecId).Any())
                 {
                     MessageBox.Show("Рецепт або товар перенесоно до архіву!");
                 }

@@ -120,7 +120,6 @@
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 4;
             this.simpleButton1.Text = "Відмінити";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // panelControl2
             // 
@@ -352,7 +351,6 @@
             this.MsrComboBox.Properties.ShowHeader = false;
             this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MsrComboBox.Properties.ValueMember = "MId";
-            this.MsrComboBox.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MsrComboBox_Properties_ButtonClick);
             this.MsrComboBox.Size = new System.Drawing.Size(80, 22);
             this.MsrComboBox.StyleController = this.styleController1;
             this.MsrComboBox.TabIndex = 48;

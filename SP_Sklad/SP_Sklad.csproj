@@ -260,20 +260,20 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Common\WhDocEdit.cs" />
-    <Compile Include="DeboningWeighingInterface\frmDeboningWeighing.cs">
+    <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeboningWeighingInterface\frmDeboningWeighing.Designer.cs">
+    <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.Designer.cs">
       <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeboningWeighingInterface\frmDeboningWeighingDet.cs">
+    <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DeboningWeighingInterface\frmDeboningWeighingDet.Designer.cs">
+    <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighingDet.Designer.cs">
       <DependentUpon>frmDeboningWeighingDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeboningWeighingInterface\Views\DeboningDetView.cs" />
-    <Compile Include="DeboningWeighingInterface\Views\WayBillMakeView.cs" />
+    <Compile Include="Interfaces\DeboningWeighingInterface\Views\DeboningDetView.cs" />
+    <Compile Include="Interfaces\DeboningWeighingInterface\Views\WayBillMakeView.cs" />
     <Compile Include="EditForm\frmAccountTypeEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -460,30 +460,42 @@
     <Compile Include="frmSuppliersSales.Designer.cs">
       <DependentUpon>frmSuppliersSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.cs">
+    <Compile Include="Interfaces\IntermediateWeighingInterface\MainIntermediateWeighingDet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.Designer.cs">
+    <Compile Include="Interfaces\IntermediateWeighingInterface\MainIntermediateWeighingDet.Designer.cs">
       <DependentUpon>MainIntermediateWeighingDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.cs">
+    <Compile Include="Interfaces\IntermediateWeighingInterface\frmMainIntermediateWeighing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.Designer.cs">
+    <Compile Include="Interfaces\IntermediateWeighingInterface\frmMainIntermediateWeighing.Designer.cs">
       <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
     </Compile>
-    <Compile Include="IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
-    <Compile Include="IntermediateWeighingInterface\Views\make_det.cs" />
-    <Compile Include="RawMaterialManagementInterface\frmRawMatDet.cs">
+    <Compile Include="Interfaces\IntermediateWeighingInterface\Views\IntermediateWeighingView.cs" />
+    <Compile Include="Interfaces\IntermediateWeighingInterface\Views\make_det.cs" />
+    <Compile Include="Interfaces\ExpeditionInterface\frmMainExpeditionInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RawMaterialManagementInterface\frmRawMatDet.Designer.cs">
+    <Compile Include="Interfaces\ExpeditionInterface\frmMainExpeditionInterface.Designer.cs">
+      <DependentUpon>frmMainExpeditionInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\ExpeditionInterface\frmExpeditionInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\ExpeditionInterface\frmExpeditionInterface.Designer.cs">
+      <DependentUpon>frmExpeditionInterface.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\RawMaterialManagementInterface\frmRawMatDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\RawMaterialManagementInterface\frmRawMatDet.Designer.cs">
       <DependentUpon>frmRawMatDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.cs">
+    <Compile Include="Interfaces\RawMaterialManagementInterface\frmMainRawMaterialManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
+    <Compile Include="Interfaces\RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmReport54.cs">
@@ -2124,10 +2136,10 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="DeboningWeighingInterface\frmDeboningWeighing.resx">
+    <EmbeddedResource Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.resx">
       <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DeboningWeighingInterface\frmDeboningWeighingDet.resx">
+    <EmbeddedResource Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighingDet.resx">
       <DependentUpon>frmDeboningWeighingDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditForm\frmAccountTypeEdit.resx">
@@ -2223,16 +2235,22 @@
     <EmbeddedResource Include="frmSuppliersSales.resx">
       <DependentUpon>frmSuppliersSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IntermediateWeighingInterface\MainIntermediateWeighingDet.resx">
+    <EmbeddedResource Include="Interfaces\IntermediateWeighingInterface\MainIntermediateWeighingDet.resx">
       <DependentUpon>MainIntermediateWeighingDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
+    <EmbeddedResource Include="Interfaces\IntermediateWeighingInterface\frmMainIntermediateWeighing.resx">
       <DependentUpon>frmMainIntermediateWeighing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RawMaterialManagementInterface\frmRawMatDet.resx">
+    <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmMainExpeditionInterface.resx">
+      <DependentUpon>frmMainExpeditionInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmExpeditionInterface.resx">
+      <DependentUpon>frmExpeditionInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\RawMaterialManagementInterface\frmRawMatDet.resx">
       <DependentUpon>frmRawMatDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
+    <EmbeddedResource Include="Interfaces\RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReport54.resx">

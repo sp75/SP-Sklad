@@ -2327,6 +2327,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="PacksQuantity" Type="numeric" Precision="38" Scale="8" />
           <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbNotes" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8952,7 +8953,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[WbAmount] AS [WbAmount], 
     [v_ExpeditionDet].[KaFullName] AS [KaFullName], 
     [v_ExpeditionDet].[PacksQuantity] AS [PacksQuantity], 
-    [v_ExpeditionDet].[WaybillListId] AS [WaybillListId]
+    [v_ExpeditionDet].[WaybillListId] AS [WaybillListId], 
+    [v_ExpeditionDet].[WbNotes] AS [WbNotes]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="Self.v_ExpeditionWBMaterialsDet" store:Type="Views" store:Schema="dbo">
@@ -20585,6 +20587,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="PacksQuantity" Type="Decimal" Precision="38" Scale="8" />
           <Property Name="WaybillListId" Type="Guid" Nullable="false" />
+          <Property Name="WbNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -26153,6 +26156,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
               <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="WbNotes" ColumnName="WbNotes" />
                 <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
                 <ScalarProperty Name="PacksQuantity" ColumnName="PacksQuantity" />
                 <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />

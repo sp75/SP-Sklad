@@ -82,31 +82,29 @@ namespace SP_Sklad.ViewsForm
         {
             e.NewObject = _db.KontragentGroup.Add(new KontragentGroup() { Id = Guid.NewGuid() });
         }
-        public class rep_53
+        public class rep_54
         {
             public int MatId { get; set; }
             public int GrpId { get; set; }
             public string MatName { get; set; }
             public string GrpName { get; set; }
             public decimal? Remain { get; set; }
-            public decimal? OrderedAmount1 { get; set; }
-            public decimal? OrderedAmount2 { get; set; }
+            public decimal? OrderedAmount { get; set; }
             public decimal? MakeAmount { get; set; }
             public string Artikul { get; set; }
             public string MsrName { get; set; }
         }
-        private List<rep_53> GetData()
+        private List<rep_54> GetData()
         {
             var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
             int wid = wh_row.WId;
 
-            return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
-coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
-coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , WayBillMake wbm, MatRecipe mr where wbm.RecId = mr.RecId and mr.MatId = x.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) ),0) MakeAmount       
-from 
-(
-      select 
-           pr.MatId,
+            var sql = @"select 
+   wbd.MatId, 
+   m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
+   sum(wbd.Amount) OrderedAmount,
+   coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , WayBillMake wbm, MatRecipe mr where wbm.RecId = mr.RecId and mr.MatId = wbd.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) ),0) MakeAmount,
+   (select 
 				   sum( pr.remain) Remain
 		   from PosRemains pr
 		   join (
@@ -117,14 +115,19 @@ from
 					     where ondate <= {0}
 					     group by [PosId]
 						) x on x.PosId = pr.PosId and pr.OnDate = x.OnDate
-        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {2} or {2} = 0 )
-        group by  pr.MatId
-
-		)x
-		inner join Materials m on m.MatId = x.MatId  and m.TypeId in (1,5)
+        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {2} or {2} = 0 ) and pr.MatId = wbd.MatId
+    ) Remain 
+from WaybillDet wbd
+        inner join  WaybillList wbl on wbd.WbillId = wbl.WbillId
+		inner join Materials m on m.MatId =  wbd.MatId  and m.TypeId in (1,5)
 		inner join MatGroup mg on mg.GrpId = m.GrpId 
         inner join Measures on Measures.MId = m.MId
-        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, wid).ToList();
+where   wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) 
+group by wbd.MatId, m.Name , mg.Name , mg.GrpId, m.Artikul, Measures.ShortName
+order by m.Artikul";
+
+
+            return _db.Database.SqlQuery<rep_54>(sql, OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, wid).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)

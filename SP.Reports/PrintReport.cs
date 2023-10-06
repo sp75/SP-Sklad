@@ -1604,13 +1604,17 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
 
             var sql_1 = @"
    	            select wbl.Num , c.Id CarId , c.Name CarName, c.Number CarNumber , wbl.KaId , k.[Name] KaName, wbl.OnDate , wbl.Checked,
-                    (select sum([Amount]) from [WaybillDet], [Materials] where [Materials].MatId = [WaybillDet].MatId and [WbillId] = wbl.WbillId and [Materials].MId = 2 ) TotalKg,
-                    (select sum([Amount]) from WayBillTmc where [WbillId] = wbl.WbillId ) TotalTmc
+                    ( select sum(case when Materials.MId = 2 then WaybillDet.Amount else 0 end) +  sum( WaybillDet.Amount * coalesce (MaterialMeasures.Amount, 0) ) 
+                      from WaybillDet
+                      inner join  Materials on Materials.MatId = WaybillDet.MatId
+                      left outer join MaterialMeasures on MaterialMeasures.MId = 2 and MaterialMeasures.MatId = WaybillDet.MatId
+                      where  WbillId = wbl.WbillId ) TotalKg,
+                    (select sum(Amount) from WayBillTmc where WbillId = wbl.WbillId ) TotalTmc
                 from [WaybillList] wbl
                 inner join [dbo].[Cars] c on c.Id = wbl.CarId
                 inner join [dbo].[Kagent] k on k.KaId = wbl.KaId
                 where wbl.ondate between {0} and {1} and {2} in (c.Id , '00000000-0000-0000-0000-000000000000' ) and {3} in (wbl.Checked, -1) and {4} in ( wbl.DriverId, -1 )
-                order by k.[Name] ";
+                order by k.Name ";
 
             var waybill_list = _db.Database.SqlQuery<rep_46>(sql_1, StartDate, EndDate, car_id, status, driver_id).ToList();
 
@@ -1752,6 +1756,7 @@ SELECT WaybillList.[WbillId]
             public string MatName { get; set; }
             public int MatId { get; set; }
             public string MeasuresShortName { get; set; }
+            public decimal? ConvertedToKilograms { get; set; }
         }
 
         private void REP_49()
@@ -1767,13 +1772,14 @@ SELECT WaybillList.[WbillId]
        m.Name MatName,
        m.MatId,
        ms.ShortName MeasuresShortName
-	--   sum( case when m.mid = 2 then cast(wbd.amount as numeric(15,4)) else 0 end ) Amount
+       coalesce (mm.Amount * wbd.Amount , 0) ConvertedToKilograms
     from materials m
     join waybilldet wbd on m.matid=wbd.matid
     join waybilllist wbl on wbl.wbillid=wbd.wbillid
     join measures ms on ms.mid=m.mid
 	join MatGroup mg on m.GrpId = mg.GrpId
     left outer join kagent ka on ka.kaid=wbl.kaid
+    left outer join MaterialMeasures mm on mm.MatId = m.MatId and MId = 2
 
     where  wbl.WType = -16 
            and wbl.ondate between {0} and {1}
@@ -1781,7 +1787,6 @@ SELECT WaybillList.[WbillId]
            and {3} in (ka.kaid , 0 )
            and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
            and {6}  in (-1, wbl.RouteId) 
- --   group by mg.Name , m.GrpId, ka.kaid, ka.Name
     )x
     where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr, RouteId.Id).ToList();
 
@@ -1794,7 +1799,7 @@ SELECT WaybillList.[WbillId]
             {
                 s.Key.KaId,
                 Name = s.Key.KagentName,
-                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0)
+                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0) + s.Sum(ss=> ss.ConvertedToKilograms)
             }).OrderBy(o => o.Name).ToList();
 
             realation.Add(new
@@ -1815,14 +1820,20 @@ SELECT WaybillList.[WbillId]
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", ka_grp);
-            data_for_report.Add("MatOutDet", mat.GroupBy(g=> new { g.GrpName, g.GrpId, g.KaId,g.KagentName}).Select(s=> new {s.Key.GrpId, s.Key.KaId, s.Key.GrpName, Amount = s.Sum(ss=> ss.Mid == 2 ? ss.Amount :0)}).ToList());
+            data_for_report.Add("MatOutDet", mat.GroupBy(g => new { g.GrpName, g.GrpId, g.KaId, g.KagentName }).Select(s => new
+            {
+                s.Key.GrpId,
+                s.Key.KaId,
+                s.Key.GrpName,
+                Amount = s.Sum(ss => ss.Mid == 2 ? ss.Amount : 0) + s.Sum(sss => sss.ConvertedToKilograms)
+            }).ToList());
 
             data_for_report.Add("KaGroup", ka_grp);
             data_for_report.Add("MatOutDet2", mat);
 
             data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
             {
-                AmountOut = s.Sum(ss =>  ss.Mid == 2 ? ss.Amount : 0)
+                AmountOut = s.Sum(ss => ss.Mid == 2 ? ss.Amount : 0) + s.Sum(sss => sss.ConvertedToKilograms)
             }).ToList());
 
 

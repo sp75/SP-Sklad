@@ -38,5 +38,6 @@ namespace SP_Sklad.SkladData
         public string KaFullName { get; set; }
         public Nullable<decimal> PacksQuantity { get; set; }
         public System.Guid WaybillListId { get; set; }
+        public string WbNotes { get; set; }
     }
 }

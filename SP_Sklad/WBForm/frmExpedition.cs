@@ -26,10 +26,11 @@ namespace SP_Sklad.WBForm
     {
         private Guid? _exp_id { get; set; }
         public BaseEntities _db { get; set; }
-        private DbContextTransaction current_transaction { get; set; }
+      //  private DbContextTransaction current_transaction { get; set; }
         private Expedition exp { get; set; }
         private int?  _PTypeId { get; set; }
         private int? _mat_id { get; set; }
+        public bool is_new_record { get; set; }
 
         private v_ExpeditionDet focused_dr => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
 
@@ -37,11 +38,12 @@ namespace SP_Sklad.WBForm
         {
             InitializeComponent();
 
+            is_new_record = false;
             _exp_id = exp_id;
             _PTypeId = PTypeId;
             _mat_id = mat_id;
             _db = new BaseEntities();
-            current_transaction = _db.Database.BeginTransaction();
+          //  current_transaction = _db.Database.BeginTransaction();
         }
           
         private void frmPriceList_Load(object sender, EventArgs e)
@@ -51,6 +53,8 @@ namespace SP_Sklad.WBForm
 
             if (_exp_id == null)
             {
+                is_new_record = true;
+
                 exp = _db.Expedition.Add(new Expedition
                 {
                     Id = Guid.NewGuid(),
@@ -89,19 +93,26 @@ namespace SP_Sklad.WBForm
             exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
             _db.SaveChanges();
-            current_transaction.Commit();
+            //  current_transaction.Commit();
+
+            is_new_record = false;
             Close();
         }
 
         private void frmPriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (current_transaction.UnderlyingTransaction.Connection != null)
+            //    if (current_transaction.UnderlyingTransaction.Connection != null)
+            //    {
+            //        current_transaction.Rollback();
+            //     }
+
+            if (is_new_record)
             {
-                current_transaction.Rollback();
+                _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
             }
 
             _db.Dispose();
-            current_transaction.Dispose();
+        //    current_transaction.Dispose();
         }
 
         void GetDetail()
@@ -241,11 +252,18 @@ namespace SP_Sklad.WBForm
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
-                    if (_db.WaybillList.Any(w => w.WbillId == wbill_id))
+                    if (_db.WaybillList.Any(w => w.WbillId == wbill_id && w.WType == -1))
                     {
-                        new frmExpeditionDet(_db, null, exp, wbill_id).ShowDialog();
+                        using (var fed = new frmExpeditionDet(_db, null, exp, wbill_id))
+                        {
+                            fed.ShowDialog();
+                        }
 
                         GetDetail();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Документ не знайдено!");
                     }
 
                 }
