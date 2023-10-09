@@ -1771,15 +1771,15 @@ SELECT WaybillList.[WbillId]
        m.Mid,
        m.Name MatName,
        m.MatId,
-       ms.ShortName MeasuresShortName
-       coalesce (mm.Amount * wbd.Amount , 0) ConvertedToKilograms
+       ms.ShortName MeasuresShortName,
+       coalesce (mm.Amount * wbd.Amount, 0) ConvertedToKilograms
     from materials m
     join waybilldet wbd on m.matid=wbd.matid
     join waybilllist wbl on wbl.wbillid=wbd.wbillid
     join measures ms on ms.mid=m.mid
 	join MatGroup mg on m.GrpId = mg.GrpId
     left outer join kagent ka on ka.kaid=wbl.kaid
-    left outer join MaterialMeasures mm on mm.MatId = m.MatId and MId = 2
+    left outer join MaterialMeasures mm on mm.MatId = m.MatId and mm.MId = 2
 
     where  wbl.WType = -16 
            and wbl.ondate between {0} and {1}
