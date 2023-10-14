@@ -28,20 +28,18 @@ namespace SP_Sklad.WBForm
         public BaseEntities _db { get; set; }
       //  private DbContextTransaction current_transaction { get; set; }
         private Expedition exp { get; set; }
-        private int?  _PTypeId { get; set; }
-        private int? _mat_id { get; set; }
+
         public bool is_new_record { get; set; }
 
         private v_ExpeditionDet focused_dr => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
 
-        public frmExpedition(Guid? exp_id = null, int? PTypeId = null, int? mat_id = null )
+        public frmExpedition(Guid? exp_id = null)
         {
             InitializeComponent();
 
             is_new_record = false;
             _exp_id = exp_id;
-            _PTypeId = PTypeId;
-            _mat_id = mat_id;
+
             _db = new BaseEntities();
           //  current_transaction = _db.Database.BeginTransaction();
         }
@@ -77,11 +75,6 @@ namespace SP_Sklad.WBForm
             if (exp != null)
             {
                 ExpeditionBS.DataSource = exp;
-            }
-
-            if (_mat_id.HasValue)
-            {
-                AddNewMaterial(_mat_id.Value);
             }
 
             GetDetail();
@@ -152,10 +145,7 @@ namespace SP_Sklad.WBForm
            
         }
 
-        private void AddNewMaterial( int mat_id)
-        {
-
-        }
+       
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

@@ -30,7 +30,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         public BaseEntities _db { get; set; }
 
-        private v_RawMaterialManagement rmm_focused_row => tileView1.GetFocusedRow() is NotLoadedObject ? null : tileView1.GetFocusedRow() as v_RawMaterialManagement;
+        private v_Expedition rmm_focused_row => tileView1.GetFocusedRow() is NotLoadedObject ? null : tileView1.GetFocusedRow() as v_Expedition;
 
         public frmMainExpeditionInterface()
             :this (UserSession.UserId)
@@ -46,14 +46,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
   
         private void Form1_Load(object sender, EventArgs e)
         {
-            CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
 
-            //   gridControl1.DataSource = _db.v_RawMaterialManagement.Where(w => w.Checked == 0).ToList();
-        }
-
-        private void RgViewType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
         }
 
 
@@ -75,25 +68,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            var exp = _db.Expedition.Add(new Expedition
+            using (var frm = new frmExpeditionInterface())
             {
-                Id = Guid.NewGuid(),
-                DocType = 32,
-                Checked = 0,
-                OnDate = DBHelper.ServerDateTime(),
-                PersonId = DBHelper.CurrentUser.KaId,
-                Num = new BaseEntities().GetDocNum("expedition").FirstOrDefault(),
-                CarId = _db.Cars.FirstOrDefault().Id,
-                UpdatedBy = DBHelper.CurrentUser.UserId
-            });
-
-            _db.SaveChanges();
-            
-     /*       using (var frm = new frmRawMatDet(rmm.Id))
-            {
-                frm.labelControl1.Text = rgViewType.Properties.Items[rgViewType.SelectedIndex].Description + " №"+rmm.Num;
                 frm.ShowDialog();
-            }*/
+            }
 
             ExpeditionSource.Refresh();
         }
@@ -127,9 +105,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                 return;
             }
 
-            using (var frm = new frmRawMatDet(rmm_focused_row.Id))
+            using (var frm = new frmExpeditionInterface(rmm_focused_row.Id))
             {
-                frm.labelControl1.Text = rmm_focused_row.DocTypeName + " №" + rmm_focused_row.Num;
+               // frm.labelControl1.Text = rmm_focused_row.DocTypeName + " №" + rmm_focused_row.Num;
                 frm.ShowDialog();
             }
 
@@ -139,6 +117,33 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             ExpeditionSource.Refresh();
+        }
+
+        private void tileView1_ItemCustomize(object sender, TileViewItemCustomizeEventArgs e)
+        {
+            if (e.Item == null || e.Item.Elements.Count == 0)
+            {
+                return;
+            }
+ 
+            var Checked = tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["Checked"]);
+            if (!(Checked is NotLoadedObject))
+            {
+                var RecipeCaption = e.Item.GetElementByName("CheckedElement");
+                if ((int)Checked == 0)
+                {
+                    RecipeCaption.Text = "Новий";
+                }
+                else if ((int)Checked == 1)
+                {
+                    RecipeCaption.Text = "Завершено погрузку";
+                }
+            }
+
+         //   e.Item.AppearanceItem.Normal.BackColor = is_done ? colorPanelSold : colorPanelReady;
+
+            //RecipeCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
+            //WBDateCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
         }
     }
 }

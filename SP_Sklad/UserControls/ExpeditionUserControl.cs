@@ -85,7 +85,7 @@ namespace SP_Sklad.UserControls
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 97 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 103 && w.UserId == UserSession.UserId);
             }
         }
 

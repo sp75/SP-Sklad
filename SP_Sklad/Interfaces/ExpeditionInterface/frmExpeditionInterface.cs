@@ -21,18 +21,21 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private readonly RawInput _rawinput;
 
         private Expedition exp { get; set; }
-        private v_ExpeditionDet focused_row => tileView1.GetFocusedRow() as v_ExpeditionDet;
-        private Guid _id { get; set; }
-        //  private Tara tara { get; set; }
+        private v_ExpeditionDet focused_row => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
+        private Guid? _exp_id { get; set; }
+        public bool is_new_record { get; set; }
+        public BaseEntities _db { get; set; }
 
-        public frmExpeditionInterface(Guid id)
+        public frmExpeditionInterface(Guid? exp_id = null)
         {
             InitializeComponent();
             _rawinput = new RawInput(Handle, true);
             _rawinput.KeyPressed += OnKeyPressed;
-            _id = id;
+            _exp_id = exp_id;
 
-            GetDetail(id);
+            _db = new BaseEntities();
+
+           
         }
 
         private void FluentDesignForm1_Load(object sender, EventArgs e)
@@ -41,27 +44,48 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             {
 
             }
+            CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
 
-            using (var _db = new BaseEntities())
+            if (_exp_id == null)
             {
-                exp = _db.Expedition.Find(_id);
+                is_new_record = true;
 
-                //      tara = _db.Tara.FirstOrDefault(w => w.TypeId == 7);
+                exp = _db.Expedition.Add(new Expedition
+                {
+                    Id = Guid.NewGuid(),
+                    DocType = 32,
+                    Checked = 1,
+                    OnDate = DBHelper.ServerDateTime(),
+                    PersonId = DBHelper.CurrentUser.KaId,
+                    Num = new BaseEntities().GetDocNum("expedition").FirstOrDefault(),
+                    CarId = _db.Cars.FirstOrDefault().Id
+                });
+
+                _db.SaveChanges();
+                _exp_id = exp.Id;
+            }
+            else
+            {
+                exp = _db.Expedition.Find(_exp_id);
             }
 
+            if (exp != null)
+            {
+                ExpeditionBS.DataSource = exp;
+
+              
+            }
+
+            GetDetail();
         }
 
-        private void GetDetail(Guid id)
+        private void GetDetail()
         {
-            using (var _db = new BaseEntities())
-            {
-                var list = _db.v_ExpeditionDet.Where(w => w.ExpeditionId == id).ToList();
-                ExpeditionDetBS.DataSource = list;
-
-                //        IntermediateWeighingEdit.EditValue = list.Sum(s => s.Amount);
-            }
-
+            int top_row = ExpeditionDetGridView.TopRowIndex;
+            ExpeditionDetBS.DataSource = _db.v_ExpeditionDet.AsNoTracking().Where(w => w.ExpeditionId == _exp_id).OrderBy(o => o.CreatedAt).ToList();
+            ExpeditionDetGridView.TopRowIndex = top_row;
         }
+
         private void tileView1_ItemClick(object sender, DevExpress.XtraGrid.Views.Tile.TileViewItemClickEventArgs e)
         {
 
@@ -156,22 +180,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
-            /*   using (var _db = new BaseEntities())
-               {
-                   rmm = _db.RawMaterialManagement.Find(_id);
-                   if (!rmm.RawMaterialManagementDet.Any())
-                   {
-                       _db.DeleteWhere<RawMaterialManagement>(w => w.Id == _id);
-                   }
-                   else
-                   {
-                       rmm.UpdatedAt = DateTime.Now;
+            exp.UpdatedAt = DateTime.Now;
+            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
-                       _db.SaveChanges();
-                   }
-               }
+            _db.SaveChanges();
 
-               Close();*/
+            is_new_record = false;
+
+            Close();
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -242,8 +258,23 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             labelControl1.Focus();
 
-            GetDetail(exp.Id);
+            GetDetail();
 
+        }
+
+        private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
+        }
+
+        private void frmExpeditionInterface_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (is_new_record)
+            {
+                _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
+            }
+
+            _db.Dispose();
         }
     }
 }

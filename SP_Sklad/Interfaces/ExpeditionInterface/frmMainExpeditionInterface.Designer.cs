@@ -57,7 +57,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.tileViewColumn4 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn5 = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.tileViewColumn3 = new DevExpress.XtraGrid.Columns.TileViewColumn();
-            this.tileViewColumn6 = new DevExpress.XtraGrid.Columns.TileViewColumn();
+            this.CheckedColumn = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -77,22 +77,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.ExpeditionSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.tileView1 = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
-            this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
-            this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup6 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -109,20 +97,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).BeginInit();
             this.sidePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
-            this.tabPane1.SuspendLayout();
-            this.tabNavigationPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // tileViewColumn1
@@ -165,14 +139,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.tileViewColumn3.Visible = true;
             this.tileViewColumn3.VisibleIndex = 4;
             // 
-            // tileViewColumn6
+            // CheckedColumn
             // 
-            this.tileViewColumn6.Caption = "Статус";
-            this.tileViewColumn6.ColumnEdit = this.repositoryItemCheckEdit1;
-            this.tileViewColumn6.FieldName = "Checked";
-            this.tileViewColumn6.Name = "tileViewColumn6";
-            this.tileViewColumn6.Visible = true;
-            this.tileViewColumn6.VisibleIndex = 5;
+            this.CheckedColumn.Caption = "Статус";
+            this.CheckedColumn.ColumnEdit = this.repositoryItemCheckEdit1;
+            this.CheckedColumn.FieldName = "Checked";
+            this.CheckedColumn.Name = "CheckedColumn";
+            this.CheckedColumn.Visible = true;
+            this.CheckedColumn.VisibleIndex = 5;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -320,7 +294,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(793, 565);
+            this.gridControl1.Size = new System.Drawing.Size(898, 565);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tileView1});
@@ -340,7 +314,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.tileViewColumn2,
             this.tileViewColumn5,
             this.tileViewColumn3,
-            this.tileViewColumn6});
+            this.CheckedColumn});
             this.tileView1.GridControl = this.gridControl1;
             this.tileView1.Name = "tileView1";
             this.tileView1.OptionsBehavior.ReadOnly = true;
@@ -457,11 +431,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             tileViewItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
             tileViewItemElement12.Appearance.Normal.Font = new System.Drawing.Font("Tahoma", 16F);
             tileViewItemElement12.Appearance.Normal.Options.UseFont = true;
-            tileViewItemElement12.Column = this.tileViewColumn6;
+            tileViewItemElement12.Column = this.CheckedColumn;
             tileViewItemElement12.ColumnIndex = 1;
             tileViewItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
             tileViewItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Squeeze;
-            tileViewItemElement12.Text = "tileViewColumn6";
+            tileViewItemElement12.Name = "CheckedElement";
+            tileViewItemElement12.Text = "CheckedColumn";
             tileViewItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
             this.tileView1.TileTemplate.Add(tileViewItemElement1);
             this.tileView1.TileTemplate.Add(tileViewItemElement2);
@@ -475,79 +450,59 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.tileView1.TileTemplate.Add(tileViewItemElement10);
             this.tileView1.TileTemplate.Add(tileViewItemElement11);
             this.tileView1.TileTemplate.Add(tileViewItemElement12);
+            this.tileView1.ItemCustomize += new DevExpress.XtraGrid.Views.Tile.TileViewItemCustomizeEventHandler(this.tileView1_ItemCustomize);
             // 
             // sidePanel1
             // 
-            this.sidePanel1.Controls.Add(this.tabPane1);
+            this.sidePanel1.Controls.Add(this.simpleButton5);
+            this.sidePanel1.Controls.Add(this.simpleButton2);
+            this.sidePanel1.Controls.Add(this.simpleButton3);
+            this.sidePanel1.Controls.Add(this.simpleButton1);
             this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel1.Location = new System.Drawing.Point(793, 0);
+            this.sidePanel1.Location = new System.Drawing.Point(898, 0);
             this.sidePanel1.Name = "sidePanel1";
-            this.sidePanel1.Size = new System.Drawing.Size(407, 565);
+            this.sidePanel1.Size = new System.Drawing.Size(302, 565);
             this.sidePanel1.TabIndex = 13;
             this.sidePanel1.Text = "sidePanel1";
-            // 
-            // tabPane1
-            // 
-            this.tabPane1.Controls.Add(this.tabNavigationPage1);
-            this.tabPane1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPane1.Location = new System.Drawing.Point(1, 0);
-            this.tabPane1.Name = "tabPane1";
-            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNavigationPage1});
-            this.tabPane1.RegularSize = new System.Drawing.Size(406, 565);
-            this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(406, 565);
-            this.tabPane1.TabIndex = 0;
-            this.tabPane1.Text = "tabPane1";
-            // 
-            // tabNavigationPage1
-            // 
-            this.tabNavigationPage1.Caption = "Новий документ";
-            this.tabNavigationPage1.Controls.Add(this.layoutControl1);
-            this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(406, 532);
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.AllowCustomization = false;
-            this.layoutControl1.Controls.Add(this.simpleButton5);
-            this.layoutControl1.Controls.Add(this.simpleButton3);
-            this.layoutControl1.Controls.Add(this.simpleButton1);
-            this.layoutControl1.Controls.Add(this.simpleButton2);
-            this.layoutControl1.Controls.Add(this.CarsLookUpEdit);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1248, 317, 650, 400);
-            this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(406, 532);
-            this.layoutControl1.TabIndex = 8;
-            this.layoutControl1.Text = "layoutControl1";
             // 
             // simpleButton5
             // 
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.Dock = System.Windows.Forms.DockStyle.Top;
             this.simpleButton5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.ImageOptions.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(2, 194);
+            this.simpleButton5.Location = new System.Drawing.Point(1, 112);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton5.Size = new System.Drawing.Size(402, 56);
-            this.simpleButton5.StyleController = this.layoutControl1;
+            this.simpleButton5.Size = new System.Drawing.Size(301, 56);
             this.simpleButton5.TabIndex = 16;
             this.simpleButton5.Text = "Обновити";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(1, 509);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
+            this.simpleButton2.Size = new System.Drawing.Size(301, 56);
+            this.simpleButton2.TabIndex = 12;
+            this.simpleButton2.Text = "Завершити роботу";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton3
             // 
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Top;
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(2, 134);
+            this.simpleButton3.Location = new System.Drawing.Point(1, 56);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton3.Size = new System.Drawing.Size(402, 56);
-            this.simpleButton3.StyleController = this.layoutControl1;
+            this.simpleButton3.Size = new System.Drawing.Size(301, 56);
             this.simpleButton3.TabIndex = 14;
             this.simpleButton3.Text = "Редагувати";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -558,134 +513,15 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.simpleButton1.Appearance.Options.UseBackColor = true;
             this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Top;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(2, 74);
+            this.simpleButton1.Location = new System.Drawing.Point(1, 0);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton1.Size = new System.Drawing.Size(402, 56);
-            this.simpleButton1.StyleController = this.layoutControl1;
+            this.simpleButton1.Size = new System.Drawing.Size(301, 56);
             this.simpleButton1.TabIndex = 11;
             this.simpleButton1.Text = "Створити документ";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(2, 474);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton2.Size = new System.Drawing.Size(402, 56);
-            this.simpleButton2.StyleController = this.layoutControl1;
-            this.simpleButton2.TabIndex = 12;
-            this.simpleButton2.Text = "Завершити роботу";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
-            // CarsLookUpEdit
-            // 
-            this.CarsLookUpEdit.Location = new System.Drawing.Point(12, 34);
-            this.CarsLookUpEdit.MenuManager = this.barManager2;
-            this.CarsLookUpEdit.Name = "CarsLookUpEdit";
-            this.CarsLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.CarsLookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.CarsLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.CarsLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.CarsLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Number", "Номер")});
-            this.CarsLookUpEdit.Properties.DisplayMember = "Name";
-            this.CarsLookUpEdit.Properties.NullText = "";
-            this.CarsLookUpEdit.Properties.PopupSizeable = false;
-            this.CarsLookUpEdit.Properties.ShowFooter = false;
-            this.CarsLookUpEdit.Properties.ValueMember = "Id";
-            this.CarsLookUpEdit.Size = new System.Drawing.Size(382, 26);
-            this.CarsLookUpEdit.StyleController = this.layoutControl1;
-            this.CarsLookUpEdit.TabIndex = 13;
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2,
-            this.layoutControlItem5,
-            this.layoutControlGroup6,
-            this.layoutControlItem4,
-            this.emptySpaceItem1,
-            this.layoutControlItem7});
-            this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(406, 532);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.simpleButton1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 72);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(406, 60);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
-            // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 472);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(406, 60);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // layoutControlGroup6
-            // 
-            this.layoutControlGroup6.AppearanceGroup.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.layoutControlGroup6.AppearanceGroup.Options.UseFont = true;
-            this.layoutControlGroup6.CustomizationFormText = "Машина:";
-            this.layoutControlGroup6.GroupStyle = DevExpress.Utils.GroupStyle.Title;
-            this.layoutControlGroup6.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem3});
-            this.layoutControlGroup6.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup6.Name = "layoutControlGroup6";
-            this.layoutControlGroup6.OptionsItemText.TextToControlDistance = 3;
-            this.layoutControlGroup6.Size = new System.Drawing.Size(406, 72);
-            this.layoutControlGroup6.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
-            this.layoutControlGroup6.Text = "Машина:";
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.CarsLookUpEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(386, 30);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
-            // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.simpleButton3;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 132);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(406, 60);
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 252);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(406, 220);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.simpleButton5;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 192);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(406, 60);
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
             // 
             // bar1
             // 
@@ -718,7 +554,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("frmMainExpeditionInterface.IconOptions.LargeImage")));
             this.Name = "frmMainExpeditionInterface";
-            this.Text = "Зважування напівтуш";
+            this.Text = "Екпедиція";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMainIntermediateWeighing_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -736,20 +572,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileView1)).EndInit();
             this.sidePanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
-            this.tabPane1.ResumeLayout(false);
-            this.tabNavigationPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -772,32 +594,20 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraEditors.SidePanel sidePanel1;
-        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
-        private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup6;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource ExpeditionSource;
         private DevExpress.XtraGrid.Views.Tile.TileView tileView1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn1;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn2;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn4;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn5;
-        private DevExpress.XtraEditors.LookUpEdit CarsLookUpEdit;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn3;
-        private DevExpress.XtraGrid.Columns.TileViewColumn tileViewColumn6;
+        private DevExpress.XtraGrid.Columns.TileViewColumn CheckedColumn;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
     }
 }
