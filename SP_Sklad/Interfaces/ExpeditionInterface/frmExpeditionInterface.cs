@@ -217,6 +217,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                         if (nf.ShowDialog() == DialogResult.OK)
                         {
                             AmountEdit.Value = nf.numKeyboardUserControl2.Value;
+                            det.Amount = nf.numKeyboardUserControl2.Value;
 
                             SaveDetBtn.PerformClick();
                         }
