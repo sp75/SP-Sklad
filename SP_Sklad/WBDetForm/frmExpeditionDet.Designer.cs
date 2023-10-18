@@ -104,7 +104,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(633, 552);
+            this.OkButton.Location = new System.Drawing.Point(633, 587);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 5;
@@ -115,7 +115,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(737, 552);
+            this.simpleButton1.Location = new System.Drawing.Point(737, 587);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 4;
@@ -129,7 +129,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(847, 590);
+            this.panelControl2.Size = new System.Drawing.Size(847, 625);
             this.panelControl2.TabIndex = 31;
             // 
             // panel1
@@ -141,16 +141,16 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(843, 535);
+            this.panel1.Size = new System.Drawing.Size(843, 570);
             this.panel1.TabIndex = 25;
             // 
             // groupControl1
             // 
             this.groupControl1.Controls.Add(this.MatChangeGridControl);
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl1.Location = new System.Drawing.Point(5, 100);
+            this.groupControl1.Location = new System.Drawing.Point(5, 106);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(833, 312);
+            this.groupControl1.Size = new System.Drawing.Size(833, 322);
             this.groupControl1.TabIndex = 27;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Товари по накладній";
@@ -166,7 +166,7 @@
             this.repositoryItemCheckEdit2,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCalcEdit1});
-            this.MatChangeGridControl.Size = new System.Drawing.Size(829, 287);
+            this.MatChangeGridControl.Size = new System.Drawing.Size(829, 297);
             this.MatChangeGridControl.TabIndex = 10;
             this.MatChangeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatChangeGridView});
@@ -296,13 +296,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(833, 95);
+            this.panelControl1.Size = new System.Drawing.Size(833, 101);
             this.panelControl1.TabIndex = 0;
             // 
             // AmountEdit
             // 
             this.AmountEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "Amount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.AmountEdit.Location = new System.Drawing.Point(149, 55);
+            this.AmountEdit.Location = new System.Drawing.Point(162, 57);
             this.AmountEdit.Name = "AmountEdit";
             editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.gaugestylehalfcircular_16x16;
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -340,7 +340,7 @@
             // MsrComboBox
             // 
             this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "MId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.MsrComboBox.Location = new System.Drawing.Point(279, 56);
+            this.MsrComboBox.Location = new System.Drawing.Point(296, 59);
             this.MsrComboBox.Name = "MsrComboBox";
             this.MsrComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -358,7 +358,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(17, 59);
+            this.labelControl1.Location = new System.Drawing.Point(19, 61);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(126, 16);
             this.labelControl1.StyleController = this.styleController1;
@@ -378,9 +378,9 @@
             this.groupControl3.Controls.Add(this.textEdit1);
             this.groupControl3.Controls.Add(this.TareWeightEdit);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupControl3.Location = new System.Drawing.Point(5, 412);
+            this.groupControl3.Location = new System.Drawing.Point(5, 428);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(833, 118);
+            this.groupControl3.Size = new System.Drawing.Size(833, 137);
             this.groupControl3.TabIndex = 26;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Підсумок";
@@ -391,7 +391,7 @@
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Location = new System.Drawing.Point(365, 89);
+            this.labelControl3.Location = new System.Drawing.Point(365, 101);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(16, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -400,7 +400,7 @@
             // 
             // calcEdit1
             // 
-            this.calcEdit1.Location = new System.Drawing.Point(215, 86);
+            this.calcEdit1.Location = new System.Drawing.Point(215, 98);
             this.calcEdit1.Name = "calcEdit1";
             this.calcEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -460,7 +460,7 @@
             // TotalDoc
             // 
             this.TotalDoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TotalWeight", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.TotalDoc.Location = new System.Drawing.Point(428, 58);
+            this.TotalDoc.Location = new System.Drawing.Point(487, 58);
             this.TotalDoc.Name = "TotalDoc";
             this.TotalDoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -477,7 +477,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(428, 36);
+            this.labelControl4.Location = new System.Drawing.Point(487, 36);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(44, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -511,7 +511,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 590);
+            this.ClientSize = new System.Drawing.Size(847, 625);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmExpeditionDet";

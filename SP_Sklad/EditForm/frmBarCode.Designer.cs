@@ -48,11 +48,9 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.OkButton.Appearance.ForeColor = System.Drawing.Color.Green;
             this.OkButton.Appearance.Options.UseFont = true;
-            this.OkButton.Appearance.Options.UseForeColor = true;
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(255, 100);
+            this.OkButton.Location = new System.Drawing.Point(255, 129);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 46);
             this.OkButton.TabIndex = 10;
@@ -72,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 158);
+            this.ClientSize = new System.Drawing.Size(365, 187);
             this.Controls.Add(this.BarCodeEdit);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.OkButton);

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using DevExpress.Data;
+using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.TableLayout;
 using DevExpress.XtraGrid.Views.Tile;
@@ -18,6 +19,7 @@ using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 using SP_Sklad.Common;
 using SP_Sklad.IntermediateWeighingInterface.Views;
 using SP_Sklad.RawMaterialManagementInterface;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.WBDetForm;
 
@@ -119,6 +121,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ExpeditionSource.Refresh();
         }
 
+        Color colorPanelReady = Color.FromArgb(58, 166, 101);
+        Color colorPanelSold = Color.FromArgb(158, 158, 158);
+        Color colorCaptionReady = Color.FromArgb(193, 222, 204);
+        Color colorCaptionSold = Color.FromArgb(219, 219, 219);
+
         private void tileView1_ItemCustomize(object sender, TileViewItemCustomizeEventArgs e)
         {
             if (e.Item == null || e.Item.Elements.Count == 0)
@@ -127,23 +134,45 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
  
             var Checked = tileView1.GetRowCellValue(e.RowHandle, tileView1.Columns["Checked"]);
-            if (!(Checked is NotLoadedObject))
+
+            if (Checked is NotLoadedObject)
             {
-                var RecipeCaption = e.Item.GetElementByName("CheckedElement");
+                return;
+            }
+
+            if (Checked == null)
+            {
+                return;
+            }
+
+   
+                var CheckedCaption = e.Item.GetElementByName("CheckedElement");
                 if ((int)Checked == 0)
                 {
-                    RecipeCaption.Text = "Новий";
+                    CheckedCaption.Text = "Новий";
                 }
                 else if ((int)Checked == 1)
                 {
-                    RecipeCaption.Text = "Завершено погрузку";
+                    CheckedCaption.Text = "Завершено погрузку";
+                 //   CheckedCaption.Appearance.Normal.ForeColor = Color.Green;
                 }
-            }
+         
 
-         //   e.Item.AppearanceItem.Normal.BackColor = is_done ? colorPanelSold : colorPanelReady;
+            e.Item.AppearanceItem.Normal.BackColor = (int)Checked == 1 ? colorPanelSold : colorPanelReady;
 
             //RecipeCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
             //WBDateCaption.Appearance.Normal.ForeColor = is_done ? colorCaptionSold : colorCaptionReady;
+        }
+
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            PrintDoc.ExpeditionReport(rmm_focused_row.Id, _db, print: true);
+        }
+
+        private void frmMainExpeditionInterface_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.ApplicationSkinName = UserLookAndFeel.Default.SkinName;
+            Properties.Settings.Default.Save();
         }
     }
 }

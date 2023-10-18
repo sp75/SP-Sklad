@@ -783,7 +783,7 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, TemlateList.setting_material_prices);
         }
 
-        public static void ExpeditionReport(Guid ex_id , BaseEntities db)
+        public static void ExpeditionReport(Guid ex_id , BaseEntities db, bool print = false)
         {
             var dataForReport = new Dictionary<string, IList>();
 
@@ -793,7 +793,7 @@ namespace SP_Sklad.Reports
             dataForReport.Add("Expedition", exp);
             dataForReport.Add("DocList", exp_id);
 
-            IHelper.Print(dataForReport, TemlateList.expedition_tmplate);
+            IHelper.Print(dataForReport, TemlateList.expedition_tmplate, print: print);
         }
 
         private class ProductionPlansReportRep
