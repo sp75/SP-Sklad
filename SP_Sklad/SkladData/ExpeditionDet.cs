@@ -34,6 +34,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> Tare2 { get; set; }
         public Nullable<int> Checked { get; set; }
         public Nullable<decimal> WbAmount { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
     
         public virtual ICollection<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
         public virtual WaybillList WaybillList { get; set; }

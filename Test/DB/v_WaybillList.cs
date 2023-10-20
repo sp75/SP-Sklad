@@ -1,4 +1,4 @@
-namespace SP.Base.Models
+namespace Test.DB
 {
     using System;
     using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace SP.Base.Models
 
         [Key]
         [Column(Order = 1)]
-        [StringLength(20)]
+        [StringLength(50)]
         public string Num { get; set; }
 
         [Key]

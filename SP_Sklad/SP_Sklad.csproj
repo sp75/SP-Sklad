@@ -1212,6 +1212,12 @@
     <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
+      <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmKagentMaterilPrices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2302,6 +2308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
+      <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKagentMaterilPrices.resx">
       <DependentUpon>frmKagentMaterilPrices.cs</DependentUpon>

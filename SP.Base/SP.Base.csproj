@@ -206,6 +206,7 @@
     <Compile Include="Models\v_IntermediateWeighing.cs" />
     <Compile Include="Models\v_Kagent.cs" />
     <Compile Include="Models\v_KagentMaterilPrices.cs" />
+    <Compile Include="Models\v_WaybillDet.cs" />
     <Compile Include="Models\WBListMake_Result.cs" />
     <Compile Include="SPBaseModel.cs" />
     <Compile Include="Models\SvcGroup.cs" />

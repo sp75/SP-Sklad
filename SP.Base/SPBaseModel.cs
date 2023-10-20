@@ -175,6 +175,7 @@ namespace SP.Base.Models
         public virtual DbSet<v_Users> v_Users { get; set; }
         public virtual DbSet<v_WaybillList> v_WaybillList { get; set; }
         public virtual DbSet<v_WorkDate> v_WorkDate { get; set; }
+        public virtual DbSet<v_WaybillDet> v_WaybillDet { get; set; }
 
         public virtual DbSet<REP_1_Result> REP_1_Result { get; set; }
         public virtual DbSet<REP_47_Result> REP_47_Result { get; set; }

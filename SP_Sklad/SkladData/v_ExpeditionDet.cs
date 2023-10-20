@@ -39,5 +39,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> PacksQuantity { get; set; }
         public System.Guid WaybillListId { get; set; }
         public string WbNotes { get; set; }
+        public Nullable<decimal> KilogramsQuantity { get; set; }
+        public Nullable<decimal> TareWeight { get; set; }
     }
 }

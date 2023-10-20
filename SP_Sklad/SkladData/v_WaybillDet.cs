@@ -43,5 +43,12 @@ namespace SP_Sklad.SkladData
         public string MatName { get; set; }
         public int GrpId { get; set; }
         public byte[] BMP { get; set; }
+        public string KaName { get; set; }
+        public string WbNum { get; set; }
+        public System.DateTime WbOnDate { get; set; }
+        public int WType { get; set; }
+        public System.Guid KagentId { get; set; }
+        public int WbChecked { get; set; }
+        public string Artikul { get; set; }
     }
 }

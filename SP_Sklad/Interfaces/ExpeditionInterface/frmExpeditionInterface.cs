@@ -38,8 +38,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             _exp_id = exp_id;
 
             _db = new BaseEntities();
-
-           
         }
 
         private void FluentDesignForm1_Load(object sender, EventArgs e)
@@ -91,43 +89,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ExpeditionDetGridView.TopRowIndex = top_row;
         }
 
-  
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void GetOk()
-        {
-            /*    var row = focused_row;
-
-                if (row != null)
-                {
-                    using (var _db = new BaseEntities())
-                    {
-                        var plan_weighing = Math.Round(Convert.ToDecimal((row.AmountByRecipe * row.IntermediateWeighingAmount) / row.TotalWeightByRecipe), 3);
-
-                        //    ByRecipeEdit.EditValue = row.AmountByRecipe;
-                        IntermediateWeighingEdit.EditValue = row.TotalWeighted;
-                        TotalEdit.EditValue = row.AmountByRecipe - (row.TotalWeighted ?? 0);
-
-                        var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == row.MatId && w.RecId == row.RecId)?.Deviation ?? 1000000;
-
-                        var netto_amount = AmountEdit.Value - TaraCalcEdit.Value;
-
-                        CalcAmount.EditValue = plan_weighing + TaraCalcEdit.Value;
-
-                        OkButton.Enabled = ((plan_weighing + deviation) >= netto_amount && (plan_weighing - deviation) <= netto_amount) && AmountEdit.Value > 0;
-                    }
-
-                }
-                else
-                {
-                    OkButton.Enabled = false;
-                }*/
-        }
-
-             
+           
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
@@ -163,82 +125,103 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
         }
 
+        private class WbIfo
+        {
+            public Guid? CarId { get; set; }
+            public List<Measures> Measures { get; set; }
+            public decimal WbAmount { get; set; }
+            public decimal TareWeight { get; set; }
+
+        }
+
+        private WbIfo GetWbInfo(ExpeditionDet expedition_det)
+        {
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == expedition_det.WbillId && w.WType == -1);
+            if (wb != null)
+            {
+                var msr_list = _db.WaybillDet.Where(w => w.WbillId == expedition_det.WbillId).Select(s => s.Materials.Measures).Distinct().ToList();
+
+
+                return new WbIfo()
+                {
+                    CarId = wb.CarId,
+                    Measures = msr_list,
+                    WbAmount = _db.WaybillDet.Where(w => w.WbillId == expedition_det.WbillId && w.Materials.MId == expedition_det.MId).Select(s => s.Amount).ToList().Sum(),
+                    TareWeight = _db.WayBillTmc.Where(w => w.WbillId == expedition_det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum(),
+             };
+            }
+            else
+            {
+                MessageBox.Show("Документ не знайдено!");
+
+                return null;
+            }
+        }
+
         private void Add(int wbill_id)
         {
-            using (var _db = new BaseEntities())
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id && w.WType == -1);
+            if (wb != null)
             {
-                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id && w.WType == -1);
-                if (wb != null)
+                exp.CarId = wb.CarId.HasValue ? wb.CarId.Value : exp.CarId;
+
+                var msr_list = _db.WaybillDet.Where(w => w.WbillId == wbill_id).Select(s => s.Materials.Measures).Distinct().ToList();
+                var new_id = Guid.NewGuid();
+
+                det = _db.ExpeditionDet.Add(new ExpeditionDet
                 {
-                    exp.CarId = wb.CarId.HasValue ? wb.CarId.Value : exp.CarId;
-
-                    var msr_list = _db.WaybillDet.Where(w => w.WbillId == wbill_id).Select(s => s.Materials.Measures).Distinct().ToList();
-                    var new_id = Guid.NewGuid();
-
-                    det = _db.ExpeditionDet.Add(new ExpeditionDet
-                    {
-                        Id = new_id,
-                        Amount = 0,
-                        ExpeditionId = exp.Id,
-                        CreatedAt = DBHelper.ServerDateTime(),
-                        WbillId = wbill_id,
-                        MId = msr_list.FirstOrDefault()?.MId,
-                        Checked = 0
-                    });
+                    Id = new_id,
+                    Amount = 0,
+                    ExpeditionId = exp.Id,
+                    CreatedAt = DBHelper.ServerDateTime(),
+                    WbillId = wbill_id,
+                    MId = msr_list.FirstOrDefault()?.MId,
+                    Checked = 0
+                });
 
 
-                    det.WbAmount = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == det.MId).Select(s => s.Amount).ToList().Sum();
-                    textEdit1.EditValue = det.WbAmount;
+                det.WbAmount = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == det.MId).Select(s => s.Amount).ToList().Sum();
+                textEdit1.EditValue = det.WbAmount;
 
-                    TareWeightEdit.EditValue = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+                det.TareWeight = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+                TareWeightEdit.EditValue = det.TareWeight;
 
-                    det.TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount).ToList().Sum();
-                    calcEdit1.EditValue = det.TareQuantity;
+                det.TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount).ToList().Sum();
+                TareQuantityEdit.EditValue = det.TareQuantity;
 
-                    _db.SaveChanges();
+                var verified_weight_without_tare = det?.MId == 2 ? AmountEdit.Value - TareWeightEdit.Value : AmountEdit.Value;
 
+                det.TotalWeight = verified_weight_without_tare - textEdit1.Value;
+                TotalDoc.EditValue = det.TotalWeight;
 
-                    PacksQuantityEdit.EditValue = _db.v_ExpeditionWBMaterialsDet.Where(w => w.Id == det.Id && w.MId == det.MId).Sum(ss => ss.PacksQuantity);
-                    KilogramsQuantityEdit.EditValue = _db.v_ExpeditionWBMaterialsDet.Where(w => w.Id == det.Id && w.MId == det.MId).Sum(ss => ss.KilogramsQuantity);
+                _db.SaveChanges();
 
-                    layoutControlItem3.Text = "Товарів по документу, " + MsrComboBox.Text;
+                layoutControlItem3.Text = "Товарів по документу, " + MsrComboBox.Text;
 
-                    GetDetail();
+                GetDetail();
 
-                    int rowHandle = ExpeditionDetGridView.LocateByValue("Id", new_id);
-                    if (rowHandle != GridControl.InvalidRowHandle)
-                    {
-                        ExpeditionDetGridView.FocusedRowHandle = rowHandle;
-                    }
-
-                    using (var nf = new frmNumKeyboard())
-                    {
-                        nf.Text = "К-сть товару з тарою";
-                        if (nf.ShowDialog() == DialogResult.OK)
-                        {
-                            AmountEdit.Value = nf.numKeyboardUserControl2.Value;
-                            det.Amount = nf.numKeyboardUserControl2.Value;
-
-                            SaveDetBtn.PerformClick();
-                        }
-                    }
-               /*     using (var frm = new frmNumericKeypad())
-                    {
-                        frm.Text = "К-сть товару з тарою";
-                        if (frm.ShowDialog() == DialogResult.OK)
-                        {
-                            AmountEdit.Value = Convert.ToDecimal(frm.AmountEdit.Text);
-
-                            SaveDetBtn.PerformClick();
-                        }
-                    }*/
-
-
-                }
-                else
+                int rowHandle = ExpeditionDetGridView.LocateByValue("Id", new_id);
+                if (rowHandle != GridControl.InvalidRowHandle)
                 {
-                    MessageBox.Show("Документ не знайдено!");
+                    ExpeditionDetGridView.FocusedRowHandle = rowHandle;
                 }
+
+                using (var nf = new frmNumKeyboard())
+                {
+                    nf.Text = "К-сть товару з тарою";
+                    if (nf.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.Value = nf.numKeyboardUserControl2.Value;
+                        det.Amount = nf.numKeyboardUserControl2.Value;
+
+                        SaveDetBtn.PerformClick();
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Документ не знайдено!");
             }
         }
 
@@ -273,12 +256,16 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void ExpeditionDetGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            if(focused_row == null)
+            if (focused_row == null)
             {
-                det = null;
-                ExpeditionDetBS.DataSource = new ExpeditionDet();
+            //    det = null;
+             //   ExpeditionDetBS.DataSource = new ExpeditionDet();
                 return;
             }
+
+            PacksQuantityEdit.EditValue = focused_row.PacksQuantity;
+            KilogramsQuantityEdit.EditValue = focused_row.KilogramsQuantity;
+
 
             det = _db.ExpeditionDet.Where(w => w.Id == focused_row.Id).FirstOrDefault();
           
@@ -301,12 +288,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             var verified_weight_without_tare = msr?.MId == 2 ? AmountEdit.Value - TareWeightEdit.Value : AmountEdit.Value;
 
-            det.TotalWeight = verified_weight_without_tare - textEdit1.Value;
+            det.TotalWeight = verified_weight_without_tare - det.WbAmount??0;
             TotalDoc.EditValue = det.TotalWeight;
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
+            GetTotalWeight();
+
             _db.SaveChanges();
             GetDetail();
 
@@ -314,11 +303,19 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GetTotalWeight();
+            if (AmountEdit.ContainsFocus)
+            {
+                GetTotalWeight();
+            }
         }
 
         private void MsrComboBox_EditValueChanged(object sender, EventArgs e)
         {
+            if(!MsrComboBox.ContainsFocus)
+            {
+                return;
+            }
+
             var r = MsrComboBox.GetSelectedDataRow() as Measures;
             if (r == null)
             {
@@ -329,25 +326,25 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             det.WbAmount = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == r.MId).Select(s => s.Amount).ToList().Sum();
             textEdit1.EditValue = det.WbAmount;
 
-            TareWeightEdit.EditValue = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+            det.TareWeight = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+            TareWeightEdit.EditValue = det.TareWeight;
 
             det.TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount).ToList().Sum();
-            calcEdit1.EditValue = det.TareQuantity;
+            TareQuantityEdit.EditValue = det.TareQuantity;
 
             _db.SaveChanges();
 
-            PacksQuantityEdit.EditValue = _db.v_ExpeditionWBMaterialsDet.Where(w => w.Id == det.Id && w.MId == det.MId).Sum(ss => ss.PacksQuantity);
-            KilogramsQuantityEdit.EditValue = _db.v_ExpeditionWBMaterialsDet.Where(w => w.Id == det.Id && w.MId == det.MId).Sum(ss => ss.KilogramsQuantity);
-
             layoutControlItem3.Text = "Товарів по документу, "+ MsrComboBox.Text;
-
 
             GetTotalWeight();
         }
 
         private void TareWeightEdit_EditValueChanged(object sender, EventArgs e)
         {
-            GetTotalWeight();
+            if (TareWeightEdit.ContainsFocus)
+            {
+                GetTotalWeight();
+            }
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -362,6 +359,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                         Add(wbill_id);
                     }
                 }
+            }
+        }
+
+        private void ExpeditionDetGridView_DoubleClick(object sender, EventArgs e)
+        {
+            using (var frm = new frmWBMaterialsDet(det))
+            {
+                frm.ShowDialog();
             }
         }
     }

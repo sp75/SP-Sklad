@@ -445,6 +445,7 @@
           <Property Name="Tare1" Type="int" />
           <Property Name="Tare2" Type="int" />
           <Property Name="WbAmount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="ExpeditionMaterialsDet">
           <Key>
@@ -2327,8 +2328,10 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
           <Property Name="WbAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="PacksQuantity" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="KilogramsQuantity" Type="numeric" Precision="38" Scale="8" />
           <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WbNotes" Type="nvarchar" MaxLength="255" />
+          <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3389,6 +3392,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="MsrName" />
             <PropertyRef Name="GrpId" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="KagentId" />
+            <PropertyRef Name="WbChecked" />
           </Key>
           <Property Name="PosId" Type="int" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
@@ -3419,6 +3428,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="BMP" Type="varbinary(max)" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WbOnDate" Type="datetime" Nullable="false" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="KagentId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbChecked" Type="int" Nullable="false" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8956,8 +8972,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[WbAmount] AS [WbAmount], 
     [v_ExpeditionDet].[KaFullName] AS [KaFullName], 
     [v_ExpeditionDet].[PacksQuantity] AS [PacksQuantity], 
+    [v_ExpeditionDet].[KilogramsQuantity] AS [KilogramsQuantity], 
     [v_ExpeditionDet].[WaybillListId] AS [WaybillListId], 
-    [v_ExpeditionDet].[WbNotes] AS [WbNotes]
+    [v_ExpeditionDet].[WbNotes] AS [WbNotes], 
+    [v_ExpeditionDet].[TareWeight] AS [TareWeight]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="Self.v_ExpeditionWBMaterialsDet" store:Type="Views" store:Schema="dbo">
@@ -9740,7 +9758,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillDet].[MsrName] AS [MsrName], 
     [v_WaybillDet].[MatName] AS [MatName], 
     [v_WaybillDet].[GrpId] AS [GrpId], 
-    [v_WaybillDet].[BMP] AS [BMP]
+    [v_WaybillDet].[BMP] AS [BMP], 
+    [v_WaybillDet].[KaName] AS [KaName], 
+    [v_WaybillDet].[WbNum] AS [WbNum], 
+    [v_WaybillDet].[WbOnDate] AS [WbOnDate], 
+    [v_WaybillDet].[WType] AS [WType], 
+    [v_WaybillDet].[KagentId] AS [KagentId], 
+    [v_WaybillDet].[WbChecked] AS [WbChecked], 
+    [v_WaybillDet].[Artikul] AS [Artikul]
     FROM [dbo].[v_WaybillDet] AS [v_WaybillDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="Self.v_WaybillList" store:Type="Views" store:Schema="dbo">
@@ -18092,6 +18117,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="MsrName" />
             <PropertyRef Name="GrpId" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WbOnDate" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="KagentId" />
+            <PropertyRef Name="WbChecked" />
           </Key>
           <Property Name="PosId" Type="Int32" Nullable="false" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
@@ -18122,6 +18153,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GrpId" Type="Int32" Nullable="false" />
           <Property Name="BMP" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="KagentId" Type="Guid" Nullable="false" />
+          <Property Name="WbChecked" Type="Int32" Nullable="false" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingSummary">
           <Key>
@@ -20558,6 +20596,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="ExpeditionMaterialsDet" Relationship="BaseModel.FK_ExpeditionMaterialsDet_ExpeditionDet" FromRole="ExpeditionDet" ToRole="ExpeditionMaterialsDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_ExpeditionDet_WaybillList" FromRole="ExpeditionDet" ToRole="WaybillList" />
           <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="ExpeditionDet" ToRole="Expedition" />
+          <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="v_ExpeditionDet">
           <Key>
@@ -20593,6 +20632,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PacksQuantity" Type="Decimal" Precision="38" Scale="8" />
           <Property Name="WaybillListId" Type="Guid" Nullable="false" />
           <Property Name="WbNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KilogramsQuantity" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -24716,6 +24757,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillDet">
               <MappingFragment StoreEntitySet="v_WaybillDet">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />
+                <ScalarProperty Name="KagentId" ColumnName="KagentId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="BMP" ColumnName="BMP" />
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="MatName" ColumnName="MatName" />
@@ -26142,6 +26190,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.ExpeditionDet">
               <MappingFragment StoreEntitySet="ExpeditionDet">
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="WbAmount" ColumnName="WbAmount" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
                 <ScalarProperty Name="Tare2" ColumnName="Tare2" />
@@ -26163,6 +26212,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
               <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
+                <ScalarProperty Name="KilogramsQuantity" ColumnName="KilogramsQuantity" />
                 <ScalarProperty Name="WbNotes" ColumnName="WbNotes" />
                 <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
                 <ScalarProperty Name="PacksQuantity" ColumnName="PacksQuantity" />
