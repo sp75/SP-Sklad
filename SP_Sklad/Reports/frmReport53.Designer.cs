@@ -32,24 +32,28 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.OnDateGroupBox = new System.Windows.Forms.Panel();
+            this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.dateEdit3 = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.OnDateGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -57,7 +61,7 @@
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 203);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 232);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(436, 52);
             this.BottomPanel.TabIndex = 18;
@@ -84,6 +88,8 @@
             // 
             // OnDateGroupBox
             // 
+            this.OnDateGroupBox.Controls.Add(this.dateEdit3);
+            this.OnDateGroupBox.Controls.Add(this.labelControl4);
             this.OnDateGroupBox.Controls.Add(this.WhComboBox);
             this.OnDateGroupBox.Controls.Add(this.labelControl10);
             this.OnDateGroupBox.Controls.Add(this.dateEdit2);
@@ -96,8 +102,36 @@
             this.OnDateGroupBox.Location = new System.Drawing.Point(0, 0);
             this.OnDateGroupBox.Name = "OnDateGroupBox";
             this.OnDateGroupBox.Padding = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.OnDateGroupBox.Size = new System.Drawing.Size(436, 203);
+            this.OnDateGroupBox.Size = new System.Drawing.Size(436, 232);
             this.OnDateGroupBox.TabIndex = 26;
+            // 
+            // WhComboBox
+            // 
+            this.WhComboBox.Location = new System.Drawing.Point(186, 156);
+            this.WhComboBox.Name = "WhComboBox";
+            this.WhComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WhComboBox.Properties.Appearance.Options.UseFont = true;
+            this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.ShowFooter = false;
+            this.WhComboBox.Properties.ShowHeader = false;
+            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.WhComboBox.Properties.ValueMember = "WId";
+            this.WhComboBox.Size = new System.Drawing.Size(238, 22);
+            this.WhComboBox.TabIndex = 28;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl10.Appearance.Options.UseFont = true;
+            this.labelControl10.Location = new System.Drawing.Point(8, 159);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(40, 16);
+            this.labelControl10.TabIndex = 27;
+            this.labelControl10.Text = "Склад:";
             // 
             // dateEdit2
             // 
@@ -183,39 +217,39 @@
             this.labelControl3.TabIndex = 3;
             this.labelControl3.Text = "Залишки на складах на дату:";
             // 
-            // WhComboBox
+            // dateEdit3
             // 
-            this.WhComboBox.Location = new System.Drawing.Point(186, 120);
-            this.WhComboBox.Name = "WhComboBox";
-            this.WhComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.WhComboBox.Properties.Appearance.Options.UseFont = true;
-            this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.dateEdit3.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
+            this.dateEdit3.Location = new System.Drawing.Point(186, 113);
+            this.dateEdit3.Name = "dateEdit3";
+            this.dateEdit3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.dateEdit3.Properties.Appearance.Options.UseFont = true;
+            this.dateEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.WhComboBox.Properties.DisplayMember = "Name";
-            this.WhComboBox.Properties.ShowFooter = false;
-            this.WhComboBox.Properties.ShowHeader = false;
-            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.WhComboBox.Properties.ValueMember = "WId";
-            this.WhComboBox.Size = new System.Drawing.Size(238, 22);
-            this.WhComboBox.TabIndex = 28;
+            this.dateEdit3.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.False;
+            this.dateEdit3.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dateEdit3.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.dateEdit3.Properties.MaskSettings.Set("mask", "d");
+            this.dateEdit3.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.dateEdit3.Size = new System.Drawing.Size(107, 22);
+            this.dateEdit3.TabIndex = 30;
             // 
-            // labelControl10
+            // labelControl4
             // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl10.Appearance.Options.UseFont = true;
-            this.labelControl10.Location = new System.Drawing.Point(8, 123);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(40, 16);
-            this.labelControl10.TabIndex = 27;
-            this.labelControl10.Text = "Склад:";
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(8, 114);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(135, 16);
+            this.labelControl4.TabIndex = 29;
+            this.labelControl4.Text = "Замовлення на дату 3:";
             // 
             // frmReport53
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 255);
+            this.ClientSize = new System.Drawing.Size(436, 284);
             this.Controls.Add(this.OnDateGroupBox);
             this.Controls.Add(this.BottomPanel);
             this.Name = "frmReport53";
@@ -228,13 +262,15 @@
             this.BottomPanel.ResumeLayout(false);
             this.OnDateGroupBox.ResumeLayout(false);
             this.OnDateGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WhComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateEdit3.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -253,5 +289,7 @@
         public DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.LookUpEdit WhComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.DateEdit dateEdit3;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

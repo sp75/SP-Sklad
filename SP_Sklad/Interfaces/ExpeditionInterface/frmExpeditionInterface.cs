@@ -257,6 +257,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
 
             var msr = MsrComboBox.GetSelectedDataRow() as Measures;
+            det.Amount = AmountEdit.Value;
+            det.TareWeight = TareWeightEdit.Value;
 
             var verified_weight_without_tare = msr?.MId == 2 ? AmountEdit.Value - TareWeightEdit.Value : AmountEdit.Value;
 
@@ -278,6 +280,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             if (AmountEdit.ContainsFocus)
             {
                 GetTotalWeight();
+                GetDetail();
             }
         }
 
@@ -316,6 +319,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             if (TareWeightEdit.ContainsFocus)
             {
                 GetTotalWeight();
+                GetDetail();
             }
         }
 
@@ -346,5 +350,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
         }
 
+        private void AmountEdit_Properties_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
+        {
+            AmountEdit.Focus();
+        }
+
+        private void TareWeightEdit_Properties_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
+        {
+            TareWeightEdit.Focus();
+        }
     }
 }

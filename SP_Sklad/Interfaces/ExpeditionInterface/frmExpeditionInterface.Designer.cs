@@ -32,11 +32,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpeditionInterface));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.ExpeditionDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.ExpeditionDetListBS = new System.Windows.Forms.BindingSource(this.components);
@@ -526,7 +526,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.TotalDoc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
             this.TotalDoc.Properties.Appearance.Options.UseFont = true;
             this.TotalDoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.TotalDoc.Properties.DisplayFormat.FormatString = "0.00";
             this.TotalDoc.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TotalDoc.Properties.Mask.UseMaskAsDisplayFormat = true;
@@ -583,10 +583,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TareWeightEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TareWeightEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TareWeightEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.TareWeightEdit_Properties_CloseUp);
             this.TareWeightEdit.Size = new System.Drawing.Size(205, 30);
             this.TareWeightEdit.StyleController = this.layoutControl2;
             this.TareWeightEdit.TabIndex = 66;
-
             this.TareWeightEdit.EditValueChanged += new System.EventHandler(this.TareWeightEdit_EditValueChanged);
             // 
             // MsrComboBox
@@ -621,10 +621,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.ShowCloseButton = true;
+            this.AmountEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.AmountEdit_Properties_CloseUp);
             this.AmountEdit.Size = new System.Drawing.Size(402, 30);
             this.AmountEdit.StyleController = this.layoutControl2;
             this.AmountEdit.TabIndex = 63;
-
             this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             // 
             // SaveDetBtn

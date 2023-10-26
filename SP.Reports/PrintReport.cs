@@ -1837,6 +1837,15 @@ SELECT WaybillList.[WbillId]
             }).ToList());
 
 
+            var mat_group = mat.GroupBy(g => new { g.GrpId, g.GrpName }).Select(s => new
+            {
+                s.Key.GrpId,
+                s.Key.GrpName,
+                Total = s.Sum(xs =>  xs.Amount )
+            }).OrderBy(o => o.GrpName).ToList();
+            data_for_report.Add("MatGroup2", mat_group);
+
+
             data_for_report.Add("_realation_", realation);
         }
 

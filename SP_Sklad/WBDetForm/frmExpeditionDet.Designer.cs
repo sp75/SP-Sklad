@@ -498,6 +498,7 @@
             // 
             // TareWeightEdit
             // 
+            this.TareWeightEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TareWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.TareWeightEdit.Location = new System.Drawing.Point(215, 58);
             this.TareWeightEdit.Name = "TareWeightEdit";
             this.TareWeightEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

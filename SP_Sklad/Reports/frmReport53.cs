@@ -34,6 +34,7 @@ namespace SP_Sklad.ViewsForm
             public string OnDate { get; set; }
             public string OnDate1 { get; set; }
             public string OnDate2 { get; set; }
+            public string OnDate3 { get; set; }
             public string WhName { get; set; }
         }
 
@@ -50,6 +51,7 @@ namespace SP_Sklad.ViewsForm
                         OnDate = OnDateDBEdit.DateTime.ToShortDateString(),
                         OnDate1 = dateEdit1.DateTime.ToShortDateString(),
                         OnDate2 = dateEdit2.DateTime.ToShortDateString(),
+                        OnDate3 = dateEdit3.DateTime.ToShortDateString(),
                         WhName = wh_row.Name
                     }
                 };
@@ -63,6 +65,7 @@ namespace SP_Sklad.ViewsForm
             OnDateDBEdit.DateTime = DateTime.Now;
             dateEdit1.DateTime = DateTime.Now;
             dateEdit2.DateTime = DateTime.Now;
+            dateEdit3.DateTime = DateTime.Now;
 
             var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId, s.Name, s.Def }).ToList();
 
@@ -93,9 +96,11 @@ namespace SP_Sklad.ViewsForm
             public decimal? Remain { get; set; }
             public decimal? OrderedAmount1 { get; set; }
             public decimal? OrderedAmount2 { get; set; }
+            public decimal? OrderedAmount3 { get; set; }
             public decimal? MakeAmount { get; set; }
             public string Artikul { get; set; }
             public string MsrName { get; set; }
+
         }
         private List<rep_53> GetData()
         {
@@ -105,6 +110,7 @@ namespace SP_Sklad.ViewsForm
             return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {2} and  DATEADD (day, 1 , {2} ) ),0) OrderedAmount2,
+coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {3} and  DATEADD (day, 1 , {2} ) ),0) OrderedAmount3,
 coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , WayBillMake wbm, MatRecipe mr where wbm.RecId = mr.RecId and mr.MatId = x.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) ),0) MakeAmount       
 from 
 (
@@ -120,14 +126,14 @@ from
 					     where ondate <= {0}
 					     group by [PosId]
 						) x on x.PosId = pr.PosId and pr.OnDate = x.OnDate
-        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {3} or {3} = 0 )
+        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {4} or {4} = 0 )
         group by  pr.MatId
 
 		)x
 		inner join Materials m on m.MatId = x.MatId  and m.TypeId in (1,5)
 		inner join MatGroup mg on mg.GrpId = m.GrpId 
         inner join Measures on Measures.MId = m.MId
-        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, wid).ToList();
+        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wid).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)

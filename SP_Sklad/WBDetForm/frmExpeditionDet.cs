@@ -167,7 +167,8 @@ namespace SP_Sklad.WBDetForm
             det.WbAmount = _db.WaybillDet.Where(w => w.WbillId == det.WbillId && w.Materials.MId == r.MId).Select(s => s.Amount).ToList().Sum();
             textEdit1.EditValue = det.WbAmount;
 
-            TareWeightEdit.EditValue = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+            det.TareWeight = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum();
+            TareWeightEdit.EditValue = det.TareWeight;
 
             det.TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == det.WbillId).Select(s => s.Amount).ToList().Sum();
             calcEdit1.EditValue = det.TareQuantity;
