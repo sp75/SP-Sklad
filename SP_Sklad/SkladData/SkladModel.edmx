@@ -1975,6 +1975,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
             <PropertyRef Name="NdsPayer" />
             <PropertyRef Name="KType" />
             <PropertyRef Name="KaKind" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
@@ -2021,6 +2022,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="WId" Type="int" />
           <Property Name="JobName" Type="nvarchar" MaxLength="50" />
           <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2541,7 +2543,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2570,6 +2572,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Kagent' does not have a primary key 
             <PropertyRef Name="NdsPayer" />
             <PropertyRef Name="KType" />
             <PropertyRef Name="KaKind" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="KAU" Type="nvarchar" MaxLength="10" />
@@ -2614,6 +2617,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Kagent' does not have a primary key 
           <Property Name="RouteId" Type="int" />
           <Property Name="WId" Type="int" />
           <Property Name="JobName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentAccount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2680,7 +2684,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -6860,7 +6864,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="UserId" Type="int" />
                 <Property Name="OriginatorId" Type="uniqueidentifier" />
                 <Property Name="FunName" Type="nvarchar" MaxLength="255" Nullable="false" />
-                <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
+                <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
                 <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="DocType" Type="int" />
               </RowType>
@@ -7264,7 +7268,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
                 <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="DiscountPrice" Type="numeric" Precision="38" Scale="6" />
-                <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+                <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
                 <Property Name="UpdateAt" Type="datetime" />
                 <Property Name="TotalInCurrency" Type="numeric" Precision="31" Scale="6" />
                 <Property Name="MId" Type="int" />
@@ -8740,7 +8744,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[RouteId] AS [RouteId], 
     [KagentList].[WId] AS [WId], 
     [KagentList].[JobName] AS [JobName], 
-    [KagentList].[RouteName] AS [RouteName]
+    [KagentList].[RouteName] AS [RouteName], 
+    [KagentList].[Id] AS [Id]
     FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="Self.MaterialsList" store:Type="Views" store:Schema="dbo">
@@ -9178,7 +9183,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Kagent].[WebUserName] AS [WebUserName], 
     [v_Kagent].[RouteId] AS [RouteId], 
     [v_Kagent].[WId] AS [WId], 
-    [v_Kagent].[JobName] AS [JobName]
+    [v_Kagent].[JobName] AS [JobName], 
+    [v_Kagent].[Id] AS [Id]
     FROM [dbo].[v_Kagent] AS [v_Kagent]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentAccount" EntityType="Self.v_KAgentAccount" store:Type="Views" store:Schema="dbo">
@@ -17045,7 +17051,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -17262,6 +17268,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="NdsPayer" />
             <PropertyRef Name="KType" />
             <PropertyRef Name="KaKind" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="KaId" Type="Int32" Nullable="false" />
           <Property Name="KAU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -17308,6 +17315,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WId" Type="Int32" />
           <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="AdditionalCosts">
           <Key>
@@ -18185,7 +18193,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -18707,6 +18715,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="NdsPayer" />
             <PropertyRef Name="KType" />
             <PropertyRef Name="KaKind" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="KaId" Type="Int32" Nullable="false" />
           <Property Name="KAU" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -18751,6 +18760,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RouteId" Type="Int32" />
           <Property Name="WId" Type="Int32" />
           <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
         </EntityType>
         <ComplexType Name="GetKagentList_Result">
           <Property Type="Int32" Name="KaId" Nullable="false" />
@@ -24179,6 +24189,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="JobName" ColumnName="JobName" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
@@ -25275,6 +25286,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Kagent">
             <EntityTypeMapping TypeName="BaseModel.v_Kagent">
               <MappingFragment StoreEntitySet="v_Kagent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="JobName" ColumnName="JobName" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />

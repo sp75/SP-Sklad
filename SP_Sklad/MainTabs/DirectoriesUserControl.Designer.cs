@@ -141,6 +141,7 @@
             this.row18 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row19 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.editorRow12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -279,6 +280,7 @@
             this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage22 = new DevExpress.XtraTab.XtraTabPage();
             this.TechProcessGridControl = new DevExpress.XtraGrid.GridControl();
             this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
@@ -408,7 +410,6 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.repositoryItemCheckEdit14 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -515,6 +516,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).BeginInit();
             this.xtraTabPage22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).BeginInit();
@@ -587,7 +589,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1641,7 +1642,7 @@
             // 
             // vGridControl1
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.KAgentInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1709,7 +1710,7 @@
             // 
             // vGridControl4
             // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -1727,7 +1728,8 @@
             this.row17,
             this.row18,
             this.row19,
-            this.editorRow11});
+            this.editorRow11,
+            this.editorRow12});
             this.vGridControl4.Size = new System.Drawing.Size(1086, 197);
             this.vGridControl4.TabIndex = 1;
             // 
@@ -1798,6 +1800,12 @@
             this.editorRow11.Name = "editorRow11";
             this.editorRow11.Properties.Caption = "Номер в системі";
             this.editorRow11.Properties.FieldName = "KaId";
+            // 
+            // editorRow12
+            // 
+            this.editorRow12.Name = "editorRow12";
+            this.editorRow12.Properties.Caption = "Api Token";
+            this.editorRow12.Properties.FieldName = "Id";
             // 
             // xtraTabPage2
             // 
@@ -3142,6 +3150,13 @@
             this.gridColumn54.VisibleIndex = 3;
             this.gridColumn54.Width = 100;
             // 
+            // repositoryItemCheckEdit14
+            // 
+            this.repositoryItemCheckEdit14.AutoHeight = false;
+            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
+            this.repositoryItemCheckEdit14.ValueChecked = 1;
+            this.repositoryItemCheckEdit14.ValueUnchecked = 0;
+            // 
             // xtraTabPage22
             // 
             this.xtraTabPage22.Controls.Add(this.TechProcessGridControl);
@@ -4396,13 +4411,6 @@
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
             // 
-            // repositoryItemCheckEdit14
-            // 
-            this.repositoryItemCheckEdit14.AutoHeight = false;
-            this.repositoryItemCheckEdit14.Name = "repositoryItemCheckEdit14";
-            this.repositoryItemCheckEdit14.ValueChecked = 1;
-            this.repositoryItemCheckEdit14.ValueUnchecked = 0;
-            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4530,6 +4538,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MeasuresGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
             this.xtraTabPage22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).EndInit();
@@ -4602,7 +4611,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit14)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4986,5 +4994,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMatId;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit14;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
     }
 }

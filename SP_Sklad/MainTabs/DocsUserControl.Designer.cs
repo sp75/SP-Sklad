@@ -597,6 +597,7 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1128,7 +1129,8 @@
             this.gridColumn110,
             this.gridColumn111,
             this.gridColumn113,
-            this.gridColumn114});
+            this.gridColumn114,
+            this.colPersonName});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1781,13 +1783,13 @@
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
             this.xtraTabPage1.ImageOptions.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1136, 272);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1136, 277);
             this.xtraTabPage1.Text = "Інформація про накладну";
             // 
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1810,7 +1812,7 @@
             this.row10,
             this.row9,
             this.row18});
-            this.vGridControl1.Size = new System.Drawing.Size(1136, 272);
+            this.vGridControl1.Size = new System.Drawing.Size(1136, 277);
             this.vGridControl1.TabIndex = 0;
             // 
             // WayBillListInfoBS
@@ -1989,6 +1991,7 @@
             // 
             // row10
             // 
+            this.row10.Height = 16;
             this.row10.Name = "row10";
             this.row10.Properties.Caption = "Виконавець";
             this.row10.Properties.FieldName = "PersonName";
@@ -2010,7 +2013,7 @@
             this.xtraTabPage2.Controls.Add(this.gridControl3);
             this.xtraTabPage2.ImageOptions.ImageIndex = 2;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1136, 272);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1136, 277);
             this.xtraTabPage2.Text = "Зв\'язані документи";
             // 
             // gridControl3
@@ -2023,7 +2026,7 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox6,
             this.repositoryItemImageComboBox7});
-            this.gridControl3.Size = new System.Drawing.Size(1136, 272);
+            this.gridControl3.Size = new System.Drawing.Size(1136, 277);
             this.gridControl3.TabIndex = 0;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView3});
@@ -2204,7 +2207,7 @@
             this.xtraTabPage24.Controls.Add(this.gridControl10);
             this.xtraTabPage24.ImageOptions.ImageIndex = 11;
             this.xtraTabPage24.Name = "xtraTabPage24";
-            this.xtraTabPage24.Size = new System.Drawing.Size(1136, 272);
+            this.xtraTabPage24.Size = new System.Drawing.Size(1136, 277);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
             // gridControl10
@@ -2219,7 +2222,7 @@
             this.repositoryItemImageComboBox32,
             this.repositoryItemImageComboBox31,
             this.repositoryItemImageComboBox30});
-            this.gridControl10.Size = new System.Drawing.Size(1136, 272);
+            this.gridControl10.Size = new System.Drawing.Size(1136, 277);
             this.gridControl10.TabIndex = 1;
             this.gridControl10.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView8});
@@ -7271,6 +7274,12 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // colPersonName
+            // 
+            this.colPersonName.Caption = "Виконавець";
+            this.colPersonName.FieldName = "PersonName";
+            this.colPersonName.Name = "colPersonName";
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8125,5 +8134,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
         private UserControls.ExpeditionUserControl expeditionUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
+        private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
     }
 }

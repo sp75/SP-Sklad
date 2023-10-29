@@ -57,5 +57,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RouteId { get; set; }
         public Nullable<int> WId { get; set; }
         public string JobName { get; set; }
+        public System.Guid Id { get; set; }
     }
 }
