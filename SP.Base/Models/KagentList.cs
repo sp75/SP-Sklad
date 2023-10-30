@@ -134,5 +134,6 @@ namespace SP.Base.Models
 
         [StringLength(256)]
         public string WebUserName { get; set; }
+        public Guid Id { get; set; }
     }
 }

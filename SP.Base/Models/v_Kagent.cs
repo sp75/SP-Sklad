@@ -137,5 +137,6 @@ namespace SP.Base.Models
 
         [StringLength(50)]
         public string JobName { get; set; }
+        public Guid Id { get; set; }
     }
 }
