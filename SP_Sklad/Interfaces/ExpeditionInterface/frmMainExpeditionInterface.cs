@@ -75,7 +75,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                 frm.ShowDialog();
             }
 
-            ExpeditionSource.Refresh();
+            RefreshList();
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -84,20 +84,29 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         }
 
 
+        private void RefreshList()
+        {
+            row = tileView1.FocusedRowHandle;
+            restore = true;
+
+            gridControl1.DataSource = null;
+            gridControl1.DataSource = ExpeditionSource;
+        }
+
         private void IsDoneToggleSwitch_EditValueChanged(object sender, EventArgs e)
         {
-            ExpeditionSource.Refresh();
+            RefreshList();
         }
 
         private void RawMaterialManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var _db = DB.SkladBase();
+            var db = DB.SkladBase();
 
-            var rmm = _db.v_Expedition;
+            var rmm = db.v_Expedition;
 
             e.QueryableSource = rmm;
 
-            e.Tag = _db;
+            e.Tag = db;
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -113,12 +122,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                 frm.ShowDialog();
             }
 
-            ExpeditionSource.Refresh();
+            RefreshList();
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            ExpeditionSource.Refresh();
+            RefreshList();
         }
 
         Color colorPanelReady = Color.FromArgb(58, 166, 101);
@@ -173,6 +182,22 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         {
             Properties.Settings.Default.ApplicationSkinName = UserLookAndFeel.Default.SkinName;
             Properties.Settings.Default.Save();
+        }
+
+
+        int row = 0;
+        bool restore = false;
+
+        private void tileView1_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (!restore)
+            {
+                return;
+            }
+
+        
+            tileView1.FocusedRowHandle = row;
+            restore = false;
         }
     }
 }

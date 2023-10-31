@@ -184,7 +184,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                             CreatedAt = DBHelper.ServerDateTime(),
                             WbillId = wbill_id,
                             MId = mid,
-                            Checked = 0,
+                            Checked = 1,
                             WbAmount = info.WbAmount,
                             TareWeight = info.TareWeight,
                             TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == wbill_id).Select(s => s.Amount).ToList().Sum(),

@@ -474,6 +474,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.tileView1.TileTemplate.Add(tileViewItemElement11);
             this.tileView1.TileTemplate.Add(tileViewItemElement12);
             this.tileView1.ItemCustomize += new DevExpress.XtraGrid.Views.Tile.TileViewItemCustomizeEventHandler(this.tileView1_ItemCustomize);
+            this.tileView1.AsyncCompleted += new System.EventHandler(this.tileView1_AsyncCompleted);
             // 
             // sidePanel1
             // 
