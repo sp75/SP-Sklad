@@ -115,5 +115,6 @@ namespace SP.Base.Models
         public Guid KagentId { get; set; }
         public int WbChecked { get; set; }
         public string Artikul { get; set; }
+        public string WbNotes { get; set; }
     }
 }

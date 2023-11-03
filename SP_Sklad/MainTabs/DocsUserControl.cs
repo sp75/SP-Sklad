@@ -162,8 +162,16 @@ namespace SP_Sklad.MainTabs
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
 
             int top_row = WbGridView.TopRowIndex;
+            var focused_id = wb_focused_row?.Id;
+
             GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
             WbGridView.TopRowIndex = top_row;
+
+            int rowHandle = WbGridView.LocateByValue("Id", focused_id);
+            if (rowHandle != GridControl.InvalidRowHandle)
+            {
+                WbGridView.FocusedRowHandle = rowHandle;
+            }
         }
 
         void GetPayDocList(string doc_typ)
