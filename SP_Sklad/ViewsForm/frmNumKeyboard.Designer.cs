@@ -28,12 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.numKeyboardUserControl2 = new SP_Sklad.UserControls.NumKeyboardUserControl();
             this.AmountEdit = new DevExpress.XtraEditors.CalcEdit();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numKeyboardUserControl2 = new SP_Sklad.UserControls.NumKeyboardUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // AmountEdit
+            // 
+            this.AmountEdit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AmountEdit.Location = new System.Drawing.Point(10, 10);
+            this.AmountEdit.Name = "AmountEdit";
+            this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+            this.AmountEdit.Properties.Appearance.Options.UseFont = true;
+            this.AmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
+            this.AmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.AmountEdit.Size = new System.Drawing.Size(304, 40);
+            this.AmountEdit.TabIndex = 1;
+            this.AmountEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmountEdit_KeyPress);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.AmountEdit);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
+            this.panel1.Size = new System.Drawing.Size(324, 50);
+            this.panel1.TabIndex = 47;
             // 
             // numKeyboardUserControl2
             // 
@@ -50,30 +74,6 @@
             0,
             0});
             // 
-            // AmountEdit
-            // 
-            this.AmountEdit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AmountEdit.Location = new System.Drawing.Point(10, 10);
-            this.AmountEdit.Name = "AmountEdit";
-            this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-            this.AmountEdit.Properties.Appearance.Options.UseFont = true;
-            this.AmountEdit.Properties.DisplayFormat.FormatString = "0.0000";
-            this.AmountEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.AmountEdit.Size = new System.Drawing.Size(304, 40);
-            this.AmountEdit.TabIndex = 46;
-            this.AmountEdit.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.AutoSize = true;
-            this.panel1.Controls.Add(this.AmountEdit);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.panel1.Size = new System.Drawing.Size(324, 50);
-            this.panel1.TabIndex = 47;
-            // 
             // frmNumKeyboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -88,7 +88,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Цифрова клавіатура";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmTestComPort_FormClosed);
-            this.Shown += new System.EventHandler(this.frmTestComPort_Shown);
+            this.Load += new System.EventHandler(this.frmNumKeyboard_Load);
+            this.Shown += new System.EventHandler(this.frmNumKeyboard_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

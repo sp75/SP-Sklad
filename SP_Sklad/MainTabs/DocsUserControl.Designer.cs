@@ -79,6 +79,7 @@
             this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -597,7 +598,6 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -1393,6 +1393,12 @@
             this.gridColumn114.Caption = "Дата звітності";
             this.gridColumn114.FieldName = "ReportingDate";
             this.gridColumn114.Name = "gridColumn114";
+            // 
+            // colPersonName
+            // 
+            this.colPersonName.Caption = "Виконавець";
+            this.colPersonName.FieldName = "PersonName";
+            this.colPersonName.Name = "colPersonName";
             // 
             // panelControl2
             // 
@@ -7273,12 +7279,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // colPersonName
-            // 
-            this.colPersonName.Caption = "Виконавець";
-            this.colPersonName.FieldName = "PersonName";
-            this.colPersonName.Name = "colPersonName";
             // 
             // DocsUserControl
             // 

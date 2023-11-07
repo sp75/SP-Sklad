@@ -393,6 +393,9 @@
         <AssociationConnector Association="BaseModel.FK_ExpeditionMaterialsDet_Materials" />
         <AssociationConnector Association="BaseModel.FK_ExpeditionDet_WaybillList" />
         <AssociationConnector Association="BaseModel.FK_ExpeditionDet_Expedition" />
+        <EntityTypeShape EntityType="BaseModel.UserQuickMaterials" Width="1.5" PointX="33.125" PointY="41.875" />
+        <AssociationConnector Association="BaseModel.FK_UserQuickButtons_Materials" />
+        <AssociationConnector Association="BaseModel.FK_UserQuickButtons_Users" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

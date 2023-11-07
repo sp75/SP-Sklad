@@ -120,10 +120,12 @@ namespace SP_Sklad.EditForm
             }).ToList();
 
             AccountEdit.EditValue = user_settings.AccountDefaultRMK;
- 
+
+            GetUserQuickMaterials();
+
 
           //  WarehouseEdit.Properties.DataSource = DBHelper.GetWhList(_user_id.Value, _db);
-         
+
             LoginCheckboxEdit.Text = user_settings.CashierLoginCheckbox;
             PassCheckboxEdit.Text = user_settings.CashierPasswordCheckbox;
 
@@ -633,6 +635,55 @@ namespace SP_Sklad.EditForm
                 RoleGridView.RefreshRow(RoleGridView.FocusedRowHandle);
             }
 
+        }
+
+        private void GetUserQuickMaterials()
+        {
+            UserQuickMaterialsBS.DataSource = _db.UserQuickMaterials.Where(w => w.UserId == _user_id).ToList();
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var id = IHelper.ShowDirectList(null, 5);
+
+            if (id != null)
+            {
+                int mat_id = (int)id;
+
+                _db.UserQuickMaterials.Add(new UserQuickMaterials
+                {
+                    MatId = mat_id,
+                    Name = "Btn1",
+                    Num = UserQuickMaterialsBS.Count + 1,
+                    UserId = _user_id.Value,
+                    Materials = _db.Materials.Find(mat_id)
+                });
+                _db.SaveChanges();
+
+                GetUserQuickMaterials();
+            }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = UserQuickMaterialsGridView.GetFocusedRow() as UserQuickMaterials;
+
+            if(row != null)
+            {
+                _db.UserQuickMaterials.Remove(row);
+
+                _db.SaveChanges();
+
+                GetUserQuickMaterials();
+            }
+        }
+
+        private void UserQuickMaterialsGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+          /*  if(e.Column.FieldName == "Name")
+            {
+
+            }*/
         }
     }
 }

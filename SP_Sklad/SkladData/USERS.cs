@@ -24,6 +24,7 @@ namespace SP_Sklad.SkladData
             this.UserRoles = new HashSet<UserRoles>();
             this.UserSettings = new HashSet<UserSettings>();
             this.Kagent = new HashSet<Kagent>();
+            this.UserQuickMaterials = new HashSet<UserQuickMaterials>();
         }
     
         public int UserId { get; set; }
@@ -51,5 +52,6 @@ namespace SP_Sklad.SkladData
         public virtual UsersGroup UsersGroup { get; set; }
         public virtual ICollection<UserSettings> UserSettings { get; set; }
         public virtual ICollection<Kagent> Kagent { get; set; }
+        public virtual ICollection<UserQuickMaterials> UserQuickMaterials { get; set; }
     }
 }

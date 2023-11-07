@@ -51,6 +51,10 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -151,18 +155,27 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit4 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.PassCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.LoginCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.ChargeTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage11 = new DevExpress.XtraTab.XtraTabPage();
             this.labelControl64 = new DevExpress.XtraEditors.LabelControl();
+            this.PassCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
+            this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.LoginCheckboxEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ChargeTypesEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.AccountEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.CashEditComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
+            this.UserQuickMaterialsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UserQuickMaterialsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.UserQuickMaterialsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.DiscountCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -230,12 +243,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).BeginInit();
             this.xtraTabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).BeginInit();
+            this.xtraTabControl3.SuspendLayout();
+            this.xtraTabPage11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).BeginInit();
+            this.xtraTabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsGridView)).BeginInit();
             this.xtraTabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
@@ -245,10 +265,13 @@
             // 
             // barManager1
             // 
+            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
             this.barManager1.Images = this.ImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -257,8 +280,56 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem5,
-            this.barButtonItem6});
-            this.barManager1.MaxItemId = 13;
+            this.barButtonItem6,
+            this.barButtonItem7,
+            this.barButtonItem8});
+            this.barManager1.MaxItemId = 15;
+            // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 2";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar1.FloatLocation = new System.Drawing.Point(365, 217);
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8)});
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
+            this.bar1.Text = "Custom 2";
+            // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "Додати";
+            this.barButtonItem7.Id = 13;
+            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
+            this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
+            // 
+            // barButtonItem8
+            // 
+            this.barButtonItem8.Caption = "Видалити";
+            this.barButtonItem8.Id = 14;
+            this.barButtonItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
+            this.barButtonItem8.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.LargeImage")));
+            this.barButtonItem8.Name = "barButtonItem8";
+            this.barButtonItem8.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.AutoSize = true;
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(628, 24);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
             // 
@@ -315,6 +386,8 @@
             this.ImageList.Images.SetKeyName(16, "Склад+Торговля.bmp");
             this.ImageList.Images.SetKeyName(17, "iconfinder_folder_edit_36067.png");
             this.ImageList.Images.SetKeyName(18, "grant.png");
+            this.ImageList.Images.SetKeyName(19, "Add.png");
+            this.ImageList.Images.SetKeyName(20, "Delete.bmp");
             // 
             // barButtonItem1
             // 
@@ -1363,170 +1436,67 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.PassCheckboxEdit);
-            this.xtraTabPage8.Controls.Add(this.labelControl13);
-            this.xtraTabPage8.Controls.Add(this.LoginCheckboxEdit);
-            this.xtraTabPage8.Controls.Add(this.labelControl9);
-            this.xtraTabPage8.Controls.Add(this.labelControl5);
-            this.xtraTabPage8.Controls.Add(this.CashEditComboBox);
-            this.xtraTabPage8.Controls.Add(this.AccountEdit);
-            this.xtraTabPage8.Controls.Add(this.labelControl3);
-            this.xtraTabPage8.Controls.Add(this.ChargeTypesEdit);
-            this.xtraTabPage8.Controls.Add(this.labelControl7);
-            this.xtraTabPage8.Controls.Add(this.KagentComboBox);
-            this.xtraTabPage8.Controls.Add(this.labelControl64);
+            this.xtraTabPage8.Controls.Add(this.xtraTabControl3);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(630, 380);
             this.xtraTabPage8.Text = "РМК";
             // 
+            // xtraTabControl3
+            // 
+            this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
+            this.xtraTabControl3.Name = "xtraTabControl3";
+            this.xtraTabControl3.SelectedTabPage = this.xtraTabPage11;
+            this.xtraTabControl3.Size = new System.Drawing.Size(630, 380);
+            this.xtraTabControl3.TabIndex = 87;
+            this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.xtraTabPage11,
+            this.xtraTabPage12});
+            // 
+            // xtraTabPage11
+            // 
+            this.xtraTabPage11.Controls.Add(this.labelControl64);
+            this.xtraTabPage11.Controls.Add(this.PassCheckboxEdit);
+            this.xtraTabPage11.Controls.Add(this.KagentComboBox);
+            this.xtraTabPage11.Controls.Add(this.labelControl13);
+            this.xtraTabPage11.Controls.Add(this.labelControl7);
+            this.xtraTabPage11.Controls.Add(this.LoginCheckboxEdit);
+            this.xtraTabPage11.Controls.Add(this.ChargeTypesEdit);
+            this.xtraTabPage11.Controls.Add(this.labelControl9);
+            this.xtraTabPage11.Controls.Add(this.labelControl3);
+            this.xtraTabPage11.Controls.Add(this.labelControl5);
+            this.xtraTabPage11.Controls.Add(this.AccountEdit);
+            this.xtraTabPage11.Controls.Add(this.CashEditComboBox);
+            this.xtraTabPage11.Name = "xtraTabPage11";
+            this.xtraTabPage11.Size = new System.Drawing.Size(628, 355);
+            this.xtraTabPage11.Text = "Основні";
+            // 
+            // labelControl64
+            // 
+            this.labelControl64.Location = new System.Drawing.Point(20, 21);
+            this.labelControl64.Name = "labelControl64";
+            this.labelControl64.Size = new System.Drawing.Size(85, 16);
+            this.labelControl64.StyleController = this.styleController1;
+            this.labelControl64.TabIndex = 57;
+            this.labelControl64.Text = "Торгова точка";
+            // 
             // PassCheckboxEdit
             // 
-            this.PassCheckboxEdit.Location = new System.Drawing.Point(225, 315);
+            this.PassCheckboxEdit.Location = new System.Drawing.Point(230, 317);
             this.PassCheckboxEdit.Name = "PassCheckboxEdit";
             this.PassCheckboxEdit.Size = new System.Drawing.Size(176, 22);
             this.PassCheckboxEdit.StyleController = this.styleController1;
             this.PassCheckboxEdit.TabIndex = 86;
             this.PassCheckboxEdit.EditValueChanged += new System.EventHandler(this.PassCheckboxEdit_EditValueChanged);
             // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(225, 293);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(153, 16);
-            this.labelControl13.TabIndex = 85;
-            this.labelControl13.Text = "Пароль касира (checkbox)";
-            // 
-            // LoginCheckboxEdit
-            // 
-            this.LoginCheckboxEdit.Location = new System.Drawing.Point(15, 315);
-            this.LoginCheckboxEdit.Name = "LoginCheckboxEdit";
-            this.LoginCheckboxEdit.Size = new System.Drawing.Size(183, 22);
-            this.LoginCheckboxEdit.StyleController = this.styleController1;
-            this.LoginCheckboxEdit.TabIndex = 84;
-            this.LoginCheckboxEdit.EditValueChanged += new System.EventHandler(this.LoginCheckboxEdit_EditValueChanged);
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl9.Appearance.Options.UseFont = true;
-            this.labelControl9.Location = new System.Drawing.Point(15, 293);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(141, 16);
-            this.labelControl9.TabIndex = 83;
-            this.labelControl9.Text = "Логін касира (checkbox)";
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Location = new System.Drawing.Point(337, 153);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(51, 16);
-            this.labelControl5.TabIndex = 80;
-            this.labelControl5.Text = "Рахунок:";
-            // 
-            // CashEditComboBox
-            // 
-            this.CashEditComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CashEditComboBox.Location = new System.Drawing.Point(15, 175);
-            this.CashEditComboBox.Name = "CashEditComboBox";
-            this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.CashEditComboBox.Properties.DisplayMember = "Name";
-            this.CashEditComboBox.Properties.ShowFooter = false;
-            this.CashEditComboBox.Properties.ShowHeader = false;
-            this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.CashEditComboBox.Properties.ValueMember = "CashId";
-            this.CashEditComboBox.Size = new System.Drawing.Size(289, 24);
-            this.CashEditComboBox.TabIndex = 79;
-            this.CashEditComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CashEditComboBox_ButtonClick);
-            this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.CashEditComboBox_EditValueChanged);
-            // 
-            // AccountEdit
-            // 
-            this.AccountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.AccountEdit.Location = new System.Drawing.Point(337, 175);
-            this.AccountEdit.Name = "AccountEdit";
-            this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.AccountEdit.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
-            this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("KaName", "Підприємство")});
-            this.AccountEdit.Properties.DisplayMember = "AccNum";
-            this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.AccountEdit.Properties.ValueMember = "AccId";
-            this.AccountEdit.Size = new System.Drawing.Size(280, 24);
-            this.AccountEdit.TabIndex = 78;
-            this.AccountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AccountEdit_ButtonClick);
-            this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(15, 153);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(32, 16);
-            this.labelControl3.TabIndex = 77;
-            this.labelControl3.Text = "Каса:";
-            // 
-            // ChargeTypesEdit
-            // 
-            this.ChargeTypesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ChargeTypesEdit.Location = new System.Drawing.Point(15, 107);
-            this.ChargeTypesEdit.Name = "ChargeTypesEdit";
-            this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
-            this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.ChargeTypesEdit.Properties.DisplayMember = "Name";
-            this.ChargeTypesEdit.Properties.ShowFooter = false;
-            this.ChargeTypesEdit.Properties.ShowHeader = false;
-            this.ChargeTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.ChargeTypesEdit.Properties.ValueMember = "CTypeId";
-            this.ChargeTypesEdit.Size = new System.Drawing.Size(602, 24);
-            this.ChargeTypesEdit.TabIndex = 75;
-            this.ChargeTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ChargeTypesEdit_ButtonClick);
-            this.ChargeTypesEdit.EditValueChanged += new System.EventHandler(this.ChargeTypesEdit_EditValueChanged);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.labelControl7.Appearance.Options.UseFont = true;
-            this.labelControl7.Location = new System.Drawing.Point(15, 85);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(89, 16);
-            this.labelControl7.TabIndex = 74;
-            this.labelControl7.Text = "Стаття витрат:";
-            // 
             // KagentComboBox
             // 
-            this.KagentComboBox.Location = new System.Drawing.Point(15, 41);
+            this.KagentComboBox.Location = new System.Drawing.Point(20, 43);
             this.KagentComboBox.Name = "KagentComboBox";
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
@@ -1534,20 +1504,208 @@
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KagentComboBox.Properties.ValueMember = "KaId";
-            this.KagentComboBox.Size = new System.Drawing.Size(602, 22);
+            this.KagentComboBox.Size = new System.Drawing.Size(591, 22);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 58;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
             this.KagentComboBox.EditValueChanged += new System.EventHandler(this.KagentComboBox_EditValueChanged);
             // 
-            // labelControl64
+            // labelControl13
             // 
-            this.labelControl64.Location = new System.Drawing.Point(15, 19);
-            this.labelControl64.Name = "labelControl64";
-            this.labelControl64.Size = new System.Drawing.Size(85, 16);
-            this.labelControl64.StyleController = this.styleController1;
-            this.labelControl64.TabIndex = 57;
-            this.labelControl64.Text = "Торгова точка";
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(230, 295);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(153, 16);
+            this.labelControl13.TabIndex = 85;
+            this.labelControl13.Text = "Пароль касира (checkbox)";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl7.Appearance.Options.UseFont = true;
+            this.labelControl7.Location = new System.Drawing.Point(20, 87);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(89, 16);
+            this.labelControl7.TabIndex = 74;
+            this.labelControl7.Text = "Стаття витрат:";
+            // 
+            // LoginCheckboxEdit
+            // 
+            this.LoginCheckboxEdit.Location = new System.Drawing.Point(20, 317);
+            this.LoginCheckboxEdit.Name = "LoginCheckboxEdit";
+            this.LoginCheckboxEdit.Size = new System.Drawing.Size(183, 22);
+            this.LoginCheckboxEdit.StyleController = this.styleController1;
+            this.LoginCheckboxEdit.TabIndex = 84;
+            this.LoginCheckboxEdit.EditValueChanged += new System.EventHandler(this.LoginCheckboxEdit_EditValueChanged);
+            // 
+            // ChargeTypesEdit
+            // 
+            this.ChargeTypesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChargeTypesEdit.Location = new System.Drawing.Point(20, 109);
+            this.ChargeTypesEdit.Name = "ChargeTypesEdit";
+            this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.ChargeTypesEdit.Properties.DisplayMember = "Name";
+            this.ChargeTypesEdit.Properties.ShowFooter = false;
+            this.ChargeTypesEdit.Properties.ShowHeader = false;
+            this.ChargeTypesEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.ChargeTypesEdit.Properties.ValueMember = "CTypeId";
+            this.ChargeTypesEdit.Size = new System.Drawing.Size(591, 24);
+            this.ChargeTypesEdit.TabIndex = 75;
+            this.ChargeTypesEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ChargeTypesEdit_ButtonClick);
+            this.ChargeTypesEdit.EditValueChanged += new System.EventHandler(this.ChargeTypesEdit_EditValueChanged);
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl9.Appearance.Options.UseFont = true;
+            this.labelControl9.Location = new System.Drawing.Point(20, 295);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(141, 16);
+            this.labelControl9.TabIndex = 83;
+            this.labelControl9.Text = "Логін касира (checkbox)";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Location = new System.Drawing.Point(20, 155);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(32, 16);
+            this.labelControl3.TabIndex = 77;
+            this.labelControl3.Text = "Каса:";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.labelControl5.Appearance.Options.UseFont = true;
+            this.labelControl5.Location = new System.Drawing.Point(342, 155);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(51, 16);
+            this.labelControl5.TabIndex = 80;
+            this.labelControl5.Text = "Рахунок:";
+            // 
+            // AccountEdit
+            // 
+            this.AccountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountEdit.Location = new System.Drawing.Point(342, 177);
+            this.AccountEdit.Name = "AccountEdit";
+            this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.AccountEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("KaName", "Підприємство")});
+            this.AccountEdit.Properties.DisplayMember = "AccNum";
+            this.AccountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.AccountEdit.Properties.ValueMember = "AccId";
+            this.AccountEdit.Size = new System.Drawing.Size(269, 24);
+            this.AccountEdit.TabIndex = 78;
+            this.AccountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AccountEdit_ButtonClick);
+            this.AccountEdit.EditValueChanged += new System.EventHandler(this.AccountEdit_EditValueChanged);
+            // 
+            // CashEditComboBox
+            // 
+            this.CashEditComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CashEditComboBox.Location = new System.Drawing.Point(20, 177);
+            this.CashEditComboBox.Name = "CashEditComboBox";
+            this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.CashEditComboBox.Properties.DisplayMember = "Name";
+            this.CashEditComboBox.Properties.ShowFooter = false;
+            this.CashEditComboBox.Properties.ShowHeader = false;
+            this.CashEditComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CashEditComboBox.Properties.ValueMember = "CashId";
+            this.CashEditComboBox.Size = new System.Drawing.Size(297, 24);
+            this.CashEditComboBox.TabIndex = 79;
+            this.CashEditComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CashEditComboBox_ButtonClick);
+            this.CashEditComboBox.EditValueChanged += new System.EventHandler(this.CashEditComboBox_EditValueChanged);
+            // 
+            // xtraTabPage12
+            // 
+            this.xtraTabPage12.Controls.Add(this.UserQuickMaterialsGridControl);
+            this.xtraTabPage12.Controls.Add(this.standaloneBarDockControl1);
+            this.xtraTabPage12.Name = "xtraTabPage12";
+            this.xtraTabPage12.Size = new System.Drawing.Size(628, 355);
+            this.xtraTabPage12.Text = "Бистрі товари";
+            // 
+            // UserQuickMaterialsGridControl
+            // 
+            this.UserQuickMaterialsGridControl.DataSource = this.UserQuickMaterialsBS;
+            this.UserQuickMaterialsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserQuickMaterialsGridControl.Location = new System.Drawing.Point(0, 24);
+            this.UserQuickMaterialsGridControl.MainView = this.UserQuickMaterialsGridView;
+            this.UserQuickMaterialsGridControl.MenuManager = this.barManager1;
+            this.UserQuickMaterialsGridControl.Name = "UserQuickMaterialsGridControl";
+            this.UserQuickMaterialsGridControl.Size = new System.Drawing.Size(628, 331);
+            this.UserQuickMaterialsGridControl.TabIndex = 12;
+            this.UserQuickMaterialsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UserQuickMaterialsGridView});
+            // 
+            // UserQuickMaterialsBS
+            // 
+            this.UserQuickMaterialsBS.DataSource = typeof(SP_Sklad.SkladData.UserQuickMaterials);
+            // 
+            // UserQuickMaterialsGridView
+            // 
+            this.UserQuickMaterialsGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn11,
+            this.gridColumn12,
+            this.gridColumn13});
+            this.UserQuickMaterialsGridView.GridControl = this.UserQuickMaterialsGridControl;
+            this.UserQuickMaterialsGridView.Name = "UserQuickMaterialsGridView";
+            this.UserQuickMaterialsGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.UserQuickMaterialsGridView.OptionsView.ShowGroupPanel = false;
+            this.UserQuickMaterialsGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.UserQuickMaterialsGridView_CellValueChanged);
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.Caption = "#";
+            this.gridColumn11.FieldName = "Num";
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.VisibleIndex = 0;
+            this.gridColumn11.Width = 50;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.Caption = "Назва";
+            this.gridColumn12.FieldName = "Name";
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.VisibleIndex = 1;
+            this.gridColumn12.Width = 216;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Номенклатура";
+            this.gridColumn13.FieldName = "Materials.Name";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.OptionsColumn.AllowEdit = false;
+            this.gridColumn13.OptionsColumn.ReadOnly = true;
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.Width = 337;
             // 
             // xtraTabPage6
             // 
@@ -1691,13 +1849,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit4)).EndInit();
             this.xtraTabPage8.ResumeLayout(false);
-            this.xtraTabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).EndInit();
+            this.xtraTabControl3.ResumeLayout(false);
+            this.xtraTabPage11.ResumeLayout(false);
+            this.xtraTabPage11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PassCheckboxEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LoginCheckboxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChargeTypesEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashEditComboBox.Properties)).EndInit();
+            this.xtraTabPage12.ResumeLayout(false);
+            this.xtraTabPage12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserQuickMaterialsGridView)).EndInit();
             this.xtraTabPage6.ResumeLayout(false);
             this.xtraTabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountCheckBox.Properties)).EndInit();
@@ -1830,5 +1996,18 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit4;
+        private DevExpress.XtraTab.XtraTabControl xtraTabControl3;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage11;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage12;
+        private DevExpress.XtraGrid.GridControl UserQuickMaterialsGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView UserQuickMaterialsGridView;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private System.Windows.Forms.BindingSource UserQuickMaterialsBS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
     }
 }

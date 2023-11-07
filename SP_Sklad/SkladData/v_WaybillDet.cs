@@ -50,5 +50,6 @@ namespace SP_Sklad.SkladData
         public System.Guid KagentId { get; set; }
         public int WbChecked { get; set; }
         public string Artikul { get; set; }
+        public string WbNotes { get; set; }
     }
 }

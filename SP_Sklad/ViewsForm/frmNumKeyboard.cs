@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -21,18 +22,31 @@ namespace SP_Sklad.ViewsForm
             InitializeComponent();
         }
 
- 
 
         private void frmTestComPort_FormClosed(object sender, FormClosedEventArgs e)
         {
 
         }
 
-        private void frmTestComPort_Shown(object sender, EventArgs e)
+        private void frmNumKeyboard_Load(object sender, EventArgs e)
         {
-   
+
         }
 
- 
+        private void AmountEdit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13 )
+            {
+                numKeyboardUserControl2.Value = string.IsNullOrEmpty(AmountEdit.Text) ? 0 : Convert.ToDecimal(AmountEdit.Text.Replace(',', '.'), new CultureInfo("en-US"));
+
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        private void frmNumKeyboard_Shown(object sender, EventArgs e)
+        {
+            this.ActiveControl = AmountEdit;
+        }
     }
 }

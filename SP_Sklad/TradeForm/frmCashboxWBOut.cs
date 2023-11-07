@@ -77,6 +77,8 @@ namespace SP_Sklad.WBForm
             TradingPoint = DBHelper.TradingPoints.FirstOrDefault(w => w.KaId == user_settings.DefaultBuyer);
             SetPriceBtn.Enabled = user_settings.AccessEditPrice;
 
+            AddQuickBtn();
+
             if (Enterprise == null)
             {
                 MessageBox.Show("Не визначено підприемство для торгової точки " + TradingPoint.Name);
@@ -93,6 +95,25 @@ namespace SP_Sklad.WBForm
             {
                 LoadWaybill(_wbill_id.Value);
             }
+        }
+
+        private void AddQuickBtn()
+        {
+            foreach (var btn in _db.UserQuickMaterials.Where(w => w.UserId == UserSession.UserId && w.Materials.Deleted == 0 && (w.Materials.Archived ?? 0) == 0))
+            {
+                var q_btn = UserQuickMaterialsPanel.Controls["QuickBtn" + btn.Num.ToString()] as SimpleButton;
+                if (q_btn != null)
+                {
+                    q_btn.Visible = true;
+                    q_btn.Text = btn.Name;
+                    q_btn.Tag = btn.MatId;
+                }
+            }
+        }
+
+        private void QuickSimpleButton_Click(object sender, EventArgs e)
+        {
+            AddMat((int)((SimpleButton)sender).Tag);
         }
 
         private bool SaveWbill()
@@ -1116,6 +1137,18 @@ namespace SP_Sklad.WBForm
             }
 
             AmountEdit.Text = "";
+        }
+
+        private void simpleButton24_Click(object sender, EventArgs e)
+        {
+            if (UserQuickMaterialsPanel.Visible)
+            {
+                UserQuickMaterialsPanel.Visible = false;
+            }
+            else
+            {
+                UserQuickMaterialsPanel.Visible = true;
+            }
         }
     }
 }

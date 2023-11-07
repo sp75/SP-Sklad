@@ -48,6 +48,7 @@ namespace SP_Sklad.WBForm
         {
             CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            DriversLookUpEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
 
             if (_exp_id == null)
             {
@@ -268,6 +269,11 @@ namespace SP_Sklad.WBForm
             }
 
             GetDetail();
+        }
+
+        private void DriversLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
         }
     }
 }

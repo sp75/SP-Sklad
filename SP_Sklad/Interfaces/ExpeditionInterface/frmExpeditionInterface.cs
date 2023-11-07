@@ -46,7 +46,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             {
 
             }
+
             CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
+            DriverEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
 
             if (_exp_id == null)
             {
@@ -73,9 +75,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             if (exp != null)
             {
-                ExpeditionBS.DataSource = exp;
+                exp.Checked = 0;
 
-              
+                ExpeditionBS.DataSource = exp;
             }
           
 
@@ -93,14 +95,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton2_Click_1(object sender, EventArgs e)
         {
-            exp.UpdatedAt = DateTime.Now;
-            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
-
-            _db.SaveChanges();
-
-            is_new_record = false;
-
-            Close();
+           
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
@@ -131,7 +126,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             public List<Measures> Measures { get; set; }
             public decimal WbAmount { get; set; }
             public decimal TareWeight { get; set; }
-
+            public int? DriverId { get; set; }
+            public int? RouteId { get; set; }
         }
 
         private WbIfo GetWbInfo(int wbill_id)
@@ -145,10 +141,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                 return new WbIfo()
                 {
                     CarId = wb.CarId,
+                    DriverId = wb.DriverId,
+                    RouteId = wb.RouteId,
                     Measures = msr_list,
                     WbAmount = _db.WaybillDet.Where(w => w.WbillId == wbill_id && w.Materials.MId == mid).Select(s => s.Amount).ToList().Sum(),
                     TareWeight = _db.WayBillTmc.Where(w => w.WbillId == wbill_id).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum(),
-             };
+                };
             }
             else
             {
@@ -170,6 +168,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     {
                         exp.CarId = info.CarId.HasValue ? info.CarId.Value : exp.CarId;
                         CarsLookUpEdit.EditValue = exp.CarId;
+
+                        exp.DriverId = info.DriverId.HasValue ? info.DriverId.Value : exp.DriverId;
+                        DriverEdit.EditValue = exp.DriverId;
+
+                        exp.RouteId = info.RouteId;
 
                         var mid = info.Measures.FirstOrDefault()?.MId;
 
@@ -270,9 +273,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            GetTotalWeight();
-          
-            GetDetail();
+            exp.Checked = 1;
+
+            simpleButton2.PerformClick();
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
@@ -358,6 +361,28 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private void TareWeightEdit_Properties_CloseUp(object sender, DevExpress.XtraEditors.Controls.CloseUpEventArgs e)
         {
             TareWeightEdit.Focus();
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            exp.UpdatedAt = DateTime.Now;
+            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
+
+            _db.SaveChanges();
+
+            is_new_record = false;
+
+            Close();
+        }
+
+        private void checkEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            _db.SaveChanges();
+
+            focused_row.Checked = Convert.ToInt32( checkEdit1.Checked);
+
+            ExpeditionDetGridView.RefreshData();
+
         }
     }
 }

@@ -1454,7 +1454,7 @@ namespace SP_Sklad.MainTabs
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         Nds = 0,
                         KaId = kagent.KaId,
-
+                        Notes = pl_row.Notes
                     });
                     db.SaveChanges();
 

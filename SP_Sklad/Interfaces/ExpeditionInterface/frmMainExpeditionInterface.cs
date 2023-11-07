@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Tile;
 using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 using SP_Sklad.Common;
 using SP_Sklad.IntermediateWeighingInterface.Views;
+using SP_Sklad.Properties;
 using SP_Sklad.RawMaterialManagementInterface;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
@@ -111,14 +112,22 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            if(rmm_focused_row == null)
+            if (rmm_focused_row == null)
             {
                 return;
             }
 
+            if (rmm_focused_row.Checked == 1)
+            {
+                if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
             using (var frm = new frmExpeditionInterface(rmm_focused_row.Id))
             {
-               // frm.labelControl1.Text = rmm_focused_row.DocTypeName + " №" + rmm_focused_row.Num;
+                // frm.labelControl1.Text = rmm_focused_row.DocTypeName + " №" + rmm_focused_row.Num;
                 frm.ShowDialog();
             }
 

@@ -82,6 +82,7 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -365,7 +366,8 @@
             this.gridColumn112,
             this.gridColumn3,
             this.gridColumn5,
-            this.gridColumn11});
+            this.gridColumn11,
+            this.gridColumn13});
             this.ExpeditionsGridView.GridControl = this.ExpeditionsGridControl;
             this.ExpeditionsGridView.Name = "ExpeditionsGridView";
             this.ExpeditionsGridView.OptionsBehavior.Editable = false;
@@ -385,7 +387,7 @@
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 1;
-            this.gridColumn47.Width = 116;
+            this.gridColumn47.Width = 103;
             // 
             // gridColumn46
             // 
@@ -397,7 +399,7 @@
             this.gridColumn46.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 2;
-            this.gridColumn46.Width = 318;
+            this.gridColumn46.Width = 282;
             // 
             // gridColumn48
             // 
@@ -406,7 +408,7 @@
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 5;
-            this.gridColumn48.Width = 279;
+            this.gridColumn48.Width = 147;
             // 
             // gridColumn112
             // 
@@ -415,7 +417,7 @@
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 4;
-            this.gridColumn112.Width = 228;
+            this.gridColumn112.Width = 202;
             // 
             // gridColumn3
             // 
@@ -449,7 +451,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 257;
+            this.gridColumn5.Width = 228;
             // 
             // gridColumn11
             // 
@@ -457,7 +459,8 @@
             this.gridColumn11.FieldName = "TotalKilograms";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 6;
+            this.gridColumn11.VisibleIndex = 7;
+            this.gridColumn11.Width = 76;
             // 
             // xtraTabControl3
             // 
@@ -660,6 +663,15 @@
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Водій";
+            this.gridColumn13.FieldName = "DriverName";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 6;
+            this.gridColumn13.Width = 160;
+            // 
             // ExpeditionUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -756,5 +768,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
     }
 }

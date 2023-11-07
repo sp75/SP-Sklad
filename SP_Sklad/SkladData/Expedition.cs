@@ -30,6 +30,8 @@ namespace SP_Sklad.SkladData
         public Nullable<System.Guid> SessionId { get; set; }
         public System.Guid CarId { get; set; }
         public int DocType { get; set; }
+        public Nullable<int> DriverId { get; set; }
+        public Nullable<int> RouteId { get; set; }
     
         public virtual Cars Cars { get; set; }
         public virtual ICollection<ExpeditionDet> ExpeditionDet { get; set; }

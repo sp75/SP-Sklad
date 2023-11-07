@@ -618,6 +618,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\TableFunctions\funGetSalesOfSuppliers.cs" />
+    <Compile Include="SkladData\UserQuickMaterials.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\UserRoles.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -2736,6 +2739,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.TechProcess.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserAccessMatGroup.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.UserQuickMaterials.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UsersGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.UserTreeAccess.datasource" />

@@ -852,7 +852,6 @@
             // WaybillDetOutBS
             // 
             this.WaybillDetOutBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillDetOut_Result);
-         
             this.WaybillDetOutBS.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.WaybillDetOutBS_ListChanged);
             // 
             // WaybillDetOutGridView

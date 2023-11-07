@@ -107,6 +107,8 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -134,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -254,7 +257,7 @@
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 160);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
-            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1107, 24);
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(1200, 24);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // barDockControlTop
@@ -263,7 +266,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1107, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1200, 24);
             // 
             // barDockControlBottom
             // 
@@ -271,7 +274,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 676);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1107, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1200, 0);
             // 
             // barDockControlLeft
             // 
@@ -285,7 +288,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1107, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1200, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 652);
             // 
@@ -297,7 +300,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1107, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1200, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // WBImgList
@@ -384,11 +387,13 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(1107, 136);
+            this.panel1.Size = new System.Drawing.Size(1200, 136);
             this.panel1.TabIndex = 24;
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.DriversLookUpEdit);
+            this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.CarsLookUpEdit);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl10);
@@ -403,13 +408,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1097, 126);
+            this.panelControl1.Size = new System.Drawing.Size(1190, 126);
             this.panelControl1.TabIndex = 0;
             // 
             // CarsLookUpEdit
             // 
             this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CarsLookUpEdit.Location = new System.Drawing.Point(592, 52);
+            this.CarsLookUpEdit.Location = new System.Drawing.Point(567, 48);
             this.CarsLookUpEdit.Name = "CarsLookUpEdit";
             this.CarsLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -433,7 +438,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(533, 54);
+            this.labelControl3.Location = new System.Drawing.Point(508, 51);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -442,7 +447,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(538, 90);
+            this.labelControl10.Location = new System.Drawing.Point(871, 51);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(48, 16);
             this.labelControl10.StyleController = this.styleController1;
@@ -453,7 +458,7 @@
             // 
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "PersonId", true));
             this.PersonComboBox.Enabled = false;
-            this.PersonComboBox.Location = new System.Drawing.Point(592, 86);
+            this.PersonComboBox.Location = new System.Drawing.Point(925, 48);
             this.PersonComboBox.Name = "PersonComboBox";
             editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -465,7 +470,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(273, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(252, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 60;
             // 
@@ -574,14 +579,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 624);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1107, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1200, 52);
             this.panelControl2.TabIndex = 26;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(885, 10);
+            this.OkButton.Location = new System.Drawing.Point(978, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -591,7 +596,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(995, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(1088, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -637,7 +642,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1});
-            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1107, 440);
+            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1200, 440);
             this.ExpeditionDetGridControl.TabIndex = 38;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionDetGridView});
@@ -795,11 +800,40 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(508, 91);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(36, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 64;
+            this.labelControl4.Text = "Водій:";
+            // 
+            // DriversLookUpEdit
+            // 
+            this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DriversLookUpEdit.Location = new System.Drawing.Point(567, 88);
+            this.DriversLookUpEdit.Name = "DriversLookUpEdit";
+            this.DriversLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DriversLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.DriversLookUpEdit.Properties.DisplayMember = "Name";
+            this.DriversLookUpEdit.Properties.NullText = "";
+            this.DriversLookUpEdit.Properties.PopupSizeable = false;
+            this.DriversLookUpEdit.Properties.ShowFooter = false;
+            this.DriversLookUpEdit.Properties.ShowHeader = false;
+            this.DriversLookUpEdit.Properties.ValueMember = "KaId";
+            this.DriversLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DriversLookUpEdit_Properties_ButtonClick);
+            this.DriversLookUpEdit.Size = new System.Drawing.Size(273, 22);
+            this.DriversLookUpEdit.StyleController = this.styleController1;
+            this.DriversLookUpEdit.TabIndex = 65;
+            // 
             // frmExpedition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1107, 676);
+            this.ClientSize = new System.Drawing.Size(1200, 676);
             this.Controls.Add(this.ExpeditionDetGridControl);
             this.Controls.Add(this.standaloneBarDockControl2);
             this.Controls.Add(this.panel1);
@@ -845,6 +879,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -914,5 +949,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LookUpEdit DriversLookUpEdit;
     }
 }

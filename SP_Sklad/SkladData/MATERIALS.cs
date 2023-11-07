@@ -39,6 +39,7 @@ namespace SP_Sklad.SkladData
             this.KAgentMatPrices = new HashSet<KAgentMatPrices>();
             this.DeboningWeighing = new HashSet<DeboningWeighing>();
             this.ExpeditionMaterialsDet = new HashSet<ExpeditionMaterialsDet>();
+            this.UserQuickMaterials = new HashSet<UserQuickMaterials>();
         }
     
         public int MatId { get; set; }
@@ -107,5 +108,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<KAgentMatPrices> KAgentMatPrices { get; set; }
         public virtual ICollection<DeboningWeighing> DeboningWeighing { get; set; }
         public virtual ICollection<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
+        public virtual ICollection<UserQuickMaterials> UserQuickMaterials { get; set; }
     }
 }

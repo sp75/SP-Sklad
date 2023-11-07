@@ -30,5 +30,8 @@ namespace SP_Sklad.SkladData
         public System.Guid CarId { get; set; }
         public Nullable<decimal> TotalKilograms { get; set; }
         public string DriverName { get; set; }
+        public Nullable<int> DriverId { get; set; }
+        public Nullable<int> RouteId { get; set; }
+        public string RouteName { get; set; }
     }
 }

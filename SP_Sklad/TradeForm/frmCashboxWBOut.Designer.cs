@@ -90,6 +90,22 @@
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.UserQuickMaterialsPanel = new System.Windows.Forms.Panel();
+            this.QuickBtn14 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn13 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn12 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn11 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn10 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn9 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn8 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn7 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn6 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn5 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn4 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn3 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn1 = new DevExpress.XtraEditors.SimpleButton();
+            this.QuickBtn2 = new DevExpress.XtraEditors.SimpleButton();
             this.NumPadPanel = new System.Windows.Forms.Panel();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton12 = new DevExpress.XtraEditors.SimpleButton();
@@ -146,6 +162,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.WhMatGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.UserQuickMaterialsPanel.SuspendLayout();
             this.NumPadPanel.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
@@ -456,7 +474,7 @@
             this.panel5.Controls.Add(this.panel8);
             this.panel5.Controls.Add(this.splitterControl1);
             this.panel5.Controls.Add(this.panel9);
-            this.panel5.Controls.Add(this.NumPadPanel);
+            this.panel5.Controls.Add(this.panel1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(5, 178);
             this.panel5.Name = "panel5";
@@ -470,7 +488,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(1117, 314);
+            this.panel8.Size = new System.Drawing.Size(1114, 351);
             this.panel8.TabIndex = 24;
             // 
             // WaybillDetOutGridControl
@@ -486,7 +504,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1107, 304);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1104, 341);
             this.WaybillDetOutGridControl.TabIndex = 23;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -705,9 +723,9 @@
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitterControl1.Location = new System.Drawing.Point(0, 314);
+            this.splitterControl1.Location = new System.Drawing.Point(0, 351);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1117, 10);
+            this.splitterControl1.Size = new System.Drawing.Size(1114, 10);
             this.splitterControl1.TabIndex = 37;
             this.splitterControl1.TabStop = false;
             this.splitterControl1.Visible = false;
@@ -716,10 +734,10 @@
             // 
             this.panel9.Controls.Add(this.WhMatGridControl);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(0, 324);
+            this.panel9.Location = new System.Drawing.Point(0, 361);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(1117, 271);
+            this.panel9.Size = new System.Drawing.Size(1114, 234);
             this.panel9.TabIndex = 25;
             this.panel9.Visible = false;
             // 
@@ -732,7 +750,7 @@
             this.WhMatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox5});
-            this.WhMatGridControl.Size = new System.Drawing.Size(1107, 261);
+            this.WhMatGridControl.Size = new System.Drawing.Size(1104, 224);
             this.WhMatGridControl.TabIndex = 1;
             this.WhMatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhMatGridView});
@@ -878,6 +896,235 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
             this.repositoryItemImageComboBox5.Name = "repositoryItemImageComboBox5";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.UserQuickMaterialsPanel);
+            this.panel1.Controls.Add(this.NumPadPanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1114, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(317, 595);
+            this.panel1.TabIndex = 38;
+            // 
+            // UserQuickMaterialsPanel
+            // 
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn14);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn13);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn12);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn11);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn10);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn9);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn8);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn7);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn6);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn5);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn4);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn3);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn1);
+            this.UserQuickMaterialsPanel.Controls.Add(this.QuickBtn2);
+            this.UserQuickMaterialsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserQuickMaterialsPanel.Location = new System.Drawing.Point(0, 293);
+            this.UserQuickMaterialsPanel.Name = "UserQuickMaterialsPanel";
+            this.UserQuickMaterialsPanel.Size = new System.Drawing.Size(317, 302);
+            this.UserQuickMaterialsPanel.TabIndex = 31;
+            this.UserQuickMaterialsPanel.Visible = false;
+            // 
+            // QuickBtn14
+            // 
+            this.QuickBtn14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn14.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn14.Appearance.Options.UseFont = true;
+            this.QuickBtn14.Location = new System.Drawing.Point(163, 258);
+            this.QuickBtn14.Name = "QuickBtn14";
+            this.QuickBtn14.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn14.TabIndex = 50;
+            this.QuickBtn14.TabStop = false;
+            this.QuickBtn14.Text = "0";
+            this.QuickBtn14.Visible = false;
+            this.QuickBtn14.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn13
+            // 
+            this.QuickBtn13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn13.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn13.Appearance.Options.UseFont = true;
+            this.QuickBtn13.Location = new System.Drawing.Point(9, 258);
+            this.QuickBtn13.Name = "QuickBtn13";
+            this.QuickBtn13.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn13.TabIndex = 49;
+            this.QuickBtn13.TabStop = false;
+            this.QuickBtn13.Text = "0";
+            this.QuickBtn13.Visible = false;
+            this.QuickBtn13.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn12
+            // 
+            this.QuickBtn12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn12.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn12.Appearance.Options.UseFont = true;
+            this.QuickBtn12.Location = new System.Drawing.Point(163, 216);
+            this.QuickBtn12.Name = "QuickBtn12";
+            this.QuickBtn12.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn12.TabIndex = 48;
+            this.QuickBtn12.TabStop = false;
+            this.QuickBtn12.Text = "0";
+            this.QuickBtn12.Visible = false;
+            this.QuickBtn12.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn11
+            // 
+            this.QuickBtn11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn11.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn11.Appearance.Options.UseFont = true;
+            this.QuickBtn11.Location = new System.Drawing.Point(9, 216);
+            this.QuickBtn11.Name = "QuickBtn11";
+            this.QuickBtn11.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn11.TabIndex = 47;
+            this.QuickBtn11.TabStop = false;
+            this.QuickBtn11.Text = "0";
+            this.QuickBtn11.Visible = false;
+            this.QuickBtn11.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn10
+            // 
+            this.QuickBtn10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn10.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn10.Appearance.Options.UseFont = true;
+            this.QuickBtn10.Location = new System.Drawing.Point(163, 174);
+            this.QuickBtn10.Name = "QuickBtn10";
+            this.QuickBtn10.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn10.TabIndex = 46;
+            this.QuickBtn10.TabStop = false;
+            this.QuickBtn10.Text = "0";
+            this.QuickBtn10.Visible = false;
+            this.QuickBtn10.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn9
+            // 
+            this.QuickBtn9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn9.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn9.Appearance.Options.UseFont = true;
+            this.QuickBtn9.Location = new System.Drawing.Point(9, 174);
+            this.QuickBtn9.Name = "QuickBtn9";
+            this.QuickBtn9.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn9.TabIndex = 45;
+            this.QuickBtn9.TabStop = false;
+            this.QuickBtn9.Text = "0";
+            this.QuickBtn9.Visible = false;
+            this.QuickBtn9.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn8
+            // 
+            this.QuickBtn8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn8.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn8.Appearance.Options.UseFont = true;
+            this.QuickBtn8.Location = new System.Drawing.Point(163, 132);
+            this.QuickBtn8.Name = "QuickBtn8";
+            this.QuickBtn8.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn8.TabIndex = 44;
+            this.QuickBtn8.TabStop = false;
+            this.QuickBtn8.Text = "0";
+            this.QuickBtn8.Visible = false;
+            this.QuickBtn8.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn7
+            // 
+            this.QuickBtn7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn7.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn7.Appearance.Options.UseFont = true;
+            this.QuickBtn7.Location = new System.Drawing.Point(9, 132);
+            this.QuickBtn7.Name = "QuickBtn7";
+            this.QuickBtn7.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn7.TabIndex = 43;
+            this.QuickBtn7.TabStop = false;
+            this.QuickBtn7.Text = "0";
+            this.QuickBtn7.Visible = false;
+            this.QuickBtn7.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn6
+            // 
+            this.QuickBtn6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn6.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn6.Appearance.Options.UseFont = true;
+            this.QuickBtn6.Location = new System.Drawing.Point(163, 90);
+            this.QuickBtn6.Name = "QuickBtn6";
+            this.QuickBtn6.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn6.TabIndex = 42;
+            this.QuickBtn6.TabStop = false;
+            this.QuickBtn6.Text = "0";
+            this.QuickBtn6.Visible = false;
+            this.QuickBtn6.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn5
+            // 
+            this.QuickBtn5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn5.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn5.Appearance.Options.UseFont = true;
+            this.QuickBtn5.Location = new System.Drawing.Point(9, 90);
+            this.QuickBtn5.Name = "QuickBtn5";
+            this.QuickBtn5.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn5.TabIndex = 41;
+            this.QuickBtn5.TabStop = false;
+            this.QuickBtn5.Text = "0";
+            this.QuickBtn5.Visible = false;
+            this.QuickBtn5.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn4
+            // 
+            this.QuickBtn4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn4.Appearance.Options.UseFont = true;
+            this.QuickBtn4.Location = new System.Drawing.Point(163, 48);
+            this.QuickBtn4.Name = "QuickBtn4";
+            this.QuickBtn4.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn4.TabIndex = 40;
+            this.QuickBtn4.TabStop = false;
+            this.QuickBtn4.Text = "0";
+            this.QuickBtn4.Visible = false;
+            this.QuickBtn4.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn3
+            // 
+            this.QuickBtn3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn3.Appearance.Options.UseFont = true;
+            this.QuickBtn3.Location = new System.Drawing.Point(9, 48);
+            this.QuickBtn3.Name = "QuickBtn3";
+            this.QuickBtn3.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn3.TabIndex = 39;
+            this.QuickBtn3.TabStop = false;
+            this.QuickBtn3.Text = "0";
+            this.QuickBtn3.Visible = false;
+            this.QuickBtn3.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn1
+            // 
+            this.QuickBtn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn1.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn1.Appearance.Options.UseFont = true;
+            this.QuickBtn1.Location = new System.Drawing.Point(9, 6);
+            this.QuickBtn1.Name = "QuickBtn1";
+            this.QuickBtn1.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn1.TabIndex = 38;
+            this.QuickBtn1.TabStop = false;
+            this.QuickBtn1.Text = "0";
+            this.QuickBtn1.Visible = false;
+            this.QuickBtn1.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
+            // QuickBtn2
+            // 
+            this.QuickBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.QuickBtn2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.QuickBtn2.Appearance.Options.UseFont = true;
+            this.QuickBtn2.Location = new System.Drawing.Point(163, 6);
+            this.QuickBtn2.Name = "QuickBtn2";
+            this.QuickBtn2.Size = new System.Drawing.Size(148, 36);
+            this.QuickBtn2.TabIndex = 37;
+            this.QuickBtn2.TabStop = false;
+            this.QuickBtn2.Text = "0";
+            this.QuickBtn2.Visible = false;
+            this.QuickBtn2.Click += new System.EventHandler(this.QuickSimpleButton_Click);
+            // 
             // NumPadPanel
             // 
             this.NumPadPanel.Controls.Add(this.simpleButton4);
@@ -896,11 +1143,11 @@
             this.NumPadPanel.Controls.Add(this.simpleButton5);
             this.NumPadPanel.Controls.Add(this.btn8);
             this.NumPadPanel.Controls.Add(this.simpleButton3);
-            this.NumPadPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.NumPadPanel.Location = new System.Drawing.Point(1117, 0);
+            this.NumPadPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.NumPadPanel.Location = new System.Drawing.Point(0, 0);
             this.NumPadPanel.Name = "NumPadPanel";
             this.NumPadPanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.NumPadPanel.Size = new System.Drawing.Size(314, 595);
+            this.NumPadPanel.Size = new System.Drawing.Size(317, 293);
             this.NumPadPanel.TabIndex = 30;
             // 
             // simpleButton4
@@ -908,7 +1155,7 @@
             this.simpleButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton4.Appearance.Options.UseFont = true;
-            this.simpleButton4.Location = new System.Drawing.Point(160, 218);
+            this.simpleButton4.Location = new System.Drawing.Point(163, 218);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Size = new System.Drawing.Size(71, 65);
             this.simpleButton4.TabIndex = 39;
@@ -921,7 +1168,7 @@
             this.simpleButton12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton12.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton12.Appearance.Options.UseFont = true;
-            this.simpleButton12.Location = new System.Drawing.Point(237, 218);
+            this.simpleButton12.Location = new System.Drawing.Point(240, 218);
             this.simpleButton12.Name = "simpleButton12";
             this.simpleButton12.Size = new System.Drawing.Size(71, 65);
             this.simpleButton12.TabIndex = 38;
@@ -934,7 +1181,7 @@
             this.simpleButton13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton13.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton13.Appearance.Options.UseFont = true;
-            this.simpleButton13.Location = new System.Drawing.Point(83, 218);
+            this.simpleButton13.Location = new System.Drawing.Point(86, 218);
             this.simpleButton13.Name = "simpleButton13";
             this.simpleButton13.Size = new System.Drawing.Size(71, 65);
             this.simpleButton13.TabIndex = 37;
@@ -947,7 +1194,7 @@
             this.simpleButton14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton14.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton14.Appearance.Options.UseFont = true;
-            this.simpleButton14.Location = new System.Drawing.Point(6, 218);
+            this.simpleButton14.Location = new System.Drawing.Point(9, 218);
             this.simpleButton14.Name = "simpleButton14";
             this.simpleButton14.Size = new System.Drawing.Size(71, 65);
             this.simpleButton14.TabIndex = 36;
@@ -960,7 +1207,7 @@
             this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton15.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton15.Appearance.Options.UseFont = true;
-            this.simpleButton15.Location = new System.Drawing.Point(160, 148);
+            this.simpleButton15.Location = new System.Drawing.Point(163, 148);
             this.simpleButton15.Name = "simpleButton15";
             this.simpleButton15.Size = new System.Drawing.Size(71, 65);
             this.simpleButton15.TabIndex = 35;
@@ -973,7 +1220,7 @@
             this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton16.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton16.Appearance.Options.UseFont = true;
-            this.simpleButton16.Location = new System.Drawing.Point(237, 148);
+            this.simpleButton16.Location = new System.Drawing.Point(240, 148);
             this.simpleButton16.Name = "simpleButton16";
             this.simpleButton16.Size = new System.Drawing.Size(71, 65);
             this.simpleButton16.TabIndex = 34;
@@ -986,7 +1233,7 @@
             this.simpleButton17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton17.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton17.Appearance.Options.UseFont = true;
-            this.simpleButton17.Location = new System.Drawing.Point(83, 148);
+            this.simpleButton17.Location = new System.Drawing.Point(86, 148);
             this.simpleButton17.Name = "simpleButton17";
             this.simpleButton17.Size = new System.Drawing.Size(71, 65);
             this.simpleButton17.TabIndex = 33;
@@ -999,7 +1246,7 @@
             this.simpleButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton18.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton18.Appearance.Options.UseFont = true;
-            this.simpleButton18.Location = new System.Drawing.Point(6, 148);
+            this.simpleButton18.Location = new System.Drawing.Point(9, 148);
             this.simpleButton18.Name = "simpleButton18";
             this.simpleButton18.Size = new System.Drawing.Size(71, 65);
             this.simpleButton18.TabIndex = 32;
@@ -1012,7 +1259,7 @@
             this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Location = new System.Drawing.Point(160, 77);
+            this.simpleButton7.Location = new System.Drawing.Point(163, 77);
             this.simpleButton7.Name = "simpleButton7";
             this.simpleButton7.Size = new System.Drawing.Size(71, 65);
             this.simpleButton7.TabIndex = 31;
@@ -1025,7 +1272,7 @@
             this.SetPriceBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SetPriceBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.SetPriceBtn.Appearance.Options.UseFont = true;
-            this.SetPriceBtn.Location = new System.Drawing.Point(237, 77);
+            this.SetPriceBtn.Location = new System.Drawing.Point(240, 77);
             this.SetPriceBtn.Name = "SetPriceBtn";
             this.SetPriceBtn.Size = new System.Drawing.Size(71, 65);
             this.SetPriceBtn.TabIndex = 30;
@@ -1038,7 +1285,7 @@
             this.simpleButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton9.Appearance.Options.UseFont = true;
-            this.simpleButton9.Location = new System.Drawing.Point(83, 77);
+            this.simpleButton9.Location = new System.Drawing.Point(86, 77);
             this.simpleButton9.Name = "simpleButton9";
             this.simpleButton9.Size = new System.Drawing.Size(71, 65);
             this.simpleButton9.TabIndex = 29;
@@ -1051,7 +1298,7 @@
             this.simpleButton10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton10.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton10.Appearance.Options.UseFont = true;
-            this.simpleButton10.Location = new System.Drawing.Point(6, 77);
+            this.simpleButton10.Location = new System.Drawing.Point(9, 77);
             this.simpleButton10.Name = "simpleButton10";
             this.simpleButton10.Size = new System.Drawing.Size(71, 65);
             this.simpleButton10.TabIndex = 28;
@@ -1064,7 +1311,7 @@
             this.simpleButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Location = new System.Drawing.Point(160, 6);
+            this.simpleButton6.Location = new System.Drawing.Point(163, 6);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(71, 65);
             this.simpleButton6.TabIndex = 27;
@@ -1077,7 +1324,7 @@
             this.simpleButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Location = new System.Drawing.Point(237, 6);
+            this.simpleButton5.Location = new System.Drawing.Point(240, 6);
             this.simpleButton5.Name = "simpleButton5";
             this.simpleButton5.Size = new System.Drawing.Size(71, 65);
             this.simpleButton5.TabIndex = 26;
@@ -1090,7 +1337,7 @@
             this.btn8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn8.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.btn8.Appearance.Options.UseFont = true;
-            this.btn8.Location = new System.Drawing.Point(83, 6);
+            this.btn8.Location = new System.Drawing.Point(86, 6);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(71, 65);
             this.btn8.TabIndex = 25;
@@ -1103,7 +1350,7 @@
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
             this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Location = new System.Drawing.Point(6, 6);
+            this.simpleButton3.Location = new System.Drawing.Point(9, 6);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(71, 65);
             this.simpleButton3.TabIndex = 24;
@@ -1130,21 +1377,24 @@
             this.simpleButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton24.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton24.Appearance.Options.UseFont = true;
-            this.simpleButton24.Location = new System.Drawing.Point(1190, 79);
+            this.simpleButton24.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton24.ImageOptions.Image")));
+            this.simpleButton24.Location = new System.Drawing.Point(1211, 79);
             this.simpleButton24.Name = "simpleButton24";
-            this.simpleButton24.Size = new System.Drawing.Size(97, 39);
+            this.simpleButton24.Size = new System.Drawing.Size(114, 39);
             this.simpleButton24.TabIndex = 46;
             this.simpleButton24.TabStop = false;
             this.simpleButton24.Text = "Бистрі товари";
+            this.simpleButton24.Click += new System.EventHandler(this.simpleButton24_Click);
             // 
             // simpleButton2
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
             this.simpleButton2.Location = new System.Drawing.Point(1123, 79);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(61, 39);
+            this.simpleButton2.Size = new System.Drawing.Size(82, 39);
             this.simpleButton2.TabIndex = 45;
             this.simpleButton2.TabStop = false;
             this.simpleButton2.Text = "Клавіши";
@@ -1335,6 +1585,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.WhMatGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.UserQuickMaterialsPanel.ResumeLayout(false);
             this.NumPadPanel.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
@@ -1447,5 +1699,21 @@
         private DevExpress.XtraEditors.SimpleButton CashboxBtn;
         private DevExpress.XtraEditors.SimpleButton simpleButton24;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel UserQuickMaterialsPanel;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn14;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn13;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn12;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn11;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn10;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn9;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn8;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn7;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn6;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn5;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn4;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn3;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn1;
+        private DevExpress.XtraEditors.SimpleButton QuickBtn2;
     }
 }
