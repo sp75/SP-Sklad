@@ -112,6 +112,8 @@ namespace SP_Sklad.WBDetForm
         {
             isNewRecord = false;
 
+            _db.SetDocRel(_ex.Id,  _db.WaybillList.Find(_wb_id).Id);
+
             //    if (_db.Entry<ExpeditionDet>(det).State == EntityState.Detached)
             //     {
             //        _db.ExpeditionDet.Add(det);

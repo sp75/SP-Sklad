@@ -13,6 +13,7 @@ using SP_Sklad.Common;
 using SP_Sklad.WBForm;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.UserControls
 {
@@ -30,7 +31,8 @@ namespace SP_Sklad.UserControls
 
         private UserAccess user_access { get; set; }
 
-        int row = 0;
+        private Guid prev_focused_id = Guid.Empty;
+        public Guid? find_id;
         bool restore = false;
         public ExpeditionUserControl()
         {
@@ -39,7 +41,17 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
-            row = ExpeditionsGridView.FocusedRowHandle;
+            if (row_exp != null && !find_id.HasValue)
+            {
+                prev_focused_id = row_exp.Id;
+            }
+
+            if(find_id.HasValue)
+            {
+                prev_focused_id = find_id.Value;
+                find_id = null;
+            }
+
             restore = true;
 
             ExpeditionsGridControl.DataSource = null;
@@ -102,13 +114,18 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (!restore)
+            if (row_exp == null || !restore)
             {
                 return;
             }
 
-            ExpeditionsGridView.TopRowIndex = row;
-            ExpeditionsGridView.FocusedRowHandle = row;
+            int rowHandle = ExpeditionsGridView.LocateByValue("Id", prev_focused_id);
+            if (rowHandle != GridControl.InvalidRowHandle)
+            {
+                ExpeditionsGridView.FocusedRowHandle = rowHandle;
+                ExpeditionsGridView.TopRowIndex = rowHandle;
+            }
+
             restore = false;
         }
 
@@ -164,5 +181,6 @@ namespace SP_Sklad.UserControls
         {
             FindDoc.Find(row_smp_det.WaybillListId, -1, row_smp_det.OnDate);
         }
+
     }
 }

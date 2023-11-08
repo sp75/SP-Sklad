@@ -1225,6 +1225,7 @@
             this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
             this.GridImageList.Images.SetKeyName(46, "management2.png");
             this.GridImageList.Images.SetKeyName(47, "ActServices.png");
+            this.GridImageList.Images.SetKeyName(48, "truck (1).png");
             // 
             // gridColumn2
             // 
@@ -2125,7 +2126,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 46)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 46),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 32, 48)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 
@@ -8132,8 +8134,8 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage31;
         private UserControls.SettingMaterialPricesUserControl settingMaterialPricesUserControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
-        private UserControls.ExpeditionUserControl expeditionUserControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
+        public UserControls.ExpeditionUserControl expeditionUserControl1;
     }
 }

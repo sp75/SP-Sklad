@@ -62,6 +62,7 @@
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.ExpeditionDetGridControl = new DevExpress.XtraGrid.GridControl();
@@ -82,7 +83,6 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -462,6 +462,15 @@
             this.gridColumn11.VisibleIndex = 7;
             this.gridColumn11.Width = 76;
             // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "Водій";
+            this.gridColumn13.FieldName = "DriverName";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 6;
+            this.gridColumn13.Width = 160;
+            // 
             // xtraTabControl3
             // 
             this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -662,15 +671,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Водій";
-            this.gridColumn13.FieldName = "DriverName";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 6;
-            this.gridColumn13.Width = 160;
             // 
             // ExpeditionUserControl
             // 

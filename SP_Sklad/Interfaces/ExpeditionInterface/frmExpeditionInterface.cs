@@ -128,6 +128,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             public decimal TareWeight { get; set; }
             public int? DriverId { get; set; }
             public int? RouteId { get; set; }
+            public Guid Id { get; set; }
         }
 
         private WbIfo GetWbInfo(int wbill_id)
@@ -146,6 +147,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     Measures = msr_list,
                     WbAmount = _db.WaybillDet.Where(w => w.WbillId == wbill_id && w.Materials.MId == mid).Select(s => s.Amount).ToList().Sum(),
                     TareWeight = _db.WayBillTmc.Where(w => w.WbillId == wbill_id).Select(s => s.Amount * s.Materials.Weight ?? 0).ToList().Sum(),
+                    Id = wb.Id
                 };
             }
             else
@@ -158,25 +160,25 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void Add(int wbill_id)
         {
-            var info = GetWbInfo(wbill_id);
-            if (info != null)
+            var wb_info = GetWbInfo(wbill_id);
+            if (wb_info != null)
             {
                 using (var nf = new frmNumKeyboard())
                 {
                     nf.Text = "К-сть товару з тарою";
                     if (nf.ShowDialog() == DialogResult.OK)
                     {
-                        exp.CarId = info.CarId.HasValue ? info.CarId.Value : exp.CarId;
+                        exp.CarId = wb_info.CarId.HasValue ? wb_info.CarId.Value : exp.CarId;
                         CarsLookUpEdit.EditValue = exp.CarId;
 
-                        exp.DriverId = info.DriverId.HasValue ? info.DriverId.Value : exp.DriverId;
+                        exp.DriverId = wb_info.DriverId.HasValue ? wb_info.DriverId.Value : exp.DriverId;
                         DriverEdit.EditValue = exp.DriverId;
 
-                        exp.RouteId = info.RouteId;
+                        exp.RouteId = wb_info.RouteId;
 
-                        var mid = info.Measures.FirstOrDefault()?.MId;
+                        var mid = wb_info.Measures.FirstOrDefault()?.MId;
 
-                        var verified_weight_without_tare = mid == 2 ? nf.numKeyboardUserControl2.Value - info.TareWeight : nf.numKeyboardUserControl2.Value;
+                        var verified_weight_without_tare = mid == 2 ? nf.numKeyboardUserControl2.Value - wb_info.TareWeight : nf.numKeyboardUserControl2.Value;
                         var new_id = Guid.NewGuid();
 
                         var new_det = _db.ExpeditionDet.Add(new ExpeditionDet
@@ -188,11 +190,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                             WbillId = wbill_id,
                             MId = mid,
                             Checked = 1,
-                            WbAmount = info.WbAmount,
-                            TareWeight = info.TareWeight,
+                            WbAmount = wb_info.WbAmount,
+                            TareWeight = wb_info.TareWeight,
                             TareQuantity = _db.WayBillTmc.Where(w => w.WbillId == wbill_id).Select(s => s.Amount).ToList().Sum(),
-                            TotalWeight = verified_weight_without_tare - info.WbAmount
+                            TotalWeight = verified_weight_without_tare - wb_info.WbAmount
                         });
+                        _db.SetDocRel(exp.Id, wb_info.Id);
 
                         _db.SaveChanges();
 

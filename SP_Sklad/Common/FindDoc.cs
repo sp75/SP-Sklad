@@ -219,6 +219,14 @@ namespace SP_Sklad.Common
                         _manufacturing_user_control.ProductionPlansGridView.FocusedRowHandle = rowHandle3;
                     }
                     break;
+
+                case 32:
+                    PageIndex = 0;
+
+                    mainForm.main_form.docsUserControl1.expeditionUserControl1.find_id = _doc_id;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 145);
+
+                    break;
             }
         }
     }
