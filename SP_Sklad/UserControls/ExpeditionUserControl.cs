@@ -77,6 +77,15 @@ namespace SP_Sklad.UserControls
             PrintBtn.Enabled = (row_exp != null);
 
             GetDetailData();
+
+            if (row_exp != null)
+            {
+                ucRelDocGrid1.GetRelDoc(row_exp.Id);
+            }
+            else
+            {
+                ucRelDocGrid1.GetRelDoc(Guid.Empty);
+            }
         }
 
 
@@ -139,7 +148,7 @@ namespace SP_Sklad.UserControls
             if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
-                SettingMaterialPricesPopupMenu.ShowPopup(p2);
+                ExpeditionsPopupMenu.ShowPopup(p2);
             }
         }
 
@@ -173,7 +182,7 @@ namespace SP_Sklad.UserControls
             if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
-                SettingMaterialPricesDetPopupMenu.ShowPopup(p2);
+                ExpeditionsDetPopupMenu.ShowPopup(p2);
             }
         }
 
@@ -182,5 +191,10 @@ namespace SP_Sklad.UserControls
             FindDoc.Find(row_smp_det.WaybillListId, -1, row_smp_det.OnDate);
         }
 
+        private void ExpeditionsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            var list = DB.SkladBase().v_Expedition.AsQueryable();
+            e.QueryableSource = list;
+        }
     }
 }

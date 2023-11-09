@@ -945,26 +945,6 @@ namespace SP_Sklad.MainTabs
             //     }
         }
 
-        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            FindDoc.Find(row.Id, row.DocType, row.OnDate);
-        }
-
-        private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                BottomPopupMenu.ShowPopup(p2);
-            }
-        }
-
-        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
-        }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
@@ -973,16 +953,17 @@ namespace SP_Sklad.MainTabs
 
             if (focused_row != null)
             {
+               
                 using (var db = DB.SkladBase())
                 {
                     WaybillDetGridControl.DataSource = db.GetWaybillDetIn(focused_row.WBillId).ToList();
-                    gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid1.GetRelDoc(focused_row.Id);
                 }
             }
             else
             {
                 WaybillDetGridControl.DataSource = null;
-                gridControl3.DataSource = null;
+                ucRelDocGrid1.GetRelDoc(Guid.Empty);
             }
 
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -1311,6 +1292,11 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem17_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_tree_node == null)
+            {
+                return;
+            }
+
             switch (focused_tree_node.GType)
             {
                 case 1:

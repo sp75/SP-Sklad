@@ -380,6 +380,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void checkEdit1_EditValueChanged(object sender, EventArgs e)
         {
+            if(focused_row == null)
+            {
+                return;
+            }
+
             _db.SaveChanges();
 
             focused_row.Checked = Convert.ToInt32( checkEdit1.Checked);

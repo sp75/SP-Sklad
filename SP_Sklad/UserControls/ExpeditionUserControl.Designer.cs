@@ -33,7 +33,6 @@
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -81,8 +80,10 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
+            this.ExpeditionsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ExpeditionsDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -103,15 +104,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionsPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionsDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl4
             // 
             this.splitContainerControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl4.Horizontal = false;
-            this.splitContainerControl4.Location = new System.Drawing.Point(0, 20);
+            this.splitContainerControl4.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl4.Name = "splitContainerControl4";
             // 
             // splitContainerControl4.Panel1
@@ -124,7 +126,7 @@
             // 
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 608);
+            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 628);
             this.splitContainerControl4.SplitterPosition = 354;
             this.splitContainerControl4.TabIndex = 9;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -142,8 +144,6 @@
             // 
             // barManager1
             // 
-            this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -166,24 +166,13 @@
             this.barButtonItem1});
             this.barManager1.MaxItemId = 32;
             // 
-            // bar1
-            // 
-            this.bar1.BarName = "Custom 1";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.OptionsBar.UseWholeRow = true;
-            this.bar1.Text = "Custom 1";
-            this.bar1.Visible = false;
-            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1248, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1248, 0);
             // 
             // barDockControlBottom
             // 
@@ -197,24 +186,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 628);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1248, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1248, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 628);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 20);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1248, 0);
@@ -225,7 +214,7 @@
             this.standaloneBarDockControl3.AutoSize = true;
             this.standaloneBarDockControl3.CausesValidation = false;
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 20);
+            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
             this.standaloneBarDockControl3.Size = new System.Drawing.Size(1248, 0);
@@ -353,7 +342,7 @@
             this.ExpeditionsSource.DefaultSorting = "OnDate DESC";
             this.ExpeditionsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_Expedition);
             this.ExpeditionsSource.KeyExpression = "Id";
-            this.ExpeditionsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
+            this.ExpeditionsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ExpeditionsSource_GetQueryable);
             // 
             // ExpeditionsGridView
             // 
@@ -477,16 +466,17 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 244);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 264);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage14});
+            this.xtraTabPage14,
+            this.xtraTabPage1});
             // 
             // xtraTabPage14
             // 
             this.xtraTabPage14.Controls.Add(this.ExpeditionDetGridControl);
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 219);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 239);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // ExpeditionDetGridControl
@@ -500,7 +490,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1});
-            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 219);
+            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 239);
             this.ExpeditionDetGridControl.TabIndex = 2;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionDetGridView});
@@ -652,9 +642,24 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
-            // SettingMaterialPricesPopupMenu
+            // xtraTabPage1
             // 
-            this.SettingMaterialPricesPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.xtraTabPage1.Controls.Add(this.ucRelDocGrid1);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1246, 239);
+            this.xtraTabPage1.Text = "Зв\'язані документи";
+            // 
+            // ucRelDocGrid1
+            // 
+            this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
+            this.ucRelDocGrid1.Name = "ucRelDocGrid1";
+            this.ucRelDocGrid1.Size = new System.Drawing.Size(1246, 239);
+            this.ucRelDocGrid1.TabIndex = 0;
+            // 
+            // ExpeditionsPopupMenu
+            // 
+            this.ExpeditionsPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
@@ -662,15 +667,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
-            this.SettingMaterialPricesPopupMenu.Manager = this.barManager1;
-            this.SettingMaterialPricesPopupMenu.Name = "SettingMaterialPricesPopupMenu";
+            this.ExpeditionsPopupMenu.Manager = this.barManager1;
+            this.ExpeditionsPopupMenu.Name = "ExpeditionsPopupMenu";
             // 
-            // SettingMaterialPricesDetPopupMenu
+            // ExpeditionsDetPopupMenu
             // 
-            this.SettingMaterialPricesDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.ExpeditionsDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
-            this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
-            this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
+            this.ExpeditionsDetPopupMenu.Manager = this.barManager1;
+            this.ExpeditionsDetPopupMenu.Name = "ExpeditionsDetPopupMenu";
             // 
             // ExpeditionUserControl
             // 
@@ -707,8 +712,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetPopupMenu)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionsPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionsDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -754,11 +760,10 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.PopupMenu SettingMaterialPricesPopupMenu;
-        private DevExpress.XtraBars.PopupMenu SettingMaterialPricesDetPopupMenu;
+        private DevExpress.XtraBars.PopupMenu ExpeditionsPopupMenu;
+        private DevExpress.XtraBars.PopupMenu ExpeditionsDetPopupMenu;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
@@ -769,5 +774,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private ucRelDocGrid ucRelDocGrid1;
     }
 }

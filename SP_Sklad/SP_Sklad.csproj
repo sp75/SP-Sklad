@@ -1209,6 +1209,12 @@
     <Compile Include="UserControls\SettingMaterialPricesUserControl.Designer.cs">
       <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucRelDocGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucRelDocGrid.Designer.cs">
+      <DependentUpon>ucRelDocGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WaybillTemplateUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2309,6 +2315,9 @@
     <EmbeddedResource Include="UserControls\SettingMaterialPricesUserControl.resx">
       <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
+      <DependentUpon>ucRelDocGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -2673,6 +2682,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPosOut_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetPriceListDet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.GetRelDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradePayDocList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTradeWayBillList_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.GetTaraList_Result.datasource" />

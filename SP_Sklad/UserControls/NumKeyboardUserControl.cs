@@ -42,14 +42,18 @@ namespace SP_Sklad.UserControls
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            Value = string.IsNullOrEmpty(_amount_edit.Text) ? 0 : Convert.ToDecimal(_amount_edit.Text.Replace(',', '.'), new CultureInfo("en-US"));
-
-            if (_amount_edit != null)
+        /*    if (_amount_edit != null)
             {
-                _amount_edit.Value = Value;
+                Value = _amount_edit.Value;
             }
+            else
+            {
+                Value = string.IsNullOrEmpty(_amount_edit.Text) ? 0 : Convert.ToDecimal(_amount_edit.Text.Replace(" ", "").Replace(',', '.'), new CultureInfo("en-US"));
+            }*/
 
-           ((XtraForm)this.Parent).Close();
+            Value = _amount_edit.Value;
+
+            ((XtraForm)this.Parent).Close();
         }
     }
 }

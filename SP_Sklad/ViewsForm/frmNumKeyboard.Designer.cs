@@ -98,7 +98,6 @@
         }
 
         #endregion
-        private UserControls.NumKeyboardUserControl numKeyboardUserControl1;
         public UserControls.NumKeyboardUserControl numKeyboardUserControl2;
         public DevExpress.XtraEditors.CalcEdit AmountEdit;
         private System.Windows.Forms.Panel panel1;

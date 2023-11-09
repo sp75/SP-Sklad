@@ -37,7 +37,7 @@ namespace SP_Sklad.ViewsForm
         {
             if (e.KeyChar == 13 )
             {
-                numKeyboardUserControl2.Value = string.IsNullOrEmpty(AmountEdit.Text) ? 0 : Convert.ToDecimal(AmountEdit.Text.Replace(',', '.'), new CultureInfo("en-US"));
+                numKeyboardUserControl2.Value = AmountEdit.Value;
 
                 DialogResult = DialogResult.OK;
                 Close();
