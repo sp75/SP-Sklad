@@ -322,6 +322,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void TareWeightEdit_EditValueChanged(object sender, EventArgs e)
         {
+            if (focused_row == null)
+            {
+                return;
+            }
+
             if (TareWeightEdit.ContainsFocus)
             {
                 GetTotalWeight();
@@ -391,6 +396,34 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             ExpeditionDetGridView.RefreshData();
 
+        }
+
+        private void NumPadBtn_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1 )
+            {
+                if (focused_row == null)
+                {
+                    return;
+                }
+
+                using (var nf = new frmNumKeyboard())
+                {
+                    nf.Text = "К-сть товару з тарою";
+                    if (nf.ShowDialog() == DialogResult.OK)
+                    {
+                        AmountEdit.Value = nf.numKeyboardUserControl2.Value;
+
+                        GetTotalWeight();
+                        GetDetail();
+                    }
+                }
+            }
         }
     }
 }

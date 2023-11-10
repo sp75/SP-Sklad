@@ -170,9 +170,9 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(633, 166);
+            this.OkButton.Location = new System.Drawing.Point(592, 166);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(98, 30);
+            this.OkButton.Size = new System.Drawing.Size(139, 30);
             this.OkButton.TabIndex = 30;
             this.OkButton.Text = "Застосувати";
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);

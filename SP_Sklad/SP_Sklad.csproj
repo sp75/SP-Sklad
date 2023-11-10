@@ -2946,6 +2946,8 @@
     <None Include="Resources\calculatesheet_32x32.png" />
     <None Include="Resources\weightedpies_16x161.png" />
     <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\calculatesheet_16x161.png" />
+    <None Include="Resources\left_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

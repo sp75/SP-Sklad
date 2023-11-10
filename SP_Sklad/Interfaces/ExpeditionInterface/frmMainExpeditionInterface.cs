@@ -22,6 +22,7 @@ using SP_Sklad.Properties;
 using SP_Sklad.RawMaterialManagementInterface;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
+using SP_Sklad.ViewsForm;
 using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.Interfaces.ExpeditionInterface
@@ -207,6 +208,17 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         
             tileView1.FocusedRowHandle = row;
             restore = false;
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmAddBarCodeScanner())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                   // DeviceNameRMKTextEdit.Text = frm.DeviceName;
+                }
+            }
         }
     }
 }
