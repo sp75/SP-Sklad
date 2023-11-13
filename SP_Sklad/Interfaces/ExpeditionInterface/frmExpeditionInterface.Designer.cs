@@ -392,6 +392,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.DriverEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.DriverEdit.Properties.ShowFooter = false;
             this.DriverEdit.Properties.ShowHeader = false;
+            this.DriverEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.DriverEdit.Properties.ValueMember = "KaId";
             this.DriverEdit.Size = new System.Drawing.Size(276, 26);
             this.DriverEdit.TabIndex = 70;
@@ -544,6 +545,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.TareWeightEdit.Properties.DisplayFormat.FormatString = "0.00";
             this.TareWeightEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.TareWeightEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.TareWeightEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.TareWeightEdit_Properties_CloseUp);
             this.TareWeightEdit.Size = new System.Drawing.Size(160, 30);
             this.TareWeightEdit.StyleController = this.layoutControl2;
@@ -588,6 +590,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Down, "", -1, true, false, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.AmountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.AmountEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.AmountEdit_Properties_CloseUp);
             this.AmountEdit.Size = new System.Drawing.Size(357, 40);
             this.AmountEdit.StyleController = this.layoutControl2;
@@ -885,7 +888,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.CarsLookUpEdit.Properties.DropDownRows = 20;
             this.CarsLookUpEdit.Properties.PopupWidth = 500;
             this.CarsLookUpEdit.Properties.ShowFooter = false;
-            this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.CarsLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.CarsLookUpEdit.Properties.ValueMember = "Id";
             this.CarsLookUpEdit.Size = new System.Drawing.Size(224, 26);
             this.CarsLookUpEdit.TabIndex = 64;
