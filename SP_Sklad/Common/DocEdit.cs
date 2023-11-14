@@ -48,6 +48,11 @@ namespace SP_Sklad.Common
 
                     if (wb.Checked == 1)
                     {
+                        if (wb.WType == -1)
+                        {
+                            if (!DBHelper.CheckExpedition(wbill_id, db)) return ;
+                        }
+
                         if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             result = DBHelper.StornoOrder(db, wbill_id);

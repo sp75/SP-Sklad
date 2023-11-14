@@ -62,7 +62,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
                     Num = new BaseEntities().GetDocNum("expedition").FirstOrDefault(),
-                    CarId = _db.Cars.FirstOrDefault().Id
+                 //   CarId = _db.Cars.FirstOrDefault().Id
                 });
 
                 _db.SaveChanges();
@@ -133,7 +133,15 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private WbIfo GetWbInfo(int wbill_id)
         {
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id && w.WType == -1);
+            _db.SaveChanges();
+
+            if (_db.ExpeditionDet.Any(a=> a.WbillId == wbill_id && a.Checked == 1))
+            {
+                MessageBox.Show("Документ вже добавлено в одну з експедицій!");
+                return null;
+            }
+
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id && w.WType == -1 );
             if (wb != null)
             {
                 var msr_list = _db.WaybillDet.Where(w => w.WbillId == wbill_id).Select(s => s.Materials.Measures).Distinct().ToList();
@@ -160,6 +168,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void Add(int wbill_id)
         {
+            if (CarsLookUpEdit.EditValue == DBNull.Value || DriverEdit.EditValue == DBNull.Value)
+            {
+                MessageBox.Show("Виберіть машину та водія!");
+                return;
+            }
+
             var wb_info = GetWbInfo(wbill_id);
             if (wb_info != null)
             {
@@ -256,6 +270,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void GetTotalWeight()
         {
+            if (focused_row == null)
+            {
+                return;
+            }
+
             var det = _db.ExpeditionDet.Where(w => w.Id == focused_row.Id).FirstOrDefault();
             if (det == null)
             {

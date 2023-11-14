@@ -672,6 +672,12 @@ namespace SP_Sklad.MainTabs
 
                         if (wb.Checked == 1)
                         {
+                            if (wb.WType == -1)
+                            {
+
+                                if (!DBHelper.CheckExpedition(dr.WbillId, db)) return;
+                            }
+
                             DBHelper.StornoOrder(db, dr.WbillId);
                         }
                         else

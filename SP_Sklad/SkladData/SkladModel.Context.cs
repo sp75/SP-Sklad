@@ -236,13 +236,13 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WayBillMake> v_WayBillMake { get; set; }
         public DbSet<v_DeboningDet> v_DeboningDet { get; set; }
         public DbSet<DeboningWeighing> DeboningWeighing { get; set; }
-        public DbSet<Expedition> Expedition { get; set; }
         public DbSet<ExpeditionDet> ExpeditionDet { get; set; }
         public DbSet<v_ExpeditionDet> v_ExpeditionDet { get; set; }
         public DbSet<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
         public DbSet<v_ExpeditionWBMaterialsDet> v_ExpeditionWBMaterialsDet { get; set; }
-        public DbSet<v_Expedition> v_Expedition { get; set; }
         public DbSet<UserQuickMaterials> UserQuickMaterials { get; set; }
+        public DbSet<Expedition> Expedition { get; set; }
+        public DbSet<v_Expedition> v_Expedition { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

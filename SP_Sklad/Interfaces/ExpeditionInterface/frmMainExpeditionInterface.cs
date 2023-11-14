@@ -185,6 +185,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
+            if(rmm_focused_row == null)
+            {
+                return;
+            }
+
             PrintDoc.ExpeditionReport(rmm_focused_row.Id, _db, print: true);
         }
 

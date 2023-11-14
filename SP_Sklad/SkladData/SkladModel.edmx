@@ -189,6 +189,7 @@
           <Property Name="TemplatePatch" Type="nvarchar" MaxLength="100" />
           <Property Name="EndCalcPeriod" Type="datetime" />
           <Property Name="TrialPeriod" Type="datetime" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -424,7 +425,7 @@
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
-          <Property Name="CarId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CarId" Type="uniqueidentifier" />
           <Property Name="DriverId" Type="int" />
           <Property Name="RouteId" Type="int" />
         </EntityType>
@@ -2284,16 +2285,14 @@ warning 6002: The table/view 'sp_base.dbo.v_ErrorLog' does not have a primary ke
 warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Expedition">
           <Key>
-            <PropertyRef Name="PersonName" />
             <PropertyRef Name="Id" />
             <PropertyRef Name="DocType" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="Checked" />
-            <PropertyRef Name="CarId" />
           </Key>
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
           <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
-          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DocType" Type="int" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" />
@@ -2304,7 +2303,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary 
           <Property Name="UpdatedAt" Type="datetime" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="SessionId" Type="uniqueidentifier" />
-          <Property Name="CarId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CarId" Type="uniqueidentifier" />
           <Property Name="TotalKilograms" Type="numeric" Precision="38" Scale="4" />
           <Property Name="DriverName" Type="nvarchar" MaxLength="100" />
           <Property Name="DriverId" Type="int" />
@@ -4484,7 +4483,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Expedition_Cars">
-          <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+          <End Role="Cars" Type="Self.Cars" Multiplicity="0..1" />
           <End Role="Expedition" Type="Self.Expedition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cars">
@@ -12523,11 +12522,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="WaybillList" EntitySet="WaybillList" />
             <End Role="DeboningWeighing" EntitySet="DeboningWeighing" />
           </AssociationSet>
-          <EntitySet Name="Expedition" EntityType="BaseModel.Expedition" />
-          <AssociationSet Name="FK_Expedition_Cars" Association="BaseModel.FK_Expedition_Cars">
-            <End Role="Cars" EntitySet="Cars" />
-            <End Role="Expedition" EntitySet="Expedition" />
-          </AssociationSet>
           <AssociationSet Name="FK_Kagent_Kagent" Association="BaseModel.FK_Kagent_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="Kagent1" EntitySet="Kagent" />
@@ -12566,11 +12560,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
           </AssociationSet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="BaseModel.v_ExpeditionWBMaterialsDet" />
-          <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
-          <AssociationSet Name="FK_ExpeditionDet_Expedition" Association="BaseModel.FK_ExpeditionDet_Expedition">
-            <End Role="Expedition" EntitySet="Expedition" />
-            <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
-          </AssociationSet>
           <EntitySet Name="UserQuickMaterials" EntityType="BaseModel.UserQuickMaterials" />
           <AssociationSet Name="FK_UserQuickButtons_Materials" Association="BaseModel.FK_UserQuickButtons_Materials">
             <End Role="Materials" EntitySet="Materials" />
@@ -12580,6 +12569,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Users" EntitySet="Users" />
             <End Role="UserQuickMaterials" EntitySet="UserQuickMaterials" />
           </AssociationSet>
+          <EntitySet Name="Expedition" EntityType="BaseModel.Expedition" />
+          <AssociationSet Name="FK_Expedition_Cars" Association="BaseModel.FK_Expedition_Cars">
+            <End Role="Cars" EntitySet="Cars" />
+            <End Role="Expedition" EntitySet="Expedition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExpeditionDet_Expedition" Association="BaseModel.FK_ExpeditionDet_Expedition">
+            <End Role="Expedition" EntitySet="Expedition" />
+            <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
+          </AssociationSet>
+          <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -12999,6 +12998,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="TemplatePatch" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="EndCalcPeriod" Precision="3" />
           <Property Name="TrialPeriod" Type="DateTime" Precision="3" />
+          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetMatExtra_Result">
           <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
@@ -20607,38 +20607,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Expedition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="SessionId" Type="Guid" />
-          <Property Name="CarId" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Expedition" ToRole="Cars" />
-          <Property Name="DocType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="Expedition" ToRole="ExpeditionDet" />
-          <Property Name="DriverId" Type="Int32" />
-          <Property Name="RouteId" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_Expedition_Cars">
-          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="1" />
-          <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cars">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Expedition">
-              <PropertyRef Name="CarId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Kagent_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
           <End Type="BaseModel.Kagent" Role="Kagent1" Multiplicity="*" />
@@ -20672,8 +20640,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbAmount" Type="Decimal" Precision="15" Scale="4" />
           <NavigationProperty Name="ExpeditionMaterialsDet" Relationship="BaseModel.FK_ExpeditionMaterialsDet_ExpeditionDet" FromRole="ExpeditionDet" ToRole="ExpeditionMaterialsDet" />
           <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_ExpeditionDet_WaybillList" FromRole="ExpeditionDet" ToRole="WaybillList" />
-          <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="ExpeditionDet" ToRole="Expedition" />
           <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="ExpeditionDet" ToRole="Expedition" />
         </EntityType>
         <EntityType Name="v_ExpeditionDet">
           <Key>
@@ -20828,49 +20796,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ExpeditionAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="ExpeditionId" Type="Guid" Nullable="false" />
         </EntityType>
-        <EntityType Name="v_Expedition">
-          <Key>
-            <PropertyRef Name="PersonName" />
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="DocType" />
-            <PropertyRef Name="OnDate" />
-            <PropertyRef Name="Checked" />
-            <PropertyRef Name="CarId" />
-          </Key>
-          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="DocType" Type="Int32" Nullable="false" />
-          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Checked" Type="Int32" Nullable="false" />
-          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PersonId" Type="Int32" />
-          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="SessionId" Type="Guid" />
-          <Property Name="CarId" Type="Guid" Nullable="false" />
-          <Property Name="TotalKilograms" Type="Decimal" Precision="38" Scale="4" />
-          <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="DriverId" Type="Int32" />
-          <Property Name="RouteId" Type="Int32" />
-          <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK_ExpeditionDet_Expedition">
-          <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.ExpeditionDet" Role="ExpeditionDet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Expedition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ExpeditionDet">
-              <PropertyRef Name="ExpeditionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="UserQuickMaterials">
           <Key>
             <PropertyRef Name="Id" />
@@ -20907,6 +20832,79 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Expedition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="CarId" Type="Guid" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="RouteId" Type="Int32" />
+          <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Expedition" ToRole="Cars" />
+          <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_Expedition" FromRole="Expedition" ToRole="ExpeditionDet" />
+        </EntityType>
+        <Association Name="FK_Expedition_Cars">
+          <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
+          <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cars">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Expedition">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExpeditionDet_Expedition">
+          <End Type="BaseModel.Expedition" Role="Expedition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.ExpeditionDet" Role="ExpeditionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expedition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExpeditionDet">
+              <PropertyRef Name="ExpeditionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_Expedition">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DocType" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+          </Key>
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DocType" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="CarId" Type="Guid" />
+          <Property Name="TotalKilograms" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="RouteId" Type="Int32" />
+          <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -21263,6 +21261,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
                 <ScalarProperty Name="TrialPeriod" ColumnName="TrialPeriod" />
                 <ScalarProperty Name="EndCalcPeriod" ColumnName="EndCalcPeriod" />
                 <ScalarProperty Name="TemplatePatch" ColumnName="TemplatePatch" />
@@ -26289,25 +26288,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Expedition">
-            <EntityTypeMapping TypeName="BaseModel.Expedition">
-              <MappingFragment StoreEntitySet="Expedition">
-                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
-                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
-                <ScalarProperty Name="DocType" ColumnName="DocType" />
-                <ScalarProperty Name="CarId" ColumnName="CarId" />
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.ExpeditionDet">
               <MappingFragment StoreEntitySet="ExpeditionDet">
@@ -26428,6 +26408,36 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UserQuickMaterials">
+            <EntityTypeMapping TypeName="BaseModel.UserQuickMaterials">
+              <MappingFragment StoreEntitySet="UserQuickMaterials">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expedition">
+            <EntityTypeMapping TypeName="BaseModel.Expedition">
+              <MappingFragment StoreEntitySet="Expedition">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="v_Expedition">
             <EntityTypeMapping TypeName="BaseModel.v_Expedition">
               <MappingFragment StoreEntitySet="v_Expedition">
@@ -26450,17 +26460,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserQuickMaterials">
-            <EntityTypeMapping TypeName="BaseModel.UserQuickMaterials">
-              <MappingFragment StoreEntitySet="UserQuickMaterials">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
