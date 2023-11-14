@@ -168,11 +168,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     nf.Text = "К-сть товару з тарою";
                     if (nf.ShowDialog() == DialogResult.OK)
                     {
-                        exp.CarId = wb_info.CarId.HasValue ? wb_info.CarId.Value : exp.CarId;
-                        CarsLookUpEdit.EditValue = exp.CarId;
+                   //     exp.CarId = wb_info.CarId.HasValue ? wb_info.CarId.Value : exp.CarId;
+                    //    CarsLookUpEdit.EditValue = exp.CarId;
 
-                        exp.DriverId = wb_info.DriverId.HasValue ? wb_info.DriverId.Value : exp.DriverId;
-                        DriverEdit.EditValue = exp.DriverId;
+                   //     exp.DriverId = wb_info.DriverId.HasValue ? wb_info.DriverId.Value : exp.DriverId;
+                 //       DriverEdit.EditValue = exp.DriverId;
 
                         exp.RouteId = wb_info.RouteId;
 
