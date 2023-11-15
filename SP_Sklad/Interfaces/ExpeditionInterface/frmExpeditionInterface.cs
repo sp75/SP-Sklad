@@ -372,6 +372,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void ExpeditionDetGridView_DoubleClick(object sender, EventArgs e)
         {
+            if(focused_row == null)
+            {
+                return;
+            }
+
             var det = _db.ExpeditionDet.Where(w => w.Id == focused_row.Id).FirstOrDefault();
             if (det != null)
             {
