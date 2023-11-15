@@ -1374,6 +1374,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="DriverId" Type="int" />
           <Property Name="CarId" Type="uniqueidentifier" />
+          <Property Name="Duration" Type="bigint" />
         </EntityType>
         <EntityType Name="SchedulingOrders">
           <Key>
@@ -2348,6 +2349,9 @@ warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a prima
           <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WbNotes" Type="nvarchar" MaxLength="255" />
           <Property Name="TareWeight" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RouteDuration" Type="bigint" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionWBMaterialsDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3528,6 +3532,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary
           <Property Name="CarName" Type="nvarchar" MaxLength="50" />
           <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
           <Property Name="DriverName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RouteDuration" Type="bigint" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillMake' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9023,7 +9030,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ExpeditionDet].[KilogramsQuantity] AS [KilogramsQuantity], 
     [v_ExpeditionDet].[WaybillListId] AS [WaybillListId], 
     [v_ExpeditionDet].[WbNotes] AS [WbNotes], 
-    [v_ExpeditionDet].[TareWeight] AS [TareWeight]
+    [v_ExpeditionDet].[TareWeight] AS [TareWeight], 
+    [v_ExpeditionDet].[RouteName] AS [RouteName], 
+    [v_ExpeditionDet].[RouteDuration] AS [RouteDuration], 
+    [v_ExpeditionDet].[RouteId] AS [RouteId]
     FROM [dbo].[v_ExpeditionDet] AS [v_ExpeditionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionWBMaterialsDet" EntityType="Self.v_ExpeditionWBMaterialsDet" store:Type="Views" store:Schema="dbo">
@@ -9880,7 +9890,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillList].[CarNumber] AS [CarNumber], 
     [v_WaybillList].[CarName] AS [CarName], 
     [v_WaybillList].[Balans] AS [Balans], 
-    [v_WaybillList].[DriverName] AS [DriverName]
+    [v_WaybillList].[DriverName] AS [DriverName], 
+    [v_WaybillList].[RouteName] AS [RouteName], 
+    [v_WaybillList].[RouteDuration] AS [RouteDuration], 
+    [v_WaybillList].[RouteId] AS [RouteId]
     FROM [dbo].[v_WaybillList] AS [v_WaybillList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillMake" EntityType="Self.v_WayBillMake" store:Type="Views" store:Schema="dbo">
@@ -14760,6 +14773,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Cars" Relationship="BaseModel.FK_Routes_Cars" FromRole="Routes" ToRole="Cars" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Kagent_Routes" FromRole="Routes" ToRole="Kagent" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Routes_Kagent" FromRole="Routes" ToRole="Kagent" />
+          <Property Name="Duration" Type="Int64" />
           </EntityType>
         <EntityType Name="Jobs">
           <Key>
@@ -15330,6 +15344,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Balans" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RouteDuration" Type="Int64" />
+          <Property Name="RouteId" Type="Int32" />
         </EntityType>
         <ComplexType Name="GetMatRsv_Result">
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="8" />
@@ -20679,6 +20696,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="KilogramsQuantity" Type="Decimal" Precision="38" Scale="8" />
           <Property Name="TareWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RouteDuration" Type="Int64" />
+          <Property Name="RouteId" Type="Int32" />
         </EntityType>
         <ComplexType Name="GetMatMove_Result">
           <Property Type="Guid" Name="Id" Nullable="true" />
@@ -22483,6 +22503,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Routes">
             <EntityTypeMapping TypeName="BaseModel.Routes">
               <MappingFragment StoreEntitySet="Routes">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -22634,6 +22655,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillList">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillList">
               <MappingFragment StoreEntitySet="v_WaybillList">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="RouteDuration" ColumnName="RouteDuration" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="DriverName" ColumnName="DriverName" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="CarName" ColumnName="CarName" />
@@ -26313,6 +26337,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ExpeditionDet">
             <EntityTypeMapping TypeName="BaseModel.v_ExpeditionDet">
               <MappingFragment StoreEntitySet="v_ExpeditionDet">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="RouteDuration" ColumnName="RouteDuration" />
+                <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="TareWeight" ColumnName="TareWeight" />
                 <ScalarProperty Name="KilogramsQuantity" ColumnName="KilogramsQuantity" />
                 <ScalarProperty Name="WbNotes" ColumnName="WbNotes" />

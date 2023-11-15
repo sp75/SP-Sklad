@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using SP_Sklad.Common;
+using SP_Sklad.Interfaces.Tablet.UI;
 using SP_Sklad.SkladData;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,29 @@ namespace SP_Sklad.Interfaces.Tablet
         private void accordionControlElement24_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void accordionControlElement33_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accordionControlElement41_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accordionControlElement21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void accordionControlElement4_Click(object sender, EventArgs e)
+        {
+            if (!mainContainer.Controls.Contains(mainContainer.Controls["ucWaybillIn"]))
+            {
+                mainContainer.Controls.Add(new ucWaybillIn());
+            }
         }
     }
 }

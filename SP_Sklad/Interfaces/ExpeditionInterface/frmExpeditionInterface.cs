@@ -91,13 +91,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ExpeditionDetGridView.TopRowIndex = top_row;
         }
 
-           
-
-        private void simpleButton2_Click_1(object sender, EventArgs e)
-        {
-           
-        }
-
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             if (focused_row == null)
@@ -296,6 +289,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             exp.Checked = 1;
+            foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+            {
+                if (item.RouteId.HasValue && item.Checked == 1)
+                {
+                    var exp_wb = _db.WaybillList.Find(item.WbillId);
+                    exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                }
+            }
 
             simpleButton2.PerformClick();
         }

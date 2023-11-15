@@ -835,6 +835,15 @@ namespace SP_Sklad.MainTabs
                         else
                         {
                             exp.Checked = 1;
+
+                            foreach (var item in db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+                            {
+                                if (item.RouteId.HasValue && item.Checked == 1)
+                                {
+                                    var exp_wb = db.WaybillList.Find(item.WbillId);
+                                    exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                                }
+                            }
                         }
 
                         db.SaveChanges();
@@ -1447,6 +1456,7 @@ namespace SP_Sklad.MainTabs
                 int wb_count = 0;
                 foreach (var kagent in ka_template_list.Where(w => w.Check))
                 {
+
                     var _wb = db.WaybillList.Add(new WaybillList()
                     {
                         Id = Guid.NewGuid(),
@@ -1460,8 +1470,20 @@ namespace SP_Sklad.MainTabs
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         Nds = 0,
                         KaId = kagent.KaId,
-                        Notes = pl_row.Notes
+                        Notes = pl_row.Notes,
+                        Kontragent = db.Kagent.Find(kagent.KaId)
                     });
+
+                    if (_wb.Kontragent.RouteId.HasValue)
+                    {
+                        var r = _db.Routes.FirstOrDefault(w => w.Id == _wb.Kontragent.RouteId);
+                        _wb.CarId = r.CarId;
+                        _wb.RouteId = _wb.Kontragent.RouteId;
+                        _wb.Received = r.Kagent1 != null ? r.Kagent1.Name : "";
+                        _wb.DriverId = r.Kagent1 != null ? (int?)r.Kagent1.KaId : null;
+                    }
+
+
                     db.SaveChanges();
 
                     db.CreateOrderByPriceList(_wb.WbillId, pl_row.PlId);
@@ -1860,6 +1882,23 @@ namespace SP_Sklad.MainTabs
 
                 }
             }
+        }
+
+        private void repositoryItemDateEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!EditItemBtn.Enabled)
+            {
+                return;
+            }
+
+            var s_date = ((DateEdit)sender).DateTime;
+
+            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+
+            wb.ShipmentDate = s_date;
+            _db.SaveChanges();
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

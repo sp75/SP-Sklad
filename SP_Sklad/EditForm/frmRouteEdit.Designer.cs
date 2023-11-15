@@ -39,6 +39,8 @@
             this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.DurationEdit = new DevExpress.XtraEditors.TimeSpanEdit();
             this.RoutesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -46,6 +48,7 @@
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DurationEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +71,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 12);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
@@ -79,7 +83,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 214);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 300);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(475, 52);
             this.BottomPanel.TabIndex = 41;
@@ -167,6 +171,31 @@
             this.CarsLookUpEdit.StyleController = this.styleController1;
             this.CarsLookUpEdit.TabIndex = 47;
             // 
+            // labelControl22
+            // 
+            this.labelControl22.Location = new System.Drawing.Point(12, 215);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(65, 16);
+            this.labelControl22.StyleController = this.styleController1;
+            this.labelControl22.TabIndex = 57;
+            this.labelControl22.Text = "Тривалість";
+            // 
+            // DurationEdit
+            // 
+            this.DurationEdit.EditValue = null;
+            this.DurationEdit.Location = new System.Drawing.Point(12, 237);
+            this.DurationEdit.Name = "DurationEdit";
+            this.DurationEdit.Properties.BeepOnError = false;
+            this.DurationEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DurationEdit.Properties.MaskSettings.Set("mask", "dd DD hh HH mm MM");
+            this.DurationEdit.Properties.MaxValue = System.TimeSpan.Parse("30.00:00:00");
+            this.DurationEdit.Properties.MinValue = System.TimeSpan.Parse("00:00:00");
+            this.DurationEdit.Size = new System.Drawing.Size(178, 22);
+            this.DurationEdit.StyleController = this.styleController1;
+            this.DurationEdit.TabIndex = 56;
+            this.DurationEdit.EditValueChanged += new System.EventHandler(this.textEdit4_EditValueChanged);
+            // 
             // RoutesBS
             // 
             this.RoutesBS.DataSource = typeof(SP_Sklad.SkladData.Routes);
@@ -175,7 +204,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 266);
+            this.ClientSize = new System.Drawing.Size(475, 352);
+            this.Controls.Add(this.labelControl22);
+            this.Controls.Add(this.DurationEdit);
             this.Controls.Add(this.CarsLookUpEdit);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.DriversLookUpEdit);
@@ -195,6 +226,7 @@
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DurationEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoutesBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -214,5 +246,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl54;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit CarsLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl22;
+        private DevExpress.XtraEditors.TimeSpanEdit DurationEdit;
     }
 }

@@ -41,5 +41,8 @@ namespace SP_Sklad.SkladData
         public string WbNotes { get; set; }
         public Nullable<decimal> KilogramsQuantity { get; set; }
         public Nullable<decimal> TareWeight { get; set; }
+        public string RouteName { get; set; }
+        public Nullable<long> RouteDuration { get; set; }
+        public Nullable<int> RouteId { get; set; }
     }
 }

@@ -41,6 +41,7 @@ namespace SP_Sklad.EditForm
             {
                 r = _db.Routes.Find(_id);
             }
+            DurationEdit.TimeSpan = new TimeSpan(r.Duration ?? 0);
 
             RoutesBS.DataSource = r;
 
@@ -87,6 +88,11 @@ namespace SP_Sklad.EditForm
                     r.CarId = null;
                 }
             }
+        }
+
+        private void textEdit4_EditValueChanged(object sender, EventArgs e)
+        {
+            r.Duration = DurationEdit.TimeSpan.Ticks;
         }
     }
 }
