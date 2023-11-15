@@ -115,6 +115,7 @@
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -131,6 +132,7 @@
             this.row20 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row21 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row22 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row24 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row10 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row9 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -646,6 +648,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -1805,7 +1809,8 @@
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox12,
             this.repositoryItemLookUpEdit3,
-            this.repositoryItemLookUpEdit5});
+            this.repositoryItemLookUpEdit5,
+            this.repositoryItemDateEdit1});
             this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
@@ -1865,6 +1870,22 @@
             this.repositoryItemLookUpEdit5.ShowHeader = false;
             this.repositoryItemLookUpEdit5.ValueMember = "KaId";
             this.repositoryItemLookUpEdit5.EditValueChanged += new System.EventHandler(this.repositoryItemLookUpEdit5_EditValueChanged);
+            // 
+            // repositoryItemDateEdit1
+            // 
+            this.repositoryItemDateEdit1.AutoHeight = false;
+            this.repositoryItemDateEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
+            this.repositoryItemDateEdit1.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit1.DisplayFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.EditFormat.FormatString = "g";
+            this.repositoryItemDateEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.repositoryItemDateEdit1.MaskSettings.Set("mask", "g");
+            this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
+            this.repositoryItemDateEdit1.EditValueChanged += new System.EventHandler(this.repositoryItemDateEdit1_EditValueChanged);
             // 
             // row
             // 
@@ -1966,7 +1987,8 @@
             this.category1.ChildRows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row20,
             this.row21,
-            this.row22});
+            this.row22,
+            this.row24});
             this.category1.Height = 30;
             this.category1.Name = "category1";
             this.category1.Properties.Caption = "Доставка";
@@ -1989,6 +2011,13 @@
             this.row22.Name = "row22";
             this.row22.Properties.Caption = "Водіій";
             this.row22.Properties.FieldName = "Received";
+            // 
+            // row24
+            // 
+            this.row24.Name = "row24";
+            this.row24.Properties.Caption = "Дата доставки";
+            this.row24.Properties.FieldName = "ShipmentDate";
+            this.row24.Properties.RowEdit = this.repositoryItemDateEdit1;
             // 
             // row11
             // 
@@ -7344,6 +7373,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -8137,5 +8168,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
         public UserControls.ExpeditionUserControl expeditionUserControl1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row24;
+        private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
     }
 }

@@ -604,6 +604,20 @@ order by wbd.ondate desc
             return r;
         }
 
+        public static bool CheckExpedition(int wbill_id, BaseEntities db)
+        {
+            bool r = true;
+            var query = db.ExpeditionDet.Where(w=> w.WbillId == wbill_id && w.Checked == 1).ToList();
+
+            if (query.Any())
+            {
+                MessageBox.Show(string.Format("Неможливо сторнувати накладну, так як вона добавлена в експедицію #{0}", String.Join("\n", query.FirstOrDefault().Expedition.Num)), "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                r = false;
+            }
+
+            return r;
+        }
+
         public static void UpdateSessionWaybill(int wb_id, bool clear = false)
         {
             using (var db = new BaseEntities())

@@ -172,7 +172,7 @@ namespace SP_Sklad
         private void GetMainHeder()
         {
             var date = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-            Text = "SP-Склад [Користувач: " + DBHelper.CurrentUser.Name + ", Підприємство: " + (DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "") + "] [v." + date + "]";
+            Text = $"{DBHelper.CommonParam.ProgramName} [Користувач: {DBHelper.CurrentUser.Name}, Підприємство: {(DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "")}] [v.{ date }]";
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

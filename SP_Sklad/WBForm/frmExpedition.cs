@@ -86,8 +86,19 @@ namespace SP_Sklad.WBForm
             exp.UpdatedAt = DateTime.Now;
             exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
+            if(exp.Checked == 1)
+            {
+                foreach(var item in _db.v_ExpeditionDet.Where(w=> w.ExpeditionId == exp.Id))
+                {
+                    if(item.RouteId.HasValue && item.Checked == 1)
+                    {
+                        var wb = _db.WaybillList.Find(item.WbillId);
+                        wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                    }
+                }
+            }
+
             _db.SaveChanges();
-            //  current_transaction.Commit();
 
             is_new_record = false;
             Close();

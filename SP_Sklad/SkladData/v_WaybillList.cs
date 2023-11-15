@@ -75,5 +75,8 @@ namespace SP_Sklad.SkladData
         public string CarName { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public string DriverName { get; set; }
+        public string RouteName { get; set; }
+        public Nullable<long> RouteDuration { get; set; }
+        public Nullable<int> RouteId { get; set; }
     }
 }

@@ -121,7 +121,7 @@
             this.simpleButton16.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
             this.simpleButton16.Appearance.Options.UseFont = true;
             this.simpleButton16.Appearance.Options.UseTextOptions = true;
-            this.simpleButton16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Top;
+            this.simpleButton16.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.simpleButton16.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.simpleButton16.Location = new System.Drawing.Point(239, 150);
             this.simpleButton16.Name = "simpleButton16";

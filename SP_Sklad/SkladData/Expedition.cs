@@ -20,6 +20,7 @@ namespace SP_Sklad.SkladData
         }
     
         public System.Guid Id { get; set; }
+        public int DocType { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
         public int Checked { get; set; }
@@ -28,8 +29,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
-        public System.Guid CarId { get; set; }
-        public int DocType { get; set; }
+        public Nullable<System.Guid> CarId { get; set; }
         public Nullable<int> DriverId { get; set; }
         public Nullable<int> RouteId { get; set; }
     

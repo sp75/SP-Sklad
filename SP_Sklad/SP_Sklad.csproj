@@ -500,6 +500,18 @@
     <Compile Include="Interfaces\RawMaterialManagementInterface\frmMainRawMaterialManagement.Designer.cs">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Tablet\frmMainTablet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
+      <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
+      <DependentUpon>ucWaybillIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmReport54.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2281,6 +2293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\RawMaterialManagementInterface\frmMainRawMaterialManagement.resx">
       <DependentUpon>frmMainRawMaterialManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
+      <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
+      <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReport54.resx">
       <DependentUpon>frmReport54.cs</DependentUpon>
