@@ -215,9 +215,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         {
             if (e.KeyChar == 13 && !string.IsNullOrEmpty(BarCodeBox.Text))
             {
-                var wbill_id = Convert.ToInt32(BarCodeBox.Text);
-
-                Add(wbill_id);
+                if (int.TryParse(BarCodeBox.Text, out int wbill_id))
+                {
+                    Add(wbill_id);
+                }
 
                 BarCodeBox.Text = "";
                 labelControl1.Focus();
