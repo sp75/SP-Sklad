@@ -110,7 +110,7 @@ namespace SP_Sklad.ViewsForm
             return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {2} and  DATEADD (day, 1 , {2} ) ),0) OrderedAmount2,
-coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {3} and  DATEADD (day, 1 , {2} ) ),0) OrderedAmount3,
+coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {3} and  DATEADD (day, 1 , {3} ) ),0) OrderedAmount3,
 coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , WayBillMake wbm, MatRecipe mr where wbm.RecId = mr.RecId and mr.MatId = x.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) ),0) MakeAmount       
 from 
 (
