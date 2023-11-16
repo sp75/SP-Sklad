@@ -26,11 +26,8 @@ namespace SP_Sklad.WBForm
     {
         private Guid? _exp_id { get; set; }
         public BaseEntities _db { get; set; }
-      //  private DbContextTransaction current_transaction { get; set; }
         private Expedition exp { get; set; }
-
         public bool is_new_record { get; set; }
-
         private v_ExpeditionDet focused_dr => ExpeditionDetGridView.GetFocusedRow() as v_ExpeditionDet;
 
         public frmExpedition(Guid? exp_id = null)
@@ -41,7 +38,6 @@ namespace SP_Sklad.WBForm
             _exp_id = exp_id;
 
             _db = new BaseEntities();
-          //  current_transaction = _db.Database.BeginTransaction();
         }
           
         private void frmPriceList_Load(object sender, EventArgs e)
@@ -94,7 +90,7 @@ namespace SP_Sklad.WBForm
                     if(item.RouteId.HasValue && item.Checked == 1)
                     {
                         var wb = _db.WaybillList.Find(item.WbillId);
-                        wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                        wb.ShipmentDate = exp.UpdatedAt.Value.AddTicks(item.RouteDuration ?? 0);
                     }
                 }
             }
@@ -107,18 +103,12 @@ namespace SP_Sklad.WBForm
 
         private void frmPriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //    if (current_transaction.UnderlyingTransaction.Connection != null)
-            //    {
-            //        current_transaction.Rollback();
-            //     }
-
             if (is_new_record)
             {
                 _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
             }
 
             _db.Dispose();
-        //    current_transaction.Dispose();
         }
 
         void GetDetail()
@@ -143,78 +133,11 @@ namespace SP_Sklad.WBForm
             PrintDoc.ExpeditionReport(_exp_id.Value, _db);
         }
 
-        private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Close();
         }
              
-        private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-       
-
-        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-         /*   var mat_id = IHelper.ShowDirectList(null, 5);
-            if (mat_id != null)
-            {
-                var id = Convert.ToInt32(mat_id);
-                var mat = _db.Materials.Find(id);
-                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
-                {
-
-                    if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
-                    {
-                        _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
-                        {
-                            Id = Guid.NewGuid(),
-                            MatId = item.MatId,
-                            SettingMaterialPricesId = _wbt_id.Value,
-                            CreatedAt = DBHelper.ServerDateTime(),
-                            Price = 0
-                        });
-                    }
-                }
-                _db.SaveChanges();
-                GetDetail();
-            }*/
-        }
-
-
-        private void PriceListGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                this.TemplateListPopupMenu.ShowPopup(p2);
-            }
-        }
-
-
-        private void WaybillTemplateDetGrid_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-          /*  var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
-
-            if (e.Column.FieldName == "Price")
-            {
-                wbtd.Price = Convert.ToDecimal(e.Value);
-            }
-
-            _db.SaveChanges();*/
-        }
-
-        private void OnDateDBEdit_Validating(object sender, CancelEventArgs e)
-        {
-  
-        }
-
         private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if(e.Button.Index ==1)
@@ -222,6 +145,7 @@ namespace SP_Sklad.WBForm
                 OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
             }
         }
+
         bool GetOk()
         {
             bool recult = ExpeditionDetBS.List.Count > 0;
@@ -240,12 +164,6 @@ namespace SP_Sklad.WBForm
         {
             OnDateDBEdit.Focus();
             NumEdit.Focus();
-        }
-
-
-        private void CarsLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
         }
 
         private void AddDocBtnItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -268,7 +186,6 @@ namespace SP_Sklad.WBForm
                     {
                         MessageBox.Show("Документ не знайдено!");
                     }
-
                 }
             }
         }
@@ -283,14 +200,13 @@ namespace SP_Sklad.WBForm
             GetDetail();
         }
 
-        private void DriversLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void ExpeditionDetGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-
-        }
-
-        private void RouteLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.TemplateListPopupMenu.ShowPopup(p2);
+            }
         }
     }
 }

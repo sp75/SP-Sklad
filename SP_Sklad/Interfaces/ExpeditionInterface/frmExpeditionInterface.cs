@@ -48,8 +48,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
 
             CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
-            DriverEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
-            RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
+            DriverEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).OrderBy(o=> o.Name).ToList();
+            RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().OrderBy(o=> o.Name).ToList();
 
             if (_exp_id == null)
             {
@@ -241,9 +241,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                   _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
               }*/
 
-            exp.UpdatedAt = DateTime.Now;
-            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
-
             _db.SaveChanges();
 
             _db.Dispose();
@@ -297,14 +294,19 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             exp.Checked = 1;
+            exp.UpdatedAt = DBHelper.ServerDateTime();
+            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
+
             foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
             {
                 if (item.RouteId.HasValue && item.Checked == 1)
                 {
                     var exp_wb = _db.WaybillList.Find(item.WbillId);
-                    exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                    exp_wb.ShipmentDate = exp.UpdatedAt.Value.AddTicks(item.RouteDuration ?? 0);
                 }
             }
+
+            _db.SaveChanges();
 
             simpleButton2.PerformClick();
         }

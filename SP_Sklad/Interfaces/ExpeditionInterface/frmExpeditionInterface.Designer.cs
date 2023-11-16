@@ -84,10 +84,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sidePanel2 = new DevExpress.XtraEditors.SidePanel();
-            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.ExpeditionBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.DriverEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
@@ -124,11 +121,18 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
+            this.ExpeditionBS = new System.Windows.Forms.BindingSource(this.components);
             this.BarCodeBox = new System.Windows.Forms.TextBox();
             this.CarsLookUpEdit = new DevExpress.XtraEditors.GridLookUpEdit();
             this.gridLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DriverEdit = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.GridLookUpEdit();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sidePanel1 = new DevExpress.XtraEditors.SidePanel();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
@@ -143,9 +147,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             this.sidePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DriverEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PacksQuantityEdit.Properties)).BeginInit();
@@ -176,8 +177,13 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriverEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.sidePanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).BeginInit();
@@ -369,9 +375,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.sidePanel2.AllowResize = false;
             this.sidePanel2.AllowSnap = false;
-            this.sidePanel2.Controls.Add(this.RouteLookUpEdit);
             this.sidePanel2.Controls.Add(this.labelControl4);
-            this.sidePanel2.Controls.Add(this.DriverEdit);
             this.sidePanel2.Controls.Add(this.labelControl1);
             this.sidePanel2.Controls.Add(this.simpleButton2);
             this.sidePanel2.Controls.Add(this.labelControl3);
@@ -379,6 +383,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.sidePanel2.Controls.Add(this.NumEdit);
             this.sidePanel2.Controls.Add(this.BarCodeBox);
             this.sidePanel2.Controls.Add(this.CarsLookUpEdit);
+            this.sidePanel2.Controls.Add(this.DriverEdit);
+            this.sidePanel2.Controls.Add(this.RouteLookUpEdit);
             this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.sidePanel2.Location = new System.Drawing.Point(0, 0);
             this.sidePanel2.Name = "sidePanel2";
@@ -386,73 +392,21 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.sidePanel2.TabIndex = 0;
             this.sidePanel2.Text = "sidePanel2";
             // 
-            // RouteLookUpEdit
-            // 
-            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(649, 38);
-            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
-            this.RouteLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.RouteLookUpEdit.Properties.Appearance.Options.UseFont = true;
-            this.RouteLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.RouteLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
-            this.RouteLookUpEdit.Properties.NullText = "";
-            this.RouteLookUpEdit.Properties.PopupSizeable = false;
-            this.RouteLookUpEdit.Properties.ShowFooter = false;
-            this.RouteLookUpEdit.Properties.ShowHeader = false;
-            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.RouteLookUpEdit.Properties.ValueMember = "Id";
-            this.RouteLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RouteLookUpEdit_Properties_ButtonClick);
-            this.RouteLookUpEdit.Size = new System.Drawing.Size(245, 26);
-            this.RouteLookUpEdit.TabIndex = 72;
-            // 
-            // ExpeditionBS
-            // 
-            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
-            // 
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(649, 16);
+            this.labelControl4.Location = new System.Drawing.Point(616, 16);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(58, 16);
             this.labelControl4.TabIndex = 71;
             this.labelControl4.Text = "Маршрут:";
             // 
-            // DriverEdit
-            // 
-            this.DriverEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true));
-            this.DriverEdit.Location = new System.Drawing.Point(359, 38);
-            this.DriverEdit.Name = "DriverEdit";
-            this.DriverEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.DriverEdit.Properties.Appearance.Options.UseFont = true;
-            this.DriverEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.DriverEdit.Properties.AppearanceDropDown.Options.UseFont = true;
-            this.DriverEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DriverEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.DriverEdit.Properties.DisplayMember = "Name";
-            this.DriverEdit.Properties.DropDownRows = 20;
-            this.DriverEdit.Properties.PopupWidth = 500;
-            this.DriverEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
-            this.DriverEdit.Properties.ShowFooter = false;
-            this.DriverEdit.Properties.ShowHeader = false;
-            this.DriverEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.DriverEdit.Properties.ValueMember = "KaId";
-            this.DriverEdit.Size = new System.Drawing.Size(276, 26);
-            this.DriverEdit.TabIndex = 70;
-            // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(359, 16);
+            this.labelControl1.Location = new System.Drawing.Point(345, 16);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(36, 16);
             this.labelControl1.TabIndex = 69;
@@ -901,7 +855,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(134, 16);
+            this.labelControl3.Location = new System.Drawing.Point(127, 16);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 16);
             this.labelControl3.TabIndex = 67;
@@ -924,8 +878,12 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.NumEdit.Name = "NumEdit";
             this.NumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.NumEdit.Properties.Appearance.Options.UseFont = true;
-            this.NumEdit.Size = new System.Drawing.Size(111, 26);
+            this.NumEdit.Size = new System.Drawing.Size(101, 26);
             this.NumEdit.TabIndex = 61;
+            // 
+            // ExpeditionBS
+            // 
+            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
             // 
             // BarCodeBox
             // 
@@ -939,7 +897,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // CarsLookUpEdit
             // 
             this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CarsLookUpEdit.Location = new System.Drawing.Point(129, 38);
+            this.CarsLookUpEdit.Location = new System.Drawing.Point(122, 38);
             this.CarsLookUpEdit.Name = "CarsLookUpEdit";
             this.CarsLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.CarsLookUpEdit.Properties.Appearance.Options.UseFont = true;
@@ -952,7 +910,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.CarsLookUpEdit.Properties.PopupView = this.gridLookUpEdit1View;
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.ValueMember = "Id";
-            this.CarsLookUpEdit.Size = new System.Drawing.Size(224, 26);
+            this.CarsLookUpEdit.Size = new System.Drawing.Size(217, 26);
             this.CarsLookUpEdit.TabIndex = 64;
             // 
             // gridLookUpEdit1View
@@ -985,6 +943,88 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 1;
             this.gridColumn11.Width = 280;
+            // 
+            // DriverEdit
+            // 
+            this.DriverEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true));
+            this.DriverEdit.Location = new System.Drawing.Point(345, 38);
+            this.DriverEdit.Name = "DriverEdit";
+            this.DriverEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.DriverEdit.Properties.Appearance.Options.UseFont = true;
+            this.DriverEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.DriverEdit.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.DriverEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DriverEdit.Properties.DisplayMember = "Name";
+            this.DriverEdit.Properties.PopupFormSize = new System.Drawing.Size(300, 600);
+            this.DriverEdit.Properties.PopupView = this.gridView1;
+            this.DriverEdit.Properties.ShowFooter = false;
+            this.DriverEdit.Properties.ValueMember = "KaId";
+            this.DriverEdit.Size = new System.Drawing.Size(265, 26);
+            this.DriverEdit.TabIndex = 70;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView1.Appearance.Row.Options.UseFont = true;
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn13});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView1.OptionsView.ShowColumnHeaders = false;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowIndicator = false;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "gridColumn13";
+            this.gridColumn13.FieldName = "Name";
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 0;
+            // 
+            // RouteLookUpEdit
+            // 
+            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(616, 38);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.RouteLookUpEdit.Properties.Appearance.Options.UseFont = true;
+            this.RouteLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.RouteLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.NullText = "";
+            this.RouteLookUpEdit.Properties.PopupFormSize = new System.Drawing.Size(500, 600);
+            this.RouteLookUpEdit.Properties.PopupSizeable = false;
+            this.RouteLookUpEdit.Properties.PopupView = this.gridView2;
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(203, 26);
+            this.RouteLookUpEdit.TabIndex = 72;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.gridView2.Appearance.Row.Options.UseFont = true;
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn14});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsView.ShowColumnHeaders = false;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowIndicator = false;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "gridColumn14";
+            this.gridColumn14.FieldName = "Name";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
             // 
             // sidePanel1
             // 
@@ -1075,9 +1115,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             this.sidePanel2.ResumeLayout(false);
             this.sidePanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DriverEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PacksQuantityEdit.Properties)).EndInit();
@@ -1108,8 +1145,13 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridLookUpEdit1View)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriverEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             this.sidePanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEdit1.Properties)).EndInit();
@@ -1179,15 +1221,19 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.LookUpEdit MsrComboBox;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.LookUpEdit DriverEdit;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
         private DevExpress.XtraEditors.GridLookUpEdit CarsLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridLookUpEdit1View;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem2;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem3;
+        private DevExpress.XtraEditors.GridLookUpEdit DriverEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraEditors.GridLookUpEdit RouteLookUpEdit;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

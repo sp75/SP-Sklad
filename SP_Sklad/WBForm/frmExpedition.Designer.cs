@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpedition));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExpedition));
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -61,17 +61,14 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.WBImgList = new System.Windows.Forms.ImageList(this.components);
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ExpeditionBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
+            this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -109,8 +106,6 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -119,8 +114,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -139,7 +135,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -173,11 +168,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
             this.DelMaterialBtn,
-            this.barSubItem1,
-            this.AddMaterialBtn,
-            this.barButtonItem6,
-            this.MatInfoBtn,
-            this.barButtonItem5,
             this.AddDocBtnItem,
             this.barButtonItem1});
             this.barManager1.MaxItemId = 36;
@@ -323,56 +313,12 @@
             this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
             this.WBImgList.Images.SetKeyName(11, "edit.bmp");
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати";
-            this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageOptions.ImageIndex = 2;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // AddMaterialBtn
-            // 
-            this.AddMaterialBtn.Caption = "Товар";
-            this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageOptions.ImageIndex = 4;
-            this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
-            this.AddMaterialBtn.Name = "AddMaterialBtn";
-            this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Товарну групу";
-            this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageOptions.ImageIndex = 7;
-            this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
-            // 
-            // MatInfoBtn
-            // 
-            this.MatInfoBtn.Caption = "Інформація про товар";
-            this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 1;
-            this.MatInfoBtn.Name = "MatInfoBtn";
-            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Додати товар / групу";
-            this.barButtonItem5.Id = 23;
-            this.barButtonItem5.ImageOptions.ImageIndex = 2;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.EditFormat.FormatString = "0.00";
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -416,6 +362,39 @@
             this.panelControl1.Size = new System.Drawing.Size(1190, 126);
             this.panelControl1.TabIndex = 0;
             // 
+            // RouteLookUpEdit
+            // 
+            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(906, 49);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.NullText = "";
+            this.RouteLookUpEdit.Properties.PopupSizeable = false;
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ShowHeader = false;
+            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(266, 22);
+            this.RouteLookUpEdit.StyleController = this.styleController1;
+            this.RouteLookUpEdit.TabIndex = 67;
+            // 
+            // ExpeditionBS
+            // 
+            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Location = new System.Drawing.Point(842, 51);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(58, 16);
+            this.labelControl54.StyleController = this.styleController1;
+            this.labelControl54.TabIndex = 66;
+            this.labelControl54.Text = "Маршрут:";
+            // 
             // DriversLookUpEdit
             // 
             this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -431,14 +410,9 @@
             this.DriversLookUpEdit.Properties.ShowFooter = false;
             this.DriversLookUpEdit.Properties.ShowHeader = false;
             this.DriversLookUpEdit.Properties.ValueMember = "KaId";
-            this.DriversLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DriversLookUpEdit_Properties_ButtonClick);
             this.DriversLookUpEdit.Size = new System.Drawing.Size(251, 22);
             this.DriversLookUpEdit.StyleController = this.styleController1;
             this.DriversLookUpEdit.TabIndex = 65;
-            // 
-            // ExpeditionBS
-            // 
-            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
             // 
             // labelControl4
             // 
@@ -465,7 +439,6 @@
             this.CarsLookUpEdit.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.ValueMember = "Id";
-            this.CarsLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CarsLookUpEdit_Properties_ButtonClick);
             this.CarsLookUpEdit.Size = new System.Drawing.Size(251, 22);
             this.CarsLookUpEdit.StyleController = this.styleController1;
             this.CarsLookUpEdit.TabIndex = 63;
@@ -494,10 +467,10 @@
             this.PersonComboBox.Enabled = false;
             this.PersonComboBox.Location = new System.Drawing.Point(906, 87);
             this.PersonComboBox.Name = "PersonComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
@@ -515,10 +488,10 @@
             this.OnDateDBEdit.Location = new System.Drawing.Point(266, 48);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -640,8 +613,9 @@
             // TemplateListPopupMenu
             // 
             this.TemplateListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddDocBtnItem, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
             this.TemplateListPopupMenu.Manager = this.barManager1;
             this.TemplateListPopupMenu.Name = "TemplateListPopupMenu";
             // 
@@ -653,7 +627,6 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(278, 275);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
@@ -699,6 +672,7 @@
             this.ExpeditionDetGridView.Name = "ExpeditionDetGridView";
             this.ExpeditionDetGridView.OptionsBehavior.ReadOnly = true;
             this.ExpeditionDetGridView.OptionsView.ShowGroupPanel = false;
+            this.ExpeditionDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.ExpeditionDetGridView_PopupMenuShowing);
             // 
             // colMatId
             // 
@@ -834,36 +808,6 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
-            // RouteLookUpEdit
-            // 
-            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(906, 49);
-            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
-            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
-            this.RouteLookUpEdit.Properties.NullText = "";
-            this.RouteLookUpEdit.Properties.PopupSizeable = false;
-            this.RouteLookUpEdit.Properties.ShowFooter = false;
-            this.RouteLookUpEdit.Properties.ShowHeader = false;
-            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.RouteLookUpEdit.Properties.ValueMember = "Id";
-            this.RouteLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RouteLookUpEdit_Properties_ButtonClick);
-            this.RouteLookUpEdit.Size = new System.Drawing.Size(266, 22);
-            this.RouteLookUpEdit.StyleController = this.styleController1;
-            this.RouteLookUpEdit.TabIndex = 67;
-            // 
-            // labelControl54
-            // 
-            this.labelControl54.Location = new System.Drawing.Point(842, 51);
-            this.labelControl54.Name = "labelControl54";
-            this.labelControl54.Size = new System.Drawing.Size(58, 16);
-            this.labelControl54.StyleController = this.styleController1;
-            this.labelControl54.TabIndex = 66;
-            this.labelControl54.Text = "Маршрут:";
-            // 
             // frmExpedition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -895,8 +839,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -915,7 +860,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -926,10 +870,6 @@
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
-        private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem DelMaterialBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
@@ -944,7 +884,6 @@
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.BindingSource ExpeditionBS;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.PopupMenu TemplateListPopupMenu;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl7;
