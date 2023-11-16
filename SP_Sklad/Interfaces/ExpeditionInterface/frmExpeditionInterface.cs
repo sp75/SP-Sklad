@@ -49,6 +49,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             CarsLookUpEdit.Properties.DataSource = _db.Cars.ToList();
             DriverEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
+            RouteLookUpEdit.Properties.DataSource = DB.SkladBase().Routes.AsNoTracking().ToList();
 
             if (_exp_id == null)
             {
@@ -61,9 +62,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     Checked = 1,
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
-                    Num = new BaseEntities().GetDocNum("expedition").FirstOrDefault(),
-                 //   CarId = _db.Cars.FirstOrDefault().Id
-                });
+                    Num = new BaseEntities().GetDocNum("expedition").FirstOrDefault()
+                 });
 
                 _db.SaveChanges();
                 _exp_id = exp.Id;
@@ -126,14 +126,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private WbIfo GetWbInfo(int wbill_id)
         {
-            _db.SaveChanges();
-
-            if (_db.ExpeditionDet.Any(a=> a.WbillId == wbill_id && a.Checked == 1))
-            {
-                MessageBox.Show("Документ вже добавлено в одну з експедицій!");
-                return null;
-            }
-
             var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id && w.WType == -1 );
             if (wb != null)
             {
@@ -153,8 +145,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             }
             else
             {
-                MessageBox.Show("Документ не знайдено!");
-
                 return null;
             }
         }
@@ -165,6 +155,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             {
                 MessageBox.Show("Виберіть машину та водія!");
                 return;
+            }
+
+            _db.SaveChanges();
+
+            if (_db.ExpeditionDet.Any(a => a.WbillId == wbill_id && a.Checked == 1))
+            {
+                MessageBox.Show("Документ вже добавлено в одну з експедицій!");
+                return ;
             }
 
             var wb_info = GetWbInfo(wbill_id);
@@ -181,7 +179,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                    //     exp.DriverId = wb_info.DriverId.HasValue ? wb_info.DriverId.Value : exp.DriverId;
                  //       DriverEdit.EditValue = exp.DriverId;
 
-                        exp.RouteId = wb_info.RouteId;
+                        exp.RouteId = wb_info.RouteId.HasValue ? wb_info.RouteId : exp.RouteId;
 
                         var mid = wb_info.Measures.FirstOrDefault()?.MId;
 
@@ -216,6 +214,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Документ не знайдено!");
+            }
         }
 
         private void textEdit1_KeyPress(object sender, KeyPressEventArgs e)
@@ -234,10 +236,15 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void frmExpeditionInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (is_new_record)
-            {
-                _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
-            }
+            /*  if (is_new_record)
+              {
+                  _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
+              }*/
+
+            exp.UpdatedAt = DateTime.Now;
+            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
+
+            _db.SaveChanges();
 
             _db.Dispose();
         }
@@ -363,8 +370,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                 {
                     if (!string.IsNullOrEmpty(frm.BarCodeEdit.Text))
                     {
-                        var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
-                        Add(wbill_id);
+                        if (int.TryParse(frm.BarCodeEdit.Text, out int wbill_id))
+                        {
+                            Add(wbill_id);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Не вірний штрих код!");
+                        }
                     }
                 }
             }
@@ -399,11 +412,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            exp.UpdatedAt = DateTime.Now;
-            exp.UpdatedBy = DBHelper.CurrentUser.UserId;
-
-            _db.SaveChanges();
-
             is_new_record = false;
 
             Close();
@@ -450,6 +458,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
                     }
                 }
             }
+        }
+
+        private void RouteLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+
         }
     }
 }

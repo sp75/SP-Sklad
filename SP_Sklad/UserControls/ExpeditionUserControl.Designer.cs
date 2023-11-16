@@ -84,6 +84,8 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.ExpeditionsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ExpeditionsDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -501,6 +503,8 @@
             // 
             // ExpeditionDetGridView
             // 
+            this.ExpeditionDetGridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.ExpeditionDetGridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.ExpeditionDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMatId,
             this.gridColumn2,
@@ -511,10 +515,13 @@
             this.gridColumn8,
             this.gridColumn9,
             this.gridColumn10,
-            this.gridColumn12});
+            this.gridColumn12,
+            this.gridColumn14,
+            this.gridColumn15});
             this.ExpeditionDetGridView.GridControl = this.ExpeditionDetGridControl;
             this.ExpeditionDetGridView.Name = "ExpeditionDetGridView";
             this.ExpeditionDetGridView.OptionsBehavior.ReadOnly = true;
+            this.ExpeditionDetGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.ExpeditionDetGridView.OptionsView.ShowGroupPanel = false;
             this.ExpeditionDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
             // 
@@ -525,7 +532,7 @@
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 3;
-            this.colMatId.Width = 413;
+            this.colMatId.Width = 263;
             // 
             // gridColumn2
             // 
@@ -540,12 +547,12 @@
             // 
             // gridColumn4
             // 
-            this.gridColumn4.Caption = "К-сть";
+            this.gridColumn4.Caption = "К-сть товару з тарою";
             this.gridColumn4.FieldName = "Amount";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 7;
-            this.gridColumn4.Width = 67;
+            this.gridColumn4.VisibleIndex = 9;
+            this.gridColumn4.Width = 90;
             // 
             // gridColumn1
             // 
@@ -571,7 +578,7 @@
             this.gridColumn7.FieldName = "TotalWeight";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 8;
+            this.gridColumn7.VisibleIndex = 10;
             // 
             // gridColumn8
             // 
@@ -581,7 +588,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 0;
-            this.gridColumn8.Width = 71;
+            this.gridColumn8.Width = 63;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -616,7 +623,7 @@
             this.gridColumn12.FieldName = "WbNotes";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 9;
+            this.gridColumn12.VisibleIndex = 11;
             this.gridColumn12.Width = 84;
             // 
             // repositoryItemImageComboBox1
@@ -676,6 +683,22 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.ExpeditionsDetPopupMenu.Manager = this.barManager1;
             this.ExpeditionsDetPopupMenu.Name = "ExpeditionsDetPopupMenu";
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Тара, кг";
+            this.gridColumn14.FieldName = "TareWeight";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 7;
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Тара, шт";
+            this.gridColumn15.FieldName = "TareQuantity";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 8;
             // 
             // ExpeditionUserControl
             // 
@@ -776,5 +799,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private ucRelDocGrid ucRelDocGrid1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
     }
 }

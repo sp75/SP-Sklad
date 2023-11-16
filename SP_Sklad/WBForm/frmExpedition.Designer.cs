@@ -70,8 +70,10 @@
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.ExpeditionBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.CarsLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -107,8 +109,8 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.RouteLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl54 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -117,8 +119,9 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).BeginInit();
@@ -136,7 +139,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -392,6 +395,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.RouteLookUpEdit);
+            this.panelControl1.Controls.Add(this.labelControl54);
             this.panelControl1.Controls.Add(this.DriversLookUpEdit);
             this.panelControl1.Controls.Add(this.labelControl4);
             this.panelControl1.Controls.Add(this.CarsLookUpEdit);
@@ -411,6 +416,39 @@
             this.panelControl1.Size = new System.Drawing.Size(1190, 126);
             this.panelControl1.TabIndex = 0;
             // 
+            // DriversLookUpEdit
+            // 
+            this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DriversLookUpEdit.Location = new System.Drawing.Point(567, 88);
+            this.DriversLookUpEdit.Name = "DriversLookUpEdit";
+            this.DriversLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.DriversLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
+            this.DriversLookUpEdit.Properties.DisplayMember = "Name";
+            this.DriversLookUpEdit.Properties.NullText = "";
+            this.DriversLookUpEdit.Properties.PopupSizeable = false;
+            this.DriversLookUpEdit.Properties.ShowFooter = false;
+            this.DriversLookUpEdit.Properties.ShowHeader = false;
+            this.DriversLookUpEdit.Properties.ValueMember = "KaId";
+            this.DriversLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DriversLookUpEdit_Properties_ButtonClick);
+            this.DriversLookUpEdit.Size = new System.Drawing.Size(251, 22);
+            this.DriversLookUpEdit.StyleController = this.styleController1;
+            this.DriversLookUpEdit.TabIndex = 65;
+            // 
+            // ExpeditionBS
+            // 
+            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(508, 91);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(36, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 64;
+            this.labelControl4.Text = "Водій:";
+            // 
             // CarsLookUpEdit
             // 
             this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -428,13 +466,9 @@
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.ValueMember = "Id";
             this.CarsLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.CarsLookUpEdit_Properties_ButtonClick);
-            this.CarsLookUpEdit.Size = new System.Drawing.Size(273, 22);
+            this.CarsLookUpEdit.Size = new System.Drawing.Size(251, 22);
             this.CarsLookUpEdit.StyleController = this.styleController1;
             this.CarsLookUpEdit.TabIndex = 63;
-            // 
-            // ExpeditionBS
-            // 
-            this.ExpeditionBS.DataSource = typeof(SP_Sklad.SkladData.Expedition);
             // 
             // labelControl3
             // 
@@ -447,7 +481,7 @@
             // 
             // labelControl10
             // 
-            this.labelControl10.Location = new System.Drawing.Point(871, 51);
+            this.labelControl10.Location = new System.Drawing.Point(852, 91);
             this.labelControl10.Name = "labelControl10";
             this.labelControl10.Size = new System.Drawing.Size(48, 16);
             this.labelControl10.StyleController = this.styleController1;
@@ -458,7 +492,7 @@
             // 
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "PersonId", true));
             this.PersonComboBox.Enabled = false;
-            this.PersonComboBox.Location = new System.Drawing.Point(925, 48);
+            this.PersonComboBox.Location = new System.Drawing.Point(906, 87);
             this.PersonComboBox.Name = "PersonComboBox";
             editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -470,7 +504,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(252, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(266, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 60;
             // 
@@ -800,34 +834,35 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
-            // labelControl4
+            // RouteLookUpEdit
             // 
-            this.labelControl4.Location = new System.Drawing.Point(508, 91);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(36, 16);
-            this.labelControl4.StyleController = this.styleController1;
-            this.labelControl4.TabIndex = 64;
-            this.labelControl4.Text = "Водій:";
-            // 
-            // DriversLookUpEdit
-            // 
-            this.DriversLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DriversLookUpEdit.Location = new System.Drawing.Point(567, 88);
-            this.DriversLookUpEdit.Name = "DriversLookUpEdit";
-            this.DriversLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(906, 49);
+            this.RouteLookUpEdit.Name = "RouteLookUpEdit";
+            this.RouteLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DriversLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            this.RouteLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.DriversLookUpEdit.Properties.DisplayMember = "Name";
-            this.DriversLookUpEdit.Properties.NullText = "";
-            this.DriversLookUpEdit.Properties.PopupSizeable = false;
-            this.DriversLookUpEdit.Properties.ShowFooter = false;
-            this.DriversLookUpEdit.Properties.ShowHeader = false;
-            this.DriversLookUpEdit.Properties.ValueMember = "KaId";
-            this.DriversLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.DriversLookUpEdit_Properties_ButtonClick);
-            this.DriversLookUpEdit.Size = new System.Drawing.Size(273, 22);
-            this.DriversLookUpEdit.StyleController = this.styleController1;
-            this.DriversLookUpEdit.TabIndex = 65;
+            this.RouteLookUpEdit.Properties.DisplayMember = "Name";
+            this.RouteLookUpEdit.Properties.NullText = "";
+            this.RouteLookUpEdit.Properties.PopupSizeable = false;
+            this.RouteLookUpEdit.Properties.ShowFooter = false;
+            this.RouteLookUpEdit.Properties.ShowHeader = false;
+            this.RouteLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.RouteLookUpEdit.Properties.ValueMember = "Id";
+            this.RouteLookUpEdit.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.RouteLookUpEdit_Properties_ButtonClick);
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(266, 22);
+            this.RouteLookUpEdit.StyleController = this.styleController1;
+            this.RouteLookUpEdit.TabIndex = 67;
+            // 
+            // labelControl54
+            // 
+            this.labelControl54.Location = new System.Drawing.Point(842, 51);
+            this.labelControl54.Name = "labelControl54";
+            this.labelControl54.Size = new System.Drawing.Size(58, 16);
+            this.labelControl54.StyleController = this.styleController1;
+            this.labelControl54.TabIndex = 66;
+            this.labelControl54.Text = "Маршрут:";
             // 
             // frmExpedition
             // 
@@ -860,8 +895,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties)).EndInit();
@@ -879,7 +915,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RouteLookUpEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -951,5 +987,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LookUpEdit DriversLookUpEdit;
+        private DevExpress.XtraEditors.LookUpEdit RouteLookUpEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl54;
     }
 }
