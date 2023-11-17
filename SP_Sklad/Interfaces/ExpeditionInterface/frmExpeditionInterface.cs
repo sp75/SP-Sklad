@@ -308,7 +308,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
             _db.SaveChanges();
 
-            simpleButton2.PerformClick();
+            is_new_record = false;
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
@@ -348,6 +348,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             _db.SaveChanges();
 
             GetTotalWeight();
+
+            GetDetail();
         }
 
         private void TareWeightEdit_EditValueChanged(object sender, EventArgs e)
@@ -414,8 +416,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            is_new_record = false;
-
             Close();
         }
 

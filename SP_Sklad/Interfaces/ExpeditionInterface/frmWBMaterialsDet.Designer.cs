@@ -212,6 +212,7 @@
             this.ClientSize = new System.Drawing.Size(897, 571);
             this.Controls.Add(this.MatChangeGridControl);
             this.Controls.Add(this.BottomPanel);
+            this.MinimizeBox = false;
             this.Name = "frmWBMaterialsDet";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

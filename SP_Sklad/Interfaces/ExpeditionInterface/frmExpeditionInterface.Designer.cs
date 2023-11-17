@@ -120,6 +120,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
             this.ExpeditionBS = new System.Windows.Forms.BindingSource(this.components);
             this.BarCodeBox = new System.Windows.Forms.TextBox();
@@ -176,6 +177,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).BeginInit();
@@ -569,7 +571,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.MsrComboBox.Properties.DisplayMember = "Name";
             this.MsrComboBox.Properties.ShowFooter = false;
             this.MsrComboBox.Properties.ShowHeader = false;
-            this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.MsrComboBox.Properties.ValueMember = "MId";
             this.MsrComboBox.Size = new System.Drawing.Size(357, 30);
             this.MsrComboBox.StyleController = this.layoutControl2;
@@ -605,6 +607,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.SaveDetBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.SaveDetBtn.Appearance.Options.UseBackColor = true;
             this.SaveDetBtn.Appearance.Options.UseFont = true;
+            this.SaveDetBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.SaveDetBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SaveDetBtn.ImageOptions.Image")));
             this.SaveDetBtn.Location = new System.Drawing.Point(24, 656);
             this.SaveDetBtn.Name = "SaveDetBtn";
@@ -868,8 +871,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.labelControl2.Location = new System.Drawing.Point(12, 16);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(37, 16);
+            this.labelControl2.StyleController = this.styleController1;
             this.labelControl2.TabIndex = 65;
             this.labelControl2.Text = "Номер";
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // NumEdit
             // 
@@ -1144,6 +1153,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExpeditionBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CarsLookUpEdit.Properties)).EndInit();
@@ -1235,5 +1245,6 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
         private DevExpress.XtraEditors.GridLookUpEdit RouteLookUpEdit;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraEditors.StyleController styleController1;
     }
 }
