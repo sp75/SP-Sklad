@@ -2310,6 +2310,7 @@ warning 6002: The table/view 'sp_base.dbo.v_Expedition' does not have a primary 
           <Property Name="DriverId" Type="int" />
           <Property Name="RouteId" Type="int" />
           <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Duration" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_ExpeditionDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8999,7 +9000,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Expedition].[DriverName] AS [DriverName], 
     [v_Expedition].[DriverId] AS [DriverId], 
     [v_Expedition].[RouteId] AS [RouteId], 
-    [v_Expedition].[RouteName] AS [RouteName]
+    [v_Expedition].[RouteName] AS [RouteName], 
+    [v_Expedition].[Duration] AS [Duration]
     FROM [dbo].[v_Expedition] AS [v_Expedition]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ExpeditionDet" EntityType="Self.v_ExpeditionDet" store:Type="Views" store:Schema="dbo">
@@ -20924,6 +20926,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DriverId" Type="Int32" />
           <Property Name="RouteId" Type="Int32" />
           <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="DateTime" Precision="3" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -26468,6 +26471,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Expedition">
             <EntityTypeMapping TypeName="BaseModel.v_Expedition">
               <MappingFragment StoreEntitySet="v_Expedition">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
                 <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />

@@ -196,5 +196,6 @@ namespace SP_Sklad.UserControls
             var list = DB.SkladBase().v_Expedition.AsQueryable();
             e.QueryableSource = list;
         }
+
     }
 }
