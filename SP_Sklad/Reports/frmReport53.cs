@@ -107,7 +107,7 @@ namespace SP_Sklad.ViewsForm
             var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
             int wid = wh_row.WId;
 
-            return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
+         /*   return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {2} and  DATEADD (day, 1 , {2} ) ),0) OrderedAmount2,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {3} and  DATEADD (day, 1 , {3} ) ),0) OrderedAmount3,
@@ -133,7 +133,44 @@ from
 		inner join Materials m on m.MatId = x.MatId  and m.TypeId in (1,5)
 		inner join MatGroup mg on mg.GrpId = m.GrpId 
         inner join Measures on Measures.MId = m.MId
-        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wid).ToList();
+        order by m.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wid).ToList();*/
+
+
+            return _db.Database.SqlQuery<rep_53>(@"select x.* ,
+coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , WayBillMake wbm, MatRecipe mr where wbm.RecId = mr.RecId and mr.MatId = x.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) ),0) MakeAmount,
+(select 
+				   sum( pr.remain) Remain
+		   from PosRemains pr
+		   join (
+						   SELECT 
+							    PosId,
+							    max(OnDate) OnDate
+						   FROM PosRemains
+					     where ondate <= {0}
+					     group by [PosId]
+						) xx on xx.PosId = pr.PosId and pr.OnDate = xx.OnDate
+        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {4} or {4} = 0 ) and pr.MatId = x.MatId
+    ) Remain 
+from (
+select  wbd.MatId, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
+sum(case when wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) then  wbd.Amount else 0 end ) OrderedAmount1,
+sum(case when wbl.OnDate between {2} and DATEADD (day, 1 , {2} ) then  wbd.Amount else 0 end ) OrderedAmount2,
+sum(case when wbl.OnDate between {3} and DATEADD (day, 1 , {3} ) then  wbd.Amount else 0 end ) OrderedAmount3   
+from WaybillDet wbd
+inner join WaybillList wbl on wbd.WbillId = wbl.WbillId
+inner join Materials m on m.MatId = wbd.MatId and m.TypeId in (1,5)
+inner join MatGroup mg on mg.GrpId = m.GrpId 
+inner join Measures on Measures.MId = m.MId
+
+where   wbl.WType = -16 
+       and (wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) 
+	   or wbl.OnDate between {2} and DATEADD (day, 1 , {2} ) 
+	   or wbl.OnDate between {3} and DATEADD (day, 1 , {3} ) )
+group by wbd.MatId, m.Name , mg.Name , mg.GrpId, m.Artikul, Measures.ShortName 
+)x
+
+order by x.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wid).ToList();
+
         }
 
         private void OkButton_Click(object sender, EventArgs e)
