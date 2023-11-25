@@ -1207,6 +1207,7 @@ namespace SP_Sklad.MainTabs
             RecalcRemainsMatBtn.Enabled = DBHelper.is_admin;
             DelRemainsMatBtn.Enabled = DBHelper.is_admin;
             RecalcRemainsAllMatBtn.Enabled = DBHelper.is_admin;
+            RecalcRemainsPostBtn.Enabled = DBHelper.is_admin;
             SetPriceBtnItem.Enabled = IHelper.GetUserAccess(97)?.CanInsert == 1;
         }
 
@@ -1318,6 +1319,27 @@ namespace SP_Sklad.MainTabs
                     frm.ShowDialog();
                 }
             }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var db = DB.SkladBase())
+            {
+                var row = bandedGridView1.GetFocusedRow() as PosGet_Result;
+
+                db.DeleteWhere<PosRemains>(w => w.PosId == row.PosId);
+
+                var pos = db.WMatTurn.Where(w => w.PosId == row.PosId).OrderBy(o => o.OnDate).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList().Distinct();
+
+                foreach (var item in pos)
+                {
+                    db.SP_RECALC_POSREMAINS(item.PosId, focused_wh_mat.MatId, item.WId, item.OnDate, 0);
+                }
+
+                db.SaveChanges();
+            }
+
+            RefreshWhBtn.PerformClick();
         }
     }
 }
