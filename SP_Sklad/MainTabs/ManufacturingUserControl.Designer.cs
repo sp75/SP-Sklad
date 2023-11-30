@@ -314,6 +314,7 @@
             this.gridColumn106 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn107 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn92 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn245 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -561,7 +562,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn245 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -1656,7 +1656,7 @@
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.WbGridView.OptionsBehavior.Editable = false;
+            this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WbGridView_RowStyle);
@@ -3030,7 +3030,7 @@
             this.gridColumn229});
             this.DeboningGridView.GridControl = this.DeboningGridControl;
             this.DeboningGridView.Name = "DeboningGridView";
-            this.DeboningGridView.OptionsBehavior.Editable = false;
+            this.DeboningGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.DeboningGridView.OptionsBehavior.ReadOnly = true;
             this.DeboningGridView.OptionsView.ShowGroupPanel = false;
             this.DeboningGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
@@ -4207,6 +4207,15 @@
             this.gridColumn92.Visible = true;
             this.gridColumn92.VisibleIndex = 6;
             this.gridColumn92.Width = 106;
+            // 
+            // gridColumn245
+            // 
+            this.gridColumn245.Caption = "Артикул";
+            this.gridColumn245.FieldName = "Artikul";
+            this.gridColumn245.Name = "gridColumn245";
+            this.gridColumn245.Visible = true;
+            this.gridColumn245.VisibleIndex = 2;
+            this.gridColumn245.Width = 96;
             // 
             // xtraTabPage14
             // 
@@ -7084,15 +7093,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // gridColumn245
-            // 
-            this.gridColumn245.Caption = "Артикул";
-            this.gridColumn245.FieldName = "Artikul";
-            this.gridColumn245.Name = "gridColumn245";
-            this.gridColumn245.Visible = true;
-            this.gridColumn245.VisibleIndex = 2;
-            this.gridColumn245.Width = 96;
             // 
             // ManufacturingUserControl
             // 
