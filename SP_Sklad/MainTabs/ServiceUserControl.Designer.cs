@@ -1556,7 +1556,7 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView1.OptionsBehavior.AutoExpandAllGroups = true;
-            this.gridView1.OptionsBehavior.Editable = false;
+            this.gridView1.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.gridView1.OptionsBehavior.ReadOnly = true;
             this.gridView1.OptionsCustomization.AllowRowSizing = true;
             this.gridView1.OptionsCustomization.UseAdvancedCustomizationForm = DevExpress.Utils.DefaultBoolean.True;
@@ -2765,6 +2765,7 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.Filter = "txt files (*.txt)|*.txt|sql files (*.sql)|*.sql";
+            this.saveFileDialog1.RestoreDirectory = true;
             // 
             // tab1
             // 

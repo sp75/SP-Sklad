@@ -547,23 +547,9 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SaveFileDialog dialog = new SaveFileDialog
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                Filter = "Text Format Files (*.txt)|*.txt|All Files (*.*)|*.*",
-                FileName = "query.txt",
-                RestoreDirectory = true,
-                CheckFileExists = false,
-                CheckPathExists = true,
-                OverwritePrompt = true,
-                DereferenceLinks = true,
-                ValidateNames = true,
-                AddExtension = false,
-                FilterIndex = 1
-            };
-           // dialog.InitialDirectory = "C:\\Temp";
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                richEditControl1.SaveDocument(dialog.FileName, DevExpress.XtraRichEdit.DocumentFormat.PlainText);
+                richEditControl1.SaveDocument(saveFileDialog1.FileName, DevExpress.XtraRichEdit.DocumentFormat.PlainText);
             }
         }
 
