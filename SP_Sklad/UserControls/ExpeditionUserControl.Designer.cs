@@ -333,6 +333,11 @@
             // 
             this.ExpeditionsGridControl.DataSource = this.ExpeditionsSource;
             this.ExpeditionsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExpeditionsGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.ExpeditionsGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.ExpeditionsGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.ExpeditionsGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.ExpeditionsGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.ExpeditionsGridControl.Location = new System.Drawing.Point(0, 0);
             this.ExpeditionsGridControl.MainView = this.ExpeditionsGridView;
             this.ExpeditionsGridControl.Name = "ExpeditionsGridControl";
@@ -341,6 +346,7 @@
             this.repositoryItemTimeEdit1});
             this.ExpeditionsGridControl.Size = new System.Drawing.Size(1248, 354);
             this.ExpeditionsGridControl.TabIndex = 0;
+            this.ExpeditionsGridControl.UseEmbeddedNavigator = true;
             this.ExpeditionsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionsGridView});
             // 

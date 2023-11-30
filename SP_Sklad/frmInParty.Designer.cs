@@ -179,7 +179,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 3),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 4)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 6)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
             // 
@@ -193,6 +194,7 @@
             this.imageList1.Images.SetKeyName(3, "Введення залишк_в товар_в.bmp");
             this.imageList1.Images.SetKeyName(4, "Возврат от клиетна.bmp");
             this.imageList1.Images.SetKeyName(5, "Товари.bmp");
+            this.imageList1.Images.SetKeyName(6, "Без имени-2.png");
             // 
             // gridColumn2
             // 

@@ -188,10 +188,13 @@
             this.DurationEdit.Properties.BeepOnError = false;
             this.DurationEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.DurationEdit.Properties.MaskSettings.Set("mask", "dd DD hh HH mm MM");
+            this.DurationEdit.Properties.DisplayFormat.FormatString = "{0:dd} днів, {0:hh} годин, {0:mm} хвилин";
+            this.DurationEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Custom;
+            this.DurationEdit.Properties.MaskSettings.Set("mask", "dd дні hh години mm хвилини");
+            this.DurationEdit.Properties.MaskSettings.Set("allowNegativeValues", false);
             this.DurationEdit.Properties.MaxValue = System.TimeSpan.Parse("30.00:00:00");
             this.DurationEdit.Properties.MinValue = System.TimeSpan.Parse("00:00:00");
-            this.DurationEdit.Size = new System.Drawing.Size(178, 22);
+            this.DurationEdit.Size = new System.Drawing.Size(228, 22);
             this.DurationEdit.StyleController = this.styleController1;
             this.DurationEdit.TabIndex = 56;
             this.DurationEdit.EditValueChanged += new System.EventHandler(this.textEdit4_EditValueChanged);
