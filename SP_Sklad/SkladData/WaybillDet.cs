@@ -32,6 +32,7 @@ namespace SP_Sklad.SkladData
             this.OrderedRels1 = new HashSet<OrderedRels>();
             this.PosRemains = new HashSet<PosRemains>();
             this.RawMaterialManagementDet = new HashSet<RawMaterialManagementDet>();
+            this.WaybillCorrectionDet = new HashSet<WaybillCorrectionDet>();
         }
     
         public int PosId { get; set; }
@@ -81,5 +82,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
         public virtual PriceTypes PriceTypes { get; set; }
+        public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet { get; set; }
     }
 }

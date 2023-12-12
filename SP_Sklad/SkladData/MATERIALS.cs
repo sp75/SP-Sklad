@@ -40,6 +40,8 @@ namespace SP_Sklad.SkladData
             this.DeboningWeighing = new HashSet<DeboningWeighing>();
             this.ExpeditionMaterialsDet = new HashSet<ExpeditionMaterialsDet>();
             this.UserQuickMaterials = new HashSet<UserQuickMaterials>();
+            this.WaybillCorrectionDet = new HashSet<WaybillCorrectionDet>();
+            this.WaybillCorrectionDet1 = new HashSet<WaybillCorrectionDet>();
         }
     
         public int MatId { get; set; }
@@ -109,5 +111,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<DeboningWeighing> DeboningWeighing { get; set; }
         public virtual ICollection<ExpeditionMaterialsDet> ExpeditionMaterialsDet { get; set; }
         public virtual ICollection<UserQuickMaterials> UserQuickMaterials { get; set; }
+        public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet { get; set; }
+        public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet1 { get; set; }
     }
 }

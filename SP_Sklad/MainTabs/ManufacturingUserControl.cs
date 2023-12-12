@@ -26,6 +26,8 @@ namespace SP_Sklad.MainTabs
 {
     public partial class ManufacturingUserControl : DevExpress.XtraEditors.XtraUserControl
     {
+        private UserSettingsRepository user_settings { get; set; }
+
         private GetManufactureTree_Result focused_tree_node { get; set; }
         private WBListMake_Result focused_row { get; set; }
         private ProductionPlansList_Result pp_focused_row { get; set; }
@@ -102,6 +104,9 @@ namespace SP_Sklad.MainTabs
                 RawMaterialManagementStatus.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведений" }, new { Id = 0, Name = "Новий" } };
                 RawMaterialManagementStatus.EditValue = -1;
 
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
+                WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+                DeboningGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
                 DocsTreeList.DataSource = manuf_tree;
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);

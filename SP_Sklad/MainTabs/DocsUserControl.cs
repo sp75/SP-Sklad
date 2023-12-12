@@ -1042,6 +1042,8 @@ namespace SP_Sklad.MainTabs
 
             if (cur_wtype == -1) createTaxWBbtn.Visibility = BarItemVisibility.Always;
             else createTaxWBbtn.Visibility = BarItemVisibility.Never;
+
+            ChangeWaybillKagentBtn.Enabled = DBHelper.is_admin;
         }
 
         private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -1544,6 +1546,7 @@ namespace SP_Sklad.MainTabs
             }
 
             barButtonItem11.Enabled = wb_focused_row.WType == 6 || wb_focused_row.WType == 1;
+            
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
@@ -1899,6 +1902,32 @@ namespace SP_Sklad.MainTabs
             _db.SaveChanges();
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (var frm = new frmKagents(-1, ""))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var new_id = frm.focused_row?.KaId;
+
+                    if(new_id !=null)
+                    {
+                        _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
+
+                        RefrechItemBtn.PerformClick();
+                    }
+                }
+            }
+        }
+
+        private void WaybillCorrectionDetBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (var frm = new frmWaybillCorrection(wb_det_focused_row.PosId))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

@@ -396,6 +396,12 @@
         <EntityTypeShape EntityType="BaseModel.Expedition" Width="1.5" PointX="30.625" PointY="38.75" />
         <AssociationConnector Association="BaseModel.FK_Expedition_Cars" />
         <AssociationConnector Association="BaseModel.FK_ExpeditionDet_Expedition" />
+        <EntityTypeShape EntityType="BaseModel.WaybillCorrection" Width="1.5" PointX="36.5" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.WaybillCorrectionDet" Width="1.5" PointX="38.75" PointY="18.625" />
+        <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_Materials" />
+        <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_Materials1" />
+        <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" />
+        <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillDet" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
@@ -429,6 +435,8 @@
         <EntityTypeShape EntityType="BaseModel.v_ExpeditionDet" Width="1.5" PointX="0.75" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_ExpeditionWBMaterialsDet" Width="1.5" PointX="7.375" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_Expedition" Width="1.5" PointX="17.375" PointY="17.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillCorrection" Width="1.5" PointX="9.375" PointY="18.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillCorrectionDet" Width="1.5" PointX="18.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

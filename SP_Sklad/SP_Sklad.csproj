@@ -258,9 +258,6 @@
     <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WayBills\WayBillsController.cs" />
-    <Compile Include="Common\WBForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Common\WhDocEdit.cs" />
     <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.cs">
       <SubType>Form</SubType>
@@ -706,6 +703,12 @@
     <Compile Include="SkladData\v_SummarySettingMaterialPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WaybillCorrection.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WaybillCorrectionDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -713,6 +716,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WaybillTemplateDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WaybillCorrection.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\WaybillCorrectionDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\WaybillTemplate.cs">
@@ -2015,6 +2024,12 @@
     <Compile Include="TradeForm\frmCashierWorkplace.Designer.cs">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWaybillCorrection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWaybillCorrection.Designer.cs">
+      <DependentUpon>frmWaybillCorrection.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmExpedition.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2581,6 +2596,9 @@
     <EmbeddedResource Include="TradeForm\frmCashierWorkplace.resx">
       <DependentUpon>frmCashierWorkplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWaybillCorrection.resx">
+      <DependentUpon>frmWaybillCorrection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmExpedition.resx">
       <DependentUpon>frmExpedition.cs</DependentUpon>
     </EmbeddedResource>
@@ -2800,8 +2818,10 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_SettingMaterialPricesDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Users.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillCorrectionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillTemplateDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillCorrection.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillDetAddProps.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillList.datasource" />
@@ -2966,6 +2986,8 @@
     <None Include="Resources\cancel_32x32.png" />
     <None Include="Resources\calculatesheet_16x161.png" />
     <None Include="Resources\left_16x16.png" />
+    <None Include="Resources\transit_16x16.png" />
+    <None Include="Resources\transit_16x161.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

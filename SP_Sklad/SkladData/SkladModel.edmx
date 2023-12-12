@@ -1729,6 +1729,36 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="WaybillCorrection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="WaybillCorrectionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="OldMatId" Type="int" />
+          <Property Name="NewMatId" Type="int" />
+          <Property Name="OldPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="NewPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="WaybillCorrectionId" Type="uniqueidentifier" />
+        </EntityType>
         <EntityType Name="WaybillDet">
           <Key>
             <PropertyRef Name="PosId" />
@@ -3402,6 +3432,57 @@ warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key d
           <Property Name="InternalEditor" Type="bit" />
           <Property Name="IsWorking" Type="bit" Nullable="false" />
           <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrection' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillCorrection">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillCorrectionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="OldMatId" Type="int" />
+          <Property Name="NewMatId" Type="int" />
+          <Property Name="OldPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="NewPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" />
+          <Property Name="WaybillCorrectionId" Type="uniqueidentifier" />
+          <Property Name="OldMatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="NewMatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="WId" Type="int" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5948,6 +6029,56 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WaybillCorrectionDet_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+          <End Role="WaybillCorrectionDet" Type="Self.WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="NewMatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_Materials1">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="0..1" />
+          <End Role="WaybillCorrectionDet" Type="Self.WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="OldMatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_WaybillCorrection">
+          <End Role="WaybillCorrection" Type="Self.WaybillCorrection" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WaybillCorrectionDet" Type="Self.WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillCorrection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="WaybillCorrectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_WaybillDet">
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1" />
+          <End Role="WaybillCorrectionDet" Type="Self.WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WAYBILLD_FK_WBDET__MATERIAL">
           <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
           <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="*" />
@@ -6374,6 +6505,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ChangeWaybillKagent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="new_kaid" Type="int" Mode="In" />
+          <Parameter Name="wbill_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="CopyMaterial" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="mat_id" Type="int" Mode="In" />
         </Function>
@@ -6989,7 +7124,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
-                <Property Name="DocNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+                <Property Name="DocNum" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="DocDate" Type="datetime" Nullable="false" />
                 <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
                 <Property Name="SerialNo" Type="nvarchar" MaxLength="64" />
@@ -7003,7 +7138,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="Amount" Type="numeric" Precision="15" Scale="8" />
                 <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
                 <Property Name="FullRemain" Type="numeric" Precision="21" Scale="8" />
-                <Property Name="DocInfo" Type="nvarchar" MaxLength="57" />
+                <Property Name="DocInfo" Type="nvarchar" MaxLength="87" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -7443,6 +7578,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="DestinationWhName" Type="nvarchar" MaxLength="64" />
                 <Property Name="UpdatedAt" Type="datetime" />
                 <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
+                <Property Name="Expedition" Type="int" Nullable="false" />
                 <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
                 <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
               </RowType>
@@ -8720,6 +8856,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="UserTreeView" EntityType="Self.UserTreeView" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViewLng" EntityType="Self.ViewLng" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaybillCorrection" EntityType="Self.WaybillCorrection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaybillCorrectionDet" EntityType="Self.WaybillCorrectionDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WaybillDet" EntityType="Self.WaybillDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillDetAddProps" EntityType="Self.WayBillDetAddProps" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WayBillDetTaxes" EntityType="Self.WayBillDetTaxes" Schema="dbo" store:Type="Tables" />
@@ -9791,6 +9929,43 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_Users].[EmployeeName] AS [EmployeeName]
     FROM [dbo].[v_Users] AS [v_Users]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WaybillCorrection" EntityType="Self.v_WaybillCorrection" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillCorrection].[Id] AS [Id], 
+    [v_WaybillCorrection].[Num] AS [Num], 
+    [v_WaybillCorrection].[OnDate] AS [OnDate], 
+    [v_WaybillCorrection].[Checked] AS [Checked], 
+    [v_WaybillCorrection].[Notes] AS [Notes], 
+    [v_WaybillCorrection].[PersonId] AS [PersonId], 
+    [v_WaybillCorrection].[UpdatedAt] AS [UpdatedAt], 
+    [v_WaybillCorrection].[UpdatedBy] AS [UpdatedBy], 
+    [v_WaybillCorrection].[DocType] AS [DocType], 
+    [v_WaybillCorrection].[SessionId] AS [SessionId], 
+    [v_WaybillCorrection].[PersonName] AS [PersonName], 
+    [v_WaybillCorrection].[Reason] AS [Reason]
+    FROM [dbo].[v_WaybillCorrection] AS [v_WaybillCorrection]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_WaybillCorrectionDet" EntityType="Self.v_WaybillCorrectionDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillCorrectionDet].[Id] AS [Id], 
+    [v_WaybillCorrectionDet].[Checked] AS [Checked], 
+    [v_WaybillCorrectionDet].[OldMatId] AS [OldMatId], 
+    [v_WaybillCorrectionDet].[NewMatId] AS [NewMatId], 
+    [v_WaybillCorrectionDet].[OldPrice] AS [OldPrice], 
+    [v_WaybillCorrectionDet].[NewPrice] AS [NewPrice], 
+    [v_WaybillCorrectionDet].[PosId] AS [PosId], 
+    [v_WaybillCorrectionDet].[Notes] AS [Notes], 
+    [v_WaybillCorrectionDet].[WaybillCorrectionId] AS [WaybillCorrectionId], 
+    [v_WaybillCorrectionDet].[OldMatName] AS [OldMatName], 
+    [v_WaybillCorrectionDet].[NewMatName] AS [NewMatName], 
+    [v_WaybillCorrectionDet].[WbNum] AS [WbNum], 
+    [v_WaybillCorrectionDet].[WbillId] AS [WbillId], 
+    [v_WaybillCorrectionDet].[KaId] AS [KaId], 
+    [v_WaybillCorrectionDet].[OnDate] AS [OnDate], 
+    [v_WaybillCorrectionDet].[WId] AS [WId], 
+    [v_WaybillCorrectionDet].[Amount] AS [Amount]
+    FROM [dbo].[v_WaybillCorrectionDet] AS [v_WaybillCorrectionDet]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WaybillDet].[PosId] AS [PosId], 
@@ -10701,6 +10876,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_USERTREE_FK_USERTR_USERTREE" Association="Self.FK_USERTREE_FK_USERTR_USERTREE">
             <End Role="UserTree" EntitySet="UserTree" />
             <End Role="UserTreeView" EntitySet="UserTreeView" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_Materials" Association="Self.FK_WaybillCorrectionDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_Materials1" Association="Self.FK_WaybillCorrectionDet_Materials1">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_WaybillCorrection" Association="Self.FK_WaybillCorrectionDet_WaybillCorrection">
+            <End Role="WaybillCorrection" EntitySet="WaybillCorrection" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_WaybillDet" Association="Self.FK_WaybillCorrectionDet_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
           </AssociationSet>
           <AssociationSet Name="FK_WAYBILLD_FK_WBDET__MATERIAL" Association="Self.FK_WAYBILLD_FK_WBDET__MATERIAL">
             <End Role="Materials" EntitySet="Materials" />
@@ -12586,6 +12777,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="ExpeditionDet" EntitySet="ExpeditionDet" />
           </AssociationSet>
           <EntitySet Name="v_Expedition" EntityType="BaseModel.v_Expedition" />
+          <FunctionImport Name="ChangeWaybillKagent">
+            <Parameter Name="new_kaid" Mode="In" Type="Int32" />
+            <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="GetWayBillList" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillList_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -12596,6 +12791,26 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="wh" Mode="In" Type="String" />
             <Parameter Name="person_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="WaybillCorrection" EntityType="BaseModel.WaybillCorrection" />
+          <EntitySet Name="WaybillCorrectionDet" EntityType="BaseModel.WaybillCorrectionDet" />
+          <AssociationSet Name="FK_WaybillCorrectionDet_Materials" Association="BaseModel.FK_WaybillCorrectionDet_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_Materials1" Association="BaseModel.FK_WaybillCorrectionDet_Materials1">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_WaybillCorrection" Association="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection">
+            <End Role="WaybillCorrection" EntitySet="WaybillCorrection" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaybillCorrectionDet_WaybillDet" Association="BaseModel.FK_WaybillCorrectionDet_WaybillDet">
+            <End Role="WaybillDet" EntitySet="WaybillDet" />
+            <End Role="WaybillCorrectionDet" EntitySet="WaybillCorrectionDet" />
+          </AssociationSet>
+          <EntitySet Name="v_WaybillCorrection" EntityType="BaseModel.v_WaybillCorrection" />
+          <EntitySet Name="v_WaybillCorrectionDet" EntityType="BaseModel.v_WaybillCorrectionDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -13613,7 +13828,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="DeboningWeighing" Relationship="BaseModel.FK_DeboningWeighing_Materials" FromRole="Materials" ToRole="DeboningWeighing" />
           <NavigationProperty Name="ExpeditionMaterialsDet" Relationship="BaseModel.FK_ExpeditionMaterialsDet_Materials" FromRole="Materials" ToRole="ExpeditionMaterialsDet" />
           <NavigationProperty Name="UserQuickMaterials" Relationship="BaseModel.FK_UserQuickButtons_Materials" FromRole="Materials" ToRole="UserQuickMaterials" />
-        </EntityType>
+          <NavigationProperty Name="WaybillCorrectionDet" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials" FromRole="Materials" ToRole="WaybillCorrectionDet" />
+          <NavigationProperty Name="WaybillCorrectionDet1" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials1" FromRole="Materials" ToRole="WaybillCorrectionDet" />
+          </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
           <End Type="BaseModel.CONTRDET" Role="CONTRDET" Multiplicity="*" />
@@ -14899,6 +15116,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__POSID__2DB1C7EE" FromRole="WaybillDet" ToRole="PosRemains" />
           <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="WaybillDet" ToRole="RawMaterialManagementDet" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
+          <NavigationProperty Name="WaybillCorrectionDet" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillDet" FromRole="WaybillDet" ToRole="WaybillCorrectionDet" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -20929,9 +21147,142 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="DestinationWhName" Nullable="true" MaxLength="64" />
           <Property Type="DateTime" Name="UpdatedAt" Nullable="true" Precision="23" />
           <Property Type="String" Name="UpdatedUserName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Expedition" Nullable="false" />
           <Property Type="Decimal" Name="Balans" Nullable="true" Precision="17" Scale="2" />
           <Property Type="Decimal" Name="TotalAmount" Nullable="true" Precision="38" Scale="4" />
         </ComplexType>
+        <EntityType Name="WaybillCorrection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="Reason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WaybillCorrectionDet" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" FromRole="WaybillCorrection" ToRole="WaybillCorrectionDet" />
+        </EntityType>
+        <EntityType Name="WaybillCorrectionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="OldMatId" Type="Int32" />
+          <Property Name="NewMatId" Type="Int32" />
+          <Property Name="OldPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="NewPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillCorrectionId" Type="Guid" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials" FromRole="WaybillCorrectionDet" ToRole="Materials" />
+          <NavigationProperty Name="Materials1" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials1" FromRole="WaybillCorrectionDet" ToRole="Materials" />
+          <NavigationProperty Name="WaybillCorrection" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" FromRole="WaybillCorrectionDet" ToRole="WaybillCorrection" />
+          <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillDet" FromRole="WaybillCorrectionDet" ToRole="WaybillDet" />
+        </EntityType>
+        <Association Name="FK_WaybillCorrectionDet_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillCorrectionDet" Role="WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="NewMatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_Materials1">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillCorrectionDet" Role="WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="OldMatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_WaybillCorrection">
+          <End Type="BaseModel.WaybillCorrection" Role="WaybillCorrection" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.WaybillCorrectionDet" Role="WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillCorrection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="WaybillCorrectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaybillCorrectionDet_WaybillDet">
+          <End Type="BaseModel.WaybillDet" Role="WaybillDet" Multiplicity="1" />
+          <End Type="BaseModel.WaybillCorrectionDet" Role="WaybillCorrectionDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WaybillDet">
+              <PropertyRef Name="PosId" />
+            </Principal>
+            <Dependent Role="WaybillCorrectionDet">
+              <PropertyRef Name="PosId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_WaybillCorrection">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PersonName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_WaybillCorrectionDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WbNum" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Amount" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="OldMatId" Type="Int32" />
+          <Property Name="NewMatId" Type="Int32" />
+          <Property Name="OldPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="NewPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillCorrectionId" Type="Guid" />
+          <Property Name="OldMatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NewMatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="WId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -26439,6 +26790,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ChangeWaybillKagent" FunctionName="BaseModel.Store.ChangeWaybillKagent" />
           <FunctionImportMapping FunctionImportName="GetWayBillList" FunctionName="BaseModel.Store.GetWayBillList">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.GetWayBillList_Result">
@@ -26495,11 +26847,85 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="DestinationWhName" ColumnName="DestinationWhName" />
                 <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
                 <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
+                <ScalarProperty Name="Expedition" ColumnName="Expedition" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="WaybillCorrection">
+            <EntityTypeMapping TypeName="BaseModel.WaybillCorrection">
+              <MappingFragment StoreEntitySet="WaybillCorrection">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaybillCorrectionDet">
+            <EntityTypeMapping TypeName="BaseModel.WaybillCorrectionDet">
+              <MappingFragment StoreEntitySet="WaybillCorrectionDet">
+                <ScalarProperty Name="WaybillCorrectionId" ColumnName="WaybillCorrectionId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="NewMatId" ColumnName="NewMatId" />
+                <ScalarProperty Name="OldMatId" ColumnName="OldMatId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillCorrection">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrection">
+              <MappingFragment StoreEntitySet="v_WaybillCorrection">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillCorrectionDet">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrectionDet">
+              <MappingFragment StoreEntitySet="v_WaybillCorrectionDet">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="WbNum" ColumnName="WbNum" />
+                <ScalarProperty Name="NewMatName" ColumnName="NewMatName" />
+                <ScalarProperty Name="OldMatName" ColumnName="OldMatName" />
+                <ScalarProperty Name="WaybillCorrectionId" ColumnName="WaybillCorrectionId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="NewMatId" ColumnName="NewMatId" />
+                <ScalarProperty Name="OldMatId" ColumnName="OldMatId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

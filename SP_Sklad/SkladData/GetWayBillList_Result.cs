@@ -66,6 +66,7 @@ namespace SP_Sklad.SkladData
         public string DestinationWhName { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public string UpdatedUserName { get; set; }
+        public int Expedition { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
     }

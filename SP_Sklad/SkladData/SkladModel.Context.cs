@@ -243,6 +243,10 @@ namespace SP_Sklad.SkladData
         public DbSet<UserQuickMaterials> UserQuickMaterials { get; set; }
         public DbSet<Expedition> Expedition { get; set; }
         public DbSet<v_Expedition> v_Expedition { get; set; }
+        public DbSet<WaybillCorrection> WaybillCorrection { get; set; }
+        public DbSet<WaybillCorrectionDet> WaybillCorrectionDet { get; set; }
+        public DbSet<v_WaybillCorrection> v_WaybillCorrection { get; set; }
+        public DbSet<v_WaybillCorrectionDet> v_WaybillCorrectionDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2626,6 +2630,19 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh, @ka_grp_id, @user_id)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter, ka_grp_idParameter, user_idParameter);
+        }
+    
+        public virtual int ChangeWaybillKagent(Nullable<int> new_kaid, Nullable<int> wbill_id)
+        {
+            var new_kaidParameter = new_kaid.HasValue ?
+                new ObjectParameter("new_kaid", new_kaid) :
+                new ObjectParameter("new_kaid", typeof(int));
+    
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ChangeWaybillKagent", new_kaidParameter, wbill_idParameter);
         }
     
         [EdmFunction("BaseEntities", "GetWayBillList")]
