@@ -1248,6 +1248,12 @@
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmWaybillCorrectionsView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmWaybillCorrectionsView.Designer.cs">
+      <DependentUpon>frmWaybillCorrectionsView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmKagentMaterilPrices.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2357,6 +2363,9 @@
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmWaybillCorrectionsView.resx">
+      <DependentUpon>frmWaybillCorrectionsView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmKagentMaterilPrices.resx">
       <DependentUpon>frmKagentMaterilPrices.cs</DependentUpon>
     </EmbeddedResource>
@@ -2988,6 +2997,8 @@
     <None Include="Resources\left_16x16.png" />
     <None Include="Resources\transit_16x16.png" />
     <None Include="Resources\transit_16x161.png" />
+    <None Include="Resources\edittask_16x16.png" />
+    <None Include="Resources\edittask_32x32.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

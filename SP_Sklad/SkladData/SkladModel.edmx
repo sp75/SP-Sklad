@@ -3465,6 +3465,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
             <PropertyRef Name="WbNum" />
             <PropertyRef Name="WbillId" />
             <PropertyRef Name="Amount" />
+            <PropertyRef Name="WbCorrOnDate" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="WhName" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Checked" Type="int" Nullable="false" />
@@ -3483,6 +3488,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
           <Property Name="OnDate" Type="datetime" />
           <Property Name="WId" Type="int" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="WbCorrOnDate" Type="datetime" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9963,7 +9974,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillCorrectionDet].[KaId] AS [KaId], 
     [v_WaybillCorrectionDet].[OnDate] AS [OnDate], 
     [v_WaybillCorrectionDet].[WId] AS [WId], 
-    [v_WaybillCorrectionDet].[Amount] AS [Amount]
+    [v_WaybillCorrectionDet].[Amount] AS [Amount], 
+    [v_WaybillCorrectionDet].[Num] AS [Num], 
+    [v_WaybillCorrectionDet].[WbCorrOnDate] AS [WbCorrOnDate], 
+    [v_WaybillCorrectionDet].[PersonName] AS [PersonName], 
+    [v_WaybillCorrectionDet].[WType] AS [WType], 
+    [v_WaybillCorrectionDet].[KaName] AS [KaName], 
+    [v_WaybillCorrectionDet].[WhName] AS [WhName]
     FROM [dbo].[v_WaybillCorrectionDet] AS [v_WaybillCorrectionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
@@ -21264,6 +21281,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WbNum" />
             <PropertyRef Name="WbillId" />
             <PropertyRef Name="Amount" />
+            <PropertyRef Name="WbCorrOnDate" />
+            <PropertyRef Name="PersonName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="KaName" />
+            <PropertyRef Name="WhName" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
@@ -21282,6 +21304,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="WId" Type="Int32" />
           <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WbCorrOnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -26906,6 +26934,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillCorrectionDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrectionDet">
               <MappingFragment StoreEntitySet="v_WaybillCorrectionDet">
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="WbCorrOnDate" ColumnName="WbCorrOnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="WId" ColumnName="WId" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />

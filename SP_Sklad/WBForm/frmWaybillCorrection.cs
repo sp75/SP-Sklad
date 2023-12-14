@@ -103,7 +103,7 @@ namespace SP_Sklad.WBForm
             wbcor.UpdatedBy = DBHelper.CurrentUser.UserId;
             wbcor.Checked = 1;
 
-            foreach (var item in _db.v_WaybillCorrectionDet.Where(w => w.WaybillCorrectionId == wbcor.Id && w.Checked == 0).ToList())
+            foreach (var item in _db.v_WaybillCorrectionDet.AsNoTracking().Where(w => w.WaybillCorrectionId == wbcor.Id && w.Checked == 0).ToList())
             {
                 var wbcor_det = _db.WaybillCorrectionDet.Find(item.Id);
                 var wbd = _db.WaybillDet.Find(item.PosId);
@@ -130,9 +130,11 @@ namespace SP_Sklad.WBForm
 
                     if (item.OldMatId != item.NewMatId && item.NewMatId.HasValue)
                     {
-                        if (!_db.GetPosIn(item.OnDate, item.NewMatId, item.WId, 0, DBHelper.CurrentUser.UserId).AsNoTracking().Where(w => w.CurRemain >= item.Amount).Any())
+                        wbcor_det.Checked = 0; 
+
+                        if (_db.GetPosIn(item.OnDate, item.NewMatId, item.WId, 0, DBHelper.CurrentUser.UserId).Sum(w => w.CurRemain) >= item.Amount)
                         {
-                            _db.DeleteWhere<WMatTurn>(w => w.SourceId == item.PosId);
+                            _db.DeleteWhere<WMatTurn>(w => w.SourceId == item.PosId );
                             wbd.MatId = item.NewMatId.Value;
                             _db.SaveChanges();
 
@@ -142,12 +144,32 @@ namespace SP_Sklad.WBForm
 
                             if (r.Value != null && (int)r.Value == 0)
                             {
+                                wbd.MatId = item.OldMatId.Value;
+                                _db.SaveChanges();
+                                _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
+                                foreach (var i in _db.WMatTurn.Where(w => w.SourceId == item.PosId).ToList())
+                                {
+                                    i.TurnType = -1;
+                                }
+
                                 wbcor_det.Notes = "Не вдалося зарезервувати!";
                             }
                             else
                             {
+                                foreach (var i in _db.WMatTurn.Where(w => w.SourceId == item.PosId ).ToList())
+                                {
+                                    i.TurnType = -1;
+                                }
+
+                                wbcor_det.Notes = "";
                                 wbcor_det.Checked = 1;
                             }
+
+                            _db.SaveChanges();
+                        }
+                        else
+                        {
+                            wbcor_det.Notes = "На складі відсутня необхідна кількість товару!";
                         }
                     }
                 }

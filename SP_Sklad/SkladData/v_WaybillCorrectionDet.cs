@@ -31,5 +31,11 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> OnDate { get; set; }
         public Nullable<int> WId { get; set; }
         public decimal Amount { get; set; }
+        public string Num { get; set; }
+        public System.DateTime WbCorrOnDate { get; set; }
+        public string PersonName { get; set; }
+        public int WType { get; set; }
+        public string KaName { get; set; }
+        public string WhName { get; set; }
     }
 }
