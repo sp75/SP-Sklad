@@ -59,6 +59,7 @@ namespace SP_Sklad
             var sta = new AppSettingRepository().ShowTradeApp;
             TradeTabPage.PageVisible = sta;
             CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher || DBHelper.is_cacher;
+            WbCorrBtn.Enabled = DBHelper.is_buh;
 
             WbMatTemplateBtn.Enabled = IHelper.GetUserAccess(96)?.CanView == 1;
             NewCustomerOrder.Enabled = IHelper.GetUserAccess(64)?.CanInsert == 1;
@@ -376,6 +377,33 @@ namespace SP_Sklad
             using (var wb_on = new frmWBWriteOff(wid: _wid))
             {
                 wb_on.ShowDialog();
+            }
+        }
+
+        private void WbCorrBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmWaybillCorrection())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void WbCorrListBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmWaybillCorrectionsView().ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (UserSession.production_monitor_frm == null)
+            {
+                UserSession.production_monitor_frm = new frmProductionMonitor();
+                UserSession.production_monitor_frm.Show();
+            }
+            else
+            {
+                UserSession.production_monitor_frm.WindowState = FormWindowState.Normal;
+                UserSession.production_monitor_frm.Activate();
             }
         }
     }

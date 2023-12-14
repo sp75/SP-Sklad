@@ -1248,6 +1248,12 @@
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmWaybillDetView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmWaybillDetView.Designer.cs">
+      <DependentUpon>frmWaybillDetView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillCorrectionsView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2363,6 +2369,9 @@
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmWaybillDetView.resx">
+      <DependentUpon>frmWaybillDetView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillCorrectionsView.resx">
       <DependentUpon>frmWaybillCorrectionsView.cs</DependentUpon>
     </EmbeddedResource>
@@ -2999,6 +3008,16 @@
     <None Include="Resources\transit_16x161.png" />
     <None Include="Resources\edittask_16x16.png" />
     <None Include="Resources\edittask_32x32.png" />
+    <None Include="Resources\solidbluedatabar_16x16.png" />
+    <None Include="Resources\solidbluedatabar_32x32.png" />
+    <None Include="Resources\chartsshowlegend_16x16.png" />
+    <None Include="Resources\chartsshowlegend_32x32.png" />
+    <None Include="Resources\exporttoxlsx_16x16.png" />
+    <None Include="Resources\exporttoxlsx_32x32.png" />
+    <None Include="Resources\showtestreport_16x16.png" />
+    <None Include="Resources\showtestreport_32x32.png" />
+    <None Include="Resources\showtestreport_16x161.png" />
+    <None Include="Resources\showtestreport_32x321.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

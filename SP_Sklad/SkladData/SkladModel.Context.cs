@@ -404,32 +404,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_DOC_SALDO", wBILLIDParameter);
         }
     
-        public virtual int SP_RECALC_KA_SALDO(Nullable<int> kAID, Nullable<System.DateTime> oNDATE)
-        {
-            var kAIDParameter = kAID.HasValue ?
-                new ObjectParameter("KAID", kAID) :
-                new ObjectParameter("KAID", typeof(int));
-    
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_KA_SALDO", kAIDParameter, oNDATEParameter);
-        }
-    
-        public virtual int SP_RECALC_KA_SALDO_EX(Nullable<int> kAID, Nullable<System.DateTime> oNDATE)
-        {
-            var kAIDParameter = kAID.HasValue ?
-                new ObjectParameter("KAID", kAID) :
-                new ObjectParameter("KAID", typeof(int));
-    
-            var oNDATEParameter = oNDATE.HasValue ?
-                new ObjectParameter("ONDATE", oNDATE) :
-                new ObjectParameter("ONDATE", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_RECALC_KA_SALDO_EX", kAIDParameter, oNDATEParameter);
-        }
-    
         public virtual int SP_RECALC_MATREMAINS(Nullable<int> mATID, Nullable<System.DateTime> oNDATE, Nullable<int> aFTERDEL)
         {
             var mATIDParameter = mATID.HasValue ?

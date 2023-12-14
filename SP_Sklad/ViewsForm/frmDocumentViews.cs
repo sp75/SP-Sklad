@@ -58,5 +58,10 @@ namespace SP_Sklad.ViewsForm
         {
 
         }
+
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -51,5 +51,7 @@ namespace SP_Sklad.SkladData
         public int WbChecked { get; set; }
         public string Artikul { get; set; }
         public string WbNotes { get; set; }
+        public string WhName { get; set; }
+        public string PersonName { get; set; }
     }
 }

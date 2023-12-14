@@ -36,7 +36,6 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewCustomerOrder = new DevExpress.XtraBars.BarButtonItem();
             this.NewWBWriteOnItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +58,11 @@
             this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+            this.WbCorrBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
+            this.WbMatTemplateBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.WbCorrListBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
@@ -156,6 +160,7 @@
             this.barManagerImgList.Images.SetKeyName(32, "РасходНакл+.bmp");
             this.barManagerImgList.Images.SetKeyName(33, "lock.png");
             this.barManagerImgList.Images.SetKeyName(34, "CashRegister.png");
+            this.barManagerImgList.Images.SetKeyName(35, "edittask_16x16.png");
             // 
             // GridImageList
             // 
@@ -241,9 +246,13 @@
             this.WbMatTemplateBtn,
             this.NewWBWriteOnItem,
             this.NewWayBillMoveBtn,
-            this.NewWBWriteOffBtn});
+            this.NewWBWriteOffBtn,
+            this.barSubItem5,
+            this.WbCorrBtn,
+            this.WbCorrListBtn,
+            this.barButtonItem2});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 37;
+            this.barManager1.MaxItemId = 41;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -260,8 +269,7 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewCustomerOrder),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewCustomerOrder, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOnItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
@@ -291,15 +299,6 @@
             this.NextBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NextBtn.ImageOptions.Image")));
             this.NextBtn.Name = "NextBtn";
             this.NextBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NextBtn_ItemClick);
-            // 
-            // WbMatTemplateBtn
-            // 
-            this.WbMatTemplateBtn.Caption = "Шаблони";
-            this.WbMatTemplateBtn.Id = 33;
-            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.Image")));
-            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.LargeImage")));
-            this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
-            this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbMatTemplateBtn_ItemClick);
             // 
             // NewCustomerOrder
             // 
@@ -394,6 +393,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
@@ -501,15 +501,61 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.NewWayBillMoveBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOffBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WbCorrBtn)});
             this.barSubItem3.Name = "barSubItem3";
+            // 
+            // WbCorrBtn
+            // 
+            this.WbCorrBtn.Caption = "Корегування позицій документа";
+            this.WbCorrBtn.Id = 38;
+            this.WbCorrBtn.ImageOptions.ImageIndex = 35;
+            this.WbCorrBtn.Name = "WbCorrBtn";
+            this.WbCorrBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbCorrBtn_ItemClick);
+            // 
+            // barSubItem5
+            // 
+            this.barSubItem5.Caption = "Інструменти";
+            this.barSubItem5.Id = 37;
+            this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.WbMatTemplateBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WbCorrListBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn)});
+            this.barSubItem5.Name = "barSubItem5";
+            // 
+            // WbMatTemplateBtn
+            // 
+            this.WbMatTemplateBtn.Caption = "Шаблони";
+            this.WbMatTemplateBtn.Id = 33;
+            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.Image")));
+            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.LargeImage")));
+            this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
+            this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbMatTemplateBtn_ItemClick);
+            // 
+            // WbCorrListBtn
+            // 
+            this.WbCorrListBtn.Caption = "Список корегуваннь документів";
+            this.WbCorrListBtn.Id = 39;
+            this.WbCorrListBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.showtestreport_16x161;
+            this.WbCorrListBtn.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.showtestreport_32x321;
+            this.WbCorrListBtn.Name = "WbCorrListBtn";
+            this.WbCorrListBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbCorrListBtn_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Монітор виробництва";
+            this.barButtonItem2.Id = 40;
+            this.barButtonItem2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.solidbluedatabar_16x16;
+            this.barButtonItem2.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.solidbluedatabar_32x32;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barSubItem4
             // 
             this.barSubItem4.Caption = "Сервіс";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
@@ -1036,6 +1082,10 @@
         private DevExpress.XtraBars.BarButtonItem NewWBWriteOnItem;
         private DevExpress.XtraBars.BarButtonItem NewWayBillMoveBtn;
         private DevExpress.XtraBars.BarButtonItem NewWBWriteOffBtn;
+        private DevExpress.XtraBars.BarSubItem barSubItem5;
+        private DevExpress.XtraBars.BarButtonItem WbCorrBtn;
+        private DevExpress.XtraBars.BarButtonItem WbCorrListBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
 

@@ -193,6 +193,26 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap chartsshowlegend_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("chartsshowlegend_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chartsshowlegend_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("chartsshowlegend_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap company {
             get {
                 object obj = ResourceManager.GetObject("company", resourceCulture);
@@ -262,6 +282,26 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap edittask_32x32 {
             get {
                 object obj = ResourceManager.GetObject("edittask_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxlsx_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxlsx_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exporttoxlsx_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exporttoxlsx_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -459,6 +499,66 @@ namespace SP_Sklad.Properties {
         internal static string save_wb {
             get {
                 return ResourceManager.GetString("save_wb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtestreport_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("showtestreport_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtestreport_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("showtestreport_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtestreport_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("showtestreport_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap showtestreport_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("showtestreport_32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap solidbluedatabar_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("solidbluedatabar_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap solidbluedatabar_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("solidbluedatabar_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

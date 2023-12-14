@@ -77,24 +77,29 @@ namespace SP_Sklad.WBForm
 
             if(_pos_id.HasValue)
             {
-                var pos = _db.WaybillDet.Find(_pos_id);
-                if (pos != null)
-                {
-                    _db.WaybillCorrectionDet.Add(new WaybillCorrectionDet
-                    {
-                        Checked = 0,
-                        Id = Guid.NewGuid(),
-                        OldMatId = pos.MatId,
-                        OldPrice = pos.BasePrice,
-                        WaybillCorrectionId = wbcor.Id,
-                        PosId = pos.PosId,
-                    });
-
-                    _db.SaveChanges();
-                }
+                AddItem(_pos_id.Value);
             }
 
             GetDetail();
+        }
+
+        private void AddItem(int pos_id)
+        {
+            var pos = _db.WaybillDet.Find(pos_id);
+            if (pos != null)
+            {
+                _db.WaybillCorrectionDet.Add(new WaybillCorrectionDet
+                {
+                    Checked = 0,
+                    Id = Guid.NewGuid(),
+                    OldMatId = pos.MatId,
+                    OldPrice = pos.BasePrice,
+                    WaybillCorrectionId = wbcor.Id,
+                    PosId = pos.PosId,
+                });
+
+                _db.SaveChanges();
+            }
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -102,6 +107,7 @@ namespace SP_Sklad.WBForm
             wbcor.UpdatedAt = DateTime.Now;
             wbcor.UpdatedBy = DBHelper.CurrentUser.UserId;
             wbcor.Checked = 1;
+            int corr_count = 0;
 
             foreach (var item in _db.v_WaybillCorrectionDet.AsNoTracking().Where(w => w.WaybillCorrectionId == wbcor.Id && w.Checked == 0).ToList())
             {
@@ -177,6 +183,8 @@ namespace SP_Sklad.WBForm
                 {
                     wbcor_det.Notes = "Є повернення по цій позиції!";
                 }
+
+                ++corr_count;
             }
 
             _db.SaveChanges();
@@ -185,8 +193,8 @@ namespace SP_Sklad.WBForm
 
             GetDetail();
 
-
-           // Close();
+            MessageBox.Show($"{corr_count} корегувань виконано!");
+           
         }
 
         private void frmPriceList_FormClosed(object sender, FormClosedEventArgs e)
@@ -256,26 +264,14 @@ namespace SP_Sklad.WBForm
 
         private void AddDocBtnItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           /* using (var frm = new frmBarCode())
+            using (var frm = new frmWaybillDetView(new List<int?> { -1 }))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
-                    if (_db.WaybillList.Any(w => w.WbillId == wbill_id && w.WType == -1))
-                    {
-                        using (var fed = new frmExpeditionDet(_db, null, wbcor, wbill_id))
-                        {
-                            fed.ShowDialog();
-                        }
-
-                        GetDetail();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Документ не знайдено!");
-                    }
+                    AddItem(frm.focused_row.PosId);
+                    GetDetail();
                 }
-            }*/
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -303,6 +299,15 @@ namespace SP_Sklad.WBForm
             {
                 var wbcor_det = _db.WaybillCorrectionDet.Find(focused_correction_det.Id);
                 wbcor_det.NewPrice = Convert.ToDecimal(e.Value);
+                _db.SaveChanges();
+
+                GetDetail();
+            }
+
+            if (e.Column.FieldName == "Notes")
+            {
+                var wbcor_det = _db.WaybillCorrectionDet.Find(focused_correction_det.Id);
+                wbcor_det.Notes = Convert.ToString(e.Value);
                 _db.SaveChanges();
 
                 GetDetail();

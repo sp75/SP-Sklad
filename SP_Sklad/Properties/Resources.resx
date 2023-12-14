@@ -133,8 +133,14 @@
   <data name="Конрагент" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Конрагент.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="find_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\find_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="chartsshowlegend_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chartsshowlegend_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="find_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\find_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exporttoxlsx_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exporttoxlsx_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Одиниц_ вим_ру" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Одиниц_ вим_ру.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,6 +153,12 @@
   </data>
   <data name="boorderitem_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boorderitem_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Основн_ дов" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="showtestreport_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showtestreport_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Каси" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Каси.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,8 +190,8 @@
   <data name="technology_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\technology_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\1\factory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="exporttoxlsx_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exporttoxlsx_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="findbyid_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\findbyid_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +217,17 @@
   <data name="Послуги" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Послуги.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="solidbluedatabar_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\solidbluedatabar_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="table_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="edittask_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edittask_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="solidbluedatabar_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\solidbluedatabar_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chartsshowlegend_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chartsshowlegend_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="company" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\company.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +235,8 @@
   <data name="Банки2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\PNG\Банки.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="technology_16x162" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\technology_16x162.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="factory" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\1\factory.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="not_execute_wb" xml:space="preserve">
     <value>Провести документ не можливо. Не всі позіціх зарезервовано. </value>
@@ -235,8 +253,11 @@
   <data name="info_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Статт_ витрат1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Статт_ витрат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edittask_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edittask_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="showtestreport_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showtestreport_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="finance32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\PNG\finance32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,11 +271,14 @@
   <data name="barcode_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\barcode_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editing_not_allowed" xml:space="preserve">
-    <value>Редагувати заборонено !</value>
+  <data name="Статт_ витрат1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\Справочники\Статт_ витрат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="find_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\find_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="find_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\find_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Банки" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Банки.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -295,20 +319,20 @@
   <data name="Службовц_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Службовц_.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="transit_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\transit_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="technology_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\technology_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_wb" xml:space="preserve">
-    <value>Ви дійсно бажаєте видалити цей документ ?</value>
+  <data name="transit_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transit_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Товари" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Товари.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="not_storno_wb" xml:space="preserve">
     <value>Відмінити проводку документа не можливо поки він зв'язаний з другими документами.</value>
+  </data>
+  <data name="showtestreport_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showtestreport_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Країни1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Країни.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,14 +358,17 @@
   <data name="edit_info" xml:space="preserve">
     <value>Для редагування документа потрібно скасувати проводку. Ви упевнені що прагнете цього?</value>
   </data>
+  <data name="delete_wb" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити цей документ ?</value>
+  </data>
   <data name="Типи рахунк_в1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Типи рахунк_в.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\1\bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="technology_16x162" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\technology_16x162.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Основн_ дов" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edittask_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edittask_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="currencyexchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\currencyexchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -355,10 +382,13 @@
   <data name="not_find_wb" xml:space="preserve">
     <value>Документ не знайдено.</value>
   </data>
-  <data name="find_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\find_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="editing_not_allowed" xml:space="preserve">
+    <value>Редагувати заборонено !</value>
   </data>
-  <data name="edittask_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edittask_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\BMP\1\bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="showtestreport_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showtestreport_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

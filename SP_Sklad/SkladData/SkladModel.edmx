@@ -3513,6 +3513,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
             <PropertyRef Name="WType" />
             <PropertyRef Name="KagentId" />
             <PropertyRef Name="WbChecked" />
+            <PropertyRef Name="WhName" />
           </Key>
           <Property Name="PosId" Type="int" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
@@ -3551,6 +3552,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
           <Property Name="WbChecked" Type="int" Nullable="false" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
           <Property Name="WbNotes" Type="nvarchar" MaxLength="255" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -8532,14 +8535,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <Function Name="SP_RECALC_DOC_SALDO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WBILLID" Type="int" Mode="In" />
         </Function>
-        <Function Name="SP_RECALC_KA_SALDO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="KAID" Type="int" Mode="In" />
-          <Parameter Name="ONDATE" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="SP_RECALC_KA_SALDO_EX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="KAID" Type="int" Mode="In" />
-          <Parameter Name="ONDATE" Type="datetime" Mode="In" />
-        </Function>
         <Function Name="SP_RECALC_MATREMAINS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MATID" Type="int" Mode="In" />
           <Parameter Name="ONDATE" Type="datetime" Mode="In" />
@@ -10021,7 +10016,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillDet].[KagentId] AS [KagentId], 
     [v_WaybillDet].[WbChecked] AS [WbChecked], 
     [v_WaybillDet].[Artikul] AS [Artikul], 
-    [v_WaybillDet].[WbNotes] AS [WbNotes]
+    [v_WaybillDet].[WbNotes] AS [WbNotes], 
+    [v_WaybillDet].[WhName] AS [WhName], 
+    [v_WaybillDet].[PersonName] AS [PersonName]
     FROM [dbo].[v_WaybillDet] AS [v_WaybillDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="Self.v_WaybillList" store:Type="Views" store:Schema="dbo">
@@ -11115,14 +11112,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <FunctionImport Name="SP_RECALC_DOC_SALDO">
           <Parameter Name="WBILLID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RECALC_KA_SALDO">
-            <Parameter Name="KAID" Mode="In" Type="Int32" />
-            <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="SP_RECALC_KA_SALDO_EX">
-            <Parameter Name="KAID" Mode="In" Type="Int32" />
-            <Parameter Name="ONDATE" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SP_RECALC_MATREMAINS">
             <Parameter Name="MATID" Mode="In" Type="Int32" />
@@ -18451,6 +18440,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WType" />
             <PropertyRef Name="KagentId" />
             <PropertyRef Name="WbChecked" />
+            <PropertyRef Name="WhName" />
           </Key>
           <Property Name="PosId" Type="Int32" Nullable="false" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
@@ -18489,6 +18479,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbChecked" Type="Int32" Nullable="false" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="WbNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingSummary">
           <Key>
@@ -21537,8 +21529,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="SP_ORDER_UPD_RSV" FunctionName="BaseModel.Store.SP_ORDER_UPD_RSV" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_DOC_SALDO" FunctionName="BaseModel.Store.SP_RECALC_DOC_SALDO" />
-          <FunctionImportMapping FunctionImportName="SP_RECALC_KA_SALDO" FunctionName="BaseModel.Store.SP_RECALC_KA_SALDO" />
-          <FunctionImportMapping FunctionImportName="SP_RECALC_KA_SALDO_EX" FunctionName="BaseModel.Store.SP_RECALC_KA_SALDO_EX" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_MATREMAINS" FunctionName="BaseModel.Store.SP_RECALC_MATREMAINS" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_MONEY_SALDO" FunctionName="BaseModel.Store.SP_RECALC_MONEY_SALDO" />
           <FunctionImportMapping FunctionImportName="SP_RECALC_MONEY_SALDO_EX" FunctionName="BaseModel.Store.SP_RECALC_MONEY_SALDO_EX" />
@@ -25283,6 +25273,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillDet">
               <MappingFragment StoreEntitySet="v_WaybillDet">
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="WbNotes" ColumnName="WbNotes" />
                 <ScalarProperty Name="Artikul" ColumnName="Artikul" />
                 <ScalarProperty Name="WbChecked" ColumnName="WbChecked" />
