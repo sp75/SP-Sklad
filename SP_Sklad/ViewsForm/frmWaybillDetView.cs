@@ -29,7 +29,7 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
- 
+         //   WaybillDetGridView.RowFilter 
         }
 
         private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)

@@ -49,8 +49,8 @@
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSummPay = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -148,6 +148,8 @@
             // 
             // gridBand2
             // 
+            this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand2.AppearanceHeader.Options.UseFont = true;
             this.gridBand2.Caption = "Документ";
             this.gridBand2.Columns.Add(this.bandedGridColumn2);
             this.gridBand2.Columns.Add(this.colWType);
@@ -157,7 +159,7 @@
             this.gridBand2.Columns.Add(this.bandedGridColumn3);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 0;
-            this.gridBand2.Width = 603;
+            this.gridBand2.Width = 635;
             // 
             // bandedGridColumn2
             // 
@@ -167,7 +169,7 @@
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 76;
+            this.bandedGridColumn2.Width = 78;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -184,7 +186,7 @@
             this.colWType.Name = "colWType";
             this.colWType.OptionsColumn.AllowEdit = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 92;
+            this.colWType.Width = 94;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -229,7 +231,7 @@
             this.gridColumn3.FieldName = "WbNum";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.Width = 98;
+            this.gridColumn3.Width = 101;
             // 
             // colName
             // 
@@ -238,7 +240,7 @@
             this.colName.Name = "colName";
             this.colName.OptionsColumn.AllowEdit = false;
             this.colName.Visible = true;
-            this.colName.Width = 337;
+            this.colName.Width = 362;
             // 
             // bandedGridColumn1
             // 
@@ -256,6 +258,8 @@
             // 
             // gridBand3
             // 
+            this.gridBand3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand3.AppearanceHeader.Options.UseFont = true;
             this.gridBand3.Caption = "Позиція по документу";
             this.gridBand3.Columns.Add(this.colOnDate);
             this.gridBand3.Columns.Add(this.gridColumn2);
@@ -266,7 +270,7 @@
             this.gridBand3.Columns.Add(this.bandedGridColumn4);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 827;
+            this.gridBand3.Width = 795;
             // 
             // colOnDate
             // 
@@ -287,20 +291,21 @@
             this.gridColumn2.Visible = true;
             this.gridColumn2.Width = 192;
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Од. виміру";
-            this.gridColumn1.FieldName = "MsrName";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.Width = 117;
-            // 
             // colNum
             // 
             this.colNum.Caption = "К-сть";
+            this.colNum.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colNum.FieldName = "Amount";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Од. вим.";
+            this.gridColumn1.FieldName = "MsrName";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.Width = 64;
             // 
             // colSummPay
             // 
@@ -311,7 +316,7 @@
             this.colSummPay.Name = "colSummPay";
             this.colSummPay.OptionsColumn.AllowEdit = false;
             this.colSummPay.Visible = true;
-            this.colSummPay.Width = 100;
+            this.colSummPay.Width = 87;
             // 
             // colSummInCurr
             // 
@@ -329,7 +334,7 @@
             this.bandedGridColumn4.FieldName = "WhName";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 175;
+            this.bandedGridColumn4.Width = 209;
             // 
             // frmWaybillDetView
             // 
@@ -341,7 +346,7 @@
             this.Name = "frmWaybillDetView";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Список корегувань документів";
+            this.Text = "Список документів в розрізі товарів";
             this.Load += new System.EventHandler(this.frmKaGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
