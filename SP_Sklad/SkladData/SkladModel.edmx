@@ -3494,6 +3494,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
           <Property Name="WType" Type="int" Nullable="false" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -9975,7 +9976,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillCorrectionDet].[PersonName] AS [PersonName], 
     [v_WaybillCorrectionDet].[WType] AS [WType], 
     [v_WaybillCorrectionDet].[KaName] AS [KaName], 
-    [v_WaybillCorrectionDet].[WhName] AS [WhName]
+    [v_WaybillCorrectionDet].[WhName] AS [WhName], 
+    [v_WaybillCorrectionDet].[Reason] AS [Reason]
     FROM [dbo].[v_WaybillCorrectionDet] AS [v_WaybillCorrectionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
@@ -21302,6 +21304,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WType" Type="Int32" Nullable="false" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -26926,6 +26929,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillCorrectionDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrectionDet">
               <MappingFragment StoreEntitySet="v_WaybillCorrectionDet">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="WType" ColumnName="WType" />

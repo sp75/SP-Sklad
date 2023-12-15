@@ -1939,7 +1939,7 @@ namespace SP_Sklad.MainTabs
 
         private void WbDetPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh);
+            WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh && wb_focused_row.Checked == 1);
         }
     }
 }

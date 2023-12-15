@@ -37,5 +37,6 @@ namespace SP_Sklad.SkladData
         public int WType { get; set; }
         public string KaName { get; set; }
         public string WhName { get; set; }
+        public string Reason { get; set; }
     }
 }

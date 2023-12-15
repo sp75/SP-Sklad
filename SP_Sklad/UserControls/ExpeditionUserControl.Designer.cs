@@ -485,6 +485,7 @@
             this.gridColumn16.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn16.FieldName = "UpdatedAt";
             this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 3;
             this.gridColumn16.Width = 134;
