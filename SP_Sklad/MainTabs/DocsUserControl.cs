@@ -1144,11 +1144,7 @@ namespace SP_Sklad.MainTabs
         {
             GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView1.Focus())
+            if (gridView1.Focus())
             {
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
@@ -1173,11 +1169,7 @@ namespace SP_Sklad.MainTabs
         {
             GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView1.Focus())
+            if (gridView1.Focus())
             {
                 row = gridView1.GetFocusedRow() as GetRelDocList_Result;
             }
@@ -1412,7 +1404,7 @@ namespace SP_Sklad.MainTabs
             if (dr == null)
             {
                 gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
+                ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 WayBillListInfoBS.DataSource = null;
                 gridControl10.DataSource = null;
 
@@ -1431,8 +1423,9 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid1.GetRelDoc(dr.Id);
                     break;
+
                 case 3:
                     gridControl10.DataSource = _db.DocRels.Where(w => w.OriginatorId == dr.Id)
                         .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();

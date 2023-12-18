@@ -188,8 +188,9 @@
             this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
             this.GridImageList.Images.SetKeyName(46, "management2.png");
             this.GridImageList.Images.SetKeyName(47, "ActServices.png");
-            this.GridImageList.Images.SetKeyName(48, "truck (1).png");
+            this.GridImageList.Images.SetKeyName(48, "delivery-truck (1).png");
             this.GridImageList.Images.SetKeyName(49, "free-icon-point-of-sale-313166.png");
+            this.GridImageList.Images.SetKeyName(50, "weighing-scale.png");
             // 
             // gridColumn15
             // 
@@ -233,7 +234,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 46),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 32, 48),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 49)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 49),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 50)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
             // 

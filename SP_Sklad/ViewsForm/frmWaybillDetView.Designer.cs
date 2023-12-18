@@ -110,7 +110,7 @@
             // WaybillDetSource
             // 
             this.WaybillDetSource.AreSourceRowsThreadSafe = true;
-            this.WaybillDetSource.DefaultSorting = "OnDate DESC";
+            this.WaybillDetSource.DefaultSorting = "WbillId DESC";
             this.WaybillDetSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WaybillDet);
             this.WaybillDetSource.KeyExpression = "PosId";
             this.WaybillDetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KagentListSource_GetQueryable);

@@ -934,11 +934,7 @@ namespace SP_Sklad.MainTabs
         {
             GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView5.Focus())
+            if (gridView5.Focus())
             {
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
@@ -976,11 +972,7 @@ namespace SP_Sklad.MainTabs
         {
             GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView5.Focus())
+            if (gridView5.Focus())
             {
                 row = gridView5.GetFocusedRow() as GetRelDocList_Result;
             }
@@ -1139,7 +1131,7 @@ namespace SP_Sklad.MainTabs
             {
                 TechProcDetBS.DataSource = null;
                 WayBillMakeDetGridControl.DataSource = null;
-                gridControl3.DataSource = null;
+                ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 ManufacturedPosGridControl.DataSource = null;
                 IntermediateWeighingByWBBS.DataSource = null;
                 return;
@@ -1163,7 +1155,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 3:
-                        gridControl3.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        ucRelDocGrid1.GetRelDoc(focused_row.Id);
                         break;
 
                     case 4:

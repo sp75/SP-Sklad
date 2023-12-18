@@ -174,7 +174,7 @@ namespace SP_Sklad.UserControls
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EditBtn.PerformClick();
+             EditBtn.PerformClick();
         }
 
         private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)

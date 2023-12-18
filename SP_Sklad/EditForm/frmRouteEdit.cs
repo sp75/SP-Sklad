@@ -45,7 +45,7 @@ namespace SP_Sklad.EditForm
 
             RoutesBS.DataSource = r;
 
-            DriversLookUpEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
+            DriversLookUpEdit.Properties.DataSource = _db.Kagent.Where(w => w.JobType == 3&& w.Deleted == 0).Select(s => new Kontragent { KaId = s.KaId, Name = s.Name }).ToList();
             CarsLookUpEdit.Properties.DataSource =  _db.Cars.ToList();
         }
 

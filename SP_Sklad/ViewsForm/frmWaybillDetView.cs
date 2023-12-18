@@ -29,17 +29,33 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-         //   WaybillDetGridView.RowFilter 
+            //   WaybillDetGridView.RowFilter 
         }
 
         private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            e.QueryableSource = _db.v_WaybillDet;
+            var query = _db.v_WaybillDet.Select(wbd => new
+            {
+                wbd.PosId,
+                wbd.WbChecked,
+                wbd.WbNum,
+                wbd.OnDate,
+                wbd.MatName,
+                wbd.Amount,
+                wbd.MsrName,
+                wbd.BasePrice,
+                wbd.WhName,
+                wbd.KaName,
+                wbd.WType,
+                wbd.WbillId
+            });
 
             if (_doc_list != null)
             {
-                e.QueryableSource = _db.v_WaybillDet.Where(w => _doc_list.Contains(w.WType));
+                query = query.Where(w => _doc_list.Contains(w.WType));
             }
+
+            e.QueryableSource = query.Where(w=> w.OnDate > DBHelper.CommonParam.EndCalcPeriod) ;
             e.Tag = _db;
         }
 
