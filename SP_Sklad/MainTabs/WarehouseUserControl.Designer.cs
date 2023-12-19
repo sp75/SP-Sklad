@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseUserControl));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView1 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView2 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView3 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView4 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView5 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView6 = new DevExpress.XtraCharts.StackedBarSeriesView();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -365,12 +365,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).BeginInit();
             this.xtraTabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
@@ -707,7 +707,7 @@
             // 
             // DeboningMatBtn
             // 
-            this.DeboningMatBtn.Caption = "Виконати обвалку";
+            this.DeboningMatBtn.Caption = "Виконати обвалку товару";
             this.DeboningMatBtn.Id = 11;
             this.DeboningMatBtn.ImageOptions.ImageIndex = 15;
             this.DeboningMatBtn.Name = "DeboningMatBtn";
@@ -946,6 +946,7 @@
             this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
             this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
             this.BarImageList.Images.SetKeyName(21, "exec16.png");
+            this.BarImageList.Images.SetKeyName(22, "update.png");
             // 
             // barButtonItem1
             // 
@@ -957,8 +958,9 @@
             // 
             // RecalcRemainsMatBtn
             // 
-            this.RecalcRemainsMatBtn.Caption = "Перерахувати залишки";
+            this.RecalcRemainsMatBtn.Caption = "Перерахувати залишки товару";
             this.RecalcRemainsMatBtn.Id = 19;
+            this.RecalcRemainsMatBtn.ImageOptions.ImageIndex = 22;
             this.RecalcRemainsMatBtn.Name = "RecalcRemainsMatBtn";
             this.RecalcRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsMatBtn_ItemClick);
             // 
@@ -1010,7 +1012,7 @@
             // 
             // DelRemainsMatBtn
             // 
-            this.DelRemainsMatBtn.Caption = "Видалити історію по залишкам";
+            this.DelRemainsMatBtn.Caption = "Видалити історію по залишкам для всіх товарів";
             this.DelRemainsMatBtn.Id = 30;
             this.DelRemainsMatBtn.Name = "DelRemainsMatBtn";
             this.DelRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
@@ -1768,7 +1770,7 @@
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
             this.xtraTabPage4.ImageOptions.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage4.Text = "Партії";
             // 
             // PosGridControl
@@ -1779,7 +1781,7 @@
             this.PosGridControl.Name = "PosGridControl";
             this.PosGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox10});
-            this.PosGridControl.Size = new System.Drawing.Size(1212, 254);
+            this.PosGridControl.Size = new System.Drawing.Size(1212, 156);
             this.PosGridControl.TabIndex = 1;
             this.PosGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -1966,7 +1968,7 @@
             this.xtraTabPage5.Controls.Add(this.gridControl5);
             this.xtraTabPage5.ImageOptions.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage5.Text = "Замовлене";
             // 
             // gridControl5
@@ -1980,7 +1982,7 @@
             this.repositoryItemImageComboBox9,
             this.repositoryItemImageComboBox8,
             this.repositoryItemImageComboBox5});
-            this.gridControl5.Size = new System.Drawing.Size(1212, 254);
+            this.gridControl5.Size = new System.Drawing.Size(1212, 156);
             this.gridControl5.TabIndex = 0;
             this.gridControl5.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView2});
@@ -2191,7 +2193,7 @@
             this.xtraTabPage9.Controls.Add(this.MatChangeGridControl);
             this.xtraTabPage9.ImageOptions.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage9.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage9.Text = "Взаємозамінність";
             // 
             // MatChangeGridControl
@@ -2203,7 +2205,7 @@
             this.MatChangeGridControl.Name = "MatChangeGridControl";
             this.MatChangeGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit2});
-            this.MatChangeGridControl.Size = new System.Drawing.Size(1212, 254);
+            this.MatChangeGridControl.Size = new System.Drawing.Size(1212, 156);
             this.MatChangeGridControl.TabIndex = 10;
             this.MatChangeGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatChangeGridView});
@@ -2271,7 +2273,7 @@
             this.MatListTabPage.ImageOptions.ImageIndex = 14;
             this.MatListTabPage.Name = "MatListTabPage";
             this.MatListTabPage.PageVisible = false;
-            this.MatListTabPage.Size = new System.Drawing.Size(1212, 254);
+            this.MatListTabPage.Size = new System.Drawing.Size(1212, 156);
             this.MatListTabPage.Text = "Список товарів";
             // 
             // MatListGridControl
@@ -2287,7 +2289,7 @@
             this.repositoryItemButtonEdit1,
             this.repositoryItemCheckEdit4,
             this.repositoryItemCalcEdit3});
-            this.MatListGridControl.Size = new System.Drawing.Size(1212, 230);
+            this.MatListGridControl.Size = new System.Drawing.Size(1212, 132);
             this.MatListGridControl.TabIndex = 3;
             this.MatListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatListGridView});
@@ -2455,7 +2457,7 @@
             this.xtraTabPage11.Controls.Add(this.gridControl1);
             this.xtraTabPage11.ImageOptions.ImageIndex = 19;
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage11.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage11.Text = "Залишки по ТМЦ";
             // 
             // gridControl1
@@ -2464,7 +2466,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1212, 254);
+            this.gridControl1.Size = new System.Drawing.Size(1212, 156);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -2519,7 +2521,7 @@
             this.xtraTabPage12.Controls.Add(this.chartControl1);
             this.xtraTabPage12.ImageOptions.ImageIndex = 20;
             this.xtraTabPage12.Name = "xtraTabPage12";
-            this.xtraTabPage12.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage12.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage12.Text = "Динаміка продажу";
             // 
             // simpleButton1
@@ -2536,34 +2538,34 @@
             // chartControl1
             // 
             this.chartControl1.DataSource = this.REP_15BS;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Interlaced = true;
-            xyDiagram1.AxisY.MinorCount = 4;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Interlaced = true;
+            xyDiagram2.AxisY.MinorCount = 4;
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram2;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series1.ArgumentDataMember = "OnDate";
-            series1.LegendTextPattern = "Відгрузка";
-            series1.Name = "OutLine";
-            series1.ValueDataMembersSerializable = "AmountOut";
-            stackedBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            series1.View = stackedBarSeriesView1;
-            series2.ArgumentDataMember = "OnDate";
-            series2.LegendTextPattern = "Повернення";
-            series2.Name = "ReturnLine";
-            series2.ValueDataMembersSerializable = "ReturnAmount";
-            stackedBarSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.View = stackedBarSeriesView2;
+            series3.ArgumentDataMember = "OnDate";
+            series3.LegendTextPattern = "Відгрузка";
+            series3.Name = "OutLine";
+            series3.ValueDataMembersSerializable = "AmountOut";
+            stackedBarSeriesView4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            series3.View = stackedBarSeriesView4;
+            series4.ArgumentDataMember = "OnDate";
+            series4.LegendTextPattern = "Повернення";
+            series4.Name = "ReturnLine";
+            series4.ValueDataMembersSerializable = "ReturnAmount";
+            stackedBarSeriesView5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series4.View = stackedBarSeriesView5;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2};
-            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView3;
-            this.chartControl1.Size = new System.Drawing.Size(1212, 254);
+        series3,
+        series4};
+            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView6;
+            this.chartControl1.Size = new System.Drawing.Size(1212, 156);
             this.chartControl1.TabIndex = 1;
             // 
             // REP_15BS
@@ -2575,7 +2577,7 @@
             this.xtraTabPage13.Controls.Add(this.vGridControl2);
             this.xtraTabPage13.ImageOptions.ImageIndex = 1;
             this.xtraTabPage13.Name = "xtraTabPage13";
-            this.xtraTabPage13.Size = new System.Drawing.Size(1212, 254);
+            this.xtraTabPage13.Size = new System.Drawing.Size(1212, 156);
             this.xtraTabPage13.Text = "Додадкова інформація";
             // 
             // vGridControl2
@@ -2593,7 +2595,7 @@
             this.vGridControl2.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.editorRow1,
             this.row2});
-            this.vGridControl2.Size = new System.Drawing.Size(1212, 254);
+            this.vGridControl2.Size = new System.Drawing.Size(1212, 156);
             this.vGridControl2.TabIndex = 1;
             // 
             // ExtMatIfoBS
@@ -3230,9 +3232,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsMatBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelRemainsMatBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsAllMatBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelRemainsMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowEmptyItemsCheck, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
@@ -3456,12 +3458,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).EndInit();
             this.xtraTabPage13.ResumeLayout(false);

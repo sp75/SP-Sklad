@@ -932,31 +932,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
-
-            if (gridView5.Focus())
-            {
-                row = gridView5.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView7.Focus())
-            {
-                row = gridView7.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView12.Focus())
-            {
-                row = gridView12.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView14.Focus())
-            {
-                row = gridView14.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView10.Focus())
-            {
-                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-
-            FindDoc.Find(row.Id, row.DocType, row.OnDate);
+           
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -970,18 +946,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
-
-            if (gridView5.Focus())
-            {
-                row = gridView5.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView14.Focus())
-            {
-                row = gridView14.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
+            
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -1080,14 +1045,13 @@ namespace SP_Sklad.MainTabs
                 using (var db = DB.SkladBase())
                 {
                     gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).OrderBy(o => o.Num).ToList();
-                    gridControl7.DataSource = db.GetRelDocList(pp_focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid3.GetRelDoc(pp_focused_row.Id);
                 }
             }
             else
             {
                 gridControl6.DataSource = null;
-                gridControl7.DataSource = null;
-
+                ucRelDocGrid3.GetRelDoc(Guid.Empty);
             }
 
             DeleteItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
@@ -1209,7 +1173,7 @@ namespace SP_Sklad.MainTabs
             if (focused_row == null)
             {
                 gridControl4.DataSource = null;
-                gridControl5.DataSource = null;
+                ucRelDocGrid2.GetRelDoc(Guid.Empty);
                 return;
             }
 
@@ -1226,7 +1190,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        gridControl5.DataSource = db.GetRelDocList(focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        ucRelDocGrid2.GetRelDoc(focused_row.Id);
                         break;
                 }
             }
@@ -1368,7 +1332,7 @@ namespace SP_Sklad.MainTabs
             {
                 // TechProcDetBS.DataSource = null;
                 gridControl13.DataSource = null;
-                gridControl14.DataSource = null;
+                ucRelDocGrid4.GetRelDoc(Guid.Empty);
                 return;
             }
 
@@ -1386,7 +1350,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 2:
-                        gridControl14.DataSource = db.GetRelDocList(focused_prep_raw_mat_row.Id).OrderBy(o => o.OnDate).ToList();
+                        ucRelDocGrid4.GetRelDoc(focused_prep_raw_mat_row.Id);
                         break;
                 }
             }
@@ -1464,7 +1428,7 @@ namespace SP_Sklad.MainTabs
             {
 
                 IntermediateWeighingDetBS.DataSource = null;
-                gridControl16.DataSource = null;
+                ucRelDocGrid5.GetRelDoc(Guid.Empty);
                 return;
             }
 
@@ -1480,9 +1444,8 @@ namespace SP_Sklad.MainTabs
                         WaybillDetInGridView.TopRowIndex = top_row;
                         break;
 
-
                     case 1:
-                        gridControl16.DataSource = db.GetRelDocList(intermediate_weighing_focused_row.Id).OrderBy(o => o.OnDate).ToList();
+                        ucRelDocGrid5.GetRelDoc(intermediate_weighing_focused_row.Id);
                         break;
                 }
             }
@@ -1511,7 +1474,7 @@ namespace SP_Sklad.MainTabs
             if (focused_raw_material_management == null)
             {
                 RawMaterialManagementDetGridControl.DataSource = null;
-                gridControl12.DataSource = null;
+                ucRelDocGrid6.GetRelDoc(Guid.Empty);
             }
 
             if (!restore)
@@ -1553,7 +1516,7 @@ namespace SP_Sklad.MainTabs
             if (focused_raw_material_management == null)
             {
                 RawMaterialManagementDetGridControl.DataSource = null;
-                gridControl12.DataSource = null;
+                ucRelDocGrid6.GetRelDoc(Guid.Empty);
 
                 return;
             }
@@ -1571,8 +1534,9 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 1:
-                        gridControl12.DataSource = db.GetRelDocList(focused_raw_material_management.Id).OrderBy(o => o.OnDate).ToList();
+                        ucRelDocGrid6.GetRelDoc(focused_raw_material_management.Id);
                         break;
+
                     case 2:
                         gridControl10.DataSource = db.Database.SqlQuery<pos_rmmd>(@"select x.*, pos.ActualRemain, pos.OnDate, wbd.Amount Total, wb.Num
 from

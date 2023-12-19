@@ -1142,18 +1142,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
-
-            if (gridView1.Focus())
-            {
-                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView10.Focus())
-            {
-                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-            FindDoc.Find(row.Id, row.DocType, row.OnDate);
+          
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -1167,18 +1156,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView1.Focus())
-            {
-                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView10.Focus())
-            {
-                row = gridView10.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-            PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -1211,7 +1189,12 @@ namespace SP_Sklad.MainTabs
 
             if (dr != null)
             {
-                RelPayDocGridControl.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                ucRelDocGrid2.GetRelDoc(dr.Id);
+
+            }
+            else
+            {
+                ucRelDocGrid2.GetRelDoc(Guid.Empty);
             }
 
             var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
@@ -1644,7 +1627,7 @@ namespace SP_Sklad.MainTabs
             if (dr == null)
             {
                 gridControl5.DataSource = null;
-                gridControl6.DataSource = null;
+                ucRelDocGrid3.GetRelDoc(Guid.Empty);
                 KAgentAdjustmentInfoBS.DataSource = null;
 
                 return;
@@ -1662,7 +1645,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl6.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid3.GetRelDoc(dr.Id);
                     break;
             }
 
@@ -1728,7 +1711,7 @@ namespace SP_Sklad.MainTabs
             if (bank_statements_row == null)
             {
                 BankStatementsDetGridControl.DataSource = null;
-                gridControl13.DataSource = null;
+                ucRelDocGrid5.GetRelDoc(Guid.Empty);
 
 
                 return;
@@ -1746,7 +1729,7 @@ namespace SP_Sklad.MainTabs
                 //       break;
 
                 case 2:
-                    gridControl13.DataSource = _db.GetRelDocList(bank_statements_row.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid5.GetRelDoc(bank_statements_row.Id);
                     break;
             }
         }
@@ -1839,7 +1822,7 @@ namespace SP_Sklad.MainTabs
             if (project_management_row == null)
             {
                 ProjectManagementDetGridControl.DataSource = null;
-                gridControl14.DataSource = null;
+                ucRelDocGrid6.GetRelDoc(Guid.Empty);
                 return;
             }
 
@@ -1850,7 +1833,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl14.DataSource = _db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid6.GetRelDoc(project_management_row.Id);
                     break;
             }
         }
