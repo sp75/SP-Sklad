@@ -19,42 +19,38 @@ namespace SP_Sklad.ViewsForm
     {
         private BaseEntities _db { get; set; }
 
-        public v_WaybillCorrectionDet focused_row => bandedGridView1.GetFocusedRow() is NotLoadedObject ? null : bandedGridView1.GetFocusedRow() as v_WaybillCorrectionDet;
+        public v_WaybillCorrectionDet focused_row => WaybillCorrectionDetGridView.GetFocusedRow() is NotLoadedObject ? null : WaybillCorrectionDetGridView.GetFocusedRow() as v_WaybillCorrectionDet;
 
         public frmWaybillCorrectionsView()
         {
             InitializeComponent();
-            _db = DB.SkladBase();
+           
         }
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-            
+
         }
 
   
         private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            e.QueryableSource = DB.SkladBase().v_WaybillCorrectionDet;
+            _db = DB.SkladBase();
 
-          //  e.Tag = _db;
+            e.QueryableSource = _db.v_WaybillCorrectionDet;
+
+            e.Tag = _db;
         }
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ExportToXlsx(DocumentGridControl);
+            IHelper.ExportToXlsx(WaybillCorrectionDetGridControl);
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-     //       DocumentGridControl.DataSource = null;
-       //     DocumentGridControl.DataSource = WaybillCorrectionSource;
-            WaybillCorrectionSource.Refresh();
-
-
-            //bandedGridView1.RefreshData();
-
-            
+            WaybillCorrectionDetGridControl.DataSource = null;
+            WaybillCorrectionDetGridControl.DataSource = WaybillCorrectionSource;
         }
     }
 }

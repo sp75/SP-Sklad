@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaybillCorrectionsView));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.DocumentGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WaybillCorrectionDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillCorrectionSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
-            this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.WaybillCorrectionDetGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -60,11 +60,12 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -74,8 +75,8 @@
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillCorrectionDetGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillCorrectionDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -101,20 +102,26 @@
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Закрити";
             // 
-            // DocumentGridControl
+            // WaybillCorrectionDetGridControl
             // 
-            this.DocumentGridControl.DataSource = this.WaybillCorrectionSource;
-            this.DocumentGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DocumentGridControl.Location = new System.Drawing.Point(0, 24);
-            this.DocumentGridControl.MainView = this.bandedGridView1;
-            this.DocumentGridControl.Name = "DocumentGridControl";
-            this.DocumentGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.WaybillCorrectionDetGridControl.DataSource = this.WaybillCorrectionSource;
+            this.WaybillCorrectionDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WaybillCorrectionDetGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WaybillCorrectionDetGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WaybillCorrectionDetGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WaybillCorrectionDetGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WaybillCorrectionDetGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.WaybillCorrectionDetGridControl.Location = new System.Drawing.Point(0, 24);
+            this.WaybillCorrectionDetGridControl.MainView = this.WaybillCorrectionDetGridView;
+            this.WaybillCorrectionDetGridControl.Name = "WaybillCorrectionDetGridControl";
+            this.WaybillCorrectionDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemCheckEdit1});
-            this.DocumentGridControl.Size = new System.Drawing.Size(1455, 492);
-            this.DocumentGridControl.TabIndex = 19;
-            this.DocumentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.bandedGridView1});
+            this.WaybillCorrectionDetGridControl.Size = new System.Drawing.Size(1455, 492);
+            this.WaybillCorrectionDetGridControl.TabIndex = 19;
+            this.WaybillCorrectionDetGridControl.UseEmbeddedNavigator = true;
+            this.WaybillCorrectionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.WaybillCorrectionDetGridView});
             // 
             // WaybillCorrectionSource
             // 
@@ -124,18 +131,18 @@
             this.WaybillCorrectionSource.KeyExpression = "Id";
             this.WaybillCorrectionSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KagentListSource_GetQueryable);
             // 
-            // bandedGridView1
+            // WaybillCorrectionDetGridView
             // 
-            this.bandedGridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.bandedGridView1.Appearance.HeaderPanel.Options.UseFont = true;
-            this.bandedGridView1.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.bandedGridView1.Appearance.Row.Options.UseFont = true;
-            this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.WaybillCorrectionDetGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillCorrectionDetGridView.Appearance.HeaderPanel.Options.UseFont = true;
+            this.WaybillCorrectionDetGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.WaybillCorrectionDetGridView.Appearance.Row.Options.UseFont = true;
+            this.WaybillCorrectionDetGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand1,
             this.gridBand3,
             this.gridBand4,
             this.gridBand2});
-            this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.WaybillCorrectionDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.colWType,
             this.colNum,
             this.colOnDate,
@@ -149,14 +156,18 @@
             this.bandedGridColumn2,
             this.bandedGridColumn3,
             this.bandedGridColumn4,
-            this.bandedGridColumn5});
-            this.bandedGridView1.GridControl = this.DocumentGridControl;
-            this.bandedGridView1.Name = "bandedGridView1";
-            this.bandedGridView1.OptionsBehavior.ReadOnly = true;
-            this.bandedGridView1.OptionsFind.AlwaysVisible = true;
+            this.bandedGridColumn5,
+            this.bandedGridColumn6});
+            this.WaybillCorrectionDetGridView.GridControl = this.WaybillCorrectionDetGridControl;
+            this.WaybillCorrectionDetGridView.Name = "WaybillCorrectionDetGridView";
+            this.WaybillCorrectionDetGridView.OptionsBehavior.ReadOnly = true;
+            this.WaybillCorrectionDetGridView.OptionsFind.AlwaysVisible = true;
+            this.WaybillCorrectionDetGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             // 
             // gridBand1
             // 
+            this.gridBand1.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand1.AppearanceHeader.Options.UseFont = true;
             this.gridBand1.Caption = "Корегування";
             this.gridBand1.Columns.Add(this.bandedGridColumn2);
             this.gridBand1.Columns.Add(this.colNum);
@@ -167,7 +178,7 @@
             this.gridBand1.Columns.Add(this.bandedGridColumn4);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 732;
+            this.gridBand1.Width = 661;
             // 
             // bandedGridColumn2
             // 
@@ -176,7 +187,7 @@
             this.bandedGridColumn2.FieldName = "Checked";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 68;
+            this.bandedGridColumn2.Width = 44;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -191,7 +202,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 77;
+            this.colNum.Width = 70;
             // 
             // colOnDate
             // 
@@ -202,7 +213,7 @@
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 132;
+            this.colOnDate.Width = 111;
             // 
             // bandedGridColumn1
             // 
@@ -210,7 +221,7 @@
             this.bandedGridColumn1.FieldName = "PersonName";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 134;
+            this.bandedGridColumn1.Width = 95;
             // 
             // bandedGridColumn5
             // 
@@ -218,7 +229,7 @@
             this.bandedGridColumn5.FieldName = "Reason";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
             this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.Width = 120;
+            this.bandedGridColumn5.Width = 94;
             // 
             // bandedGridColumn3
             // 
@@ -226,7 +237,7 @@
             this.bandedGridColumn3.FieldName = "Notes";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 118;
+            this.bandedGridColumn3.Width = 88;
             // 
             // bandedGridColumn4
             // 
@@ -234,16 +245,18 @@
             this.bandedGridColumn4.FieldName = "WhName";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            this.bandedGridColumn4.Width = 83;
+            this.bandedGridColumn4.Width = 159;
             // 
             // gridBand3
             // 
+            this.gridBand3.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand3.AppearanceHeader.Options.UseFont = true;
             this.gridBand3.Caption = "Товар";
             this.gridBand3.Columns.Add(this.gridColumn2);
             this.gridBand3.Columns.Add(this.gridColumn1);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 283;
+            this.gridBand3.Width = 277;
             // 
             // gridColumn2
             // 
@@ -251,7 +264,7 @@
             this.gridColumn2.FieldName = "OldMatName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.Width = 152;
+            this.gridColumn2.Width = 143;
             // 
             // gridColumn1
             // 
@@ -259,16 +272,18 @@
             this.gridColumn1.FieldName = "NewMatName";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.Width = 131;
+            this.gridColumn1.Width = 134;
             // 
             // gridBand4
             // 
+            this.gridBand4.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand4.AppearanceHeader.Options.UseFont = true;
             this.gridBand4.Caption = "Ціна";
             this.gridBand4.Columns.Add(this.colSummInCurr);
             this.gridBand4.Columns.Add(this.colSummPay);
             this.gridBand4.Name = "gridBand4";
             this.gridBand4.VisibleIndex = 2;
-            this.gridBand4.Width = 105;
+            this.gridBand4.Width = 120;
             // 
             // colSummInCurr
             // 
@@ -279,7 +294,7 @@
             this.colSummInCurr.Name = "colSummInCurr";
             this.colSummInCurr.OptionsColumn.AllowEdit = false;
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 42;
+            this.colSummInCurr.Width = 54;
             // 
             // colSummPay
             // 
@@ -290,17 +305,20 @@
             this.colSummPay.Name = "colSummPay";
             this.colSummPay.OptionsColumn.AllowEdit = false;
             this.colSummPay.Visible = true;
-            this.colSummPay.Width = 63;
+            this.colSummPay.Width = 66;
             // 
             // gridBand2
             // 
+            this.gridBand2.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gridBand2.AppearanceHeader.Options.UseFont = true;
             this.gridBand2.Caption = "Документ";
             this.gridBand2.Columns.Add(this.colWType);
             this.gridBand2.Columns.Add(this.gridColumn3);
+            this.gridBand2.Columns.Add(this.bandedGridColumn6);
             this.gridBand2.Columns.Add(this.colName);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 3;
-            this.gridBand2.Width = 310;
+            this.gridBand2.Width = 372;
             // 
             // colWType
             // 
@@ -310,7 +328,7 @@
             this.colWType.Name = "colWType";
             this.colWType.OptionsColumn.AllowEdit = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 65;
+            this.colWType.Width = 42;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -355,7 +373,17 @@
             this.gridColumn3.FieldName = "WbNum";
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
-            this.gridColumn3.Width = 41;
+            this.gridColumn3.Width = 47;
+            // 
+            // bandedGridColumn6
+            // 
+            this.bandedGridColumn6.Caption = "Дата";
+            this.bandedGridColumn6.DisplayFormat.FormatString = "g";
+            this.bandedGridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.bandedGridColumn6.FieldName = "WbOnDate";
+            this.bandedGridColumn6.Name = "bandedGridColumn6";
+            this.bandedGridColumn6.Visible = true;
+            this.bandedGridColumn6.Width = 71;
             // 
             // colName
             // 
@@ -364,7 +392,7 @@
             this.colName.Name = "colName";
             this.colName.OptionsColumn.AllowEdit = false;
             this.colName.Visible = true;
-            this.colName.Width = 204;
+            this.colName.Width = 212;
             // 
             // barManager1
             // 
@@ -402,16 +430,6 @@
             this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl2;
             this.bar3.Text = "Custom 2";
             // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Обновити";
-            this.barButtonItem1.Id = 36;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
             // PrevievBtn
             // 
             this.PrevievBtn.Caption = "Експорт";
@@ -422,6 +440,16 @@
             this.PrevievBtn.Name = "PrevievBtn";
             this.PrevievBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Обновити";
+            this.barButtonItem1.Id = 36;
+            this.barButtonItem1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.recurrence_16x16;
+            this.barButtonItem1.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.recurrence_32x32;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // standaloneBarDockControl2
             // 
@@ -480,9 +508,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.EditFormat.FormatString = "0.00";
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -493,7 +521,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 568);
-            this.Controls.Add(this.DocumentGridControl);
+            this.Controls.Add(this.WaybillCorrectionDetGridControl);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.standaloneBarDockControl2);
             this.Controls.Add(this.BottomPanel);
@@ -508,8 +536,8 @@
             this.Load += new System.EventHandler(this.frmKaGroup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillCorrectionDetGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WaybillCorrectionDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -523,11 +551,11 @@
 
         private DevExpress.XtraEditors.PanelControl BottomPanel;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraGrid.GridControl DocumentGridControl;
+        private DevExpress.XtraGrid.GridControl WaybillCorrectionDetGridControl;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WaybillCorrectionSource;
         public System.Windows.Forms.ImageList imageList1;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView bandedGridView1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView WaybillCorrectionDetGridView;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colNum;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOnDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn2;
@@ -553,6 +581,7 @@
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;

@@ -3018,6 +3018,8 @@
     <None Include="Resources\showtestreport_32x32.png" />
     <None Include="Resources\showtestreport_16x161.png" />
     <None Include="Resources\showtestreport_32x321.png" />
+    <None Include="Resources\recurrence_16x16.png" />
+    <None Include="Resources\recurrence_32x32.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
