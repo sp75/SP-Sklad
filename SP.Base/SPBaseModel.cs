@@ -187,6 +187,7 @@ namespace SP.Base.Models
         public virtual DbSet<LoginHistory> LoginHistory { get; set; }
         public virtual DbSet<v_Kagent> v_Kagent { get; set; }
         public DbSet<v_KagentMaterilPrices> v_KagentMaterilPrices { get; set; }
+        public virtual DbSet<RemoteCustomerOrders> RemoteCustomerOrders { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {

@@ -3470,6 +3470,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
             <PropertyRef Name="WType" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="WhName" />
+            <PropertyRef Name="WbOnDate" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Checked" Type="int" Nullable="false" />
@@ -3495,6 +3496,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="Reason" Type="nvarchar" MaxLength="250" />
+          <Property Name="WbOnDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -6083,7 +6085,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_WaybillCorrectionDet_WaybillDet">
-          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1" />
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="WaybillCorrectionDet" Type="Self.WaybillCorrectionDet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
@@ -7524,6 +7528,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="UpdateAt" Type="datetime" />
                 <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
                 <Property Name="DiscountTotal" Type="numeric" Precision="32" Scale="8" />
+                <Property Name="RemoteOrdered" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -9977,7 +9982,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillCorrectionDet].[WType] AS [WType], 
     [v_WaybillCorrectionDet].[KaName] AS [KaName], 
     [v_WaybillCorrectionDet].[WhName] AS [WhName], 
-    [v_WaybillCorrectionDet].[Reason] AS [Reason]
+    [v_WaybillCorrectionDet].[Reason] AS [Reason], 
+    [v_WaybillCorrectionDet].[WbOnDate] AS [WbOnDate]
     FROM [dbo].[v_WaybillCorrectionDet] AS [v_WaybillCorrectionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
@@ -12489,9 +12495,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="KAgentMatPrices" EntitySet="KAgentMatPrices" />
           </AssociationSet>
-          <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
-          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <EntitySet Name="SettingMaterialPrices" EntityType="BaseModel.SettingMaterialPrices" />
           <EntitySet Name="SettingMaterialPricesDet" EntityType="BaseModel.SettingMaterialPricesDet" />
           <EntitySet Name="v_SettingMaterialPrices" EntityType="BaseModel.v_SettingMaterialPrices" />
@@ -12819,6 +12822,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <EntitySet Name="v_WaybillCorrection" EntityType="BaseModel.v_WaybillCorrection" />
           <EntitySet Name="v_WaybillCorrectionDet" EntityType="BaseModel.v_WaybillCorrectionDet" />
+          <FunctionImport Name="GetWayBillDetOut" IsComposable="true" ReturnType="Collection(BaseModel.GetWayBillDetOut_Result)">
+          <Parameter Name="wbill_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19712,53 +19718,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetWayBillDetOut_Result">
-          <Property Type="Int32" Name="Num" Nullable="false" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="Int32" Name="WbillId" Nullable="false" />
-          <Property Type="Int32" Name="MatId" Nullable="false" />
-          <Property Type="Int32" Name="Wid" Nullable="true" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="17" Scale="4" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="CurrId" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="PtypeId" Nullable="true" />
-          <Property Type="Int32" Name="Checked" Nullable="true" />
-          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PosType" Nullable="true" />
-          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
-          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Serials" Nullable="true" />
-          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
-          <Property Type="Int32" Name="WarrantyPeriod" Nullable="true" />
-          <Property Type="Int32" Name="WarrantyPeriodType" Nullable="true" />
-          <Property Type="Int32" Name="GrpId" Nullable="true" />
-          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="CardId" Nullable="true" />
-          <Property Type="String" Name="CardNum" Nullable="true" MaxLength="24" />
-          <Property Type="String" Name="Holder" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
-          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
-          <Property Type="Int32" Name="Rsv" Nullable="true" />
-          <Property Type="Decimal" Name="DiscountPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="1000" />
-          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
-          <Property Type="Decimal" Name="AvgInPrice" Nullable="true" Precision="38" Scale="6" />
-          <Property Type="Decimal" Name="DiscountTotal" Nullable="true" Precision="32" Scale="8" />
-        </ComplexType>
         <EntityType Name="SettingMaterialPrices">
           <Key>
             <PropertyRef Name="Id" />
@@ -21280,6 +21239,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WType" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="WhName" />
+            <PropertyRef Name="WbOnDate" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
@@ -21305,7 +21265,56 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Reason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <ComplexType Name="GetWayBillDetOut_Result">
+          <Property Type="Int32" Name="Num" Nullable="false" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="Int32" Name="WbillId" Nullable="false" />
+          <Property Type="Int32" Name="MatId" Nullable="false" />
+          <Property Type="Int32" Name="Wid" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="17" Scale="4" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Discount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="NDS" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="CurrId" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="PtypeId" Nullable="true" />
+          <Property Type="Int32" Name="Checked" Nullable="true" />
+          <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="MsrName" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PosType" Nullable="true" />
+          <Property Type="Decimal" Name="Norm" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="Producer" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Gtd" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="CertNum" Nullable="true" MaxLength="64" />
+          <Property Type="DateTime" Name="CertDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Serials" Nullable="true" />
+          <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
+          <Property Type="Int32" Name="WarrantyPeriod" Nullable="true" />
+          <Property Type="Int32" Name="WarrantyPeriodType" Nullable="true" />
+          <Property Type="Int32" Name="GrpId" Nullable="true" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="CardId" Nullable="true" />
+          <Property Type="String" Name="CardNum" Nullable="true" MaxLength="24" />
+          <Property Type="String" Name="Holder" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SerialNo" Nullable="true" MaxLength="64" />
+          <Property Type="String" Name="GroupName" Nullable="false" MaxLength="64" />
+          <Property Type="Decimal" Name="BasePrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Total" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="SumNds" Nullable="true" Precision="35" Scale="10" />
+          <Property Type="Int32" Name="Rsv" Nullable="true" />
+          <Property Type="Decimal" Name="DiscountPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="1000" />
+          <Property Type="DateTime" Name="UpdateAt" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="AvgInPrice" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="DiscountTotal" Nullable="true" Precision="32" Scale="8" />
+          <Property Type="Int32" Name="RemoteOrdered" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -26208,57 +26217,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetWayBillDetOut" FunctionName="BaseModel.Store.GetWayBillDetOut">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetWayBillDetOut_Result">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="Wid" ColumnName="Wid" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="NDS" ColumnName="NDS" />
-                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
-                <ScalarProperty Name="Checked" ColumnName="Checked" />
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosType" ColumnName="PosType" />
-                <ScalarProperty Name="Norm" ColumnName="Norm" />
-                <ScalarProperty Name="Producer" ColumnName="Producer" />
-                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
-                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
-                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
-                <ScalarProperty Name="Serials" ColumnName="Serials" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
-                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="CardId" ColumnName="CardId" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Holder" ColumnName="Holder" />
-                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
-                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
-                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
-                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
-                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
-                <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="SettingMaterialPrices">
             <EntityTypeMapping TypeName="BaseModel.SettingMaterialPrices">
               <MappingFragment StoreEntitySet="SettingMaterialPrices">
@@ -26929,6 +26887,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillCorrectionDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrectionDet">
               <MappingFragment StoreEntitySet="v_WaybillCorrectionDet">
+                <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
@@ -26956,6 +26915,58 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetWayBillDetOut" FunctionName="BaseModel.Store.GetWayBillDetOut">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetWayBillDetOut_Result">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="Wid" ColumnName="Wid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="NDS" ColumnName="NDS" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="PtypeId" ColumnName="PtypeId" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosType" ColumnName="PosType" />
+                <ScalarProperty Name="Norm" ColumnName="Norm" />
+                <ScalarProperty Name="Producer" ColumnName="Producer" />
+                <ScalarProperty Name="Gtd" ColumnName="Gtd" />
+                <ScalarProperty Name="CertNum" ColumnName="CertNum" />
+                <ScalarProperty Name="CertDate" ColumnName="CertDate" />
+                <ScalarProperty Name="Serials" ColumnName="Serials" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="WarrantyPeriod" ColumnName="WarrantyPeriod" />
+                <ScalarProperty Name="WarrantyPeriodType" ColumnName="WarrantyPeriodType" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CardId" ColumnName="CardId" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="Holder" ColumnName="Holder" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="SumNds" ColumnName="SumNds" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
+                <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
+                <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
+                <ScalarProperty Name="RemoteOrdered" ColumnName="RemoteOrdered" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

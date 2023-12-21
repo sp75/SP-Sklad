@@ -160,6 +160,7 @@
     <Compile Include="Models\ProfileDocSetting.cs" />
     <Compile Include="Models\ProfilesSetting.cs" />
     <Compile Include="Models\PROFINTF.cs" />
+    <Compile Include="Models\RemoteCustomerOrders.cs" />
     <Compile Include="Models\RepLng.cs" />
     <Compile Include="Models\ReportModels\GetWayBillDetOut_Result.cs" />
     <Compile Include="Models\ReportModels\REP_10_Result.cs" />

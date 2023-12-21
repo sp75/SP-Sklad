@@ -114,7 +114,17 @@ namespace Test
 
             using (var db = new SPBaseModel("SPBaseModel"))
             {
-                var ddd = db.Banks.ToList();
+                db.RemoteCustomerOrders.Add(new RemoteCustomerOrders
+                {
+                    Amount = 1,
+                    CreatedAt = DateTime.Now,
+                    MatId = 1,
+                    PosId = 1,
+                    WbillId =1,
+                    CustomerId = Guid.NewGuid()
+                });
+
+                db.SaveChanges();
             }
 
 

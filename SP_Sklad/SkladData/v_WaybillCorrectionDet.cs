@@ -38,5 +38,6 @@ namespace SP_Sklad.SkladData
         public string KaName { get; set; }
         public string WhName { get; set; }
         public string Reason { get; set; }
+        public System.DateTime WbOnDate { get; set; }
     }
 }

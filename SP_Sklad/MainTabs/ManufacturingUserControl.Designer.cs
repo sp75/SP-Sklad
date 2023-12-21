@@ -469,6 +469,7 @@
             this.repositoryItemCalcEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn211 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucRelDocGrid6 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl10 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
@@ -489,7 +490,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ucRelDocGrid6 = new SP_Sklad.UserControls.ucRelDocGrid();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -5802,6 +5802,14 @@
             this.xtraTabPage30.Size = new System.Drawing.Size(1047, 180);
             this.xtraTabPage30.Text = "Зв\'язані документи";
             // 
+            // ucRelDocGrid6
+            // 
+            this.ucRelDocGrid6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucRelDocGrid6.Location = new System.Drawing.Point(0, 0);
+            this.ucRelDocGrid6.Name = "ucRelDocGrid6";
+            this.ucRelDocGrid6.Size = new System.Drawing.Size(1047, 180);
+            this.ucRelDocGrid6.TabIndex = 5;
+            // 
             // xtraTabPage29
             // 
             this.xtraTabPage29.Controls.Add(this.gridControl10);
@@ -5990,14 +5998,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // ucRelDocGrid6
-            // 
-            this.ucRelDocGrid6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucRelDocGrid6.Location = new System.Drawing.Point(0, 0);
-            this.ucRelDocGrid6.Name = "ucRelDocGrid6";
-            this.ucRelDocGrid6.Size = new System.Drawing.Size(1047, 180);
-            this.ucRelDocGrid6.TabIndex = 5;
             // 
             // ManufacturingUserControl
             // 

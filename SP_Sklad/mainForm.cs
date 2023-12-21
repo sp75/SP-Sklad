@@ -70,7 +70,7 @@ namespace SP_Sklad
             NewWBWriteOffBtn.Enabled = IHelper.GetUserAccess(41)?.CanInsert == 1;
             AddManufacturingBtn.Enabled = IHelper.GetUserAccess(68)?.CanInsert == 1;
             AddDeboningBtn.Enabled = IHelper.GetUserAccess(72)?.CanInsert == 1;
-            
+           
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

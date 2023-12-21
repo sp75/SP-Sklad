@@ -108,6 +108,8 @@
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -160,6 +162,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
@@ -414,7 +417,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 240);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(968, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1052, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -423,7 +426,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(968, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1052, 24);
             // 
             // barDockControlBottom
             // 
@@ -431,7 +434,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 612);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(968, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1052, 0);
             // 
             // barDockControlLeft
             // 
@@ -445,7 +448,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(968, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1052, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
             // 
@@ -473,6 +476,7 @@
             this.WBImgList.Images.SetKeyName(17, "Договор продажу.bmp");
             this.WBImgList.Images.SetKeyName(18, "Дисконтна картка.bmp");
             this.WBImgList.Images.SetKeyName(19, "icons-05.png");
+            this.WBImgList.Images.SetKeyName(20, "store-2017.png");
             // 
             // RsvBarBtn
             // 
@@ -551,7 +555,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl3.Size = new System.Drawing.Size(968, 216);
+            this.panelControl3.Size = new System.Drawing.Size(1052, 216);
             this.panelControl3.TabIndex = 7;
             // 
             // panelControl1
@@ -576,12 +580,13 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(570, 206);
+            this.panelControl1.Size = new System.Drawing.Size(654, 206);
             this.panelControl1.TabIndex = 4;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(304, 110);
+            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl5.Location = new System.Drawing.Point(388, 110);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(71, 16);
             this.labelControl5.StyleController = this.styleController1;
@@ -591,8 +596,9 @@
             // 
             // PTypeComboBox
             // 
+            this.PTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "PTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PTypeComboBox.Location = new System.Drawing.Point(381, 107);
+            this.PTypeComboBox.Location = new System.Drawing.Point(465, 107);
             this.PTypeComboBox.Name = "PTypeComboBox";
             this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -615,6 +621,8 @@
             // 
             // PersonComboBox
             // 
+            this.PersonComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(92, 107);
             this.PersonComboBox.Name = "PersonComboBox";
@@ -628,18 +636,20 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(179, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(253, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 23;
             this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);
             // 
             // NotesEdit
             // 
+            this.NotesEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NotesEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Notes", true));
             this.NotesEdit.Location = new System.Drawing.Point(92, 173);
             this.NotesEdit.MenuManager = this.barManager1;
             this.NotesEdit.Name = "NotesEdit";
-            this.NotesEdit.Size = new System.Drawing.Size(464, 22);
+            this.NotesEdit.Size = new System.Drawing.Size(547, 22);
             this.NotesEdit.StyleController = this.styleController1;
             this.NotesEdit.TabIndex = 22;
             // 
@@ -663,23 +673,25 @@
             // 
             // ToDateEdit
             // 
+            this.ToDateEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ToDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "ToDate", true));
             this.ToDateEdit.EditValue = null;
-            this.ToDateEdit.Location = new System.Drawing.Point(408, 107);
+            this.ToDateEdit.Location = new System.Drawing.Point(465, 107);
             this.ToDateEdit.MenuManager = this.barManager1;
             this.ToDateEdit.Name = "ToDateEdit";
             this.ToDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.ToDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ToDateEdit.Size = new System.Drawing.Size(148, 22);
+            this.ToDateEdit.Size = new System.Drawing.Size(173, 22);
             this.ToDateEdit.StyleController = this.styleController1;
             this.ToDateEdit.TabIndex = 18;
             this.ToDateEdit.EditValueChanged += new System.EventHandler(this.ToDateEdit_EditValueChanged);
             // 
             // checkEdit2
             // 
-            this.checkEdit2.Location = new System.Drawing.Point(314, 108);
+            this.checkEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkEdit2.Location = new System.Drawing.Point(372, 108);
             this.checkEdit2.MenuManager = this.barManager1;
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "Дійсний до:";
@@ -690,16 +702,20 @@
             // 
             // ReasonEdit
             // 
+            this.ReasonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReasonEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "Reason", true));
             this.ReasonEdit.Location = new System.Drawing.Point(92, 140);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
-            this.ReasonEdit.Size = new System.Drawing.Size(464, 22);
+            this.ReasonEdit.Size = new System.Drawing.Size(547, 22);
             this.ReasonEdit.StyleController = this.styleController1;
             this.ReasonEdit.TabIndex = 16;
             // 
             // KagentComboBox
             // 
+            this.KagentComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.KagentComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "KaId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.KagentComboBox.Location = new System.Drawing.Point(92, 75);
             this.KagentComboBox.Name = "KagentComboBox";
@@ -714,7 +730,7 @@
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.ValueMember = "KaId";
-            this.KagentComboBox.Size = new System.Drawing.Size(464, 24);
+            this.KagentComboBox.Size = new System.Drawing.Size(547, 24);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
@@ -740,7 +756,8 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(341, 44);
+            this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl2.Location = new System.Drawing.Point(425, 44);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(34, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -775,16 +792,17 @@
             this.NumEdit.Location = new System.Drawing.Point(92, 41);
             this.NumEdit.MenuManager = this.barManager1;
             this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Size = new System.Drawing.Size(179, 22);
+            this.NumEdit.Size = new System.Drawing.Size(150, 22);
             this.NumEdit.StyleController = this.styleController1;
             this.NumEdit.TabIndex = 0;
             this.NumEdit.EditValueChanged += new System.EventHandler(this.NumEdit_Validated);
             // 
             // OnDateDBEdit
             // 
+            this.OnDateDBEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true));
             this.OnDateDBEdit.EditValue = null;
-            this.OnDateDBEdit.Location = new System.Drawing.Point(381, 41);
+            this.OnDateDBEdit.Location = new System.Drawing.Point(465, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
@@ -794,8 +812,8 @@
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.OnDateDBEdit.Properties.Mask.EditMask = "g";
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.OnDateDBEdit.Properties.MaskSettings.Set("mask", "g");
             this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             this.OnDateDBEdit.Size = new System.Drawing.Size(175, 24);
             this.OnDateDBEdit.StyleController = this.styleController1;
@@ -806,7 +824,7 @@
             // 
             this.panel1.Controls.Add(this.payDocUserControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(575, 5);
+            this.panel1.Location = new System.Drawing.Point(659, 5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.panel1.Size = new System.Drawing.Size(388, 206);
@@ -827,7 +845,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 264);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(968, 296);
+            this.panelControl5.Size = new System.Drawing.Size(1052, 296);
             this.panelControl5.TabIndex = 13;
             // 
             // WaybillDetOutGridControl
@@ -843,8 +861,9 @@
             this.repositoryItemImageComboBox2,
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
-            this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(964, 292);
+            this.repositoryItemComboBox1,
+            this.repositoryItemImageComboBox4});
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1048, 292);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -865,6 +884,7 @@
             this.WaybillDetOutGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn12,
             this.gridColumn1,
+            this.gridColumn18,
             this.gridColumn2,
             this.gridColumn11,
             this.gridColumn3,
@@ -894,7 +914,7 @@
             // 
             // gridColumn12
             // 
-            this.gridColumn12.Caption = "gridColumn12";
+            this.gridColumn12.Caption = "Помічене";
             this.gridColumn12.ColumnEdit = this.repositoryItemImageComboBox3;
             this.gridColumn12.FieldName = "Checked";
             this.gridColumn12.Name = "gridColumn12";
@@ -919,9 +939,35 @@
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
             // 
+            // gridColumn18
+            // 
+            this.gridColumn18.Caption = "Відалене замовлення";
+            this.gridColumn18.ColumnEdit = this.repositoryItemImageComboBox4;
+            this.gridColumn18.FieldName = "RemoteOrdered";
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.OptionsColumn.AllowEdit = false;
+            this.gridColumn18.OptionsColumn.AllowFocus = false;
+            this.gridColumn18.OptionsColumn.AllowSize = false;
+            this.gridColumn18.OptionsColumn.FixedWidth = true;
+            this.gridColumn18.OptionsColumn.ShowCaption = false;
+            this.gridColumn18.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 3;
+            this.gridColumn18.Width = 25;
+            // 
+            // repositoryItemImageComboBox4
+            // 
+            this.repositoryItemImageComboBox4.AutoHeight = false;
+            this.repositoryItemImageComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox4.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20)});
+            this.repositoryItemImageComboBox4.Name = "repositoryItemImageComboBox4";
+            this.repositoryItemImageComboBox4.SmallImages = this.WBImgList;
+            // 
             // gridColumn1
             // 
-            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.Caption = "Тип";
             this.gridColumn1.ColumnEdit = this.repositoryItemImageComboBox1;
             this.gridColumn1.FieldName = "PosType";
             this.gridColumn1.Name = "gridColumn1";
@@ -960,12 +1006,12 @@
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 31;
+            this.gridColumn2.VisibleIndex = 4;
+            this.gridColumn2.Width = 26;
             // 
             // gridColumn11
             // 
-            this.gridColumn11.Caption = "gridColumn11";
+            this.gridColumn11.Caption = "В резерві";
             this.gridColumn11.ColumnEdit = this.repositoryItemImageComboBox2;
             this.gridColumn11.FieldName = "Rsv";
             this.gridColumn11.Name = "gridColumn11";
@@ -1000,8 +1046,8 @@
             this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 4;
-            this.gridColumn3.Width = 214;
+            this.gridColumn3.VisibleIndex = 5;
+            this.gridColumn3.Width = 179;
             // 
             // gridColumn4
             // 
@@ -1012,8 +1058,8 @@
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 80;
+            this.gridColumn4.VisibleIndex = 6;
+            this.gridColumn4.Width = 67;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -1034,8 +1080,8 @@
             this.gridColumn5.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 6;
-            this.gridColumn5.Width = 46;
+            this.gridColumn5.VisibleIndex = 7;
+            this.gridColumn5.Width = 38;
             // 
             // gridColumn6
             // 
@@ -1046,8 +1092,8 @@
             this.gridColumn6.OptionsColumn.AllowEdit = false;
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 11;
-            this.gridColumn6.Width = 83;
+            this.gridColumn6.VisibleIndex = 12;
+            this.gridColumn6.Width = 69;
             // 
             // gridColumn10
             // 
@@ -1057,8 +1103,8 @@
             this.gridColumn10.FieldName = "Discount";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 10;
-            this.gridColumn10.Width = 72;
+            this.gridColumn10.VisibleIndex = 11;
+            this.gridColumn10.Width = 60;
             // 
             // gridColumn7
             // 
@@ -1070,8 +1116,8 @@
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 12;
-            this.gridColumn7.Width = 73;
+            this.gridColumn7.VisibleIndex = 13;
+            this.gridColumn7.Width = 61;
             // 
             // gridColumn8
             // 
@@ -1083,8 +1129,8 @@
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 13;
-            this.gridColumn8.Width = 95;
+            this.gridColumn8.VisibleIndex = 14;
+            this.gridColumn8.Width = 84;
             // 
             // gridColumn9
             // 
@@ -1094,8 +1140,8 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 8;
-            this.gridColumn9.Width = 73;
+            this.gridColumn9.VisibleIndex = 9;
+            this.gridColumn9.Width = 61;
             // 
             // gridColumn13
             // 
@@ -1104,8 +1150,8 @@
             this.gridColumn13.FieldName = "Notes";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 7;
-            this.gridColumn13.Width = 97;
+            this.gridColumn13.VisibleIndex = 8;
+            this.gridColumn13.Width = 81;
             // 
             // repositoryItemComboBox1
             // 
@@ -1141,7 +1187,8 @@
             this.gridColumn17.FieldName = "BasePrice";
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
-            this.gridColumn17.VisibleIndex = 9;
+            this.gridColumn17.VisibleIndex = 10;
+            this.gridColumn17.Width = 63;
             // 
             // barDockControl1
             // 
@@ -1149,7 +1196,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Manager = null;
-            this.barDockControl1.Size = new System.Drawing.Size(964, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1048, 0);
             // 
             // panelControl2
             // 
@@ -1158,13 +1205,13 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 560);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(968, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1052, 52);
             this.panelControl2.TabIndex = 14;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(746, 10);
+            this.OkButton.Location = new System.Drawing.Point(830, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -1174,7 +1221,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(856, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(940, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -1184,7 +1231,7 @@
             // progressBarControl1
             // 
             this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarControl1.Location = new System.Drawing.Point(686, 246);
+            this.progressBarControl1.Location = new System.Drawing.Point(770, 246);
             this.progressBarControl1.MenuManager = this.barManager1;
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Properties.Step = 1;
@@ -1216,7 +1263,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 612);
+            this.ClientSize = new System.Drawing.Size(1052, 612);
             this.Controls.Add(this.progressBarControl1);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl1);
@@ -1263,6 +1310,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
@@ -1367,5 +1415,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
     }
 }
