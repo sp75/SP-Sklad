@@ -40,25 +40,30 @@
             this.DocumentGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillCorrectionSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colSummInCurr = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colSummPay = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colWType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -67,10 +72,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).BeginInit();
@@ -154,6 +155,20 @@
             this.bandedGridView1.OptionsBehavior.ReadOnly = true;
             this.bandedGridView1.OptionsFind.AlwaysVisible = true;
             // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Корегування";
+            this.gridBand1.Columns.Add(this.bandedGridColumn2);
+            this.gridBand1.Columns.Add(this.colNum);
+            this.gridBand1.Columns.Add(this.colOnDate);
+            this.gridBand1.Columns.Add(this.bandedGridColumn1);
+            this.gridBand1.Columns.Add(this.bandedGridColumn5);
+            this.gridBand1.Columns.Add(this.bandedGridColumn3);
+            this.gridBand1.Columns.Add(this.bandedGridColumn4);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 732;
+            // 
             // bandedGridColumn2
             // 
             this.bandedGridColumn2.Caption = "Статус";
@@ -197,6 +212,14 @@
             this.bandedGridColumn1.Visible = true;
             this.bandedGridColumn1.Width = 134;
             // 
+            // bandedGridColumn5
+            // 
+            this.bandedGridColumn5.Caption = "Підстава";
+            this.bandedGridColumn5.FieldName = "Reason";
+            this.bandedGridColumn5.Name = "bandedGridColumn5";
+            this.bandedGridColumn5.Visible = true;
+            this.bandedGridColumn5.Width = 120;
+            // 
             // bandedGridColumn3
             // 
             this.bandedGridColumn3.Caption = "Примітка";
@@ -213,6 +236,15 @@
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.Width = 83;
             // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Товар";
+            this.gridBand3.Columns.Add(this.gridColumn2);
+            this.gridBand3.Columns.Add(this.gridColumn1);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 1;
+            this.gridBand3.Width = 283;
+            // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "До";
@@ -228,6 +260,15 @@
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.Width = 131;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Ціна";
+            this.gridBand4.Columns.Add(this.colSummInCurr);
+            this.gridBand4.Columns.Add(this.colSummPay);
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.VisibleIndex = 2;
+            this.gridBand4.Width = 105;
             // 
             // colSummInCurr
             // 
@@ -250,6 +291,16 @@
             this.colSummPay.OptionsColumn.AllowEdit = false;
             this.colSummPay.Visible = true;
             this.colSummPay.Width = 63;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Документ";
+            this.gridBand2.Columns.Add(this.colWType);
+            this.gridBand2.Columns.Add(this.gridColumn3);
+            this.gridBand2.Columns.Add(this.colName);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 3;
+            this.gridBand2.Width = 310;
             // 
             // colWType
             // 
@@ -315,14 +366,6 @@
             this.colName.Visible = true;
             this.colName.Width = 204;
             // 
-            // bandedGridColumn5
-            // 
-            this.bandedGridColumn5.Caption = "Підстава";
-            this.bandedGridColumn5.FieldName = "Reason";
-            this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.Visible = true;
-            this.bandedGridColumn5.Width = 120;
-            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -335,8 +378,9 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.PrevievBtn});
-            this.barManager1.MaxItemId = 36;
+            this.PrevievBtn,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 37;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
             // 
@@ -348,6 +392,7 @@
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar3.FloatLocation = new System.Drawing.Point(34, 243);
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DisableClose = true;
@@ -356,6 +401,16 @@
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl2;
             this.bar3.Text = "Custom 2";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Обновити";
+            this.barButtonItem1.Id = 36;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // PrevievBtn
             // 
@@ -433,48 +488,6 @@
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Корегування";
-            this.gridBand1.Columns.Add(this.bandedGridColumn2);
-            this.gridBand1.Columns.Add(this.colNum);
-            this.gridBand1.Columns.Add(this.colOnDate);
-            this.gridBand1.Columns.Add(this.bandedGridColumn1);
-            this.gridBand1.Columns.Add(this.bandedGridColumn5);
-            this.gridBand1.Columns.Add(this.bandedGridColumn3);
-            this.gridBand1.Columns.Add(this.bandedGridColumn4);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 732;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "Товар";
-            this.gridBand3.Columns.Add(this.gridColumn2);
-            this.gridBand3.Columns.Add(this.gridColumn1);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 283;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "Ціна";
-            this.gridBand4.Columns.Add(this.colSummInCurr);
-            this.gridBand4.Columns.Add(this.colSummPay);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 2;
-            this.gridBand4.Width = 105;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Документ";
-            this.gridBand2.Columns.Add(this.colWType);
-            this.gridBand2.Columns.Add(this.gridColumn3);
-            this.gridBand2.Columns.Add(this.colName);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 3;
-            this.gridBand2.Width = 310;
-            // 
             // frmWaybillCorrectionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -544,5 +557,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

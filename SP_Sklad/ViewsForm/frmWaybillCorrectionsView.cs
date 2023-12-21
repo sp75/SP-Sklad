@@ -29,20 +29,32 @@ namespace SP_Sklad.ViewsForm
 
         private void frmKaGroup_Load(object sender, EventArgs e)
         {
-
+            
         }
 
   
         private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            e.QueryableSource = _db.v_WaybillCorrectionDet;
+            e.QueryableSource = DB.SkladBase().v_WaybillCorrectionDet;
 
-            e.Tag = _db;
+          //  e.Tag = _db;
         }
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ExportToXlsx(DocumentGridControl);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+     //       DocumentGridControl.DataSource = null;
+       //     DocumentGridControl.DataSource = WaybillCorrectionSource;
+            WaybillCorrectionSource.Refresh();
+
+
+            //bandedGridView1.RefreshData();
+
+            
         }
     }
 }
