@@ -57,5 +57,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> TotalInCurrency { get; set; }
         public Nullable<int> MId { get; set; }
         public Nullable<int> Rsv { get; set; }
+        public Nullable<int> RemoteOrdered { get; set; }
     }
 }

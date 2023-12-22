@@ -21,7 +21,7 @@ namespace SP_Sklad.ViewsForm
     public partial class frmReport53 : DevExpress.XtraEditors.XtraForm
     {
         private BaseEntities _db { get; set; }
-
+        public string wh_list = "*";
 
         public frmReport53()
         {
@@ -42,8 +42,6 @@ namespace SP_Sklad.ViewsForm
         {
             get
             {
-                var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
-
                 var obj = new List<XLRPARAM>
                 {
                     new XLRPARAM
@@ -52,7 +50,7 @@ namespace SP_Sklad.ViewsForm
                         OnDate1 = dateEdit1.DateTime.ToShortDateString(),
                         OnDate2 = dateEdit2.DateTime.ToShortDateString(),
                         OnDate3 = dateEdit3.DateTime.ToShortDateString(),
-                        WhName = wh_row.Name
+                        WhName = WhCheckedComboBox.Text
                     }
                 };
 
@@ -67,7 +65,7 @@ namespace SP_Sklad.ViewsForm
             dateEdit2.DateTime = DateTime.Now;
             dateEdit3.DateTime = DateTime.Now;
 
-            var wh = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId, s.Name, s.Def }).ToList();
+       /*     var whlist = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId, s.Name, s.Def }).ToList();
 
             WhComboBox.Properties.DataSource = new List<object>() { new  { WId = 0, Name = "Усі" } }.Concat(wh.Select(s => new 
             {
@@ -75,7 +73,15 @@ namespace SP_Sklad.ViewsForm
                  s.Name
             }).ToList());
 
-            WhComboBox.EditValue = 0;
+            WhComboBox.EditValue = 0;*/
+
+
+            var whlist = new BaseEntities().Warehouse.Where(w => w.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId)).Select(s => new { WId = s.WId.ToString(), s.Name, IsChecked = false }).ToList();
+
+            foreach (var item in whlist)
+            {
+                WhCheckedComboBox.Properties.Items.Add(item.WId, item.Name, item.IsChecked ? CheckState.Checked : CheckState.Unchecked, true);
+            }
         }
 
         private void frmKaGroup_FormClosed(object sender, FormClosedEventArgs e)
@@ -104,8 +110,8 @@ namespace SP_Sklad.ViewsForm
         }
         private List<rep_53> GetData()
         {
-            var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
-            int wid = wh_row.WId;
+      //      var wh_row = WhComboBox.GetSelectedDataRow() as dynamic;
+        //    int wid = wh_row.WId;
 
          /*   return _db.Database.SqlQuery<rep_53>(@"select x.*, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
 coalesce((select sum(wbd.Amount) from WaybillDet wbd , WaybillList wbl where wbd.MatId = x.MatId and wbd.WbillId = wbl.WbillId and wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) ),0) OrderedAmount1,
@@ -149,7 +155,7 @@ coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) from WaybillList wbl , W
 					     where ondate <= {0}
 					     group by [PosId]
 						) xx on xx.PosId = pr.PosId and pr.OnDate = xx.OnDate
-        where  (pr.remain > 0 or Ordered > 0)  and (pr.WId = {4} or {4} = 0 ) and pr.MatId = x.MatId
+        where  (pr.remain > 0 or Ordered > 0)  and (EXISTS (SELECT * FROM Split(',', {4}) WHERE s = pr.WId) or {4} = '*') and pr.MatId = x.MatId
     ) Remain 
 from (
 select  wbd.MatId, m.Name MatName, mg.Name GrpName, mg.GrpId, m.Artikul, Measures.ShortName MsrName,
@@ -169,7 +175,7 @@ where   wbl.WType = -16
 group by wbd.MatId, m.Name , mg.Name , mg.GrpId, m.Artikul, Measures.ShortName 
 )x
 
-order by x.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wid).ToList();
+order by x.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEdit2.DateTime.Date, dateEdit3.DateTime.Date, wh_list).ToList();
 
         }
 
@@ -227,6 +233,19 @@ order by x.Artikul", OnDateDBEdit.DateTime.Date, dateEdit1.DateTime.Date, dateEd
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             new frmGridView(Text, GetData()).ShowDialog();
+        }
+
+        private void WhCheckedComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (WhCheckedComboBox.ContainsFocus)
+            {
+                wh_list = WhCheckedComboBox.Properties.Items.Any(w => w.CheckState == CheckState.Checked) ? "" : "*";
+
+                foreach (var item in WhCheckedComboBox.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                {
+                    wh_list += item.Value.ToString() + ",";
+                }
+            }
         }
     }
 }

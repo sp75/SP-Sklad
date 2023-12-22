@@ -1997,16 +1997,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatTree_Result>("[BaseEntities].[GetMatTree](@p_type, @curr_id)", p_typeParameter, curr_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
-        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
-        {
-            var wbill_idParameter = wbill_id.HasValue ?
-                new ObjectParameter("wbill_id", wbill_id) :
-                new ObjectParameter("wbill_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
-        }
-    
         public virtual ObjectResult<GetRecipePreparationRawMaterials_Result> GetRecipePreparationRawMaterials(Nullable<int> wbill_id)
         {
             var wbill_idParameter = wbill_id.HasValue ?
@@ -2655,6 +2645,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillDetOut_Result>("[BaseEntities].[GetWayBillDetOut](@wbill_id)", wbill_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetWaybillDetIn")]
+        public virtual IQueryable<GetWaybillDetIn_Result> GetWaybillDetIn(Nullable<int> wbill_id)
+        {
+            var wbill_idParameter = wbill_id.HasValue ?
+                new ObjectParameter("wbill_id", wbill_id) :
+                new ObjectParameter("wbill_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
         }
     }
 }

@@ -82,10 +82,10 @@ namespace SP_Sklad.MainTabs
             public bool IsChecked { get; set; }
         }
 
-        System.IO.Stream str = new System.IO.MemoryStream();
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void WarehouseUserControl_Load(object sender, EventArgs e)
         {
-            WhMatGridView.SaveLayoutToStream(str);
+            WhMatGridView.SaveLayoutToStream(wh_layout_stream);
 
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WbGridView");
             WhMatGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WarehouseUserControl\\WhMatGridView");
@@ -1223,8 +1223,9 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            str.Seek(0, System.IO.SeekOrigin.Begin);
-            WhMatGridView.RestoreLayoutFromStream(str);
+            wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            WhMatGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
 
         private void AddGrpItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

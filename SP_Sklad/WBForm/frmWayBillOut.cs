@@ -16,6 +16,7 @@ using SP_Sklad.Reports;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.Properties;
 using DevExpress.Data;
+using System.IO;
 
 namespace SP_Sklad.WBForm
 {
@@ -53,8 +54,11 @@ namespace SP_Sklad.WBForm
             InitializeComponent();
         }
 
+        Stream wb_det_layout_stream = new MemoryStream();
+
         private void frmWayBillOut_Load(object sender, EventArgs e)
         {
+            WaybillDetOutGridView.SaveLayoutToStream(wb_det_layout_stream);
             WaybillDetOutGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmWayBillOut\\WaybillDetOutGridView");
 
             KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
@@ -937,6 +941,13 @@ namespace SP_Sklad.WBForm
         private void WaybillDetOutBS_ListChanged(object sender, System.ComponentModel.ListChangedEventArgs e)
         {
             is_update_record = true;
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wb_det_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            WaybillDetOutGridView.RestoreLayoutFromStream(wb_det_layout_stream);
         }
     }
 }
