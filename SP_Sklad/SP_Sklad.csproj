@@ -712,6 +712,12 @@
     <Compile Include="SkladData\v_WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillIn.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillInDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WayBillMake.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1235,6 +1241,18 @@
     </Compile>
     <Compile Include="UserControls\ucRelDocGrid.Designer.cs">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WayBillInDetUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WayBillInDetUserControl.Designer.cs">
+      <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WayBillInUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WayBillInUserControl.Designer.cs">
+      <DependentUpon>WayBillInUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WaybillTemplateUserControl.cs">
       <SubType>UserControl</SubType>
@@ -2363,6 +2381,12 @@
     <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WayBillInDetUserControl.resx">
+      <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WayBillInUserControl.resx">
+      <DependentUpon>WayBillInUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -3020,6 +3044,29 @@
     <None Include="Resources\showtestreport_32x321.png" />
     <None Include="Resources\recurrence_16x16.png" />
     <None Include="Resources\recurrence_32x32.png" />
+    <None Include="Resources\historyitem_16x16.png" />
+    <None Include="Resources\historyitem_32x32.png" />
+    <None Include="Resources\info_16x16.png" />
+    <None Include="Resources\grid_16x16.png" />
+    <None Include="Resources\addgroupheader_16x16.png" />
+    <None Include="Resources\copy_16x16.png" />
+    <None Include="Resources\edit_16x16.png" />
+    <None Include="Resources\deletelist_16x16.png" />
+    <None Include="Resources\additem_16x16.png" />
+    <None Include="Resources\refresh_16x16.png" />
+    <None Include="Resources\apply_16x16.png" />
+    <None Include="Resources\preview_16x16.png" />
+    <None Include="Resources\showtestreport_16x162.png" />
+    <None Include="Resources\additem_16x161.png" />
+    <None Include="Resources\iconsetsymbols3_16x16.png" />
+    <None Include="Resources\new_16x16.png" />
+    <None Include="Resources\preview_16x161.png" />
+    <None Include="Resources\refresh2_16x16.png" />
+    <None Include="Resources\snapdeletelist_16x16.png" />
+    <None Include="Resources\insertgroupheader_16x16.png" />
+    <None Include="Resources\copymodeldifferences_16x16.png" />
+    <None Include="Resources\download_16x16.png" />
+    <None Include="Resources\listbox_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

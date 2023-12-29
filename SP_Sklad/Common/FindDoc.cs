@@ -109,7 +109,13 @@ namespace SP_Sklad.Common
 
             switch (doc_type)
             {
-                case 1: SetDocFilter(26);
+                case 1:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 26);
+                    _docs_user_control.wayBillInUserControl.FindItem(doc_id.Value, date.Value);
+                  
+
+                 //   SetDocFilter(26);
                     break;
 
                 case -1: SetDocFilter(27);

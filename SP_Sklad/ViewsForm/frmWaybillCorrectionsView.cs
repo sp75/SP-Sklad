@@ -12,6 +12,7 @@ using SP_Sklad.SkladData;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using SP_Sklad.Common;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.ViewsForm
 {
@@ -51,6 +52,11 @@ namespace SP_Sklad.ViewsForm
         {
             WaybillCorrectionDetGridControl.DataSource = null;
             WaybillCorrectionDetGridControl.DataSource = WaybillCorrectionSource;
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            PrintDoc.Show(focused_row.WaybillListId, focused_row.WType, _db);
         }
     }
 }

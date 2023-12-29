@@ -227,7 +227,14 @@ namespace SP_Sklad.MainTabs
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
-            wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            if (focused_tree_node.FunId == 21)
+            {
+                wbContentTab.SelectedTabPageIndex = 14;
+            }
+            else
+            {
+                wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            }
 
             if (focused_tree_node.FunId != null)
             {
@@ -268,7 +275,13 @@ namespace SP_Sklad.MainTabs
                         }
 
                     }
-                    if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
+
+                    if (cur_wtype == 1) //Прибткова накладна 
+                    {
+                        wayBillInUserControl.NewItem();
+                    }
+
+                    if (cur_wtype == 16)  //Замовлення постачальникам
                     {
                         using (var wb_in = new frmWayBillIn(cur_wtype, null))
                         {
@@ -369,14 +382,24 @@ namespace SP_Sklad.MainTabs
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
+            if (focused_tree_node == null)
+            {
+                return;
+            }
 
             using (var db = new BaseEntities())
             {
-                switch (gtype)
+                switch (focused_tree_node.GType)
                 {
                     case 1:
-                        DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
+                        if (focused_tree_node.WType == 1)
+                        {
+                            wayBillInUserControl.EditItem();
+                        }
+                        else
+                        {
+                            DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
+                        }
                         break;
 
                     case 4:
@@ -440,114 +463,122 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (DocsTreeList.FocusedNode == null) //баг з shortcut коли кнопка enabled = false
+            if (focused_tree_node == null)
             {
                 return;
             }
 
-            int gtype = (int)DocsTreeList.FocusedNode.GetValue("GType");
-            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-            var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-            var adj_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
-
-            //    var trans = _db.Database.BeginTransaction(IsolationLevel.RepeatableRead);
-            using (var db = new BaseEntities())
+            if (focused_tree_node.WType == 1)
             {
+                wayBillInUserControl.DeleteItem();
+            }
+            else
+            {
+                int gtype = focused_tree_node.GType.Value;
 
-                try
+                var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                var adj_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
+
+                using (var db = new BaseEntities())
                 {
-                    switch (gtype)
-                    {
-                        //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
-                        case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
-                            //	case 5: PriceList->LockRecord();  break;
-                            //	case 6: ContractsList->LockRecord();  break;
-                            //	case 7: TaxWBList->LockRecord();  break;
-                    }
-                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    try
                     {
                         switch (gtype)
                         {
-                            case 1:
-                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == dr.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId));
-                                if (wb != null)
-                                {
-                                    db.WaybillList.Remove(wb);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(Resources.deadlock);
-                                }
-                                break;
-
-                            case 4:
-                                var _pd = db.PayDoc.Find(pd_row.PayDocId);
-
-                                if (_pd != null)
-                                {
-                                    db.PayDoc.Remove(_pd);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
-                                }
-                                break;
-
-                            case 5:
-                                db.DeleteWhere<PriceList>(w => w.PlId == pl_focused_row.PlId);
-                                break;
-
-                            //	   case 6: ContractsList->Delete();  break;
-                            //	   case 7: TaxWBList->Delete();  break;
-                            case 8:
-                                var adj = db.KAgentAdjustment.Find(adj_row.Id);
-
-                                if (adj != null)
-                                {
-                                    db.KAgentAdjustment.Remove(adj);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
-                                }
-                                break;
-
-                            case 10:
-
-                                var bs = db.BankStatements.Find(bank_statements_row.Id);
-
-                                if (bs != null)
-                                {
-                                    db.BankStatements.Remove(bs);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(string.Format("Документ #{0} не знайдено", bank_statements_row.Num));
-                                }
-                                break;
-
-                            case 12:
-                                var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
-                                if (smp != null)
-                                {
-                                    db.SettingMaterialPrices.Remove(smp);
-                                }
-                                break;
-
-                            case 13:
-                                var exp = db.Expedition.Find(expeditionUserControl1.row_exp.Id);
-                                if (exp != null)
-                                {
-                                    db.Expedition.Remove(exp);
-                                }
-                                break;
+                            //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
+                            case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
+                                //	case 5: PriceList->LockRecord();  break;
+                                //	case 6: ContractsList->LockRecord();  break;
+                                //	case 7: TaxWBList->LockRecord();  break;
                         }
-                        db.SaveChanges();
+                        if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            switch (gtype)
+                            {
+                                case 1:
+
+
+                                    var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId));
+                                    if (wb != null)
+                                    {
+                                        db.WaybillList.Remove(wb);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(Resources.deadlock);
+                                    }
+
+                                    break;
+
+                                case 4:
+                                    var _pd = db.PayDoc.Find(pd_row.PayDocId);
+
+                                    if (_pd != null)
+                                    {
+                                        db.PayDoc.Remove(_pd);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                    }
+                                    break;
+
+                                case 5:
+                                    db.DeleteWhere<PriceList>(w => w.PlId == pl_focused_row.PlId);
+                                    break;
+
+                                //	   case 6: ContractsList->Delete();  break;
+                                //	   case 7: TaxWBList->Delete();  break;
+                                case 8:
+                                    var adj = db.KAgentAdjustment.Find(adj_row.Id);
+
+                                    if (adj != null)
+                                    {
+                                        db.KAgentAdjustment.Remove(adj);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                    }
+                                    break;
+
+                                case 10:
+
+                                    var bs = db.BankStatements.Find(bank_statements_row.Id);
+
+                                    if (bs != null)
+                                    {
+                                        db.BankStatements.Remove(bs);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", bank_statements_row.Num));
+                                    }
+                                    break;
+
+                                case 12:
+                                    var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
+                                    if (smp != null)
+                                    {
+                                        db.SettingMaterialPrices.Remove(smp);
+                                    }
+                                    break;
+
+                                case 13:
+                                    var exp = db.Expedition.Find(expeditionUserControl1.row_exp.Id);
+                                    if (exp != null)
+                                    {
+                                        db.Expedition.Remove(exp);
+                                    }
+                                    break;
+                            }
+                            db.SaveChanges();
+                        }
                     }
-                }
-                catch
-                {
-                    MessageBox.Show(Resources.deadlock);
+                    catch
+                    {
+                        MessageBox.Show(Resources.deadlock);
+                    }
                 }
             }
 
@@ -571,7 +602,12 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 1:
-                    if (focused_tree_node.WType == null)
+
+                    if(focused_tree_node.WType == 1)
+                    {
+                        wayBillInUserControl.GetData();
+                    }
+                    else if (focused_tree_node.WType == null)
                     {
                         GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
                     }
@@ -640,54 +676,55 @@ namespace SP_Sklad.MainTabs
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (DocsTreeList.FocusedNode == null)
+            if (focused_tree_node == null)
             {
                 return;
             }
 
-            var g_type = (int)DocsTreeList.FocusedNode.GetValue("GType");
-
             using (var db = new BaseEntities())
             {
-                switch (g_type)
+                switch (focused_tree_node.GType)
                 {
                     case 1:
-                        var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                        if (dr == null)
-                        {
-                            return;
-                        }
 
-                        var wb = db.WaybillList.Find(dr.WbillId);
-                        if (wb == null)
+                        if (focused_tree_node.WType == 1)
                         {
-                            XtraMessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (wb.SessionId != null)
-                        {
-                            XtraMessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-                        if (wb.Checked == 1)
-                        {
-                            if (wb.WType == -1)
-                            {
-
-                                if (!DBHelper.CheckExpedition(dr.WbillId, db)) return;
-                            }
-
-                            DBHelper.StornoOrder(db, dr.WbillId);
+                            wayBillInUserControl.ExecuteItem();
                         }
                         else
                         {
-                            if (wb.WType == -1)
+                            var wb = db.WaybillList.Find(wb_focused_row.WbillId);
+
+                            if (wb == null)
                             {
-                                if (!DBHelper.CheckOrderedInSuppliers(dr.WbillId, db)) return;
+                                XtraMessageBox.Show(Resources.not_find_wb);
+                                return;
+                            }
+                            if (wb.SessionId != null)
+                            {
+                                XtraMessageBox.Show(Resources.deadlock);
+                                return;
                             }
 
-                            DBHelper.ExecuteOrder(db, dr.WbillId);
+                            if (wb.Checked == 1)
+                            {
+                                if (wb.WType == -1)
+                                {
+
+                                    if (!DBHelper.CheckExpedition(wb_focused_row.WbillId, db)) return;
+                                }
+
+                                DBHelper.StornoOrder(db, wb_focused_row.WbillId);
+                            }
+                            else
+                            {
+                                if (wb.WType == -1)
+                                {
+                                    if (!DBHelper.CheckOrderedInSuppliers(wb_focused_row.WbillId, db)) return;
+                                }
+
+                                DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
+                            }
                         }
 
                         break;
@@ -856,14 +893,21 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_tree_node == null)
+            {
+                return;
+            }
+
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    if (dr == null)
+                    var doc_id = focused_tree_node.WType == 1 ? wayBillInUserControl.wb_focused_row?.Id : wb_focused_row?.Id;
+
+                    if(!doc_id.HasValue)
                     {
                         return;
                     }
+
 
                     /*  if (dr.WType == -1)
                       {
@@ -887,7 +931,7 @@ namespace SP_Sklad.MainTabs
                       }
                       else*/
                     //     {
-                    PrintDoc.Show(dr.Id, dr.WType, _db);
+                    PrintDoc.Show(doc_id.Value, focused_tree_node.WType.Value, _db);
                     //    }
                     break;
 
@@ -918,115 +962,85 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //user_settings.Reload();
-            using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+
+            if (cur_wtype == 1)  //Прибткова накладна 
             {
-                if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
-                {
-                    return;
-                }
+                wayBillInUserControl.CopyItem();
             }
-
-            switch (focused_tree_node.GType)
+            else
             {
-                case 1:
-                    var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-                    var doc = DB.SkladBase().DocCopy(dr.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-
-                    if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
+                using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+                {
+                    if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
                     {
-                        using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
+                        return;
+                    }
+                }
+
+                switch (focused_tree_node.GType)
+                {
+                    case 1:
+                            var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+
+                            if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
+                            {
+                                using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
+                                {
+                                    wb_in.is_new_record = true;
+                                    wb_in.ShowDialog();
+                                }
+
+                            }
+
+                            if (cur_wtype == 16)  //замовлення постачальникам
+                            {
+                                using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
+                                {
+                                    wb_in.is_new_record = true;
+                                    wb_in.ShowDialog();
+                                }
+                            }
+
+                            if (cur_wtype == 29)  //Акт надання послуг
+                            {
+                                using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
+                                {
+                                    wb_in.is_new_record = true;
+                                    wb_in.ShowDialog();
+                                }
+                            }
+
+                            if (cur_wtype == 6) // Повернення від клієнта
+                            {
+                                using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
+                                {
+                                    wb_re_in.ShowDialog();
+                                }
+                            }
+                        break;
+
+                    case 4:
+                        var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                        var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+
+                        int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
+                        using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
                         {
-                            wb_in.is_new_record = true;
-                            wb_in.ShowDialog();
+                            pdf.ShowDialog();
+                        }
+                        break;
+
+                    case 5:
+                        var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
+                        var pl_id = DB.SkladBase().CopyPriceList(pl_row.PlId).FirstOrDefault();
+
+                        using (var frm = new frmPriceList(pl_id))
+                        {
+                            frm.ShowDialog();
                         }
 
-                    }
-
-                    if (cur_wtype == 1 || cur_wtype == 16)  //Прибткова накладна , замовлення постачальникам
-                    {
-                        using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
-                        {
-                            wb_in.is_new_record = true;
-                            wb_in.ShowDialog();
-                        }
-                    }
-
-                    if (cur_wtype == 29)  //Акт надання послуг
-                    {
-                        using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
-                        {
-                            wb_in.is_new_record = true;
-                            wb_in.ShowDialog();
-                        }
-                    }
-
-                    if (cur_wtype == 6) // Повернення від клієнта
-                    {
-                        using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
-                        {
-                            wb_re_in.ShowDialog();
-                        }
-                    }
-
-                    /*         if(DocsTreeDataID->Value == 56 ) //Повернення постачальнику
-                             {
-                                 frmWBReturnOut = new  TfrmWBReturnOut(Application);
-                                 frmWBReturnOut->WayBillList->Open();
-                                 frmWBReturnOut->WayBillList->Append();
-                                 frmWBReturnOut->WayBillListWTYPE->Value  = -6;
-                                 frmWBReturnOut->WayBillList->Post();
-                                 frmWBReturnOut->WayBillList->Edit();
-                                 frmWBReturnOut->ShowModal() ;
-                             }*/
-                    break;
-
-                case 4:
-                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-
-                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                    using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
-                    {
-                        pdf.ShowDialog();
-                    }
-                    break;
-
-                case 5:
-                    var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
-                    var pl_id = DB.SkladBase().CopyPriceList(pl_row.PlId).FirstOrDefault();
-
-                    using (var frm = new frmPriceList(pl_id))
-                    {
-                        frm.ShowDialog();
-                    }
-
-                    break;
-
-                    /*           case 6: frmContr = new  TfrmContr(Application);
-                                       frmContr->CONTRACTS->Open();
-                                       frmContr->CONTRACTS->Append();
-                                       if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                       if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                       frmContr->CONTRACTS->Post();
-                                       frmContr->CONTRACTS->Edit();
-
-                                       frmContr->CONTRPARAMS->Append();
-                                       frmContr->CONTRPARAMS->Post();
-                                       frmContr->CONTRRESULTS->Append();
-
-                                       frmContr->ShowModal() ;
-                                       delete frmContr;
-                                       break;
-
-                               case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                       frmTaxWB->TaxWB->Open();
-                                       frmTaxWB->TaxWB->Append();
-                                       frmTaxWB->TaxWB->Post();
-                                       frmTaxWB->TaxWB->Edit();
-                                       frmTaxWB->ShowModal() ;
-                                       delete frmTaxWB;
-                                       break;*/
+                        break;
+                }
             }
 
             RefrechItemBtn.PerformClick();
@@ -1043,9 +1057,8 @@ namespace SP_Sklad.MainTabs
             if (cur_wtype == -1) createTaxWBbtn.Visibility = BarItemVisibility.Always;
             else createTaxWBbtn.Visibility = BarItemVisibility.Never;
 
-            ChangeWaybillKagentBtn.Enabled = DBHelper.is_admin;
-
-           
+            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) && (cur_wtype == -1 || cur_wtype == 1);
+            WbHistoryBtn.Enabled =  IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
         private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -1299,84 +1312,7 @@ namespace SP_Sklad.MainTabs
         {
             if ((wb_focused_row.WType == 6 || wb_focused_row.WType == 1) && wb_focused_row.Checked == 1)
             {
-                var _wbill_ids = new List<int?>();
-                using (var db = DB.SkladBase())
-                {
-                    var wb_det = db.WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId && w.WMatTurn.Any()).ToList();
-                    if (wb_det.Any())
-                    {
-                        foreach (var wid in wb_det.GroupBy(g => g.WId).Select(s => s.Key).ToList())
-                        {
-                            var wb = db.WaybillList.Add(new WaybillList()
-                            {
-                                Id = Guid.NewGuid(),
-                                WType = -5,
-                                DefNum = 1,
-                                OnDate = DBHelper.ServerDateTime(),
-                                Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
-                                CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
-                                OnValue = 1,
-                                PersonId = DBHelper.CurrentUser.KaId,
-                                WaybillMove = new WaybillMove { SourceWid = wid.Value },
-                                Nds = 0,
-                                UpdatedBy = DBHelper.CurrentUser.UserId,
-                                EntId = DBHelper.Enterprise.KaId
-                            });
-
-                            db.SaveChanges();
-                            _wbill_ids.Add(wb.WbillId);
-                            db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
-
-                            foreach (var det_item in wb_det.Where(w => w.WId == wid))
-                            {
-                                var pos_in = db.GetPosIn(wb.OnDate, det_item.MatId, det_item.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.PosId == det_item.PosId).OrderBy(o => o.OnDate).FirstOrDefault();
-                                if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == det_item.WId && a.UseReceived))
-                                {
-
-                                    var _wbd = db.WaybillDet.Add(new WaybillDet()
-                                    {
-                                        WbillId = wb.WbillId,
-                                        Num = wb.WaybillDet.Count() + 1,
-                                        Amount = pos_in.CurRemain.Value,
-                                        OnValue = det_item.OnValue,
-                                        WId = det_item.WId,
-                                        Nds = wb.Nds,
-                                        CurrId = wb.CurrId,
-                                        OnDate = wb.OnDate,
-                                        MatId = det_item.MatId,
-                                        Price = det_item.Price,
-                                        BasePrice = det_item.Price
-                                    });
-                                    db.SaveChanges();
-
-                                    db.WMatTurn.Add(new WMatTurn
-                                    {
-                                        PosId = pos_in.PosId,
-                                        WId = _wbd.WId.Value,
-                                        MatId = _wbd.MatId,
-                                        OnDate = _wbd.OnDate.Value,
-                                        TurnType = 2,
-                                        Amount = _wbd.Amount,
-                                        SourceId = _wbd.PosId
-                                    });
-                                }
-                            }
-
-                        }
-
-                    }
-
-                    db.SaveChanges();
-                }
-
-                foreach (var item in _wbill_ids)
-                {
-                    using (var frm = new frmWBWriteOff(item))
-                    {
-                        frm.is_new_record = true;
-                        frm.ShowDialog();
-                    }
-                }
+                DBHelper.CreateWBWriteOff(wb_focused_row.WbillId);
             }
         }
 
@@ -1916,6 +1852,14 @@ namespace SP_Sklad.MainTabs
         private void WbDetPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
             WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh && wb_focused_row.Checked == 1);
+        }
+
+        private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

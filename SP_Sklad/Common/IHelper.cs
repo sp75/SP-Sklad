@@ -784,19 +784,14 @@ namespace SP_Sklad.Common
 
         static public bool FindMatInDir(int? mat_id)
         {
-            mainForm.main_form.mainTabControl.SelectedTabPageIndex = 6;
+            mainForm.main_form.DirUserControl.find_mat_id = mat_id;
 
+            mainForm.main_form.mainTabControl.SelectedTabPageIndex = 6;
             var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
             mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);
-
-            var rowHandle = mainForm.main_form.DirUserControl.MatGridView.LocateByValue("MatId", mat_id);
-            //  mainForm.main_form.DirUserControl.MatGridView.FocusedRowHandle = rowHandle;
             mainForm.main_form.DirUserControl.MatGridView.ClearFindFilter();
 
-         //   mainForm.main_form.DirUserControl.MatGridView.fin FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{mat_id}'");
-
-
-            return rowHandle != GridControl.InvalidRowHandle;
+            return true;
         }
 
         public static void Print(Dictionary<string, IList> data_for_report, string temlate, bool show_report = true, bool print = false)

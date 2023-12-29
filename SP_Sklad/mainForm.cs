@@ -93,6 +93,7 @@ namespace SP_Sklad
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            docsUserControl1.wayBillInUserControl.SaveGridLayouts();
             docsUserControl1.SaveGridLayouts();
             whUserControl.SaveGridLayouts();
             manufacturingUserControl1.SaveGridLayouts();

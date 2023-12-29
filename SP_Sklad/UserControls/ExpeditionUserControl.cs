@@ -197,5 +197,14 @@ namespace SP_Sklad.UserControls
             e.QueryableSource = list;
         }
 
+        private void ExpeditionsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            DeleteItemBtn.Enabled = DeleteBtn.Enabled;
+            ExecuteItemBtn.Enabled = ExecuteBtn.Enabled;
+            EditItemBtn.Enabled =  EditBtn.Enabled ;
+            CopyItemBtn.Enabled = CopyBtn.Enabled ;
+            PrintItemBtn.Enabled = PrintBtn.Enabled;
+
+        }
     }
 }

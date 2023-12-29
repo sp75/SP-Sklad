@@ -128,6 +128,7 @@ namespace SP_Sklad.WBForm
                         }
 
                         wbl.UpdatedAt = DateTime.Now;
+                        wbl.UpdatedBy = DBHelper.CurrentUser.UserId;
                         _db.SaveChanges();
                         _db.RecalcKaSaldo(item.KaId);
 
@@ -219,9 +220,13 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.WaybillCorrectionDet.Remove(_db.WaybillCorrectionDet.FirstOrDefault(w => w.Id == focused_correction_det.Id));
-            _db.SaveChanges();
-            GetDetail();
+            var item = _db.WaybillCorrectionDet.FirstOrDefault(w => w.Id == focused_correction_det.Id);
+            if (item.Checked == 0)
+            {
+                _db.WaybillCorrectionDet.Remove(item);
+                _db.SaveChanges();
+                GetDetail();
+            }
         }
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

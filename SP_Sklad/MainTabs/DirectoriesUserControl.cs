@@ -20,6 +20,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using SkladEngine.DBFunction;
 using SP_Sklad.WBForm;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.MainTabs
 {
@@ -52,8 +53,6 @@ namespace SP_Sklad.MainTabs
 
         public DirectoriesUserControl()
         {
-            
-
             InitializeComponent();
             _ka_archived = 0;
             _mat_archived = 0;
@@ -61,6 +60,12 @@ namespace SP_Sklad.MainTabs
 
     //        KaGridControl.DataSource = null;
         }
+        int mat_restore_row = 0;
+        int kagent_restore_row = 0;
+        bool restore = false;
+
+        public int? find_mat_id;
+        int prev_focused_mat_id = 0;
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
@@ -116,8 +121,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        int row = 0;
-        bool restore = false;
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -130,28 +133,28 @@ namespace SP_Sklad.MainTabs
 
                     LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
 
-                //       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
+                    //       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
 
-                   /*    var ka = (from k in _db.KagentList
-                                 join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                                 from subfg in gj.DefaultIfEmpty()
-                                 where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
-                                 select k
-                                 );
+                    /*    var ka = (from k in _db.KagentList
+                                  join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
+                                  from subfg in gj.DefaultIfEmpty()
+                                  where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
+                                  select k
+                                  );
 
-                       if (focused_tree_node.Id != 10)
-                       {
-                           ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
-                       }
+                        if (focused_tree_node.Id != 10)
+                        {
+                            ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
+                        }
 
-                       if (_ka_archived == 0)
-                       {
-                           ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
-                       }
+                        if (_ka_archived == 0)
+                        {
+                            ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
+                        }
 
-                       KAgentDS.DataSource = ka.Distinct().ToList();*/
+                        KAgentDS.DataSource = ka.Distinct().ToList();*/
 
-                    row = KaGridView.FocusedRowHandle;
+                    kagent_restore_row = KaGridView.FocusedRowHandle;
                     restore = true;
                //     KagentListSource.Refresh();
 
@@ -163,12 +166,17 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    /*  top_row = MatGridView.TopRowIndex;
+                    if (focused_mat != null && !find_mat_id.HasValue)
+                    {
+                        prev_focused_mat_id = focused_mat.MatId;
+                    }
 
-                      MatListDS.DataSource = _db.GetMatList(focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId, 0, _mat_archived, showChildNodeBtn.Down ? 1 : 0);
-                      MatGridView.TopRowIndex = top_row;*/
+                    if (find_mat_id.HasValue)
+                    {
+                        prev_focused_mat_id = find_mat_id.Value;
+                        find_mat_id = null;
+                    }
 
-                    row = MatGridView.FocusedRowHandle;
                     restore = true;
 
                     MatGridControl.DataSource = null;
@@ -1666,8 +1674,8 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            KaGridView.TopRowIndex = row;
-            KaGridView.FocusedRowHandle = row;
+            KaGridView.TopRowIndex = kagent_restore_row;
+            KaGridView.FocusedRowHandle = kagent_restore_row;
             restore = false;
         }
 
@@ -1717,8 +1725,14 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            MatGridView.TopRowIndex = row;
-            MatGridView.FocusedRowHandle = row;
+            
+            int rowHandle = MatGridView.LocateByValue("MatId", prev_focused_mat_id);
+            if (rowHandle != GridControl.InvalidRowHandle)
+            {
+                MatGridView.FocusedRowHandle = rowHandle;
+                MatGridView.TopRowIndex = rowHandle;
+            }
+
             restore = false;
         }
 

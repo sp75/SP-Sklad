@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using SkladEngine.DBFunction;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad.SkladData
 {
@@ -782,6 +783,88 @@ order by wbd.ondate desc
             return is_rsv;
         }
 
+        public static void CreateWBWriteOff(int wbill_id)
+        {
+            var _wbill_ids = new List<int?>();
+            using (var db = DB.SkladBase())
+            {
+                var wb_det = db.WaybillDet.Where(w => w.WbillId == wbill_id && w.WMatTurn.Any()).ToList();
+                if (wb_det.Any())
+                {
+                    foreach (var wid in wb_det.GroupBy(g => g.WId).Select(s => s.Key).ToList())
+                    {
+                        var wb = db.WaybillList.Add(new WaybillList()
+                        {
+                            Id = Guid.NewGuid(),
+                            WType = -5,
+                            DefNum = 1,
+                            OnDate = DBHelper.ServerDateTime(),
+                            Num = new BaseEntities().GetDocNum("wb_write_off").FirstOrDefault(),
+                            CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
+                            OnValue = 1,
+                            PersonId = DBHelper.CurrentUser.KaId,
+                            WaybillMove = new WaybillMove { SourceWid = wid.Value },
+                            Nds = 0,
+                            UpdatedBy = DBHelper.CurrentUser.UserId,
+                            EntId = DBHelper.Enterprise.KaId
+                        });
+
+                        db.SaveChanges();
+                        _wbill_ids.Add(wb.WbillId);
+                        db.Commission.Add(new Commission { WbillId = wb.WbillId, KaId = DBHelper.CurrentUser.KaId });
+
+                        foreach (var det_item in wb_det.Where(w => w.WId == wid))
+                        {
+                            var pos_in = db.GetPosIn(wb.OnDate, det_item.MatId, det_item.WId, 0, DBHelper.CurrentUser.UserId).Where(w => w.PosId == det_item.PosId).OrderBy(o => o.OnDate).FirstOrDefault();
+                            if (pos_in != null && db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == det_item.WId && a.UseReceived))
+                            {
+
+                                var _wbd = db.WaybillDet.Add(new WaybillDet()
+                                {
+                                    WbillId = wb.WbillId,
+                                    Num = wb.WaybillDet.Count() + 1,
+                                    Amount = pos_in.CurRemain.Value,
+                                    OnValue = det_item.OnValue,
+                                    WId = det_item.WId,
+                                    Nds = wb.Nds,
+                                    CurrId = wb.CurrId,
+                                    OnDate = wb.OnDate,
+                                    MatId = det_item.MatId,
+                                    Price = det_item.Price,
+                                    BasePrice = det_item.Price
+                                });
+                                db.SaveChanges();
+
+                                db.WMatTurn.Add(new WMatTurn
+                                {
+                                    PosId = pos_in.PosId,
+                                    WId = _wbd.WId.Value,
+                                    MatId = _wbd.MatId,
+                                    OnDate = _wbd.OnDate.Value,
+                                    TurnType = 2,
+                                    Amount = _wbd.Amount,
+                                    SourceId = _wbd.PosId
+                                });
+                            }
+                        }
+
+                    }
+
+                }
+
+                db.SaveChanges();
+            }
+
+            foreach (var item in _wbill_ids)
+            {
+                using (var frm = new frmWBWriteOff(item))
+                {
+                    frm.is_new_record = true;
+                    frm.ShowDialog();
+                }
+            }
+
+        }
 
     }
     public class MaterialsByWh

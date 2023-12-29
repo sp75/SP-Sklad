@@ -746,6 +746,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
             this.ExpeditionsPopupMenu.Manager = this.barManager1;
             this.ExpeditionsPopupMenu.Name = "ExpeditionsPopupMenu";
+            this.ExpeditionsPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.ExpeditionsPopupMenu_BeforePopup);
             // 
             // ExpeditionsDetPopupMenu
             // 

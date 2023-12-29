@@ -39,5 +39,6 @@ namespace SP_Sklad.SkladData
         public string WhName { get; set; }
         public string Reason { get; set; }
         public System.DateTime WbOnDate { get; set; }
+        public System.Guid WaybillListId { get; set; }
     }
 }
