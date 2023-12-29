@@ -313,22 +313,11 @@
             this.imageCollection1.Images.SetKeyName(19, "edit.png");
             this.imageCollection1.Images.SetKeyName(20, "Delete.bmp");
             this.imageCollection1.Images.SetKeyName(21, "refresh.bmp");
-            this.imageCollection1.Images.SetKeyName(22, "execute.png");
-            this.imageCollection1.Images.SetKeyName(23, "Попередн_й перегляд.bmp");
-            this.imageCollection1.Images.SetKeyName(24, "Провести документ.bmp");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_16x16, "new_16x16", typeof(global::SP_Sklad.Properties.Resources), 25);
-            this.imageCollection1.Images.SetKeyName(25, "new_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deletelist_16x16, "deletelist_16x16", typeof(global::SP_Sklad.Properties.Resources), 26);
-            this.imageCollection1.Images.SetKeyName(26, "deletelist_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 27);
-            this.imageCollection1.Images.SetKeyName(27, "copy_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_16x161, "additem_16x161", typeof(global::SP_Sklad.Properties.Resources), 28);
-            this.imageCollection1.Images.SetKeyName(28, "additem_16x161");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.download_16x16, "download_16x16", typeof(global::SP_Sklad.Properties.Resources), 29);
-            this.imageCollection1.Images.SetKeyName(29, "download_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbox_16x16, "listbox_16x16", typeof(global::SP_Sklad.Properties.Resources), 30);
-            this.imageCollection1.Images.SetKeyName(30, "listbox_16x16");
-            this.imageCollection1.Images.SetKeyName(31, "прибуткова.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_16x16, "new_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.imageCollection1.Images.SetKeyName(22, "new_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.imageCollection1.Images.SetKeyName(23, "copy_16x16");
+            this.imageCollection1.Images.SetKeyName(24, "прибуткова.png");
             // 
             // NewItemBtn
             // 
