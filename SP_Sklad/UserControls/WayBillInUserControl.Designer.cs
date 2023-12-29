@@ -299,7 +299,7 @@
             this.imageCollection1.Images.SetKeyName(7, "preview_16x161");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh2_16x16, "refresh2_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.imageCollection1.Images.SetKeyName(8, "refresh2_16x16");
-            this.imageCollection1.Images.SetKeyName(9, "прибуткова.png");
+            this.imageCollection1.Images.SetKeyName(9, "wb_in_16x16.png");
             this.imageCollection1.Images.SetKeyName(10, "Товари.png");
             this.imageCollection1.Images.SetKeyName(11, "info.png");
             this.imageCollection1.Images.SetKeyName(12, "Зв\'язан_ документи.bmp");
@@ -328,6 +328,7 @@
             this.imageCollection1.Images.SetKeyName(29, "download_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbox_16x16, "listbox_16x16", typeof(global::SP_Sklad.Properties.Resources), 30);
             this.imageCollection1.Images.SetKeyName(30, "listbox_16x16");
+            this.imageCollection1.Images.SetKeyName(31, "прибуткова.png");
             // 
             // NewItemBtn
             // 
