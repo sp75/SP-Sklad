@@ -115,25 +115,28 @@ namespace SP_Sklad.UserControls
 
         public void ExecuteItem()
         {
-            var wb = _db.WaybillList.Find(wb_focused_row.WbillId);
-            if (wb == null)
+            using (var db =  new BaseEntities())
             {
-                XtraMessageBox.Show(Resources.not_find_wb);
-                return;
-            }
-            if (wb.SessionId != null)
-            {
-                XtraMessageBox.Show(Resources.deadlock);
-                return;
-            }
+                var wb = db.WaybillList.Find(wb_focused_row.WbillId);
+                if (wb == null)
+                {
+                    XtraMessageBox.Show(Resources.not_find_wb);
+                    return;
+                }
+                if (wb.SessionId != null)
+                {
+                    XtraMessageBox.Show(Resources.deadlock);
+                    return;
+                }
 
-            if (wb.Checked == 1)
-            {
-                DBHelper.StornoOrder(_db, wb_focused_row.WbillId);
-            }
-            else
-            {
-                DBHelper.ExecuteOrder(_db, wb_focused_row.WbillId);
+                if (wb.Checked == 1)
+                {
+                    DBHelper.StornoOrder(db, wb_focused_row.WbillId);
+                }
+                else
+                {
+                    DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
+                }
             }
         }
         public void PrintItem()

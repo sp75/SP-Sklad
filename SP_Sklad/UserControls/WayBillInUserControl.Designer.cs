@@ -286,10 +286,9 @@
             this.imageCollection1.Images.SetKeyName(0, "new_document.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.insertgroupheader_16x16, "insertgroupheader_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "insertgroupheader_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copymodeldifferences_16x16, "copymodeldifferences_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "copymodeldifferences_16x16");
+            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "copy_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_16x16, "edit_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "edit_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.snapdeletelist_16x16, "snapdeletelist_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
@@ -300,24 +299,18 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh2_16x16, "refresh2_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.imageCollection1.Images.SetKeyName(8, "refresh2_16x16");
             this.imageCollection1.Images.SetKeyName(9, "wb_in_16x16.png");
-            this.imageCollection1.Images.SetKeyName(10, "Товари.png");
-            this.imageCollection1.Images.SetKeyName(11, "info.png");
-            this.imageCollection1.Images.SetKeyName(12, "Зв\'язан_ документи.bmp");
-            this.imageCollection1.Images.SetKeyName(13, "Безготівкові гроші.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
+            this.imageCollection1.Images.SetKeyName(11, "wb_info.png");
+            this.imageCollection1.Images.SetKeyName(12, "RelDoc3.png");
+            this.imageCollection1.Images.SetKeyName(13, "pay_wb.png");
             this.imageCollection1.Images.SetKeyName(14, "Акти списання товару.png");
-            this.imageCollection1.Images.SetKeyName(15, "ИсходПлатежи.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.grid_16x16, "grid_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.imageCollection1.Images.SetKeyName(16, "grid_16x16");
-            this.imageCollection1.Images.SetKeyName(17, "Add.png");
-            this.imageCollection1.Images.SetKeyName(18, "Copy.bmp");
-            this.imageCollection1.Images.SetKeyName(19, "edit.png");
-            this.imageCollection1.Images.SetKeyName(20, "Delete.bmp");
-            this.imageCollection1.Images.SetKeyName(21, "refresh.bmp");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_16x16, "new_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
-            this.imageCollection1.Images.SetKeyName(22, "new_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 23);
-            this.imageCollection1.Images.SetKeyName(23, "copy_16x16");
-            this.imageCollection1.Images.SetKeyName(24, "прибуткова.png");
+            this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1).png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
+            this.imageCollection1.Images.SetKeyName(17, "change_kontragent2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbullets_16x16, "listbullets_16x16", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "listbullets_16x16");
             // 
             // NewItemBtn
             // 
@@ -380,7 +373,7 @@
             // 
             // NewPayDocBtn
             // 
-            this.NewPayDocBtn.Caption = "Додати платіж по документу";
+            this.NewPayDocBtn.Caption = "Додати вихідний платіж";
             this.NewPayDocBtn.Id = 9;
             this.NewPayDocBtn.ImageOptions.ImageIndex = 15;
             this.NewPayDocBtn.Name = "NewPayDocBtn";
@@ -398,6 +391,7 @@
             // 
             this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
             this.ChangeWaybillKagentBtn.Id = 30;
+            this.ChangeWaybillKagentBtn.ImageOptions.ImageIndex = 17;
             this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
             this.ChangeWaybillKagentBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeWaybillKagentBtn_ItemClick);
             // 

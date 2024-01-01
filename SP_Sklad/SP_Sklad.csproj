@@ -509,6 +509,11 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmReport54.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2567,14 +2572,9 @@
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="ViewsForm\frmManufacturing.resx">
       <DependentUpon>frmManufacturing.cs</DependentUpon>
     </EmbeddedResource>
@@ -3024,12 +3024,10 @@
     <None Include="Resources\findbyid_32x321.png" />
     <None Include="Resources\calculatesheet_16x16.png" />
     <None Include="Resources\calculatesheet_32x32.png" />
-    <None Include="Resources\weightedpies_16x161.png" />
     <None Include="Resources\cancel_32x32.png" />
     <None Include="Resources\calculatesheet_16x161.png" />
     <None Include="Resources\left_16x16.png" />
     <None Include="Resources\transit_16x16.png" />
-    <None Include="Resources\transit_16x161.png" />
     <None Include="Resources\edittask_16x16.png" />
     <None Include="Resources\edittask_32x32.png" />
     <None Include="Resources\solidbluedatabar_16x16.png" />
@@ -3067,6 +3065,38 @@
     <None Include="Resources\copymodeldifferences_16x16.png" />
     <None Include="Resources\download_16x16.png" />
     <None Include="Resources\listbox_16x16.png" />
+    <None Include="Resources\movedown_16x16.png" />
+    <None Include="Resources\iconsetarrows3_16x16.png" />
+    <None Include="Resources\addfile_16x16.png" />
+    <None Include="Resources\info_16x161.png" />
+    <None Include="Resources\info_16x162.png" />
+    <None Include="Resources\information_16x16.png" />
+    <None Include="Resources\information_16x161.png" />
+    <None Include="Resources\info_16x163.png" />
+    <None Include="Resources\hyperlink1_16x16.png" />
+    <None Include="Resources\currency_16x16.png" />
+    <None Include="Resources\attach_16x16.png" />
+    <None Include="Resources\listbullets_16x16.png" />
+    <None Include="Resources\assigntome_16x16.png" />
+    <None Include="Resources\insert_16x16.png" />
+    <None Include="Resources\textbox_16x16.png" />
+    <None Include="Resources\converttoparagraphs_16x16.png" />
+    <None Include="Resources\currency_16x161.png" />
+    <None Include="Resources\pivottablegroupselection_16x16.png" />
+    <None Include="Resources\pageinfo_16x16.png" />
+    <None Include="Resources\converttorange_16x16.png" />
+    <None Include="Resources\currency_16x162.png" />
+    <None Include="Resources\tableconverttorange_16x16.png" />
+    <None Include="Resources\customers_16x16.png" />
+    <None Include="Resources\employees_16x16.png" />
+    <None Include="Resources\movepivottable_16x16.png" />
+    <None Include="Resources\indentdecrease_16x16.png" />
+    <None Include="Resources\allowuserstoeditranges_16x16.png" />
+    <None Include="Resources\reverssort_16x16.png" />
+    <None Include="Resources\sortgroupheader_16x16.png" />
+    <None Include="Resources\chartswitchrowcolumn_16x16.png" />
+    <None Include="Resources\open2_16x16.png" />
+    <None Include="Resources\showproduct_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
