@@ -3067,7 +3067,6 @@
     <None Include="Resources\listbox_16x16.png" />
     <None Include="Resources\movedown_16x16.png" />
     <None Include="Resources\iconsetarrows3_16x16.png" />
-    <None Include="Resources\addfile_16x16.png" />
     <None Include="Resources\info_16x161.png" />
     <None Include="Resources\info_16x162.png" />
     <None Include="Resources\information_16x16.png" />
@@ -3085,7 +3084,6 @@
     <None Include="Resources\pivottablegroupselection_16x16.png" />
     <None Include="Resources\pageinfo_16x16.png" />
     <None Include="Resources\converttorange_16x16.png" />
-    <None Include="Resources\currency_16x162.png" />
     <None Include="Resources\tableconverttorange_16x16.png" />
     <None Include="Resources\customers_16x16.png" />
     <None Include="Resources\employees_16x16.png" />
@@ -3097,6 +3095,22 @@
     <None Include="Resources\chartswitchrowcolumn_16x16.png" />
     <None Include="Resources\open2_16x16.png" />
     <None Include="Resources\showproduct_16x16.png" />
+    <None Include="Resources\error_16x16.png" />
+    <None Include="Resources\inbox_16x16.png" />
+    <None Include="Resources\outbox_16x16.png" />
+    <None Include="Resources\boproduct_16x16.png" />
+    <None Include="Resources\snapdeletelist_16x161.png" />
+    <None Include="Resources\delete_16x16.png" />
+    <None Include="Resources\historyitem_16x161.png" />
+    <None Include="Resources\refresh_16x161.png" />
+    <None Include="Resources\updatetableofcontents_16x16.png" />
+    <None Include="Resources\convert_16x16.png" />
+    <None Include="Resources\boemployee_16x16.png" />
+    <None Include="Resources\editrangepermission_16x16.png" />
+    <None Include="Resources\gotodate_16x16.png" />
+    <None Include="Resources\refreshallpivottable_16x16.png" />
+    <None Include="Resources\removegroupheader_16x16.png" />
+    <None Include="Resources\snapinsertheader_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

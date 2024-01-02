@@ -287,30 +287,28 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
             this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_16x16, "copy_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "copy_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_16x16, "edit_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.imageCollection1.Images.SetKeyName(4, "edit_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.snapdeletelist_16x16, "snapdeletelist_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "snapdeletelist_16x16");
+            this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
+            this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_16x161, "preview_16x161", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_16x161");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh2_16x16, "refresh2_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refresh2_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
             this.imageCollection1.Images.SetKeyName(9, "wb_in_16x16.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
             this.imageCollection1.Images.SetKeyName(11, "wb_info.png");
             this.imageCollection1.Images.SetKeyName(12, "RelDoc3.png");
             this.imageCollection1.Images.SetKeyName(13, "pay_wb.png");
-            this.imageCollection1.Images.SetKeyName(14, "Акти списання товару.png");
-            this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1).png");
+            this.imageCollection1.Images.SetKeyName(14, "WBWriteOff.png");
+            this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1)_3.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
-            this.imageCollection1.Images.SetKeyName(17, "change_kontragent2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbullets_16x16, "listbullets_16x16", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.imageCollection1.Images.SetKeyName(18, "listbullets_16x16");
+            this.imageCollection1.Images.SetKeyName(17, "change_kontragent4.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "historyitem_16x161");
             // 
             // NewItemBtn
             // 
@@ -399,8 +397,7 @@
             // 
             this.WbHistoryBtn.Caption = "Історія змін в документі";
             this.WbHistoryBtn.Id = 33;
-            this.WbHistoryBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.historyitem_16x16;
-            this.WbHistoryBtn.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.historyitem_32x32;
+            this.WbHistoryBtn.ImageOptions.ImageIndex = 18;
             this.WbHistoryBtn.Name = "WbHistoryBtn";
             this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
             // 
