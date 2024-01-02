@@ -286,7 +286,7 @@
             this.imageCollection1.Images.SetKeyName(0, "new_document.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
-            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
+            this.imageCollection1.Images.SetKeyName(2, "additem.png");
             this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
             this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
