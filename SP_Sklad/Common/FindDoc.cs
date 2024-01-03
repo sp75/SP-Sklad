@@ -143,7 +143,11 @@ namespace SP_Sklad.Common
                 case -16: SetDocFilter(107);
                     break;
 
-                case 16: SetDocFilter(108);
+                case 16:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 108);
+                    _docs_user_control.ucWBOrdersOut.FindItem(doc_id.Value, date.Value);
+                 //  SetDocFilter(108);
                     break;
 
                 case 8:/* MainPageControl->ActivePage = DocumentsTabSheet;

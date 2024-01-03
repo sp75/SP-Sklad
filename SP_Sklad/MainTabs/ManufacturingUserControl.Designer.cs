@@ -1372,9 +1372,11 @@
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
             this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "Склад+Торговля.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "Документи.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "OpenFolder.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "прибуткова.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.documentmap_16x16, "documentmap_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "documentmap_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "article_16x16");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "wb_in_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "Счета.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "РасходНакл.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
@@ -1385,7 +1387,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "Заказ от клиента.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "Заказ поставщикам.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "Прайс лист.png");
@@ -1453,8 +1455,6 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "delivery-truck (2).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "delivery-truck.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab

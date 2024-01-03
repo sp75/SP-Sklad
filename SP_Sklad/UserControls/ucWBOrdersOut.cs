@@ -23,9 +23,9 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class WayBillInUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWBOrdersOut : DevExpress.XtraEditors.XtraUserControl
     {
-        int w_type = 1;
+        int w_type = 16;
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -43,7 +43,7 @@ namespace SP_Sklad.UserControls
         private int? find_id { get; set; }
         private bool restore = false;
 
-        public WayBillInUserControl()
+        public ucWBOrdersOut()
         {
             InitializeComponent();
         }
@@ -97,7 +97,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити прибуткову накладну {wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити замовлення постачальнику {wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                 if (wb != null)
@@ -189,7 +189,7 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "WayBillInUserControl\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucWBOrdersOut\\WbInGridView");
 
             if (!DesignMode)
             {
@@ -347,7 +347,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "WayBillInUserControl\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWBOrdersOut\\WbInGridView");
         }
 
         private void SetWBEditorBarBtn()
@@ -434,8 +434,6 @@ namespace SP_Sklad.UserControls
             CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
             PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
 
-
-            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
@@ -538,14 +536,7 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (wb_focused_row.Checked == 1)
-            {
-                DBHelper.CreateWBWriteOff(wb_focused_row.WbillId);
-            }
-        }
-
+      
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
@@ -567,6 +558,28 @@ namespace SP_Sklad.UserControls
             wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
             WbGridView.RestoreLayoutFromStream(wh_layout_stream);
+        }
+
+        private void ExecuteInBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 0)
+            {
+                using (var f = new frmWayBillIn(1))
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
+                    f.is_new_record = true;
+                    f.doc_id = result.NewDocId;
+                    f.ShowDialog();
+                }
+            }
+
+            RefrechItemBtn.PerformClick();
         }
     }
 }

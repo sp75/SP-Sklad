@@ -90,7 +90,7 @@ namespace SP_Sklad.WBForm
 
                 if (is_new_record) //Після копіювання згенерувати новий номер
                 {
-                    wb.Num = new BaseEntities().GetDocNum("wb_in").FirstOrDefault();
+                    wb.Num = (_wtype == 1 ? new BaseEntities().GetDocNum("wb_in").FirstOrDefault() : new BaseEntities().GetDocNum("wb(16)").FirstOrDefault());
                 }
 
                 WaybillListBS.DataSource = wb;

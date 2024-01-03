@@ -227,9 +227,13 @@ namespace SP_Sklad.MainTabs
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
-            if (focused_tree_node.FunId == 21)
+            if (focused_tree_node.FunId == 21) //Прибуткова накладна
             {
                 wbContentTab.SelectedTabPageIndex = 14;
+            }
+            else if(focused_tree_node.FunId == 65) //Замовлення постачальникам
+            {
+                wbContentTab.SelectedTabPageIndex = 15;
             }
             else
             {
@@ -267,7 +271,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    if (cur_wtype == -1 || cur_wtype == -16 || cur_wtype == 2) //Відаткова , замолення клиента , рахунок
+                    if (cur_wtype == -1 || cur_wtype == -16 || cur_wtype == 2) //Відаткова , замовлення клиента , рахунок
                     {
                         using (var wb_in = new frmWayBillOut(cur_wtype, null))
                         {
@@ -281,12 +285,9 @@ namespace SP_Sklad.MainTabs
                         wayBillInUserControl.NewItem();
                     }
 
-                    if (cur_wtype == 16)  //Замовлення постачальникам
+                    if (cur_wtype == 16) //Замовлення постачальнику
                     {
-                        using (var wb_in = new frmWayBillIn(cur_wtype, null))
-                        {
-                            wb_in.ShowDialog();
-                        }
+                        ucWBOrdersOut.NewItem();
                     }
 
                     if (cur_wtype == 6) // Повернення від клієнта
@@ -396,6 +397,10 @@ namespace SP_Sklad.MainTabs
                         {
                             wayBillInUserControl.EditItem();
                         }
+                        else if(focused_tree_node.WType == 16)
+                        {
+                            ucWBOrdersOut.EditItem();
+                        }
                         else
                         {
                             DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
@@ -471,6 +476,10 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.WType == 1)
             {
                 wayBillInUserControl.DeleteItem();
+            }
+            else if(focused_tree_node.WType == 16)
+            {
+                ucWBOrdersOut.DeleteItem();
             }
             else
             {
@@ -607,6 +616,10 @@ namespace SP_Sklad.MainTabs
                     {
                         wayBillInUserControl.GetData();
                     }
+                    else if(focused_tree_node.WType == 16)
+                    {
+                        ucWBOrdersOut.GetData();
+                    }
                     else if (focused_tree_node.WType == null)
                     {
                         GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
@@ -690,6 +703,10 @@ namespace SP_Sklad.MainTabs
                         if (focused_tree_node.WType == 1)
                         {
                             wayBillInUserControl.ExecuteItem();
+                        }
+                        else if(focused_tree_node.WType == 16)
+                        {
+                            ucWBOrdersOut.ExecuteItem();
                         }
                         else
                         {
@@ -901,7 +918,22 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var doc_id = focused_tree_node.WType == 1 ? wayBillInUserControl.wb_focused_row?.Id : wb_focused_row?.Id;
+                    Guid? doc_id;
+                    if (focused_tree_node.WType == 1)
+                    {
+                        doc_id = wayBillInUserControl.wb_focused_row?.Id;
+                    }
+                    else if (focused_tree_node.WType == 16)
+                    {
+                        doc_id = ucWBOrdersOut.wb_focused_row?.Id;
+                    }
+                    else
+                    {
+                        doc_id = wb_focused_row?.Id;
+                    }
+                        
+                        
+                
 
                     if(!doc_id.HasValue)
                     {
@@ -967,6 +999,10 @@ namespace SP_Sklad.MainTabs
             {
                 wayBillInUserControl.CopyItem();
             }
+            else if(cur_wtype == 16) //замовлення постачальникам
+            {
+                ucWBOrdersOut.CopyItem();
+            }
             else
             {
                 using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
@@ -990,15 +1026,6 @@ namespace SP_Sklad.MainTabs
                                     wb_in.ShowDialog();
                                 }
 
-                            }
-
-                            if (cur_wtype == 16)  //замовлення постачальникам
-                            {
-                                using (var wb_in = new frmWayBillIn(cur_wtype, doc.out_wbill_id))
-                                {
-                                    wb_in.is_new_record = true;
-                                    wb_in.ShowDialog();
-                                }
                             }
 
                             if (cur_wtype == 29)  //Акт надання послуг
@@ -1051,9 +1078,6 @@ namespace SP_Sklad.MainTabs
             if (cur_wtype == -16 || cur_wtype == 2) ExecuteInvBtn.Visibility = BarItemVisibility.Always;
             else ExecuteInvBtn.Visibility = BarItemVisibility.Never;
 
-            if (cur_wtype == 16) ExecuteInBtn.Visibility = BarItemVisibility.Always;
-            else ExecuteInBtn.Visibility = BarItemVisibility.Never;
-
             if (cur_wtype == -1) createTaxWBbtn.Visibility = BarItemVisibility.Always;
             else createTaxWBbtn.Visibility = BarItemVisibility.Never;
 
@@ -1092,27 +1116,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void ExecuteInBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-            if (wbl == null)
-            {
-                return;
-            }
-
-            if (wbl.Checked == 0)
-            {
-                using (var f = new frmWayBillIn(1))
-                {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
-                    f.is_new_record = true;
-                    f.doc_id = result.NewDocId;
-                    f.ShowDialog();
-                }
-            }
-
-            RefrechItemBtn.PerformClick();
-        }
 
         private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
         {

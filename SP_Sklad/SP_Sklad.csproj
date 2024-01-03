@@ -1253,6 +1253,12 @@
     <Compile Include="UserControls\WayBillInDetUserControl.Designer.cs">
       <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucWBOrdersOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucWBOrdersOut.Designer.cs">
+      <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WayBillInUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2389,6 +2395,9 @@
     <EmbeddedResource Include="UserControls\WayBillInDetUserControl.resx">
       <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucWBOrdersOut.resx">
+      <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WayBillInUserControl.resx">
       <DependentUpon>WayBillInUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -3111,6 +3120,15 @@
     <None Include="Resources\refreshallpivottable_16x16.png" />
     <None Include="Resources\removegroupheader_16x16.png" />
     <None Include="Resources\snapinsertheader_16x16.png" />
+    <None Include="Resources\exporttopdf_16x16.png" />
+    <None Include="Resources\version_16x16.png" />
+    <None Include="Resources\cube_16x16.png" />
+    <None Include="Resources\groupheader_16x16.png" />
+    <None Include="Resources\salesanalysis_16x16.png" />
+    <None Include="Resources\sales_16x16.png" />
+    <None Include="Resources\spellcheck_16x16.png" />
+    <None Include="Resources\article_16x16.png" />
+    <None Include="Resources\documentmap_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
