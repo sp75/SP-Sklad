@@ -355,8 +355,8 @@ namespace SP_Sklad.UserControls
             xtraTabControl2_SelectedPageChanged(null, null);
 
             ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || wb_focused_row.Checked == 1));
+            ExtExecuteBtn.Enabled = false; // (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
+            ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0));
             ExtCopyBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
             ExtPrintBtn.Enabled = (wb_focused_row != null);
         }

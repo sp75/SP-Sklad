@@ -3130,6 +3130,8 @@
     <None Include="Resources\article_16x16.png" />
     <None Include="Resources\documentmap_16x16.png" />
     <None Include="Resources\home_16x16.png" />
+    <None Include="Resources\open_16x16.png" />
+    <None Include="Resources\home_16x161.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
