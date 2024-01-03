@@ -890,7 +890,8 @@
             // 
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "Склад+Торговля.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.documentmap_16x16, "documentmap_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "documentmap_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
