@@ -871,7 +871,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill(-1)_3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_3.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "ИсходПлатежи.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
