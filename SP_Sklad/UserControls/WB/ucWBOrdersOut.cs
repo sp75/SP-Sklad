@@ -368,7 +368,7 @@ namespace SP_Sklad.UserControls
                 wayBillInDetUserControl.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 vGridControl1.DataSource = null;
-                gridControl10.DataSource = null;
+                ucDocumentPaymentGrid.GetPaymentDoc(Guid.Empty); 
 
                 return;
             }
@@ -388,8 +388,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 3:
-                    gridControl10.DataSource = _db.DocRels.Where(w => w.OriginatorId == wb_focused_row.Id)
-                        .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
+                    ucDocumentPaymentGrid.GetPaymentDoc(wb_focused_row.Id);
                     break;
             }
         }

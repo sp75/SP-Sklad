@@ -531,9 +531,11 @@
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.expeditionUserControl1 = new SP_Sklad.UserControls.ExpeditionUserControl();
             this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
-            this.wayBillInUserControl = new SP_Sklad.UserControls.WayBillInUserControl();
+            this.wayBillInUserControl = new SP_Sklad.UserControls.ucWayBillIn();
             this.xtraTabPage35 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWBOrdersOut = new SP_Sklad.UserControls.ucWBOrdersOut();
+            this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillOut = new SP_Sklad.UserControls.ucWaybillOut();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -787,6 +789,7 @@
             this.xtraTabPage33.SuspendLayout();
             this.xtraTabPage34.SuspendLayout();
             this.xtraTabPage35.SuspendLayout();
+            this.xtraTabPage36.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -872,7 +875,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "ИсходПлатежи.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "pay_doc(-1).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.png");
@@ -973,7 +976,8 @@
             this.xtraTabPage31,
             this.xtraTabPage33,
             this.xtraTabPage34,
-            this.xtraTabPage35});
+            this.xtraTabPage35,
+            this.xtraTabPage36});
             // 
             // xtraTabPage7
             // 
@@ -6223,6 +6227,26 @@
             this.ucWBOrdersOut.Size = new System.Drawing.Size(1138, 695);
             this.ucWBOrdersOut.TabIndex = 0;
             // 
+            // xtraTabPage36
+            // 
+            this.xtraTabPage36.Controls.Add(this.ucWaybillOut);
+            this.xtraTabPage36.Name = "xtraTabPage36";
+            this.xtraTabPage36.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage36.Text = "Видаткові";
+            // 
+            // ucWaybillOut
+            // 
+            this.ucWaybillOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillOut.ExtCopyBtn = this.CopyItemBtn;
+            this.ucWaybillOut.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucWaybillOut.ExtEditBtn = this.EditItemBtn;
+            this.ucWaybillOut.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucWaybillOut.ExtPrintBtn = this.PrintItemBtn;
+            this.ucWaybillOut.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillOut.Name = "ucWaybillOut";
+            this.ucWaybillOut.Size = new System.Drawing.Size(1138, 695);
+            this.ucWaybillOut.TabIndex = 0;
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -6605,6 +6629,7 @@
             this.xtraTabPage33.ResumeLayout(false);
             this.xtraTabPage34.ResumeLayout(false);
             this.xtraTabPage35.ResumeLayout(false);
+            this.xtraTabPage36.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -7111,8 +7136,10 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraBars.BarButtonItem WbHistoryBtn;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
-        public UserControls.WayBillInUserControl wayBillInUserControl;
+        public UserControls.ucWayBillIn wayBillInUserControl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage35;
         public UserControls.ucWBOrdersOut ucWBOrdersOut;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
+        public UserControls.ucWaybillOut ucWaybillOut;
     }
 }

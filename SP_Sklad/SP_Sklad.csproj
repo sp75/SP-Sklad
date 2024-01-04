@@ -726,6 +726,12 @@
     <Compile Include="SkladData\v_WayBillMake.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillOut.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillOutDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillTemplateDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1241,29 +1247,47 @@
     <Compile Include="UserControls\SettingMaterialPricesUserControl.Designer.cs">
       <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucDocumentPaymentGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucDocumentPaymentGrid.Designer.cs">
+      <DependentUpon>ucDocumentPaymentGrid.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucRelDocGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ucRelDocGrid.Designer.cs">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WayBillInDetUserControl.cs">
+    <Compile Include="UserControls\WBDet\ucWayBillOutDet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WayBillInDetUserControl.Designer.cs">
+    <Compile Include="UserControls\WBDet\ucWayBillOutDet.Designer.cs">
+      <DependentUpon>ucWayBillOutDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WBDet\WayBillInDetUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WBDet\WayBillInDetUserControl.Designer.cs">
       <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucWBOrdersOut.cs">
+    <Compile Include="UserControls\WB\ucWBOrdersOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucWBOrdersOut.Designer.cs">
+    <Compile Include="UserControls\WB\ucWBOrdersOut.Designer.cs">
       <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WayBillInUserControl.cs">
+    <Compile Include="UserControls\WB\ucWaybillOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WayBillInUserControl.Designer.cs">
-      <DependentUpon>WayBillInUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\WB\ucWaybillOut.Designer.cs">
+      <DependentUpon>ucWaybillOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWayBillIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWayBillIn.Designer.cs">
+      <DependentUpon>ucWayBillIn.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WaybillTemplateUserControl.cs">
       <SubType>UserControl</SubType>
@@ -2389,17 +2413,26 @@
     <EmbeddedResource Include="UserControls\SettingMaterialPricesUserControl.resx">
       <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucDocumentPaymentGrid.resx">
+      <DependentUpon>ucDocumentPaymentGrid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WayBillInDetUserControl.resx">
+    <EmbeddedResource Include="UserControls\WBDet\ucWayBillOutDet.resx">
+      <DependentUpon>ucWayBillOutDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WBDet\WayBillInDetUserControl.resx">
       <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucWBOrdersOut.resx">
+    <EmbeddedResource Include="UserControls\WB\ucWBOrdersOut.resx">
       <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WayBillInUserControl.resx">
-      <DependentUpon>WayBillInUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\WB\ucWaybillOut.resx">
+      <DependentUpon>ucWaybillOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WB\ucWayBillIn.resx">
+      <DependentUpon>ucWayBillIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
       <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
