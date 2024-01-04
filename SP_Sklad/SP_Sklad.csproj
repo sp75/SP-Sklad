@@ -1265,11 +1265,11 @@
     <Compile Include="UserControls\WBDet\ucWayBillOutDet.Designer.cs">
       <DependentUpon>ucWayBillOutDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WBDet\WayBillInDetUserControl.cs">
+    <Compile Include="UserControls\WBDet\ucWayBillInDet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WBDet\WayBillInDetUserControl.Designer.cs">
-      <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\WBDet\ucWayBillInDet.Designer.cs">
+      <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WB\ucWBOrdersOut.cs">
       <SubType>UserControl</SubType>
@@ -2422,8 +2422,8 @@
     <EmbeddedResource Include="UserControls\WBDet\ucWayBillOutDet.resx">
       <DependentUpon>ucWayBillOutDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WBDet\WayBillInDetUserControl.resx">
-      <DependentUpon>WayBillInDetUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\WBDet\ucWayBillInDet.resx">
+      <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucWBOrdersOut.resx">
       <DependentUpon>ucWBOrdersOut.cs</DependentUpon>

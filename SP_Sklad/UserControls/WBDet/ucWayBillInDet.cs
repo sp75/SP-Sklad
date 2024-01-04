@@ -14,7 +14,7 @@ using SP_Sklad.WBDetForm;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class WayBillInDetUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWayBillInDet : DevExpress.XtraEditors.XtraUserControl
     {
         private int _wbill_id { get; set; }
         private v_WayBillInDet wb_det_focused_row
@@ -25,7 +25,7 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        public WayBillInDetUserControl()
+        public ucWayBillInDet()
         {
             InitializeComponent();
         }

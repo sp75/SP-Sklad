@@ -88,7 +88,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.wayBillInDetUserControl = new SP_Sklad.UserControls.WayBillInDetUserControl();
+            this.wayBillInDetUserControl = new SP_Sklad.UserControls.ucWayBillInDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -1195,7 +1195,7 @@
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private WayBillInDetUserControl wayBillInDetUserControl;
+        private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem ExecuteInBtn;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
