@@ -293,6 +293,7 @@
             this.WaybillDetGridView.OptionsBehavior.ReadOnly = true;
             this.WaybillDetGridView.OptionsView.ShowFooter = true;
             this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
+            this.WaybillDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetGridView_PopupMenuShowing);
             // 
             // gridColumn9
             // 

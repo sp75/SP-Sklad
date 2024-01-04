@@ -1370,7 +1370,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "bank_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
@@ -1381,6 +1381,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "costanalysis_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab

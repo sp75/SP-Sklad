@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUserControl));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -692,10 +692,10 @@
             this.barCheckItem1.Caption = "Підсумки групи перемістити в рядок групи";
             this.barCheckItem1.Id = 55;
             this.barCheckItem1.Name = "barCheckItem1";
-            toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem1.Text = resources.GetString("toolTipItem1.Text");
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barCheckItem1.SuperTip = superToolTip1;
+            toolTipItem4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem4.Text = resources.GetString("toolTipItem4.Text");
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barCheckItem1.SuperTip = superToolTip4;
             this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // standaloneBarDockControl25
@@ -1165,7 +1165,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "costanalysis_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "bank_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
@@ -1176,6 +1176,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "costanalysis_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
