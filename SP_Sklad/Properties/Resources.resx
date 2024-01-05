@@ -148,6 +148,9 @@
   <data name="Типи рахунк_в1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Типи рахунк_в.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="projectfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\projectfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="additem_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\additem_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -177,6 +180,9 @@
   </data>
   <data name="administration" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\administration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="upload_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\upload_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exporttopdf_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exporttopdf_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -243,9 +249,6 @@
   </data>
   <data name="currencyexchange" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\1\currencyexchange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="findbyid_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\findbyid_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="version_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\version_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -328,6 +331,9 @@
   <data name="info_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tableconverttorange_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tableconverttorange_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Статт_ витрат1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Статт_ витрат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -373,14 +379,14 @@
   <data name="Службовц_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Службовц_.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="outbox_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\outbox_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Одиниц_ вим_ру" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Одиниц_ вим_ру.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="outbox_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\outbox_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="updatetableofcontents_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\updatetableofcontents_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -396,6 +402,9 @@
   </data>
   <data name="solidbluedatabar_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\solidbluedatabar_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="converttoparagraphs_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\converttoparagraphs_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Валюта1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Валюта.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -420,6 +429,9 @@
   </data>
   <data name="convert_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convert_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="project_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\project_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="not_storno_wb" xml:space="preserve">
     <value>Відмінити проводку документа не можливо поки він зв'язаний з другими документами.</value>
@@ -457,8 +469,8 @@
   <data name="_нформац_я про рух товар_в" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\_нформац_я про рух товар_в.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="converttoparagraphs_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\converttoparagraphs_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="addfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Основн_ дов" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Основн_ дов.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -468,6 +480,9 @@
   </data>
   <data name="Статт_ витрат" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Статт_ витрат.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="currency_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\currency_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="snapdeletelist_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\snapdeletelist_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -508,9 +523,6 @@
   <data name="article_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\article_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="salesanalysis_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salesanalysis_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -538,8 +550,8 @@
   <data name="Послуги1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\BMP\Справочники\Послуги.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tableconverttorange_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tableconverttorange_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="findbyid_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\findbyid_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="calculatesheet_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calculatesheet_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -564,6 +576,9 @@
   </data>
   <data name="reverssort_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reverssort_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="salessummary_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salessummary_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="projectdirectory_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\projectdirectory_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -619,8 +634,11 @@
   <data name="findbyid_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\findbyid_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="currency_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\currency_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="datasource_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\datasource_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="saledetalis_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\saledetalis_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="showtestreport_32x321" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\showtestreport_32x321.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -637,7 +655,7 @@
   <data name="sortgroupheader_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sortgroupheader_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="upload_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\upload_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="loadpagesetup_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadpagesetup_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

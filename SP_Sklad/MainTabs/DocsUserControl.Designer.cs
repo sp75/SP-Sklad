@@ -536,6 +536,10 @@
             this.ucWBOrdersOut = new SP_Sklad.UserControls.ucWBOrdersOut();
             this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillOut = new SP_Sklad.UserControls.ucWaybillOut();
+            this.xtraTabPage37 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucInvoices = new SP_Sklad.UserControls.ucInvoices();
+            this.xtraTabPage38 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWBOrdersIn = new SP_Sklad.UserControls.ucWBOrdersIn();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -544,6 +548,8 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucServicesIn = new SP_Sklad.UserControls.ucServicesIn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -790,11 +796,14 @@
             this.xtraTabPage34.SuspendLayout();
             this.xtraTabPage35.SuspendLayout();
             this.xtraTabPage36.SuspendLayout();
+            this.xtraTabPage37.SuspendLayout();
+            this.xtraTabPage38.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).BeginInit();
+            this.xtraTabPage39.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -879,8 +888,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "Заказ от клиента.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "Заказ поставщикам.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
@@ -895,7 +904,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "korganizer.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "Валюта.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "Дисконтна картка.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "Склади.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
@@ -913,14 +922,14 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "view_settings.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "Безготівкові гроші.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "pay_wb.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(50, "exec16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "korganizer.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(52, "Інформація про рух товарів.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "пратнерка.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "map_pin-next-16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "route.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "prod_plan.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "salesreport2_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
@@ -934,21 +943,20 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "free-icon-payment-terminal-3777466.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "delivery-truck (1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "bank_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "Безготівкові гроші.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.datasource_16x16, "datasource_16x16", typeof(global::SP_Sklad.Properties.Resources), 71);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "datasource_16x16");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "pay_wb.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "ActServices.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.projectdirectory_16x16, "projectdirectory_16x16", typeof(global::SP_Sklad.Properties.Resources), 76);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "projectdirectory_16x16");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "costanalysis_16x16.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -978,7 +986,10 @@
             this.xtraTabPage33,
             this.xtraTabPage34,
             this.xtraTabPage35,
-            this.xtraTabPage36});
+            this.xtraTabPage36,
+            this.xtraTabPage37,
+            this.xtraTabPage38,
+            this.xtraTabPage39});
             // 
             // xtraTabPage7
             // 
@@ -6248,6 +6259,46 @@
             this.ucWaybillOut.Size = new System.Drawing.Size(1138, 695);
             this.ucWaybillOut.TabIndex = 0;
             // 
+            // xtraTabPage37
+            // 
+            this.xtraTabPage37.Controls.Add(this.ucInvoices);
+            this.xtraTabPage37.Name = "xtraTabPage37";
+            this.xtraTabPage37.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage37.Text = "Рахунки";
+            // 
+            // ucInvoices
+            // 
+            this.ucInvoices.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucInvoices.ExtCopyBtn = this.CopyItemBtn;
+            this.ucInvoices.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucInvoices.ExtEditBtn = this.EditItemBtn;
+            this.ucInvoices.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucInvoices.ExtPrintBtn = this.PrintItemBtn;
+            this.ucInvoices.Location = new System.Drawing.Point(0, 0);
+            this.ucInvoices.Name = "ucInvoices";
+            this.ucInvoices.Size = new System.Drawing.Size(1138, 695);
+            this.ucInvoices.TabIndex = 0;
+            // 
+            // xtraTabPage38
+            // 
+            this.xtraTabPage38.Controls.Add(this.ucWBOrdersIn);
+            this.xtraTabPage38.Name = "xtraTabPage38";
+            this.xtraTabPage38.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage38.Text = "Замовлення від клієнтів";
+            // 
+            // ucWBOrdersIn
+            // 
+            this.ucWBOrdersIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWBOrdersIn.ExtCopyBtn = this.CopyItemBtn;
+            this.ucWBOrdersIn.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucWBOrdersIn.ExtEditBtn = this.EditItemBtn;
+            this.ucWBOrdersIn.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucWBOrdersIn.ExtPrintBtn = this.PrintItemBtn;
+            this.ucWBOrdersIn.Location = new System.Drawing.Point(0, 0);
+            this.ucWBOrdersIn.Name = "ucWBOrdersIn";
+            this.ucWBOrdersIn.Size = new System.Drawing.Size(1138, 695);
+            this.ucWBOrdersIn.TabIndex = 0;
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -6363,6 +6414,26 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
+            // 
+            // xtraTabPage39
+            // 
+            this.xtraTabPage39.Controls.Add(this.ucServicesIn);
+            this.xtraTabPage39.Name = "xtraTabPage39";
+            this.xtraTabPage39.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage39.Text = "Акт послуг";
+            // 
+            // ucServicesIn
+            // 
+            this.ucServicesIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucServicesIn.ExtCopyBtn = this.CopyItemBtn;
+            this.ucServicesIn.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucServicesIn.ExtEditBtn = this.EditItemBtn;
+            this.ucServicesIn.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucServicesIn.ExtPrintBtn = this.PrintItemBtn;
+            this.ucServicesIn.Location = new System.Drawing.Point(0, 0);
+            this.ucServicesIn.Name = "ucServicesIn";
+            this.ucServicesIn.Size = new System.Drawing.Size(1138, 695);
+            this.ucServicesIn.TabIndex = 0;
             // 
             // DocsUserControl
             // 
@@ -6631,11 +6702,14 @@
             this.xtraTabPage34.ResumeLayout(false);
             this.xtraTabPage35.ResumeLayout(false);
             this.xtraTabPage36.ResumeLayout(false);
+            this.xtraTabPage37.ResumeLayout(false);
+            this.xtraTabPage38.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).EndInit();
+            this.xtraTabPage39.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7142,5 +7216,11 @@
         public UserControls.ucWBOrdersOut ucWBOrdersOut;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
         public UserControls.ucWaybillOut ucWaybillOut;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage37;
+        private UserControls.ucInvoices ucInvoices;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage38;
+        private UserControls.ucWBOrdersIn ucWBOrdersIn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage39;
+        private UserControls.ucServicesIn ucServicesIn;
     }
 }

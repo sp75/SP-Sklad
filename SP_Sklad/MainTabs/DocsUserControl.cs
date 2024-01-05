@@ -230,13 +230,25 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.SelectedTabPageIndex = 14;
             }
-            else if(focused_tree_node.FunId == 65) //Замовлення постачальникам
+            else if (focused_tree_node.FunId == 65) //Замовлення постачальникам
             {
                 wbContentTab.SelectedTabPageIndex = 15;
             }
             else if (focused_tree_node.FunId == 23) //Видаткова постачальникам
             {
                 wbContentTab.SelectedTabPageIndex = 16;
+            }
+            else if (focused_tree_node.FunId == 30) //Рахунок
+            {
+                wbContentTab.SelectedTabPageIndex = 17;
+            }
+            else if (focused_tree_node.FunId == 64) //Замовлення від клієнта
+            {
+                wbContentTab.SelectedTabPageIndex = 18;
+            }
+            else if (focused_tree_node.FunId == 94) //Акт послуг
+            {
+                wbContentTab.SelectedTabPageIndex = 19;
             }
             else
             {
@@ -274,14 +286,6 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    if (cur_wtype == -16 || cur_wtype == 2) // , замовлення клиента , рахунок
-                    {
-                        using (var wb_in = new frmWayBillOut(cur_wtype, null))
-                        {
-                            wb_in.ShowDialog();
-                        }
-                    }
-
                     if (cur_wtype == 1) //Прибткова накладна 
                     {
                         wayBillInUserControl.NewItem();
@@ -292,10 +296,19 @@ namespace SP_Sklad.MainTabs
                         ucWaybillOut.NewItem();
                     }
 
+                    if (cur_wtype == 2) //рахунок
+                    {
+                        ucInvoices.NewItem();
+                    }
 
                     if (cur_wtype == 16) //Замовлення постачальнику
                     {
                         ucWBOrdersOut.NewItem();
+                    }
+
+                    if (cur_wtype == -16) //Замовлення від клієнта
+                    {
+                        ucWBOrdersIn.NewItem();
                     }
 
                     if (cur_wtype == 6) // Повернення від клієнта
@@ -317,10 +330,7 @@ namespace SP_Sklad.MainTabs
 
                     if (cur_wtype == 29)  //Акти наданих послуг
                     {
-                        using (var wb_in = new frmActServicesProvided(cur_wtype, null))
-                        {
-                            wb_in.ShowDialog();
-                        }
+                        ucServicesIn.NewItem();
                     }
 
 
@@ -413,6 +423,18 @@ namespace SP_Sklad.MainTabs
                         {
                             ucWaybillOut.EditItem();
                         }
+                        else if (focused_tree_node.WType == 2)
+                        {
+                            ucInvoices.EditItem();
+                        }
+                        else if (focused_tree_node.WType == -16)
+                        {
+                            ucWBOrdersIn.EditItem();
+                        }
+                        else if (focused_tree_node.WType == 29)
+                        {
+                            ucServicesIn.EditItem();
+                        }
                         else
                         {
                             DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
@@ -497,7 +519,18 @@ namespace SP_Sklad.MainTabs
             {
                 ucWaybillOut.DeleteItem();
             }
-
+            else if (focused_tree_node.WType == 2)
+            {
+                ucInvoices.DeleteItem();
+            }
+            else if (focused_tree_node.WType == -16)
+            {
+                ucWBOrdersIn.DeleteItem();
+            }
+            else if (focused_tree_node.WType == 29)
+            {
+                ucServicesIn.DeleteItem();
+            }
             else
             {
                 int gtype = focused_tree_node.GType.Value;
@@ -641,6 +674,19 @@ namespace SP_Sklad.MainTabs
                     {
                         ucWaybillOut.GetData();
                     }
+                    else if (focused_tree_node.WType == 2)
+                    {
+                        ucInvoices.GetData();
+                    }
+                    else if (focused_tree_node.WType == -16)
+                    {
+                        ucWBOrdersIn.GetData();
+                    }
+                    else if (focused_tree_node.WType == 29)
+                    {
+                        ucServicesIn.GetData();
+                    }
+
                     else if (focused_tree_node.WType == null)
                     {
                         GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
@@ -733,6 +779,19 @@ namespace SP_Sklad.MainTabs
                         {
                             ucWaybillOut.ExecuteItem();
                         }
+                        else if (focused_tree_node.WType == 2)
+                        {
+                            ucInvoices.ExecuteItem();
+                        }
+                        else if (focused_tree_node.WType == -16)
+                        {
+                            ucWBOrdersIn.ExecuteItem();
+                        }
+                        else if (focused_tree_node.WType == 29)
+                        {
+                            ucServicesIn.ExecuteItem();
+                        }
+
                         else
                         {
                             var wb = db.WaybillList.Find(wb_focused_row.WbillId);
@@ -956,6 +1015,19 @@ namespace SP_Sklad.MainTabs
                     {
                         doc_id = ucWaybillOut.wb_focused_row?.Id;
                     }
+                    else if (focused_tree_node.WType == 2)
+                    {
+                        doc_id = ucInvoices.wb_focused_row?.Id;
+                    }
+                    else if (focused_tree_node.WType == -16)
+                    {
+                        doc_id = ucWBOrdersIn.wb_focused_row?.Id;
+                    }
+                    else if (focused_tree_node.WType == 29)
+                    {
+                        doc_id = ucServicesIn.wb_focused_row?.Id;
+                    }
+
                     else
                     {
                         doc_id = wb_focused_row?.Id;
@@ -1030,9 +1102,21 @@ namespace SP_Sklad.MainTabs
             {
                 ucWBOrdersOut.CopyItem();
             }
-            else if (cur_wtype == -1) //замовлення постачальникам
+            else if (cur_wtype == -1) //видаткова
             {
                 ucWaybillOut.CopyItem();
+            }
+            else if (cur_wtype == 2) //рахунок
+            {
+                ucInvoices.CopyItem();
+            }
+            else if (cur_wtype == -16) //Замовлення від клієнта
+            {
+                ucWBOrdersIn.CopyItem();
+            }
+            else if (cur_wtype == 29) //акт про надання послуг
+            {
+                ucServicesIn.CopyItem();
             }
 
             else
@@ -1050,24 +1134,24 @@ namespace SP_Sklad.MainTabs
                     case 1:
                         var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-                        if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
-                        {
-                            using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
-                            {
-                                wb_in.is_new_record = true;
-                                wb_in.ShowDialog();
-                            }
+                        /*   if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
+                           {
+                               using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
+                               {
+                                   wb_in.is_new_record = true;
+                                   wb_in.ShowDialog();
+                               }
 
-                        }
+                           }*/
 
-                        if (cur_wtype == 29)  //Акт надання послуг
-                        {
-                            using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
-                            {
-                                wb_in.is_new_record = true;
-                                wb_in.ShowDialog();
-                            }
-                        }
+                        /*       if (cur_wtype == 29)  //Акт надання послуг
+                               {
+                                   using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
+                                   {
+                                       wb_in.is_new_record = true;
+                                       wb_in.ShowDialog();
+                                   }
+                               }*/
 
                         if (cur_wtype == 6) // Повернення від клієнта
                         {

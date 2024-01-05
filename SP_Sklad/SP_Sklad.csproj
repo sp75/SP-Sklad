@@ -1271,6 +1271,24 @@
     <Compile Include="UserControls\WBDet\ucWayBillInDet.Designer.cs">
       <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WB\ucServicesIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WB\ucServicesIn.Designer.cs">
+      <DependentUpon>ucServicesIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWBOrdersIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWBOrdersIn.Designer.cs">
+      <DependentUpon>ucWBOrdersIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WB\ucInvoices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WB\ucInvoices.Designer.cs">
+      <DependentUpon>ucInvoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WB\ucWBOrdersOut.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2425,6 +2443,15 @@
     <EmbeddedResource Include="UserControls\WBDet\ucWayBillInDet.resx">
       <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WB\ucServicesIn.resx">
+      <DependentUpon>ucServicesIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WB\ucWBOrdersIn.resx">
+      <DependentUpon>ucWBOrdersIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WB\ucInvoices.resx">
+      <DependentUpon>ucInvoices.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucWBOrdersOut.resx">
       <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
     </EmbeddedResource>
@@ -3166,6 +3193,12 @@
     <None Include="Resources\open_16x16.png" />
     <None Include="Resources\home_16x161.png" />
     <None Include="Resources\upload_16x16.png" />
+    <None Include="Resources\salessummary_16x16.png" />
+    <None Include="Resources\saledetalis_16x16.png" />
+    <None Include="Resources\datasource_16x16.png" />
+    <None Include="Resources\projectfile_16x16.png" />
+    <None Include="Resources\project_16x16.png" />
+    <None Include="Resources\loadpagesetup_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
