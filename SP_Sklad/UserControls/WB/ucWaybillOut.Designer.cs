@@ -37,6 +37,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -93,6 +94,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWayBillOutDet = new SP_Sklad.UserControls.ucWayBillOutDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -127,9 +129,7 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
-            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ucWayBillOutDet = new SP_Sklad.UserControls.ucWayBillOutDet();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -195,6 +195,7 @@
             // 
             // WBGridControl
             // 
+            this.WBGridControl.DataSource = this.WayBillInSource;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -213,6 +214,15 @@
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
+            // 
+            // WayBillInSource
+            // 
+            this.WayBillInSource.AreSourceRowsThreadSafe = true;
+            this.WayBillInSource.DefaultSorting = "OnDate DESC";
+            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillOut);
+            this.WayBillInSource.KeyExpression = "WbillId";
+            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
+            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
             // 
             // WbGridView
             // 
@@ -306,6 +316,7 @@
             this.imageCollection1.Images.SetKeyName(17, "waybill(-1)_3.png");
             this.imageCollection1.Images.SetKeyName(18, "checked_blue.png");
             this.imageCollection1.Images.SetKeyName(19, "pay_doc(1)_2.png");
+            this.imageCollection1.Images.SetKeyName(20, "delivery-truck (1).png");
             // 
             // gridColumn2
             // 
@@ -495,9 +506,10 @@
             this.repositoryItemImageComboBox42.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox42.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 48),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox42.Name = "repositoryItemImageComboBox42";
+            this.repositoryItemImageComboBox42.SmallImages = this.imageCollection1;
             // 
             // standaloneBarDockControl1
             // 
@@ -831,6 +843,14 @@
             this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage15.Text = "Позиції";
             // 
+            // ucWayBillOutDet
+            // 
+            this.ucWayBillOutDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBillOutDet.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBillOutDet.Name = "ucWayBillOutDet";
+            this.ucWayBillOutDet.Size = new System.Drawing.Size(1373, 199);
+            this.ucWayBillOutDet.TabIndex = 0;
+            // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
@@ -1138,15 +1158,6 @@
             this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
-            // WayBillInSource
-            // 
-            this.WayBillInSource.AreSourceRowsThreadSafe = true;
-            this.WayBillInSource.DefaultSorting = "OnDate DESC";
-            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillIn);
-            this.WayBillInSource.KeyExpression = "WbillId";
-            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
-            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
-            // 
             // WbListPopupMenu
             // 
             this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -1164,14 +1175,6 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // ucWayBillOutDet
-            // 
-            this.ucWayBillOutDet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWayBillOutDet.Location = new System.Drawing.Point(0, 0);
-            this.ucWayBillOutDet.Name = "ucWayBillOutDet";
-            this.ucWayBillOutDet.Size = new System.Drawing.Size(1373, 199);
-            this.ucWayBillOutDet.TabIndex = 0;
             // 
             // ucWaybillOut
             // 
