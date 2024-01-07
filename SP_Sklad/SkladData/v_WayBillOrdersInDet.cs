@@ -12,7 +12,7 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_WayBillOutDet
+    public partial class v_WayBillOrdersInDet
     {
         public int Num { get; set; }
         public Nullable<int> PosId { get; set; }
@@ -59,5 +59,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public Nullable<decimal> AvgInPrice { get; set; }
         public Nullable<decimal> DiscountTotal { get; set; }
+        public Nullable<int> RemoteOrdered { get; set; }
     }
 }

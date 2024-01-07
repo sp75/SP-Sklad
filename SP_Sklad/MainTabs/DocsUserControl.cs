@@ -1587,7 +1587,14 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    IHelper.ExportToXlsx(WBGridControl);
+                    if(focused_tree_node.WType == -16)
+                    {
+                        ucWBOrdersIn.ExportToExcel();
+                    }
+
+
+
+                    else                 IHelper.ExportToXlsx(WBGridControl);
                     break;
 
                 case 4:

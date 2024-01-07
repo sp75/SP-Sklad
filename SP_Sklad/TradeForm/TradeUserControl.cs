@@ -566,7 +566,7 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //user_settings.Reload();
+     /*
             using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
             {
                 if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
@@ -622,7 +622,7 @@ namespace SP_Sklad.MainTabs
 
             }
 
-            RefrechItemBtn.PerformClick();
+            RefrechItemBtn.PerformClick();*/
         }
 
         private void DocsPopupMenu_BeforePopup(object sender, CancelEventArgs e)

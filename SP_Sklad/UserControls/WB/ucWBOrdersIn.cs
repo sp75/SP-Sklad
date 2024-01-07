@@ -34,7 +34,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_WayBillOut wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillOut;
+        public v_WayBillOrdersIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillOrdersIn;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -51,7 +51,7 @@ namespace SP_Sklad.UserControls
 
         public void NewItem()
         {
-            using (var wb_in = new frmWayBillOut(w_type, null))
+            using (var wb_in = new frmWayBillCustomerOrder(w_type, null))
             {
                 wb_in.ShowDialog();
             }
@@ -74,7 +74,7 @@ namespace SP_Sklad.UserControls
 
             var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-            using (var wb_in = new frmWayBillOut(w_type, doc.out_wbill_id))
+            using (var wb_in = new frmWayBillCustomerOrder(w_type, doc.out_wbill_id))
             {
                 wb_in.is_new_record = true;
                 wb_in.ShowDialog();
@@ -149,6 +149,10 @@ namespace SP_Sklad.UserControls
 
             PrintDoc.Show(wb_focused_row.Id, w_type, _db);
         }
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
+        }
 
         public void FindItem(Guid id, DateTime on_date)
         {
@@ -180,7 +184,7 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillOut.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillOrdersIn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -190,7 +194,7 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucWBOrdersIn\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucWBOrdersIn\\WbGridView");
 
             if (!DesignMode)
             {
@@ -221,8 +225,6 @@ namespace SP_Sklad.UserControls
 
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
                 repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
-
-                gridColumn111.Caption = $"К-сть всього, {DBHelper.MeasuresList?.FirstOrDefault(w => w.Def == 1)?.ShortName}";
             }
         }
 
@@ -244,7 +246,7 @@ namespace SP_Sklad.UserControls
             _restore = true;
 
             WBGridControl.DataSource = null;
-            WBGridControl.DataSource = WayBillInSource;
+            WBGridControl.DataSource = WayBillOutSource;
 
             xtraTabControl2_SelectedPageChanged(null, null);
         }
@@ -350,7 +352,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWBOrdersIn\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWBOrdersIn\\WbGridView");
         }
 
         private void SetWBEditorBarBtn()
@@ -368,7 +370,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                ucWayBillOutDet.GetDate(0);
+                ucWayBillOrdersInDet.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 vGridControl1.DataSource = null;
                 ucDocumentPaymentGrid.GetPaymentDoc(Guid.Empty);
@@ -379,11 +381,11 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    ucWayBillOutDet.GetDate(wb_focused_row.WbillId);
+                    ucWayBillOrdersInDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WayBillOut.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WayBillOrdersIn.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                     break;
 
                 case 2:
@@ -437,7 +439,7 @@ namespace SP_Sklad.UserControls
             PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
 
 
-            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
+            ChangeWaybillKagentBtnEdit.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
@@ -522,24 +524,6 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            using (var frm = new frmKagents(-1, ""))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    var new_id = frm.focused_row?.KaId;
-
-                    if (new_id != null)
-                    {
-                        _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
-
-                        GetData();
-                    }
-                }
-            }
-        }
-
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
@@ -600,6 +584,32 @@ namespace SP_Sklad.UserControls
             }
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+           if(e.Button.Index == 0)
+            {
+                using (var frm = new frmKagents(-1, ""))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var new_id = frm.focused_row?.KaId;
+
+                        if (new_id != null)
+                        {
+                            _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
+
+                            GetData();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }

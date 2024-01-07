@@ -403,7 +403,7 @@
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" />
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillDet" />
         </Diagram>
-      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="71" >
+      <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="BaseModel.v_TechProcDet" Width="1.5" PointX="2.75" PointY="3.25" />
         <EntityTypeShape EntityType="BaseModel.MaterialsList" Width="1.5" PointX="0.75" PointY="0.75" />
@@ -414,13 +414,13 @@
         <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="10.875" PointY="4" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="3.875" />
+        <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="4.375" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="12.875" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_BarCodes" Width="1.5" PointX="16.5" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_GetRetailTree" Width="1.5" PointX="3.375" PointY="8.75" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighing" Width="1.5" PointX="14.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="14.75" PointY="6.25" />
-        <EntityTypeShape EntityType="BaseModel.v_WaybillDet" Width="1.5" PointX="18.5" PointY="2.375" />
+        <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="14.75" PointY="6.5" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillDet" Width="1.5" PointX="18.25" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingSummary" Width="1.5" PointX="16.5" PointY="2.375" />
         <EntityTypeShape EntityType="BaseModel.v_BankStatements" Width="1.5" PointX="9.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_PriceListDet" Width="1.5" PointX="0.75" PointY="13.75" />
@@ -437,10 +437,13 @@
         <EntityTypeShape EntityType="BaseModel.v_Expedition" Width="1.5" PointX="17.375" PointY="17.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillCorrection" Width="1.5" PointX="9.375" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillCorrectionDet" Width="1.5" PointX="18.375" PointY="11.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WayBillIn" Width="1.5" PointX="19.375" PointY="18.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WayBillInDet" Width="1.5" PointX="21.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillInDet" Width="1.5" PointX="20.25" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillOut" Width="1.5" PointX="3.375" PointY="21.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillIn" Width="1.5" PointX="11.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.v_Invoices" Width="1.5" PointX="13.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillOrdersInDet" Width="1.5" PointX="19.375" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillOutDet" Width="1.5" PointX="21.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillOrdersIn" Width="1.5" PointX="21.375" PointY="22.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

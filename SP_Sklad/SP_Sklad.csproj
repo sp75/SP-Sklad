@@ -666,6 +666,9 @@
     <Compile Include="SkladData\v_IntermediateWeighingSummary.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Invoices.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_Kagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -724,6 +727,12 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillMake.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillOrdersIn.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillOrdersInDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillOut.cs">
@@ -1259,6 +1268,12 @@
     <Compile Include="UserControls\ucRelDocGrid.Designer.cs">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\WBDet\ucWayBillOrdersInDet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WBDet\ucWayBillOrdersInDet.Designer.cs">
+      <DependentUpon>ucWayBillOrdersInDet.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\WBDet\ucWayBillOutDet.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1271,11 +1286,11 @@
     <Compile Include="UserControls\WBDet\ucWayBillInDet.Designer.cs">
       <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WB\ucServicesIn.cs">
+    <Compile Include="UserControls\WB\ucActServicesProvidedIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WB\ucServicesIn.Designer.cs">
-      <DependentUpon>ucServicesIn.cs</DependentUpon>
+    <Compile Include="UserControls\WB\ucActServicesProvidedIn.Designer.cs">
+      <DependentUpon>ucActServicesProvidedIn.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WB\ucWBOrdersIn.cs">
       <SubType>UserControl</SubType>
@@ -2125,6 +2140,12 @@
     <Compile Include="WBForm\frmSettingMaterialPrices.Designer.cs">
       <DependentUpon>frmSettingMaterialPrices.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmWayBillCustomerOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmWayBillCustomerOrder.Designer.cs">
+      <DependentUpon>frmWayBillCustomerOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWaybillTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2437,14 +2458,17 @@
     <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WBDet\ucWayBillOrdersInDet.resx">
+      <DependentUpon>ucWayBillOrdersInDet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WBDet\ucWayBillOutDet.resx">
       <DependentUpon>ucWayBillOutDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WBDet\ucWayBillInDet.resx">
       <DependentUpon>ucWayBillInDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WB\ucServicesIn.resx">
-      <DependentUpon>ucServicesIn.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\WB\ucActServicesProvidedIn.resx">
+      <DependentUpon>ucActServicesProvidedIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucWBOrdersIn.resx">
       <DependentUpon>ucWBOrdersIn.cs</DependentUpon>
@@ -2716,6 +2740,9 @@
     <EmbeddedResource Include="WBForm\frmSettingMaterialPrices.resx">
       <DependentUpon>frmSettingMaterialPrices.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmWayBillCustomerOrder.resx">
+      <DependentUpon>frmWayBillCustomerOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWaybillTemplate.resx">
       <DependentUpon>frmWaybillTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -2766,6 +2793,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWayBillOut.resx">
       <DependentUpon>frmWayBillOut.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWBDeboning.resx">
       <DependentUpon>frmWBDeboning.cs</DependentUpon>
@@ -3199,6 +3227,7 @@
     <None Include="Resources\projectfile_16x16.png" />
     <None Include="Resources\project_16x16.png" />
     <None Include="Resources\loadpagesetup_16x16.png" />
+    <None Include="Resources\snapmodifytablecellstyle_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

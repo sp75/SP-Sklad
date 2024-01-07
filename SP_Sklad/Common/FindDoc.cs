@@ -118,7 +118,11 @@ namespace SP_Sklad.Common
                  //   SetDocFilter(26);
                     break;
 
-                case -1: SetDocFilter(27);
+                case -1:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 27);
+                    _docs_user_control.ucWaybillOut.FindItem(doc_id.Value, date.Value);
+                    //SetDocFilter(27);
                     break;
 
                 case 6: SetDocFilter(57);
@@ -137,10 +141,19 @@ namespace SP_Sklad.Common
                     SetPayDocFilter(103);
                     break;
 
-                case 2: SetDocFilter(39);
+                case 2:
+
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 39);
+                    _docs_user_control.ucInvoices.FindItem(doc_id.Value, date.Value);
+                   // SetDocFilter(39);
                     break;
 
-                case -16: SetDocFilter(107);
+                case -16:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 107);
+                    _docs_user_control.ucWBOrdersIn.FindItem(doc_id.Value, date.Value);
+                    //SetDocFilter(107);
                     break;
 
                 case 16:

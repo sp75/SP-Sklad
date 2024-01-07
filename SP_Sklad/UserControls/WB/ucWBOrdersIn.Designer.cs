@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWBOrdersIn));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -37,6 +42,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WayBillOutSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -58,11 +64,9 @@
             this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn151 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -79,9 +83,10 @@
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -93,13 +98,14 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucWayBillOutDet = new SP_Sklad.UserControls.ucWayBillOutDet();
+            this.ucWayBillOrdersInDet = new SP_Sklad.UserControls.ucWayBillOrdersInDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
+            this.ChangeWaybillKagentBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -128,9 +134,7 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
-            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -164,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeWaybillKagentBtnEdit)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).BeginInit();
@@ -196,6 +201,7 @@
             // 
             // WBGridControl
             // 
+            this.WBGridControl.DataSource = this.WayBillOutSource;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -214,6 +220,15 @@
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
+            // 
+            // WayBillOutSource
+            // 
+            this.WayBillOutSource.AreSourceRowsThreadSafe = true;
+            this.WayBillOutSource.DefaultSorting = "OnDate DESC";
+            this.WayBillOutSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillOrdersIn);
+            this.WayBillOutSource.KeyExpression = "WbillId";
+            this.WayBillOutSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
+            this.WayBillOutSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
             // 
             // WbGridView
             // 
@@ -237,11 +252,9 @@
             this.gridColumn108,
             this.gridColumn109,
             this.gridColumn110,
-            this.gridColumn111,
             this.gridColumn113,
             this.gridColumn114,
-            this.colPersonName,
-            this.gridColumn151});
+            this.colPersonName});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -273,7 +286,7 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 17)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 17)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
             // 
@@ -352,7 +365,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 86;
+            this.gridColumn4.Width = 137;
             // 
             // gridColumn5
             // 
@@ -458,12 +471,6 @@
             this.gridColumn110.FieldName = "Received";
             this.gridColumn110.Name = "gridColumn110";
             // 
-            // gridColumn111
-            // 
-            this.gridColumn111.Caption = "К-сть всього, кг";
-            this.gridColumn111.FieldName = "TotalAmount";
-            this.gridColumn111.Name = "gridColumn111";
-            // 
             // gridColumn113
             // 
             this.gridColumn113.Caption = "Дата відвантаження";
@@ -481,14 +488,6 @@
             this.colPersonName.Caption = "Виконавець";
             this.colPersonName.FieldName = "PersonName";
             this.colPersonName.Name = "colPersonName";
-            // 
-            // gridColumn151
-            // 
-            this.gridColumn151.Caption = "Експедиція";
-            this.gridColumn151.ColumnEdit = this.repositoryItemImageComboBox42;
-            this.gridColumn151.FieldName = "Expedition";
-            this.gridColumn151.Name = "gridColumn151";
-            this.gridColumn151.OptionsColumn.AllowEdit = false;
             // 
             // repositoryItemImageComboBox42
             // 
@@ -530,11 +529,11 @@
             this.ExecuteItemBtn,
             this.PrintItemBtn,
             this.NewPayDocBtn,
-            this.ChangeWaybillKagentBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
-            this.ExecuteInvBtn});
-            this.barManager1.MaxItemId = 36;
+            this.ExecuteInvBtn,
+            this.ExportToExcelBtn});
+            this.barManager1.MaxItemId = 37;
             // 
             // barDockControlTop
             // 
@@ -646,14 +645,6 @@
             this.NewPayDocBtn.Name = "NewPayDocBtn";
             this.NewPayDocBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewPayDocBtn_ItemClick);
             // 
-            // ChangeWaybillKagentBtn
-            // 
-            this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
-            this.ChangeWaybillKagentBtn.Id = 30;
-            this.ChangeWaybillKagentBtn.ImageOptions.ImageIndex = 14;
-            this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
-            this.ChangeWaybillKagentBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeWaybillKagentBtn_ItemClick);
-            // 
             // WbHistoryBtn
             // 
             this.WbHistoryBtn.Caption = "Історія змін в документі";
@@ -669,6 +660,21 @@
             this.barButtonItem1.ImageOptions.ImageIndex = 13;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // ExecuteInvBtn
+            // 
+            this.ExecuteInvBtn.Caption = "Відвантажити весь товар";
+            this.ExecuteInvBtn.Id = 35;
+            this.ExecuteInvBtn.ImageOptions.ImageIndex = 16;
+            this.ExecuteInvBtn.Name = "ExecuteInvBtn";
+            this.ExecuteInvBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInvBtn_ItemClick);
+            // 
+            // ExportToExcelBtn
+            // 
+            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
+            this.ExportToExcelBtn.Id = 36;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
             // panelControl2
             // 
@@ -743,10 +749,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wbKagentList.Location = new System.Drawing.Point(554, 13);
             this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.wbKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.wbKagentList.Properties.DisplayMember = "Name";
@@ -827,19 +833,19 @@
             // 
             // xtraTabPage15
             // 
-            this.xtraTabPage15.Controls.Add(this.ucWayBillOutDet);
+            this.xtraTabPage15.Controls.Add(this.ucWayBillOrdersInDet);
             this.xtraTabPage15.ImageOptions.ImageIndex = 9;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage15.Text = "Позиції";
             // 
-            // ucWayBillOutDet
+            // ucWayBillOrdersInDet
             // 
-            this.ucWayBillOutDet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWayBillOutDet.Location = new System.Drawing.Point(0, 0);
-            this.ucWayBillOutDet.Name = "ucWayBillOutDet";
-            this.ucWayBillOutDet.Size = new System.Drawing.Size(1373, 199);
-            this.ucWayBillOutDet.TabIndex = 0;
+            this.ucWayBillOrdersInDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBillOrdersInDet.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBillOrdersInDet.Name = "ucWayBillOrdersInDet";
+            this.ucWayBillOrdersInDet.Size = new System.Drawing.Size(1373, 199);
+            this.ucWayBillOrdersInDet.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
@@ -861,7 +867,8 @@
             this.repositoryItemImageComboBox12,
             this.repositoryItemLookUpEdit3,
             this.repositoryItemLookUpEdit5,
-            this.repositoryItemDateEdit1});
+            this.repositoryItemDateEdit1,
+            this.ChangeWaybillKagentBtnEdit});
             this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
@@ -935,6 +942,15 @@
             this.repositoryItemDateEdit1.Name = "repositoryItemDateEdit1";
             this.repositoryItemDateEdit1.EditValueChanged += new System.EventHandler(this.repositoryItemDateEdit1_EditValueChanged);
             // 
+            // ChangeWaybillKagentBtnEdit
+            // 
+            this.ChangeWaybillKagentBtnEdit.AutoHeight = false;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            this.ChangeWaybillKagentBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ChangeWaybillKagentBtnEdit.Name = "ChangeWaybillKagentBtnEdit";
+            this.ChangeWaybillKagentBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
+            // 
             // row
             // 
             this.row.Height = 16;
@@ -991,8 +1007,9 @@
             // row1
             // 
             this.row1.Name = "row1";
-            this.row1.Properties.Caption = "П.І.Б";
+            this.row1.Properties.Caption = "Назва";
             this.row1.Properties.FieldName = "KaName";
+            this.row1.Properties.RowEdit = this.ChangeWaybillKagentBtnEdit;
             // 
             // row3
             // 
@@ -1148,41 +1165,24 @@
             this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
-            // WayBillInSource
-            // 
-            this.WayBillInSource.AreSourceRowsThreadSafe = true;
-            this.WayBillInSource.DefaultSorting = "OnDate DESC";
-            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillIn);
-            this.WayBillInSource.KeyExpression = "WbillId";
-            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
-            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
-            // 
             // WbListPopupMenu
             // 
             this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeWaybillKagentBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // ExecuteInvBtn
-            // 
-            this.ExecuteInvBtn.Caption = "Відвантажити весь товар";
-            this.ExecuteInvBtn.Id = 35;
-            this.ExecuteInvBtn.ImageOptions.ImageIndex = 16;
-            this.ExecuteInvBtn.Name = "ExecuteInvBtn";
-            this.ExecuteInvBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInvBtn_ItemClick);
             // 
             // ucWBOrdersIn
             // 
@@ -1231,6 +1231,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeWaybillKagentBtnEdit)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).EndInit();
@@ -1271,15 +1272,13 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
-        private DevExpress.XtraBars.BarButtonItem ChangeWaybillKagentBtn;
         private DevExpress.XtraBars.BarButtonItem WbHistoryBtn;
         private DevExpress.XtraBars.PopupMenu WbListPopupMenu;
-        private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillOutSource;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         public DevExpress.XtraGrid.GridControl WBGridControl;
-        public DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
@@ -1299,11 +1298,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn108;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn109;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
         private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn151;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox42;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;
@@ -1335,7 +1332,10 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row25;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row26;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
-        private ucWayBillOutDet ucWayBillOutDet;
         private DevExpress.XtraBars.BarButtonItem ExecuteInvBtn;
+        private ucWayBillOrdersInDet ucWayBillOrdersInDet;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
+        private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
+        private DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
     }
 }

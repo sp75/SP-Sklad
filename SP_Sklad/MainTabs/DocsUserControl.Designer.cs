@@ -540,6 +540,8 @@
             this.ucInvoices = new SP_Sklad.UserControls.ucInvoices();
             this.xtraTabPage38 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWBOrdersIn = new SP_Sklad.UserControls.ucWBOrdersIn();
+            this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucServicesIn = new SP_Sklad.UserControls.ucActServicesProvidedIn();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -548,8 +550,6 @@
             this.PayDocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucServicesIn = new SP_Sklad.UserControls.ucServicesIn();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -798,12 +798,12 @@
             this.xtraTabPage36.SuspendLayout();
             this.xtraTabPage37.SuspendLayout();
             this.xtraTabPage38.SuspendLayout();
+            this.xtraTabPage39.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).BeginInit();
-            this.xtraTabPage39.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -6299,6 +6299,26 @@
             this.ucWBOrdersIn.Size = new System.Drawing.Size(1138, 695);
             this.ucWBOrdersIn.TabIndex = 0;
             // 
+            // xtraTabPage39
+            // 
+            this.xtraTabPage39.Controls.Add(this.ucServicesIn);
+            this.xtraTabPage39.Name = "xtraTabPage39";
+            this.xtraTabPage39.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage39.Text = "Акт послуг";
+            // 
+            // ucServicesIn
+            // 
+            this.ucServicesIn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucServicesIn.ExtCopyBtn = this.CopyItemBtn;
+            this.ucServicesIn.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucServicesIn.ExtEditBtn = this.EditItemBtn;
+            this.ucServicesIn.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucServicesIn.ExtPrintBtn = this.PrintItemBtn;
+            this.ucServicesIn.Location = new System.Drawing.Point(0, 0);
+            this.ucServicesIn.Name = "ucServicesIn";
+            this.ucServicesIn.Size = new System.Drawing.Size(1138, 695);
+            this.ucServicesIn.TabIndex = 0;
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -6414,26 +6434,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // xtraTabPage39
-            // 
-            this.xtraTabPage39.Controls.Add(this.ucServicesIn);
-            this.xtraTabPage39.Name = "xtraTabPage39";
-            this.xtraTabPage39.Size = new System.Drawing.Size(1138, 695);
-            this.xtraTabPage39.Text = "Акт послуг";
-            // 
-            // ucServicesIn
-            // 
-            this.ucServicesIn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucServicesIn.ExtCopyBtn = this.CopyItemBtn;
-            this.ucServicesIn.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucServicesIn.ExtEditBtn = this.EditItemBtn;
-            this.ucServicesIn.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucServicesIn.ExtPrintBtn = this.PrintItemBtn;
-            this.ucServicesIn.Location = new System.Drawing.Point(0, 0);
-            this.ucServicesIn.Name = "ucServicesIn";
-            this.ucServicesIn.Size = new System.Drawing.Size(1138, 695);
-            this.ucServicesIn.TabIndex = 0;
             // 
             // DocsUserControl
             // 
@@ -6704,12 +6704,12 @@
             this.xtraTabPage36.ResumeLayout(false);
             this.xtraTabPage37.ResumeLayout(false);
             this.xtraTabPage38.ResumeLayout(false);
+            this.xtraTabPage39.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceListPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PayDocsPopupMenu)).EndInit();
-            this.xtraTabPage39.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7217,10 +7217,10 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
         public UserControls.ucWaybillOut ucWaybillOut;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage37;
-        private UserControls.ucInvoices ucInvoices;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage38;
-        private UserControls.ucWBOrdersIn ucWBOrdersIn;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage39;
-        private UserControls.ucServicesIn ucServicesIn;
+        public UserControls.ucInvoices ucInvoices;
+        public UserControls.ucWBOrdersIn ucWBOrdersIn;
+        public UserControls.ucActServicesProvidedIn ucServicesIn;
     }
 }

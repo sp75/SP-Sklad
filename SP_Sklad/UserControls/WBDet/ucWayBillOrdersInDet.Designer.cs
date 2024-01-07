@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.UserControls
 {
-    partial class ucWayBillOutDet
+    partial class ucWayBillOrdersInDet
     {
         /// <summary> 
         /// Required designer variable.
@@ -65,6 +65,7 @@
             this.repositoryItemImageComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -283,7 +284,8 @@
             this.gridColumn50,
             this.gridColumn94,
             this.gridColumn119,
-            this.gridColumn150});
+            this.gridColumn150,
+            this.gridColumn14});
             this.WaybillDetGridView.GridControl = this.gridControl2;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -299,7 +301,7 @@
             this.gridColumn9.FieldName = "Num";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 1;
+            this.gridColumn9.VisibleIndex = 2;
             this.gridColumn9.Width = 50;
             // 
             // gridColumn10
@@ -308,7 +310,7 @@
             this.gridColumn10.FieldName = "MatName";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 2;
+            this.gridColumn10.VisibleIndex = 3;
             this.gridColumn10.Width = 233;
             // 
             // gridColumn11
@@ -320,7 +322,7 @@
             this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 5;
+            this.gridColumn11.VisibleIndex = 6;
             this.gridColumn11.Width = 55;
             // 
             // repositoryItemCalcEdit1
@@ -337,7 +339,7 @@
             this.gridColumn12.FieldName = "MsrName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 6;
+            this.gridColumn12.VisibleIndex = 7;
             this.gridColumn12.Width = 59;
             // 
             // gridColumn13
@@ -348,7 +350,7 @@
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 9;
+            this.gridColumn13.VisibleIndex = 10;
             this.gridColumn13.Width = 66;
             // 
             // gridColumn37
@@ -359,7 +361,7 @@
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 10;
+            this.gridColumn37.VisibleIndex = 11;
             this.gridColumn37.Width = 74;
             // 
             // gridColumn39
@@ -368,7 +370,7 @@
             this.gridColumn39.FieldName = "WhName";
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 4;
+            this.gridColumn39.VisibleIndex = 5;
             this.gridColumn39.Width = 174;
             // 
             // gridColumn115
@@ -377,7 +379,7 @@
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 7;
+            this.gridColumn115.VisibleIndex = 8;
             this.gridColumn115.Width = 59;
             // 
             // gridColumn41
@@ -398,7 +400,7 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 11;
+            this.gridColumn50.VisibleIndex = 12;
             this.gridColumn50.Width = 96;
             // 
             // gridColumn94
@@ -434,7 +436,7 @@
             this.gridColumn119.FieldName = "Notes";
             this.gridColumn119.Name = "gridColumn119";
             this.gridColumn119.Visible = true;
-            this.gridColumn119.VisibleIndex = 3;
+            this.gridColumn119.VisibleIndex = 4;
             this.gridColumn119.Width = 215;
             // 
             // gridColumn150
@@ -443,7 +445,25 @@
             this.gridColumn150.FieldName = "Discount";
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
-            this.gridColumn150.VisibleIndex = 8;
+            this.gridColumn150.VisibleIndex = 9;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Віддалене замовлення";
+            this.gridColumn14.ColumnEdit = this.repositoryItemImageComboBox2;
+            this.gridColumn14.FieldName = "RemoteOrdered";
+            this.gridColumn14.MaxWidth = 25;
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowFocus = false;
+            this.gridColumn14.OptionsColumn.AllowMove = false;
+            this.gridColumn14.OptionsColumn.AllowSize = false;
+            this.gridColumn14.OptionsColumn.ShowCaption = false;
+            this.gridColumn14.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumn14.ToolTip = "Віддалене замовлення";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 1;
+            this.gridColumn14.Width = 25;
             // 
             // repositoryItemImageComboBox2
             // 
@@ -520,6 +540,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox33;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
     }
 }

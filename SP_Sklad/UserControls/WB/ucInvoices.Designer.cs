@@ -55,14 +55,7 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn108 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn109 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn111 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn151 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -79,7 +72,6 @@
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -129,7 +121,7 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
-            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
+            this.InvoicesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
@@ -234,14 +226,7 @@
             this.gridColumn44,
             this.gridColumn45,
             this.gridColumn104,
-            this.gridColumn108,
-            this.gridColumn109,
-            this.gridColumn110,
-            this.gridColumn111,
-            this.gridColumn113,
-            this.gridColumn114,
-            this.colPersonName,
-            this.gridColumn151});
+            this.colPersonName});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -440,55 +425,11 @@
             this.gridColumn104.Visible = true;
             this.gridColumn104.VisibleIndex = 12;
             // 
-            // gridColumn108
-            // 
-            this.gridColumn108.Caption = "Маршрут";
-            this.gridColumn108.FieldName = "RouteName";
-            this.gridColumn108.Name = "gridColumn108";
-            // 
-            // gridColumn109
-            // 
-            this.gridColumn109.Caption = "Машина";
-            this.gridColumn109.FieldName = "CarName";
-            this.gridColumn109.Name = "gridColumn109";
-            // 
-            // gridColumn110
-            // 
-            this.gridColumn110.Caption = "Водій";
-            this.gridColumn110.FieldName = "Received";
-            this.gridColumn110.Name = "gridColumn110";
-            // 
-            // gridColumn111
-            // 
-            this.gridColumn111.Caption = "К-сть всього, кг";
-            this.gridColumn111.FieldName = "TotalAmount";
-            this.gridColumn111.Name = "gridColumn111";
-            // 
-            // gridColumn113
-            // 
-            this.gridColumn113.Caption = "Дата відвантаження";
-            this.gridColumn113.FieldName = "ShipmentDate";
-            this.gridColumn113.Name = "gridColumn113";
-            // 
-            // gridColumn114
-            // 
-            this.gridColumn114.Caption = "Дата звітності";
-            this.gridColumn114.FieldName = "ReportingDate";
-            this.gridColumn114.Name = "gridColumn114";
-            // 
             // colPersonName
             // 
             this.colPersonName.Caption = "Виконавець";
             this.colPersonName.FieldName = "PersonName";
             this.colPersonName.Name = "colPersonName";
-            // 
-            // gridColumn151
-            // 
-            this.gridColumn151.Caption = "Експедиція";
-            this.gridColumn151.ColumnEdit = this.repositoryItemImageComboBox42;
-            this.gridColumn151.FieldName = "Expedition";
-            this.gridColumn151.Name = "gridColumn151";
-            this.gridColumn151.OptionsColumn.AllowEdit = false;
             // 
             // repositoryItemImageComboBox42
             // 
@@ -530,7 +471,6 @@
             this.ExecuteItemBtn,
             this.PrintItemBtn,
             this.NewPayDocBtn,
-            this.ChangeWaybillKagentBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
             this.ExecuteInvBtn});
@@ -645,14 +585,6 @@
             this.NewPayDocBtn.ImageOptions.ImageIndex = 19;
             this.NewPayDocBtn.Name = "NewPayDocBtn";
             this.NewPayDocBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewPayDocBtn_ItemClick);
-            // 
-            // ChangeWaybillKagentBtn
-            // 
-            this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
-            this.ChangeWaybillKagentBtn.Id = 30;
-            this.ChangeWaybillKagentBtn.ImageOptions.ImageIndex = 14;
-            this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
-            this.ChangeWaybillKagentBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeWaybillKagentBtn_ItemClick);
             // 
             // WbHistoryBtn
             // 
@@ -1156,14 +1088,14 @@
             this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
-            // WayBillInSource
+            // InvoicesSource
             // 
-            this.WayBillInSource.AreSourceRowsThreadSafe = true;
-            this.WayBillInSource.DefaultSorting = "OnDate DESC";
-            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillIn);
-            this.WayBillInSource.KeyExpression = "WbillId";
-            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
-            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
+            this.InvoicesSource.AreSourceRowsThreadSafe = true;
+            this.InvoicesSource.DefaultSorting = "OnDate DESC";
+            this.InvoicesSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_Invoices);
+            this.InvoicesSource.KeyExpression = "WbillId";
+            this.InvoicesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
+            this.InvoicesSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
             // 
             // WbListPopupMenu
             // 
@@ -1176,7 +1108,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeWaybillKagentBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn)});
@@ -1271,10 +1202,9 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
-        private DevExpress.XtraBars.BarButtonItem ChangeWaybillKagentBtn;
         private DevExpress.XtraBars.BarButtonItem WbHistoryBtn;
         private DevExpress.XtraBars.PopupMenu WbListPopupMenu;
-        private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource InvoicesSource;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -1296,14 +1226,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn108;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn109;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn110;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
         private DevExpress.XtraGrid.Columns.GridColumn colPersonName;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn151;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox42;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox12;

@@ -96,6 +96,9 @@ namespace SP_Sklad
             docsUserControl1.wayBillInUserControl.SaveGridLayouts();
             docsUserControl1.ucWBOrdersOut.SaveGridLayouts();
             docsUserControl1.ucWaybillOut.SaveGridLayouts();
+            docsUserControl1.ucWBOrdersIn.SaveGridLayouts();
+            docsUserControl1.ucInvoices.SaveGridLayouts();
+            docsUserControl1.ucServicesIn.SaveGridLayouts();
 
             docsUserControl1.SaveGridLayouts();
             whUserControl.SaveGridLayouts();
@@ -354,7 +357,7 @@ namespace SP_Sklad
 
         private void NewCustomerOrder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var wb_in = new frmWayBillOut(-16, null))
+            using (var wb_in = new frmWayBillCustomerOrder(-16, null))
             {
                 wb_in.ShowDialog();
             }

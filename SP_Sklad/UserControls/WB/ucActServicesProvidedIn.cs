@@ -23,7 +23,7 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucServicesIn : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucActServicesProvidedIn : DevExpress.XtraEditors.XtraUserControl
     {
         int w_type = 29;
         BaseEntities _db { get; set; }
@@ -43,7 +43,7 @@ namespace SP_Sklad.UserControls
         private int? find_id { get; set; }
         private bool restore = false;
 
-        public ucServicesIn()
+        public ucActServicesProvidedIn()
         {
             InitializeComponent();
         }
@@ -189,7 +189,7 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucServicesIn\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucActServicesProvidedIn\\WbInGridView");
 
             if (!DesignMode)
             {
@@ -347,7 +347,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucServicesIn\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucActServicesProvidedIn\\WbInGridView");
         }
 
         private void SetWBEditorBarBtn()

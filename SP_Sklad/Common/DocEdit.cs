@@ -76,9 +76,17 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                    if (w_type == -1 || w_type == -16 || w_type == 2)
+                    if (w_type == -1 || w_type == 2)
                     {
                         using (var wb_out = new frmWayBillOut(w_type, wb.WbillId))
+                        {
+                            wb_out.ShowDialog();
+                        }
+                    }
+
+                    if (w_type == -16)
+                    {
+                        using (var wb_out = new frmWayBillCustomerOrder(w_type, wb.WbillId))
                         {
                             wb_out.ShowDialog();
                         }

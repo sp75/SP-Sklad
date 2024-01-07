@@ -35,6 +35,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -53,7 +58,6 @@
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
@@ -95,6 +99,7 @@
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.ChangeWaybillKagentBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row7 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -117,8 +122,8 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
-            this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
+            this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -150,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeWaybillKagentBtnEdit)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).BeginInit();
@@ -211,7 +217,6 @@
             this.PrintItemBtn,
             this.NewPayDocBtn,
             this.barButtonItem11,
-            this.ChangeWaybillKagentBtn,
             this.WbHistoryBtn,
             this.barButtonItem1});
             this.barManager1.MaxItemId = 35;
@@ -364,14 +369,6 @@
             this.barButtonItem11.ImageOptions.ImageIndex = 14;
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
-            // 
-            // ChangeWaybillKagentBtn
-            // 
-            this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
-            this.ChangeWaybillKagentBtn.Id = 30;
-            this.ChangeWaybillKagentBtn.ImageOptions.ImageIndex = 17;
-            this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
-            this.ChangeWaybillKagentBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeWaybillKagentBtn_ItemClick);
             // 
             // WbHistoryBtn
             // 
@@ -814,7 +811,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
@@ -822,7 +819,8 @@
             this.vGridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox12,
             this.repositoryItemLookUpEdit3,
-            this.repositoryItemLookUpEdit5});
+            this.repositoryItemLookUpEdit5,
+            this.ChangeWaybillKagentBtnEdit});
             this.vGridControl1.RowHeaderWidth = 268;
             this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
             this.row,
@@ -877,6 +875,15 @@
             this.repositoryItemLookUpEdit5.ShowHeader = false;
             this.repositoryItemLookUpEdit5.ValueMember = "KaId";
             this.repositoryItemLookUpEdit5.EditValueChanged += new System.EventHandler(this.repositoryItemLookUpEdit5_EditValueChanged);
+            // 
+            // ChangeWaybillKagentBtnEdit
+            // 
+            this.ChangeWaybillKagentBtnEdit.AutoHeight = false;
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.ChangeWaybillKagentBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.ChangeWaybillKagentBtnEdit.Name = "ChangeWaybillKagentBtnEdit";
+            this.ChangeWaybillKagentBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
             // row
             // 
@@ -935,8 +942,9 @@
             // row1
             // 
             this.row1.Name = "row1";
-            this.row1.Properties.Caption = "П.І.Б";
+            this.row1.Properties.Caption = "Назва";
             this.row1.Properties.FieldName = "KaName";
+            this.row1.Properties.RowEdit = this.ChangeWaybillKagentBtnEdit;
             // 
             // row3
             // 
@@ -1045,6 +1053,14 @@
             this.xtraTabPage24.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
+            // ucDocumentPaymentGrid
+            // 
+            this.ucDocumentPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDocumentPaymentGrid.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentPaymentGrid.Name = "ucDocumentPaymentGrid";
+            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
+            this.ucDocumentPaymentGrid.TabIndex = 0;
+            // 
             // WbListPopupMenu
             // 
             this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -1057,22 +1073,13 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeWaybillKagentBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
             // 
-            // ucDocumentPaymentGrid
-            // 
-            this.ucDocumentPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDocumentPaymentGrid.Location = new System.Drawing.Point(0, 0);
-            this.ucDocumentPaymentGrid.Name = "ucDocumentPaymentGrid";
-            this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
-            this.ucDocumentPaymentGrid.TabIndex = 0;
-            // 
-            // WayBillInUserControl
+            // ucWayBillIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1081,7 +1088,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "WayBillInUserControl";
+            this.Name = "ucWayBillIn";
             this.Size = new System.Drawing.Size(1375, 659);
             this.Load += new System.EventHandler(this.WayBillInUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
@@ -1117,6 +1124,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ChangeWaybillKagentBtnEdit)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).EndInit();
@@ -1202,7 +1210,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem ChangeWaybillKagentBtn;
         private DevExpress.XtraBars.BarButtonItem WbHistoryBtn;
         private DevExpress.XtraBars.PopupMenu WbListPopupMenu;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
@@ -1211,5 +1218,6 @@
         private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
     }
 }

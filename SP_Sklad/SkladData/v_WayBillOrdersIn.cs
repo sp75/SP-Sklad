@@ -12,23 +12,25 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_WayBillIn
+    public partial class v_WayBillOrdersIn
     {
         public System.Guid Id { get; set; }
         public int WbillId { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
+        public Nullable<int> CurrId { get; set; }
         public string Reason { get; set; }
         public int Checked { get; set; }
         public Nullable<decimal> SummAll { get; set; }
         public int WType { get; set; }
         public Nullable<decimal> Nds { get; set; }
+        public Nullable<int> PersonId { get; set; }
         public Nullable<decimal> SummPay { get; set; }
         public string Notes { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
-        public Nullable<decimal> Balans { get; set; }
         public string CurrName { get; set; }
         public Nullable<decimal> CurrRate { get; set; }
+        public string KaName { get; set; }
         public Nullable<int> KaId { get; set; }
         public string KaFullName { get; set; }
         public string KaPhone { get; set; }
@@ -42,16 +44,24 @@ namespace SP_Sklad.SkladData
         public string Email { get; set; }
         public string www { get; set; }
         public Nullable<int> KType { get; set; }
+        public string AttNum { get; set; }
+        public Nullable<System.DateTime> AttDate { get; set; }
+        public string Received { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
+        public int DefNum { get; set; }
         public Nullable<int> EntId { get; set; }
         public string EntName { get; set; }
         public string KagentGroupName { get; set; }
+        public string DocTypeName { get; set; }
         public Nullable<int> PTypeId { get; set; }
         public string PTypeName { get; set; }
+        public string RouteName { get; set; }
+        public string CarName { get; set; }
+        public Nullable<System.DateTime> ShipmentDate { get; set; }
         public Nullable<System.DateTime> ReportingDate { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public string UpdatedUserName { get; set; }
         public int WorkerId { get; set; }
-        public string KaName { get; set; }
-        public string DocTypeName { get; set; }
+        public Nullable<decimal> Balans { get; set; }
     }
 }
