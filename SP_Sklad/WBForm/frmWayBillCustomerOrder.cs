@@ -30,14 +30,14 @@ namespace SP_Sklad.WBForm
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
         private bool is_update_record { get; set; }
-        private v_WayBillOrdersInDet wbd_row
+        private v_WayBillCustomerOrderDet wbd_row
         {
             get
             {
-                return  WaybillDetOutGridView.GetFocusedRow() as v_WayBillOrdersInDet;
+                return  WaybillDetOutGridView.GetFocusedRow() as v_WayBillCustomerOrderDet;
             }
         }
-        private List<v_WayBillOrdersInDet> wbd_list { get; set; }
+        private List<v_WayBillCustomerOrderDet> wbd_list { get; set; }
         private UserSettingsRepository user_settings { get; set; }
         private DiscCards disc_card { get; set; }
         private List<WaybillDet> tmp_WaybillDet { get; set; }
@@ -171,10 +171,10 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-             wbd_list = _db.v_WayBillOrdersInDet.Where(w=> w.WbillId ==_wbill_id).OrderBy(o=> o.Num).AsNoTracking().ToList();
+             wbd_list = _db.v_WayBillCustomerOrderDet.Where(w=> w.WbillId ==_wbill_id).OrderBy(o=> o.Num).AsNoTracking().ToList();
             if(disc_card != null)
             {
-                wbd_list.Add(new v_WayBillOrdersInDet { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
+                wbd_list.Add(new v_WayBillCustomerOrderDet { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
             }
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
@@ -426,7 +426,7 @@ namespace SP_Sklad.WBForm
 
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            var wb_list = _db.v_WayBillOrdersInDet.Where(w=> w.WbillId == _wbill_id).Where(w => w.Rsv != 1).ToList();
+            var wb_list = _db.v_WayBillCustomerOrderDet.Where(w=> w.WbillId == _wbill_id).Where(w => w.Rsv != 1).ToList();
             progressBarControl1.Visible = true;
             progressBarControl1.Properties.Maximum = wb_list.Count;
             foreach (var i in wb_list)
@@ -607,7 +607,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-           IHelper.MapProp(_db.v_WayBillOrdersInDet.Where(w=> w.WbillId ==  _wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
+           IHelper.MapProp(_db.v_WayBillCustomerOrderDet.Where(w=> w.WbillId ==  _wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
 
             is_update_record = true;
         }
@@ -734,7 +734,7 @@ namespace SP_Sklad.WBForm
         {
             for (int i = 0; WaybillDetOutGridView.RowCount > i; i++)
             {
-                var row = WaybillDetOutGridView.GetRow(i) as v_WayBillOrdersInDet;
+                var row = WaybillDetOutGridView.GetRow(i) as v_WayBillCustomerOrderDet;
                 if (row.PosType == 0)
                 {
                     var wbd = _db.WaybillDet.Find(row.PosId);
@@ -849,7 +849,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var wh_row = WaybillDetOutGridView.GetRow(e.RowHandle) as v_WayBillOrdersInDet;
+            var wh_row = WaybillDetOutGridView.GetRow(e.RowHandle) as v_WayBillCustomerOrderDet;
 
             if (wh_row != null && e.Column.FieldName == "Price")
             {

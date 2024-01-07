@@ -34,7 +34,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_WayBillOrdersIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillOrdersIn;
+        public v_WayBillCustomerOrder wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillCustomerOrder;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -184,7 +184,7 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillOrdersIn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillCustomerOrder.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -385,7 +385,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WayBillOrdersIn.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WayBillCustomerOrder.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                     break;
 
                 case 2:

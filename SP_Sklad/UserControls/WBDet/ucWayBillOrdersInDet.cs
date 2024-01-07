@@ -17,11 +17,11 @@ namespace SP_Sklad.UserControls
     public partial class ucWayBillOrdersInDet : DevExpress.XtraEditors.XtraUserControl
     {
         private int _wbill_id { get; set; }
-        private v_WayBillOrdersInDet wb_det_focused_row
+        private v_WayBillCustomerOrderDet wb_det_focused_row
         {
             get
             {
-                return WaybillDetGridView.GetFocusedRow() as v_WayBillOrdersInDet;
+                return WaybillDetGridView.GetFocusedRow() as v_WayBillCustomerOrderDet;
             }
         }
 
@@ -34,7 +34,7 @@ namespace SP_Sklad.UserControls
         {
             _wbill_id = wbill_id;
 
-            var list = new BaseEntities().v_WayBillOrdersInDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
+            var list = new BaseEntities().v_WayBillCustomerOrderDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
 
             gridColumn37.Caption = "Сума в валюті, " + list.FirstOrDefault()?.CurrName;
             gridControl2.DataSource = list;

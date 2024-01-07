@@ -12,7 +12,7 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_WayBillOrdersInDet
+    public partial class v_WayBillCustomerOrderDet
     {
         public int Num { get; set; }
         public Nullable<int> PosId { get; set; }

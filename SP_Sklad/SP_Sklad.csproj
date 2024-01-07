@@ -717,6 +717,12 @@
     <Compile Include="SkladData\v_WaybillCorrectionDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillCustomerOrder.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WayBillCustomerOrderDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WaybillDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -727,12 +733,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillMake.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\v_WayBillOrdersIn.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\v_WayBillOrdersInDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillOut.cs">

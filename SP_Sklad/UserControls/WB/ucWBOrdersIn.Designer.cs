@@ -225,7 +225,7 @@
             // 
             this.WayBillOutSource.AreSourceRowsThreadSafe = true;
             this.WayBillOutSource.DefaultSorting = "OnDate DESC";
-            this.WayBillOutSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillOrdersIn);
+            this.WayBillOutSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillCustomerOrder);
             this.WayBillOutSource.KeyExpression = "WbillId";
             this.WayBillOutSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
             this.WayBillOutSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);

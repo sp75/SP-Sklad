@@ -441,9 +441,9 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillOut" Width="1.5" PointX="3.375" PointY="21.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillIn" Width="1.5" PointX="11.375" PointY="22.75" />
         <EntityTypeShape EntityType="BaseModel.v_Invoices" Width="1.5" PointX="13.375" PointY="22.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WayBillOrdersInDet" Width="1.5" PointX="19.375" PointY="18.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillOutDet" Width="1.5" PointX="21.375" PointY="11.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WayBillOrdersIn" Width="1.5" PointX="21.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillCustomerOrder" Width="1.5" PointX="21.375" PointY="22.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillCustomerOrderDet" Width="1.5" PointX="22.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
