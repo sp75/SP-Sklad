@@ -1292,11 +1292,11 @@
     <Compile Include="UserControls\WB\ucActServicesProvidedIn.Designer.cs">
       <DependentUpon>ucActServicesProvidedIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WB\ucWBOrdersIn.cs">
+    <Compile Include="UserControls\WB\ucWayBillCustomerOrder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WB\ucWBOrdersIn.Designer.cs">
-      <DependentUpon>ucWBOrdersIn.cs</DependentUpon>
+    <Compile Include="UserControls\WB\ucWayBillCustomerOrder.Designer.cs">
+      <DependentUpon>ucWayBillCustomerOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WB\ucInvoices.cs">
       <SubType>UserControl</SubType>
@@ -1304,11 +1304,11 @@
     <Compile Include="UserControls\WB\ucInvoices.Designer.cs">
       <DependentUpon>ucInvoices.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WB\ucWBOrdersOut.cs">
+    <Compile Include="UserControls\WB\ucWayBillSupplierOrders.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WB\ucWBOrdersOut.Designer.cs">
-      <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
+    <Compile Include="UserControls\WB\ucWayBillSupplierOrders.Designer.cs">
+      <DependentUpon>ucWayBillSupplierOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WB\ucWaybillOut.cs">
       <SubType>UserControl</SubType>
@@ -2470,14 +2470,14 @@
     <EmbeddedResource Include="UserControls\WB\ucActServicesProvidedIn.resx">
       <DependentUpon>ucActServicesProvidedIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WB\ucWBOrdersIn.resx">
-      <DependentUpon>ucWBOrdersIn.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\WB\ucWayBillCustomerOrder.resx">
+      <DependentUpon>ucWayBillCustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucInvoices.resx">
       <DependentUpon>ucInvoices.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WB\ucWBOrdersOut.resx">
-      <DependentUpon>ucWBOrdersOut.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\WB\ucWayBillSupplierOrders.resx">
+      <DependentUpon>ucWayBillSupplierOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucWaybillOut.resx">
       <DependentUpon>ucWaybillOut.cs</DependentUpon>

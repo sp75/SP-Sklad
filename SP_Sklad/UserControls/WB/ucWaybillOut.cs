@@ -159,6 +159,10 @@ namespace SP_Sklad.UserControls
 
             GetData();
         }
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
+        }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
@@ -436,7 +440,7 @@ namespace SP_Sklad.UserControls
             PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
 
 
-            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
+            ChangeWaybillKagentBtnEdit.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
@@ -523,20 +527,7 @@ namespace SP_Sklad.UserControls
 
         private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frm = new frmKagents(-1, ""))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    var new_id = frm.focused_row?.KaId;
 
-                    if (new_id != null)
-                    {
-                        _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
-
-                        GetData();
-                    }
-                }
-            }
         }
 
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -577,6 +568,32 @@ namespace SP_Sklad.UserControls
             _db.SaveChanges();
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void ChangeWaybillKagentBtnEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 0)
+            {
+                using (var frm = new frmKagents(-1, ""))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var new_id = frm.focused_row?.KaId;
+
+                        if (new_id != null)
+                        {
+                            _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
+
+                            GetData();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }
