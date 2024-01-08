@@ -116,30 +116,26 @@ namespace SP_Sklad.UserControls
 
         public void ExecuteItem()
         {
-            using (var db =  new BaseEntities())
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            if (wbl == null)
             {
-                var wb = db.WaybillList.Find(wb_focused_row.WbillId);
-                if (wb == null)
-                {
-                    XtraMessageBox.Show(Resources.not_find_wb);
-                    return;
-                }
-                if (wb.SessionId != null)
-                {
-                    XtraMessageBox.Show(Resources.deadlock);
-                    return;
-                }
+                return;
+            }
 
-                if (wb.Checked == 1)
+            if (wbl.Checked == 0)
+            {
+                using (var f = new frmWayBillOut(-1, null))
                 {
-                    DBHelper.StornoOrder(db, wb_focused_row.WbillId);
-                }
-                else
-                {
-                    DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.is_new_record = true;
+                    f.ShowDialog();
                 }
             }
+
+            RefrechItemBtn.PerformClick();
         }
+
         public void PrintItem()
         {
             if (wb_focused_row == null)
@@ -148,6 +144,11 @@ namespace SP_Sklad.UserControls
             }
 
             PrintDoc.Show(wb_focused_row.Id, w_type, _db);
+        }
+
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
         }
 
         public void FindItem(Guid id, DateTime on_date)
@@ -357,8 +358,8 @@ namespace SP_Sklad.UserControls
             xtraTabControl2_SelectedPageChanged(null, null);
 
             ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || (wb_focused_row.Checked == 1 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 )));
+            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanPost == 1);
+            ExtEditBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanModify == 1);
             ExtCopyBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
             ExtPrintBtn.Enabled = (wb_focused_row != null);
         }
@@ -577,26 +578,9 @@ namespace SP_Sklad.UserControls
             RefrechItemBtn.PerformClick();
         }
 
-        private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
+        private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-            if (wbl == null)
-            {
-                return;
-            }
-
-            if (wbl.Checked == 0)
-            {
-                using (var f = new frmWayBillOut(-1, null))
-                {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
-                    f.doc_id = result.NewDocId;
-                    f.is_new_record = true;
-                    f.ShowDialog();
-                }
-            }
-
-            RefrechItemBtn.PerformClick();
+            ExportToExcel();
         }
     }
 }

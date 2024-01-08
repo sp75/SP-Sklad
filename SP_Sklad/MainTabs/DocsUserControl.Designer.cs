@@ -533,13 +533,13 @@
             this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
             this.wayBillInUserControl = new SP_Sklad.UserControls.ucWayBillIn();
             this.xtraTabPage35 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucWBOrdersOut = new SP_Sklad.UserControls.ucWBOrdersOut();
+            this.ucWBOrdersOut = new SP_Sklad.UserControls.ucWayBillSupplierOrders();
             this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillOut = new SP_Sklad.UserControls.ucWaybillOut();
             this.xtraTabPage37 = new DevExpress.XtraTab.XtraTabPage();
             this.ucInvoices = new SP_Sklad.UserControls.ucInvoices();
             this.xtraTabPage38 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucWBOrdersIn = new SP_Sklad.UserControls.ucWBOrdersIn();
+            this.ucWBOrdersIn = new SP_Sklad.UserControls.ucWayBillCustomerOrder();
             this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
             this.ucServicesIn = new SP_Sklad.UserControls.ucActServicesProvidedIn();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -3313,8 +3313,8 @@
             // 
             this.barButtonItem17.Caption = "Пошук документа";
             this.barButtonItem17.Id = 29;
-            this.barButtonItem17.ImageOptions.Image = global::SP_Sklad.Properties.Resources.findbyid_16x161;
-            this.barButtonItem17.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.findbyid_32x321;
+            this.barButtonItem17.ImageOptions.Image = global::SP_Sklad.Properties.Resources.findbyid_16x16;
+            this.barButtonItem17.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.findbyid_32x32;
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
             // 
@@ -7213,14 +7213,14 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
         public UserControls.ucWayBillIn wayBillInUserControl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage35;
-        public UserControls.ucWBOrdersOut ucWBOrdersOut;
+        public UserControls.ucWayBillSupplierOrders ucWBOrdersOut;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
         public UserControls.ucWaybillOut ucWaybillOut;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage37;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage38;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage39;
         public UserControls.ucInvoices ucInvoices;
-        public UserControls.ucWBOrdersIn ucWBOrdersIn;
+        public UserControls.ucWayBillCustomerOrder ucWBOrdersIn;
         public UserControls.ucActServicesProvidedIn ucServicesIn;
     }
 }

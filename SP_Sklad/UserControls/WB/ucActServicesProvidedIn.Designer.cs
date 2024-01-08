@@ -55,6 +55,7 @@
             this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -211,8 +212,9 @@
             this.NewPayDocBtn,
             this.ChangeWaybillKagentBtn,
             this.WbHistoryBtn,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 35;
+            this.barButtonItem1,
+            this.ExportToExcelBtn});
+            this.barManager1.MaxItemId = 36;
             // 
             // barDockControlTop
             // 
@@ -264,7 +266,7 @@
             this.imageCollection1.Images.SetKeyName(0, "new_document.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
-            this.imageCollection1.Images.SetKeyName(2, "additem.png");
+            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
             this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
             this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
@@ -377,6 +379,13 @@
             this.barButtonItem1.ImageOptions.ImageIndex = 16;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // ExportToExcelBtn
+            // 
+            this.ExportToExcelBtn.Caption = "Екпорт в Excel...";
+            this.ExportToExcelBtn.Id = 35;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
             // WBGridControl
             // 
@@ -924,7 +933,7 @@
             // row1
             // 
             this.row1.Name = "row1";
-            this.row1.Properties.Caption = "П.І.Б";
+            this.row1.Properties.Caption = "Назва";
             this.row1.Properties.FieldName = "KaName";
             // 
             // row3
@@ -1047,20 +1056,20 @@
             this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeWaybillKagentBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
             // 
-            // ucServicesIn
+            // ucActServicesProvidedIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1069,7 +1078,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucServicesIn";
+            this.Name = "ucActServicesProvidedIn";
             this.Size = new System.Drawing.Size(1375, 659);
             this.Load += new System.EventHandler(this.WayBillInUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
@@ -1198,5 +1207,6 @@
         private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
+        private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
     }
 }

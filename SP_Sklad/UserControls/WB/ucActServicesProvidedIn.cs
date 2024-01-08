@@ -159,6 +159,10 @@ namespace SP_Sklad.UserControls
 
             GetData();
         }
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
+        }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
@@ -558,6 +562,11 @@ namespace SP_Sklad.UserControls
             wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
             WbGridView.RestoreLayoutFromStream(wh_layout_stream);
+        }
+
+        private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }

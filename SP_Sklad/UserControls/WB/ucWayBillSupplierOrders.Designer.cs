@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.UserControls
 {
-    partial class ucWBOrdersOut
+    partial class ucWayBillSupplierOrders
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWBOrdersOut));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillSupplierOrders));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -54,7 +54,7 @@
             this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.ExecuteInBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -116,8 +116,8 @@
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
-            this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
+            this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -211,8 +211,8 @@
             this.NewPayDocBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
-            this.ExecuteInBtn});
-            this.barManager1.MaxItemId = 36;
+            this.ExportToExcelBtn});
+            this.barManager1.MaxItemId = 37;
             // 
             // barDockControlTop
             // 
@@ -264,7 +264,7 @@
             this.imageCollection1.Images.SetKeyName(0, "new_document.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
-            this.imageCollection1.Images.SetKeyName(2, "additem.png");
+            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
             this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
             this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
@@ -284,8 +284,8 @@
             this.imageCollection1.Images.SetKeyName(15, "converttorange_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "historyitem_16x161");
-            this.imageCollection1.Images.SetKeyName(17, "wb_in_16x16.png");
-            this.imageCollection1.Images.SetKeyName(18, "checked_blue.png");
+            this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
+            this.imageCollection1.Images.SetKeyName(18, "additem.png");
             // 
             // NewItemBtn
             // 
@@ -331,7 +331,7 @@
             // 
             // ExecuteItemBtn
             // 
-            this.ExecuteItemBtn.Caption = "Провести";
+            this.ExecuteItemBtn.Caption = "Отримати весь товар на склад";
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
             this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
@@ -370,13 +370,12 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            // ExecuteInBtn
+            // ExportToExcelBtn
             // 
-            this.ExecuteInBtn.Caption = "Отримати весь товар на склад";
-            this.ExecuteInBtn.Id = 35;
-            this.ExecuteInBtn.ImageOptions.ImageIndex = 17;
-            this.ExecuteInBtn.Name = "ExecuteInBtn";
-            this.ExecuteInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInBtn_ItemClick);
+            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
+            this.ExportToExcelBtn.Id = 36;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
             // WBGridControl
             // 
@@ -487,7 +486,7 @@
             this.CheckedItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 18)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 17)});
             this.CheckedItemImageComboBox.Name = "CheckedItemImageComboBox";
             this.CheckedItemImageComboBox.SmallImages = this.imageCollection1;
             // 
@@ -695,10 +694,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wbKagentList.Location = new System.Drawing.Point(554, 13);
             this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.wbKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.wbKagentList.Properties.DisplayMember = "Name";
@@ -1035,24 +1034,6 @@
             this.xtraTabPage24.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage24.Text = "Оплата по документу";
             // 
-            // WbListPopupMenu
-            // 
-            this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
-            this.WbListPopupMenu.Manager = this.barManager1;
-            this.WbListPopupMenu.Name = "WbListPopupMenu";
-            this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
             // ucDocumentPaymentGrid
             // 
             this.ucDocumentPaymentGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1061,7 +1042,25 @@
             this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 199);
             this.ucDocumentPaymentGrid.TabIndex = 0;
             // 
-            // ucWBOrdersOut
+            // WbListPopupMenu
+            // 
+            this.WbListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            this.WbListPopupMenu.Manager = this.barManager1;
+            this.WbListPopupMenu.Name = "WbListPopupMenu";
+            this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
+            // 
+            // ucWayBillSupplierOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1070,7 +1069,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucWBOrdersOut";
+            this.Name = "ucWayBillSupplierOrders";
             this.Size = new System.Drawing.Size(1375, 659);
             this.Load += new System.EventHandler(this.WayBillInUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
@@ -1197,7 +1196,7 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem ExecuteInBtn;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
+        private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
     }
 }
