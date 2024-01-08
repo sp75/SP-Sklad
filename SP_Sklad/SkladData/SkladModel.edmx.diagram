@@ -444,6 +444,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillOutDet" Width="1.5" PointX="21.375" PointY="11.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillCustomerOrder" Width="1.5" PointX="21.375" PointY="22.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillCustomerOrderDet" Width="1.5" PointX="22.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BaseModel.v_WayBillReturnСustomers" Width="1.5" PointX="5.375" PointY="23.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

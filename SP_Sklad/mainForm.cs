@@ -99,6 +99,7 @@ namespace SP_Sklad
             docsUserControl1.ucWBOrdersIn.SaveGridLayouts();
             docsUserControl1.ucInvoices.SaveGridLayouts();
             docsUserControl1.ucServicesIn.SaveGridLayouts();
+            docsUserControl1.ucWayBillReturnСustomers.SaveGridLayouts();
 
             docsUserControl1.SaveGridLayouts();
             whUserControl.SaveGridLayouts();

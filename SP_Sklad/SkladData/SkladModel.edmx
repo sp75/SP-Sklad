@@ -2592,7 +2592,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2785,7 +2785,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -4115,6 +4115,58 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOutDet' does not have a prima
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="numeric" Precision="32" Scale="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnСustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WayBillReturnСustomers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="SummPay" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="3" />
+          <Property Name="CurrRate" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="KaPhone" Type="nvarchar" MaxLength="64" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="255" />
+          <Property Name="City" Type="varchar" MaxLength="64" />
+          <Property Name="District" Type="varchar" MaxLength="64" />
+          <Property Name="Country" Type="varchar" MaxLength="64" />
+          <Property Name="PostIndex" Type="varchar" MaxLength="15" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="32" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" />
+          <Property Name="www" Type="nvarchar" MaxLength="64" />
+          <Property Name="KType" Type="int" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" />
+          <Property Name="KagentGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PTypeId" Type="int" />
+          <Property Name="PTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReportingDate" Type="datetime" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7477,7 +7529,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="UserId" Type="int" />
                 <Property Name="OriginatorId" Type="uniqueidentifier" />
                 <Property Name="FunName" Type="nvarchar" MaxLength="255" Nullable="false" />
-                <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
+                <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="DocType" Type="int" />
               </RowType>
@@ -10911,6 +10963,49 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillOutDet].[DiscountTotal] AS [DiscountTotal]
     FROM [dbo].[v_WayBillOutDet] AS [v_WayBillOutDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WayBillReturnСustomers" EntityType="Self.v_WayBillReturnСustomers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WayBillReturnСustomers].[Id] AS [Id], 
+    [v_WayBillReturnСustomers].[WbillId] AS [WbillId], 
+    [v_WayBillReturnСustomers].[Num] AS [Num], 
+    [v_WayBillReturnСustomers].[OnDate] AS [OnDate], 
+    [v_WayBillReturnСustomers].[Reason] AS [Reason], 
+    [v_WayBillReturnСustomers].[Checked] AS [Checked], 
+    [v_WayBillReturnСustomers].[SummAll] AS [SummAll], 
+    [v_WayBillReturnСustomers].[WType] AS [WType], 
+    [v_WayBillReturnСustomers].[Nds] AS [Nds], 
+    [v_WayBillReturnСustomers].[SummPay] AS [SummPay], 
+    [v_WayBillReturnСustomers].[Notes] AS [Notes], 
+    [v_WayBillReturnСustomers].[SummInCurr] AS [SummInCurr], 
+    [v_WayBillReturnСustomers].[Balans] AS [Balans], 
+    [v_WayBillReturnСustomers].[CurrName] AS [CurrName], 
+    [v_WayBillReturnСustomers].[CurrRate] AS [CurrRate], 
+    [v_WayBillReturnСustomers].[KaId] AS [KaId], 
+    [v_WayBillReturnСustomers].[KaFullName] AS [KaFullName], 
+    [v_WayBillReturnСustomers].[KaPhone] AS [KaPhone], 
+    [v_WayBillReturnСustomers].[PersonName] AS [PersonName], 
+    [v_WayBillReturnСustomers].[Address] AS [Address], 
+    [v_WayBillReturnСustomers].[City] AS [City], 
+    [v_WayBillReturnСustomers].[District] AS [District], 
+    [v_WayBillReturnСustomers].[Country] AS [Country], 
+    [v_WayBillReturnСustomers].[PostIndex] AS [PostIndex], 
+    [v_WayBillReturnСustomers].[Fax] AS [Fax], 
+    [v_WayBillReturnСustomers].[Email] AS [Email], 
+    [v_WayBillReturnСustomers].[www] AS [www], 
+    [v_WayBillReturnСustomers].[KType] AS [KType], 
+    [v_WayBillReturnСustomers].[EntId] AS [EntId], 
+    [v_WayBillReturnСustomers].[EntName] AS [EntName], 
+    [v_WayBillReturnСustomers].[KagentGroupName] AS [KagentGroupName], 
+    [v_WayBillReturnСustomers].[PTypeId] AS [PTypeId], 
+    [v_WayBillReturnСustomers].[PTypeName] AS [PTypeName], 
+    [v_WayBillReturnСustomers].[ReportingDate] AS [ReportingDate], 
+    [v_WayBillReturnСustomers].[UpdatedAt] AS [UpdatedAt], 
+    [v_WayBillReturnСustomers].[UpdatedUserName] AS [UpdatedUserName], 
+    [v_WayBillReturnСustomers].[WorkerId] AS [WorkerId], 
+    [v_WayBillReturnСustomers].[KaName] AS [KaName], 
+    [v_WayBillReturnСustomers].[DocTypeName] AS [DocTypeName]
+    FROM [dbo].[v_WayBillReturnСustomers] AS [v_WayBillReturnСustomers]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WaybillTemplateDet" EntityType="Self.v_WaybillTemplateDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WaybillTemplateDet].[Num] AS [Num], 
@@ -13592,6 +13687,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WayBillOutDet" EntityType="BaseModel.v_WayBillOutDet" />
           <EntitySet Name="v_WayBillCustomerOrder" EntityType="BaseModel.v_WayBillCustomerOrder" />
           <EntitySet Name="v_WayBillCustomerOrderDet" EntityType="BaseModel.v_WayBillCustomerOrderDet" />
+          <EntitySet Name="v_WayBillReturnСustomers" EntityType="BaseModel.v_WayBillReturnСustomers" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -18134,7 +18230,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -19235,7 +19331,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -22480,6 +22576,56 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AvgInPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="Decimal" Precision="32" Scale="8" />
           <Property Name="RemoteOrdered" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_WayBillReturnСustomers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="SummPay" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Balans" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="CurrName" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="CurrRate" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="KaFullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KaPhone" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="District" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="PostIndex" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="www" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="KType" Type="Int32" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="EntName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KagentGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PTypeId" Type="Int32" />
+          <Property Name="PTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -28492,6 +28638,51 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WayBillReturnСustomers">
+            <EntityTypeMapping TypeName="BaseModel.v_WayBillReturnСustomers">
+              <MappingFragment StoreEntitySet="v_WayBillReturnСustomers">
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
+                <ScalarProperty Name="PTypeName" ColumnName="PTypeName" />
+                <ScalarProperty Name="PTypeId" ColumnName="PTypeId" />
+                <ScalarProperty Name="KagentGroupName" ColumnName="KagentGroupName" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="KType" ColumnName="KType" />
+                <ScalarProperty Name="www" ColumnName="www" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="PostIndex" ColumnName="PostIndex" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="KaPhone" ColumnName="KaPhone" />
+                <ScalarProperty Name="KaFullName" ColumnName="KaFullName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="CurrRate" ColumnName="CurrRate" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

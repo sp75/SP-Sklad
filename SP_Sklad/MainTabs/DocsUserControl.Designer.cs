@@ -542,6 +542,8 @@
             this.ucWBOrdersIn = new SP_Sklad.UserControls.ucWayBillCustomerOrder();
             this.xtraTabPage39 = new DevExpress.XtraTab.XtraTabPage();
             this.ucServicesIn = new SP_Sklad.UserControls.ucActServicesProvidedIn();
+            this.xtraTabPage40 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWayBillReturnСustomers = new SP_Sklad.UserControls.ucWayBillReturnСustomers();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -799,6 +801,7 @@
             this.xtraTabPage37.SuspendLayout();
             this.xtraTabPage38.SuspendLayout();
             this.xtraTabPage39.SuspendLayout();
+            this.xtraTabPage40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -989,7 +992,8 @@
             this.xtraTabPage36,
             this.xtraTabPage37,
             this.xtraTabPage38,
-            this.xtraTabPage39});
+            this.xtraTabPage39,
+            this.xtraTabPage40});
             // 
             // xtraTabPage7
             // 
@@ -6319,6 +6323,26 @@
             this.ucServicesIn.Size = new System.Drawing.Size(1138, 695);
             this.ucServicesIn.TabIndex = 0;
             // 
+            // xtraTabPage40
+            // 
+            this.xtraTabPage40.Controls.Add(this.ucWayBillReturnСustomers);
+            this.xtraTabPage40.Name = "xtraTabPage40";
+            this.xtraTabPage40.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage40.Text = "Повернення від кліента";
+            // 
+            // ucWayBillReturnСustomers
+            // 
+            this.ucWayBillReturnСustomers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBillReturnСustomers.ExtCopyBtn = this.CopyItemBtn;
+            this.ucWayBillReturnСustomers.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucWayBillReturnСustomers.ExtEditBtn = this.EditItemBtn;
+            this.ucWayBillReturnСustomers.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucWayBillReturnСustomers.ExtPrintBtn = this.PrintItemBtn;
+            this.ucWayBillReturnСustomers.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBillReturnСustomers.Name = "ucWayBillReturnСustomers";
+            this.ucWayBillReturnСustomers.Size = new System.Drawing.Size(1138, 695);
+            this.ucWayBillReturnСustomers.TabIndex = 0;
+            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -6705,6 +6729,7 @@
             this.xtraTabPage37.ResumeLayout(false);
             this.xtraTabPage38.ResumeLayout(false);
             this.xtraTabPage39.ResumeLayout(false);
+            this.xtraTabPage40.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -7222,5 +7247,7 @@
         public UserControls.ucInvoices ucInvoices;
         public UserControls.ucWayBillCustomerOrder ucWBOrdersIn;
         public UserControls.ucActServicesProvidedIn ucServicesIn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage40;
+        public UserControls.ucWayBillReturnСustomers ucWayBillReturnСustomers;
     }
 }
