@@ -1400,7 +1400,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "new-product.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "receipt (2).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
@@ -1412,7 +1412,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "Типи рахунків.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(36, "Країни.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(37, "Статті витрат.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "cash-register.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "receipt_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "Користувачі.png");
@@ -1441,7 +1441,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "w_scale.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "receipt_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
@@ -1453,7 +1453,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;

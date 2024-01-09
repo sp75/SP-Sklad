@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUserControl));
-            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -692,10 +692,10 @@
             this.barCheckItem1.Caption = "Підсумки групи перемістити в рядок групи";
             this.barCheckItem1.Id = 55;
             this.barCheckItem1.Name = "barCheckItem1";
-            toolTipItem14.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem14.Text = resources.GetString("toolTipItem14.Text");
-            superToolTip14.Items.Add(toolTipItem14);
-            this.barCheckItem1.SuperTip = superToolTip14;
+            toolTipItem6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem6.Text = resources.GetString("toolTipItem6.Text");
+            superToolTip6.Items.Add(toolTipItem6);
+            this.barCheckItem1.SuperTip = superToolTip6;
             this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // standaloneBarDockControl25
@@ -1120,7 +1120,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "new-product.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "receipt (2).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
@@ -1132,7 +1132,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "Типи рахунків.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(36, "Країни.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(37, "Статті витрат.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "cash-register.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "receipt_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "Користувачі.png");
@@ -1161,7 +1161,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "w_scale.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "receipt_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
@@ -1173,7 +1173,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16x16.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;
