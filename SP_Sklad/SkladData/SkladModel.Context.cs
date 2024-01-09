@@ -255,6 +255,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WayBillCustomerOrder> v_WayBillCustomerOrder { get; set; }
         public DbSet<v_WayBillCustomerOrderDet> v_WayBillCustomerOrderDet { get; set; }
         public DbSet<v_WayBillReturnСustomers> v_WayBillReturnСustomers { get; set; }
+        public DbSet<v_WayBillReturnСustomerDet> v_WayBillReturnСustomerDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

@@ -741,6 +741,9 @@
     <Compile Include="SkladData\v_WayBillOutDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillReturnСustomerDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WayBillReturnСustomers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1270,6 +1273,12 @@
     </Compile>
     <Compile Include="UserControls\ucRelDocGrid.Designer.cs">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WBDet\ucWayBillReturnСustomerDet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WBDet\ucWayBillReturnСustomerDet.Designer.cs">
+      <DependentUpon>ucWayBillReturnСustomerDet.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WBDet\ucWayBillOrdersInDet.cs">
       <SubType>UserControl</SubType>
@@ -2466,6 +2475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WBDet\ucWayBillReturnСustomerDet.resx">
+      <DependentUpon>ucWayBillReturnСustomerDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WBDet\ucWayBillOrdersInDet.resx">
       <DependentUpon>ucWayBillOrdersInDet.cs</DependentUpon>
