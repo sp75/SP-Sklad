@@ -741,6 +741,9 @@
     <Compile Include="SkladData\v_WayBillOutDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillReturnSuppliers.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WayBillReturnСustomerDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1315,6 +1318,12 @@
     </Compile>
     <Compile Include="UserControls\WB\ucInvoices.Designer.cs">
       <DependentUpon>ucInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWaybillReturnSuppliers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\WB\ucWaybillReturnSuppliers.Designer.cs">
+      <DependentUpon>ucWaybillReturnSuppliers.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\WB\ucWayBillReturnСustomers.cs">
       <SubType>UserControl</SubType>
@@ -2497,6 +2506,9 @@
     <EmbeddedResource Include="UserControls\WB\ucInvoices.resx">
       <DependentUpon>ucInvoices.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\WB\ucWaybillReturnSuppliers.resx">
+      <DependentUpon>ucWaybillReturnSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\WB\ucWayBillReturnСustomers.resx">
       <DependentUpon>ucWayBillReturnСustomers.cs</DependentUpon>
     </EmbeddedResource>
@@ -3254,6 +3266,7 @@
     <None Include="Resources\snapmodifytablecellstyle_16x16.png" />
     <None Include="Resources\waybill%28-1%29_4.png" />
     <None Include="Resources\waybill_out.png" />
+    <None Include="Resources\createmodeldifferences_32x32.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

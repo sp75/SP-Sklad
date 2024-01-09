@@ -254,6 +254,10 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.SelectedTabPageIndex = 20;
             }
+            else if (focused_tree_node.FunId == 43) //Повернення постачальнику
+            {
+                wbContentTab.SelectedTabPageIndex = 21;
+            }
             else
             {
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
@@ -322,11 +326,7 @@ namespace SP_Sklad.MainTabs
 
                     if (cur_wtype == -6) //Повернення постачальнику
                     {
-                        using (var wb_re_out = new frmWBReturnOut(null))
-                        {
-                            wb_re_out.ShowDialog();
-                        }
-
+                        ucWaybillReturnSuppliers.NewItem();
                     }
 
                     if (cur_wtype == 29)  //Акти наданих послуг
@@ -440,6 +440,10 @@ namespace SP_Sklad.MainTabs
                         {
                             ucWayBillReturnСustomers.EditItem();
                         }
+                        else if(focused_tree_node.WType == -6)
+                        {
+                            ucWaybillReturnSuppliers.EditItem();
+                        }
                         else
                         {
                             DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
@@ -536,9 +540,13 @@ namespace SP_Sklad.MainTabs
             {
                 ucServicesIn.DeleteItem();
             }
-            else if(focused_tree_node.WType == 6)
+            else if (focused_tree_node.WType == 6)
             {
                 ucWayBillReturnСustomers.DeleteItem();
+            }
+            else if (focused_tree_node.WType == -6)
+            {
+                ucWaybillReturnSuppliers.DeleteItem();
             }
             else
             {
@@ -699,6 +707,10 @@ namespace SP_Sklad.MainTabs
                     {
                         ucWayBillReturnСustomers.GetData();
                     }
+                    else if (focused_tree_node.WType == -6)
+                    {
+                        ucWaybillReturnSuppliers.GetData();
+                    }
                     else if (focused_tree_node.WType == null)
                     {
                         GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
@@ -807,6 +819,11 @@ namespace SP_Sklad.MainTabs
                         {
                             ucWayBillReturnСustomers.ExecuteItem();
                         }
+                        else if (focused_tree_node.WType == -6)
+                        {
+                            ucWaybillReturnSuppliers.ExecuteItem();
+                        }
+
                         else
                         {
                             var wb = db.WaybillList.Find(wb_focused_row.WbillId);
@@ -1046,6 +1063,11 @@ namespace SP_Sklad.MainTabs
                     {
                         doc_id = ucWayBillReturnСustomers.wb_focused_row?.Id;
                     }
+                    else if (focused_tree_node.WType == -6)
+                    {
+                        doc_id = ucWaybillReturnSuppliers.wb_focused_row?.Id;
+                    }
+
                     else
                     {
                         doc_id = wb_focused_row?.Id;
@@ -1140,7 +1162,10 @@ namespace SP_Sklad.MainTabs
             {
                 ucWayBillReturnСustomers.CopyItem();
             }
-
+            else if (cur_wtype == -6) //Повернення постачальнику
+            {
+                ucWaybillReturnSuppliers.CopyItem();
+            }
             else
             {
                 using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
@@ -1175,13 +1200,13 @@ namespace SP_Sklad.MainTabs
                                    }
                                }*/
 
-                   /*     if (cur_wtype == 6) // Повернення від клієнта
-                        {
-                            using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
-                            {
-                                wb_re_in.ShowDialog();
-                            }
-                        }*/
+                        /*     if (cur_wtype == 6) // Повернення від клієнта
+                             {
+                                 using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
+                                 {
+                                     wb_re_in.ShowDialog();
+                                 }
+                             }*/
                         break;
 
                     case 4:

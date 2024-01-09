@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUserControl));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip14 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipItem toolTipItem14 = new DevExpress.Utils.ToolTipItem();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -692,10 +692,10 @@
             this.barCheckItem1.Caption = "Підсумки групи перемістити в рядок групи";
             this.barCheckItem1.Id = 55;
             this.barCheckItem1.Name = "barCheckItem1";
-            toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipItem1.Text = resources.GetString("toolTipItem1.Text");
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barCheckItem1.SuperTip = superToolTip1;
+            toolTipItem14.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipItem14.Text = resources.GetString("toolTipItem14.Text");
+            superToolTip14.Items.Add(toolTipItem14);
+            this.barCheckItem1.SuperTip = superToolTip14;
             this.barCheckItem1.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
             // 
             // standaloneBarDockControl25
@@ -1103,26 +1103,26 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "pay_doc(-1).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "pay_doc(-1)_3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "Возврат Поставщику.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "Возврат от клиетна.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "Заказ от клиента.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "Заказ поставщикам.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "wb_return_out.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "wb_return_in.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "Склади.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "warehouse.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "Накладні переміщення.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "Акти iнвентаризацiї.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "new-product.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "korganizer.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "receipt (2).png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "Дисконтна картка.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "Склади.png");
@@ -1132,7 +1132,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "Типи рахунків.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(36, "Країни.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(37, "Статті витрат.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "Каси.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "cash-register.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "Користувачі.png");
@@ -1159,10 +1159,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit adjustment.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "tara.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weighing-scale.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "free-icon-payment-terminal-3777466.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "w_scale.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "receipt_2.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "purchasing (8).png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.datasource_16x16, "datasource_16x16", typeof(global::SP_Sklad.Properties.Resources), 71);
