@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.UserControls
 {
-    partial class SettingMaterialPricesUserControl
+    partial class ucSettingMaterialPrices
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingMaterialPricesUserControl));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSettingMaterialPrices));
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);

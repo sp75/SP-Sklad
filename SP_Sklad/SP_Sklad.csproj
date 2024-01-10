@@ -1247,11 +1247,17 @@
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ExpeditionUserControl.cs">
+    <Compile Include="UserControls\ucKAgentAdjustment.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ExpeditionUserControl.Designer.cs">
-      <DependentUpon>ExpeditionUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\ucKAgentAdjustment.Designer.cs">
+      <DependentUpon>ucKAgentAdjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucExpedition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucExpedition.Designer.cs">
+      <DependentUpon>ucExpedition.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\NumKeyboardUserControl.cs">
       <SubType>UserControl</SubType>
@@ -1259,11 +1265,11 @@
     <Compile Include="UserControls\NumKeyboardUserControl.Designer.cs">
       <DependentUpon>NumKeyboardUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\SettingMaterialPricesUserControl.cs">
+    <Compile Include="UserControls\ucSettingMaterialPrices.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\SettingMaterialPricesUserControl.Designer.cs">
-      <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\ucSettingMaterialPrices.Designer.cs">
+      <DependentUpon>ucSettingMaterialPrices.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucDocumentPaymentGrid.cs">
       <SubType>UserControl</SubType>
@@ -2482,14 +2488,17 @@
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ExpeditionUserControl.resx">
-      <DependentUpon>ExpeditionUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucKAgentAdjustment.resx">
+      <DependentUpon>ucKAgentAdjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucExpedition.resx">
+      <DependentUpon>ucExpedition.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NumKeyboardUserControl.resx">
       <DependentUpon>NumKeyboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\SettingMaterialPricesUserControl.resx">
-      <DependentUpon>SettingMaterialPricesUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucSettingMaterialPrices.resx">
+      <DependentUpon>ucSettingMaterialPrices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucDocumentPaymentGrid.resx">
       <DependentUpon>ucDocumentPaymentGrid.cs</DependentUpon>

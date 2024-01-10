@@ -18,7 +18,7 @@ using DevExpress.XtraEditors;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class SettingMaterialPricesUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucSettingMaterialPrices : DevExpress.XtraEditors.XtraUserControl
     {
         BaseEntities _db { get; set; }
         public BarButtonItem EditBtn { get; set; }
@@ -34,7 +34,7 @@ namespace SP_Sklad.UserControls
 
         int row = 0;
         bool restore = false;
-        public SettingMaterialPricesUserControl()
+        public ucSettingMaterialPrices()
         {
             InitializeComponent();
         }

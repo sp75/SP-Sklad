@@ -18,7 +18,7 @@ using SP_Sklad.Properties;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ExpeditionUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucExpedition : DevExpress.XtraEditors.XtraUserControl
     {
         BaseEntities _db { get; set; }
         public BarButtonItem EditBtn { get; set; }
@@ -35,7 +35,7 @@ namespace SP_Sklad.UserControls
         private Guid prev_focused_id = Guid.Empty;
         public Guid? find_id;
         bool restore = false;
-        public ExpeditionUserControl()
+        public ucExpedition()
         {
             InitializeComponent();
         }

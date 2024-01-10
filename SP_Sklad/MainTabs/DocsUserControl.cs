@@ -597,7 +597,7 @@ namespace SP_Sklad.MainTabs
                                     }
                                     else
                                     {
-                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", adj.Num));
                                     }
                                     break;
 
