@@ -64,9 +64,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private v_BankStatements bank_statements_row => BankStatementsGridView.GetFocusedRow() as v_BankStatements;
-        private v_ProjectManagement project_management_row => ProjectManagementGridView.GetFocusedRow() as v_ProjectManagement;
-
         public DocsUserControl()
         {
             InitializeComponent();
@@ -93,12 +90,6 @@ namespace SP_Sklad.MainTabs
                 kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 kaaStatusList.EditValue = -1;
 
-                lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                lookUpEdit2.EditValue = -1;
-
-                lookUpEdit3.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                lookUpEdit3.EditValue = -1;
-
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
@@ -108,11 +99,6 @@ namespace SP_Sklad.MainTabs
                 kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
                 kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                BSStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
-                BSEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                ProjectManagementStartDateEdit.EditValue = null;// DateTime.Now.Date.FirstDayOfMonth();
-                ProjectManagementEndDateEdit.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -224,7 +210,8 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = false;
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
-            RefrechItemBtn.PerformClick();
+
+               RefrechItemBtn.PerformClick();
 
             if (focused_tree_node.FunId == 21) //Прибуткова накладна
             {
@@ -276,6 +263,8 @@ namespace SP_Sklad.MainTabs
                     Settings.Default.LastFunId = focused_tree_node.FunId.Value;
                 }
             }
+
+   
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
@@ -380,11 +369,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 10:
-                    new frmBankStatements().ShowDialog();
+                    ucBankStatements.NewItem();
                     break;
 
                 case 11:
-                    new frmProjectManagement().ShowDialog();
+                    ucProjectManagement.NewItem();
                     break;
 
                 case 12:
@@ -472,17 +461,11 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 10:
-                        using (var bs_frm = new frmBankStatements(bank_statements_row.Id))
-                        {
-                            bs_frm.ShowDialog();
-                        }
+                        ucBankStatements.EditItem();
                         break;
 
                     case 11:
-                        using (var bs_frm = new frmProjectManagement(project_management_row.Id))
-                        {
-                            bs_frm.ShowDialog();
-                        }
+                        ucProjectManagement.EditItem();
                         break;
 
                     case 12:
@@ -619,17 +602,11 @@ namespace SP_Sklad.MainTabs
                                     break;
 
                                 case 10:
+                                    ucBankStatements.DeleteItem();
+                                    break;
 
-                                    var bs = db.BankStatements.Find(bank_statements_row.Id);
-
-                                    if (bs != null)
-                                    {
-                                        db.BankStatements.Remove(bs);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", bank_statements_row.Num));
-                                    }
+                                case 11:
+                                    ucProjectManagement.DeleteItem();
                                     break;
 
                                 case 12:
@@ -751,20 +728,12 @@ namespace SP_Sklad.MainTabs
 
                 case 10:
 
-                    int rIndex = BankStatementsGridView.GetVisibleIndex(BankStatementsGridView.FocusedRowHandle);
-                    BankStatementsSource.QueryableSource = new BaseEntities().v_BankStatements.AsNoTracking().Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && ((int)lookUpEdit2.EditValue == -1 || w.Checked == (int)lookUpEdit2.EditValue));
-                    BankStatementsGridView.TopRowIndex = rIndex;
-
-                    BankStatementsGridView_FocusedRowObjectChanged(sender, null);
+                    ucBankStatements.GetData();
                     break;
 
                 case 11:
 
-                    int rIndex2 = ProjectManagementGridView.GetVisibleIndex(ProjectManagementGridView.FocusedRowHandle);
-                    ProjectManagementSource.QueryableSource = new BaseEntities().v_ProjectManagement.AsNoTracking().Where(w => w.OnDate >= ProjectManagementStartDateEdit.DateTime && w.OnDate < ProjectManagementEndDateEdit.DateTime && ((int)lookUpEdit3.EditValue == -1 || w.Checked == (int)lookUpEdit3.EditValue));
-                    ProjectManagementGridView.TopRowIndex = rIndex2;
-
-                    ProjectManagementGridView_FocusedRowObjectChanged(sender, null);
+                    ucProjectManagement.GetData();
                     break;
 
                 case 12:
@@ -905,118 +874,20 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
 
+                    case 10:
+                        ucBankStatements.ExecuteItem();
+                        break;
+
                     case 11:
-
-                        if (project_management_row == null)
-                        {
-                            return;
-                        }
-
-                        var pm = db.ProjectManagement.Find(project_management_row.Id);
-
-                        if (pm == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (pm.SessionId != null)
-                        {
-                            XtraMessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-                        var rel = db.GetRelDocList(project_management_row.Id).OrderBy(o => o.OnDate).ToList();
-                        if (rel.Any())
-                        {
-                            XtraMessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
-
-                        if (pm.Checked == 1)
-                        {
-                            pm.Checked = 0;
-                        }
-
-                        db.SaveChanges();
+                        ucProjectManagement.ExecuteItem();
                         break;
 
                     case 12:
-                        if (settingMaterialPricesUserControl1.row_smp.Id == null)
-                        {
-                            return;
-                        }
-
-                        var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
-
-                        if (smp == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (smp.SessionId != null)
-                        {
-                            MessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-
-                        if (smp.OnDate.Date < DBHelper.ServerDateTime().Date)
-                        {
-                            XtraMessageBox.Show("Проводити та сторнувати цей документ заборонено", "Провести документ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
-
-                        if (smp.Checked == 1)
-                        {
-                            smp.Checked = 0;
-                        }
-                        else
-                        {
-                            smp.Checked = 1;
-                        }
-
-                        db.SaveChanges();
+                        settingMaterialPricesUserControl1.ExecuteItem();
                         break;
 
-
                     case 13:
-                        if (expeditionUserControl1.row_exp == null)
-                        {
-                            return;
-                        }
-
-                        var exp = db.Expedition.Find(expeditionUserControl1.row_exp?.Id);
-
-                        if (exp == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (exp.SessionId != null)
-                        {
-                            MessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-                        if (exp.Checked == 1)
-                        {
-                            exp.Checked = 0;
-                        }
-                        else
-                        {
-                            exp.Checked = 1;
-
-                            foreach (var item in db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
-                            {
-                                if (item.RouteId.HasValue && item.Checked == 1)
-                                {
-                                    var exp_wb = db.WaybillList.Find(item.WbillId);
-                                    exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
-                                }
-                            }
-                        }
-
-                        db.SaveChanges();
+                        expeditionUserControl1.ExecuteItem();
                         break;
                 }
             }
@@ -1067,7 +938,6 @@ namespace SP_Sklad.MainTabs
                     {
                         doc_id = ucWaybillReturnSuppliers.wb_focused_row?.Id;
                     }
-
                     else
                     {
                         doc_id = wb_focused_row?.Id;
@@ -1079,31 +949,7 @@ namespace SP_Sklad.MainTabs
                         return;
                     }
 
-
-                    /*  if (dr.WType == -1)
-                      {
-                          var print = new SP.Reports.PrintDoc();
-                          var template_name = print.GetWBTemlate(dr.WType);
-
-                          var template_file = Path.Combine(IHelper.template_path, template_name);
-                          if (File.Exists(template_file))
-                          {
-
-                              var rep = print.CreateReport(dr.Id, dr.WType, template_file);
-
-                              String result_file = Path.Combine(Path.Combine(Application.StartupPath, "Rep"), Path.GetFileNameWithoutExtension(template_name) + "_" + DateTime.Now.Ticks.ToString() + "." + "xlsx");
-                              File.WriteAllBytes(result_file, rep);
-
-                              if (File.Exists(result_file))
-                              {
-                                  Process.Start(result_file);
-                              }
-                          }
-                      }
-                      else*/
-                    //     {
                     PrintDoc.Show(doc_id.Value, focused_tree_node.WType.Value, _db);
-                    //    }
                     break;
 
                 case 4:
@@ -1324,15 +1170,7 @@ namespace SP_Sklad.MainTabs
           
         }
 
-        private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                BottomPopupMenu.ShowPopup(p2);
-            }
-        }
-
+  
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
 
@@ -1807,59 +1645,9 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void BankStatementsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var dr = bank_statements_row;
-
-            xtraTabControl6_SelectedPageChanged(sender, null);
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
-            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            PrintItemBtn.Enabled = (dr != null);
-        }
-
-        private void xtraTabControl6_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (bank_statements_row == null)
-            {
-                BankStatementsDetGridControl.DataSource = null;
-                ucRelDocGrid5.GetRelDoc(Guid.Empty);
-
-
-                return;
-            }
-
-            switch (xtraTabControl6.SelectedTabPageIndex)
-            {
-                case 0:
-
-                    BankStatementsDetGridControl.DataSource = _db.v_BankStatementsDet.AsNoTracking().Where(w => w.BankStatementId == bank_statements_row.Id).ToList();
-                    break;
-
-                //     case 1:
-                //      WayBillListInfoBS.DataSource = dr;
-                //       break;
-
-                case 2:
-                    ucRelDocGrid5.GetRelDoc(bank_statements_row.Id);
-                    break;
-            }
-        }
-
         private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
         {
             if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
-        }
-
-        private void gridView10_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                BottomPopupMenu.ShowPopup(p2);
-            }
         }
 
         private void wbStartDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -1918,44 +1706,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void ProjectManagementGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var dr = project_management_row;
-
-            xtraTabControl7_SelectedPageChanged(sender, null);
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
-            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            PrintItemBtn.Enabled = (dr != null);
-        }
-
-        private void xtraTabControl7_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (project_management_row == null)
-            {
-                ProjectManagementDetGridControl.DataSource = null;
-                ucRelDocGrid6.GetRelDoc(Guid.Empty);
-                return;
-            }
-
-            switch (xtraTabControl7.SelectedTabPageIndex)
-            {
-                case 0:
-                    ProjectManagementDetGridControl.DataSource = _db.v_ProjectManagementDet.Where(w => w.ProjectManagementId == project_management_row.Id).OrderBy(o => o.Num).ToList();
-                    break;
-
-                case 2:
-                    ucRelDocGrid6.GetRelDoc(project_management_row.Id);
-                    break;
-            }
-        }
-
-        private void ProjectManagementGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
-        }
 
         private void WbGridView_ColumnFilterChanged(object sender, EventArgs e)
         {

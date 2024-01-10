@@ -14,6 +14,7 @@ using SP_Sklad.WBForm;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using DevExpress.XtraGrid;
+using SP_Sklad.Properties;
 
 namespace SP_Sklad.UserControls
 {
@@ -68,12 +69,53 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        public void ExecuteItem()
+        {
+            if (row_exp == null)
+            {
+                return;
+            }
+
+            var exp = _db.Expedition.Find(row_exp?.Id);
+
+            if (exp == null)
+            {
+                MessageBox.Show(Resources.not_find_wb);
+                return;
+            }
+            if (exp.SessionId != null)
+            {
+                MessageBox.Show(Resources.deadlock);
+                return;
+            }
+
+            if (exp.Checked == 1)
+            {
+                exp.Checked = 0;
+            }
+            else
+            {
+                exp.Checked = 1;
+
+                foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+                {
+                    if (item.RouteId.HasValue && item.Checked == 1)
+                    {
+                        var exp_wb = _db.WaybillList.Find(item.WbillId);
+                        exp_wb.ShipmentDate = exp.OnDate.AddTicks(item.RouteDuration ?? 0);
+                    }
+                }
+            }
+
+            _db.SaveChanges();
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
             ExecuteBtn.Enabled = (row_exp != null && user_access.CanPost == 1);
             EditBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanModify == 1);
-            CopyBtn.Enabled = (row_exp != null && user_access.CanModify == 1); 
+            CopyBtn.Enabled = (row_exp != null && user_access.CanModify == 1);
             PrintBtn.Enabled = (row_exp != null);
 
             GetDetailData();

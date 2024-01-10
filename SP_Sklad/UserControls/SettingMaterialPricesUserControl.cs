@@ -13,6 +13,8 @@ using SP_Sklad.Common;
 using SP_Sklad.WBForm;
 using DevExpress.Data;
 using SP_Sklad.ViewsForm;
+using SP_Sklad.Properties;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.UserControls
 {
@@ -56,12 +58,51 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        public void ExecuteItem()
+        {
+            if (row_smp.Id == null)
+            {
+                return;
+            }
+
+            var smp = _db.SettingMaterialPrices.Find(row_smp.Id);
+
+            if (smp == null)
+            {
+                MessageBox.Show(Resources.not_find_wb);
+                return;
+            }
+            if (smp.SessionId != null)
+            {
+                MessageBox.Show(Resources.deadlock);
+                return;
+            }
+
+
+            if (smp.OnDate.Date < DBHelper.ServerDateTime().Date)
+            {
+                XtraMessageBox.Show("Проводити та сторнувати цей документ заборонено", "Провести документ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (smp.Checked == 1)
+            {
+                smp.Checked = 0;
+            }
+            else
+            {
+                smp.Checked = 1;
+            }
+
+            _db.SaveChanges();
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
             ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
             EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
-            CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1); 
+            CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
             PrintBtn.Enabled = (row_smp != null);
 
             GetDetailData();

@@ -1271,6 +1271,18 @@
     <Compile Include="UserControls\ucDocumentPaymentGrid.Designer.cs">
       <DependentUpon>ucDocumentPaymentGrid.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucBankStatements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucBankStatements.Designer.cs">
+      <DependentUpon>ucBankStatements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucProjectManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucProjectManagement.Designer.cs">
+      <DependentUpon>ucProjectManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucRelDocGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2481,6 +2493,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucDocumentPaymentGrid.resx">
       <DependentUpon>ucDocumentPaymentGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucBankStatements.resx">
+      <DependentUpon>ucBankStatements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucProjectManagement.resx">
+      <DependentUpon>ucProjectManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucRelDocGrid.resx">
       <DependentUpon>ucRelDocGrid.cs</DependentUpon>

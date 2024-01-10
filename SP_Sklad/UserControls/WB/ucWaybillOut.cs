@@ -164,11 +164,6 @@ namespace SP_Sklad.UserControls
             IHelper.ExportToXlsx(WBGridControl);
         }
 
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-            GetData();
-        }
-
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
             if (wbStatusList.EditValue == null || wbKagentList.EditValue == null )
@@ -226,6 +221,8 @@ namespace SP_Sklad.UserControls
                 repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
 
                 gridColumn111.Caption = $"К-сть всього, {DBHelper.MeasuresList?.FirstOrDefault(w => w.Def == 1)?.ShortName}";
+
+                GetData();
             }
         }
 
@@ -523,11 +520,6 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
-        }
-
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
         }
 
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
