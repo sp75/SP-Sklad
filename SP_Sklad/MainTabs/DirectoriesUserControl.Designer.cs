@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -612,7 +612,7 @@
             this.GridImageList.Images.SetKeyName(0, "Товари.png");
             this.GridImageList.Images.SetKeyName(1, "Конрагент.png");
             this.GridImageList.Images.SetKeyName(2, "юзер.png");
-            this.GridImageList.Images.SetKeyName(3, "store-2017.png");
+            this.GridImageList.Images.SetKeyName(3, "store_16.png");
             this.GridImageList.Images.SetKeyName(4, "Послуги.png");
             // 
             // repositoryItemImageComboBox2
@@ -1327,7 +1327,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "receipt (2).png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "korganizer.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "Дисконтна картка.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "Склади.png");
@@ -1365,7 +1365,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "w_scale.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
@@ -1377,7 +1377,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store-2017.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
@@ -2872,9 +2872,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3926,9 +3926,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode2});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";

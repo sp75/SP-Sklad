@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillOutDet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillOrdersInDet));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -166,7 +166,7 @@
             this.imageCollection1.Images.SetKeyName(6, "edit.png");
             this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
             this.imageCollection1.Images.SetKeyName(8, "Зарезервовано.bmp");
-            this.imageCollection1.Images.SetKeyName(9, "store-2017.png");
+            this.imageCollection1.Images.SetKeyName(9, "store_16.png");
             // 
             // EditItemBtn
             // 
@@ -476,7 +476,7 @@
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.imageCollection1;
             // 
-            // ucWayBillOutDet
+            // ucWayBillOrdersInDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -487,7 +487,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucWayBillOutDet";
+            this.Name = "ucWayBillOrdersInDet";
             this.Size = new System.Drawing.Size(1185, 287);
             this.Load += new System.EventHandler(this.WayBillInDetUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
