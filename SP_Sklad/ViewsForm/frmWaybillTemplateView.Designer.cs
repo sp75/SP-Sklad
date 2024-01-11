@@ -31,7 +31,7 @@
             this.BottomPanel = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
+            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.ucWaybillTemplate();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +98,6 @@
         private DevExpress.XtraEditors.PanelControl BottomPanel;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         public DevExpress.XtraEditors.SimpleButton OkButton;
-        public UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
+        public UserControls.ucWaybillTemplate waybillTemplateUserControl1;
     }
 }

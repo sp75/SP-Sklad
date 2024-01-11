@@ -15,11 +15,15 @@ using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using DevExpress.XtraGrid;
 using SP_Sklad.Properties;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.UserControls
 {
     public partial class ucExpedition : DevExpress.XtraEditors.XtraUserControl
     {
+        private int fun_id = 103;
+        private string reg_layout_path = "ucExpedition\\ExpeditionsGridView";
+
         BaseEntities _db { get; set; }
         public BarButtonItem EditBtn { get; set; }
         public BarButtonItem DeleteBtn { get; set; }
@@ -69,6 +73,24 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        public void EditItem()
+        {
+            using (var ex_frm = new frmExpedition(row_exp.Id))
+            {
+                ex_frm.ShowDialog();
+            }
+        }
+
+        public void DeleteItem()
+        {
+            var exp = _db.Expedition.Find(row_exp.Id);
+            if (exp != null)
+            {
+                _db.Expedition.Remove(exp);
+                _db.SaveChanges();
+            }
+        }
+
         public void ExecuteItem()
         {
             if (row_exp == null)
@@ -110,6 +132,11 @@ namespace SP_Sklad.UserControls
             _db.SaveChanges();
         }
 
+        public void PrintItem()
+        {
+            PrintDoc.ExpeditionReport(row_exp.Id, _db);
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
@@ -143,13 +170,21 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void SettingMaterialPricesUserControl_Load(object sender, EventArgs e)
         {
+            ExpeditionsGridView.SaveLayoutToStream(wh_layout_stream);
+            ExpeditionsGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 103 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
+        }
+        public void SaveGridLayouts()
+        {
+            ExpeditionsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
@@ -211,7 +246,7 @@ namespace SP_Sklad.UserControls
 
         private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PrintBtn.PerformClick();
+            PrintItem();
         }
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)

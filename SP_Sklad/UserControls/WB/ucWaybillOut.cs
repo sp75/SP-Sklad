@@ -26,6 +26,8 @@ namespace SP_Sklad.UserControls
     public partial class ucWaybillOut : DevExpress.XtraEditors.XtraUserControl
     {
         int w_type = -1;
+        private int fun_id = 23;
+        private string reg_layout_path = "ucWaybillOut\\WbInGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -188,12 +190,12 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucWaybillOut\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 21 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
@@ -350,7 +352,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWaybillOut\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SetWBEditorBarBtn()

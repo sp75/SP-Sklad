@@ -19,9 +19,10 @@ namespace SP_Sklad.WBForm
 {
     public partial class frmKAgentAdjustment : DevExpress.XtraEditors.XtraForm
     {
+        private int _wtype { get; set; }
         public BaseEntities _db { get; set; }
         public Guid? _doc_id { get; set; }
-        private KAgentAdjustment pp { get; set; }
+        private KAgentAdjustment kaa { get; set; }
         public bool is_new_record { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
@@ -33,8 +34,9 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        public frmKAgentAdjustment(Guid? doc_id = null)
+        public frmKAgentAdjustment(int wtype, Guid? doc_id = null)
         {
+            _wtype = wtype;
             is_new_record = false;
             _doc_id = doc_id;
             _db = new BaseEntities();
@@ -50,12 +52,12 @@ namespace SP_Sklad.WBForm
             OperationTypeEdit.Properties.DataSource = _db.OperationTypes.Select(s => new { s.Id, s.Name }).ToList();
             WriteOffTypesEdit.Properties.DataSource = _db.WriteOffTypes.Select(s => new { s.Id, s.Name }).ToList();
 
-
             if (_doc_id == null)
             {
                 is_new_record = true;
+            //    WriteOffTypesEdit.EditValue = _wtype == 23 ? 1 : 2;
 
-                pp = _db.KAgentAdjustment.Add(new KAgentAdjustment
+                kaa = _db.KAgentAdjustment.Add(new KAgentAdjustment
                 {
                     Id = Guid.NewGuid(),
                     Checked = 0,
@@ -64,33 +66,36 @@ namespace SP_Sklad.WBForm
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     OperationType = _db.OperationTypes.FirstOrDefault().Id,
-                    WriteOffType = _db.WriteOffTypes.FirstOrDefault().Id,
+                    WriteOffType = _wtype == 23 ? 1 : 2,
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
-                    Deleted = 0
+                    Deleted = 0,
+                    WType = _wtype
                 });
+
+               
 
                 _db.SaveChanges();
             }
             else
             {
-                pp = _db.KAgentAdjustment.FirstOrDefault(f => f.Id == _doc_id);
+                kaa = _db.KAgentAdjustment.FirstOrDefault(f => f.Id == _doc_id);
             }
 
-            if (pp != null)
+            if (kaa != null)
             {
-                _doc_id = pp.Id;
+                _doc_id = kaa.Id;
 
-                pp.SessionId = (Guid?)UserSession.SessionId;
-                pp.UpdatedBy = UserSession.UserId;
-                pp.UpdatedAt = DateTime.Now;
+                kaa.SessionId = (Guid?)UserSession.SessionId;
+                kaa.UpdatedBy = UserSession.UserId;
+                kaa.UpdatedAt = DateTime.Now;
                 _db.SaveChanges();
 
                 if (is_new_record)
                 {
-                    pp.Num = new BaseEntities().GetDocNum("writing_off_debt").FirstOrDefault();
+                    kaa.Num = new BaseEntities().GetDocNum("writing_off_debt").FirstOrDefault();
                 }
-                KAgentAdjustmentBS.DataSource = pp;
+                KAgentAdjustmentBS.DataSource = kaa;
 
             }
 
@@ -137,7 +142,7 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            pp.UpdatedAt = DateTime.Now;
+            kaa.UpdatedAt = DateTime.Now;
 
             var ProductionPlan = _db.ProductionPlans.Find(_doc_id);
             if (ProductionPlan != null && ProductionPlan.SessionId != UserSession.SessionId)
@@ -147,7 +152,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                pp.SummAll = pp.SummInCurr;
+                kaa.SummAll = kaa.SummInCurr;
             }
 
             _db.SaveChanges();
@@ -162,9 +167,9 @@ namespace SP_Sklad.WBForm
         {
             _db.UndoAllChanges();
 
-            pp.SessionId = (pp.SessionId == UserSession.SessionId ? null : pp.SessionId);
-            pp.UpdatedBy = UserSession.UserId;
-            pp.UpdatedAt = DateTime.Now;
+            kaa.SessionId = (kaa.SessionId == UserSession.SessionId ? null : kaa.SessionId);
+            kaa.UpdatedBy = UserSession.UserId;
+            kaa.UpdatedAt = DateTime.Now;
             _db.SaveChanges();
 
             if (is_new_record)
@@ -182,7 +187,7 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.KAgentAdjustmentDet.RemoveRange(_db.KAgentAdjustmentDet.Where(w=> w.KAgentAdjustmentId == pp.Id).ToList()); //DeleteWhere<KAgentAdjustmentDet>(w => w.KAgentAdjustmentId == pp.Id);
+            _db.KAgentAdjustmentDet.RemoveRange(_db.KAgentAdjustmentDet.Where(w=> w.KAgentAdjustmentId == kaa.Id).ToList()); //DeleteWhere<KAgentAdjustmentDet>(w => w.KAgentAdjustmentId == pp.Id);
             _db.SaveChanges();
 
             RefreshDet();
@@ -194,9 +199,9 @@ namespace SP_Sklad.WBForm
 
             if (OperationTypeEdit.EditValue != null && OperationTypeEdit.EditValue != DBNull.Value && WriteOffTypesEdit.EditValue != null && WriteOffTypesEdit.EditValue != DBNull.Value)
             {
-                _db.DeleteWhere<KAgentAdjustmentDet>(w => w.KAgentAdjustmentId == pp.Id);
+                _db.DeleteWhere<KAgentAdjustmentDet>(w => w.KAgentAdjustmentId == kaa.Id);
 
-                var doc_list = _db.GetDocList(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), pp.DebtKaId, 0).OrderBy(o => o.OnDate).ToList();
+                var doc_list = _db.GetDocList(DateTime.Now.AddYears(-100), DateTime.Now.AddYears(100), kaa.DebtKaId, 0).OrderBy(o => o.OnDate).ToList();
                 var result = new List<GetDocList_Result>();
                 foreach (var item in doc_list)
                 {
@@ -210,7 +215,7 @@ namespace SP_Sklad.WBForm
 
                 decimal saldo = 0;
                 int idx = 0;
-                var saldo_types = new List<int>() { 1, -1, -6, 6, -3, 3, -23, 23, 100, -100 };
+                var saldo_types = new List<int>() { 1, -1, -6, 6, -3, 3, -23, 23, 100, -100, 29 };
 
                 foreach (var item in result.Where(w => saldo_types.Contains(w.WType.Value) && w.SummInCurr != 0))
                 {
@@ -221,13 +226,13 @@ namespace SP_Sklad.WBForm
                         Id = Guid.NewGuid(),
                         Idx = ++idx,
                         DocId = item.Id,
-                        KAgentAdjustmentId = pp.Id,
+                        KAgentAdjustmentId = kaa.Id,
                         Saldo = saldo
                     });
                  
 
-                    pp.SummAll = Math.Abs(saldo);
-                    pp.SummInCurr = Math.Abs(saldo) ;
+                    kaa.SummAll = Math.Abs(saldo);
+                    kaa.SummInCurr = Math.Abs(saldo) ;
                 }
 
                 _db.SaveChanges();
@@ -271,7 +276,7 @@ namespace SP_Sklad.WBForm
                 if (type == 1)
                 {
                     KagentComboBox.Properties.DataSource = _db.KagentList.Where(w => w.Saldo < 0).Select(s => new { s.KaId, s.Name, s.Saldo }).ToList();
-                    pp.WType = 23;
+                    kaa.WType = 23;
 
                     labelControl6.Text = "Дебіторська заборгованість";
                 }
@@ -279,7 +284,7 @@ namespace SP_Sklad.WBForm
                 if (type == 2)
                 {
                     KagentComboBox.Properties.DataSource = _db.KagentList.Where(w => w.Saldo > 0).Select(s => new { s.KaId, s.Name, s.Saldo }).ToList();
-                    pp.WType = -23;
+                    kaa.WType = -23;
 
                     labelControl6.Text = "Кредиторська заборгованість";
                 }
@@ -290,8 +295,8 @@ namespace SP_Sklad.WBForm
         {
             if (e.Button.Index == 1)
             {
-                pp.OnDate = DBHelper.ServerDateTime();
-                OnDateDBEdit.DateTime = pp.OnDate;
+                kaa.OnDate = DBHelper.ServerDateTime();
+                OnDateDBEdit.DateTime = kaa.OnDate;
             }
         }
 

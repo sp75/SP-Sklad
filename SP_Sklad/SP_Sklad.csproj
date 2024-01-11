@@ -1247,6 +1247,12 @@
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucPriceList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucPriceList.Designer.cs">
+      <DependentUpon>ucPriceList.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucKAgentAdjustment.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1367,11 +1373,11 @@
     <Compile Include="UserControls\WB\ucWayBillIn.Designer.cs">
       <DependentUpon>ucWayBillIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\WaybillTemplateUserControl.cs">
+    <Compile Include="UserControls\ucWaybillTemplate.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\WaybillTemplateUserControl.Designer.cs">
-      <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    <Compile Include="UserControls\ucWaybillTemplate.Designer.cs">
+      <DependentUpon>ucWaybillTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.cs">
       <SubType>Form</SubType>
@@ -2488,6 +2494,9 @@
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucPriceList.resx">
+      <DependentUpon>ucPriceList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucKAgentAdjustment.resx">
       <DependentUpon>ucKAgentAdjustment.cs</DependentUpon>
     </EmbeddedResource>
@@ -2548,8 +2557,8 @@
     <EmbeddedResource Include="UserControls\WB\ucWayBillIn.resx">
       <DependentUpon>ucWayBillIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\WaybillTemplateUserControl.resx">
-      <DependentUpon>WaybillTemplateUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucWaybillTemplate.resx">
+      <DependentUpon>ucWaybillTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>

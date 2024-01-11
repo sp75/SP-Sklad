@@ -2395,7 +2395,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABc
-        WQAAAk1TRnQBSQFMAgEBFgEAASgBFAEoARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        WQAAAk1TRnQBSQFMAgEBFgEAAVABFAFQARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEYBgABSDkAAfkB+AH2Ab8BjwFJAegB3QHNGAABuAGCAU0BuAGCAU0BuAGCAU0B9QHz
         AfGQAAH3AfUB8wG8AYUBNwGwAWwBCQHjAdQBvgYAAU8BtQHqAU8BtQHqAU8BtQHqAU8BtQHqAU8BtQHq
         AwABuAGCAU0BuAGCAU0B9QHzAfEBuAGCAU0B9QHzAfGKAAH2AfQB8gG1AXkBIgGyAW0BDQHmAdkBxwkA
@@ -2967,13 +2967,13 @@
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="SharedImageCollection.Timestamp" type="System.DateTime, mscorlib">
-    <value>01/10/2024 16:46:05</value>
+    <value>01/11/2024 15:48:16</value>
   </data>
   <data name="SharedImageCollection.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
   <metadata name="GetWayBillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>973, 63</value>
+    <value>838, 60</value>
   </metadata>
   <metadata name="GridImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>173, 18</value>
@@ -2983,7 +2983,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACO
-        rgAAAk1TRnQBSQFMAgEBMgEAARgBFAEYARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        rgAAAk1TRnQBSQFMAgEBMgEAAUABFAFAARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwAB0AMAAQEBAAEYBgABnP8AAwAD/gHtAewB6gGxAakBngGxAakBngGxAakBngGxAakBngGxAakBngGx
         AakBngGzAasBnwGyAasBngGyAasBngGyAasBngG0AawBnwG3Aa8BpAHnAeUB4mwAAfcC9AHOAaEBowHc
         Ab8BwAP+CQAB3gHFAcYBzQGfAaEB9QLwCQAD/gHgAd4B2wFwAWABRwFwAWABRwFwAWABRwFwAWABRwFw
@@ -3754,7 +3754,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAi
-        TgAAAk1TRnQBSQFMAgEBEwEAARABFAEQARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        TgAAAk1TRnQBSQFMAgEBEwEAATgBFAE4ARQBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABUAMAAQEBAAEYBgABPBgAAdYBhAFjAf8BewFjAf8BjAFrAd4BjAFaAf8B1gGcAd4BjAFaAe8BewFa
         AecBWgE5AXsBpQFSAcYB3gG1AdYB5wHGAXMB1gFzAWMBzgFjAUIBtQFCDwABUgGcAVoBAAFzAQgBMQGE
         ATEbAAGtAVIBKQGtAVIBGAGtAVIBKV0AAaUBYwFCAYwBMQEYAiEBcwIhAXsBpQFSAUoBxgFaATEBcwG1
@@ -4091,7 +4091,7 @@
 </value>
   </data>
   <metadata name="WayBillListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1025, 22</value>
+    <value>844, 23</value>
   </metadata>
   <data name="row7.Properties.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4130,7 +4130,7 @@
 </value>
   </data>
   <metadata name="GetPayDocListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1123, 56</value>
+    <value>996, 57</value>
   </metadata>
   <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -4146,37 +4146,13 @@
 </value>
   </data>
   <metadata name="PayDocListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1170, 22</value>
+    <value>988, 24</value>
   </metadata>
   <metadata name="PriceListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1270, 57</value>
+    <value>1144, 59</value>
   </metadata>
   <metadata name="PriceListDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1311, 21</value>
-  </metadata>
-  <data name="editorButtonImageOptions3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        Qk02AwAAAAAAADYAAAAoAAAAEAAAABAAAAABABgAAAAAAAAAAAASCwAAEgsAAAAAAAAAAAAA////////
-        ////////////////////////////////////////////////////////////////OTmcGBiU////////
-        ////////////////////////////////WlqcEBB7nJzOCBilACnvCCneMTmc////////////////////
-        ////////rbXOEBiUAAilnJy1ISGlUpz/GFr/ADH/CCHGa2ut////////////////////SkqcABCtABC9
-        c3ut////////GDGtc9b/GFL/ADH/CBitpaXG////////paW9CBiUIUrnCCnOUlKU////////////////
-        KUq9hN7/IVr/CDn/CBClra3OOUKUABi9KWv/IVLvMTGM////////////////////////MVrGhOf/KWv/
-        EEL/CBitCDHvOYT/OXP3GCGM////////////////////////////////OWPGjO//OXv/IVL/QoT/Upz/
-        ECGc////////////////////////////////hITGECnGSoz/jPf/UpT/Qoz/ECGt////////////////
-        ////////////////MTm9MVrvSoT/Qnv/Y6X/lPf/a73/KVLvOUKc////////////////////c3vWKUrW
-        WpT/Y5z/WpT/e87/jOf/OWPee87/hN7/OWvvQkql////////////////OUrGWpT/c63/c63/lO//jN7/
-        QnPva2vGjIzGUozelPf/UpT3SlKl////////////////OUrGa6X/nPf/hNb/Woz3QlK9////////////
-        Qlq9c8b3e9b/Umu1////////////////QmPOe7X/c63/OULO////////////////////jIzOMVK9Y63v
-        QlKt////////////////OUrGMULO////////////////////////////////lJTGMTmtvb3O////////
-        ////////////////////////////////////////////////////////
-</value>
-  </data>
-  <metadata name="KAgentAdjustmentBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>842, 17</value>
-  </metadata>
-  <metadata name="KAgentAdjustmentInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>778, 55</value>
+    <value>1141, 26</value>
   </metadata>
   <metadata name="DocsPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>699, 20</value>

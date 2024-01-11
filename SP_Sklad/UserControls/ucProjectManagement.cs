@@ -22,6 +22,8 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucProjectManagement : DevExpress.XtraEditors.XtraUserControl
     {
+        private int fun_id = 95;
+        private string reg_layout_path = "ucProjectManagement\\ProjectManagementGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -217,12 +219,12 @@ namespace SP_Sklad.UserControls
         private void ucProjectManagement_Load(object sender, EventArgs e)
         {
             ProjectManagementGridView.SaveLayoutToStream(wh_layout_stream);
-            ProjectManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucProjectManagement\\ProjectManagementGridView");
+            ProjectManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 21 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
 
                 PMStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -237,7 +239,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            ProjectManagementGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucProjectManagement\\ProjectManagementGridView");
+            ProjectManagementGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)

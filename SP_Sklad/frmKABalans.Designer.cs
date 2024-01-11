@@ -267,7 +267,7 @@
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 700;
+            this.gridBand1.Width = 705;
             // 
             // colWType
             // 
@@ -282,7 +282,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 20;
+            this.colWType.Width = 25;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -301,7 +301,10 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 40),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 39)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 39),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 29, 41),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 43),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 42)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -350,6 +353,9 @@
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "Без имени-2.png");
             this.GridImageList.Images.SetKeyName(40, "free-icon-payment-terminal-3777466.png");
+            this.GridImageList.Images.SetKeyName(41, "projectfile_2.png");
+            this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
+            this.GridImageList.Images.SetKeyName(43, "Debt adjustment.png");
             // 
             // bandedGridColumn1
             // 
@@ -396,7 +402,7 @@
             this.gridBand2.Columns.Add(this.colSaldo);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 451;
+            this.gridBand2.Width = 446;
             // 
             // colSummAll
             // 
@@ -405,7 +411,7 @@
             this.colSummAll.FieldName = "SummAll";
             this.colSummAll.Name = "colSummAll";
             this.colSummAll.Visible = true;
-            this.colSummAll.Width = 97;
+            this.colSummAll.Width = 95;
             // 
             // colOnValue
             // 
@@ -415,7 +421,7 @@
             this.colOnValue.FieldName = "OnValue";
             this.colOnValue.Name = "colOnValue";
             this.colOnValue.Visible = true;
-            this.colOnValue.Width = 67;
+            this.colOnValue.Width = 65;
             // 
             // colCurrName
             // 
@@ -423,7 +429,7 @@
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 60;
+            this.colCurrName.Width = 58;
             // 
             // colSummInCurr
             // 
@@ -435,7 +441,7 @@
             this.colSummInCurr.FieldName = "SummInCurr";
             this.colSummInCurr.Name = "colSummInCurr";
             this.colSummInCurr.Visible = true;
-            this.colSummInCurr.Width = 119;
+            this.colSummInCurr.Width = 117;
             // 
             // colSaldo
             // 
@@ -447,7 +453,7 @@
             this.colSaldo.FieldName = "Saldo";
             this.colSaldo.Name = "colSaldo";
             this.colSaldo.Visible = true;
-            this.colSaldo.Width = 108;
+            this.colSaldo.Width = 111;
             // 
             // panelControl1
             // 

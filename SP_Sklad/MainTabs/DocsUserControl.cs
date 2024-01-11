@@ -56,14 +56,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private v_PriceList pl_focused_row
-        {
-            get
-            {
-                return PriceListGridView.GetFocusedRow() as v_PriceList;
-            }
-        }
-
         public DocsUserControl()
         {
             InitializeComponent();
@@ -87,18 +79,11 @@ namespace SP_Sklad.MainTabs
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
 
-                kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                kaaStatusList.EditValue = -1;
-
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 PDEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
-                kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
 
                 PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 PDKagentList.EditValue = 0;
@@ -174,25 +159,6 @@ namespace SP_Sklad.MainTabs
             PayDocGridView.TopRowIndex = top_row;
         }
 
-        void GetKAgentAdjustment(string wtyp)
-        {
-            if (kaaStatusList.EditValue == null || DocsTreeList.FocusedNode == null)
-            {
-                return;
-            }
-
-            var satrt_date = kaaStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : kaaStartDate.DateTime;
-            var end_date = kaaEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : kaaEndDate.DateTime;
-            int status = (int)kaaStatusList.EditValue;
-
-            int top_row = KAgentAdjustmentGridView.TopRowIndex;
-            using (var db = new BaseEntities())
-            {
-                KAgentAdjustmentBS.DataSource = db.v_KAgentAdjustment.Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status)).OrderByDescending(o => o.OnDate).ToList();
-            }
-            KAgentAdjustmentGridView.TopRowIndex = top_row;
-        }
-
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DocsTreeList.GetDataRecordByNode(e.Node) as v_GetDocsTree;
@@ -244,6 +210,14 @@ namespace SP_Sklad.MainTabs
             else if (focused_tree_node.FunId == 43) //Повернення постачальнику
             {
                 wbContentTab.SelectedTabPageIndex = 21;
+            }
+            else if (focused_tree_node.FunId == 77) //Заборгованість покупця
+            {
+                wbContentTab.SelectedTabPageIndex = 22;
+            }
+            else if (focused_tree_node.FunId == 78) //Заборгованість покупця
+            {
+                wbContentTab.SelectedTabPageIndex = 23;
             }
             else
             {
@@ -336,36 +310,20 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 5:
-                    new frmPriceList().ShowDialog();
+                    ucPriceList.NewItem();
                     break;
 
-                /*           case 6: frmContr = new  TfrmContr(Application);
-                                   frmContr->CONTRACTS->Open();
-                                   frmContr->CONTRACTS->Append();
-                                   if(DocsTreeDataID->Value == 47) frmContr->CONTRACTSDOCTYPE->Value = -1;
-                                   if(DocsTreeDataID->Value == 46) frmContr->CONTRACTSDOCTYPE->Value = 1;
-                                   frmContr->CONTRACTS->Post();
-                                   frmContr->CONTRACTS->Edit();
-
-                                   frmContr->CONTRPARAMS->Append();
-                                   frmContr->CONTRPARAMS->Post();
-                                   frmContr->CONTRRESULTS->Append();
-
-                                   frmContr->ShowModal() ;
-                                   delete frmContr;
-                                   break;
-
-                           case 7: frmTaxWB = new  TfrmTaxWB(Application);
-                                   frmTaxWB->TaxWB->Open();
-                                   frmTaxWB->TaxWB->Append();
-                                   frmTaxWB->TaxWB->Post();
-                                   frmTaxWB->TaxWB->Edit();
-                                   frmTaxWB->ShowModal() ;
-                                   delete frmTaxWB;
-                                   break;*/
                 case 8:
-                    new frmKAgentAdjustment().ShowDialog();
+                    if (cur_wtype == 23) //Заборгованість покупця
+                    {
+                        ucKAgentAdjustmentIn.NewItem();
+                    }
 
+                    if (cur_wtype == -23) //Заборгованість постачальнику
+                    {
+                        ucKAgentAdjustmentOut.NewItem();
+                    }
+                    
                     break;
 
                 case 10:
@@ -443,20 +401,19 @@ namespace SP_Sklad.MainTabs
                         var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
                         DocEdit.PDEdit(pd_row.PayDocId, pd_row.DocType);
                         break;
-                    case 5:
-                        var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
-                        using (var pl_frm = new frmPriceList(pl_row.PlId))
-                        {
-                            pl_frm.ShowDialog();
-                        }
 
+                    case 5:
+                        ucPriceList.EditItem();
                         break;
 
                     case 8:
-                        var kaa_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
-                        using (var kaa_frm = new frmKAgentAdjustment(kaa_row.Id))
+                        if (focused_tree_node.WType == 23) //Заборгованість покупця
                         {
-                            kaa_frm.ShowDialog();
+                            ucKAgentAdjustmentIn.EditItem();
+                        }
+                        else if (focused_tree_node.WType == -23) //Заборгованість постачальнику
+                        {
+                            ucKAgentAdjustmentOut.EditItem();
                         }
                         break;
 
@@ -469,17 +426,11 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 12:
-                        using (var smp_frm = new frmSettingMaterialPrices(settingMaterialPricesUserControl1.row_smp.Id))
-                        {
-                            smp_frm.ShowDialog();
-                        }
+                        settingMaterialPricesUserControl1.EditItem();
                         break;
 
                     case 13:
-                        using (var ex_frm = new frmExpedition(expeditionUserControl1.row_exp.Id))
-                        {
-                            ex_frm.ShowDialog();
-                        }
+                        expeditionUserControl1.EditItem();
                         break;
                 }
             }
@@ -536,7 +487,6 @@ namespace SP_Sklad.MainTabs
                 int gtype = focused_tree_node.GType.Value;
 
                 var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                var adj_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
 
                 using (var db = new BaseEntities())
                 {
@@ -583,22 +533,21 @@ namespace SP_Sklad.MainTabs
                                     break;
 
                                 case 5:
-                                    db.DeleteWhere<PriceList>(w => w.PlId == pl_focused_row.PlId);
+                                    ucPriceList.DeleteItem();
                                     break;
 
-                                //	   case 6: ContractsList->Delete();  break;
-                                //	   case 7: TaxWBList->Delete();  break;
                                 case 8:
-                                    var adj = db.KAgentAdjustment.Find(adj_row.Id);
 
-                                    if (adj != null)
+                                    if (focused_tree_node.WType == 23) //Заборгованість покупця
                                     {
-                                        db.KAgentAdjustment.Remove(adj);
+                                        ucKAgentAdjustmentIn.DeleteItem();
                                     }
-                                    else
+
+                                    if (focused_tree_node.WType == -23) //Заборгованість постачальнику
                                     {
-                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", adj.Num));
+                                        ucKAgentAdjustmentOut.DeleteItem();
                                     }
+
                                     break;
 
                                 case 10:
@@ -610,19 +559,11 @@ namespace SP_Sklad.MainTabs
                                     break;
 
                                 case 12:
-                                    var smp = db.SettingMaterialPrices.Find(settingMaterialPricesUserControl1.row_smp.Id);
-                                    if (smp != null)
-                                    {
-                                        db.SettingMaterialPrices.Remove(smp);
-                                    }
+                                    settingMaterialPricesUserControl1.DeleteItem();
                                     break;
 
                                 case 13:
-                                    var exp = db.Expedition.Find(expeditionUserControl1.row_exp.Id);
-                                    if (exp != null)
-                                    {
-                                        db.Expedition.Remove(exp);
-                                    }
+                                    expeditionUserControl1.DeleteItem();
                                     break;
                             }
                             db.SaveChanges();
@@ -717,13 +658,19 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 5:
-                    int top_row = PriceListGridView.TopRowIndex;
-                    PriceListBS.DataSource = DB.SkladBase().v_PriceList.ToList();
-                    PriceListGridView.TopRowIndex = top_row;
+                    ucPriceList.GetData();
                     break;
 
                 case 8:
-                    GetKAgentAdjustment("");
+                    if (focused_tree_node.WType == 23) //Заборгованість покупця
+                    {
+                        ucKAgentAdjustmentIn.GetData();
+                    }
+
+                    if (focused_tree_node.WType == -23) //Заборгованість постачальнику
+                    {
+                        ucKAgentAdjustmentOut.GetData();
+                    }
                     break;
 
                 case 10:
@@ -854,23 +801,14 @@ namespace SP_Sklad.MainTabs
 
                     case 8:
 
-                        var kadjustment_row = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
-                        var kadj = db.KAgentAdjustment.Find(kadjustment_row.Id);
-                        if (kadj != null)
+                        if (focused_tree_node.WType == 23) //Заборгованість покупця
                         {
-                            if (kadj.OnDate > db.CommonParams.First().EndCalcPeriod)
-                            {
-                                kadj.Checked = kadjustment_row.Checked == 0 ? 1 : 0;
-                                db.SaveChanges();
-                            }
-                            else
-                            {
-                                XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення корегуючого документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            ucKAgentAdjustmentIn.ExecuteItem();
                         }
-                        else
+
+                        if (focused_tree_node.WType == -23) //Заборгованість постачальнику
                         {
-                            XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", kadjustment_row.Num));
+                            ucKAgentAdjustmentOut.ExecuteItem();
                         }
                         break;
 
@@ -958,16 +896,16 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 5:
-                    var p_l = PriceListGridView.GetFocusedRow() as v_PriceList;
-                    PrintDoc.Show(p_l.Id, 10, _db);
+                    ucPriceList.PrintItem();
+                 
                     break;
 
                 case 12:
-                    PrintDoc.SettingMaterialPricesReport(settingMaterialPricesUserControl1.row_smp.PTypeId, _db);
+                    settingMaterialPricesUserControl1.PrintItem();
                     break;
 
                 case 13:
-                    PrintDoc.ExpeditionReport(expeditionUserControl1.row_exp.Id, _db);
+                    expeditionUserControl1.PrintItem();
                     break;
             }
         }
@@ -979,104 +917,58 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
-            if (cur_wtype == 1)  //Прибткова накладна 
+            switch (focused_tree_node.GType)
             {
-                wayBillInUserControl.CopyItem();
-            }
-            else if (cur_wtype == 16) //замовлення постачальникам
-            {
-                ucWBOrdersOut.CopyItem();
-            }
-            else if (cur_wtype == -1) //видаткова
-            {
-                ucWaybillOut.CopyItem();
-            }
-            else if (cur_wtype == 2) //рахунок
-            {
-                ucInvoices.CopyItem();
-            }
-            else if (cur_wtype == -16) //Замовлення від клієнта
-            {
-                ucWBOrdersIn.CopyItem();
-            }
-            else if (cur_wtype == 29) //акт про надання послуг
-            {
-                ucServicesIn.CopyItem();
-            }
-            else if (cur_wtype == 6) //Повернення від клієнта
-            {
-                ucWayBillReturnСustomers.CopyItem();
-            }
-            else if (cur_wtype == -6) //Повернення постачальнику
-            {
-                ucWaybillReturnSuppliers.CopyItem();
-            }
-            else
-            {
-                using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
-                {
-                    if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
+                case 1:
+                    if (cur_wtype == 1)  //Прибткова накладна 
                     {
-                        return;
+                        wayBillInUserControl.CopyItem();
                     }
-                }
+                    else if (cur_wtype == 16) //замовлення постачальникам
+                    {
+                        ucWBOrdersOut.CopyItem();
+                    }
+                    else if (cur_wtype == -1) //видаткова
+                    {
+                        ucWaybillOut.CopyItem();
+                    }
+                    else if (cur_wtype == 2) //рахунок
+                    {
+                        ucInvoices.CopyItem();
+                    }
+                    else if (cur_wtype == -16) //Замовлення від клієнта
+                    {
+                        ucWBOrdersIn.CopyItem();
+                    }
+                    else if (cur_wtype == 29) //акт про надання послуг
+                    {
+                        ucServicesIn.CopyItem();
+                    }
+                    else if (cur_wtype == 6) //Повернення від клієнта
+                    {
+                        ucWayBillReturnСustomers.CopyItem();
+                    }
+                    else if (cur_wtype == -6) //Повернення постачальнику
+                    {
+                        ucWaybillReturnSuppliers.CopyItem();
+                    }
+                    break;
 
-                switch (focused_tree_node.GType)
-                {
-                    case 1:
-                        var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                case 4:
+                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
+                    var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-                        /*   if (cur_wtype == -1 || cur_wtype == -16) //Відаткова , замовлення клиента 
-                           {
-                               using (var wb_in = new frmWayBillOut(cur_wtype, doc.out_wbill_id))
-                               {
-                                   wb_in.is_new_record = true;
-                                   wb_in.ShowDialog();
-                               }
+                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
+                    using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
+                    {
+                        pdf.ShowDialog();
+                    }
+                    break;
 
-                           }*/
+                case 5:
+                    ucPriceList.CopyItem();
 
-                        /*       if (cur_wtype == 29)  //Акт надання послуг
-                               {
-                                   using (var wb_in = new frmActServicesProvided(cur_wtype, doc.out_wbill_id))
-                                   {
-                                       wb_in.is_new_record = true;
-                                       wb_in.ShowDialog();
-                                   }
-                               }*/
-
-                        /*     if (cur_wtype == 6) // Повернення від клієнта
-                             {
-                                 using (var wb_re_in = new frmWBReturnIn(cur_wtype, doc.out_wbill_id))
-                                 {
-                                     wb_re_in.ShowDialog();
-                                 }
-                             }*/
-                        break;
-
-                    case 4:
-                        var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                        var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-
-                        int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                        using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
-                        {
-                            pdf.ShowDialog();
-                        }
-                        break;
-
-                    case 5:
-                        var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
-                        var pl_id = DB.SkladBase().CopyPriceList(pl_row.PlId).FirstOrDefault();
-
-                        using (var frm = new frmPriceList(pl_id))
-                        {
-                            frm.ShowDialog();
-                        }
-
-                        break;
-                }
+                    break;
             }
 
             RefrechItemBtn.PerformClick();
@@ -1225,39 +1117,6 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (dr != null);
         }
 
-        private void PriceListGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var pl_dr = e.Row as v_PriceList;
-            if (pl_dr != null)
-            {
-                using (var db = new BaseEntities())
-                {
-                    PriceListDetBS.DataSource = db.v_PriceListDet.AsNoTracking().Where(w => w.PlId == pl_dr.PlId).OrderBy(o => o.Num).ToList();
-                    ka_template_list = db.PriceList.FirstOrDefault(w => w.PlId == pl_dr.PlId).Kagent.Select(s => new KaTemplateList
-                    {
-                        Check = true,
-                        KaId = s.KaId,
-                        KaName = s.Name
-                    }).ToList();
-                }
-            }
-            else
-            {
-                PriceListDetBS.DataSource = null;
-                ka_template_list.Clear();
-            }
-
-            KaTemplateListGridControl.DataSource = ka_template_list;
-
-
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
-
-            DeleteItemBtn.Enabled = (pl_focused_row != null && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = false;
-            EditItemBtn.Enabled = (pl_focused_row != null && tree_row.CanModify == 1);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (pl_focused_row != null);
-        }
         private class KaTemplateList
         {
             public bool Check { get; set; }
@@ -1368,51 +1227,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-            KaTemplateListGridView.CloseEditor();
-
-            var pl_row = PriceListGridView.GetFocusedRow() as v_PriceList;
-            using (var db = DB.SkladBase())
-            {
-                int wb_count = 0;
-                foreach (var kagent in ka_template_list.Where(w => w.Check))
-                {
-
-                    var _wb = db.WaybillList.Add(new WaybillList()
-                    {
-                        Id = Guid.NewGuid(),
-                        WType = -16,
-                        OnDate = DBHelper.ServerDateTime(),
-                        Num = db.GetDocNum("wb(-16)").FirstOrDefault(),
-                        CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
-                        OnValue = 1,
-                        PersonId = DBHelper.CurrentUser.KaId,
-                        EntId = DBHelper.Enterprise.KaId,
-                        UpdatedBy = DBHelper.CurrentUser.UserId,
-                        Nds = 0,
-                        KaId = kagent.KaId,
-                        Notes = pl_row.Notes,
-                        Kontragent = db.Kagent.Find(kagent.KaId)
-                    });
-
-                    if (_wb.Kontragent.RouteId.HasValue)
-                    {
-                        var r = _db.Routes.FirstOrDefault(w => w.Id == _wb.Kontragent.RouteId);
-                        _wb.CarId = r.CarId;
-                        _wb.RouteId = _wb.Kontragent.RouteId;
-                        _wb.Received = r.Kagent1 != null ? r.Kagent1.Name : "";
-                        _wb.DriverId = r.Kagent1 != null ? (int?)r.Kagent1.KaId : null;
-                    }
-
-
-                    db.SaveChanges();
-
-                    db.CreateOrderByPriceList(_wb.WbillId, pl_row.PlId);
-
-                    ++wb_count;
-                }
-
-                MessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
-            }
+ 
         }
 
         private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
@@ -1491,7 +1306,7 @@ namespace SP_Sklad.MainTabs
                     IHelper.ExportToXlsx(PayDocGridControl);
                     break;
                 case 5:
-                    IHelper.ExportToXlsx(PriceListGridControl);
+                    ucPriceList.ExportToExcel();
                     break;
             }
         }
@@ -1549,59 +1364,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void kaaStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            RefrechItemBtn.PerformClick();
-        }
-
-        private void KAgentAdjustmentGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var dr = e.Row as v_KAgentAdjustment;
-
-            xtraTabControl4_SelectedPageChanged(sender, null);
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1 && dr.Checked == 0);
-            CopyItemBtn.Enabled = (dr != null && focused_tree_node.CanModify == 1);
-            PrintItemBtn.Enabled = (dr != null);
-        }
-
-        private void KAgentAdjustmentGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
-        }
-
-        private void xtraTabControl4_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            var dr = KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
-
-            if (dr == null)
-            {
-                gridControl5.DataSource = null;
-                ucRelDocGrid3.GetRelDoc(Guid.Empty);
-                KAgentAdjustmentInfoBS.DataSource = null;
-
-                return;
-            }
-
-            switch (xtraTabControl4.SelectedTabPageIndex)
-            {
-                case 0:
-
-                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == dr.Id).OrderBy(o => o.Idx).ToList();
-                    break;
-
-                case 1:
-                    KAgentAdjustmentInfoBS.DataSource = dr;
-                    break;
-
-                case 2:
-                    ucRelDocGrid3.GetRelDoc(dr.Id);
-                    break;
-            }
-
-        }
 
         private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {

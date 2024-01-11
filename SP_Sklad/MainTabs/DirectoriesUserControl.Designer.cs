@@ -389,7 +389,7 @@
             this.repositoryItemCheckEdit13 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn110 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
-            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.WaybillTemplateUserControl();
+            this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.ucWaybillTemplate();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -4986,7 +4986,7 @@
         private DevExpress.XtraBars.BarButtonItem PrintRecipeBtn;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage36;
-        public UserControls.WaybillTemplateUserControl waybillTemplateUserControl1;
+        public UserControls.ucWaybillTemplate waybillTemplateUserControl1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn113;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.Utils.ImageCollection GridImageList;

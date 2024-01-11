@@ -22,6 +22,9 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucBankStatements : DevExpress.XtraEditors.XtraUserControl
     {
+        private int fun_id = 90;
+        private string reg_layout_path = "ucBankStatements\\BankStatementsGridView";
+
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -48,12 +51,12 @@ namespace SP_Sklad.UserControls
         private void ucProjectManagement_Load(object sender, EventArgs e)
         {
             BankStatementsGridView.SaveLayoutToStream(wh_layout_stream);
-            BankStatementsGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucBankStatements\\BankStatementsGridView");
+            BankStatementsGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 21 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
 
                 BSStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -174,7 +177,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            BankStatementsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucBankStatements\\BankStatementsGridView");
+            BankStatementsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)

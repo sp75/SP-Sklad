@@ -25,7 +25,9 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucActServicesProvidedIn : DevExpress.XtraEditors.XtraUserControl
     {
+        private int fun_id = 94;
         int w_type = 29;
+        private string reg_layout_path = "ucActServicesProvidedIn\\WbGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -193,12 +195,12 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucActServicesProvidedIn\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 21 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
@@ -351,7 +353,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucActServicesProvidedIn\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SetWBEditorBarBtn()
@@ -359,7 +361,7 @@ namespace SP_Sklad.UserControls
             xtraTabControl2_SelectedPageChanged(null, null);
 
             ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
+            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && user_access.CanPost == 1);
             ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || wb_focused_row.Checked == 1));
             ExtCopyBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
             ExtPrintBtn.Enabled = (wb_focused_row != null);

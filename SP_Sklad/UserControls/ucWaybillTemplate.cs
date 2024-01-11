@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class WaybillTemplateUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWaybillTemplate : DevExpress.XtraEditors.XtraUserControl
     {
         public frmWaybillTemplateView view_frm { get; set; }
 
@@ -35,7 +35,7 @@ namespace SP_Sklad.UserControls
         }
         private List<KaTemplateList> ka_template_list { get; set; }
 
-        public WaybillTemplateUserControl()
+        public ucWaybillTemplate()
         {
             InitializeComponent();
             ka_template_list = new List<KaTemplateList>();

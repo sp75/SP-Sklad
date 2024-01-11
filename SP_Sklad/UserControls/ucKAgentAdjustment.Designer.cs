@@ -35,6 +35,7 @@
             this.KAgentAdjustmentGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox13 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox17 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -54,7 +55,6 @@
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -109,8 +109,8 @@
             this.editorRow20 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid3 = new SP_Sklad.UserControls.ucRelDocGrid();
-            this.KAgentAdjustmentSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
-            this.ProjectManagementPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.GgridDataSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
+            this.GridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
             this.splitContainerControl8.Panel1.SuspendLayout();
@@ -120,9 +120,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
             this.panelControl8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kaaStatusList.Properties)).BeginInit();
@@ -141,7 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
             this.xtraTabPage18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl8
@@ -206,7 +206,11 @@
             this.KAgentAdjustmentGridView.OptionsBehavior.ReadOnly = true;
             this.KAgentAdjustmentGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.KAgentAdjustmentGridView.OptionsView.ShowGroupPanel = false;
+            this.KAgentAdjustmentGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KAgentAdjustmentGridView_PopupMenuShowing);
+            this.KAgentAdjustmentGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KAgentAdjustmentGridView_FocusedRowObjectChanged);
+            this.KAgentAdjustmentGridView.ColumnFilterChanged += new System.EventHandler(this.KAgentAdjustmentGridView_ColumnFilterChanged);
             this.KAgentAdjustmentGridView.AsyncCompleted += new System.EventHandler(this.KAgentAdjustmentGridView_AsyncCompleted);
+            this.KAgentAdjustmentGridView.DoubleClick += new System.EventHandler(this.KAgentAdjustmentGridView_DoubleClick);
             // 
             // gridColumn53
             // 
@@ -227,9 +231,37 @@
             this.repositoryItemImageComboBox13.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox13.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 41),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 42)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 14)});
             this.repositoryItemImageComboBox13.Name = "repositoryItemImageComboBox13";
+            this.repositoryItemImageComboBox13.SmallImages = this.imageCollection1;
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
+            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
+            this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
+            this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
+            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
+            this.imageCollection1.Images.SetKeyName(7, "preview_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "showproduct_16x16");
+            this.imageCollection1.Images.SetKeyName(10, "wb_info.png");
+            this.imageCollection1.Images.SetKeyName(11, "RelDoc3.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "converttorange_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.Images.SetKeyName(13, "historyitem_16x161");
+            this.imageCollection1.Images.SetKeyName(14, "credit adjustment.png");
+            this.imageCollection1.Images.SetKeyName(15, "Debt adjustment.png");
             // 
             // gridColumn54
             // 
@@ -251,9 +283,10 @@
             this.repositoryItemImageComboBox17.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox17.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1)});
             this.repositoryItemImageComboBox17.Name = "repositoryItemImageComboBox17";
+            this.repositoryItemImageComboBox17.SmallImages = this.imageCollection1;
             // 
             // gridColumn55
             // 
@@ -427,32 +460,6 @@
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1344, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
-            this.imageCollection1.Images.SetKeyName(2, "additem_16x161.png");
-            this.imageCollection1.Images.SetKeyName(3, "copy_2.png");
-            this.imageCollection1.Images.SetKeyName(4, "edit_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
-            this.imageCollection1.Images.SetKeyName(7, "preview_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.imageCollection1.Images.SetKeyName(9, "showproduct_16x16");
-            this.imageCollection1.Images.SetKeyName(10, "wb_info.png");
-            this.imageCollection1.Images.SetKeyName(11, "RelDoc3.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.imageCollection1.Images.SetKeyName(12, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "historyitem_16x161");
-            this.imageCollection1.Images.SetKeyName(14, "project_manager_2.png");
             // 
             // NewItemBtn
             // 
@@ -850,7 +857,7 @@
             this.xtraTabPage17.Controls.Add(this.vGridControl3);
             this.xtraTabPage17.ImageOptions.ImageIndex = 10;
             this.xtraTabPage17.Name = "xtraTabPage17";
-            this.xtraTabPage17.Size = new System.Drawing.Size(1342, 276);
+            this.xtraTabPage17.Size = new System.Drawing.Size(1342, 273);
             this.xtraTabPage17.Text = "Інформація про документ";
             // 
             // vGridControl3
@@ -873,7 +880,7 @@
             this.editorRow18,
             this.editorRow19,
             this.editorRow20});
-            this.vGridControl3.Size = new System.Drawing.Size(1342, 276);
+            this.vGridControl3.Size = new System.Drawing.Size(1342, 273);
             this.vGridControl3.TabIndex = 0;
             // 
             // repositoryItemImageComboBox18
@@ -981,7 +988,7 @@
             this.xtraTabPage18.Controls.Add(this.ucRelDocGrid3);
             this.xtraTabPage18.ImageOptions.ImageIndex = 11;
             this.xtraTabPage18.Name = "xtraTabPage18";
-            this.xtraTabPage18.Size = new System.Drawing.Size(1342, 276);
+            this.xtraTabPage18.Size = new System.Drawing.Size(1342, 273);
             this.xtraTabPage18.Text = "Зв\'язані документи";
             // 
             // ucRelDocGrid3
@@ -989,21 +996,21 @@
             this.ucRelDocGrid3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid3.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid3.Name = "ucRelDocGrid3";
-            this.ucRelDocGrid3.Size = new System.Drawing.Size(1342, 276);
+            this.ucRelDocGrid3.Size = new System.Drawing.Size(1342, 273);
             this.ucRelDocGrid3.TabIndex = 3;
             // 
-            // KAgentAdjustmentSource
+            // GgridDataSource
             // 
-            this.KAgentAdjustmentSource.AreSourceRowsThreadSafe = true;
-            this.KAgentAdjustmentSource.DefaultSorting = "OnDate DESC";
-            this.KAgentAdjustmentSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_KAgentAdjustment);
-            this.KAgentAdjustmentSource.KeyExpression = "Id";
-            this.KAgentAdjustmentSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_GetQueryable);
-            this.KAgentAdjustmentSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_DismissQueryable);
+            this.GgridDataSource.AreSourceRowsThreadSafe = true;
+            this.GgridDataSource.DefaultSorting = "OnDate DESC";
+            this.GgridDataSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_KAgentAdjustment);
+            this.GgridDataSource.KeyExpression = "Id";
+            this.GgridDataSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_GetQueryable);
+            this.GgridDataSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_DismissQueryable);
             // 
-            // ProjectManagementPopupMenu
+            // GridPopupMenu
             // 
-            this.ProjectManagementPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.GridPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
@@ -1014,9 +1021,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.ProjectManagementPopupMenu.Manager = this.barManager1;
-            this.ProjectManagementPopupMenu.Name = "ProjectManagementPopupMenu";
-            this.ProjectManagementPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
+            this.GridPopupMenu.Manager = this.barManager1;
+            this.GridPopupMenu.Name = "GridPopupMenu";
+            this.GridPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
             // 
             // ucKAgentAdjustment
             // 
@@ -1042,9 +1049,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentAdjustmentGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
             this.panelControl8.ResumeLayout(false);
             this.panelControl8.PerformLayout();
@@ -1064,7 +1071,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
             this.xtraTabPage18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1083,7 +1090,7 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.StyleController styleController1;
-        private DevExpress.Data.Linq.LinqInstantFeedbackSource KAgentAdjustmentSource;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource GgridDataSource;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1102,7 +1109,7 @@
         private DevExpress.XtraBars.BarButtonItem RestoreSettingsGridBtn;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private DevExpress.XtraBars.PopupMenu ProjectManagementPopupMenu;
+        private DevExpress.XtraBars.PopupMenu GridPopupMenu;
         public DevExpress.XtraGrid.GridControl KAgentAdjustmentGridControl;
         public DevExpress.XtraGrid.Views.Grid.GridView KAgentAdjustmentGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn53;

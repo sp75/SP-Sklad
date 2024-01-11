@@ -26,6 +26,8 @@ namespace SP_Sklad.UserControls
     public partial class ucWayBillReturnСustomers : DevExpress.XtraEditors.XtraUserControl
     {
         int w_type = 6;
+        private int fun_id = 42;
+        private string reg_layout_path = "ucWayBillReturnСustomers\\WbGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -58,7 +60,7 @@ namespace SP_Sklad.UserControls
 
         public void CopyItem()
         {
-            if (wb_focused_row == null)
+           /* if (wb_focused_row == null)
             {
                 return;
             }
@@ -77,7 +79,7 @@ namespace SP_Sklad.UserControls
             {
                 wb_in.is_new_record = true;
                 wb_in.ShowDialog();
-            }
+            }*/
         }
 
         public void EditItem()
@@ -189,12 +191,12 @@ namespace SP_Sklad.UserControls
         {
             WbGridView.SaveLayoutToStream(wh_layout_stream);
 
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ucWayBillReturnСustomers\\WbInGridView");
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 21 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
@@ -347,7 +349,7 @@ namespace SP_Sklad.UserControls
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWayBillReturnСustomers\\WbInGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SetWBEditorBarBtn()

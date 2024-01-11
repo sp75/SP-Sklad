@@ -15,11 +15,14 @@ using DevExpress.Data;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.Properties;
 using DevExpress.XtraEditors;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.UserControls
 {
     public partial class ucSettingMaterialPrices : DevExpress.XtraEditors.XtraUserControl
     {
+        private int fun_id = 97;
+        private string reg_layout_path = "ucSettingMaterialPrices\\SettingMaterialPricesGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem EditBtn { get; set; }
         public BarButtonItem DeleteBtn { get; set; }
@@ -55,6 +58,24 @@ namespace SP_Sklad.UserControls
             using (var frm = new frmSettingMaterialPrices())
             {
                 frm.ShowDialog();
+            }
+        }
+
+        public void EditItem()
+        {
+            using (var smp_frm = new frmSettingMaterialPrices(row_smp.Id))
+            {
+                smp_frm.ShowDialog();
+            }
+        }
+
+        public void DeleteItem()
+        {
+            var smp = _db.SettingMaterialPrices.Find(row_smp.Id);
+            if (smp != null)
+            {
+                _db.SettingMaterialPrices.Remove(smp);
+                _db.SaveChanges();
             }
         }
 
@@ -97,6 +118,11 @@ namespace SP_Sklad.UserControls
             _db.SaveChanges();
         }
 
+        public void PrintItem()
+        {
+            PrintDoc.SettingMaterialPricesReport(row_smp.PTypeId, _db);
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
@@ -121,13 +147,22 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void SettingMaterialPricesUserControl_Load(object sender, EventArgs e)
         {
+            SettingMaterialPricesGridView.SaveLayoutToStream(wh_layout_stream);
+            SettingMaterialPricesGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == 97 && w.UserId == UserSession.UserId);
+                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
+        }
+
+        public void SaveGridLayouts()
+        {
+            SettingMaterialPricesGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)

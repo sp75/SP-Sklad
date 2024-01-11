@@ -268,7 +268,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 8:
-                    new frmKAgentAdjustment().ShowDialog();
+                    new frmKAgentAdjustment(focused_tree_node.WType.Value).ShowDialog();
 
                     break;
 
