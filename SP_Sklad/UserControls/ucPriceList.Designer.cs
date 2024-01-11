@@ -187,8 +187,8 @@
             this.GgridDataSource.DefaultSorting = "OnDate DESC";
             this.GgridDataSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_PriceList);
             this.GgridDataSource.KeyExpression = "PlId";
-            this.GgridDataSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_GetQueryable);
-            this.GgridDataSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.KAgentAdjustmentSource_DismissQueryable);
+            this.GgridDataSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.GgridDataSource_GetQueryable);
+            this.GgridDataSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.GgridDataSource_DismissQueryable);
             // 
             // PriceListGridView
             // 
@@ -207,11 +207,11 @@
             this.PriceListGridView.OptionsView.EnableAppearanceEvenRow = true;
             this.PriceListGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceListGridView.OptionsView.ShowGroupPanel = false;
-            this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KAgentAdjustmentGridView_PopupMenuShowing);
-            this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KAgentAdjustmentGridView_FocusedRowObjectChanged);
-            this.PriceListGridView.ColumnFilterChanged += new System.EventHandler(this.KAgentAdjustmentGridView_ColumnFilterChanged);
-            this.PriceListGridView.AsyncCompleted += new System.EventHandler(this.KAgentAdjustmentGridView_AsyncCompleted);
-            this.PriceListGridView.DoubleClick += new System.EventHandler(this.KAgentAdjustmentGridView_DoubleClick);
+            this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceListGridView_PopupMenuShowing);
+            this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PriceListGridView_FocusedRowObjectChanged);
+            this.PriceListGridView.ColumnFilterChanged += new System.EventHandler(this.PriceListGridView_ColumnFilterChanged);
+            this.PriceListGridView.AsyncCompleted += new System.EventHandler(this.PriceListGridView_AsyncCompleted);
+            this.PriceListGridView.DoubleClick += new System.EventHandler(this.PriceListGridView_DoubleClick);
             // 
             // gridColumn46
             // 
@@ -578,7 +578,7 @@
             this.EndDate.Size = new System.Drawing.Size(140, 22);
             this.EndDate.StyleController = this.styleController1;
             this.EndDate.TabIndex = 3;
-            this.EndDate.EditValueChanged += new System.EventHandler(this.ProjectManagementEndDateEdit_EditValueChanged);
+            this.EndDate.EditValueChanged += new System.EventHandler(this.EndDateEdit_EditValueChanged);
             // 
             // styleController1
             // 
@@ -871,7 +871,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.GridPopupMenu.Manager = this.barManager1;
             this.GridPopupMenu.Name = "GridPopupMenu";
-            this.GridPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
+            this.GridPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.GridPopupMenu_BeforePopup);
             // 
             // ucPriceList
             // 

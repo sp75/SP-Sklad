@@ -185,7 +185,7 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void ProjectManagementEndDateEdit_EditValueChanged(object sender, EventArgs e)
+        private void EndDateEdit_EditValueChanged(object sender, EventArgs e)
         {
             if (EndDate.ContainsFocus)
             {
@@ -204,7 +204,7 @@ namespace SP_Sklad.UserControls
             ExtPrintBtn.Enabled = (focused_row != null);
         }
 
-        private void PMGridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        private void GridPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
             DeleteItemBtn.Enabled = ExtDeleteBtn.Enabled;
             ExecuteItemBtn.Enabled = ExtExecuteBtn.Enabled;
@@ -293,7 +293,7 @@ namespace SP_Sklad.UserControls
         }
 
 
-        private void KAgentAdjustmentSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        private void GgridDataSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
             if (e.Tag == null)
                 return;
@@ -301,7 +301,7 @@ namespace SP_Sklad.UserControls
             ((BaseEntities)e.Tag).Dispose();
         }
 
-        private void KAgentAdjustmentSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        private void GgridDataSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
 
             var satrt_date = StartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : StartDate.DateTime;
@@ -314,7 +314,7 @@ namespace SP_Sklad.UserControls
             e.Tag = objectContext;
         }
 
-        private void KAgentAdjustmentGridView_AsyncCompleted(object sender, EventArgs e)
+        private void PriceListGridView_AsyncCompleted(object sender, EventArgs e)
         {
             if (focused_row == null || !restore)
             {
@@ -331,23 +331,23 @@ namespace SP_Sklad.UserControls
         }
 
 
-        private void KAgentAdjustmentGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        private void PriceListGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             SetWBEditorBarBtn();
         }
 
-        private void KAgentAdjustmentGridView_ColumnFilterChanged(object sender, EventArgs e)
+        private void PriceListGridView_ColumnFilterChanged(object sender, EventArgs e)
         {
             SetWBEditorBarBtn();
         }
 
-        private void KAgentAdjustmentGridView_DoubleClick(object sender, EventArgs e)
+        private void PriceListGridView_DoubleClick(object sender, EventArgs e)
         {
             EditItem();
             GetData();
         }
 
-        private void KAgentAdjustmentGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        private void PriceListGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
             {
