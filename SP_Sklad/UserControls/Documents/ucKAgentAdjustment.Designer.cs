@@ -304,6 +304,7 @@
             this.gridColumn56.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn56.FieldName = "OnDate";
             this.gridColumn56.Name = "gridColumn56";
+            this.gridColumn56.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn56.Visible = true;
             this.gridColumn56.VisibleIndex = 3;
             this.gridColumn56.Width = 99;

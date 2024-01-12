@@ -1247,6 +1247,12 @@
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Documents\ucPayDoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucPayDoc.Designer.cs">
+      <DependentUpon>ucPayDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Documents\ucPriceList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2493,6 +2499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
       <DependentUpon>DocListReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Documents\ucPayDoc.resx">
+      <DependentUpon>ucPayDoc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Documents\ucPriceList.resx">
       <DependentUpon>ucPriceList.cs</DependentUpon>

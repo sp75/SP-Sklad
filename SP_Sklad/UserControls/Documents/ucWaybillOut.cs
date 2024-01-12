@@ -248,7 +248,7 @@ namespace SP_Sklad.UserControls
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = WayBillInSource;
 
-            xtraTabControl2_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
@@ -358,6 +358,17 @@ namespace SP_Sklad.UserControls
         private void SetWBEditorBarBtn()
         {
             xtraTabControl2_SelectedPageChanged(null, null);
+
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (wb_focused_row == null)
+            {
+                return;
+            }
 
             ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
             ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);

@@ -175,7 +175,7 @@ namespace SP_Sklad.UserControls
             ProjectManagementGridControl.DataSource = null;
             ProjectManagementGridControl.DataSource = ProjectManagementSource;
 
-            xtraTabControl7_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
      
@@ -269,6 +269,17 @@ namespace SP_Sklad.UserControls
         private void SetWBEditorBarBtn()
         {
             xtraTabControl7_SelectedPageChanged(null, null);
+
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (pm_focused_row == null)
+            {
+                return;
+            }
 
             ExtDeleteBtn.Enabled = (pm_focused_row != null && pm_focused_row.Checked == 0 && user_access.CanDelete == 1);
             ExtExecuteBtn.Enabled = (pm_focused_row != null && user_access.CanPost == 1);

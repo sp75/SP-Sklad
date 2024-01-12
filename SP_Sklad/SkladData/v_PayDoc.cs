@@ -16,6 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public int PayDocId { get; set; }
         public int DocType { get; set; }
+        public Nullable<int> ExDocType { get; set; }
         public System.DateTime OnDate { get; set; }
         public Nullable<int> KaId { get; set; }
         public decimal Total { get; set; }
@@ -57,10 +58,13 @@ namespace SP_Sklad.SkladData
         public string KAU { get; set; }
         public System.Guid Id { get; set; }
         public Nullable<decimal> SummInCurr { get; set; }
-        public string DocTypeName { get; set; }
         public Nullable<decimal> ActualSummInCurr { get; set; }
         public string KaAccNum { get; set; }
         public Nullable<decimal> BankCommission { get; set; }
         public Nullable<int> EntId { get; set; }
+        public string EntName { get; set; }
+        public string KaGroupName { get; set; }
+        public string DocTypeName { get; set; }
+        public string SourceType { get; set; }
     }
 }

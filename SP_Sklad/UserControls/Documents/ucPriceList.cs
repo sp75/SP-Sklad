@@ -169,7 +169,7 @@ namespace SP_Sklad.UserControls
             PriceListGridControl.DataSource = null;
             PriceListGridControl.DataSource = GgridDataSource;
 
-            xtraTabControl3_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
         public void SaveGridLayouts()
@@ -196,6 +196,17 @@ namespace SP_Sklad.UserControls
         private void SetWBEditorBarBtn()
         {
             xtraTabControl3_SelectedPageChanged(null, null);
+
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (focused_row == null)
+            {
+                return;
+            }
 
             ExtDeleteBtn.Enabled = (focused_row != null && user_access.CanDelete == 1);
             ExtExecuteBtn.Enabled = false;

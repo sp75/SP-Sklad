@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
 using SP_Sklad.WBDetForm;
+using SP_Sklad.WBForm;
 
 namespace SP_Sklad.UserControls
 {
@@ -106,6 +107,21 @@ namespace SP_Sklad.UserControls
                 frm.OkButton.Visible = false;
                 frm.ShowDialog();
             }
+        }
+
+        private void WaybillCorrectionDetBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var frm = new frmWaybillCorrection(wb_det_focused_row.PosId))
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void WbDetPopupMenu_BeforePopup(object sender, CancelEventArgs e)
+        {
+            var wb = new BaseEntities().WaybillList.Find(_wbill_id);
+
+            WaybillCorrectionDetBtn.Enabled = (wb.WType == -1 && DBHelper.is_buh && wb.Checked == 1);
         }
     }
 }

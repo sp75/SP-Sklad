@@ -35,7 +35,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_WayBillIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillIn;
+        private v_WayBillIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillIn;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -246,7 +246,7 @@ namespace SP_Sklad.UserControls
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = WayBillInSource;
 
-            xtraTabControl2_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
@@ -356,6 +356,17 @@ namespace SP_Sklad.UserControls
         private void SetWBEditorBarBtn()
         {
             xtraTabControl2_SelectedPageChanged(null, null);
+
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (wb_focused_row == null)
+            {
+                return;
+            }
 
             ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
             ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanPost == 1);

@@ -37,8 +37,8 @@ namespace SP_Sklad.UserControls
         private UserAccess user_access { get; set; }
 
         private Guid prev_focused_id = Guid.Empty;
-        public Guid? find_id;
-        bool restore = false;
+        private Guid? find_id;
+        private bool restore = false;
         public ucExpedition()
         {
             InitializeComponent();
@@ -155,6 +155,16 @@ namespace SP_Sklad.UserControls
             {
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
             }
+        }
+
+        public void FindItem(Guid id, DateTime on_date)
+        {
+            find_id = id;
+          //  kaaStartDate.DateTime = on_date.Date;
+         //   kaaEndDate.DateTime = on_date.Date.SetEndDay();
+        //    kaaStatusList.EditValue = -1;
+
+            GetData();
         }
 
 

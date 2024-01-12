@@ -225,8 +225,11 @@
             // gridColumn47
             // 
             this.gridColumn47.Caption = "Дата";
+            this.gridColumn47.DisplayFormat.FormatString = "g";
+            this.gridColumn47.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn47.FieldName = "OnDate";
             this.gridColumn47.Name = "gridColumn47";
+            this.gridColumn47.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 1;
             this.gridColumn47.Width = 96;

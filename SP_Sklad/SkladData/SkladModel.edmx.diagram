@@ -412,7 +412,6 @@
         <EntityTypeShape EntityType="BaseModel.v_Users" Width="1.5" PointX="0.75" PointY="9" />
         <EntityTypeShape EntityType="BaseModel.v_MatRemains" Width="1.5" PointX="10.875" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_ErrorLog" Width="1.5" PointX="10.875" PointY="4" />
-        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="4.375" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="12.875" PointY="0.75" />
@@ -447,6 +446,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnСustomers" Width="1.5" PointX="5.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnСustomerDet" Width="1.5" PointX="7.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnSuppliers" Width="1.5" PointX="23.375" PointY="11.75" />
+        <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="8.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

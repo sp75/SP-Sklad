@@ -46,13 +46,13 @@ namespace SP_Sklad.Common
                 return mainForm.main_form.whUserControl;
             }
         }
-
+/*
         private static void SetDocFilter( int node_id)
         {
             PageIndex = 0;
 
-          /*  if (_docs_user_control.wbStartDate.DateTime > _on_date)*/ _docs_user_control.wbStartDate.DateTime = _on_date.Date;
-           /* if (_docs_user_control.wbEndDate.DateTime < _on_date)*/ _docs_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
+         _docs_user_control.wbStartDate.DateTime = _on_date.Date;
+           _docs_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
             _docs_user_control.wbKagentList.EditValue = 0;
             _docs_user_control.wbStatusList.EditValue = -1;
 
@@ -63,14 +63,14 @@ namespace SP_Sklad.Common
             {
                 _docs_user_control.WbGridView.FocusedRowHandle = rowHandle;
             }
-        }
-
+        }*/
+/*
         private static void SetPayDocFilter(int node_id)
         {
             PageIndex = 0;
 
-         /*   if (_docs_user_control.PDStartDate.DateTime > _on_date) */_docs_user_control.PDStartDate.DateTime = _on_date.Date;
-          /*  if (_docs_user_control.PDEndDate.DateTime < _on_date)*/ _docs_user_control.PDEndDate.DateTime = _on_date.Date.SetEndDay(); 
+        _docs_user_control.PDStartDate.DateTime = _on_date.Date;
+          _docs_user_control.PDEndDate.DateTime = _on_date.Date.SetEndDay(); 
             _docs_user_control.PDKagentList.EditValue = 0;
             _docs_user_control.PDSatusList.EditValue = -1;
 
@@ -81,14 +81,14 @@ namespace SP_Sklad.Common
             {
                 _docs_user_control.PayDocGridView.FocusedRowHandle = rowHandle;
             }
-        }
+        }*/
 
         private static void SetWhDocFilter(int node_id)
         {
             PageIndex = 2;
 
-         /*   if (_wh_user_control.wbStartDate.DateTime > _on_date)*/ _wh_user_control.wbStartDate.DateTime = _on_date.Date;
-          /*  if (_wh_user_control.wbEndDate.DateTime < _on_date)*/ _wh_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
+         _wh_user_control.wbStartDate.DateTime = _on_date.Date;
+          _wh_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
             _wh_user_control.WhComboBox.EditValue = "*";
             _wh_user_control.wbSatusList.EditValue = -1;
 
@@ -113,8 +113,6 @@ namespace SP_Sklad.Common
                     PageIndex = 0;
                     _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 26);
                     _docs_user_control.wayBillInUserControl.FindItem(doc_id.Value, date.Value);
-                  
-
                  //   SetDocFilter(26);
                     break;
 
@@ -125,20 +123,39 @@ namespace SP_Sklad.Common
                     //SetDocFilter(27);
                     break;
 
-                case 6: SetDocFilter(57);
+                case 6:
+                     PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 57);
+                    _docs_user_control.ucWayBillReturnСustomers.FindItem(doc_id.Value, date.Value);
+                    //SetDocFilter(57);
                     break;
 
-                case -6: SetDocFilter(56);
+                case -6:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 56);
+                    _docs_user_control.ucWaybillReturnSuppliers.FindItem(doc_id.Value, date.Value);
+                    //SetDocFilter(56);
                     break;
 
-                case 3: SetPayDocFilter(29);
+                case 3:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 29);
+                    _docs_user_control.ucPayDocIn.FindItem(doc_id.Value, date.Value);
+                 //   SetPayDocFilter(29);
                     break;
 
-                case -3: SetPayDocFilter(30);
+                case -3:
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 30);
+                    _docs_user_control.ucPayDocOut.FindItem(doc_id.Value, date.Value);
+                    //SetPayDocFilter(30);
                     break;
 
                 case -2:
-                    SetPayDocFilter(103);
+                    PageIndex = 0;
+                    _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 103);
+                    _docs_user_control.ucPayDocExtOut.FindItem(doc_id.Value, date.Value);
+                    //SetPayDocFilter(103);
                     break;
 
                 case 2:
@@ -246,8 +263,9 @@ namespace SP_Sklad.Common
                 case 32:
                     PageIndex = 0;
 
-                    mainForm.main_form.docsUserControl1.expeditionUserControl1.find_id = _doc_id;
+                //    mainForm.main_form.docsUserControl1.expeditionUserControl1.find_id = _doc_id;
                     _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 145);
+                    mainForm.main_form.docsUserControl1.expeditionUserControl1.FindItem(doc_id.Value, date.Value);
 
                     break;
             }

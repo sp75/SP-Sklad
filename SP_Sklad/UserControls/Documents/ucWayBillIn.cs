@@ -25,8 +25,8 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucWayBillIn : DevExpress.XtraEditors.XtraUserControl
     {
-        int w_type = 1;
-        private int fun_id = 21;
+        public string w_types { get; set; }
+        private int w_type = 1;
         private string reg_layout_path = "WayBillInUserControl\\WbInGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
@@ -35,9 +35,9 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_WayBillIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillIn;
+        private v_WayBillIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillIn;
 
-        private UserAccess user_access { get; set; }
+        
         private UserSettingsRepository user_settings { get; set; }
 
         private int prev_focused_id = 0;
@@ -75,7 +75,7 @@ namespace SP_Sklad.UserControls
 
             var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-            using (var wb_in = new frmWayBillIn(w_type, doc.out_wbill_id))
+            using (var wb_in = new frmWayBillIn(wb_focused_row.WType, doc.out_wbill_id))
             {
                 wb_in.is_new_record = true;
                 wb_in.ShowDialog();
@@ -148,7 +148,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            PrintDoc.Show(wb_focused_row.Id, w_type, _db);
+            PrintDoc.Show(wb_focused_row.Id, wb_focused_row.WType, _db);
         }
 
         public void FindItem(Guid id, DateTime on_date)
@@ -169,7 +169,7 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null )
+            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null)
             {
                 return;
             }
@@ -178,10 +178,11 @@ namespace SP_Sklad.UserControls
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
             var kagent_id = (int)wbKagentList.EditValue;
+            var wt = w_types.Split(',').Select(s => Convert.ToInt32(s));
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillIn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillIn.Where(w => wt.Contains(w.WType) && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -196,7 +197,7 @@ namespace SP_Sklad.UserControls
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+               
 
                 wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
                 wbKagentList.EditValue = 0;
@@ -245,7 +246,7 @@ namespace SP_Sklad.UserControls
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = WayBillInSource;
 
-            xtraTabControl2_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
@@ -356,10 +357,24 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl2_SelectedPageChanged(null, null);
 
-            ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1 && (wb_focused_row.Checked == 0 || wb_focused_row.Checked == 1));
-            ExtCopyBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (wb_focused_row == null)
+            {
+                return;
+            }
+
+            var fun_id = _db.DocType.FirstOrDefault(w => w.Id == wb_focused_row.WType).FunId;
+            UserAccess user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+
+            ExtDeleteBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access?.CanDelete == 1);
+            ExtExecuteBtn.Enabled = (wb_focused_row != null && wb_focused_row.WType != 2 && wb_focused_row.WType != -16 && wb_focused_row.WType != 16 && user_access?.CanPost == 1);
+            ExtEditBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1 && (wb_focused_row.Checked == 0 || wb_focused_row.Checked == 1));
+            ExtCopyBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1);
             ExtPrintBtn.Enabled = (wb_focused_row != null);
         }
 

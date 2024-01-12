@@ -67,8 +67,7 @@ namespace SP_Sklad.MainTabs
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\WbGridView");
-            PayDocGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\PayDocGridView");
-
+ 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
@@ -81,15 +80,6 @@ namespace SP_Sklad.MainTabs
 
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                PDEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                PDKagentList.EditValue = 0;
-
-                PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                PDSatusList.EditValue = -1;
 
                 DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
                 if (set_tree_node != null)
@@ -111,7 +101,7 @@ namespace SP_Sklad.MainTabs
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
-                PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+               
 
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
                 repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
@@ -144,20 +134,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        void GetPayDocList(string doc_typ)
-        {
-            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
-            {
-                return;
-            }
-
-            var satrt_date = PDStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PDStartDate.DateTime;
-            var end_date = PDEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PDEndDate.DateTime;
-
-            int top_row = PayDocGridView.TopRowIndex;
-            GetPayDocListBS.DataSource = _db.GetPayDocList(doc_typ, satrt_date.Date, end_date.Date.AddDays(1), (int)PDKagentList.EditValue, (int)PDSatusList.EditValue, -1, DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
-            PayDocGridView.TopRowIndex = top_row;
-        }
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
@@ -179,7 +155,11 @@ namespace SP_Sklad.MainTabs
 
                RefrechItemBtn.PerformClick();
 
-            if (focused_tree_node.FunId == 21) //Прибуткова накладна
+            if (focused_tree_node.Id == 31) //Платіжні документи
+            {
+                wbContentTab.SelectedTabPageIndex = 6;
+            }
+            else if (focused_tree_node.FunId == 21) //Прибуткова накладна
             {
                 wbContentTab.SelectedTabPageIndex = 14;
             }
@@ -218,6 +198,18 @@ namespace SP_Sklad.MainTabs
             else if (focused_tree_node.FunId == 78) //Заборгованість покупця
             {
                 wbContentTab.SelectedTabPageIndex = 23;
+            }
+            else if (focused_tree_node.FunId == 26) //Прибутковий касовий ордер
+            {
+                wbContentTab.SelectedTabPageIndex = 2;
+            }
+            else if (focused_tree_node.FunId == 25) //Видатковий касовий ордер
+            {
+                wbContentTab.SelectedTabPageIndex = 3;
+            }
+            else if (focused_tree_node.FunId == 52) //Додаткові витрати
+            {
+                wbContentTab.SelectedTabPageIndex = 4;
             }
             else
             {
@@ -302,10 +294,17 @@ namespace SP_Sklad.MainTabs
 
                 case 4:
 
-                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                    using (var pd = new frmPayDoc(w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
+                    if (cur_wtype == 3)  
                     {
-                        pd.ShowDialog();
+                        ucPayDocIn.NewItem();
+                    }else
+                    if (cur_wtype == -3)
+                    {
+                        ucPayDocOut.NewItem();
+                    }else
+                    if (cur_wtype == -2)
+                    {
+                        ucPayDocExtOut.NewItem();
                     }
                     break;
 
@@ -398,8 +397,18 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                        DocEdit.PDEdit(pd_row.PayDocId, pd_row.DocType);
+                        if (cur_wtype == 3)
+                        {
+                            ucPayDocIn.EditItem();
+                        }else
+                        if (cur_wtype == -3)
+                        {
+                            ucPayDocOut.EditItem();
+                        }else
+                        if (cur_wtype == -2)
+                        {
+                            ucPayDocExtOut.EditItem();
+                        }
                         break;
 
                     case 5:
@@ -486,8 +495,6 @@ namespace SP_Sklad.MainTabs
             {
                 int gtype = focused_tree_node.GType.Value;
 
-                var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-
                 using (var db = new BaseEntities())
                 {
                     try
@@ -495,7 +502,7 @@ namespace SP_Sklad.MainTabs
                         switch (gtype)
                         {
                             //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
-                            case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
+                  //          case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
                                 //	case 5: PriceList->LockRecord();  break;
                                 //	case 6: ContractsList->LockRecord();  break;
                                 //	case 7: TaxWBList->LockRecord();  break;
@@ -520,15 +527,17 @@ namespace SP_Sklad.MainTabs
                                     break;
 
                                 case 4:
-                                    var _pd = db.PayDoc.Find(pd_row.PayDocId);
-
-                                    if (_pd != null)
+                                    if (cur_wtype == 3)
                                     {
-                                        db.PayDoc.Remove(_pd);
+                                        ucPayDocIn.DeleteItem();
                                     }
-                                    else
+                                    else                        if (cur_wtype == -3)
                                     {
-                                        MessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                                        ucPayDocOut.DeleteItem();
+                                    }
+                                    else                        if (cur_wtype == -2)
+                                    {
+                                        ucPayDocExtOut.DeleteItem();
                                     }
                                     break;
 
@@ -640,20 +649,17 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    if (cur_wtype == -2)
+                    if (cur_wtype == 3)
                     {
-                        GetPayDocList("-2");
+                        ucPayDocIn.GetData();
                     }
-                    else if (cur_wtype == -3 || cur_wtype == 3)
+                    else if (cur_wtype == -3)
                     {
-                        GetPayDocList((cur_wtype / 3).ToString());
+                        ucPayDocOut.GetData();
                     }
-                    else if (focused_tree_node.Id == 31)
+                    else if (cur_wtype == -2)
                     {
-                        if (child_node_list.Any())
-                        {
-                            GetPayDocList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType != -2 ? s.WType / 3 : s.WType)).ToList()));
-                        }
+                        ucPayDocExtOut.GetData();
                     }
                     break;
 
@@ -779,23 +785,17 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        var pd_row = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                        var pd = _db.PayDoc.Find(pd_row.PayDocId);
-                        if (pd != null)
+                        if (cur_wtype == 3)
                         {
-                            if (pd.OnDate > _db.CommonParams.First().EndCalcPeriod)
-                            {
-                                pd.Checked = pd_row.Checked == 0 ? 1 : 0;
-                                _db.SaveChanges();
-                            }
-                            else
-                            {
-                                XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
+                            ucPayDocIn.ExecuteItem();
                         }
-                        else
+                        else if (cur_wtype == -3)
                         {
-                            XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", pd_row.DocNum));
+                            ucPayDocOut.ExecuteItem();
+                        }
+                        else if (cur_wtype == -2)
+                        {
+                            ucPayDocExtOut.ExecuteItem();
                         }
                         break;
 
@@ -835,7 +835,7 @@ namespace SP_Sklad.MainTabs
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(focused_tree_node == null)
+            if (focused_tree_node == null)
             {
                 return;
             }
@@ -843,61 +843,63 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    Guid? doc_id;
                     if (focused_tree_node.WType == 1)
                     {
-                        doc_id = wayBillInUserControl.wb_focused_row?.Id;
+                        wayBillInUserControl.PrintItem();
                     }
                     else if (focused_tree_node.WType == 16)
                     {
-                        doc_id = ucWBOrdersOut.wb_focused_row?.Id;
+                        ucWBOrdersOut.PrintItem();
                     }
                     else if (focused_tree_node.WType == -1)
                     {
-                        doc_id = ucWaybillOut.wb_focused_row?.Id;
+                        ucWaybillOut.PrintItem();
                     }
                     else if (focused_tree_node.WType == 2)
                     {
-                        doc_id = ucInvoices.wb_focused_row?.Id;
+                        ucInvoices.PrintItem();
                     }
                     else if (focused_tree_node.WType == -16)
                     {
-                        doc_id = ucWBOrdersIn.wb_focused_row?.Id;
+                        ucWBOrdersIn.PrintItem();
                     }
                     else if (focused_tree_node.WType == 29)
                     {
-                        doc_id = ucServicesIn.wb_focused_row?.Id;
+                        ucServicesIn.PrintItem();
                     }
                     else if (focused_tree_node.WType == 6)
                     {
-                        doc_id = ucWayBillReturnСustomers.wb_focused_row?.Id;
+                        ucWayBillReturnСustomers.PrintItem();
                     }
                     else if (focused_tree_node.WType == -6)
                     {
-                        doc_id = ucWaybillReturnSuppliers.wb_focused_row?.Id;
-                    }
-                    else
-                    {
-                        doc_id = wb_focused_row?.Id;
-                    }
-                
-
-                    if(!doc_id.HasValue)
-                    {
-                        return;
+                        ucWaybillReturnSuppliers.PrintItem();
                     }
 
-                    PrintDoc.Show(doc_id.Value, focused_tree_node.WType.Value, _db);
                     break;
 
                 case 4:
-                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    PrintDoc.Show(pd.Id, pd.DocType == -2 ? pd.DocType : pd.DocType * 3, _db);
+                    if (focused_tree_node.Id == 31) //Платіжні документи
+                    {
+                        ucPayDoc.PrintItem();
+                    }
+                    else if (cur_wtype == 3)
+                    {
+                        ucPayDocIn.PrintItem();
+                    }
+                    else if (cur_wtype == -3)
+                    {
+                        ucPayDocOut.PrintItem();
+                    }
+                    else if (cur_wtype == -2)
+                    {
+                        ucPayDocExtOut.PrintItem();
+                    }
                     break;
 
                 case 5:
                     ucPriceList.PrintItem();
-                 
+
                     break;
 
                 case 12:
@@ -955,13 +957,17 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 4:
-                    var pd = PayDocGridView.GetFocusedRow() as GetPayDocList_Result;
-                    var p_doc = DB.SkladBase().DocCopy(pd.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-
-                    int? w_type = focused_tree_node.WType != -2 ? focused_tree_node.WType / 3 : focused_tree_node.WType;
-                    using (var pdf = new frmPayDoc(w_type, p_doc.out_wbill_id))
+                    if (cur_wtype == 3)
                     {
-                        pdf.ShowDialog();
+                        ucPayDocIn.CopyItem();
+                    }
+                    else if (cur_wtype == -3)
+                    {
+                        ucPayDocOut.CopyItem();
+                    }
+                    else if (cur_wtype == -2)
+                    {
+                        ucPayDocExtOut.CopyItem();
                     }
                     break;
 
@@ -1091,32 +1097,7 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (row != null);
         }
 
-        private void PayDocGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var dr = e.Row as GetPayDocList_Result;
-            PayDocListInfoBS.DataSource = dr;
-
-            if (dr != null)
-            {
-                ucRelDocGrid2.GetRelDoc(dr.Id);
-
-            }
-            else
-            {
-                ucRelDocGrid2.GetRelDoc(Guid.Empty);
-            }
-
-            var tree_row = DocsTreeList.GetDataRecordByNode(DocsTreeList.FocusedNode) as v_GetDocsTree;
-
-            bool isModify = (dr != null && (DBHelper.CashDesks.Any(a => a.CashId == dr.CashId) || dr.CashId == null));
-
-            DeleteItemBtn.Enabled = (dr != null && dr.Checked == 0 && tree_row.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (dr != null && tree_row.CanPost == 1 && isModify);
-            EditItemBtn.Enabled = (dr != null && tree_row.CanModify == 1 && isModify);
-            CopyItemBtn.Enabled = EditItemBtn.Enabled;
-            PrintItemBtn.Enabled = (dr != null);
-        }
-
+ 
         private class KaTemplateList
         {
             public bool Check { get; set; }
@@ -1216,14 +1197,6 @@ namespace SP_Sklad.MainTabs
 
         }
 
-        private void PriceListGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                PriceListPopupMenu.ShowPopup(p2);
-            }
-        }
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1262,14 +1235,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void PayDocGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                PayDocsPopupMenu.ShowPopup(p2);
-            }
-        }
 
         private void DocsPopupMenu_Popup(object sender, EventArgs e)
         {
@@ -1299,11 +1264,21 @@ namespace SP_Sklad.MainTabs
                     {
                         ucWaybillOut.ExportToExcel();
                     }
-                    else IHelper.ExportToXlsx(WBGridControl);
                     break;
 
                 case 4:
-                    IHelper.ExportToXlsx(PayDocGridControl);
+                    if (cur_wtype == 3)
+                    {
+                        ucPayDocIn.ExportToExcel();
+                    }
+                    else if (cur_wtype == -3)
+                    {
+                        ucPayDocOut.ExportToExcel();
+                    }
+                    else if (cur_wtype == -2)
+                    {
+                        ucPayDocExtOut.ExportToExcel();
+                    }
                     break;
                 case 5:
                     ucPriceList.ExportToExcel();
@@ -1313,8 +1288,7 @@ namespace SP_Sklad.MainTabs
         public void SaveGridLayouts()
         {
             WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
-            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\PayDocGridView");
-        }
+          }
 
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1356,13 +1330,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void PDKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
-            }
-        }
+        
 
 
         private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)

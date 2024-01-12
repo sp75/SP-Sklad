@@ -155,7 +155,7 @@ namespace SP_Sklad.UserControls
             BankStatementsGridControl.DataSource = null;
             BankStatementsGridControl.DataSource = BankStatementsSource;
 
-            xtraTabControl6_SelectedPageChanged(null, null);
+            SetWBEditorBarBtn();
         }
 
 
@@ -207,6 +207,17 @@ namespace SP_Sklad.UserControls
         private void SetWBEditorBarBtn()
         {
             xtraTabControl6_SelectedPageChanged(null, null);
+
+            ExtDeleteBtn.Enabled = false;
+            ExtExecuteBtn.Enabled = false;
+            ExtEditBtn.Enabled = false;
+            ExtCopyBtn.Enabled = false;
+            ExtPrintBtn.Enabled = false;
+
+            if (bank_statements_row == null)
+            {
+                return;
+            }
 
             ExtDeleteBtn.Enabled = (bank_statements_row != null && bank_statements_row.Checked == 0 && user_access.CanDelete == 1);
             ExtExecuteBtn.Enabled = (bank_statements_row != null && user_access.CanPost == 1);

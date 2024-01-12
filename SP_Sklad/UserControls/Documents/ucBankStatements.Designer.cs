@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucBankStatements));
             this.splitContainerControl8 = new DevExpress.XtraEditors.SplitContainerControl();
             this.BankStatementsGridControl = new DevExpress.XtraGrid.GridControl();
+            this.BankStatementsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.BankStatementsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn116 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox34 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -104,7 +105,6 @@
             this.editorRow40 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage28 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid5 = new SP_Sklad.UserControls.ucRelDocGrid();
-            this.BankStatementsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.ProjectManagementPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
@@ -180,6 +180,15 @@
             this.BankStatementsGridControl.TabIndex = 2;
             this.BankStatementsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.BankStatementsGridView});
+            // 
+            // BankStatementsSource
+            // 
+            this.BankStatementsSource.AreSourceRowsThreadSafe = true;
+            this.BankStatementsSource.DefaultSorting = "OnDate DESC";
+            this.BankStatementsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_BankStatements);
+            this.BankStatementsSource.KeyExpression = "Id";
+            this.BankStatementsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ProjectManagementSource_GetQueryable);
+            this.BankStatementsSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ProjectManagementSource_DismissQueryable);
             // 
             // BankStatementsGridView
             // 
@@ -270,6 +279,7 @@
             this.gridColumn118.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn118.FieldName = "OnDate";
             this.gridColumn118.Name = "gridColumn118";
+            this.gridColumn118.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn118.Visible = true;
             this.gridColumn118.VisibleIndex = 2;
             this.gridColumn118.Width = 237;
@@ -958,15 +968,6 @@
             this.ucRelDocGrid5.Name = "ucRelDocGrid5";
             this.ucRelDocGrid5.Size = new System.Drawing.Size(1342, 273);
             this.ucRelDocGrid5.TabIndex = 5;
-            // 
-            // BankStatementsSource
-            // 
-            this.BankStatementsSource.AreSourceRowsThreadSafe = true;
-            this.BankStatementsSource.DefaultSorting = "OnDate DESC";
-            this.BankStatementsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_BankStatements);
-            this.BankStatementsSource.KeyExpression = "Id";
-            this.BankStatementsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ProjectManagementSource_GetQueryable);
-            this.BankStatementsSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ProjectManagementSource_DismissQueryable);
             // 
             // ProjectManagementPopupMenu
             // 

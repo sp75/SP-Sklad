@@ -17,14 +17,15 @@ using DevExpress.Data;
 using DevExpress.XtraGrid.Views.Grid;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.WBForm;
+using SP_Sklad.FinanseForm;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucKAgentAdjustment : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucPayDoc : DevExpress.XtraEditors.XtraUserControl
     {
         public int w_type { get; set; }
         public int fun_id { get; set; }
-        private string reg_layout_path = "ucKAgentAdjustment\\KAgentAdjustmentGridView";
+        private string reg_layout_path = "ucPayDoc\\PayDocGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -32,7 +33,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_KAgentAdjustment focused_row => KAgentAdjustmentGridView.GetFocusedRow() is NotLoadedObject ? null : KAgentAdjustmentGridView.GetFocusedRow() as v_KAgentAdjustment;
+        private v_PayDoc focused_row => PayDocGridView.GetFocusedRow() is NotLoadedObject ? null : PayDocGridView.GetFocusedRow() as v_PayDoc;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -42,7 +43,7 @@ namespace SP_Sklad.UserControls
         private Guid? find_id { get; set; }
         private bool restore = false;
 
-        public ucKAgentAdjustment()
+        public ucPayDoc()
         {
             InitializeComponent();
         }
@@ -50,20 +51,25 @@ namespace SP_Sklad.UserControls
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ucProjectManagement_Load(object sender, EventArgs e)
         {
-            KAgentAdjustmentGridView.SaveLayoutToStream(wh_layout_stream);
-            KAgentAdjustmentGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+            PayDocGridView.SaveLayoutToStream(wh_layout_stream);
+            PayDocGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
+                PDStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                PDEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                kaaStatusList.EditValue = -1;
+                PDKagentList.Properties.DataSource = DBHelper.KagentsList;// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
+                PDKagentList.EditValue = 0;
 
-                kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
-                kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+                PDSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
+                PDSatusList.EditValue = -1;
+
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
                 GetData();
             }
@@ -71,15 +77,19 @@ namespace SP_Sklad.UserControls
 
         public void NewItem()
         {
-            using (var frm = new frmKAgentAdjustment(w_type))
+            using (var pd = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
             {
-                frm.ShowDialog();
+                pd.ShowDialog();
             }
         }
 
         public void CopyItem()
         {
-            ;
+            var p_doc = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+            using (var pdf = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, p_doc.out_wbill_id))
+            {
+                pdf.ShowDialog();
+            }
         }
 
         public void EditItem()
@@ -89,74 +99,70 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            using (var frm = new frmKAgentAdjustment(w_type, focused_row.Id))
-            {
-                frm.ShowDialog();
-            }
+            DocEdit.PDEdit(focused_row.PayDocId, focused_row.DocType);
         }
 
         public void DeleteItem()
         {
-            var adj = _db.KAgentAdjustment.Find(focused_row.Id);
+            var _pd = _db.PayDoc.Find(focused_row.PayDocId);
 
-            if (adj != null)
+            if (_pd != null)
             {
-                _db.KAgentAdjustment.Remove(adj);
+                _db.PayDoc.Remove(_pd);
                 _db.SaveChanges();
             }
             else
             {
-                MessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.Num));
+                MessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.DocNum));
             }
         }
 
         public void ExecuteItem()
         {
-            
-            var kadj = _db.KAgentAdjustment.Find(focused_row.Id);
-            if (kadj != null)
+            var pd = _db.PayDoc.Find(focused_row.PayDocId);
+            if (pd != null)
             {
-                if (kadj.OnDate > _db.CommonParams.First().EndCalcPeriod)
+                if (pd.OnDate > _db.CommonParams.First().EndCalcPeriod)
                 {
-                    kadj.Checked = focused_row.Checked == 0 ? 1 : 0;
+                    pd.Checked = focused_row.Checked == 0 ? 1 : 0;
                     _db.SaveChanges();
                 }
                 else
                 {
-                    XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення корегуючого документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    XtraMessageBox.Show("Період вже закритий. Змініть дату документа!", "Відміна/Проведення платіжного документа", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.Num));
+                XtraMessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.DocNum));
             }
         }
 
         public void PrintItem()
         {
-            ;
+            PrintDoc.Show(focused_row.Id, focused_row.ExDocType.Value, _db);
         }
 
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
-            kaaStartDate.DateTime = on_date.Date;
-            kaaEndDate.DateTime = on_date.Date.SetEndDay();
-            kaaStatusList.EditValue = -1;
+            PDStartDate.DateTime = on_date.Date;
+            PDEndDate.DateTime = on_date.Date.SetEndDay();
+            PDSatusList.EditValue = -1;
 
             GetData();
         }
 
         public void ExportToExcel()
         {
-            IHelper.ExportToXlsx(KAgentAdjustmentGridControl);
+            IHelper.ExportToXlsx(PayDocGridControl);
         }
 
         public void GetData()
         {
             if (focused_row != null && !find_id.HasValue)
             {
-                prev_top_row_index = KAgentAdjustmentGridView.TopRowIndex;
+                prev_top_row_index = PayDocGridView.TopRowIndex;
                 prev_focused_id = focused_row.Id;
             }
 
@@ -169,20 +175,20 @@ namespace SP_Sklad.UserControls
 
             restore = true;
 
-            KAgentAdjustmentGridControl.DataSource = null;
-            KAgentAdjustmentGridControl.DataSource = GgridDataSource;
+            PayDocGridControl.DataSource = null;
+            PayDocGridControl.DataSource = GgridDataSource;
 
             SetWBEditorBarBtn();
         }
 
         public void SaveGridLayouts()
         {
-            KAgentAdjustmentGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (kaaStartDate.ContainsFocus)
+            if (PDStartDate.ContainsFocus)
             {
                 GetData();
             }
@@ -190,7 +196,7 @@ namespace SP_Sklad.UserControls
 
         private void ProjectManagementEndDateEdit_EditValueChanged(object sender, EventArgs e)
         {
-            if (kaaEndDate.ContainsFocus)
+            if (PDEndDate.ContainsFocus)
             {
                 GetData();
             }
@@ -198,7 +204,7 @@ namespace SP_Sklad.UserControls
 
         private void PMStatusList_EditValueChanged(object sender, EventArgs e)
         {
-            if (kaaStatusList.ContainsFocus)
+            if (PDSatusList.ContainsFocus)
             {
                 GetData();
             }
@@ -219,10 +225,12 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            ExtDeleteBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExtExecuteBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
-            ExtEditBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && focused_row.Checked == 0);
-            ExtCopyBtn.Enabled = (focused_row != null && user_access.CanModify == 1);
+            bool isModify = (focused_row != null && (DBHelper.CashDesks.Any(a => a.CashId == focused_row.CashId) || focused_row.CashId == null));
+
+            ExtDeleteBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access?.CanDelete == 1);
+            ExtExecuteBtn.Enabled = (focused_row != null && user_access?.CanPost == 1 && isModify);
+            ExtEditBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
+            ExtCopyBtn.Enabled = (focused_row != null && user_access?.CanModify == 1 && isModify);
             ExtPrintBtn.Enabled = (focused_row != null);
         }
 
@@ -241,9 +249,9 @@ namespace SP_Sklad.UserControls
         void OnRowSearchComplete(object rh)
         {
             int rowHandle = (int)rh;
-            if (KAgentAdjustmentGridView.IsValidRowHandle(rowHandle))
+            if (PayDocGridView.IsValidRowHandle(rowHandle))
             {
-                FocusRow(KAgentAdjustmentGridView, rowHandle);
+                FocusRow(PayDocGridView, rowHandle);
             }
         }
 
@@ -311,7 +319,7 @@ namespace SP_Sklad.UserControls
         {
             wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
-            KAgentAdjustmentGridView.RestoreLayoutFromStream(wh_layout_stream);
+            PayDocGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
 
 
@@ -325,20 +333,22 @@ namespace SP_Sklad.UserControls
 
         private void KAgentAdjustmentSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-
-            if (kaaStatusList.EditValue == null )
+            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null)
             {
                 return;
             }
 
-            var satrt_date = kaaStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : kaaStartDate.DateTime;
-            var end_date = kaaEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : kaaEndDate.DateTime;
-            int status = (int)kaaStatusList.EditValue;
+            var satrt_date = PDStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PDStartDate.DateTime;
+            var end_date = PDEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PDEndDate.DateTime;
+            var status = (int)PDSatusList.EditValue;
+            var ka_id = (int)PDKagentList.EditValue;
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_KAgentAdjustment.Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.WType == w_type || w_type == -1));
-            e.QueryableSource = list;
 
+
+            var list = objectContext.v_PayDoc.Join(objectContext.EnterpriseWorker.Where(eww => eww.WorkerId == DBHelper.CurrentUser.KaId), pd => pd.EntId, ew => ew.EnterpriseId, (pd, ew) => pd)
+                .Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.ExDocType == w_type || w_type == -1) && (w.KaId == ka_id || ka_id == 0));
+            e.QueryableSource = list;
             e.Tag = objectContext;
         }
 
@@ -349,10 +359,10 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            int rowHandle = KAgentAdjustmentGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
+            int rowHandle = PayDocGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
             if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
             {
-                FocusRow(KAgentAdjustmentGridView, rowHandle);
+                FocusRow(PayDocGridView, rowHandle);
             }
 
             restore = false;
@@ -362,27 +372,23 @@ namespace SP_Sklad.UserControls
         {
             if (focused_row == null)
             {
-                gridControl5.DataSource = null;
-                ucRelDocGrid3.GetRelDoc(Guid.Empty);
-                vGridControl3.DataSource = null;
+                vGridControl2.DataSource = null;
+                ucRelDocGrid2.GetRelDoc(Guid.Empty);
 
                 return;
             }
 
-            switch (xtraTabControl4.SelectedTabPageIndex)
+            switch (xtraTabControl1.SelectedTabPageIndex)
             {
                 case 0:
 
-                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == focused_row.Id).OrderBy(o => o.Idx).ToList();
+                    vGridControl2.DataSource = _db.v_PayDoc.Where(w => w.Id == focused_row.Id).ToList();
                     break;
 
                 case 1:
-                    vGridControl3.DataSource = _db.v_KAgentAdjustment.Where(w=> w.Id == focused_row.Id).ToList();
+                    ucRelDocGrid2.GetRelDoc(focused_row.Id);
                     break;
 
-                case 2:
-                    ucRelDocGrid3.GetRelDoc(focused_row.Id);
-                    break;
             }
         }
 
@@ -409,6 +415,46 @@ namespace SP_Sklad.UserControls
                 Point p2 = Control.MousePosition;
                 GridPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void PDKagentList_EditValueChanged(object sender, EventArgs e)
+        {
+            if (PDKagentList.ContainsFocus)
+            {
+                GetData();
+            }
+        }
+        private void PDKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
+            }
+        }
+
+        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            PDEndDate.DateTime = DateTime.Now.Date.SetEndDay();
+            switch (PeriodComboBoxEdit.SelectedIndex)
+            {
+                case 1:
+                    PDStartDate.DateTime = DateTime.Now.Date;
+                    break;
+
+                case 2:
+                    PDStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
+                    break;
+
+                case 3:
+                    PDStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
+                    break;
+
+                case 4:
+                    PDStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
+                    break;
+            }
+
+            GetData();
         }
     }
 }

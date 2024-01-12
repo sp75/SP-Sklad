@@ -47,6 +47,7 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.WaybillCorrectionDetBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -95,8 +96,9 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
-            this.barManager1.MaxItemId = 34;
+            this.barButtonItem10,
+            this.WaybillCorrectionDetBtn});
+            this.barManager1.MaxItemId = 35;
             // 
             // barDockControlTop
             // 
@@ -166,6 +168,8 @@
             this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
             this.imageCollection1.Images.SetKeyName(8, "Зарезервовано.bmp");
             this.imageCollection1.Images.SetKeyName(9, "store-2017.png");
+            this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16.png");
+            this.imageCollection1.Images.SetKeyName(11, "Зарезервувати все.bmp");
             // 
             // EditItemBtn
             // 
@@ -238,6 +242,14 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
+            // WaybillCorrectionDetBtn
+            // 
+            this.WaybillCorrectionDetBtn.Caption = "Корегувати позицію";
+            this.WaybillCorrectionDetBtn.Id = 34;
+            this.WaybillCorrectionDetBtn.ImageOptions.ImageIndex = 10;
+            this.WaybillCorrectionDetBtn.Name = "WaybillCorrectionDetBtn";
+            this.WaybillCorrectionDetBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WaybillCorrectionDetBtn_ItemClick);
+            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -248,9 +260,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.WaybillCorrectionDetBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
+            this.WbDetPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbDetPopupMenu_BeforePopup);
             // 
             // gridControl2
             // 
@@ -285,6 +299,7 @@
             this.gridColumn119,
             this.gridColumn150});
             this.WaybillDetGridView.GridControl = this.gridControl2;
+            this.WaybillDetGridView.Images = this.imageCollection1;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
@@ -300,7 +315,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 50;
+            this.gridColumn9.Width = 40;
             // 
             // gridColumn10
             // 
@@ -309,7 +324,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 233;
+            this.gridColumn10.Width = 220;
             // 
             // gridColumn11
             // 
@@ -321,7 +336,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 5;
-            this.gridColumn11.Width = 55;
+            this.gridColumn11.Width = 45;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -338,7 +353,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 6;
-            this.gridColumn12.Width = 59;
+            this.gridColumn12.Width = 49;
             // 
             // gridColumn13
             // 
@@ -349,7 +364,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 9;
-            this.gridColumn13.Width = 66;
+            this.gridColumn13.Width = 55;
             // 
             // gridColumn37
             // 
@@ -360,7 +375,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 10;
-            this.gridColumn37.Width = 74;
+            this.gridColumn37.Width = 63;
             // 
             // gridColumn39
             // 
@@ -369,7 +384,7 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 4;
-            this.gridColumn39.Width = 174;
+            this.gridColumn39.Width = 162;
             // 
             // gridColumn115
             // 
@@ -378,7 +393,7 @@
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
             this.gridColumn115.VisibleIndex = 7;
-            this.gridColumn115.Width = 59;
+            this.gridColumn115.Width = 49;
             // 
             // gridColumn41
             // 
@@ -399,14 +414,14 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
             this.gridColumn50.VisibleIndex = 11;
-            this.gridColumn50.Width = 96;
+            this.gridColumn50.Width = 184;
             // 
             // gridColumn94
             // 
             this.gridColumn94.Caption = "gridColumn94";
             this.gridColumn94.ColumnEdit = this.repositoryItemImageComboBox33;
             this.gridColumn94.FieldName = "Rsv";
-            this.gridColumn94.MaxWidth = 25;
+            this.gridColumn94.ImageOptions.ImageIndex = 11;
             this.gridColumn94.Name = "gridColumn94";
             this.gridColumn94.OptionsColumn.AllowEdit = false;
             this.gridColumn94.OptionsColumn.AllowFocus = false;
@@ -414,9 +429,10 @@
             this.gridColumn94.OptionsColumn.AllowSize = false;
             this.gridColumn94.OptionsColumn.ShowCaption = false;
             this.gridColumn94.OptionsColumn.ShowInCustomizationForm = false;
+            this.gridColumn94.OptionsFilter.AllowFilter = false;
             this.gridColumn94.Visible = true;
             this.gridColumn94.VisibleIndex = 0;
-            this.gridColumn94.Width = 25;
+            this.gridColumn94.Width = 29;
             // 
             // repositoryItemImageComboBox33
             // 
@@ -435,7 +451,7 @@
             this.gridColumn119.Name = "gridColumn119";
             this.gridColumn119.Visible = true;
             this.gridColumn119.VisibleIndex = 3;
-            this.gridColumn119.Width = 215;
+            this.gridColumn119.Width = 202;
             // 
             // gridColumn150
             // 
@@ -444,6 +460,7 @@
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
             this.gridColumn150.VisibleIndex = 8;
+            this.gridColumn150.Width = 64;
             // 
             // repositoryItemImageComboBox2
             // 
@@ -521,5 +538,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraBars.BarButtonItem WaybillCorrectionDetBtn;
     }
 }
