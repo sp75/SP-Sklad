@@ -363,7 +363,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucDocumentPaymentGrid";
             this.Size = new System.Drawing.Size(948, 329);
-            this.Load += new System.EventHandler(this.ucRelDocGrid_Load);
+            this.Load += new System.EventHandler(this.ucDocumentPaymentGrid_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentPaymentGridControl)).EndInit();

@@ -88,6 +88,8 @@
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -324,6 +326,10 @@
             this.imageCollection1.Images.SetKeyName(18, "checked_blue.png");
             this.imageCollection1.Images.SetKeyName(19, "pay_doc(1)_2.png");
             this.imageCollection1.Images.SetKeyName(20, "delivery-truck (1).png");
+            this.imageCollection1.InsertGalleryImage("printtitles_16x16.png", "images/spreadsheet/printtitles_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/spreadsheet/printtitles_16x16.png"), 21);
+            this.imageCollection1.Images.SetKeyName(21, "printtitles_16x16.png");
+            this.imageCollection1.InsertGalleryImage("exportfile_16x16.png", "images/export/exportfile_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/export/exportfile_16x16.png"), 22);
+            this.imageCollection1.Images.SetKeyName(22, "exportfile_16x16.png");
             // 
             // gridColumn2
             // 
@@ -551,8 +557,10 @@
             this.NewPayDocBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
-            this.ExportToExcelBtn});
-            this.barManager1.MaxItemId = 36;
+            this.ExportToExcelBtn,
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 38;
             // 
             // barDockControlTop
             // 
@@ -682,10 +690,26 @@
             // 
             // ExportToExcelBtn
             // 
-            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
+            this.ExportToExcelBtn.Caption = "Експорт списка в Excel...";
             this.ExportToExcelBtn.Id = 35;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Друк вибраних документів";
+            this.barButtonItem2.Id = 36;
+            this.barButtonItem2.ImageOptions.ImageIndex = 21;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Зберегти вибрані накладні в файли";
+            this.barButtonItem3.Id = 37;
+            this.barButtonItem3.ImageOptions.ImageIndex = 22;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // panelControl2
             // 
@@ -1188,6 +1212,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.WbListPopupMenu.Manager = this.barManager1;
@@ -1348,5 +1374,7 @@
         private ucWayBillOutDet ucWayBillOutDet;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

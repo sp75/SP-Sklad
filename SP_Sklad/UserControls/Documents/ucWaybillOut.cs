@@ -600,5 +600,60 @@ namespace SP_Sklad.UserControls
         {
             ExportToExcel();
         }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                for (int i = 0; i < WbGridView.RowCount; i++)
+                {
+                    var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
+
+                    if (dr != null)
+                    {
+                        if (dr.WType == -1)
+                        {
+                            var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
+                            IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
+                        }
+
+                        if (dr.WType == -16)
+                        {
+                            var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
+                            IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            for (int i = 0; i < WbGridView.RowCount; i++)
+            {
+                var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
+
+                if (dr != null)
+                {
+                    if (dr.WType == -1)
+                    {
+                        var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
+                        IHelper.Print(data_report, TemlateList.wb_out, false);
+                    }
+
+                    if (dr.WType == -16)
+                    {
+                        var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
+                        IHelper.Print(ord_out, TemlateList.ord_out, false);
+                    }
+                }
+
+            }
+
+            MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");
+
+        }
     }
 }

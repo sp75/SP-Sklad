@@ -23,7 +23,7 @@ namespace SP_Sklad.UserControls
             InitializeComponent();
         }
 
-        private void ucRelDocGrid_Load(object sender, EventArgs e)
+        private void ucDocumentPaymentGrid_Load(object sender, EventArgs e)
         {
             ;
         }
