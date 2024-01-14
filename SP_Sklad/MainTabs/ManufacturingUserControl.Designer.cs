@@ -1392,7 +1392,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "warehouse.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "boproductgroup_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "Накладні переміщення.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");

@@ -670,7 +670,7 @@
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
             this.xtraTabPage7.ImageOptions.ImageIndex = 8;
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage7.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage7.TabPageWidth = 120;
             this.xtraTabPage7.Text = "Сервіс";
             // 
@@ -679,7 +679,7 @@
             this.serviceUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.serviceUserControl1.Location = new System.Drawing.Point(0, 0);
             this.serviceUserControl1.Name = "serviceUserControl1";
-            this.serviceUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.serviceUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.serviceUserControl1.TabIndex = 0;
             // 
             // xtraTabPage6
@@ -687,7 +687,7 @@
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
             this.xtraTabPage6.ImageOptions.ImageIndex = 6;
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage6.TabPageWidth = 120;
             this.xtraTabPage6.Text = "Довідники";
             // 
@@ -699,7 +699,7 @@
             this.DirUserControl.isMatList = false;
             this.DirUserControl.Location = new System.Drawing.Point(0, 0);
             this.DirUserControl.Name = "DirUserControl";
-            this.DirUserControl.Size = new System.Drawing.Size(1186, 586);
+            this.DirUserControl.Size = new System.Drawing.Size(1186, 591);
             this.DirUserControl.TabIndex = 0;
             this.DirUserControl.wb = null;
             // 
@@ -708,7 +708,7 @@
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
             this.xtraTabPage5.ImageOptions.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage5.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage5.TabPageWidth = 120;
             this.xtraTabPage5.Text = "Звіти";
             // 
@@ -717,7 +717,7 @@
             this.reportUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.reportUserControl1.Location = new System.Drawing.Point(0, 0);
             this.reportUserControl1.Name = "reportUserControl1";
-            this.reportUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.reportUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.reportUserControl1.TabIndex = 0;
             // 
             // xtraTabPage4
@@ -725,7 +725,7 @@
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
             this.xtraTabPage4.ImageOptions.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage4.TabPageWidth = 120;
             this.xtraTabPage4.Text = "Фінанси";
             // 
@@ -735,7 +735,7 @@
             this.financesUserControl1.isDirectList = false;
             this.financesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.financesUserControl1.Name = "financesUserControl1";
-            this.financesUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.financesUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.financesUserControl1.TabIndex = 0;
             // 
             // xtraTabPage3
@@ -743,7 +743,7 @@
             this.xtraTabPage3.Controls.Add(this.whUserControl);
             this.xtraTabPage3.ImageOptions.ImageIndex = 2;
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage3.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage3.TabPageWidth = 120;
             this.xtraTabPage3.Text = "Склад";
             // 
@@ -758,7 +758,7 @@
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.resut = null;
             this.whUserControl.set_tree_node = null;
-            this.whUserControl.Size = new System.Drawing.Size(1186, 586);
+            this.whUserControl.Size = new System.Drawing.Size(1186, 591);
             this.whUserControl.TabIndex = 0;
             this.whUserControl.wb = null;
             this.whUserControl.wh_mat_list = null;
@@ -768,7 +768,7 @@
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
             this.xtraTabPage2.ImageOptions.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage2.TabPageWidth = 120;
             this.xtraTabPage2.Text = "Виробництво";
             // 
@@ -777,7 +777,7 @@
             this.manufacturingUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.manufacturingUserControl1.Location = new System.Drawing.Point(0, 0);
             this.manufacturingUserControl1.Name = "manufacturingUserControl1";
-            this.manufacturingUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.manufacturingUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.manufacturingUserControl1.TabIndex = 0;
             // 
             // xtraTabPage1
@@ -829,11 +829,11 @@
             this.TabImageCollection.TransparentColor = System.Drawing.Color.Transparent;
             this.TabImageCollection.Images.SetKeyName(0, "article_32x32.png");
             this.TabImageCollection.Images.SetKeyName(1, "technology_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(2, "packageproduct_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(2, "boproductgroup_32x32.png");
             this.TabImageCollection.Images.SetKeyName(3, "bosale_32x32.png");
             this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
             this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(6, "projectdirectory_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(6, "morefunctions_32x32.png");
             this.TabImageCollection.Images.SetKeyName(7, "editrangepermission_32x32.png");
             this.TabImageCollection.Images.SetKeyName(8, "ide_32x32.png");
             this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
@@ -855,13 +855,14 @@
             this.TabImageCollection.Images.SetKeyName(18, "currencyexchange");
             this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.factory, "factory", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.TabImageCollection.Images.SetKeyName(19, "factory");
+            this.TabImageCollection.Images.SetKeyName(20, "packageproduct_32x32.png");
             // 
             // TradeTabPage
             // 
             this.TradeTabPage.Controls.Add(this.tradeUserControl1);
             this.TradeTabPage.ImageOptions.ImageIndex = 3;
             this.TradeTabPage.Name = "TradeTabPage";
-            this.TradeTabPage.Size = new System.Drawing.Size(1186, 586);
+            this.TradeTabPage.Size = new System.Drawing.Size(1186, 591);
             this.TradeTabPage.TabPageWidth = 120;
             this.TradeTabPage.Text = "Продажі";
             // 
@@ -871,7 +872,7 @@
             this.tradeUserControl1.Location = new System.Drawing.Point(0, 0);
             this.tradeUserControl1.Name = "tradeUserControl1";
             this.tradeUserControl1.set_tree_node = null;
-            this.tradeUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.tradeUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.tradeUserControl1.TabIndex = 0;
             // 
             // UserTreeImgList
@@ -901,7 +902,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "warehouse.png");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "boproductgroup_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "Накладні переміщення.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
