@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillIn));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBill));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -60,6 +60,7 @@
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -124,7 +125,7 @@
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DocumentsImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -160,6 +161,7 @@
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl2
@@ -386,6 +388,12 @@
             this.barButtonItem1.ImageOptions.ImageIndex = 16;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // ExportToExcelBtn
+            // 
+            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
+            this.ExportToExcelBtn.Id = 35;
+            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             // 
             // WBGridControl
             // 
@@ -1081,13 +1089,12 @@
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
             // 
-            // ExportToExcelBtn
+            // DocumentsImageCollection
             // 
-            this.ExportToExcelBtn.Caption = "Експорт в Excel...";
-            this.ExportToExcelBtn.Id = 35;
-            this.ExportToExcelBtn.Name = "ExportToExcelBtn";
+            this.DocumentsImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("DocumentsImageCollection.ImageStream")));
+            this.DocumentsImageCollection.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // ucWayBillIn
+            // ucWayBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1096,7 +1103,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucWayBillIn";
+            this.Name = "ucWayBill";
             this.Size = new System.Drawing.Size(1375, 659);
             this.Load += new System.EventHandler(this.WayBillInUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
@@ -1136,6 +1143,7 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1228,5 +1236,6 @@
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
+        private DevExpress.Utils.ImageCollection DocumentsImageCollection;
     }
 }
