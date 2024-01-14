@@ -3322,6 +3322,7 @@
     <None Include="Resources\waybill_out.png" />
     <None Include="Resources\createmodeldifferences_32x32.png" />
     <None Include="Resources\template_16x16.png" />
+    <None Include="Resources\waybill_in.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
