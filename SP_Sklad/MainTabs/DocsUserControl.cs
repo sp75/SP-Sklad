@@ -157,7 +157,7 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
-                wbContentTab.SelectedTabPageIndex = 0; // focused_tree_node.GType.Value;
+                wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
             RefrechItemBtn.PerformClick();
