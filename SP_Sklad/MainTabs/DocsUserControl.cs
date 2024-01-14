@@ -84,11 +84,24 @@ namespace SP_Sklad.MainTabs
 
             cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
 
-               RefrechItemBtn.PerformClick();
-
             if (focused_tree_node.Id == 31) //Платіжні документи
             {
                 wbContentTab.SelectedTabPageIndex = 6;
+            }
+            else if(focused_tree_node.Id == 32) //Прибуткові , видаткові , рахунки
+            {
+                ucWayBill.w_types = "1,-1,2";
+                wbContentTab.SelectedTabPageIndex = 1;
+            }
+            else if (focused_tree_node.Id == 106) //Замовлення
+            {
+                ucWayBill.w_types = "-16,16";
+                wbContentTab.SelectedTabPageIndex = 1;
+            }
+            else if (focused_tree_node.Id == 55) //Повеорнення
+            {
+                ucWayBill.w_types = "-6,6";
+                wbContentTab.SelectedTabPageIndex = 1;
             }
             else if (focused_tree_node.FunId == 21) //Прибуткова накладна
             {
@@ -147,6 +160,8 @@ namespace SP_Sklad.MainTabs
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
+            RefrechItemBtn.PerformClick();
+
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity
@@ -160,8 +175,6 @@ namespace SP_Sklad.MainTabs
                     Settings.Default.LastFunId = focused_tree_node.FunId.Value;
                 }
             }
-
-   
         }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)

@@ -668,7 +668,6 @@
             // xtraTabPage7
             // 
             this.xtraTabPage7.Controls.Add(this.serviceUserControl1);
-            this.xtraTabPage7.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534473_police;
             this.xtraTabPage7.ImageOptions.ImageIndex = 8;
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(1186, 586);
@@ -686,7 +685,6 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Controls.Add(this.DirUserControl);
-            this.xtraTabPage6.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534381_findjob;
             this.xtraTabPage6.ImageOptions.ImageIndex = 6;
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1186, 586);
@@ -708,7 +706,6 @@
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
-            this.xtraTabPage5.ImageOptions.Image = global::SP_Sklad.Properties.Resources.company;
             this.xtraTabPage5.ImageOptions.ImageIndex = 5;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1186, 586);
@@ -726,7 +723,6 @@
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.financesUserControl1);
-            this.xtraTabPage4.ImageOptions.Image = global::SP_Sklad.Properties.Resources.bank;
             this.xtraTabPage4.ImageOptions.ImageIndex = 4;
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1186, 586);
@@ -745,7 +741,6 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.whUserControl);
-            this.xtraTabPage3.ImageOptions.Image = global::SP_Sklad.Properties.Resources._1324534557_mine_копия;
             this.xtraTabPage3.ImageOptions.ImageIndex = 2;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1186, 586);
@@ -771,7 +766,6 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.manufacturingUserControl1);
-            this.xtraTabPage2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.factory;
             this.xtraTabPage2.ImageOptions.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1186, 586);
@@ -789,10 +783,9 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.docsUserControl1);
-            this.xtraTabPage1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.administration;
             this.xtraTabPage1.ImageOptions.ImageIndex = 0;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 586);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage1.TabPageWidth = 120;
             this.xtraTabPage1.Text = "Документи";
             // 
@@ -802,7 +795,7 @@
             this.docsUserControl1.Location = new System.Drawing.Point(0, 0);
             this.docsUserControl1.Name = "docsUserControl1";
             this.docsUserControl1.set_tree_node = null;
-            this.docsUserControl1.Size = new System.Drawing.Size(1186, 586);
+            this.docsUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.docsUserControl1.TabIndex = 0;
             // 
             // mainTabControl
@@ -866,7 +859,6 @@
             // TradeTabPage
             // 
             this.TradeTabPage.Controls.Add(this.tradeUserControl1);
-            this.TradeTabPage.ImageOptions.Image = global::SP_Sklad.Properties.Resources.currencyexchange;
             this.TradeTabPage.ImageOptions.ImageIndex = 3;
             this.TradeTabPage.Name = "TradeTabPage";
             this.TradeTabPage.Size = new System.Drawing.Size(1186, 586);

@@ -37,6 +37,7 @@
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -129,7 +130,6 @@
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -366,6 +366,20 @@
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage7.Text = "Накладні";
+            // 
+            // ucWayBill
+            // 
+            this.ucWayBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBill.ExtCopyBtn = this.CopyItemBtn;
+            this.ucWayBill.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucWayBill.ExtEditBtn = this.EditItemBtn;
+            this.ucWayBill.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucWayBill.ExtPrintBtn = this.PrintItemBtn;
+            this.ucWayBill.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBill.Name = "ucWayBill";
+            this.ucWayBill.Size = new System.Drawing.Size(1138, 695);
+            this.ucWayBill.TabIndex = 0;
+            this.ucWayBill.w_types = "1,-1,2";
             // 
             // CopyItemBtn
             // 
@@ -1356,20 +1370,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // ucWayBill
-            // 
-            this.ucWayBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWayBill.ExtCopyBtn = this.CopyItemBtn;
-            this.ucWayBill.ExtDeleteBtn = this.DeleteItemBtn;
-            this.ucWayBill.ExtEditBtn = this.EditItemBtn;
-            this.ucWayBill.ExtExecuteBtn = this.ExecuteItemBtn;
-            this.ucWayBill.ExtPrintBtn = this.PrintItemBtn;
-            this.ucWayBill.Location = new System.Drawing.Point(0, 0);
-            this.ucWayBill.Name = "ucWayBill";
-            this.ucWayBill.Size = new System.Drawing.Size(1138, 695);
-            this.ucWayBill.TabIndex = 0;
-            this.ucWayBill.w_types = "1,-1,2";
             // 
             // DocsUserControl
             // 

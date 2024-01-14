@@ -66,6 +66,7 @@
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.DocumentsImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -125,7 +126,6 @@
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.DocumentsImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -137,6 +137,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
@@ -161,7 +162,6 @@
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainerControl2
@@ -294,8 +294,9 @@
             this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1)_3.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 17);
-            this.imageCollection1.Images.SetKeyName(17, "historyitem_16x161");
+            this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "historyitem_16x161");
             // 
             // NewItemBtn
             // 
@@ -477,9 +478,22 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 9)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
+            this.repositoryItemImageComboBox1.SmallImages = this.DocumentsImageCollection;
+            // 
+            // DocumentsImageCollection
+            // 
+            this.DocumentsImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("DocumentsImageCollection.ImageStream")));
+            this.DocumentsImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.DocumentsImageCollection.Images.SetKeyName(0, "waybill_out");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.DocumentsImageCollection.Images.SetKeyName(1, "waybill_in");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.DocumentsImageCollection.Images.SetKeyName(2, "invoice");
             // 
             // gridColumn2
             // 
@@ -502,7 +516,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.CheckedItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 17)});
             this.CheckedItemImageComboBox.Name = "CheckedItemImageComboBox";
             this.CheckedItemImageComboBox.SmallImages = this.imageCollection1;
             // 
@@ -1077,8 +1092,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
@@ -1087,15 +1100,6 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // DocumentsImageCollection
-            // 
-            this.DocumentsImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("DocumentsImageCollection.ImageStream")));
-            this.DocumentsImageCollection.TransparentColor = System.Drawing.Color.Transparent;
-            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.DocumentsImageCollection.Images.SetKeyName(0, "waybill_out");
-            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.DocumentsImageCollection.Images.SetKeyName(1, "waybill_in");
             // 
             // ucWayBill
             // 
@@ -1121,6 +1125,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -1146,7 +1151,6 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WbListPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocumentsImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

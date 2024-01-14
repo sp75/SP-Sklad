@@ -421,7 +421,6 @@
             this.barButtonItem1.Caption = "Обновити";
             this.barButtonItem1.Id = 36;
             this.barButtonItem1.ImageOptions.Image = global::SP_Sklad.Properties.Resources.recurrence_16x16;
-            this.barButtonItem1.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.recurrence_32x32;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
