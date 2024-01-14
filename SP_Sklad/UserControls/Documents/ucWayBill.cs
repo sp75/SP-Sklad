@@ -23,10 +23,10 @@ using DevExpress.XtraGrid.Views.Grid;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucWayBillIn : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWayBill : DevExpress.XtraEditors.XtraUserControl
     {
-        private int w_type = 1;
-        private string reg_layout_path = "ucWayBillIn\\WbInGridView";
+        public string w_types { get; set; }
+        private string reg_layout_path = "ucWayBill\\WbInGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -44,17 +44,9 @@ namespace SP_Sklad.UserControls
         private int? find_id { get; set; }
         private bool restore = false;
 
-        public ucWayBillIn()
+        public ucWayBill()
         {
             InitializeComponent();
-        }
-
-        public void NewItem()
-        {
-            using (var wb_in = new frmWayBillIn(w_type, null))
-            {
-                wb_in.ShowDialog();
-            }
         }
 
         public void CopyItem()
@@ -177,9 +169,11 @@ namespace SP_Sklad.UserControls
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
             var kagent_id = (int)wbKagentList.EditValue;
+            var wt = w_types.Split(',').Select(s => Convert.ToInt32(s));
+
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillIn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillIn.Where(w => wt.Contains(w.WType) && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -481,8 +475,7 @@ namespace SP_Sklad.UserControls
 
         private void NewItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            NewItem();
-            GetData();
+          
         }
 
         private void CopyItemBtn_ItemClick(object sender, ItemClickEventArgs e)

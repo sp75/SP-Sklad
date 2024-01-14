@@ -40,22 +40,6 @@ namespace SP_Sklad.MainTabs
         private UserSettingsRepository user_settings { get; set; }
         private List<KaTemplateList> ka_template_list { get; set; }
 
-        private GetWayBillList_Result wb_focused_row
-        {
-            get
-            {
-                return WbGridView.GetFocusedRow() as GetWayBillList_Result;
-            }
-        }
-
-        private GetWaybillDetIn_Result wb_det_focused_row
-        {
-            get
-            {
-                return WaybillDetGridView.GetFocusedRow() as GetWaybillDetIn_Result;
-            }
-        }
-
         public DocsUserControl()
         {
             InitializeComponent();
@@ -65,21 +49,10 @@ namespace SP_Sklad.MainTabs
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-
-            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "DocsUserControl\\WbGridView");
  
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-
-                wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                wbKagentList.EditValue = 0;
-
-                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                wbStatusList.EditValue = -1;
-
-                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
                 if (set_tree_node != null)
@@ -89,51 +62,9 @@ namespace SP_Sklad.MainTabs
                 }
 
                 DocsTreeList.ExpandAll();
-
-                WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
-                WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
-                WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
-                gridColumn44.Caption = gridColumn50.Caption;
-
-                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
-                WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
-               
-
-                repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
-                repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
-
-                gridColumn111.Caption = $"К-сть всього, {DBHelper.MeasuresList?.FirstOrDefault(w => w.Def == 1)?.ShortName}";
             }
 
         }
-
-        void GetWayBillList(string wtyp)
-        {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null || DocsTreeList.FocusedNode == null)
-            {
-                return;
-            }
-
-            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
-            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
-
-            int top_row = WbGridView.TopRowIndex;
-            var focused_id = wb_focused_row?.Id;
-
-            GetWayBillListBS.DataSource = _db.GetWayBillList(satrt_date, end_date, wtyp, (int)wbStatusList.EditValue, (int)wbKagentList.EditValue, show_null_balance, "*", DBHelper.CurrentUser.KaId).OrderByDescending(o => o.OnDate).ToList();
-            WbGridView.TopRowIndex = top_row;
-
-            int rowHandle = WbGridView.LocateByValue("Id", focused_id);
-            if (rowHandle != GridControl.InvalidRowHandle)
-            {
-                WbGridView.FocusedRowHandle = rowHandle;
-            }
-        }
-
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
@@ -390,10 +321,6 @@ namespace SP_Sklad.MainTabs
                         {
                             ucWaybillReturnSuppliers.EditItem();
                         }
-                        else
-                        {
-                            DocEdit.WBEdit(wb_focused_row.WbillId, wb_focused_row.WType);
-                        }
                         break;
 
                     case 4:
@@ -459,41 +386,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            if (focused_tree_node.WType == 1)
-            {
-                wayBillInUserControl.DeleteItem();
-            }
-            else if (focused_tree_node.WType == 16)
-            {
-                ucWBOrdersOut.DeleteItem();
-            }
-            else if (focused_tree_node.WType == -1)
-            {
-                ucWaybillOut.DeleteItem();
-            }
-            else if (focused_tree_node.WType == 2)
-            {
-                ucInvoices.DeleteItem();
-            }
-            else if (focused_tree_node.WType == -16)
-            {
-                ucWBOrdersIn.DeleteItem();
-            }
-            else if (focused_tree_node.WType == 29)
-            {
-                ucServicesIn.DeleteItem();
-            }
-            else if (focused_tree_node.WType == 6)
-            {
-                ucWayBillReturnСustomers.DeleteItem();
-            }
-            else if (focused_tree_node.WType == -6)
-            {
-                ucWaybillReturnSuppliers.DeleteItem();
-            }
-            else
-            {
-                int gtype = focused_tree_node.GType.Value;
+                    int gtype = focused_tree_node.GType.Value;
 
                 using (var db = new BaseEntities())
                 {
@@ -502,28 +395,48 @@ namespace SP_Sklad.MainTabs
                         switch (gtype)
                         {
                             //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
-                  //          case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
-                                //	case 5: PriceList->LockRecord();  break;
-                                //	case 6: ContractsList->LockRecord();  break;
-                                //	case 7: TaxWBList->LockRecord();  break;
+                            //          case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
+                            //	case 5: PriceList->LockRecord();  break;
+                            //	case 6: ContractsList->LockRecord();  break;
+                            //	case 7: TaxWBList->LockRecord();  break;
                         }
                         if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
                             switch (gtype)
                             {
                                 case 1:
-
-
-                                    var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId));
-                                    if (wb != null)
+                                    if (focused_tree_node.WType == 1)
                                     {
-                                        db.WaybillList.Remove(wb);
+                                        wayBillInUserControl.DeleteItem();
                                     }
-                                    else
+                                    else if (focused_tree_node.WType == 16)
                                     {
-                                        MessageBox.Show(Resources.deadlock);
+                                        ucWBOrdersOut.DeleteItem();
                                     }
-
+                                    else if (focused_tree_node.WType == -1)
+                                    {
+                                        ucWaybillOut.DeleteItem();
+                                    }
+                                    else if (focused_tree_node.WType == 2)
+                                    {
+                                        ucInvoices.DeleteItem();
+                                    }
+                                    else if (focused_tree_node.WType == -16)
+                                    {
+                                        ucWBOrdersIn.DeleteItem();
+                                    }
+                                    else if (focused_tree_node.WType == 29)
+                                    {
+                                        ucServicesIn.DeleteItem();
+                                    }
+                                    else if (focused_tree_node.WType == 6)
+                                    {
+                                        ucWayBillReturnСustomers.DeleteItem();
+                                    }
+                                    else if (focused_tree_node.WType == -6)
+                                    {
+                                        ucWaybillReturnSuppliers.DeleteItem();
+                                    }
                                     break;
 
                                 case 4:
@@ -531,11 +444,11 @@ namespace SP_Sklad.MainTabs
                                     {
                                         ucPayDocIn.DeleteItem();
                                     }
-                                    else                        if (cur_wtype == -3)
+                                    else if (cur_wtype == -3)
                                     {
                                         ucPayDocOut.DeleteItem();
                                     }
-                                    else                        if (cur_wtype == -2)
+                                    else if (cur_wtype == -2)
                                     {
                                         ucPayDocExtOut.DeleteItem();
                                     }
@@ -583,7 +496,7 @@ namespace SP_Sklad.MainTabs
                         MessageBox.Show(Resources.deadlock);
                     }
                 }
-            }
+     
 
             RefrechItemBtn.PerformClick();
         }
@@ -638,13 +551,9 @@ namespace SP_Sklad.MainTabs
                     {
                         ucWaybillReturnSuppliers.GetData();
                     }
-                    else if (focused_tree_node.WType == null)
-                    {
-                        GetWayBillList(string.Join(",", child_node_list.Select(s => Convert.ToString(s.WType))));
-                    }
                     else
                     {
-                        GetWayBillList(cur_wtype.ToString());
+                        ucWayBill.GetData();
                     }
                     break;
 
@@ -744,42 +653,6 @@ namespace SP_Sklad.MainTabs
                         else if (focused_tree_node.WType == -6)
                         {
                             ucWaybillReturnSuppliers.ExecuteItem();
-                        }
-
-                        else
-                        {
-                            var wb = db.WaybillList.Find(wb_focused_row.WbillId);
-
-                            if (wb == null)
-                            {
-                                XtraMessageBox.Show(Resources.not_find_wb);
-                                return;
-                            }
-                            if (wb.SessionId != null)
-                            {
-                                XtraMessageBox.Show(Resources.deadlock);
-                                return;
-                            }
-
-                            if (wb.Checked == 1)
-                            {
-                                if (wb.WType == -1)
-                                {
-
-                                    if (!DBHelper.CheckExpedition(wb_focused_row.WbillId, db)) return;
-                                }
-
-                                DBHelper.StornoOrder(db, wb_focused_row.WbillId);
-                            }
-                            else
-                            {
-                                if (wb.WType == -1)
-                                {
-                                    if (!DBHelper.CheckOrderedInSuppliers(wb_focused_row.WbillId, db)) return;
-                                }
-
-                                DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
-                            }
                         }
 
                         break;
@@ -1003,7 +876,7 @@ namespace SP_Sklad.MainTabs
 
         private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+          /*  var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
             if (wbl == null)
             {
                 return;
@@ -1020,13 +893,13 @@ namespace SP_Sklad.MainTabs
                 }
             }
 
-            RefrechItemBtn.PerformClick();
+            RefrechItemBtn.PerformClick();*/
         }
 
 
         private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if ((wb_focused_row.SummInCurr - wb_focused_row.SummPay) <= 0)
+         /*   if ((wb_focused_row.SummInCurr - wb_focused_row.SummPay) <= 0)
             {
                 MessageBox.Show("Документ вже оплачено!");
                 return;
@@ -1060,7 +933,7 @@ namespace SP_Sklad.MainTabs
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 RefrechItemBtn.PerformClick();
-            }
+            }*/
         }
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
@@ -1114,86 +987,17 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowMatInfo(wb_det_focused_row.MatId);
-        }
-
-        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowTurnMaterial(wb_det_focused_row.MatId);
-        }
-
-        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            IHelper.ShowMatRSV(wb_det_focused_row.MatId, DB.SkladBase());
-        }
-
-        private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (!IHelper.FindMatInWH(wb_det_focused_row.MatId))
-            {
-                MessageBox.Show(string.Format("На даний час товар <{0}> на складі вдсутній!", wb_det_focused_row.MatName));
-            }
-        }
-
-        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            if (!IHelper.FindMatInDir(wb_det_focused_row.MatId))
-            {
-                MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", wb_det_focused_row.MatName));
-            }
-        }
-
-        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var frm = new frmWayBillDetIn(DB.SkladBase(), wb_det_focused_row.PosId, DB.SkladBase().WaybillList.Find(wb_det_focused_row.WbillId));
-            frm.OkButton.Visible = false;
-            frm.ShowDialog();
-        }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if ((wb_focused_row.WType == 6 || wb_focused_row.WType == 1) && wb_focused_row.Checked == 1)
+          /*  if ((wb_focused_row.WType == 6 || wb_focused_row.WType == 1) && wb_focused_row.Checked == 1)
             {
                 DBHelper.CreateWBWriteOff(wb_focused_row.WbillId);
-            }
+            }*/
         }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            var dr = WbGridView.GetFocusedRow() as GetWayBillList_Result;
-
-            if (dr == null)
-            {
-                gridControl2.DataSource = null;
-                ucRelDocGrid1.GetRelDoc(Guid.Empty);
-                WayBillListInfoBS.DataSource = null;
-                gridControl10.DataSource = null;
-
-                return;
-            }
-
-            switch (xtraTabControl2.SelectedTabPageIndex)
-            {
-                case 0:
-                    gridColumn37.Caption = "Сума в валюті, " + dr.CurrName;
-                    gridControl2.DataSource = new BaseEntities().GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o => o.Num);
-                    break;
-
-                case 1:
-                    WayBillListInfoBS.DataSource = dr;
-                    break;
-
-                case 2:
-                    ucRelDocGrid1.GetRelDoc(dr.Id);
-                    break;
-
-                case 3:
-                    gridControl10.DataSource = _db.DocRels.Where(w => w.OriginatorId == dr.Id)
-                        .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
-                    break;
-            }
 
         }
 
@@ -1205,7 +1009,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
         {
-            switch (focused_tree_node.GType)
+          /*  switch (focused_tree_node.GType)
             {
                 case 1:
                     for (int i = 0; i < WbGridView.RowCount; i++)
@@ -1232,18 +1036,18 @@ namespace SP_Sklad.MainTabs
                     MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");
 
                     break;
-            }
+            }*/
         }
 
 
         private void DocsPopupMenu_Popup(object sender, EventArgs e)
         {
-            if (wb_focused_row == null)
+         /*   if (wb_focused_row == null)
             {
                 return;
             }
 
-            barButtonItem11.Enabled = wb_focused_row.WType == 6 || wb_focused_row.WType == 1;
+            barButtonItem11.Enabled = wb_focused_row.WType == 6 || wb_focused_row.WType == 1;*/
             
         }
 
@@ -1287,12 +1091,12 @@ namespace SP_Sklad.MainTabs
         }
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
+          //  WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
           }
 
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+         /*  if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 switch (focused_tree_node.GType)
                 {
@@ -1319,15 +1123,15 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
                 }
-            }
+            }*/
         }
 
         private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 1)
+         /*   if (e.Button.Index == 1)
             {
                 wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
-            }
+            }*/
         }
 
         
@@ -1336,7 +1140,7 @@ namespace SP_Sklad.MainTabs
         private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {
 
-            if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
+         /* if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
             {
                 var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
 
@@ -1349,18 +1153,18 @@ namespace SP_Sklad.MainTabs
 
                     e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
                 }
-            }
+            }*/
         }
 
 
         private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
+        //    IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
         }
 
         private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
         {
-            if (!EditItemBtn.Enabled)
+         /*   if (!EditItemBtn.Enabled)
             {
                 return;
             }
@@ -1372,7 +1176,7 @@ namespace SP_Sklad.MainTabs
             wb.PTypeId = PTypeId;
             _db.SaveChanges();
 
-            RefrechItemBtn.PerformClick();
+            RefrechItemBtn.PerformClick();*/
         }
 
         private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
@@ -1380,48 +1184,11 @@ namespace SP_Sklad.MainTabs
             if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
 
-        private void wbStartDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                wbStartDate.EditValue = DBHelper.ServerDateTime().Date;
-            }
-        }
 
-        private void wbEndDate_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                wbEndDate.EditValue = DBHelper.ServerDateTime().SetEndDay();
-            }
-        }
-
-        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
-            switch (PeriodComboBoxEdit.SelectedIndex)
-            {
-                case 1:
-                    wbStartDate.DateTime = DateTime.Now.Date;
-                    break;
-
-                case 2:
-                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
-                    break;
-
-                case 3:
-                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
-                    break;
-
-                case 4:
-                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
-                    break;
-            }
-        }
 
         private void repositoryItemLookUpEdit5_EditValueChanged(object sender, EventArgs e)
         {
-            if (!EditItemBtn.Enabled)
+          /*  if (!EditItemBtn.Enabled)
             {
                 return;
             }
@@ -1433,14 +1200,9 @@ namespace SP_Sklad.MainTabs
             wb.EntId = EntId;
             _db.SaveChanges();
 
-            RefrechItemBtn.PerformClick();
+            RefrechItemBtn.PerformClick();*/
         }
 
-
-        private void WbGridView_ColumnFilterChanged(object sender, EventArgs e)
-        {
-            SetWBEditorBarBtn(wb_focused_row);
-        }
 
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -1461,7 +1223,7 @@ namespace SP_Sklad.MainTabs
 
         private void repositoryItemDateEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            if (!EditItemBtn.Enabled)
+          /*  if (!EditItemBtn.Enabled)
             {
                 return;
             }
@@ -1473,12 +1235,12 @@ namespace SP_Sklad.MainTabs
             wb.ShipmentDate = s_date;
             _db.SaveChanges();
 
-            RefrechItemBtn.PerformClick();
+            RefrechItemBtn.PerformClick();*/
         }
 
         private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frm = new frmKagents(-1, ""))
+         /*   using (var frm = new frmKagents(-1, ""))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
@@ -1491,15 +1253,15 @@ namespace SP_Sklad.MainTabs
                         RefrechItemBtn.PerformClick();
                     }
                 }
-            }
+            }*/
         }
 
         private void WaybillCorrectionDetBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frm = new frmWaybillCorrection(wb_det_focused_row.PosId))
+         /*   using (var frm = new frmWaybillCorrection(wb_det_focused_row.PosId))
             {
                 frm.ShowDialog();
-            }
+            }*/
         }
 
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
@@ -1509,15 +1271,15 @@ namespace SP_Sklad.MainTabs
 
         private void WbDetPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh && wb_focused_row.Checked == 1);
+         //   WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh && wb_focused_row.Checked == 1);
         }
 
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
+        /*    using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
             {
                 frm.ShowDialog();
-            }
+            }*/
         }
     }
 }

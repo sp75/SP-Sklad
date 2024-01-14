@@ -1271,6 +1271,12 @@
     <Compile Include="UserControls\Documents\ucExpedition.Designer.cs">
       <DependentUpon>ucExpedition.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Documents\ucWayBill.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucWayBill.Designer.cs">
+      <DependentUpon>ucWayBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\NumKeyboardUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2511,6 +2517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Documents\ucExpedition.resx">
       <DependentUpon>ucExpedition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Documents\ucWayBill.resx">
+      <DependentUpon>ucWayBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\NumKeyboardUserControl.resx">
       <DependentUpon>NumKeyboardUserControl.cs</DependentUpon>
