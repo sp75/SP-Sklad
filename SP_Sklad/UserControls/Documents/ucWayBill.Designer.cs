@@ -1094,6 +1094,8 @@
             this.DocumentsImageCollection.TransparentColor = System.Drawing.Color.Transparent;
             this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 0);
             this.DocumentsImageCollection.Images.SetKeyName(0, "waybill_out");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.DocumentsImageCollection.Images.SetKeyName(1, "waybill_in");
             // 
             // ucWayBill
             // 
