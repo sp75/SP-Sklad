@@ -237,7 +237,7 @@
             // 
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x161, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x161");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "article_16x16");
@@ -1192,7 +1192,6 @@
             this.WbHistoryBtn.Caption = "Історія змін в документі";
             this.WbHistoryBtn.Id = 33;
             this.WbHistoryBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.historyitem_16x16;
-            this.WbHistoryBtn.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.historyitem_32x32;
             this.WbHistoryBtn.Name = "WbHistoryBtn";
             this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
             // 

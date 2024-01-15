@@ -293,7 +293,7 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
             this.imageCollection1.Images.SetKeyName(17, "change_kontragent4.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "historyitem_16x161");
             // 
             // NewItemBtn

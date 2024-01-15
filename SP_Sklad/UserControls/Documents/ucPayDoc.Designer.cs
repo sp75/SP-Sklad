@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPayDoc));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -164,7 +164,7 @@
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "historyitem_16x161");
             this.imageCollection1.Images.SetKeyName(14, "pay_doc(1).png");
             this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1)_3.png");
@@ -696,12 +696,12 @@
             // 
             // PDKagentList
             // 
-            this.PDKagentList.Location = new System.Drawing.Point(574, 13);
+            this.PDKagentList.Location = new System.Drawing.Point(620, 13);
             this.PDKagentList.Name = "PDKagentList";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PDKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.PDKagentList.Properties.DisplayMember = "Name";
@@ -716,7 +716,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(508, 17);
+            this.labelControl6.Location = new System.Drawing.Point(554, 17);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(60, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -726,20 +726,25 @@
             // PDEndDate
             // 
             this.PDEndDate.EditValue = null;
-            this.PDEndDate.Location = new System.Drawing.Point(323, 14);
+            this.PDEndDate.Location = new System.Drawing.Point(342, 15);
             this.PDEndDate.Name = "PDEndDate";
             this.PDEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PDEndDate.Size = new System.Drawing.Size(121, 22);
+            this.PDEndDate.Properties.DisplayFormat.FormatString = "g";
+            this.PDEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.PDEndDate.Properties.EditFormat.FormatString = "g";
+            this.PDEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.PDEndDate.Properties.MaskSettings.Set("mask", "g");
+            this.PDEndDate.Size = new System.Drawing.Size(140, 22);
             this.PDEndDate.StyleController = this.styleController1;
             this.PDEndDate.TabIndex = 3;
             this.PDEndDate.EditValueChanged += new System.EventHandler(this.ProjectManagementEndDateEdit_EditValueChanged);
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(303, 18);
+            this.labelControl7.Location = new System.Drawing.Point(322, 18);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(14, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -755,7 +760,12 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.PDStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PDStartDate.Size = new System.Drawing.Size(121, 22);
+            this.PDStartDate.Properties.DisplayFormat.FormatString = "g";
+            this.PDStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.PDStartDate.Properties.EditFormat.FormatString = "g";
+            this.PDStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.PDStartDate.Properties.MaskSettings.Set("mask", "g");
+            this.PDStartDate.Size = new System.Drawing.Size(140, 22);
             this.PDStartDate.StyleController = this.styleController1;
             this.PDStartDate.TabIndex = 1;
             this.PDStartDate.EditValueChanged += new System.EventHandler(this.ProjectManagementStartDateEdit_EditValueChanged);

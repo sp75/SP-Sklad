@@ -450,8 +450,6 @@ namespace SP_Sklad.UserControls
             CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
             PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
 
-
-            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) ;
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
@@ -533,24 +531,6 @@ namespace SP_Sklad.UserControls
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 GetData();
-            }
-        }
-
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            using (var frm = new frmKagents(-1, ""))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    var new_id = frm.focused_row?.KaId;
-
-                    if (new_id != null)
-                    {
-                        _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
-
-                        GetData();
-                    }
-                }
             }
         }
 

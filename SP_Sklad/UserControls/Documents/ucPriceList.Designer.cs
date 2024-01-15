@@ -462,7 +462,7 @@
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "historyitem_16x161");
             this.imageCollection1.InsertGalleryImage("template_16x16.png", "images/support/template_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/support/template_16x16.png"), 14);
             this.imageCollection1.Images.SetKeyName(14, "template_16x16.png");

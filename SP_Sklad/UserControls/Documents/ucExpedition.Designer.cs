@@ -231,28 +231,36 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
-            this.imageCollection1.Images.SetKeyName(1, "execute.png");
-            this.imageCollection1.Images.SetKeyName(2, "edit.png");
-            this.imageCollection1.Images.SetKeyName(3, "інформація про товар.png");
-            this.imageCollection1.Images.SetKeyName(4, "Add.png");
-            this.imageCollection1.Images.SetKeyName(5, "Рух товарів.png");
-            this.imageCollection1.Images.SetKeyName(6, "Провести документ.bmp");
-            this.imageCollection1.Images.SetKeyName(7, "інформація про резерв товару.png");
-            this.imageCollection1.Images.SetKeyName(8, "Попередн_й перегляд.bmp");
-            this.imageCollection1.Images.SetKeyName(9, "Delete.bmp");
-            this.imageCollection1.Images.SetKeyName(10, "Copy.bmp");
-            this.imageCollection1.Images.SetKeyName(11, "refresh.bmp");
-            this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "financial_16x16");
-            this.imageCollection1.Images.SetKeyName(14, "Перейти до  документа.bmp");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "new_document");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "checked_green");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "edit_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "additem_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "preview_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "delete_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "copy_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "walking_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "RelDoc3");
             // 
             // NewItemBtn
             // 
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.ImageIndex = 4;
+            this.NewItemBtn.ImageOptions.ImageIndex = 3;
             this.NewItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
@@ -261,7 +269,7 @@
             // 
             this.CopyItemBtn.Caption = "Копію документа";
             this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 10;
+            this.CopyItemBtn.ImageOptions.ImageIndex = 7;
             this.CopyItemBtn.Name = "CopyItemBtn";
             // 
             // EditItemBtn
@@ -276,7 +284,7 @@
             // 
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 9;
+            this.DeleteItemBtn.ImageOptions.ImageIndex = 6;
             this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
@@ -285,7 +293,7 @@
             // 
             this.RefrechItemBtn.Caption = "Обновити";
             this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.ImageIndex = 11;
+            this.RefrechItemBtn.ImageOptions.ImageIndex = 8;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
@@ -293,7 +301,7 @@
             // 
             this.ExecuteItemBtn.Caption = "Провести";
             this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.ImageOptions.ImageIndex = 6;
+            this.ExecuteItemBtn.ImageOptions.ImageIndex = 4;
             this.ExecuteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
@@ -302,7 +310,7 @@
             // 
             this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
             this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 8;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 5;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
@@ -320,12 +328,13 @@
             this.barButtonItem14.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
             this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
             this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Перейти до документа";
             this.barButtonItem1.Id = 31;
-            this.barButtonItem1.ImageOptions.ImageIndex = 14;
+            this.barButtonItem1.ImageOptions.ImageIndex = 9;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -519,6 +528,7 @@
             // xtraTabControl3
             // 
             this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl3.Images = this.imageCollection1;
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
@@ -531,8 +541,9 @@
             // xtraTabPage14
             // 
             this.xtraTabPage14.Controls.Add(this.ExpeditionDetGridControl);
+            this.xtraTabPage14.ImageOptions.ImageIndex = 10;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 239);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 236);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // ExpeditionDetGridControl
@@ -546,7 +557,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1});
-            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 239);
+            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 236);
             this.ExpeditionDetGridControl.TabIndex = 2;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionDetGridView});
@@ -722,8 +733,9 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.ucRelDocGrid1);
+            this.xtraTabPage1.ImageOptions.ImageIndex = 11;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1246, 239);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1246, 236);
             this.xtraTabPage1.Text = "Зв\'язані документи";
             // 
             // ucRelDocGrid1
@@ -731,7 +743,7 @@
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";
-            this.ucRelDocGrid1.Size = new System.Drawing.Size(1246, 239);
+            this.ucRelDocGrid1.Size = new System.Drawing.Size(1246, 236);
             this.ucRelDocGrid1.TabIndex = 0;
             // 
             // ExpeditionsPopupMenu
@@ -743,7 +755,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.ExpeditionsPopupMenu.Manager = this.barManager1;
             this.ExpeditionsPopupMenu.Name = "ExpeditionsPopupMenu";
             this.ExpeditionsPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.ExpeditionsPopupMenu_BeforePopup);
@@ -755,7 +768,7 @@
             this.ExpeditionsDetPopupMenu.Manager = this.barManager1;
             this.ExpeditionsDetPopupMenu.Name = "ExpeditionsDetPopupMenu";
             // 
-            // ExpeditionUserControl
+            // ucExpedition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -766,7 +779,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ExpeditionUserControl";
+            this.Name = "ucExpedition";
             this.Size = new System.Drawing.Size(1248, 628);
             this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();

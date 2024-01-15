@@ -150,6 +150,11 @@ namespace SP_Sklad.UserControls
             PrintDoc.Show(wb_focused_row.Id, wb_focused_row.WType, _db);
         }
 
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
+        }
+
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;

@@ -137,6 +137,11 @@ namespace SP_Sklad.UserControls
             PrintDoc.ExpeditionReport(row_exp.Id, _db);
         }
 
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(ExpeditionsGridControl);
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_exp != null && row_exp.Checked == 0 && user_access.CanDelete == 1);
@@ -291,7 +296,11 @@ namespace SP_Sklad.UserControls
             EditItemBtn.Enabled =  EditBtn.Enabled ;
             CopyItemBtn.Enabled = CopyBtn.Enabled ;
             PrintItemBtn.Enabled = PrintBtn.Enabled;
+        }
 
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }

@@ -253,21 +253,32 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "new_document.png");
-            this.imageCollection1.Images.SetKeyName(1, "execute.png");
-            this.imageCollection1.Images.SetKeyName(2, "edit.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "new_document");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "checked_green");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "edit_2");
             this.imageCollection1.Images.SetKeyName(3, "інформація про товар.png");
-            this.imageCollection1.Images.SetKeyName(4, "Add.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "additem_3");
             this.imageCollection1.Images.SetKeyName(5, "Рух товарів.png");
-            this.imageCollection1.Images.SetKeyName(6, "Провести документ.bmp");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
             this.imageCollection1.Images.SetKeyName(7, "інформація про резерв товару.png");
-            this.imageCollection1.Images.SetKeyName(8, "Попередн_й перегляд.bmp");
-            this.imageCollection1.Images.SetKeyName(9, "Delete.bmp");
-            this.imageCollection1.Images.SetKeyName(10, "Copy.bmp");
-            this.imageCollection1.Images.SetKeyName(11, "refresh.bmp");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "preview_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "delete_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "copy_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "refreshallpivottable_16x16");
             this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "financial_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbullets_16x16, "listbullets_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "listbullets_16x16");
             // 
             // NewItemBtn
             // 
@@ -527,6 +538,7 @@
             // xtraTabControl3
             // 
             this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xtraTabControl3.Images = this.imageCollection1;
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
@@ -538,8 +550,9 @@
             // xtraTabPage14
             // 
             this.xtraTabPage14.Controls.Add(this.SettingMaterialPricesDetGridControl);
+            this.xtraTabPage14.ImageOptions.ImageIndex = 14;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 215);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 212);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // SettingMaterialPricesDetGridControl
@@ -552,7 +565,7 @@
             this.SettingMaterialPricesDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1});
-            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 215);
+            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 212);
             this.SettingMaterialPricesDetGridControl.TabIndex = 2;
             this.SettingMaterialPricesDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.SettingMaterialPricesDetGrid});
@@ -657,7 +670,7 @@
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
             // 
-            // SettingMaterialPricesUserControl
+            // ucSettingMaterialPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -668,7 +681,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "SettingMaterialPricesUserControl";
+            this.Name = "ucSettingMaterialPrices";
             this.Size = new System.Drawing.Size(1248, 628);
             this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();

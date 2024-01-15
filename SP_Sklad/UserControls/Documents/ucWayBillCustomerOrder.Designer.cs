@@ -313,7 +313,7 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
             this.imageCollection1.Images.SetKeyName(14, "change_kontragent4.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "historyitem_16x161");
             this.imageCollection1.Images.SetKeyName(16, "wb_order_in.png");
             this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");

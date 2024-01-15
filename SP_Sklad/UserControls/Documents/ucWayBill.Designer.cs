@@ -95,7 +95,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.wayBillInDetUserControl = new SP_Sklad.UserControls.ucWayBillInDet();
+            this.ucWayBillReturnСustomerDet = new SP_Sklad.UserControls.ucWayBillReturnСustomerDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -295,7 +295,7 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
             this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x161, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "historyitem_16x161");
             // 
             // NewItemBtn
@@ -480,7 +480,11 @@
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 6)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.DocumentsImageCollection;
             // 
@@ -494,6 +498,14 @@
             this.DocumentsImageCollection.Images.SetKeyName(1, "waybill_in");
             this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.DocumentsImageCollection.Images.SetKeyName(2, "invoice");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.DocumentsImageCollection.Images.SetKeyName(3, "wb_order_in");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.DocumentsImageCollection.Images.SetKeyName(4, "wb_order_out");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_in, "wb_return_in", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.DocumentsImageCollection.Images.SetKeyName(5, "wb_return_in");
+            this.DocumentsImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_out, "wb_return_out", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.DocumentsImageCollection.Images.SetKeyName(6, "wb_return_out");
             // 
             // gridColumn2
             // 
@@ -809,19 +821,19 @@
             // 
             // xtraTabPage15
             // 
-            this.xtraTabPage15.Controls.Add(this.wayBillInDetUserControl);
+            this.xtraTabPage15.Controls.Add(this.ucWayBillReturnСustomerDet);
             this.xtraTabPage15.ImageOptions.ImageIndex = 10;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage15.Text = "Позиції";
             // 
-            // wayBillInDetUserControl
+            // ucWayBillReturnСustomerDet
             // 
-            this.wayBillInDetUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wayBillInDetUserControl.Location = new System.Drawing.Point(0, 0);
-            this.wayBillInDetUserControl.Name = "wayBillInDetUserControl";
-            this.wayBillInDetUserControl.Size = new System.Drawing.Size(1373, 199);
-            this.wayBillInDetUserControl.TabIndex = 0;
+            this.ucWayBillReturnСustomerDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBillReturnСustomerDet.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBillReturnСustomerDet.Name = "ucWayBillReturnСustomerDet";
+            this.ucWayBillReturnСustomerDet.Size = new System.Drawing.Size(1373, 199);
+            this.ucWayBillReturnСustomerDet.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
@@ -1238,11 +1250,11 @@
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
         private DevExpress.Utils.ImageCollection DocumentsImageCollection;
+        private ucWayBillReturnСustomerDet ucWayBillReturnСustomerDet;
     }
 }

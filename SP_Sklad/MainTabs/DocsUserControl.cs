@@ -583,6 +583,10 @@ namespace SP_Sklad.MainTabs
                     {
                         ucPayDocExtOut.GetData();
                     }
+                    else
+                    {
+                        ucPayDoc.GetData();
+                    }
                     break;
 
                 case 5:
@@ -1080,6 +1084,10 @@ namespace SP_Sklad.MainTabs
                     else if (focused_tree_node.WType == -1)
                     {
                         ucWaybillOut.ExportToExcel();
+                    }
+                    else if (focused_tree_node.WType == 1)
+                    {
+                        wayBillInUserControl.ExportToExcel();
                     }
                     break;
 

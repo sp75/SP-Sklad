@@ -538,7 +538,6 @@
             this.WbCorrListBtn.Caption = "Список корегуваннь документів";
             this.WbCorrListBtn.Id = 39;
             this.WbCorrListBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.showtestreport_16x161;
-            this.WbCorrListBtn.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.showtestreport_32x321;
             this.WbCorrListBtn.Name = "WbCorrListBtn";
             this.WbCorrListBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbCorrListBtn_ItemClick);
             // 
@@ -839,23 +838,6 @@
             this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
             this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
             this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534381_findjob, "_1324534381_findjob", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.TabImageCollection.Images.SetKeyName(12, "_1324534381_findjob");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534473_police, "_1324534473_police", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.TabImageCollection.Images.SetKeyName(13, "_1324534473_police");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources._1324534557_mine_копия, "_1324534557_mine_копия", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.TabImageCollection.Images.SetKeyName(14, "_1324534557_mine_копия");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.administration, "administration", typeof(global::SP_Sklad.Properties.Resources), 15);
-            this.TabImageCollection.Images.SetKeyName(15, "administration");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.TabImageCollection.Images.SetKeyName(16, "bank");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.company, "company", typeof(global::SP_Sklad.Properties.Resources), 17);
-            this.TabImageCollection.Images.SetKeyName(17, "company");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.currencyexchange, "currencyexchange", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.TabImageCollection.Images.SetKeyName(18, "currencyexchange");
-            this.TabImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.factory, "factory", typeof(global::SP_Sklad.Properties.Resources), 19);
-            this.TabImageCollection.Images.SetKeyName(19, "factory");
-            this.TabImageCollection.Images.SetKeyName(20, "packageproduct_32x32.png");
             // 
             // TradeTabPage
             // 

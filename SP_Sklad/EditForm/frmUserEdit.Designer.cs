@@ -890,7 +890,7 @@
             // 
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x161, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x161");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "article_16x16");

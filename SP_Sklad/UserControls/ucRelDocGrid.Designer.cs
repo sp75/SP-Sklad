@@ -52,11 +52,11 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MoveToDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.RelDocGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GetRelDocListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RelDocGridView)).BeginInit();
@@ -65,6 +65,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // RelDocGridControl
@@ -388,26 +389,18 @@
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(948, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(2, "Перейти до  документа.bmp");
-            // 
             // RefrechItemBtn
             // 
             this.RefrechItemBtn.Caption = "Обновити";
             this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.ImageIndex = 0;
+            this.RefrechItemBtn.ImageOptions.ImageIndex = 2;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             // 
             // MoveToDocBtn
             // 
             this.MoveToDocBtn.Caption = "Перейти до документа";
             this.MoveToDocBtn.Id = 12;
-            this.MoveToDocBtn.ImageOptions.ImageIndex = 2;
+            this.MoveToDocBtn.ImageOptions.ImageIndex = 0;
             this.MoveToDocBtn.Name = "MoveToDocBtn";
             this.MoveToDocBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveToDocBtn_ItemClick);
             // 
@@ -426,6 +419,17 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintDocBtn)});
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
+            // 
+            // BarImageList
+            // 
+            this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList.Images.SetKeyName(0, "walking_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.BarImageList.Images.SetKeyName(1, "preview_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList.Images.SetKeyName(2, "refreshallpivottable_16x16");
             // 
             // ucRelDocGrid
             // 
@@ -449,6 +453,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,7 +486,7 @@
         private DevExpress.XtraBars.BarButtonItem MoveToDocBtn;
         private DevExpress.XtraBars.BarButtonItem PrintDocBtn;
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
-        public System.Windows.Forms.ImageList BarImageList;
         private System.Windows.Forms.BindingSource GetRelDocListBS;
+        private DevExpress.Utils.ImageCollection BarImageList;
     }
 }

@@ -142,6 +142,11 @@ namespace SP_Sklad.UserControls
             PrintDoc.Show(wb_focused_row.Id, wb_focused_row.WType, _db);
         }
 
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(WBGridControl);
+        }
+
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
@@ -373,7 +378,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                wayBillInDetUserControl.GetDate(0);
+                ucWayBillReturnСustomerDet.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 vGridControl1.DataSource = null;
                 ucDocumentPaymentGrid.GetPaymentDoc(Guid.Empty);
@@ -384,7 +389,7 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    wayBillInDetUserControl.GetDate(wb_focused_row.WbillId);
+                    ucWayBillReturnСustomerDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:
@@ -524,11 +529,6 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
-        }
-
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-           
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)

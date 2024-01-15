@@ -3324,6 +3324,21 @@
     <None Include="Resources\template_16x16.png" />
     <None Include="Resources\waybill_in.png" />
     <None Include="Resources\invoice.png" />
+    <None Include="Resources\wb_return_out.png" />
+    <None Include="Resources\wb_return_in.png" />
+    <None Include="Resources\wb_order_in.png" />
+    <None Include="Resources\wb_order_out.png" />
+    <None Include="Resources\new_document.png" />
+    <None Include="Resources\checked_green.png" />
+    <None Include="Resources\edit_2.png" />
+    <None Include="Resources\additem_16x1611.png" />
+    <None Include="Resources\additem_3.png" />
+    <None Include="Resources\execute_16x16_red.png" />
+    <None Include="Resources\preview_2.png" />
+    <None Include="Resources\copy_2.png" />
+    <None Include="Resources\walking_16x16.png" />
+    <None Include="Resources\RelDoc3.png" />
+    <None Include="Resources\wb_info.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
