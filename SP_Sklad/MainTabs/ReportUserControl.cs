@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using DevExpress.XtraReports.UI;
 using SP_Sklad.Reports;
+using SP_Sklad.Reports.XtraRep;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 
@@ -44,15 +46,23 @@ namespace SP_Sklad.MainTabs
             {
                 RepGridControl.DataSource = null;
                 RepGridControl.DataSource = db.Reports.Where(w => w.GrpId == focused_tree_node.Id && w.Fil == 1)
-                .Join(db.RepLng.Where(r => r.LangId == 2), rep => rep.RepId, lng => lng.RepId, (rep, lng) => new
-            {
-                ImgIndex = 23,
-                rep.RepId,
-                lng.Name,
-                lng.Notes,
-                rep.Num
-            }).OrderBy(o => o.Num).ToList();
+                .Join(db.RepLng.Where(r => r.LangId == 2), rep => rep.RepId, lng => lng.RepId, (rep, lng) => new RepView
+                {
+                    ImgIndex = 23,
+                    RepId = rep.RepId,
+                    Name = lng.Name,
+                    Notes = lng.Notes,
+                    Num = rep.Num
+                }).OrderBy(o => o.Num).ToList();
             }
+        }
+        public class RepView
+        {
+            public int ImgIndex { get; set; }
+            public int RepId { get; set; }
+            public string Name { get; set; }
+            public string Notes { get; set; }
+            public int? Num { get; set; }
         }
 
         private void RepGridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
@@ -62,20 +72,27 @@ namespace SP_Sklad.MainTabs
 
         private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dynamic row = RepGridView.GetFocusedRow();
+            dynamic row = RepGridView.GetFocusedRow() as RepView;
 
             if(row == null)
             {
                 return;
             }
 
-            if ((int)row.RepId == 53)
+            if (row.RepId == 53)
             {
                 new frmReport53().ShowDialog();
             }
-            else if ((int)row.RepId == 54)
+            else if (row.RepId == 54)
             {
                 new frmReport54().ShowDialog();
+            }
+            else if (row.RepId == 55)
+            {
+                XtraReport55 report = new XtraReport55();
+
+                var tool = new ReportPrintTool(report);
+                tool.ShowPreview();
             }
             else
             {
@@ -97,6 +114,11 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new frmReport51().ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
         }
     }
 }

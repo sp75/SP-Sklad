@@ -382,7 +382,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                wayBillInDetUserControl.GetDate(0);
+                ucActServicesProvidedInDet.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 vGridControl1.DataSource = null;
                 ucDocumentPaymentGrid.GetPaymentDoc(Guid.Empty);
@@ -393,7 +393,7 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    wayBillInDetUserControl.GetDate(wb_focused_row.WbillId);
+                    ucActServicesProvidedInDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:

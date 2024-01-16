@@ -3344,6 +3344,18 @@ warning 6002: The table/view 'sp_base.dbo.v_RawMaterialManagementDet' does not h
           <Property Name="PosId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_Report_55' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Report_55">
+          <Key>
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="TechProcDetOnDate" Type="datetime" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Services">
           <Key>
@@ -4119,6 +4131,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOutDet' does not have a prima
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="numeric" Precision="32" Scale="8" />
+          <Property Name="MId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnSuppliers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10467,6 +10480,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_RawMaterialManagementDet].[PosId] AS [PosId]
     FROM [dbo].[v_RawMaterialManagementDet] AS [v_RawMaterialManagementDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_Report_55" EntityType="Self.v_Report_55" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Report_55].[Num] AS [Num], 
+    [v_Report_55].[OnDate] AS [OnDate], 
+    [v_Report_55].[TechProcDetOnDate] AS [TechProcDetOnDate], 
+    [v_Report_55].[RecipeName] AS [RecipeName]
+    FROM [dbo].[v_Report_55] AS [v_Report_55]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_Services].[SvcId] AS [SvcId], 
@@ -11079,7 +11100,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillOutDet].[Notes] AS [Notes], 
     [v_WayBillOutDet].[UpdateAt] AS [UpdateAt], 
     [v_WayBillOutDet].[AvgInPrice] AS [AvgInPrice], 
-    [v_WayBillOutDet].[DiscountTotal] AS [DiscountTotal]
+    [v_WayBillOutDet].[DiscountTotal] AS [DiscountTotal], 
+    [v_WayBillOutDet].[MId] AS [MId]
     FROM [dbo].[v_WayBillOutDet] AS [v_WayBillOutDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillReturnSuppliers" EntityType="Self.v_WayBillReturnSuppliers" store:Type="Views" store:Schema="dbo">
@@ -13899,6 +13921,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WayBillReturnСustomerDet" EntityType="BaseModel.v_WayBillReturnСustomerDet" />
           <EntitySet Name="v_WayBillReturnSuppliers" EntityType="BaseModel.v_WayBillReturnSuppliers" />
           <EntitySet Name="v_PayDoc" EntityType="BaseModel.v_PayDoc" />
+          <EntitySet Name="v_Report_55" EntityType="BaseModel.v_Report_55" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -22606,6 +22629,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="AvgInPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="Decimal" Precision="32" Scale="8" />
+          <Property Name="MId" Type="Int32" />
         </EntityType>
         <EntityType Name="v_WayBillCustomerOrder">
           <Key>
@@ -22948,6 +22972,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="SourceType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Report_55">
+          <Key>
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+          </Key>
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TechProcDetOnDate" Type="DateTime" Precision="3" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -28754,6 +28788,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillOutDet">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillOutDet">
               <MappingFragment StoreEntitySet="v_WayBillOutDet">
+                <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
                 <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
@@ -29103,6 +29138,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="ExDocType" ColumnName="ExDocType" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="PayDocId" ColumnName="PayDocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Report_55">
+            <EntityTypeMapping TypeName="BaseModel.v_Report_55">
+              <MappingFragment StoreEntitySet="v_Report_55">
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="TechProcDetOnDate" ColumnName="TechProcDetOnDate" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

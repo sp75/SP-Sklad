@@ -88,7 +88,6 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.wayBillInDetUserControl = new SP_Sklad.UserControls.ucWayBillInDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -118,6 +117,7 @@
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ucActServicesProvidedInDet = new SP_Sklad.UserControls.ucActServicesProvidedInDet();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -783,19 +783,11 @@
             // 
             // xtraTabPage15
             // 
-            this.xtraTabPage15.Controls.Add(this.wayBillInDetUserControl);
+            this.xtraTabPage15.Controls.Add(this.ucActServicesProvidedInDet);
             this.xtraTabPage15.ImageOptions.ImageIndex = 10;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage15.Text = "Позиції";
-            // 
-            // wayBillInDetUserControl
-            // 
-            this.wayBillInDetUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wayBillInDetUserControl.Location = new System.Drawing.Point(0, 0);
-            this.wayBillInDetUserControl.Name = "wayBillInDetUserControl";
-            this.wayBillInDetUserControl.Size = new System.Drawing.Size(1373, 199);
-            this.wayBillInDetUserControl.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
@@ -1065,6 +1057,14 @@
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
             // 
+            // ucActServicesProvidedInDet
+            // 
+            this.ucActServicesProvidedInDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucActServicesProvidedInDet.Location = new System.Drawing.Point(0, 0);
+            this.ucActServicesProvidedInDet.Name = "ucActServicesProvidedInDet";
+            this.ucActServicesProvidedInDet.Size = new System.Drawing.Size(1373, 199);
+            this.ucActServicesProvidedInDet.TabIndex = 0;
+            // 
             // ucActServicesProvidedIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1199,9 +1199,9 @@
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WayBillInSource;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.Utils.ImageCollection imageCollection1;
-        private ucWayBillInDet wayBillInDetUserControl;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private ucDocumentPaymentGrid ucDocumentPaymentGrid;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
+        private ucActServicesProvidedInDet ucActServicesProvidedInDet;
     }
 }

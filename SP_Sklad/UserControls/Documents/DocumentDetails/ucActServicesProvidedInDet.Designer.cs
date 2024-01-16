@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.UserControls
 {
-    partial class ucWayBillOutDet
+    partial class ucActServicesProvidedInDet
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillOutDet));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucActServicesProvidedInDet));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -47,34 +47,26 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.WaybillCorrectionDetBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn94 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -96,9 +88,8 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10,
-            this.WaybillCorrectionDetBtn});
-            this.barManager1.MaxItemId = 35;
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 34;
             // 
             // barDockControlTop
             // 
@@ -166,10 +157,6 @@
             this.imageCollection1.Images.SetKeyName(5, "Склади.bmp");
             this.imageCollection1.Images.SetKeyName(6, "edit.png");
             this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
-            this.imageCollection1.Images.SetKeyName(8, "Зарезервовано.bmp");
-            this.imageCollection1.Images.SetKeyName(9, "store-2017.png");
-            this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16.png");
-            this.imageCollection1.Images.SetKeyName(11, "Зарезервувати все.bmp");
             // 
             // EditItemBtn
             // 
@@ -242,14 +229,6 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
-            // WaybillCorrectionDetBtn
-            // 
-            this.WaybillCorrectionDetBtn.Caption = "Корегувати позицію";
-            this.WaybillCorrectionDetBtn.Id = 34;
-            this.WaybillCorrectionDetBtn.ImageOptions.ImageIndex = 10;
-            this.WaybillCorrectionDetBtn.Name = "WaybillCorrectionDetBtn";
-            this.WaybillCorrectionDetBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WaybillCorrectionDetBtn_ItemClick);
-            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -260,11 +239,9 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.WaybillCorrectionDetBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            this.WbDetPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbDetPopupMenu_BeforePopup);
             // 
             // gridControl2
             // 
@@ -273,11 +250,9 @@
             this.gridControl2.MainView = this.WaybillDetGridView;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCalcEdit1,
-            this.repositoryItemImageComboBox33,
-            this.repositoryItemImageComboBox2});
+            this.repositoryItemMemoEdit1});
             this.gridControl2.Size = new System.Drawing.Size(1185, 287);
-            this.gridControl2.TabIndex = 15;
+            this.gridControl2.TabIndex = 8;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetGridView});
             // 
@@ -291,15 +266,11 @@
             this.gridColumn12,
             this.gridColumn13,
             this.gridColumn37,
-            this.gridColumn39,
             this.gridColumn115,
-            this.gridColumn41,
             this.gridColumn50,
-            this.gridColumn94,
-            this.gridColumn119,
-            this.gridColumn150});
+            this.gridColumn150,
+            this.gridColumn1});
             this.WaybillDetGridView.GridControl = this.gridControl2;
-            this.WaybillDetGridView.Images = this.imageCollection1;
             this.WaybillDetGridView.Name = "WaybillDetGridView";
             this.WaybillDetGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
@@ -307,7 +278,6 @@
             this.WaybillDetGridView.OptionsView.ShowFooter = true;
             this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetGridView_PopupMenuShowing);
-            this.WaybillDetGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WaybillDetGridView_CustomSummaryCalculate);
             // 
             // gridColumn9
             // 
@@ -315,8 +285,8 @@
             this.gridColumn9.FieldName = "Num";
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 48;
+            this.gridColumn9.VisibleIndex = 0;
+            this.gridColumn9.Width = 52;
             // 
             // gridColumn10
             // 
@@ -324,28 +294,19 @@
             this.gridColumn10.FieldName = "MatName";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 307;
+            this.gridColumn10.VisibleIndex = 1;
+            this.gridColumn10.Width = 254;
             // 
             // gridColumn11
             // 
             this.gridColumn11.Caption = "Кількість";
-            this.gridColumn11.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn11.FieldName = "Amount";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 4;
-            this.gridColumn11.Width = 55;
-            // 
-            // repositoryItemCalcEdit1
-            // 
-            this.repositoryItemCalcEdit1.AutoHeight = false;
-            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.gridColumn11.VisibleIndex = 3;
+            this.gridColumn11.Width = 63;
             // 
             // gridColumn12
             // 
@@ -353,8 +314,8 @@
             this.gridColumn12.FieldName = "MsrName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 5;
-            this.gridColumn12.Width = 64;
+            this.gridColumn12.VisibleIndex = 4;
+            this.gridColumn12.Width = 85;
             // 
             // gridColumn13
             // 
@@ -363,9 +324,7 @@
             this.gridColumn13.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 8;
-            this.gridColumn13.Width = 81;
+            this.gridColumn13.Width = 71;
             // 
             // gridColumn37
             // 
@@ -374,17 +333,7 @@
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
-            this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 9;
-            // 
-            // gridColumn39
-            // 
-            this.gridColumn39.Caption = "Склад";
-            this.gridColumn39.FieldName = "WhName";
-            this.gridColumn39.Name = "gridColumn39";
-            this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 3;
-            this.gridColumn39.Width = 236;
+            this.gridColumn37.Width = 80;
             // 
             // gridColumn115
             // 
@@ -392,16 +341,8 @@
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 6;
-            this.gridColumn115.Width = 70;
-            // 
-            // gridColumn41
-            // 
-            this.gridColumn41.Caption = "Добавлно/Змінено";
-            this.gridColumn41.DisplayFormat.FormatString = "g";
-            this.gridColumn41.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn41.FieldName = "UpdateAt";
-            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn115.VisibleIndex = 5;
+            this.gridColumn115.Width = 85;
             // 
             // gridColumn50
             // 
@@ -413,65 +354,31 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 10;
-            this.gridColumn50.Width = 125;
-            // 
-            // gridColumn94
-            // 
-            this.gridColumn94.Caption = "gridColumn94";
-            this.gridColumn94.ColumnEdit = this.repositoryItemImageComboBox33;
-            this.gridColumn94.FieldName = "Rsv";
-            this.gridColumn94.ImageOptions.ImageIndex = 11;
-            this.gridColumn94.Name = "gridColumn94";
-            this.gridColumn94.OptionsColumn.AllowEdit = false;
-            this.gridColumn94.OptionsColumn.AllowFocus = false;
-            this.gridColumn94.OptionsColumn.AllowMove = false;
-            this.gridColumn94.OptionsColumn.AllowSize = false;
-            this.gridColumn94.OptionsColumn.ShowCaption = false;
-            this.gridColumn94.OptionsColumn.ShowInCustomizationForm = false;
-            this.gridColumn94.OptionsFilter.AllowFilter = false;
-            this.gridColumn94.Visible = true;
-            this.gridColumn94.VisibleIndex = 0;
-            this.gridColumn94.Width = 35;
-            // 
-            // repositoryItemImageComboBox33
-            // 
-            this.repositoryItemImageComboBox33.AutoHeight = false;
-            this.repositoryItemImageComboBox33.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox33.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 8)});
-            this.repositoryItemImageComboBox33.Name = "repositoryItemImageComboBox33";
-            this.repositoryItemImageComboBox33.SmallImages = this.imageCollection1;
-            // 
-            // gridColumn119
-            // 
-            this.gridColumn119.Caption = "Примітка";
-            this.gridColumn119.FieldName = "Notes";
-            this.gridColumn119.Name = "gridColumn119";
-            this.gridColumn119.Width = 202;
+            this.gridColumn50.VisibleIndex = 6;
+            this.gridColumn50.Width = 99;
             // 
             // gridColumn150
             // 
             this.gridColumn150.Caption = "Знижка, %";
             this.gridColumn150.FieldName = "Discount";
             this.gridColumn150.Name = "gridColumn150";
-            this.gridColumn150.Visible = true;
-            this.gridColumn150.VisibleIndex = 7;
-            this.gridColumn150.Width = 66;
+            this.gridColumn150.Width = 81;
             // 
-            // repositoryItemImageComboBox2
+            // gridColumn1
             // 
-            this.repositoryItemImageComboBox2.AutoHeight = false;
-            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
-            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.imageCollection1;
+            this.gridColumn1.Caption = "Опис";
+            this.gridColumn1.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.gridColumn1.FieldName = "Notes";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 524;
             // 
-            // ucWayBillOutDet
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // ucActServicesProvidedInDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -482,7 +389,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucWayBillOutDet";
+            this.Name = "ucActServicesProvidedInDet";
             this.Size = new System.Drawing.Size(1185, 287);
             this.Load += new System.EventHandler(this.WayBillInDetUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -490,9 +397,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,19 +428,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn115;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn94;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox33;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn119;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
-        private DevExpress.XtraBars.BarButtonItem WaybillCorrectionDetBtn;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

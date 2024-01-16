@@ -594,5 +594,10 @@ namespace SP_Sklad.UserControls
                 }
             }
         }
+
+        private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
+        }
     }
 }

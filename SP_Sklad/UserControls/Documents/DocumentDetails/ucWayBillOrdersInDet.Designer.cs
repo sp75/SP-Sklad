@@ -322,7 +322,7 @@
             this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 6;
+            this.gridColumn11.VisibleIndex = 5;
             this.gridColumn11.Width = 55;
             // 
             // repositoryItemCalcEdit1
@@ -339,7 +339,7 @@
             this.gridColumn12.FieldName = "MsrName";
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 7;
+            this.gridColumn12.VisibleIndex = 6;
             this.gridColumn12.Width = 59;
             // 
             // gridColumn13
@@ -350,7 +350,7 @@
             this.gridColumn13.FieldName = "Price";
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 10;
+            this.gridColumn13.VisibleIndex = 9;
             this.gridColumn13.Width = 66;
             // 
             // gridColumn37
@@ -361,7 +361,7 @@
             this.gridColumn37.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 11;
+            this.gridColumn37.VisibleIndex = 10;
             this.gridColumn37.Width = 74;
             // 
             // gridColumn39
@@ -370,7 +370,7 @@
             this.gridColumn39.FieldName = "WhName";
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
-            this.gridColumn39.VisibleIndex = 5;
+            this.gridColumn39.VisibleIndex = 4;
             this.gridColumn39.Width = 174;
             // 
             // gridColumn115
@@ -379,7 +379,7 @@
             this.gridColumn115.FieldName = "BasePrice";
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
-            this.gridColumn115.VisibleIndex = 8;
+            this.gridColumn115.VisibleIndex = 7;
             this.gridColumn115.Width = 59;
             // 
             // gridColumn41
@@ -400,7 +400,7 @@
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
             this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 12;
+            this.gridColumn50.VisibleIndex = 11;
             this.gridColumn50.Width = 96;
             // 
             // gridColumn94
@@ -432,11 +432,9 @@
             // 
             // gridColumn119
             // 
-            this.gridColumn119.Caption = "Опис";
+            this.gridColumn119.Caption = "Примітка";
             this.gridColumn119.FieldName = "Notes";
             this.gridColumn119.Name = "gridColumn119";
-            this.gridColumn119.Visible = true;
-            this.gridColumn119.VisibleIndex = 4;
             this.gridColumn119.Width = 215;
             // 
             // gridColumn150
@@ -445,7 +443,7 @@
             this.gridColumn150.FieldName = "Discount";
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
-            this.gridColumn150.VisibleIndex = 9;
+            this.gridColumn150.VisibleIndex = 8;
             // 
             // gridColumn14
             // 

@@ -243,16 +243,6 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap chartsshowlegend_32x32 {
-            get {
-                object obj = ResourceManager.GetObject("chartsshowlegend_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap chartswitchrowcolumn_16x16 {
             get {
                 object obj = ResourceManager.GetObject("chartswitchrowcolumn_16x16", resourceCulture);
@@ -599,6 +589,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap findbyid_16x161 {
+            get {
+                object obj = ResourceManager.GetObject("findbyid_16x161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap findbyid_32x32 {
             get {
                 object obj = ResourceManager.GetObject("findbyid_32x32", resourceCulture);
@@ -712,36 +712,6 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap info_16x16 {
             get {
                 object obj = ResourceManager.GetObject("info_16x16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info_16x161 {
-            get {
-                object obj = ResourceManager.GetObject("info_16x161", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info_16x162 {
-            get {
-                object obj = ResourceManager.GetObject("info_16x162", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info_16x163 {
-            get {
-                object obj = ResourceManager.GetObject("info_16x163", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1487,16 +1457,6 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap Склади {
             get {
                 object obj = ResourceManager.GetObject("Склади", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Склади1 {
-            get {
-                object obj = ResourceManager.GetObject("Склади1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

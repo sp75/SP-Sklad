@@ -532,6 +532,12 @@
     <Compile Include="Reports\frmReport51.Designer.cs">
       <DependentUpon>frmReport51.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\XtraRep\XtraReport55.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\XtraRep\XtraReport55.Designer.cs">
+      <DependentUpon>XtraReport55.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\BanksProvidingStatements.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -702,6 +708,9 @@
     <Compile Include="SkladData\v_RawMaterialManagementDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_Report_55.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_SettingMaterialPrices.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -788,12 +797,6 @@
     </Compile>
     <Compile Include="TradeForm\TradeUserControl.Designer.cs">
       <DependentUpon>TradeUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\XtraRep\DocListReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\XtraRep\DocListReport.Designer.cs">
-      <DependentUpon>DocListReport.cs</DependentUpon>
     </Compile>
     <Compile Include="SkladData\AdditionalCosts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
@@ -1246,6 +1249,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Documents\DocumentDetails\ucActServicesProvidedInDet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\DocumentDetails\ucActServicesProvidedInDet.Designer.cs">
+      <DependentUpon>ucActServicesProvidedInDet.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Documents\ucPayDoc.cs">
       <SubType>UserControl</SubType>
@@ -2491,6 +2500,9 @@
     <EmbeddedResource Include="Reports\frmReport51.resx">
       <DependentUpon>frmReport51.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\XtraRep\XtraReport55.resx">
+      <DependentUpon>XtraReport55.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TradeForm\frmCashboxRefund.resx">
       <DependentUpon>frmCashboxRefund.cs</DependentUpon>
     </EmbeddedResource>
@@ -2503,8 +2515,8 @@
     <EmbeddedResource Include="TradeForm\TradeUserControl.resx">
       <DependentUpon>TradeUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\XtraRep\DocListReport.resx">
-      <DependentUpon>DocListReport.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Documents\DocumentDetails\ucActServicesProvidedInDet.resx">
+      <DependentUpon>ucActServicesProvidedInDet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Documents\ucPayDoc.resx">
       <DependentUpon>ucPayDoc.cs</DependentUpon>
@@ -3339,6 +3351,7 @@
     <None Include="Resources\walking_16x16.png" />
     <None Include="Resources\RelDoc3.png" />
     <None Include="Resources\wb_info.png" />
+    <None Include="Resources\findbyid_16x162.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

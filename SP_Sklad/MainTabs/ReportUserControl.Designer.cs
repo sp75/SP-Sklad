@@ -104,7 +104,7 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.RepBtn,
             this.barButtonItem1});
-            this.barManager1.MaxItemId = 28;
+            this.barManager1.MaxItemId = 29;
             // 
             // bar1
             // 
