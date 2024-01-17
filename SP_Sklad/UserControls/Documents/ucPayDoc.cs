@@ -25,7 +25,7 @@ namespace SP_Sklad.UserControls
     {
         public int w_type { get; set; }
         public int fun_id { get; set; }
-        private string reg_layout_path = "ucPayDoc\\PayDocGridView";
+        public string reg_layout_path { get; set; } //= "ucPayDoc\\PayDocGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }

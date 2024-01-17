@@ -74,6 +74,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
@@ -100,6 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
@@ -217,7 +219,7 @@
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.barManagerImgList;
+            this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItem1,
             this.barSubItem2,
@@ -304,7 +306,7 @@
             // 
             this.NewCustomerOrder.Caption = "Замовлення від кліента";
             this.NewCustomerOrder.Id = 32;
-            this.NewCustomerOrder.ImageOptions.ImageIndex = 13;
+            this.NewCustomerOrder.ImageOptions.ImageIndex = 4;
             this.NewCustomerOrder.Name = "NewCustomerOrder";
             this.NewCustomerOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewCustomerOrder_ItemClick);
             // 
@@ -312,7 +314,7 @@
             // 
             this.NewWBWriteOnItem.Caption = "Введення залишків товарів";
             this.NewWBWriteOnItem.Id = 34;
-            this.NewWBWriteOnItem.ImageOptions.ImageIndex = 20;
+            this.NewWBWriteOnItem.ImageOptions.ImageIndex = 6;
             this.NewWBWriteOnItem.Name = "NewWBWriteOnItem";
             this.NewWBWriteOnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOnItem_ItemClick);
             // 
@@ -320,7 +322,7 @@
             // 
             this.AddWBInBtn.Caption = "Прибуткова накладна";
             this.AddWBInBtn.Id = 11;
-            this.AddWBInBtn.ImageOptions.ImageIndex = 31;
+            this.AddWBInBtn.ImageOptions.ImageIndex = 2;
             this.AddWBInBtn.Name = "AddWBInBtn";
             this.AddWBInBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddWBInBtn_ItemClick);
             // 
@@ -328,7 +330,7 @@
             // 
             this.AddWBOutBtn.Caption = "Видаткова накладна";
             this.AddWBOutBtn.Id = 10;
-            this.AddWBOutBtn.ImageOptions.ImageIndex = 32;
+            this.AddWBOutBtn.ImageOptions.ImageIndex = 3;
             this.AddWBOutBtn.Name = "AddWBOutBtn";
             this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddWBOutBtn_ItemClick);
             // 
@@ -336,7 +338,7 @@
             // 
             this.NewWayBillMoveBtn.Caption = "Накладна переміщення";
             this.NewWayBillMoveBtn.Id = 35;
-            this.NewWayBillMoveBtn.ImageOptions.ImageIndex = 19;
+            this.NewWayBillMoveBtn.ImageOptions.ImageIndex = 10;
             this.NewWayBillMoveBtn.Name = "NewWayBillMoveBtn";
             this.NewWayBillMoveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWayBillMoveBtn_ItemClick);
             // 
@@ -344,7 +346,7 @@
             // 
             this.NewWBWriteOffBtn.Caption = "Акти списання товару";
             this.NewWBWriteOffBtn.Id = 36;
-            this.NewWBWriteOffBtn.ImageOptions.ImageIndex = 21;
+            this.NewWBWriteOffBtn.ImageOptions.ImageIndex = 5;
             this.NewWBWriteOffBtn.Name = "NewWBWriteOffBtn";
             this.NewWBWriteOffBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOffBtn_ItemClick);
             // 
@@ -352,7 +354,7 @@
             // 
             this.AddManufacturingBtn.Caption = "Виготовлення продукції";
             this.AddManufacturingBtn.Id = 12;
-            this.AddManufacturingBtn.ImageOptions.ImageIndex = 30;
+            this.AddManufacturingBtn.ImageOptions.ImageIndex = 1;
             this.AddManufacturingBtn.Name = "AddManufacturingBtn";
             this.AddManufacturingBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddManufacturingBtn_ItemClick);
             // 
@@ -360,7 +362,7 @@
             // 
             this.AddDeboningBtn.Caption = "Обвалка";
             this.AddDeboningBtn.Id = 13;
-            this.AddDeboningBtn.ImageOptions.ImageIndex = 29;
+            this.AddDeboningBtn.ImageOptions.ImageIndex = 9;
             this.AddDeboningBtn.Name = "AddDeboningBtn";
             this.AddDeboningBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddDeboningBtn_ItemClick);
             // 
@@ -368,7 +370,7 @@
             // 
             this.CashierWorkplaceBtn.Caption = "Робоче місце касира";
             this.CashierWorkplaceBtn.Id = 28;
-            this.CashierWorkplaceBtn.ImageOptions.ImageIndex = 34;
+            this.CashierWorkplaceBtn.ImageOptions.ImageIndex = 7;
             this.CashierWorkplaceBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.CashierWorkplaceBtn.Name = "CashierWorkplaceBtn";
             this.CashierWorkplaceBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CashierWorkplaceBtn_ItemClick);
@@ -377,7 +379,7 @@
             // 
             this.barButtonItem3.Caption = "Тимчасове блокування";
             this.barButtonItem3.Id = 7;
-            this.barButtonItem3.ImageOptions.ImageIndex = 33;
+            this.barButtonItem3.ImageOptions.ImageIndex = 0;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -641,6 +643,33 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1188, 45);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.editrangepermission_16x16, "editrangepermission_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "editrangepermission_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.technology_16x16, "technology_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "technology_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "waybill_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "waybill_out");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "wb_order_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "WBWriteOff_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "WBWriteOn_4");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.cash_register, "cash_register", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "cash_register");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act_2, "inventory_act_2", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "inventory_act_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "deboneing");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "move_stock");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -972,6 +1001,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel1)).EndInit();
@@ -1064,6 +1094,7 @@
         private DevExpress.XtraBars.BarButtonItem WbCorrBtn;
         private DevExpress.XtraBars.BarButtonItem WbCorrListBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }
 

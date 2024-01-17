@@ -259,7 +259,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             KilogramsQuantityEdit.EditValue = focused_row.KilogramsQuantity;
 
             var msr_list = _db.WaybillDet.Where(w => w.WbillId == focused_row.WbillId).Select(s => s.Materials.Measures).Distinct().ToList();
-            layoutControlItem3.Text = "Товарів по документу, " + msr_list.FirstOrDefault(w=> w.MId == focused_row.MId)?.ShortName;
+            layoutControlItem3.Text = "По документу, " + msr_list.FirstOrDefault(w=> w.MId == focused_row.MId)?.ShortName;
 
             MsrComboBox.Properties.DataSource = msr_list;
 

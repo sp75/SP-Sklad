@@ -294,6 +294,7 @@
             this.WaybillDetGridView.OptionsView.ShowFooter = true;
             this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WaybillDetGridView_PopupMenuShowing);
+            this.WaybillDetGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WaybillDetGridView_CustomSummaryCalculate);
             // 
             // gridColumn9
             // 

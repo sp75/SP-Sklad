@@ -100,8 +100,14 @@ namespace SP_Sklad
             docsUserControl1.ucInvoices.SaveGridLayouts();
             docsUserControl1.ucServicesIn.SaveGridLayouts();
             docsUserControl1.ucWayBillReturnСustomers.SaveGridLayouts();
+            docsUserControl1.ucPayDocIn.SaveGridLayouts();
+            docsUserControl1.ucPayDocOut.SaveGridLayouts();
+            docsUserControl1.ucPayDocExtOut.SaveGridLayouts();
+            docsUserControl1.ucPayDoc.SaveGridLayouts();
 
-            docsUserControl1.SaveGridLayouts();
+
+
+
             whUserControl.SaveGridLayouts();
             manufacturingUserControl1.SaveGridLayouts();
             tradeUserControl1.SaveGridLayouts();

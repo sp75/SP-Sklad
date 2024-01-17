@@ -11,17 +11,19 @@ using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
 using SP_Sklad.WBDetForm;
+using DevExpress.Data;
+using DevExpress.XtraGrid;
 
 namespace SP_Sklad.UserControls
 {
     public partial class ucWayBillReturnСustomerDet : DevExpress.XtraEditors.XtraUserControl
     {
         private int _wbill_id { get; set; }
-        private v_WayBillInDet wb_det_focused_row
+        private v_WayBillReturnСustomerDet wb_det_focused_row
         {
             get
             {
-                return WaybillDetGridView.GetFocusedRow() as v_WayBillInDet;
+                return WaybillDetGridView.GetFocusedRow() as v_WayBillReturnСustomerDet;
             }
         }
 
@@ -106,6 +108,28 @@ namespace SP_Sklad.UserControls
                 frm.OkButton.Visible = false;
                 frm.ShowDialog();
             }
+        }
+
+        private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
+        {
+
+           /*  if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
+             {
+                 var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
+
+                 GridSummaryItem item = e.Item as GridSummaryItem;
+
+                 if (item.FieldName == "Amount")
+                 {
+                     var mat_list = gridControl2.DataSource as IOrderedEnumerable<v_WayBillReturnСustomerDet>;
+                    if (mat_list != null)
+                    {
+                        var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
+
+                        e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;
+                    }
+                 }
+             }*/
         }
     }
 }

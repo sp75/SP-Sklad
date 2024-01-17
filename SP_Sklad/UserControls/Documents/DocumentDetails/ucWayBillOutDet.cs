@@ -129,7 +129,7 @@ namespace SP_Sklad.UserControls
         private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
         {
 
-           /* if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
+            if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
             {
                 var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
 
@@ -137,12 +137,14 @@ namespace SP_Sklad.UserControls
 
                 if (item.FieldName == "Amount")
                 {
-                    var mat_list = gridControl2.DataSource as IOrderedEnumerable<v_WayBillOutDet>;
-                    var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
-
-                    e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
+                    var mat_list = gridControl2.DataSource as List<v_WayBillOutDet>;
+                    if (mat_list != null)
+                    {
+                        var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
+                        e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
+                    }
                 }
-            }*/
+            }
         }
     }
 }

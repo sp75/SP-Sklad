@@ -1110,10 +1110,7 @@ namespace SP_Sklad.MainTabs
                     break;
             }
         }
-        public void SaveGridLayouts()
-        {
-          //  WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\DocsUserControl\\WbGridView");
-          }
+
 
         private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
         {

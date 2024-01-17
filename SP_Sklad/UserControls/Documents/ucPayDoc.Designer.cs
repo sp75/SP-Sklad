@@ -384,6 +384,7 @@
             // 
             // PayDocGridControl
             // 
+            this.PayDocGridControl.DataSource = this.GgridDataSource;
             this.PayDocGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PayDocGridControl.Location = new System.Drawing.Point(0, 50);
             this.PayDocGridControl.MainView = this.PayDocGridView;
@@ -425,8 +426,6 @@
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.PayDocGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.PayDocGridView.OptionsBehavior.ReadOnly = true;
-            this.PayDocGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.PayDocGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PayDocGridView.OptionsView.ShowGroupPanel = false;
             this.PayDocGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KAgentAdjustmentGridView_PopupMenuShowing);
             this.PayDocGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KAgentAdjustmentGridView_FocusedRowObjectChanged);

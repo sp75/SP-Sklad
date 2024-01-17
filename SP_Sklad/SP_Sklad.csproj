@@ -3352,6 +3352,12 @@
     <None Include="Resources\RelDoc3.png" />
     <None Include="Resources\wb_info.png" />
     <None Include="Resources\findbyid_16x162.png" />
+    <None Include="Resources\WBWriteOff_2.png" />
+    <None Include="Resources\WBWriteOn_4.png" />
+    <None Include="Resources\inventory_act_2.png" />
+    <None Include="Resources\deboneing.png" />
+    <None Include="Resources\cash_register.png" />
+    <None Include="Resources\move_stock.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

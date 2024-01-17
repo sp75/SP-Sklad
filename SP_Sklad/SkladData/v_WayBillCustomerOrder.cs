@@ -63,5 +63,6 @@ namespace SP_Sklad.SkladData
         public string UpdatedUserName { get; set; }
         public int WorkerId { get; set; }
         public Nullable<decimal> Balans { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     }
 }

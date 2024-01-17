@@ -449,6 +449,7 @@
             this.ucPayDocIn.fun_id = 26;
             this.ucPayDocIn.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocIn.Name = "ucPayDocIn";
+            this.ucPayDocIn.reg_layout_path = "ucPayDocIn\\\\PayDocGridView";
             this.ucPayDocIn.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocIn.TabIndex = 0;
             this.ucPayDocIn.w_type = 3;
@@ -471,6 +472,7 @@
             this.ucPayDocOut.fun_id = 25;
             this.ucPayDocOut.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocOut.Name = "ucPayDocOut";
+            this.ucPayDocOut.reg_layout_path = "ucPayDocOut\\\\PayDocGridView";
             this.ucPayDocOut.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocOut.TabIndex = 1;
             this.ucPayDocOut.w_type = -3;
@@ -493,6 +495,7 @@
             this.ucPayDocExtOut.fun_id = 52;
             this.ucPayDocExtOut.Location = new System.Drawing.Point(0, 0);
             this.ucPayDocExtOut.Name = "ucPayDocExtOut";
+            this.ucPayDocExtOut.reg_layout_path = "ucPayDocExtOut\\\\PayDocGridView";
             this.ucPayDocExtOut.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocExtOut.TabIndex = 2;
             this.ucPayDocExtOut.w_type = -2;
@@ -535,6 +538,7 @@
             this.ucPayDoc.fun_id = -1;
             this.ucPayDoc.Location = new System.Drawing.Point(0, 0);
             this.ucPayDoc.Name = "ucPayDoc";
+            this.ucPayDoc.reg_layout_path = "ucPayDoc\\\\PayDocGridView";
             this.ucPayDoc.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDoc.TabIndex = 1;
             this.ucPayDoc.w_type = -1;

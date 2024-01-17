@@ -66,5 +66,6 @@ namespace SP_Sklad.SkladData
         public string KaGroupName { get; set; }
         public string DocTypeName { get; set; }
         public string SourceType { get; set; }
+        public Nullable<System.DateTime> ReportingDate { get; set; }
     }
 }

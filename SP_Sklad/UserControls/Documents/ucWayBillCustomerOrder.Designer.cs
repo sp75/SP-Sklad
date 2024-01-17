@@ -67,6 +67,7 @@
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -253,7 +254,8 @@
             this.gridColumn110,
             this.gridColumn113,
             this.gridColumn114,
-            this.colPersonName});
+            this.colPersonName,
+            this.gridColumn8});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -487,6 +489,14 @@
             this.colPersonName.Caption = "Виконавець";
             this.colPersonName.FieldName = "PersonName";
             this.colPersonName.Name = "colPersonName";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "К-сть всього, кг";
+            this.gridColumn8.FieldName = "TotalAmount";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 13;
             // 
             // repositoryItemImageComboBox42
             // 
@@ -1325,5 +1335,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit ChangeWaybillKagentBtnEdit;
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
         private DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
     }
 }

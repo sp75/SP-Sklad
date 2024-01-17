@@ -111,8 +111,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -170,8 +170,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
@@ -200,19 +200,19 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fluentDesignFormContainer1.Location = new System.Drawing.Point(0, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1424, 736);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1042, 736);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // ExpeditionDetGridControl
             // 
             this.ExpeditionDetGridControl.DataSource = this.ExpeditionDetListBS;
             this.ExpeditionDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExpeditionDetGridControl.Location = new System.Drawing.Point(0, 90);
+            this.ExpeditionDetGridControl.Location = new System.Drawing.Point(0, 91);
             this.ExpeditionDetGridControl.MainView = this.ExpeditionDetGridView;
             this.ExpeditionDetGridControl.Name = "ExpeditionDetGridControl";
             this.ExpeditionDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1042, 646);
+            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(743, 645);
             this.ExpeditionDetGridControl.TabIndex = 39;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionDetGridView});
@@ -225,7 +225,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.ExpeditionDetGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ExpeditionDetGridView.Appearance.HeaderPanel.Options.UseFont = true;
-            this.ExpeditionDetGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 14F);
+            this.ExpeditionDetGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ExpeditionDetGridView.Appearance.Row.Options.UseFont = true;
             this.ExpeditionDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMatId,
@@ -260,7 +260,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.colMatId.OptionsFilter.AllowFilter = false;
             this.colMatId.Visible = true;
             this.colMatId.VisibleIndex = 1;
-            this.colMatId.Width = 306;
+            this.colMatId.Width = 342;
             // 
             // gridColumn2
             // 
@@ -281,7 +281,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn4.OptionsFilter.AllowFilter = false;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 5;
-            this.gridColumn4.Width = 97;
+            this.gridColumn4.Width = 112;
             // 
             // gridColumn1
             // 
@@ -291,7 +291,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn1.OptionsFilter.AllowFilter = false;
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
-            this.gridColumn1.Width = 108;
+            this.gridColumn1.Width = 106;
             // 
             // gridColumn3
             // 
@@ -309,7 +309,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn7.OptionsFilter.AllowFilter = false;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 0;
-            this.gridColumn7.Width = 52;
+            this.gridColumn7.Width = 53;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -328,7 +328,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn6.OptionsFilter.AllowFilter = false;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 114;
+            this.gridColumn6.Width = 115;
             // 
             // gridColumn8
             // 
@@ -340,7 +340,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn8.OptionsFilter.AllowFilter = false;
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 6;
-            this.gridColumn8.Width = 95;
+            this.gridColumn8.Width = 102;
             // 
             // gridColumn5
             // 
@@ -361,7 +361,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn9.OptionsFilter.AllowFilter = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 3;
-            this.gridColumn9.Width = 77;
+            this.gridColumn9.Width = 68;
             // 
             // gridColumn10
             // 
@@ -371,7 +371,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.gridColumn10.OptionsFilter.AllowFilter = false;
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 7;
-            this.gridColumn10.Width = 191;
+            this.gridColumn10.Width = 195;
             // 
             // sidePanel2
             // 
@@ -390,7 +390,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.sidePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.sidePanel2.Location = new System.Drawing.Point(0, 0);
             this.sidePanel2.Name = "sidePanel2";
-            this.sidePanel2.Size = new System.Drawing.Size(1042, 90);
+            this.sidePanel2.Size = new System.Drawing.Size(743, 91);
             this.sidePanel2.TabIndex = 0;
             this.sidePanel2.Text = "sidePanel2";
             // 
@@ -398,7 +398,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Location = new System.Drawing.Point(616, 16);
+            this.labelControl4.Location = new System.Drawing.Point(389, 17);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(58, 16);
             this.labelControl4.TabIndex = 71;
@@ -408,7 +408,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(345, 16);
+            this.labelControl1.Location = new System.Drawing.Point(237, 17);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(36, 16);
             this.labelControl1.TabIndex = 69;
@@ -420,10 +420,10 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(952, 16);
+            this.simpleButton2.Location = new System.Drawing.Point(659, 21);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton2.Size = new System.Drawing.Size(80, 64);
+            this.simpleButton2.Size = new System.Drawing.Size(78, 58);
             this.simpleButton2.StyleController = this.layoutControl2;
             this.simpleButton2.TabIndex = 68;
             this.simpleButton2.Text = "До списку документів";
@@ -448,19 +448,19 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(435, 293, 650, 400);
             this.layoutControl2.Root = this.Root;
-            this.layoutControl2.Size = new System.Drawing.Size(381, 736);
+            this.layoutControl2.Size = new System.Drawing.Size(298, 736);
             this.layoutControl2.TabIndex = 1;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton4.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton4.Appearance.Options.UseFont = true;
             this.simpleButton4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.ImageOptions.Image")));
             this.simpleButton4.Location = new System.Drawing.Point(24, 596);
             this.simpleButton4.Name = "simpleButton4";
             this.simpleButton4.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton4.Size = new System.Drawing.Size(159, 56);
+            this.simpleButton4.Size = new System.Drawing.Size(123, 56);
             this.simpleButton4.StyleController = this.layoutControl2;
             this.simpleButton4.TabIndex = 72;
             this.simpleButton4.Text = "Додати";
@@ -468,25 +468,25 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             // PacksQuantityEdit
             // 
-            this.PacksQuantityEdit.Location = new System.Drawing.Point(197, 358);
+            this.PacksQuantityEdit.Location = new System.Drawing.Point(193, 344);
             this.PacksQuantityEdit.Name = "PacksQuantityEdit";
-            this.PacksQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.PacksQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.PacksQuantityEdit.Properties.Appearance.Options.UseFont = true;
             this.PacksQuantityEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PacksQuantityEdit.Properties.DisplayFormat.FormatString = "0";
             this.PacksQuantityEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PacksQuantityEdit.Properties.ReadOnly = true;
-            this.PacksQuantityEdit.Size = new System.Drawing.Size(160, 30);
+            this.PacksQuantityEdit.Size = new System.Drawing.Size(81, 26);
             this.PacksQuantityEdit.StyleController = this.layoutControl2;
             this.PacksQuantityEdit.TabIndex = 71;
             // 
             // TotalDoc
             // 
             this.TotalDoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TotalWeight", true, System.Windows.Forms.DataSourceUpdateMode.Never));
-            this.TotalDoc.Location = new System.Drawing.Point(197, 426);
+            this.TotalDoc.Location = new System.Drawing.Point(193, 404);
             this.TotalDoc.Name = "TotalDoc";
-            this.TotalDoc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.TotalDoc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.TotalDoc.Properties.Appearance.Options.UseFont = true;
             this.TotalDoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -495,7 +495,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.TotalDoc.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TotalDoc.Properties.ReadOnly = true;
             this.TotalDoc.Properties.ShowCloseButton = true;
-            this.TotalDoc.Size = new System.Drawing.Size(160, 30);
+            this.TotalDoc.Size = new System.Drawing.Size(81, 26);
             this.TotalDoc.StyleController = this.layoutControl2;
             this.TotalDoc.TabIndex = 69;
             // 
@@ -506,41 +506,41 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // TareQuantityEdit
             // 
             this.TareQuantityEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TareQuantity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TareQuantityEdit.Location = new System.Drawing.Point(197, 324);
+            this.TareQuantityEdit.Location = new System.Drawing.Point(193, 314);
             this.TareQuantityEdit.Name = "TareQuantityEdit";
-            this.TareQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.TareQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.TareQuantityEdit.Properties.Appearance.Options.UseFont = true;
             this.TareQuantityEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.TareQuantityEdit.Properties.DisplayFormat.FormatString = "0";
             this.TareQuantityEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TareQuantityEdit.Properties.ReadOnly = true;
-            this.TareQuantityEdit.Size = new System.Drawing.Size(160, 30);
+            this.TareQuantityEdit.Size = new System.Drawing.Size(81, 26);
             this.TareQuantityEdit.StyleController = this.layoutControl2;
             this.TareQuantityEdit.TabIndex = 68;
             // 
             // textEdit1
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "WbAmount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit1.Location = new System.Drawing.Point(197, 256);
+            this.textEdit1.Location = new System.Drawing.Point(193, 254);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.textEdit1.Properties.DisplayFormat.FormatString = "0.00";
             this.textEdit1.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.textEdit1.Properties.ReadOnly = true;
-            this.textEdit1.Size = new System.Drawing.Size(160, 30);
+            this.textEdit1.Size = new System.Drawing.Size(81, 26);
             this.textEdit1.StyleController = this.layoutControl2;
             this.textEdit1.TabIndex = 67;
             // 
             // TareWeightEdit
             // 
             this.TareWeightEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TareWeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TareWeightEdit.Location = new System.Drawing.Point(197, 290);
+            this.TareWeightEdit.Location = new System.Drawing.Point(193, 284);
             this.TareWeightEdit.Name = "TareWeightEdit";
-            this.TareWeightEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.TareWeightEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.TareWeightEdit.Properties.Appearance.Options.UseFont = true;
             this.TareWeightEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 15F);
             this.TareWeightEdit.Properties.AppearanceDropDown.Options.UseFont = true;
@@ -550,7 +550,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.TareWeightEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.TareWeightEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.TareWeightEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.TareWeightEdit_Properties_CloseUp);
-            this.TareWeightEdit.Size = new System.Drawing.Size(160, 30);
+            this.TareWeightEdit.Size = new System.Drawing.Size(81, 26);
             this.TareWeightEdit.StyleController = this.layoutControl2;
             this.TareWeightEdit.TabIndex = 66;
             this.TareWeightEdit.EditValueChanged += new System.EventHandler(this.TareWeightEdit_EditValueChanged);
@@ -560,7 +560,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "MId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MsrComboBox.Location = new System.Drawing.Point(12, 137);
             this.MsrComboBox.Name = "MsrComboBox";
-            this.MsrComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.MsrComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13F);
             this.MsrComboBox.Properties.Appearance.Options.UseFont = true;
             this.MsrComboBox.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
             this.MsrComboBox.Properties.AppearanceDropDown.Options.UseFont = true;
@@ -571,9 +571,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.MsrComboBox.Properties.DisplayMember = "Name";
             this.MsrComboBox.Properties.ShowFooter = false;
             this.MsrComboBox.Properties.ShowHeader = false;
-            this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.MsrComboBox.Properties.ValueMember = "MId";
-            this.MsrComboBox.Size = new System.Drawing.Size(357, 30);
+            this.MsrComboBox.Size = new System.Drawing.Size(274, 28);
             this.MsrComboBox.StyleController = this.layoutControl2;
             this.MsrComboBox.TabIndex = 64;
             this.MsrComboBox.EditValueChanged += new System.EventHandler(this.MsrComboBox_EditValueChanged);
@@ -595,7 +594,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.AmountEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.AmountEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.AmountEdit.Properties.CloseUp += new DevExpress.XtraEditors.Controls.CloseUpEventHandler(this.AmountEdit_Properties_CloseUp);
-            this.AmountEdit.Size = new System.Drawing.Size(357, 40);
+            this.AmountEdit.Size = new System.Drawing.Size(274, 40);
             this.AmountEdit.StyleController = this.layoutControl2;
             this.AmountEdit.TabIndex = 63;
             this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
@@ -604,7 +603,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // SaveDetBtn
             // 
             this.SaveDetBtn.Appearance.BackColor = System.Drawing.Color.SteelBlue;
-            this.SaveDetBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.SaveDetBtn.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.SaveDetBtn.Appearance.Options.UseBackColor = true;
             this.SaveDetBtn.Appearance.Options.UseFont = true;
             this.SaveDetBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -612,7 +611,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.SaveDetBtn.Location = new System.Drawing.Point(24, 656);
             this.SaveDetBtn.Name = "SaveDetBtn";
             this.SaveDetBtn.Padding = new System.Windows.Forms.Padding(10);
-            this.SaveDetBtn.Size = new System.Drawing.Size(333, 56);
+            this.SaveDetBtn.Size = new System.Drawing.Size(250, 56);
             this.SaveDetBtn.StyleController = this.layoutControl2;
             this.SaveDetBtn.TabIndex = 61;
             this.SaveDetBtn.Text = "Завершити погрузку";
@@ -621,14 +620,14 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // simpleButton3
             // 
             this.simpleButton3.Appearance.BackColor = System.Drawing.Color.LavenderBlush;
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton3.Appearance.Options.UseBackColor = true;
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(187, 596);
+            this.simpleButton3.Location = new System.Drawing.Point(151, 596);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Padding = new System.Windows.Forms.Padding(10);
-            this.simpleButton3.Size = new System.Drawing.Size(170, 56);
+            this.simpleButton3.Size = new System.Drawing.Size(123, 56);
             this.simpleButton3.StyleController = this.layoutControl2;
             this.simpleButton3.TabIndex = 54;
             this.simpleButton3.Text = "Видалити";
@@ -644,23 +643,23 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.checkEdit1.Properties.Caption = "Провести документ";
             this.checkEdit1.Properties.ValueChecked = 1;
             this.checkEdit1.Properties.ValueUnchecked = 0;
-            this.checkEdit1.Size = new System.Drawing.Size(357, 23);
+            this.checkEdit1.Size = new System.Drawing.Size(274, 23);
             this.checkEdit1.StyleController = this.layoutControl2;
             this.checkEdit1.TabIndex = 65;
             this.checkEdit1.EditValueChanged += new System.EventHandler(this.checkEdit1_EditValueChanged);
             // 
             // KilogramsQuantityEdit
             // 
-            this.KilogramsQuantityEdit.Location = new System.Drawing.Point(197, 392);
+            this.KilogramsQuantityEdit.Location = new System.Drawing.Point(193, 374);
             this.KilogramsQuantityEdit.Name = "KilogramsQuantityEdit";
-            this.KilogramsQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 15F);
+            this.KilogramsQuantityEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.KilogramsQuantityEdit.Properties.Appearance.Options.UseFont = true;
             this.KilogramsQuantityEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.KilogramsQuantityEdit.Properties.DisplayFormat.FormatString = "0";
             this.KilogramsQuantityEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.KilogramsQuantityEdit.Properties.ReadOnly = true;
-            this.KilogramsQuantityEdit.Size = new System.Drawing.Size(160, 30);
+            this.KilogramsQuantityEdit.Size = new System.Drawing.Size(81, 26);
             this.KilogramsQuantityEdit.StyleController = this.layoutControl2;
             this.KilogramsQuantityEdit.TabIndex = 71;
             // 
@@ -675,7 +674,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.emptySpaceItem3,
             this.layoutControlItem4});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(381, 736);
+            this.Root.Size = new System.Drawing.Size(298, 736);
             this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
@@ -689,128 +688,128 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem5,
             this.layoutControlItem12,
             this.layoutControlItem13,
-            this.layoutControlItem11,
-            this.layoutControlItem2});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 211);
+            this.layoutControlItem2,
+            this.layoutControlItem11});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 209);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(361, 505);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(278, 507);
             this.layoutControlGroup1.Text = "Підсумок";
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 204);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 180);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(337, 136);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(254, 162);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem8
             // 
-            this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem8.Control = this.TareWeightEdit;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 34);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 30);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(337, 34);
+            this.layoutControlItem8.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem8.Text = "Тара, кг";
             this.layoutControlItem8.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem3.Control = this.textEdit1;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(337, 34);
-            this.layoutControlItem3.Text = "Товарів по документу";
+            this.layoutControlItem3.Size = new System.Drawing.Size(254, 30);
+            this.layoutControlItem3.Text = "По документу";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem9
             // 
-            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem9.Control = this.TareQuantityEdit;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 68);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(337, 34);
+            this.layoutControlItem9.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem9.Text = "Тара, шт";
             this.layoutControlItem9.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem9.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem10
             // 
-            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem10.Control = this.TotalDoc;
-            this.layoutControlItem10.Location = new System.Drawing.Point(0, 170);
+            this.layoutControlItem10.Location = new System.Drawing.Point(0, 150);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(337, 34);
+            this.layoutControlItem10.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem10.Text = "Різниця";
             this.layoutControlItem10.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem10.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem10.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.SaveDetBtn;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 400);
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 402);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(337, 60);
+            this.layoutControlItem5.Size = new System.Drawing.Size(254, 60);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem12
             // 
-            this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem12.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem12.Control = this.PacksQuantityEdit;
-            this.layoutControlItem12.Location = new System.Drawing.Point(0, 102);
+            this.layoutControlItem12.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(337, 34);
+            this.layoutControlItem12.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem12.Text = "К-сть упаковок";
             this.layoutControlItem12.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem13
             // 
-            this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem13.AppearanceItemCaption.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.layoutControlItem13.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem13.Control = this.KilogramsQuantityEdit;
             this.layoutControlItem13.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem13.CustomizationFormText = "К-сть упаковок";
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 136);
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(337, 34);
+            this.layoutControlItem13.Size = new System.Drawing.Size(254, 30);
             this.layoutControlItem13.Text = "К-сть кілограм";
             this.layoutControlItem13.TextLocation = DevExpress.Utils.Locations.Left;
-            this.layoutControlItem13.TextSize = new System.Drawing.Size(161, 19);
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.simpleButton4;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 340);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(163, 60);
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextVisible = false;
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(157, 16);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.simpleButton3;
-            this.layoutControlItem2.Location = new System.Drawing.Point(163, 340);
+            this.layoutControlItem2.Location = new System.Drawing.Point(127, 342);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(174, 60);
+            this.layoutControlItem2.Size = new System.Drawing.Size(127, 60);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.simpleButton4;
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 342);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(127, 60);
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextVisible = false;
             // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 159);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 157);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(361, 52);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(278, 52);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem6
@@ -820,17 +819,17 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem6.Control = this.AmountEdit;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 37);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(361, 66);
+            this.layoutControlItem6.Size = new System.Drawing.Size(278, 66);
             this.layoutControlItem6.Text = "К-сть товару з тарою";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(157, 19);
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.checkEdit1;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(361, 27);
+            this.layoutControlItem7.Size = new System.Drawing.Size(278, 27);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -839,7 +838,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(0, 27);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(361, 10);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(278, 10);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
@@ -849,16 +848,16 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem4.Control = this.MsrComboBox;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 103);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(361, 56);
+            this.layoutControlItem4.Size = new System.Drawing.Size(278, 54);
             this.layoutControlItem4.Text = " Од. виміру";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(161, 19);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(157, 19);
             // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(127, 16);
+            this.labelControl3.Location = new System.Drawing.Point(94, 16);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(53, 16);
             this.labelControl3.TabIndex = 67;
@@ -885,9 +884,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.NumEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "Num", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.NumEdit.Location = new System.Drawing.Point(12, 38);
             this.NumEdit.Name = "NumEdit";
-            this.NumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.NumEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
             this.NumEdit.Properties.Appearance.Options.UseFont = true;
-            this.NumEdit.Size = new System.Drawing.Size(101, 26);
+            this.NumEdit.Size = new System.Drawing.Size(76, 24);
             this.NumEdit.TabIndex = 61;
             // 
             // ExpeditionBS
@@ -906,9 +905,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // CarsLookUpEdit
             // 
             this.CarsLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "CarId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.CarsLookUpEdit.Location = new System.Drawing.Point(122, 38);
+            this.CarsLookUpEdit.Location = new System.Drawing.Point(94, 38);
             this.CarsLookUpEdit.Name = "CarsLookUpEdit";
-            this.CarsLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.CarsLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
             this.CarsLookUpEdit.Properties.Appearance.Options.UseFont = true;
             this.CarsLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
             this.CarsLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
@@ -919,7 +918,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.CarsLookUpEdit.Properties.PopupView = this.gridLookUpEdit1View;
             this.CarsLookUpEdit.Properties.ShowFooter = false;
             this.CarsLookUpEdit.Properties.ValueMember = "Id";
-            this.CarsLookUpEdit.Size = new System.Drawing.Size(217, 26);
+            this.CarsLookUpEdit.Size = new System.Drawing.Size(137, 24);
             this.CarsLookUpEdit.TabIndex = 64;
             // 
             // gridLookUpEdit1View
@@ -956,9 +955,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // DriverEdit
             // 
             this.DriverEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "DriverId", true));
-            this.DriverEdit.Location = new System.Drawing.Point(345, 38);
+            this.DriverEdit.Location = new System.Drawing.Point(237, 39);
             this.DriverEdit.Name = "DriverEdit";
-            this.DriverEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.DriverEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
             this.DriverEdit.Properties.Appearance.Options.UseFont = true;
             this.DriverEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
             this.DriverEdit.Properties.AppearanceDropDown.Options.UseFont = true;
@@ -969,7 +968,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.DriverEdit.Properties.PopupView = this.gridView1;
             this.DriverEdit.Properties.ShowFooter = false;
             this.DriverEdit.Properties.ValueMember = "KaId";
-            this.DriverEdit.Size = new System.Drawing.Size(265, 26);
+            this.DriverEdit.Size = new System.Drawing.Size(146, 24);
             this.DriverEdit.TabIndex = 70;
             // 
             // gridView1
@@ -996,9 +995,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // RouteLookUpEdit
             // 
             this.RouteLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionBS, "RouteId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.RouteLookUpEdit.Location = new System.Drawing.Point(616, 38);
+            this.RouteLookUpEdit.Location = new System.Drawing.Point(389, 39);
             this.RouteLookUpEdit.Name = "RouteLookUpEdit";
-            this.RouteLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.RouteLookUpEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
             this.RouteLookUpEdit.Properties.Appearance.Options.UseFont = true;
             this.RouteLookUpEdit.Properties.AppearanceDropDown.Font = new System.Drawing.Font("Tahoma", 12F);
             this.RouteLookUpEdit.Properties.AppearanceDropDown.Options.UseFont = true;
@@ -1011,7 +1010,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.RouteLookUpEdit.Properties.PopupView = this.gridView2;
             this.RouteLookUpEdit.Properties.ShowFooter = false;
             this.RouteLookUpEdit.Properties.ValueMember = "Id";
-            this.RouteLookUpEdit.Size = new System.Drawing.Size(203, 26);
+            this.RouteLookUpEdit.Size = new System.Drawing.Size(191, 24);
             this.RouteLookUpEdit.TabIndex = 72;
             // 
             // gridView2
@@ -1039,9 +1038,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.sidePanel1.Controls.Add(this.layoutControl2);
             this.sidePanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.sidePanel1.Location = new System.Drawing.Point(1042, 0);
+            this.sidePanel1.Location = new System.Drawing.Point(743, 0);
             this.sidePanel1.Name = "sidePanel1";
-            this.sidePanel1.Size = new System.Drawing.Size(382, 736);
+            this.sidePanel1.Size = new System.Drawing.Size(299, 736);
             this.sidePanel1.TabIndex = 38;
             this.sidePanel1.Text = "sidePanel1";
             // 
@@ -1054,7 +1053,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.skinDropDownButtonItem3});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1424, 31);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1042, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.skinDropDownButtonItem3);
@@ -1101,7 +1100,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1424, 767);
+            this.ClientSize = new System.Drawing.Size(1042, 767);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.buttonEdit1);
@@ -1146,8 +1145,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();

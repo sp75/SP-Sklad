@@ -3047,6 +3047,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key 
           <Property Name="KaGroupName" Type="nvarchar" MaxLength="50" />
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="SourceType" Type="nvarchar" MaxLength="128" />
+          <Property Name="ReportingDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3630,6 +3631,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrder' does not have 
           <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
           <Property Name="WorkerId" Type="int" Nullable="false" />
           <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrderDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3688,6 +3690,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrderDet' does not ha
           <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="numeric" Precision="32" Scale="8" />
           <Property Name="RemoteOrdered" Type="int" />
+          <Property Name="MId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10272,7 +10275,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PayDoc].[EntName] AS [EntName], 
     [v_PayDoc].[KaGroupName] AS [KaGroupName], 
     [v_PayDoc].[DocTypeName] AS [DocTypeName], 
-    [v_PayDoc].[SourceType] AS [SourceType]
+    [v_PayDoc].[SourceType] AS [SourceType], 
+    [v_PayDoc].[ReportingDate] AS [ReportingDate]
     FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PlannedCalculation" EntityType="Self.v_PlannedCalculation" store:Type="Views" store:Schema="dbo">
@@ -10685,7 +10689,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillCustomerOrder].[UpdatedAt] AS [UpdatedAt], 
     [v_WayBillCustomerOrder].[UpdatedUserName] AS [UpdatedUserName], 
     [v_WayBillCustomerOrder].[WorkerId] AS [WorkerId], 
-    [v_WayBillCustomerOrder].[Balans] AS [Balans]
+    [v_WayBillCustomerOrder].[Balans] AS [Balans], 
+    [v_WayBillCustomerOrder].[TotalAmount] AS [TotalAmount]
     FROM [dbo].[v_WayBillCustomerOrder] AS [v_WayBillCustomerOrder]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillCustomerOrderDet" EntityType="Self.v_WayBillCustomerOrderDet" store:Type="Views" store:Schema="dbo">
@@ -10735,7 +10740,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillCustomerOrderDet].[UpdateAt] AS [UpdateAt], 
     [v_WayBillCustomerOrderDet].[AvgInPrice] AS [AvgInPrice], 
     [v_WayBillCustomerOrderDet].[DiscountTotal] AS [DiscountTotal], 
-    [v_WayBillCustomerOrderDet].[RemoteOrdered] AS [RemoteOrdered]
+    [v_WayBillCustomerOrderDet].[RemoteOrdered] AS [RemoteOrdered], 
+    [v_WayBillCustomerOrderDet].[MId] AS [MId]
     FROM [dbo].[v_WayBillCustomerOrderDet] AS [v_WayBillCustomerOrderDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillDet" EntityType="Self.v_WaybillDet" store:Type="Views" store:Schema="dbo">
@@ -22691,6 +22697,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WorkerId" Type="Int32" Nullable="false" />
           <Property Name="Balans" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="4" />
         </EntityType>
         <EntityType Name="v_WayBillCustomerOrderDet">
           <Key>
@@ -22747,6 +22754,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AvgInPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="Decimal" Precision="32" Scale="8" />
           <Property Name="RemoteOrdered" Type="Int32" />
+          <Property Name="MId" Type="Int32" />
         </EntityType>
         <EntityType Name="v_WayBillReturnСustomers">
           <Key>
@@ -22972,6 +22980,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="KaGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="SourceType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="v_Report_55">
           <Key>
@@ -28840,6 +28849,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillCustomerOrder">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillCustomerOrder">
               <MappingFragment StoreEntitySet="v_WayBillCustomerOrder">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
@@ -28895,6 +28905,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillCustomerOrderDet">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillCustomerOrderDet">
               <MappingFragment StoreEntitySet="v_WayBillCustomerOrderDet">
+                <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="RemoteOrdered" ColumnName="RemoteOrdered" />
                 <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
                 <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
@@ -29086,6 +29097,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
+                <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="SourceType" ColumnName="SourceType" />
                 <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
                 <ScalarProperty Name="KaGroupName" ColumnName="KaGroupName" />
