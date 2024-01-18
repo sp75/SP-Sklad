@@ -272,12 +272,12 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NextBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewCustomerOrder, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOnItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddWBInBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddWBOutBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOffBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOnItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewWayBillMoveBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewWBWriteOffBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.AddManufacturingBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddDeboningBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.CashierWorkplaceBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
@@ -565,6 +565,7 @@
             // 
             this.barButtonItem10.Caption = "Зайти під другим користувачем";
             this.barButtonItem10.Id = 27;
+            this.barButtonItem10.ImageOptions.ImageIndex = 11;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick_1);
             // 
@@ -670,6 +671,8 @@
             this.imageCollection1.Images.SetKeyName(9, "deboneing");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "move_stock");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.change_user, "change_user", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "change_user");
             // 
             // repositoryItemTimeEdit1
             // 

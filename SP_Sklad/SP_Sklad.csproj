@@ -3358,6 +3358,7 @@
     <None Include="Resources\deboneing.png" />
     <None Include="Resources\cash_register.png" />
     <None Include="Resources\move_stock.png" />
+    <None Include="Resources\change_user.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
