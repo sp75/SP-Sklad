@@ -399,117 +399,112 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-                    int gtype = focused_tree_node.GType.Value;
+            int gtype = focused_tree_node.GType.Value;
 
-                using (var db = new BaseEntities())
+
+            try
+            {
+                switch (gtype)
                 {
-                    try
-                    {
-                        switch (gtype)
-                        {
-                            //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
-                            //          case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
-                            //	case 5: PriceList->LockRecord();  break;
-                            //	case 6: ContractsList->LockRecord();  break;
-                            //	case 7: TaxWBList->LockRecord();  break;
-                        }
-                        if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            switch (gtype)
-                            {
-                                case 1:
-                                    if (focused_tree_node.WType == 1)
-                                    {
-                                        wayBillInUserControl.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == 16)
-                                    {
-                                        ucWBOrdersOut.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == -1)
-                                    {
-                                        ucWaybillOut.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == 2)
-                                    {
-                                        ucInvoices.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == -16)
-                                    {
-                                        ucWBOrdersIn.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == 29)
-                                    {
-                                        ucServicesIn.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == 6)
-                                    {
-                                        ucWayBillReturnСustomers.DeleteItem();
-                                    }
-                                    else if (focused_tree_node.WType == -6)
-                                    {
-                                        ucWaybillReturnSuppliers.DeleteItem();
-                                    }
-                                    break;
-
-                                case 4:
-                                    if (cur_wtype == 3)
-                                    {
-                                        ucPayDocIn.DeleteItem();
-                                    }
-                                    else if (cur_wtype == -3)
-                                    {
-                                        ucPayDocOut.DeleteItem();
-                                    }
-                                    else if (cur_wtype == -2)
-                                    {
-                                        ucPayDocExtOut.DeleteItem();
-                                    }
-                                    break;
-
-                                case 5:
-                                    ucPriceList.DeleteItem();
-                                    break;
-
-                                case 8:
-
-                                    if (focused_tree_node.WType == 23) //Заборгованість покупця
-                                    {
-                                        ucKAgentAdjustmentIn.DeleteItem();
-                                    }
-
-                                    if (focused_tree_node.WType == -23) //Заборгованість постачальнику
-                                    {
-                                        ucKAgentAdjustmentOut.DeleteItem();
-                                    }
-
-                                    break;
-
-                                case 10:
-                                    ucBankStatements.DeleteItem();
-                                    break;
-
-                                case 11:
-                                    ucProjectManagement.DeleteItem();
-                                    break;
-
-                                case 12:
-                                    settingMaterialPricesUserControl1.DeleteItem();
-                                    break;
-
-                                case 13:
-                                    expeditionUserControl1.DeleteItem();
-                                    break;
-                            }
-                            db.SaveChanges();
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show(Resources.deadlock);
-                    }
+                    //      case 1: db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK) where WbillId = {0}", dr.WbillId).FirstOrDefault(); break;
+                    //          case 4: db.Database.SqlQuery<PayDoc>("SELECT * from PayDoc WITH (UPDLOCK) where PayDocId = {0}", pd_row.PayDocId).FirstOrDefault(); break;
+                    //	case 5: PriceList->LockRecord();  break;
+                    //	case 6: ContractsList->LockRecord();  break;
+                    //	case 7: TaxWBList->LockRecord();  break;
                 }
-     
+
+
+                switch (gtype)
+                {
+                    case 1:
+                        if (focused_tree_node.WType == 1)
+                        {
+                            wayBillInUserControl.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == 16)
+                        {
+                            ucWBOrdersOut.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == -1)
+                        {
+                            ucWaybillOut.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == 2)
+                        {
+                            ucInvoices.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == -16)
+                        {
+                            ucWBOrdersIn.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == 29)
+                        {
+                            ucServicesIn.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == 6)
+                        {
+                            ucWayBillReturnСustomers.DeleteItem();
+                        }
+                        else if (focused_tree_node.WType == -6)
+                        {
+                            ucWaybillReturnSuppliers.DeleteItem();
+                        }
+                        break;
+
+                    case 4:
+                        if (cur_wtype == 3)
+                        {
+                            ucPayDocIn.DeleteItem();
+                        }
+                        else if (cur_wtype == -3)
+                        {
+                            ucPayDocOut.DeleteItem();
+                        }
+                        else if (cur_wtype == -2)
+                        {
+                            ucPayDocExtOut.DeleteItem();
+                        }
+                        break;
+
+                    case 5:
+                        ucPriceList.DeleteItem();
+                        break;
+
+                    case 8:
+
+                        if (focused_tree_node.WType == 23) //Заборгованість покупця
+                        {
+                            ucKAgentAdjustmentIn.DeleteItem();
+                        }
+
+                        if (focused_tree_node.WType == -23) //Заборгованість постачальнику
+                        {
+                            ucKAgentAdjustmentOut.DeleteItem();
+                        }
+
+                        break;
+
+                    case 10:
+                        ucBankStatements.DeleteItem();
+                        break;
+
+                    case 11:
+                        ucProjectManagement.DeleteItem();
+                        break;
+
+                    case 12:
+                        settingMaterialPricesUserControl1.DeleteItem();
+                        break;
+
+                    case 13:
+                        expeditionUserControl1.DeleteItem();
+                        break;
+                }
+            }
+            catch
+            {
+                MessageBox.Show(Resources.deadlock);
+            }
 
             RefrechItemBtn.PerformClick();
         }
