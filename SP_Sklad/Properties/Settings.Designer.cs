@@ -309,5 +309,17 @@ namespace SP_Sklad.Properties {
                 this["size_tile"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("349, 146")]
+        public global::System.Drawing.Size expedition_sidePanel {
+            get {
+                return ((global::System.Drawing.Size)(this["expedition_sidePanel"]));
+            }
+            set {
+                this["expedition_sidePanel"] = value;
+            }
+        }
     }
 }

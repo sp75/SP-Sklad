@@ -999,22 +999,22 @@ namespace SP_Sklad.MainTabs
             AddMatItemToList(focused_mat);
         }
 
-        private void AddMatItemToList(v_Materials row )
+        private void AddMatItemToList(v_Materials row)
         {
-            if(row == null)
+            if (row == null)
             {
-        //        MessageBox.Show("Товар не знайдено!");
-
                 return;
             }
 
+            var ka_price = GetPrice(row.MatId, wb);
             custom_mat_list.Add(new CustomMatList
             {
                 Num = custom_mat_list.Count() + 1,
                 MatId = row.MatId,
                 Name = row.Name,
                 Amount = 1,
-                Price = GetPrice(row.MatId, wb),
+                Price = ka_price,
+                PriceWithoutNDS = wb.Nds > 0 ? Math.Round(ka_price * 100 / (100 + (wb.Nds ?? 0)), 4) : ka_price,
                 WId = row.WId != null ? row.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
                 BarCode = BarCodeEdit.Text
             });
@@ -1828,6 +1828,21 @@ namespace SP_Sklad.MainTabs
             DB.SkladBase().RecalcKaSaldo(focused_kagent.KaId);
 
             RefrechItemBtn.PerformClick();
+        }
+
+        private void MatListGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            var row = MatListGridView.GetFocusedRow() as CustomMatList;
+
+            if (e.Column.FieldName == "Price")
+            {
+                row.PriceWithoutNDS = wb.Nds > 0 ? Math.Round((decimal)e.Value * 100 / (100 + (wb.Nds ?? 0)), 4) : (decimal?)e.Value;
+            }
+
+            if (e.Column.FieldName == "PriceWithoutNDS")
+            {
+                row.Price = wb.Nds > 0 ? Math.Round((decimal)e.Value + ((decimal)e.Value * (wb.Nds ?? 0) / 100), 4) : (decimal)e.Value;
+            }
         }
     }
 }

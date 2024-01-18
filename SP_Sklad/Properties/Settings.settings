@@ -74,5 +74,8 @@
     <Setting Name="size_tile" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">124</Value>
     </Setting>
+    <Setting Name="expedition_sidePanel" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">349, 146</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

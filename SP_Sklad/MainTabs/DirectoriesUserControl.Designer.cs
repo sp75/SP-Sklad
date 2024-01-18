@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -236,6 +236,7 @@
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridColumn74 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.ServicesGridControl = new DevExpress.XtraGrid.GridControl();
@@ -2617,10 +2618,12 @@
             this.gridColumn42,
             this.gridColumn44,
             this.gridColumn37,
-            this.gridColumn74});
+            this.gridColumn74,
+            this.gridColumn115});
             this.MatListGridView.GridControl = this.MatListGridControl;
             this.MatListGridView.Name = "MatListGridView";
             this.MatListGridView.OptionsView.ShowGroupPanel = false;
+            this.MatListGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.MatListGridView_CellValueChanged);
             // 
             // gridColumn40
             // 
@@ -2630,7 +2633,7 @@
             this.gridColumn40.OptionsColumn.AllowEdit = false;
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 0;
-            this.gridColumn40.Width = 98;
+            this.gridColumn40.Width = 91;
             // 
             // gridColumn41
             // 
@@ -2640,7 +2643,7 @@
             this.gridColumn41.OptionsColumn.AllowEdit = false;
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 1;
-            this.gridColumn41.Width = 209;
+            this.gridColumn41.Width = 215;
             // 
             // gridColumn42
             // 
@@ -2649,8 +2652,8 @@
             this.gridColumn42.FieldName = "Amount";
             this.gridColumn42.Name = "gridColumn42";
             this.gridColumn42.Visible = true;
-            this.gridColumn42.VisibleIndex = 3;
-            this.gridColumn42.Width = 123;
+            this.gridColumn42.VisibleIndex = 4;
+            this.gridColumn42.Width = 103;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -2661,13 +2664,13 @@
             // 
             // gridColumn44
             // 
-            this.gridColumn44.Caption = "Ціна";
+            this.gridColumn44.Caption = "Ціна з ПДВ";
             this.gridColumn44.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn44.FieldName = "Price";
             this.gridColumn44.Name = "gridColumn44";
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 2;
-            this.gridColumn44.Width = 99;
+            this.gridColumn44.Width = 96;
             // 
             // gridColumn37
             // 
@@ -2676,8 +2679,8 @@
             this.gridColumn37.FieldName = "WId";
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
-            this.gridColumn37.VisibleIndex = 4;
-            this.gridColumn37.Width = 290;
+            this.gridColumn37.VisibleIndex = 5;
+            this.gridColumn37.Width = 275;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -2699,8 +2702,17 @@
             this.gridColumn74.FieldName = "BarCode";
             this.gridColumn74.Name = "gridColumn74";
             this.gridColumn74.Visible = true;
-            this.gridColumn74.VisibleIndex = 5;
-            this.gridColumn74.Width = 243;
+            this.gridColumn74.VisibleIndex = 6;
+            this.gridColumn74.Width = 187;
+            // 
+            // gridColumn115
+            // 
+            this.gridColumn115.Caption = "Ціна без ПДВ";
+            this.gridColumn115.FieldName = "PriceWithoutNDS";
+            this.gridColumn115.Name = "gridColumn115";
+            this.gridColumn115.Visible = true;
+            this.gridColumn115.VisibleIndex = 3;
+            this.gridColumn115.Width = 94;
             // 
             // gridView7
             // 
@@ -2872,9 +2884,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode1});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3926,9 +3938,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -4998,5 +5010,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit14;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn115;
     }
 }

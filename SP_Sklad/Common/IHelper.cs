@@ -1200,6 +1200,8 @@ namespace SP_Sklad.Common
         public decimal? Price { get; set; }
         public int WId { get; set; }
         public string BarCode { get; set; }
+        public decimal? PriceWithoutNDS { get; set; }
+        public decimal Nds { get; set; }
     }
 
     public class CatalogTreeList

@@ -42,6 +42,8 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void FluentDesignForm1_Load(object sender, EventArgs e)
         {
+            ExpeditionDetGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmExpeditionInterface\\ExpeditionDetGridView");
+
             using (var s = new UserSettingsRepository())
             {
 
@@ -82,6 +84,11 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
           
 
             GetDetail();
+        }
+
+        public void SaveGridLayouts()
+        {
+            ExpeditionDetGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "frmExpeditionInterface\\ExpeditionDetGridView");
         }
 
         private void GetDetail()
@@ -236,10 +243,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
 
         private void frmExpeditionInterface_FormClosed(object sender, FormClosedEventArgs e)
         {
-            /*  if (is_new_record)
-              {
-                  _db.DeleteWhere<Expedition>(w => w.Id == _exp_id);
-              }*/
+            SaveGridLayouts();
 
             _db.SaveChanges();
 
