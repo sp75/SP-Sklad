@@ -371,7 +371,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "receipt_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "Користувачі.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_groups, "user_groups", typeof(global::SP_Sklad.Properties.Resources), 41);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "user_groups");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(42, "Бази даних.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
@@ -416,6 +417,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.enterprise, "enterprise", typeof(global::SP_Sklad.Properties.Resources), 81);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "enterprise");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 82);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab

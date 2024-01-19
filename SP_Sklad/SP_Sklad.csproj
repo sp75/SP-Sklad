@@ -3361,6 +3361,9 @@
     <None Include="Resources\template_16.png" />
     <None Include="Resources\employee.png" />
     <None Include="Resources\enterprise.png" />
+    <None Include="Resources\businessman.png" />
+    <None Include="Resources\user_groups.png" />
+    <None Include="Resources\usergroup_16x16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
