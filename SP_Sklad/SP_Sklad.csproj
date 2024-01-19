@@ -3357,6 +3357,8 @@
     <None Include="Resources\move_stock.png" />
     <None Include="Resources\change_user.png" />
     <None Include="Resources\template.png" />
+    <None Include="Resources\morefunctions_16x16.png" />
+    <None Include="Resources\template_16.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -530,8 +530,7 @@
             // 
             this.WbMatTemplateBtn.Caption = "Шаблони";
             this.WbMatTemplateBtn.Id = 33;
-            this.WbMatTemplateBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.Image")));
-            this.WbMatTemplateBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("WbMatTemplateBtn.ImageOptions.LargeImage")));
+            this.WbMatTemplateBtn.ImageOptions.ImageIndex = 12;
             this.WbMatTemplateBtn.Name = "WbMatTemplateBtn";
             this.WbMatTemplateBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbMatTemplateBtn_ItemClick);
             // 
@@ -673,6 +672,8 @@
             this.imageCollection1.Images.SetKeyName(10, "move_stock");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.change_user, "change_user", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "change_user");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "template");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -925,7 +926,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");

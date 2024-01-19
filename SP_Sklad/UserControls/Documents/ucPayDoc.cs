@@ -347,7 +347,7 @@ namespace SP_Sklad.UserControls
 
 
             var list = objectContext.v_PayDoc.Join(objectContext.EnterpriseWorker.Where(eww => eww.WorkerId == DBHelper.CurrentUser.KaId), pd => pd.EntId, ew => ew.EnterpriseId, (pd, ew) => pd)
-                .Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.ExDocType == w_type || w_type == -1) && (w.KaId == ka_id || ka_id == 0));
+                .Where(w => (w.ExDocType == -3 || w.ExDocType == 3 || w.ExDocType == 2) && w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.ExDocType == w_type || w_type == -1 ) && (w.KaId == ka_id || ka_id == 0));
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

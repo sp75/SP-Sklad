@@ -269,7 +269,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");

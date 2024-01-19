@@ -470,7 +470,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
@@ -525,7 +526,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;

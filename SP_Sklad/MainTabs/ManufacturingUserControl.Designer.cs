@@ -193,7 +193,6 @@
             this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.whUserControl = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
@@ -551,7 +550,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).BeginInit();
@@ -1401,7 +1399,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "Справочники.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "Конрагент.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
@@ -1456,7 +1455,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;
@@ -2676,26 +2676,9 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.whUserControl);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(1049, 632);
             this.xtraTabPage8.Text = "Склад";
-            // 
-            // whUserControl
-            // 
-            this.whUserControl.custom_mat_list = null;
-            this.whUserControl.disc_card = null;
-            this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.whUserControl.isDirectList = false;
-            this.whUserControl.isMatList = false;
-            this.whUserControl.Location = new System.Drawing.Point(0, 0);
-            this.whUserControl.Name = "whUserControl";
-            this.whUserControl.resut = null;
-            this.whUserControl.set_tree_node = null;
-            this.whUserControl.Size = new System.Drawing.Size(1049, 632);
-            this.whUserControl.TabIndex = 0;
-            this.whUserControl.wb = null;
-            this.whUserControl.wh_mat_list = null;
             // 
             // xtraTabPage10
             // 
@@ -6083,7 +6066,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
-            this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).EndInit();
             this.splitContainerControl3.Panel1.ResumeLayout(false);

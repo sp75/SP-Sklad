@@ -81,10 +81,10 @@
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.PDKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.PDSatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.PDKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.PDEndDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
@@ -127,9 +127,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PDKagentList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDSatusList.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PDKagentList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDStartDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -164,8 +164,8 @@
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "historyitem_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.Images.SetKeyName(13, "historyitem_16x16");
             this.imageCollection1.Images.SetKeyName(14, "pay_doc(1).png");
             this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1)_3.png");
             this.imageCollection1.Images.SetKeyName(16, "ДопРасход.png");
@@ -631,10 +631,10 @@
             // 
             // panelControl3
             // 
+            this.panelControl3.Controls.Add(this.PDKagentList);
             this.panelControl3.Controls.Add(this.PeriodComboBoxEdit);
             this.panelControl3.Controls.Add(this.PDSatusList);
             this.panelControl3.Controls.Add(this.labelControl5);
-            this.panelControl3.Controls.Add(this.PDKagentList);
             this.panelControl3.Controls.Add(this.labelControl6);
             this.panelControl3.Controls.Add(this.PDEndDate);
             this.panelControl3.Controls.Add(this.labelControl7);
@@ -644,6 +644,27 @@
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(1344, 50);
             this.panelControl3.TabIndex = 1;
+            // 
+            // PDKagentList
+            // 
+            this.PDKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PDKagentList.Location = new System.Drawing.Point(584, 12);
+            this.PDKagentList.Name = "PDKagentList";
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.PDKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.PDKagentList.Properties.DisplayMember = "Name";
+            this.PDKagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
+            this.PDKagentList.Properties.ShowHeader = false;
+            this.PDKagentList.Properties.ValueMember = "KaId";
+            this.PDKagentList.Size = new System.Drawing.Size(476, 24);
+            this.PDKagentList.StyleController = this.styleController1;
+            this.PDKagentList.TabIndex = 23;
+            this.PDKagentList.EditValueChanged += new System.EventHandler(this.PDKagentList_EditValueChanged);
             // 
             // PeriodComboBoxEdit
             // 
@@ -669,7 +690,7 @@
             // PDSatusList
             // 
             this.PDSatusList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.PDSatusList.Location = new System.Drawing.Point(1109, 14);
+            this.PDSatusList.Location = new System.Drawing.Point(1146, 14);
             this.PDSatusList.Name = "PDSatusList";
             this.PDSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -678,7 +699,7 @@
             this.PDSatusList.Properties.DisplayMember = "Name";
             this.PDSatusList.Properties.ShowHeader = false;
             this.PDSatusList.Properties.ValueMember = "Id";
-            this.PDSatusList.Size = new System.Drawing.Size(230, 22);
+            this.PDSatusList.Size = new System.Drawing.Size(187, 22);
             this.PDSatusList.StyleController = this.styleController1;
             this.PDSatusList.TabIndex = 8;
             this.PDSatusList.EditValueChanged += new System.EventHandler(this.PMStatusList_EditValueChanged);
@@ -686,36 +707,16 @@
             // labelControl5
             // 
             this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl5.Location = new System.Drawing.Point(1064, 17);
+            this.labelControl5.Location = new System.Drawing.Point(1101, 17);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(39, 16);
             this.labelControl5.StyleController = this.styleController1;
             this.labelControl5.TabIndex = 7;
             this.labelControl5.Text = "Статус";
             // 
-            // PDKagentList
-            // 
-            this.PDKagentList.Location = new System.Drawing.Point(620, 13);
-            this.PDKagentList.Name = "PDKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
-            this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.PDKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.PDKagentList.Properties.DisplayMember = "Name";
-            this.PDKagentList.Properties.ShowFooter = false;
-            this.PDKagentList.Properties.ShowHeader = false;
-            this.PDKagentList.Properties.ValueMember = "KaId";
-            this.PDKagentList.Size = new System.Drawing.Size(400, 24);
-            this.PDKagentList.StyleController = this.styleController1;
-            this.PDKagentList.TabIndex = 6;
-            this.PDKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PDKagentList_ButtonClick);
-            this.PDKagentList.EditValueChanged += new System.EventHandler(this.PDKagentList_EditValueChanged);
-            // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(554, 17);
+            this.labelControl6.Location = new System.Drawing.Point(518, 17);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(60, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -962,9 +963,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PDKagentList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDSatusList.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PDKagentList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PDStartDate.Properties.CalendarTimeProperties)).EndInit();
@@ -1029,7 +1030,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl3;
         public DevExpress.XtraEditors.LookUpEdit PDSatusList;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        public DevExpress.XtraEditors.LookUpEdit PDKagentList;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         public DevExpress.XtraEditors.DateEdit PDEndDate;
         private DevExpress.XtraEditors.LabelControl labelControl7;
@@ -1055,5 +1055,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         private ucRelDocGrid ucRelDocGrid2;
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
+        public DevExpress.XtraEditors.LookUpEdit PDKagentList;
     }
 }
