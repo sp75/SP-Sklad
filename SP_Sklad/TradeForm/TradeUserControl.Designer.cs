@@ -440,15 +440,18 @@
             // 
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x161");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "article_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "open_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "wb_in_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "invoice_3.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill(-1)_3.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "waybill_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "invoice");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill_out");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");

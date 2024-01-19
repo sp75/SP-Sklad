@@ -286,10 +286,12 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
             this.imageCollection1.Images.SetKeyName(14, "change_kontragent4.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 15);
-            this.imageCollection1.Images.SetKeyName(15, "historyitem_16x161");
-            this.imageCollection1.Images.SetKeyName(16, "waybill(-1)_3.png");
-            this.imageCollection1.Images.SetKeyName(17, "invoice_3.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.imageCollection1.Images.SetKeyName(15, "historyitem_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "waybill_out");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.imageCollection1.Images.SetKeyName(17, "invoice");
             this.imageCollection1.Images.SetKeyName(18, "checked_blue.png");
             this.imageCollection1.Images.SetKeyName(19, "pay_doc(1)_2.png");
             // 

@@ -37,11 +37,11 @@
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NextBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewCustomerOrder = new DevExpress.XtraBars.BarButtonItem();
-            this.NewWBWriteOnItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBInBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddWBOutBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.NewWayBillMoveBtn = new DevExpress.XtraBars.BarButtonItem();
             this.NewWBWriteOffBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.NewWBWriteOnItem = new DevExpress.XtraBars.BarButtonItem();
+            this.NewWayBillMoveBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddManufacturingBtn = new DevExpress.XtraBars.BarButtonItem();
             this.AddDeboningBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CashierWorkplaceBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -310,14 +310,6 @@
             this.NewCustomerOrder.Name = "NewCustomerOrder";
             this.NewCustomerOrder.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewCustomerOrder_ItemClick);
             // 
-            // NewWBWriteOnItem
-            // 
-            this.NewWBWriteOnItem.Caption = "Введення залишків товарів";
-            this.NewWBWriteOnItem.Id = 34;
-            this.NewWBWriteOnItem.ImageOptions.ImageIndex = 6;
-            this.NewWBWriteOnItem.Name = "NewWBWriteOnItem";
-            this.NewWBWriteOnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOnItem_ItemClick);
-            // 
             // AddWBInBtn
             // 
             this.AddWBInBtn.Caption = "Прибуткова накладна";
@@ -334,14 +326,6 @@
             this.AddWBOutBtn.Name = "AddWBOutBtn";
             this.AddWBOutBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddWBOutBtn_ItemClick);
             // 
-            // NewWayBillMoveBtn
-            // 
-            this.NewWayBillMoveBtn.Caption = "Накладна переміщення";
-            this.NewWayBillMoveBtn.Id = 35;
-            this.NewWayBillMoveBtn.ImageOptions.ImageIndex = 10;
-            this.NewWayBillMoveBtn.Name = "NewWayBillMoveBtn";
-            this.NewWayBillMoveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWayBillMoveBtn_ItemClick);
-            // 
             // NewWBWriteOffBtn
             // 
             this.NewWBWriteOffBtn.Caption = "Акти списання товару";
@@ -349,6 +333,22 @@
             this.NewWBWriteOffBtn.ImageOptions.ImageIndex = 5;
             this.NewWBWriteOffBtn.Name = "NewWBWriteOffBtn";
             this.NewWBWriteOffBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOffBtn_ItemClick);
+            // 
+            // NewWBWriteOnItem
+            // 
+            this.NewWBWriteOnItem.Caption = "Введення залишків товарів";
+            this.NewWBWriteOnItem.Id = 34;
+            this.NewWBWriteOnItem.ImageOptions.ImageIndex = 6;
+            this.NewWBWriteOnItem.Name = "NewWBWriteOnItem";
+            this.NewWBWriteOnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWBWriteOnItem_ItemClick);
+            // 
+            // NewWayBillMoveBtn
+            // 
+            this.NewWayBillMoveBtn.Caption = "Накладна переміщення";
+            this.NewWayBillMoveBtn.Id = 35;
+            this.NewWayBillMoveBtn.ImageOptions.ImageIndex = 10;
+            this.NewWayBillMoveBtn.Name = "NewWayBillMoveBtn";
+            this.NewWayBillMoveBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewWayBillMoveBtn_ItemClick);
             // 
             // AddManufacturingBtn
             // 
@@ -895,15 +895,18 @@
             // 
             // 
             this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x161", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x161");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "article_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "open_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "wb_in_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "invoice_3.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill(-1)_3.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "waybill_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "invoice");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill_out");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
@@ -977,7 +980,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template_16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "build_16x16.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
             this.UserTreeImgList.ParentControl = this;

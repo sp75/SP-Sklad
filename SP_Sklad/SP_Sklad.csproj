@@ -3300,7 +3300,6 @@
     <None Include="Resources\boproduct_16x16.png" />
     <None Include="Resources\snapdeletelist_16x161.png" />
     <None Include="Resources\delete_16x16.png" />
-    <None Include="Resources\historyitem_16x161.png" />
     <None Include="Resources\refresh_16x161.png" />
     <None Include="Resources\updatetableofcontents_16x16.png" />
     <None Include="Resources\convert_16x16.png" />
@@ -3330,7 +3329,6 @@
     <None Include="Resources\project_16x16.png" />
     <None Include="Resources\loadpagesetup_16x16.png" />
     <None Include="Resources\snapmodifytablecellstyle_16x16.png" />
-    <None Include="Resources\waybill%28-1%29_4.png" />
     <None Include="Resources\waybill_out.png" />
     <None Include="Resources\createmodeldifferences_32x32.png" />
     <None Include="Resources\template_16x16.png" />
@@ -3343,7 +3341,6 @@
     <None Include="Resources\new_document.png" />
     <None Include="Resources\checked_green.png" />
     <None Include="Resources\edit_2.png" />
-    <None Include="Resources\additem_16x1611.png" />
     <None Include="Resources\additem_3.png" />
     <None Include="Resources\execute_16x16_red.png" />
     <None Include="Resources\preview_2.png" />
@@ -3359,6 +3356,7 @@
     <None Include="Resources\cash_register.png" />
     <None Include="Resources\move_stock.png" />
     <None Include="Resources\change_user.png" />
+    <None Include="Resources\template.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
