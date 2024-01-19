@@ -35,6 +35,7 @@ namespace SP_Sklad.UserControls
 
         private UserAccess user_access { get; set; }
 
+        private int prev_rowHandle = 0;
         int row = 0;
         bool restore = false;
         public ucSettingMaterialPrices()
@@ -44,6 +45,8 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
+            prev_rowHandle = SettingMaterialPricesGridView.FocusedRowHandle;
+
             row = SettingMaterialPricesGridView.FocusedRowHandle;
             restore = true;
 

@@ -42,6 +42,7 @@ namespace SP_Sklad.UserControls
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
         private int? _find_id { get; set; }
         private bool _restore = false;
 
@@ -133,9 +134,8 @@ namespace SP_Sklad.UserControls
                     f.ShowDialog();
                 }
             }
-
-            RefrechItemBtn.PerformClick();
         }
+
         public void PrintItem()
         {
             if (wb_focused_row == null)
@@ -226,6 +226,8 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
+            prev_rowHandle = WbGridView.FocusedRowHandle;
+
             if (wb_focused_row != null && !_find_id.HasValue)
             {
                 prev_top_row_index = WbGridView.TopRowIndex;
@@ -283,6 +285,10 @@ namespace SP_Sklad.UserControls
             if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
             {
                 FocusRow(WbGridView, rowHandle);
+            }
+            else
+            {
+                WbGridView.FocusedRowHandle = prev_rowHandle;
             }
 
             _restore = false;

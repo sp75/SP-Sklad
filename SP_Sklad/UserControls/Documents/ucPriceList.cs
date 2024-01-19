@@ -39,6 +39,8 @@ namespace SP_Sklad.UserControls
 
         private Guid prev_focused_id = Guid.Empty;
         private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
+
         private Guid? find_id { get; set; }
         private bool restore = false;
 
@@ -151,6 +153,8 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
+            prev_rowHandle = PriceListGridView.FocusedRowHandle;
+
             if (focused_row != null && !find_id.HasValue)
             {
                 prev_top_row_index = PriceListGridView.TopRowIndex;
@@ -336,6 +340,10 @@ namespace SP_Sklad.UserControls
             if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
             {
                 FocusRow(PriceListGridView, rowHandle);
+            }
+            else
+            {
+                PriceListGridView.FocusedRowHandle = prev_rowHandle;
             }
 
             restore = false;

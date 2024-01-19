@@ -38,6 +38,7 @@ namespace SP_Sklad.UserControls
 
         private Guid prev_focused_id = Guid.Empty;
         private Guid? find_id;
+        private int prev_rowHandle = 0;
         private bool restore = false;
         public ucExpedition()
         {
@@ -46,6 +47,8 @@ namespace SP_Sklad.UserControls
 
         public void GetData()
         {
+            prev_rowHandle = ExpeditionsGridView.FocusedRowHandle;
+
             if (row_exp != null && !find_id.HasValue)
             {
                 prev_focused_id = row_exp.Id;
@@ -225,6 +228,10 @@ namespace SP_Sklad.UserControls
             {
                 ExpeditionsGridView.FocusedRowHandle = rowHandle;
                 ExpeditionsGridView.TopRowIndex = rowHandle;
+            }
+            else
+            {
+                ExpeditionsGridView.FocusedRowHandle = prev_rowHandle;
             }
 
             restore = false;

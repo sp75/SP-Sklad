@@ -1417,8 +1417,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "receipt_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "Податки.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "Сервіс.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_groups, "user_groups", typeof(global::SP_Sklad.Properties.Resources), 41);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "user_groups");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.employees, "employees", typeof(global::SP_Sklad.Properties.Resources), 41);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "employees");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(42, "Бази даних.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "Редактор SQL-запитiв.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "Журнал подій.png");
@@ -1447,8 +1447,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.employee, "employee", typeof(global::SP_Sklad.Properties.Resources), 70);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "employee");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_valet, "user_valet", typeof(global::SP_Sklad.Properties.Resources), 70);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "user_valet");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.datasource_16x16, "datasource_16x16", typeof(global::SP_Sklad.Properties.Resources), 71);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "datasource_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "pay_wb.png");

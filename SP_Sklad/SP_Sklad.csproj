@@ -3267,10 +3267,8 @@
     <None Include="Resources\movedown_16x16.png" />
     <None Include="Resources\iconsetarrows3_16x16.png" />
     <None Include="Resources\info_16x161.png" />
-    <None Include="Resources\info_16x162.png" />
     <None Include="Resources\information_16x16.png" />
     <None Include="Resources\information_16x161.png" />
-    <None Include="Resources\info_16x163.png" />
     <None Include="Resources\hyperlink1_16x16.png" />
     <None Include="Resources\currency_16x16.png" />
     <None Include="Resources\attach_16x16.png" />
@@ -3303,7 +3301,6 @@
     <None Include="Resources\refresh_16x161.png" />
     <None Include="Resources\updatetableofcontents_16x16.png" />
     <None Include="Resources\convert_16x16.png" />
-    <None Include="Resources\boemployee_16x16.png" />
     <None Include="Resources\editrangepermission_16x16.png" />
     <None Include="Resources\gotodate_16x16.png" />
     <None Include="Resources\refreshallpivottable_16x16.png" />
@@ -3320,7 +3317,6 @@
     <None Include="Resources\documentmap_16x16.png" />
     <None Include="Resources\home_16x16.png" />
     <None Include="Resources\open_16x16.png" />
-    <None Include="Resources\home_16x161.png" />
     <None Include="Resources\upload_16x16.png" />
     <None Include="Resources\salessummary_16x16.png" />
     <None Include="Resources\saledetalis_16x16.png" />
@@ -3358,12 +3354,16 @@
     <None Include="Resources\change_user.png" />
     <None Include="Resources\template.png" />
     <None Include="Resources\morefunctions_16x16.png" />
-    <None Include="Resources\template_16.png" />
     <None Include="Resources\employee.png" />
     <None Include="Resources\enterprise.png" />
     <None Include="Resources\businessman.png" />
     <None Include="Resources\user_groups.png" />
     <None Include="Resources\usergroup_16x16.png" />
+    <None Include="Resources\employees.png" />
+    <None Include="Resources\worker2.png" />
+    <None Include="Resources\worker.png" />
+    <None Include="Resources\user_manager.png" />
+    <None Include="Resources\user-valet.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
