@@ -343,9 +343,6 @@
   <data name="outbox_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\outbox_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boemployee_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boemployee_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="updatetableofcontents_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\updatetableofcontents_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -573,5 +570,11 @@
   </data>
   <data name="morefunctions_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\morefunctions_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="employee" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\employee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enterprise" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enterprise.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -3359,6 +3359,8 @@
     <None Include="Resources\template.png" />
     <None Include="Resources\morefunctions_16x16.png" />
     <None Include="Resources\template_16.png" />
+    <None Include="Resources\employee.png" />
+    <None Include="Resources\enterprise.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
