@@ -16,6 +16,7 @@ using SP_Sklad.ViewsForm;
 using DevExpress.XtraGrid;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace SP_Sklad.UserControls
 {
@@ -39,7 +40,9 @@ namespace SP_Sklad.UserControls
         private Guid prev_focused_id = Guid.Empty;
         private Guid? find_id;
         private int prev_rowHandle = 0;
-        private bool restore = false;
+        private int prev_top_row_index = 0;
+
+        private bool _restore = false;
         public ucExpedition()
         {
             InitializeComponent();
@@ -60,7 +63,7 @@ namespace SP_Sklad.UserControls
                 find_id = null;
             }
 
-            restore = true;
+            _restore = true;
 
             ExpeditionsGridControl.DataSource = null;
             ExpeditionsGridControl.DataSource = ExpeditionsSource;
@@ -168,10 +171,11 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
-          //  kaaStartDate.DateTime = on_date.Date;
-         //   kaaEndDate.DateTime = on_date.Date.SetEndDay();
-        //    kaaStatusList.EditValue = -1;
-
+            //  kaaStartDate.DateTime = on_date.Date;
+            //   kaaEndDate.DateTime = on_date.Date.SetEndDay();
+            //    kaaStatusList.EditValue = -1;
+            ExpeditionsGridView.ClearColumnsFilter();
+            ExpeditionsGridView.ClearFindFilter();
             GetData();
         }
 
@@ -218,7 +222,26 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (row_exp == null || !restore)
+            if (row_exp == null || !_restore)
+            {
+                return;
+            }
+
+            int rowHandle = ExpeditionsGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
+            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
+            {
+                FocusRow(ExpeditionsGridView, rowHandle);
+            }
+            else
+            {
+                ExpeditionsGridView.FocusedRowHandle = prev_rowHandle;
+            }
+
+            _restore = false;
+
+
+/*
+            if (row_exp == null || !_restore)
             {
                 return;
             }
@@ -234,7 +257,22 @@ namespace SP_Sklad.UserControls
                 ExpeditionsGridView.FocusedRowHandle = prev_rowHandle;
             }
 
-            restore = false;
+            _restore = false;*/
+        }
+
+        void OnRowSearchComplete(object rh)
+        {
+            int rowHandle = (int)rh;
+            if (ExpeditionsGridView.IsValidRowHandle(rowHandle))
+            {
+                FocusRow(ExpeditionsGridView, rowHandle);
+            }
+        }
+
+        public void FocusRow(GridView view, int rowHandle)
+        {
+            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+            view.FocusedRowHandle = rowHandle;
         }
 
         private void NewItemBtn_ItemClick(object sender, ItemClickEventArgs e)

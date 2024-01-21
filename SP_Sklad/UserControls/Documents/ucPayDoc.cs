@@ -147,6 +147,9 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
+            PayDocGridView.ClearColumnsFilter();
+            PayDocGridView.ClearFindFilter();
+            PeriodComboBoxEdit.SelectedIndex = 0;
             PDStartDate.DateTime = on_date.Date;
             PDEndDate.DateTime = on_date.Date.SetEndDay();
             PDSatusList.EditValue = -1;

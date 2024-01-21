@@ -142,6 +142,9 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
+            KAgentAdjustmentGridView.ClearColumnsFilter();
+            KAgentAdjustmentGridView.ClearFindFilter();
+         //   PeriodComboBoxEdit.SelectedIndex = 0;
             kaaStartDate.DateTime = on_date.Date;
             kaaEndDate.DateTime = on_date.Date.SetEndDay();
             kaaStatusList.EditValue = -1;

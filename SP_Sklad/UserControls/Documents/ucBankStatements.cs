@@ -125,6 +125,8 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
+            BankStatementsGridView.ClearColumnsFilter();
+            BankStatementsGridView.ClearFindFilter();
             BSStartDate.DateTime = on_date.Date;
             BSEndDate.DateTime = on_date.Date.SetEndDay();
             BSStatusList.EditValue = -1;

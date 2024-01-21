@@ -145,6 +145,7 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
+
             ProjectManagementStartDateEdit.DateTime = on_date.Date;
             ProjectManagementEndDateEdit.DateTime = on_date.Date.SetEndDay();
             PMStatusList.EditValue = -1;
