@@ -257,10 +257,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    whUserControl.set_tree_node = focused_tree_node.Id;
-                    whUserControl.WHTreeList.FocusedNode = whUserControl.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
+                    warehouseUserControl1.set_tree_node = focused_tree_node.Id;
+                    warehouseUserControl1.WHTreeList.FocusedNode = warehouseUserControl1.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
                     bar1.Visible = false;
-                    whUserControl.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
+                    warehouseUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
                     break;
 
                 case 3:

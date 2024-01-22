@@ -489,6 +489,7 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -550,6 +551,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).BeginInit();
@@ -2682,6 +2684,7 @@
             // 
             // xtraTabPage8
             // 
+            this.xtraTabPage8.Controls.Add(this.warehouseUserControl1);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(1049, 632);
             this.xtraTabPage8.Text = "Склад";
@@ -5992,6 +5995,22 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // warehouseUserControl1
+            // 
+            this.warehouseUserControl1.custom_mat_list = null;
+            this.warehouseUserControl1.disc_card = null;
+            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warehouseUserControl1.isDirectList = false;
+            this.warehouseUserControl1.isMatList = false;
+            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.warehouseUserControl1.Name = "warehouseUserControl1";
+            this.warehouseUserControl1.resut = null;
+            this.warehouseUserControl1.set_tree_node = null;
+            this.warehouseUserControl1.Size = new System.Drawing.Size(1049, 632);
+            this.warehouseUserControl1.TabIndex = 0;
+            this.warehouseUserControl1.wb = null;
+            this.warehouseUserControl1.wh_mat_list = null;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6072,6 +6091,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).EndInit();
             this.splitContainerControl3.Panel1.ResumeLayout(false);
@@ -6396,7 +6416,6 @@
         public DevExpress.XtraGrid.Views.Grid.GridView DeboningGridView;
         public DevExpress.XtraEditors.LookUpEdit DebWhComboBox;
         public DevExpress.XtraEditors.LookUpEdit DebSatusList;
-        private WarehouseUserControl whUserControl;
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
@@ -6725,5 +6744,6 @@
         private UserControls.ucRelDocGrid ucRelDocGrid4;
         private UserControls.ucRelDocGrid ucRelDocGrid5;
         private UserControls.ucRelDocGrid ucRelDocGrid6;
+        private WarehouseUserControl warehouseUserControl1;
     }
 }

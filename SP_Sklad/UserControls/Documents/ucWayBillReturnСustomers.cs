@@ -577,6 +577,13 @@ namespace SP_Sklad.UserControls
 
             WbGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
-       
+
+        private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
+            }
+        }
     }
 }

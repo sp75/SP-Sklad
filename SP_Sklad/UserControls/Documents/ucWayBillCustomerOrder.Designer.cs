@@ -762,6 +762,7 @@
             this.wbKagentList.Size = new System.Drawing.Size(543, 24);
             this.wbKagentList.StyleController = this.styleController1;
             this.wbKagentList.TabIndex = 6;
+            this.wbKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.wbKagentList_ButtonClick);
             this.wbKagentList.EditValueChanged += new System.EventHandler(this.wbKagentList_EditValueChanged);
             // 
             // labelControl3
