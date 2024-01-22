@@ -20,6 +20,7 @@ using DocumentFormat.OpenXml.ReportBuilder;
 using FormulaExcel;
 using SP_Sklad.EditForm;
 using SP_Sklad.Properties;
+using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.WBDetForm;
@@ -1186,6 +1187,29 @@ namespace SP_Sklad.Common
             }
         }
 
+        public static void PrintSelectedWayBill(int w_type, List<Guid> doc_list)
+        {
+            if (MessageBox.Show("Ви бажаєте роздрукувати " + doc_list.Count.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    foreach (var id in doc_list)
+                    {
+                        if (w_type == -1)
+                        {
+                            var data_report = PrintDoc.WayBillOutReport(id, db);
+                            IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
+                        }
+
+                        if (w_type == -16)
+                        {
+                            var ord_out = PrintDoc.WayBillOrderedOutReport(id, db);
+                            IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

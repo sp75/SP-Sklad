@@ -20,6 +20,7 @@ using SP_Sklad.Reports;
 using SP_Sklad.ViewsForm;
 using SP_Sklad.FinanseForm;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.UserControls
 {
@@ -613,29 +614,43 @@ namespace SP_Sklad.UserControls
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            List<Guid> doc_list = new List<Guid>();
+            for (int i = 0; i < WbGridView.RowCount; i++)
             {
-                for (int i = 0; i < WbGridView.RowCount; i++)
+                var dr = WbGridView.GetRow(i) as v_WayBillOut;
+                if (dr != null)
                 {
-                    var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
-
-                    if (dr != null)
-                    {
-                        if (dr.WType == -1)
-                        {
-                            var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                            IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
-                        }
-
-                        if (dr.WType == -16)
-                        {
-                            var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
-                            IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
-                        }
-                    }
+                    doc_list.Add(dr.Id);
                 }
-
             }
+            if (doc_list.Any())
+            {
+                IHelper.PrintSelectedWayBill(w_type, doc_list);
+            }
+
+
+            /*  if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+              {
+                  for (int i = 0; i < WbGridView.RowCount; i++)
+                  {
+                      var dr = WbGridView.GetRow(i) as v_WayBillOut;
+
+                      if (dr != null)
+                      {
+                          if (dr.WType == -1)
+                          {
+                              var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
+                              IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
+                          }
+
+                          if (dr.WType == -16)
+                          {
+                              var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
+                              IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
+                          }
+                      }
+                  }
+              }*/
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
@@ -643,7 +658,7 @@ namespace SP_Sklad.UserControls
 
             for (int i = 0; i < WbGridView.RowCount; i++)
             {
-                var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
+                var dr = WbGridView.GetRow(i) as v_WayBillOut;
 
                 if (dr != null)
                 {

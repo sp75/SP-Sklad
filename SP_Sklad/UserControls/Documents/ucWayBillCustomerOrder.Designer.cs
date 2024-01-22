@@ -30,16 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWayBillCustomerOrder));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillOutSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
@@ -87,6 +87,7 @@
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -314,9 +315,10 @@
             this.imageCollection1.Images.SetKeyName(12, "pay_wb.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
-            this.imageCollection1.Images.SetKeyName(14, "change_kontragent4.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 15);
-            this.imageCollection1.Images.SetKeyName(15, "historyitem_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.printtitles_16x16, "printtitles_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "printtitles_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.imageCollection1.Images.SetKeyName(15, "historyitem_16x16");
             this.imageCollection1.Images.SetKeyName(16, "wb_order_in.png");
             this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
             this.imageCollection1.Images.SetKeyName(18, "pay_doc(1)_2.png");
@@ -540,8 +542,9 @@
             this.NewPayDocBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
-            this.ExportToExcelBtn});
-            this.barManager1.MaxItemId = 37;
+            this.ExportToExcelBtn,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 38;
             // 
             // barDockControlTop
             // 
@@ -676,6 +679,14 @@
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Друк вибраних документів";
+            this.barButtonItem2.Id = 37;
+            this.barButtonItem2.ImageOptions.ImageIndex = 14;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.PeriodComboBoxEdit);
@@ -749,10 +760,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.wbKagentList.Location = new System.Drawing.Point(554, 13);
             this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.wbKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.wbKagentList.Properties.DisplayMember = "Name";
@@ -946,9 +957,9 @@
             // ChangeWaybillKagentBtnEdit
             // 
             this.ChangeWaybillKagentBtnEdit.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.ChangeWaybillKagentBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.ChangeWaybillKagentBtnEdit.Name = "ChangeWaybillKagentBtnEdit";
             this.ChangeWaybillKagentBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
@@ -1178,7 +1189,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExportToExcelBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
@@ -1337,5 +1349,6 @@
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
         private DevExpress.XtraGrid.Views.Grid.GridView WbGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

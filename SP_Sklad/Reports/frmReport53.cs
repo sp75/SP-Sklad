@@ -146,7 +146,7 @@ from
 coalesce((select sum(wbm.AmountByRecipe * (mr.Out/100)) 
           from WaybillList wbl , WayBillMake wbm, MatRecipe mr 
           where wbm.RecId = mr.RecId and mr.MatId = x.MatId and wbm.WbillId = wbl.WbillId and wbl.WType = -20 and wbl.Checked in(0, 2) 
-                and ( coalesce( (select max(Num) from v_TechProcDet Where WbillId = 58995) , 0 ) ) <> 8), 0) MakeAmount,
+                and ( coalesce( (select max(Num) from v_TechProcDet Where WbillId = wbl.WbillId) , 0 ) ) <> 8), 0) MakeAmount,
 (select 
 				   sum( pr.remain) Remain
 		   from PosRemains pr

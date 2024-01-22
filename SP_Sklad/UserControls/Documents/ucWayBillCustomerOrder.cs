@@ -618,5 +618,22 @@ namespace SP_Sklad.UserControls
                 wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
             }
         }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            List<Guid> doc_list = new List<Guid>();
+            for (int i = 0; i < WbGridView.RowCount; i++)
+            {
+                var dr = WbGridView.GetRow(i) as v_WayBillCustomerOrder;
+                if (dr != null)
+                {
+                    doc_list.Add(dr.Id);
+                }
+            }
+            if (doc_list.Any())
+            {
+                IHelper.PrintSelectedWayBill(w_type, doc_list);
+            }
+        }
     }
 }

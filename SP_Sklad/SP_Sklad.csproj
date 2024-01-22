@@ -3364,6 +3364,8 @@
     <None Include="Resources\worker.png" />
     <None Include="Resources\user_manager.png" />
     <None Include="Resources\user-valet.png" />
+    <None Include="Resources\printtitles_16x16.png" />
+    <None Include="Resources\user_monitor.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
