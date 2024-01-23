@@ -46,5 +46,11 @@ namespace SP_Sklad
 
             InPartyGridView.RefreshRow(e.RowHandle);
         }
+
+        private void repositoryItemCheckEdit1_CheckedChanged(object sender, EventArgs e)
+        {
+            InPartyGridView.CloseEditor();
+            InPartyGridView.RefreshData();
+        }
     }
 }

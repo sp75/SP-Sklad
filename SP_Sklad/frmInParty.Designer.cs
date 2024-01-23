@@ -148,6 +148,7 @@
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
             this.repositoryItemCheckEdit1.ValueChecked = 1;
             this.repositoryItemCheckEdit1.ValueUnchecked = 0;
+            this.repositoryItemCheckEdit1.CheckedChanged += new System.EventHandler(this.repositoryItemCheckEdit1_CheckedChanged);
             // 
             // gridColumn1
             // 
