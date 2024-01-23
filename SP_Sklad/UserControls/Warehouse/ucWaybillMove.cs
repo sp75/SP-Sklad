@@ -26,9 +26,9 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucWaybillMove : DevExpress.XtraEditors.XtraUserControl
     {
-        int w_type = -1;
+        int w_type = 4;
         private int fun_id = 23;
-        private string reg_layout_path = "ucWaybillOut\\WbInGridView";
+        private string reg_layout_path = "ucWaybillMove\\WbGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -36,7 +36,7 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_WayBillOut wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillOut;
+        public v_WaybillMove wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillMove;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -46,6 +46,13 @@ namespace SP_Sklad.UserControls
         private int prev_rowHandle = 0;
         private int? find_id { get; set; }
         private bool restore = false;
+
+        public class checkedWhList
+        {
+            public string WId { get; set; }
+            public string Name { get; set; }
+            public bool IsChecked { get; set; }
+        }
 
         public ucWaybillMove()
         {
@@ -161,7 +168,6 @@ namespace SP_Sklad.UserControls
             PeriodComboBoxEdit.SelectedIndex = 0;
             wbStartDate.DateTime = on_date.Date;
             wbEndDate.DateTime = on_date.Date.SetEndDay();
-            wbKagentList.EditValue = 0;
             wbStatusList.EditValue = -1;
 
             GetData();
@@ -173,7 +179,7 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null )
+            if (wbStatusList.EditValue == null || WhComboBox.EditValue == null )
             {
                 return;
             }
@@ -181,11 +187,11 @@ namespace SP_Sklad.UserControls
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
-            var kagent_id = (int)wbKagentList.EditValue;
+            var wh_str= (string)WhComboBox.EditValue;
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillOut.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillMove.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -202,8 +208,8 @@ namespace SP_Sklad.UserControls
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
-                wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                wbKagentList.EditValue = 0;
+                WhComboBox.Properties.DataSource = new List<checkedWhList>() { new checkedWhList { WId = "*", Name = "Усі", IsChecked = false } }.Concat(new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = false }).ToList());
+                WhComboBox.EditValue = "*";
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -212,22 +218,12 @@ namespace SP_Sklad.UserControls
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
 
-                WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
-                WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
-                WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
                 gridColumn44.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
              
 
-                repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
-                repositoryItemLookUpEdit5.DataSource = DBHelper.EnterpriseList;
-
-                gridColumn111.Caption = $"К-сть всього, {DBHelper.MeasuresList?.FirstOrDefault(w => w.Def == 1)?.ShortName}";
 
                 GetData();
             }

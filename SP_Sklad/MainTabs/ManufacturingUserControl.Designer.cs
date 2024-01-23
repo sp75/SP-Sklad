@@ -193,6 +193,7 @@
             this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
@@ -489,7 +490,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -2688,6 +2688,22 @@
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(1049, 632);
             this.xtraTabPage8.Text = "Склад";
+            // 
+            // warehouseUserControl1
+            // 
+            this.warehouseUserControl1.custom_mat_list = null;
+            this.warehouseUserControl1.disc_card = null;
+            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.warehouseUserControl1.isDirectList = false;
+            this.warehouseUserControl1.isMatList = false;
+            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.warehouseUserControl1.Name = "warehouseUserControl1";
+            this.warehouseUserControl1.resut = null;
+            this.warehouseUserControl1.set_tree_node = null;
+            this.warehouseUserControl1.Size = new System.Drawing.Size(1049, 632);
+            this.warehouseUserControl1.TabIndex = 0;
+            this.warehouseUserControl1.wb = null;
+            this.warehouseUserControl1.wh_mat_list = null;
             // 
             // xtraTabPage10
             // 
@@ -5994,22 +6010,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // warehouseUserControl1
-            // 
-            this.warehouseUserControl1.custom_mat_list = null;
-            this.warehouseUserControl1.disc_card = null;
-            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouseUserControl1.isDirectList = false;
-            this.warehouseUserControl1.isMatList = false;
-            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.warehouseUserControl1.Name = "warehouseUserControl1";
-            this.warehouseUserControl1.resut = null;
-            this.warehouseUserControl1.set_tree_node = null;
-            this.warehouseUserControl1.Size = new System.Drawing.Size(1049, 632);
-            this.warehouseUserControl1.TabIndex = 0;
-            this.warehouseUserControl1.wb = null;
-            this.warehouseUserControl1.wh_mat_list = null;
             // 
             // ManufacturingUserControl
             // 
