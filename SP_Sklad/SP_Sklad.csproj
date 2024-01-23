@@ -1406,6 +1406,12 @@
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillMove.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillMove.Designer.cs">
+      <DependentUpon>ucWaybillMove.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillDetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2592,6 +2598,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWaybillMove.resx">
+      <DependentUpon>ucWaybillMove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillDetView.resx">
       <DependentUpon>frmWaybillDetView.cs</DependentUpon>
