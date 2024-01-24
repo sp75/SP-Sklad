@@ -24,14 +24,14 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucWaybillMove : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWaybillWriteOn : DevExpress.XtraEditors.XtraUserControl
     {
-        int w_type = 4;
-        private int fun_id = 36;
-        private string reg_layout_path = "ucWaybillMove\\WbGridView";
+        int w_type = 5;
+        private int fun_id = 44;
+        private string reg_layout_path = "ucWaybillWriteOn\\WbGridView";
         BaseEntities _db { get; set; }
 
-        public v_WaybillMove wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillMove;
+        public v_WaybillWriteOn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillWriteOn;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -49,14 +49,14 @@ namespace SP_Sklad.UserControls
             public bool IsChecked { get; set; }
         }
 
-        public ucWaybillMove()
+        public ucWaybillWriteOn()
         {
             InitializeComponent();
         }
 
         public void NewItem()
         {
-            using (var wb_move = new frmWayBillMove())
+            using (var wb_move = new frmWBWriteOn())
             {
                 wb_move.ShowDialog();
             }
@@ -79,7 +79,7 @@ namespace SP_Sklad.UserControls
 
             var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-            using (var wb_re_in = new frmWayBillMove(doc.out_wbill_id))
+            using (var wb_re_in = new frmWBWriteOn(doc.out_wbill_id))
             {
                 wb_re_in.ShowDialog();
             }
@@ -102,7 +102,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити накладну переміщення{wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити введення залишків{wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                 if (wb != null)
@@ -169,7 +169,6 @@ namespace SP_Sklad.UserControls
             wbStartDate.DateTime = on_date.Date;
             wbEndDate.DateTime = on_date.Date.SetEndDay();
             wbStatusList.EditValue = -1;
-            WhComboBox.EditValue = -1;
 
             GetData();
         }
@@ -181,7 +180,7 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null || WhComboBox.EditValue == null )
+            if (wbStatusList.EditValue == null  )
             {
                 return;
             }
@@ -189,11 +188,10 @@ namespace SP_Sklad.UserControls
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
-            var wh_id= (int)WhComboBox.EditValue;
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillMove.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || w.ToWId == wh_id || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillWriteOn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -209,9 +207,6 @@ namespace SP_Sklad.UserControls
             {
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
-
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId, s.Name }).ToList());
-                WhComboBox.EditValue =-1;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -400,7 +395,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WaybillMove.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WaybillWriteOn.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                     break;
 
                 case 2:
@@ -495,23 +490,5 @@ namespace SP_Sklad.UserControls
             ExportToExcel();
         }
 
-
-        private void WhComboBox_EditValueChanged(object sender, EventArgs e)
-        {
-            if (WhComboBox.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void WbGridView_Layout(object sender, EventArgs e)
-        {
-            ;
-        }
-
-        private void WbGridView_LayoutUpgrade(object sender, DevExpress.Utils.LayoutUpgradeEventArgs e)
-        {
-            ;
-        }
     }
 }

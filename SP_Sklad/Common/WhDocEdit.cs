@@ -18,20 +18,15 @@ namespace SP_Sklad.Common
         private const int LockingErrorNumber = 1222;
         private const int UpdateConflictErrorNumber = 3960;
 
-        public static void WBEdit(GetWayBillListWh_Result dr)
+        public static void WBEdit(int wbill_id, int w_type)
         {
             int? result = 0;
-
-            if (dr == null)
-            {
-                return;
-            }
 
             using (var db = new BaseEntities())
             {
                 try
                 {
-                    var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", dr.WBillId).FirstOrDefault();
+                    var wb = db.Database.SqlQuery<WaybillList>("SELECT * from WaybillList WITH (UPDLOCK, NOWAIT) where WbillId = {0}", wbill_id).FirstOrDefault();
 
                     if (wb == null)
                     {
@@ -49,7 +44,7 @@ namespace SP_Sklad.Common
                     {
                         if (MessageBox.Show(Resources.edit_info, "Відміна проводки", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            result = DBHelper.StornoOrder(db, dr.WBillId.Value);
+                            result = DBHelper.StornoOrder(db, wbill_id);
                         }
                         else
                         {
@@ -62,7 +57,7 @@ namespace SP_Sklad.Common
                         return;
                     }
 
-                    if (dr.WType == 4 )
+                    if (w_type == 4 )
                     {
                         using (var wb_in = new frmWayBillMove( wb.WbillId))
                         {
@@ -70,7 +65,7 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                    if (dr.WType == 5)
+                    if (w_type == 5)
                     {
                         using (var wb_write_on = new frmWBWriteOn(wb.WbillId))
                         {
@@ -78,7 +73,7 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                    if (dr.WType == -5)
+                    if (w_type == -5)
                     {
                         using (var wb_on = new frmWBWriteOff(wb.WbillId))
                         {
@@ -86,7 +81,7 @@ namespace SP_Sklad.Common
                         }
                     }
 
-                    if (dr.WType == 7 )
+                    if (w_type == 7 )
                     {
                         using (var wb_on = new frmWBInventory(wb.WbillId))
                         {

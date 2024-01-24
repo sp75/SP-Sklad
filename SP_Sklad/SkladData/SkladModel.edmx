@@ -2592,7 +2592,7 @@ warning 6002: The table/view 'sp_base.dbo.v_IntermediateWeighingSummary' does no
           <Property Name="Total" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
-          <Property Name="WbNum" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="WbNum" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IntermediateWeighingNum" Type="nvarchar" MaxLength="50" />
           <Property Name="IntermediateWeighingAmount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="RecipeCount" Type="int" />
@@ -2785,7 +2785,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentAdjustmentDet' does not have a
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WType" Type="int" />
-          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" />
           <Property Name="SummAll" Type="numeric" Precision="21" Scale="8" />
@@ -4367,6 +4367,92 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillTemplateDet' does not have a 
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="150" />
           <Property Name="WId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillWriteOff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillWriteOff">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="FromWId" />
+            <PropertyRef Name="FromWh" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="SummPay" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DefTotalAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="FromWId" Type="int" Nullable="false" />
+          <Property Name="FromWh" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillWriteOn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillWriteOn">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="SummPay" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DefTotalAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7707,7 +7793,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="UserId" Type="int" />
                 <Property Name="OriginatorId" Type="uniqueidentifier" />
                 <Property Name="FunName" Type="nvarchar" MaxLength="255" Nullable="false" />
-                <Property Name="ClassName" Type="varchar" MaxLength="24" Nullable="false" />
+                <Property Name="ClassName" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
                 <Property Name="DocType" Type="int" />
               </RowType>
@@ -11340,6 +11426,70 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillTemplateDet].[WId] AS [WId]
     FROM [dbo].[v_WaybillTemplateDet] AS [v_WaybillTemplateDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WaybillWriteOff" EntityType="Self.v_WaybillWriteOff" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillWriteOff].[Id] AS [Id], 
+    [v_WaybillWriteOff].[WbillId] AS [WbillId], 
+    [v_WaybillWriteOff].[Num] AS [Num], 
+    [v_WaybillWriteOff].[OnDate] AS [OnDate], 
+    [v_WaybillWriteOff].[CurrId] AS [CurrId], 
+    [v_WaybillWriteOff].[Reason] AS [Reason], 
+    [v_WaybillWriteOff].[Checked] AS [Checked], 
+    [v_WaybillWriteOff].[SummAll] AS [SummAll], 
+    [v_WaybillWriteOff].[WType] AS [WType], 
+    [v_WaybillWriteOff].[PersonId] AS [PersonId], 
+    [v_WaybillWriteOff].[SummPay] AS [SummPay], 
+    [v_WaybillWriteOff].[Notes] AS [Notes], 
+    [v_WaybillWriteOff].[SummInCurr] AS [SummInCurr], 
+    [v_WaybillWriteOff].[PersonName] AS [PersonName], 
+    [v_WaybillWriteOff].[EntId] AS [EntId], 
+    [v_WaybillWriteOff].[EntName] AS [EntName], 
+    [v_WaybillWriteOff].[DocTypeName] AS [DocTypeName], 
+    [v_WaybillWriteOff].[UpdatedAt] AS [UpdatedAt], 
+    [v_WaybillWriteOff].[UpdatedUserName] AS [UpdatedUserName], 
+    [v_WaybillWriteOff].[Deleted] AS [Deleted], 
+    [v_WaybillWriteOff].[AttNum] AS [AttNum], 
+    [v_WaybillWriteOff].[AttDate] AS [AttDate], 
+    [v_WaybillWriteOff].[SessionId] AS [SessionId], 
+    [v_WaybillWriteOff].[UpdatedBy] AS [UpdatedBy], 
+    [v_WaybillWriteOff].[DefTotalAmount] AS [DefTotalAmount], 
+    [v_WaybillWriteOff].[ExTotalAmount] AS [ExTotalAmount], 
+    [v_WaybillWriteOff].[FromWId] AS [FromWId], 
+    [v_WaybillWriteOff].[FromWh] AS [FromWh], 
+    [v_WaybillWriteOff].[WorkerId] AS [WorkerId]
+    FROM [dbo].[v_WaybillWriteOff] AS [v_WaybillWriteOff]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_WaybillWriteOn" EntityType="Self.v_WaybillWriteOn" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillWriteOn].[Id] AS [Id], 
+    [v_WaybillWriteOn].[WbillId] AS [WbillId], 
+    [v_WaybillWriteOn].[Num] AS [Num], 
+    [v_WaybillWriteOn].[OnDate] AS [OnDate], 
+    [v_WaybillWriteOn].[CurrId] AS [CurrId], 
+    [v_WaybillWriteOn].[Reason] AS [Reason], 
+    [v_WaybillWriteOn].[Checked] AS [Checked], 
+    [v_WaybillWriteOn].[SummAll] AS [SummAll], 
+    [v_WaybillWriteOn].[WType] AS [WType], 
+    [v_WaybillWriteOn].[PersonId] AS [PersonId], 
+    [v_WaybillWriteOn].[SummPay] AS [SummPay], 
+    [v_WaybillWriteOn].[Notes] AS [Notes], 
+    [v_WaybillWriteOn].[SummInCurr] AS [SummInCurr], 
+    [v_WaybillWriteOn].[PersonName] AS [PersonName], 
+    [v_WaybillWriteOn].[EntId] AS [EntId], 
+    [v_WaybillWriteOn].[EntName] AS [EntName], 
+    [v_WaybillWriteOn].[DocTypeName] AS [DocTypeName], 
+    [v_WaybillWriteOn].[UpdatedAt] AS [UpdatedAt], 
+    [v_WaybillWriteOn].[UpdatedUserName] AS [UpdatedUserName], 
+    [v_WaybillWriteOn].[Deleted] AS [Deleted], 
+    [v_WaybillWriteOn].[AttNum] AS [AttNum], 
+    [v_WaybillWriteOn].[AttDate] AS [AttDate], 
+    [v_WaybillWriteOn].[SessionId] AS [SessionId], 
+    [v_WaybillWriteOn].[UpdatedBy] AS [UpdatedBy], 
+    [v_WaybillWriteOn].[DefTotalAmount] AS [DefTotalAmount], 
+    [v_WaybillWriteOn].[ExTotalAmount] AS [ExTotalAmount], 
+    [v_WaybillWriteOn].[WorkerId] AS [WorkerId]
+    FROM [dbo].[v_WaybillWriteOn] AS [v_WaybillWriteOn]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WorkDate].[OnDate] AS [OnDate]
@@ -14011,6 +14161,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_PayDoc" EntityType="BaseModel.v_PayDoc" />
           <EntitySet Name="v_Report_55" EntityType="BaseModel.v_Report_55" />
           <EntitySet Name="v_WaybillMove" EntityType="BaseModel.v_WaybillMove" />
+          <EntitySet Name="v_WaybillWriteOn" EntityType="BaseModel.v_WaybillWriteOn" />
+          <EntitySet Name="v_WaybillWriteOff" EntityType="BaseModel.v_WaybillWriteOff" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -18489,7 +18641,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WType" Type="Int32" />
-          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SummAll" Type="Decimal" Precision="21" Scale="8" />
@@ -19590,7 +19742,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WbNum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IntermediateWeighingAmount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="MsrName" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
@@ -23118,6 +23270,88 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="FromWh" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="ToWId" Type="Int32" />
           <Property Name="ToWh" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_WaybillWriteOn">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="SummPay" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="EntName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DefTotalAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_WaybillWriteOff">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="FromWId" />
+            <PropertyRef Name="FromWh" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="SummPay" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="EntName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DefTotalAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="FromWId" Type="Int32" Nullable="false" />
+          <Property Name="FromWh" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="WorkerId" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
@@ -29297,6 +29531,74 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="ToWh" ColumnName="ToWh" />
                 <ScalarProperty Name="ToWId" ColumnName="ToWId" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />
+                <ScalarProperty Name="DefTotalAmount" ColumnName="DefTotalAmount" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillWriteOn">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillWriteOn">
+              <MappingFragment StoreEntitySet="v_WaybillWriteOn">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />
+                <ScalarProperty Name="DefTotalAmount" ColumnName="DefTotalAmount" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillWriteOff">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillWriteOff">
+              <MappingFragment StoreEntitySet="v_WaybillWriteOff">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="FromWh" ColumnName="FromWh" />
                 <ScalarProperty Name="FromWId" ColumnName="FromWId" />
                 <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />

@@ -765,6 +765,12 @@
     <Compile Include="SkladData\v_WaybillTemplateDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WaybillWriteOff.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\v_WaybillWriteOn.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\WaybillCorrection.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1408,6 +1414,18 @@
     </Compile>
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillWriteOff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillWriteOff.Designer.cs">
+      <DependentUpon>ucWaybillWriteOff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillWriteOn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillWriteOn.Designer.cs">
+      <DependentUpon>ucWaybillWriteOn.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Warehouse\ucWaybillMove.cs">
       <SubType>UserControl</SubType>
@@ -2601,6 +2619,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWaybillWriteOff.resx">
+      <DependentUpon>ucWaybillWriteOff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWaybillWriteOn.resx">
+      <DependentUpon>ucWaybillWriteOn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Warehouse\ucWaybillMove.resx">
       <DependentUpon>ucWaybillMove.cs</DependentUpon>

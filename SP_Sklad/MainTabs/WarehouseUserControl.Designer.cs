@@ -281,6 +281,11 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
+            this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
+            this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
@@ -297,6 +302,7 @@
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ucWaybillWriteOff = new SP_Sklad.UserControls.ucWaybillWriteOff();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -409,6 +415,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
+            this.xtraTabPage14.SuspendLayout();
+            this.xtraTabPage16.SuspendLayout();
+            this.xtraTabPage17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
@@ -1299,7 +1308,10 @@
             this.whContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
             this.xtraTabPage8,
-            this.xtraTabPage7});
+            this.xtraTabPage7,
+            this.xtraTabPage14,
+            this.xtraTabPage16,
+            this.xtraTabPage17});
             // 
             // xtraTabPage8
             // 
@@ -3236,6 +3248,43 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Період з";
             // 
+            // xtraTabPage14
+            // 
+            this.xtraTabPage14.Controls.Add(this.ucWaybillMove);
+            this.xtraTabPage14.Name = "xtraTabPage14";
+            this.xtraTabPage14.Size = new System.Drawing.Size(1214, 645);
+            this.xtraTabPage14.Text = "Переміщення";
+            // 
+            // ucWaybillMove
+            // 
+            this.ucWaybillMove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillMove.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillMove.Name = "ucWaybillMove";
+            this.ucWaybillMove.Size = new System.Drawing.Size(1214, 645);
+            this.ucWaybillMove.TabIndex = 0;
+            // 
+            // xtraTabPage16
+            // 
+            this.xtraTabPage16.Controls.Add(this.ucWaybillWriteOn);
+            this.xtraTabPage16.Name = "xtraTabPage16";
+            this.xtraTabPage16.Size = new System.Drawing.Size(1214, 645);
+            this.xtraTabPage16.Text = "Введення залишків";
+            // 
+            // ucWaybillWriteOn
+            // 
+            this.ucWaybillWriteOn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillWriteOn.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillWriteOn.Name = "ucWaybillWriteOn";
+            this.ucWaybillWriteOn.Size = new System.Drawing.Size(1214, 645);
+            this.ucWaybillWriteOn.TabIndex = 0;
+            // 
+            // xtraTabPage17
+            // 
+            this.xtraTabPage17.Controls.Add(this.ucWaybillWriteOff);
+            this.xtraTabPage17.Name = "xtraTabPage17";
+            this.xtraTabPage17.Size = new System.Drawing.Size(1214, 645);
+            this.xtraTabPage17.Text = "Акти списання товару";
+            // 
             // MatPopupMenu
             // 
             this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -3388,6 +3437,14 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // ucWaybillWriteOff
+            // 
+            this.ucWaybillWriteOff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillWriteOff.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillWriteOff.Name = "ucWaybillWriteOff";
+            this.ucWaybillWriteOff.Size = new System.Drawing.Size(1214, 645);
+            this.ucWaybillWriteOff.TabIndex = 0;
+            // 
             // WarehouseUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3521,6 +3578,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
+            this.xtraTabPage14.ResumeLayout(false);
+            this.xtraTabPage16.ResumeLayout(false);
+            this.xtraTabPage17.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
@@ -3792,5 +3852,11 @@
         private DevExpress.XtraBars.BarButtonItem SetPriceBtnItem;
         private UserControls.ucRelDocGrid ucRelDocGrid1;
         private DevExpress.XtraBars.BarButtonItem RecalcRemainsPostBtn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage14;
+        public UserControls.ucWaybillMove ucWaybillMove;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage16;
+        public UserControls.ucWaybillWriteOn ucWaybillWriteOn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage17;
+        public UserControls.ucWaybillWriteOff ucWaybillWriteOff;
     }
 }

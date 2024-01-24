@@ -199,13 +199,26 @@ namespace SP_Sklad.Common
                     frmDocumentsPanel->cxGrid13->SetFocus();*/
                     break;
 
-                case 4: SetWhDocFilter(48);
+                case 4:
+                    PageIndex = 2;
+                    _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 48);
+                    _wh_user_control.ucWaybillMove.FindItem(doc_id.Value, date.Value);
+                 //   SetWhDocFilter(48);
                     break;
 
-                case -5: SetWhDocFilter(54);
+                case -5:
+                    PageIndex = 2;
+                    _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 54);
+                    _wh_user_control.ucWaybillWriteOff.FindItem(doc_id.Value, date.Value);
+                    //SetWhDocFilter(54);
                     break;
 
-                case 5: SetWhDocFilter(58);
+                case 5:
+                    PageIndex = 2;
+                    _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 58);
+                    _wh_user_control.ucWaybillWriteOn.FindItem(doc_id.Value, date.Value);
+
+                 //   SetWhDocFilter(58);
                     break;
 
                 case 7: SetWhDocFilter(104);

@@ -490,6 +490,8 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -732,6 +734,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            this.xtraTabPage32.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -1488,7 +1491,8 @@
             this.xtraTabPage17,
             this.xtraTabPage20,
             this.xtraTabPage21,
-            this.xtraTabPage26});
+            this.xtraTabPage26,
+            this.xtraTabPage32});
             // 
             // xtraTabPage7
             // 
@@ -6011,6 +6015,21 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // xtraTabPage32
+            // 
+            this.xtraTabPage32.Controls.Add(this.ucWaybillMove);
+            this.xtraTabPage32.Name = "xtraTabPage32";
+            this.xtraTabPage32.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage32.Text = "Накладні переміщення";
+            // 
+            // ucWaybillMove
+            // 
+            this.ucWaybillMove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillMove.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillMove.Name = "ucWaybillMove";
+            this.ucWaybillMove.Size = new System.Drawing.Size(1049, 632);
+            this.ucWaybillMove.TabIndex = 0;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6279,6 +6298,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            this.xtraTabPage32.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6745,5 +6765,7 @@
         private UserControls.ucRelDocGrid ucRelDocGrid5;
         private UserControls.ucRelDocGrid ucRelDocGrid6;
         private WarehouseUserControl warehouseUserControl1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage32;
+        private UserControls.ucWaybillMove ucWaybillMove;
     }
 }

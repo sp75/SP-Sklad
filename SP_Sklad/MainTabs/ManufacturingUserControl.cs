@@ -225,7 +225,14 @@ namespace SP_Sklad.MainTabs
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
-            wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            if (focused_tree_node.FunId == 36)
+            {
+                wbContentTab.SelectedTabPageIndex = 9;
+            }
+            else
+            {
+                wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            }
 
             if (focused_tree_node.FunId != null)
             {

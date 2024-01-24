@@ -191,7 +191,23 @@ namespace SP_Sklad.MainTabs
 
             RefrechItemBtn.PerformClick();
 
-            whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+
+            if (focused_tree_node.FunId == 36)
+            {
+                whContentTab.SelectedTabPageIndex = 3;
+            }
+            else if(focused_tree_node.FunId == 44)
+            {
+                whContentTab.SelectedTabPageIndex = 4;
+            }
+            else if (focused_tree_node.FunId == 41)
+            {
+                whContentTab.SelectedTabPageIndex = 5;
+            }
+            else
+            {
+                whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            }
 
 
             if (focused_tree_node.FunId != null)
@@ -281,13 +297,18 @@ namespace SP_Sklad.MainTabs
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            var row = WbGridView.GetFocusedRow() as GetWayBillListWh_Result;
+            if(row == null)
+            {
+                return;
+            }
 
             using (var db = new BaseEntities())
             {
                 switch (focused_tree_node.GType)
                 {
                     case 2:
-                        WhDocEdit.WBEdit(WbGridView.GetFocusedRow() as GetWayBillListWh_Result);
+                        WhDocEdit.WBEdit(row.WBillId.Value, row.WType.Value);
                         break;
 
                 }

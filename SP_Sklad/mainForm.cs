@@ -104,8 +104,9 @@ namespace SP_Sklad
             docsUserControl1.ucPayDocOut.SaveGridLayouts();
             docsUserControl1.ucPayDocExtOut.SaveGridLayouts();
             docsUserControl1.ucPayDoc.SaveGridLayouts();
-
-
+            whUserControl.ucWaybillMove.SaveGridLayouts();
+            whUserControl.ucWaybillWriteOn.SaveGridLayouts();
+            whUserControl.ucWaybillWriteOff.SaveGridLayouts();
 
 
             whUserControl.SaveGridLayouts();
