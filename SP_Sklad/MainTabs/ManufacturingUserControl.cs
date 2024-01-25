@@ -227,10 +227,18 @@ namespace SP_Sklad.MainTabs
 
             if (focused_tree_node.FunId == 36)
             {
+                bar1.Visible = false;
                 wbContentTab.SelectedTabPageIndex = 9;
+            }
+            else if (focused_tree_node.FunId == 44)
+            {
+                bar1.Visible = false;
+                wbContentTab.SelectedTabPageIndex = 10;
             }
             else
             {
+                bar1.Visible = true;
+
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
@@ -255,7 +263,7 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            bar1.Visible = true;
+       //     bar1.Visible = true;
 
             switch (focused_tree_node.GType.Value)
             {
@@ -264,10 +272,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    warehouseUserControl1.set_tree_node = focused_tree_node.Id;
+                  /*  warehouseUserControl1.set_tree_node = focused_tree_node.Id;
                     warehouseUserControl1.WHTreeList.FocusedNode = warehouseUserControl1.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
                     bar1.Visible = false;
-                    warehouseUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;
+                    warehouseUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;*/
                     break;
 
                 case 3:

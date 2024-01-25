@@ -60,12 +60,14 @@ namespace SP_Sklad.MainTabs
 
     //        KaGridControl.DataSource = null;
         }
-        int mat_restore_row = 0;
-        int kagent_restore_row = 0;
-        bool restore = false;
 
-        public int? find_mat_id;
-        int prev_focused_mat_id = 0;
+        private int prev_focused_id = 0;
+        private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
+        private int? find_id { get; set; }
+        private bool restore = false;
+
+         int kagent_restore_row = 0;
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
@@ -166,15 +168,19 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    if (focused_mat != null && !find_mat_id.HasValue)
+                    prev_rowHandle = MatGridView.FocusedRowHandle;
+
+                    if (focused_mat != null && !find_id.HasValue)
                     {
-                        prev_focused_mat_id = focused_mat.MatId;
+                        prev_top_row_index = MatGridView.TopRowIndex;
+                        prev_focused_id = focused_mat.MatId;
                     }
 
-                    if (find_mat_id.HasValue)
+                    if (find_id.HasValue)
                     {
-                        prev_focused_mat_id = find_mat_id.Value;
-                        find_mat_id = null;
+                        prev_top_row_index = -1;
+                        prev_focused_id = find_id.Value;
+                        find_id = null;
                     }
 
                     restore = true;
@@ -1320,10 +1326,12 @@ namespace SP_Sklad.MainTabs
                 String kod = BarCodeSplit[0];
                 var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
 
-                MatGridView.ClearFindFilter();
+              //  MatGridView.ClearFindFilter();
                 if (bc != null)
                 {
-                    gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{bc.MatId}'");
+                    //  gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{bc.MatId}'");
+
+                    FindItem(bc.MatId);
                 }
 
 
@@ -1720,21 +1728,66 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (!restore)
+            /*   if (!restore)
+               {
+                   return;
+               }
+
+
+               int rowHandle = MatGridView.LocateByValue("MatId", prev_focused_mat_id);
+               if (rowHandle != GridControl.InvalidRowHandle)
+               {
+                   MatGridView.FocusedRowHandle = rowHandle;
+                   MatGridView.TopRowIndex = rowHandle;
+               }
+
+               restore = false;*/
+
+
+
+
+            if (focused_mat == null || !restore)
             {
                 return;
             }
 
-            
-            int rowHandle = MatGridView.LocateByValue("MatId", prev_focused_mat_id);
-            if (rowHandle != GridControl.InvalidRowHandle)
+            int rowHandle = MatGridView.LocateByValue("MatId", prev_focused_id, OnRowSearchComplete);
+            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
             {
-                MatGridView.FocusedRowHandle = rowHandle;
-                MatGridView.TopRowIndex = rowHandle;
+                FocusRow(MatGridView, rowHandle);
+            }
+            else
+            {
+                MatGridView.FocusedRowHandle = prev_rowHandle;
             }
 
             restore = false;
         }
+
+        void OnRowSearchComplete(object rh)
+        {
+            int rowHandle = (int)rh;
+            if (MatGridView.IsValidRowHandle(rowHandle))
+            {
+                FocusRow(MatGridView, rowHandle);
+            }
+        }
+
+        public void FocusRow(GridView view, int rowHandle)
+        {
+            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+            view.FocusedRowHandle = rowHandle;
+        }
+
+        public void FindItem(int mat_id)
+        {
+            find_id = mat_id;
+            MatGridView.ClearColumnsFilter();
+            MatGridView.ClearFindFilter();
+
+            RefrechItemBtn.PerformClick();
+        }
+
 
         private void PrintRecipeBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

@@ -24,14 +24,15 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucWaybillWriteOn : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucWaybillInventory : DevExpress.XtraEditors.XtraUserControl
     {
-        int w_type = 5;
-        private int fun_id = 44;
-        private string reg_layout_path = "ucWaybillWriteOn\\WbGridView";
+        int w_type = 7;
+        private int fun_id = 53;
+        private string reg_layout_path = "ucWaybillInventory\\WbGridView";
         BaseEntities _db { get; set; }
 
-        public v_WaybillWriteOn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillWriteOn;
+        public v_WaybillInventory wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillInventory;
+        public InventoryDet wb_det_focused_row => InventoryDetGridView.GetFocusedRow() as InventoryDet;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -42,21 +43,29 @@ namespace SP_Sklad.UserControls
         private int? find_id { get; set; }
         private bool restore = false;
 
-        public class checkedWhList
+        public class InventoryDet
         {
-            public string WId { get; set; }
-            public string Name { get; set; }
-            public bool IsChecked { get; set; }
+            public int PosId { get; set; }
+            public int Num { get; set; }
+            public int MatId { get; set; }
+            public string MatName { get; set; }
+            public string MsrName { get; set; }
+            public decimal Amount { get; set; }
+            public decimal? Price { get; set; }
+            public decimal Discount { get; set; }
+            public decimal Nds { get; set; }
+            public decimal AmountAll { get; set; }
+            public decimal SumAll { get; set; }
         }
 
-        public ucWaybillWriteOn()
+        public ucWaybillInventory()
         {
             InitializeComponent();
         }
 
         public void NewItem()
         {
-            using (var wb_move = new frmWBWriteOn())
+            using (var wb_move = new frmWBWriteOff())
             {
                 wb_move.ShowDialog();
             }
@@ -79,7 +88,7 @@ namespace SP_Sklad.UserControls
 
             var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-            using (var wb_re_in = new frmWBWriteOn(doc.out_wbill_id))
+            using (var wb_re_in = new frmWBWriteOff(doc.out_wbill_id))
             {
                 wb_re_in.ShowDialog();
             }
@@ -102,7 +111,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити введення залишків{wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити акт інвентаризації №{wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                 if (wb != null)
@@ -169,6 +178,7 @@ namespace SP_Sklad.UserControls
             wbStartDate.DateTime = on_date.Date;
             wbEndDate.DateTime = on_date.Date.SetEndDay();
             wbStatusList.EditValue = -1;
+            WhComboBox.EditValue = -1;
 
             GetData();
         }
@@ -180,7 +190,7 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null  )
+            if (wbStatusList.EditValue == null || WhComboBox.EditValue == null )
             {
                 return;
             }
@@ -188,10 +198,11 @@ namespace SP_Sklad.UserControls
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
+            var wh_id= (int)WhComboBox.EditValue;
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillWriteOn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillInventory.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -207,6 +218,9 @@ namespace SP_Sklad.UserControls
             {
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId, s.Name }).ToList());
+                WhComboBox.EditValue =-1;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -382,7 +396,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                ucWayBillInDet.GetDate(0);
+                InventoryDetGridControl.DataSource = null;
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
 
                 return;
@@ -391,11 +405,25 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    ucWayBillInDet.GetDate(wb_focused_row.WbillId);
+                    //  ucWayBillInDet.GetDate(wb_focused_row.WbillId);
+                    InventoryDetGridControl.DataSource = _db.WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId).Select(s => new InventoryDet
+                    {
+                        PosId = s.PosId,
+                        Num = s.Num,
+                        MatId = s.MatId,
+                        MatName = s.Materials.Name,
+                        MsrName = s.Materials.Measures.ShortName,
+                        Amount = s.Amount,
+                        Price = s.Price,
+                        Discount = (s.Discount ?? 0),
+                        Nds = (s.Nds ?? 0),
+                        AmountAll = (s.Discount ?? 0) - s.Amount,
+                        SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0))
+                    }).ToList(); 
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WaybillWriteOn.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WaybillInventory.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                     break;
 
                 case 2:
@@ -485,5 +513,73 @@ namespace SP_Sklad.UserControls
             ExportToExcel();
         }
 
+
+        private void WhComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (WhComboBox.ContainsFocus)
+            {
+                GetData();
+            }
+        }
+
+        private void CreateWbWriteOnBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.Id).Any(w => w.DocType == 5) && wbl.WType == 7)
+            {
+                using (var f = new frmWBWriteOn())
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, 5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.TurnDocCheckBox.Checked = true;
+                    f.is_new_record = true;
+                    f.ShowDialog();
+                }
+            }
+
+            GetData();
+        }
+
+        private void CreateWbWriteOffBtn_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+            if (wbl == null)
+            {
+                return;
+            }
+
+            if (wbl.Checked == 1 && !DB.SkladBase().GetRelDocList(wbl.Id).Any(w => w.DocType == -5) && wbl.WType == 7)
+            {
+                using (var f = new frmWBWriteOff())
+                {
+                    var result = f._db.ExecuteWayBill(wbl.WbillId, -5, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
+                    f.doc_id = result.NewDocId;
+                    f.TurnDocCheckBox.Checked = true;
+                    f.is_new_record = true;
+                    f.ShowDialog();
+                }
+            }
+
+            GetData();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(wb_det_focused_row.MatId);
+        }
+
+        private void InventoryDetGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
     }
 }

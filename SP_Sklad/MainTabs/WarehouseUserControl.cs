@@ -204,6 +204,10 @@ namespace SP_Sklad.MainTabs
             {
                 whContentTab.SelectedTabPageIndex = 5;
             }
+            else if(focused_tree_node.FunId == 53)
+            {
+                whContentTab.SelectedTabPageIndex = 6;
+            }
             else
             {
                 whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;

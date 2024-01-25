@@ -193,7 +193,6 @@
             this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
-            this.warehouseUserControl1 = new SP_Sklad.MainTabs.WarehouseUserControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
@@ -483,6 +482,10 @@
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn235 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCalcEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
+            this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -490,8 +493,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -553,7 +554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).BeginInit();
@@ -731,10 +731,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).BeginInit();
+            this.xtraTabPage32.SuspendLayout();
+            this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
-            this.xtraTabPage32.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -1492,7 +1493,8 @@
             this.xtraTabPage20,
             this.xtraTabPage21,
             this.xtraTabPage26,
-            this.xtraTabPage32});
+            this.xtraTabPage32,
+            this.xtraTabPage33});
             // 
             // xtraTabPage7
             // 
@@ -2688,26 +2690,9 @@
             // 
             // xtraTabPage8
             // 
-            this.xtraTabPage8.Controls.Add(this.warehouseUserControl1);
             this.xtraTabPage8.Name = "xtraTabPage8";
             this.xtraTabPage8.Size = new System.Drawing.Size(1049, 632);
             this.xtraTabPage8.Text = "Склад";
-            // 
-            // warehouseUserControl1
-            // 
-            this.warehouseUserControl1.custom_mat_list = null;
-            this.warehouseUserControl1.disc_card = null;
-            this.warehouseUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.warehouseUserControl1.isDirectList = false;
-            this.warehouseUserControl1.isMatList = false;
-            this.warehouseUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.warehouseUserControl1.Name = "warehouseUserControl1";
-            this.warehouseUserControl1.resut = null;
-            this.warehouseUserControl1.set_tree_node = null;
-            this.warehouseUserControl1.Size = new System.Drawing.Size(1049, 632);
-            this.warehouseUserControl1.TabIndex = 0;
-            this.warehouseUserControl1.wb = null;
-            this.warehouseUserControl1.wh_mat_list = null;
             // 
             // xtraTabPage10
             // 
@@ -5957,6 +5942,36 @@
             this.repositoryItemCalcEdit7.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemCalcEdit7.Name = "repositoryItemCalcEdit7";
             // 
+            // xtraTabPage32
+            // 
+            this.xtraTabPage32.Controls.Add(this.ucWaybillMove);
+            this.xtraTabPage32.Name = "xtraTabPage32";
+            this.xtraTabPage32.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage32.Text = "Накладні переміщення";
+            // 
+            // ucWaybillMove
+            // 
+            this.ucWaybillMove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillMove.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillMove.Name = "ucWaybillMove";
+            this.ucWaybillMove.Size = new System.Drawing.Size(1049, 632);
+            this.ucWaybillMove.TabIndex = 0;
+            // 
+            // xtraTabPage33
+            // 
+            this.xtraTabPage33.Controls.Add(this.ucWaybillWriteOn);
+            this.xtraTabPage33.Name = "xtraTabPage33";
+            this.xtraTabPage33.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage33.Text = "Введення залишків";
+            // 
+            // ucWaybillWriteOn
+            // 
+            this.ucWaybillWriteOn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWaybillWriteOn.Location = new System.Drawing.Point(0, 0);
+            this.ucWaybillWriteOn.Name = "ucWaybillWriteOn";
+            this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 632);
+            this.ucWaybillWriteOn.TabIndex = 0;
+            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -6014,21 +6029,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // xtraTabPage32
-            // 
-            this.xtraTabPage32.Controls.Add(this.ucWaybillMove);
-            this.xtraTabPage32.Name = "xtraTabPage32";
-            this.xtraTabPage32.Size = new System.Drawing.Size(1049, 632);
-            this.xtraTabPage32.Text = "Накладні переміщення";
-            // 
-            // ucWaybillMove
-            // 
-            this.ucWaybillMove.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucWaybillMove.Location = new System.Drawing.Point(0, 0);
-            this.ucWaybillMove.Name = "ucWaybillMove";
-            this.ucWaybillMove.Size = new System.Drawing.Size(1049, 632);
-            this.ucWaybillMove.TabIndex = 0;
             // 
             // ManufacturingUserControl
             // 
@@ -6110,7 +6110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
-            this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3.Panel1)).EndInit();
             this.splitContainerControl3.Panel1.ResumeLayout(false);
@@ -6295,10 +6294,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).EndInit();
+            this.xtraTabPage32.ResumeLayout(false);
+            this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
-            this.xtraTabPage32.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6764,8 +6764,9 @@
         private UserControls.ucRelDocGrid ucRelDocGrid4;
         private UserControls.ucRelDocGrid ucRelDocGrid5;
         private UserControls.ucRelDocGrid ucRelDocGrid6;
-        private WarehouseUserControl warehouseUserControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage32;
         private UserControls.ucWaybillMove ucWaybillMove;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
+        private UserControls.ucWaybillWriteOn ucWaybillWriteOn;
     }
 }

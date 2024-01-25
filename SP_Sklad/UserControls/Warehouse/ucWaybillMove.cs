@@ -387,7 +387,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                WaybillDetGridControl.DataSource = null;
+                ucWayBillInDet.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
 
                 return;
@@ -396,7 +396,7 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    WaybillDetGridControl.DataSource = _db.GetWaybillDetIn(wb_focused_row.WbillId).ToList();
+                    ucWayBillInDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:
