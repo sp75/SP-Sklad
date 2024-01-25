@@ -73,15 +73,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
-            this.WaybillDetGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ucWayBillInDet = new SP_Sklad.UserControls.ucWayBillInDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -118,9 +110,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -186,8 +175,6 @@
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.Editable = false;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
-            this.WbGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.WbGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
@@ -642,104 +629,19 @@
             // 
             // xtraTabPage15
             // 
-            this.xtraTabPage15.Controls.Add(this.WaybillDetGridControl);
+            this.xtraTabPage15.Controls.Add(this.ucWayBillInDet);
             this.xtraTabPage15.ImageOptions.ImageIndex = 9;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1297, 199);
             this.xtraTabPage15.Text = "Позиції";
             // 
-            // WaybillDetGridControl
+            // ucWayBillInDet
             // 
-            this.WaybillDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaybillDetGridControl.Location = new System.Drawing.Point(0, 0);
-            this.WaybillDetGridControl.MainView = this.WaybillDetGridView;
-            this.WaybillDetGridControl.Name = "WaybillDetGridControl";
-            this.WaybillDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCalcEdit2});
-            this.WaybillDetGridControl.Size = new System.Drawing.Size(1297, 199);
-            this.WaybillDetGridControl.TabIndex = 0;
-            this.WaybillDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WaybillDetGridView});
-            // 
-            // WaybillDetGridView
-            // 
-            this.WaybillDetGridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.WaybillDetGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn9,
-            this.gridColumn10,
-            this.gridColumn11,
-            this.gridColumn12,
-            this.gridColumn13,
-            this.gridColumn50});
-            this.WaybillDetGridView.GridControl = this.WaybillDetGridControl;
-            this.WaybillDetGridView.Name = "WaybillDetGridView";
-            this.WaybillDetGridView.OptionsView.ShowFooter = true;
-            this.WaybillDetGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "№";
-            this.gridColumn9.FieldName = "Num";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 60;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "Назва товару/послуги";
-            this.gridColumn10.FieldName = "MatName";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 1;
-            this.gridColumn10.Width = 225;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Кількість";
-            this.gridColumn11.ColumnEdit = this.repositoryItemCalcEdit2;
-            this.gridColumn11.FieldName = "Amount";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 3;
-            this.gridColumn11.Width = 114;
-            // 
-            // repositoryItemCalcEdit2
-            // 
-            this.repositoryItemCalcEdit2.AutoHeight = false;
-            this.repositoryItemCalcEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit2.Mask.UseMaskAsDisplayFormat = true;
-            this.repositoryItemCalcEdit2.Name = "repositoryItemCalcEdit2";
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Од. вим.";
-            this.gridColumn12.FieldName = "MsrName";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 4;
-            this.gridColumn12.Width = 114;
-            // 
-            // gridColumn13
-            // 
-            this.gridColumn13.Caption = "Ціна";
-            this.gridColumn13.FieldName = "Price";
-            this.gridColumn13.Name = "gridColumn13";
-            this.gridColumn13.Visible = true;
-            this.gridColumn13.VisibleIndex = 5;
-            this.gridColumn13.Width = 122;
-            // 
-            // gridColumn50
-            // 
-            this.gridColumn50.Caption = "Склад";
-            this.gridColumn50.FieldName = "WhName";
-            this.gridColumn50.Name = "gridColumn50";
-            this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 2;
-            this.gridColumn50.Width = 218;
+            this.ucWayBillInDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWayBillInDet.Location = new System.Drawing.Point(0, 0);
+            this.ucWayBillInDet.Name = "ucWayBillInDet";
+            this.ucWayBillInDet.Size = new System.Drawing.Size(1297, 199);
+            this.ucWayBillInDet.TabIndex = 2;
             // 
             // xtraTabPage1
             // 
@@ -887,9 +789,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage15.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -946,15 +845,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn59;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
-        private DevExpress.XtraGrid.GridControl WaybillDetGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
@@ -966,5 +856,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private ucRelDocGrid ucRelDocGrid1;
         private DevExpress.XtraBars.Bar bar1;
+        private ucWayBillInDet ucWayBillInDet;
     }
 }

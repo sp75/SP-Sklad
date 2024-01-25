@@ -204,8 +204,6 @@
             this.PriceListGridView.Name = "PriceListGridView";
             this.PriceListGridView.OptionsBehavior.Editable = false;
             this.PriceListGridView.OptionsBehavior.ReadOnly = true;
-            this.PriceListGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.PriceListGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceListGridView.OptionsView.ShowGroupPanel = false;
             this.PriceListGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceListGridView_PopupMenuShowing);
             this.PriceListGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PriceListGridView_FocusedRowObjectChanged);

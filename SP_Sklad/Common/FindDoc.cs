@@ -221,7 +221,12 @@ namespace SP_Sklad.Common
                  //   SetWhDocFilter(58);
                     break;
 
-                case 7: SetWhDocFilter(104);
+                case 7:
+                    PageIndex = 2;
+                    _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 104);
+                    _wh_user_control.ucWaybillInventory.FindItem(doc_id.Value, date.Value);
+
+                    //SetWhDocFilter(104);
                     break;
 
                 case -20:

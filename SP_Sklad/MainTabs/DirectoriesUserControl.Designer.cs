@@ -2090,8 +2090,6 @@
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatGridView.OptionsBehavior.Editable = false;
-            this.MatGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.MatGridView.OptionsView.EnableAppearanceOddRow = true;
             this.MatGridView.OptionsView.ShowGroupPanel = false;
             this.MatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatGridView_PopupMenuShowing);
             this.MatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatGridView_FocusedRowObjectChanged);
@@ -2770,8 +2768,6 @@
             this.ServicesGridView.Name = "ServicesGridView";
             this.ServicesGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.ServicesGridView.OptionsBehavior.Editable = false;
-            this.ServicesGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.ServicesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.ServicesGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn43
@@ -2929,8 +2925,6 @@
             this.MatRecipeGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatRecipeGridView.OptionsBehavior.Editable = false;
             this.MatRecipeGridView.OptionsBehavior.ReadOnly = true;
-            this.MatRecipeGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.MatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.MatRecipeGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatRecipeGridView_PopupMenuShowing);
             this.MatRecipeGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
@@ -3046,8 +3040,6 @@
             this.WarehouseGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WarehouseGridView.OptionsBehavior.Editable = false;
             this.WarehouseGridView.OptionsBehavior.ReadOnly = true;
-            this.WarehouseGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.WarehouseGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WarehouseGridView.OptionsView.ShowGroupPanel = false;
             this.WarehouseGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3134,8 +3126,6 @@
             this.MeasuresGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MeasuresGridView.OptionsBehavior.Editable = false;
             this.MeasuresGridView.OptionsBehavior.ReadOnly = true;
-            this.MeasuresGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.MeasuresGridView.OptionsView.EnableAppearanceOddRow = true;
             this.MeasuresGridView.OptionsView.ShowGroupPanel = false;
             this.MeasuresGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3218,8 +3208,6 @@
             this.TechProcessGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.TechProcessGridView.OptionsBehavior.Editable = false;
             this.TechProcessGridView.OptionsBehavior.ReadOnly = true;
-            this.TechProcessGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.TechProcessGridView.OptionsView.EnableAppearanceOddRow = true;
             this.TechProcessGridView.OptionsView.ShowGroupPanel = false;
             this.TechProcessGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3279,8 +3267,6 @@
             this.PriceTypesGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.PriceTypesGridView.OptionsBehavior.Editable = false;
             this.PriceTypesGridView.OptionsBehavior.ReadOnly = true;
-            this.PriceTypesGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.PriceTypesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PriceTypesGridView.OptionsView.ShowGroupPanel = false;
             this.PriceTypesGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PriceTypesGridView_PopupMenuShowing);
             this.PriceTypesGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
@@ -3366,8 +3352,6 @@
             this.AccountTypeGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.AccountTypeGridView.OptionsBehavior.Editable = false;
             this.AccountTypeGridView.OptionsBehavior.ReadOnly = true;
-            this.AccountTypeGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.AccountTypeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.AccountTypeGridView.OptionsView.ShowGroupPanel = false;
             this.AccountTypeGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3434,8 +3418,6 @@
             this.ChargeTypeGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.ChargeTypeGridView.OptionsBehavior.Editable = false;
             this.ChargeTypeGridView.OptionsBehavior.ReadOnly = true;
-            this.ChargeTypeGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.ChargeTypeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.ChargeTypeGridView.OptionsView.ShowGroupPanel = false;
             this.ChargeTypeGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3502,8 +3484,6 @@
             this.CashDesksGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.CashDesksGridView.OptionsBehavior.Editable = false;
             this.CashDesksGridView.OptionsBehavior.ReadOnly = true;
-            this.CashDesksGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.CashDesksGridView.OptionsView.EnableAppearanceOddRow = true;
             this.CashDesksGridView.OptionsView.ShowGroupPanel = false;
             this.CashDesksGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3571,8 +3551,6 @@
             this.CountriesGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.CountriesGridView.OptionsBehavior.Editable = false;
             this.CountriesGridView.OptionsBehavior.ReadOnly = true;
-            this.CountriesGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.CountriesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.CountriesGridView.OptionsView.ShowGroupPanel = false;
             this.CountriesGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3649,8 +3627,6 @@
             this.BanksGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.BanksGridView.OptionsBehavior.Editable = false;
             this.BanksGridView.OptionsBehavior.ReadOnly = true;
-            this.BanksGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.BanksGridView.OptionsView.EnableAppearanceOddRow = true;
             this.BanksGridView.OptionsView.ShowGroupPanel = false;
             this.BanksGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3725,8 +3701,6 @@
             this.RouteGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.RouteGridView.OptionsBehavior.Editable = false;
             this.RouteGridView.OptionsBehavior.ReadOnly = true;
-            this.RouteGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.RouteGridView.OptionsView.EnableAppearanceOddRow = true;
             this.RouteGridView.OptionsView.ShowGroupPanel = false;
             this.RouteGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3795,8 +3769,6 @@
             this.DiscCardsGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.DiscCardsGridView.OptionsBehavior.Editable = false;
             this.DiscCardsGridView.OptionsBehavior.ReadOnly = true;
-            this.DiscCardsGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.DiscCardsGridView.OptionsView.EnableAppearanceOddRow = true;
             this.DiscCardsGridView.OptionsView.ShowGroupPanel = false;
             this.DiscCardsGridView.DoubleClick += new System.EventHandler(this.MatRecipeGridView_DoubleClick);
             // 
@@ -3886,8 +3858,6 @@
             this.CurrencyGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.CurrencyGridView.OptionsBehavior.Editable = false;
             this.CurrencyGridView.OptionsBehavior.ReadOnly = true;
-            this.CurrencyGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.CurrencyGridView.OptionsView.EnableAppearanceOddRow = true;
             this.CurrencyGridView.OptionsView.ShowGroupPanel = false;
             this.CurrencyGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -3979,8 +3949,6 @@
             this.PreparationMatRecipeGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.PreparationMatRecipeGridView.OptionsBehavior.Editable = false;
             this.PreparationMatRecipeGridView.OptionsBehavior.ReadOnly = true;
-            this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.PreparationMatRecipeGridView.OptionsView.EnableAppearanceOddRow = true;
             this.PreparationMatRecipeGridView.OptionsView.ShowGroupPanel = false;
             this.PreparationMatRecipeGridView.DoubleClick += new System.EventHandler(this.PreparationMatRecipeGridView_DoubleClick);
             // 
@@ -4089,8 +4057,6 @@
             this.CarsGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.CarsGridView.OptionsBehavior.Editable = false;
             this.CarsGridView.OptionsBehavior.ReadOnly = true;
-            this.CarsGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.CarsGridView.OptionsView.EnableAppearanceOddRow = true;
             this.CarsGridView.OptionsView.ShowGroupPanel = false;
             this.CarsGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -4162,8 +4128,6 @@
             this.KAgentAccountGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.KAgentAccountGridView.OptionsBehavior.Editable = false;
             this.KAgentAccountGridView.OptionsBehavior.ReadOnly = true;
-            this.KAgentAccountGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.KAgentAccountGridView.OptionsView.EnableAppearanceOddRow = true;
             this.KAgentAccountGridView.OptionsView.ShowGroupPanel = false;
             this.KAgentAccountGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
             // 
@@ -4286,8 +4250,6 @@
             this.TaraGridView.Name = "TaraGridView";
             this.TaraGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.TaraGridView.OptionsBehavior.Editable = false;
-            this.TaraGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.TaraGridView.OptionsView.EnableAppearanceOddRow = true;
             this.TaraGridView.OptionsView.ShowGroupPanel = false;
             this.TaraGridView.DoubleClick += new System.EventHandler(this.TaraGridView_DoubleClick);
             // 

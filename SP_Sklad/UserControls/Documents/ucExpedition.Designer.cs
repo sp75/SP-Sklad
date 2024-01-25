@@ -388,8 +388,6 @@
             this.ExpeditionsGridView.OptionsBehavior.Editable = false;
             this.ExpeditionsGridView.OptionsBehavior.ReadOnly = true;
             this.ExpeditionsGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
-            this.ExpeditionsGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.ExpeditionsGridView.OptionsView.EnableAppearanceOddRow = true;
             this.ExpeditionsGridView.OptionsView.ShowGroupPanel = false;
             this.ExpeditionsGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesGridView_PopupMenuShowing);
             this.ExpeditionsGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);

@@ -741,6 +741,9 @@
     <Compile Include="SkladData\v_WayBillInDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WaybillInventory.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WayBillMake.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1414,6 +1417,12 @@
     </Compile>
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillInventory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWaybillInventory.Designer.cs">
+      <DependentUpon>ucWaybillInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Warehouse\ucWaybillWriteOff.cs">
       <SubType>UserControl</SubType>
@@ -2619,6 +2628,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWaybillInventory.resx">
+      <DependentUpon>ucWaybillInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Warehouse\ucWaybillWriteOff.resx">
       <DependentUpon>ucWaybillWriteOff.cs</DependentUpon>

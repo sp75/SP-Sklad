@@ -3861,6 +3861,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillInDet' does not have a primar
           <Property Name="MId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WaybillInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WaybillInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="FromWId" />
+            <PropertyRef Name="FromWh" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="SummPay" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="EntId" Type="int" />
+          <Property Name="EntName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DefTotalAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="FromWId" Type="int" Nullable="false" />
+          <Property Name="FromWh" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="WriteOn" Type="int" />
+          <Property Name="WriteOff" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WaybillList">
           <Key>
@@ -11010,6 +11057,41 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillInDet].[MId] AS [MId]
     FROM [dbo].[v_WayBillInDet] AS [v_WayBillInDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WaybillInventory" EntityType="Self.v_WaybillInventory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WaybillInventory].[Id] AS [Id], 
+    [v_WaybillInventory].[WbillId] AS [WbillId], 
+    [v_WaybillInventory].[Num] AS [Num], 
+    [v_WaybillInventory].[OnDate] AS [OnDate], 
+    [v_WaybillInventory].[CurrId] AS [CurrId], 
+    [v_WaybillInventory].[Reason] AS [Reason], 
+    [v_WaybillInventory].[Checked] AS [Checked], 
+    [v_WaybillInventory].[SummAll] AS [SummAll], 
+    [v_WaybillInventory].[WType] AS [WType], 
+    [v_WaybillInventory].[PersonId] AS [PersonId], 
+    [v_WaybillInventory].[SummPay] AS [SummPay], 
+    [v_WaybillInventory].[Notes] AS [Notes], 
+    [v_WaybillInventory].[SummInCurr] AS [SummInCurr], 
+    [v_WaybillInventory].[PersonName] AS [PersonName], 
+    [v_WaybillInventory].[EntId] AS [EntId], 
+    [v_WaybillInventory].[EntName] AS [EntName], 
+    [v_WaybillInventory].[DocTypeName] AS [DocTypeName], 
+    [v_WaybillInventory].[UpdatedAt] AS [UpdatedAt], 
+    [v_WaybillInventory].[UpdatedUserName] AS [UpdatedUserName], 
+    [v_WaybillInventory].[Deleted] AS [Deleted], 
+    [v_WaybillInventory].[AttNum] AS [AttNum], 
+    [v_WaybillInventory].[AttDate] AS [AttDate], 
+    [v_WaybillInventory].[SessionId] AS [SessionId], 
+    [v_WaybillInventory].[UpdatedBy] AS [UpdatedBy], 
+    [v_WaybillInventory].[DefTotalAmount] AS [DefTotalAmount], 
+    [v_WaybillInventory].[ExTotalAmount] AS [ExTotalAmount], 
+    [v_WaybillInventory].[FromWId] AS [FromWId], 
+    [v_WaybillInventory].[FromWh] AS [FromWh], 
+    [v_WaybillInventory].[WorkerId] AS [WorkerId], 
+    [v_WaybillInventory].[WriteOn] AS [WriteOn], 
+    [v_WaybillInventory].[WriteOff] AS [WriteOff]
+    FROM [dbo].[v_WaybillInventory] AS [v_WaybillInventory]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WaybillList" EntityType="Self.v_WaybillList" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WaybillList].[WbillId] AS [WbillId], 
@@ -14163,6 +14245,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WaybillMove" EntityType="BaseModel.v_WaybillMove" />
           <EntitySet Name="v_WaybillWriteOn" EntityType="BaseModel.v_WaybillWriteOn" />
           <EntitySet Name="v_WaybillWriteOff" EntityType="BaseModel.v_WaybillWriteOff" />
+          <EntitySet Name="v_WaybillInventory" EntityType="BaseModel.v_WaybillInventory" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -23354,6 +23437,51 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="FromWh" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="WorkerId" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="v_WaybillInventory">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="Deleted" />
+            <PropertyRef Name="FromWId" />
+            <PropertyRef Name="FromWh" />
+            <PropertyRef Name="WorkerId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="SummPay" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntId" Type="Int32" />
+          <Property Name="EntName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="SessionId" Type="Guid" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DefTotalAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="ExTotalAmount" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="FromWId" Type="Int32" Nullable="false" />
+          <Property Name="FromWh" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="WriteOn" Type="Int32" />
+          <Property Name="WriteOff" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -29598,6 +29726,43 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillWriteOff">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillWriteOff">
               <MappingFragment StoreEntitySet="v_WaybillWriteOff">
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="ExTotalAmount" ColumnName="ExTotalAmount" />
+                <ScalarProperty Name="DefTotalAmount" ColumnName="DefTotalAmount" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="UpdatedUserName" ColumnName="UpdatedUserName" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="EntName" ColumnName="EntName" />
+                <ScalarProperty Name="EntId" ColumnName="EntId" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SummPay" ColumnName="SummPay" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_WaybillInventory">
+            <EntityTypeMapping TypeName="BaseModel.v_WaybillInventory">
+              <MappingFragment StoreEntitySet="v_WaybillInventory">
+                <ScalarProperty Name="WriteOff" ColumnName="WriteOff" />
+                <ScalarProperty Name="WriteOn" ColumnName="WriteOn" />
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
                 <ScalarProperty Name="FromWh" ColumnName="FromWh" />
                 <ScalarProperty Name="FromWId" ColumnName="FromWId" />

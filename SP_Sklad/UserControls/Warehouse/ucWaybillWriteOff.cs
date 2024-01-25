@@ -380,7 +380,7 @@ namespace SP_Sklad.UserControls
         {
             if (wb_focused_row == null)
             {
-                WaybillDetGridControl.DataSource = null;
+                ucWayBillInDet.GetDate(0);
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
 
                 return;
@@ -389,7 +389,7 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    WaybillDetGridControl.DataSource = _db.GetWaybillDetIn(wb_focused_row.WbillId).ToList();
+                    ucWayBillInDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:
@@ -408,11 +408,6 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
-        }
-
-        private void wbKagentList_EditValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void wbEndDate_EditValueChanged(object sender, EventArgs e)
@@ -495,16 +490,6 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
-        }
-
-        private void WbGridView_Layout(object sender, EventArgs e)
-        {
-            ;
-        }
-
-        private void WbGridView_LayoutUpgrade(object sender, DevExpress.Utils.LayoutUpgradeEventArgs e)
-        {
-            ;
         }
     }
 }

@@ -454,8 +454,6 @@
             this.SettingMaterialPricesGridView.Name = "SettingMaterialPricesGridView";
             this.SettingMaterialPricesGridView.OptionsBehavior.Editable = false;
             this.SettingMaterialPricesGridView.OptionsBehavior.ReadOnly = true;
-            this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.SettingMaterialPricesGridView.OptionsView.EnableAppearanceOddRow = true;
             this.SettingMaterialPricesGridView.OptionsView.ShowGroupPanel = false;
             this.SettingMaterialPricesGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesGridView_PopupMenuShowing);
             this.SettingMaterialPricesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);

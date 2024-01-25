@@ -785,12 +785,14 @@ namespace SP_Sklad.Common
 
         static public bool FindMatInDir(int? mat_id)
         {
-            mainForm.main_form.DirUserControl.find_mat_id = mat_id;
+       //     mainForm.main_form.DirUserControl.find_mat_id = mat_id;
 
             mainForm.main_form.mainTabControl.SelectedTabPageIndex = 6;
             var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
             mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);
-            mainForm.main_form.DirUserControl.MatGridView.ClearFindFilter();
+            mainForm.main_form.DirUserControl.FindItem(mat_id.Value) ;
+
+            //    mainForm.main_form.DirUserControl.MatGridView.ClearFindFilter();
 
             return true;
         }
