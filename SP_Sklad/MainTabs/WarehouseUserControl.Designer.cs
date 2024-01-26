@@ -289,6 +289,8 @@
             this.ucWaybillWriteOff = new SP_Sklad.UserControls.ucWaybillWriteOff();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillInventory = new SP_Sklad.UserControls.ucWaybillInventory();
+            this.xtraTabPage19 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWhMat = new SP_Sklad.UserControls.Warehouse.ucWhMat();
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
@@ -421,6 +423,7 @@
             this.xtraTabPage16.SuspendLayout();
             this.xtraTabPage17.SuspendLayout();
             this.xtraTabPage18.SuspendLayout();
+            this.xtraTabPage19.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
@@ -1315,7 +1318,8 @@
             this.xtraTabPage14,
             this.xtraTabPage16,
             this.xtraTabPage17,
-            this.xtraTabPage18});
+            this.xtraTabPage18,
+            this.xtraTabPage19});
             // 
             // xtraTabPage8
             // 
@@ -3312,6 +3316,32 @@
             this.ucWaybillInventory.Size = new System.Drawing.Size(1214, 645);
             this.ucWaybillInventory.TabIndex = 0;
             // 
+            // xtraTabPage19
+            // 
+            this.xtraTabPage19.Controls.Add(this.ucWhMat);
+            this.xtraTabPage19.Name = "xtraTabPage19";
+            this.xtraTabPage19.Size = new System.Drawing.Size(1214, 645);
+            this.xtraTabPage19.Text = "Товари на складі";
+            // 
+            // ucWhMat
+            // 
+            this.ucWhMat.by_grp = false;
+            this.ucWhMat.custom_mat_list = null;
+            this.ucWhMat.disc_card = null;
+            this.ucWhMat.display_child_groups = false;
+            this.ucWhMat.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWhMat.focused_tree_node_num = 0;
+            this.ucWhMat.isDirectList = false;
+            this.ucWhMat.isMatList = false;
+            this.ucWhMat.Location = new System.Drawing.Point(0, 0);
+            this.ucWhMat.Name = "ucWhMat";
+            this.ucWhMat.resut = null;
+            this.ucWhMat.set_tree_node = null;
+            this.ucWhMat.Size = new System.Drawing.Size(1214, 645);
+            this.ucWhMat.TabIndex = 0;
+            this.ucWhMat.wb = null;
+            this.ucWhMat.wh_mat_list = null;
+            // 
             // MatPopupMenu
             // 
             this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -3601,6 +3631,7 @@
             this.xtraTabPage16.ResumeLayout(false);
             this.xtraTabPage17.ResumeLayout(false);
             this.xtraTabPage18.ResumeLayout(false);
+            this.xtraTabPage19.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
@@ -3723,7 +3754,6 @@
         public DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage5;
         public DevExpress.XtraTab.XtraTabPage xtraTabPage9;
-        public DevExpress.XtraTab.XtraTabPage MatListTabPage;
         private DevExpress.XtraGrid.GridControl MatListGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView MatListGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
@@ -3880,5 +3910,8 @@
         public UserControls.ucWaybillWriteOff ucWaybillWriteOff;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage18;
         public UserControls.ucWaybillInventory ucWaybillInventory;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage19;
+        public UserControls.Warehouse.ucWhMat ucWhMat;
+        private DevExpress.XtraTab.XtraTabPage MatListTabPage;
     }
 }

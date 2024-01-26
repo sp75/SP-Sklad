@@ -189,7 +189,7 @@ namespace SP_Sklad.MainTabs
                      RefrechItemBtn.PerformClick();
                  }*/
 
-            RefrechItemBtn.PerformClick();
+         //   RefrechItemBtn.PerformClick();
 
 
             if (focused_tree_node.FunId == 36)
@@ -208,6 +208,17 @@ namespace SP_Sklad.MainTabs
             {
                 whContentTab.SelectedTabPageIndex = 6;
             }
+
+            else if(focused_tree_node.GType.Value == 1)
+            {
+                ucWhMat.by_grp = ByGrpBtn.Down;
+                ucWhMat.display_child_groups = ViewDetailTree.Down;
+                ucWhMat.focused_tree_node_num = focused_tree_node.Num;
+                whContentTab.SelectedTabPageIndex = 7;
+                var result = ucWhMat.GetMatOnWh();
+            }
+
+
             else
             {
                 whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
@@ -243,11 +254,14 @@ namespace SP_Sklad.MainTabs
 
         private void ByGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ucWhMat.by_grp = ByGrpBtn.Down;
             GetTree(1);
         }
 
         private void ByWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ucWhMat.display_child_groups = ViewDetailTree.Down;
+            ucWhMat.by_grp = ByGrpBtn.Down;
             GetTree(2);
         }
 
@@ -459,56 +473,11 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 1:
-                    /*  int grp_id = 0;
-
-                      string grp = "";
-
-                      grp_id = ByGrpBtn.Down ? focused_tree_node.Num : 0;
-                      wid = ByGrpBtn.Down ? 0 : focused_tree_node.Num;
-                      if (wid == 0 && WhComboBox2.EditValue.ToString() != "*")
-                      {
-                          wid = Convert.ToInt32(WhComboBox2.EditValue);
-                      }
-
-                      if (ViewDetailTree.Down && ByGrpBtn.Down && focused_tree_node.Num != 0)
-                      {
-                          grp = focused_tree_node.Num.ToString();
-                      }
-
-                      int top_row = WhMatGridView.TopRowIndex;
-                //      var wh_ids = String.Join(",", DB.SkladBase().UserAccessWh.Where(w => w.UserId == DBHelper.CurrentUser.UserId).Select(s => s.WId).ToList());
-                      wh_mat_list = DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, ViewDetailTree.Down ? 1 : 0).ToList();
-                      WhMatGetBS.DataSource = wh_mat_list;
-                      WhMatGridView.TopRowIndex = top_row;*/
-
-
-
-                    var result = GetMatOnWh();
-
-                  //         WhMatGridControl.DataSource = null;
-                  //         WhMatGridControl.DataSource = WhMatGetSource;
-
+//                    var result = GetMatOnWh();
                     break;
 
                 case 2:
-                    GetWayBillList(focused_tree_node.WType);
-                    /* cxGrid1Level1->GridView = cxGrid1DBTableView1;
-                      cxGridLevel6->GridView = cxGridDBTableView1;
-                      GET_RelDocList->DataSource = WayBillListDS;
-                      WBTopPanelDate->Edit();
-                      if (WhTreeDataID->Value == 48) WBTopPanelDateWTYPE->Value = 4;
-                      if (WhTreeDataID->Value == 58) WBTopPanelDateWTYPE->Value = 5;
-                      if (WhTreeDataID->Value == 54) WBTopPanelDateWTYPE->Value = -5;
-                      if (WhTreeDataID->Value == 104)
-                      {
-                          WBTopPanelDateWTYPE->Value = 7;
-                          cxGrid1Level1->GridView = cxGrid2DBTableView1;
-                          cxGridLevel6->GridView = cxGrid7DBTableView1;
-                      }
-
-                      WBTopPanelDate->Post();
-                      WayBillList->FullRefresh();
-                      WayBillList->Refresh();*/
+         //           GetWayBillList(focused_tree_node.WType);
 
                     break;
             }
@@ -517,7 +486,11 @@ namespace SP_Sklad.MainTabs
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ByGrpBtn.Down = true;
-            RefrechItemBtn.PerformClick();
+            ucWhMat.display_child_groups = ViewDetailTree.Down;
+            ucWhMat.by_grp = ByGrpBtn.Down;
+            RefreshWhBtn.PerformClick();
+
+            var result = ucWhMat.GetMatOnWh();
         }
 
         private void WhMatGridView_DoubleClick(object sender, EventArgs e)

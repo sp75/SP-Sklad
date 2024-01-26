@@ -1442,6 +1442,12 @@
     <Compile Include="UserControls\Warehouse\ucWaybillMove.Designer.cs">
       <DependentUpon>ucWaybillMove.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Warehouse\ucWhMat.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWhMat.Designer.cs">
+      <DependentUpon>ucWhMat.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillDetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2641,6 +2647,9 @@
     <EmbeddedResource Include="UserControls\Warehouse\ucWaybillMove.resx">
       <DependentUpon>ucWaybillMove.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWhMat.resx">
+      <DependentUpon>ucWhMat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillDetView.resx">
       <DependentUpon>frmWaybillDetView.cs</DependentUpon>
     </EmbeddedResource>
@@ -3414,6 +3423,7 @@
     <None Include="Resources\user-valet.png" />
     <None Include="Resources\printtitles_16x16.png" />
     <None Include="Resources\user_monitor.png" />
+    <None Include="Resources\wb_return_sale.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

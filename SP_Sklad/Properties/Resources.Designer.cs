@@ -1534,6 +1534,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap wb_return_sale {
+            get {
+                object obj = ResourceManager.GetObject("wb_return_sale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap WBWriteOff_2 {
             get {
                 object obj = ResourceManager.GetObject("WBWriteOff_2", resourceCulture);
