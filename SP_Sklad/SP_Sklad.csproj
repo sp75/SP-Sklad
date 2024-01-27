@@ -3426,15 +3426,28 @@
     <None Include="Resources\user_groups.png" />
     <None Include="Resources\usergroup_16x16.png" />
     <None Include="Resources\employees.png" />
-    <None Include="Resources\worker2.png" />
-    <None Include="Resources\worker.png" />
     <None Include="Resources\user_manager.png" />
     <None Include="Resources\user-valet.png" />
     <None Include="Resources\printtitles_16x16.png" />
     <None Include="Resources\user_monitor.png" />
     <None Include="Resources\wb_return_sale.png" />
-    <None Include="Resources\boproduct_16x161.png" />
     <None Include="Resources\product_info.png" />
+    <None Include="Resources\kontragents.png" />
+    <None Include="Resources\recipes.png" />
+    <None Include="Resources\discount_card.png" />
+    <None Include="Resources\tag_16x16.png" />
+    <None Include="Resources\build_16x16.png" />
+    <None Include="Resources\tag_16x161.png" />
+    <None Include="Resources\price_settings.png" />
+    <None Include="Resources\sql_script.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\properties_16x16.png" />
+    <None Include="Resources\bank.png" />
+    <None Include="Resources\ide_16x16.png" />
+    <None Include="Resources\preparation.png" />
+    <None Include="Resources\countries.png" />
+    <None Include="Resources\taxes.png" />
+    <None Include="Resources\event_log.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

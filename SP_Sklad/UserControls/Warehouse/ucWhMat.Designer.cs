@@ -63,7 +63,7 @@
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl9 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl10 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -77,6 +77,7 @@
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.SetPriceBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsPostBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -203,8 +204,8 @@
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
@@ -272,7 +273,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -333,7 +333,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatTurnInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefreshWhBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true)});
@@ -380,7 +379,7 @@
             // 
             this.DeboningMatBtn.Caption = "Виконати обвалку товару";
             this.DeboningMatBtn.Id = 11;
-            this.DeboningMatBtn.ImageOptions.ImageIndex = 15;
+            this.DeboningMatBtn.ImageOptions.ImageIndex = 1;
             this.DeboningMatBtn.Name = "DeboningMatBtn";
             this.DeboningMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeboningMatBtn_ItemClick);
             // 
@@ -388,7 +387,7 @@
             // 
             this.RefreshWhBtn.Caption = "Обновити";
             this.RefreshWhBtn.Id = 12;
-            this.RefreshWhBtn.ImageOptions.ImageIndex = 4;
+            this.RefreshWhBtn.ImageOptions.ImageIndex = 2;
             this.RefreshWhBtn.Name = "RefreshWhBtn";
             this.RefreshWhBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefreshWhBtn_ItemClick);
             // 
@@ -585,33 +584,16 @@
             this.standaloneBarDockControl10.Size = new System.Drawing.Size(1379, 0);
             this.standaloneBarDockControl10.Text = "standaloneBarDockControl10";
             // 
-            // BarImageList
+            // imageCollection1
             // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(8, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(9, "tree.png");
-            this.BarImageList.Images.SetKeyName(10, "_нформац_я про товар.bmp");
-            this.BarImageList.Images.SetKeyName(11, "Рух товар_в.bmp");
-            this.BarImageList.Images.SetKeyName(12, "_нформац_я про резерв товару.ico");
-            this.BarImageList.Images.SetKeyName(13, "Взаемозам_н_сть.bmp");
-            this.BarImageList.Images.SetKeyName(14, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(15, "пратнерка.png");
-            this.BarImageList.Images.SetKeyName(16, "down.bmp");
-            this.BarImageList.Images.SetKeyName(17, "Up.bmp");
-            this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
-            this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
-            this.BarImageList.Images.SetKeyName(21, "exec16.png");
-            this.BarImageList.Images.SetKeyName(22, "update.png");
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info, "product_info", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "product_info");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "deboneing");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "refreshallpivottable_16x16");
             // 
             // barButtonItem1
             // 
@@ -713,6 +695,34 @@
             this.RecalcRemainsPostBtn.Id = 46;
             this.RecalcRemainsPostBtn.Name = "RecalcRemainsPostBtn";
             this.RecalcRemainsPostBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsPostBtn_ItemClick);
+            // 
+            // BarImageList
+            // 
+            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.White;
+            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
+            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
+            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
+            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
+            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
+            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
+            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
+            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
+            this.BarImageList.Images.SetKeyName(8, "Товари.bmp");
+            this.BarImageList.Images.SetKeyName(9, "tree.png");
+            this.BarImageList.Images.SetKeyName(10, "_нформац_я про товар.bmp");
+            this.BarImageList.Images.SetKeyName(11, "Рух товар_в.bmp");
+            this.BarImageList.Images.SetKeyName(12, "_нформац_я про резерв товару.ico");
+            this.BarImageList.Images.SetKeyName(13, "Взаемозам_н_сть.bmp");
+            this.BarImageList.Images.SetKeyName(14, "refresh.bmp");
+            this.BarImageList.Images.SetKeyName(15, "пратнерка.png");
+            this.BarImageList.Images.SetKeyName(16, "down.bmp");
+            this.BarImageList.Images.SetKeyName(17, "Up.bmp");
+            this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
+            this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
+            this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
+            this.BarImageList.Images.SetKeyName(21, "exec16.png");
+            this.BarImageList.Images.SetKeyName(22, "update.png");
             // 
             // styleController1
             // 
@@ -2146,13 +2156,6 @@
             this.GridImageList.Images.SetKeyName(39, "Без имени-2.png");
             this.GridImageList.Images.SetKeyName(40, "management2.png");
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info, "product_info", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection1.Images.SetKeyName(0, "product_info");
-            // 
             // ucWhMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2173,6 +2176,7 @@
             this.Size = new System.Drawing.Size(1381, 647);
             this.Load += new System.EventHandler(this.ucWhMat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PosBottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
@@ -2243,7 +2247,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

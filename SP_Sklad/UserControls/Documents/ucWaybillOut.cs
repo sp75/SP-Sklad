@@ -122,6 +122,39 @@ namespace SP_Sklad.UserControls
             using (var db =  new BaseEntities())
             {
                 var wb = db.WaybillList.Find(wb_focused_row.WbillId);
+
+                if (wb == null)
+                {
+                    XtraMessageBox.Show(Resources.not_find_wb);
+                    return;
+                }
+                if (wb.SessionId != null)
+                {
+                    XtraMessageBox.Show(Resources.deadlock);
+                    return;
+                }
+
+                if (wb.Checked == 1)
+                {
+                    if (wb.WType == -1)
+                    {
+
+                        if (!DBHelper.CheckExpedition(wb_focused_row.WbillId, db)) return;
+                    }
+
+                    DBHelper.StornoOrder(db, wb_focused_row.WbillId);
+                }
+                else
+                {
+                    if (wb.WType == -1)
+                    {
+                        if (!DBHelper.CheckOrderedInSuppliers(wb_focused_row.WbillId, db)) return;
+                    }
+
+                    DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
+                }
+
+                /*var wb = db.WaybillList.Find(wb_focused_row.WbillId);
                 if (wb == null)
                 {
                     XtraMessageBox.Show(Resources.not_find_wb);
@@ -140,7 +173,7 @@ namespace SP_Sklad.UserControls
                 else
                 {
                     DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
-                }
+                }*/
             }
         }
         public void PrintItem()
