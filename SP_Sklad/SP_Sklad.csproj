@@ -3433,6 +3433,8 @@
     <None Include="Resources\printtitles_16x16.png" />
     <None Include="Resources\user_monitor.png" />
     <None Include="Resources\wb_return_sale.png" />
+    <None Include="Resources\boproduct_16x161.png" />
+    <None Include="Resources\product_info.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
