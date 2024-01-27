@@ -102,11 +102,11 @@ namespace SP_Sklad.WBDetForm
              MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
              _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;*/
 
-            using (var f = new frmWhCatalog(1))
+            using (var f = new frmWhCatalog())
             {
 
-                f.uc.whKagentList.Enabled = false;
-                f.uc.OnDateEdit.Enabled = false;
+                f.uc.ucWhMat.whKagentList.Enabled = false;
+                f.uc.ucWhMat.OnDateEdit.Enabled = false;
                 f.uc.bar3.Visible = false;
                 f.uc.ByWhBtn.Down = true;
                 f.uc.splitContainerControl1.SplitterPosition = 0;
@@ -114,12 +114,12 @@ namespace SP_Sklad.WBDetForm
                 {
                     f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
                 }
-                f.uc.GrpNameGridColumn.GroupIndex = 0;
+                f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
 
-                f.uc.isDirectList = true;
+                f.uc.ucWhMat.isDirectList = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    _wbd.MatId = f.uc.focused_wh_mat.MatId;
+                    _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
                     MatComboBox.EditValue = _wbd.MatId;
                     SetValue();
                 }

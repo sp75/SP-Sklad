@@ -68,19 +68,19 @@
             // 
             // uc
             // 
-            this.uc.custom_mat_list = null;
-            this.uc.disc_card = null;
+            this.uc.ucWhMat.custom_mat_list = null;
+            this.uc.ucWhMat.disc_card = null;
             this.uc.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uc.isDirectList = false;
-            this.uc.isMatList = false;
+            this.uc.ucWhMat.isDirectList = false;
+            this.uc.ucWhMat.isMatList = false;
             this.uc.Location = new System.Drawing.Point(0, 0);
             this.uc.Name = "uc";
-            this.uc.resut = null;
+            this.uc.ucWhMat.resut = null;
             this.uc.set_tree_node = null;
             this.uc.Size = new System.Drawing.Size(1484, 608);
             this.uc.TabIndex = 0;
-            this.uc.wb = null;
-            this.uc.wh_mat_list = null;
+            this.uc.ucWhMat.wb = null;
+            this.uc.ucWhMat.wh_mat_list = null;
             // 
             // frmWhCatalog
             // 

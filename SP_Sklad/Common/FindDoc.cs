@@ -83,25 +83,7 @@ namespace SP_Sklad.Common
             }
         }*/
 
-        private static void SetWhDocFilter(int node_id)
-        {
-            PageIndex = 2;
-
-         _wh_user_control.wbStartDate.DateTime = _on_date.Date;
-          _wh_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay();
-            _wh_user_control.WhComboBox.EditValue = "*";
-            _wh_user_control.wbSatusList.EditValue = -1;
-
-            _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", node_id);
-            _wh_user_control.RefrechItemBtn.PerformClick();
-
-            int rowHandle = _wh_user_control.WbGridView.LocateByValue("Id", _doc_id);
-            if (rowHandle != GridControl.InvalidRowHandle)
-            {
-                _wh_user_control.WbGridView.FocusedRowHandle = rowHandle;
-            }
-        }
-
+       
         public static void Find(Guid? doc_id, int? doc_type, DateTime? date)
         {
             _doc_id = doc_id.Value;

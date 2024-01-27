@@ -163,29 +163,28 @@ namespace SP_Sklad.Common
 
         static public void ShowMatListByWH(BaseEntities db, WaybillList wb, DiscCards disc_card = null, int? WId = -1)
         {
-            using (var f = new frmWhCatalog(1, disc_card))
+            using (var f = new frmWhCatalog(disc_card))
             {
-
                 //   f.uc.xtraTabPage3.PageVisible = false;
-                f.uc.xtraTabPage4.PageVisible = false;
-                f.uc.xtraTabPage5.PageVisible = false;
-                f.uc.xtraTabPage9.PageVisible = false;
-                f.uc.xtraTabPage11.PageVisible = false;
-                f.uc.xtraTabPage12.PageVisible = false;
-                f.uc.xtraTabPage13.PageVisible = false;
-                f.uc.MatListTabPage.PageVisible = true;
-                f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
-                f.uc.wb = wb;
-                f.uc.isMatList = true;
-                f.uc.wid = WId.Value;
+                f.uc.ucWhMat.xtraTabPage4.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage5.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage9.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage11.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage12.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage13.PageVisible = false;
+                f.uc.ucWhMat.MatListTabPage.PageVisible = true;
+                f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
+                f.uc.ucWhMat.wb = wb;
+                f.uc.ucWhMat.isMatList = true;
+                f.uc.ucWhMat.wid = WId.Value;
 
                 if (WId != -1)
                 {
                     f.Text = $"Залишки на складі: [{db.Warehouse.FirstOrDefault(w => w.WId == WId)?.Name}]";
 
-                    f.uc.MatListGridColumnWh.Visible = false;
-                    f.uc.WhCheckedComboBox.Enabled = false;
-                    f.uc.wh_list = WId.Value.ToString();
+                    f.uc.ucWhMat.MatListGridColumnWh.Visible = false;
+                    f.uc.ucWhMat.WhCheckedComboBox.Enabled = false;
+                    f.uc.ucWhMat.wh_list = WId.Value.ToString();
                     f.uc.ByWhBtn.Enabled = false;
                 }
                 else
@@ -196,7 +195,7 @@ namespace SP_Sklad.Common
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     var num = wb.WaybillDet.Count();
-                    foreach (var item in f.uc.custom_mat_list)
+                    foreach (var item in f.uc.ucWhMat.custom_mat_list)
                     {
                         var base_price = Math.Round(item.Price ?? 0, 2);
                         var total = Math.Round(base_price * item.Amount, 2);
@@ -248,32 +247,32 @@ namespace SP_Sklad.Common
         static public void ShowMatListByWH2(BaseEntities db, WaybillList wb, int ka_id)
         {
             //Не доделано
-            var f = new frmWhCatalog(1);
+            var f = new frmWhCatalog();
 
-            f.uc.xtraTabPage4.PageVisible = false;
-            f.uc.xtraTabPage5.PageVisible = false;
-            f.uc.xtraTabPage9.PageVisible = false;
-            f.uc.MatListTabPage.PageVisible = true;
-            f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
-            f.uc.gridColumn49.Visible = false;
-            f.uc.gridColumn51.Visible = false;
-            f.uc.gridColumn52.Visible = false;
+            f.uc.ucWhMat.xtraTabPage4.PageVisible = false;
+            f.uc.ucWhMat.xtraTabPage5.PageVisible = false;
+            f.uc.ucWhMat.xtraTabPage9.PageVisible = false;
+            f.uc.ucWhMat.MatListTabPage.PageVisible = true;
+            f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
+            f.uc.ucWhMat.gridColumn49.Visible = false;
+            f.uc.ucWhMat.gridColumn51.Visible = false;
+            f.uc.ucWhMat.gridColumn52.Visible = false;
             f.uc.bar3.Visible = false;
             f.uc.ByWhBtn.Down = true;
             f.uc.splitContainerControl1.SplitterPosition = 0;
 
-            f.uc.whKagentList.EditValue = ka_id;
-            f.uc.whKagentList.Enabled = false;
+            f.uc.ucWhMat.whKagentList.EditValue = ka_id;
+            f.uc.ucWhMat.whKagentList.Enabled = false;
 
             f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
 
-            f.uc.GrpNameGridColumn.GroupIndex = 0;
+            f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
 
-            f.uc.wb = wb;
-            f.uc.isMatList = true;
+            f.uc.ucWhMat.wb = wb;
+            f.uc.ucWhMat.isMatList = true;
             if (f.ShowDialog() == DialogResult.OK)
             {
-                foreach (var item in f.uc.custom_mat_list)
+                foreach (var item in f.uc.ucWhMat.custom_mat_list)
                 {
                     var wbd = db.WaybillDet.Add(new WaybillDet
                     {
@@ -300,19 +299,19 @@ namespace SP_Sklad.Common
 
         static public void ShowMatListByWH3(BaseEntities db, WaybillList wb, String WID)
         {
-            using (var f = new frmWhCatalog(1))
+            using (var f = new frmWhCatalog())
             {
                 f.Text = "Залишки на складі";
 
-                f.uc.xtraTabPage4.PageVisible = false;
-                f.uc.xtraTabPage5.PageVisible = false;
-                f.uc.xtraTabPage9.PageVisible = false;
-                f.uc.MatListTabPage.PageVisible = true;
-                f.uc.xtraTabControl1.SelectedTabPageIndex = 4;
-                f.uc.gridColumn49.Visible = false;
-                f.uc.gridColumn51.Visible = false;
-                f.uc.gridColumn52.Visible = false;
-                f.uc.MatListGridColumnWh.Visible = (WID == "*");
+                f.uc.ucWhMat.xtraTabPage4.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage5.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage9.PageVisible = false;
+                f.uc.ucWhMat.MatListTabPage.PageVisible = true;
+                f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
+                f.uc.ucWhMat.gridColumn49.Visible = false;
+                f.uc.ucWhMat.gridColumn51.Visible = false;
+                f.uc.ucWhMat.gridColumn52.Visible = false;
+                f.uc.ucWhMat.MatListGridColumnWh.Visible = (WID == "*");
                 f.uc.bar3.Visible = false;
                 f.uc.ByWhBtn.Down = true;
                 f.uc.splitContainerControl1.SplitterPosition = 0;
@@ -329,14 +328,14 @@ namespace SP_Sklad.Common
                     {
                         f.uc.WHTreeList.DataSource = _db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
                     }
-                    f.uc.GrpNameGridColumn.GroupIndex = 0;
+                    f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
                 }
 
-                f.uc.wb = wb;
-                f.uc.isMatList = true;
+                f.uc.ucWhMat.wb = wb;
+                f.uc.ucWhMat.isMatList = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    foreach (var item in f.uc.custom_mat_list)
+                    foreach (var item in f.uc.ucWhMat.custom_mat_list)
                     {
                         var wbd = db.WaybillDet.Add(new WaybillDet
                         {
@@ -613,8 +612,8 @@ namespace SP_Sklad.Common
         {
             var result = new ReturnRemainByWH();
 
-            var f = new frmWhCatalog(1);
-            f.uc.OnDateEdit.Enabled = false;
+            var f = new frmWhCatalog();
+            f.uc.ucWhMat.OnDateEdit.Enabled = false;
 
             switch (Typ)
             {
@@ -623,9 +622,9 @@ namespace SP_Sklad.Common
                     // frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID, TLocateOptions()) ;
                     if (f.ShowDialog() == DialogResult.OK)
                     {
-                        result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
+                        result.mat_id = (f.uc.ucWhMat.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
                         //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
-                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
+                        var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.ucWhMat.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
                         result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId;
                     }
                     else
@@ -657,21 +656,21 @@ namespace SP_Sklad.Common
                     {
                         int wid = Convert.ToInt32(old_WID);
 
-                        f.uc.gridColumn49.Visible = false;
-                        f.uc.gridColumn51.Visible = false;
-                        f.uc.gridColumn52.Visible = false;
-                        f.uc.MatListGridColumnWh.Visible = (wid == -1);
+                        f.uc.ucWhMat.gridColumn49.Visible = false;
+                        f.uc.ucWhMat.gridColumn51.Visible = false;
+                        f.uc.ucWhMat.gridColumn52.Visible = false;
+                        f.uc.ucWhMat.MatListGridColumnWh.Visible = (wid == -1);
                         f.uc.bar3.Visible = false;
                         f.uc.ByWhBtn.Down = true;
                         f.uc.splitContainerControl1.SplitterPosition = 0;
 
                         f.uc.WHTreeList.DataSource = DB.SkladBase().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
 
-                        f.uc.GrpNameGridColumn.GroupIndex = 0;
+                        f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
 
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            result.mat_id = (f.uc.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
+                            result.mat_id = (f.uc.ucWhMat.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
                         }
                         else
                         {
@@ -777,8 +776,8 @@ namespace SP_Sklad.Common
             var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
             mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
 
-            var rowHandle = mainForm.main_form.whUserControl.WhMatGridView.LocateByValue("MatId", mat_id);
-            mainForm.main_form.whUserControl.WhMatGridView.FocusedRowHandle = rowHandle;
+            var rowHandle = mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.LocateByValue("MatId", mat_id);
+            mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.FocusedRowHandle = rowHandle;
 
             return rowHandle != GridControl.InvalidRowHandle;
         }

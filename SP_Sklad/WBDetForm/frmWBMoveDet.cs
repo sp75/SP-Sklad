@@ -345,21 +345,21 @@ namespace SP_Sklad.WBDetForm
 
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            using (var f = new frmWhCatalog(1))
+            using (var f = new frmWhCatalog())
             {
-                f.uc.whKagentList.EditValue = _ka_id;
-                f.uc.whKagentList.Enabled = false;
-                f.uc.OnDateEdit.Enabled = false;
+                f.uc.ucWhMat.whKagentList.EditValue = _ka_id;
+                f.uc.ucWhMat.whKagentList.Enabled = false;
+                f.uc.ucWhMat.OnDateEdit.Enabled = false;
                 f.uc.bar3.Visible = false;
                 f.uc.ByWhBtn.Down = true;
                 f.uc.splitContainerControl1.SplitterPosition = 0;
                 f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-                f.uc.GrpNameGridColumn.GroupIndex = 0;
+                f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
 
-                f.uc.isDirectList = true;
+                f.uc.ucWhMat.isDirectList = true;
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    _wbd.MatId = f.uc.focused_wh_mat.MatId;
+                    _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
                     MatComboBox.EditValue = _wbd.MatId;
 
                     GetContent();

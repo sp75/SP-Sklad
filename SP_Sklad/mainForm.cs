@@ -28,7 +28,7 @@ namespace SP_Sklad
         private int user_id { get; set; }
         public static mainForm main_form { get; set; }
 
-        private int? _wid => (mainTabControl.SelectedTabPageIndex == 2 && whUserControl.ByWhBtn.Down) ? (int?)whUserControl.wid : null;
+        private int? _wid => (mainTabControl.SelectedTabPageIndex == 2 && whUserControl.ByWhBtn.Down) ? (int?)whUserControl.ucWhMat.wid : null;
 
 
         public mainForm() : this(UserSession.UserId) { }
@@ -109,7 +109,7 @@ namespace SP_Sklad
             whUserControl.ucWaybillWriteOff.SaveGridLayouts();
 
 
-            whUserControl.SaveGridLayouts();
+            whUserControl.ucWhMat.SaveGridLayouts();
             manufacturingUserControl1.SaveGridLayouts();
             tradeUserControl1.SaveGridLayouts();
             financesUserControl1.SaveGridLayouts();

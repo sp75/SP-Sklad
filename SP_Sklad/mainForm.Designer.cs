@@ -781,19 +781,19 @@
             // 
             // whUserControl
             // 
-            this.whUserControl.custom_mat_list = null;
-            this.whUserControl.disc_card = null;
+            this.whUserControl.ucWhMat.custom_mat_list = null;
+            this.whUserControl.ucWhMat.disc_card = null;
             this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.whUserControl.isDirectList = false;
-            this.whUserControl.isMatList = false;
+            this.whUserControl.ucWhMat.isDirectList = false;
+            this.whUserControl.ucWhMat.isMatList = false;
             this.whUserControl.Location = new System.Drawing.Point(0, 0);
             this.whUserControl.Name = "whUserControl";
-            this.whUserControl.resut = null;
+            this.whUserControl.ucWhMat.resut = null;
             this.whUserControl.set_tree_node = null;
             this.whUserControl.Size = new System.Drawing.Size(1186, 591);
             this.whUserControl.TabIndex = 0;
-            this.whUserControl.wb = null;
-            this.whUserControl.wh_mat_list = null;
+            this.whUserControl.ucWhMat.wb = null;
+            this.whUserControl.ucWhMat.wh_mat_list = null;
             // 
             // xtraTabPage2
             // 

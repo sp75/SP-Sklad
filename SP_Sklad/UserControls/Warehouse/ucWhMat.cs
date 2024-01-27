@@ -21,8 +21,6 @@ using DevExpress.XtraCharts.Designer;
 using DevExpress.Data;
 using System.Data.Entity;
 using SkladEngine.DBFunction;
-using SP_Sklad.WBDetForm;
-using static SP_Sklad.MainTabs.WarehouseUserControl;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
@@ -66,6 +64,12 @@ namespace SP_Sklad.UserControls.Warehouse
             public string WId { get; set; }
             public string Name { get; set; }
             public bool IsChecked { get; set; }
+        }
+
+        public class ExtMatIfo
+        {
+            public decimal? LastPrice { get; set; }
+            public int MatId { get; set; }
         }
 
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
@@ -682,6 +686,32 @@ namespace SP_Sklad.UserControls.Warehouse
                     WhCheckedComboBox.Properties.Items[i].CheckState = CheckState.Unchecked;
 
                 RefreshWhBtn.PerformClick();
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            ChartDesigner designer = new ChartDesigner(chartControl1);
+            designer.ShowDialog();
+        }
+
+        private void chartControl1_DoubleClick(object sender, EventArgs e)
+        {
+            ChartDesigner designer = new ChartDesigner(chartControl1);
+            designer.ShowDialog();
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            MatListGridView.DeleteSelectedRows();
+        }
+
+        private void WhMatGridView_BeforeLoadLayout(object sender, DevExpress.Utils.LayoutAllowEventArgs e)
+        {
+            GridView view = sender as GridView;
+            if (e.PreviousVersion != view.OptionsLayout.LayoutVersion)
+            {
+                e.Allow = false;
             }
         }
     }
