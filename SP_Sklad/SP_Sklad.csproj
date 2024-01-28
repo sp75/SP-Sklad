@@ -3448,6 +3448,26 @@
     <None Include="Resources\countries.png" />
     <None Include="Resources\taxes.png" />
     <None Include="Resources\event_log.png" />
+    <None Include="Resources\management_ raw_materials.png" />
+    <None Include="Resources\boproduct_reserved.png" />
+    <None Include="Resources\boproduct_reserved_2.png" />
+    <None Include="Resources\boproduct_reserved_3.png" />
+    <None Include="Resources\product_reserved_1.png" />
+    <None Include="Resources\product_reserved_2.png" />
+    <None Include="Resources\product_info_2.png" />
+    <None Include="Resources\product_info_3.png" />
+    <None Include="Resources\formatnumbershortdate_16x16.png" />
+    <None Include="Resources\production_planning.png" />
+    <None Include="Resources\management_ raw_materials_2.png" />
+    <None Include="Resources\product_movement.png" />
+    <None Include="Resources\service_3.png" />
+    <None Include="Resources\supplier.png" />
+    <None Include="Resources\type_acounts.png" />
+    <None Include="Resources\calculationoptions_16x16.png" />
+    <None Include="Resources\kontragents_folder.png" />
+    <None Include="Resources\planned_calculation.png" />
+    <None Include="Resources\credit_adjustmen.png" />
+    <None Include="Resources\debt_adjustment.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -41,7 +41,6 @@
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatTurnInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.DeboningMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefreshWhBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
@@ -64,6 +63,7 @@
             this.standaloneBarDockControl9 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl10 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -347,7 +347,7 @@
             // 
             this.MatInfoBtn.Caption = "Інформація про товар";
             this.MatInfoBtn.Id = 7;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 0;
+            this.MatInfoBtn.ImageOptions.ImageIndex = 4;
             this.MatInfoBtn.Name = "MatInfoBtn";
             this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
@@ -355,7 +355,7 @@
             // 
             this.MatTurnInfoBtn.Caption = "Інформація про рух товару";
             this.MatTurnInfoBtn.Id = 8;
-            this.MatTurnInfoBtn.ImageOptions.ImageIndex = 11;
+            this.MatTurnInfoBtn.ImageOptions.ImageIndex = 5;
             this.MatTurnInfoBtn.Name = "MatTurnInfoBtn";
             this.MatTurnInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatTurnInfoBtn_ItemClick);
             // 
@@ -363,17 +363,9 @@
             // 
             this.RsvInfoBtn.Caption = "Інформація про резерв товару";
             this.RsvInfoBtn.Id = 9;
-            this.RsvInfoBtn.ImageOptions.ImageIndex = 12;
+            this.RsvInfoBtn.ImageOptions.ImageIndex = 3;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
             this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Показати список аналогів";
-            this.barButtonItem4.Id = 10;
-            this.barButtonItem4.ImageOptions.ImageIndex = 13;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // DeboningMatBtn
             // 
@@ -594,6 +586,20 @@
             this.imageCollection1.Images.SetKeyName(1, "deboneing");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.imageCollection1.Images.SetKeyName(2, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "product_reserved_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_movement, "product_movement", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "product_movement");
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Показати список аналогів";
+            this.barButtonItem4.Id = 10;
+            this.barButtonItem4.ImageOptions.ImageIndex = 13;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // barButtonItem1
             // 
