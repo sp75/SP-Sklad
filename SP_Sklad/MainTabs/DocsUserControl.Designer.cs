@@ -274,7 +274,8 @@
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 25);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "kontragents_folder");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "Послуги.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.project_16x16, "project_16x16", typeof(global::SP_Sklad.Properties.Resources), 27);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "project_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.recipes, "recipes", typeof(global::SP_Sklad.Properties.Resources), 28);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "recipes");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
@@ -309,10 +310,11 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "pay_wb.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "юзер.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "user_monitor");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(50, "exec16.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 51);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "new_document");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 51);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "supplier");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(52, "Інформація про рух товарів.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "пратнерка.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "route.png");
