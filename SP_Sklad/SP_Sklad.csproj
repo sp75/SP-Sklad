@@ -3271,7 +3271,6 @@
     <None Include="Resources\technology_16x161.png" />
     <None Include="Resources\projectdirectory_16x16.png" />
     <None Include="Resources\gaugestylehalfcircular_16x16.png" />
-    <None Include="Resources\technology_16x162.png" />
     <None Include="Resources\boorderitem_16x16.png" />
     <None Include="Resources\info_32x32.png" />
     <None Include="Resources\info_32x321.png" />
@@ -3437,7 +3436,6 @@
     <None Include="Resources\discount_card.png" />
     <None Include="Resources\tag_16x16.png" />
     <None Include="Resources\build_16x16.png" />
-    <None Include="Resources\tag_16x161.png" />
     <None Include="Resources\price_settings.png" />
     <None Include="Resources\sql_script.png" />
     <None Include="Resources\database.png" />
@@ -3451,14 +3449,12 @@
     <None Include="Resources\management_ raw_materials.png" />
     <None Include="Resources\boproduct_reserved.png" />
     <None Include="Resources\boproduct_reserved_2.png" />
-    <None Include="Resources\boproduct_reserved_3.png" />
     <None Include="Resources\product_reserved_1.png" />
     <None Include="Resources\product_reserved_2.png" />
     <None Include="Resources\product_info_2.png" />
     <None Include="Resources\product_info_3.png" />
     <None Include="Resources\formatnumbershortdate_16x16.png" />
     <None Include="Resources\production_planning.png" />
-    <None Include="Resources\management_ raw_materials_2.png" />
     <None Include="Resources\product_movement.png" />
     <None Include="Resources\service_3.png" />
     <None Include="Resources\supplier.png" />
@@ -3475,6 +3471,13 @@
     <None Include="Resources\recipes_1.png" />
     <None Include="Resources\receipt.png" />
     <None Include="Resources\service_1.png" />
+    <None Include="Resources\boproductgroup_16x16.png" />
+    <None Include="Resources\packageproduct_16x16.png" />
+    <None Include="Resources\product_16x16.png" />
+    <None Include="Resources\warehouse_1.png" />
+    <None Include="Resources\product.png" />
+    <None Include="Resources\teh_process.png" />
+    <None Include="Resources\bank_statements.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

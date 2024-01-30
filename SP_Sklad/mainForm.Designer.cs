@@ -94,7 +94,6 @@
             this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
-            this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
@@ -117,8 +116,6 @@
             this.mainTabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.TradeTabPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -796,135 +793,6 @@
             this.tradeUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.tradeUserControl1.TabIndex = 0;
             // 
-            // UserTreeImgList
-            // 
-            // 
-            // 
-            // 
-            this.UserTreeImgList.ImageSource.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("UserTreeImgList.ImageSource.ImageStream")));
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.home_16x16, "home_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(0, "home_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.article_16x16, "article_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(1, "article_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(2, "open_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(3, "waybill_in");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(4, "invoice");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(5, "waybill_out");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(6, "податкова накладна.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(7, "Счет-фактуры.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "pay_doc(-1)_3.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "wb_return_out.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "wb_return_in.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "boproductgroup_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "Накладні переміщення.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 25);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "kontragents_folder");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 27);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "service");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.recipes_1, "recipes_1", typeof(global::SP_Sklad.Properties.Resources), 28);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "recipes_1");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.discount_card, "discount_card", typeof(global::SP_Sklad.Properties.Resources), 30);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "discount_card");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wh, "wh", typeof(global::SP_Sklad.Properties.Resources), 31);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "wh");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.tag_16x16, "tag_16x16", typeof(global::SP_Sklad.Properties.Resources), 34);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "tag_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.type_acounts, "type_acounts", typeof(global::SP_Sklad.Properties.Resources), 35);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "type_acounts");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.countries, "countries", typeof(global::SP_Sklad.Properties.Resources), 36);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(36, "countries");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(37, "Статті витрат.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(38, "receipt_2.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.taxes, "taxes", typeof(global::SP_Sklad.Properties.Resources), 39);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(39, "taxes");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.ide_16x16, "ide_16x16", typeof(global::SP_Sklad.Properties.Resources), 40);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(40, "ide_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.employees, "employees", typeof(global::SP_Sklad.Properties.Resources), 41);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(41, "employees");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.database, "database", typeof(global::SP_Sklad.Properties.Resources), 42);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(42, "database");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.sql_script, "sql_script", typeof(global::SP_Sklad.Properties.Resources), 43);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(43, "sql_script");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.event_log, "event_log", typeof(global::SP_Sklad.Properties.Resources), 44);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "event_log");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.properties_16x16, "properties_16x16", typeof(global::SP_Sklad.Properties.Resources), 45);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "money-bag.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "pay_wb.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "user_monitor");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(50, "exec16.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 51);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "supplier");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(52, "Інформація про рух товарів.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 53);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "deboneing");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "route.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.production_planning, "production_planning", typeof(global::SP_Sklad.Properties.Resources), 55);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "production_planning");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.planned_calculation, "planned_calculation", typeof(global::SP_Sklad.Properties.Resources), 56);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "planned_calculation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "3.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "Фінанси.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 61);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(61, "debt_adjustment");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.credit_adjustmen, "credit_adjustmen", typeof(global::SP_Sklad.Properties.Resources), 62);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(62, "credit_adjustmen");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 64);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_valet, "user_valet", typeof(global::SP_Sklad.Properties.Resources), 70);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "user_valet");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.datasource_16x16, "datasource_16x16", typeof(global::SP_Sklad.Properties.Resources), 71);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "datasource_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "pay_wb.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.management__raw_materials, "management__raw_materials", typeof(global::SP_Sklad.Properties.Resources), 73);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management__raw_materials");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_settings, "price_settings", typeof(global::SP_Sklad.Properties.Resources), 79);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(79, "price_settings");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(80, "delivery-truck (1).png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.enterprise, "enterprise", typeof(global::SP_Sklad.Properties.Resources), 81);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "enterprise");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 82);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
-            this.UserTreeImgList.ParentControl = this;
-            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -965,8 +833,6 @@
             this.mainTabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.TradeTabPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1025,7 +891,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem CashierWorkplaceBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         private DevExpress.XtraTab.XtraTabPage TradeTabPage;
         private MainTabs.TradeUserControl tradeUserControl1;
         private DevExpress.XtraBars.BarButtonItem NewCustomerOrder;
