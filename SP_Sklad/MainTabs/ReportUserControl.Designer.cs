@@ -368,8 +368,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.discount_card, "discount_card", typeof(global::SP_Sklad.Properties.Resources), 30);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "discount_card");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 31);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "warehouse");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 31);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "warehouse_2");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
@@ -432,7 +432,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "user_valet");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank_statements, "bank_statements", typeof(global::SP_Sklad.Properties.Resources), 71);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "bank_statements");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "pay_wb.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank_account, "bank_account", typeof(global::SP_Sklad.Properties.Resources), 72);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "bank_account");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.management__raw_materials, "management__raw_materials", typeof(global::SP_Sklad.Properties.Resources), 73);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management__raw_materials");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");

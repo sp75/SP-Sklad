@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OLD_WarehouseUserControl));
-            DevExpress.XtraCharts.XYDiagram xyDiagram7 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series13 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView19 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series14 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView20 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView21 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView4 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView5 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView6 = new DevExpress.XtraCharts.StackedBarSeriesView();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -373,12 +373,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView19)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView20)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).BeginInit();
             this.xtraTabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
@@ -1244,8 +1244,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.discount_card, "discount_card", typeof(global::SP_Sklad.Properties.Resources), 30);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "discount_card");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 31);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "warehouse");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 31);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "warehouse_2");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
@@ -1308,7 +1308,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "user_valet");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank_statements, "bank_statements", typeof(global::SP_Sklad.Properties.Resources), 71);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(71, "bank_statements");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "pay_wb.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank_account, "bank_account", typeof(global::SP_Sklad.Properties.Resources), 72);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(72, "bank_account");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.management__raw_materials, "management__raw_materials", typeof(global::SP_Sklad.Properties.Resources), 73);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management__raw_materials");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
@@ -2595,33 +2596,33 @@
             // chartControl1
             // 
             this.chartControl1.DataSource = this.REP_15BS;
-            xyDiagram7.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram7.AxisY.Interlaced = true;
-            xyDiagram7.AxisY.MinorCount = 4;
-            xyDiagram7.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram7;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Interlaced = true;
+            xyDiagram2.AxisY.MinorCount = 4;
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram2;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series13.ArgumentDataMember = "OnDate";
-            series13.LegendTextPattern = "Відгрузка";
-            series13.Name = "OutLine";
-            series13.ValueDataMembersSerializable = "AmountOut";
-            stackedBarSeriesView19.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            series13.View = stackedBarSeriesView19;
-            series14.ArgumentDataMember = "OnDate";
-            series14.LegendTextPattern = "Повернення";
-            series14.Name = "ReturnLine";
-            series14.ValueDataMembersSerializable = "ReturnAmount";
-            stackedBarSeriesView20.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series14.View = stackedBarSeriesView20;
+            series3.ArgumentDataMember = "OnDate";
+            series3.LegendTextPattern = "Відгрузка";
+            series3.Name = "OutLine";
+            series3.ValueDataMembersSerializable = "AmountOut";
+            stackedBarSeriesView4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            series3.View = stackedBarSeriesView4;
+            series4.ArgumentDataMember = "OnDate";
+            series4.LegendTextPattern = "Повернення";
+            series4.Name = "ReturnLine";
+            series4.ValueDataMembersSerializable = "ReturnAmount";
+            stackedBarSeriesView5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series4.View = stackedBarSeriesView5;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series13,
-        series14};
-            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView21;
+        series3,
+        series4};
+            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView6;
             this.chartControl1.Size = new System.Drawing.Size(1212, 156);
             this.chartControl1.TabIndex = 1;
             // 
@@ -3578,12 +3579,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView19)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView20)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).EndInit();
             this.xtraTabPage13.ResumeLayout(false);

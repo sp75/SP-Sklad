@@ -3478,6 +3478,8 @@
     <None Include="Resources\product.png" />
     <None Include="Resources\teh_process.png" />
     <None Include="Resources\bank_statements.png" />
+    <None Include="Resources\bank_account.png" />
+    <None Include="Resources\warehouse_2.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
