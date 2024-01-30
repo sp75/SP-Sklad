@@ -3468,6 +3468,13 @@
     <None Include="Resources\planned_calculation.png" />
     <None Include="Resources\credit_adjustmen.png" />
     <None Include="Resources\debt_adjustment.png" />
+    <None Include="Resources\service.png" />
+    <None Include="Resources\warehouse.png" />
+    <None Include="Resources\wh.png" />
+    <None Include="Resources\recipes_2.png" />
+    <None Include="Resources\recipes_1.png" />
+    <None Include="Resources\receipt.png" />
+    <None Include="Resources\service_1.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

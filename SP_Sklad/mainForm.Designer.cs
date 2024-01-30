@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
-            this.barManagerImgList = new System.Windows.Forms.ImageList(this.components);
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.PrevBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -122,91 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // barManagerImgList
-            // 
-            this.barManagerImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("barManagerImgList.ImageStream")));
-            this.barManagerImgList.TransparentColor = System.Drawing.Color.White;
-            this.barManagerImgList.Images.SetKeyName(0, "Склад+Торговля.bmp");
-            this.barManagerImgList.Images.SetKeyName(1, "Документы16x16.bmp");
-            this.barManagerImgList.Images.SetKeyName(2, "OpenFolder.bmp");
-            this.barManagerImgList.Images.SetKeyName(3, "ПриходНакл.bmp");
-            this.barManagerImgList.Images.SetKeyName(4, "Счета.bmp");
-            this.barManagerImgList.Images.SetKeyName(5, "РасходНакл.bmp");
-            this.barManagerImgList.Images.SetKeyName(6, "податкова накладна.bmp");
-            this.barManagerImgList.Images.SetKeyName(7, "Счет-фактуры.bmp");
-            this.barManagerImgList.Images.SetKeyName(8, "ВходПлатежи.bmp");
-            this.barManagerImgList.Images.SetKeyName(9, "ИсходПлатежи.bmp");
-            this.barManagerImgList.Images.SetKeyName(10, "ДопРасход.bmp");
-            this.barManagerImgList.Images.SetKeyName(11, "Возврат Поставщику.bmp");
-            this.barManagerImgList.Images.SetKeyName(12, "Возврат от клиетна.bmp");
-            this.barManagerImgList.Images.SetKeyName(13, "Заказ от клиента.bmp");
-            this.barManagerImgList.Images.SetKeyName(14, "Заказ поставщикам.bmp");
-            this.barManagerImgList.Images.SetKeyName(15, "Договор купли.bmp");
-            this.barManagerImgList.Images.SetKeyName(16, "Договор продажу.bmp");
-            this.barManagerImgList.Images.SetKeyName(17, "Прайс лист.bmp");
-            this.barManagerImgList.Images.SetKeyName(18, "Склади.bmp");
-            this.barManagerImgList.Images.SetKeyName(19, "Накладн_ перем_щення.bmp");
-            this.barManagerImgList.Images.SetKeyName(20, "Введення залишк_в товар_в.bmp");
-            this.barManagerImgList.Images.SetKeyName(21, "Акти списання товару.bmp");
-            this.barManagerImgList.Images.SetKeyName(22, "Акти iнвентаризацiї.bmp");
-            this.barManagerImgList.Images.SetKeyName(23, "Отчеты.bmp");
-            this.barManagerImgList.Images.SetKeyName(24, "Справочники.bmp");
-            this.barManagerImgList.Images.SetKeyName(25, "Конрагент.bmp");
-            this.barManagerImgList.Images.SetKeyName(26, "Товари.bmp");
-            this.barManagerImgList.Images.SetKeyName(27, "Послуги.bmp");
-            this.barManagerImgList.Images.SetKeyName(28, "korganizer.png");
-            this.barManagerImgList.Images.SetKeyName(29, "пратнерка.png");
-            this.barManagerImgList.Images.SetKeyName(30, "111.bmp");
-            this.barManagerImgList.Images.SetKeyName(31, "ПриходНакл+.bmp");
-            this.barManagerImgList.Images.SetKeyName(32, "РасходНакл+.bmp");
-            this.barManagerImgList.Images.SetKeyName(33, "lock.png");
-            this.barManagerImgList.Images.SetKeyName(34, "CashRegister.png");
-            this.barManagerImgList.Images.SetKeyName(35, "edittask_16x16.png");
-            // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Счета.bmp");
-            this.GridImageList.Images.SetKeyName(2, "РасходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(3, "Счет-фактуры.bmp");
-            this.GridImageList.Images.SetKeyName(4, "ВходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(5, "ИсходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(6, "ДопРасход.bmp");
-            this.GridImageList.Images.SetKeyName(7, "Возврат Поставщику.bmp");
-            this.GridImageList.Images.SetKeyName(8, "Возврат от клиетна.bmp");
-            this.GridImageList.Images.SetKeyName(9, "Заказ от клиента.bmp");
-            this.GridImageList.Images.SetKeyName(10, "Заказ поставщикам.bmp");
-            this.GridImageList.Images.SetKeyName(11, "Договор купли.bmp");
-            this.GridImageList.Images.SetKeyName(12, "Договор продажу.bmp");
-            this.GridImageList.Images.SetKeyName(13, "Прайс лист.bmp");
-            this.GridImageList.Images.SetKeyName(14, "Введення залишк_в товар_в.bmp");
-            this.GridImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
-            this.GridImageList.Images.SetKeyName(16, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(17, "Накладн_ перем_щення.bmp");
-            this.GridImageList.Images.SetKeyName(18, "Бази даних.bmp");
-            this.GridImageList.Images.SetKeyName(19, "Add.bmp");
-            this.GridImageList.Images.SetKeyName(20, "edit.bmp");
-            this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "Так.bmp");
-            this.GridImageList.Images.SetKeyName(23, "н_.bmp");
-            this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
-            this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
-            this.GridImageList.Images.SetKeyName(26, "exec16.png");
-            this.GridImageList.Images.SetKeyName(27, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(28, "Службовц_.bmp");
-            this.GridImageList.Images.SetKeyName(29, "списати грош_.bmp");
-            this.GridImageList.Images.SetKeyName(30, "зарахувати.bmp");
-            this.GridImageList.Images.SetKeyName(31, "Акти iнвентаризацiї.bmp");
-            this.GridImageList.Images.SetKeyName(32, "позначити.bmp");
-            this.GridImageList.Images.SetKeyName(33, "пратнерка.png");
-            this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
-            this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
-            this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "1335611633_link_break.png");
-            this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             // 
             // barManager1
             // 
@@ -738,7 +651,7 @@
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.reportUserControl1);
-            this.xtraTabPage5.ImageOptions.ImageIndex = 5;
+            this.xtraTabPage5.ImageOptions.ImageIndex = 11;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1186, 591);
             this.xtraTabPage5.TabPageWidth = 120;
@@ -924,14 +837,15 @@
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 25);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(25, "kontragents_folder");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(26, "Товари.png");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.project_16x16, "project_16x16", typeof(global::SP_Sklad.Properties.Resources), 27);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "project_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.recipes, "recipes", typeof(global::SP_Sklad.Properties.Resources), 28);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "recipes");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 27);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(27, "service");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.recipes_1, "recipes_1", typeof(global::SP_Sklad.Properties.Resources), 28);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(28, "recipes_1");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(29, "currency_16x161.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.discount_card, "discount_card", typeof(global::SP_Sklad.Properties.Resources), 30);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(30, "discount_card");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "Склади.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wh, "wh", typeof(global::SP_Sklad.Properties.Resources), 31);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(31, "wh");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
@@ -966,7 +880,8 @@
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 51);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(51, "supplier");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(52, "Інформація про рух товарів.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "пратнерка.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 53);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(53, "deboneing");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(54, "route.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.production_planning, "production_planning", typeof(global::SP_Sklad.Properties.Resources), 55);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "production_planning");
@@ -1074,8 +989,6 @@
         private DevExpress.XtraBars.BarEditItem CurDateEditBarItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
-        public System.Windows.Forms.ImageList barManagerImgList;
-        public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
