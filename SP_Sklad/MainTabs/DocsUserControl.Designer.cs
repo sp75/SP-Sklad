@@ -376,7 +376,7 @@
             this.wbContentTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wbContentTab.Location = new System.Drawing.Point(0, 24);
             this.wbContentTab.Name = "wbContentTab";
-            this.wbContentTab.SelectedTabPage = this.xtraTabPage7;
+            this.wbContentTab.SelectedTabPage = this.xtraTabPage6;
             this.wbContentTab.Size = new System.Drawing.Size(1140, 720);
             this.wbContentTab.TabIndex = 2;
             this.wbContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
