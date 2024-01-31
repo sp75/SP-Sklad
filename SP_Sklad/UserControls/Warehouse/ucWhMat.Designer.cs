@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWhMat));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView1 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView2 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView3 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram15 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series29 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView43 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series30 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView44 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView45 = new DevExpress.XtraCharts.StackedBarSeriesView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -204,6 +204,7 @@
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -262,17 +263,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series29)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series30)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView45)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).BeginInit();
             this.xtraTabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -424,7 +426,7 @@
             // 
             this.DelItem.Caption = "Видалити помічені товари";
             this.DelItem.Id = 16;
-            this.DelItem.ImageOptions.ImageIndex = 17;
+            this.DelItem.ImageOptions.ImageIndex = 10;
             this.DelItem.Name = "DelItem";
             this.DelItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelItem_ItemClick);
             // 
@@ -432,7 +434,7 @@
             // 
             this.AddItem.Caption = "Додати товар в список";
             this.AddItem.Id = 17;
-            this.AddItem.ImageOptions.ImageIndex = 16;
+            this.AddItem.ImageOptions.ImageIndex = 9;
             this.AddItem.Name = "AddItem";
             this.AddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddItem_ItemClick);
             // 
@@ -584,14 +586,28 @@
             this.imageCollection1.Images.SetKeyName(0, "product_info");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "deboneing");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "refresh");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.imageCollection1.Images.SetKeyName(3, "product_reserved_1");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "product_info_3");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_movement, "product_movement", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "product_movement");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "move_warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "order_info");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.info_process, "info_process", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "info_process");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_price, "add_price", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "add_price");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_down, "product_down", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "product_down");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_up, "product_up", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "product_up");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "converttorange_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_movement, "product_movement", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "product_movement");
             // 
             // barButtonItem4
             // 
@@ -605,7 +621,7 @@
             // 
             this.barButtonItem1.Caption = "Інформація про замовлення";
             this.barButtonItem1.Id = 18;
-            this.barButtonItem1.ImageOptions.ImageIndex = 18;
+            this.barButtonItem1.ImageOptions.ImageIndex = 6;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -668,7 +684,7 @@
             // 
             this.barButtonItem10.Caption = "Інформація про виробництво товару";
             this.barButtonItem10.Id = 33;
-            this.barButtonItem10.ImageOptions.ImageIndex = 21;
+            this.barButtonItem10.ImageOptions.ImageIndex = 7;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
@@ -676,6 +692,7 @@
             // 
             this.barButtonItem7.Caption = "Встановити налаштування сітки по замовчуванню";
             this.barButtonItem7.Id = 35;
+            this.barButtonItem7.ImageOptions.ImageIndex = 11;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
@@ -690,7 +707,7 @@
             // 
             this.SetPriceBtnItem.Caption = "Встановити ціну товару";
             this.SetPriceBtnItem.Id = 45;
-            this.SetPriceBtnItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.Image")));
+            this.SetPriceBtnItem.ImageOptions.ImageIndex = 8;
             this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
             this.SetPriceBtnItem.Name = "SetPriceBtnItem";
             this.SetPriceBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SetPriceBtnItem_ItemClick);
@@ -1129,7 +1146,7 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Images = this.PageImageList;
+            this.xtraTabControl1.Images = this.imageCollection2;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
@@ -1175,7 +1192,7 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.RemainOnWhGrid);
-            this.xtraTabPage3.ImageOptions.ImageIndex = 7;
+            this.xtraTabPage3.ImageOptions.ImageIndex = 0;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage3.Text = "Наявність на складах";
@@ -1252,7 +1269,7 @@
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.PosGridControl);
-            this.xtraTabPage4.ImageOptions.ImageIndex = 4;
+            this.xtraTabPage4.ImageOptions.ImageIndex = 1;
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage4.Text = "Партії";
@@ -1465,7 +1482,7 @@
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.gridControl5);
-            this.xtraTabPage5.ImageOptions.ImageIndex = 5;
+            this.xtraTabPage5.ImageOptions.ImageIndex = 2;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage5.Text = "Замовлене";
@@ -1688,7 +1705,6 @@
             // xtraTabPage9
             // 
             this.xtraTabPage9.Controls.Add(this.MatChangeGridControl);
-            this.xtraTabPage9.ImageOptions.ImageIndex = 6;
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage9.Text = "Взаємозамінність";
@@ -2017,7 +2033,7 @@
             // 
             this.xtraTabPage12.Controls.Add(this.simpleButton1);
             this.xtraTabPage12.Controls.Add(this.chartControl1);
-            this.xtraTabPage12.ImageOptions.ImageIndex = 20;
+            this.xtraTabPage12.ImageOptions.ImageIndex = 4;
             this.xtraTabPage12.Name = "xtraTabPage12";
             this.xtraTabPage12.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage12.Text = "Динаміка продажу";
@@ -2036,33 +2052,33 @@
             // chartControl1
             // 
             this.chartControl1.DataSource = this.REP_15BS;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Interlaced = true;
-            xyDiagram1.AxisY.MinorCount = 4;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram1;
+            xyDiagram15.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram15.AxisY.Interlaced = true;
+            xyDiagram15.AxisY.MinorCount = 4;
+            xyDiagram15.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram15;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series1.ArgumentDataMember = "OnDate";
-            series1.LegendTextPattern = "Відгрузка";
-            series1.Name = "OutLine";
-            series1.ValueDataMembersSerializable = "AmountOut";
-            stackedBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            series1.View = stackedBarSeriesView1;
-            series2.ArgumentDataMember = "OnDate";
-            series2.LegendTextPattern = "Повернення";
-            series2.Name = "ReturnLine";
-            series2.ValueDataMembersSerializable = "ReturnAmount";
-            stackedBarSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.View = stackedBarSeriesView2;
+            series29.ArgumentDataMember = "OnDate";
+            series29.LegendTextPattern = "Відгрузка";
+            series29.Name = "OutLine";
+            series29.ValueDataMembersSerializable = "AmountOut";
+            stackedBarSeriesView43.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            series29.View = stackedBarSeriesView43;
+            series30.ArgumentDataMember = "OnDate";
+            series30.LegendTextPattern = "Повернення";
+            series30.Name = "ReturnLine";
+            series30.ValueDataMembersSerializable = "ReturnAmount";
+            stackedBarSeriesView44.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series30.View = stackedBarSeriesView44;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2};
-            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView3;
+        series29,
+        series30};
+            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView45;
             this.chartControl1.Size = new System.Drawing.Size(1379, 156);
             this.chartControl1.TabIndex = 1;
             this.chartControl1.DoubleClick += new System.EventHandler(this.chartControl1_DoubleClick);
@@ -2074,7 +2090,7 @@
             // xtraTabPage13
             // 
             this.xtraTabPage13.Controls.Add(this.vGridControl2);
-            this.xtraTabPage13.ImageOptions.ImageIndex = 1;
+            this.xtraTabPage13.ImageOptions.ImageIndex = 3;
             this.xtraTabPage13.Name = "xtraTabPage13";
             this.xtraTabPage13.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage13.Text = "Додадкова інформація";
@@ -2162,6 +2178,21 @@
             this.GridImageList.Images.SetKeyName(39, "Без имени-2.png");
             this.GridImageList.Images.SetKeyName(40, "management2.png");
             // 
+            // imageCollection2
+            // 
+            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
+            this.imageCollection2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection2.Images.SetKeyName(0, "warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.pos_in_wh, "pos_in_wh", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection2.Images.SetKeyName(1, "pos_in_wh");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection2.Images.SetKeyName(2, "order_info");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.info_16x16, "info_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection2.Images.SetKeyName(3, "info_16x16");
+            this.imageCollection2.InsertGalleryImage("column2_16x16.png", "images/chart/column2_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/chart/column2_16x16.png"), 4);
+            this.imageCollection2.Images.SetKeyName(4, "column2_16x16.png");
+            // 
             // ucWhMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2241,18 +2272,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series29)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series30)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView45)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).EndInit();
             this.xtraTabPage13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2428,5 +2460,6 @@
         public System.Windows.Forms.ImageList PageImageList;
         public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.Utils.ImageCollection imageCollection2;
     }
 }

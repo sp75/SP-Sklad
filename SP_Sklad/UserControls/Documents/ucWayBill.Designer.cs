@@ -282,7 +282,7 @@
             this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
             this.imageCollection1.Images.SetKeyName(7, "preview_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
             this.imageCollection1.Images.SetKeyName(9, "wb_in_16x16.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);

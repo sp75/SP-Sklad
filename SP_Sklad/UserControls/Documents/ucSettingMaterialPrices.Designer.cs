@@ -272,7 +272,7 @@
             this.imageCollection1.Images.SetKeyName(9, "delete_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "copy_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "refreshallpivottable_16x16");
             this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);

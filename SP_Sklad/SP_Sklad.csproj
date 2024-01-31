@@ -3451,7 +3451,6 @@
     <None Include="Resources\boproduct_reserved_2.png" />
     <None Include="Resources\product_reserved_1.png" />
     <None Include="Resources\product_reserved_2.png" />
-    <None Include="Resources\product_info_2.png" />
     <None Include="Resources\product_info_3.png" />
     <None Include="Resources\formatnumbershortdate_16x16.png" />
     <None Include="Resources\production_planning.png" />
@@ -3466,8 +3465,6 @@
     <None Include="Resources\debt_adjustment.png" />
     <None Include="Resources\service.png" />
     <None Include="Resources\warehouse.png" />
-    <None Include="Resources\wh.png" />
-    <None Include="Resources\recipes_2.png" />
     <None Include="Resources\recipes_1.png" />
     <None Include="Resources\receipt.png" />
     <None Include="Resources\service_1.png" />
@@ -3480,6 +3477,19 @@
     <None Include="Resources\bank_statements.png" />
     <None Include="Resources\bank_account.png" />
     <None Include="Resources\warehouse_2.png" />
+    <None Include="Resources\act_services_provider.png" />
+    <None Include="Resources\up_16x16.png" />
+    <None Include="Resources\sortasc_16x16.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\order_info.png" />
+    <None Include="Resources\add_price.png" />
+    <None Include="Resources\product_up.png" />
+    <None Include="Resources\product_down.png" />
+    <None Include="Resources\info_process.png" />
+    <None Include="Resources\move_warehouse.png" />
+    <None Include="Resources\kontragent_balans.png" />
+    <None Include="Resources\product_pos.png" />
+    <None Include="Resources\pos_in_wh.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

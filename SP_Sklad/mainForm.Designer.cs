@@ -774,6 +774,8 @@
             this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
             this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
             this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(12, "warehouse_32.png");
+            this.TabImageCollection.Images.SetKeyName(13, "functionsfinancial_32x32.png");
             // 
             // TradeTabPage
             // 

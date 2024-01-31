@@ -353,7 +353,8 @@
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.management__raw_materials, "management__raw_materials", typeof(global::SP_Sklad.Properties.Resources), 73);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(73, "management__raw_materials");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(74, "management2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "projectfile_2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.act_services_provider, "act_services_provider", typeof(global::SP_Sklad.Properties.Resources), 75);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "act_services_provider");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
@@ -365,6 +366,7 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "enterprise");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 82);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "projectfile_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -1074,7 +1076,7 @@
             this.BarImageList1.Images.SetKeyName(2, "edit_2");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.BarImageList1.Images.SetKeyName(3, "delete_16x16");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refreshallpivottable_16x16, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.BarImageList1.Images.SetKeyName(4, "refreshallpivottable_16x16");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
