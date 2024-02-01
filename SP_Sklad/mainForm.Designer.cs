@@ -448,7 +448,7 @@
             // 
             this.WbCorrListBtn.Caption = "Список корегуваннь документів";
             this.WbCorrListBtn.Id = 39;
-            this.WbCorrListBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.showtestreport_16x161;
+            this.WbCorrListBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.showtestreport_16x16;
             this.WbCorrListBtn.Name = "WbCorrListBtn";
             this.WbCorrListBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbCorrListBtn_ItemClick);
             // 

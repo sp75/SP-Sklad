@@ -36,6 +36,7 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
+            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -43,7 +44,6 @@
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.ucPayDocIn = new SP_Sklad.UserControls.ucPayDoc();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
@@ -256,10 +256,14 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(8, "pay_doc(1)_2.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(9, "pay_doc(-1)_3.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(10, "ДопРасход.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "wb_return_out.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "wb_return_in.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_out, "wb_return_out", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(11, "wb_return_out");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_in, "wb_return_in", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(12, "wb_return_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "inserttableofcontents_16x16.png");
@@ -267,9 +271,12 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "boproductgroup_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "move_stock");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act_2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(20, "WBWriteOn_4");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 21);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
@@ -340,10 +347,12 @@
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 64);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "Без имени-2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 69);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(69, "wb_return_sale");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_valet, "user_valet", typeof(global::SP_Sklad.Properties.Resources), 70);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(70, "user_valet");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank_statements, "bank_statements", typeof(global::SP_Sklad.Properties.Resources), 71);
@@ -366,7 +375,6 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "enterprise");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 82);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "projectfile_2.png");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -404,6 +412,12 @@
             this.xtraTabPage41,
             this.xtraTabPage20,
             this.xtraTabPage21});
+            // 
+            // xtraTabPage6
+            // 
+            this.xtraTabPage6.Name = "xtraTabPage6";
+            this.xtraTabPage6.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage7
             // 
@@ -467,12 +481,6 @@
             this.PrintItemBtn.ImageOptions.ImageIndex = 6;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
-            // xtraTabPage6
-            // 
-            this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1138, 695);
-            this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage8
             // 

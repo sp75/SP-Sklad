@@ -287,8 +287,8 @@
             this.imageCollection1.Images.SetKeyName(14, "exportfile_16x16.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "WBWriteOff_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act_2, "inventory_act_2", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.imageCollection1.Images.SetKeyName(16, "inventory_act_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "inventory_act");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.imageCollection1.Images.SetKeyName(17, "WBWriteOn_4");
             // 

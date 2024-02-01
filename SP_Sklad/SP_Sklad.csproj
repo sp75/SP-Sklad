@@ -3289,7 +3289,6 @@
     <None Include="Resources\calculatesheet_16x16.png" />
     <None Include="Resources\calculatesheet_32x32.png" />
     <None Include="Resources\cancel_32x32.png" />
-    <None Include="Resources\calculatesheet_16x161.png" />
     <None Include="Resources\left_16x16.png" />
     <None Include="Resources\transit_16x16.png" />
     <None Include="Resources\edittask_16x16.png" />
@@ -3302,8 +3301,6 @@
     <None Include="Resources\exporttoxlsx_32x32.png" />
     <None Include="Resources\showtestreport_16x16.png" />
     <None Include="Resources\showtestreport_32x32.png" />
-    <None Include="Resources\showtestreport_16x161.png" />
-    <None Include="Resources\showtestreport_32x321.png" />
     <None Include="Resources\recurrence_16x16.png" />
     <None Include="Resources\recurrence_32x32.png" />
     <None Include="Resources\historyitem_16x16.png" />
@@ -3361,7 +3358,6 @@
     <None Include="Resources\inbox_16x16.png" />
     <None Include="Resources\outbox_16x16.png" />
     <None Include="Resources\boproduct_16x16.png" />
-    <None Include="Resources\snapdeletelist_16x161.png" />
     <None Include="Resources\delete_16x16.png" />
     <None Include="Resources\refresh_16x161.png" />
     <None Include="Resources\updatetableofcontents_16x16.png" />
@@ -3490,6 +3486,11 @@
     <None Include="Resources\kontragent_balans.png" />
     <None Include="Resources\product_pos.png" />
     <None Include="Resources\pos_in_wh.png" />
+    <None Include="Resources\info1.png" />
+    <None Include="Resources\info_2.png" />
+    <None Include="Resources\inventory_act.png" />
+    <None Include="Resources\mat_pos_wh.png" />
+    <None Include="Resources\interchangeability.png" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
