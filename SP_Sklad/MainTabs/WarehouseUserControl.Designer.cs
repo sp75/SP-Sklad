@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WarehouseUserControl));
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
-            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.ByGrpBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -50,7 +48,7 @@
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -119,6 +117,7 @@
             this.barDockControl11 = new DevExpress.XtraBars.BarDockControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -142,78 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Счета.bmp");
-            this.GridImageList.Images.SetKeyName(2, "РасходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(3, "Счет-фактуры.bmp");
-            this.GridImageList.Images.SetKeyName(4, "ВходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(5, "ИсходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(6, "ДопРасход.bmp");
-            this.GridImageList.Images.SetKeyName(7, "Возврат Поставщику.bmp");
-            this.GridImageList.Images.SetKeyName(8, "Возврат от клиетна.bmp");
-            this.GridImageList.Images.SetKeyName(9, "Заказ от клиента.bmp");
-            this.GridImageList.Images.SetKeyName(10, "Заказ поставщикам.bmp");
-            this.GridImageList.Images.SetKeyName(11, "Договор купли.bmp");
-            this.GridImageList.Images.SetKeyName(12, "Договор продажу.bmp");
-            this.GridImageList.Images.SetKeyName(13, "Прайс лист.bmp");
-            this.GridImageList.Images.SetKeyName(14, "Введення залишк_в товар_в.bmp");
-            this.GridImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
-            this.GridImageList.Images.SetKeyName(16, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(17, "Накладн_ перем_щення.bmp");
-            this.GridImageList.Images.SetKeyName(18, "Бази даних.bmp");
-            this.GridImageList.Images.SetKeyName(19, "Add.bmp");
-            this.GridImageList.Images.SetKeyName(20, "edit.bmp");
-            this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "execute.png");
-            this.GridImageList.Images.SetKeyName(23, "storno.png");
-            this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
-            this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
-            this.GridImageList.Images.SetKeyName(26, "exec16.png");
-            this.GridImageList.Images.SetKeyName(27, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(28, "Службовц_.bmp");
-            this.GridImageList.Images.SetKeyName(29, "списати грош_.bmp");
-            this.GridImageList.Images.SetKeyName(30, "зарахувати.bmp");
-            this.GridImageList.Images.SetKeyName(31, "Акти iнвентаризацiї.bmp");
-            this.GridImageList.Images.SetKeyName(32, "позначити.bmp");
-            this.GridImageList.Images.SetKeyName(33, "пратнерка.png");
-            this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
-            this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
-            this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
-            this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
-            this.GridImageList.Images.SetKeyName(39, "Без имени-2.png");
-            this.GridImageList.Images.SetKeyName(40, "management2.png");
-            // 
-            // PageImageList
-            // 
-            this.PageImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PageImageList.ImageStream")));
-            this.PageImageList.TransparentColor = System.Drawing.Color.White;
-            this.PageImageList.Images.SetKeyName(0, "Товари.bmp");
-            this.PageImageList.Images.SetKeyName(1, "info.bmp");
-            this.PageImageList.Images.SetKeyName(2, "Зв\'язан_ документи.bmp");
-            this.PageImageList.Images.SetKeyName(3, "Склади.bmp");
-            this.PageImageList.Images.SetKeyName(4, "Парт_ї.bmp");
-            this.PageImageList.Images.SetKeyName(5, "Замовлене кл_єнтами.bmp");
-            this.PageImageList.Images.SetKeyName(6, "Аналоги.bmp");
-            this.PageImageList.Images.SetKeyName(7, "Наявн_сть на сладах.bmp");
-            this.PageImageList.Images.SetKeyName(8, "Ц_нов_ кат.bmp");
-            this.PageImageList.Images.SetKeyName(9, "edit.bmp");
-            this.PageImageList.Images.SetKeyName(10, "UserInfo.bmp");
-            this.PageImageList.Images.SetKeyName(11, "Типи рахунк_в.bmp");
-            this.PageImageList.Images.SetKeyName(12, "Службовц_.bmp");
-            this.PageImageList.Images.SetKeyName(13, "Документ.bmp");
-            this.PageImageList.Images.SetKeyName(14, "Товари списком.bmp");
-            this.PageImageList.Images.SetKeyName(15, "system-users.png");
-            this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
-            this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
-            this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
-            this.PageImageList.Images.SetKeyName(19, "Баланс з контрагентом.bmp");
-            this.PageImageList.Images.SetKeyName(20, "c.png");
-            // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
@@ -229,7 +156,7 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl6);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl8);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.BarImageList;
+            this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.NewItemBtn,
             this.CopyItemBtn,
@@ -299,7 +226,7 @@
             this.ByGrpBtn.Down = true;
             this.ByGrpBtn.GroupIndex = 1;
             this.ByGrpBtn.Id = 13;
-            this.ByGrpBtn.ImageOptions.ImageIndex = 8;
+            this.ByGrpBtn.ImageOptions.ImageIndex = 0;
             this.ByGrpBtn.Name = "ByGrpBtn";
             this.ByGrpBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ByGrpBtn_ItemClick);
             // 
@@ -309,7 +236,7 @@
             this.ByWhBtn.Caption = "По сладах";
             this.ByWhBtn.GroupIndex = 1;
             this.ByWhBtn.Id = 14;
-            this.ByWhBtn.ImageOptions.ImageIndex = 7;
+            this.ByWhBtn.ImageOptions.ImageIndex = 1;
             this.ByWhBtn.Name = "ByWhBtn";
             this.ByWhBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ByWhBtn_ItemClick);
             // 
@@ -319,7 +246,7 @@
             this.ViewDetailTree.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
             this.ViewDetailTree.Caption = "Відображати з підпорядкованих груп";
             this.ViewDetailTree.Id = 15;
-            this.ViewDetailTree.ImageOptions.ImageIndex = 9;
+            this.ViewDetailTree.ImageOptions.ImageIndex = 2;
             this.ViewDetailTree.Name = "ViewDetailTree";
             this.ViewDetailTree.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewDetailTree_ItemClick);
             // 
@@ -451,33 +378,14 @@
             this.standaloneBarDockControl8.Size = new System.Drawing.Size(1214, 0);
             this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
             // 
-            // BarImageList
+            // imageCollection1
             // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(8, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(9, "tree.png");
-            this.BarImageList.Images.SetKeyName(10, "_нформац_я про товар.bmp");
-            this.BarImageList.Images.SetKeyName(11, "Рух товар_в.bmp");
-            this.BarImageList.Images.SetKeyName(12, "_нформац_я про резерв товару.ico");
-            this.BarImageList.Images.SetKeyName(13, "Взаемозам_н_сть.bmp");
-            this.BarImageList.Images.SetKeyName(14, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(15, "пратнерка.png");
-            this.BarImageList.Images.SetKeyName(16, "down.bmp");
-            this.BarImageList.Images.SetKeyName(17, "Up.bmp");
-            this.BarImageList.Images.SetKeyName(18, "Замовлене кл_єнтами.bmp");
-            this.BarImageList.Images.SetKeyName(19, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(20, "Акти списання товару.bmp");
-            this.BarImageList.Images.SetKeyName(21, "exec16.png");
-            this.BarImageList.Images.SetKeyName(22, "update.png");
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.Images.SetKeyName(0, "product_group.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "warehouse");
+            this.imageCollection1.Images.SetKeyName(2, "tree_structure.png");
             // 
             // NewItemBtn
             // 
@@ -1201,6 +1109,7 @@
             this.Size = new System.Drawing.Size(1508, 674);
             this.Load += new System.EventHandler(this.WarehouseUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1.Panel1)).EndInit();
@@ -1232,8 +1141,6 @@
         }
 
         #endregion
-        public System.Windows.Forms.ImageList GridImageList;
-        public System.Windows.Forms.ImageList PageImageList;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarButtonItem NewItemBtn;
         private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
@@ -1245,7 +1152,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
@@ -1320,5 +1226,6 @@
         public UserControls.ucWaybillInventory ucWaybillInventory;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage19;
         public UserControls.Warehouse.ucWhMat ucWhMat;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

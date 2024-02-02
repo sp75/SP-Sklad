@@ -805,7 +805,9 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("mainForm.IconOptions.Image")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("mainForm.IconOptions.Icon")));
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.warehouse;
+            this.IconOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("mainForm.IconOptions.LargeImage")));
             this.Name = "mainForm";
             this.Text = "My ERP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

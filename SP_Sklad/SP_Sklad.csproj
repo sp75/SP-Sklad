@@ -3273,7 +3273,6 @@
     <None Include="Resources\gaugestylehalfcircular_16x16.png" />
     <None Include="Resources\boorderitem_16x16.png" />
     <None Include="Resources\info_32x32.png" />
-    <None Include="Resources\info_32x321.png" />
     <None Include="Resources\weightedpies_16x16.png" />
     <None Include="Resources\table_16x16.png" />
     <None Include="Resources\findbyid_16x16.png" />
@@ -3484,13 +3483,15 @@
     <None Include="Resources\info_process.png" />
     <None Include="Resources\move_warehouse.png" />
     <None Include="Resources\kontragent_balans.png" />
-    <None Include="Resources\product_pos.png" />
     <None Include="Resources\pos_in_wh.png" />
     <None Include="Resources\info1.png" />
     <None Include="Resources\info_2.png" />
     <None Include="Resources\inventory_act.png" />
     <None Include="Resources\mat_pos_wh.png" />
     <None Include="Resources\interchangeability.png" />
+    <None Include="Resources\mat_pos_wh_1.png" />
+    <None Include="Resources\product_list.png" />
+    <Content Include="warehouse.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>

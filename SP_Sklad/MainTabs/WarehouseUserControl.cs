@@ -129,12 +129,16 @@ namespace SP_Sklad.MainTabs
 
         private void ByGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ViewDetailTree.Enabled = true;
+
             ucWhMat.by_grp = ByGrpBtn.Down;
             GetTree(1);
         }
 
         private void ByWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            ViewDetailTree.Enabled = !ByWhBtn.Down;
+
             ucWhMat.display_child_groups = ViewDetailTree.Down;
             ucWhMat.by_grp = ByGrpBtn.Down;
             GetTree(2);
@@ -170,10 +174,9 @@ namespace SP_Sklad.MainTabs
 
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ByGrpBtn.Down = true;
+         //   ByGrpBtn.Down = true;
             ucWhMat.display_child_groups = ViewDetailTree.Down;
-            ucWhMat.by_grp = ByGrpBtn.Down;
-            RefreshWhBtn.PerformClick();
+        //    ucWhMat.by_grp = ByGrpBtn.Down;
 
             var result = ucWhMat.GetMatOnWh();
         }
