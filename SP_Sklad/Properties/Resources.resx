@@ -145,9 +145,6 @@
   <data name="barcode_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\barcode_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="projectfile_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\projectfile_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -192,9 +189,6 @@
   </data>
   <data name="download_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="currency_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\currency_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="table_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\table_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,9 +301,6 @@
   <data name="historyitem_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\historyitem_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boproduct_reserved_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boproduct_reserved_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="attach_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\attach_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -400,9 +391,6 @@
   <data name="not_execute_wb" xml:space="preserve">
     <value>Провести документ не можливо. Не всі позіціх зарезервовано. </value>
   </data>
-  <data name="boproduct_reserved" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boproduct_reserved.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="edittask_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edittask_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -477,9 +465,6 @@
   </data>
   <data name="snapdeletelist_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\snapdeletelist_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="information_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\information_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="employee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\employee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -604,9 +589,6 @@
   <data name="warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boorderitem_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boorderitem_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="hyperlink1_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hyperlink1_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -646,9 +628,6 @@
   <data name="sql_script" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sql_script.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="copymodeldifferences_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\copymodeldifferences_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="preparation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\preparation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -678,9 +657,6 @@
   </data>
   <data name="tag_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tag_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="currency_16x161" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\currency_16x161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exporttopdf_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exporttopdf_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -745,7 +721,31 @@
   <data name="mat_pos_wh_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mat_pos_wh_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="currency" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\currency.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="interchangeability1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\interchangeability.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="interchangeability_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\interchangeability_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pay_doc_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pay_doc_in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pay_doc_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pay_doc_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pay_wb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pay_wb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="product_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\product_list.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh_office" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh_office.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="xls_export" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xls_export.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

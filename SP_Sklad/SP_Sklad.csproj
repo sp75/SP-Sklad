@@ -3491,6 +3491,13 @@
     <None Include="Resources\interchangeability.png" />
     <None Include="Resources\mat_pos_wh_1.png" />
     <None Include="Resources\product_list.png" />
+    <None Include="Resources\pay_doc_in.png" />
+    <None Include="Resources\pay_doc_out.png" />
+    <None Include="Resources\currency.png" />
+    <None Include="Resources\refresh_office.png" />
+    <None Include="Resources\interchangeability_1.png" />
+    <None Include="Resources\xls_export.png" />
+    <None Include="Resources\pay_wb.png" />
     <Content Include="warehouse.ico" />
     <Content Include="Склади.ico" />
   </ItemGroup>

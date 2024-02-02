@@ -41,7 +41,6 @@
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatTurnInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DeboningMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefreshWhBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -64,6 +63,7 @@
             this.standaloneBarDockControl10 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.DeboningMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -363,14 +363,6 @@
             this.RsvInfoBtn.Name = "RsvInfoBtn";
             this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
-            // DeboningMatBtn
-            // 
-            this.DeboningMatBtn.Caption = "Виконати обвалку товару";
-            this.DeboningMatBtn.Id = 11;
-            this.DeboningMatBtn.ImageOptions.ImageIndex = 1;
-            this.DeboningMatBtn.Name = "DeboningMatBtn";
-            this.DeboningMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeboningMatBtn_ItemClick);
-            // 
             // RefreshWhBtn
             // 
             this.RefreshWhBtn.Caption = "Обновити";
@@ -579,7 +571,8 @@
             this.imageCollection1.Images.SetKeyName(0, "walking_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection1.Images.SetKeyName(1, "deboneing");
-            this.imageCollection1.Images.SetKeyName(2, "refresh_office.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "refresh_office");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.imageCollection1.Images.SetKeyName(3, "product_reserved_1");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
@@ -602,7 +595,8 @@
             this.imageCollection1.Images.SetKeyName(12, "pageinfo_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_16x161, "preview_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "preview_16x161");
-            this.imageCollection1.Images.SetKeyName(14, "interchangeability_1.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability_1, "interchangeability_1", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "interchangeability_1");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "warehouse");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 16);
@@ -611,7 +605,9 @@
             this.imageCollection1.Images.SetKeyName(17, "chart_16x16.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_list, "product_list", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "product_list");
-            this.imageCollection1.Images.SetKeyName(19, "xls_export.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.imageCollection1.Images.SetKeyName(19, "xls_export");
+            this.imageCollection1.Images.SetKeyName(20, "re_calc_remain_1.png");
             // 
             // barButtonItem4
             // 
@@ -620,6 +616,14 @@
             this.barButtonItem4.ImageOptions.ImageIndex = 14;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // DeboningMatBtn
+            // 
+            this.DeboningMatBtn.Caption = "Виконати обвалку товару";
+            this.DeboningMatBtn.Id = 11;
+            this.DeboningMatBtn.ImageOptions.ImageIndex = 1;
+            this.DeboningMatBtn.Name = "DeboningMatBtn";
+            this.DeboningMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeboningMatBtn_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -633,7 +637,7 @@
             // 
             this.RecalcRemainsMatBtn.Caption = "Перерахувати залишки товару";
             this.RecalcRemainsMatBtn.Id = 19;
-            this.RecalcRemainsMatBtn.ImageOptions.ImageIndex = 22;
+            this.RecalcRemainsMatBtn.ImageOptions.ImageIndex = 20;
             this.RecalcRemainsMatBtn.Name = "RecalcRemainsMatBtn";
             this.RecalcRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsMatBtn_ItemClick);
             // 
