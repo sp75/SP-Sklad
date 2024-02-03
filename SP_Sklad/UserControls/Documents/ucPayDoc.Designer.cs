@@ -178,7 +178,8 @@
             this.imageCollection1.Images.SetKeyName(14, "pay_doc_in");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "pay_doc_out");
-            this.imageCollection1.Images.SetKeyName(16, "ДопРасход.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out_2, "pay_doc_out_2", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "pay_doc_out_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.imageCollection1.Images.SetKeyName(17, "xls_export");
             // 

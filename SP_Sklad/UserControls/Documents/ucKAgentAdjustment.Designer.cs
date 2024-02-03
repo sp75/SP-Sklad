@@ -242,8 +242,8 @@
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
             this.imageCollection1.Images.SetKeyName(0, "new_document");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.iconsetsymbols3_16x16, "iconsetsymbols3_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "iconsetsymbols3_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "checked_green");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.imageCollection1.Images.SetKeyName(2, "additem_3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 3);

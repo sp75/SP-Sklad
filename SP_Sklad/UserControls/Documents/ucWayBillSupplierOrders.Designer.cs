@@ -293,9 +293,11 @@
             this.imageCollection1.Images.SetKeyName(14, "pay_doc_out");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "refresh", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.imageCollection1.Images.SetKeyName(16, "refresh");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "historyitem_16x16");
             this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "xls_export");
             // 
             // NewItemBtn
             // 
@@ -384,6 +386,7 @@
             // 
             this.ExportToExcelBtn.Caption = "Експорт в Excel...";
             this.ExportToExcelBtn.Id = 36;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 18;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 

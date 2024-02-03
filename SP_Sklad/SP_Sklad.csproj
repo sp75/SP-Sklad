@@ -3506,6 +3506,8 @@
     <None Include="Resources\product_list_1.png" />
     <None Include="Resources\checked_blue.png" />
     <None Include="Resources\pay_doc_out_2.png" />
+    <None Include="Resources\project_manager_2.png" />
+    <None Include="Resources\expedition.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

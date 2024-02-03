@@ -320,7 +320,8 @@
             this.imageCollection1.Images.SetKeyName(10, "wb_info");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3");
-            this.imageCollection1.Images.SetKeyName(12, "pay_wb.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_wb, "pay_wb", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "pay_wb");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.printtitles_16x16, "printtitles_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
@@ -329,8 +330,10 @@
             this.imageCollection1.Images.SetKeyName(15, "historyitem_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "wb_order_in");
-            this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
-            this.imageCollection1.Images.SetKeyName(18, "pay_doc(1)_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.imageCollection1.Images.SetKeyName(17, "checked_blue");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "pay_doc_in");
             // 
             // gridColumn2
             // 
