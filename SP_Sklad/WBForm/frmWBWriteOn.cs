@@ -162,10 +162,8 @@ namespace SP_Sklad.WBForm
         private void frmWBWriteOn_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
             PersonComboBox.Enabled = !String.IsNullOrEmpty(user_settings.AccessEditPersonId) && Convert.ToInt32(user_settings.AccessEditPersonId) == 1;
-            PersonEditBtn.Enabled = PersonComboBox.Enabled;
             WaybillDetInGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
             NumEdit.Enabled = user_settings.AccessEditDocNum;
@@ -270,10 +268,7 @@ order by  ma.ondate desc */
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            wb.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = wb.OnDate;
-
-            _db.SaveChanges();
+           
         }
 
         private void TurnDocCheckBox_EditValueChanged(object sender, EventArgs e)
@@ -352,7 +347,7 @@ order by  ma.ondate desc */
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+           
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -430,6 +425,34 @@ order by  ma.ondate desc */
                     _db.SaveChanges();
                     RefreshDet();
                 }
+            }
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+                UpdateWh();
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                wb.OnDate = DBHelper.ServerDateTime();
+                OnDateDBEdit.DateTime = wb.OnDate;
+
+                _db.SaveChanges();
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
             }
         }
     }

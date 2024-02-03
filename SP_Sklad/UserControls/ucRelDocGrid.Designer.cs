@@ -428,8 +428,8 @@
             this.BarImageList.Images.SetKeyName(0, "walking_16x16");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.BarImageList.Images.SetKeyName(1, "preview_2");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.BarImageList.Images.SetKeyName(2, "refreshallpivottable_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList.Images.SetKeyName(2, "refresh");
             // 
             // ucRelDocGrid
             // 

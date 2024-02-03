@@ -259,26 +259,29 @@
             this.imageCollection1.Images.SetKeyName(1, "checked_green");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.imageCollection1.Images.SetKeyName(2, "edit_2");
-            this.imageCollection1.Images.SetKeyName(3, "інформація про товар.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "product_info_3");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "additem_3");
-            this.imageCollection1.Images.SetKeyName(5, "Рух товарів.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "move_warehouse");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
-            this.imageCollection1.Images.SetKeyName(7, "інформація про резерв товару.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "product_reserved_1");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.imageCollection1.Images.SetKeyName(8, "preview_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.imageCollection1.Images.SetKeyName(9, "delete_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "copy_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.imageCollection1.Images.SetKeyName(11, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "refresh_office");
             this.imageCollection1.Images.SetKeyName(12, "high-productivity-icon.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "financial_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.listbullets_16x16, "listbullets_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.imageCollection1.Images.SetKeyName(14, "listbullets_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "showproduct_16x16");
             // 
             // NewItemBtn
             // 

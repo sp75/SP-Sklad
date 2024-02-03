@@ -3498,8 +3498,15 @@
     <None Include="Resources\interchangeability_1.png" />
     <None Include="Resources\xls_export.png" />
     <None Include="Resources\pay_wb.png" />
+    <None Include="Resources\time_16x16.png" />
+    <None Include="Resources\delete_properties.png" />
+    <None Include="Resources\add_properties.png" />
+    <None Include="Resources\edit_property.png" />
+    <None Include="Resources\product_list_2.png" />
+    <None Include="Resources\product_list_1.png" />
+    <None Include="Resources\checked_blue.png" />
+    <None Include="Resources\pay_doc_out_2.png" />
     <Content Include="warehouse.ico" />
-    <Content Include="Склади.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CheckboxIntegration\CheckboxIntegration.csproj">

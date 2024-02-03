@@ -88,6 +88,7 @@
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucActServicesProvidedInDet = new SP_Sklad.UserControls.ucActServicesProvidedInDet();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.repositoryItemImageComboBox12 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -117,7 +118,6 @@
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ucActServicesProvidedInDet = new SP_Sklad.UserControls.ucActServicesProvidedInDet();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -277,21 +277,25 @@
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
-            this.imageCollection1.Images.SetKeyName(9, "projectfile_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refresh");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.act_services_provider, "act_services_provider", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "act_services_provider");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
             this.imageCollection1.Images.SetKeyName(11, "wb_info.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "RelDoc3");
-            this.imageCollection1.Images.SetKeyName(13, "pay_wb.png");
-            this.imageCollection1.Images.SetKeyName(14, "WBWriteOff_2.png");
-            this.imageCollection1.Images.SetKeyName(15, "pay_doc(-1)_3.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_wb, "pay_wb", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.imageCollection1.Images.SetKeyName(13, "pay_wb");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "WBWriteOff_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.imageCollection1.Images.SetKeyName(15, "pay_doc_out");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 17);
-            this.imageCollection1.Images.SetKeyName(17, "historyitem_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "refresh", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.imageCollection1.Images.SetKeyName(17, "refresh");
             // 
             // NewItemBtn
             // 
@@ -789,6 +793,14 @@
             this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
             this.xtraTabPage15.Text = "Позиції";
             // 
+            // ucActServicesProvidedInDet
+            // 
+            this.ucActServicesProvidedInDet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucActServicesProvidedInDet.Location = new System.Drawing.Point(0, 0);
+            this.ucActServicesProvidedInDet.Name = "ucActServicesProvidedInDet";
+            this.ucActServicesProvidedInDet.Size = new System.Drawing.Size(1373, 199);
+            this.ucActServicesProvidedInDet.TabIndex = 0;
+            // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
@@ -1056,14 +1068,6 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // ucActServicesProvidedInDet
-            // 
-            this.ucActServicesProvidedInDet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucActServicesProvidedInDet.Location = new System.Drawing.Point(0, 0);
-            this.ucActServicesProvidedInDet.Name = "ucActServicesProvidedInDet";
-            this.ucActServicesProvidedInDet.Size = new System.Drawing.Size(1373, 199);
-            this.ucActServicesProvidedInDet.TabIndex = 0;
             // 
             // ucActServicesProvidedIn
             // 

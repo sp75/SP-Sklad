@@ -282,8 +282,8 @@
             this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
             this.imageCollection1.Images.SetKeyName(7, "preview_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refresh");
             this.imageCollection1.Images.SetKeyName(9, "wb_in_16x16.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
@@ -295,8 +295,8 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
             this.imageCollection1.Images.SetKeyName(17, "checked_blue.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.imageCollection1.Images.SetKeyName(18, "historyitem_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "refresh", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "refresh");
             // 
             // NewItemBtn
             // 

@@ -1087,8 +1087,8 @@
             this.BarImageList1.Images.SetKeyName(2, "edit_2");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.BarImageList1.Images.SetKeyName(3, "delete_16x16");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList1.Images.SetKeyName(4, "refreshallpivottable_16x16");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList1.Images.SetKeyName(4, "refresh");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 6);

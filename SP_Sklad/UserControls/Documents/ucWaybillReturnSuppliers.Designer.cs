@@ -288,8 +288,8 @@
             this.imageCollection1.Images.SetKeyName(5, "delete_16x16");
             this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red.png");
             this.imageCollection1.Images.SetKeyName(7, "preview_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refreshallpivottable_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refreshallpivottable_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refresh");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.imageCollection1.Images.SetKeyName(9, "showproduct_16x16");
             this.imageCollection1.Images.SetKeyName(10, "wb_info.png");
@@ -297,8 +297,8 @@
             this.imageCollection1.Images.SetKeyName(12, "pay_wb.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x161", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.imageCollection1.Images.SetKeyName(14, "historyitem_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "refresh", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "refresh");
             this.imageCollection1.Images.SetKeyName(15, "checked_blue.png");
             this.imageCollection1.Images.SetKeyName(16, "pay_doc(1)_2.png");
             this.imageCollection1.Images.SetKeyName(17, "wb_return_out.png");
