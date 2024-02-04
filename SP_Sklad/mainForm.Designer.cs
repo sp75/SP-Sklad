@@ -593,7 +593,7 @@
             this.imageCollection1.Images.SetKeyName(14, "exit.png");
             this.imageCollection1.Images.SetKeyName(15, "info1.png");
             this.imageCollection1.Images.SetKeyName(16, "download.png");
-            this.imageCollection1.Images.SetKeyName(17, "available_updates.png");
+            this.imageCollection1.Images.SetKeyName(17, "refresh_2.png");
             // 
             // repositoryItemTimeEdit1
             // 
