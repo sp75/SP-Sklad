@@ -325,6 +325,7 @@
             // 
             this.barButtonItem4.Caption = "Вихід";
             this.barButtonItem4.Id = 8;
+            this.barButtonItem4.ImageOptions.ImageIndex = 14;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -355,6 +356,7 @@
             // 
             this.skinBarSubItem1.Caption = "Тема";
             this.skinBarSubItem1.Id = 21;
+            this.skinBarSubItem1.ImageOptions.ImageIndex = 13;
             this.skinBarSubItem1.Name = "skinBarSubItem1";
             // 
             // barEditItem3
@@ -492,6 +494,7 @@
             // 
             this.barButtonItem9.Caption = "Про програму";
             this.barButtonItem9.Id = 18;
+            this.barButtonItem9.ImageOptions.ImageIndex = 15;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
             // 
@@ -499,6 +502,7 @@
             // 
             this.barButtonItem1.Caption = "Перевірити на наявність оновлень";
             this.barButtonItem1.Id = 26;
+            this.barButtonItem1.ImageOptions.ImageIndex = 17;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -506,6 +510,7 @@
             // 
             this.barButtonItem13.Caption = "Загрузити останню версію";
             this.barButtonItem13.Id = 30;
+            this.barButtonItem13.ImageOptions.ImageIndex = 16;
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
@@ -584,6 +589,11 @@
             this.imageCollection1.Images.SetKeyName(11, "change_user");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "template");
+            this.imageCollection1.Images.SetKeyName(13, "change_theme.png");
+            this.imageCollection1.Images.SetKeyName(14, "exit.png");
+            this.imageCollection1.Images.SetKeyName(15, "info1.png");
+            this.imageCollection1.Images.SetKeyName(16, "download.png");
+            this.imageCollection1.Images.SetKeyName(17, "available_updates.png");
             // 
             // repositoryItemTimeEdit1
             // 

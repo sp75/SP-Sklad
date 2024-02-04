@@ -302,7 +302,7 @@
             // 
             this.ImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ImageList.ImageStream")));
             this.ImageList.Images.SetKeyName(0, "інформація про товар.png");
-            this.ImageList.Images.SetKeyName(1, "Цінові кат.png");
+            this.ImageList.Images.SetKeyName(1, "tag_16x16.png");
             this.ImageList.Images.SetKeyName(2, "Податки.png");
             this.ImageList.Images.SetKeyName(3, "взаємозамінність.png");
             this.ImageList.Images.SetKeyName(4, "посвідчення якості.png");
@@ -312,7 +312,7 @@
             this.ImageList.Images.SetKeyName(8, "Рух товарів.png");
             this.ImageList.Images.SetKeyName(9, "down.png");
             this.ImageList.Images.SetKeyName(10, "up.png");
-            this.ImageList.Images.SetKeyName(11, "Цінові кат.png");
+            this.ImageList.Images.SetKeyName(11, "tag_16x16.png");
             this.ImageList.Images.SetKeyName(12, "Одиниці виміру.png");
             this.ImageList.Images.SetKeyName(13, "Країни.png");
             this.ImageList.Images.SetKeyName(14, "Right.png");
@@ -321,6 +321,7 @@
             this.ImageList.Images.SetKeyName(17, "open_16x16.png");
             this.ImageList.Images.SetKeyName(18, "removepivotfield_16x16.png");
             this.ImageList.Images.SetKeyName(19, "barcode_16x16.png");
+            this.ImageList.Images.SetKeyName(20, "refresh_barcode.png");
             // 
             // panelControl2
             // 
@@ -649,7 +650,7 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.ImageOptions.ImageIndex = 1;
+            this.simpleButton3.ImageOptions.ImageIndex = 20;
             this.simpleButton3.ImageOptions.ImageList = this.ImageList;
             this.simpleButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton3.Location = new System.Drawing.Point(271, 194);
