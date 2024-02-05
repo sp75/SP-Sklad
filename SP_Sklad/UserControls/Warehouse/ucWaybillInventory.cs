@@ -65,7 +65,7 @@ namespace SP_Sklad.UserControls
 
         public void NewItem()
         {
-            using (var wb_move = new frmWBWriteOff())
+            using (var wb_move = new frmWBInventory())
             {
                 wb_move.ShowDialog();
             }
@@ -88,7 +88,7 @@ namespace SP_Sklad.UserControls
 
             var doc = DB.SkladBase().DocCopy(wb_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
 
-            using (var wb_re_in = new frmWBWriteOff(doc.out_wbill_id))
+            using (var wb_re_in = new frmWBInventory(doc.out_wbill_id))
             {
                 wb_re_in.ShowDialog();
             }

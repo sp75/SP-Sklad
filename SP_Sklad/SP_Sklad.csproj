@@ -3268,7 +3268,6 @@
     <Content Include="main_ico.ico" />
     <None Include="Resources\financial_16x16.png" />
     <None Include="Resources\technology_16x16.png" />
-    <None Include="Resources\technology_16x161.png" />
     <None Include="Resources\projectdirectory_16x16.png" />
     <None Include="Resources\gaugestylehalfcircular_16x16.png" />
     <None Include="Resources\boorderitem_16x16.png" />
@@ -3441,7 +3440,6 @@
     <None Include="Resources\countries.png" />
     <None Include="Resources\taxes.png" />
     <None Include="Resources\event_log.png" />
-    <None Include="Resources\management_ raw_materials.png" />
     <None Include="Resources\boproduct_reserved.png" />
     <None Include="Resources\boproduct_reserved_2.png" />
     <None Include="Resources\product_reserved_1.png" />
@@ -3463,7 +3461,6 @@
     <None Include="Resources\recipes_1.png" />
     <None Include="Resources\receipt.png" />
     <None Include="Resources\service_1.png" />
-    <None Include="Resources\boproductgroup_16x16.png" />
     <None Include="Resources\packageproduct_16x16.png" />
     <None Include="Resources\product_16x16.png" />
     <None Include="Resources\warehouse_1.png" />
@@ -3508,6 +3505,26 @@
     <None Include="Resources\pay_doc_out_2.png" />
     <None Include="Resources\project_manager_2.png" />
     <None Include="Resources\expedition.png" />
+    <None Include="Resources\product_group.png" />
+    <None Include="Resources\product_list_4.png" />
+    <None Include="Resources\management_raw_materials.png" />
+    <None Include="Resources\truck_2.png" />
+    <None Include="Resources\inserttableofcontents_16x16.png" />
+    <None Include="Resources\manufacturing_products.png" />
+    <None Include="Resources\price_lict.png" />
+    <None Include="Resources\manufacturing.png" />
+    <None Include="Resources\finance.png" />
+    <None Include="Resources\money_bag.png" />
+    <None Include="Resources\money_bag_2.png" />
+    <None Include="Resources\money.png" />
+    <None Include="Resources\expense_items.png" />
+    <None Include="Resources\cash.png" />
+    <None Include="Resources\bank_cards.png" />
+    <None Include="Resources\structure.png" />
+    <None Include="Resources\debit_card.png" />
+    <None Include="Resources\trolley.png" />
+    <None Include="Resources\arrow_right.png" />
+    <None Include="Resources\arrow.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ namespace SP_Sklad.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -113,6 +113,26 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow {
+            get {
+                object obj = ResourceManager.GetObject("arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap arrow_right {
+            get {
+                object obj = ResourceManager.GetObject("arrow_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap article_16x16 {
             get {
                 object obj = ResourceManager.GetObject("article_16x16", resourceCulture);
@@ -143,6 +163,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bank_cards {
+            get {
+                object obj = ResourceManager.GetObject("bank_cards", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bank_statements {
             get {
                 object obj = ResourceManager.GetObject("bank_statements", resourceCulture);
@@ -166,16 +196,6 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap barcode_32x32 {
             get {
                 object obj = ResourceManager.GetObject("barcode_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap boproductgroup_16x16 {
-            get {
-                object obj = ResourceManager.GetObject("boproductgroup_16x16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +246,16 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap cancel_32x32 {
             get {
                 object obj = ResourceManager.GetObject("cancel_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cash {
+            get {
+                object obj = ResourceManager.GetObject("cash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -346,6 +376,16 @@ namespace SP_Sklad.Properties {
         internal static string deadlock {
             get {
                 return ResourceManager.GetString("deadlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap debit_card {
+            get {
+                object obj = ResourceManager.GetObject("debit_card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -549,6 +589,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap expense_items {
+            get {
+                object obj = ResourceManager.GetObject("expense_items", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exporttopdf_16x16 {
             get {
                 object obj = ResourceManager.GetObject("exporttopdf_16x16", resourceCulture);
@@ -572,6 +622,16 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap exporttoxlsx_32x32 {
             get {
                 object obj = ResourceManager.GetObject("exporttoxlsx_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap finance {
+            get {
+                object obj = ResourceManager.GetObject("finance", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -779,6 +839,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap inserttableofcontents_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("inserttableofcontents_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap interchangeability {
             get {
                 object obj = ResourceManager.GetObject("interchangeability", resourceCulture);
@@ -869,9 +939,29 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap management__raw_materials {
+        internal static System.Drawing.Bitmap management_raw_materials {
             get {
-                object obj = ResourceManager.GetObject("management__raw_materials", resourceCulture);
+                object obj = ResourceManager.GetObject("management_raw_materials", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manufacturing {
+            get {
+                object obj = ResourceManager.GetObject("manufacturing", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap manufacturing_products {
+            get {
+                object obj = ResourceManager.GetObject("manufacturing_products", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -882,6 +972,26 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap mat_pos_wh_1 {
             get {
                 object obj = ResourceManager.GetObject("mat_pos_wh_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money {
+            get {
+                object obj = ResourceManager.GetObject("money", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap money_bag_2 {
+            get {
+                object obj = ResourceManager.GetObject("money_bag_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1066,6 +1176,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap price_lict {
+            get {
+                object obj = ResourceManager.GetObject("price_lict", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap price_settings {
             get {
                 object obj = ResourceManager.GetObject("price_settings", resourceCulture);
@@ -1106,6 +1226,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap product_group {
+            get {
+                object obj = ResourceManager.GetObject("product_group", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap product_info_3 {
             get {
                 object obj = ResourceManager.GetObject("product_info_3", resourceCulture);
@@ -1139,6 +1269,16 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap product_list_2 {
             get {
                 object obj = ResourceManager.GetObject("product_list_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap product_list_4 {
+            get {
+                object obj = ResourceManager.GetObject("product_list_4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1445,6 +1585,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap structure {
+            get {
+                object obj = ResourceManager.GetObject("structure", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap supplier {
             get {
                 object obj = ResourceManager.GetObject("supplier", resourceCulture);
@@ -1528,6 +1678,26 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap time_16x16 {
             get {
                 object obj = ResourceManager.GetObject("time_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trolley {
+            get {
+                object obj = ResourceManager.GetObject("trolley", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap truck_2 {
+            get {
+                object obj = ResourceManager.GetObject("truck_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
