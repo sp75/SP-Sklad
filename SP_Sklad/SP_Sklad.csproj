@@ -3333,7 +3333,6 @@
     <None Include="Resources\currency_16x16.png" />
     <None Include="Resources\attach_16x16.png" />
     <None Include="Resources\listbullets_16x16.png" />
-    <None Include="Resources\assigntome_16x16.png" />
     <None Include="Resources\insert_16x16.png" />
     <None Include="Resources\textbox_16x16.png" />
     <None Include="Resources\converttoparagraphs_16x16.png" />
@@ -3429,7 +3428,6 @@
     <None Include="Resources\recipes.png" />
     <None Include="Resources\discount_card.png" />
     <None Include="Resources\tag_16x16.png" />
-    <None Include="Resources\build_16x16.png" />
     <None Include="Resources\price_settings.png" />
     <None Include="Resources\sql_script.png" />
     <None Include="Resources\database.png" />
@@ -3538,6 +3536,8 @@
     <None Include="Resources\reserved.png" />
     <None Include="Resources\add_16x16.png" />
     <None Include="Resources\add_32x32.png" />
+    <None Include="Resources\status_16x16.png" />
+    <None Include="Resources\listnumbers_16x16.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

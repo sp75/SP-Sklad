@@ -152,7 +152,6 @@ namespace SP_Sklad.WBForm
             bool recult = (!String.IsNullOrEmpty(NumEdit.Text) && OnDateDBEdit.EditValue != null && WaybillDetInBS.Count > 0);
 
             WhOutComboBox.Enabled = (WaybillDetInBS.Count == 0);
-            WhBtn.Enabled = WhOutComboBox.Enabled;
 
             EditMaterialBtn.Enabled = WaybillDetInBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
@@ -371,7 +370,7 @@ namespace SP_Sklad.WBForm
 
         private void WhBtn_Click(object sender, EventArgs e)
         {
-            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+          
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -414,7 +413,23 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+           
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void WhOutComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+            }
         }
     }
 }

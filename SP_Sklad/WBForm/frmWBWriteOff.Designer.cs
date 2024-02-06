@@ -439,9 +439,8 @@
             this.imageCollection1.Images.SetKeyName(10, "remove_reserve");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "reserved");
-            this.imageCollection1.Images.SetKeyName(12, "lock_2.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "reserved_all");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "reserved_all");
             // 
             // RsvBarBtn
             // 
