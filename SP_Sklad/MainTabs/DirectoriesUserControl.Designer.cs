@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -754,7 +754,8 @@
             // 
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.ImageIndex = 0;
+            this.NewItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NewItemBtn.ImageOptions.Image")));
+            this.NewItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("NewItemBtn.ImageOptions.LargeImage")));
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
@@ -762,7 +763,8 @@
             // 
             this.CopyItemBtn.Caption = "Додати на підставі";
             this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
+            this.CopyItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CopyItemBtn.ImageOptions.Image")));
+            this.CopyItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("CopyItemBtn.ImageOptions.LargeImage")));
             this.CopyItemBtn.Name = "CopyItemBtn";
             this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
             // 
@@ -770,7 +772,8 @@
             // 
             this.EditItemBtn.Caption = "Властивості";
             this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 2;
+            this.EditItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditItemBtn.ImageOptions.Image")));
+            this.EditItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("EditItemBtn.ImageOptions.LargeImage")));
             this.EditItemBtn.Name = "EditItemBtn";
             this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
             // 
@@ -778,7 +781,8 @@
             // 
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
+            this.DeleteItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeleteItemBtn.ImageOptions.Image")));
+            this.DeleteItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DeleteItemBtn.ImageOptions.LargeImage")));
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
@@ -786,7 +790,8 @@
             // 
             this.RefrechItemBtn.Caption = "Обновити";
             this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.ImageIndex = 4;
+            this.RefrechItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefrechItemBtn.ImageOptions.Image")));
+            this.RefrechItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("RefrechItemBtn.ImageOptions.LargeImage")));
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
@@ -874,7 +879,7 @@
             this.showChildNodeBtn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
             this.showChildNodeBtn.Caption = "Відображати з підпорядкованих груп";
             this.showChildNodeBtn.Id = 37;
-            this.showChildNodeBtn.ImageOptions.ImageIndex = 16;
+            this.showChildNodeBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("showChildNodeBtn.ImageOptions.Image")));
             this.showChildNodeBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("showChildNodeBtn.ImageOptions.LargeImage")));
             this.showChildNodeBtn.Name = "showChildNodeBtn";
             this.showChildNodeBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
@@ -883,12 +888,14 @@
             // 
             this.barSubItem1.Caption = "Додати...";
             this.barSubItem1.Id = 13;
+            this.barSubItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem1.ImageOptions.Image")));
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // AddGroupMatBtn
             // 
@@ -1045,6 +1052,11 @@
             this.BarImageList.Images.SetKeyName(18, "Дисконтна картка.bmp");
             this.BarImageList.Images.SetKeyName(19, "Попередн_й перегляд.bmp");
             this.BarImageList.Images.SetKeyName(20, "Прайс лист.bmp");
+            this.BarImageList.Images.SetKeyName(21, "copy_document.png");
+            this.BarImageList.Images.SetKeyName(22, "new_document2.png");
+            this.BarImageList.Images.SetKeyName(23, "edit_document.png");
+            this.BarImageList.Images.SetKeyName(24, "refresh_office.png");
+            this.BarImageList.Images.SetKeyName(25, "close.png");
             // 
             // RenameMatGroupBarButtonItem
             // 
@@ -1325,12 +1337,14 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 14);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.contract_in, "contract_in", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "contract_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.contract_out, "contract_out", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "contract_out");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_lict, "price_lict", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "price_lict");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.product_group, "product_group", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "product_group");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "warehouse");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "move_stock");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 20);
@@ -1386,7 +1400,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "financial_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "trash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "user_monitor");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 50);
@@ -1415,7 +1430,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 64);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trolley, "trolley", typeof(global::SP_Sklad.Properties.Resources), 65);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
@@ -1437,7 +1453,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "act_services_provider");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.project_manager_2, "project_manager_2", typeof(global::SP_Sklad.Properties.Resources), 76);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 77);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_settings, "price_settings", typeof(global::SP_Sklad.Properties.Resources), 79);
@@ -2946,9 +2963,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode3.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
+            gridLevelNode2});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3974,9 +3991,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode3.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode3});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";

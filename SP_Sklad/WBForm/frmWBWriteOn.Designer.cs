@@ -64,7 +64,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -165,7 +164,7 @@
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -183,7 +182,7 @@
             // 
             this.MatInfoBtn.Caption = "Інформація про товар";
             this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 4;
+            this.MatInfoBtn.ImageOptions.ImageIndex = 1;
             this.MatInfoBtn.Name = "MatInfoBtn";
             this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
@@ -191,7 +190,7 @@
             // 
             this.RsvInfoBtn.Caption = "Інформація про резерв товару";
             this.RsvInfoBtn.Id = 10;
-            this.RsvInfoBtn.ImageOptions.ImageIndex = 5;
+            this.RsvInfoBtn.ImageOptions.ImageIndex = 2;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
             this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
@@ -217,10 +216,10 @@
             // 
             this.AddBarSubItem.Caption = "Додати";
             this.AddBarSubItem.Id = 4;
-            this.AddBarSubItem.ImageOptions.ImageIndex = 9;
+            this.AddBarSubItem.ImageOptions.ImageIndex = 6;
             this.AddBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.AddBarSubItem.Name = "AddBarSubItem";
             this.AddBarSubItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -229,7 +228,7 @@
             // 
             this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageOptions.ImageIndex = 8;
+            this.AddMaterialBtn.ImageOptions.ImageIndex = 5;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
@@ -238,7 +237,7 @@
             // 
             this.barButtonItem6.Caption = "Товари списком";
             this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageOptions.ImageIndex = 7;
+            this.barButtonItem6.ImageOptions.ImageIndex = 4;
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
@@ -247,7 +246,7 @@
             // 
             this.barButtonItem1.Caption = "Виробницва списком";
             this.barButtonItem1.Id = 17;
-            this.barButtonItem1.ImageOptions.ImageIndex = 17;
+            this.barButtonItem1.ImageOptions.ImageIndex = 10;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -255,7 +254,7 @@
             // 
             this.EditMaterialBtn.Caption = "Властивості";
             this.EditMaterialBtn.Id = 2;
-            this.EditMaterialBtn.ImageOptions.ImageIndex = 11;
+            this.EditMaterialBtn.ImageOptions.ImageIndex = 8;
             this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.EditMaterialBtn.Name = "EditMaterialBtn";
             this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -265,7 +264,7 @@
             // 
             this.DelMaterialBtn.Caption = "Видалити";
             this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageOptions.ImageIndex = 10;
+            this.DelMaterialBtn.ImageOptions.ImageIndex = 7;
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -279,7 +278,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 183);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(972, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1106, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -288,7 +287,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(972, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1106, 24);
             // 
             // barDockControlBottom
             // 
@@ -296,7 +295,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 546);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(972, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1106, 0);
             // 
             // barDockControlLeft
             // 
@@ -310,7 +309,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(972, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1106, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 522);
             // 
@@ -320,56 +319,28 @@
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
             this.imageCollection1.Images.SetKeyName(0, "preview_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "additem_3");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "edit_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "delete_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.imageCollection1.Images.SetKeyName(4, "product_info_3");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "product_reserved_1");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "warehouse_2");
-            this.imageCollection1.Images.SetKeyName(7, "product_list_2.png");
-            this.imageCollection1.Images.SetKeyName(8, "product_new.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.imageCollection1.Images.SetKeyName(9, "add_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 10);
-            this.imageCollection1.Images.SetKeyName(10, "delete_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.imageCollection1.Images.SetKeyName(11, "edit_property");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.event_log, "event_log", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.imageCollection1.Images.SetKeyName(12, "event_log");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_list, "product_list", typeof(global::SP_Sklad.Properties.Resources), 13);
-            this.imageCollection1.Images.SetKeyName(13, "product_list");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.imageCollection1.Images.SetKeyName(14, "product");
-            this.imageCollection1.Images.SetKeyName(15, "product_list_1.png");
-            // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "Баланс з контрагентом.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Замовлене кл_єнтами.bmp");
-            this.WBImgList.Images.SetKeyName(3, "_нформац_я про резерв товару.bmp");
-            this.WBImgList.Images.SetKeyName(4, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(6, "edit.bmp");
-            this.WBImgList.Images.SetKeyName(7, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(8, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(9, "Товари списком.bmp");
-            this.WBImgList.Images.SetKeyName(10, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(11, "Послуги списком.bmp");
-            this.WBImgList.Images.SetKeyName(12, "Зарезервовано.bmp");
-            this.WBImgList.Images.SetKeyName(13, "Зарезервувати все.bmp");
-            this.WBImgList.Images.SetKeyName(14, "Зняти з резерву.bmp");
-            this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
-            this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
-            this.WBImgList.Images.SetKeyName(17, "exec16.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "product_reserved_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "warehouse_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "product_list_4");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "product");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "add_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "delete_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "edit_property");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.info_process, "info_process", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "info_process");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products_list, "manufacturing_products_list", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "manufacturing_products_list");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.technology_16x16, "technology_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "technology_16x16");
             // 
             // styleController1
             // 
@@ -396,7 +367,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl3.Size = new System.Drawing.Size(972, 159);
+            this.panelControl3.Size = new System.Drawing.Size(1106, 159);
             this.panelControl3.TabIndex = 9;
             // 
             // panelControl1
@@ -411,7 +382,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(571, 149);
+            this.panelControl1.Size = new System.Drawing.Size(568, 149);
             this.panelControl1.TabIndex = 4;
             // 
             // WHComboBox
@@ -445,7 +416,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(284, 44);
+            this.labelControl2.Location = new System.Drawing.Point(309, 44);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(34, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -485,8 +456,8 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.EditValue = new System.DateTime(2016, 3, 3, 16, 47, 59, 0);
-            this.OnDateDBEdit.Location = new System.Drawing.Point(324, 40);
+            this.OnDateDBEdit.EditValue = null;
+            this.OnDateDBEdit.Location = new System.Drawing.Point(349, 40);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.time_16x16;
@@ -497,9 +468,9 @@
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.OnDateDBEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.OnDateDBEdit.Properties.MaskSettings.Set("mask", "F");
+            this.OnDateDBEdit.Properties.MaskSettings.Set("mask", "g");
             this.OnDateDBEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.OnDateDBEdit.Size = new System.Drawing.Size(232, 24);
+            this.OnDateDBEdit.Size = new System.Drawing.Size(207, 24);
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 8;
             this.OnDateDBEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.OnDateDBEdit_ButtonClick);
@@ -508,10 +479,10 @@
             // 
             this.panel1.Controls.Add(this.panelControl4);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(576, 5);
+            this.panel1.Location = new System.Drawing.Point(573, 5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(391, 149);
+            this.panel1.Size = new System.Drawing.Size(528, 149);
             this.panel1.TabIndex = 12;
             // 
             // panelControl4
@@ -525,7 +496,7 @@
             this.panelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl4.Location = new System.Drawing.Point(5, 0);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(386, 149);
+            this.panelControl4.Size = new System.Drawing.Size(523, 149);
             this.panelControl4.TabIndex = 1;
             // 
             // NotesEdit
@@ -535,16 +506,18 @@
             this.NotesEdit.Location = new System.Drawing.Point(90, 75);
             this.NotesEdit.MenuManager = this.barManager1;
             this.NotesEdit.Name = "NotesEdit";
-            this.NotesEdit.Size = new System.Drawing.Size(279, 22);
+            this.NotesEdit.Size = new System.Drawing.Size(416, 22);
             this.NotesEdit.StyleController = this.styleController1;
             this.NotesEdit.TabIndex = 24;
             // 
             // ReasonEdit
             // 
+            this.ReasonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ReasonEdit.Location = new System.Drawing.Point(90, 41);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
-            this.ReasonEdit.Size = new System.Drawing.Size(279, 22);
+            this.ReasonEdit.Size = new System.Drawing.Size(416, 22);
             this.ReasonEdit.StyleController = this.styleController1;
             this.ReasonEdit.TabIndex = 16;
             // 
@@ -582,7 +555,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(279, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(416, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 21;
             this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);
@@ -603,7 +576,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 207);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(972, 287);
+            this.panelControl5.Size = new System.Drawing.Size(1106, 287);
             this.panelControl5.TabIndex = 13;
             // 
             // WaybillDetInGridControl
@@ -619,7 +592,7 @@
             this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
             this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(968, 283);
+            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1102, 283);
             this.WaybillDetInGridControl.TabIndex = 1;
             this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetInGridView});
@@ -673,10 +646,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 17)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 9)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
+            this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
             // 
             // gridColumn2
             // 
@@ -778,7 +751,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Manager = null;
-            this.barDockControl1.Size = new System.Drawing.Size(968, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1102, 0);
             // 
             // panelControl2
             // 
@@ -787,14 +760,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 494);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(972, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1106, 52);
             this.panelControl2.TabIndex = 14;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(750, 10);
+            this.OkButton.Location = new System.Drawing.Point(884, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -805,7 +778,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(860, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(994, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -816,7 +789,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 546);
+            this.ClientSize = new System.Drawing.Size(1106, 546);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.panelControl3);
@@ -825,6 +798,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.WBWriteOn_4;
             this.Name = "frmWBWriteOn";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -886,7 +860,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraEditors.PanelControl panelControl3;

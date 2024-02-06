@@ -306,6 +306,8 @@ namespace SP_Sklad.Common
                 f.uc.ucWhMat.xtraTabPage4.PageVisible = false;
                 f.uc.ucWhMat.xtraTabPage5.PageVisible = false;
                 f.uc.ucWhMat.xtraTabPage9.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage12.PageVisible = false;
+                f.uc.ucWhMat.xtraTabPage11.PageVisible = false;
                 f.uc.ucWhMat.MatListTabPage.PageVisible = true;
                 f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
                 f.uc.ucWhMat.gridColumn49.Visible = false;

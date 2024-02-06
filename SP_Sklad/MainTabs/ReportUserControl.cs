@@ -79,7 +79,11 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            if (row.RepId == 53)
+            if(row.RepId == 51)
+            {
+                new frmReport51().ShowDialog();
+            }
+            else if (row.RepId == 53)
             {
                 new frmReport53().ShowDialog();
             }
@@ -113,7 +117,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmReport51().ShowDialog();
+         
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -33,7 +33,6 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.RepBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -102,8 +101,7 @@
             this.barManager1.Form = this;
             this.barManager1.Images = this.BarImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.RepBtn,
-            this.barButtonItem1});
+            this.RepBtn});
             this.barManager1.MaxItemId = 29;
             // 
             // bar1
@@ -114,8 +112,7 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(338, 115);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.RepBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.RepBtn)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -129,13 +126,6 @@
             this.RepBtn.ImageOptions.ImageIndex = 0;
             this.RepBtn.Name = "RepBtn";
             this.RepBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RepBtn_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Звіт 51";
-            this.barButtonItem1.Id = 27;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // standaloneBarDockControl7
             // 
@@ -351,12 +341,14 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(13, "wb_order_in");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 14);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(14, "wb_order_out");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "Договор купли.png");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "Договор продажу.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.contract_in, "contract_in", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(15, "contract_in");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.contract_out, "contract_out", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(16, "contract_out");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_lict, "price_lict", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(17, "price_lict");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.product_group, "product_group", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "product_group");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(18, "warehouse");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(19, "move_stock");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 20);
@@ -412,7 +404,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "financial_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "iconfinder_General_Office_24_2530784.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "trash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(49, "user_monitor");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 50);
@@ -441,7 +434,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(63, "акт інвентаризації з контрагентом.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 64);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(64, "preparation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trolley, "trolley", typeof(global::SP_Sklad.Properties.Resources), 65);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
             this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
@@ -463,7 +457,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(75, "act_services_provider");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.project_manager_2, "project_manager_2", typeof(global::SP_Sklad.Properties.Resources), 76);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(76, "project_manager_2");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 77);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(77, "store_16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.template, "template", typeof(global::SP_Sklad.Properties.Resources), 78);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(78, "template");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_settings, "price_settings", typeof(global::SP_Sklad.Properties.Resources), 79);
@@ -658,6 +653,5 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView4;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

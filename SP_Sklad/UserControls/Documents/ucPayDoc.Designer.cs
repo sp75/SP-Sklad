@@ -677,6 +677,7 @@
             this.PDKagentList.Size = new System.Drawing.Size(476, 24);
             this.PDKagentList.StyleController = this.styleController1;
             this.PDKagentList.TabIndex = 23;
+            this.PDKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PDKagentList_ButtonClick_1);
             this.PDKagentList.EditValueChanged += new System.EventHandler(this.PDKagentList_EditValueChanged);
             // 
             // PeriodComboBoxEdit

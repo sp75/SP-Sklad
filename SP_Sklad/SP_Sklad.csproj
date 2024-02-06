@@ -3525,6 +3525,19 @@
     <None Include="Resources\trolley.png" />
     <None Include="Resources\arrow_right.png" />
     <None Include="Resources\arrow.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\store_16.png" />
+    <None Include="Resources\contract_in.png" />
+    <None Include="Resources\contract_out.png" />
+    <None Include="Resources\project_setup.png" />
+    <None Include="Resources\product_new.png" />
+    <None Include="Resources\manufacturing_products_list.png" />
+    <None Include="Resources\remove_all_reserve.png" />
+    <None Include="Resources\remove_reserve.png" />
+    <None Include="Resources\reserved_all.png" />
+    <None Include="Resources\reserved.png" />
+    <None Include="Resources\add_16x16.png" />
+    <None Include="Resources\add_32x32.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

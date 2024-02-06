@@ -597,7 +597,8 @@
             this.imageCollection1.Images.SetKeyName(13, "preview_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability_1, "interchangeability_1", typeof(global::SP_Sklad.Properties.Resources), 14);
             this.imageCollection1.Images.SetKeyName(14, "interchangeability_1");
-            this.imageCollection1.Images.SetKeyName(15, "info_remain_wh.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.imageCollection1.Images.SetKeyName(15, "warehouse");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "mat_pos_wh_1");
             this.imageCollection1.InsertGalleryImage("chart_16x16.png", "images/chart/chart_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/chart/chart_16x16.png"), 17);
@@ -606,10 +607,6 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.imageCollection1.Images.SetKeyName(19, "xls_export");
             this.imageCollection1.Images.SetKeyName(20, "re_calc_remain_1.png");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 21);
-            this.imageCollection1.Images.SetKeyName(21, "warehouse");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_list_2, "product_list_2", typeof(global::SP_Sklad.Properties.Resources), 22);
-            this.imageCollection1.Images.SetKeyName(22, "product_list_2");
             // 
             // barButtonItem4
             // 

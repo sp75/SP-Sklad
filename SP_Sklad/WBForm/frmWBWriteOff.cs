@@ -171,7 +171,6 @@ namespace SP_Sklad.WBForm
             }
 
             WhOutComboBox.Enabled = (WaybillDetOutBS.Count == 0);
-            WhBtn.Enabled = WhOutComboBox.Enabled;
 
             EditMaterialBtn.Enabled = WaybillDetOutBS.Count > 0;
             DelMaterialBtn.Enabled = EditMaterialBtn.Enabled;
@@ -185,7 +184,6 @@ namespace SP_Sklad.WBForm
         private void frmWBWriteOff_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             NumEdit.Enabled = user_settings.AccessEditDocNum;
@@ -364,7 +362,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+           
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -407,7 +405,7 @@ namespace SP_Sklad.WBForm
 
         private void WhBtn_Click(object sender, EventArgs e)
         {
-            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+          
         }
 
         private void lookUpEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -437,5 +435,17 @@ namespace SP_Sklad.WBForm
             }
         }
 
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void WhOutComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+        }
     }
 }

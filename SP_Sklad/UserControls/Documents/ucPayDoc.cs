@@ -466,5 +466,13 @@ namespace SP_Sklad.UserControls
 
             GetData();
         }
+
+        private void PDKagentList_ButtonClick_1(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
+            }
+        }
     }
 }
