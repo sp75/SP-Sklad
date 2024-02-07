@@ -77,6 +77,8 @@
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.SetPriceBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.RecalcRemainsPostBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -316,8 +318,10 @@
             this.barButtonItem16,
             this.barButtonItem17,
             this.SetPriceBtnItem,
-            this.RecalcRemainsPostBtn});
-            this.barManager1.MaxItemId = 47;
+            this.RecalcRemainsPostBtn,
+            this.CopyCellContentsBtn,
+            this.barSubItem1});
+            this.barManager1.MaxItemId = 49;
             // 
             // bar2
             // 
@@ -607,6 +611,10 @@
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.imageCollection1.Images.SetKeyName(19, "xls_export");
             this.imageCollection1.Images.SetKeyName(20, "re_calc_remain_1.png");
+            this.imageCollection1.InsertGalleryImage("copy_16x16.png", "images/edit/copy_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png"), 21);
+            this.imageCollection1.Images.SetKeyName(21, "copy_16x16.png");
+            this.imageCollection1.InsertGalleryImage("table_16x16.png", "images/toolbox%20items/table_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/toolbox%20items/table_16x16.png"), 22);
+            this.imageCollection1.Images.SetKeyName(22, "table_16x16.png");
             // 
             // barButtonItem4
             // 
@@ -724,6 +732,25 @@
             this.RecalcRemainsPostBtn.Name = "RecalcRemainsPostBtn";
             this.RecalcRemainsPostBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsPostBtn_ItemClick);
             // 
+            // CopyCellContentsBtn
+            // 
+            this.CopyCellContentsBtn.Caption = "Скопіювати вміст клітинки";
+            this.CopyCellContentsBtn.Id = 47;
+            this.CopyCellContentsBtn.ImageOptions.ImageIndex = 21;
+            this.CopyCellContentsBtn.Name = "CopyCellContentsBtn";
+            this.CopyCellContentsBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyCellContentsBtn_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Таблиця";
+            this.barSubItem1.Id = 48;
+            this.barSubItem1.ImageOptions.ImageIndex = 22;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyCellContentsBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -754,7 +781,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DelRemainsMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowEmptyItemsCheck, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true)});
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
@@ -830,8 +857,9 @@
             this.WhMatGridView.GridControl = this.WhMatGridControl;
             this.WhMatGridView.Name = "WhMatGridView";
             this.WhMatGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.WhMatGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.WhMatGridView.OptionsBehavior.Editable = false;
             this.WhMatGridView.OptionsBehavior.ReadOnly = true;
+            this.WhMatGridView.OptionsSelection.MultiSelect = true;
             this.WhMatGridView.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.WhMatGridView.OptionsView.ShowFooter = true;
             this.WhMatGridView.OptionsView.ShowGroupPanel = false;
@@ -2346,5 +2374,7 @@
         private System.Windows.Forms.BindingSource ExtMatIfoBS;
         private DevExpress.Utils.ImageCollection DocTypeImageCollection;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraBars.BarButtonItem CopyCellContentsBtn;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
     }
 }

@@ -714,5 +714,10 @@ namespace SP_Sklad.UserControls.Warehouse
                 e.Allow = false;
             }
         }
+
+        private void CopyCellContentsBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Clipboard.SetText(WhMatGridView.GetFocusedDisplayText());
+        }
     }
 }
