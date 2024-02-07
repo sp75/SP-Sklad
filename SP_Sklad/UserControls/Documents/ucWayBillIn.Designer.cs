@@ -723,9 +723,9 @@
             // 
             this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(589, 14);
+            this.wbKagentList.Location = new System.Drawing.Point(589, 15);
             this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.supplier;
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});

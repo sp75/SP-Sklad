@@ -38,7 +38,7 @@
             this.KontragentGroupGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
@@ -47,6 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KontragentBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KontragentGroupGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -132,22 +133,28 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Юридичні особи", 0, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фізичні особи", 1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Службовці", 2, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Юридичні особи", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фізичні особи", 1, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Службовці", 2, 4),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Власні підприємства", 3, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Торгові точки", 4, 3)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Торгові точки", 4, 2)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
             // 
-            // GridImageList
+            // imageCollection1
             // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(2, "Службовц_.bmp");
-            this.GridImageList.Images.SetKeyName(3, "free-icon-payment-terminal-3777466.png");
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "businessman");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.enterprise, "enterprise", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "enterprise");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "store_16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "supplier");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.user_valet, "user_valet", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "user_valet");
             // 
             // gridColumn30
             // 
@@ -175,6 +182,7 @@
             this.ClientSize = new System.Drawing.Size(1176, 568);
             this.Controls.Add(this.KontragentGrid);
             this.Controls.Add(this.BottomPanel);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
             this.Name = "frmKagents";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -187,6 +195,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KontragentBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KontragentGroupGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,6 +212,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Views.Grid.GridView KontragentGroupGridView;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox1;
-        public System.Windows.Forms.ImageList GridImageList;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

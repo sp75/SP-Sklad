@@ -294,7 +294,7 @@
             this.imageCollection1.Images.SetKeyName(15, "pay_doc_out");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "refresh", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.imageCollection1.Images.SetKeyName(17, "refresh");
             // 
             // NewItemBtn
@@ -693,7 +693,8 @@
             this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelControl4.Location = new System.Drawing.Point(1123, 18);
             this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(36, 13);
+            this.labelControl4.Size = new System.Drawing.Size(39, 16);
+            this.labelControl4.StyleController = this.styleController1;
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Статус";
             // 
@@ -701,9 +702,9 @@
             // 
             this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(554, 13);
+            this.wbKagentList.Location = new System.Drawing.Point(577, 13);
             this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.supplier;
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -713,18 +714,20 @@
             this.wbKagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.wbKagentList.Properties.ShowHeader = false;
             this.wbKagentList.Properties.ValueMember = "KaId";
-            this.wbKagentList.Size = new System.Drawing.Size(543, 24);
+            this.wbKagentList.Size = new System.Drawing.Size(520, 24);
             this.wbKagentList.StyleController = this.styleController1;
             this.wbKagentList.TabIndex = 6;
+            this.wbKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.wbKagentList_ButtonClick);
             this.wbKagentList.EditValueChanged += new System.EventHandler(this.wbKagentList_EditValueChanged);
             // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(488, 18);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(54, 13);
+            this.labelControl3.Size = new System.Drawing.Size(83, 16);
+            this.labelControl3.StyleController = this.styleController1;
             this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Конрагент";
+            this.labelControl3.Text = "Постачальник";
             // 
             // wbEndDate
             // 

@@ -662,9 +662,9 @@
             // 
             this.PDKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PDKagentList.Location = new System.Drawing.Point(584, 12);
+            this.PDKagentList.Location = new System.Drawing.Point(584, 13);
             this.PDKagentList.Name = "PDKagentList";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
             this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -730,12 +730,12 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(518, 17);
+            this.labelControl6.Location = new System.Drawing.Point(512, 17);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(60, 16);
+            this.labelControl6.Size = new System.Drawing.Size(66, 16);
             this.labelControl6.StyleController = this.styleController1;
             this.labelControl6.TabIndex = 4;
-            this.labelControl6.Text = "Конрагент";
+            this.labelControl6.Text = "Контрагент";
             // 
             // PDEndDate
             // 
