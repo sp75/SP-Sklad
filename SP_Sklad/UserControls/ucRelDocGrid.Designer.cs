@@ -35,9 +35,10 @@
             this.RelDocGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox7 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox6 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.DocTypeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -52,20 +53,22 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MoveToDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.PrintDocBtn = new DevExpress.XtraBars.BarButtonItem();
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.RelDocGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GetRelDocListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RelDocGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocTypeImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // RelDocGridControl
@@ -132,66 +135,25 @@
             this.repositoryItemImageComboBox7.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox7.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 37),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 38)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 3)});
             this.repositoryItemImageComboBox7.Name = "repositoryItemImageComboBox7";
             this.repositoryItemImageComboBox7.SmallImages = this.GridImageList;
             // 
             // GridImageList
             // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Счета.bmp");
-            this.GridImageList.Images.SetKeyName(2, "РасходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(3, "Счет-фактуры.bmp");
-            this.GridImageList.Images.SetKeyName(4, "ВходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(5, "ИсходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(6, "ДопРасход.bmp");
-            this.GridImageList.Images.SetKeyName(7, "Возврат Поставщику.bmp");
-            this.GridImageList.Images.SetKeyName(8, "Возврат от клиетна.bmp");
-            this.GridImageList.Images.SetKeyName(9, "Заказ от клиента.bmp");
-            this.GridImageList.Images.SetKeyName(10, "Заказ поставщикам.bmp");
-            this.GridImageList.Images.SetKeyName(11, "Договор купли.bmp");
-            this.GridImageList.Images.SetKeyName(12, "Договор продажу.bmp");
-            this.GridImageList.Images.SetKeyName(13, "Прайс лист.bmp");
-            this.GridImageList.Images.SetKeyName(14, "Введення залишк_в товар_в.bmp");
-            this.GridImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
-            this.GridImageList.Images.SetKeyName(16, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(17, "Накладн_ перем_щення.bmp");
-            this.GridImageList.Images.SetKeyName(18, "Бази даних.bmp");
-            this.GridImageList.Images.SetKeyName(19, "Add.bmp");
-            this.GridImageList.Images.SetKeyName(20, "edit.bmp");
-            this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "execute.png");
-            this.GridImageList.Images.SetKeyName(23, "н_.bmp");
-            this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
-            this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
-            this.GridImageList.Images.SetKeyName(26, "exec16.png");
-            this.GridImageList.Images.SetKeyName(27, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(28, "Службовц_.bmp");
-            this.GridImageList.Images.SetKeyName(29, "списати грош_.bmp");
-            this.GridImageList.Images.SetKeyName(30, "зарахувати.bmp");
-            this.GridImageList.Images.SetKeyName(31, "Акти iнвентаризацiї.bmp");
-            this.GridImageList.Images.SetKeyName(32, "позначити.bmp");
-            this.GridImageList.Images.SetKeyName(33, "пратнерка.png");
-            this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
-            this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
-            this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
-            this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
-            this.GridImageList.Images.SetKeyName(39, "Послуги.bmp");
-            this.GridImageList.Images.SetKeyName(40, "moneymove.png");
-            this.GridImageList.Images.SetKeyName(41, "Debt adjustment.png");
-            this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
-            this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
-            this.GridImageList.Images.SetKeyName(44, "CostAnalysis_16x16.png");
-            this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
-            this.GridImageList.Images.SetKeyName(46, "management2.png");
-            this.GridImageList.Images.SetKeyName(47, "ActServices.png");
-            this.GridImageList.Images.SetKeyName(48, "delivery-truck (1).png");
-            this.GridImageList.Images.SetKeyName(49, "free-icon-point-of-sale-313166.png");
-            this.GridImageList.Images.SetKeyName(50, "weighing-scale.png");
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "new_document");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "checked_green");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "checked_blue");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.doc_link, "doc_link", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "doc_link");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.disabled_link, "disabled_link", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.GridImageList.Images.SetKeyName(4, "disabled_link");
             // 
             // gridColumn15
             // 
@@ -218,27 +180,89 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox6.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 7),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 17),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 33),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 15),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 14),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 18),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 20),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 19),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -16, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 16),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 21),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 13),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 9, 40),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 46),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 32, 48),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 31),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 49),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 50)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 28, 24),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 32, 11),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 12),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 23),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 22),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 7)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
-            this.repositoryItemImageComboBox6.SmallImages = this.GridImageList;
+            this.repositoryItemImageComboBox6.SmallImages = this.DocTypeImageCollection;
+            // 
+            // DocTypeImageCollection
+            // 
+            this.DocTypeImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("DocTypeImageCollection.ImageStream")));
+            this.DocTypeImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.DocTypeImageCollection.Images.SetKeyName(0, "waybill_in");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.DocTypeImageCollection.Images.SetKeyName(1, "wb_order_in");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_in, "wb_return_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.DocTypeImageCollection.Images.SetKeyName(2, "wb_return_in");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.DocTypeImageCollection.Images.SetKeyName(3, "move_stock");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.DocTypeImageCollection.Images.SetKeyName(4, "WBWriteOn_4");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.DocTypeImageCollection.Images.SetKeyName(5, "wb_return_sale");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.act_services_provider, "act_services_provider", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.DocTypeImageCollection.Images.SetKeyName(6, "act_services_provider");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.DocTypeImageCollection.Images.SetKeyName(7, "preparation");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.contract_out, "contract_out", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.DocTypeImageCollection.Images.SetKeyName(8, "contract_out");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.DocTypeImageCollection.Images.SetKeyName(9, "deboneing");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.DocTypeImageCollection.Images.SetKeyName(10, "debt_adjustment");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.expedition, "expedition", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.DocTypeImageCollection.Images.SetKeyName(11, "expedition");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.DocTypeImageCollection.Images.SetKeyName(12, "inventory_act");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.DocTypeImageCollection.Images.SetKeyName(13, "invoice");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.DocTypeImageCollection.Images.SetKeyName(14, "manufacturing_products");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.DocTypeImageCollection.Images.SetKeyName(15, "pay_doc_in");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.DocTypeImageCollection.Images.SetKeyName(16, "pay_doc_out");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out_2, "pay_doc_out_2", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.DocTypeImageCollection.Images.SetKeyName(17, "pay_doc_out_2");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.DocTypeImageCollection.Images.SetKeyName(18, "waybill_out");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.DocTypeImageCollection.Images.SetKeyName(19, "wb_order_out");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_out, "wb_return_out", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.DocTypeImageCollection.Images.SetKeyName(20, "wb_return_out");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 21);
+            this.DocTypeImageCollection.Images.SetKeyName(21, "WBWriteOff_2");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.DocTypeImageCollection.Images.SetKeyName(22, "weightedpies_16x16");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.DocTypeImageCollection.Images.SetKeyName(23, "purchase");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.management_raw_materials, "management_raw_materials", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.DocTypeImageCollection.Images.SetKeyName(24, "management_raw_materials");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.price_lict, "price_lict", typeof(global::SP_Sklad.Properties.Resources), 25);
+            this.DocTypeImageCollection.Images.SetKeyName(25, "price_lict");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.price_settings, "price_settings", typeof(global::SP_Sklad.Properties.Resources), 26);
+            this.DocTypeImageCollection.Images.SetKeyName(26, "price_settings");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.project_manager_2, "project_manager_2", typeof(global::SP_Sklad.Properties.Resources), 27);
+            this.DocTypeImageCollection.Images.SetKeyName(27, "project_manager_2");
             // 
             // gridColumn16
             // 
@@ -264,9 +288,9 @@
             this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
             // 
@@ -389,6 +413,17 @@
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(948, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
+            // BarImageList
+            // 
+            this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList.Images.SetKeyName(0, "walking_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.BarImageList.Images.SetKeyName(1, "preview_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList.Images.SetKeyName(2, "refresh");
+            // 
             // RefrechItemBtn
             // 
             this.RefrechItemBtn.Caption = "Обновити";
@@ -420,17 +455,6 @@
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.BarImageList.Images.SetKeyName(0, "walking_16x16");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.BarImageList.Images.SetKeyName(1, "preview_2");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.BarImageList.Images.SetKeyName(2, "refresh");
-            // 
             // ucRelDocGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,11 +473,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.GetRelDocListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RelDocGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DocTypeImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +500,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
-        public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -488,5 +513,7 @@
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private System.Windows.Forms.BindingSource GetRelDocListBS;
         private DevExpress.Utils.ImageCollection BarImageList;
+        private DevExpress.Utils.ImageCollection DocTypeImageCollection;
+        private DevExpress.Utils.ImageCollection GridImageList;
     }
 }

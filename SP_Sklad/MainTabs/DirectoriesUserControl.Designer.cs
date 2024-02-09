@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -119,6 +119,7 @@
             this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
             this.KAgentInfoBS = new System.Windows.Forms.BindingSource(this.components);
@@ -443,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).BeginInit();
@@ -598,10 +600,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 5),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 3)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
@@ -610,11 +612,22 @@
             // 
             this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
             this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.GridImageList.Images.SetKeyName(0, "Товари.png");
-            this.GridImageList.Images.SetKeyName(1, "Конрагент.png");
-            this.GridImageList.Images.SetKeyName(2, "юзер.png");
-            this.GridImageList.Images.SetKeyName(3, "store_16.png");
-            this.GridImageList.Images.SetKeyName(4, "Послуги.png");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_1, "product_1", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "product_1");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "businessman");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.user_valet, "user_valet", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "user_valet");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "store_16");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.GridImageList.Images.SetKeyName(4, "service");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.enterprise, "enterprise", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.GridImageList.Images.SetKeyName(5, "enterprise");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.GridImageList.Images.SetKeyName(6, "supplier");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.GridImageList.Images.SetKeyName(7, "product");
             // 
             // repositoryItemImageComboBox2
             // 
@@ -742,6 +755,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
@@ -753,7 +767,7 @@
             // 
             this.NewItemBtn.Caption = "Додати";
             this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("NewItemBtn.ImageOptions.Image")));
+            this.NewItemBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.additem_3;
             this.NewItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("NewItemBtn.ImageOptions.LargeImage")));
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
@@ -762,7 +776,7 @@
             // 
             this.CopyItemBtn.Caption = "Додати на підставі";
             this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("CopyItemBtn.ImageOptions.Image")));
+            this.CopyItemBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.copy_2;
             this.CopyItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("CopyItemBtn.ImageOptions.LargeImage")));
             this.CopyItemBtn.Name = "CopyItemBtn";
             this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
@@ -771,7 +785,7 @@
             // 
             this.EditItemBtn.Caption = "Властивості";
             this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditItemBtn.ImageOptions.Image")));
+            this.EditItemBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_2;
             this.EditItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("EditItemBtn.ImageOptions.LargeImage")));
             this.EditItemBtn.Name = "EditItemBtn";
             this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
@@ -780,7 +794,7 @@
             // 
             this.DeleteItemBtn.Caption = "Видалити";
             this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("DeleteItemBtn.ImageOptions.Image")));
+            this.DeleteItemBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.close;
             this.DeleteItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("DeleteItemBtn.ImageOptions.LargeImage")));
             this.DeleteItemBtn.Name = "DeleteItemBtn";
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
@@ -789,8 +803,8 @@
             // 
             this.RefrechItemBtn.Caption = "Обновити";
             this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("RefrechItemBtn.ImageOptions.Image")));
-            this.RefrechItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("RefrechItemBtn.ImageOptions.LargeImage")));
+            this.RefrechItemBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.refresh_office;
+            this.RefrechItemBtn.ImageOptions.LargeImage = global::SP_Sklad.Properties.Resources.recurrence_32x32;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
@@ -1372,8 +1386,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.tag_16x16, "tag_16x16", typeof(global::SP_Sklad.Properties.Resources), 34);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "tag_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_categories, "price_categories", typeof(global::SP_Sklad.Properties.Resources), 34);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "price_categories");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.type_acounts, "type_acounts", typeof(global::SP_Sklad.Properties.Resources), 35);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "type_acounts");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.countries, "countries", typeof(global::SP_Sklad.Properties.Resources), 36);
@@ -1395,8 +1409,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "event_log");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.properties_16x16, "properties_16x16", typeof(global::SP_Sklad.Properties.Resources), 45);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 46);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "financial_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance, "finance", typeof(global::SP_Sklad.Properties.Resources), 46);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
@@ -1419,7 +1433,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 60);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "cash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 61);
@@ -1433,7 +1448,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 67);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.truck_2, "truck_2", typeof(global::SP_Sklad.Properties.Resources), 68);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 69);
@@ -1704,7 +1720,7 @@
             // xtraTabControl2
             // 
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl2.Images = this.PageImageList;
+            this.xtraTabControl2.Images = this.imageCollection1;
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage1;
@@ -1718,10 +1734,39 @@
             this.xtraTabPage18,
             this.xtraTabPage31});
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.info1, "info1", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "info1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.contact_info, "contact_info", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "contact_info");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.user_groups, "user_groups", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "user_groups");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.bank_account, "bank_account", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "bank_account");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.note2, "note2", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "note2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.contact_details, "contact_details", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "contact_details");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "interchangeability");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "product_list_4");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "pricing");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.contact, "contact", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "contact");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.note_1, "note_1", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "note_1");
+            // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.vGridControl1);
-            this.xtraTabPage1.ImageOptions.ImageIndex = 10;
+            this.xtraTabPage1.ImageOptions.ImageIndex = 1;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage1.Text = "Контактна інформація";
@@ -1789,14 +1834,14 @@
             // xtraTabPage15
             // 
             this.xtraTabPage15.Controls.Add(this.vGridControl4);
-            this.xtraTabPage15.ImageOptions.ImageIndex = 1;
+            this.xtraTabPage15.ImageOptions.ImageIndex = 10;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage15.Text = "Основна інформація";
             // 
             // vGridControl4
             // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -1896,7 +1941,7 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl3);
-            this.xtraTabPage2.ImageOptions.ImageIndex = 12;
+            this.xtraTabPage2.ImageOptions.ImageIndex = 5;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage2.Text = "Контактні особи";
@@ -1967,7 +2012,7 @@
             // xtraTabPage16
             // 
             this.xtraTabPage16.Controls.Add(this.gridControl1);
-            this.xtraTabPage16.ImageOptions.ImageIndex = 11;
+            this.xtraTabPage16.ImageOptions.ImageIndex = 3;
             this.xtraTabPage16.Name = "xtraTabPage16";
             this.xtraTabPage16.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage16.Text = "Рахунки";
@@ -2029,7 +2074,7 @@
             // xtraTabPage18
             // 
             this.xtraTabPage18.Controls.Add(this.memoEdit1);
-            this.xtraTabPage18.ImageOptions.ImageIndex = 9;
+            this.xtraTabPage18.ImageOptions.ImageIndex = 11;
             this.xtraTabPage18.Name = "xtraTabPage18";
             this.xtraTabPage18.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage18.Text = "Примітка";
@@ -2046,6 +2091,7 @@
             // xtraTabPage31
             // 
             this.xtraTabPage31.Controls.Add(this.gridControl4);
+            this.xtraTabPage31.ImageOptions.ImageIndex = 2;
             this.xtraTabPage31.Name = "xtraTabPage31";
             this.xtraTabPage31.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage31.Text = "Контрагенти/Службовці";
@@ -2330,7 +2376,7 @@
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl1.Images = this.PageImageList;
+            this.xtraTabControl1.Images = this.imageCollection1;
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage3;
@@ -2348,7 +2394,7 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.vGridControl3);
-            this.xtraTabPage3.ImageOptions.ImageIndex = 1;
+            this.xtraTabPage3.ImageOptions.ImageIndex = 7;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage3.Text = "Основна інформація";
@@ -2421,14 +2467,14 @@
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.vGridControl2);
-            this.xtraTabPage4.ImageOptions.ImageIndex = 1;
+            this.xtraTabPage4.ImageOptions.ImageIndex = 0;
             this.xtraTabPage4.Name = "xtraTabPage4";
             this.xtraTabPage4.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage4.Text = "Дод. Інформація";
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl2.DataSource = this.MatListInfoBS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
@@ -2494,7 +2540,7 @@
             // xtraTabPage5
             // 
             this.xtraTabPage5.Controls.Add(this.MatPriceGridControl);
-            this.xtraTabPage5.ImageOptions.ImageIndex = 8;
+            this.xtraTabPage5.ImageOptions.ImageIndex = 9;
             this.xtraTabPage5.Name = "xtraTabPage5";
             this.xtraTabPage5.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage5.Text = "Ціноутворення";
@@ -2651,7 +2697,7 @@
             // xtraTabPage13
             // 
             this.xtraTabPage13.Controls.Add(this.MatNotesEdit);
-            this.xtraTabPage13.ImageOptions.ImageIndex = 9;
+            this.xtraTabPage13.ImageOptions.ImageIndex = 4;
             this.xtraTabPage13.Name = "xtraTabPage13";
             this.xtraTabPage13.Size = new System.Drawing.Size(1086, 197);
             this.xtraTabPage13.Text = "Примітка";
@@ -2669,7 +2715,7 @@
             // 
             this.xtraTabPage14.Controls.Add(this.MatListGridControl);
             this.xtraTabPage14.Controls.Add(this.standaloneBarDockControl7);
-            this.xtraTabPage14.ImageOptions.ImageIndex = 14;
+            this.xtraTabPage14.ImageOptions.ImageIndex = 8;
             this.xtraTabPage14.Name = "xtraTabPage14";
             this.xtraTabPage14.PageVisible = false;
             this.xtraTabPage14.Size = new System.Drawing.Size(1086, 197);
@@ -2962,9 +3008,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode3.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode3});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -3990,9 +4036,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -4521,6 +4567,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).EndInit();
@@ -5055,5 +5102,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit14;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn115;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

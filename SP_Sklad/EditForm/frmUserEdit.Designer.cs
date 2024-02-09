@@ -949,8 +949,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.tag_16x16, "tag_16x16", typeof(global::SP_Sklad.Properties.Resources), 34);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "tag_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_categories, "price_categories", typeof(global::SP_Sklad.Properties.Resources), 34);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "price_categories");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.type_acounts, "type_acounts", typeof(global::SP_Sklad.Properties.Resources), 35);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "type_acounts");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.countries, "countries", typeof(global::SP_Sklad.Properties.Resources), 36);
@@ -972,8 +972,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "event_log");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.properties_16x16, "properties_16x16", typeof(global::SP_Sklad.Properties.Resources), 45);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 46);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "financial_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance, "finance", typeof(global::SP_Sklad.Properties.Resources), 46);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
@@ -996,7 +996,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 60);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "cash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 61);
@@ -1010,7 +1011,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 67);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.truck_2, "truck_2", typeof(global::SP_Sklad.Properties.Resources), 68);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 69);

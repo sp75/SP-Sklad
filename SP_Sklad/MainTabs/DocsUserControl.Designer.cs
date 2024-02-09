@@ -90,8 +90,8 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
@@ -120,11 +120,8 @@
             this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WaybillCorrectionDetBtn = new DevExpress.XtraBars.BarButtonItem();
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.GetWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -303,8 +300,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(32, "Одиниці виміру.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 33);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(33, "bank");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.tag_16x16, "tag_16x16", typeof(global::SP_Sklad.Properties.Resources), 34);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "tag_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.price_categories, "price_categories", typeof(global::SP_Sklad.Properties.Resources), 34);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(34, "price_categories");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.type_acounts, "type_acounts", typeof(global::SP_Sklad.Properties.Resources), 35);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(35, "type_acounts");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.countries, "countries", typeof(global::SP_Sklad.Properties.Resources), 36);
@@ -326,8 +323,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(44, "event_log");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.properties_16x16, "properties_16x16", typeof(global::SP_Sklad.Properties.Resources), 45);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.financial_16x16, "financial_16x16", typeof(global::SP_Sklad.Properties.Resources), 46);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "financial_16x16");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance, "finance", typeof(global::SP_Sklad.Properties.Resources), 46);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
@@ -350,7 +347,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process2.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(59, "finance_process");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 60);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(60, "cash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 61);
@@ -364,7 +362,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(65, "trolley");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 66);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(66, "weightedpies_16x16");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 67);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(67, "purchase");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.truck_2, "truck_2", typeof(global::SP_Sklad.Properties.Resources), 68);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(68, "truck_2");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 69);
@@ -988,8 +987,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14)});
             this.bar1.OptionsBar.DrawBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
@@ -1013,14 +1012,6 @@
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
-            // barButtonItem17
-            // 
-            this.barButtonItem17.Caption = "Пошук документа";
-            this.barButtonItem17.Id = 29;
-            this.barButtonItem17.ImageOptions.ImageIndex = 7;
-            this.barButtonItem17.Name = "barButtonItem17";
-            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
-            // 
             // barButtonItem18
             // 
             this.barButtonItem18.Caption = "Список корегуваннь документів";
@@ -1029,12 +1020,19 @@
             this.barButtonItem18.Name = "barButtonItem18";
             this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
             // 
+            // barButtonItem17
+            // 
+            this.barButtonItem17.Caption = "Пошук документа";
+            this.barButtonItem17.Id = 29;
+            this.barButtonItem17.ImageOptions.ImageIndex = 7;
+            this.barButtonItem17.Name = "barButtonItem17";
+            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
+            // 
             // barButtonItem14
             // 
             this.barButtonItem14.Caption = "Експорт списка";
             this.barButtonItem14.Id = 25;
-            this.barButtonItem14.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
-            this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
+            this.barButtonItem14.ImageOptions.ImageIndex = 9;
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
             // 
@@ -1110,10 +1108,12 @@
             this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 6);
             this.BarImageList1.Images.SetKeyName(6, "preview_2");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.findbyid_16x161, "findbyid_16x161", typeof(global::SP_Sklad.Properties.Resources), 7);
-            this.BarImageList1.Images.SetKeyName(7, "findbyid_16x161");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.find_barcode, "find_barcode", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.BarImageList1.Images.SetKeyName(7, "find_barcode");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.showtestreport_16x162, "showtestreport_16x162", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.BarImageList1.Images.SetKeyName(8, "showtestreport_16x162");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.BarImageList1.Images.SetKeyName(9, "xls_export");
             // 
             // ExecuteInvBtn
             // 
@@ -1266,120 +1266,14 @@
             this.WbHistoryBtn.Name = "WbHistoryBtn";
             this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
             // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(8, "_нформац_я про резерв товару.bmp");
-            this.BarImageList.Images.SetKeyName(9, "_нформац_я про товар.bmp");
-            this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
-            this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(12, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(13, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(14, "Аналоги.bmp");
-            this.BarImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
-            this.BarImageList.Images.SetKeyName(16, "218745_export_16x16.png");
-            this.BarImageList.Images.SetKeyName(17, "printer (1).png");
-            this.BarImageList.Images.SetKeyName(18, "Заказ от клиента.png");
-            this.BarImageList.Images.SetKeyName(19, "exec16.png");
-            this.BarImageList.Images.SetKeyName(20, "magnifier.png");
-            this.BarImageList.Images.SetKeyName(21, "edittask_16x16.png");
-            // 
             // GetWayBillListBS
             // 
             this.GetWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
-            // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(1, "Счета.bmp");
-            this.GridImageList.Images.SetKeyName(2, "РасходНакл.bmp");
-            this.GridImageList.Images.SetKeyName(3, "Счет-фактуры.bmp");
-            this.GridImageList.Images.SetKeyName(4, "ВходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(5, "ИсходПлатежи.bmp");
-            this.GridImageList.Images.SetKeyName(6, "ДопРасход.bmp");
-            this.GridImageList.Images.SetKeyName(7, "Возврат Поставщику.bmp");
-            this.GridImageList.Images.SetKeyName(8, "Возврат от клиетна.bmp");
-            this.GridImageList.Images.SetKeyName(9, "Заказ от клиента.bmp");
-            this.GridImageList.Images.SetKeyName(10, "Заказ поставщикам.bmp");
-            this.GridImageList.Images.SetKeyName(11, "Договор купли.bmp");
-            this.GridImageList.Images.SetKeyName(12, "Договор продажу.bmp");
-            this.GridImageList.Images.SetKeyName(13, "Прайс лист.bmp");
-            this.GridImageList.Images.SetKeyName(14, "Введення залишк_в товар_в.bmp");
-            this.GridImageList.Images.SetKeyName(15, "Акти списання товару.bmp");
-            this.GridImageList.Images.SetKeyName(16, "Товари.bmp");
-            this.GridImageList.Images.SetKeyName(17, "Накладн_ перем_щення.bmp");
-            this.GridImageList.Images.SetKeyName(18, "Бази даних.bmp");
-            this.GridImageList.Images.SetKeyName(19, "Add.bmp");
-            this.GridImageList.Images.SetKeyName(20, "edit.bmp");
-            this.GridImageList.Images.SetKeyName(21, "Delete.bmp");
-            this.GridImageList.Images.SetKeyName(22, "execute.png");
-            this.GridImageList.Images.SetKeyName(23, "н_.bmp");
-            this.GridImageList.Images.SetKeyName(24, "н_чого.bmp");
-            this.GridImageList.Images.SetKeyName(25, "Частково оброблений.bmp");
-            this.GridImageList.Images.SetKeyName(26, "exec16.png");
-            this.GridImageList.Images.SetKeyName(27, "Конрагент.bmp");
-            this.GridImageList.Images.SetKeyName(28, "Службовц_.bmp");
-            this.GridImageList.Images.SetKeyName(29, "списати грош_.bmp");
-            this.GridImageList.Images.SetKeyName(30, "зарахувати.bmp");
-            this.GridImageList.Images.SetKeyName(31, "Акти iнвентаризацiї.bmp");
-            this.GridImageList.Images.SetKeyName(32, "позначити.bmp");
-            this.GridImageList.Images.SetKeyName(33, "пратнерка.png");
-            this.GridImageList.Images.SetKeyName(34, "Отчеты.bmp");
-            this.GridImageList.Images.SetKeyName(35, "Документы16x16.bmp");
-            this.GridImageList.Images.SetKeyName(36, "податкова накладна.bmp");
-            this.GridImageList.Images.SetKeyName(37, "disabled_link.png");
-            this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
-            this.GridImageList.Images.SetKeyName(39, "Послуги.bmp");
-            this.GridImageList.Images.SetKeyName(40, "moneymove.png");
-            this.GridImageList.Images.SetKeyName(41, "Debt adjustment.png");
-            this.GridImageList.Images.SetKeyName(42, "credit adjustment.png");
-            this.GridImageList.Images.SetKeyName(43, "Зарезервовано.bmp");
-            this.GridImageList.Images.SetKeyName(44, "CostAnalysis_16x16.png");
-            this.GridImageList.Images.SetKeyName(45, "crediting the funds to the account.png");
-            this.GridImageList.Images.SetKeyName(46, "management2.png");
-            this.GridImageList.Images.SetKeyName(47, "ActServices.png");
-            this.GridImageList.Images.SetKeyName(48, "delivery-truck (1).png");
-            this.GridImageList.Images.SetKeyName(49, "store-2017.png");
             // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // PageImageList
-            // 
-            this.PageImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PageImageList.ImageStream")));
-            this.PageImageList.TransparentColor = System.Drawing.Color.White;
-            this.PageImageList.Images.SetKeyName(0, "Товари.bmp");
-            this.PageImageList.Images.SetKeyName(1, "info.bmp");
-            this.PageImageList.Images.SetKeyName(2, "Зв\'язан_ документи.bmp");
-            this.PageImageList.Images.SetKeyName(3, "Склади.bmp");
-            this.PageImageList.Images.SetKeyName(4, "Парт_ї.bmp");
-            this.PageImageList.Images.SetKeyName(5, "Замовлене кл_єнтами.bmp");
-            this.PageImageList.Images.SetKeyName(6, "Аналоги.bmp");
-            this.PageImageList.Images.SetKeyName(7, "Наявн_сть на сладах.bmp");
-            this.PageImageList.Images.SetKeyName(8, "Ц_нов_ кат.bmp");
-            this.PageImageList.Images.SetKeyName(9, "edit.bmp");
-            this.PageImageList.Images.SetKeyName(10, "UserInfo.bmp");
-            this.PageImageList.Images.SetKeyName(11, "Типи рахунк_в.bmp");
-            this.PageImageList.Images.SetKeyName(12, "Службовц_.bmp");
-            this.PageImageList.Images.SetKeyName(13, "Документ.bmp");
-            this.PageImageList.Images.SetKeyName(14, "Товари списком.bmp");
-            this.PageImageList.Images.SetKeyName(15, "system-users.png");
-            this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
-            this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
-            this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
             // 
             // WayBillListInfoBS
             // 
@@ -1538,8 +1432,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage12;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage13;
-        public System.Windows.Forms.ImageList GridImageList;
-        public System.Windows.Forms.ImageList PageImageList;
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1554,7 +1446,6 @@
         private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
         private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.Bar bar2;
-        public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.XtraBars.BarButtonItem ExecuteInvBtn;
         private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
         private DevExpress.XtraBars.BarButtonItem createTaxWBbtn;

@@ -3538,6 +3538,31 @@
     <None Include="Resources\add_32x32.png" />
     <None Include="Resources\status_16x16.png" />
     <None Include="Resources\listnumbers_16x16.png" />
+    <None Include="Resources\purchase.png" />
+    <None Include="Resources\doc_link_break.png" />
+    <None Include="Resources\doc_link.png" />
+    <None Include="Resources\disabled_link.png" />
+    <None Include="Resources\finance_process.png" />
+    <None Include="Resources\zoom100percent_16x16.png" />
+    <None Include="Resources\find_barcode.png" />
+    <None Include="Resources\refresh_16x162.png" />
+    <None Include="Resources\refresh_32x32.png" />
+    <None Include="Resources\recurrence_16x161.png" />
+    <None Include="Resources\recurrence_32x321.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\contact.png" />
+    <None Include="Resources\contact_details.png" />
+    <None Include="Resources\mail_contact.png" />
+    <None Include="Resources\phone_contact.png" />
+    <None Include="Resources\contact_info.png" />
+    <None Include="Resources\note.png" />
+    <None Include="Resources\product_1.png" />
+    <None Include="Resources\price_categories.png" />
+    <None Include="Resources\pricing_1.png" />
+    <None Include="Resources\pricing.png" />
+    <None Include="Resources\price.png" />
+    <None Include="Resources\note_1.png" />
+    <None Include="Resources\note2.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>
