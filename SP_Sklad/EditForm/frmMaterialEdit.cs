@@ -288,14 +288,12 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            ArtikulEdit.Text = NameTextEdit.Text;
-            ArtikulEdit.Focus();
+         
         }
 
         private void WhBtn_Click(object sender, EventArgs e)
         {
-            NameTextEdit.Text = ArtikulEdit.Text;
-            NameTextEdit.Focus();
+           
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -838,7 +836,23 @@ namespace SP_Sklad.EditForm
             }
         }
 
+        private void NameTextEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 0)
+            {
+                ArtikulEdit.Text = NameTextEdit.Text;
+                ArtikulEdit.Focus();
+            }
+        }
 
+        private void ArtikulEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 0)
+            {
+                NameTextEdit.Text = ArtikulEdit.Text;
+                NameTextEdit.Focus();
+            }
+        }
     }
 
 

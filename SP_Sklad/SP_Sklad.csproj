@@ -3568,6 +3568,11 @@
     <None Include="Resources\tree_structure.png" />
     <None Include="Resources\arrow_up.png" />
     <None Include="Resources\arrow_down.png" />
+    <None Include="Resources\making_notes.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\copy_object.png" />
+    <None Include="Resources\w_scale.png" />
+    <None Include="Resources\image.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -719,5 +719,13 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             Clipboard.SetText(WhMatGridView.GetFocusedDisplayText());
         }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (!IHelper.FindMatInDir(focused_wh_mat.MatId))
+            {
+                MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", focused_wh_mat.MatName));
+            }
+        }
     }
 }
