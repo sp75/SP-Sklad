@@ -3563,6 +3563,11 @@
     <None Include="Resources\price.png" />
     <None Include="Resources\note_1.png" />
     <None Include="Resources\note2.png" />
+    <None Include="Resources\recalc_money.png" />
+    <None Include="Resources\add_new.png" />
+    <None Include="Resources\tree_structure.png" />
+    <None Include="Resources\arrow_up.png" />
+    <None Include="Resources\arrow_down.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>
