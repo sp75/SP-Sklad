@@ -877,7 +877,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
             // AddGroupMatBtn
             // 
@@ -1021,8 +1021,8 @@
             this.BarImageList.Images.SetKeyName(2, "add_price");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.discount_card, "discount_card", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.BarImageList.Images.SetKeyName(3, "discount_card");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList.Images.SetKeyName(4, "edit_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList.Images.SetKeyName(4, "edit_property");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.kontragent_balans, "kontragent_balans", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList.Images.SetKeyName(5, "kontragent_balans");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 6);
@@ -1043,8 +1043,7 @@
             this.BarImageList.Images.SetKeyName(13, "recalc_money");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.trolley, "trolley", typeof(global::SP_Sklad.Properties.Resources), 14);
             this.BarImageList.Images.SetKeyName(14, "trolley");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 15);
-            this.BarImageList.Images.SetKeyName(15, "additem_3");
+            this.BarImageList.Images.SetKeyName(15, "rename.png");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.BarImageList.Images.SetKeyName(16, "close");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 17);
