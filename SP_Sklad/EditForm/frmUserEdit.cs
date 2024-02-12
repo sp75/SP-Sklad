@@ -49,13 +49,13 @@ namespace SP_Sklad.EditForm
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = -1, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
             tree.Add(new CatalogTreeList { Id = 1, ParentId = -1, Text = "Права", ImgIdx = 13, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 3, ParentId = 1, Text = "Основні", ImgIdx = 16, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 4, ParentId = 1, Text = "Доступ до сладів", ImgIdx = 14, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 3, ParentId = 1, Text = "Основні", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 4, ParentId = 1, Text = "Доступ до сладів", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 1, Text = "Додаткові", ImgIdx = 1, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 15, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 17, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 9, ParentId = 1, Text = "Ролі", ImgIdx = 18, TabIdx = 1 });
-            tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 15, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 9, ParentId = 1, Text = "Ролі", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 18, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 3 });
 
 

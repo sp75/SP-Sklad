@@ -188,7 +188,7 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.cash_register;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.receipt_2;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCashdesksEdit";
