@@ -3573,6 +3573,7 @@
     <None Include="Resources\copy_object.png" />
     <None Include="Resources\w_scale.png" />
     <None Include="Resources\image.png" />
+    <None Include="Resources\discounts.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

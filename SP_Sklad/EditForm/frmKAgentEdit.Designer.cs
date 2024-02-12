@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKAgentEdit));
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.KagentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -362,6 +362,7 @@
             this.simpleButton22 = new DevExpress.XtraEditors.SimpleButton();
             this.dropDownButton4 = new DevExpress.XtraEditors.DropDownButton();
             this.aspNetUsersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentBindingSource)).BeginInit();
@@ -592,6 +593,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit9.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -603,29 +605,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 8)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.ImageList;
-            // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
-            this.ImageList.Images.SetKeyName(1, "Знижка.bmp");
-            this.ImageList.Images.SetKeyName(2, "Службовц_.bmp");
-            this.ImageList.Images.SetKeyName(3, "Типи рахунк_в.bmp");
-            this.ImageList.Images.SetKeyName(4, "edit.bmp");
-            this.ImageList.Images.SetKeyName(5, "Документ.bmp");
-            this.ImageList.Images.SetKeyName(6, "Right.bmp");
-            this.ImageList.Images.SetKeyName(7, "Товари.bmp");
-            this.ImageList.Images.SetKeyName(8, "CloseFolder.bmp");
-            this.ImageList.Images.SetKeyName(9, "Баланс з контрагентом.bmp");
-            this.ImageList.Images.SetKeyName(10, "Посв_дчення якост_.bmp");
-            this.ImageList.Images.SetKeyName(11, "Delete.bmp");
-            this.ImageList.Images.SetKeyName(12, "Банки.bmp");
-            this.ImageList.Images.SetKeyName(13, "down.bmp");
-            this.ImageList.Images.SetKeyName(14, "Add.bmp");
-            this.ImageList.Images.SetKeyName(15, "Delete.bmp");
-            this.ImageList.Images.SetKeyName(16, "Ц_нов_ кат.bmp");
             // 
             // styleController1
             // 
@@ -827,7 +806,6 @@
             this.DirTreeList.OptionsView.ShowIndicator = false;
             this.DirTreeList.OptionsView.ShowVertLines = false;
             this.DirTreeList.ParentFieldName = "ParentId";
-            this.DirTreeList.SelectImageList = this.ImageList;
             this.DirTreeList.Size = new System.Drawing.Size(246, 629);
             this.DirTreeList.TabIndex = 33;
             this.DirTreeList.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.DirTreeList_FocusedNodeChanged);
@@ -904,7 +882,6 @@
             // 
             this.simpleButton23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton23.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton23.ImageOptions.Image")));
-            this.simpleButton23.ImageOptions.ImageList = this.ImageList;
             this.simpleButton23.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton23.Location = new System.Drawing.Point(638, 34);
             this.simpleButton23.Name = "simpleButton23";
@@ -1476,7 +1453,6 @@
             // 
             this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.ImageOptions.ImageIndex = 13;
-            this.simpleButton2.ImageOptions.ImageList = this.ImageList;
             this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton2.Location = new System.Drawing.Point(635, 32);
             this.simpleButton2.Name = "simpleButton2";
@@ -1648,7 +1624,6 @@
             // simpleButton5
             // 
             this.simpleButton5.ImageOptions.ImageIndex = 14;
-            this.simpleButton5.ImageOptions.ImageList = this.ImageList;
             this.simpleButton5.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton5.Location = new System.Drawing.Point(274, 149);
             this.simpleButton5.Name = "simpleButton5";
@@ -1732,7 +1707,6 @@
             // simpleButton3
             // 
             this.simpleButton3.ImageOptions.ImageIndex = 15;
-            this.simpleButton3.ImageOptions.ImageList = this.ImageList;
             this.simpleButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton3.Location = new System.Drawing.Point(302, 149);
             this.simpleButton3.Name = "simpleButton3";
@@ -2737,7 +2711,6 @@
             // 
             this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton15.ImageOptions.ImageIndex = 13;
-            this.simpleButton15.ImageOptions.ImageList = this.ImageList;
             this.simpleButton15.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton15.Location = new System.Drawing.Point(629, 163);
             this.simpleButton15.Name = "simpleButton15";
@@ -3321,7 +3294,6 @@
             // 
             this.simpleButton18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton18.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton18.ImageOptions.Image")));
-            this.simpleButton18.ImageOptions.ImageList = this.ImageList;
             this.simpleButton18.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton18.Location = new System.Drawing.Point(641, 23);
             this.simpleButton18.Name = "simpleButton18";
@@ -3375,7 +3347,6 @@
             // 
             this.simpleButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.ImageOptions.Image")));
-            this.simpleButton7.ImageOptions.ImageList = this.ImageList;
             this.simpleButton7.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton7.Location = new System.Drawing.Point(634, 32);
             this.simpleButton7.Name = "simpleButton7";
@@ -3472,7 +3443,6 @@
             // simpleButton14
             // 
             this.simpleButton14.ImageOptions.ImageIndex = 12;
-            this.simpleButton14.ImageOptions.ImageList = this.ImageList;
             this.simpleButton14.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton14.Location = new System.Drawing.Point(314, 91);
             this.simpleButton14.Name = "simpleButton14";
@@ -3519,7 +3489,6 @@
             // simpleButton13
             // 
             this.simpleButton13.ImageOptions.ImageIndex = 3;
-            this.simpleButton13.ImageOptions.ImageList = this.ImageList;
             this.simpleButton13.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton13.Location = new System.Drawing.Point(314, 51);
             this.simpleButton13.Name = "simpleButton13";
@@ -3591,7 +3560,6 @@
             // 
             this.simpleButton6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.ImageOptions.Image")));
-            this.simpleButton6.ImageOptions.ImageList = this.ImageList;
             this.simpleButton6.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton6.Location = new System.Drawing.Point(638, 34);
             this.simpleButton6.Name = "simpleButton6";
@@ -3722,7 +3690,6 @@
             // 
             this.simpleButton16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton16.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton16.ImageOptions.Image")));
-            this.simpleButton16.ImageOptions.ImageList = this.ImageList;
             this.simpleButton16.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton16.Location = new System.Drawing.Point(638, 34);
             this.simpleButton16.Name = "simpleButton16";
@@ -4100,7 +4067,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 8)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.ImageList;
             // 
             // dropDownButton6
             // 
@@ -4188,7 +4154,6 @@
             // 
             this.simpleButton21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton21.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton21.ImageOptions.Image")));
-            this.simpleButton21.ImageOptions.ImageList = this.ImageList;
             this.simpleButton21.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton21.Location = new System.Drawing.Point(638, 34);
             this.simpleButton21.Name = "simpleButton21";
@@ -4357,6 +4322,49 @@
             // aspNetUsersBindingSource
             // 
             this.aspNetUsersBindingSource.DataSource = typeof(SP_Sklad.SkladData.AspNetUsers);
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.contact, "contact", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.ImageList.Images.SetKeyName(0, "contact");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.discounts, "discounts", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.ImageList.Images.SetKeyName(1, "discounts");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.contact_details, "contact_details", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.ImageList.Images.SetKeyName(2, "contact_details");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.type_acounts, "type_acounts", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.ImageList.Images.SetKeyName(3, "type_acounts");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.ImageList.Images.SetKeyName(4, "edit_property");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.textbox_16x16, "textbox_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.ImageList.Images.SetKeyName(5, "textbox_16x16");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.arrow_right, "arrow_right", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.ImageList.Images.SetKeyName(6, "arrow_right");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.ImageList.Images.SetKeyName(7, "product");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.ImageList.Images.SetKeyName(8, "open_16x16");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.kontragent_balans, "kontragent_balans", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.ImageList.Images.SetKeyName(9, "kontragent_balans");
+            this.ImageList.Images.SetKeyName(10, "certificate.png");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.ImageList.Images.SetKeyName(11, "delete_16x16");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.bank, "bank", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.ImageList.Images.SetKeyName(12, "bank");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.arrow_down, "arrow_down", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.ImageList.Images.SetKeyName(13, "arrow_down");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.ImageList.Images.SetKeyName(14, "add_properties");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.ImageList.Images.SetKeyName(15, "delete_properties");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.ImageList.Images.SetKeyName(16, "pricing");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.making_notes, "making_notes", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.ImageList.Images.SetKeyName(17, "making_notes");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.price, "price", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.ImageList.Images.SetKeyName(18, "price");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.contact_info, "contact_info", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.ImageList.Images.SetKeyName(19, "contact_info");
             // 
             // frmKAgentEdit
             // 
@@ -4629,14 +4637,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.calcEdit5.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit9.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.aspNetUsersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        public System.Windows.Forms.ImageList ImageList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource KagentBindingSource;
         private DevExpress.XtraBars.BarManager barManager1;
@@ -4968,5 +4975,6 @@
         private DevExpress.XtraEditors.DropDownButton dropDownButton6;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
         private DevExpress.XtraEditors.SimpleButton simpleButton11;
+        private DevExpress.Utils.ImageCollection ImageList;
     }
 }

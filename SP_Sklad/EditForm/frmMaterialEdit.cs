@@ -309,11 +309,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            int randomNumber = random.Next(0, 1000000000);
-
-            BarCodeEdit.EditValue = randomNumber.ToString();
-            textEdit4.EditValue = NameTextEdit.EditValue;
+            
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -705,15 +701,6 @@ namespace SP_Sklad.EditForm
         private void simpleButton7_Click_1(object sender, EventArgs e)
         {
 
-            var data_for_report = new Dictionary<string, IList>();
-
-
-            var list = _db.Materials.Where(w => w.MatId == _mat_id).ToList();
-
-            data_for_report.Add("range1", list);
-
-
-            IHelper.Print(data_for_report, "BarCode.xlsx");
         }
 
         private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
@@ -852,6 +839,32 @@ namespace SP_Sklad.EditForm
                 NameTextEdit.Text = ArtikulEdit.Text;
                 NameTextEdit.Focus();
             }
+        }
+
+        private void BarCodeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 0)
+            {
+                Random random = new Random();
+                int randomNumber = random.Next(0, 1000000000);
+
+                BarCodeEdit.EditValue = randomNumber.ToString();
+                textEdit4.EditValue = NameTextEdit.EditValue;
+            }
+            else if(e.Button.Index == 1)
+            {
+
+                var data_for_report = new Dictionary<string, IList>();
+
+
+                var list = _db.Materials.Where(w => w.MatId == _mat_id).ToList();
+
+                data_for_report.Add("range1", list);
+
+
+                IHelper.Print(data_for_report, "BarCode.xlsx");
+            }
+
         }
     }
 
