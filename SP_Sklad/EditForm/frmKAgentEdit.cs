@@ -40,12 +40,12 @@ namespace SP_Sklad.EditForm
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
             tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Додаткова інформація", ImgIdx = 0, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Додаткова інформація", ImgIdx = 18, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Документ", ImgIdx = 5, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Ціноутворення", ImgIdx = 16, TabIdx = 13 });
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Знижки", ImgIdx = 1, TabIdx = 3 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Контактна інформація", ImgIdx = 2, TabIdx = 4 });
-            tree.Add(new CatalogTreeList { Id = 6, ParentId = 5, Text = "Контактні особи", ImgIdx = 2, TabIdx = 5 });
+            tree.Add(new CatalogTreeList { Id = 6, ParentId = 5, Text = "Контактні особи", ImgIdx = 17, TabIdx = 5 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Рахунки", ImgIdx = 3, TabIdx = 6 });
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Договір", ImgIdx = 10, TabIdx = 12 });
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 4, TabIdx = 7 });
@@ -635,8 +635,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            UsersLookUpEdit.EditValue = null;
-        //    _ka.UserId = null;
+
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
@@ -669,7 +668,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            textEdit11.EditValue = textEdit12.EditValue;
+          
         }
 
         private void RouteLookUpEdit_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -965,5 +964,21 @@ namespace SP_Sklad.EditForm
             simpleButton23.PerformClick();
         }
 
+        private void textEdit12_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            textEdit11.EditValue = textEdit12.EditValue;
+        }
+
+        private void UsersLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                UsersLookUpEdit.EditValue = null;
+            }
+            else if(e.Button.Index == 2)
+            {
+               
+            }
+        }
     }
 }

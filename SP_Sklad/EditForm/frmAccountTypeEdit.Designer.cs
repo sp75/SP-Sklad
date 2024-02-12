@@ -33,16 +33,16 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.AccountTypeBS = new System.Windows.Forms.BindingSource(this.components);
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.AccountTypeBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountTypeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountTypeBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -81,10 +81,6 @@
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
             // 
-            // AccountTypeBS
-            // 
-            this.AccountTypeBS.DataSource = typeof(SP_Sklad.SkladData.AccountType);
-            // 
             // DefCheckBox
             // 
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.AccountTypeBS, "Def", true));
@@ -111,11 +107,16 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(27, 17);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
             this.labelControl3.TabIndex = 42;
             this.labelControl3.Text = "Назва";
+            // 
+            // AccountTypeBS
+            // 
+            this.AccountTypeBS.DataSource = typeof(SP_Sklad.SkladData.AccountType);
             // 
             // frmAccountTypeEdit
             // 
@@ -126,7 +127,10 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.type_acounts;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAccountTypeEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -135,9 +139,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountTypeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountTypeBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

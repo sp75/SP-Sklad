@@ -3574,6 +3574,8 @@
     <None Include="Resources\w_scale.png" />
     <None Include="Resources\image.png" />
     <None Include="Resources\discounts.png" />
+    <None Include="Resources\contract.png" />
+    <None Include="Resources\identification_documents.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>
