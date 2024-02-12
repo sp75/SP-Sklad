@@ -34,16 +34,16 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.CalcEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.TechProcessDS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -93,9 +93,14 @@
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 38;
             // 
+            // TechProcessDS
+            // 
+            this.TechProcessDS.DataSource = typeof(SP_Sklad.SkladData.TechProcess);
+            // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(12, 65);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
@@ -119,15 +124,12 @@
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(12, 7);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(43, 16);
             this.labelControl1.TabIndex = 41;
             this.labelControl1.Text = "Номер";
-            // 
-            // TechProcessDS
-            // 
-            this.TechProcessDS.DataSource = typeof(SP_Sklad.SkladData.TechProcess);
             // 
             // frmTechProcessEdit
             // 
@@ -139,7 +141,10 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.teh_process;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTechProcessEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -149,8 +154,8 @@
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TechProcessDS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
