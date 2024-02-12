@@ -33,6 +33,7 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
@@ -52,10 +53,10 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.RoundUpToEdit = new DevExpress.XtraEditors.SpinEdit();
-            this.PriceTypesBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -74,7 +75,6 @@
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RoundingMethodEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoundUpToEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -119,6 +119,10 @@
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 40;
             // 
+            // PriceTypesBS
+            // 
+            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -127,6 +131,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(23, 16);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
@@ -141,7 +146,7 @@
             this.DefCheckBox.Properties.Caption = "Основна цінова категорія  (використовувати за змовчуванням)";
             this.DefCheckBox.Properties.ValueChecked = 1;
             this.DefCheckBox.Properties.ValueUnchecked = 0;
-            this.DefCheckBox.Size = new System.Drawing.Size(397, 19);
+            this.DefCheckBox.Size = new System.Drawing.Size(397, 20);
             this.DefCheckBox.TabIndex = 41;
             // 
             // groupControl2
@@ -386,10 +391,6 @@
             this.RoundUpToEdit.StyleController = this.styleController1;
             this.RoundUpToEdit.TabIndex = 69;
             // 
-            // PriceTypesBS
-            // 
-            this.PriceTypesBS.DataSource = typeof(SP_Sklad.SkladData.PriceTypes);
-            // 
             // frmPricetypesEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,7 +398,10 @@
             this.ClientSize = new System.Drawing.Size(639, 450);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.price_categories;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmPricetypesEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -406,6 +410,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -427,7 +432,6 @@
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RoundingMethodEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RoundUpToEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PriceTypesBS)).EndInit();
             this.ResumeLayout(false);
 
         }

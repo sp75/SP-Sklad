@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSvcGroupEdit));
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.SvcGroupDS = new System.Windows.Forms.BindingSource(this.components);
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -52,6 +51,7 @@
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
             this.textEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.ImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
@@ -71,15 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
-            this.ImageList.Images.SetKeyName(1, "edit.bmp");
-            this.ImageList.Images.SetKeyName(2, "CloseFolder.bmp");
             // 
             // styleController1
             // 
@@ -125,7 +118,7 @@
             // 
             this.splitterControl1.Location = new System.Drawing.Point(210, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 274);
+            this.splitterControl1.Size = new System.Drawing.Size(10, 274);
             this.splitterControl1.TabIndex = 42;
             this.splitterControl1.TabStop = false;
             // 
@@ -222,7 +215,6 @@
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(42, 145);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
@@ -311,10 +303,20 @@
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Notes", true));
             this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit1.Location = new System.Drawing.Point(7, 25);
+            this.textEdit1.Location = new System.Drawing.Point(7, 28);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(569, 220);
+            this.textEdit1.Size = new System.Drawing.Size(569, 217);
             this.textEdit1.TabIndex = 36;
+            // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.info1, "info1", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.ImageList.Images.SetKeyName(0, "info1");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.making_notes, "making_notes", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.ImageList.Images.SetKeyName(1, "making_notes");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.ImageList.Images.SetKeyName(2, "open_16x16");
             // 
             // frmSvcGroupEdit
             // 
@@ -353,13 +355,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
             this.groupControl5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        public System.Windows.Forms.ImageList ImageList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource SvcGroupDS;
         private DevExpress.XtraTreeList.TreeList DirTreeList;
@@ -381,5 +382,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.MemoEdit textEdit1;
+        private DevExpress.Utils.ImageCollection ImageList;
     }
 }

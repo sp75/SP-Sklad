@@ -81,19 +81,17 @@ namespace SP_Sklad.EditForm
 
         private void NameTextEdit_EditValueChanged(object sender, EventArgs e)
         {
-            Text = "Товар: " + NameTextEdit.Text;
+            Text = "Послуга: " + NameTextEdit.Text;
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            ArtikulEdit.Text = NameTextEdit.Text;
-            ArtikulEdit.Focus();
+          
         }
 
         private void UpTextBtn_Click(object sender, EventArgs e)
         {
-            NameTextEdit.Text = ArtikulEdit.Text;
-            NameTextEdit.Focus();
+          
         }
 
         private void checkEdit1_EditValueChanged(object sender, EventArgs e)
@@ -104,7 +102,27 @@ namespace SP_Sklad.EditForm
 
         private void MsListBtn_Click(object sender, EventArgs e)
         {
-            MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+           
+        }
+
+        private void NameTextEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            ArtikulEdit.Text = NameTextEdit.Text;
+            ArtikulEdit.Focus();
+        }
+
+        private void ArtikulEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            NameTextEdit.Text = ArtikulEdit.Text;
+            NameTextEdit.Focus();
+        }
+
+        private void MsrComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                MsrComboBox.EditValue = IHelper.ShowDirectList(MsrComboBox.EditValue, 12);
+            }
         }
     }
 }

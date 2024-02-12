@@ -254,7 +254,6 @@
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(-22, 68);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
@@ -298,7 +297,10 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.textEdit1);
             this.Controls.Add(this.textEdit2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.discount_card;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmDiscountCardEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редагувати дисконтну картку";

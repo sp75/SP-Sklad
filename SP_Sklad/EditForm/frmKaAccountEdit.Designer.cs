@@ -254,7 +254,10 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.bank_account;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmKaAccountEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

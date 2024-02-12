@@ -34,19 +34,19 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.NameTextEdit = new DevExpress.XtraEditors.TextEdit();
+            this.CarsBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.NumTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.DriversLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.CarsBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -94,9 +94,14 @@
             this.NameTextEdit.StyleController = this.styleController1;
             this.NameTextEdit.TabIndex = 45;
             // 
+            // CarsBS
+            // 
+            this.CarsBS.DataSource = typeof(SP_Sklad.SkladData.Cars);
+            // 
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(24, 17);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(100, 16);
@@ -151,10 +156,6 @@
             this.DriversLookUpEdit.StyleController = this.styleController1;
             this.DriversLookUpEdit.TabIndex = 51;
             // 
-            // CarsBS
-            // 
-            this.CarsBS.DataSource = typeof(SP_Sklad.SkladData.Cars);
-            // 
             // frmCarEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,7 +168,10 @@
             this.Controls.Add(this.NameTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.truck_2;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCarEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -178,9 +182,9 @@
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NameTextEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DriversLookUpEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CarsBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

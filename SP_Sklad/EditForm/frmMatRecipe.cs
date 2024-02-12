@@ -340,7 +340,6 @@ namespace SP_Sklad.EditForm
 
             var isDoc = _db.WayBillMake.Any(a => a.RecId == _mr.RecId);
             MatRecLookUpEdit.Enabled = !isDoc;
-            simpleButton2.Enabled = !isDoc;
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -352,24 +351,12 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            MatRecLookUpEdit.EditValue = IHelper.ShowDirectList(MatRecLookUpEdit.EditValue, 5);
+          
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
-            _db.SaveChanges();
-
-            ChangeName();
-
-       /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
-            if (det != null)
-            {
-                det.Text = MatLookUpEdit.Text;
-                DirTreeList.RefreshDataSource();
-            }*/
-
-      //      GetRecDetail();
+           
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -459,7 +446,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton13_Click(object sender, EventArgs e)
         {
-            TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
+           
         }
 
         private void textEdit3_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -581,6 +568,42 @@ namespace SP_Sklad.EditForm
             rd.Duration = textEdit4.TimeSpan.Ticks;
             _db.SaveChanges();
            
+        }
+
+        private void MatRecLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                MatRecLookUpEdit.EditValue = IHelper.ShowDirectList(MatRecLookUpEdit.EditValue, 5);
+            }
+        }
+
+        private void MatLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
+                _db.SaveChanges();
+
+                ChangeName();
+
+                /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
+                     if (det != null)
+                     {
+                         det.Text = MatLookUpEdit.Text;
+                         DirTreeList.RefreshDataSource();
+                     }*/
+
+                //      GetRecDetail();
+            }
+        }
+
+        private void TechProcLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
+            }
         }
     }
 }

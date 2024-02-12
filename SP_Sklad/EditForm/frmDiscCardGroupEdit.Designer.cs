@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSvcGroupEdit));
-            this.ImageList = new System.Windows.Forms.ImageList(this.components);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDiscCardGroupEdit));
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.SvcGroupDS = new System.Windows.Forms.BindingSource(this.components);
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.ImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -55,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
@@ -72,14 +73,6 @@
             this.groupControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ImageList
-            // 
-            this.ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageList.ImageStream")));
-            this.ImageList.TransparentColor = System.Drawing.Color.White;
-            this.ImageList.Images.SetKeyName(0, "UserInfo.bmp");
-            this.ImageList.Images.SetKeyName(1, "edit.bmp");
-            this.ImageList.Images.SetKeyName(2, "CloseFolder.bmp");
             // 
             // styleController1
             // 
@@ -121,11 +114,21 @@
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
             // 
+            // ImageList
+            // 
+            this.ImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("ImageList.ImageStream")));
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.info1, "info1", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.ImageList.Images.SetKeyName(0, "info1");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.note_1, "note_1", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.ImageList.Images.SetKeyName(1, "note_1");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.ImageList.Images.SetKeyName(2, "open_16x16");
+            // 
             // splitterControl1
             // 
             this.splitterControl1.Location = new System.Drawing.Point(210, 0);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(5, 274);
+            this.splitterControl1.Size = new System.Drawing.Size(10, 274);
             this.splitterControl1.TabIndex = 42;
             this.splitterControl1.TabStop = false;
             // 
@@ -222,7 +225,6 @@
             this.treeListLookUpEdit1TreeList.KeyFieldName = "GrpId";
             this.treeListLookUpEdit1TreeList.Location = new System.Drawing.Point(42, 145);
             this.treeListLookUpEdit1TreeList.Name = "treeListLookUpEdit1TreeList";
-            this.treeListLookUpEdit1TreeList.OptionsBehavior.EnableFiltering = true;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowColumns = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowHorzLines = false;
             this.treeListLookUpEdit1TreeList.OptionsView.ShowIndicator = false;
@@ -311,12 +313,12 @@
             // 
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.SvcGroupDS, "Notes", true));
             this.textEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textEdit1.Location = new System.Drawing.Point(7, 25);
+            this.textEdit1.Location = new System.Drawing.Point(7, 28);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(569, 220);
+            this.textEdit1.Size = new System.Drawing.Size(569, 217);
             this.textEdit1.TabIndex = 36;
             // 
-            // frmSvcGroupEdit
+            // frmDiscCardGroupEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -325,8 +327,11 @@
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.DirTreeList);
             this.Controls.Add(this.panelControl2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmSvcGroupEdit";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.open_16x16;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmDiscCardGroupEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSvcGroupEdit";
@@ -336,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SvcGroupDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
@@ -358,8 +364,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.ImageList ImageList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.BindingSource SvcGroupDS;
         private DevExpress.XtraTreeList.TreeList DirTreeList;
@@ -381,5 +385,6 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private DevExpress.XtraEditors.GroupControl groupControl5;
         private DevExpress.XtraEditors.MemoEdit textEdit1;
+        private DevExpress.Utils.ImageCollection ImageList;
     }
 }

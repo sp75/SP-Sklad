@@ -34,21 +34,21 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.DefCheckBox = new DevExpress.XtraEditors.CheckEdit();
+            this.CashDesksBS = new System.Windows.Forms.BindingSource(this.components);
             this.NotesTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.EntEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.LicenseKeyEdit = new DevExpress.XtraEditors.TextEdit();
-            this.CashDesksBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashDesksBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EntEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LicenseKeyEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashDesksBS)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -99,6 +99,10 @@
             this.DefCheckBox.StyleController = this.styleController1;
             this.DefCheckBox.TabIndex = 47;
             // 
+            // CashDesksBS
+            // 
+            this.CashDesksBS.DataSource = typeof(SP_Sklad.SkladData.CashDesks);
+            // 
             // NotesTextEdit
             // 
             this.NotesTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -113,6 +117,7 @@
             // labelControl3
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(22, 12);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(40, 16);
@@ -169,10 +174,6 @@
             this.LicenseKeyEdit.StyleController = this.styleController1;
             this.LicenseKeyEdit.TabIndex = 56;
             // 
-            // CashDesksBS
-            // 
-            this.CashDesksBS.DataSource = typeof(SP_Sklad.SkladData.CashDesks);
-            // 
             // frmCashdesksEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +187,10 @@
             this.Controls.Add(this.NotesTextEdit);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.BottomPanel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.cash_register;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmCashdesksEdit";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -196,10 +200,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DefCheckBox.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CashDesksBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EntEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LicenseKeyEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CashDesksBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

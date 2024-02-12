@@ -1897,5 +1897,10 @@ namespace SP_Sklad.MainTabs
                 row.Price = wb.Nds > 0 ? Math.Round((decimal)e.Value + ((decimal)e.Value * (wb.Nds ?? 0) / 100), 4) : (decimal)e.Value;
             }
         }
+
+        private void ServicesGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditItemBtn.PerformClick();
+        }
     }
 }

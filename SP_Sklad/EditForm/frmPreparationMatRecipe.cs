@@ -306,19 +306,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
-            _db.SaveChanges();
-
-            ChangeName();
-
-       /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
-            if (det != null)
-            {
-                det.Text = MatLookUpEdit.Text;
-                DirTreeList.RefreshDataSource();
-            }*/
-
-      //      GetRecDetail();
+           
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -408,7 +396,7 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton13_Click(object sender, EventArgs e)
         {
-            TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
+          
         }
 
         private void textEdit3_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -433,6 +421,34 @@ namespace SP_Sklad.EditForm
         private void MatRecLookUpEdit_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void MatLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MatLookUpEdit.EditValue = IHelper.ShowDirectList(MatLookUpEdit.EditValue, 5);
+                _db.SaveChanges();
+
+                ChangeName();
+
+                /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
+                     if (det != null)
+                     {
+                         det.Text = MatLookUpEdit.Text;
+                         DirTreeList.RefreshDataSource();
+                     }*/
+
+                //      GetRecDetail();
+            }
+        }
+
+        private void TechProcLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
+            }
         }
     }
 }

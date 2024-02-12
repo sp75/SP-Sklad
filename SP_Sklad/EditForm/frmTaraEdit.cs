@@ -95,14 +95,12 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            ArtikulEdit.Text = NameTextEdit.Text;
-            ArtikulEdit.Focus();
+          
         }
 
         private void UpTextBtn_Click(object sender, EventArgs e)
         {
-            NameTextEdit.Text = ArtikulEdit.Text;
-            NameTextEdit.Focus();
+           
         }
 
         private void WeightEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -116,6 +114,18 @@ namespace SP_Sklad.EditForm
                     WeightEdit.EditValue = frm.AmountEdit.Value;
                 }
             }
+        }
+
+        private void NameTextEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            ArtikulEdit.Text = NameTextEdit.Text;
+            ArtikulEdit.Focus();
+        }
+
+        private void ArtikulEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            NameTextEdit.Text = ArtikulEdit.Text;
+            NameTextEdit.Focus();
         }
     }
 }
