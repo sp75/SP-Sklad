@@ -13,6 +13,7 @@ namespace SP_Sklad.MainTabs
     public partial class ReportUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetReportTree_Result focused_tree_node { get; set; }
+        public RepView report_row => RepGridView.GetFocusedRow() as RepView;
 
         public ReportUserControl()
         {
@@ -73,6 +74,7 @@ namespace SP_Sklad.MainTabs
         private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             dynamic row = RepGridView.GetFocusedRow() as RepView;
+            string report_name = DB.SkladBase().RepLng.Where(w => w.LangId == 2 && w.RepId == report_row.RepId).Select(s => s.Name).FirstOrDefault();
 
             if(row == null)
             {

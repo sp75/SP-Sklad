@@ -15,6 +15,7 @@ using SP_Sklad.Common.WayBills;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
 using SP_Sklad.EditForm;
+using DevExpress.XtraBars;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -31,8 +32,9 @@ namespace SP_Sklad.WBDetForm
         private int? _def_wid { get; set; }
         private DateTime _start_date { get; set; }
         private int wtype_out { get; set; }
+        private int? _defective { get; set; }
 
-        public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid, DateTime start_date)
+        public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid, DateTime start_date, int? Defective = null)
         {
             InitializeComponent();
 
@@ -41,7 +43,9 @@ namespace SP_Sklad.WBDetForm
             _wb = wb;
             _def_wid = wid;
             _start_date = start_date;
-           
+            _defective = Defective;
+
+
             if (_wb.WType == 6) // повернення від клієнта
             {
                 wtype_out = -1;
@@ -51,11 +55,22 @@ namespace SP_Sklad.WBDetForm
                 wtype_out = -25;
             }
 
-            WHComboBox.Properties.DataSource = DBHelper.WhList;
+         //   if(_defective == 1)
+       //     {
+       //         WHComboBox.Properties.DataSource = DBHelper.WhList.Where(w=> w.RecyclingWarehouse == 1 ).ToList();
+      ////      }
+       //     else
+      //      {
+                WHComboBox.Properties.DataSource = DBHelper.WhList;
+       //     }
+            
         }
 
         private void frmWBReturnDetIn_Load(object sender, EventArgs e)
         {
+            panel5.Visible = barCheckItem3.Checked;
+            if (!barCheckItem3.Checked) Height -= panel5.Height;
+
             _wbd = _db.WaybillDet.Find(_PosId);
 
             if (_wbd == null)
@@ -108,7 +123,7 @@ namespace SP_Sklad.WBDetForm
             {
                 GetPosOutBS.DataSource = row;
 
-                var wid = _def_wid != null ? _def_wid.Value : row.WID;
+                int? wid = _def_wid != null ? _def_wid.Value : row.WID;
 
                 PriceNotNDSEdit.EditValue = row.Price;
 
@@ -124,8 +139,8 @@ namespace SP_Sklad.WBDetForm
                // _wbd.DiscountKind = row.DiscountKind;
 
                 ordered_in_list = _db.GetShippedPosIn(row.PosId).ToList();
-
                 WHComboBox.EditValue = wid;
+                labelControl27.Text = row.Measure;
             }
 
             GetOk();
@@ -148,12 +163,10 @@ namespace SP_Sklad.WBDetForm
 
             foreach (var item in ordered_in_list.Where(w => w.Remain > 0))
             {
-
                 if (!stop)
                 {
                     var t_wbd = _db.WaybillDet.Add(new WaybillDet
                     {
-
                         WbillId = _wb.WbillId,
                         Price = pos_out_row.Price,
                         BasePrice = pos_out_row.BasePrice,
@@ -164,7 +177,7 @@ namespace SP_Sklad.WBDetForm
                         WId = _wbd.WId,
                         MatId = item.MatId,
                         Discount = pos_out_row.Discount,
-
+                        Defective = _defective,
                         Num = ++num
                     });
 
@@ -231,10 +244,19 @@ namespace SP_Sklad.WBDetForm
             if (e.Button.Index == 1)
             {
                 var f = new frmOutParty();
-                f.Text = "Вхідні партії: " +  MatComboBox.Text + ", Контрагент: " ; //OrderedOutListKANAME->AsString
-              //  frmOutParty->ToDateEdit->Date = frmWBReturnIn->OnDateDBEdit->EditValue;
+                f.Text = "Вхідні партії: " +  MatComboBox.Text + ", Контрагент: " ; 
+             
                 f.OutPartyGridControl.DataSource = ordered_in_list;
                 f.ShowDialog();
+            }
+            else if(e.Button.Index == 2)
+            {
+                var frm = new frmWeightEdit(MatComboBox.Text, 1);
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AmountEdit.EditValue = frm.AmountEdit.Value;
+                }
             }
         }
 
@@ -268,29 +290,12 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
-            int matId = row != null ? row.MatId : 0;
-
-            using (var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value, wtype_out))
-            {
-                if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    pos_out_list = frm.pos_out_list;
-                    MatComboBox.Properties.DataSource = frm.pos_out_list;
-
-                    if (pos_out_list != null)
-                    {
-                        var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
-
-                        MatComboBox.EditValue = mat_row.PosId;
-                    }
-                }
-            }
+           
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+          
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -310,12 +315,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            var frm = new frmWeightEdit(MatComboBox.Text, 1);
-
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                AmountEdit.EditValue = frm.AmountEdit.Value;
-            }
+          
 
         }
 
@@ -327,5 +327,53 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            }
+        }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                var row = (GetPosOutView)MatComboBox.GetSelectedDataRow();
+                int matId = row != null ? row.MatId : 0;
+
+                using (var frm = new frmOutMatList(_db, _start_date, _wb.OnDate, matId, _wb.KaId.Value, wtype_out))
+                {
+                    if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        pos_out_list = frm.pos_out_list;
+                        MatComboBox.Properties.DataSource = frm.pos_out_list;
+
+                        if (pos_out_list != null)
+                        {
+                            var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
+
+                            MatComboBox.EditValue = mat_row.PosId;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void barCheckItem3_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var item = e.Item as BarCheckItem;
+
+            bool ch = item.Checked;
+            int ItemIndex = Convert.ToInt32(e.Item.Tag);
+
+            if (ItemIndex == 2)
+            {
+                panel5.Visible = ch;
+                if (ch) Height += panel5.Height;
+                else Height -= panel5.Height;
+                Settings.Default.ch_view3 = ch;
+            }
+        }
     }
 }

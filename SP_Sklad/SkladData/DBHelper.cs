@@ -381,7 +381,8 @@ namespace SP_Sklad.SkladData
                     {
                         WId = s.WId,
                         Name = s.Name,
-                        Def = s.Def
+                        Def = s.Def,
+                        RecyclingWarehouse = s.RecyclingWarehouse
                     }).ToList();
 
                     if (!_wh_list.Any(a => a.Def == 1))
@@ -901,6 +902,7 @@ order by wbd.ondate desc
         public int WId { get; set; }
         public String Name { get; set; }
         public int Def { get; set; }
+        public int? RecyclingWarehouse { get; set; }
     }
 
     public class Kontragent

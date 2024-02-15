@@ -25,9 +25,9 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
-        private GetWaybillDetIn_Result focused_dr
+        private v_WayBillReturnСustomerDet focused_dr
         {
-            get { return WBDetReInGridView.GetFocusedRow() as GetWaybillDetIn_Result; }
+            get { return WBDetReInGridView.GetFocusedRow() as v_WayBillReturnСustomerDet; }
         }
         private UserSettingsRepository user_settings { get; set; }
 
@@ -120,7 +120,7 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             int top_row = WBDetReInGridView.TopRowIndex;
-            WaybillDetInBS.DataSource = _db.GetWaybillDetIn(_wbill_id).ToList();
+            WaybillDetInBS.DataSource = _db.v_WayBillReturnСustomerDet.Where(w=> w.WbillId == _wbill_id).ToList();
             WBDetReInGridView.TopRowIndex = top_row;
 
             GetOk();
@@ -252,13 +252,23 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WBDetReInGridView.GetRow(WBDetReInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
-
-            if (dr != null)
+        
+            if (focused_dr != null)
             {
-                if (dr.PosType == 0)
+                if (focused_dr.PosType == 0)
                 {
-                    using (var df = new frmWBReturnDetIn(_db, dr.PosId, wb, (int?)WHComboBox.EditValue, OutDateEdit.DateTime))
+                    using (var df = new frmWBReturnDetIn(_db, focused_dr.PosId, wb, (int?)WHComboBox.EditValue, focused_dr.OnDate.Value))
+                    {
+                        if (df.ShowDialog() == DialogResult.OK)
+                        {
+                            RefreshDet();
+                        }
+                    }
+                }
+
+                if (focused_dr.PosType == 1) // Товар під утилізацію
+                {
+                    using (var df = new frmWBReturnDetIn(_db, focused_dr.PosId, wb, DBHelper.WhList.FirstOrDefault(w => w.RecyclingWarehouse == 1)?.WId, focused_dr.OnDate.Value,1))
                     {
                         if (df.ShowDialog() == DialogResult.OK)
                         {
@@ -268,9 +278,9 @@ namespace SP_Sklad.WBForm
                 }
 
 
-                if (dr.PosType == 2)
+                if (focused_dr.PosType == 2) //ТМС
                 {
-                    using (var df = new frmWayBillTMCDet(_db, dr.PosId, wb))
+                    using (var df = new frmWayBillTMCDet(_db, focused_dr.PosId, wb))
                     {
                         if (df.ShowDialog() == DialogResult.OK)
                         {
@@ -283,18 +293,16 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WBDetReInGridView.GetRow(WBDetReInGridView.FocusedRowHandle) as GetWaybillDetIn_Result;
-
-            if (dr != null)
+            if (focused_dr != null)
             {
-                if (dr.PosType == 0)
+                if (focused_dr.PosType == 0 || focused_dr.PosType == 1)
                 {
-                    _db.DeleteWhere<WaybillDet>(w => w.PosId == dr.PosId);
+                    _db.DeleteWhere<WaybillDet>(w => w.PosId == focused_dr.PosId);
                 }
 
-                if (dr.PosType == 2)
+                if (focused_dr.PosType == 2)
                 {
-                    _db.DeleteWhere<WayBillTmc>(w => w.PosId == dr.PosId);
+                    _db.DeleteWhere<WayBillTmc>(w => w.PosId == focused_dr.PosId);
                 }
 
                 RefreshDet();
@@ -369,10 +377,12 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var df = new frmWayBillTMCDet(_db, null, wb);
-            if (df.ShowDialog() == DialogResult.OK)
+            using (var df = new frmWayBillTMCDet(_db, null, wb))
             {
-                RefreshDet();
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
             }
         }
 
@@ -437,5 +447,42 @@ namespace SP_Sklad.WBForm
             }
         }
 
+        private void WBDetReInGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.WbDetPopupMenu.ShowPopup(p2);
+            }
+        }
+
+        private void barButtonItem1_ItemClick_2(object sender, ItemClickEventArgs e)
+        {
+            using (var df = new frmWBReturnDetIn(_db, null, wb, DBHelper.WhList.FirstOrDefault(w => w.RecyclingWarehouse == 1)?.WId, OutDateEdit.DateTime, 1))
+            {
+                if (df.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshDet();
+                }
+            }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var wbd = _db.WaybillDet.Find(focused_dr.PosId);
+
+            wbd.Defective = 1;
+            wbd.WId = DBHelper.WhList.FirstOrDefault(w => w.RecyclingWarehouse == 1)?.WId;
+
+            _db.SaveChanges();
+
+            RefreshDet();
+
+        }
+
+        private void WbDetPopupMenu_BeforePopup(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            barButtonItem2.Enabled = focused_dr.PosType == 0 && DBHelper.WhList.Any(w => w.RecyclingWarehouse == 1);
+        }
     }
 }

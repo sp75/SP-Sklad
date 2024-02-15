@@ -1728,6 +1728,7 @@
           <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="RecyclingWarehouse" Type="int" />
         </EntityType>
         <EntityType Name="WaybillCorrection">
           <Key>
@@ -1787,6 +1788,7 @@
           <Property Name="AvgInPrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Notes" Type="nvarchar" MaxLength="100" />
           <Property Name="UpdateAt" Type="datetime" />
+          <Property Name="Defective" Type="int" />
         </EntityType>
         <EntityType Name="WayBillDetAddProps">
           <Key>
@@ -3751,6 +3753,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
           <Property Name="WbNotes" Type="nvarchar" MaxLength="255" />
           <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Defective" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3859,6 +3862,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillInDet' does not have a primar
           <Property Name="UpdateAt" Type="datetime" />
           <Property Name="TotalInCurrency" Type="numeric" Precision="31" Scale="6" />
           <Property Name="MId" Type="int" />
+          <Property Name="Defective" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WaybillInventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10964,7 +10968,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillDet].[Artikul] AS [Artikul], 
     [v_WaybillDet].[WbNotes] AS [WbNotes], 
     [v_WaybillDet].[WhName] AS [WhName], 
-    [v_WaybillDet].[PersonName] AS [PersonName]
+    [v_WaybillDet].[PersonName] AS [PersonName], 
+    [v_WaybillDet].[Defective] AS [Defective]
     FROM [dbo].[v_WaybillDet] AS [v_WaybillDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillIn" EntityType="Self.v_WayBillIn" store:Type="Views" store:Schema="dbo">
@@ -11054,7 +11059,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillInDet].[Notes] AS [Notes], 
     [v_WayBillInDet].[UpdateAt] AS [UpdateAt], 
     [v_WayBillInDet].[TotalInCurrency] AS [TotalInCurrency], 
-    [v_WayBillInDet].[MId] AS [MId]
+    [v_WayBillInDet].[MId] AS [MId], 
+    [v_WayBillInDet].[Defective] AS [Defective]
     FROM [dbo].[v_WayBillInDet] AS [v_WayBillInDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WaybillInventory" EntityType="Self.v_WaybillInventory" store:Type="Views" store:Schema="dbo">
@@ -14747,6 +14753,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="ProductionPlans" Relationship="BaseModel.FK_ProductionPlans_Warehouse" FromRole="Warehouse" ToRole="ProductionPlans" />
           <NavigationProperty Name="ProductionPlans1" Relationship="BaseModel.FK_ProductionPlans_Warehouse1" FromRole="Warehouse" ToRole="ProductionPlans" />
           <NavigationProperty Name="MatRecDet" Relationship="BaseModel.FK_MatRecDet_Warehouse" FromRole="Warehouse" ToRole="MatRecDet" />
+          <Property Name="RecyclingWarehouse" Type="Int32" />
           </EntityType>
         <Association Name="FK__WMATTURN__WID__3BCADD1B">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="1" />
@@ -16552,6 +16559,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_WaybillDet" FromRole="WaybillDet" ToRole="RawMaterialManagementDet" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_WAYBILLD_REFERENCE_PRICETYP" FromRole="WaybillDet" ToRole="PriceTypes" />
           <NavigationProperty Name="WaybillCorrectionDet" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillDet" FromRole="WaybillDet" ToRole="WaybillCorrectionDet" />
+          <Property Name="Defective" Type="Int32" />
         </EntityType>
         <EntityType Name="WaybillList">
           <Key>
@@ -19800,6 +19808,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WbNotes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Defective" Type="Int32" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingSummary">
           <Key>
@@ -22728,6 +22737,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="TotalInCurrency" Type="Decimal" Precision="31" Scale="6" />
           <Property Name="MId" Type="Int32" />
+          <Property Name="Defective" Type="Int32" />
         </EntityType>
         <EntityType Name="v_WayBillOut">
           <Key>
@@ -23916,6 +23926,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Warehouse">
             <EntityTypeMapping TypeName="BaseModel.Warehouse">
               <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="RecyclingWarehouse" ColumnName="RecyclingWarehouse" />
                 <ScalarProperty Name="Def" ColumnName="Def" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
@@ -25118,6 +25129,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillDet">
             <EntityTypeMapping TypeName="BaseModel.WaybillDet">
               <MappingFragment StoreEntitySet="WaybillDet">
+                <ScalarProperty Name="Defective" ColumnName="Defective" />
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />
@@ -27348,6 +27360,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillDet">
               <MappingFragment StoreEntitySet="v_WaybillDet">
+                <ScalarProperty Name="Defective" ColumnName="Defective" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="WbNotes" ColumnName="WbNotes" />
@@ -29085,6 +29098,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillInDet">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillInDet">
               <MappingFragment StoreEntitySet="v_WayBillInDet">
+                <ScalarProperty Name="Defective" ColumnName="Defective" />
                 <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="TotalInCurrency" ColumnName="TotalInCurrency" />
                 <ScalarProperty Name="UpdateAt" ColumnName="UpdateAt" />

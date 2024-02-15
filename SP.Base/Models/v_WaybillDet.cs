@@ -116,5 +116,8 @@ namespace SP.Base.Models
         public int WbChecked { get; set; }
         public string Artikul { get; set; }
         public string WbNotes { get; set; }
+        public string WhName { get; set; }
+        public string PersonName { get; set; }
+        public int? Defective { get; set; }
     }
 }

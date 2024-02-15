@@ -3578,6 +3578,10 @@
     <None Include="Resources\identification_documents.png" />
     <None Include="Resources\grant_rights.png" />
     <None Include="Resources\receipt_2.png" />
+    <None Include="Resources\storno.png" />
+    <None Include="Resources\flag_red.png" />
+    <None Include="Resources\product_tmc.png" />
+    <None Include="Resources\open_view.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

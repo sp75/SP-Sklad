@@ -39,7 +39,6 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -50,6 +49,7 @@
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.imageList1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl5)).BeginInit();
@@ -60,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageList1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl2
@@ -178,24 +179,12 @@
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 16, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 3),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 2),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 6)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 5)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.White;
-            this.imageList1.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.imageList1.Images.SetKeyName(1, "Заказ поставщикам.bmp");
-            this.imageList1.Images.SetKeyName(2, "Накладн_ перем_щення.bmp");
-            this.imageList1.Images.SetKeyName(3, "Введення залишк_в товар_в.bmp");
-            this.imageList1.Images.SetKeyName(4, "Возврат от клиетна.bmp");
-            this.imageList1.Images.SetKeyName(5, "Товари.bmp");
-            this.imageList1.Images.SetKeyName(6, "Без имени-2.png");
             // 
             // gridColumn2
             // 
@@ -295,7 +284,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Замовлений товар", 1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар на складі", 0, 5)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.imageList1;
             // 
             // gridColumn8
             // 
@@ -315,6 +303,23 @@
             this.barDockControl1.Manager = null;
             this.barDockControl1.Size = new System.Drawing.Size(848, 0);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageList1.Images.SetKeyName(0, "waybill_in");
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageList1.Images.SetKeyName(1, "wb_order_out");
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_in, "wb_return_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageList1.Images.SetKeyName(2, "wb_return_in");
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageList1.Images.SetKeyName(3, "move_stock");
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageList1.Images.SetKeyName(4, "WBWriteOn_4");
+            this.imageList1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageList1.Images.SetKeyName(5, "wb_return_sale");
+            // 
             // frmInParty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +327,7 @@
             this.ClientSize = new System.Drawing.Size(852, 403);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.panelControl2);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.mat_pos_wh_1;
             this.Name = "frmInParty";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -338,6 +344,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageList1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -361,8 +368,8 @@
         private DevExpress.XtraBars.BarDockControl barDockControl1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.Utils.ImageCollection imageList1;
     }
 }

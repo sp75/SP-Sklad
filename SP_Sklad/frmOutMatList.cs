@@ -73,5 +73,13 @@ namespace SP_Sklad
         {
             if (IHelper.isRowDublClick(sender)) OkButton.PerformClick();
         }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            }
+        }
     }
 }

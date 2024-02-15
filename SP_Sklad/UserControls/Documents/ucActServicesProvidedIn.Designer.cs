@@ -702,7 +702,7 @@
             // 
             this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(577, 13);
+            this.wbKagentList.Location = new System.Drawing.Point(577, 15);
             this.wbKagentList.Name = "wbKagentList";
             editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.supplier;
             this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {

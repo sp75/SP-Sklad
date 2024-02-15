@@ -39,6 +39,7 @@ namespace SP_Sklad.SkladData
         public string Notes { get; set; }
         public int Deleted { get; set; }
         public int Def { get; set; }
+        public Nullable<int> RecyclingWarehouse { get; set; }
     
         public virtual ICollection<WMatTurn> WMatTurn { get; set; }
         public virtual ICollection<WaybillMove> WaybillMove { get; set; }

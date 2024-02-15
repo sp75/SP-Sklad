@@ -53,5 +53,6 @@ namespace SP_Sklad.SkladData
         public string WbNotes { get; set; }
         public string WhName { get; set; }
         public string PersonName { get; set; }
+        public Nullable<int> Defective { get; set; }
     }
 }

@@ -1374,13 +1374,13 @@
             // 
             // simpleButton24
             // 
-            this.simpleButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton24.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton24.Appearance.Options.UseFont = true;
             this.simpleButton24.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton24.ImageOptions.Image")));
-            this.simpleButton24.Location = new System.Drawing.Point(1211, 79);
+            this.simpleButton24.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.simpleButton24.Location = new System.Drawing.Point(1229, 79);
             this.simpleButton24.Name = "simpleButton24";
-            this.simpleButton24.Size = new System.Drawing.Size(114, 39);
+            this.simpleButton24.Size = new System.Drawing.Size(133, 39);
             this.simpleButton24.TabIndex = 46;
             this.simpleButton24.TabStop = false;
             this.simpleButton24.Text = "Бистрі товари";
@@ -1388,13 +1388,13 @@
             // 
             // simpleButton2
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             this.simpleButton2.Location = new System.Drawing.Point(1123, 79);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(82, 39);
+            this.simpleButton2.Size = new System.Drawing.Size(100, 39);
             this.simpleButton2.TabIndex = 45;
             this.simpleButton2.TabStop = false;
             this.simpleButton2.Text = "Клавіши";

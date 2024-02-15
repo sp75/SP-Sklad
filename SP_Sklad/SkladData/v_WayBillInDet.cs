@@ -57,5 +57,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public Nullable<decimal> TotalInCurrency { get; set; }
         public Nullable<int> MId { get; set; }
+        public Nullable<int> Defective { get; set; }
     }
 }

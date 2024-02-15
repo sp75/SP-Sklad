@@ -48,6 +48,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -60,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -67,7 +69,7 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 446);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 483);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(492, 52);
             this.BottomPanel.TabIndex = 16;
@@ -164,7 +166,7 @@
             // DefCheckBox
             // 
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Def", true));
-            this.DefCheckBox.Location = new System.Drawing.Point(21, 420);
+            this.DefCheckBox.Location = new System.Drawing.Point(21, 446);
             this.DefCheckBox.Name = "DefCheckBox";
             this.DefCheckBox.Properties.Caption = "Основний склад (використовувати за змовчуванням)";
             this.DefCheckBox.Properties.ValueChecked = 1;
@@ -184,7 +186,7 @@
             this.UsersGridControl.Name = "UsersGridControl";
             this.UsersGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.UsersGridControl.Size = new System.Drawing.Size(459, 135);
+            this.UsersGridControl.Size = new System.Drawing.Size(459, 143);
             this.UsersGridControl.TabIndex = 36;
             this.UsersGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UsersGridView});
@@ -239,11 +241,24 @@
             this.labelControl2.TabIndex = 37;
             this.labelControl2.Text = "Доступ до складу";
             // 
+            // checkEdit1
+            // 
+            this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "RecyclingWarehouse", true));
+            this.checkEdit1.Location = new System.Drawing.Point(21, 413);
+            this.checkEdit1.Name = "checkEdit1";
+            this.checkEdit1.Properties.Caption = "Cклад для товарів з дефектом";
+            this.checkEdit1.Properties.ValueChecked = 1;
+            this.checkEdit1.Properties.ValueUnchecked = 0;
+            this.checkEdit1.Size = new System.Drawing.Size(397, 20);
+            this.checkEdit1.StyleController = this.styleController1;
+            this.checkEdit1.TabIndex = 38;
+            // 
             // frmWarehouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 498);
+            this.ClientSize = new System.Drawing.Size(492, 535);
+            this.Controls.Add(this.checkEdit1);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.UsersGridControl);
             this.Controls.Add(this.DefCheckBox);
@@ -276,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,5 +318,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.BindingSource UserListBS;
+        private DevExpress.XtraEditors.CheckEdit checkEdit1;
     }
 }

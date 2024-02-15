@@ -88,12 +88,13 @@ namespace SP.Reports
 
         public object GetReportDate()
         {
+            object result;
             switch (_rep_id)
             {
                 case 39:
                     var sort_list = GetSortedList(_rep_id);
 
-                    return _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s => new
+                    result = _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s => new
                     {
                         ГрупаКонтрагентів = s.KaGrpName,
                         Контрагент = s.KaName,
@@ -108,10 +109,31 @@ namespace SP.Reports
                         ПовернутоСума = s.ReturnSummIn,
                         ВсьогоКсть = (s.Amount ?? 0) - (s.ReturnAmountIn ?? 0)
                     }).ToList();
+                    break;
+
+                case 56:
+                    result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate)
+                        .Select(s => new
+                        {
+                            ДатаДокументу = s.WbOnDate,
+                            Контрагент = s.KaName,
+                            ГрупаТоварів = s.GrpName,
+                            Товар = s.MatName,
+                            ОдВиміру = s.MsrName,
+                            Артикул = s.Artikul,
+                            ПовернутоКсть = s.Amount,
+                            Ціна = s.Price,
+                            Всього = s.Total,
+                            Склад = s.WhName,
+                            Виконавець = s.PersonName
+                        }).ToList();
+                    break;
 
                 default:
                     return null;
             }
+
+            return result;
         }
 
         public byte[] CreateReport(string template_file, string file_format)

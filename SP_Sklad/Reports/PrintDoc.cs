@@ -704,7 +704,15 @@ namespace SP_Sklad.Reports
 
             var mr = db.MatRecipe.Where(w=> w.RecId == id).Select(s=> new { s.Materials.Name, s.Amount, s.Out, s.ThermoLossOut, s.Materials.Measures.ShortName}) .ToList();
             var raw_mat_type = db.RawMaterialType.ToList();
-            var mrd = db.MatRecDet.Where(w=> w.RecId == id).Select(s=> new { s.MatId, s.Materials.Name, s.Amount, s.Materials.RawMaterialTypeId, s.Materials.Measures.ShortName}).ToList();
+            var mrd = db.MatRecDet.Where(w => w.RecId == id).Select(s => new
+            {
+                s.MatId,
+                s.Materials.Name,
+                s.Amount,
+                RawMaterialTypeId = s.Materials.RawMaterialTypeId ?? 0,
+                s.Materials.Measures.ShortName,
+                AvgPrice = db.v_PosRemains.Where(ww => ww.MatId == s.MatId).GroupBy(g => g.MatId).Select(ss => ss.Sum(s1 => s1.Remain * s1.AvgPrice) / ss.Sum(s1 => s1.Remain)).FirstOrDefault()
+            }).ToList();
 
             List<object> realation = new List<object>();
             realation.Add(new

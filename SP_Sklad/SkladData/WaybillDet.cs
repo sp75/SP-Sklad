@@ -59,6 +59,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AvgInPrice { get; set; }
         public string Notes { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
+        public Nullable<int> Defective { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual ICollection<ExtRel> ExtRel { get; set; }

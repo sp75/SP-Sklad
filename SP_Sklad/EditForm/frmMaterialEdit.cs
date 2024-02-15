@@ -54,23 +54,23 @@ namespace SP_Sklad.EditForm
             }
 
             tree = new List<CatalogTreeList>();
-            TreeListBS.DataSource = tree;
         }
 
         private void frmMaterialEdit_Load(object sender, EventArgs e)
         {
             xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-         
-            TreeListBS.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
-            TreeListBS.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
-            TreeListBS.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Додаткові одиниці виміру", ImgIdx = 12, TabIdx = 8 });
-            TreeListBS.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
-            TreeListBS.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
-            TreeListBS.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Штрих-коди", ImgIdx = 19, TabIdx = 9 });
-            TreeListBS.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
-            TreeListBS.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
-            TreeListBS.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
 
+            tree.Add(new CatalogTreeList { Id = 0, ParentId = 255, Text = "Основна інформація", ImgIdx = 0, TabIdx = 0 });
+            tree.Add(new CatalogTreeList { Id = 1, ParentId = 255, Text = "Ціноутворення", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = 255, Text = "Додаткові одиниці виміру", ImgIdx = 12, TabIdx = 8 });
+            tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
+            tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
+            tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Штрих-коди", ImgIdx = 19, TabIdx = 9 });
+            tree.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
+            tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
+            tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+
+            TreeListBS.DataSource = tree;
 
             if (_copy_mat_id != null)
             {

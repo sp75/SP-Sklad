@@ -432,7 +432,18 @@ namespace SP_Sklad
                     KontragentPanel.Visible = true;
                     GroupKontragentPanel.Visible = true;
                     MatGroupBox.Visible = false;
-                    
+                    break;
+
+                case 56:
+                    this.KontragentPanel.Visible = false;
+                    this.GRPGroupBox.Visible = false;
+                    this.KontragentPanel.Visible = false;
+                    this.MatGroupBox.Visible = false;
+                    this.DocTypeGroupBox.Visible = false;
+                    this.ChargeGroupBox.Visible = false;
+                    this.WHGroupBox.Visible = false;
+                    this.OkButton.Visible = false;
+                    btnShowGrid.Visible = true;
                     break;
             }
 

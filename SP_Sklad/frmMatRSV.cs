@@ -78,10 +78,20 @@ namespace SP_Sklad
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.pdf");
-            gridControl1.ExportToPdf(path);
+            var file_format = DBHelper.CurrentUser.ReportFormat;
 
-            Process.Start(path);
+            if (file_format == "pdf")
+            {
+                var path = Path.Combine(Application.StartupPath, "expotr.pdf");
+                gridControl1.ExportToPdf(path);
+
+                Process.Start(path);
+            }
+            else if (file_format == "xlsx")
+            {
+                IHelper.ExportToXlsx(gridControl1);
+            }
+
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -91,6 +101,11 @@ namespace SP_Sklad
             {
                 FindDoc.Find(row.Id, row.WType, row.OnDate);
             }
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
