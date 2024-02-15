@@ -203,6 +203,7 @@
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -818,6 +819,11 @@
             // 
             this.WhMatGridControl.DataSource = this.WhMatGetBS;
             this.WhMatGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WhMatGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WhMatGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WhMatGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WhMatGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WhMatGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WhMatGridControl.Location = new System.Drawing.Point(0, 44);
             this.WhMatGridControl.MainView = this.WhMatGridView;
             this.WhMatGridControl.Name = "WhMatGridControl";
@@ -826,6 +832,7 @@
             this.repositoryItemImageComboBox4});
             this.WhMatGridControl.Size = new System.Drawing.Size(1381, 385);
             this.WhMatGridControl.TabIndex = 0;
+            this.WhMatGridControl.UseEmbeddedNavigator = true;
             this.WhMatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhMatGridView});
             // 
@@ -867,6 +874,8 @@
             this.WhMatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhMatGridView_PopupMenuShowing);
             this.WhMatGridView.CustomSummaryCalculate += new DevExpress.Data.CustomSummaryEventHandler(this.WhMatGridView_CustomSummaryCalculate);
             this.WhMatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WhMatGridView_FocusedRowObjectChanged);
+            this.WhMatGridView.ColumnFilterChanged += new System.EventHandler(this.WhMatGridView_ColumnFilterChanged);
+            this.WhMatGridView.AsyncCompleted += new System.EventHandler(this.WhMatGridView_AsyncCompleted);
             this.WhMatGridView.BeforeLoadLayout += new DevExpress.Utils.LayoutAllowEventHandler(this.WhMatGridView_BeforeLoadLayout);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
@@ -2112,6 +2121,15 @@
             this.row2.Properties.Caption = "Код обміну";
             this.row2.Properties.FieldName = "MatId";
             // 
+            // WhMatGetSource
+            // 
+            this.WhMatGetSource.AreSourceRowsThreadSafe = true;
+            this.WhMatGetSource.DefaultSorting = "RecNo";
+            this.WhMatGetSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.WhMatGet_Result);
+            this.WhMatGetSource.KeyExpression = "MatId";
+            this.WhMatGetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_GetQueryable);
+            this.WhMatGetSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_DismissQueryable);
+            // 
             // ucWhMat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2377,5 +2395,6 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.BarButtonItem CopyCellContentsBtn;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource WhMatGetSource;
     }
 }

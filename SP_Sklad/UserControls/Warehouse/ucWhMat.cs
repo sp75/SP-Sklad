@@ -39,6 +39,12 @@ namespace SP_Sklad.UserControls.Warehouse
         public WaybillList wb { get; set; }
         public Object resut { get; set; }
 
+        private int prev_focused_id = 0;
+        private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
+        private int? find_id { get; set; }
+        private bool restore = false;
+
         public WhMatGet_Result focused_wh_mat
         {
             get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
@@ -54,8 +60,6 @@ namespace SP_Sklad.UserControls.Warehouse
             public decimal AccountingAmount { get; set; }
             public int? DiscountType { get; set; }
         }
-
-     //   GetWhTree_Result focused_tree_node { get; set; }
 
         public int? set_tree_node { get; set; }
 
@@ -121,7 +125,6 @@ namespace SP_Sklad.UserControls.Warehouse
                 WhMatGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 MatListGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
-               
             }
         }
 
@@ -155,6 +158,9 @@ namespace SP_Sklad.UserControls.Warehouse
         private void RefreshWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var result = GetMatOnWh();
+
+           // GetData();
+
         }
 
         private void WhMatGridView_DoubleClick(object sender, EventArgs e)
@@ -726,6 +732,105 @@ namespace SP_Sklad.UserControls.Warehouse
             {
                 MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", focused_wh_mat.MatName));
             }
+        }
+
+        private void WhMatGetSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            int grp_id = 0;
+
+            string grp = "";
+
+            grp_id = by_grp ? focused_tree_node_num : 0;
+            wid = by_grp ? 0 : focused_tree_node_num;
+
+            if (wh_list != "*")
+            {
+                wid = -1;
+            }
+
+            if (display_child_groups && by_grp && focused_tree_node_num != 0)
+            {
+                grp = focused_tree_node_num.ToString();
+            }
+
+            BaseEntities objectContext = new BaseEntities();
+            var list = objectContext.WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0);
+            e.QueryableSource = list;
+            e.Tag = objectContext;
+
+        }
+
+        private void WhMatGetSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (e.Tag == null)
+                return;
+
+            ((BaseEntities)e.Tag).Dispose();
+        }
+
+        public void GetData()
+        {
+            prev_rowHandle = WhMatGridView.FocusedRowHandle;
+
+            if (focused_wh_mat != null && !find_id.HasValue)
+            {
+                prev_top_row_index = WhMatGridView.TopRowIndex;
+                prev_focused_id = focused_wh_mat.MatId;
+            }
+
+            if (find_id.HasValue)
+            {
+                prev_top_row_index = -1;
+                prev_focused_id = find_id.Value;
+                find_id = null;
+            }
+
+            restore = true;
+
+            WhMatGridControl.DataSource = null;
+            WhMatGridControl.DataSource = WhMatGetSource;
+
+            GetWhBottomInfo(focused_wh_mat);
+        }
+
+        private void WhMatGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (focused_wh_mat == null || !restore)
+            {
+                return;
+            }
+
+            int rowHandle = WhMatGridView.LocateByValue("MatId", prev_focused_id, OnRowSearchComplete);
+            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
+            {
+                FocusRow(WhMatGridView, rowHandle);
+            }
+            else
+            {
+                WhMatGridView.FocusedRowHandle = prev_rowHandle;
+            }
+
+            restore = false;
+        }
+
+        void OnRowSearchComplete(object rh)
+        {
+            int rowHandle = (int)rh;
+            if (WhMatGridView.IsValidRowHandle(rowHandle))
+            {
+                FocusRow(WhMatGridView, rowHandle);
+            }
+        }
+
+        public void FocusRow(GridView view, int rowHandle)
+        {
+            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+            view.FocusedRowHandle = rowHandle;
+        }
+
+        private void WhMatGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            GetWhBottomInfo(focused_wh_mat);
         }
     }
 }

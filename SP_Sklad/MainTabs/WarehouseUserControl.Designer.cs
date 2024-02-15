@@ -395,7 +395,7 @@
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 0;
             this.NewItemBtn.Name = "NewItemBtn";
-            this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
+
             // 
             // CopyItemBtn
             // 
@@ -411,7 +411,7 @@
             this.EditItemBtn.Id = 2;
             this.EditItemBtn.ImageOptions.ImageIndex = 2;
             this.EditItemBtn.Name = "EditItemBtn";
-            this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
+
             // 
             // DeleteItemBtn
             // 
@@ -419,7 +419,7 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
-            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
+
             // 
             // RefrechItemBtn
             // 
@@ -427,7 +427,6 @@
             this.RefrechItemBtn.Id = 4;
             this.RefrechItemBtn.ImageOptions.ImageIndex = 4;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
-            this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // ExecuteItemBtn
             // 
@@ -435,7 +434,7 @@
             this.ExecuteItemBtn.Id = 5;
             this.ExecuteItemBtn.ImageOptions.ImageIndex = 5;
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-            this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
+
             // 
             // PrintItemBtn
             // 
@@ -491,7 +490,6 @@
             this.RefreshWhBtn.Id = 12;
             this.RefreshWhBtn.ImageOptions.ImageIndex = 4;
             this.RefreshWhBtn.Name = "RefreshWhBtn";
-            this.RefreshWhBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // barButtonItem1
             // 
@@ -665,14 +663,14 @@
             this.SetPriceBtnItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.Image")));
             this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
             this.SetPriceBtnItem.Name = "SetPriceBtnItem";
-            this.SetPriceBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem18_ItemClick);
+
             // 
             // RecalcRemainsPostBtn
             // 
             this.RecalcRemainsPostBtn.Caption = "Перерахувати залишки по партії";
             this.RecalcRemainsPostBtn.Id = 46;
             this.RecalcRemainsPostBtn.Name = "RecalcRemainsPostBtn";
-            this.RecalcRemainsPostBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+
             // 
             // panelControl1
             // 

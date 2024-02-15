@@ -105,7 +105,9 @@ namespace SP_Sklad.MainTabs
                 ucWhMat.display_child_groups = ViewDetailTree.Down;
                 ucWhMat.focused_tree_node_num = focused_tree_node.Num;
                 whContentTab.SelectedTabPageIndex = 7;
+
                 var result = ucWhMat.GetMatOnWh();
+             //   ucWhMat.GetData();
             }
             else
             {
@@ -144,41 +146,15 @@ namespace SP_Sklad.MainTabs
             GetTree(2);
         }
 
-        private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
 
-        private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
-
-        private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
-
-
-
-        private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
- 
-        }
-    
-        private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-
-        }
 
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-         //   ByGrpBtn.Down = true;
             ucWhMat.display_child_groups = ViewDetailTree.Down;
-        //    ucWhMat.by_grp = ByGrpBtn.Down;
 
-            var result = ucWhMat.GetMatOnWh();
+
+             var result = ucWhMat.GetMatOnWh();
+          //  ucWhMat.GetData();
         }
 
       
@@ -346,14 +322,8 @@ namespace SP_Sklad.MainTabs
             
         }
 
-        private void barButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-          
-        }
+    
 
-        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
+  
     }
 }
