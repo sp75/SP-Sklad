@@ -59,6 +59,7 @@
     <Compile Include="DBFunction\Models\GetRemainingMaterialInWh_Result.cs" />
     <Compile Include="DBFunction\Models\GetRemainsOnMaterials_Result.cs" />
     <Compile Include="DBFunction\Models\GetMatRemainByWh_Result.cs" />
+    <Compile Include="DBFunction\Models\MaterialRemainViews.cs" />
     <Compile Include="ExecuteDoc\ExecuteWayBill.cs" />
     <Compile Include="ModelViews\GetPosOutView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

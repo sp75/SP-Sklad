@@ -115,5 +115,14 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
             }
         }
 
+        public async Task<List<MaterialRemainViews>> WhMatGet(int? grp_id, int? wid, int? ka_id, DateTime? on_date, int? get_empty, string wh, int? show_all_mats, string grp, int? get_child_node)
+        {
+            using (var db = Database.SPBase())
+            {
+                  return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
+             //   return await db.WhMatGet(grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToList();
+            }
+        }
+
     }
 }

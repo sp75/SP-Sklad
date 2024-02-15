@@ -21,6 +21,7 @@ using DevExpress.XtraCharts.Designer;
 using DevExpress.Data;
 using System.Data.Entity;
 using SkladEngine.DBFunction;
+using SkladEngine.DBFunction.Models;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
@@ -35,7 +36,8 @@ namespace SP_Sklad.UserControls.Warehouse
         public bool isDirectList { get; set; }
         public bool isMatList { get; set; }
         public List<CustomMatListWH> custom_mat_list { get; set; }
-        public List<WhMatGet_Result> wh_mat_list { get; set; }
+        public List<MaterialRemainViews> wh_mat_list { get; set; }
+        
         public WaybillList wb { get; set; }
         public Object resut { get; set; }
 
@@ -45,9 +47,9 @@ namespace SP_Sklad.UserControls.Warehouse
         private int? find_id { get; set; }
         private bool restore = false;
 
-        public WhMatGet_Result focused_wh_mat
+        public MaterialRemainViews focused_wh_mat
         {
-            get { return WhMatGridView.GetFocusedRow() as WhMatGet_Result; }
+            get { return WhMatGridView.GetFocusedRow() as MaterialRemainViews; }
         }
 
         public DiscCards disc_card { get; set; }
@@ -149,7 +151,9 @@ namespace SP_Sklad.UserControls.Warehouse
 
             WhMatGridView.ShowLoadingPanel();
             int top_row = WhMatGridView.TopRowIndex;
-            wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0).ToListAsync();
+          //       wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0).ToListAsync();
+             wh_mat_list = await new MaterialRemain(DBHelper.CurrentUser.UserId).WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, display_child_groups ? 1 : 0);
+
             WhMatGetBS.DataSource = wh_mat_list;
             WhMatGridView.TopRowIndex = top_row;
             WhMatGridView.HideLoadingPanel();
@@ -189,7 +193,7 @@ namespace SP_Sklad.UserControls.Warehouse
 
             AddMatToCustomList(amount, focused_wh_mat);
         }
-        private void AddMatToCustomList(decimal amount, WhMatGet_Result wh_mat)
+        private void AddMatToCustomList(decimal amount, MaterialRemainViews wh_mat)
         {
             if (wh_mat == null)
             {
@@ -256,7 +260,7 @@ namespace SP_Sklad.UserControls.Warehouse
                 var BarCodeSplit = BarCodeEdit.Text.Split('+');
                 String kod = BarCodeSplit[0];
 
-                var row = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.BarCode == kod);
+                var row = WhMatGetBS.List.OfType<MaterialRemainViews>().ToList().Find(f => f.BarCode == kod);
                 var pos = WhMatGetBS.IndexOf(row);
                 WhMatGetBS.Position = pos;
 
@@ -267,7 +271,7 @@ namespace SP_Sklad.UserControls.Warehouse
                         var bc = db.v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
                         if (bc != null)
                         {
-                            row = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.MatId == bc.MatId);
+                            row = WhMatGetBS.List.OfType<MaterialRemainViews>().ToList().Find(f => f.MatId == bc.MatId);
                             pos = WhMatGetBS.IndexOf(row);
                             WhMatGetBS.Position = pos;
                         }
@@ -315,7 +319,7 @@ namespace SP_Sklad.UserControls.Warehouse
                         {
                             var ean13 = new EAN13(BarCodeEdit.Text);
 
-                            var row2 = WhMatGetBS.List.OfType<WhMatGet_Result>().ToList().Find(f => f.Artikul == ean13.artikul);
+                            var row2 = WhMatGetBS.List.OfType<MaterialRemainViews>().ToList().Find(f => f.Artikul == ean13.artikul);
                             var pos2 = WhMatGetBS.IndexOf(row2);
 
                             WhMatGetBS.Position = pos2;
@@ -434,7 +438,7 @@ namespace SP_Sklad.UserControls.Warehouse
 
             for (int i = 0; WhMatGridView.RowCount > i; ++i)
             {
-                var row = WhMatGridView.GetRow(i) as WhMatGet_Result;
+                var row = WhMatGridView.GetRow(i) as MaterialRemainViews;
                 try
                 {
                     DB.SkladBase().RecalcRemainsMat(row.MatId);
@@ -596,7 +600,7 @@ namespace SP_Sklad.UserControls.Warehouse
             GetWhBottomInfo(focused_wh_mat);
         }
 
-        private void GetWhBottomInfo(WhMatGet_Result row)
+        private void GetWhBottomInfo(MaterialRemainViews row)
         {
             if (row == null)
             {
