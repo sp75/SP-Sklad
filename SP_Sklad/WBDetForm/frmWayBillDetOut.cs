@@ -594,7 +594,7 @@ namespace SP_Sklad.WBDetForm
                 var pos = new frmInParty(pos_in);
                 pos.Text = "Прибуткові партії: " + MatComboBox.Text;
                 pos.ShowDialog();
-                _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+                _wbd.Amount = pos_in?.Sum(s => (s.Amount ?? 0)) ?? 0;
                 AmountEdit.Value = _wbd.Amount;
 
                 GetOk();

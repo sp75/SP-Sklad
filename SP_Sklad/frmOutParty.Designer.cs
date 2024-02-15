@@ -41,6 +41,7 @@
             this.OutPartyGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,7 +49,6 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -60,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -162,6 +163,7 @@
             this.gridColumn6});
             this.OutPartyGridView.GridControl = this.OutPartyGridControl;
             this.OutPartyGridView.Name = "OutPartyGridView";
+            this.OutPartyGridView.OptionsBehavior.ReadOnly = true;
             this.OutPartyGridView.OptionsView.ShowFooter = true;
             this.OutPartyGridView.OptionsView.ShowGroupPanel = false;
             // 
@@ -193,7 +195,14 @@
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 0)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
+            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.White;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "waybill_in");
             // 
             // gridColumn2
             // 
@@ -225,6 +234,8 @@
             this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.gridColumn4.FieldName = "ReturnAmount";
             this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.OptionsColumn.AllowEdit = false;
+            this.gridColumn4.OptionsColumn.ReadOnly = true;
             this.gridColumn4.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ReturnAmount", "{0:0.##}")});
             this.gridColumn4.Visible = true;
@@ -268,12 +279,6 @@
             this.repositoryItemCheckEdit1.ValueChecked = 1;
             this.repositoryItemCheckEdit1.ValueUnchecked = 0;
             // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "ПриходНакл.bmp");
-            // 
             // frmOutParty
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +303,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OutPartyGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -325,6 +331,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.DateEdit wbStartDate;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        public System.Windows.Forms.ImageList WBImgList;
+        private DevExpress.Utils.ImageCollection GridImageList;
     }
 }
