@@ -24,7 +24,7 @@ namespace SkladEngine.WayBills
 
         public int CopyWithPriceList(int price_id)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 var pld = db.PriceListDet.Where(w => w.PlId == price_id).ToList();
 

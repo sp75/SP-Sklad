@@ -16,7 +16,7 @@ namespace SkladEngine.DBFunction
 
         public GetLastPrice(int mat_id, int? ka_id, int wtype, DateTime on_date)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 var quary = db.WaybillDet.Where(w => w.MatId == mat_id && w.WaybillList.WType == wtype && w.OnDate <= on_date && w.WaybillList.Checked == 1);
 

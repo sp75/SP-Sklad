@@ -59,7 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database.cs" />
+    <Compile Include="SPDatabase.cs" />
     <Compile Include="Models\AccountType.cs" />
     <Compile Include="Models\AspNetRoles.cs" />
     <Compile Include="Models\AspNetUserClaims.cs" />

@@ -14,7 +14,7 @@ namespace SkladEngine.Common
 
         public static DateTime ServerDateTime()
         {
-            return Database.SPBase().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
+            return SPDatabase.SPBase().Database.SqlQuery<DateTime>("SELECT getdate()").FirstOrDefault();
         }
 
         public static List<Currency> Currency
@@ -23,7 +23,7 @@ namespace SkladEngine.Common
             {
                 if (_currency == null)
                 {
-                    using (var db = Database.SPBase())
+                    using (var db = SPDatabase.SPBase())
                     {
                         _currency = db.Currency.ToList();
                     }
@@ -36,7 +36,7 @@ namespace SkladEngine.Common
         public static List<Enterprise> EnterpriseList(int current_user_kaid)
         {
 
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0))
                         .Join(db.EnterpriseWorker.Where(ew => ew.WorkerId == current_user_kaid), w => w.KaId, ew => ew.EnterpriseId, (w, ew) => new Enterprise

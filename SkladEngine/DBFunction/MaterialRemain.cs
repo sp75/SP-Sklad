@@ -2,6 +2,7 @@
 using SP.Base;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace SkladEngine.DBFunction
 
         public List<GetMatRemainByWh_Result> GetMatRemainByWh(int mat_id)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Database.SqlQuery<GetMatRemainByWh_Result>(@"
 SELECT  pr.WId,
@@ -50,7 +51,7 @@ group by pr.WId", mat_id, _user_id).ToList();
 
         public List<GetRemainsOnMaterials_Result> GetRemainsOnMaterials()
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Database.SqlQuery<GetRemainsOnMaterials_Result>(@"
 SELECT  pr.MatId,
@@ -77,7 +78,7 @@ group by pr.MatId", _user_id).ToList();
 
         public List<GetMaterialsOnWh_Result> GetMaterialsOnWh(int wh_id)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Database.SqlQuery<GetMaterialsOnWh_Result>(@"
 SELECT   pr.MatId,
@@ -99,7 +100,7 @@ group by pr.MatId, m.Name, ms.ShortName", wh_id).ToList();
 
         public GetRemainingMaterialInWh_Result GetRemainingMaterialInWh(int wh_id, int mat_id)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Database.SqlQuery<GetRemainingMaterialInWh_Result>(@"
 SELECT   sum( pr.remain) Remain,
@@ -115,12 +116,35 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
             }
         }
 
-        public async Task<List<MaterialRemainViews>> WhMatGet(int? grp_id, int? wid, int? ka_id, DateTime? on_date, int? get_empty, string wh, int? show_all_mats, string grp, int? get_child_node)
+        public async Task<List<MaterialRemainViews>> GetRemainingMaterials(int? grp_id, int? wid, int? ka_id, DateTime? on_date, int? get_empty, string wh, int? show_all_mats, string grp, int? get_child_node)
         {
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
-                  return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
-             //   return await db.WhMatGet(grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToList();
+                //         return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
+                return await db.WhMatGet(grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).Select(s => new MaterialRemainViews
+                {
+                    RecNo = s.RecNo,
+                    MatId = s.MatId,
+                    MatName = s.MatName,
+                    Remain = s.Remain,
+                    Rsv = s.Rsv,
+                    AvgPrice = s.AvgPrice,
+                    Ordered = s.Ordered,
+                    ORsv = s.ORsv,
+                    CurRemain = s.CurRemain,
+                    SumRemain = s.SumRemain,
+                    Artikul = s.Artikul,
+                    BarCode = s.BarCode,
+                    GrpName = s.GrpName,
+                    Num = s.Num,
+                    IsSerial = s.IsSerial,
+                    MId = s.MId,
+                    OutGrpId = s.OutGrpId,
+                    MinReserv = s.MinReserv,
+                    MsrName = s.MsrName,
+                    Country = s.Country,
+                    Producer = s.Producer
+                }).ToListAsync();
             }
         }
 

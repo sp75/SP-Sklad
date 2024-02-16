@@ -11,12 +11,12 @@ using System.Reflection;
 
 namespace SP.Base
 {
-    public static class Database
+    public static class SPDatabase
     {
         private static string _connection_string = "";
         private static readonly object _sync_root = new object();
 
-        static Database()
+        static SPDatabase()
         {
             // By default connection string is taken from web.config
             ConnectionString = ConfigurationManager.ConnectionStrings["SPBaseModel"].ConnectionString;

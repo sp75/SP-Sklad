@@ -126,7 +126,6 @@ namespace SP_Sklad.UserControls.Warehouse
 
                 WhMatGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 MatListGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
-
             }
         }
 
@@ -134,7 +133,7 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             int grp_id = 0;
 
-            string grp = "";
+      //      string grp = "";
 
             grp_id = by_grp ? focused_tree_node_num : 0;
             wid = by_grp ? 0 : focused_tree_node_num;
@@ -144,15 +143,15 @@ namespace SP_Sklad.UserControls.Warehouse
                 wid = -1;
             }
 
-            if (display_child_groups && by_grp && focused_tree_node_num != 0)
+          /*  if (display_child_groups && by_grp && focused_tree_node_num != 0)
             {
                 grp = focused_tree_node_num.ToString();
-            }
+            }*/
 
             WhMatGridView.ShowLoadingPanel();
             int top_row = WhMatGridView.TopRowIndex;
-          //       wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0).ToListAsync();
-             wh_mat_list = await new MaterialRemain(DBHelper.CurrentUser.UserId).WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, display_child_groups ? 1 : 0);
+            //     wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0).ToListAsync();
+            wh_mat_list = await new MaterialRemain(UserSession.UserId).GetRemainingMaterials(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, (ShowEmptyItemsCheck.Checked ? 1 : 0), wh_list, (ShowAllItemsCheck.Checked ? 1 : 0), "", (display_child_groups ? 1 : 0));
 
             WhMatGetBS.DataSource = wh_mat_list;
             WhMatGridView.TopRowIndex = top_row;
@@ -163,7 +162,7 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             var result = GetMatOnWh();
 
-           // GetData();
+         //   GetData();
 
         }
 
@@ -757,9 +756,82 @@ namespace SP_Sklad.UserControls.Warehouse
                 grp = focused_tree_node_num.ToString();
             }
 
+            int ka_id = (int)whKagentList.EditValue;
+            List<int> grp_list = grp.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)?.Select(s => Convert.ToInt32(s)).ToList();
+
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0);
-            e.QueryableSource = list;
+
+          /*  var dfdf = from pr in objectContext.PosRemains
+                       join ua in objectContext.UserAccessWh on pr.WId equals ua.WId
+                       where ua.UserId == UserSession.UserId
+                       && (pr.Remain > 0 || pr.Ordered > 0)
+                       && (pr.WId == wid || wid == 0)
+                       && pr.OnDate == (objectContext.PosRemains.Where(w2 => w2.PosId == pr.PosId && w2.OnDate <= OnDateEdit.DateTime).Max(prm => prm.OnDate))
+                       group pr by pr.MatId into newGroup
+                       orderby newGroup.Key
+                       select new
+                       {
+                           MatId = newGroup.Key,
+                           Remain = newGroup.Sum(sr => sr.Remain),
+                           Rsv = newGroup.Sum(sr => sr.Rsv),
+                           AvgPrice = newGroup.Sum(sr => (sr.Remain + sr.Ordered) * sr.AvgPrice) / newGroup.Sum(sr => sr.Remain + sr.Ordered),
+                           MinPrice = newGroup.Min(mr => mr.AvgPrice),
+                           MaxPrice = newGroup.Max(mr => mr.AvgPrice),
+                           Ordered = newGroup.Sum(sr => sr.Ordered),
+                           ORsv = newGroup.Sum(sr => sr.OrderedRsv),
+                           CurRemain = newGroup.Sum(sr => sr.ActualRemain),
+                           SumRemain = newGroup.Sum(sr => (sr.Remain + sr.Ordered) * sr.AvgPrice)
+                       };*/
+
+
+
+            e.QueryableSource = (from m in objectContext.Materials
+                                 join ms in objectContext.Measures on m.MId equals ms.MId
+                                 join mg in objectContext.MatGroup on m.GrpId equals mg.GrpId
+                                 join wh_item in (objectContext.PosRemains.Join(objectContext.UserAccessWh.Where(wu => wu.UserId == UserSession.UserId), pr => pr.WId, ua => ua.WId, (pr, ua) => pr)
+                                 .Where(w => (w.Remain > 0 || w.Ordered > 0) && (w.WId == wid || wid == 0) && (ka_id == 0 || w.SupplierId == ka_id) && w.OnDate == (objectContext.PosRemains.Where(w2 => w2.PosId == w.PosId && w2.OnDate <= OnDateEdit.DateTime).Max(prm => prm.OnDate)))
+                                 .GroupBy(g => g.MatId)
+                                 .Select(s => new
+                                 {
+                                     MatId = s.Key,
+                                     Remain = s.Sum(sr => sr.Remain),
+                                     Rsv = s.Sum(sr => sr.Rsv),
+                                     AvgPrice = s.Sum(sr => (sr.Remain + sr.Ordered) * sr.AvgPrice) / s.Sum(sr => sr.Remain + sr.Ordered),
+                                     MinPrice = s.Min(mr => mr.AvgPrice),
+                                     MaxPrice = s.Max(mr => mr.AvgPrice),
+                                     Ordered = s.Sum(sr => sr.Ordered),
+                                     ORsv = s.Sum(sr => sr.OrderedRsv),
+                                     CurRemain = s.Sum(sr => sr.ActualRemain),
+                                     SumRemain = s.Sum(sr => (sr.Remain + sr.Ordered) * sr.AvgPrice)
+                                 })) on m.MatId equals wh_item.MatId into gj
+                                 from subwh_item in gj.DefaultIfEmpty()
+                                 join wh_emty_item in (objectContext.PosRemains.Where(w=>  w.Remain == 0 && (w.WId == wid || wid == 0)).GroupBy(g=> g.MatId).Select(ss=> new { OnDate =ss.Max(m=> m.OnDate), MatId = ss.Key }) ) on m.MatId equals wh_emty_item.MatId into gje
+                                 from subwh_empty_item in gje.DefaultIfEmpty()
+
+                                 where m.Deleted == 0 && m.Archived == 0 && (subwh_item.Remain > 0 || subwh_item.Ordered > 0) && (m.GrpId == grp_id || grp_id == 0)
+                                 orderby m.MatId
+                                 select new MaterialRemainViews
+                                 {
+                                     MatId = m.MatId,
+                                     MatName = m.Name,
+                                     Remain = subwh_item.Remain,
+                                     Rsv = subwh_item.Rsv,
+                                     AvgPrice = subwh_item.AvgPrice,
+                                     Ordered = subwh_item.Ordered,
+                                     ORsv = subwh_item.ORsv,
+                                     CurRemain = subwh_item.CurRemain,
+                                     SumRemain = subwh_item.SumRemain,
+                                     Artikul = m.Artikul,
+                                     BarCode = m.BarCode,
+                                     GrpName = mg.Name,
+                                     Num = m.Num,
+                                     IsSerial = m.Serials,
+                                     MId = m.MId,
+                                     OutGrpId = m.GrpId,
+                                     MinReserv = m.MinReserv,
+                                     MsrName = ms.ShortName,
+                                 });
+
             e.Tag = objectContext;
 
         }

@@ -107,7 +107,7 @@ namespace SP_Sklad.MainTabs
                 whContentTab.SelectedTabPageIndex = 7;
 
                 var result = ucWhMat.GetMatOnWh();
-             //   ucWhMat.GetData();
+               // ucWhMat.GetData();
             }
             else
             {

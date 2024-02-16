@@ -14,7 +14,7 @@ namespace SP.Reports.Comon
 
         public BaseReport()
         {
-            _db = Database.SPBase();
+            _db = SPDatabase.SPBase();
         }
 
 

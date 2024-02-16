@@ -2010,7 +2010,7 @@ SELECT WaybillList.[WbillId]
         private List<Enterprise> EnterpriseList(int? currentuser_kaid)
         {
 
-            using (var db = Database.SPBase())
+            using (var db = SPDatabase.SPBase())
             {
                 return db.Kagent.Where(w => w.KType == 3 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0))
                     .Join(db.EnterpriseWorker.Where(ew => ew.WorkerId == currentuser_kaid), w => w.KaId, ew => ew.EnterpriseId, (w, ew) => new Enterprise
