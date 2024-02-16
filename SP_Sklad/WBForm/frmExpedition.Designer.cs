@@ -822,7 +822,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmExpedition.IconOptions.Image")));
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.expedition;
             this.Name = "frmExpedition";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
