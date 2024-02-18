@@ -745,6 +745,7 @@
             this.NewItemBtn.Id = 0;
             this.NewItemBtn.ImageOptions.ImageIndex = 19;
             this.NewItemBtn.Name = "NewItemBtn";
+            this.NewItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
             // 
             // CopyItemBtn
@@ -753,6 +754,7 @@
             this.CopyItemBtn.Id = 1;
             this.CopyItemBtn.ImageOptions.ImageIndex = 27;
             this.CopyItemBtn.Name = "CopyItemBtn";
+            this.CopyItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
             // 
             // EditItemBtn
@@ -761,6 +763,7 @@
             this.EditItemBtn.Id = 2;
             this.EditItemBtn.ImageOptions.ImageIndex = 26;
             this.EditItemBtn.Name = "EditItemBtn";
+            this.EditItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
             // 
             // DeleteItemBtn
@@ -769,6 +772,7 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 16;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // RefrechItemBtn
@@ -777,6 +781,7 @@
             this.RefrechItemBtn.Id = 4;
             this.RefrechItemBtn.ImageOptions.ImageIndex = 18;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
+            this.RefrechItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // barButtonItem11
@@ -785,6 +790,7 @@
             this.barButtonItem11.Id = 38;
             this.barButtonItem11.ImageOptions.ImageIndex = 23;
             this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
             // 
             // standaloneBarDockControl6
@@ -870,14 +876,14 @@
             // 
             this.barSubItem1.Caption = "Додати...";
             this.barSubItem1.Id = 13;
-            this.barSubItem1.ImageOptions.ImageIndex = 19;
+            this.barSubItem1.ImageOptions.ImageIndex = 28;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddGroupMatBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // AddGroupMatBtn
             // 
@@ -1068,6 +1074,7 @@
             this.BarImageList.Images.SetKeyName(26, "edit");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_object, "copy_object", typeof(global::SP_Sklad.Properties.Resources), 27);
             this.BarImageList.Images.SetKeyName(27, "copy_object");
+            this.BarImageList.Images.SetKeyName(28, "add_16x16.png");
             // 
             // RenameMatGroupBarButtonItem
             // 

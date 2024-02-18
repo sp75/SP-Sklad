@@ -377,9 +377,9 @@
             this.ImageList.Images.SetKeyName(5, "del_all_line.png");
             this.ImageList.Images.SetKeyName(6, "enable_all.png");
             this.ImageList.Images.SetKeyName(7, "h_line_disable.png");
-            this.ImageList.Images.SetKeyName(8, "line_grin.png");
+            this.ImageList.Images.SetKeyName(8, "line_grin_2.png");
             this.ImageList.Images.SetKeyName(9, "v_line_disable.png");
-            this.ImageList.Images.SetKeyName(10, "v_line_enable.png");
+            this.ImageList.Images.SetKeyName(10, "v_line_enable_2.png");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.info_process, "info_process", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.ImageList.Images.SetKeyName(11, "info_process");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.info1, "info1", typeof(global::SP_Sklad.Properties.Resources), 12);

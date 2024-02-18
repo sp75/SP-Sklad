@@ -186,7 +186,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = null;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1441, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1450, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // styleController1
@@ -272,7 +272,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 778);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1441, 60);
+            this.panelControl2.Size = new System.Drawing.Size(1450, 60);
             this.panelControl2.TabIndex = 15;
             // 
             // CashboxBtn
@@ -401,7 +401,7 @@
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.OkButton.Appearance.Options.UseFont = true;
-            this.OkButton.Location = new System.Drawing.Point(1188, 6);
+            this.OkButton.Location = new System.Drawing.Point(1197, 6);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(135, 49);
             this.OkButton.TabIndex = 0;
@@ -413,7 +413,7 @@
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(1329, 6);
+            this.simpleButton1.Location = new System.Drawing.Point(1338, 6);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 49);
             this.simpleButton1.TabIndex = 1;
@@ -429,7 +429,7 @@
             this.panel4.Location = new System.Drawing.Point(2, 2);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(5);
-            this.panel4.Size = new System.Drawing.Size(1103, 81);
+            this.panel4.Size = new System.Drawing.Size(1112, 81);
             this.panel4.TabIndex = 13;
             // 
             // textBox1
@@ -442,7 +442,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(1093, 40);
+            this.textBox1.Size = new System.Drawing.Size(1102, 40);
             this.textBox1.TabIndex = 14;
             this.textBox1.TabStop = false;
             // 
@@ -453,7 +453,7 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(5, 45);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1093, 31);
+            this.label1.Size = new System.Drawing.Size(1102, 31);
             this.label1.TabIndex = 15;
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -466,7 +466,7 @@
             this.panelControl6.Location = new System.Drawing.Point(0, 0);
             this.panelControl6.Name = "panelControl6";
             this.panelControl6.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl6.Size = new System.Drawing.Size(1441, 778);
+            this.panelControl6.Size = new System.Drawing.Size(1450, 778);
             this.panelControl6.TabIndex = 28;
             // 
             // panel5
@@ -478,7 +478,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(5, 178);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1431, 595);
+            this.panel5.Size = new System.Drawing.Size(1440, 595);
             this.panel5.TabIndex = 0;
             // 
             // panel8
@@ -488,7 +488,7 @@
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(5);
-            this.panel8.Size = new System.Drawing.Size(1114, 351);
+            this.panel8.Size = new System.Drawing.Size(1123, 351);
             this.panel8.TabIndex = 24;
             // 
             // WaybillDetOutGridControl
@@ -504,7 +504,7 @@
             this.repositoryItemImageComboBox3,
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1104, 341);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1113, 341);
             this.WaybillDetOutGridControl.TabIndex = 23;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -725,7 +725,7 @@
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.splitterControl1.Location = new System.Drawing.Point(0, 351);
             this.splitterControl1.Name = "splitterControl1";
-            this.splitterControl1.Size = new System.Drawing.Size(1114, 10);
+            this.splitterControl1.Size = new System.Drawing.Size(1123, 10);
             this.splitterControl1.TabIndex = 37;
             this.splitterControl1.TabStop = false;
             this.splitterControl1.Visible = false;
@@ -737,7 +737,7 @@
             this.panel9.Location = new System.Drawing.Point(0, 361);
             this.panel9.Name = "panel9";
             this.panel9.Padding = new System.Windows.Forms.Padding(5);
-            this.panel9.Size = new System.Drawing.Size(1114, 234);
+            this.panel9.Size = new System.Drawing.Size(1123, 234);
             this.panel9.TabIndex = 25;
             this.panel9.Visible = false;
             // 
@@ -750,7 +750,7 @@
             this.WhMatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemImageComboBox5});
-            this.WhMatGridControl.Size = new System.Drawing.Size(1104, 224);
+            this.WhMatGridControl.Size = new System.Drawing.Size(1113, 224);
             this.WhMatGridControl.TabIndex = 1;
             this.WhMatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhMatGridView});
@@ -901,7 +901,7 @@
             this.panel1.Controls.Add(this.UserQuickMaterialsPanel);
             this.panel1.Controls.Add(this.NumPadPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1114, 0);
+            this.panel1.Location = new System.Drawing.Point(1123, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(317, 595);
             this.panel1.TabIndex = 38;
@@ -1369,16 +1369,17 @@
             this.panel6.Location = new System.Drawing.Point(5, 5);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(5);
-            this.panel6.Size = new System.Drawing.Size(1431, 173);
+            this.panel6.Size = new System.Drawing.Size(1440, 173);
             this.panel6.TabIndex = 1;
             // 
             // simpleButton24
             // 
+            this.simpleButton24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton24.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton24.Appearance.Options.UseFont = true;
             this.simpleButton24.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton24.ImageOptions.Image")));
             this.simpleButton24.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton24.Location = new System.Drawing.Point(1229, 79);
+            this.simpleButton24.Location = new System.Drawing.Point(1238, 79);
             this.simpleButton24.Name = "simpleButton24";
             this.simpleButton24.Size = new System.Drawing.Size(133, 39);
             this.simpleButton24.TabIndex = 46;
@@ -1388,11 +1389,12 @@
             // 
             // simpleButton2
             // 
+            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
             this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(1123, 79);
+            this.simpleButton2.Location = new System.Drawing.Point(1132, 79);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(100, 39);
             this.simpleButton2.TabIndex = 45;
@@ -1407,14 +1409,14 @@
             this.panelControl4.Controls.Add(this.panel4);
             this.panelControl4.Location = new System.Drawing.Point(5, 79);
             this.panelControl4.Name = "panelControl4";
-            this.panelControl4.Size = new System.Drawing.Size(1107, 85);
+            this.panelControl4.Size = new System.Drawing.Size(1116, 85);
             this.panelControl4.TabIndex = 15;
             // 
             // AmountEdit
             // 
             this.AmountEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AmountEdit.Enabled = false;
-            this.AmountEdit.Location = new System.Drawing.Point(1123, 124);
+            this.AmountEdit.Location = new System.Drawing.Point(1132, 124);
             this.AmountEdit.Name = "AmountEdit";
             this.AmountEdit.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.AmountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
@@ -1440,7 +1442,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(5, 5);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1421, 67);
+            this.panel7.Size = new System.Drawing.Size(1430, 67);
             this.panel7.TabIndex = 15;
             // 
             // error_autch_label
@@ -1508,7 +1510,7 @@
             this.panelControl3.Controls.Add(this.labelControl5);
             this.panelControl3.Controls.Add(this.textEdit2);
             this.panelControl3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelControl3.Location = new System.Drawing.Point(1118, 0);
+            this.panelControl3.Location = new System.Drawing.Point(1127, 0);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Size = new System.Drawing.Size(303, 67);
             this.panelControl3.TabIndex = 11;
@@ -1545,7 +1547,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1441, 838);
+            this.ClientSize = new System.Drawing.Size(1450, 838);
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);
