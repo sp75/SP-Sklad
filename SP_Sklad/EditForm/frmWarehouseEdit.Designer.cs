@@ -246,7 +246,7 @@
             this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "RecyclingWarehouse", true));
             this.checkEdit1.Location = new System.Drawing.Point(21, 413);
             this.checkEdit1.Name = "checkEdit1";
-            this.checkEdit1.Properties.Caption = "Cклад для товарів з дефектом";
+            this.checkEdit1.Properties.Caption = "Cклад для зіпсованих товарів";
             this.checkEdit1.Properties.ValueChecked = 1;
             this.checkEdit1.Properties.ValueUnchecked = 0;
             this.checkEdit1.Size = new System.Drawing.Size(397, 20);

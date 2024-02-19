@@ -908,5 +908,14 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             GetWhBottomInfo(focused_wh_mat);
         }
+
+        private void bandedGridView1_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                PosBottomPopupMenu.ShowPopup(p2);
+            }
+        }
     }
 }

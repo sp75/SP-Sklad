@@ -3582,6 +3582,7 @@
     <None Include="Resources\flag_red.png" />
     <None Include="Resources\product_tmc.png" />
     <None Include="Resources\open_view.png" />
+    <None Include="Resources\ingredients.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -56,7 +56,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 1, Text = "Ролі", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 18, TabIdx = 2 });
-            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткова інформація", ImgIdx = 12, TabIdx = 3 });
+            tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткові налаштування", ImgIdx = 12, TabIdx = 3 });
 
 
 

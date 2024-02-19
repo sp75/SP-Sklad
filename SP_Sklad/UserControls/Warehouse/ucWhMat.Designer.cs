@@ -1302,6 +1302,7 @@
             this.bandedGridView1.OptionsBehavior.ReadOnly = true;
             this.bandedGridView1.OptionsView.ShowFooter = true;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
+            this.bandedGridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.bandedGridView1_PopupMenuShowing);
             // 
             // gridBand4
             // 
