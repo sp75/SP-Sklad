@@ -754,7 +754,6 @@
             this.CopyItemBtn.Id = 1;
             this.CopyItemBtn.ImageOptions.ImageIndex = 27;
             this.CopyItemBtn.Name = "CopyItemBtn";
-            this.CopyItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
             // 
             // EditItemBtn
@@ -763,7 +762,6 @@
             this.EditItemBtn.Id = 2;
             this.EditItemBtn.ImageOptions.ImageIndex = 26;
             this.EditItemBtn.Name = "EditItemBtn";
-            this.EditItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.EditItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.EditItemBtn_ItemClick);
             // 
             // DeleteItemBtn
@@ -772,7 +770,6 @@
             this.DeleteItemBtn.Id = 3;
             this.DeleteItemBtn.ImageOptions.ImageIndex = 16;
             this.DeleteItemBtn.Name = "DeleteItemBtn";
-            this.DeleteItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // RefrechItemBtn
@@ -781,7 +778,6 @@
             this.RefrechItemBtn.Id = 4;
             this.RefrechItemBtn.ImageOptions.ImageIndex = 18;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
-            this.RefrechItemBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
             // 
             // barButtonItem11
@@ -790,7 +786,6 @@
             this.barButtonItem11.Id = 38;
             this.barButtonItem11.ImageOptions.ImageIndex = 23;
             this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
             // 
             // standaloneBarDockControl6

@@ -22,6 +22,7 @@ namespace SP_Sklad.Common
         public decimal weight { get; set; }
         public WeighingScales weighing_scales { get; set; }
         private ScalesServerBTA _bta { get; set; }
+        private int _weights_decimal_places { get; set; }
 
         public ComPortHelper()
             : this(1)
@@ -40,12 +41,14 @@ namespace SP_Sklad.Common
                 _serialPort.PortName = Settings.Default.com_port_name;
                 _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed);
                 weighing_scales = DBHelper.WeighingScales_1;//new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales);
+                _weights_decimal_places = Settings.Default.weights_decimal_places;
             }
             else if (weigher_index == 2)
             {
                 _serialPort.PortName = Settings.Default.com_port_name_2;
                 _serialPort.BaudRate = Convert.ToInt32(Settings.Default.com_port_speed_2);
                 weighing_scales = DBHelper.WeighingScales_2;//new BaseEntities().WeighingScales.FirstOrDefault(f => f.Id == Settings.Default.weighing_scales_2);
+                _weights_decimal_places = Settings.Default.weights_decimal_places_2;
             }
 
 
@@ -131,7 +134,8 @@ namespace SP_Sklad.Common
 
                 if (decimal.TryParse(rez, out decimal display))
                 {
-                    weight = (display / 100);
+                    //  weight = (display / 100);
+                    weight = display / ((decimal)(Math.Pow(10, _weights_decimal_places)));
                 }
                 else weight = 0;
 

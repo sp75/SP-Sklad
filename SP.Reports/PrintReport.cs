@@ -115,6 +115,7 @@ namespace SP.Reports
                     result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate)
                         .Select(s => new
                         {
+                            НомерДокументу = s.WbNum,
                             ДатаДокументу = s.WbOnDate,
                             Контрагент = s.KaName,
                             ГрупаТоварів = s.GrpName,

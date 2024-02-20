@@ -206,6 +206,8 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
+            this.spinEdit2 = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.WeighingScalesLookUpEdit2 = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
@@ -214,6 +216,8 @@
             this.ComPortName2Edit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.spinEdit1 = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.WeighingScalesLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -244,6 +248,8 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tab1 = new DevExpress.XtraVerticalGrid.Tab();
             this.tab2 = new DevExpress.XtraVerticalGrid.Tab();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -324,11 +330,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
@@ -2402,6 +2410,9 @@
             // 
             // groupControl1
             // 
+            this.groupControl1.Controls.Add(this.labelControl20);
+            this.groupControl1.Controls.Add(this.labelControl18);
+            this.groupControl1.Controls.Add(this.spinEdit2);
             this.groupControl1.Controls.Add(this.labelControl15);
             this.groupControl1.Controls.Add(this.WeighingScalesLookUpEdit2);
             this.groupControl1.Controls.Add(this.simpleButton4);
@@ -2411,14 +2422,41 @@
             this.groupControl1.Controls.Add(this.labelControl11);
             this.groupControl1.Location = new System.Drawing.Point(446, 163);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(414, 189);
+            this.groupControl1.Size = new System.Drawing.Size(414, 260);
             this.groupControl1.TabIndex = 84;
             this.groupControl1.Tag = "";
             this.groupControl1.Text = "Ваги №2";
             // 
+            // labelControl18
+            // 
+            this.labelControl18.Location = new System.Drawing.Point(107, 177);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(102, 16);
+            this.labelControl18.StyleController = this.styleController1;
+            this.labelControl18.TabIndex = 87;
+            this.labelControl18.Text = "знаків після коми";
+            // 
+            // spinEdit2
+            // 
+            this.spinEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weights_decimal_places_2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.spinEdit2.EditValue = global::SP_Sklad.Properties.Settings.Default.weights_decimal_places_2;
+            this.spinEdit2.Location = new System.Drawing.Point(15, 174);
+            this.spinEdit2.MenuManager = this.barManager1;
+            this.spinEdit2.Name = "spinEdit2";
+            this.spinEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit2.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.spinEdit2.Size = new System.Drawing.Size(86, 22);
+            this.spinEdit2.StyleController = this.styleController1;
+            this.spinEdit2.TabIndex = 86;
+            // 
             // labelControl15
             // 
-            this.labelControl15.Location = new System.Drawing.Point(15, 97);
+            this.labelControl15.Location = new System.Drawing.Point(15, 92);
             this.labelControl15.Name = "labelControl15";
             this.labelControl15.Size = new System.Drawing.Size(45, 16);
             this.labelControl15.StyleController = this.styleController1;
@@ -2429,7 +2467,7 @@
             // 
             this.WeighingScalesLookUpEdit2.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weighing_scales_2", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WeighingScalesLookUpEdit2.EditValue = global::SP_Sklad.Properties.Settings.Default.weighing_scales_2;
-            this.WeighingScalesLookUpEdit2.Location = new System.Drawing.Point(15, 119);
+            this.WeighingScalesLookUpEdit2.Location = new System.Drawing.Point(15, 114);
             this.WeighingScalesLookUpEdit2.Name = "WeighingScalesLookUpEdit2";
             this.WeighingScalesLookUpEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2447,9 +2485,9 @@
             // 
             // simpleButton4
             // 
-            this.simpleButton4.Location = new System.Drawing.Point(335, 151);
+            this.simpleButton4.Location = new System.Drawing.Point(324, 216);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(66, 22);
+            this.simpleButton4.Size = new System.Drawing.Size(77, 30);
             this.simpleButton4.TabIndex = 33;
             this.simpleButton4.Text = "Тест";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -2524,6 +2562,9 @@
             // 
             // groupControl3
             // 
+            this.groupControl3.Controls.Add(this.labelControl19);
+            this.groupControl3.Controls.Add(this.labelControl17);
+            this.groupControl3.Controls.Add(this.spinEdit1);
             this.groupControl3.Controls.Add(this.labelControl14);
             this.groupControl3.Controls.Add(this.simpleButton3);
             this.groupControl3.Controls.Add(this.WeighingScalesLookUpEdit);
@@ -2533,14 +2574,41 @@
             this.groupControl3.Controls.Add(this.ComPortNameEdit);
             this.groupControl3.Location = new System.Drawing.Point(12, 163);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(415, 189);
+            this.groupControl3.Size = new System.Drawing.Size(415, 260);
             this.groupControl3.TabIndex = 83;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Ваги №1";
             // 
+            // labelControl17
+            // 
+            this.labelControl17.Location = new System.Drawing.Point(15, 152);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(126, 16);
+            this.labelControl17.StyleController = this.styleController1;
+            this.labelControl17.TabIndex = 85;
+            this.labelControl17.Text = "Точність зважування";
+            // 
+            // spinEdit1
+            // 
+            this.spinEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weights_decimal_places", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.spinEdit1.EditValue = global::SP_Sklad.Properties.Settings.Default.weights_decimal_places;
+            this.spinEdit1.Location = new System.Drawing.Point(15, 174);
+            this.spinEdit1.MenuManager = this.barManager1;
+            this.spinEdit1.Name = "spinEdit1";
+            this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEdit1.Properties.MaxValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.spinEdit1.Size = new System.Drawing.Size(91, 22);
+            this.spinEdit1.StyleController = this.styleController1;
+            this.spinEdit1.TabIndex = 84;
+            // 
             // labelControl14
             // 
-            this.labelControl14.Location = new System.Drawing.Point(15, 97);
+            this.labelControl14.Location = new System.Drawing.Point(15, 92);
             this.labelControl14.Name = "labelControl14";
             this.labelControl14.Size = new System.Drawing.Size(45, 16);
             this.labelControl14.StyleController = this.styleController1;
@@ -2549,9 +2617,9 @@
             // 
             // simpleButton3
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(335, 151);
+            this.simpleButton3.Location = new System.Drawing.Point(328, 216);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(66, 22);
+            this.simpleButton3.Size = new System.Drawing.Size(73, 30);
             this.simpleButton3.TabIndex = 32;
             this.simpleButton3.Text = "Тест";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -2560,7 +2628,7 @@
             // 
             this.WeighingScalesLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", global::SP_Sklad.Properties.Settings.Default, "weighing_scales", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WeighingScalesLookUpEdit.EditValue = global::SP_Sklad.Properties.Settings.Default.weighing_scales;
-            this.WeighingScalesLookUpEdit.Location = new System.Drawing.Point(15, 119);
+            this.WeighingScalesLookUpEdit.Location = new System.Drawing.Point(15, 114);
             this.WeighingScalesLookUpEdit.Name = "WeighingScalesLookUpEdit";
             this.WeighingScalesLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -2847,6 +2915,24 @@
             this.tab2.Caption = "Tab 2";
             this.tab2.Name = "tab2";
             // 
+            // labelControl19
+            // 
+            this.labelControl19.Location = new System.Drawing.Point(112, 177);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(102, 16);
+            this.labelControl19.StyleController = this.styleController1;
+            this.labelControl19.TabIndex = 86;
+            this.labelControl19.Text = "знаків після коми";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Location = new System.Drawing.Point(15, 152);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(126, 16);
+            this.labelControl20.StyleController = this.styleController1;
+            this.labelControl20.TabIndex = 88;
+            this.labelControl20.Text = "Точність зважування";
+            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2957,12 +3043,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeed2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortName2Edit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WeighingScalesLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortSpeedEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).EndInit();
@@ -3200,5 +3288,11 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItem1;
         private DevExpress.XtraVerticalGrid.Tab tab1;
         private DevExpress.XtraVerticalGrid.Tab tab2;
+        private DevExpress.XtraEditors.SpinEdit spinEdit1;
+        private DevExpress.XtraEditors.LabelControl labelControl18;
+        private DevExpress.XtraEditors.SpinEdit spinEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl17;
+        private DevExpress.XtraEditors.LabelControl labelControl20;
+        private DevExpress.XtraEditors.LabelControl labelControl19;
     }
 }

@@ -33,6 +33,8 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.ComPortText = new DevExpress.XtraEditors.MemoEdit();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ComPortText.Properties)).BeginInit();
@@ -40,6 +42,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 191);
@@ -70,6 +73,23 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.simpleButton1.Location = new System.Drawing.Point(12, 10);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(112, 30);
+            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.Text = "Зберегти у файл";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileName = "com_port.log";
+            this.saveFileDialog1.Filter = "log files (*.log)|*.log";
+            this.saveFileDialog1.RestoreDirectory = true;
+            // 
             // frmTestComPort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,5 +116,7 @@
         private DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.MemoEdit ComPortText;
         private System.Windows.Forms.Timer timer1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

@@ -132,6 +132,7 @@ namespace SP_Sklad.WBForm
 
             AddMaterialBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
             TMCBtnItem.Enabled = KagentComboBox.EditValue != DBNull.Value;
+            UsedProcuctBtn.Enabled = KagentComboBox.EditValue != DBNull.Value;
 
 
             EditMaterialBtn.Enabled = WaybillDetInBS.Count > 0;

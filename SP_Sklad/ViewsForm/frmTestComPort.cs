@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
@@ -19,11 +20,13 @@ namespace SP_Sklad.ViewsForm
         private String received { get; set; }
 
         public UserSettingsRepository user_settings { get; set; }
+        System.IO.Stream log_stream = new System.IO.MemoryStream();
 
         public frmTestComPort(string port_name, int baud_rate)
         {
             InitializeComponent();
 
+            
             _serialPort = new SerialPort();
             _serialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
    
@@ -91,6 +94,18 @@ namespace SP_Sklad.ViewsForm
         private void timer1_Tick(object sender, EventArgs e)
         {
             ComPortText.Text = received;
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream fs = File.Create(saveFileDialog1.FileName))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(received);
+                    fs.Write(info, 0, info.Length);
+                }
+            }
         }
     }
 }

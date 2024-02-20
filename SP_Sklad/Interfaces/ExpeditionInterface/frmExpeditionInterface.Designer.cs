@@ -487,7 +487,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.TotalDoc.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.ExpeditionDetBS, "TotalWeight", true, System.Windows.Forms.DataSourceUpdateMode.Never));
             this.TotalDoc.Location = new System.Drawing.Point(80, 384);
             this.TotalDoc.Name = "TotalDoc";
-            this.TotalDoc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.TotalDoc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Bold);
             this.TotalDoc.Properties.Appearance.Options.UseFont = true;
             this.TotalDoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -496,7 +496,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.TotalDoc.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.TotalDoc.Properties.ReadOnly = true;
             this.TotalDoc.Properties.ShowCloseButton = true;
-            this.TotalDoc.Size = new System.Drawing.Size(244, 22);
+            this.TotalDoc.Size = new System.Drawing.Size(244, 24);
             this.TotalDoc.StyleController = this.layoutControl2;
             this.TotalDoc.TabIndex = 69;
             // 
@@ -703,9 +703,9 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 156);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 158);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(304, 156);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(304, 154);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem8
@@ -757,7 +757,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             this.layoutControlItem10.Control = this.TotalDoc;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 130);
             this.layoutControlItem10.Name = "layoutControlItem10";
-            this.layoutControlItem10.Size = new System.Drawing.Size(304, 26);
+            this.layoutControlItem10.Size = new System.Drawing.Size(304, 28);
             this.layoutControlItem10.Text = "Різниця";
             this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem10.TextLocation = DevExpress.Utils.Locations.Left;

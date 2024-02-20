@@ -123,9 +123,6 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>61</value>
   </metadata>
-  <metadata name="WaybillDetInBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>471, 20</value>
-  </metadata>
   <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>615, 18</value>
   </metadata>
@@ -138,24 +135,17 @@
         a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
         cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
         /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
-        BQAAAHcCAAACcwIAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIVSURBVDhPrZJdb9JgFMfrlX4FE2+80fgR/Aq78ANsKzSl
-        JgaDSxbaspaEOWAiI3EMJBuUvsCQ4gQUIRTcYnyPmc5kJi5RjMZ4pTMal2UDhWPLnlk09cLoL/mnTfP8
-        Tnqec7D/gl3yHRqZ5w7jKeYELrhP4il6SH8fxgXaqT95QpyIOmQ+Tyn8MiV7n1IK95pIMe+RjmE2gQFS
-        4b84s95P5wqBj3Q5vOmtzX6ebsa2L91OdRP3ZUg9zoGydhXU9TKUNqpgOEjfK1B8cROurBdBeqLC/KMs
-        RO+JEF5ZAH891uVuhDvjhands7nJndOip00k2e+/FBgVmA4pcuDMTcKY6ofxpWmgiyFgSiHwlGeAvx4B
-        vhIBb2WmM1GJtG1JpoeL9BDSMcwVdR20C+5v1ZYGzbcr/Vx+oEBAiwNbugiu/HmovKz3v2fWlsAhs+8w
-        wA4gfQ9S4TYyeo/GIe3NLQgtJ2DubrrfktHefmFnztexCfQFpJkQIrMQ1OK9xMPMz8O/Z//yqCxzBGkm
-        +sjwM1nfbrARt5SNBBsxIAW2PSLQx5Fmgic9x/C0uyutqpZy9ZUG+h7AWMH/VW/hFNJMRpP8UeP3aq2m
-        ZYFaqwHp1TwE6nP6HbAs0kyGkyzhUqd2rOTBGNNxyFweaSb6ui7O3hF6VtJgFp9dA0rinyPNhJS4D4Pj
-        +lOMfbCLzBbSTIz+/yZI+1cw7AcCKOtywcJChwAAAABJRU5ErkJgggs=
+        BQAAAAAAAAACCw==
 </value>
   </data>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>165, 19</value>
   </metadata>
+  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>312, 19</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
         dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAARdEVYdFRpdGxlAFRpbWU7Q2xvY2s7pZZB/gAAA35J
@@ -177,7 +167,10 @@
         rAAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>312, 19</value>
+  <metadata name="WaybillDetInBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>471, 20</value>
+  </metadata>
+  <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>615, 18</value>
   </metadata>
 </root>

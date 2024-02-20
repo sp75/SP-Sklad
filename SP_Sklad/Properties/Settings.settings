@@ -77,5 +77,11 @@
     <Setting Name="expedition_sidePanel" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">349, 146</Value>
     </Setting>
+    <Setting Name="weights_decimal_places" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="weights_decimal_places_2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

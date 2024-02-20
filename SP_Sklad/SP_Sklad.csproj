@@ -509,6 +509,12 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Manufacturing\ucManufacturingProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucManufacturingProducts.Designer.cs">
+      <DependentUpon>ucManufacturingProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\OLD_WarehouseUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2539,6 +2545,9 @@
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucManufacturingProducts.resx">
+      <DependentUpon>ucManufacturingProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\OLD_WarehouseUserControl.resx">
       <DependentUpon>OLD_WarehouseUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -3583,6 +3592,7 @@
     <None Include="Resources\product_tmc.png" />
     <None Include="Resources\open_view.png" />
     <None Include="Resources\ingredients.png" />
+    <None Include="Resources\used_product.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

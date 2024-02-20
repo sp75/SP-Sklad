@@ -51,6 +51,8 @@ namespace SP_Sklad.MainTabs
             mainContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             delTurnDate.DateTime = DateTime.Now;
 
+        //    var dddd = 123456.00m / ((decimal)(Math.Pow(10, 3)));
+
 
             if (!DesignMode)
             {

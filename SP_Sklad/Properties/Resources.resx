@@ -859,4 +859,7 @@
   <data name="ingredients" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ingredients.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="used_product" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\used_product.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

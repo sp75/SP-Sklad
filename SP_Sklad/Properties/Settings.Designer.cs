@@ -321,5 +321,29 @@ namespace SP_Sklad.Properties {
                 this["expedition_sidePanel"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int weights_decimal_places {
+            get {
+                return ((int)(this["weights_decimal_places"]));
+            }
+            set {
+                this["weights_decimal_places"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public int weights_decimal_places_2 {
+            get {
+                return ((int)(this["weights_decimal_places_2"]));
+            }
+            set {
+                this["weights_decimal_places_2"] = value;
+            }
+        }
     }
 }
