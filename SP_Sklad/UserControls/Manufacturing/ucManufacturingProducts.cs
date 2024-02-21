@@ -33,7 +33,7 @@ namespace SP_Sklad.MainTabs
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
 
-        public GetManufactureTree_Result focused_tree_node { get; set; }
+        public int grp_id { get; set; }
         private WBListMake_Result focused_row => WbGridView.GetFocusedRow() as WBListMake_Result;
         private List<GetManufactureTree_Result> manuf_tree { get; set; }
         private GetManufactureTree_Result intermediate_weighing_access { get; set; }
@@ -64,6 +64,7 @@ namespace SP_Sklad.MainTabs
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
+                user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
         }
 
@@ -80,7 +81,7 @@ namespace SP_Sklad.MainTabs
             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
 
             int top_row = WbGridView.TopRowIndex;
-            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, w_type, UserSession.UserId).ToList();
+            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), grp_id, w_type, UserSession.UserId).ToList();
             WbGridView.TopRowIndex = top_row;
         }
 
@@ -88,11 +89,6 @@ namespace SP_Sklad.MainTabs
         bool restore = false;
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_tree_node == null)
-            {
-                return;
-            }
-
             GetWBListMake();
         }
 
@@ -215,11 +211,6 @@ namespace SP_Sklad.MainTabs
 
         public void PrintItem()
         {
-            if (focused_tree_node == null)
-            {
-                return;
-            }
-
             PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
         }
 
@@ -383,13 +374,13 @@ namespace SP_Sklad.MainTabs
         {
             xtraTabControl2_SelectedPageChanged(sender, null);
 
-            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
-            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_row != null);
-            ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
+            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && user_access.CanPost == 1);
+            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (user_access.CanInsert == 1 && focused_row != null);
+            ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
-            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
+            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1);
             AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanInsert == 1);
 
         }
@@ -543,8 +534,8 @@ namespace SP_Sklad.MainTabs
 
         private void TechProcGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1) && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/);
+            DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1) && TechProcGridView.DataRowCount > 0);
+            EditTechProcBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/);
         }
 
         public void SaveGridLayouts()
@@ -662,7 +653,7 @@ namespace SP_Sklad.MainTabs
                     break;
             }
 
-            var can_modify = (focused_tree_node.CanModify == 1 && focused_tree_node.CanPost == 1);
+            var can_modify = (user_access.CanModify == 1 && user_access.CanPost == 1);
             IHelper.ShowWayBillDetInfo(pos_id, can_modify);
 
             RefrechItemBtn.PerformClick();
@@ -689,6 +680,31 @@ namespace SP_Sklad.MainTabs
                 UserSession.production_monitor_frm.WindowState = FormWindowState.Normal;
                 UserSession.production_monitor_frm.Activate();
             }
+        }
+
+        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
+            switch (PeriodComboBoxEdit.SelectedIndex)
+            {
+                case 1:
+                    wbStartDate.DateTime = DateTime.Now.Date;
+                    break;
+
+                case 2:
+                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
+                    break;
+
+                case 3:
+                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
+                    break;
+
+                case 4:
+                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
+                    break;
+            }
+
+            GetWBListMake();
         }
     }
 }

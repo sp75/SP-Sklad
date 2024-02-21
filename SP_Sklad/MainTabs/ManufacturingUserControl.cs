@@ -229,7 +229,7 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.GType.Value == 1)
             {
                 bar1.Visible = false;
-                ucManufacturingProducts.focused_tree_node = focused_tree_node;
+                ucManufacturingProducts.grp_id = focused_tree_node.Num;
                 wbContentTab.SelectedTabPageIndex = 11;
                 ucManufacturingProducts.GetWBListMake();
             }

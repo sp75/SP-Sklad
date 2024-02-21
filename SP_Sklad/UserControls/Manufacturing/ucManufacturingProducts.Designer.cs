@@ -111,7 +111,6 @@
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
@@ -187,6 +186,7 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -241,6 +241,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -450,7 +451,7 @@
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1323, 24);
+            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1332, 24);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
             // 
             // bar3
@@ -583,7 +584,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1329, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1338, 24);
             // 
             // barDockControlBottom
             // 
@@ -591,7 +592,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 685);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1329, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1338, 0);
             // 
             // barDockControlLeft
             // 
@@ -605,7 +606,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1329, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1338, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 661);
             // 
@@ -617,7 +618,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1329, 0);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1338, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // standaloneBarDockControl5
@@ -704,7 +705,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 24);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1329, 661);
+            this.panelControl1.Size = new System.Drawing.Size(1338, 661);
             this.panelControl1.TabIndex = 6;
             // 
             // splitContainerControl2
@@ -724,7 +725,7 @@
             // 
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
-            this.splitContainerControl2.Size = new System.Drawing.Size(1325, 657);
+            this.splitContainerControl2.Size = new System.Drawing.Size(1334, 657);
             this.splitContainerControl2.SplitterPosition = 378;
             this.splitContainerControl2.TabIndex = 0;
             this.splitContainerControl2.Text = "splitContainerControl2";
@@ -739,7 +740,7 @@
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox});
-            this.WBGridControl.Size = new System.Drawing.Size(1325, 328);
+            this.WBGridControl.Size = new System.Drawing.Size(1334, 328);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
@@ -1045,6 +1046,7 @@
             // 
             // panelControl2
             // 
+            this.panelControl2.Controls.Add(this.PeriodComboBoxEdit);
             this.panelControl2.Controls.Add(this.WhComboBox);
             this.panelControl2.Controls.Add(this.wbSatusList);
             this.panelControl2.Controls.Add(this.labelControl4);
@@ -1052,16 +1054,17 @@
             this.panelControl2.Controls.Add(this.wbEndDate);
             this.panelControl2.Controls.Add(this.labelControl2);
             this.panelControl2.Controls.Add(this.wbStartDate);
-            this.panelControl2.Controls.Add(this.labelControl1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1325, 50);
+            this.panelControl2.Size = new System.Drawing.Size(1334, 50);
             this.panelControl2.TabIndex = 1;
             // 
             // WhComboBox
             // 
-            this.WhComboBox.Location = new System.Drawing.Point(463, 14);
+            this.WhComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.WhComboBox.Location = new System.Drawing.Point(591, 14);
             this.WhComboBox.Name = "WhComboBox";
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1071,7 +1074,7 @@
             this.WhComboBox.Properties.ShowHeader = false;
             this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhComboBox.Properties.ValueMember = "WId";
-            this.WhComboBox.Size = new System.Drawing.Size(286, 22);
+            this.WhComboBox.Size = new System.Drawing.Size(399, 22);
             this.WhComboBox.StyleController = this.styleController1;
             this.WhComboBox.TabIndex = 18;
             this.WhComboBox.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
@@ -1083,7 +1086,8 @@
             // 
             // wbSatusList
             // 
-            this.wbSatusList.Location = new System.Drawing.Point(836, 14);
+            this.wbSatusList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.wbSatusList.Location = new System.Drawing.Point(1080, 14);
             this.wbSatusList.Name = "wbSatusList";
             this.wbSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1099,7 +1103,8 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(791, 17);
+            this.labelControl4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl4.Location = new System.Drawing.Point(1035, 17);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(39, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -1108,7 +1113,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(430, 17);
+            this.labelControl3.Location = new System.Drawing.Point(558, 17);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(27, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -1118,7 +1123,7 @@
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(234, 14);
+            this.wbEndDate.Location = new System.Drawing.Point(338, 14);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1134,7 +1139,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(214, 17);
+            this.labelControl2.Location = new System.Drawing.Point(318, 17);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(14, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -1144,7 +1149,7 @@
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(68, 14);
+            this.wbStartDate.Location = new System.Drawing.Point(177, 14);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -1154,21 +1159,12 @@
             this.wbStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.wbStartDate.Properties.EditFormat.FormatString = "g";
             this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.wbStartDate.Properties.Mask.EditMask = "g";
             this.wbStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.wbStartDate.Size = new System.Drawing.Size(140, 22);
+            this.wbStartDate.Properties.MaskSettings.Set("mask", "g");
+            this.wbStartDate.Size = new System.Drawing.Size(135, 22);
             this.wbStartDate.StyleController = this.styleController1;
             this.wbStartDate.TabIndex = 1;
             this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(13, 17);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(49, 16);
-            this.labelControl1.StyleController = this.styleController1;
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Період з";
             // 
             // xtraTabControl2
             // 
@@ -1177,7 +1173,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1325, 269);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1334, 269);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -1211,7 +1207,7 @@
             this.xtraTabPage15.Controls.Add(this.standaloneBarDockControl3);
             this.xtraTabPage15.ImageOptions.ImageIndex = 0;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1323, 241);
+            this.xtraTabPage15.Size = new System.Drawing.Size(1332, 241);
             this.xtraTabPage15.Text = "Технологічні процеси";
             // 
             // TechProcGridControl
@@ -1221,7 +1217,7 @@
             this.TechProcGridControl.Location = new System.Drawing.Point(0, 24);
             this.TechProcGridControl.MainView = this.TechProcGridView;
             this.TechProcGridControl.Name = "TechProcGridControl";
-            this.TechProcGridControl.Size = new System.Drawing.Size(1323, 217);
+            this.TechProcGridControl.Size = new System.Drawing.Size(1332, 217);
             this.TechProcGridControl.TabIndex = 2;
             this.TechProcGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.TechProcGridView});
@@ -1926,7 +1922,7 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl4.Location = new System.Drawing.Point(1329, 24);
+            this.barDockControl4.Location = new System.Drawing.Point(1338, 24);
             this.barDockControl4.Manager = null;
             this.barDockControl4.Size = new System.Drawing.Size(0, 661);
             // 
@@ -1972,6 +1968,27 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // PeriodComboBoxEdit
+            // 
+            this.PeriodComboBoxEdit.EditValue = "Довільний період";
+            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(15, 14);
+            this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
+            this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
+            this.PeriodComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PeriodComboBoxEdit.Properties.Items.AddRange(new object[] {
+            "Довільний період",
+            "За поточний день",
+            "З початку неділі",
+            "З початку місяця",
+            "З початку року"});
+            this.PeriodComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(156, 22);
+            this.PeriodComboBoxEdit.StyleController = this.styleController1;
+            this.PeriodComboBoxEdit.TabIndex = 22;
+            this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
+            // 
             // ucManufacturingProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1984,7 +2001,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucManufacturingProducts";
-            this.Size = new System.Drawing.Size(1329, 685);
+            this.Size = new System.Drawing.Size(1338, 685);
             this.Load += new System.EventHandler(this.ManufacturingUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).EndInit();
@@ -2044,6 +2061,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2081,7 +2099,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl2;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage15;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
@@ -2207,5 +2224,6 @@
         private DevExpress.Utils.ImageCollection BarImageList;
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection GridImageList;
+        private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
     }
 }
