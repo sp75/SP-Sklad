@@ -644,6 +644,8 @@
             this.ImageList.Images.SetKeyName(17, "contact_details");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.info1, "info1", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.ImageList.Images.SetKeyName(18, "info1");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_group, "product_group", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.ImageList.Images.SetKeyName(19, "product_group");
             // 
             // repositoryItemImageComboBox1
             // 
@@ -654,6 +656,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 8)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
+            this.repositoryItemImageComboBox1.SmallImages = this.ImageList;
             // 
             // styleController1
             // 
@@ -741,6 +744,7 @@
             // 
             this.barButtonItem3.Caption = "Знижку на товар";
             this.barButtonItem3.Id = 3;
+            this.barButtonItem3.ImageOptions.ImageIndex = 7;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -748,6 +752,7 @@
             // 
             this.barButtonItem4.Caption = "Знижку на товарну групу";
             this.barButtonItem4.Id = 4;
+            this.barButtonItem4.ImageOptions.ImageIndex = 8;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -755,6 +760,7 @@
             // 
             this.barButtonItem2.Caption = "Ціноутворення товару";
             this.barButtonItem2.Id = 5;
+            this.barButtonItem2.ImageOptions.ImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -762,6 +768,7 @@
             // 
             this.barButtonItem5.Caption = "Ціноутворення групи товарів";
             this.barButtonItem5.Id = 6;
+            this.barButtonItem5.ImageOptions.ImageIndex = 8;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -2747,6 +2754,7 @@
             // 
             this.simpleButton15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton15.ImageOptions.ImageIndex = 13;
+            this.simpleButton15.ImageOptions.ImageList = this.ImageList;
             this.simpleButton15.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton15.Location = new System.Drawing.Point(629, 163);
             this.simpleButton15.Name = "simpleButton15";
@@ -3478,13 +3486,13 @@
             // 
             // simpleButton14
             // 
-            this.simpleButton14.ImageOptions.ImageIndex = 12;
+            this.simpleButton14.ImageOptions.Image = global::SP_Sklad.Properties.Resources.bank;
             this.simpleButton14.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton14.Location = new System.Drawing.Point(314, 91);
             this.simpleButton14.Name = "simpleButton14";
             this.simpleButton14.Size = new System.Drawing.Size(22, 22);
             this.simpleButton14.TabIndex = 57;
-            this.simpleButton14.ToolTip = "Повернутися до списку";
+            this.simpleButton14.ToolTip = "Банк";
             this.simpleButton14.Click += new System.EventHandler(this.simpleButton14_Click);
             // 
             // checkEdit5
@@ -3524,13 +3532,13 @@
             // 
             // simpleButton13
             // 
-            this.simpleButton13.ImageOptions.ImageIndex = 3;
+            this.simpleButton13.ImageOptions.Image = global::SP_Sklad.Properties.Resources.type_acounts;
             this.simpleButton13.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.simpleButton13.Location = new System.Drawing.Point(314, 51);
             this.simpleButton13.Name = "simpleButton13";
             this.simpleButton13.Size = new System.Drawing.Size(22, 22);
             this.simpleButton13.TabIndex = 53;
-            this.simpleButton13.ToolTip = "Повернутися до списку";
+            this.simpleButton13.ToolTip = "Тип рахунку";
             this.simpleButton13.Click += new System.EventHandler(this.simpleButton13_Click);
             // 
             // labelControl33
@@ -4103,6 +4111,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 8)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.repositoryItemImageComboBox2.SmallImages = this.ImageList;
             // 
             // dropDownButton6
             // 
