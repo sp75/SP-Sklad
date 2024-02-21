@@ -67,7 +67,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        void GetWBListMake()
+        public void GetWBListMake()
         {
             if (wbSatusList.EditValue == null || WhComboBox.EditValue == null)
             {
@@ -359,7 +359,7 @@ namespace SP_Sklad.MainTabs
             if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
-                popupMenu1.ShowPopup(p2);
+                WbGridPopupMenu.ShowPopup(p2);
             }
         }
 
@@ -377,16 +377,6 @@ namespace SP_Sklad.MainTabs
         {
             CopyItem();
             GetWBListMake();
-        }
-
-        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

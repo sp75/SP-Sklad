@@ -225,7 +225,15 @@ namespace SP_Sklad.MainTabs
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
             RefrechItemBtn.PerformClick();
 
-            if (focused_tree_node.FunId == 36)
+
+            if (focused_tree_node.GType.Value == 1)
+            {
+                bar1.Visible = false;
+                ucManufacturingProducts.focused_tree_node = focused_tree_node;
+                wbContentTab.SelectedTabPageIndex = 11;
+                ucManufacturingProducts.GetWBListMake();
+            }
+            else if (focused_tree_node.FunId == 36)
             {
                 bar1.Visible = false;
                 wbContentTab.SelectedTabPageIndex = 9;

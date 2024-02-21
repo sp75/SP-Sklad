@@ -37,9 +37,6 @@
             this.ViewDetailTree = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar4 = new DevExpress.XtraBars.Bar();
-            this.DelItem = new DevExpress.XtraBars.BarButtonItem();
-            this.AddItem = new DevExpress.XtraBars.BarButtonItem();
-            this.AddGrpItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -49,42 +46,6 @@
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.MatTurnInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.DeboningMatBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.RefreshWhBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.RecalcRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.RecalcRemainsAllMatBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ShowEmptyItemsCheck = new DevExpress.XtraBars.BarCheckItem();
-            this.ShowAllItemsCheck = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.DelRemainsMatBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.WBDetPropBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-            this.SetPriceBtnItem = new DevExpress.XtraBars.BarButtonItem();
-            this.RecalcRemainsPostBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WHTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -158,48 +119,9 @@
             this.barManager1.Form = this;
             this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.NewItemBtn,
-            this.CopyItemBtn,
-            this.EditItemBtn,
-            this.DeleteItemBtn,
-            this.RefrechItemBtn,
-            this.ExecuteItemBtn,
-            this.PrintItemBtn,
-            this.MatInfoBtn,
-            this.MatTurnInfoBtn,
-            this.RsvInfoBtn,
-            this.barButtonItem4,
-            this.DeboningMatBtn,
-            this.RefreshWhBtn,
             this.ByGrpBtn,
             this.ByWhBtn,
-            this.ViewDetailTree,
-            this.DelItem,
-            this.AddItem,
-            this.barButtonItem1,
-            this.RecalcRemainsMatBtn,
-            this.RecalcRemainsAllMatBtn,
-            this.ShowEmptyItemsCheck,
-            this.ShowAllItemsCheck,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barSubItem1,
-            this.DelRemainsMatBtn,
-            this.barButtonItem8,
-            this.barButtonItem9,
-            this.barButtonItem10,
-            this.barButtonItem7,
-            this.AddGrpItemBtn,
-            this.WBDetPropBtn,
-            this.barButtonItem11,
-            this.barButtonItem12,
-            this.barButtonItem13,
-            this.barButtonItem14,
-            this.barButtonItem15,
-            this.barButtonItem16,
-            this.barButtonItem17,
-            this.SetPriceBtnItem,
-            this.RecalcRemainsPostBtn});
+            this.ViewDetailTree});
             this.barManager1.MaxItemId = 47;
             // 
             // bar3
@@ -268,39 +190,10 @@
             this.bar4.DockRow = 0;
             this.bar4.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar4.FloatLocation = new System.Drawing.Point(392, 559);
-            this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.AddGrpItemBtn, true)});
             this.bar4.OptionsBar.AllowQuickCustomization = false;
             this.bar4.OptionsBar.DrawDragBorder = false;
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.Text = "Custom 5";
-            // 
-            // DelItem
-            // 
-            this.DelItem.Caption = "Видалити помічені товари";
-            this.DelItem.Id = 16;
-            this.DelItem.ImageOptions.ImageIndex = 17;
-            this.DelItem.Name = "DelItem";
-            this.DelItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelItem_ItemClick);
-            // 
-            // AddItem
-            // 
-            this.AddItem.Caption = "Додати товар в список";
-            this.AddItem.Id = 17;
-            this.AddItem.ImageOptions.ImageIndex = 16;
-            this.AddItem.Name = "AddItem";
-            this.AddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddItem_ItemClick);
-            // 
-            // AddGrpItemBtn
-            // 
-            this.AddGrpItemBtn.Caption = "Додати групу товарів в список";
-            this.AddGrpItemBtn.Id = 36;
-            this.AddGrpItemBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("AddGrpItemBtn.ImageOptions.Image")));
-            this.AddGrpItemBtn.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("AddGrpItemBtn.ImageOptions.LargeImage")));
-            this.AddGrpItemBtn.Name = "AddGrpItemBtn";
-            this.AddGrpItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddGrpItemBtn_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -388,289 +281,6 @@
             this.imageCollection1.Images.SetKeyName(2, "tree_structure.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.imageCollection1.Images.SetKeyName(3, "warehouse");
-            // 
-            // NewItemBtn
-            // 
-            this.NewItemBtn.Caption = "Додати";
-            this.NewItemBtn.Id = 0;
-            this.NewItemBtn.ImageOptions.ImageIndex = 0;
-            this.NewItemBtn.Name = "NewItemBtn";
-
-            // 
-            // CopyItemBtn
-            // 
-            this.CopyItemBtn.Caption = "Копію документа";
-            this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
-            this.CopyItemBtn.Name = "CopyItemBtn";
-            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
-            // 
-            // EditItemBtn
-            // 
-            this.EditItemBtn.Caption = "Властивості";
-            this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 2;
-            this.EditItemBtn.Name = "EditItemBtn";
-
-            // 
-            // DeleteItemBtn
-            // 
-            this.DeleteItemBtn.Caption = "Видалити";
-            this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 3;
-            this.DeleteItemBtn.Name = "DeleteItemBtn";
-
-            // 
-            // RefrechItemBtn
-            // 
-            this.RefrechItemBtn.Caption = "Обновити";
-            this.RefrechItemBtn.Id = 4;
-            this.RefrechItemBtn.ImageOptions.ImageIndex = 4;
-            this.RefrechItemBtn.Name = "RefrechItemBtn";
-            // 
-            // ExecuteItemBtn
-            // 
-            this.ExecuteItemBtn.Caption = "Провести";
-            this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.ImageOptions.ImageIndex = 5;
-            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 6;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
-            // MatInfoBtn
-            // 
-            this.MatInfoBtn.Caption = "Інформація про товар";
-            this.MatInfoBtn.Id = 7;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 10;
-            this.MatInfoBtn.Name = "MatInfoBtn";
-            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
-            // 
-            // MatTurnInfoBtn
-            // 
-            this.MatTurnInfoBtn.Caption = "Інформація про рух товару";
-            this.MatTurnInfoBtn.Id = 8;
-            this.MatTurnInfoBtn.ImageOptions.ImageIndex = 11;
-            this.MatTurnInfoBtn.Name = "MatTurnInfoBtn";
-            this.MatTurnInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatTurnInfoBtn_ItemClick);
-            // 
-            // RsvInfoBtn
-            // 
-            this.RsvInfoBtn.Caption = "Інформація про резерв товару";
-            this.RsvInfoBtn.Id = 9;
-            this.RsvInfoBtn.ImageOptions.ImageIndex = 12;
-            this.RsvInfoBtn.Name = "RsvInfoBtn";
-            this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Показати список аналогів";
-            this.barButtonItem4.Id = 10;
-            this.barButtonItem4.ImageOptions.ImageIndex = 13;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
-            // 
-            // DeboningMatBtn
-            // 
-            this.DeboningMatBtn.Caption = "Виконати обвалку товару";
-            this.DeboningMatBtn.Id = 11;
-            this.DeboningMatBtn.ImageOptions.ImageIndex = 15;
-            this.DeboningMatBtn.Name = "DeboningMatBtn";
-            this.DeboningMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeboningMatBtn_ItemClick);
-            // 
-            // RefreshWhBtn
-            // 
-            this.RefreshWhBtn.Caption = "Обновити";
-            this.RefreshWhBtn.Id = 12;
-            this.RefreshWhBtn.ImageOptions.ImageIndex = 4;
-            this.RefreshWhBtn.Name = "RefreshWhBtn";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Інформація про замовлення";
-            this.barButtonItem1.Id = 18;
-            this.barButtonItem1.ImageOptions.ImageIndex = 18;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
-            // RecalcRemainsMatBtn
-            // 
-            this.RecalcRemainsMatBtn.Caption = "Перерахувати залишки товару";
-            this.RecalcRemainsMatBtn.Id = 19;
-            this.RecalcRemainsMatBtn.ImageOptions.ImageIndex = 22;
-            this.RecalcRemainsMatBtn.Name = "RecalcRemainsMatBtn";
-            this.RecalcRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsMatBtn_ItemClick);
-            // 
-            // RecalcRemainsAllMatBtn
-            // 
-            this.RecalcRemainsAllMatBtn.Caption = "Перерахувати залишки для всіх товарів";
-            this.RecalcRemainsAllMatBtn.Id = 20;
-            this.RecalcRemainsAllMatBtn.Name = "RecalcRemainsAllMatBtn";
-            this.RecalcRemainsAllMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RecalcRemainsAllMatBtn_ItemClick);
-            // 
-            // ShowEmptyItemsCheck
-            // 
-            this.ShowEmptyItemsCheck.Caption = "Показувати нульові позиції";
-            this.ShowEmptyItemsCheck.Id = 21;
-            this.ShowEmptyItemsCheck.Name = "ShowEmptyItemsCheck";
-            this.ShowEmptyItemsCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowEmptyItemsCheck_CheckedChanged);
-            // 
-            // ShowAllItemsCheck
-            // 
-            this.ShowAllItemsCheck.Caption = "Показати всі позиції";
-            this.ShowAllItemsCheck.Checked = global::SP_Sklad.Properties.Settings.Default.show_all_mat;
-            this.ShowAllItemsCheck.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SP_Sklad.Properties.Settings.Default, "show_all_mat", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ShowAllItemsCheck.Id = 22;
-            this.ShowAllItemsCheck.Name = "ShowAllItemsCheck";
-            this.ShowAllItemsCheck.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowAllItemsCheck_CheckedChanged);
-            this.ShowAllItemsCheck.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ShowAllItemsCheck_ItemClick);
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Сформувати акт введення залишків";
-            this.barButtonItem2.Id = 23;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Сформувати акт списання";
-            this.barButtonItem3.Id = 24;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Додати на підставі";
-            this.barSubItem1.Id = 27;
-            this.barSubItem1.ImageOptions.ImageIndex = 1;
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
-            // DelRemainsMatBtn
-            // 
-            this.DelRemainsMatBtn.Caption = "Видалити історію по залишкам для всіх товарів";
-            this.DelRemainsMatBtn.Id = 30;
-            this.DelRemainsMatBtn.Name = "DelRemainsMatBtn";
-            this.DelRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Перейти до документа";
-            this.barButtonItem8.Id = 31;
-            this.barButtonItem8.ImageOptions.ImageIndex = 19;
-            this.barButtonItem8.Name = "barButtonItem8";
-            this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Друк/Попередній перегляд";
-            this.barButtonItem9.Id = 32;
-            this.barButtonItem9.ImageOptions.ImageIndex = 6;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Інформація про виробництво товару";
-            this.barButtonItem10.Id = 33;
-            this.barButtonItem10.ImageOptions.ImageIndex = 21;
-            this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Встановити налаштування сітки по замовчуванню";
-            this.barButtonItem7.Id = 35;
-            this.barButtonItem7.Name = "barButtonItem7";
-            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick_1);
-            // 
-            // WBDetPropBtn
-            // 
-            this.WBDetPropBtn.Caption = "Властивості позиції";
-            this.WBDetPropBtn.Id = 37;
-            this.WBDetPropBtn.ImageOptions.ImageIndex = 2;
-            this.WBDetPropBtn.Name = "WBDetPropBtn";
-            this.WBDetPropBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WBDetPropBtn_ItemClick);
-            // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "Інформація про товар";
-            this.barButtonItem11.Id = 38;
-            this.barButtonItem11.ImageOptions.ImageIndex = 10;
-            this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
-            // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "Інформація про рух товару";
-            this.barButtonItem12.Id = 39;
-            this.barButtonItem12.ImageOptions.ImageIndex = 11;
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
-            // 
-            // barButtonItem13
-            // 
-            this.barButtonItem13.Caption = "Інформація про резерв товару";
-            this.barButtonItem13.Id = 40;
-            this.barButtonItem13.ImageOptions.ImageIndex = 12;
-            this.barButtonItem13.Name = "barButtonItem13";
-            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
-            // 
-            // barButtonItem14
-            // 
-            this.barButtonItem14.Caption = "Інформація про виробництво товару";
-            this.barButtonItem14.Id = 41;
-            this.barButtonItem14.ImageOptions.ImageIndex = 21;
-            this.barButtonItem14.Name = "barButtonItem14";
-            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
-            // 
-            // barButtonItem15
-            // 
-            this.barButtonItem15.Caption = "Знайти на складі...";
-            this.barButtonItem15.Id = 42;
-            this.barButtonItem15.ImageOptions.ImageIndex = 7;
-            this.barButtonItem15.Name = "barButtonItem15";
-            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
-            // 
-            // barButtonItem16
-            // 
-            this.barButtonItem16.Caption = "Знайти в довіднику товарів...";
-            this.barButtonItem16.Id = 43;
-            this.barButtonItem16.ImageOptions.ImageIndex = 8;
-            this.barButtonItem16.Name = "barButtonItem16";
-            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
-            // 
-            // barButtonItem17
-            // 
-            this.barButtonItem17.Caption = "Експорт списка";
-            this.barButtonItem17.Id = 44;
-            this.barButtonItem17.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.ImageOptions.Image")));
-            this.barButtonItem17.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.ImageOptions.LargeImage")));
-            this.barButtonItem17.Name = "barButtonItem17";
-            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
-            // 
-            // SetPriceBtnItem
-            // 
-            this.SetPriceBtnItem.Caption = "Встановити ціну товару";
-            this.SetPriceBtnItem.Id = 45;
-            this.SetPriceBtnItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.Image")));
-            this.SetPriceBtnItem.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("SetPriceBtnItem.ImageOptions.LargeImage")));
-            this.SetPriceBtnItem.Name = "SetPriceBtnItem";
-
-            // 
-            // RecalcRemainsPostBtn
-            // 
-            this.RecalcRemainsPostBtn.Caption = "Перерахувати залишки по партії";
-            this.RecalcRemainsPostBtn.Id = 46;
-            this.RecalcRemainsPostBtn.Name = "RecalcRemainsPostBtn";
-
             // 
             // panelControl1
             // 
@@ -1164,12 +774,6 @@
 
         #endregion
         private DevExpress.XtraBars.BarManager barManager1;
-        private DevExpress.XtraBars.BarButtonItem NewItemBtn;
-        private DevExpress.XtraBars.BarButtonItem CopyItemBtn;
-        private DevExpress.XtraBars.BarButtonItem EditItemBtn;
-        private DevExpress.XtraBars.BarButtonItem DeleteItemBtn;
-        private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
-        private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
@@ -1183,18 +787,10 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
-        private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
-        private DevExpress.XtraBars.BarButtonItem MatTurnInfoBtn;
-        private DevExpress.XtraBars.BarButtonItem RsvInfoBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem DeboningMatBtn;
-        private DevExpress.XtraBars.BarButtonItem RefreshWhBtn;
         private DevExpress.XtraBars.BarButtonItem ByGrpBtn;
         private DevExpress.XtraBars.BarButtonItem ViewDetailTree;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl6;
         private DevExpress.XtraBars.Bar bar4;
-        private DevExpress.XtraBars.BarButtonItem DelItem;
-        private DevExpress.XtraBars.BarButtonItem AddItem;
         public DevExpress.XtraTreeList.TreeList WHTreeList;
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl4;
@@ -1206,38 +802,13 @@
         private DevExpress.XtraBars.BarDockControl barDockControl9;
         private DevExpress.XtraBars.BarDockControl barDockControl10;
         private DevExpress.XtraBars.BarDockControl barDockControl11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem RecalcRemainsMatBtn;
-        private DevExpress.XtraBars.BarButtonItem RecalcRemainsAllMatBtn;
-        private DevExpress.XtraBars.BarCheckItem ShowEmptyItemsCheck;
-        private DevExpress.XtraBars.BarCheckItem ShowAllItemsCheck;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;
         public DevExpress.XtraBars.BarButtonItem ByWhBtn;
         public DevExpress.XtraBars.Bar bar3;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarButtonItem DelRemainsMatBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraEditors.StyleController styleController1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem AddGrpItemBtn;
-        private DevExpress.XtraBars.BarButtonItem WBDetPropBtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem17;
-        private DevExpress.XtraBars.BarButtonItem SetPriceBtnItem;
-        private DevExpress.XtraBars.BarButtonItem RecalcRemainsPostBtn;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage14;
         public UserControls.ucWaybillMove ucWaybillMove;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage16;

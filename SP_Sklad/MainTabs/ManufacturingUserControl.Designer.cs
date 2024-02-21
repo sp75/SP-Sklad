@@ -493,6 +493,8 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucManufacturingProducts = new SP_Sklad.MainTabs.ucManufacturingProducts();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -736,6 +738,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            this.xtraTabPage34.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -1556,7 +1559,8 @@
             this.xtraTabPage21,
             this.xtraTabPage26,
             this.xtraTabPage32,
-            this.xtraTabPage33});
+            this.xtraTabPage33,
+            this.xtraTabPage34});
             // 
             // xtraTabPage7
             // 
@@ -6092,6 +6096,22 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
+            // xtraTabPage34
+            // 
+            this.xtraTabPage34.Controls.Add(this.ucManufacturingProducts);
+            this.xtraTabPage34.Name = "xtraTabPage34";
+            this.xtraTabPage34.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage34.Text = "Виробництво";
+            // 
+            // ucManufacturingProducts
+            // 
+            this.ucManufacturingProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucManufacturingProducts.focused_tree_node = null;
+            this.ucManufacturingProducts.Location = new System.Drawing.Point(0, 0);
+            this.ucManufacturingProducts.Name = "ucManufacturingProducts";
+            this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 632);
+            this.ucManufacturingProducts.TabIndex = 0;
+            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6361,6 +6381,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            this.xtraTabPage34.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6830,5 +6851,7 @@
         private UserControls.ucWaybillMove ucWaybillMove;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
         private UserControls.ucWaybillWriteOn ucWaybillWriteOn;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
+        public ucManufacturingProducts ucManufacturingProducts;
     }
 }

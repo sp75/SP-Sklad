@@ -199,7 +199,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 7, 12),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 23),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 22),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 7)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 28)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.DocTypeImageCollection;
             // 
@@ -263,6 +264,8 @@
             this.DocTypeImageCollection.Images.SetKeyName(26, "price_settings");
             this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.project_manager_2, "project_manager_2", typeof(global::SP_Sklad.Properties.Resources), 27);
             this.DocTypeImageCollection.Images.SetKeyName(27, "project_manager_2");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.production_planning, "production_planning", typeof(global::SP_Sklad.Properties.Resources), 28);
+            this.DocTypeImageCollection.Images.SetKeyName(28, "production_planning");
             // 
             // gridColumn16
             // 
