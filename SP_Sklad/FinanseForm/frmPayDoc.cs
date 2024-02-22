@@ -526,5 +526,10 @@ namespace SP_Sklad.FinanseForm
                 RecipientAccEdit.EditValue = IHelper.ShowDirectList(RecipientAccEdit.EditValue, 17);
             }
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ;
+        }
     }
 }

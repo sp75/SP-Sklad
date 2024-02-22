@@ -509,6 +509,12 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Manufacturing\ucDeboningProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucDeboningProducts.Designer.cs">
+      <DependentUpon>ucDeboningProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucManufacturingProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2545,6 +2551,9 @@
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucDeboningProducts.resx">
+      <DependentUpon>ucDeboningProducts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucManufacturingProducts.resx">
       <DependentUpon>ucManufacturingProducts.cs</DependentUpon>
     </EmbeddedResource>
@@ -3316,7 +3325,6 @@
     <None Include="Resources\grid_16x16.png" />
     <None Include="Resources\addgroupheader_16x16.png" />
     <None Include="Resources\copy_16x16.png" />
-    <None Include="Resources\edit_16x16.png" />
     <None Include="Resources\deletelist_16x16.png" />
     <None Include="Resources\additem_16x16.png" />
     <None Include="Resources\refresh_16x16.png" />
@@ -3556,8 +3564,6 @@
     <None Include="Resources\find_barcode.png" />
     <None Include="Resources\refresh_16x162.png" />
     <None Include="Resources\refresh_32x32.png" />
-    <None Include="Resources\recurrence_16x161.png" />
-    <None Include="Resources\recurrence_32x321.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\contact.png" />
     <None Include="Resources\contact_details.png" />
@@ -3593,6 +3599,10 @@
     <None Include="Resources\open_view.png" />
     <None Include="Resources\ingredients.png" />
     <None Include="Resources\used_product.png" />
+    <None Include="Resources\print.png" />
+    <None Include="Resources\open_document.png" />
+    <None Include="Resources\edit_3.png" />
+    <None Include="Resources\balans_businessman.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

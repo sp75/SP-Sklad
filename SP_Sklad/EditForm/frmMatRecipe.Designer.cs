@@ -268,8 +268,8 @@
             this.ImageList.Images.SetKeyName(7, "teh_process");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out_2, "pay_doc_out_2", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.ImageList.Images.SetKeyName(8, "pay_doc_out_2");
-            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.ImageList.Images.SetKeyName(9, "preview_2");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.print, "print", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.ImageList.Images.SetKeyName(9, "print");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.ImageList.Images.SetKeyName(10, "warehouse_2");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.making_notes, "making_notes", typeof(global::SP_Sklad.Properties.Resources), 11);
@@ -278,6 +278,8 @@
             this.ImageList.Images.SetKeyName(12, "open_16x16");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.ImageList.Images.SetKeyName(13, "delete_16x16");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.ImageList.Images.SetKeyName(14, "preview_2");
             // 
             // barManager1
             // 
@@ -867,12 +869,12 @@
             // simpleButton3
             // 
             this.simpleButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(475, 11);
+            this.simpleButton3.ImageOptions.Image = global::SP_Sklad.Properties.Resources.xls_export;
+            this.simpleButton3.Location = new System.Drawing.Point(493, 11);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(98, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(80, 23);
             this.simpleButton3.TabIndex = 12;
-            this.simpleButton3.Text = "Перегляд";
+            this.simpleButton3.Text = "Екпорт";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
             // AddRecDetBtn
@@ -897,7 +899,7 @@
             // 
             // EditRecDetBtn
             // 
-            this.EditRecDetBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditRecDetBtn.ImageOptions.Image")));
+            this.EditRecDetBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.EditRecDetBtn.Location = new System.Drawing.Point(130, 11);
             this.EditRecDetBtn.Name = "EditRecDetBtn";
             this.EditRecDetBtn.Size = new System.Drawing.Size(106, 23);
@@ -1368,7 +1370,7 @@
             // 
             // EditTecProcDetBtn
             // 
-            this.EditTecProcDetBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditTecProcDetBtn.ImageOptions.Image")));
+            this.EditTecProcDetBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.EditTecProcDetBtn.Location = new System.Drawing.Point(132, 32);
             this.EditTecProcDetBtn.Name = "EditTecProcDetBtn";
             this.EditTecProcDetBtn.Size = new System.Drawing.Size(106, 23);

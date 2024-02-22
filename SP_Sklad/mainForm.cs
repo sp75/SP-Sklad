@@ -100,17 +100,23 @@ namespace SP_Sklad
             docsUserControl1.ucInvoices.SaveGridLayouts();
             docsUserControl1.ucServicesIn.SaveGridLayouts();
             docsUserControl1.ucWayBillReturnСustomers.SaveGridLayouts();
+            docsUserControl1.ucWaybillReturnSuppliers.SaveGridLayouts();
+            docsUserControl1.ucKAgentAdjustmentIn.SaveGridLayouts();
+            docsUserControl1.ucKAgentAdjustmentOut.SaveGridLayouts();
             docsUserControl1.ucPayDocIn.SaveGridLayouts();
             docsUserControl1.ucPayDocOut.SaveGridLayouts();
             docsUserControl1.ucPayDocExtOut.SaveGridLayouts();
             docsUserControl1.ucPayDoc.SaveGridLayouts();
+
             whUserControl.ucWaybillMove.SaveGridLayouts();
             whUserControl.ucWaybillWriteOn.SaveGridLayouts();
             whUserControl.ucWaybillWriteOff.SaveGridLayouts();
-
-
             whUserControl.ucWhMat.SaveGridLayouts();
-            manufacturingUserControl1.SaveGridLayouts();
+            whUserControl.ucWaybillInventory.SaveGridLayouts();
+
+            manufacturingUserControl1.ucManufacturingProducts.SaveGridLayouts();
+            manufacturingUserControl1.ucDeboningProducts.SaveGridLayouts();
+
             tradeUserControl1.SaveGridLayouts();
             financesUserControl1.SaveGridLayouts();
 

@@ -3124,6 +3124,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PosRemains' does not have a primary 
           <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="SupplierId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_PriceList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3352,11 +3353,14 @@ warning 6002: The table/view 'sp_base.dbo.v_Report_55' does not have a primary k
           <Key>
             <PropertyRef Name="Num" />
             <PropertyRef Name="OnDate" />
+            
           </Key>
           <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
-          <Property Name="TechProcDetOnDate" Type="datetime" />
           <Property Name="RecipeName" Type="nvarchar" MaxLength="255" />
+          <Property Name="TechProcDetOnDate" Type="datetime" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Services' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10509,7 +10513,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PosRemains].[OrderedRsv] AS [OrderedRsv], 
     [v_PosRemains].[ActualRemain] AS [ActualRemain], 
     [v_PosRemains].[Num] AS [Num], 
-    [v_PosRemains].[OnDate] AS [OnDate]
+    [v_PosRemains].[OnDate] AS [OnDate], 
+    [v_PosRemains].[SupplierId] AS [SupplierId]
     FROM [dbo].[v_PosRemains] AS [v_PosRemains]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PriceList" EntityType="Self.v_PriceList" store:Type="Views" store:Schema="dbo">
@@ -10672,8 +10677,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <DefiningQuery>SELECT 
     [v_Report_55].[Num] AS [Num], 
     [v_Report_55].[OnDate] AS [OnDate], 
+    [v_Report_55].[RecipeName] AS [RecipeName], 
     [v_Report_55].[TechProcDetOnDate] AS [TechProcDetOnDate], 
-    [v_Report_55].[RecipeName] AS [RecipeName]
+    [v_Report_55].[Notes] AS [Notes], 
+    [v_Report_55].[OutNetto] AS [OutNetto]
     FROM [dbo].[v_Report_55] AS [v_Report_55]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Services" EntityType="Self.v_Services" store:Type="Views" store:Schema="dbo">
@@ -18176,6 +18183,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="ActualRemain" Precision="17" Scale="4" />
           <Property Type="String" Name="Num" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="OnDate" Nullable="false" Precision="3" />
+          <Property Name="SupplierId" Type="Int32" />
         </EntityType>
         <EntityType Name="PayDoc">
           <Key>
@@ -23317,8 +23325,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TechProcDetOnDate" Type="DateTime" Precision="3" />
+          <Property Name="TechProcDetOnDate" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OutNetto" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="v_WaybillMove">
           <Key>
@@ -26293,6 +26303,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_PosRemains">
             <EntityTypeMapping TypeName="BaseModel.v_PosRemains">
               <MappingFragment StoreEntitySet="v_PosRemains">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
@@ -29660,6 +29671,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_Report_55">
             <EntityTypeMapping TypeName="BaseModel.v_Report_55">
               <MappingFragment StoreEntitySet="v_Report_55">
+                <ScalarProperty Name="OutNetto" ColumnName="OutNetto" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
                 <ScalarProperty Name="TechProcDetOnDate" ColumnName="TechProcDetOnDate" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />

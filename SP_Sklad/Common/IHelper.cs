@@ -624,7 +624,7 @@ namespace SP_Sklad.Common
                     // frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID, TLocateOptions()) ;
                     if (f.ShowDialog() == DialogResult.OK)
                     {
-                        result.mat_id = (f.uc.ucWhMat.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
+                        result.mat_id = f.uc.ucWhMat.focused_wh_mat.MatId;
                         //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
                         var remain_in_wh = DB.SkladBase().MatRemainByWh(result.mat_id, old_WID != DBNull.Value ? (int?)old_WID : 0, 0, f.uc.ucWhMat.OnDateEdit.DateTime, "*", DBHelper.CurrentUser.UserId).ToList();
                         result.wid = remain_in_wh.Any() ? remain_in_wh.First().WId : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId;
@@ -672,7 +672,7 @@ namespace SP_Sklad.Common
 
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            result.mat_id = (f.uc.ucWhMat.WhMatGridView.GetFocusedRow() as WhMatGet_Result).MatId;
+                            result.mat_id = f.uc.ucWhMat.focused_wh_mat.MatId; 
                         }
                         else
                         {

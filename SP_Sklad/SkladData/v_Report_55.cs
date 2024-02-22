@@ -16,7 +16,9 @@ namespace SP_Sklad.SkladData
     {
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
-        public Nullable<System.DateTime> TechProcDetOnDate { get; set; }
+        public System.DateTime TechProcDetOnDate { get; set; }
         public string RecipeName { get; set; }
+        public string Notes { get; set; }
+        public Nullable<decimal> OutNetto { get; set; }
     }
 }

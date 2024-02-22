@@ -233,6 +233,13 @@ namespace SP_Sklad.MainTabs
                 wbContentTab.SelectedTabPageIndex = 11;
                 ucManufacturingProducts.GetWBListMake();
             }
+            else if (focused_tree_node.GType.Value == 3)
+            {
+                bar1.Visible = false;
+                ucDeboningProducts.grp_id = focused_tree_node.Num;
+                wbContentTab.SelectedTabPageIndex = 12;
+                ucDeboningProducts.GetDeboningList();
+            }
             else if (focused_tree_node.FunId == 36)
             {
                 bar1.Visible = false;

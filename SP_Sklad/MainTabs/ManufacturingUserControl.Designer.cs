@@ -486,6 +486,10 @@
             this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
+            this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucManufacturingProducts = new SP_Sklad.MainTabs.ucManufacturingProducts();
+            this.xtraTabPage35 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucDeboningProducts = new SP_Sklad.MainTabs.ucDeboningProducts();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -493,8 +497,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucManufacturingProducts = new SP_Sklad.MainTabs.ucManufacturingProducts();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -735,10 +737,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).BeginInit();
             this.xtraTabPage32.SuspendLayout();
             this.xtraTabPage33.SuspendLayout();
+            this.xtraTabPage34.SuspendLayout();
+            this.xtraTabPage35.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
-            this.xtraTabPage34.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -1560,7 +1563,8 @@
             this.xtraTabPage26,
             this.xtraTabPage32,
             this.xtraTabPage33,
-            this.xtraTabPage34});
+            this.xtraTabPage34,
+            this.xtraTabPage35});
             // 
             // xtraTabPage7
             // 
@@ -3405,7 +3409,7 @@
             this.gridColumn239.Name = "gridColumn239";
             this.gridColumn239.Visible = true;
             this.gridColumn239.VisibleIndex = 0;
-            this.gridColumn239.Width = 38;
+            this.gridColumn239.Width = 31;
             // 
             // repositoryItemCheckEdit5
             // 
@@ -3421,7 +3425,7 @@
             this.gridColumn240.Name = "gridColumn240";
             this.gridColumn240.Visible = true;
             this.gridColumn240.VisibleIndex = 1;
-            this.gridColumn240.Width = 82;
+            this.gridColumn240.Width = 80;
             // 
             // gridColumn241
             // 
@@ -3430,7 +3434,7 @@
             this.gridColumn241.Name = "gridColumn241";
             this.gridColumn241.Visible = true;
             this.gridColumn241.VisibleIndex = 4;
-            this.gridColumn241.Width = 213;
+            this.gridColumn241.Width = 212;
             // 
             // gridColumn242
             // 
@@ -3441,7 +3445,7 @@
             this.gridColumn242.Name = "gridColumn242";
             this.gridColumn242.Visible = true;
             this.gridColumn242.VisibleIndex = 2;
-            this.gridColumn242.Width = 112;
+            this.gridColumn242.Width = 110;
             // 
             // gridColumn243
             // 
@@ -3449,7 +3453,7 @@
             this.gridColumn243.Name = "gridColumn243";
             this.gridColumn243.Visible = true;
             this.gridColumn243.VisibleIndex = 5;
-            this.gridColumn243.Width = 426;
+            this.gridColumn243.Width = 435;
             // 
             // gridColumn244
             // 
@@ -3460,7 +3464,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
             this.gridColumn244.Visible = true;
             this.gridColumn244.VisibleIndex = 3;
-            this.gridColumn244.Width = 155;
+            this.gridColumn244.Width = 154;
             // 
             // xtraTabPage12
             // 
@@ -6038,6 +6042,38 @@
             this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 632);
             this.ucWaybillWriteOn.TabIndex = 0;
             // 
+            // xtraTabPage34
+            // 
+            this.xtraTabPage34.Controls.Add(this.ucManufacturingProducts);
+            this.xtraTabPage34.Name = "xtraTabPage34";
+            this.xtraTabPage34.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage34.Text = "Виробництво";
+            // 
+            // ucManufacturingProducts
+            // 
+            this.ucManufacturingProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucManufacturingProducts.grp_id = 0;
+            this.ucManufacturingProducts.Location = new System.Drawing.Point(0, 0);
+            this.ucManufacturingProducts.Name = "ucManufacturingProducts";
+            this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 632);
+            this.ucManufacturingProducts.TabIndex = 0;
+            // 
+            // xtraTabPage35
+            // 
+            this.xtraTabPage35.Controls.Add(this.ucDeboningProducts);
+            this.xtraTabPage35.Name = "xtraTabPage35";
+            this.xtraTabPage35.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage35.Text = "Обвалка";
+            // 
+            // ucDeboningProducts
+            // 
+            this.ucDeboningProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDeboningProducts.grp_id = 0;
+            this.ucDeboningProducts.Location = new System.Drawing.Point(0, 0);
+            this.ucDeboningProducts.Name = "ucDeboningProducts";
+            this.ucDeboningProducts.Size = new System.Drawing.Size(1049, 632);
+            this.ucDeboningProducts.TabIndex = 0;
+            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -6095,22 +6131,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // xtraTabPage34
-            // 
-            this.xtraTabPage34.Controls.Add(this.ucManufacturingProducts);
-            this.xtraTabPage34.Name = "xtraTabPage34";
-            this.xtraTabPage34.Size = new System.Drawing.Size(1049, 632);
-            this.xtraTabPage34.Text = "Виробництво";
-            // 
-            // ucManufacturingProducts
-            // 
-            this.ucManufacturingProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            
-            this.ucManufacturingProducts.Location = new System.Drawing.Point(0, 0);
-            this.ucManufacturingProducts.Name = "ucManufacturingProducts";
-            this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 632);
-            this.ucManufacturingProducts.TabIndex = 0;
             // 
             // ManufacturingUserControl
             // 
@@ -6378,10 +6398,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).EndInit();
             this.xtraTabPage32.ResumeLayout(false);
             this.xtraTabPage33.ResumeLayout(false);
+            this.xtraTabPage34.ResumeLayout(false);
+            this.xtraTabPage35.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
-            this.xtraTabPage34.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -6853,5 +6874,7 @@
         private UserControls.ucWaybillWriteOn ucWaybillWriteOn;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
         public ucManufacturingProducts ucManufacturingProducts;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage35;
+        public ucDeboningProducts ucDeboningProducts;
     }
 }

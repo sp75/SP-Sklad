@@ -63,19 +63,19 @@ namespace SP_Sklad.MainTabs
 
             if (focused_tree_node.FunId == 36)
             {
-                whContentTab.SelectedTabPageIndex = 3;
+                whContentTab.SelectedTabPageIndex = 2;
             }
             else if(focused_tree_node.FunId == 44)
             {
-                whContentTab.SelectedTabPageIndex = 4;
+                whContentTab.SelectedTabPageIndex = 3;
             }
             else if (focused_tree_node.FunId == 41)
             {
-                whContentTab.SelectedTabPageIndex = 5;
+                whContentTab.SelectedTabPageIndex = 4;
             }
             else if(focused_tree_node.FunId == 53)
             {
-                whContentTab.SelectedTabPageIndex = 6;
+                whContentTab.SelectedTabPageIndex = 5;
             }
 
             else if(focused_tree_node.GType.Value == 1)
@@ -83,7 +83,7 @@ namespace SP_Sklad.MainTabs
                 ucWhMat.by_grp = ByGrpBtn.Down;
                 ucWhMat.display_child_groups = ViewDetailTree.Down;
                 ucWhMat.focused_tree_node_num = focused_tree_node.Num;
-                whContentTab.SelectedTabPageIndex = 7;
+                whContentTab.SelectedTabPageIndex = 1;
 
                 var result = ucWhMat.GetMatOnWh();
                // ucWhMat.GetData();
@@ -93,11 +93,9 @@ namespace SP_Sklad.MainTabs
                 whContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 2 });
-
 
                 if (WHTreeList.ContainsFocus)
                 {
@@ -105,8 +103,6 @@ namespace SP_Sklad.MainTabs
                 }
             }
         }
-
-      
 
         private void ByGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -128,7 +124,6 @@ namespace SP_Sklad.MainTabs
         private void ViewDetailTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ucWhMat.display_child_groups = ViewDetailTree.Down;
-
 
              var result = ucWhMat.GetMatOnWh();
           //  ucWhMat.GetData();

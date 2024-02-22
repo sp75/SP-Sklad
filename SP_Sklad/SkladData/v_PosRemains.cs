@@ -26,5 +26,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ActualRemain { get; set; }
         public string Num { get; set; }
         public System.DateTime OnDate { get; set; }
+        public Nullable<int> SupplierId { get; set; }
     }
 }

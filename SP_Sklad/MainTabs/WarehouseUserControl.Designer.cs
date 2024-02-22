@@ -42,9 +42,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -52,9 +49,7 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             this.whContentTab = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
@@ -92,8 +87,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.whContentTab)).BeginInit();
             this.whContentTab.SuspendLayout();
-            this.xtraTabPage8.SuspendLayout();
-            this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage14.SuspendLayout();
             this.xtraTabPage16.SuspendLayout();
             this.xtraTabPage17.SuspendLayout();
@@ -112,10 +105,7 @@
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl3);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl4);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl6);
-            this.barManager1.DockControls.Add(this.standaloneBarDockControl8);
             this.barManager1.Form = this;
             this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -237,39 +227,6 @@
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1216, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
-            // 
-            // standaloneBarDockControl3
-            // 
-            this.standaloneBarDockControl3.AutoSize = true;
-            this.standaloneBarDockControl3.CausesValidation = false;
-            this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl3.Manager = this.barManager1;
-            this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
-            this.standaloneBarDockControl3.Size = new System.Drawing.Size(1214, 0);
-            this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
-            // 
-            // standaloneBarDockControl4
-            // 
-            this.standaloneBarDockControl4.AutoSize = true;
-            this.standaloneBarDockControl4.CausesValidation = false;
-            this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl4.Manager = this.barManager1;
-            this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
-            this.standaloneBarDockControl4.Size = new System.Drawing.Size(1214, 0);
-            this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
-            // 
-            // standaloneBarDockControl8
-            // 
-            this.standaloneBarDockControl8.AutoSize = true;
-            this.standaloneBarDockControl8.CausesValidation = false;
-            this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
-            this.standaloneBarDockControl8.Manager = this.barManager1;
-            this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
-            this.standaloneBarDockControl8.Size = new System.Drawing.Size(1214, 0);
-            this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
             // 
             // imageCollection1
             // 
@@ -517,39 +474,22 @@
             this.whContentTab.Location = new System.Drawing.Point(0, 0);
             this.whContentTab.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.whContentTab.Name = "whContentTab";
-            this.whContentTab.SelectedTabPage = this.xtraTabPage8;
+            this.whContentTab.SelectedTabPage = this.xtraTabPage6;
             this.whContentTab.Size = new System.Drawing.Size(1216, 670);
             this.whContentTab.TabIndex = 2;
             this.whContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
-            this.xtraTabPage8,
-            this.xtraTabPage7,
+            this.xtraTabPage19,
             this.xtraTabPage14,
             this.xtraTabPage16,
             this.xtraTabPage17,
-            this.xtraTabPage18,
-            this.xtraTabPage19});
-            // 
-            // xtraTabPage8
-            // 
-            this.xtraTabPage8.Controls.Add(this.standaloneBarDockControl4);
-            this.xtraTabPage8.Controls.Add(this.standaloneBarDockControl3);
-            this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1214, 645);
-            this.xtraTabPage8.Text = "Товари";
+            this.xtraTabPage18});
             // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1214, 645);
             this.xtraTabPage6.Text = "ViewList";
-            // 
-            // xtraTabPage7
-            // 
-            this.xtraTabPage7.Controls.Add(this.standaloneBarDockControl8);
-            this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(1214, 645);
-            this.xtraTabPage7.Text = "Документи";
             // 
             // xtraTabPage14
             // 
@@ -757,10 +697,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.whContentTab)).EndInit();
             this.whContentTab.ResumeLayout(false);
-            this.xtraTabPage8.ResumeLayout(false);
-            this.xtraTabPage8.PerformLayout();
-            this.xtraTabPage7.ResumeLayout(false);
-            this.xtraTabPage7.PerformLayout();
             this.xtraTabPage14.ResumeLayout(false);
             this.xtraTabPage16.ResumeLayout(false);
             this.xtraTabPage17.ResumeLayout(false);
@@ -782,11 +718,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTab.XtraTabControl whContentTab;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl3;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
         private DevExpress.XtraBars.BarButtonItem ByGrpBtn;
         private DevExpress.XtraBars.BarButtonItem ViewDetailTree;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl6;
@@ -803,7 +735,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControl10;
         private DevExpress.XtraBars.BarDockControl barDockControl11;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage10;
-        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;
         public DevExpress.XtraBars.BarButtonItem ByWhBtn;
         public DevExpress.XtraBars.Bar bar3;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;

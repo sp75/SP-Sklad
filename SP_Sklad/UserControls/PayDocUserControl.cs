@@ -432,13 +432,15 @@ namespace SP_Sklad.MainTabs
                 receipt.total_sum = 0;
             }
 
-               
-          
-
             return receipt;
         }
 
-
-
+        private void ChargeTypesEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ChargeTypesEdit.EditValue = IHelper.ShowDirectList(ChargeTypesEdit.EditValue, 6);
+            }
+        }
     }
 }

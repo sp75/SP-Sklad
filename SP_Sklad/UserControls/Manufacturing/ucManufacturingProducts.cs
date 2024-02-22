@@ -28,7 +28,7 @@ namespace SP_Sklad.MainTabs
     {
         private int w_type = -20;
         private int fun_id = 68;
-        private string reg_layout_path = "ManufacturingUserControl\\WbGridView";
+        private string reg_layout_path = "ucManufacturingProducts\\WbGridView";
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -166,6 +166,7 @@ namespace SP_Sklad.MainTabs
                 }
             }
         }
+
         public void ExecuteItem()
         {
             using (var db = new BaseEntities())
@@ -215,7 +216,7 @@ namespace SP_Sklad.MainTabs
         }
 
 
-            private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NewItem();
 
@@ -342,7 +343,10 @@ namespace SP_Sklad.MainTabs
 
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-            GetWBListMake();
+            if (wbStartDate.ContainsFocus)
+            {
+                GetWBListMake();
+            }
         }
 
         private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -540,7 +544,7 @@ namespace SP_Sklad.MainTabs
 
         public void SaveGridLayouts()
         {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -705,6 +709,30 @@ namespace SP_Sklad.MainTabs
             }
 
             GetWBListMake();
+        }
+
+        private void wbEndDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (wbEndDate.ContainsFocus)
+            {
+                GetWBListMake();
+            }
+        }
+
+        private void WhComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (WhComboBox.ContainsFocus)
+            {
+                GetWBListMake();
+            }
+        }
+
+        private void wbSatusList_EditValueChanged(object sender, EventArgs e)
+        {
+            if (wbSatusList.ContainsFocus)
+            {
+                GetWBListMake();
+            }
         }
     }
 }
