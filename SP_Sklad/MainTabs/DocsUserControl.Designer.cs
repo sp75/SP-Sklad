@@ -64,7 +64,7 @@
             this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
             this.settingMaterialPricesUserControl1 = new SP_Sklad.UserControls.ucSettingMaterialPrices();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
-            this.expeditionUserControl1 = new SP_Sklad.UserControls.ucExpedition();
+            this.expeditionUserControl = new SP_Sklad.UserControls.ucExpedition();
             this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
             this.wayBillInUserControl = new SP_Sklad.UserControls.ucWayBillIn();
             this.xtraTabPage35 = new DevExpress.XtraTab.XtraTabPage();
@@ -693,23 +693,23 @@
             // 
             // xtraTabPage33
             // 
-            this.xtraTabPage33.Controls.Add(this.expeditionUserControl1);
+            this.xtraTabPage33.Controls.Add(this.expeditionUserControl);
             this.xtraTabPage33.Name = "xtraTabPage33";
             this.xtraTabPage33.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage33.Text = "Екпедиція";
             // 
-            // expeditionUserControl1
+            // expeditionUserControl
             // 
-            this.expeditionUserControl1.CopyBtn = this.CopyItemBtn;
-            this.expeditionUserControl1.DeleteBtn = this.DeleteItemBtn;
-            this.expeditionUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.expeditionUserControl1.EditBtn = this.EditItemBtn;
-            this.expeditionUserControl1.ExecuteBtn = this.ExecuteItemBtn;
-            this.expeditionUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.expeditionUserControl1.Name = "expeditionUserControl1";
-            this.expeditionUserControl1.PrintBtn = this.PrintItemBtn;
-            this.expeditionUserControl1.Size = new System.Drawing.Size(1138, 695);
-            this.expeditionUserControl1.TabIndex = 0;
+            this.expeditionUserControl.CopyBtn = this.CopyItemBtn;
+            this.expeditionUserControl.DeleteBtn = this.DeleteItemBtn;
+            this.expeditionUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.expeditionUserControl.EditBtn = this.EditItemBtn;
+            this.expeditionUserControl.ExecuteBtn = this.ExecuteItemBtn;
+            this.expeditionUserControl.Location = new System.Drawing.Point(0, 0);
+            this.expeditionUserControl.Name = "expeditionUserControl";
+            this.expeditionUserControl.PrintBtn = this.PrintItemBtn;
+            this.expeditionUserControl.Size = new System.Drawing.Size(1138, 695);
+            this.expeditionUserControl.TabIndex = 0;
             // 
             // xtraTabPage34
             // 
@@ -1486,7 +1486,7 @@
         private UserControls.ucSettingMaterialPrices settingMaterialPricesUserControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
-        public UserControls.ucExpedition expeditionUserControl1;
+        public UserControls.ucExpedition expeditionUserControl;
         private DevExpress.XtraBars.BarButtonItem ChangeWaybillKagentBtn;
         private DevExpress.XtraBars.BarButtonItem WaybillCorrectionDetBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;

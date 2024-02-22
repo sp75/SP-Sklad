@@ -214,36 +214,42 @@ namespace SP_Sklad.Common
                 case -20:
                     PageIndex = 1;
 
-               /*     if (_manufacturing_user_control.wbStartDate.DateTime > _on_date)*/ _manufacturing_user_control.wbStartDate.DateTime = _on_date.Date;
-                  /*  if (_manufacturing_user_control.wbEndDate.DateTime < _on_date)*/ _manufacturing_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay(); 
-                    _manufacturing_user_control.WhComboBox.EditValue = "*";
-                    _manufacturing_user_control.wbSatusList.EditValue = -1;
+                    //     _manufacturing_user_control.wbStartDate.DateTime = _on_date.Date;
+                    //     _manufacturing_user_control.wbEndDate.DateTime = _on_date.Date.SetEndDay(); 
+                    //     _manufacturing_user_control.WhComboBox.EditValue = "*";
+                    //    _manufacturing_user_control.wbSatusList.EditValue = -1;
 
-                    _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 111);
+                    /*       _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 111);
 
-                    int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("Id", _doc_id);
-                    if (rowHandle != GridControl.InvalidRowHandle)
-                    {
-                        _manufacturing_user_control.WbGridView.FocusedRowHandle = rowHandle;
-                    }
+                           int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("Id", _doc_id);
+                           if (rowHandle != GridControl.InvalidRowHandle)
+                           {
+                               _manufacturing_user_control.WbGridView.FocusedRowHandle = rowHandle;
+                           }*/
+                    _manufacturing_user_control.ucManufacturingProducts.FindItem(_doc_id, _on_date);
+
                     break;
 
                 case -22:
                     PageIndex = 1;
 
-                /*    if (_manufacturing_user_control.DebStartDate.DateTime > _on_date) */_manufacturing_user_control.DebStartDate.DateTime = _on_date.Date;
-                  /*  if (_manufacturing_user_control.DebEndDate.DateTime < _on_date)*/ _manufacturing_user_control.DebEndDate.DateTime = _on_date.Date.SetEndDay(); 
-                    _manufacturing_user_control.DebWhComboBox.EditValue = "*";
-                    _manufacturing_user_control.DebSatusList.EditValue = -1;
+                    /*  _manufacturing_user_control.DebStartDate.DateTime = _on_date.Date;
+                     _manufacturing_user_control.DebEndDate.DateTime = _on_date.Date.SetEndDay(); 
+                       _manufacturing_user_control.DebWhComboBox.EditValue = "*";
+                       _manufacturing_user_control.DebSatusList.EditValue = -1;
 
-                    _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 114);
+                       _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 114);
 
-                    int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("Id", _doc_id);
-                    if (rowHandle2 != GridControl.InvalidRowHandle)
-                    {
-                        _manufacturing_user_control.DeboningGridView.FocusedRowHandle = rowHandle2;
-                    }
+                       int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("Id", _doc_id);
+                       if (rowHandle2 != GridControl.InvalidRowHandle)
+                       {
+                           _manufacturing_user_control.DeboningGridView.FocusedRowHandle = rowHandle2;
+                       }*/
+                    _manufacturing_user_control.ucDeboningProducts.FindItem(_doc_id, _on_date);
+
                     break;
+
+
                 case 20:
                     PageIndex = 1;
 
@@ -265,7 +271,7 @@ namespace SP_Sklad.Common
 
                 //    mainForm.main_form.docsUserControl1.expeditionUserControl1.find_id = _doc_id;
                     _docs_user_control.DocsTreeList.FocusedNode = _docs_user_control.DocsTreeList.FindNodeByFieldValue("Id", 145);
-                    mainForm.main_form.docsUserControl1.expeditionUserControl1.FindItem(doc_id.Value, date.Value);
+                    mainForm.main_form.docsUserControl1.expeditionUserControl.FindItem(doc_id.Value, date.Value);
 
                     break;
             }

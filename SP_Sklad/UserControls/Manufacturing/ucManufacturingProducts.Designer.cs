@@ -1542,7 +1542,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 3;
-            this.gridColumn10.Width = 212;
+            this.gridColumn10.Width = 234;
             // 
             // gridColumn236
             // 
@@ -1561,7 +1561,7 @@
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 7;
-            this.gridColumn11.Width = 67;
+            this.gridColumn11.Width = 72;
             // 
             // gridColumn12
             // 
@@ -1570,7 +1570,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 5;
-            this.gridColumn12.Width = 77;
+            this.gridColumn12.Width = 83;
             // 
             // gridColumn13
             // 
@@ -1581,7 +1581,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 8;
-            this.gridColumn13.Width = 56;
+            this.gridColumn13.Width = 60;
             // 
             // gridColumn31
             // 
@@ -1590,7 +1590,7 @@
             this.gridColumn31.Name = "gridColumn31";
             this.gridColumn31.Visible = true;
             this.gridColumn31.VisibleIndex = 9;
-            this.gridColumn31.Width = 203;
+            this.gridColumn31.Width = 224;
             // 
             // gridColumn75
             // 
@@ -1599,7 +1599,7 @@
             this.gridColumn75.Name = "gridColumn75";
             this.gridColumn75.Visible = true;
             this.gridColumn75.VisibleIndex = 4;
-            this.gridColumn75.Width = 188;
+            this.gridColumn75.Width = 207;
             // 
             // gridColumn132
             // 
@@ -1608,7 +1608,7 @@
             this.gridColumn132.Name = "gridColumn132";
             this.gridColumn132.Visible = true;
             this.gridColumn132.VisibleIndex = 6;
-            this.gridColumn132.Width = 92;
+            this.gridColumn132.Width = 100;
             // 
             // gridColumn134
             // 
@@ -1629,7 +1629,7 @@
             this.gridColumn134.OptionsColumn.TabStop = false;
             this.gridColumn134.Visible = true;
             this.gridColumn134.VisibleIndex = 1;
-            this.gridColumn134.Width = 25;
+            this.gridColumn134.Width = 30;
             // 
             // repositoryItemImageComboBox17
             // 
@@ -1661,7 +1661,7 @@
             this.gridColumn135.OptionsColumn.TabStop = false;
             this.gridColumn135.Visible = true;
             this.gridColumn135.VisibleIndex = 2;
-            this.gridColumn135.Width = 25;
+            this.gridColumn135.Width = 30;
             // 
             // repositoryItemImageComboBox18
             // 
@@ -1680,7 +1680,7 @@
             this.gridColumn199.Name = "gridColumn199";
             this.gridColumn199.Visible = true;
             this.gridColumn199.VisibleIndex = 10;
-            this.gridColumn199.Width = 168;
+            this.gridColumn199.Width = 207;
             // 
             // repositoryItemCheckEdit3
             // 

@@ -255,6 +255,8 @@
             this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "RelDoc3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "xls_export");
             // 
             // NewItemBtn
             // 
@@ -325,7 +327,7 @@
             // 
             this.barButtonItem14.Caption = "Експорт списка";
             this.barButtonItem14.Id = 25;
-            this.barButtonItem14.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.Image")));
+            this.barButtonItem14.ImageOptions.ImageIndex = 12;
             this.barButtonItem14.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.ImageOptions.LargeImage")));
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);

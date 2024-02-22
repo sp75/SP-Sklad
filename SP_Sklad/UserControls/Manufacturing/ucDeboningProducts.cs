@@ -181,6 +181,24 @@ namespace SP_Sklad.MainTabs
             PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
         }
 
+        public void FindItem(Guid id, DateTime on_date)
+        {
+            DeboningGridView.ClearColumnsFilter();
+            DeboningGridView.ClearFindFilter();
+            PeriodComboBoxEdit.SelectedIndex = 0;
+            DebStartDate.DateTime = on_date.Date;
+            DebEndDate.DateTime = on_date.Date.SetEndDay();
+            DebWhComboBox.EditValue = "*";
+            DebSatusList.EditValue = -1;
+            GetDeboningList();
+
+            int rowHandle = DeboningGridView.LocateByValue("Id", id);
+            if (rowHandle != GridControl.InvalidRowHandle)
+            {
+                DeboningGridView.FocusedRowHandle = rowHandle;
+            }
+        }
+
         public void GetDeboningList()
         {
             if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null)

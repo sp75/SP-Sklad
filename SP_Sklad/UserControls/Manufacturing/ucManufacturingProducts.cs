@@ -216,6 +216,24 @@ namespace SP_Sklad.MainTabs
         }
 
 
+        public void FindItem(Guid id, DateTime on_date)
+        {
+            WbGridView.ClearColumnsFilter();
+            WbGridView.ClearFindFilter();
+            PeriodComboBoxEdit.SelectedIndex = 0;
+            wbStartDate.DateTime = on_date.Date;
+            wbEndDate.DateTime = on_date.Date.SetEndDay();
+            WhComboBox.EditValue = "*";
+            wbSatusList.EditValue = -1;
+            GetWBListMake();
+
+            int rowHandle = WbGridView.LocateByValue("Id", id);
+            if (rowHandle != GridControl.InvalidRowHandle)
+            {
+                WbGridView.FocusedRowHandle = rowHandle;
+            }
+        }
+
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NewItem();

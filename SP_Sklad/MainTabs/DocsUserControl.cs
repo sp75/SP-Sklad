@@ -282,7 +282,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 13:
-                    expeditionUserControl1.NewItem();
+                    expeditionUserControl.NewItem();
                     break;
 
             }
@@ -379,7 +379,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 13:
-                        expeditionUserControl1.EditItem();
+                        expeditionUserControl.EditItem();
                         break;
                 }
             }
@@ -497,7 +497,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 13:
-                        expeditionUserControl1.DeleteItem();
+                        expeditionUserControl.DeleteItem();
                         break;
                 }
             }
@@ -615,7 +615,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 13:
-                    expeditionUserControl1.GetData();
+                    expeditionUserControl.GetData();
                     break;
             }
 
@@ -710,7 +710,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 13:
-                        expeditionUserControl1.ExecuteItem();
+                        expeditionUserControl.ExecuteItem();
                         break;
                 }
             }
@@ -792,7 +792,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 13:
-                    expeditionUserControl1.PrintItem();
+                    expeditionUserControl.PrintItem();
                     break;
             }
         }
@@ -1100,8 +1100,13 @@ namespace SP_Sklad.MainTabs
                         ucPayDocExtOut.ExportToExcel();
                     }
                     break;
+
                 case 5:
                     ucPriceList.ExportToExcel();
+                    break;
+
+                case 13:
+                    expeditionUserControl.ExportToExcel();
                     break;
             }
         }
