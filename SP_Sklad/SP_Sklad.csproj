@@ -509,6 +509,15 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_ManufacturingProducts.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucProductionPlanning.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucProductionPlanning.Designer.cs">
+      <DependentUpon>ucProductionPlanning.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucDeboningProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2550,6 +2559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucProductionPlanning.resx">
+      <DependentUpon>ucProductionPlanning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucDeboningProducts.resx">
       <DependentUpon>ucDeboningProducts.cs</DependentUpon>

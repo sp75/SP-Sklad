@@ -120,31 +120,7 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
         {
             using (var db = SPDatabase.SPBase())
             {
-                //         return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
-                return await db.WhMatGet(grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).Select(s => new MaterialRemainViews
-                {
-                    RecNo = s.RecNo,
-                    MatId = s.MatId,
-                    MatName = s.MatName,
-                    Remain = s.Remain,
-                    Rsv = s.Rsv,
-                    AvgPrice = s.AvgPrice,
-                    Ordered = s.Ordered,
-                    ORsv = s.ORsv,
-                    CurRemain = s.CurRemain,
-                    SumRemain = s.SumRemain,
-                    Artikul = s.Artikul,
-                    BarCode = s.BarCode,
-                    GrpName = s.GrpName,
-                    Num = s.Num,
-                    IsSerial = s.IsSerial,
-                    MId = s.MId,
-                    OutGrpId = s.OutGrpId,
-                    MinReserv = s.MinReserv,
-                    MsrName = s.MsrName,
-                    Country = s.Country,
-                    Producer = s.Producer
-                }).ToListAsync();
+                return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
             }
         }
 

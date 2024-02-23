@@ -2900,6 +2900,77 @@ warning 6002: The table/view 'sp_base.dbo.v_LoginHistory' does not have a primar
           <Property Name="Ver" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_ManufacturingProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ManufacturingProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+            <PropertyRef Name="MatRecipeOut" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="CurrId" Type="int" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="Nds" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="DocId" Type="int" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AttNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="AttDate" Type="datetime" />
+          <Property Name="Received" Type="nvarchar" MaxLength="64" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="DefNum" Type="int" Nullable="false" />
+          <Property Name="RecipeName" Type="varchar" MaxLength="255" />
+          <Property Name="MatRecipeOut" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Deviation" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="AmountIn" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MakedPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+          <Property Name="OnDateOut" Type="datetime" />
+          <Property Name="AmountOut" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="AmountBrutto" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="WriteOnDate" Type="datetime" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="DocStatus" Type="varchar" MaxLength="21" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="ShippedAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Tara" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="SaldoShipped" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="RecipeCount" Type="int" />
+          <Property Name="AmountByRecipe" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="AdditionalCostsAmount" Type="numeric" Precision="38" Scale="2" />
+          <Property Name="AdditionalCosts" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="MatOut" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Materials">
           <Key>
@@ -10349,6 +10420,59 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_LoginHistory].[Ver] AS [Ver]
     FROM [dbo].[v_LoginHistory] AS [v_LoginHistory]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_ManufacturingProducts" EntityType="Self.v_ManufacturingProducts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ManufacturingProducts].[Id] AS [Id], 
+    [v_ManufacturingProducts].[WbillId] AS [WbillId], 
+    [v_ManufacturingProducts].[Num] AS [Num], 
+    [v_ManufacturingProducts].[OnDate] AS [OnDate], 
+    [v_ManufacturingProducts].[CurrId] AS [CurrId], 
+    [v_ManufacturingProducts].[Reason] AS [Reason], 
+    [v_ManufacturingProducts].[Checked] AS [Checked], 
+    [v_ManufacturingProducts].[SummAll] AS [SummAll], 
+    [v_ManufacturingProducts].[WType] AS [WType], 
+    [v_ManufacturingProducts].[Nds] AS [Nds], 
+    [v_ManufacturingProducts].[PersonId] AS [PersonId], 
+    [v_ManufacturingProducts].[Notes] AS [Notes], 
+    [v_ManufacturingProducts].[DocId] AS [DocId], 
+    [v_ManufacturingProducts].[SummInCurr] AS [SummInCurr], 
+    [v_ManufacturingProducts].[PersonName] AS [PersonName], 
+    [v_ManufacturingProducts].[AttNum] AS [AttNum], 
+    [v_ManufacturingProducts].[AttDate] AS [AttDate], 
+    [v_ManufacturingProducts].[Received] AS [Received], 
+    [v_ManufacturingProducts].[ToDate] AS [ToDate], 
+    [v_ManufacturingProducts].[DefNum] AS [DefNum], 
+    [v_ManufacturingProducts].[RecipeName] AS [RecipeName], 
+    [v_ManufacturingProducts].[MatRecipeOut] AS [MatRecipeOut], 
+    [v_ManufacturingProducts].[Deviation] AS [Deviation], 
+    [v_ManufacturingProducts].[MatName] AS [MatName], 
+    [v_ManufacturingProducts].[AmountIn] AS [AmountIn], 
+    [v_ManufacturingProducts].[MatId] AS [MatId], 
+    [v_ManufacturingProducts].[MsrName] AS [MsrName], 
+    [v_ManufacturingProducts].[KaName] AS [KaName], 
+    [v_ManufacturingProducts].[MakedPerson] AS [MakedPerson], 
+    [v_ManufacturingProducts].[MId] AS [MId], 
+    [v_ManufacturingProducts].[GrpId] AS [GrpId], 
+    [v_ManufacturingProducts].[OnDateOut] AS [OnDateOut], 
+    [v_ManufacturingProducts].[AmountOut] AS [AmountOut], 
+    [v_ManufacturingProducts].[AmountBrutto] AS [AmountBrutto], 
+    [v_ManufacturingProducts].[WriteOnDate] AS [WriteOnDate], 
+    [v_ManufacturingProducts].[WhName] AS [WhName], 
+    [v_ManufacturingProducts].[WId] AS [WId], 
+    [v_ManufacturingProducts].[DocStatus] AS [DocStatus], 
+    [v_ManufacturingProducts].[Price] AS [Price], 
+    [v_ManufacturingProducts].[ShippedAmount] AS [ShippedAmount], 
+    [v_ManufacturingProducts].[Tara] AS [Tara], 
+    [v_ManufacturingProducts].[SaldoShipped] AS [SaldoShipped], 
+    [v_ManufacturingProducts].[Artikul] AS [Artikul], 
+    [v_ManufacturingProducts].[RecipeCount] AS [RecipeCount], 
+    [v_ManufacturingProducts].[AmountByRecipe] AS [AmountByRecipe], 
+    [v_ManufacturingProducts].[AdditionalCostsAmount] AS [AdditionalCostsAmount], 
+    [v_ManufacturingProducts].[AdditionalCosts] AS [AdditionalCosts], 
+    [v_ManufacturingProducts].[MatOut] AS [MatOut], 
+    [v_ManufacturingProducts].[UserId] AS [UserId]
+    FROM [dbo].[v_ManufacturingProducts] AS [v_ManufacturingProducts]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Materials" EntityType="Self.v_Materials" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_Materials].[MatId] AS [MatId], 
@@ -14259,6 +14383,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WaybillWriteOn" EntityType="BaseModel.v_WaybillWriteOn" />
           <EntitySet Name="v_WaybillWriteOff" EntityType="BaseModel.v_WaybillWriteOff" />
           <EntitySet Name="v_WaybillInventory" EntityType="BaseModel.v_WaybillInventory" />
+          <EntitySet Name="v_ManufacturingProducts" EntityType="BaseModel.v_ManufacturingProducts" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -23502,6 +23627,75 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WriteOn" Type="Int32" />
           <Property Name="WriteOff" Type="Int32" />
         </EntityType>
+        <EntityType Name="v_ManufacturingProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="DefNum" />
+            <PropertyRef Name="MatRecipeOut" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrId" Type="Int32" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DocId" Type="Int32" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AttNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AttDate" Type="DateTime" Precision="3" />
+          <Property Name="Received" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="DefNum" Type="Int32" Nullable="false" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MatRecipeOut" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Deviation" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AmountIn" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MakedPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" />
+          <Property Name="OnDateOut" Type="DateTime" Precision="3" />
+          <Property Name="AmountOut" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="AmountBrutto" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="WriteOnDate" Type="DateTime" Precision="3" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="DocStatus" Type="String" Nullable="false" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="ShippedAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="Tara" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="SaldoShipped" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeCount" Type="Int32" />
+          <Property Name="AmountByRecipe" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="AdditionalCostsAmount" Type="Decimal" Precision="38" Scale="2" />
+          <Property Name="AdditionalCosts" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="MatOut" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -29810,6 +30004,61 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="SummPay" ColumnName="SummPay" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ManufacturingProducts">
+            <EntityTypeMapping TypeName="BaseModel.v_ManufacturingProducts">
+              <MappingFragment StoreEntitySet="v_ManufacturingProducts">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MatOut" ColumnName="MatOut" />
+                <ScalarProperty Name="AdditionalCosts" ColumnName="AdditionalCosts" />
+                <ScalarProperty Name="AdditionalCostsAmount" ColumnName="AdditionalCostsAmount" />
+                <ScalarProperty Name="AmountByRecipe" ColumnName="AmountByRecipe" />
+                <ScalarProperty Name="RecipeCount" ColumnName="RecipeCount" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="SaldoShipped" ColumnName="SaldoShipped" />
+                <ScalarProperty Name="Tara" ColumnName="Tara" />
+                <ScalarProperty Name="ShippedAmount" ColumnName="ShippedAmount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="AmountBrutto" ColumnName="AmountBrutto" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="Deviation" ColumnName="Deviation" />
+                <ScalarProperty Name="MatRecipeOut" ColumnName="MatRecipeOut" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="DefNum" ColumnName="DefNum" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Received" ColumnName="Received" />
+                <ScalarProperty Name="AttDate" ColumnName="AttDate" />
+                <ScalarProperty Name="AttNum" ColumnName="AttNum" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
                 <ScalarProperty Name="WType" ColumnName="WType" />
                 <ScalarProperty Name="SummAll" ColumnName="SummAll" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />

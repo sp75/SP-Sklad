@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucManufacturingProducts));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemImageComboBox26 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox27 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -75,7 +80,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
+            this.ManufacturingProductsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -181,6 +186,7 @@
             this.gridColumn130 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn131 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.WbGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar7 = new DevExpress.XtraBars.Bar();
@@ -200,7 +206,6 @@
             this.splitContainerControl2.Panel2.SuspendLayout();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
@@ -240,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -732,8 +738,13 @@
             // 
             // WBGridControl
             // 
-            this.WBGridControl.DataSource = this.WBListMakeBS;
+            this.WBGridControl.DataSource = this.ManufacturingProductsSource;
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WBGridControl.Location = new System.Drawing.Point(0, 50);
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
@@ -742,12 +753,18 @@
             this.CheckedItemImageComboBox});
             this.WBGridControl.Size = new System.Drawing.Size(1334, 328);
             this.WBGridControl.TabIndex = 0;
+            this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 
-            // WBListMakeBS
+            // ManufacturingProductsSource
             // 
-            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            this.ManufacturingProductsSource.AreSourceRowsThreadSafe = true;
+            this.ManufacturingProductsSource.DefaultSorting = "OnDate DESC";
+            this.ManufacturingProductsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_ManufacturingProducts);
+            this.ManufacturingProductsSource.KeyExpression = "WbillId";
+            this.ManufacturingProductsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ManufacturingProductsSource_GetQueryable);
+            this.ManufacturingProductsSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.ManufacturingProductsSource_DismissQueryable);
             // 
             // WbGridView
             // 
@@ -785,6 +802,8 @@
             this.WbGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.WbGridView_RowStyle);
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
+            this.WbGridView.ColumnFilterChanged += new System.EventHandler(this.WbGridView_ColumnFilterChanged);
+            this.WbGridView.AsyncCompleted += new System.EventHandler(this.WbGridView_AsyncCompleted);
             this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn1
@@ -915,7 +934,7 @@
             // gridColumn8
             // 
             this.gridColumn8.Caption = "Цех";
-            this.gridColumn8.FieldName = "FromWh";
+            this.gridColumn8.FieldName = "WhName";
             this.gridColumn8.MinWidth = 150;
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
@@ -1089,17 +1108,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WhComboBox.Location = new System.Drawing.Point(591, 14);
             this.WhComboBox.Name = "WhComboBox";
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.warehouse_2;
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.WhComboBox.Properties.ShowHeader = false;
             this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhComboBox.Properties.ValueMember = "WId";
-            this.WhComboBox.Size = new System.Drawing.Size(399, 22);
+            this.WhComboBox.Size = new System.Drawing.Size(399, 24);
             this.WhComboBox.StyleController = this.styleController1;
             this.WhComboBox.TabIndex = 18;
+            this.WhComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WhComboBox_ButtonClick);
             this.WhComboBox.EditValueChanged += new System.EventHandler(this.WhComboBox_EditValueChanged);
             // 
             // wbSatusList
@@ -1615,7 +1638,7 @@
             this.gridColumn134.ColumnEdit = this.repositoryItemImageComboBox17;
             this.gridColumn134.FieldName = "Rsv";
             this.gridColumn134.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
-            this.gridColumn134.ImageOptions.Image = global::SP_Sklad.Properties.Resources.reserved;
+            this.gridColumn134.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("gridColumn134.ImageOptions.Image")));
             this.gridColumn134.Name = "gridColumn134";
             this.gridColumn134.OptionsColumn.AllowEdit = false;
             this.gridColumn134.OptionsColumn.AllowFocus = false;
@@ -1936,6 +1959,10 @@
             this.gridColumn148.VisibleIndex = 3;
             this.gridColumn148.Width = 155;
             // 
+            // WBListMakeBS
+            // 
+            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -2013,7 +2040,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
@@ -2057,6 +2083,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -2222,5 +2249,6 @@
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection GridImageList;
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource ManufacturingProductsSource;
     }
 }

@@ -219,9 +219,9 @@ namespace SP_Sklad.Common
                     //     _manufacturing_user_control.WhComboBox.EditValue = "*";
                     //    _manufacturing_user_control.wbSatusList.EditValue = -1;
 
-                    /*       _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 111);
+                    _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 111);
 
-                           int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("Id", _doc_id);
+                   /*        int rowHandle = _manufacturing_user_control.WbGridView.LocateByValue("Id", _doc_id);
                            if (rowHandle != GridControl.InvalidRowHandle)
                            {
                                _manufacturing_user_control.WbGridView.FocusedRowHandle = rowHandle;
@@ -236,11 +236,11 @@ namespace SP_Sklad.Common
                     /*  _manufacturing_user_control.DebStartDate.DateTime = _on_date.Date;
                      _manufacturing_user_control.DebEndDate.DateTime = _on_date.Date.SetEndDay(); 
                        _manufacturing_user_control.DebWhComboBox.EditValue = "*";
-                       _manufacturing_user_control.DebSatusList.EditValue = -1;
+                       _manufacturing_user_control.DebSatusList.EditValue = -1;*/
 
                        _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 114);
 
-                       int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("Id", _doc_id);
+                 /*      int rowHandle2 = _manufacturing_user_control.DeboningGridView.LocateByValue("Id", _doc_id);
                        if (rowHandle2 != GridControl.InvalidRowHandle)
                        {
                            _manufacturing_user_control.DeboningGridView.FocusedRowHandle = rowHandle2;
@@ -253,17 +253,8 @@ namespace SP_Sklad.Common
                 case 20:
                     PageIndex = 1;
 
-                   /* if (_manufacturing_user_control.PlanStartDate.DateTime > _on_date)*/ _manufacturing_user_control.PlanStartDate.DateTime = _on_date.Date;
-                   /* if (_manufacturing_user_control.PlanEndDate.DateTime < _on_date)*/ _manufacturing_user_control.PlanEndDate.DateTime = _on_date.Date.SetEndDay();
-                    _manufacturing_user_control.lookUpEdit2.EditValue = -1;
-
                     _manufacturing_user_control.DocsTreeList.FocusedNode = _manufacturing_user_control.DocsTreeList.FindNodeByFieldValue("Id", 116);
-
-                    int rowHandle3 = _manufacturing_user_control.ProductionPlansGridView.LocateByValue("Id", _doc_id);
-                    if (rowHandle3 != GridControl.InvalidRowHandle)
-                    {
-                        _manufacturing_user_control.ProductionPlansGridView.FocusedRowHandle = rowHandle3;
-                    }
+                    _manufacturing_user_control.ucProductionPlanning.FindItem(_doc_id, _on_date);
                     break;
 
                 case 32:

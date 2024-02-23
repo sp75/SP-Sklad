@@ -34,9 +34,14 @@ namespace SP_Sklad.MainTabs
         private UserSettingsRepository user_settings { get; set; }
 
         public int grp_id { get; set; }
-        private WBListMake_Result focused_row => WbGridView.GetFocusedRow() as WBListMake_Result;
-        private List<GetManufactureTree_Result> manuf_tree { get; set; }
-        private GetManufactureTree_Result intermediate_weighing_access { get; set; }
+        private v_ManufacturingProducts focused_row => WbGridView.GetFocusedRow() as v_ManufacturingProducts ;
+        private UserAccess intermediate_weighing_access { get; set; }
+
+        private int prev_focused_id = 0;
+        private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
+        private int? find_id { get; set; }
+        private bool restore = false;
 
         public ucManufacturingProducts()
         {
@@ -48,8 +53,8 @@ namespace SP_Sklad.MainTabs
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
             if (!DesignMode)
             {
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-                WhComboBox.EditValue = "*";
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { s.WId, s.Name }).ToList());
+                WhComboBox.EditValue = -1;
 
                 wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
                 wbSatusList.EditValue = -1;
@@ -57,8 +62,8 @@ namespace SP_Sklad.MainTabs
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
-                intermediate_weighing_access = manuf_tree.FirstOrDefault(w => w.FunId == 83);
+           //     manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
+                intermediate_weighing_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 83 && w.UserId == UserSession.UserId);// manuf_tree.FirstOrDefault(w => w.FunId == 83);
                 xtraTabPage19.PageVisible = intermediate_weighing_access?.CanView == 1;
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
@@ -70,23 +75,41 @@ namespace SP_Sklad.MainTabs
 
         public void GetWBListMake()
         {
-            if (wbSatusList.EditValue == null || WhComboBox.EditValue == null)
+            /*   if (wbSatusList.EditValue == null || WhComboBox.EditValue == null)
+               {
+                   return;
+               }
+
+               var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
+               var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+
+               int top_row = WbGridView.TopRowIndex;
+               WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), grp_id, w_type, UserSession.UserId).ToList();
+               WbGridView.TopRowIndex = top_row;*/
+
+            prev_rowHandle = WbGridView.FocusedRowHandle;
+
+            if (focused_row != null && !find_id.HasValue)
             {
-                return;
+                prev_top_row_index = WbGridView.TopRowIndex;
+                prev_focused_id = focused_row.WbillId;
             }
 
-            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
-            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+            if (find_id.HasValue)
+            {
+                prev_top_row_index = -1;
+                prev_focused_id = find_id.Value;
+                find_id = null;
+            }
 
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
+            restore = true;
 
-            int top_row = WbGridView.TopRowIndex;
-            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), grp_id, w_type, UserSession.UserId).ToList();
-            WbGridView.TopRowIndex = top_row;
+            WBGridControl.DataSource = null;
+            WBGridControl.DataSource = ManufacturingProductsSource;
+
+            SetWBEditorBarBtn();
         }
 
-        int restore_row = 0;
-        bool restore = false;
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GetWBListMake();
@@ -218,20 +241,22 @@ namespace SP_Sklad.MainTabs
 
         public void FindItem(Guid id, DateTime on_date)
         {
+            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+
             WbGridView.ClearColumnsFilter();
             WbGridView.ClearFindFilter();
             PeriodComboBoxEdit.SelectedIndex = 0;
             wbStartDate.DateTime = on_date.Date;
             wbEndDate.DateTime = on_date.Date.SetEndDay();
-            WhComboBox.EditValue = "*";
+            WhComboBox.EditValue = -1;
             wbSatusList.EditValue = -1;
             GetWBListMake();
-
+/*
             int rowHandle = WbGridView.LocateByValue("Id", id);
             if (rowHandle != GridControl.InvalidRowHandle)
             {
                 WbGridView.FocusedRowHandle = rowHandle;
-            }
+            }*/
         }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -250,20 +275,18 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
-
-            if (dr == null)
+            if (focused_row == null)
             {
                 return;
             }
 
-            using (var f = new frmTechProcDet(dr.WbillId))
+            using (var f = new frmTechProcDet(focused_row.WbillId))
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
+                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == focused_row.WbillId))
                     {
-                        RefreshTechProcDet(dr.WbillId);
+                        RefreshTechProcDet(focused_row.WbillId);
                     }
                     else
                     {
@@ -281,8 +304,8 @@ namespace SP_Sklad.MainTabs
             {
                 using (var f = new frmTechProcDet(dr.WbillId, dr.DetId))
                 {
-                    var row = WbGridView.GetFocusedRow() as WBListMake_Result;
-                    f.OkButton.Enabled = (row.Checked != 1);
+
+                    f.OkButton.Enabled = (focused_row.Checked != 1);
                     if (f.ShowDialog() == DialogResult.OK)
                     {
                         RefreshTechProcDet(dr.WbillId);
@@ -394,27 +417,30 @@ namespace SP_Sklad.MainTabs
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            xtraTabControl2_SelectedPageChanged(sender, null);
+
+            SetWBEditorBarBtn();
+        }
+
+        private void SetWBEditorBarBtn()
+        {
+            xtraTabControl2_SelectedPageChanged(null, null);
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && user_access.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
             EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanModify == 1);
-            CopyItemBtn.Enabled = (user_access.CanInsert == 1 && focused_row != null);
+            CopyItemBtn.Enabled = (focused_row != null && user_access.CanInsert == 1);
             ExecuteItemBtn.Enabled = (focused_row != null && user_access.CanPost == 1);
             PrintItemBtn.Enabled = (focused_row != null);
             AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1);
             AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanInsert == 1);
-
         }
 
         private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
-
-            var f = new frmWayBillMakePropsDet(dr.WbillId);
+            var f = new frmWayBillMakePropsDet(focused_row.WbillId);
             if (f.ShowDialog() == DialogResult.OK)
             {
-                RefreshAtribute(dr.WbillId);
+                RefreshAtribute(focused_row.WbillId);
             }
         }
 
@@ -623,8 +649,6 @@ namespace SP_Sklad.MainTabs
                       return;
                   }
 
-                  var wh_row = WbGridView.GetRow(e.RowHandle) as WBListMake_Result;
-
                   if (wh_row != null )
                   {
                     //  var mat_out = wh_row.AmountIn > 0 ? (wh_row.AmountOut / wh_row.AmountIn) * 100.00m : 0;
@@ -750,6 +774,81 @@ namespace SP_Sklad.MainTabs
             if (wbSatusList.ContainsFocus)
             {
                 GetWBListMake();
+            }
+        }
+
+        private void ManufacturingProductsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (wbSatusList.EditValue == null || WhComboBox.EditValue == null)
+            {
+                return;
+            }
+
+            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
+            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+            var status = (int)wbSatusList.EditValue;
+            var wh_id = (int)WhComboBox.EditValue;
+
+
+            BaseEntities objectContext = new BaseEntities();
+            var list = objectContext.v_ManufacturingProducts.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.WId == wh_id || wh_id ==-1) && (grp_id ==0 || w.GrpId == grp_id) && w.UserId == UserSession.UserId);
+            e.QueryableSource = list;
+            e.Tag = objectContext;
+        }
+
+        private void ManufacturingProductsSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (e.Tag == null)
+                return;
+
+            ((BaseEntities)e.Tag).Dispose();
+        }
+
+        private void WbGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (focused_row == null || !restore)
+            {
+                return;
+            }
+
+            int rowHandle = WbGridView.LocateByValue("WbillId", prev_focused_id, OnRowSearchComplete);
+            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
+            {
+                FocusRow(WbGridView, rowHandle);
+            }
+            else
+            {
+                WbGridView.FocusedRowHandle = prev_rowHandle;
+            }
+
+            restore = false;
+        }
+
+        void OnRowSearchComplete(object rh)
+        {
+            int rowHandle = (int)rh;
+            if (WbGridView.IsValidRowHandle(rowHandle))
+            {
+                FocusRow(WbGridView, rowHandle);
+            }
+        }
+
+        public void FocusRow(GridView view, int rowHandle)
+        {
+            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+            view.FocusedRowHandle = rowHandle;
+        }
+
+        private void WbGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            SetWBEditorBarBtn();
+        }
+
+        private void WhComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
             }
         }
     }

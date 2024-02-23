@@ -230,15 +230,20 @@ namespace SP_Sklad.MainTabs
             {
                 bar1.Visible = false;
                 ucManufacturingProducts.grp_id = focused_tree_node.Num;
-                wbContentTab.SelectedTabPageIndex = 11;
+                wbContentTab.SelectedTabPageIndex = 1;
                 ucManufacturingProducts.GetWBListMake();
             }
             else if (focused_tree_node.GType.Value == 3)
             {
                 bar1.Visible = false;
                 ucDeboningProducts.grp_id = focused_tree_node.Num;
-                wbContentTab.SelectedTabPageIndex = 12;
+                wbContentTab.SelectedTabPageIndex = 3;
                 ucDeboningProducts.GetDeboningList();
+            }
+            else if (focused_tree_node.GType.Value == 4)
+            {
+                bar1.Visible = false;
+                wbContentTab.SelectedTabPageIndex = 4;
             }
             else if (focused_tree_node.FunId == 36)
             {

@@ -214,9 +214,6 @@ namespace SP_Sklad.MainTabs
             DeboningGridView.TopRowIndex = top_row;
         }
 
-
-        int restore_row = 0;
-        bool restore = false;
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             GetDeboningList();

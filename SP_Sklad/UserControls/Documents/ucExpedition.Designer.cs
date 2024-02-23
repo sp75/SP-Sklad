@@ -523,6 +523,7 @@
             this.repositoryItemTimeEdit1.AutoHeight = false;
             this.repositoryItemTimeEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemTimeEdit1.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.DisplayText;
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
             // 
             // xtraTabControl3

@@ -42,6 +42,8 @@
             this.tableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -49,16 +51,14 @@
             this.tableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell1 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailData1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailData3_Odd = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.objectDataSource1 = new DevExpress.DataAccess.ObjectBinding.ObjectDataSource(this.components);
-            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell5 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell6 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).BeginInit();
@@ -66,7 +66,7 @@
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 22F;
+            this.TopMargin.HeightF = 10.54166F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -74,7 +74,7 @@
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.pageInfo1,
             this.pageInfo2});
-            this.BottomMargin.HeightF = 49F;
+            this.BottomMargin.HeightF = 36.54172F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // pageInfo1
@@ -89,7 +89,7 @@
             // 
             this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(375F, 0F);
             this.pageInfo2.Name = "pageInfo2";
-            this.pageInfo2.SizeF = new System.Drawing.SizeF(375.5F, 23F);
+            this.pageInfo2.SizeF = new System.Drawing.SizeF(413.9999F, 23F);
             this.pageInfo2.StyleName = "PageInfo";
             this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.pageInfo2.TextFormatString = "Page {0} of {1}";
@@ -105,7 +105,7 @@
             // 
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.label1.Name = "label1";
-            this.label1.SizeF = new System.Drawing.SizeF(751F, 24.19433F);
+            this.label1.SizeF = new System.Drawing.SizeF(788.9999F, 24.19433F);
             this.label1.StyleName = "Title";
             this.label1.Text = "Виробництва в яких останній тех-процес \"Посол\"";
             // 
@@ -123,7 +123,7 @@
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(751F, 28F);
+            this.table1.SizeF = new System.Drawing.SizeF(788.9999F, 28F);
             // 
             // tableRow1
             // 
@@ -144,21 +144,21 @@
             this.tableCell1.StyleName = "DetailCaption1";
             this.tableCell1.StylePriority.UseBorders = false;
             this.tableCell1.Text = "Номер";
-            this.tableCell1.Weight = 0.2328957236497399D;
+            this.tableCell1.Weight = 0.30264251229855577D;
             // 
             // tableCell2
             // 
             this.tableCell2.Name = "tableCell2";
             this.tableCell2.StyleName = "DetailCaption1";
             this.tableCell2.Text = "Дата виробництва";
-            this.tableCell2.Weight = 0.21145110578492599D;
+            this.tableCell2.Weight = 0.24632450010933393D;
             // 
             // tableCell3
             // 
             this.tableCell3.Name = "tableCell3";
             this.tableCell3.StyleName = "DetailCaption1";
             this.tableCell3.Text = "Дата процесу";
-            this.tableCell3.Weight = 0.19040067523331222D;
+            this.tableCell3.Weight = 0.22795675019279782D;
             // 
             // xrTableCell2
             // 
@@ -166,13 +166,29 @@
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.StyleName = "DetailCaption1";
             this.xrTableCell2.Text = "Виробництво";
-            this.xrTableCell2.Weight = 0.6995610609196774D;
+            this.xrTableCell2.Weight = 0.69956108056740174D;
+            // 
+            // xrTableCell5
+            // 
+            this.xrTableCell5.Multiline = true;
+            this.xrTableCell5.Name = "xrTableCell5";
+            this.xrTableCell5.StyleName = "DetailCaption1";
+            this.xrTableCell5.Text = "Вага";
+            this.xrTableCell5.Weight = 0.18719031845758744D;
+            // 
+            // xrTableCell3
+            // 
+            this.xrTableCell3.Multiline = true;
+            this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.StyleName = "DetailCaption1";
+            this.xrTableCell3.Text = "Примітка";
+            this.xrTableCell3.Weight = 0.36820997024921986D;
             // 
             // Detail
             // 
             this.Detail.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.table2});
-            this.Detail.HeightF = 25.91654F;
+            this.Detail.HeightF = 25.08341F;
             this.Detail.MultiColumn.Mode = DevExpress.XtraReports.UI.MultiColumnMode.UseColumnCount;
             this.Detail.Name = "Detail";
             // 
@@ -183,7 +199,7 @@
             this.table2.OddStyleName = "DetailData3_Odd";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(751F, 25F);
+            this.table2.SizeF = new System.Drawing.SizeF(788.9999F, 25F);
             // 
             // tableRow2
             // 
@@ -205,7 +221,7 @@
             this.tableCell4.Name = "tableCell4";
             this.tableCell4.StyleName = "DetailData1";
             this.tableCell4.StylePriority.UseBorders = false;
-            this.tableCell4.Weight = 0.2328957226313183D;
+            this.tableCell4.Weight = 0.30264243564619581D;
             // 
             // tableCell5
             // 
@@ -213,7 +229,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OnDate]")});
             this.tableCell5.Name = "tableCell5";
             this.tableCell5.StyleName = "DetailData1";
-            this.tableCell5.Weight = 0.21145101425676255D;
+            this.tableCell5.Weight = 0.24632443953122005D;
             // 
             // tableCell6
             // 
@@ -221,7 +237,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TechProcDetOnDate]")});
             this.tableCell6.Name = "tableCell6";
             this.tableCell6.StyleName = "DetailData1";
-            this.tableCell6.Weight = 0.19040063147484121D;
+            this.tableCell6.Weight = 0.22795669744695729D;
             // 
             // xrTableCell1
             // 
@@ -231,7 +247,27 @@
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.StyleName = "DetailData1";
             this.xrTableCell1.Text = "xrTableCell1";
-            this.xrTableCell1.Weight = 0.69956090796088977D;
+            this.xrTableCell1.Weight = 0.69956063289281478D;
+            // 
+            // xrTableCell6
+            // 
+            this.xrTableCell6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OutNetto]")});
+            this.xrTableCell6.Multiline = true;
+            this.xrTableCell6.Name = "xrTableCell6";
+            this.xrTableCell6.StyleName = "DetailData1";
+            this.xrTableCell6.Text = "xrTableCell6";
+            this.xrTableCell6.Weight = 0.18719026846413814D;
+            // 
+            // xrTableCell4
+            // 
+            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Notes]")});
+            this.xrTableCell4.Multiline = true;
+            this.xrTableCell4.Name = "xrTableCell4";
+            this.xrTableCell4.StyleName = "DetailData1";
+            this.xrTableCell4.Text = "xrTableCell4";
+            this.xrTableCell4.Weight = 0.36821017165259484D;
             // 
             // Title
             // 
@@ -291,42 +327,6 @@
             this.objectDataSource1.DataSource = typeof(SP_Sklad.SkladData.v_Report_55);
             this.objectDataSource1.Name = "objectDataSource1";
             // 
-            // xrTableCell3
-            // 
-            this.xrTableCell3.Multiline = true;
-            this.xrTableCell3.Name = "xrTableCell3";
-            this.xrTableCell3.StyleName = "DetailCaption1";
-            this.xrTableCell3.Text = "Примітка";
-            this.xrTableCell3.Weight = 0.45544728100109755D;
-            // 
-            // xrTableCell4
-            // 
-            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Notes]")});
-            this.xrTableCell4.Multiline = true;
-            this.xrTableCell4.Name = "xrTableCell4";
-            this.xrTableCell4.StyleName = "DetailData1";
-            this.xrTableCell4.Text = "xrTableCell4";
-            this.xrTableCell4.Weight = 0.45544714716460333D;
-            // 
-            // xrTableCell5
-            // 
-            this.xrTableCell5.Multiline = true;
-            this.xrTableCell5.Name = "xrTableCell5";
-            this.xrTableCell5.StyleName = "DetailCaption1";
-            this.xrTableCell5.Text = "Вага";
-            this.xrTableCell5.Weight = 0.14426931447788216D;
-            // 
-            // xrTableCell6
-            // 
-            this.xrTableCell6.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OutNetto]")});
-            this.xrTableCell6.Multiline = true;
-            this.xrTableCell6.Name = "xrTableCell6";
-            this.xrTableCell6.StyleName = "DetailData1";
-            this.xrTableCell6.Text = "xrTableCell6";
-            this.xrTableCell6.Weight = 0.14426927475565862D;
-            // 
             // XtraReport55
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -339,7 +339,7 @@
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(38, 38, 22, 49);
+            this.Margins = new System.Drawing.Printing.Margins(18, 20, 11, 37);
             this.PageHeight = 1169;
             this.PageWidth = 827;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;

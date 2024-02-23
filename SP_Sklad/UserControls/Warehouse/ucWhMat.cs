@@ -133,7 +133,7 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             int grp_id = 0;
 
-      //      string grp = "";
+            string grp = "";
 
             grp_id = by_grp ? focused_tree_node_num : 0;
             wid = by_grp ? 0 : focused_tree_node_num;
@@ -143,10 +143,10 @@ namespace SP_Sklad.UserControls.Warehouse
                 wid = -1;
             }
 
-          /*  if (display_child_groups && by_grp && focused_tree_node_num != 0)
+            if (display_child_groups && by_grp && focused_tree_node_num != 0)
             {
                 grp = focused_tree_node_num.ToString();
-            }*/
+            }
 
             WhMatGridView.ShowLoadingPanel();
             int top_row = WhMatGridView.TopRowIndex;
