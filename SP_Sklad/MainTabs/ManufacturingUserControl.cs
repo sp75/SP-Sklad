@@ -223,15 +223,14 @@ namespace SP_Sklad.MainTabs
             DelIntermediateWeighing.Enabled = false;
 
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
-            RefrechItemBtn.PerformClick();
+           
 
 
             if (focused_tree_node.GType.Value == 1)
             {
                 bar1.Visible = false;
-                ucManufacturingProducts.grp_id = focused_tree_node.Num;
                 wbContentTab.SelectedTabPageIndex = 1;
-                ucManufacturingProducts.GetWBListMake();
+                ucManufacturingProducts.GetWBListMake(focused_tree_node.Num);
             }
             else if (focused_tree_node.GType.Value == 3)
             {
@@ -257,6 +256,8 @@ namespace SP_Sklad.MainTabs
             }
             else
             {
+                RefrechItemBtn.PerformClick();
+
                 bar1.Visible = true;
 
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;

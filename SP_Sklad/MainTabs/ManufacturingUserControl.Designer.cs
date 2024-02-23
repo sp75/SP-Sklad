@@ -2772,7 +2772,6 @@
             // ucManufacturingProducts
             // 
             this.ucManufacturingProducts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucManufacturingProducts.grp_id = 0;
             this.ucManufacturingProducts.Location = new System.Drawing.Point(0, 0);
             this.ucManufacturingProducts.Name = "ucManufacturingProducts";
             this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 632);
