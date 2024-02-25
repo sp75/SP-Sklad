@@ -260,7 +260,7 @@ namespace SP_Sklad.MainTabs
             wbEndDate.DateTime = on_date.Date.SetEndDay();
             WhComboBox.EditValue = -1;
             wbSatusList.EditValue = -1;
-            GetWBListMake(false);
+            GetWBListMake(true);
 /*
             int rowHandle = WbGridView.LocateByValue("Id", id);
             if (rowHandle != GridControl.InvalidRowHandle)

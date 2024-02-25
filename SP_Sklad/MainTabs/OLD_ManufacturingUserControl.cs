@@ -24,7 +24,7 @@ using DevExpress.Data;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class ManufacturingUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class OLD_ManufacturingUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         private UserSettingsRepository user_settings { get; set; }
 
@@ -40,7 +40,7 @@ namespace SP_Sklad.MainTabs
 
         private int _cur_wtype = 0;
 
-        public ManufacturingUserControl()
+        public OLD_ManufacturingUserControl()
         {
             InitializeComponent();
         }
@@ -52,22 +52,39 @@ namespace SP_Sklad.MainTabs
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
-
+            WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
+            DeboningGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
 
             if (!DesignMode)
             {
                 wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-                              PrepRawMatWhList.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
+                WhComboBox.EditValue = "*";
+                DebWhComboBox.Properties.DataSource = WhComboBox.Properties.DataSource;
+                DebWhComboBox.EditValue = "*";
+                PrepRawMatWhList.Properties.DataSource = WhComboBox.Properties.DataSource;
                 PrepRawMatWhList.EditValue = "*";
 
-                              PrepRawMatStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
+                wbSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
+                wbSatusList.EditValue = -1;
+                DebSatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
+                DebSatusList.EditValue = -1;
+                PrepRawMatStatusList.Properties.DataSource = wbSatusList.Properties.DataSource;
                 PrepRawMatStatusList.EditValue = -1;
 
+                lookUpEdit2.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Розпочато виробництво" }, new { Id = 0, Name = "Актуальний" } };
+                lookUpEdit2.EditValue = -1;
+
+                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+                DebStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                DebEndDate.EditValue = DateTime.Now.Date.SetEndDay();
                 PrepRawMatStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 PrepRawMatEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-           
+                PlanStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                PlanEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
                 dateEdit2.EditValue = DateTime.Now.Date.AddDays(-30);
                 dateEdit1.EditValue = DateTime.Now.Date.SetEndDay();
@@ -80,7 +97,7 @@ namespace SP_Sklad.MainTabs
 
                 manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 intermediate_weighing_access = manuf_tree.FirstOrDefault(w => w.FunId == 83);
-              
+                xtraTabPage19.PageVisible = intermediate_weighing_access?.CanView == 1;
 
                 RawMaterialManagementStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 RawMaterialManagementEndDate.EditValue = DateTime.Now.Date.SetEndDay();
@@ -88,12 +105,45 @@ namespace SP_Sklad.MainTabs
                 RawMaterialManagementStatus.EditValue = -1;
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
-            
+                WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+                DeboningGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+
                 DocsTreeList.DataSource = manuf_tree;
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
             }
         }
 
+        void GetWBListMake()
+        {
+            if (wbSatusList.EditValue == null || WhComboBox.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
+            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
+
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
+
+            int top_row = WbGridView.TopRowIndex;
+            WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), focused_tree_node.Num, -20, UserSession.UserId).ToList();
+            WbGridView.TopRowIndex = top_row;
+        }
+
+        void GetDeboningList()
+        {
+            if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
+            var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
+
+            int top_row = DeboningGridView.TopRowIndex;
+            DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), focused_tree_node.Num, -22, UserSession.UserId).ToList();
+            DeboningGridView.TopRowIndex = top_row;
+        }
 
         void PreparationRawMaterials()
         {
@@ -135,7 +185,20 @@ namespace SP_Sklad.MainTabs
             PlannedCalculationGridView.TopRowIndex = top_row;
         }
 
-        
+        void GetProductionPlans()
+        {
+            if (lookUpEdit2.EditValue == null /*|| DebWhComboBox.EditValue == null*/ || DocsTreeList.FocusedNode == null)
+            {
+                return;
+            }
+
+            var satrt_date = PlanStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PlanStartDate.DateTime;
+            var end_date = PlanEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PlanEndDate.DateTime;
+
+            int top_row = ProductionPlansGridView.TopRowIndex;
+            ProductionPlansBS.DataSource = DB.SkladBase().ProductionPlansList(satrt_date, end_date, (int)lookUpEdit2.EditValue, DBHelper.CurrentUser.KaId).ToList();
+            ProductionPlansGridView.TopRowIndex = top_row;
+        }
 
         private void DocsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
@@ -226,7 +289,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 1:
-                    
+                    GetWBListMake();
                     break;
 
                 case 2:
@@ -237,11 +300,11 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                  
+                    GetDeboningList();
                     break;
 
                 case 4:
-                  
+                    GetProductionPlans();
                     break;
 
                 case 5:
@@ -349,7 +412,13 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 4:
-                        
+                        var row = ProductionPlansGridView.GetFocusedRow() as ProductionPlansList_Result;
+
+                        using (var f = new frmProductionPlans(row.Id))
+                        {
+                            f.ShowDialog();
+                        }
+
                         break;
 
                     case 5:
@@ -394,18 +463,20 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null)
+            var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
+
+            if (dr == null)
             {
                 return;
             }
 
-            using (var f = new frmTechProcDet(focused_row.WbillId))
+            using (var f = new frmTechProcDet(dr.WbillId))
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == focused_row.WbillId))
+                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == dr.WbillId))
                     {
-                        RefreshTechProcDet(focused_row.WbillId);
+                        RefreshTechProcDet(dr.WbillId);
                     }
                     else
                     {
@@ -418,12 +489,30 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            var dr = TechProcGridView.GetRow(TechProcGridView.FocusedRowHandle) as v_TechProcDet;
+            if (dr != null)
+            {
+                using (var f = new frmTechProcDet(dr.WbillId, dr.DetId))
+                {
+                    var row = WbGridView.GetFocusedRow() as WBListMake_Result;
+                    f.OkButton.Enabled = ( row.Checked != 1 );
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        RefreshTechProcDet(dr.WbillId);
+                    }
+                }
+            }
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            if (MessageBox.Show("Ви дійсно бажаєте видалити запис !", "Видалення запису", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                var dr = TechProcGridView.GetRow(TechProcGridView.FocusedRowHandle) as v_TechProcDet;
+                DB.SkladBase().DeleteWhere<TechProcDet>(w => w.DetId == dr.DetId).SaveChanges();
+
+                RefreshTechProcDet(dr.WbillId);
+            }
         }
 
         private void RefreshTechProcDet(int wbill_id)
@@ -775,8 +864,24 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GetWBListMake();
+        }
 
-      
+        private void DebStartDate_EditValueChanged(object sender, EventArgs e)
+        {
+            GetDeboningList();
+        }
+
+        private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                popupMenu1.ShowPopup(p2);
+            }
+        }
 
         private void PrintItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
