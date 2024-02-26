@@ -183,7 +183,7 @@
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl2);
             this.splitContainerControl2.Panel2.Text = "Panel2";
             this.splitContainerControl2.Size = new System.Drawing.Size(1375, 659);
-            this.splitContainerControl2.SplitterPosition = 227;
+            this.splitContainerControl2.SplitterPosition = 221;
             this.splitContainerControl2.TabIndex = 1;
             this.splitContainerControl2.Text = "splitContainerControl2";
             // 
@@ -424,7 +424,7 @@
             this.repositoryItemImageComboBox1,
             this.CheckedItemImageComboBox,
             this.repositoryItemImageComboBox42});
-            this.WBGridControl.Size = new System.Drawing.Size(1375, 372);
+            this.WBGridControl.Size = new System.Drawing.Size(1375, 378);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -802,7 +802,7 @@
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
-            this.xtraTabControl2.Size = new System.Drawing.Size(1375, 227);
+            this.xtraTabControl2.Size = new System.Drawing.Size(1375, 221);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage15,
@@ -816,7 +816,7 @@
             this.xtraTabPage15.Controls.Add(this.wayBillInDetUserControl);
             this.xtraTabPage15.ImageOptions.ImageIndex = 10;
             this.xtraTabPage15.Name = "xtraTabPage15";
-            this.xtraTabPage15.Size = new System.Drawing.Size(1373, 199);
+            this.xtraTabPage15.Size = new System.Drawing.Size(1373, 193);
             this.xtraTabPage15.Text = "Позиції";
             // 
             // wayBillInDetUserControl
@@ -824,7 +824,7 @@
             this.wayBillInDetUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wayBillInDetUserControl.Location = new System.Drawing.Point(0, 0);
             this.wayBillInDetUserControl.Name = "wayBillInDetUserControl";
-            this.wayBillInDetUserControl.Size = new System.Drawing.Size(1373, 199);
+            this.wayBillInDetUserControl.Size = new System.Drawing.Size(1373, 193);
             this.wayBillInDetUserControl.TabIndex = 0;
             // 
             // xtraTabPage1
