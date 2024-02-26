@@ -412,7 +412,6 @@
             this.ProjectManagementGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.ProjectManagementGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.ProjectManagementGridView.OptionsBehavior.ReadOnly = true;
-            this.ProjectManagementGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.ProjectManagementGridView.OptionsView.ShowGroupPanel = false;
             this.ProjectManagementGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.ProjectManagementGridView_PopupMenuShowing);
             this.ProjectManagementGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.ProjectManagementGridView_FocusedRowObjectChanged);

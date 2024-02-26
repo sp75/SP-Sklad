@@ -182,6 +182,8 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
+            wbKagentList.GetSelectedDataRow();
+
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
@@ -611,10 +613,19 @@ namespace SP_Sklad.UserControls
         }
         private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 1)
+            if(e.Button.Index == 1)
+            {
+                wbKagentList.EditValue = 0;
+            }
+            else if (e.Button.Index == 2)
             {
                 wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
             }
+        }
+
+        private void wbKagentList_Properties_MouseUp(object sender, MouseEventArgs e)
+        {
+            wbKagentList.SelectAll();
         }
     }
 }
