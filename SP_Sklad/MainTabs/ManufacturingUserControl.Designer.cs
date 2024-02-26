@@ -79,10 +79,6 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
-            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.TechProcDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.IntermediateWeighingByWBBS = new System.Windows.Forms.BindingSource(this.components);
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage34 = new DevExpress.XtraTab.XtraTabPage();
             this.ucManufacturingProducts = new SP_Sklad.MainTabs.ucManufacturingProducts();
@@ -106,6 +102,7 @@
             this.repositoryItemImageComboBox16 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl5 = new DevExpress.XtraEditors.PanelControl();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
@@ -277,8 +274,7 @@
             this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
-            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
-            this.ProductionPlansBS = new System.Windows.Forms.BindingSource(this.components);
+            this.IntermediateWeighingByWBBS = new System.Windows.Forms.BindingSource(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -302,10 +298,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).BeginInit();
             this.wbContentTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             this.xtraTabPage34.SuspendLayout();
             this.xtraTabPage35.SuspendLayout();
             this.xtraTabPage36.SuspendLayout();
@@ -325,6 +317,7 @@
             this.panelControl5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).BeginInit();
@@ -425,8 +418,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).BeginInit();
             this.xtraTabPage32.SuspendLayout();
             this.xtraTabPage33.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlansBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -1189,19 +1181,6 @@
             this.xtraTabPage32,
             this.xtraTabPage33});
             // 
-            // WBListMakeBS
-            // 
-            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // TechProcDetBS
-            // 
-            this.TechProcDetBS.DataSource = typeof(SP_Sklad.SkladData.v_TechProcDet);
-            // 
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
@@ -1438,6 +1417,11 @@
             this.dateEdit1.StyleController = this.styleController1;
             this.dateEdit1.TabIndex = 3;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit2_EditValueChanged);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // labelControl13
             // 
@@ -3365,14 +3349,6 @@
             this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 632);
             this.ucWaybillWriteOn.TabIndex = 0;
             // 
-            // DeboningBS
-            // 
-            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
-            // 
-            // ProductionPlansBS
-            // 
-            this.ProductionPlansBS.DataSource = typeof(SP_Sklad.SkladData.ProductionPlansList_Result);
-            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -3462,10 +3438,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).EndInit();
             this.wbContentTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TechProcDetBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             this.xtraTabPage34.ResumeLayout(false);
             this.xtraTabPage35.ResumeLayout(false);
             this.xtraTabPage36.ResumeLayout(false);
@@ -3486,6 +3458,7 @@
             this.panelControl5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).EndInit();
@@ -3589,8 +3562,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).EndInit();
             this.xtraTabPage32.ResumeLayout(false);
             this.xtraTabPage33.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductionPlansBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -3637,15 +3609,11 @@
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private System.Windows.Forms.BindingSource WBListMakeBS;
-        private System.Windows.Forms.BindingSource DeboningBS;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private System.Windows.Forms.BindingSource TechProcDetBS;
-        private System.Windows.Forms.BindingSource ProductionPlansBS;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage17;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl5;
         private DevExpress.XtraGrid.GridControl gridControl8;

@@ -2225,6 +2225,55 @@ warning 6002: The table/view 'sp_base.dbo.v_DeboningDet' does not have a primary
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_DeboningProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_DeboningProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="OnDateOut" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WbillId" Type="int" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="255" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="SummAll" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
+          <Property Name="RecipeName" Type="varchar" MaxLength="255" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="AmountIn" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MakedPerson" Type="nvarchar" MaxLength="100" />
+          <Property Name="MId" Type="int" Nullable="false" />
+          <Property Name="OnDateOut" Type="datetime" Nullable="false" />
+          <Property Name="AmountOut" Type="numeric" Precision="38" Scale="8" />
+          <Property Name="WriteOnDate" Type="datetime" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="DocStatus" Type="varchar" MaxLength="21" Nullable="false" />
+          <Property Name="Price" Type="numeric" Precision="38" Scale="17" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GrpId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DiscCards">
           <Key>
@@ -9920,6 +9969,38 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DeboningDet].[MsrName] AS [MsrName]
     FROM [dbo].[v_DeboningDet] AS [v_DeboningDet]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_DeboningProducts" EntityType="Self.v_DeboningProducts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_DeboningProducts].[Id] AS [Id], 
+    [v_DeboningProducts].[WbillId] AS [WbillId], 
+    [v_DeboningProducts].[Num] AS [Num], 
+    [v_DeboningProducts].[OnDate] AS [OnDate], 
+    [v_DeboningProducts].[Reason] AS [Reason], 
+    [v_DeboningProducts].[Checked] AS [Checked], 
+    [v_DeboningProducts].[SummAll] AS [SummAll], 
+    [v_DeboningProducts].[WType] AS [WType], 
+    [v_DeboningProducts].[Notes] AS [Notes], 
+    [v_DeboningProducts].[PersonName] AS [PersonName], 
+    [v_DeboningProducts].[RecipeName] AS [RecipeName], 
+    [v_DeboningProducts].[MatName] AS [MatName], 
+    [v_DeboningProducts].[AmountIn] AS [AmountIn], 
+    [v_DeboningProducts].[MatId] AS [MatId], 
+    [v_DeboningProducts].[MsrName] AS [MsrName], 
+    [v_DeboningProducts].[KaName] AS [KaName], 
+    [v_DeboningProducts].[MakedPerson] AS [MakedPerson], 
+    [v_DeboningProducts].[MId] AS [MId], 
+    [v_DeboningProducts].[OnDateOut] AS [OnDateOut], 
+    [v_DeboningProducts].[AmountOut] AS [AmountOut], 
+    [v_DeboningProducts].[WriteOnDate] AS [WriteOnDate], 
+    [v_DeboningProducts].[WhName] AS [WhName], 
+    [v_DeboningProducts].[WId] AS [WId], 
+    [v_DeboningProducts].[DocStatus] AS [DocStatus], 
+    [v_DeboningProducts].[Price] AS [Price], 
+    [v_DeboningProducts].[Artikul] AS [Artikul], 
+    [v_DeboningProducts].[UserId] AS [UserId], 
+    [v_DeboningProducts].[GrpId] AS [GrpId]
+    FROM [dbo].[v_DeboningProducts] AS [v_DeboningProducts]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="Self.v_DiscCards" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_DiscCards].[CardId] AS [CardId], 
@@ -14384,6 +14465,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WaybillWriteOff" EntityType="BaseModel.v_WaybillWriteOff" />
           <EntitySet Name="v_WaybillInventory" EntityType="BaseModel.v_WaybillInventory" />
           <EntitySet Name="v_ManufacturingProducts" EntityType="BaseModel.v_ManufacturingProducts" />
+          <EntitySet Name="v_DeboningProducts" EntityType="BaseModel.v_DeboningProducts" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -23696,6 +23778,53 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatOut" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="v_DeboningProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WbillId" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="AmountIn" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="MId" />
+            <PropertyRef Name="OnDateOut" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="DocStatus" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WbillId" Type="Int32" Nullable="false" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Reason" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="SummAll" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AmountIn" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MakedPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MId" Type="Int32" Nullable="false" />
+          <Property Name="OnDateOut" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AmountOut" Type="Decimal" Precision="38" Scale="8" />
+          <Property Name="WriteOnDate" Type="DateTime" Precision="3" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="DocStatus" Type="String" Nullable="false" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="38" Scale="17" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GrpId" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -30064,6 +30193,40 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CurrId" ColumnName="CurrId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_DeboningProducts">
+            <EntityTypeMapping TypeName="BaseModel.v_DeboningProducts">
+              <MappingFragment StoreEntitySet="v_DeboningProducts">
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="WriteOnDate" ColumnName="WriteOnDate" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="OnDateOut" ColumnName="OnDateOut" />
+                <ScalarProperty Name="MId" ColumnName="MId" />
+                <ScalarProperty Name="MakedPerson" ColumnName="MakedPerson" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="SummAll" ColumnName="SummAll" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />

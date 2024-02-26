@@ -235,9 +235,8 @@ namespace SP_Sklad.MainTabs
             else if (focused_tree_node.GType.Value == 3)
             {
                 bar1.Visible = false;
-                ucDeboningProducts.grp_id = focused_tree_node.Num;
                 wbContentTab.SelectedTabPageIndex = 3;
-                ucDeboningProducts.GetDeboningList();
+                ucDeboningProducts.GetDeboningList(focused_tree_node.Num);
             }
             else if (focused_tree_node.GType.Value == 4)
             {

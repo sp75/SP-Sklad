@@ -515,6 +515,9 @@
     <Compile Include="MainTabs\OLD_ManufacturingUserControl.Designer.cs">
       <DependentUpon>OLD_ManufacturingUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_DeboningProducts.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_ManufacturingProducts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

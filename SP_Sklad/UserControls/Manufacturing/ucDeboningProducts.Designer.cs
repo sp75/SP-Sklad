@@ -58,13 +58,15 @@
             this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.StopProcesBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DeboningGridControl = new DevExpress.XtraGrid.GridControl();
-            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
+            this.DeboningProductsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.DeboningGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,6 +92,7 @@
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.DebStartDate = new DevExpress.XtraEditors.DateEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
+            this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.DeboningDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.DeboningDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -123,6 +126,7 @@
             this.gridColumn242 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn243 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn244 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.DeboningBS = new System.Windows.Forms.BindingSource(this.components);
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.WbGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -130,8 +134,6 @@
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
-            this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -145,9 +147,9 @@
             this.splitContainerControl3.Panel2.SuspendLayout();
             this.splitContainerControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -161,6 +163,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DebStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).BeginInit();
             this.xtraTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridView)).BeginInit();
@@ -174,10 +177,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -227,8 +229,9 @@
             this.StopProcesBtn,
             this.barButtonItem4,
             this.barButtonItem7,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 26;
+            this.barButtonItem8,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 27;
             // 
             // bar1
             // 
@@ -475,6 +478,8 @@
             this.BarImageList.Images.SetKeyName(10, "order_info");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.BarImageList.Images.SetKeyName(11, "w_scale");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList.Images.SetKeyName(12, "converttorange_16x16");
             // 
             // StopProcesBtn
             // 
@@ -491,6 +496,14 @@
             this.barButtonItem4.ImageOptions.ImageIndex = 10;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem1.Id = 26;
+            this.barButtonItem1.ImageOptions.ImageIndex = 12;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // panelControl1
             // 
@@ -525,7 +538,7 @@
             // 
             // DeboningGridControl
             // 
-            this.DeboningGridControl.DataSource = this.DeboningBS;
+            this.DeboningGridControl.DataSource = this.DeboningProductsSource;
             this.DeboningGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeboningGridControl.Location = new System.Drawing.Point(0, 50);
             this.DeboningGridControl.MainView = this.DeboningGridView;
@@ -538,9 +551,13 @@
             this.DeboningGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.DeboningGridView});
             // 
-            // DeboningBS
+            // DeboningProductsSource
             // 
-            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            this.DeboningProductsSource.AreSourceRowsThreadSafe = true;
+            this.DeboningProductsSource.DefaultSorting = "OnDate DESC";
+            this.DeboningProductsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_DeboningProducts);
+            this.DeboningProductsSource.KeyExpression = "WbillId";
+            this.DeboningProductsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.DeboningProductsSource_GetQueryable);
             // 
             // DeboningGridView
             // 
@@ -568,6 +585,8 @@
             this.DeboningGridView.OptionsView.ShowGroupPanel = false;
             this.DeboningGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.DeboningGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.DeboningGridView_FocusedRowObjectChanged);
+            this.DeboningGridView.ColumnFilterChanged += new System.EventHandler(this.DeboningGridView_ColumnFilterChanged);
+            this.DeboningGridView.AsyncCompleted += new System.EventHandler(this.DeboningGridView_AsyncCompleted);
             this.DeboningGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn22
@@ -592,6 +611,21 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 3)});
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.GridImageList;
+            // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "new_document");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "checked_blue");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "checked_green");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "deboneing");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.GridImageList.Images.SetKeyName(4, "w_scale");
             // 
             // gridColumn23
             // 
@@ -678,8 +712,7 @@
             // gridColumn58
             // 
             this.gridColumn58.Caption = "Цех";
-            this.gridColumn58.FieldName = "FromWh";
-            this.gridColumn58.MinWidth = 230;
+            this.gridColumn58.FieldName = "WhName";
             this.gridColumn58.Name = "gridColumn58";
             this.gridColumn58.Visible = true;
             this.gridColumn58.VisibleIndex = 9;
@@ -883,6 +916,23 @@
             this.xtraTabPage5,
             this.xtraTabPage31});
             this.xtraTabControl1.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl1_SelectedPageChanged);
+            // 
+            // PageImageList
+            // 
+            this.PageImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("PageImageList.ImageStream")));
+            this.PageImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.teh_process, "teh_process", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.PageImageList.Images.SetKeyName(0, "teh_process");
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.info_2, "info_2", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.PageImageList.Images.SetKeyName(1, "info_2");
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.PageImageList.Images.SetKeyName(2, "product");
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.PageImageList.Images.SetKeyName(3, "RelDoc3");
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.PageImageList.Images.SetKeyName(4, "mat_pos_wh_1");
+            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.PageImageList.Images.SetKeyName(5, "weightedpies_16x16");
             // 
             // xtraTabPage3
             // 
@@ -1216,6 +1266,10 @@
             this.gridColumn244.VisibleIndex = 3;
             this.gridColumn244.Width = 155;
             // 
+            // DeboningBS
+            // 
+            this.DeboningBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
+            // 
             // treeListColumn1
             // 
             this.treeListColumn1.Caption = "Назва";
@@ -1242,6 +1296,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.StopProcesBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
             this.WbGridPopupMenu.Manager = this.barManager1;
             this.WbGridPopupMenu.Name = "WbGridPopupMenu";
@@ -1272,38 +1328,6 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.GridImageList.Images.SetKeyName(0, "new_document");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.GridImageList.Images.SetKeyName(1, "checked_blue");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.GridImageList.Images.SetKeyName(2, "checked_green");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.GridImageList.Images.SetKeyName(3, "deboneing");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.GridImageList.Images.SetKeyName(4, "w_scale");
-            // 
-            // PageImageList
-            // 
-            this.PageImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("PageImageList.ImageStream")));
-            this.PageImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.teh_process, "teh_process", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.PageImageList.Images.SetKeyName(0, "teh_process");
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.info_2, "info_2", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.PageImageList.Images.SetKeyName(1, "info_2");
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.PageImageList.Images.SetKeyName(2, "product");
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.RelDoc3, "RelDoc3", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.PageImageList.Images.SetKeyName(3, "RelDoc3");
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.PageImageList.Images.SetKeyName(4, "mat_pos_wh_1");
-            this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.PageImageList.Images.SetKeyName(5, "weightedpies_16x16");
-            // 
             // ucDeboningProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1331,9 +1355,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl3)).EndInit();
             this.splitContainerControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -1348,6 +1372,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DebStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeboningDetGridControl)).EndInit();
@@ -1362,10 +1387,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DeboningBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1474,5 +1498,7 @@
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection BarImageList;
         private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource DeboningProductsSource;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

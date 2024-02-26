@@ -200,7 +200,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 23),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 24, 22),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 7),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 28)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 20, 28),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 5)});
             this.repositoryItemImageComboBox6.Name = "repositoryItemImageComboBox6";
             this.repositoryItemImageComboBox6.SmallImages = this.DocTypeImageCollection;
             // 

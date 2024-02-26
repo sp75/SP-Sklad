@@ -29,8 +29,6 @@ namespace SP_Sklad.MainTabs
         private UserSettingsRepository user_settings { get; set; }
 
         private GetManufactureTree_Result focused_tree_node { get; set; }
-        private WBListMake_Result focused_row { get; set; }
-        private ProductionPlansList_Result pp_focused_row { get; set; }
         private v_PlannedCalculation pc_focused_row { get; set; }
         private PreparationRawMaterialsList_Result focused_prep_raw_mat_row { get; set; }
         private v_IntermediateWeighing intermediate_weighing_focused_row { get; set; }
@@ -172,9 +170,8 @@ namespace SP_Sklad.MainTabs
             else if (focused_tree_node.GType.Value == 3)
             {
                 bar1.Visible = false;
-                ucDeboningProducts.grp_id = focused_tree_node.Num;
                 wbContentTab.SelectedTabPageIndex = 3;
-                ucDeboningProducts.GetDeboningList();
+                ucDeboningProducts.GetDeboningList(focused_tree_node.Num);
             }
             else if (focused_tree_node.GType.Value == 4)
             {
@@ -341,11 +338,11 @@ namespace SP_Sklad.MainTabs
                 switch (focused_tree_node.GType)
                 {
                     case 1:
-                        ManufDocEdit.WBEdit(focused_row.WType, focused_row.WbillId);
+
                         break;
 
                     case 3:
-                        ManufDocEdit.WBEdit(focused_row.WType, focused_row.WbillId);
+
                         break;
 
                     case 4:
@@ -394,25 +391,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null)
-            {
-                return;
-            }
-
-            using (var f = new frmTechProcDet(focused_row.WbillId))
-            {
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    if (DB.SkladBase().WaybillList.Any(a => a.WbillId == focused_row.WbillId))
-                    {
-                        RefreshTechProcDet(focused_row.WbillId);
-                    }
-                    else
-                    {
-                        RefrechItemBtn.PerformClick();
-                    }
-                }
-            }
+            
 
         }
 
@@ -426,16 +405,6 @@ namespace SP_Sklad.MainTabs
            
         }
 
-        private void RefreshTechProcDet(int wbill_id)
-        {
-            TechProcDetBS.DataSource = null;
-            TechProcDetBS.DataSource = DB.SkladBase().v_TechProcDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
-        }
-
-        private void TechProcGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditTechProcBtn.PerformClick();
-        }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
@@ -448,76 +417,9 @@ namespace SP_Sklad.MainTabs
             {
                 switch (focused_tree_node.GType)
                 {
-                    case 3:
-                    case 1:
-                        if (focused_row == null)
-                        {
-                            return;
-                        }
-
-                        var wb = db.WaybillList.Find(focused_row.WbillId);
-                        if (wb == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (wb.SessionId != null)
-                        {
-                            MessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-
-                        if (wb.Checked == 2)
-                        {
-                            if ((wb.WType == -20 && (focused_row.ShippedAmount ?? 0) == 0) || wb.WType == -22)
-                            {
-                                DBHelper.StornoOrder(db, focused_row.WbillId);
-                            }
-                            else if (wb.WType == -20)
-                            {
-                                MessageBox.Show("Частина товару вже відгружена на склад!");
-                            }
-                        }
-                        else
-                        {
-                            DBHelper.ExecuteOrder(db, focused_row.WbillId);
-                        }
-
-                        break;
 
                     case 4:
-                        if (pp_focused_row == null)
-                        {
-                            return;
-                        }
-
-                        var pp = db.ProductionPlans.Find(pp_focused_row.Id);
-
-                        if (pp == null)
-                        {
-                            MessageBox.Show(Resources.not_find_wb);
-                            return;
-                        }
-                        if (pp.SessionId != null)
-                        {
-                            MessageBox.Show(Resources.deadlock);
-                            return;
-                        }
-
-                        var rel = db.GetRelDocList(pp_focused_row.Id).OrderBy(o => o.OnDate).ToList();
-                        if (rel.Any())
-                        {
-                            MessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
-                        }
-
-                        if (pp.Checked == 1)
-                        {
-                            pp.Checked = 0;
-                        }
-
-                        db.SaveChanges();
+                       
                         break;
 
                     case 6:
@@ -629,7 +531,7 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (focused_row == null && pp_focused_row == null && pc_focused_row == null && focused_prep_raw_mat_row == null && intermediate_weighing_focused_row == null && focused_raw_material_management == null)
+            if (  pc_focused_row == null && focused_prep_raw_mat_row == null && intermediate_weighing_focused_row == null && focused_raw_material_management == null)
             {
                 return;
             }
@@ -643,42 +545,14 @@ namespace SP_Sklad.MainTabs
                         switch (focused_tree_node.GType)
                         {
                             case 1:
-                                var wb1 = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
-                                if (wb1 != null)
-                                {
-                                    if (!db.IntermediateWeighing.Any(w => w.WbillId == wb1.WbillId))
-                                    {
-                                        db.WaybillList.Remove(wb1);
-                                    }
-                                    else
-                                    {
-                                        MessageBox.Show(Resources.not_storno_wb);
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show(Resources.deadlock);
-                                }
+                               
                                 break;
 
                             case 3:
-                                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == focused_row.WbillId && w.SessionId == null);
-                                if (wb != null)
-                                {
-                                    db.WaybillList.Remove(wb);
-                                }
-                                else
-                                {
-                                    MessageBox.Show(Resources.deadlock);
-                                }
+                                
                                 break;
 
                             case 4:
-                                var pp = db.ProductionPlans.FirstOrDefault(w => w.Id == pp_focused_row.Id && w.SessionId == null);
-                                if (pp != null)
-                                {
-                                    db.ProductionPlans.Remove(pp);
-                                }
 
                                 break;
 
@@ -744,7 +618,7 @@ namespace SP_Sklad.MainTabs
                 {
                     case 1:
                     case 3:
-                        wb_id = focused_row.WbillId;
+                     
                         break;
 
                     case 6:
@@ -788,15 +662,15 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType.Value)
             {
                 case 1:
-                    PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
+                   
                     break;
 
                 case 3:
-                    PrintDoc.Show(focused_row.Id, focused_row.WType, DB.SkladBase());
+                   
                     break;
 
                 case 4:
-                    PrintDoc.Show(pp_focused_row.Id, 21, DB.SkladBase());
+                  
                     break;
 
                 case 5:
@@ -813,7 +687,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowOrdered(0, 0, focused_row.MatId);
+            
         }
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -821,31 +695,15 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    var doc = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-                    using (var wb_in = new frmWBManufacture(doc.out_wbill_id))
-                    {
-                        wb_in.is_new_record = true;
-                        wb_in.ShowDialog();
-                    }
+                    
                     break;
 
                 case 3:
-                    var doc2 = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-                    using (var wb_in = new frmWBDeboning(doc2.out_wbill_id))
-                    {
-                        wb_in.is_new_record = true;
-                        wb_in.ShowDialog();
-                    }
+                    
                     break;
 
                 case 4:
-                    var new_pp = DB.SkladBase().DocCopy(pp_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-                    using (var wb_in = new frmProductionPlans(new_pp.out_doc_id))
-                    {
-                        wb_in.is_new_record = true;
-                        wb_in.ShowDialog();
-                    }
-
+                  
                     break;
                 case 5:
                     var pc_copy = DB.SkladBase().DocCopy(pc_focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
@@ -880,251 +738,46 @@ namespace SP_Sklad.MainTabs
             
         }
 
-        private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            focused_row = e.Row as WBListMake_Result;
-
-            xtraTabControl2_SelectedPageChanged(sender, null);
-       
-            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
-            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_row != null);
-            //  OkButton->Enabled =  !WayBillList->IsEmpty();
-            ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
-            PrintItemBtn.Enabled = (focused_row != null);
-
-            AddTechProcBtn.Enabled = (focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1);
-
-            AddIntermediateWeighing.Enabled = (focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanInsert == 1);
-           
-        }
-
-        private void DeboningGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as WBListMake_Result;
-
-            xtraTabControl1_SelectedPageChanged(sender, null);
-
-            StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && focused_tree_node.CanPost == 1);
-            DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            EditItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_row != null);
-            ExecuteItemBtn.Enabled = (focused_row != null && focused_tree_node.CanPost == 1);
-            PrintItemBtn.Enabled = (focused_row != null);
-        }
-
         private void barButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-             var dr = WbGridView.GetRow(WbGridView.FocusedRowHandle) as WBListMake_Result;
-
-             var f = new frmWayBillMakePropsDet(dr.WbillId);
-             if (f.ShowDialog() == DialogResult.OK)
-             {
-                 RefreshAtribute(dr.WbillId);
-             }
+            
         }
 
         private void RefreshAtribute(int wbill_id)
         {
-            AttributeGridControl.DataSource = DB.SkladBase().WayBillMakeProps.Where(w => w.WbillId == wbill_id).Select(s => new
-            {
-                s.Id,
-                s.Materials.Name,
-                s.OnDate,
-                s.Amount,
-                PersonName = s.Kagent.Name,
-                s.WbillId,
-                Weight = s.Amount * s.Materials.Weight
-            }).OrderBy(o => o.OnDate).ToList();
+            
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = AttributeGridView.GetFocusedRow() as dynamic;
-            int id = dr.Id;
-
-            DB.SkladBase().DeleteWhere<WayBillMakeProps>(w => w.Id == id);
-
-            RefreshAtribute(dr.WbillId);
+          
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = AttributeGridView.GetFocusedRow() as dynamic;
-            if (dr != null)
-            {
-                var f = new frmWayBillMakePropsDet(dr.WbillId, dr.Id);
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshAtribute(dr.WbillId);
-                }
-            }
+           
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ExportToXlsx(WBGridControl);
+           
         }
 
-        private void ProductionPlansGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            pp_focused_row = ((GridView)sender).GetRow(e.FocusedRowHandle) as ProductionPlansList_Result;
 
-            if (pp_focused_row != null)
-            {
-                using (var db = DB.SkladBase())
-                {
-                    gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).OrderBy(o => o.Num).ToList();
-                    ucRelDocGrid3.GetRelDoc(pp_focused_row.Id);
-                }
-            }
-            else
-            {
-                gridControl6.DataSource = null;
-                ucRelDocGrid3.GetRelDoc(Guid.Empty);
-            }
-
-            DeleteItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            EditItemBtn.Enabled = (pp_focused_row != null && pp_focused_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            ExecuteItemBtn.Enabled = (pp_focused_row != null && focused_tree_node.CanPost == 1);
-            PrintItemBtn.Enabled = (pp_focused_row != null);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && pp_focused_row != null);
-        }
-
-        private void PlanStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            GetProductionPlans();
-        }
-
-        private void TechProcGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            using (var db = new BaseEntities())
-            {
-                if (e.Column.FieldName == "Notes")
-                {
-                    var row = TechProcGridView.GetFocusedRow() as v_TechProcDet;
-                    var wbd = db.TechProcDet.FirstOrDefault(w => w.DetId == row.DetId);
-                    wbd.Notes = Convert.ToString(e.Value);
-                }
-
-                db.SaveChanges();
-            }
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            using (var frm = new frmSchedulingOrders())
-            {
-                frm.ShowDialog();
-            }
-        }
 
         private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (focused_row == null)
-            {
-                TechProcDetBS.DataSource = null;
-                WayBillMakeDetGridControl.DataSource = null;
-                ucRelDocGrid1.GetRelDoc(Guid.Empty);
-                ManufacturedPosGridControl.DataSource = null;
-                IntermediateWeighingByWBBS.DataSource = null;
-                return;
-            }
 
-            using (var db = DB.SkladBase())
-            {
-                switch (xtraTabControl2.SelectedTabPageIndex)
-                {
-                    case 0:
-                        RefreshTechProcDet(focused_row.WbillId);
-                        break;
-
-                    case 1:
-                        RefreshAtribute(focused_row.WbillId);
-                        break;
-
-                    case 2:
-                        WayBillMakeDetGridControl.DataSource = db.GetWayBillMakeDet(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
-                        WayBillMakeDetGridView.ExpandAllGroups();
-                        break;
-
-                    case 3:
-                        ucRelDocGrid1.GetRelDoc(focused_row.Id);
-                        break;
-
-                    case 4:
-                        ManufacturedPosGridControl.DataSource = db.Database.SqlQuery<GetManufacturedPos_Result>(string.Format("select * from GetManufacturedPos('{0}')", focused_row.Id)).ToList();
-                        break;
-
-                    case 5:
-                        RefreshIntermediateWeighing();
-                        break;
-                }
-            }
         }
 
         private void RefreshIntermediateWeighing()
         {
-            if(focused_row == null)
-            {
-                return;
-            }
 
-            int top_row = IntermediateWeighingByWbGridView.TopRowIndex;
-
-            using (var db = DB.SkladBase())
-            {
-                IntermediateWeighingByWBBS.DataSource = db.IntermediateWeighing.Where(w => w.WbillId == focused_row.WbillId).OrderBy(o => o.OnDate).Select(s => new IntermediateWeighingView
-                {
-                    Id = s.Id,
-                    OnDate = s.OnDate,
-                    Checked = s.Checked,
-                    Num = s.Num,
-                    PersonName = s.Kagent.Name,
-                    Amount = s.Amount
-                }).ToList();
-            }
-
-            IntermediateWeighingByWbGridView.TopRowIndex = top_row;
-        }
-
-        public class IntermediateWeighingView
-        {
-            public Guid Id { get; set; }
-            public DateTime OnDate { get; set; }
-            public int Checked { get; set; }
-            public string Num { get; set; }
-            public string PersonName { get; set; }
-            public Decimal? Amount { get; set; }
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (focused_row == null)
-            {
-                gridControl4.DataSource = null;
-                ucRelDocGrid2.GetRelDoc(Guid.Empty);
-                return;
-            }
-
-            using (var db = DB.SkladBase())
-            {
-                switch (xtraTabControl1.SelectedTabPageIndex)
-                {
-                    case 0:
-                        DeboningDetGridControl.DataSource = db.v_DeboningDet.Where(w => w.WBillId == focused_row.WbillId).ToList();
-                        break;
-
-                    case 1:
-                        gridControl4.DataSource = db.GetWayBillDetOut(focused_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
-                        break;
-
-                    case 2:
-                        ucRelDocGrid2.GetRelDoc(focused_row.Id);
-                        break;
-                }
-            }
+           
         }
 
         private void dateEdit2_EditValueChanged(object sender, EventArgs e)
@@ -1155,47 +808,16 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (pc_focused_row != null);
         }
 
-        private void TechProcGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
-
-            DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && focused_tree_node.CanModify == 1) && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = (focused_row != null && focused_tree_node.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/); 
-        }
-
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\WbGridView");
-            DeboningGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ManufacturingUserControl\\DeboningGridView");
-        }
+      
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dynamic dr = IntermediateWeighingByWbGridView.GetFocusedRow() ;
-            if (dr != null)
-            {
-                using (var wb_iw = new frmIntermediateWeighing(focused_row.WbillId, dr.Id))
-                {
-                    if(wb_iw.ShowDialog() == DialogResult.OK)
-                    {
-                        RefreshIntermediateWeighing();
-                    }
-                }
-            }
+            
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Ви дійсно бажаєте видалити проміжкове зважування!", "Видалення запису", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                dynamic dr = IntermediateWeighingByWbGridView.GetFocusedRow();
-                if (dr != null)
-                {
-                    Guid id = dr.Id;
-                    DB.SkladBase().DeleteWhere<IntermediateWeighing>(w => w.Id == id);
-                    RefreshIntermediateWeighing();
-                }
-            }
+           
         }
 
         private void IntermediateWeighingGridView_DoubleClick(object sender, EventArgs e)
@@ -1205,41 +827,9 @@ namespace SP_Sklad.MainTabs
 
         private void AddIntermediateWeighing_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var wb_iw = new frmIntermediateWeighing(focused_row.WbillId, null))
-            {
-                if (wb_iw.ShowDialog() == DialogResult.OK)
-                {
-                    RefreshIntermediateWeighing();
-                }
-            }
+           
         }
 
-        private void IntermediateWeighingGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            focused_row = WbGridView.GetFocusedRow() as WBListMake_Result;
-
-            DelIntermediateWeighing.Enabled = ((focused_row != null && focused_row.Checked == 0 && intermediate_weighing_access?.CanDelete == 1) && IntermediateWeighingByWbGridView.DataRowCount > 0);
-            EditIntermediateWeighing.Enabled = (focused_row != null &&  focused_row.Checked == 0 && intermediate_weighing_access?.CanModify == 1 && IntermediateWeighingByWbGridView.DataRowCount > 0 );
-        }
-
-        private void WbGridView_RowStyle(object sender, RowStyleEventArgs e)
-        {
-      /*      if (e.RowHandle < 0)
-            {
-                return;
-            }
-
-            var wh_row = WbGridView.GetRow(e.RowHandle) as WBListMake_Result;
-
-            if (wh_row != null )
-            {
-              //  var mat_out = wh_row.AmountIn > 0 ? (wh_row.AmountOut / wh_row.AmountIn) * 100.00m : 0;
-                if ((Math.Abs(wh_row.MatRecipeOut - wh_row.MatOut.Value) > wh_row.Deviation) && wh_row.WType != 0)
-                {
-                    e.Appearance.ForeColor = Color.Red;
-                }
-            }*/
-        }
 
         private void PreparationRawMaterialsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
@@ -1312,26 +902,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem8_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var mat_list = DB.SkladBase().GetWayBillMakeDet(focused_row.WbillId).OrderBy(o => o.Num).ToList().Select(s => new make_det
-            {
-                MatName = s.MatName,
-                MsrName = s.MsrName,
-                AmountByRecipe = s.AmountByRecipe,
-                AmountIntermediateWeighing = s.AmountIntermediateWeighing,
-                MatId = s.MatId,
-                WbillId = focused_row.WbillId,
-          //      RecipeCount = wbm.RecipeCount,
-                IntermediateWeighingCount = DB.SkladBase().v_IntermediateWeighingDet.Where(w => w.WbillId == focused_row.WbillId && w.MatId == s.MatId).Count(),
-          //      TotalWeightByRecipe = wbm.AmountByRecipe
-            }).ToList();
-
-            using (var f = new frmIntermediateWeighingList(mat_list))
-            {
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                   ;
-                }
-            }
+            
         }
 
         private void IntermediateWeighingStartDate_EditValueChanged(object sender, EventArgs e)
@@ -1517,24 +1088,7 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int pos_id=0;
-            switch (xtraTabControl2.SelectedTabPageIndex)
-            {
-                case 2:
-                    var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
-                    pos_id = row.PosId;
-                    break;
 
-                case 4:
-                    var row2 = ManufacturedPosGridView.GetFocusedRow() as GetManufacturedPos_Result;
-                    pos_id = row2.PosId;
-                    break;
-            }
-
-            var can_modify = (focused_tree_node.CanModify == 1 && focused_tree_node.CanPost == 1);
-            IHelper.ShowWayBillDetInfo(pos_id, can_modify);
-
-            RefrechItemBtn.PerformClick();
         }
 
         private void WayBillMakeDetGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)

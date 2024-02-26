@@ -112,7 +112,7 @@ namespace SP.Reports
                     break;
 
                 case 56:
-                    result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate)
+                    result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate).OrderBy(o=> o.OnDate)
                         .Select(s => new
                         {
                             НомерДокументу = s.WbNum,

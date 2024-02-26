@@ -30,14 +30,21 @@ namespace SP_Sklad.MainTabs
 
         private int w_type = -22;
         private int fun_id = 72;
+        private int _grp_id { get; set; }
 
         private UserSettingsRepository user_settings { get; set; }
         private UserAccess user_access { get; set; }
 
-        private WBListMake_Result focused_row => DeboningGridView.GetFocusedRow() as WBListMake_Result;
+        private v_DeboningProducts focused_row => DeboningGridView.GetFocusedRow() as v_DeboningProducts;
 
         public int grp_id { get; set; }
+        private int prev_focused_id = 0;
+        private int prev_top_row_index = 0;
+        private int prev_rowHandle = 0;
+        private int? find_id { get; set; }
+        private bool _restore { get; set; }
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         public ucDeboningProducts()
         {
             InitializeComponent();
@@ -50,12 +57,13 @@ namespace SP_Sklad.MainTabs
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
+            DeboningGridView.SaveLayoutToStream(wh_layout_stream);
             DeboningGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
             if (!DesignMode)
             {
-                DebWhComboBox.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-                DebWhComboBox.EditValue = "*";
+                DebWhComboBox.Properties.DataSource = new List<WhList>() { new WhList { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList).ToList();
+                DebWhComboBox.EditValue = -1;
                 DebSatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
                 DebSatusList.EditValue = -1;
 
@@ -69,6 +77,7 @@ namespace SP_Sklad.MainTabs
                 user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
         }
+
         public void NewItem()
         {
             using (var wb_make = new frmWBDeboning(null))
@@ -76,6 +85,7 @@ namespace SP_Sklad.MainTabs
                 wb_make.ShowDialog();
             }
         }
+
         public void EditItem()
         {
             if (focused_row == null)
@@ -157,17 +167,9 @@ namespace SP_Sklad.MainTabs
                     return;
                 }
 
-
                 if (wb.Checked == 2)
                 {
-                    if ((wb.WType == -20 && (focused_row.ShippedAmount ?? 0) == 0) || wb.WType == -22)
-                    {
-                        DBHelper.StornoOrder(db, focused_row.WbillId);
-                    }
-                    else if (wb.WType == -20)
-                    {
-                        MessageBox.Show("Частина товару вже відгружена на склад!");
-                    }
+                    DBHelper.StornoOrder(db, focused_row.WbillId);
                 }
                 else
                 {
@@ -183,52 +185,84 @@ namespace SP_Sklad.MainTabs
 
         public void FindItem(Guid id, DateTime on_date)
         {
+            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+
             DeboningGridView.ClearColumnsFilter();
             DeboningGridView.ClearFindFilter();
             PeriodComboBoxEdit.SelectedIndex = 0;
             DebStartDate.DateTime = on_date.Date;
             DebEndDate.DateTime = on_date.Date.SetEndDay();
-            DebWhComboBox.EditValue = "*";
+            DebWhComboBox.EditValue = -1;
             DebSatusList.EditValue = -1;
-            GetDeboningList();
 
-            int rowHandle = DeboningGridView.LocateByValue("Id", id);
-            if (rowHandle != GridControl.InvalidRowHandle)
-            {
-                DeboningGridView.FocusedRowHandle = rowHandle;
-            }
+            GetDeboningList(true);
+            /*    int rowHandle = DeboningGridView.LocateByValue("Id", id);
+                if (rowHandle != GridControl.InvalidRowHandle)
+                {
+                    DeboningGridView.FocusedRowHandle = rowHandle;
+                }*/
         }
 
-        public void GetDeboningList()
+        public void GetDeboningList(int grp_id)
         {
-            if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null)
+            _grp_id = grp_id;
+            GetDeboningList(false);
+        }
+
+        public void GetDeboningList(bool restore)
+        {
+            _restore = restore;
+
+            /*   if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null)
+               {
+                   return;
+               }
+
+               var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
+               var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
+
+               int top_row = DeboningGridView.TopRowIndex;
+               DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), grp_id, -22, UserSession.UserId).ToList();
+               DeboningGridView.TopRowIndex = top_row;*/
+
+            prev_rowHandle = DeboningGridView.FocusedRowHandle;
+
+            if (focused_row != null && !find_id.HasValue)
             {
-                return;
+                prev_top_row_index = DeboningGridView.TopRowIndex;
+                prev_focused_id = focused_row.WbillId;
             }
 
-            var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
-            var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
+            if (find_id.HasValue)
+            {
+                prev_top_row_index = -1;
+                prev_focused_id = find_id.Value;
+                find_id = null;
+            }
 
-            int top_row = DeboningGridView.TopRowIndex;
-            DeboningBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)DebSatusList.EditValue, DebWhComboBox.EditValue.ToString(), grp_id, -22, UserSession.UserId).ToList();
-            DeboningGridView.TopRowIndex = top_row;
+            _restore = restore;
+
+            DeboningGridControl.DataSource = null;
+            DeboningGridControl.DataSource = DeboningProductsSource;
+
+            SetWBEditorBarBtn();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            GetDeboningList();
+            GetDeboningList(true);
         }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             NewItem();
-            GetDeboningList();
+            GetDeboningList(false);
         }
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             EditItem();
-            GetDeboningList();
+            GetDeboningList(true);
         }
 
         private void WbGridView_DoubleClick(object sender, EventArgs e)
@@ -283,7 +317,7 @@ namespace SP_Sklad.MainTabs
         {
             if (DebStartDate.ContainsFocus || DebEndDate.ContainsFocus || DebWhComboBox.ContainsFocus || DebSatusList.ContainsFocus)
             {
-                GetDeboningList();
+                GetDeboningList(false);
             }
         }
 
@@ -309,12 +343,17 @@ namespace SP_Sklad.MainTabs
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CopyItem();
-            GetDeboningList();
+            GetDeboningList(true);
         }
 
         private void DeboningGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            xtraTabControl1_SelectedPageChanged(sender, null);
+            SetWBEditorBarBtn();
+        }
+
+        private void SetWBEditorBarBtn()
+        {
+            xtraTabControl1_SelectedPageChanged(null, null);
 
             StopProcesBtn.Enabled = (focused_row != null && focused_row.Checked == 2 && user_access.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_row != null && focused_row.Checked == 0 && user_access.CanDelete == 1);
@@ -324,7 +363,7 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (focused_row != null);
         }
 
- 
+
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             if (focused_row == null)
@@ -405,7 +444,74 @@ namespace SP_Sklad.MainTabs
                     break;
             }
 
-            GetDeboningList();
+            GetDeboningList(false);
+        }
+
+        private void DeboningProductsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (DebSatusList.EditValue == null || DebWhComboBox.EditValue == null)
+            {
+                return;
+            }
+
+            var satrt_date = DebStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : DebStartDate.DateTime;
+            var end_date = DebEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : DebEndDate.DateTime;
+
+            var status = (int)DebSatusList.EditValue;
+            var wh_id = (int)DebWhComboBox.EditValue;
+
+
+            BaseEntities objectContext = new BaseEntities();
+            var list = objectContext.v_DeboningProducts.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.WId == wh_id || wh_id == -1) && (_grp_id == 0 || w.GrpId == _grp_id) && w.UserId == UserSession.UserId);
+            e.QueryableSource = list;
+            e.Tag = objectContext;
+        }
+
+        private void DeboningGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            SetWBEditorBarBtn();
+        }
+
+        private void DeboningGridView_AsyncCompleted(object sender, EventArgs e)
+        {
+            if (focused_row == null || !_restore)
+            {
+                return;
+            }
+
+            int rowHandle = DeboningGridView.LocateByValue("WbillId", prev_focused_id, OnRowSearchComplete);
+            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
+            {
+                FocusRow(DeboningGridView, rowHandle);
+            }
+            else
+            {
+                DeboningGridView.FocusedRowHandle = prev_rowHandle;
+            }
+
+            _restore = false;
+        }
+
+        void OnRowSearchComplete(object rh)
+        {
+            int rowHandle = (int)rh;
+            if (DeboningGridView.IsValidRowHandle(rowHandle))
+            {
+                FocusRow(DeboningGridView, rowHandle);
+            }
+        }
+
+        public void FocusRow(GridView view, int rowHandle)
+        {
+            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+            view.FocusedRowHandle = rowHandle;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            DeboningGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
     }
 }
