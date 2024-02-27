@@ -199,8 +199,6 @@ namespace SP_Sklad
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new Form1().ShowDialog();
-
             Close();
 
             //     Application.Exit();

@@ -120,7 +120,7 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             int top_row = WBDetReInGridView.TopRowIndex;
-            WaybillDetInBS.DataSource = _db.v_WayBillReturnСustomerDet.Where(w=> w.WbillId == _wbill_id).ToList();
+            WaybillDetInBS.DataSource = _db.v_WayBillReturnСustomerDet.AsNoTracking().Where(w=> w.WbillId == _wbill_id).ToList();
             WBDetReInGridView.TopRowIndex = top_row;
 
             GetOk();

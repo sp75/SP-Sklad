@@ -14,21 +14,23 @@ using System.Windows.Forms;
 
 namespace SP_Sklad.UserControls
 {
-   // [DefaultEvent(nameof(ValueChanged))]
-    public partial class ucWBFilterPanel : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucDocumentFilterPanel : DevExpress.XtraEditors.XtraUserControl
     {
-        public ucWBFilterPanel()
+        public delegate void OnFilterChanged(object sender, EventArgs e);
+        public event OnFilterChanged OnFilterChangedEvent;
+
+        public ucDocumentFilterPanel()
         {
             InitializeComponent();
         }
 
-        [Browsable(true)]
+        [Browsable(false)]
         public DateTime StartDate => wbStartDate.DateTime;
-        [Browsable(true)]
+        [Browsable(false)]
         public DateTime EndDate  => wbEndDate.DateTime;
-        [Browsable(true)]
-        public int Status => (int)wbStatusList.EditValue;
-        [Browsable(true)]
+        [Browsable(false)]
+        public int StatusId => (int)wbStatusList.EditValue;
+        [Browsable(false)]
         public int KagentId => (int)wbKagentList.EditValue;
         [Browsable(true)]
         public string Title
@@ -36,13 +38,19 @@ namespace SP_Sklad.UserControls
             get => kaListLabelControl.Text;
             set => kaListLabelControl.Text = value;
         }
+        [Browsable(true)]
+        public int KagentImageIndex
+        {
+            get => wbKagentList.Properties.Buttons[2].ImageOptions.ImageIndex;
+            set => wbKagentList.Properties.Buttons[2].ImageOptions.ImageIndex = value;
+        }
 
 
         private void ucWBFilterPanel_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
-                wbKagentList.Properties.DataSource = DBHelper.KagentsList;
+                wbKagentList.Properties.DataSource =  DBHelper.KagentsList;
                 wbKagentList.EditValue = 0;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
@@ -54,10 +62,10 @@ namespace SP_Sklad.UserControls
         }
 
         [Browsable(true)]
-        public new event EventHandler TextChanged
+        public event OnFilterChanged FilterChanged
         {
-            add => textEdit1.EditValueChanged += value;
-            remove => textEdit1.EditValueChanged -= value;
+            add => this.OnFilterChangedEvent += value;
+            remove => this.OnFilterChangedEvent -= value;
         }
 
         public void ClearFindFilter(DateTime on_date)
@@ -96,7 +104,7 @@ namespace SP_Sklad.UserControls
                     break;
             }
 
-            textEdit1.EditValue = Guid.NewGuid();
+            OnFilterChangedEvent?.Invoke( sender,  e);
         }
 
         private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -120,7 +128,7 @@ namespace SP_Sklad.UserControls
         {
             if (wbStartDate.ContainsFocus)
             {
-                textEdit1.EditValue = Guid.NewGuid();
+                OnFilterChangedEvent?.Invoke(sender, e);
             }
         }
 
@@ -128,7 +136,7 @@ namespace SP_Sklad.UserControls
         {
             if (wbKagentList.ContainsFocus)
             {
-                textEdit1.EditValue = Guid.NewGuid();
+                OnFilterChangedEvent?.Invoke(sender, e);
             }
         }
 
@@ -136,7 +144,7 @@ namespace SP_Sklad.UserControls
         {
             if (wbStatusList.ContainsFocus)
             {
-                textEdit1.EditValue = Guid.NewGuid();
+                OnFilterChangedEvent?.Invoke(sender, e);
             }
         }
 
@@ -144,7 +152,7 @@ namespace SP_Sklad.UserControls
         {
             if (wbEndDate.ContainsFocus)
             {
-                textEdit1.EditValue = Guid.NewGuid();
+                OnFilterChangedEvent?.Invoke(sender, e);
             }
         }
 

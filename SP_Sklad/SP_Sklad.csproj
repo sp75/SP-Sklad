@@ -259,12 +259,6 @@
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WayBills\WayBillsController.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1460,11 +1454,11 @@
     <Compile Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.Designer.cs">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucWBFilterPanel.cs">
+    <Compile Include="UserControls\ucDocumentFilterPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucWBFilterPanel.Designer.cs">
-      <DependentUpon>ucWBFilterPanel.cs</DependentUpon>
+    <Compile Include="UserControls\ucDocumentFilterPanel.Designer.cs">
+      <DependentUpon>ucDocumentFilterPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Warehouse\ucWaybillInventory.cs">
       <SubType>UserControl</SubType>
@@ -2458,9 +2452,6 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.resx">
       <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
     </EmbeddedResource>
@@ -2701,8 +2692,8 @@
     <EmbeddedResource Include="Interfaces\ExpeditionInterface\frmWBMaterialsDet.resx">
       <DependentUpon>frmWBMaterialsDet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucWBFilterPanel.resx">
-      <DependentUpon>ucWBFilterPanel.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucDocumentFilterPanel.resx">
+      <DependentUpon>ucDocumentFilterPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Warehouse\ucWaybillInventory.resx">
       <DependentUpon>ucWaybillInventory.cs</DependentUpon>
