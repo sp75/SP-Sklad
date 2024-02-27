@@ -6,7 +6,7 @@ using System.Data.Entity.Spatial;
 
 namespace SP.Base.Models
 {
-    public partial class v_WayBillReturnСustomerDet
+    public partial class v_WayBillReturnCustomerDet
     {
         [Key]
         [Column(Order = 0)]
