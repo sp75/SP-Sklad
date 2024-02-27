@@ -82,7 +82,7 @@ namespace SP_Sklad.UserControls
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1286, 53);
+            this.panelControl2.Size = new System.Drawing.Size(1286, 54);
             this.panelControl2.TabIndex = 2;
             // 
             // PeriodComboBoxEdit
@@ -227,10 +227,9 @@ namespace SP_Sklad.UserControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.Controls.Add(this.panelControl2);
             this.Name = "ucDocumentFilterPanel";
-            this.Size = new System.Drawing.Size(1286, 53);
+            this.Size = new System.Drawing.Size(1286, 54);
             this.Load += new System.EventHandler(this.ucWBFilterPanel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
