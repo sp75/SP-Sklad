@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\v_WayBillBase.cs" />
+    <Compile Include="Models\v_WayBillReturnСustomerDet.cs" />
     <Compile Include="SPDatabase.cs" />
     <Compile Include="Models\AccountType.cs" />
     <Compile Include="Models\AspNetRoles.cs" />
