@@ -445,7 +445,10 @@ namespace SP_Sklad.WBForm
 
         private void WhOutComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+            if (e.Button.Index == 1)
+            {
+                WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
+            }
         }
     }
 }
