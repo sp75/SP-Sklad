@@ -202,7 +202,7 @@ namespace SP_Sklad.Common
                   //  if (pos_info_item.CountIn == pos_info_item.CountOut)
                   if(pos_info_item.Difference > 0)
                     {
-                        var remain = _db.v_PosRemains.FirstOrDefault(w => w.PosId == pos_info_item.PosId);
+                        var remain = _db.v_PosRemains.AsNoTracking().FirstOrDefault(w => w.PosId == pos_info_item.PosId);
                         if (remain != null && remain.ActualRemain > 0)
                         {
                             var wbd = _db.WaybillDet.Add(new WaybillDet

@@ -184,7 +184,7 @@ namespace SP_Sklad.UserControls
         {
             if (row_exp != null)
             {
-                ExpeditionDetBS.DataSource = DB.SkladBase().v_ExpeditionDet.Where(w => w.ExpeditionId == row_exp.Id).OrderBy(o => o.CreatedAt).ToList();
+                ExpeditionDetBS.DataSource = DB.SkladBase().v_ExpeditionDet.AsNoTracking().Where(w => w.ExpeditionId == row_exp.Id).OrderBy(o => o.CreatedAt).ToList();
             }
             else
             {

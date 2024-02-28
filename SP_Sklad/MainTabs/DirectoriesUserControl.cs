@@ -262,7 +262,7 @@ namespace SP_Sklad.MainTabs
 
                         case 40:
                             top_row = MatRecipeGridView.TopRowIndex;
-                            var recipe_list = _db.v_MatRecipe.Where(w => w.RType == 1);
+                            var recipe_list = _db.v_MatRecipe.AsNoTracking().Where(w => w.RType == 1);
                             if (!_show_rec_archived)
                             {
                                 recipe_list = recipe_list.Where(w => !w.Archived);
@@ -1306,7 +1306,7 @@ namespace SP_Sklad.MainTabs
                     var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
                     if (bc != null)
                     {
-                        AddMatItemToList(DB.SkladBase().v_Materials.FirstOrDefault(w => w.MatId == bc.MatId));
+                        AddMatItemToList(DB.SkladBase().v_Materials.AsNoTracking().FirstOrDefault(w => w.MatId == bc.MatId));
                     }
                 }
                 else
@@ -1381,7 +1381,7 @@ namespace SP_Sklad.MainTabs
             {
                 int KaId = focused_kagent.KaId;
 
-                var kagent = db.v_Kagent.FirstOrDefault(w => w.KaId == KaId);
+                var kagent = db.v_Kagent.AsNoTracking().FirstOrDefault(w => w.KaId == KaId);
 
                 KAgentInfoBS.DataSource = kagent;
                 memoEdit1.Text = kagent.Notes;

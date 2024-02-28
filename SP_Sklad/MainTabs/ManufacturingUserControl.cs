@@ -116,7 +116,7 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                IntermediateWeighingBS.DataSource = db.v_IntermediateWeighing.Where(w=> w.OnDate > satrt_date && w.OnDate <= end_date).OrderBy(o => o.OnDate).ToList();
+                IntermediateWeighingBS.DataSource = db.v_IntermediateWeighing.AsNoTracking().Where(w=> w.OnDate > satrt_date && w.OnDate <= end_date).OrderBy(o => o.OnDate).ToList();
             }
 
             IntermediateWeighingGridView.TopRowIndex = top_row;
@@ -129,7 +129,7 @@ namespace SP_Sklad.MainTabs
             var end_date = dateEdit1.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : dateEdit1.DateTime;
 
             int top_row = PlannedCalculationGridView.TopRowIndex;
-            PlannedCalculationBS.DataSource = DB.SkladBase().v_PlannedCalculation.Where(w=> w.OnDate >=satrt_date && w.OnDate <= end_date).OrderByDescending(o=> o.OnDate).ToList();
+            PlannedCalculationBS.DataSource = DB.SkladBase().v_PlannedCalculation.AsNoTracking().Where(w=> w.OnDate >=satrt_date && w.OnDate <= end_date).OrderByDescending(o=> o.OnDate).ToList();
             PlannedCalculationGridView.TopRowIndex = top_row;
         }
 
@@ -793,7 +793,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl9.DataSource = db.v_PlannedCalculationDetDet.Where(w => w.PlannedCalculationId == pc_focused_row.Id).OrderBy(o => o.RecipeName).ToList();
+                    gridControl9.DataSource = db.v_PlannedCalculationDetDet.AsNoTracking().Where(w => w.PlannedCalculationId == pc_focused_row.Id).OrderBy(o => o.RecipeName).ToList();
                 }
             }
             else
@@ -867,7 +867,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 1:
-                        gridControl15.DataSource = db.v_DeboningDet.Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).ToList();
+                        gridControl15.DataSource = db.v_DeboningDet.AsNoTracking().Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).ToList();
                         break;
 
                     case 2:
@@ -1009,7 +1009,7 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
-                RawMaterialManagementDetGridControl.DataSource = db.v_RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == focused_raw_material_management.Id).ToList();
+                RawMaterialManagementDetGridControl.DataSource = db.v_RawMaterialManagementDet.AsNoTracking().Where(w => w.RawMaterialManagementId == focused_raw_material_management.Id).ToList();
             }
         }
 

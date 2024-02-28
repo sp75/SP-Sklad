@@ -181,7 +181,7 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    UsersDS.DataSource = DB.SkladBase().v_Users.ToList();
+                    UsersDS.DataSource = DB.SkladBase().v_Users.AsNoTracking().ToList();
                     break;
 
                 case 2:
@@ -243,7 +243,7 @@ namespace SP_Sklad.MainTabs
                     }
                     if (xtraTabControl2.SelectedTabPageIndex == 2)
                     {
-                        ErrorLogGridControl.DataSource = DB.SkladBase().v_ErrorLog.OrderByDescending(o => o.OnDate).Take(100).ToList();
+                        ErrorLogGridControl.DataSource = DB.SkladBase().v_ErrorLog.AsNoTracking().OrderByDescending(o => o.OnDate).Take(100).ToList();
                     }
                     break;
 

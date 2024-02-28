@@ -340,7 +340,7 @@ namespace SP_Sklad.MainTabs
             if (items != null)
             {
                 var d = items.FirstOrDefault().OnDate;
-                CurActivesBS.DataSource = new BaseEntities().v_Actives.AsNoTracking().Where(o => o.OnDate == d).ToList();
+                CurActivesBS.DataSource = new BaseEntities().v_Actives.AsNoTracking().AsNoTracking().Where(o => o.OnDate == d).ToList();
             }
         }
 

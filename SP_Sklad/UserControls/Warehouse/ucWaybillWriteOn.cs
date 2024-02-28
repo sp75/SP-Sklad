@@ -383,7 +383,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WaybillWriteOn.Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WaybillWriteOn.AsNoTracking().Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                     break;
 
                 case 2:

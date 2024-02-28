@@ -392,7 +392,7 @@ namespace SP_Sklad.UserControls
             {
                 case 0:
 
-                    vGridControl2.DataSource = _db.v_PayDoc.Where(w => w.Id == focused_row.Id).ToList();
+                    vGridControl2.DataSource = _db.v_PayDoc.AsNoTracking().Where(w => w.Id == focused_row.Id).ToList();
                     break;
 
                 case 1:

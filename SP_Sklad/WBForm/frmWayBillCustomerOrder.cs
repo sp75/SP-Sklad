@@ -171,7 +171,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-             wbd_list = _db.v_WayBillCustomerOrderDet.Where(w=> w.WbillId ==_wbill_id).OrderBy(o=> o.Num).AsNoTracking().ToList();
+             wbd_list = _db.v_WayBillCustomerOrderDet.AsNoTracking().Where(w=> w.WbillId ==_wbill_id).OrderBy(o=> o.Num).ToList();
             if(disc_card != null)
             {
                 wbd_list.Add(new v_WayBillCustomerOrderDet { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
@@ -426,7 +426,7 @@ namespace SP_Sklad.WBForm
 
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            var wb_list = _db.v_WayBillCustomerOrderDet.Where(w=> w.WbillId == _wbill_id).Where(w => w.Rsv != 1).ToList();
+            var wb_list = _db.v_WayBillCustomerOrderDet.AsNoTracking().Where(w=> w.WbillId == _wbill_id).Where(w => w.Rsv != 1).ToList();
             progressBarControl1.Visible = true;
             progressBarControl1.Properties.Maximum = wb_list.Count;
             foreach (var i in wb_list)

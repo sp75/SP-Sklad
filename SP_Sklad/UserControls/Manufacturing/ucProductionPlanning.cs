@@ -276,7 +276,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var db = DB.SkladBase())
                 {
-                    gridControl6.DataSource = db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == pp_focused_row.Id).OrderBy(o => o.Num).ToList();
+                    gridControl6.DataSource = db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == pp_focused_row.Id).OrderBy(o => o.Num).ToList();
                     ucRelDocGrid3.GetRelDoc(pp_focused_row.Id);
                 }
             }

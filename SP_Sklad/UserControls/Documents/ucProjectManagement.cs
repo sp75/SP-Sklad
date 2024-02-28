@@ -196,7 +196,7 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl7.SelectedTabPageIndex)
             {
                 case 0:
-                    ProjectManagementDetGridControl.DataSource = _db.v_ProjectManagementDet.Where(w => w.ProjectManagementId == pm_focused_row.Id).OrderBy(o => o.Num).ToList();
+                    ProjectManagementDetGridControl.DataSource = _db.v_ProjectManagementDet.AsNoTracking().Where(w => w.ProjectManagementId == pm_focused_row.Id).OrderBy(o => o.Num).ToList();
                     break;
 
                 case 2:
@@ -214,7 +214,7 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_ProjectManagement.AsNoTracking().Where(w => w.OnDate >= ProjectManagementStartDateEdit.DateTime && w.OnDate < ProjectManagementEndDateEdit.DateTime && ((int)PMStatusList.EditValue == -1 || w.Checked == (int)PMStatusList.EditValue));
+            var list = objectContext.v_ProjectManagement.Where(w => w.OnDate >= ProjectManagementStartDateEdit.DateTime && w.OnDate < ProjectManagementEndDateEdit.DateTime && ((int)PMStatusList.EditValue == -1 || w.Checked == (int)PMStatusList.EditValue));
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

@@ -35,7 +35,7 @@ namespace SP_Sklad.WBDetForm
         private void frmWayBillMakePropsDet_Load(object sender, EventArgs e)
         {
             _db = new BaseEntities();
-            MatComboBox.Properties.DataSource = _db.v_Materials.Where(w => w.Archived == 0).Select(s=> new {s.MatId, s.Name}).ToList(); 
+            MatComboBox.Properties.DataSource = _db.v_Materials.AsNoTracking().Where(w => w.Archived == 0).Select(s=> new {s.MatId, s.Name}).ToList(); 
 
 
             if (_DetId == null)

@@ -301,7 +301,7 @@ namespace SP_Sklad.Interfaces.ExpeditionInterface
             exp.UpdatedAt = DBHelper.ServerDateTime();
             exp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
-            foreach (var item in _db.v_ExpeditionDet.Where(w => w.ExpeditionId == exp.Id))
+            foreach (var item in _db.v_ExpeditionDet.AsNoTracking().Where(w => w.ExpeditionId == exp.Id))
             {
                 if (item.RouteId.HasValue && item.Checked == 1)
                 {

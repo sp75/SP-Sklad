@@ -30,7 +30,7 @@ namespace SP_Sklad.UserControls
         {
             _wbill_id = wbill_id;
 
-            var list = new BaseEntities().v_WayBillReturnCustomerDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
+            var list = new BaseEntities().v_WayBillReturnCustomerDet.AsNoTracking().Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
 
             gridColumn37.Caption = "Сума в валюті, " + list.FirstOrDefault()?.CurrName;
             gridControl2.DataSource = list;

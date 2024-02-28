@@ -48,7 +48,7 @@ namespace SP_Sklad.WBDetForm
             _cart = cart;
 
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            MatComboBox.Properties.DataSource = db.v_Materials.Where(w => w.Archived == 0).ToList();
+            MatComboBox.Properties.DataSource = db.v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList();
             PriceTypesEdit.Properties.DataSource = db.PriceTypes.ToList();
             ProducerTextEdit.Properties.Items.AddRange(_db.WayBillDetAddProps.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
 

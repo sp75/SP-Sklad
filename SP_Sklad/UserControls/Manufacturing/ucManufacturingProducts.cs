@@ -338,7 +338,7 @@ namespace SP_Sklad.MainTabs
         private void RefreshTechProcDet(int wbill_id)
         {
             TechProcDetBS.DataSource = null;
-            TechProcDetBS.DataSource = DB.SkladBase().v_TechProcDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
+            TechProcDetBS.DataSource = DB.SkladBase().v_TechProcDet.AsNoTracking().Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
         }
 
         private void TechProcGridView_DoubleClick(object sender, EventArgs e)

@@ -217,7 +217,7 @@ namespace SP_Sklad.SkladData
                                               from subfg in gj.DefaultIfEmpty()
                                               where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.Enterprise.KaId && k.Archived == 0
                                               select k
-                             ).ToList();
+                             ).AsNoTracking().ToList();
                 }
             }
         }

@@ -378,7 +378,7 @@ namespace SP_Sklad.MainTabs
                 switch (xtraTabControl1.SelectedTabPageIndex)
                 {
                     case 0:
-                        DeboningDetGridControl.DataSource = db.v_DeboningDet.Where(w => w.WBillId == focused_row.WbillId).ToList();
+                        DeboningDetGridControl.DataSource = db.v_DeboningDet.AsNoTracking().Where(w => w.WBillId == focused_row.WbillId).ToList();
                         break;
 
                     case 1:

@@ -384,11 +384,11 @@ namespace SP_Sklad.UserControls
             {
                 case 0:
 
-                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.Where(w => w.KAgentAdjustmentId == focused_row.Id).OrderBy(o => o.Idx).ToList();
+                    gridControl5.DataSource = _db.v_KAgentAdjustmentDet.AsNoTracking().Where(w => w.KAgentAdjustmentId == focused_row.Id).OrderBy(o => o.Idx).ToList();
                     break;
 
                 case 1:
-                    vGridControl3.DataSource = _db.v_KAgentAdjustment.Where(w=> w.Id == focused_row.Id).ToList();
+                    vGridControl3.DataSource = _db.v_KAgentAdjustment.AsNoTracking().Where(w=> w.Id == focused_row.Id).ToList();
                     break;
 
                 case 2:

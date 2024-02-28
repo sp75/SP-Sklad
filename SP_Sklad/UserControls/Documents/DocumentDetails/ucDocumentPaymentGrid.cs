@@ -31,8 +31,8 @@ namespace SP_Sklad.UserControls
         public void GetPaymentDoc(Guid? id)
         {
             var _db = new BaseEntities();
-            DocumentPaymentGridControl.DataSource = _db.DocRels.Where(w => w.OriginatorId == id)
-                        .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
+            DocumentPaymentGridControl.DataSource = _db.DocRels.AsNoTracking().Where(w => w.OriginatorId == id)
+                        .Join(_db.v_PayDoc.AsNoTracking(), drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
         }
 
         private void RelDocGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)

@@ -54,7 +54,7 @@ namespace SP_Sklad.WBDetForm
         private void frmWriteOffDet_Load(object sender, EventArgs e)
         {
             WHComboBox.Properties.DataSource = DBHelper.WhList;
-            MatComboBox.Properties.DataSource = _db.v_Materials.Where(w => w.Archived == 0).ToList(); 
+            MatComboBox.Properties.DataSource = _db.v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList(); 
 
             if (_wb.WType == -5 || _wb.WType == -22)
             {

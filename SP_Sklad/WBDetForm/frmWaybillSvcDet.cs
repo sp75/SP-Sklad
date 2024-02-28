@@ -47,7 +47,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWaybillSvcDet_Load(object sender, EventArgs e)
         {
-            SvcComboBox.Properties.DataSource = DB.SkladBase().v_Services.Select(s => new
+            SvcComboBox.Properties.DataSource = DB.SkladBase().v_Services.AsNoTracking().Select(s => new
             {
                 s.SvcId,
                 s.Name,

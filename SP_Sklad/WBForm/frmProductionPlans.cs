@@ -158,7 +158,7 @@ namespace SP_Sklad.WBForm
 
         private void ExecuteDocument()
         {
-            var list = _db.v_ProductionPlanDet.Where(w => w.ProductionPlanId == _doc_id && w.Total > 0).OrderBy(o => o.Num).ToList();
+            var list = _db.v_ProductionPlanDet.AsNoTracking().Where(w => w.ProductionPlanId == _doc_id && w.Total > 0).OrderBy(o => o.Num).ToList();
             foreach (var i in list)
             {
                 var wb = _db.WaybillList.Add(new WaybillList()

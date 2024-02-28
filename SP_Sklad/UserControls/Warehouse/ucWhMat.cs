@@ -487,7 +487,7 @@ namespace SP_Sklad.UserControls.Warehouse
                 {
                     var dt = DateTime.Now.Date;
 
-                    var min_date_post = db.v_PosRemains.Where(w => w.MatId == focused_wh_mat.MatId).Select(s => s.OnDate).ToList();
+                    var min_date_post = db.v_PosRemains.AsNoTracking().Where(w => w.MatId == focused_wh_mat.MatId).Select(s => s.OnDate).ToList();
 
                     if (min_date_post.Count > 0 && min_date_post.Min() < dt)
                     {

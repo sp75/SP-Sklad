@@ -78,7 +78,7 @@ namespace SP_Sklad.EditForm
             {
                 _ka.UpdatedBy = UserSession.UserId;
 
-                var k_saldo = _db.v_KAgentSaldo.Where(w => w.KaId == _ka.KaId).OrderBy(d => d.OnDate).Take(2).ToList();// FirstOrDefault();
+                var k_saldo = _db.v_KAgentSaldo.AsNoTracking().Where(w => w.KaId == _ka.KaId).OrderBy(d => d.OnDate).Take(2).ToList();// FirstOrDefault();
                 KASaldoEdit.EditValue = _ka.StartSaldo != null ? Math.Abs(_ka.StartSaldo.Value) : KASaldoEdit.EditValue;
                 if (_ka.StartSaldo != null)
                 {
@@ -96,7 +96,7 @@ namespace SP_Sklad.EditForm
                 KTypeLookUpEdit.Properties.DataSource = DB.SkladBase().KAgentTyp.ToList();
                 KaKindLookUpEdit.Properties.DataSource = DB.SkladBase().KAKInd.ToList();
                 PTypeEdit.Properties.DataSource = DB.SkladBase().PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList();
                 GroupLookUpEdit.Properties.DataSource = DB.SkladBase().MatGroup.ToList();
                 UsersLookUpEdit.Properties.DataSource = DB.SkladBase().Users.Where(w => !w.Kagent.Any() || w.UserId == _ka.UserId).ToList();
 
@@ -199,7 +199,7 @@ namespace SP_Sklad.EditForm
 
         private void GetMatPrices()
         {
-            v_KAgentPricesBS.DataSource = _db.v_KAgentPrices.Where(w => w.KaId == _ka.KaId).AsNoTracking().ToList();
+            v_KAgentPricesBS.DataSource = _db.v_KAgentPrices.AsNoTracking().Where(w => w.KaId == _ka.KaId).AsNoTracking().ToList();
         }
 
         private void GetPersons()
@@ -336,7 +336,7 @@ namespace SP_Sklad.EditForm
 
         private List<v_KAgentAccount> GetAcc()
         {
-            var acc = _db.v_KAgentAccount.Where(w => w.KAId == _ka_id).ToList();
+            var acc = _db.v_KAgentAccount.AsNoTracking().Where(w => w.KAId == _ka_id).ToList();
             v_KAgentAccountBS.DataSource = acc;
 
             return acc;

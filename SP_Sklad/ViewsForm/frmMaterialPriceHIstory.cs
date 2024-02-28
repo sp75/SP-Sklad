@@ -35,7 +35,7 @@ namespace SP_Sklad.ViewsForm
             chartControl1.Titles[0].Text = Text;
        //     chartControl1.BackImage.Image = Image.FromStream(new MemoryStream(mat.BMP));
 
-            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.Where(w => w.MatId == _mat_id).OrderBy(o => o.CreatedAt).ToList();
+            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.AsNoTracking().Where(w => w.MatId == _mat_id).OrderBy(o => o.CreatedAt).ToList();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)

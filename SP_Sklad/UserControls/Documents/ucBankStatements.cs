@@ -173,7 +173,7 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_BankStatements.AsNoTracking().Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && ((int)BSStatusList.EditValue == -1 || w.Checked == (int)BSStatusList.EditValue));
+            var list = objectContext.v_BankStatements.Where(w => w.OnDate >= BSStartDate.DateTime && w.OnDate < BSEndDate.DateTime && ((int)BSStatusList.EditValue == -1 || w.Checked == (int)BSStatusList.EditValue));
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
