@@ -21,6 +21,7 @@ namespace SP.Base.Models
             WayBillTmc = new HashSet<WayBillTmc>();
             WayBillMakeProps = new HashSet<WayBillMakeProps>();
             WayBillSvc = new HashSet<WayBillSvc>();
+            RemoteCustomerReturned = new HashSet<RemoteCustomerReturned>();
         }
 
         [Key]
@@ -133,5 +134,8 @@ namespace SP.Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WayBillSvc> WayBillSvc { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
     }
 }

@@ -190,6 +190,7 @@ namespace SP.Base.Models
         public virtual DbSet<RemoteCustomerOrders> RemoteCustomerOrders { get; set; }
         public virtual DbSet<v_WayBillReturnCustomerDet> v_WayBillReturnCustomerDet { get; set; }
         public virtual DbSet<v_WayBillBase> v_WayBillBase { get; set; }
+        public virtual DbSet<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {
@@ -3043,6 +3044,9 @@ namespace SP.Base.Models
 
             modelBuilder.Entity<Tara>()
                .Property(e => e.Weight)
+               .HasPrecision(15, 4);
+            modelBuilder.Entity<RemoteCustomerReturned>()
+               .Property(e => e.Amount)
                .HasPrecision(15, 4);
         }
     }

@@ -522,6 +522,9 @@
     <Compile Include="SkladData\v_ManufacturingProducts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WayBillReturnCustomerDet.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucProductionPlanning.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -794,9 +797,6 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillReturnSuppliers.cs">
-      <DependentUpon>SkladModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SkladData\v_WayBillReturnСustomerDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\v_WayBillReturnСustomers.cs">

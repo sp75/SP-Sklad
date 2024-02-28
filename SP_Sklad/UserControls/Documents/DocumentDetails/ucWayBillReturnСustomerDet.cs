@@ -19,14 +19,8 @@ namespace SP_Sklad.UserControls
     public partial class ucWayBillReturnСustomerDet : DevExpress.XtraEditors.XtraUserControl
     {
         private int _wbill_id { get; set; }
-        private v_WayBillReturnСustomerDet wb_det_focused_row
-        {
-            get
-            {
-                return WaybillDetGridView.GetFocusedRow() as v_WayBillReturnСustomerDet;
-            }
-        }
-
+        private v_WayBillReturnCustomerDet wb_det_focused_row =>  WaybillDetGridView.GetFocusedRow() as v_WayBillReturnCustomerDet;
+        
         public ucWayBillReturnСustomerDet()
         {
             InitializeComponent();
@@ -36,7 +30,7 @@ namespace SP_Sklad.UserControls
         {
             _wbill_id = wbill_id;
 
-            var list = new BaseEntities().v_WayBillReturnСustomerDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
+            var list = new BaseEntities().v_WayBillReturnCustomerDet.Where(w => w.WbillId == wbill_id).OrderBy(o => o.Num).ToList();
 
             gridColumn37.Caption = "Сума в валюті, " + list.FirstOrDefault()?.CurrName;
             gridControl2.DataSource = list;

@@ -810,10 +810,6 @@
             this.WBDetReInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WBDetReInGridView});
             // 
-            // WaybillDetInBS
-            // 
-            this.WaybillDetInBS.DataSource = typeof(SP_Sklad.SkladData.GetWaybillDetIn_Result);
-            // 
             // WBDetReInGridView
             // 
             this.WBDetReInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {

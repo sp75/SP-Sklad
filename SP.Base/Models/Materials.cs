@@ -28,6 +28,7 @@ namespace SP.Base.Models
             TAXWBDET = new HashSet<TAXWBDET>();
             WaybillDet = new HashSet<WaybillDet>();
             WayBillMakeProps = new HashSet<WayBillMakeProps>();
+            RemoteCustomerReturned = new HashSet<RemoteCustomerReturned>();
         }
 
         [Key]
@@ -176,5 +177,8 @@ namespace SP.Base.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WayBillMakeProps> WayBillMakeProps { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
     }
 }

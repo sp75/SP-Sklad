@@ -25,10 +25,8 @@ namespace SP_Sklad.WBForm
         private int? _wbill_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
-        private v_WayBillReturnСustomerDet focused_dr
-        {
-            get { return WBDetReInGridView.GetFocusedRow() as v_WayBillReturnСustomerDet; }
-        }
+        private v_WayBillReturnCustomerDet focused_dr => WBDetReInGridView.GetFocusedRow() as v_WayBillReturnCustomerDet;
+        
         private UserSettingsRepository user_settings { get; set; }
 
         public frmWBReturnIn(int wtype, int? wbill_id)
@@ -120,7 +118,7 @@ namespace SP_Sklad.WBForm
         private void RefreshDet()
         {
             int top_row = WBDetReInGridView.TopRowIndex;
-            WaybillDetInBS.DataSource = _db.v_WayBillReturnСustomerDet.AsNoTracking().Where(w=> w.WbillId == _wbill_id).ToList();
+            WaybillDetInBS.DataSource = _db.v_WayBillReturnCustomerDet.AsNoTracking().Where(w=> w.WbillId == _wbill_id).ToList();
             WBDetReInGridView.TopRowIndex = top_row;
 
             GetOk();
