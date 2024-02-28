@@ -64,7 +64,7 @@ namespace SP_Sklad.EditForm
 
             if (_mr != null)
             {
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList();
                 TurnTypeLookUpEdit.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Списати" }, new { Id = 1, Name= "Оприходувати"} };
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
 

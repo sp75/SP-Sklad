@@ -54,7 +54,7 @@ namespace SP_Sklad.MainTabs
             {
                 _db = new BaseEntities();
 
-                DocsTreeList.DataSource = _db.v_GetDocsTree.Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
+                DocsTreeList.DataSource = _db.v_GetDocsTree.AsNoTracking().Where(w => w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId).OrderBy(o => o.Num).ToList();
                 if (set_tree_node != null)
                 {
                     DocsTreeList.FocusedNode = DocsTreeList.FindNodeByFieldValue("Id", set_tree_node);
@@ -518,7 +518,7 @@ namespace SP_Sklad.MainTabs
 
             bar1.Visible = true;
 
-            var child_node_list = _db.v_GetDocsTree.Where(w => (w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId) && w.PId == focused_tree_node.Id).ToList();
+        //    var child_node_list = _db.v_GetDocsTree.Where(w => (w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId) && w.PId == focused_tree_node.Id).ToList();
             switch (focused_tree_node.GType)
             {
                 case 0:

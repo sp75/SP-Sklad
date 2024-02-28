@@ -36,7 +36,7 @@ namespace SP_Sklad.FinanseForm
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
             CashEditComboBox.Properties.DataSource = DBHelper.CashDesks;
             PersonEdit.Properties.DataSource = DBHelper.Persons;
-            RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KType != 3).ToList();
+            RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.AsNoTracking().Where(w => w.KType != 3).ToList();
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
             CurrEdit.Properties.DataSource = DBHelper.Currency;
 

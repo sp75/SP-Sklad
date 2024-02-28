@@ -146,7 +146,7 @@ namespace SP_Sklad.MainTabs
 
         private async Task GetActives()
         {
-            CurActivesBS.DataSource = await new BaseEntities().v_Actives.OrderByDescending(o => o.OnDate).Take(1).ToListAsync();
+            CurActivesBS.DataSource = await new BaseEntities().v_Actives.AsNoTracking().OrderByDescending(o => o.OnDate).Take(1).ToListAsync();
         }
 
         void GetMoneyTurnover()
@@ -296,7 +296,7 @@ namespace SP_Sklad.MainTabs
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            ActivesBS.DataSource = new BaseEntities().v_Actives.Where(w => w.OnDate >= dateEdit2.DateTime.Date && w.OnDate <= dateEdit1.DateTime.Date).ToList();
+            ActivesBS.DataSource = new BaseEntities().v_Actives.AsNoTracking().Where(w => w.OnDate >= dateEdit2.DateTime.Date && w.OnDate <= dateEdit1.DateTime.Date).ToList();
         }
 
         private void ExecuteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -340,7 +340,7 @@ namespace SP_Sklad.MainTabs
             if (items != null)
             {
                 var d = items.FirstOrDefault().OnDate;
-                CurActivesBS.DataSource = new BaseEntities().v_Actives.Where(o => o.OnDate == d).ToList();
+                CurActivesBS.DataSource = new BaseEntities().v_Actives.AsNoTracking().Where(o => o.OnDate == d).ToList();
             }
         }
 

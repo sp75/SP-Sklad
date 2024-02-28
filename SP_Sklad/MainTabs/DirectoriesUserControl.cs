@@ -191,8 +191,8 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    if (focused_tree_node.Id == 51) ServicesBS.DataSource = DB.SkladBase().v_Services.ToList();
-                    else ServicesBS.DataSource = DB.SkladBase().v_Services.Where(w => w.GrpId == focused_tree_node.GrpId).ToList();
+                    if (focused_tree_node.Id == 51) ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().ToList();
+                    else ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().Where(w => w.GrpId == focused_tree_node.GrpId).ToList();
                     break;
 
                 case 4:
@@ -281,7 +281,7 @@ namespace SP_Sklad.MainTabs
 
                         case 28:
                             top_row = MatRecipeGridView.TopRowIndex;
-                            var recipe_d_list = _db.v_MatRecipe.Where(w => w.RType == 2);
+                            var recipe_d_list = _db.v_MatRecipe.AsNoTracking().Where(w => w.RType == 2);
 
                             if (!_show_rec_archived)
                             {
@@ -308,12 +308,12 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 73:
-                            RoutesBS.DataSource = _db.Routes.ToList();
+                            RoutesBS.DataSource = _db.Routes.AsNoTracking().ToList();
                             extDirTabControl.SelectedTabPageIndex = 10;
                             break;
 
                         case 66:
-                            var disc_cards = _db.v_DiscCards.AsQueryable();
+                            var disc_cards = _db.v_DiscCards.AsNoTracking().AsQueryable();
 
                             if (focused_tree_node.Id < 0)
                             {
@@ -330,7 +330,7 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 81:
-                            PreparationMatRecipeGridControl.DataSource = _db.v_MatRecipe.Where(w => w.RType == 3).ToList();
+                            PreparationMatRecipeGridControl.DataSource = _db.v_MatRecipe.AsNoTracking().Where(w => w.RType == 3).ToList();
                             extDirTabControl.SelectedTabPageIndex = 13;
                             break;
 

@@ -490,7 +490,7 @@ namespace SP_Sklad.FinanseForm
             {
                 var kaid = (int)KagentComboBox.EditValue;
 
-                RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.Where(w => w.KAId == kaid).ToList();
+                RecipientAccEdit.Properties.DataSource = _db.v_KAgentAccount.AsNoTracking().Where(w => w.KAId == kaid).ToList();
             }
 
         }

@@ -94,7 +94,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
                    }*/
             using (var _db = new BaseEntities())
             {
-                var result = _db.v_IntermediateWeighingSummary.Where(w => w.WbillId == wbill_id && w.Checked == 0 && w.UserId == _user_id)
+                var result = _db.v_IntermediateWeighingSummary.AsNoTracking().Where(w => w.WbillId == wbill_id && w.Checked == 0 && w.UserId == _user_id)
                     .Select(s => new make_det
                     {
                         IntermediateWeighingId = s.IntermediateWeighingId,
@@ -290,7 +290,7 @@ namespace SP_Sklad.IntermediateWeighingInterface
         {
             using (var _db = new BaseEntities())
             {
-                foreach (var item in _db.v_IntermediateWeighingSummary.Where(w => w.WbillId == _wbill_id && w.IntermediateWeighingDetId != null && w.UserId == UserSession.UserId))
+                foreach (var item in _db.v_IntermediateWeighingSummary.AsNoTracking().Where(w => w.WbillId == _wbill_id && w.IntermediateWeighingDetId != null && w.UserId == UserSession.UserId))
                 {
                     var plan_weighing = Math.Round(Convert.ToDecimal((item.AmountByRecipe * item.IntermediateWeighingAmount) / item.TotalWeightByRecipe), 3);
                     var deviation = _db.MatRecDet.FirstOrDefault(w => w.MatId == item.MatId && w.RecId == item.RecId)?.Deviation ?? 1000000;

@@ -73,7 +73,7 @@ namespace SP_Sklad.EditForm
 
             if (_mr != null)
             {
-                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.Where(w => w.Archived == 0).ToList();
+                MatLookUpEdit.Properties.DataSource = DB.SkladBase().v_Materials.AsNoTracking().Where(w => w.Archived == 0).ToList();
                 MatRecLookUpEdit.Properties.DataSource = MatLookUpEdit.Properties.DataSource;
 
                 MatRecipeBindingSource.DataSource = _mr;

@@ -57,7 +57,7 @@ namespace SP_Sklad.RawMaterialManagementInterface
         {
             using (var _db = new BaseEntities())
             {
-                var list = _db.v_RawMaterialManagementDet.Where(w => w.RawMaterialManagementId == id).ToList();
+                var list = _db.v_RawMaterialManagementDet.AsNoTracking().Where(w => w.RawMaterialManagementId == id).ToList();
                 bindingSource1.DataSource = list;
 
                 IntermediateWeighingEdit.EditValue = list.Sum(s => s.Amount);
