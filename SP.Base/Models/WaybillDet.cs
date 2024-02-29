@@ -27,7 +27,8 @@ namespace SP.Base.Models
             WayBillDetTaxes = new HashSet<WayBillDetTaxes>();
             WMatTurn = new HashSet<WMatTurn>();
             WMatTurn1 = new HashSet<WMatTurn>();
-            RemoteCustomerReturned = new HashSet<RemoteCustomerReturned>();
+            RemoteCustomerReturnedOutPosId = new HashSet<RemoteCustomerReturned>();
+            RemoteCustomerReturnedPosId = new HashSet<RemoteCustomerReturned>();
         }
 
         [Key]
@@ -146,6 +147,9 @@ namespace SP.Base.Models
         public virtual ICollection<WMatTurn> WMatTurn1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
+        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturnedOutPosId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturnedPosId { get; set; }
     }
 }

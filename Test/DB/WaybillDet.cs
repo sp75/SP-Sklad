@@ -13,6 +13,7 @@ namespace Test.DB
         public WaybillDet()
         {
             RemoteCustomerReturned = new HashSet<RemoteCustomerReturned>();
+            RemoteCustomerReturned1 = new HashSet<RemoteCustomerReturned>();
         }
 
         [Key]
@@ -79,6 +80,9 @@ namespace Test.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RemoteCustomerReturned> RemoteCustomerReturned1 { get; set; }
 
         public virtual WaybillList WaybillList { get; set; }
     }

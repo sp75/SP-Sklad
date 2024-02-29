@@ -1837,6 +1837,11 @@ namespace SP.Base.Models
                 .WithRequired(e => e.Materials)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Materials>()
+             .HasMany(e => e.RemoteCustomerReturned)
+             .WithRequired(e => e.Materials)
+             .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<MatGroup>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -3045,9 +3050,21 @@ namespace SP.Base.Models
             modelBuilder.Entity<Tara>()
                .Property(e => e.Weight)
                .HasPrecision(15, 4);
+
             modelBuilder.Entity<RemoteCustomerReturned>()
                .Property(e => e.Amount)
                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+              .HasMany(e => e.RemoteCustomerReturnedOutPosId)
+              .WithRequired(e => e.WaybillDet_OutPosId)
+              .HasForeignKey(e => e.OutPosId)
+              .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.RemoteCustomerReturnedPosId)
+                .WithOptional(e => e.WaybillDet_PosId)
+                .HasForeignKey(e => e.PosId);
         }
     }
 }

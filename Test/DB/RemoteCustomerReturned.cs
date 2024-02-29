@@ -30,6 +30,8 @@ namespace Test.DB
 
         public virtual WaybillDet WaybillDet { get; set; }
 
+        public virtual WaybillDet WaybillDet1 { get; set; }
+
         public virtual WaybillList WaybillList { get; set; }
     }
 }

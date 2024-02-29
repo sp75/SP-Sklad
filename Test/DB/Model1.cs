@@ -8,7 +8,7 @@ namespace Test.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model16")
+            : base("name=Model18")
         {
         }
 
@@ -80,6 +80,17 @@ namespace Test.DB
             modelBuilder.Entity<WaybillDet>()
                 .Property(e => e.AvgInPrice)
                 .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.RemoteCustomerReturned)
+                .WithRequired(e => e.WaybillDet)
+                .HasForeignKey(e => e.OutPosId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.RemoteCustomerReturned1)
+                .WithOptional(e => e.WaybillDet1)
+                .HasForeignKey(e => e.PosId);
 
             modelBuilder.Entity<WaybillList>()
                 .Property(e => e.SummAll)

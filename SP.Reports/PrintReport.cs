@@ -113,20 +113,20 @@ namespace SP.Reports
 
                 case 56:
                     result = _db.v_WaybillDet.Where(w => w.Defective == 1 && ((w.PosParent ?? 0) == 0) && w.WType == 6 && w.WbChecked == 1 && w.WbOnDate >= StartDate && w.WbOnDate <= EndDate).OrderBy(o=> o.OnDate)
-                        .Select(s => new
+                        .Select(s => new rep_56
                         {
-                            НомерДокументу = s.WbNum,
-                            ДатаДокументу = s.WbOnDate,
-                            Контрагент = s.KaName,
-                            ГрупаТоварів = s.GrpName,
-                            Товар = s.MatName,
-                            ОдВиміру = s.MsrName,
-                            Артикул = s.Artikul,
-                            ПовернутоКсть = s.Amount,
-                            Ціна = s.Price,
-                            Всього = s.Total,
-                            Склад = s.WhName,
-                            Виконавець = s.PersonName
+                            WbNum = s.WbNum,
+                            WbOnDate = s.WbOnDate,
+                            KaName = s.KaName,
+                            GrpName = s.GrpName,
+                            MatName = s.MatName,
+                            MsrName = s.MsrName,
+                            Artikul = s.Artikul,
+                            Amount = s.Amount,
+                            Price = s.Price,
+                            Total = s.Total,
+                            WhName = s.WhName,
+                            PersonName = s.PersonName
                         }).ToList();
                     break;
 
