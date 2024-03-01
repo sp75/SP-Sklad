@@ -23,7 +23,8 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucPayDoc : DevExpress.XtraEditors.XtraUserControl
     {
-        public int w_type { get; set; }
+        public string w_types { get; set; }
+        private List<int?> list_types => w_types.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(s => (int?)Convert.ToInt32(s)).ToList();
         public int fun_id { get; set; }
         public string reg_layout_path { get; set; } //= "ucPayDoc\\PayDocGridView";
         BaseEntities _db { get; set; }
@@ -78,18 +79,27 @@ namespace SP_Sklad.UserControls
 
         public void NewItem()
         {
-            using (var pd = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
+            if (list_types.Count() == 1)
             {
-                pd.ShowDialog();
+                int? w_type = list_types.FirstOrDefault();
+                using (var pd = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, null) { _ka_id = (int)PDKagentList.EditValue == 0 ? null : (int?)PDKagentList.EditValue })
+                {
+                    pd.ShowDialog();
+                }
             }
         }
 
         public void CopyItem()
         {
-            var p_doc = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
-            using (var pdf = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, p_doc.out_wbill_id))
+            if (list_types.Count() == 1)
             {
-                pdf.ShowDialog();
+                int? w_type = list_types.FirstOrDefault();
+
+                var p_doc = DB.SkladBase().DocCopy(focused_row.Id, DBHelper.CurrentUser.KaId).FirstOrDefault();
+                using (var pdf = new frmPayDoc(w_type != -2 ? w_type / 3 : w_type, p_doc.out_wbill_id))
+                {
+                    pdf.ShowDialog();
+                }
             }
         }
 
@@ -339,7 +349,7 @@ namespace SP_Sklad.UserControls
 
         private void KAgentAdjustmentSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null)
+            if (PDSatusList.EditValue == null || PDKagentList.EditValue == null || !list_types.Any())
             {
                 return;
             }
@@ -351,9 +361,8 @@ namespace SP_Sklad.UserControls
 
             BaseEntities objectContext = new BaseEntities();
 
-
             var list = objectContext.v_PayDoc.Join(objectContext.EnterpriseWorker.Where(eww => eww.WorkerId == DBHelper.CurrentUser.KaId), pd => pd.EntId, ew => ew.EnterpriseId, (pd, ew) => pd)
-                .Where(w => (w.ExDocType == -3 || w.ExDocType == 3 || w.ExDocType == -2) && w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.ExDocType == w_type || w_type == -1 ) && (w.KaId == ka_id || ka_id == 0));
+                .Where(w => list_types.Contains(w.ExDocType) && w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.KaId == ka_id || ka_id == 0));
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

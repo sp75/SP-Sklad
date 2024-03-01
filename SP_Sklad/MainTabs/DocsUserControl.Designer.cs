@@ -457,7 +457,7 @@
             this.ucWayBill.Name = "ucWayBill";
             this.ucWayBill.Size = new System.Drawing.Size(1138, 695);
             this.ucWayBill.TabIndex = 0;
-            this.ucWayBill.w_types = "1,-1,2";
+            this.ucWayBill.w_types = "";
             // 
             // CopyItemBtn
             // 
@@ -522,7 +522,7 @@
             this.ucPayDocIn.reg_layout_path = "ucPayDocIn\\\\PayDocGridView";
             this.ucPayDocIn.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocIn.TabIndex = 0;
-            this.ucPayDocIn.w_type = 3;
+            this.ucPayDocIn.w_types = "3";
             // 
             // xtraTabPage9
             // 
@@ -545,7 +545,7 @@
             this.ucPayDocOut.reg_layout_path = "ucPayDocOut\\\\PayDocGridView";
             this.ucPayDocOut.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocOut.TabIndex = 1;
-            this.ucPayDocOut.w_type = -3;
+            this.ucPayDocOut.w_types = "-3";
             // 
             // xtraTabPage10
             // 
@@ -568,7 +568,7 @@
             this.ucPayDocExtOut.reg_layout_path = "ucPayDocExtOut\\\\PayDocGridView";
             this.ucPayDocExtOut.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDocExtOut.TabIndex = 2;
-            this.ucPayDocExtOut.w_type = -2;
+            this.ucPayDocExtOut.w_types = "-2";
             // 
             // xtraTabPage11
             // 
@@ -611,7 +611,7 @@
             this.ucPayDoc.reg_layout_path = "ucPayDoc\\\\PayDocGridView";
             this.ucPayDoc.Size = new System.Drawing.Size(1138, 695);
             this.ucPayDoc.TabIndex = 1;
-            this.ucPayDoc.w_type = -1;
+            this.ucPayDoc.w_types = "";
             // 
             // xtraTabPage13
             // 

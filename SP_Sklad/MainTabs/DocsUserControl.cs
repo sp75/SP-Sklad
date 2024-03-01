@@ -86,21 +86,64 @@ namespace SP_Sklad.MainTabs
 
             if (focused_tree_node.Id == 31) //Платіжні документи
             {
+                ucPayDoc.w_types = "";
+                if (IHelper.GetUserAccess(25)?.CanView == 1)
+                {
+                    ucPayDoc.w_types = "-3,";
+                }
+                if (IHelper.GetUserAccess(26)?.CanView == 1)
+                {
+                    ucPayDoc.w_types += "3,";
+                }
+                if (IHelper.GetUserAccess(52)?.CanView == 1)
+                {
+                    ucPayDoc.w_types += "-2,";
+                }
                 wbContentTab.SelectedTabPageIndex = 6;
+              //  ucPayDoc.GetData();
             }
             else if(focused_tree_node.Id == 32) //Прибуткові , видаткові , рахунки
             {
-                ucWayBill.w_types = "1,-1,2";
+                ucWayBill.w_types = "";
+                if (IHelper.GetUserAccess(21)?.CanView == 1)
+                {
+                    ucWayBill.w_types = "1,";
+                }
+                if (IHelper.GetUserAccess(23)?.CanView == 1)
+                {
+                    ucWayBill.w_types += "-1,";
+                }
+                if (IHelper.GetUserAccess(30)?.CanView == 1)
+                {
+                    ucWayBill.w_types += "2,";
+                }
+
                 wbContentTab.SelectedTabPageIndex = 1;
             }
             else if (focused_tree_node.Id == 106) //Замовлення
             {
-                ucWayBill.w_types = "-16,16";
+                ucWayBill.w_types = "";
+                if (IHelper.GetUserAccess(65)?.CanView == 1)
+                {
+                    ucWayBill.w_types = "16,";
+                }
+                if (IHelper.GetUserAccess(64)?.CanView == 1)
+                {
+                    ucWayBill.w_types += "-16,";
+                }
                 wbContentTab.SelectedTabPageIndex = 1;
             }
             else if (focused_tree_node.Id == 55) //Повеорнення
             {
-                ucWayBill.w_types = "-6,6";
+                ucWayBill.w_types = "";
+                if (IHelper.GetUserAccess(42)?.CanView == 1)
+                {
+                    ucWayBill.w_types = "6,";
+                }
+                if (IHelper.GetUserAccess(43)?.CanView == 1)
+                {
+                    ucWayBill.w_types += "-6,";
+                }
                 wbContentTab.SelectedTabPageIndex = 1;
             }
             else if (focused_tree_node.FunId == 21) //Прибуткова накладна

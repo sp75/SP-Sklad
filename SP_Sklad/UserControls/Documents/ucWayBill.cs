@@ -26,6 +26,7 @@ namespace SP_Sklad.UserControls
     public partial class ucWayBill : DevExpress.XtraEditors.XtraUserControl
     {
         public string w_types { get; set; }
+        private List<int> list_types => w_types.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(s => Convert.ToInt32(s)).ToList();
         private string reg_layout_path = "ucWayBill\\WbInGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
@@ -176,11 +177,9 @@ namespace SP_Sklad.UserControls
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
             var kagent_id = (int)wbKagentList.EditValue;
-            var wt = w_types.Split(',').Select(s => Convert.ToInt32(s));
-
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillIn.Where(w => wt.Contains(w.WType) && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillIn.Where(w => list_types.Contains(w.WType) && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
