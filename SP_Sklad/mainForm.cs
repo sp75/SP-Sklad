@@ -58,9 +58,12 @@ namespace SP_Sklad
 
             var sta = new AppSettingRepository().ShowTradeApp;
             TradeTabPage.PageVisible = sta;
+            CashierWorkplaceBtn.Visibility = sta ? CashierWorkplaceBtn.Visibility : DevExpress.XtraBars.BarItemVisibility.Never;
+
             CashierWorkplaceBtn.Enabled = DBHelper.is_main_cacher || DBHelper.is_cacher;
             WbCorrBtn.Enabled = DBHelper.is_buh;
 
+            WbMatTemplateBtn.Visibility = IHelper.GetUserTreeView(143)?.Visible == 1 ? WbMatTemplateBtn.Visibility : DevExpress.XtraBars.BarItemVisibility.Never;
             WbMatTemplateBtn.Enabled = IHelper.GetUserAccess(96)?.CanView == 1;
             NewCustomerOrder.Enabled = IHelper.GetUserAccess(64)?.CanInsert == 1;
             NewWBWriteOnItem.Enabled = IHelper.GetUserAccess(44)?.CanInsert == 1;
@@ -70,7 +73,6 @@ namespace SP_Sklad
             NewWBWriteOffBtn.Enabled = IHelper.GetUserAccess(41)?.CanInsert == 1;
             AddManufacturingBtn.Enabled = IHelper.GetUserAccess(68)?.CanInsert == 1;
             AddDeboningBtn.Enabled = IHelper.GetUserAccess(72)?.CanInsert == 1;
-           
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

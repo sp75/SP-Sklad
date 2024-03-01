@@ -754,6 +754,14 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public UserTreeView GetUserTreeView(int id)
+        {
+            using (var db = DB.SkladBase())
+            {
+                return db.UserTreeView.AsNoTracking().FirstOrDefault(w => w.Id == id);
+            }
+        }
+
         static public void ShowWayBillDetInfo(int PosId, bool can_modify)
         {
             using (var frm = new frmWayBillDetEdit(PosId))
