@@ -53,7 +53,6 @@
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ProcurationBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -62,8 +61,11 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.EditMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -134,9 +136,9 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -170,7 +172,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,8 +213,11 @@
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem9,
-            this.barButtonItem10});
-            this.barManager1.MaxItemId = 27;
+            this.barButtonItem10,
+            this.barEditItem1});
+            this.barManager1.MaxItemId = 28;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemProgressBar1});
             // 
             // bar2
             // 
@@ -229,8 +233,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ProcurationBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ProcurationBtn, true)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -255,7 +258,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "Замовлене в постачальників";
+            this.barButtonItem1.Caption = "Замовлене клієнтами";
             this.barButtonItem1.Id = 9;
             this.barButtonItem1.ImageOptions.ImageIndex = 20;
             this.barButtonItem1.Name = "barButtonItem1";
@@ -286,15 +289,6 @@
             this.ProcurationBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.ProcurationBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ProcurationBtn_ItemClick);
             // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Дисконтна картка";
-            this.barButtonItem3.Id = 21;
-            this.barButtonItem3.ImageOptions.ImageIndex = 18;
-            this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
-            // 
             // bar1
             // 
             this.bar1.BarName = "Custom 2";
@@ -306,7 +300,8 @@
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
             this.bar1.OptionsBar.DrawDragBorder = false;
@@ -382,6 +377,15 @@
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Дисконтна картка";
+            this.barButtonItem3.Id = 21;
+            this.barButtonItem3.ImageOptions.ImageIndex = 18;
+            this.barButtonItem3.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F9);
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // EditMaterialBtn
             // 
             this.EditMaterialBtn.Caption = "Властивості";
@@ -401,6 +405,22 @@
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.DelMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelMaterialBtn_ItemClick);
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemProgressBar1;
+            this.barEditItem1.EditValue = "0";
+            this.barEditItem1.EditWidth = 200;
+            this.barEditItem1.Id = 27;
+            this.barEditItem1.Name = "barEditItem1";
+            this.barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // repositoryItemProgressBar1
+            // 
+            this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            this.repositoryItemProgressBar1.PercentView = false;
             // 
             // standaloneBarDockControl1
             // 
@@ -488,8 +508,8 @@
             this.WBImgList.Images.SetKeyName(18, "debit_card");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.WBImgList.Images.SetKeyName(19, "product_tmc");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.orders_suppliers_info, "orders_suppliers_info", typeof(global::SP_Sklad.Properties.Resources), 20);
-            this.WBImgList.Images.SetKeyName(20, "orders_suppliers_info");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.WBImgList.Images.SetKeyName(20, "order_info");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.WBImgList.Images.SetKeyName(21, "converttorange_16x16");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
@@ -1253,17 +1273,6 @@
             this.simpleButton1.Text = "Відмінити";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // progressBarControl1
-            // 
-            this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarControl1.Location = new System.Drawing.Point(770, 246);
-            this.progressBarControl1.MenuManager = this.barManager1;
-            this.progressBarControl1.Name = "progressBarControl1";
-            this.progressBarControl1.Properties.Step = 1;
-            this.progressBarControl1.Size = new System.Drawing.Size(270, 18);
-            this.progressBarControl1.TabIndex = 2;
-            this.progressBarControl1.Visible = false;
-            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -1290,7 +1299,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 612);
-            this.Controls.Add(this.progressBarControl1);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.panelControl3);
@@ -1309,6 +1317,7 @@
             this.Load += new System.EventHandler(this.frmWayBillOut_Load);
             this.Shown += new System.EventHandler(this.frmWayBillOut_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
@@ -1344,7 +1353,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1431,7 +1439,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem WeighBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
@@ -1444,5 +1451,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.Utils.ImageCollection WBImgList;
+        private DevExpress.XtraBars.BarEditItem barEditItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
     }
 }

@@ -539,7 +539,7 @@ namespace SP_Sklad.WBDetForm
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowOrdered(_wb.KaId.Value, -16, _wbd.MatId);
+            IHelper.ShowOrdered(_wb.KaId.Value, 16, _wbd.MatId);
         }
 
         private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

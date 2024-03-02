@@ -17,6 +17,7 @@ using SP_Sklad.ViewsForm;
 using SP_Sklad.Properties;
 using DevExpress.Data;
 using System.IO;
+using System.Threading;
 
 namespace SP_Sklad.WBForm
 {
@@ -30,14 +31,10 @@ namespace SP_Sklad.WBForm
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
         private bool is_update_record { get; set; }
-        private GetWayBillDetOut_Result wbd_row
-        {
-            get
-            {
-                return  WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result;
-            }
-        }
-        private List<GetWayBillDetOut_Result> wbd_list { get; set; }
+        private v_WayBillOutDet wbd_row => WaybillDetOutGridView.GetFocusedRow() as v_WayBillOutDet;
+           
+
+        private List<v_WayBillOutDet> wbd_list { get; set; }
         private UserSettingsRepository user_settings { get; set; }
         private DiscCards disc_card { get; set; }
         private List<WaybillDet> tmp_WaybillDet { get; set; }
@@ -214,10 +211,11 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-             wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList().OrderBy(o=> o.Num).ToList();
-            if(disc_card != null)
+             //wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList().OrderBy(o=> o.Num).ToList();
+            wbd_list = _db.v_WayBillOutDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
+            if (disc_card != null)
             {
-                wbd_list.Add(new GetWayBillDetOut_Result { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
+                wbd_list.Add(new v_WayBillOutDet { Discount = disc_card.OnValue, MatName = "Дисконтна картка", Num = wbd_list.Count() + 1, CardNum = disc_card.Num , PosType = 3});
             }
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
@@ -474,22 +472,26 @@ namespace SP_Sklad.WBForm
 
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1).ToList();
-            progressBarControl1.Visible = true;
-            progressBarControl1.Properties.Maximum = wb_list.Count;
-            foreach (var i in wb_list)
+            var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1 && w.PosType == 0).ToList();
+
+           
+            int i = 0;
+            barEditItem1.EditValue = i;
+            repositoryItemProgressBar1.Maximum = wb_list.Count;
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            foreach (var item in wb_list)
             {
-                _db.ReservedPosition(i.PosId, r, DBHelper.CurrentUser.UserId);
+                _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
 
                 if (r.Value != null && (int)r.Value == 0)
                 {
-                    list.Add(i.MatName);
+                    list.Add(item.MatName);
                 }
 
-                progressBarControl1.PerformStep();
-                progressBarControl1.Update();
+                barEditItem1.EditValue = ++i;
+                barEditItem1.Refresh();
             }
-            progressBarControl1.Visible = false;
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
             if (list.Any())
             {
@@ -782,7 +784,7 @@ namespace SP_Sklad.WBForm
         {
             for (int i = 0; WaybillDetOutGridView.RowCount > i; i++)
             {
-                var row = WaybillDetOutGridView.GetRow(i) as GetWayBillDetOut_Result;
+                var row = WaybillDetOutGridView.GetRow(i) as v_WayBillOutDet;
                 if (row.PosType == 0)
                 {
                     var wbd = _db.WaybillDet.Find(row.PosId);
@@ -897,11 +899,11 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var wh_row = WaybillDetOutGridView.GetRow(e.RowHandle) as GetWayBillDetOut_Result;
+            var style_row = WaybillDetOutGridView.GetRow(e.RowHandle) as v_WayBillOutDet;
 
-            if (wh_row != null && e.Column.FieldName == "Price")
+            if (style_row != null && e.Column.FieldName == "Price")
             {
-                if (wh_row.AvgInPrice > wh_row.Price)
+                if (style_row.AvgInPrice > style_row.Price)
                 {
                     e.Appearance.ForeColor = Color.Red;
                 }
