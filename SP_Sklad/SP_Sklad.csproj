@@ -3637,6 +3637,9 @@
     <None Include="Resources\open_document.png" />
     <None Include="Resources\edit_3.png" />
     <None Include="Resources\balans_businessman.png" />
+    <None Include="Resources\orders_ suppliers_info.png" />
+    <None Include="Resources\orders_suppliers_info.png" />
+    <None Include="Resources\handshake.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>
