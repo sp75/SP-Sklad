@@ -40,16 +40,13 @@ namespace SP_Sklad.UserControls
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
-
-        private int prev_focused_id = 0;
-        private int prev_top_row_index = 0;
-        private int prev_rowHandle = 0;
-        private int? find_id { get; set; }
-        private bool restore = false;
+        private FocusGridRow fgr;
 
         public ucWaybillOut()
         {
             InitializeComponent();
+            WBGridControl.DataSource = null;
+            fgr = new FocusGridRow(WbGridView);
         }
 
         public void NewItem()
@@ -188,7 +185,7 @@ namespace SP_Sklad.UserControls
 
         public void FindItem(Guid id, DateTime on_date)
         {
-            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+            fgr.find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
             WbGridView.ClearColumnsFilter();
             WbGridView.ClearFindFilter();
             ucDocumentFilterPanel.ClearFindFilter(on_date);
@@ -240,24 +237,9 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        public void GetData()
+        public void GetData(bool restore = true)
         {
-            prev_rowHandle = WbGridView.FocusedRowHandle;
-
-            if (wb_focused_row != null && !find_id.HasValue)
-            {
-                prev_top_row_index = WbGridView.TopRowIndex;
-                prev_focused_id = wb_focused_row.WbillId;
-            }
-
-            if (find_id.HasValue)
-            {
-                prev_top_row_index = -1;
-                prev_focused_id = find_id.Value;
-                find_id = null;
-            }
-
-            restore = true;
+            fgr.SetPrevData((wb_focused_row?.WbillId ?? 0), restore);
 
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = WayBillInSource;
@@ -267,37 +249,12 @@ namespace SP_Sklad.UserControls
 
         private void WbGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (wb_focused_row == null || !restore)
+            if (wb_focused_row == null)
             {
                 return;
             }
 
-            int rowHandle = WbGridView.LocateByValue("WbillId", prev_focused_id, OnRowSearchComplete);
-            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
-            {
-                FocusRow(WbGridView, rowHandle);
-            }
-            else
-            {
-                WbGridView.FocusedRowHandle = prev_rowHandle;
-            }
-
-            restore = false;
-        }
-
-        void OnRowSearchComplete(object rh)
-        {
-            int rowHandle = (int)rh;
-            if (WbGridView.IsValidRowHandle(rowHandle))
-            {
-                FocusRow(WbGridView, rowHandle);
-            }
-        }
-
-        public void FocusRow(GridView view, int rowHandle)
-        {
-            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
-            view.FocusedRowHandle = rowHandle;
+            fgr.SetRowFocus("WbillId");
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -321,13 +278,11 @@ namespace SP_Sklad.UserControls
         {
             PrintItem();
         }
-
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             EditItem();
             GetData();
         }
-
         private void WbGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
             if(e.HitInfo.InRow)

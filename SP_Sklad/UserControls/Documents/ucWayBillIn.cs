@@ -35,15 +35,8 @@ namespace SP_Sklad.UserControls
         public BarButtonItem ExtPrintBtn { get; set; }
 
         private v_WayBillIn wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WayBillIn;
-
         
         private UserSettingsRepository user_settings { get; set; }
-
-      //  private int prev_focused_id = 0;
-     //   private int prev_top_row_index = 0;
-    //    private int prev_rowHandle = 0;
-     //   private int? find_id { get; set; }
-     //   private bool restore = false;
         private FocusGridRow fgr;
 
         public ucWayBillIn()
