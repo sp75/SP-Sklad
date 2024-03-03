@@ -41,12 +41,6 @@ namespace SP_Sklad.UserControls
         private UserSettingsRepository user_settings { get; set; }
         private FocusGridRow fgr;
 
-     /*   private int prev_focused_id = 0;
-        private int prev_top_row_index = 0;
-        private int prev_rowHandle = 0;
-        private int? _find_id { get; set; }
-        private bool _restore = false;*/
-
         public ucInvoices()
         {
             InitializeComponent(); 
