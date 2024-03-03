@@ -142,7 +142,7 @@ namespace SP_Sklad.UserControls
             // 
             this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(589, 15);
+            this.wbKagentList.Location = new System.Drawing.Point(589, 14);
             this.wbKagentList.Name = "wbKagentList";
             editorButtonImageOptions1.ImageIndex = 0;
             editorButtonImageOptions1.ImageList = this.imageCollection1;

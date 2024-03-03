@@ -39,17 +39,13 @@ namespace SP_Sklad.UserControls
 
         
         private UserSettingsRepository user_settings { get; set; }
-
-        private int prev_focused_id = 0;
-        private int prev_top_row_index = 0;
-        private int prev_rowHandle = 0;
-
-        private int? find_id { get; set; }
-        private bool restore = false;
+        private FocusGridRow fgr;
 
         public ucWayBill()
         {
             InitializeComponent();
+            WBGridControl.DataSource = null;
+            fgr = new FocusGridRow(WbGridView);
         }
 
         public void CopyItem()
@@ -152,11 +148,8 @@ namespace SP_Sklad.UserControls
 
         public void FindItem(Guid id, DateTime on_date)
         {
-            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
-            wbStartDate.DateTime = on_date.Date;
-            wbEndDate.DateTime = on_date.Date.SetEndDay();
-            wbKagentList.EditValue = 0;
-            wbStatusList.EditValue = -1;
+            fgr.find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+            ucDocumentFilterPanel.ClearFindFilter(on_date);
 
             GetData();
         }
@@ -168,18 +161,8 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null || wbKagentList.EditValue == null)
-            {
-                return;
-            }
-
-            var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
-            var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
-            var status = (int)wbStatusList.EditValue;
-            var kagent_id = (int)wbKagentList.EditValue;
-
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillIn.Where(w => list_types.Contains(w.WType) && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.KaId == kagent_id || kagent_id == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillIn.Where(w => list_types.Contains(w.WType) && w.OnDate > ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (w.Checked == ucDocumentFilterPanel.StatusId || ucDocumentFilterPanel.StatusId == -1) && (w.KaId == ucDocumentFilterPanel.KagentId || ucDocumentFilterPanel.KagentId == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -194,17 +177,6 @@ namespace SP_Sklad.UserControls
             if (!DesignMode)
             {
                 _db = new BaseEntities();
-               
-
-                wbKagentList.Properties.DataSource = DBHelper.KagentsList;//new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(_db.Kagent.Select(s => new { s.KaId, s.Name }));
-                wbKagentList.EditValue = 0;
-
-                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                wbStatusList.EditValue = -1;
-
-                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
 
                 WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
@@ -223,24 +195,9 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        public void GetData()
+        public void GetData(bool restore = true)
         {
-            prev_rowHandle = WbGridView.FocusedRowHandle;
-
-            if (wb_focused_row != null && !find_id.HasValue)
-            {
-                prev_top_row_index = WbGridView.TopRowIndex;
-                prev_focused_id = wb_focused_row.WbillId;
-            }
-
-            if (find_id.HasValue)
-            {
-                prev_top_row_index = -1;
-                prev_focused_id = find_id.Value;
-                find_id = null;
-            }
-
-            restore = true;
+            fgr.SetPrevData((wb_focused_row?.WbillId ?? 0), restore);
 
             WBGridControl.DataSource = null;
             WBGridControl.DataSource = WayBillInSource;
@@ -248,64 +205,15 @@ namespace SP_Sklad.UserControls
             SetWBEditorBarBtn();
         }
 
-        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
-            switch (PeriodComboBoxEdit.SelectedIndex)
-            {
-                case 1:
-                    wbStartDate.DateTime = DateTime.Now.Date;
-                    break;
-
-                case 2:
-                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
-                    break;
-
-                case 3:
-                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
-                    break;
-
-                case 4:
-                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
-                    break;
-            }
-
-            GetData();
-        }
 
         private void WbGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (wb_focused_row == null || !restore)
+            if (wb_focused_row == null)
             {
                 return;
             }
 
-            int rowHandle = WbGridView.LocateByValue("WbillId", prev_focused_id, OnRowSearchComplete);
-            if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
-            {
-                FocusRow(WbGridView, rowHandle);
-            }
-            else
-            {
-                WbGridView.FocusedRowHandle = prev_rowHandle;
-            }
-
-            restore = false;
-        }
-
-        void OnRowSearchComplete(object rh)
-        {
-            int rowHandle = (int)rh;
-            if (WbGridView.IsValidRowHandle(rowHandle))
-            {
-                FocusRow(WbGridView, rowHandle);
-            }
-        }
-
-        public void FocusRow(GridView view, int rowHandle)
-        {
-            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
-            view.FocusedRowHandle = rowHandle;
+            fgr.SetRowFocus("WbillId");
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -410,38 +318,6 @@ namespace SP_Sklad.UserControls
                 case 3:
                     ucDocumentPaymentGrid.GetPaymentDoc(wb_focused_row.Id);
                     break;
-            }
-        }
-
-        private void wbStatusList_EditValueChanged(object sender, EventArgs e)
-        {
-            if(wbStatusList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void wbKagentList_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbKagentList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void wbEndDate_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbEndDate.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbStartDate.ContainsFocus)
-            {
-                GetData();
             }
         }
 
@@ -590,12 +466,9 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void ucDocumentFilterPanel_FilterChanged(object sender, EventArgs e)
         {
-            if (e.Button.Index == 1)
-            {
-                wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
-            }
+            GetData();
         }
     }
 }
