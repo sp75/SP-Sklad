@@ -27,7 +27,7 @@ namespace SP_Sklad.UserControls
         [Browsable(false)]
         public DateTime StartDate => wbStartDate.DateTime;
         [Browsable(false)]
-        public DateTime EndDate  => wbEndDate.DateTime;
+        public DateTime EndDate  => wbEndDate.DateTime == DateTime.MinValue ? DateTime.Now.AddYears(1) : wbEndDate.DateTime;
         [Browsable(false)]
         public int StatusId => (int)wbStatusList.EditValue;
         [Browsable(false)]
@@ -43,6 +43,12 @@ namespace SP_Sklad.UserControls
         {
             get => wbKagentList.Properties.Buttons[2].ImageOptions.ImageIndex;
             set => wbKagentList.Properties.Buttons[2].ImageOptions.ImageIndex = value;
+        }
+        [Browsable(true)]
+        public bool KagentPanelVisible
+        {
+            get => KagentPanel.Visible;
+            set => KagentPanel.Visible = value;
         }
 
 
@@ -101,6 +107,10 @@ namespace SP_Sklad.UserControls
 
                 case 4:
                     wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
+                    break;
+
+                case 5:
+                    wbStartDate.EditValue = null;
                     break;
             }
 

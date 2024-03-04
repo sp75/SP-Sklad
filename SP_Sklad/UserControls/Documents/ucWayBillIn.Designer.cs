@@ -37,6 +37,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
+            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -110,7 +111,6 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.xtraTabPage24 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
-            this.WayBillInSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
@@ -187,6 +187,15 @@
             this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
+            // 
+            // WayBillInSource
+            // 
+            this.WayBillInSource.AreSourceRowsThreadSafe = true;
+            this.WayBillInSource.DefaultSorting = "OnDate DESC";
+            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillIn);
+            this.WayBillInSource.KeyExpression = "WbillId";
+            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
+            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
             // 
             // WbGridView
             // 
@@ -447,6 +456,7 @@
             // 
             this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.ucDocumentFilterPanel.KagentImageIndex = 1;
+            this.ucDocumentFilterPanel.KagentPanelVisible = true;
             this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
             this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
             this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1375, 54);
@@ -924,15 +934,6 @@
             this.ucDocumentPaymentGrid.Name = "ucDocumentPaymentGrid";
             this.ucDocumentPaymentGrid.Size = new System.Drawing.Size(1373, 193);
             this.ucDocumentPaymentGrid.TabIndex = 0;
-            // 
-            // WayBillInSource
-            // 
-            this.WayBillInSource.AreSourceRowsThreadSafe = true;
-            this.WayBillInSource.DefaultSorting = "OnDate DESC";
-            this.WayBillInSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WayBillIn);
-            this.WayBillInSource.KeyExpression = "WbillId";
-            this.WayBillInSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_GetQueryable);
-            this.WayBillInSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WayBillInSource_DismissQueryable);
             // 
             // styleController1
             // 

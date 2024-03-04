@@ -66,14 +66,7 @@
             this.gridColumn137 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn138 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn139 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
-            this.PMStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.ProjectManagementEndDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.ProjectManagementStartDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl7 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage30 = new DevExpress.XtraTab.XtraTabPage();
             this.ProjectManagementDetGridControl = new DevExpress.XtraGrid.GridControl();
@@ -94,6 +87,7 @@
             this.xtraTabPage32 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid6 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.ProjectManagementPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
             this.splitContainerControl8.Panel1.SuspendLayout();
@@ -106,14 +100,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox39)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox40)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
-            this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PMStatusList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).BeginInit();
             this.xtraTabControl7.SuspendLayout();
             this.xtraTabPage30.SuspendLayout();
@@ -134,10 +121,10 @@
             // 
             // splitContainerControl8.Panel1
             // 
+            this.splitContainerControl8.Panel1.Controls.Add(this.ProjectManagementGridControl);
+            this.splitContainerControl8.Panel1.Controls.Add(this.ucDocumentFilterPanel);
             this.splitContainerControl8.Panel1.Controls.Add(this.standaloneBarDockControl1);
             this.splitContainerControl8.Panel1.Controls.Add(this.standaloneBarDockControl2);
-            this.splitContainerControl8.Panel1.Controls.Add(this.ProjectManagementGridControl);
-            this.splitContainerControl8.Panel1.Controls.Add(this.panelControl8);
             this.splitContainerControl8.Panel1.Text = "Panel1";
             // 
             // splitContainerControl8.Panel2
@@ -154,7 +141,7 @@
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 50);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1344, 0);
@@ -244,7 +231,7 @@
             this.standaloneBarDockControl2.AutoSize = true;
             this.standaloneBarDockControl2.CausesValidation = false;
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 50);
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1344, 0);
@@ -371,13 +358,13 @@
             // 
             this.ProjectManagementGridControl.DataSource = this.ProjectManagementSource;
             this.ProjectManagementGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectManagementGridControl.Location = new System.Drawing.Point(0, 50);
+            this.ProjectManagementGridControl.Location = new System.Drawing.Point(0, 54);
             this.ProjectManagementGridControl.MainView = this.ProjectManagementGridView;
             this.ProjectManagementGridControl.Name = "ProjectManagementGridControl";
             this.ProjectManagementGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox39,
             this.repositoryItemImageComboBox40});
-            this.ProjectManagementGridControl.Size = new System.Drawing.Size(1344, 423);
+            this.ProjectManagementGridControl.Size = new System.Drawing.Size(1344, 419);
             this.ProjectManagementGridControl.TabIndex = 0;
             this.ProjectManagementGridControl.UseEmbeddedNavigator = true;
             this.ProjectManagementGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -540,106 +527,10 @@
             this.gridColumn139.VisibleIndex = 5;
             this.gridColumn139.Width = 209;
             // 
-            // panelControl8
-            // 
-            this.panelControl8.Controls.Add(this.PMStatusList);
-            this.panelControl8.Controls.Add(this.labelControl1);
-            this.panelControl8.Controls.Add(this.ProjectManagementEndDateEdit);
-            this.panelControl8.Controls.Add(this.labelControl2);
-            this.panelControl8.Controls.Add(this.ProjectManagementStartDateEdit);
-            this.panelControl8.Controls.Add(this.labelControl20);
-            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 0);
-            this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(1344, 50);
-            this.panelControl8.TabIndex = 1;
-            // 
-            // PMStatusList
-            // 
-            this.PMStatusList.Location = new System.Drawing.Point(491, 13);
-            this.PMStatusList.Name = "PMStatusList";
-            this.PMStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.PMStatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.PMStatusList.Properties.DisplayMember = "Name";
-            this.PMStatusList.Properties.ShowHeader = false;
-            this.PMStatusList.Properties.ValueMember = "Id";
-            this.PMStatusList.Size = new System.Drawing.Size(188, 22);
-            this.PMStatusList.StyleController = this.styleController1;
-            this.PMStatusList.TabIndex = 8;
-            this.PMStatusList.EditValueChanged += new System.EventHandler(this.PMStatusList_EditValueChanged);
-            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(449, 18);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 13);
-            this.labelControl1.TabIndex = 7;
-            this.labelControl1.Text = "Статус";
-            // 
-            // ProjectManagementEndDateEdit
-            // 
-            this.ProjectManagementEndDateEdit.EditValue = null;
-            this.ProjectManagementEndDateEdit.Location = new System.Drawing.Point(228, 13);
-            this.ProjectManagementEndDateEdit.Name = "ProjectManagementEndDateEdit";
-            this.ProjectManagementEndDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ProjectManagementEndDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ProjectManagementEndDateEdit.Properties.DisplayFormat.FormatString = "";
-            this.ProjectManagementEndDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ProjectManagementEndDateEdit.Properties.EditFormat.FormatString = "";
-            this.ProjectManagementEndDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ProjectManagementEndDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ProjectManagementEndDateEdit.Properties.MaskSettings.Set("mask", "g");
-            this.ProjectManagementEndDateEdit.Size = new System.Drawing.Size(140, 22);
-            this.ProjectManagementEndDateEdit.StyleController = this.styleController1;
-            this.ProjectManagementEndDateEdit.TabIndex = 3;
-            this.ProjectManagementEndDateEdit.EditValueChanged += new System.EventHandler(this.ProjectManagementEndDateEdit_EditValueChanged);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(210, 18);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(12, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "по";
-            // 
-            // ProjectManagementStartDateEdit
-            // 
-            this.ProjectManagementStartDateEdit.EditValue = null;
-            this.ProjectManagementStartDateEdit.Location = new System.Drawing.Point(64, 13);
-            this.ProjectManagementStartDateEdit.Name = "ProjectManagementStartDateEdit";
-            this.ProjectManagementStartDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ProjectManagementStartDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.ProjectManagementStartDateEdit.Properties.DisplayFormat.FormatString = "";
-            this.ProjectManagementStartDateEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ProjectManagementStartDateEdit.Properties.EditFormat.FormatString = "";
-            this.ProjectManagementStartDateEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.ProjectManagementStartDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.ProjectManagementStartDateEdit.Properties.MaskSettings.Set("mask", "g");
-            this.ProjectManagementStartDateEdit.Size = new System.Drawing.Size(140, 22);
-            this.ProjectManagementStartDateEdit.StyleController = this.styleController1;
-            this.ProjectManagementStartDateEdit.TabIndex = 1;
-            this.ProjectManagementStartDateEdit.EditValueChanged += new System.EventHandler(this.ProjectManagementStartDateEdit_EditValueChanged);
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(16, 18);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(42, 13);
-            this.labelControl20.TabIndex = 0;
-            this.labelControl20.Text = "Період з";
             // 
             // xtraTabControl7
             // 
@@ -865,6 +756,18 @@
             this.ProjectManagementPopupMenu.Name = "ProjectManagementPopupMenu";
             this.ProjectManagementPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
             // 
+            // ucDocumentFilterPanel
+            // 
+            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucDocumentFilterPanel.KagentImageIndex = 1;
+            this.ucDocumentFilterPanel.KagentPanelVisible = false;
+            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
+            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1344, 54);
+            this.ucDocumentFilterPanel.TabIndex = 10;
+            this.ucDocumentFilterPanel.Title = "Постачальник";
+            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
+            // 
             // ucProjectManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -892,15 +795,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox39)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox40)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
-            this.panelControl8.ResumeLayout(false);
-            this.panelControl8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PMStatusList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementEndDateEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectManagementStartDateEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl7)).EndInit();
             this.xtraTabControl7.ResumeLayout(false);
             this.xtraTabPage30.ResumeLayout(false);
@@ -931,13 +826,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn137;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn138;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn139;
-        private DevExpress.XtraEditors.PanelControl panelControl8;
-        public DevExpress.XtraEditors.LookUpEdit PMStatusList;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        public DevExpress.XtraEditors.DateEdit ProjectManagementEndDateEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        public DevExpress.XtraEditors.DateEdit ProjectManagementStartDateEdit;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraTab.XtraTabControl xtraTabControl7;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage30;
         private DevExpress.XtraGrid.GridControl ProjectManagementDetGridControl;
@@ -980,5 +868,6 @@
         private DevExpress.XtraBars.BarButtonItem ExportToExcelBtn;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraBars.PopupMenu ProjectManagementPopupMenu;
+        private ucDocumentFilterPanel ucDocumentFilterPanel;
     }
 }

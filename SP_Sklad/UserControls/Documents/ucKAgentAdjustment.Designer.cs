@@ -46,6 +46,7 @@
             this.gridColumn64 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -65,14 +66,6 @@
             this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RestoreSettingsGridBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
-            this.kaaStatusList = new DevExpress.XtraEditors.LookUpEdit();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.kaaEndDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.kaaStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl4 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage16 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl5 = new DevExpress.XtraGrid.GridControl();
@@ -109,6 +102,7 @@
             this.editorRow20 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid3 = new SP_Sklad.UserControls.ucRelDocGrid();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.GgridDataSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.GridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
@@ -123,14 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).BeginInit();
-            this.panelControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStatusList.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaEndDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaEndDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStartDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).BeginInit();
             this.xtraTabControl4.SuspendLayout();
             this.xtraTabPage16.SuspendLayout();
@@ -141,6 +127,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).BeginInit();
             this.xtraTabPage18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,9 +142,9 @@
             // splitContainerControl8.Panel1
             // 
             this.splitContainerControl8.Panel1.Controls.Add(this.KAgentAdjustmentGridControl);
+            this.splitContainerControl8.Panel1.Controls.Add(this.ucDocumentFilterPanel);
             this.splitContainerControl8.Panel1.Controls.Add(this.standaloneBarDockControl1);
             this.splitContainerControl8.Panel1.Controls.Add(this.standaloneBarDockControl2);
-            this.splitContainerControl8.Panel1.Controls.Add(this.panelControl8);
             this.splitContainerControl8.Panel1.Text = "Panel1";
             // 
             // splitContainerControl8.Panel2
@@ -172,13 +159,13 @@
             // KAgentAdjustmentGridControl
             // 
             this.KAgentAdjustmentGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KAgentAdjustmentGridControl.Location = new System.Drawing.Point(0, 50);
+            this.KAgentAdjustmentGridControl.Location = new System.Drawing.Point(0, 54);
             this.KAgentAdjustmentGridControl.MainView = this.KAgentAdjustmentGridView;
             this.KAgentAdjustmentGridControl.Name = "KAgentAdjustmentGridControl";
             this.KAgentAdjustmentGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox13,
             this.repositoryItemImageComboBox17});
-            this.KAgentAdjustmentGridControl.Size = new System.Drawing.Size(1344, 423);
+            this.KAgentAdjustmentGridControl.Size = new System.Drawing.Size(1344, 419);
             this.KAgentAdjustmentGridControl.TabIndex = 5;
             this.KAgentAdjustmentGridControl.UseEmbeddedNavigator = true;
             this.KAgentAdjustmentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -371,12 +358,24 @@
             this.gridColumn59.VisibleIndex = 4;
             this.gridColumn59.Width = 217;
             // 
+            // ucDocumentFilterPanel
+            // 
+            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucDocumentFilterPanel.KagentImageIndex = 1;
+            this.ucDocumentFilterPanel.KagentPanelVisible = false;
+            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
+            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1344, 54);
+            this.ucDocumentFilterPanel.TabIndex = 8;
+            this.ucDocumentFilterPanel.Title = "Постачальник";
+            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 50);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1344, 0);
@@ -466,7 +465,7 @@
             this.standaloneBarDockControl2.AutoSize = true;
             this.standaloneBarDockControl2.CausesValidation = false;
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 50);
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1344, 0);
@@ -553,107 +552,6 @@
             this.ExportToExcelBtn.Id = 35;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
-            // 
-            // panelControl8
-            // 
-            this.panelControl8.Controls.Add(this.kaaStatusList);
-            this.panelControl8.Controls.Add(this.labelControl1);
-            this.panelControl8.Controls.Add(this.kaaEndDate);
-            this.panelControl8.Controls.Add(this.labelControl2);
-            this.panelControl8.Controls.Add(this.kaaStartDate);
-            this.panelControl8.Controls.Add(this.labelControl20);
-            this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl8.Location = new System.Drawing.Point(0, 0);
-            this.panelControl8.Name = "panelControl8";
-            this.panelControl8.Size = new System.Drawing.Size(1344, 50);
-            this.panelControl8.TabIndex = 1;
-            // 
-            // kaaStatusList
-            // 
-            this.kaaStatusList.Location = new System.Drawing.Point(491, 13);
-            this.kaaStatusList.Name = "kaaStatusList";
-            this.kaaStatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.kaaStatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.kaaStatusList.Properties.DisplayMember = "Name";
-            this.kaaStatusList.Properties.ShowHeader = false;
-            this.kaaStatusList.Properties.ValueMember = "Id";
-            this.kaaStatusList.Size = new System.Drawing.Size(188, 22);
-            this.kaaStatusList.StyleController = this.styleController1;
-            this.kaaStatusList.TabIndex = 8;
-            this.kaaStatusList.EditValueChanged += new System.EventHandler(this.PMStatusList_EditValueChanged);
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(449, 18);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(36, 13);
-            this.labelControl1.TabIndex = 7;
-            this.labelControl1.Text = "Статус";
-            // 
-            // kaaEndDate
-            // 
-            this.kaaEndDate.EditValue = null;
-            this.kaaEndDate.Location = new System.Drawing.Point(228, 13);
-            this.kaaEndDate.Name = "kaaEndDate";
-            this.kaaEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.kaaEndDate.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.kaaEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.kaaEndDate.Properties.DisplayFormat.FormatString = "";
-            this.kaaEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.kaaEndDate.Properties.EditFormat.FormatString = "";
-            this.kaaEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.kaaEndDate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.kaaEndDate.Properties.MaskSettings.Set("mask", "g");
-            this.kaaEndDate.Size = new System.Drawing.Size(140, 22);
-            this.kaaEndDate.StyleController = this.styleController1;
-            this.kaaEndDate.TabIndex = 3;
-            this.kaaEndDate.EditValueChanged += new System.EventHandler(this.ProjectManagementEndDateEdit_EditValueChanged);
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(210, 18);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(12, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "по";
-            // 
-            // kaaStartDate
-            // 
-            this.kaaStartDate.EditValue = null;
-            this.kaaStartDate.Location = new System.Drawing.Point(64, 13);
-            this.kaaStartDate.Name = "kaaStartDate";
-            this.kaaStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.kaaStartDate.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
-            this.kaaStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.kaaStartDate.Properties.DisplayFormat.FormatString = "";
-            this.kaaStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.kaaStartDate.Properties.EditFormat.FormatString = "";
-            this.kaaStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.kaaStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.kaaStartDate.Properties.MaskSettings.Set("mask", "g");
-            this.kaaStartDate.Size = new System.Drawing.Size(140, 22);
-            this.kaaStartDate.StyleController = this.styleController1;
-            this.kaaStartDate.TabIndex = 1;
-            this.kaaStartDate.EditValueChanged += new System.EventHandler(this.ProjectManagementStartDateEdit_EditValueChanged);
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(16, 18);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(42, 13);
-            this.labelControl20.TabIndex = 0;
-            this.labelControl20.Text = "Період з";
             // 
             // xtraTabControl4
             // 
@@ -1010,6 +908,11 @@
             this.ucRelDocGrid3.Size = new System.Drawing.Size(1342, 273);
             this.ucRelDocGrid3.TabIndex = 3;
             // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
             // GgridDataSource
             // 
             this.GgridDataSource.AreSourceRowsThreadSafe = true;
@@ -1063,15 +966,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl8)).EndInit();
-            this.panelControl8.ResumeLayout(false);
-            this.panelControl8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStatusList.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaEndDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaEndDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStartDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.kaaStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl4)).EndInit();
             this.xtraTabControl4.ResumeLayout(false);
             this.xtraTabPage16.ResumeLayout(false);
@@ -1082,6 +976,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox18)).EndInit();
             this.xtraTabPage18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1091,13 +986,6 @@
         #endregion
 
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl8;
-        private DevExpress.XtraEditors.PanelControl panelControl8;
-        public DevExpress.XtraEditors.LookUpEdit kaaStatusList;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        public DevExpress.XtraEditors.DateEdit kaaEndDate;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
-        public DevExpress.XtraEditors.DateEdit kaaStartDate;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.StyleController styleController1;
@@ -1171,5 +1059,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow20;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage18;
         private ucRelDocGrid ucRelDocGrid3;
+        private ucDocumentFilterPanel ucDocumentFilterPanel;
     }
 }

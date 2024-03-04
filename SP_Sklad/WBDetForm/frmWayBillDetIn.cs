@@ -108,7 +108,7 @@ namespace SP_Sklad.WBDetForm
                 SerialsBS.DataSource = serials;
 
                 MatComboBox.Enabled = (wbdp == null || wbdp.WbMaked == null);
-                MatEditBtn.Enabled = MatComboBox.Enabled;
+
                 //   AmountEdit.Enabled = (MatComboBox.Enabled  );
                 ManufEditBtn.Visible = ((wbdp == null || wbdp.WaybillList == null || wbdp.WaybillList.WType == -20) && _wb.WType == 5);
 
@@ -316,23 +316,7 @@ namespace SP_Sklad.WBDetForm
 
         private void MatEditBtn_Click(object sender, EventArgs e)
         {
-            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-            if( MatComboBox.EditValue != DBNull.Value)
-            {
-                SetPrice((int)MatComboBox.EditValue);
-            }
-
-            if (_wbd != null)
-            {
-                var p = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
-                if (p != null && p.WbMaked != null)
-                {
-                    p.WbMaked = null;
-                    MatComboBox.Enabled = true;
-                    //    MatEditBtn.Enabled = true;
-                    AmountEdit.Enabled = true;
-                }
-            }
+           
         }
 
         private void ManufEditBtn_Click(object sender, EventArgs e)
@@ -350,7 +334,7 @@ namespace SP_Sklad.WBDetForm
                     PriceEdit.EditValue = _wbd.BasePrice;
 
                     MatComboBox.Enabled = false;
-                    MatEditBtn.Enabled = false;
+
                  //   AmountEdit.Enabled = false;
 
                     GetOk();
@@ -415,6 +399,30 @@ namespace SP_Sklad.WBDetForm
             if (e.Button.Index == 1)
             {
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+            }
+        }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+                if (MatComboBox.EditValue != DBNull.Value)
+                {
+                    SetPrice((int)MatComboBox.EditValue);
+                }
+
+                if (_wbd != null)
+                {
+                    var p = _db.WayBillDetAddProps.FirstOrDefault(w => w.PosId == _wbd.PosId);
+                    if (p != null && p.WbMaked != null)
+                    {
+                        p.WbMaked = null;
+                        MatComboBox.Enabled = true;
+                        //    MatEditBtn.Enabled = true;
+                        AmountEdit.Enabled = true;
+                    }
+                }
             }
         }
     }

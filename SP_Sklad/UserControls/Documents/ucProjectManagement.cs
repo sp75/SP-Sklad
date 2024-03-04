@@ -145,10 +145,9 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
-
-            ProjectManagementStartDateEdit.DateTime = on_date.Date;
-            ProjectManagementEndDateEdit.DateTime = on_date.Date.SetEndDay();
-            PMStatusList.EditValue = -1;
+            ProjectManagementGridView.ClearColumnsFilter();
+            ProjectManagementGridView.ClearFindFilter();
+            ucDocumentFilterPanel.ClearFindFilter(on_date);
 
             GetData();
         }
@@ -207,14 +206,8 @@ namespace SP_Sklad.UserControls
 
         private void ProjectManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (PMStatusList.EditValue == null )
-            {
-                return;
-            }
-
-
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_ProjectManagement.Where(w => w.OnDate >= ProjectManagementStartDateEdit.DateTime && w.OnDate < ProjectManagementEndDateEdit.DateTime && ((int)PMStatusList.EditValue == -1 || w.Checked == (int)PMStatusList.EditValue));
+            var list = objectContext.v_ProjectManagement.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate < ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId));
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -230,13 +223,6 @@ namespace SP_Sklad.UserControls
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
-
-                PMStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                PMStatusList.EditValue = -1;
-
-                ProjectManagementStartDateEdit.EditValue = null;// DateTime.Now.Date.FirstDayOfMonth();
-                ProjectManagementEndDateEdit.EditValue = DateTime.Now.Date.SetEndDay();
-
                 GetData();
             }
         }
@@ -246,29 +232,6 @@ namespace SP_Sklad.UserControls
             ProjectManagementGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
-        private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            if (ProjectManagementStartDateEdit.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void ProjectManagementEndDateEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            if (ProjectManagementEndDateEdit.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void PMStatusList_EditValueChanged(object sender, EventArgs e)
-        {
-            if (PMStatusList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
 
         private void SetWBEditorBarBtn()
         {
@@ -427,6 +390,11 @@ namespace SP_Sklad.UserControls
             wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
             ProjectManagementGridView.RestoreLayoutFromStream(wh_layout_stream);
+        }
+
+        private void ucDocumentFilterPanel_FilterChanged(object sender, EventArgs e)
+        {
+            GetData();
         }
     }
 }

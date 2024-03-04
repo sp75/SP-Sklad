@@ -60,13 +60,6 @@ namespace SP_Sklad.UserControls
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
-
-                kaaStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
-                kaaStatusList.EditValue = -1;
-
-                kaaStartDate.EditValue = DateTime.Now.Date.FirstDayOfMonth();
-                kaaEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
                 GetData();
             }
         }
@@ -144,10 +137,7 @@ namespace SP_Sklad.UserControls
             find_id = id;
             KAgentAdjustmentGridView.ClearColumnsFilter();
             KAgentAdjustmentGridView.ClearFindFilter();
-         //   PeriodComboBoxEdit.SelectedIndex = 0;
-            kaaStartDate.DateTime = on_date.Date;
-            kaaEndDate.DateTime = on_date.Date.SetEndDay();
-            kaaStatusList.EditValue = -1;
+            ucDocumentFilterPanel.ClearFindFilter(on_date);
 
             GetData();
         }
@@ -187,29 +177,6 @@ namespace SP_Sklad.UserControls
             KAgentAdjustmentGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
-        private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            if (kaaStartDate.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void ProjectManagementEndDateEdit_EditValueChanged(object sender, EventArgs e)
-        {
-            if (kaaEndDate.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void PMStatusList_EditValueChanged(object sender, EventArgs e)
-        {
-            if (kaaStatusList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
 
         private void SetWBEditorBarBtn()
         {
@@ -332,18 +299,8 @@ namespace SP_Sklad.UserControls
 
         private void KAgentAdjustmentSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-
-            if (kaaStatusList.EditValue == null )
-            {
-                return;
-            }
-
-            var satrt_date = kaaStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : kaaStartDate.DateTime;
-            var end_date = kaaEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : kaaEndDate.DateTime;
-            int status = (int)kaaStatusList.EditValue;
-
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_KAgentAdjustment.Where(w => w.OnDate >= satrt_date && w.OnDate <= end_date && (status == -1 || w.Checked == status) && (w.WType == w_type || w_type == -1));
+            var list = objectContext.v_KAgentAdjustment.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId) && (w.WType == w_type || w_type == -1));
             e.QueryableSource = list;
 
             e.Tag = objectContext;
@@ -420,6 +377,11 @@ namespace SP_Sklad.UserControls
                 Point p2 = Control.MousePosition;
                 GridPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void ucDocumentFilterPanel_FilterChanged(object sender, EventArgs e)
+        {
+            GetData();
         }
     }
 }

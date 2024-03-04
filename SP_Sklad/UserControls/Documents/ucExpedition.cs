@@ -171,14 +171,12 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
-            //  kaaStartDate.DateTime = on_date.Date;
-            //   kaaEndDate.DateTime = on_date.Date.SetEndDay();
-            //    kaaStatusList.EditValue = -1;
+
             ExpeditionsGridView.ClearColumnsFilter();
             ExpeditionsGridView.ClearFindFilter();
+            ucDocumentFilterPanel.ClearFindFilter(on_date);
             GetData();
         }
-
 
         private void GetDetailData()
         {
@@ -204,6 +202,7 @@ namespace SP_Sklad.UserControls
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
         }
+
         public void SaveGridLayouts()
         {
             ExpeditionsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
@@ -212,12 +211,6 @@ namespace SP_Sklad.UserControls
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
         {
             EditBtn.PerformClick();
-        }
-
-        private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
-        {
-            var list = DB.SkladBase().v_Expedition.AsQueryable();
-            e.QueryableSource = list;
         }
 
         private void SettingMaterialPricesGridView_AsyncCompleted(object sender, EventArgs e)
@@ -330,8 +323,10 @@ namespace SP_Sklad.UserControls
 
         private void ExpeditionsSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var list = DB.SkladBase().v_Expedition.AsQueryable();
+            BaseEntities objectContext = new BaseEntities();
+            var list = objectContext.v_Expedition.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId));
             e.QueryableSource = list;
+            e.Tag = objectContext;
         }
 
         private void ExpeditionsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
@@ -346,6 +341,19 @@ namespace SP_Sklad.UserControls
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
         {
             ExportToExcel();
+        }
+
+        private void ucDocumentFilterPanel_FilterChanged(object sender, EventArgs e)
+        {
+            GetData();
+        }
+
+        private void ExpeditionsSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        {
+            if (e.Tag == null)
+                return;
+
+            ((BaseEntities)e.Tag).Dispose();
         }
     }
 }
