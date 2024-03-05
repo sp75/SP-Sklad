@@ -16,7 +16,7 @@ using System.Threading;
 
 namespace update
 {
-    public partial class Form1 : Form
+    public partial class Form1 :  DevExpress.XtraEditors.XtraForm
     {
         private bool is_web_dowload { get; set; }
         public Form1(string[] args)

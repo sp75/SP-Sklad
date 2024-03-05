@@ -391,11 +391,44 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
+            /*    var res = _db.ReservedAllPosition(wb.WbillId, DBHelper.CurrentUser.UserId);
 
-            if (res.Any())
+                if (res.Any())
+                {
+                    MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+                }
+
+                RefreshDet();*/
+
+            _db.SaveChanges();
+            var list = new List<string>();
+
+            var r = new ObjectParameter("RSV", typeof(Int32));
+
+            var wb_list = _db.GetWayBillMakeDet(_wbill_id).ToList().Where(w => w.Rsv != 1 ).ToList();
+
+
+            int i = 0;
+            barEditItem1.EditValue = i;
+            repositoryItemProgressBar1.Maximum = wb_list.Count;
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            foreach (var item in wb_list)
             {
-                MessageBox.Show("Не вдалося зарезервувати деякі товари!");
+                _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
+
+                if (r.Value != null && (int)r.Value == 0)
+                {
+                    list.Add(item.MatName);
+                }
+
+                barEditItem1.EditValue = ++i;
+                barEditItem1.Refresh();
+            }
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+
+            if (list.Any())
+            {
+                MessageBox.Show("Не вдалося зарезервувати: " + String.Join(",", list));
             }
 
             RefreshDet();

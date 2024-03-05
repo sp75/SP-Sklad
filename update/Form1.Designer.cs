@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.AutoUpdateCheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -62,13 +63,13 @@
             this.AutoUpdateCheckEdit.Properties.Caption = "Більше не запитувати";
             this.AutoUpdateCheckEdit.Properties.ValueChecked = 1;
             this.AutoUpdateCheckEdit.Properties.ValueUnchecked = 0;
-            this.AutoUpdateCheckEdit.Size = new System.Drawing.Size(191, 19);
+            this.AutoUpdateCheckEdit.Size = new System.Drawing.Size(191, 20);
             this.AutoUpdateCheckEdit.TabIndex = 35;
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(290, 52);
+            this.button3.Location = new System.Drawing.Point(290, 51);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 23);
             this.button3.TabIndex = 36;
@@ -85,6 +86,7 @@
             this.Controls.Add(this.AutoUpdateCheckEdit);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.button1);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("Form1.IconOptions.Image")));
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Обновити SP-Sklad";
