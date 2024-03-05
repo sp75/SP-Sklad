@@ -3640,6 +3640,13 @@
     <None Include="Resources\orders_ suppliers_info.png" />
     <None Include="Resources\orders_suppliers_info.png" />
     <None Include="Resources\handshake.png" />
+    <None Include="Resources\lock.png" />
+    <None Include="Resources\lock_1.png" />
+    <None Include="Resources\money_out1.png" />
+    <None Include="Resources\money_out.png" />
+    <None Include="Resources\money_in1.png" />
+    <None Include="Resources\money_in.png" />
+    <None Include="Resources\print_doc.png" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>

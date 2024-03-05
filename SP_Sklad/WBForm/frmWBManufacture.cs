@@ -19,6 +19,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Reports;
 using SP_Sklad.Properties;
 using SP_Sklad.ViewsForm;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBForm
 {
@@ -157,10 +158,9 @@ namespace SP_Sklad.WBForm
             }
 
             RecipeComboBox.Enabled = GetWayBillMakeDetBS.Count == 0;
-            ReceptBtn.Enabled = RecipeComboBox.Enabled;
             ByRecipeBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
-            WhInBtn.Enabled = RecipeComboBox.Enabled;
+
             AmountMakeEdit.Enabled = RecipeComboBox.Enabled;
 
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
@@ -190,7 +190,6 @@ namespace SP_Sklad.WBForm
         private void frmWBManufacture_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
             NumEdit.Enabled = user_settings.AccessEditDocNum;
@@ -419,9 +418,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
-            wb.OnDate = OnDateDBEdit.DateTime;
-            _db.SaveChanges();
+           
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
@@ -479,22 +476,22 @@ namespace SP_Sklad.WBForm
 
         private void WhInBtn_Click(object sender, EventArgs e)
         {
-            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+          
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+          
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+        
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -507,7 +504,7 @@ namespace SP_Sklad.WBForm
 
         private void ReceptBtn_Click(object sender, EventArgs e)
         {
-            RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 13);
+           
         }
 
         private void frmWBManufacture_FormClosing(object sender, FormClosingEventArgs e)
@@ -579,6 +576,40 @@ namespace SP_Sklad.WBForm
             if (wbd_row != null)
             {
                 IHelper.ShowMatRSV(wbd_row.MatId, _db);
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+                wb.OnDate = OnDateDBEdit.DateTime;
+                _db.SaveChanges();
+            }
+        }
+
+        private void RecipeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 13);
+            }
+        }
+
+        private void WhComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+            }
+        }
+
+        private void PersonMakeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                ((LookUpEdit)sender).EditValue = IHelper.ShowDirectList(((LookUpEdit)sender).EditValue, 3);
             }
         }
     }

@@ -853,4 +853,22 @@
   <data name="orders_suppliers_info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\orders_suppliers_info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_in.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_in1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_in1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_out1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_out1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_doc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_doc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
