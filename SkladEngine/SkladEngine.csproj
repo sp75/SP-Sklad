@@ -54,12 +54,14 @@
   <ItemGroup>
     <Compile Include="Common\DBHelper.cs" />
     <Compile Include="DBFunction\GetLastPrice.cs" />
+    <Compile Include="DBFunction\Finances.cs" />
     <Compile Include="DBFunction\MaterialRemain.cs" />
     <Compile Include="DBFunction\Models\GetMaterialsOnWh_Result.cs" />
     <Compile Include="DBFunction\Models\GetRemainingMaterialInWh_Result.cs" />
     <Compile Include="DBFunction\Models\GetRemainsOnMaterials_Result.cs" />
     <Compile Include="DBFunction\Models\GetMatRemainByWh_Result.cs" />
     <Compile Include="DBFunction\Models\MaterialRemainViews.cs" />
+    <Compile Include="DBFunction\Models\MoneyTurnoverView.cs" />
     <Compile Include="ExecuteDoc\ExecuteWayBill.cs" />
     <Compile Include="ModelViews\GetPosOutView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

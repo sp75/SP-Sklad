@@ -616,6 +616,8 @@
             this.imageCollection1.Images.SetKeyName(21, "copy_16x16.png");
             this.imageCollection1.InsertGalleryImage("table_16x16.png", "images/toolbox%20items/table_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/toolbox%20items/table_16x16.png"), 22);
             this.imageCollection1.Images.SetKeyName(22, "table_16x16.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.imageCollection1.Images.SetKeyName(23, "product_tmc");
             // 
             // barButtonItem4
             // 
@@ -1960,6 +1962,7 @@
             // xtraTabPage11
             // 
             this.xtraTabPage11.Controls.Add(this.gridControl1);
+            this.xtraTabPage11.ImageOptions.ImageIndex = 23;
             this.xtraTabPage11.Name = "xtraTabPage11";
             this.xtraTabPage11.Size = new System.Drawing.Size(1379, 156);
             this.xtraTabPage11.Text = "Залишки по ТМЦ";

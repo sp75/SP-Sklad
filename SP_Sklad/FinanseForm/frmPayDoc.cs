@@ -531,5 +531,15 @@ namespace SP_Sklad.FinanseForm
         {
             ;
         }
+
+        private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (KagentComboBox.EditValue == DBNull.Value)
+            {
+                return;
+            }
+
+            IHelper.ShowKABalans((int)KagentComboBox.EditValue);
+        }
     }
 }

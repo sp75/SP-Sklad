@@ -26,7 +26,7 @@ namespace SP_Sklad.WBForm
         private const int _wtype = -24;
 
         BaseEntities _db { get; set; }
-        private int? _wbill_id { get; set; }
+        public int? _wbill_id { get; set; }
         private WaybillList wb { get; set; }
         public bool is_new_record { get; set; }
         private GetWayBillMakeDet_Result wbd_row

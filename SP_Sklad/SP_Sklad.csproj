@@ -510,6 +510,12 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\usPreparationProducts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\usPreparationProducts.Designer.cs">
+      <DependentUpon>usPreparationProducts.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\OLD_ManufacturingUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2575,6 +2581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\usPreparationProducts.resx">
+      <DependentUpon>usPreparationProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\OLD_ManufacturingUserControl.resx">
       <DependentUpon>OLD_ManufacturingUserControl.cs</DependentUpon>

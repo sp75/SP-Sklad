@@ -1531,6 +1531,11 @@
             // 
             this.KaGridControl.DataSource = this.KagentListSource;
             this.KaGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KaGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.KaGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.KaGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.KaGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.KaGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.KaGridControl.Location = new System.Drawing.Point(0, 0);
             this.KaGridControl.MainView = this.KaGridView;
             this.KaGridControl.Name = "KaGridControl";
@@ -1538,6 +1543,7 @@
             this.repositoryItemCheckEdit7});
             this.KaGridControl.Size = new System.Drawing.Size(1088, 355);
             this.KaGridControl.TabIndex = 0;
+            this.KaGridControl.UseEmbeddedNavigator = true;
             this.KaGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.KaGridView});
             // 
@@ -1722,7 +1728,7 @@
             this.xtraTabControl2.Images = this.PageImageList;
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl2.Name = "xtraTabControl2";
-            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage1;
+            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
             this.xtraTabControl2.Size = new System.Drawing.Size(1088, 225);
             this.xtraTabControl2.TabIndex = 0;
             this.xtraTabControl2.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
@@ -1840,7 +1846,7 @@
             // 
             // vGridControl4
             // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -2165,6 +2171,11 @@
             // 
             this.MatGridControl.DataSource = this.MatListSource;
             this.MatGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MatGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.MatGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.MatGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.MatGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.MatGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.MatGridControl.Location = new System.Drawing.Point(0, 44);
             this.MatGridControl.MainView = this.MatGridView;
             this.MatGridControl.Name = "MatGridControl";
@@ -2172,6 +2183,7 @@
             this.repositoryItemCheckEdit8});
             this.MatGridControl.Size = new System.Drawing.Size(1088, 311);
             this.MatGridControl.TabIndex = 0;
+            this.MatGridControl.UseEmbeddedNavigator = true;
             this.MatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.MatGridView,
             this.gridView4});

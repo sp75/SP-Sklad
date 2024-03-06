@@ -82,18 +82,6 @@ namespace SP_Sklad.MainTabs
 
         public void GetWBListMake(bool restore)
         {
-            /*   if (wbSatusList.EditValue == null || WhComboBox.EditValue == null)
-               {
-                   return;
-               }
-
-               var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
-               var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
-
-               int top_row = WbGridView.TopRowIndex;
-               WBListMakeBS.DataSource = DB.SkladBase().WBListMake(satrt_date, end_date, (int)wbSatusList.EditValue, WhComboBox.EditValue.ToString(), grp_id, w_type, UserSession.UserId).ToList();
-               WbGridView.TopRowIndex = top_row;*/
-
             prev_rowHandle = WbGridView.FocusedRowHandle;
 
             if (focused_row != null && !find_id.HasValue)

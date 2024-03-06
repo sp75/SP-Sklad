@@ -13,6 +13,7 @@ using SP_Sklad.Common;
 using SP_Sklad.Properties;
 using DevExpress.XtraEditors;
 using System.Data.Entity;
+using SkladEngine.DBFunction;
 
 namespace SP_Sklad.MainTabs
 {
@@ -179,9 +180,10 @@ namespace SP_Sklad.MainTabs
                         }
                         break;
                 }
-                MoneyTurnoverBS.DataSource = new BaseEntities()
-                    .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId, UserSession.UserId)
-                    .ToList();
+                /*     MoneyTurnoverBS.DataSource = new BaseEntities()
+                         .MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId, UserSession.UserId)
+                         .ToList();*/
+                MoneyTurnoverBS.DataSource = new Finances(UserSession.UserId).MoneyTurnover(fun_id, TurnStartDate.DateTime.Date, TurnEndDate.DateTime.Date, turn_type, (int?)CurrensyList.EditValue, (int?)TurnKagentList.EditValue, DBHelper.CurrentUser.KaId);
             }
         }
 

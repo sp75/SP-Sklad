@@ -186,7 +186,6 @@
             this.gridColumn130 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn131 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn148 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.WBListMakeBS = new System.Windows.Forms.BindingSource(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.WbGridPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar7 = new DevExpress.XtraBars.Bar();
@@ -245,7 +244,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -1117,7 +1115,6 @@
             this.WhComboBox.Properties.DisplayMember = "Name";
             this.WhComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.WhComboBox.Properties.ShowHeader = false;
-            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhComboBox.Properties.ValueMember = "WId";
             this.WhComboBox.Size = new System.Drawing.Size(399, 24);
             this.WhComboBox.StyleController = this.styleController1;
@@ -1959,10 +1956,6 @@
             this.gridColumn148.VisibleIndex = 3;
             this.gridColumn148.Width = 155;
             // 
-            // WBListMakeBS
-            // 
-            this.WBListMakeBS.DataSource = typeof(SP_Sklad.SkladData.WBListMake_Result);
-            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -2083,7 +2076,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBListMakeBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -2164,7 +2156,6 @@
         public DevExpress.XtraEditors.LookUpEdit WhComboBox;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private System.Windows.Forms.BindingSource WBListMakeBS;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn65;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage9;
         private DevExpress.XtraGrid.GridControl ManufacturedPosGridControl;
