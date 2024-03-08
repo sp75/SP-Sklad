@@ -248,6 +248,7 @@
     <Compile Include="Common\EAN13.cs" />
     <Compile Include="Common\EFAuditingHelperMethods.cs" />
     <Compile Include="Common\ExecuteDocument.cs" />
+    <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="Common\FindDoc.cs" />
     <Compile Include="Common\FocusGridRow.cs" />
     <Compile Include="Common\GridExtensions.cs" />
@@ -258,7 +259,6 @@
     <Compile Include="Common\UserSession.cs" />
     <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
-    <Compile Include="Common\WayBills\WayBillsController.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
     <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.cs">
       <SubType>Form</SubType>

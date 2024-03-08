@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using EntityState = System.Data.Entity.EntityState;
-using SP_Sklad.Common.WayBills;
 using SkladEngine.ModelViews;
 using SP_Sklad.Properties;
 using SP_Sklad.EditForm;
@@ -24,7 +23,7 @@ namespace SP_Sklad.WBDetForm
         BaseEntities _db { get; set; }
         private int? _PosId { get; set; }
         private WaybillList _wb { get; set; }
-        private WaybillDet _wbd { get; set; }
+        private TmpReturnDet _wbd { get; set; }
         public List<GetPosOutView> pos_out_list { get; set; }
         private ReturnRel _temp_return_rel { get; set; }
         private List<GetShippedPosIn_Result> ordered_in_list { get; set; }
@@ -33,6 +32,26 @@ namespace SP_Sklad.WBDetForm
         private DateTime _start_date { get; set; }
         private int wtype_out { get; set; }
         private int? _defective { get; set; }
+
+        public class TmpReturnDet
+        {
+            public int PosId { get; set; }
+            public int WbillId { get; set; }
+            public int MatId { get; set; }
+            public Nullable<int> WId { get; set; }
+            public decimal Amount { get; set; }
+            public Nullable<decimal> Price { get; set; }
+            public Nullable<decimal> Discount { get; set; }
+            public Nullable<decimal> Nds { get; set; }
+            public Nullable<int> CurrId { get; set; }
+            public Nullable<System.DateTime> OnDate { get; set; }
+            public int Num { get; set; }
+            public Nullable<int> Checked { get; set; }
+            public Nullable<decimal> OnValue { get; set; }
+            public Nullable<decimal> Total { get; set; }
+            public Nullable<decimal> BasePrice { get; set; }
+            public Nullable<int> PosParent { get; set; }
+        }
 
         public frmWBReturnDetIn(BaseEntities db, int? PosId, WaybillList wb, int? wid, DateTime start_date, int? Defective = null)
         {
@@ -44,7 +63,7 @@ namespace SP_Sklad.WBDetForm
             _def_wid = wid;
             _start_date = start_date;
             _defective = Defective;
-
+         //   _wbd_tmp = new ReturnDet();
 
             if (_wb.WType == 6) // повернення від клієнта
             {
@@ -71,11 +90,29 @@ namespace SP_Sklad.WBDetForm
             panel5.Visible = barCheckItem3.Checked;
             if (!barCheckItem3.Checked) Height -= panel5.Height;
 
-            _wbd = _db.WaybillDet.Find(_PosId);
+            _wbd = _db.WaybillDet.Select(s => new TmpReturnDet
+            {
+                PosId = s.PosId,
+                WbillId = s.WbillId,
+                MatId = s.MatId,
+                WId = s.WId,
+                Amount = s.Amount,
+                Price = s.Price,
+                Discount = s.Discount,
+                Nds = s.Nds,
+                CurrId = s.CurrId,
+                OnDate = s.OnDate,
+                Num = s.Num,
+                Checked = s.Checked,
+                OnValue = s.OnValue,
+                Total = s.Total,
+                BasePrice = s.BasePrice,
+                PosParent = s.PosParent
+            }).FirstOrDefault(w => w.PosId == _PosId);
 
             if (_wbd == null)
             {
-                _wbd = new WaybillDet()
+                _wbd = new TmpReturnDet()
                 {
                     WbillId = _wb.WbillId,
                     Amount = 0,
@@ -200,15 +237,15 @@ namespace SP_Sklad.WBDetForm
                         OutPosId = pos_out_row.PosId,
                         PPosId = item.PosId
                     });
-
+                    _db.SaveChanges();
                 }
 
                 _temp_return_rel = null;
             }
 
-            if (_db.Entry<WaybillDet>(_wbd).State != EntityState.Detached)
+            if (_PosId.HasValue)
             {
-                _db.WaybillDet.Remove(_wbd);
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == _PosId);
             }
 
             _db.SaveChanges();
@@ -267,12 +304,6 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetIn_FormClosed(object sender, FormClosedEventArgs e)
         {
-
-            if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
-            {
-                _db.Entry<WaybillDet>(_wbd).Reload();
-            }
-
             if (_temp_return_rel != null)
             {
                 _db.ReturnRel.Add(_temp_return_rel);
@@ -288,17 +319,7 @@ namespace SP_Sklad.WBDetForm
 
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+          private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatInfo(_wbd.MatId);
         }
@@ -313,11 +334,6 @@ namespace SP_Sklad.WBDetForm
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
 
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-          
-
-        }
 
         private void AmountEdit_KeyPress(object sender, KeyPressEventArgs e)
         {

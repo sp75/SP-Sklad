@@ -6,10 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using SkladEngine.ModelViews;
 using SP_Sklad.Common;
-using SP_Sklad.Common.WayBills;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad
