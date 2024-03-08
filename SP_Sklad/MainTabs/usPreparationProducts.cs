@@ -259,8 +259,6 @@ namespace SP_Sklad.MainTabs
             CopyItemBtn.Enabled = (user_access.CanInsert == 1 && focused_prep_raw_mat_row != null);
             ExecuteItemBtn.Enabled = (focused_prep_raw_mat_row != null && user_access.CanPost == 1);
             PrintItemBtn.Enabled = (focused_prep_raw_mat_row != null);
-
-    
         }
 
         private void xtraTabControl5_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
