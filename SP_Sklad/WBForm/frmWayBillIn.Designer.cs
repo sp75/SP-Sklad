@@ -525,7 +525,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(307, 177);
+            this.labelControl4.Location = new System.Drawing.Point(307, 175);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(56, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -602,7 +602,7 @@
             // 
             // PersonComboBox
             // 
-            this.PersonComboBox.Location = new System.Drawing.Point(369, 142);
+            this.PersonComboBox.Location = new System.Drawing.Point(369, 140);
             this.PersonComboBox.Name = "PersonComboBox";
             editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.user_valet;
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -621,7 +621,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(308, 144);
+            this.labelControl7.Location = new System.Drawing.Point(308, 142);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(55, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -656,7 +656,7 @@
             // 
             // WHComboBox
             // 
-            this.WHComboBox.Location = new System.Drawing.Point(105, 142);
+            this.WHComboBox.Location = new System.Drawing.Point(105, 140);
             this.WHComboBox.Name = "WHComboBox";
             editorButtonImageOptions2.ImageIndex = 3;
             editorButtonImageOptions2.ImageList = this.WBImgList;
@@ -669,7 +669,7 @@
             this.WHComboBox.Properties.ShowFooter = false;
             this.WHComboBox.Properties.ShowHeader = false;
             this.WHComboBox.Properties.ValueMember = "WId";
-            this.WHComboBox.Size = new System.Drawing.Size(183, 24);
+            this.WHComboBox.Size = new System.Drawing.Size(170, 24);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 14;
             this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
@@ -677,7 +677,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 144);
+            this.labelControl6.Location = new System.Drawing.Point(12, 142);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(40, 16);
             this.labelControl6.StyleController = this.styleController1;

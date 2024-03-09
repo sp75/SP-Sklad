@@ -98,32 +98,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            /*
-             MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-             _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;*/
-
-            using (var f = new frmWhCatalog())
-            {
-
-                f.uc.ucWhMat.whKagentList.Enabled = false;
-                f.uc.ucWhMat.OnDateEdit.Enabled = false;
-                f.uc.bar3.Visible = false;
-                f.uc.ByWhBtn.Down = true;
-                f.uc.splitContainerControl1.SplitterPosition = 0;
-                using (var db = new BaseEntities())
-                {
-                    f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-                }
-                f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-
-                f.uc.ucWhMat.isDirectList = true;
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
-                    MatComboBox.EditValue = _wbd.MatId;
-                    SetValue();
-                }
-            }
+            
 
         }
 
@@ -167,6 +142,39 @@ namespace SP_Sklad.WBDetForm
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowTurnMaterial(_wbd.MatId);
+        }
+
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                /*
+             MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+             _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;*/
+
+                using (var f = new frmWhCatalog())
+                {
+
+                    f.uc.ucWhMat.whKagentList.Enabled = false;
+                    f.uc.ucWhMat.OnDateEdit.Enabled = false;
+                    f.uc.bar3.Visible = false;
+                    f.uc.ByWhBtn.Down = true;
+                    f.uc.splitContainerControl1.SplitterPosition = 0;
+                    using (var db = new BaseEntities())
+                    {
+                        f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
+                    }
+                    f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+
+                    f.uc.ucWhMat.isDirectList = true;
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
+                        MatComboBox.EditValue = _wbd.MatId;
+                        SetValue();
+                    }
+                }
+            }
         }
     }
 }

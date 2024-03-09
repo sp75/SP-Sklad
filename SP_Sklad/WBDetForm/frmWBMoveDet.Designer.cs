@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWBMoveDet));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -41,7 +51,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -50,11 +59,9 @@
             this.WaybillDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.MatEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.GetPosButton = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl24 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -67,8 +74,8 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -86,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -98,7 +106,7 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.imageCollection1;
+            this.barManager1.Images = this.imageCollection2;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
@@ -167,7 +175,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 292);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 298);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(549, 0);
             // 
@@ -177,7 +185,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 268);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 274);
             // 
             // barDockControlRight
             // 
@@ -185,7 +193,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(549, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 268);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 274);
             // 
             // standaloneBarDockControl1
             // 
@@ -197,19 +205,6 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(549, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection1.Images.SetKeyName(0, "_нформац_я про товар.bmp");
-            this.imageCollection1.Images.SetKeyName(1, "Рух товар_в.bmp");
-            this.imageCollection1.Images.SetKeyName(2, "_нформац_я про резерв товару.bmp");
-            this.imageCollection1.Images.SetKeyName(3, "Аналоги.bmp");
-            this.imageCollection1.Images.SetKeyName(4, "Заказ поставщикам.bmp");
-            this.imageCollection1.Images.SetKeyName(5, "view_settings.bmp");
-            this.imageCollection1.Images.SetKeyName(6, "Наявн_сть на сладах.bmp");
-            this.imageCollection1.Images.SetKeyName(7, "Парт_ї.bmp");
             // 
             // styleController1
             // 
@@ -223,7 +218,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(549, 106);
+            this.panel1.Size = new System.Drawing.Size(549, 112);
             this.panel1.TabIndex = 24;
             // 
             // panelControl1
@@ -232,12 +227,11 @@
             this.panelControl1.Controls.Add(this.MatComboBox);
             this.panelControl1.Controls.Add(this.WHComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.MatEditBtn);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(539, 96);
+            this.panelControl1.Size = new System.Drawing.Size(539, 102);
             this.panelControl1.TabIndex = 0;
             // 
             // RSVCheckBox
@@ -260,8 +254,10 @@
             this.MatComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "MatId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MatComboBox.Location = new System.Drawing.Point(101, 38);
             this.MatComboBox.Name = "MatComboBox";
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.product;
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("MatName", "Назва")});
             this.MatComboBox.Properties.DisplayMember = "MatName";
@@ -269,9 +265,10 @@
             this.MatComboBox.Properties.ShowFooter = false;
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Size = new System.Drawing.Size(399, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(427, 24);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 19;
+            this.MatComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MatComboBox_ButtonClick);
             this.MatComboBox.EditValueChanged += new System.EventHandler(this.MatComboBox_EditValueChanged);
             // 
             // WaybillDetBS
@@ -282,7 +279,7 @@
             // 
             this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.WHComboBox.Enabled = false;
-            this.WHComboBox.Location = new System.Drawing.Point(101, 67);
+            this.WHComboBox.Location = new System.Drawing.Point(101, 70);
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -299,23 +296,12 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 70);
+            this.labelControl6.Location = new System.Drawing.Point(12, 73);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(40, 16);
             this.labelControl6.StyleController = this.styleController1;
             this.labelControl6.TabIndex = 16;
             this.labelControl6.Text = "Склад:";
-            // 
-            // MatEditBtn
-            // 
-            this.MatEditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MatEditBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("MatEditBtn.ImageOptions.Image")));
-            this.MatEditBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.MatEditBtn.Location = new System.Drawing.Point(506, 38);
-            this.MatEditBtn.Name = "MatEditBtn";
-            this.MatEditBtn.Size = new System.Drawing.Size(22, 22);
-            this.MatEditBtn.TabIndex = 13;
-            this.MatEditBtn.Click += new System.EventHandler(this.MatEditBtn_Click);
             // 
             // labelControl3
             // 
@@ -332,7 +318,7 @@
             // 
             this.panel2.Controls.Add(this.panelControl3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 130);
+            this.panel2.Location = new System.Drawing.Point(0, 136);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 5);
             this.panel2.Size = new System.Drawing.Size(549, 108);
@@ -340,7 +326,6 @@
             // 
             // panelControl3
             // 
-            this.panelControl3.Controls.Add(this.GetPosButton);
             this.panelControl3.Controls.Add(this.labelControl24);
             this.panelControl3.Controls.Add(this.labelControl8);
             this.panelControl3.Controls.Add(this.labelControl2);
@@ -356,19 +341,9 @@
             this.panelControl3.Size = new System.Drawing.Size(539, 103);
             this.panelControl3.TabIndex = 8;
             // 
-            // GetPosButton
-            // 
-            this.GetPosButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("GetPosButton.ImageOptions.Image")));
-            this.GetPosButton.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.GetPosButton.Location = new System.Drawing.Point(245, 12);
-            this.GetPosButton.Name = "GetPosButton";
-            this.GetPosButton.Size = new System.Drawing.Size(22, 22);
-            this.GetPosButton.TabIndex = 29;
-            this.GetPosButton.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
             // labelControl24
             // 
-            this.labelControl24.Location = new System.Drawing.Point(273, 15);
+            this.labelControl24.Location = new System.Drawing.Point(221, 15);
             this.labelControl24.Name = "labelControl24";
             this.labelControl24.Size = new System.Drawing.Size(22, 16);
             this.labelControl24.StyleController = this.styleController1;
@@ -463,13 +438,16 @@
             this.AmountEdit.Location = new System.Drawing.Point(101, 12);
             this.AmountEdit.MenuManager = this.barManager1;
             this.AmountEdit.Name = "AmountEdit";
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.mat_pos_wh_1;
             this.AmountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AmountEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.AmountEdit.Properties.ShowCloseButton = true;
-            this.AmountEdit.Size = new System.Drawing.Size(138, 22);
+            this.AmountEdit.Size = new System.Drawing.Size(114, 24);
             this.AmountEdit.StyleController = this.styleController1;
             this.AmountEdit.TabIndex = 4;
+            this.AmountEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.AmountEdit_ButtonClick);
             this.AmountEdit.EditValueChanged += new System.EventHandler(this.AmountEdit_EditValueChanged);
             // 
             // panelControl2
@@ -477,7 +455,7 @@
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl2.Location = new System.Drawing.Point(0, 238);
+            this.panelControl2.Location = new System.Drawing.Point(0, 244);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(549, 54);
             this.panelControl2.TabIndex = 29;
@@ -503,11 +481,28 @@
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "Відмінити";
             // 
+            // imageCollection2
+            // 
+            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
+            this.imageCollection2.TransparentColor = System.Drawing.Color.White;
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection2.Images.SetKeyName(0, "product_info_3");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection2.Images.SetKeyName(1, "move_warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection2.Images.SetKeyName(2, "product_reserved_1");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection2.Images.SetKeyName(3, "interchangeability");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection2.Images.SetKeyName(4, "wb_order_out");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.open_view, "open_view", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection2.Images.SetKeyName(5, "open_view");
+            // 
             // frmWBMoveDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 292);
+            this.ClientSize = new System.Drawing.Size(549, 298);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -524,7 +519,6 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmWBReturnDetOut_FormClosed);
             this.Load += new System.EventHandler(this.frmWBMoveDet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -544,6 +538,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AmountEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,11 +563,9 @@
         private DevExpress.XtraEditors.LookUpEdit MatComboBox;
         private DevExpress.XtraEditors.LookUpEdit WHComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton MatEditBtn;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.SimpleButton GetPosButton;
         private DevExpress.XtraEditors.LabelControl labelControl24;
         private DevExpress.XtraEditors.LabelControl labelControl8;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -585,8 +578,8 @@
         private DevExpress.XtraEditors.PanelControl panelControl2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.BindingSource WaybillDetBS;
-        private DevExpress.Utils.ImageCollection imageCollection1;
         public DevExpress.XtraEditors.SimpleButton OkButton;
         public DevExpress.XtraEditors.CheckEdit RSVCheckBox;
+        private DevExpress.Utils.ImageCollection imageCollection2;
     }
 }

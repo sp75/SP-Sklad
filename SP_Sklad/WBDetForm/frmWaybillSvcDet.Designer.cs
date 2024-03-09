@@ -30,6 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWaybillSvcDet));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
@@ -44,13 +54,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.PersonEditBtn = new DevExpress.XtraEditors.SimpleButton();
             this.PersonComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.WayBillSvcBS = new System.Windows.Forms.BindingSource(this.components);
             this.NormCheckBox = new DevExpress.XtraEditors.CheckEdit();
             this.SvcComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.MemoEdit();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
@@ -216,8 +224,9 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.White;
-            this.imageCollection1.Images.SetKeyName(0, "_нформац_я про пслугу.bmp");
-            this.imageCollection1.Images.SetKeyName(1, "Налагадження.bmp");
+            this.imageCollection1.Images.SetKeyName(0, "service_info.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.open_view, "open_view", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "open_view");
             // 
             // styleController1
             // 
@@ -237,12 +246,10 @@
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.labelControl1);
-            this.panelControl1.Controls.Add(this.PersonEditBtn);
             this.panelControl1.Controls.Add(this.PersonComboBox);
             this.panelControl1.Controls.Add(this.NormCheckBox);
             this.panelControl1.Controls.Add(this.SvcComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
-            this.panelControl1.Controls.Add(this.simpleButton2);
             this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.NumEdit);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -260,32 +267,25 @@
             this.labelControl1.TabIndex = 29;
             this.labelControl1.Text = "Опис:";
             // 
-            // PersonEditBtn
-            // 
-            this.PersonEditBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("PersonEditBtn.ImageOptions.Image")));
-            this.PersonEditBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.PersonEditBtn.Location = new System.Drawing.Point(575, 123);
-            this.PersonEditBtn.Name = "PersonEditBtn";
-            this.PersonEditBtn.Size = new System.Drawing.Size(22, 22);
-            this.PersonEditBtn.TabIndex = 27;
-            this.PersonEditBtn.Click += new System.EventHandler(this.PersonEditBtn_Click);
-            // 
             // PersonComboBox
             // 
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(101, 123);
             this.PersonComboBox.Name = "PersonComboBox";
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.user_valet;
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(468, 22);
+            this.PersonComboBox.Size = new System.Drawing.Size(496, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 26;
+            this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);
             // 
             // WayBillSvcBS
             // 
@@ -309,10 +309,12 @@
             this.SvcComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.SvcComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WayBillSvcBS, "SvcId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SvcComboBox.Location = new System.Drawing.Point(101, 38);
+            this.SvcComboBox.Location = new System.Drawing.Point(101, 36);
             this.SvcComboBox.Name = "SvcComboBox";
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.service_1;
             this.SvcComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.SvcComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("IsNormed", "Нормативна послуга")});
@@ -321,9 +323,10 @@
             this.SvcComboBox.Properties.ShowHeader = false;
             this.SvcComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.SvcComboBox.Properties.ValueMember = "SvcId";
-            this.SvcComboBox.Size = new System.Drawing.Size(468, 22);
+            this.SvcComboBox.Size = new System.Drawing.Size(496, 24);
             this.SvcComboBox.StyleController = this.styleController1;
             this.SvcComboBox.TabIndex = 19;
+            this.SvcComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.SvcComboBox_ButtonClick);
             this.SvcComboBox.EditValueChanged += new System.EventHandler(this.SvcComboBox_EditValueChanged);
             // 
             // labelControl6
@@ -334,17 +337,6 @@
             this.labelControl6.StyleController = this.styleController1;
             this.labelControl6.TabIndex = 16;
             this.labelControl6.Text = "Виконав:";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(575, 38);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton2.TabIndex = 13;
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // labelControl3
             // 
@@ -433,7 +425,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.NormEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.NormEdit.Properties.ShowCloseButton = true;
-            this.NormEdit.Size = new System.Drawing.Size(245, 22);
+            this.NormEdit.Size = new System.Drawing.Size(250, 22);
             this.NormEdit.StyleController = this.styleController1;
             this.NormEdit.TabIndex = 6;
             // 
@@ -851,7 +843,6 @@
         private DevExpress.XtraEditors.CheckEdit NormCheckBox;
         private DevExpress.XtraEditors.LookUpEdit SvcComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl6;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.PanelControl panelControl3;
@@ -888,7 +879,6 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraEditors.CalcEdit BasePriceEdit;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
-        private DevExpress.XtraEditors.SimpleButton PersonEditBtn;
         private DevExpress.XtraEditors.LookUpEdit PersonComboBox;
         private System.Windows.Forms.BindingSource WayBillSvcBS;
         private DevExpress.XtraEditors.LabelControl labelControl1;

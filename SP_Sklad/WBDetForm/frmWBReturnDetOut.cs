@@ -58,7 +58,6 @@ namespace SP_Sklad.WBDetForm
             if (_wb.WType == 4)
             {
                 WHComboBox.Enabled = false;
-                WhEditBtn.Enabled = false;
             }
 
             _wbd = new WaybillDet
@@ -324,50 +323,7 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-            if (pos_in == null)
-            {
-                return;
-            }
-
-            var pos = new frmInParty(pos_in);
-            pos.Text = "Прибуткові партії: " + MatComboBox.Text;
-            pos.ShowDialog();
-            _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
-            AmountEdit.Value = _wbd.Amount;
-
-            GetOk();
-        }
-
-        private void MatEditBtn_Click(object sender, EventArgs e)
-        {
-            var f = new frmWhCatalog();
-
-            f.uc.ucWhMat.whKagentList.EditValue = _ka_id;
-            f.uc.ucWhMat.whKagentList.Enabled = false;
-            f.uc.ucWhMat.OnDateEdit.Enabled = false;
-            f.uc.bar3.Visible = false;
-            f.uc.ByWhBtn.Down = true;
-            f.uc.splitContainerControl1.SplitterPosition = 0;
-            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-            f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-
-            f.uc.ucWhMat.isDirectList = true;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
-                MatComboBox.EditValue = _wbd.MatId;
-                GetContent();
-                SetAmount();
-            }
-        }
-
-        private void WhEditBtn_Click(object sender, EventArgs e)
-        {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
-
-            GetContent();
-            SetAmount();
-            GetOk();
+           
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -385,6 +341,61 @@ namespace SP_Sklad.WBDetForm
             IHelper.ShowTurnMaterial(_wbd.MatId);
         }
 
+        private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                var f = new frmWhCatalog();
 
+                f.uc.ucWhMat.whKagentList.EditValue = _ka_id;
+                f.uc.ucWhMat.whKagentList.Enabled = false;
+                f.uc.ucWhMat.OnDateEdit.Enabled = false;
+                f.uc.bar3.Visible = false;
+                f.uc.ByWhBtn.Down = true;
+                f.uc.splitContainerControl1.SplitterPosition = 0;
+                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
+                f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+
+                f.uc.ucWhMat.isDirectList = true;
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
+                    MatComboBox.EditValue = _wbd.MatId;
+                    GetContent();
+                    SetAmount();
+                }
+            }
+        }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+                GetContent();
+                SetAmount();
+                GetOk();
+            }
+        }
+
+        private void AmountEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                if (pos_in == null)
+                {
+                    return;
+                }
+
+                var pos = new frmInParty(pos_in);
+                pos.Text = "Прибуткові партії: " + MatComboBox.Text;
+                pos.ShowDialog();
+                _wbd.Amount = pos_in.Sum(s => s.Amount).Value;
+                AmountEdit.Value = _wbd.Amount;
+
+                GetOk();
+            }
+        }
     }
 }

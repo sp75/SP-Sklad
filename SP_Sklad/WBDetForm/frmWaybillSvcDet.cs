@@ -195,12 +195,28 @@ namespace SP_Sklad.WBDetForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            SvcComboBox.EditValue = IHelper.ShowDirectList(SvcComboBox.EditValue, 11);
+         
         }
 
         private void PersonEditBtn_Click(object sender, EventArgs e)
         {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+           
+        }
+
+        private void SvcComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                SvcComboBox.EditValue = IHelper.ShowDirectList(SvcComboBox.EditValue, 11);
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+            }
         }
     }
 }
