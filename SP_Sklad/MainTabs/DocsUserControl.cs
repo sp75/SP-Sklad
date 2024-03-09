@@ -1271,13 +1271,22 @@ namespace SP_Sklad.MainTabs
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    var wbill_id = Convert.ToInt32(frm.BarCodeEdit.Text);
-                    var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id);
-                    if(wb !=null)
+                    if (int.TryParse(frm.BarCodeEdit.Text, out int wbill_id))
                     {
-                        FindDoc.Find(wb.Id, wb.WType, wb.OnDate);
+                        var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wbill_id);
+                        if (wb != null)
+                        {
+                            FindDoc.Find(wb.Id, wb.WType, wb.OnDate);
+                        }
+                        else
+                        {
+                            XtraMessageBox.Show("Документ не знайдено!");
+                        }
                     }
-
+                    else
+                    {
+                        XtraMessageBox.Show("Невірний формат штрихкода!");
+                    }
                 }
             }
         }

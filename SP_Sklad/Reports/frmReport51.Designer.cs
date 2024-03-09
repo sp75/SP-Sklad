@@ -743,7 +743,7 @@
             this.chartControl1.Size = new System.Drawing.Size(914, 426);
             this.chartControl1.TabIndex = 20;
             chartTitle1.Font = new System.Drawing.Font("Tahoma", 15F);
-            chartTitle1.Text = "Динамика прожу товарів";
+            chartTitle1.Text = "Динаміка продажу товарів";
             chartTitle1.TextColor = System.Drawing.Color.DarkSlateGray;
             chartTitle2.Font = new System.Drawing.Font("Tahoma", 12F);
             chartTitle2.Text = "";
@@ -977,7 +977,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 23)});
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             // 
-            // frmReport52
+            // frmReport51
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,8 +990,8 @@
             this.Controls.Add(this.barDockControl2);
             this.Controls.Add(this.barDockControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmReport52.IconOptions.Image")));
-            this.Name = "frmReport52";
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmReport51.IconOptions.Image")));
+            this.Name = "frmReport51";
             this.Text = "Динаміка продаж товарів";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMainIntermediateWeighing_FormClosed);
