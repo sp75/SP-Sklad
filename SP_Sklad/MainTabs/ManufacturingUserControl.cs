@@ -56,17 +56,6 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
 
-                              PrepRawMatWhList.Properties.DataSource = new List<object>() { new { WId = "*", Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId.ToString(), s.Name }).ToList());
-                PrepRawMatWhList.EditValue = "*";
-
-                              PrepRawMatStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Актуальний" }, new { Id = 2, Name = "Розпочато виробництво" }, new { Id = 1, Name = "Закінчено виробництво" } };
-                PrepRawMatStatusList.EditValue = -1;
-
-                PrepRawMatStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
-                PrepRawMatEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-           
-
                 dateEdit2.EditValue = DateTime.Now.Date.AddDays(-30);
                 dateEdit1.EditValue = DateTime.Now.Date.SetEndDay();
 
@@ -93,20 +82,7 @@ namespace SP_Sklad.MainTabs
         }
 
 
-        void PreparationRawMaterials()
-        {
-            if (PrepRawMatStatusList.EditValue == null || PrepRawMatWhList.EditValue == null || DocsTreeList.FocusedNode == null)
-            {
-                return;
-            }
 
-            var satrt_date = PrepRawMatStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : PrepRawMatStartDate.DateTime;
-            var end_date = PrepRawMatEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : PrepRawMatEndDate.DateTime;
-
-            int top_row = PreparationRawMaterialsGridView.TopRowIndex;
-            PreparationRawMaterialsBS.DataSource = DB.SkladBase().PreparationRawMaterialsList(satrt_date, end_date, (int)PrepRawMatStatusList.EditValue, PrepRawMatWhList.EditValue.ToString()).ToList();
-            PreparationRawMaterialsGridView.TopRowIndex = top_row;
-        }
 
         void GetIntermediateWeighing()
         {
@@ -158,8 +134,6 @@ namespace SP_Sklad.MainTabs
             DelIntermediateWeighing.Enabled = false;
 
             _cur_wtype = focused_tree_node.WType != null ? focused_tree_node.WType.Value : 0;
-           
-
 
             if (focused_tree_node.GType.Value == 1)
             {
@@ -188,6 +162,12 @@ namespace SP_Sklad.MainTabs
                 bar1.Visible = false;
                 wbContentTab.SelectedTabPageIndex = 10;
             }
+            else if (focused_tree_node.GType.Value == 6)
+            {
+                bar1.Visible = false;
+                wbContentTab.SelectedTabPageIndex = 6;
+            }
+
             else
             {
                 RefrechItemBtn.PerformClick();
@@ -200,7 +180,6 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.FunId != null)
             {
                 History.AddEntry(new HistoryEntity { FunId = focused_tree_node.FunId.Value, MainTabs = 1 });
-
 
                 if (DocsTreeList.ContainsFocus)
                 {
@@ -246,7 +225,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 6:
-                    PreparationRawMaterials();
                     break;
 
                 case 7:
@@ -829,77 +807,7 @@ namespace SP_Sklad.MainTabs
         {
            
         }
-
-
-        private void PreparationRawMaterialsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            focused_prep_raw_mat_row = e.Row as PreparationRawMaterialsList_Result;
-
-            xtraTabControl5_SelectedPageChanged(sender, null);
-
-            StopProcesBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 2 && focused_tree_node.CanPost == 1);
-            DeleteItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            EditItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && focused_tree_node.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && focused_prep_raw_mat_row != null);
-            ExecuteItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_tree_node.CanPost == 1);
-            PrintItemBtn.Enabled = (focused_prep_raw_mat_row != null);
-
-            AddTechProcBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked != 1 && focused_tree_node.CanModify == 1);
-        }
-
-        private void xtraTabControl5_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (focused_prep_raw_mat_row == null)
-            {
-                // TechProcDetBS.DataSource = null;
-                gridControl13.DataSource = null;
-                ucRelDocGrid4.GetRelDoc(Guid.Empty);
-                return;
-            }
-
-            using (var db = DB.SkladBase())
-            {
-                switch (xtraTabControl5.SelectedTabPageIndex)
-                {
-                    case 0:
-                        gridControl13.DataSource = db.GetWayBillMakeDet(focused_prep_raw_mat_row.WbillId).ToList().OrderBy(o => o.Num).ToList();
-                        gridView11.ExpandAllGroups();
-                        break;
-
-                    case 1:
-                        gridControl15.DataSource = db.v_DeboningDet.AsNoTracking().Where(w => w.WBillId == focused_prep_raw_mat_row.WbillId).ToList();
-                        break;
-
-                    case 2:
-                        ucRelDocGrid4.GetRelDoc(focused_prep_raw_mat_row.Id);
-                        break;
-                }
-            }
-        }
-
-        private void PrepRawMatStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            PreparationRawMaterials();
-        }
-
-        private void PreparationRawMaterialsGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                popupMenu1.ShowPopup(p2);
-            }
-        }
-
-        private void gridView12_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                BottomPopupMenu.ShowPopup(p2);
-            }
-        }
-
+        
         private void barButtonItem8_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             

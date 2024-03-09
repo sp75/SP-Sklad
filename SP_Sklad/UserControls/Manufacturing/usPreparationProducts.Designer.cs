@@ -61,6 +61,7 @@
             this.PreparationRawMaterialsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn138 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox19 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn139 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox20 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn140 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -122,7 +123,6 @@
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -139,6 +139,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).BeginInit();
             this.panelControl6.SuspendLayout();
@@ -164,7 +165,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit4)).BeginInit();
             this.xtraTabPage24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -513,6 +513,7 @@
             this.PreparationRawMaterialsGridView.OptionsView.ShowGroupPanel = false;
             this.PreparationRawMaterialsGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.PreparationRawMaterialsGridView_PopupMenuShowing);
             this.PreparationRawMaterialsGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.PreparationRawMaterialsGridView_FocusedRowObjectChanged);
+            this.PreparationRawMaterialsGridView.ColumnFilterChanged += new System.EventHandler(this.PreparationRawMaterialsGridView_ColumnFilterChanged);
             this.PreparationRawMaterialsGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn138
@@ -534,8 +535,26 @@
             this.repositoryItemImageComboBox19.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox19.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 26)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 3)});
             this.repositoryItemImageComboBox19.Name = "repositoryItemImageComboBox19";
+            this.repositoryItemImageComboBox19.SmallImages = this.GridImageList;
+            // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "new_document");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "checked_blue");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "checked_green");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "preparation");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.GridImageList.Images.SetKeyName(4, "reserved");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.GridImageList.Images.SetKeyName(5, "w_scale");
             // 
             // gridColumn139
             // 
@@ -557,10 +576,11 @@
             this.repositoryItemImageComboBox20.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox20.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 1)});
             this.repositoryItemImageComboBox20.Name = "repositoryItemImageComboBox20";
+            this.repositoryItemImageComboBox20.SmallImages = this.GridImageList;
             // 
             // gridColumn140
             // 
@@ -896,6 +916,7 @@
             this.gridColumn181});
             this.gridView11.GridControl = this.gridControl13;
             this.gridView11.GroupCount = 1;
+            this.gridView11.Images = this.GridImageList;
             this.gridView11.Name = "gridView11";
             this.gridView11.OptionsBehavior.Editable = false;
             this.gridView11.OptionsBehavior.ReadOnly = true;
@@ -984,7 +1005,7 @@
             this.gridColumn180.ColumnEdit = this.repositoryItemImageComboBox21;
             this.gridColumn180.FieldName = "Rsv";
             this.gridColumn180.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
-            this.gridColumn180.ImageOptions.ImageIndex = 40;
+            this.gridColumn180.ImageOptions.ImageIndex = 4;
             this.gridColumn180.Name = "gridColumn180";
             this.gridColumn180.OptionsColumn.AllowEdit = false;
             this.gridColumn180.OptionsColumn.AllowFocus = false;
@@ -998,7 +1019,7 @@
             this.gridColumn180.OptionsColumn.TabStop = false;
             this.gridColumn180.Visible = true;
             this.gridColumn180.VisibleIndex = 1;
-            this.gridColumn180.Width = 25;
+            this.gridColumn180.Width = 30;
             // 
             // repositoryItemImageComboBox21
             // 
@@ -1006,8 +1027,9 @@
             this.repositoryItemImageComboBox21.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox21.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 40)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 4)});
             this.repositoryItemImageComboBox21.Name = "repositoryItemImageComboBox21";
+            this.repositoryItemImageComboBox21.SmallImages = this.GridImageList;
             // 
             // gridColumn181
             // 
@@ -1015,7 +1037,7 @@
             this.gridColumn181.ColumnEdit = this.repositoryItemImageComboBox22;
             this.gridColumn181.FieldName = "IsIntermediateWeighing";
             this.gridColumn181.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
-            this.gridColumn181.ImageOptions.ImageIndex = 41;
+            this.gridColumn181.ImageOptions.ImageIndex = 5;
             this.gridColumn181.Name = "gridColumn181";
             this.gridColumn181.OptionsColumn.AllowEdit = false;
             this.gridColumn181.OptionsColumn.AllowFocus = false;
@@ -1029,7 +1051,7 @@
             this.gridColumn181.OptionsColumn.TabStop = false;
             this.gridColumn181.Visible = true;
             this.gridColumn181.VisibleIndex = 2;
-            this.gridColumn181.Width = 25;
+            this.gridColumn181.Width = 30;
             // 
             // repositoryItemImageComboBox22
             // 
@@ -1214,23 +1236,6 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.GridImageList.Images.SetKeyName(0, "new_document");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.GridImageList.Images.SetKeyName(1, "checked_blue");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.GridImageList.Images.SetKeyName(2, "checked_green");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.GridImageList.Images.SetKeyName(3, "manufacturing_products");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.GridImageList.Images.SetKeyName(4, "reserved");
-            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.GridImageList.Images.SetKeyName(5, "w_scale");
-            // 
             // usPreparationProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1261,6 +1266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl6)).EndInit();
             this.panelControl6.ResumeLayout(false);
@@ -1287,7 +1293,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit4)).EndInit();
             this.xtraTabPage24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

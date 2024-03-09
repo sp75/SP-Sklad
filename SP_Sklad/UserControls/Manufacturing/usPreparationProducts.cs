@@ -72,10 +72,10 @@ namespace SP_Sklad.MainTabs
             int top_row = PreparationRawMaterialsGridView.TopRowIndex;
             PreparationRawMaterialsBS.DataSource = DB.SkladBase().PreparationRawMaterialsList(satrt_date, end_date, (int)PrepRawMatStatusList.EditValue, PrepRawMatWhList.EditValue.ToString()).ToList();
             PreparationRawMaterialsGridView.TopRowIndex = top_row;
+
+            SetWBEditorBarBtn();
         }
 
-        int restore_row = 0;
-        bool restore = false;
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             PreparationRawMaterials();
@@ -251,12 +251,17 @@ namespace SP_Sklad.MainTabs
 
         private void PreparationRawMaterialsGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            xtraTabControl5_SelectedPageChanged(sender, null);
+            SetWBEditorBarBtn();
+        }
+
+        private void SetWBEditorBarBtn()
+        {
+            xtraTabControl5_SelectedPageChanged(null, null);
 
             StopProcesBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 2 && user_access.CanPost == 1);
             DeleteItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && user_access.CanDelete == 1);
             EditItemBtn.Enabled = (focused_prep_raw_mat_row != null && focused_prep_raw_mat_row.Checked == 0 && user_access.CanModify == 1);
-            CopyItemBtn.Enabled = (user_access.CanInsert == 1 && focused_prep_raw_mat_row != null);
+            CopyItemBtn.Enabled = (focused_prep_raw_mat_row != null && user_access.CanInsert == 1);
             ExecuteItemBtn.Enabled = (focused_prep_raw_mat_row != null && user_access.CanPost == 1);
             PrintItemBtn.Enabled = (focused_prep_raw_mat_row != null);
         }
@@ -307,6 +312,11 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ExportToXlsx(PreparationRawMaterialsGridControl);
+        }
+
+        private void PreparationRawMaterialsGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            SetWBEditorBarBtn();
         }
     }
 }
