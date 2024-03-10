@@ -215,7 +215,7 @@
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;

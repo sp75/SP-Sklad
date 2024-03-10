@@ -50,15 +50,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private GetWaybillDetIn_Result wb_det_focused_row
-        {
-            get
-            {
-                return WaybillDetGridView.GetFocusedRow() as GetWaybillDetIn_Result;
-            }
-        }
-
-
         public TradeUserControl()
         {
             InitializeComponent();
@@ -83,6 +74,7 @@ namespace SP_Sklad.MainTabs
                         var login = new CheckboxClient().CashierSignin(new CashierSigninRequest { login = user_settings.CashierLoginCheckbox, password = user_settings.CashierPasswordCheckbox });
 
                         _access_token = login.access_token;
+                        ucRelDocGrid._access_token  = login.access_token;
                     }
                     catch (Exception err)
                     {
@@ -143,10 +135,6 @@ namespace SP_Sklad.MainTabs
 
                 WbSummPayGridColumn.Visible = WbBalansGridColumn.Visible;
                 WbSummPayGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
-
-                gridColumn50.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
-                gridColumn44.Caption = gridColumn50.Caption;
-
 
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
                 PayDocGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
@@ -680,18 +668,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView1.Focus())
-            {
-                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-            FindDoc.Find(row.Id, row.DocType, row.OnDate);
         }
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -705,25 +682,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-            GetRelDocList_Result row = new GetRelDocList_Result();
 
-            if (gridView3.Focus())
-            {
-                row = gridView3.GetFocusedRow() as GetRelDocList_Result;
-            }
-            else if (gridView1.Focus())
-            {
-                row = gridView1.GetFocusedRow() as GetRelDocList_Result;
-            }
-
-            if (!string.IsNullOrEmpty(_access_token) && row.ReceiptId.HasValue && row.ReceiptId.Value != Guid.Empty)
-            {
-                IHelper.PrintReceiptPng(_access_token, row.ReceiptId.Value);
-            }
-            else
-            {
-                PrintDoc.Show(row.Id, row.DocType.Value, DB.SkladBase());
-            }
         }
 
         private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -781,40 +740,32 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowMatInfo(wb_det_focused_row.MatId);
+
         }
 
         private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowTurnMaterial(wb_det_focused_row.MatId);
+
         }
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            IHelper.ShowMatRSV(wb_det_focused_row.MatId, DB.SkladBase());
+
         }
 
         private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!IHelper.FindMatInWH(wb_det_focused_row.MatId))
-            {
-                MessageBox.Show(string.Format("На даний час товар <{0}> на складі вдсутній!", wb_det_focused_row.MatName));
-            }
+           
         }
 
         private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!IHelper.FindMatInDir(wb_det_focused_row.MatId))
-            {
-                MessageBox.Show(string.Format("Товар <{0}> в довіднику вдсутній, можливо він перебуває в архіві!", wb_det_focused_row.MatName));
-            }
+
         }
 
         private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var frm = new frmWayBillDetIn(DB.SkladBase(), wb_det_focused_row.PosId, DB.SkladBase().WaybillList.Find(wb_det_focused_row.WbillId));
-            frm.OkButton.Visible = false;
-            frm.ShowDialog();
+
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
@@ -907,19 +858,17 @@ namespace SP_Sklad.MainTabs
           
             if (dr == null)
             {
-                gridControl2.DataSource = null;
-                gridControl3.DataSource = null;
+                ucWayBillOutDet.GetDate(0);
+                ucRelDocGrid.GetRelDoc(Guid.Empty);
                 WayBillListInfoBS.DataSource = null;
-                gridControl10.DataSource = null;
-
+                ucDocumentPaymentGrid.GetPaymentDoc(Guid.Empty);
                 return;
             }
 
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    gridColumn37.Caption = "Сума в валюті, " + dr.CurrName;
-                    gridControl2.DataSource = _db.GetWaybillDetIn(dr.WbillId).ToList().OrderBy(o => o.Num);
+                    ucWayBillOutDet.GetDate(wb_focused_row.WbillId);
                     break;
 
                 case 1:
@@ -927,11 +876,10 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    gridControl3.DataSource = _db.GetRelDocList(dr.Id).OrderBy(o => o.OnDate).ToList();
+                    ucRelDocGrid.GetRelDoc(wb_focused_row.Id);
                     break;
                 case 3:
-                    gridControl10.DataSource = _db.DocRels.Where(w=> w.OriginatorId == dr.Id)
-                        .Join(_db.v_PayDoc, drel => drel.RelOriginatorId, pd => pd.Id, (drel, pd) => pd).OrderBy(o => o.OnDate).ToList();
+                    ucDocumentPaymentGrid.GetPaymentDoc(wb_focused_row.Id);
                     break;
             }
           
@@ -994,25 +942,6 @@ namespace SP_Sklad.MainTabs
         }
 
  
-        private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
-        {
-
-            if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
-            {
-                var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
-
-                GridSummaryItem item = e.Item as GridSummaryItem;
-
-                if (item.FieldName == "Amount")
-                {
-                    var mat_list = gridControl2.DataSource as IOrderedEnumerable<GetWaybillDetIn_Result>;
-                    var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
-
-                    e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
-                }
-            }
-        }
-
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (wb_focused_row.ReceiptId.HasValue && wb_focused_row.ReceiptId.Value != Guid.Empty)

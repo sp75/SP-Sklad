@@ -179,7 +179,7 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+           
         }
 
 
@@ -262,6 +262,14 @@ namespace SP_Sklad.FinanseForm
             if (e.Button.Index == 1)
             {
                 CashToEdit.EditValue = IHelper.ShowDirectList(CashToEdit.EditValue, 4);
+            }
+        }
+
+        private void PersonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
             }
         }
     }

@@ -115,7 +115,7 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+           
         }
 
         private void PTypeComboBox_EditValueChanged(object sender, EventArgs e)
@@ -165,7 +165,7 @@ namespace SP_Sklad.FinanseForm
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+           
         }
 
         private void CashEditComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -176,9 +176,21 @@ namespace SP_Sklad.FinanseForm
             }
         }
 
-        private void PayDocTypeEdit_EditValueChanged(object sender, EventArgs e)
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            
+            if(e.Button.Index == 1)
+            {
+                OnDateDBEdit.DateTime = DBHelper.ServerDateTime();
+            }
+        }
+
+        private void PersonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonEdit.EditValue = IHelper.ShowDirectList(PersonEdit.EditValue, 3);
+            }
         }
     }
 }

@@ -3421,7 +3421,6 @@
     <None Include="Resources\convert_16x16.png" />
     <None Include="Resources\editrangepermission_16x16.png" />
     <None Include="Resources\gotodate_16x16.png" />
-    <None Include="Resources\refreshallpivottable_16x16.png" />
     <None Include="Resources\removegroupheader_16x16.png" />
     <None Include="Resources\snapinsertheader_16x16.png" />
     <None Include="Resources\exporttopdf_16x16.png" />
@@ -3572,7 +3571,6 @@
     <None Include="Resources\price_lict.png" />
     <None Include="Resources\manufacturing.png" />
     <None Include="Resources\finance.png" />
-    <None Include="Resources\money_bag.png" />
     <None Include="Resources\money_bag_2.png" />
     <None Include="Resources\money.png" />
     <None Include="Resources\expense_items.png" />
@@ -3646,10 +3644,8 @@
     <None Include="Resources\open_document.png" />
     <None Include="Resources\edit_3.png" />
     <None Include="Resources\balans_businessman.png" />
-    <None Include="Resources\orders_ suppliers_info.png" />
     <None Include="Resources\orders_suppliers_info.png" />
     <None Include="Resources\handshake.png" />
-    <None Include="Resources\lock.png" />
     <None Include="Resources\lock_1.png" />
     <None Include="Resources\money_out1.png" />
     <None Include="Resources\money_out.png" />

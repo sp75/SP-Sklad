@@ -17,6 +17,7 @@ namespace SP_Sklad.UserControls
     public partial class ucRelDocGrid : DevExpress.XtraEditors.XtraUserControl
     {
         private GetRelDocList_Result rel_row => RelDocGridView.GetFocusedRow() as GetRelDocList_Result;
+        public string _access_token { get; set; }
 
         public ucRelDocGrid()
         {
@@ -49,7 +50,17 @@ namespace SP_Sklad.UserControls
 
         private void PrintDocBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.Show(rel_row.Id, rel_row.DocType.Value, DB.SkladBase());
+            if ( rel_row.ReceiptId.HasValue && rel_row.ReceiptId.Value != Guid.Empty)
+            {
+                if (!string.IsNullOrEmpty(_access_token))
+                {
+                    IHelper.PrintReceiptPng(_access_token, rel_row.ReceiptId.Value);
+                }
+            }
+            else
+            {
+                PrintDoc.Show(rel_row.Id, rel_row.DocType.Value, DB.SkladBase());
+            }
         }
     }
 }
