@@ -48,7 +48,6 @@ namespace SP_Sklad.UserControls
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WaybillTemplateGridControl = new DevExpress.XtraGrid.GridControl();
             this.WaybillTemplateBS = new System.Windows.Forms.BindingSource(this.components);
@@ -83,6 +82,7 @@ namespace SP_Sklad.UserControls
             this.repositoryItemLookUpEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
@@ -114,6 +114,7 @@ namespace SP_Sklad.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -128,7 +129,7 @@ namespace SP_Sklad.UserControls
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.BarImageList;
+            this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
@@ -187,7 +188,7 @@ namespace SP_Sklad.UserControls
             // 
             this.barButtonItem3.Caption = "Видалити привязку";
             this.barButtonItem3.Id = 32;
-            this.barButtonItem3.ImageOptions.ImageIndex = 3;
+            this.barButtonItem3.ImageOptions.ImageIndex = 1;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -195,7 +196,7 @@ namespace SP_Sklad.UserControls
             // 
             this.barButtonItem1.Caption = "Створити замовлення";
             this.barButtonItem1.Id = 30;
-            this.barButtonItem1.ImageOptions.ImageIndex = 13;
+            this.barButtonItem1.ImageOptions.ImageIndex = 2;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -241,25 +242,6 @@ namespace SP_Sklad.UserControls
             this.barDockControlRight.Location = new System.Drawing.Point(1053, 0);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 614);
-            // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(8, "_нформац_я про резерв товару.bmp");
-            this.BarImageList.Images.SetKeyName(9, "_нформац_я про товар.bmp");
-            this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
-            this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(12, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(13, "Заказ от клиента.png");
             // 
             // splitContainerControl4
             // 
@@ -636,7 +618,18 @@ namespace SP_Sklad.UserControls
             this.gridView7.GridControl = this.KaTemplateListGridControl;
             this.gridView7.Name = "gridView7";
             // 
-            // WaybillTemplateUserControl
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_new, "add_new", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "add_new");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "close");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "wb_order_in");
+            // 
+            // ucWaybillTemplate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -645,7 +638,7 @@ namespace SP_Sklad.UserControls
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "WaybillTemplateUserControl";
+            this.Name = "ucWaybillTemplate";
             this.Size = new System.Drawing.Size(1053, 614);
             this.Load += new System.EventHandler(this.WaybillTemplateUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
@@ -680,6 +673,7 @@ namespace SP_Sklad.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -731,8 +725,8 @@ namespace SP_Sklad.UserControls
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

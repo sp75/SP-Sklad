@@ -673,11 +673,7 @@ namespace SP_Sklad.MainTabs
 
         private void gridView3_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                BottomPopupMenu.ShowPopup(p2);
-            }
+           
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
@@ -727,15 +723,6 @@ namespace SP_Sklad.MainTabs
             public bool Check { get; set; }
             public int KaId { get; set; }
             public string KaName { get; set; }
-        }
-
-        private void gridView2_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                WbDetPopupMenu.ShowPopup(p2);
-            }
         }
 
         private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)

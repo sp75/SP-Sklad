@@ -35,11 +35,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.ImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -1404,11 +1399,9 @@
             this.UsersLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.UsersLookUpEdit.Location = new System.Drawing.Point(15, 149);
             this.UsersLookUpEdit.Name = "UsersLookUpEdit";
-            editorButtonImageOptions1.ImageIndex = 15;
-            editorButtonImageOptions1.ImageList = this.ImageList;
             this.UsersLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
             this.UsersLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
             this.UsersLookUpEdit.Properties.DisplayMember = "Name";
@@ -1417,7 +1410,7 @@
             this.UsersLookUpEdit.Properties.ShowHeader = false;
             this.UsersLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.UsersLookUpEdit.Properties.ValueMember = "UserId";
-            this.UsersLookUpEdit.Size = new System.Drawing.Size(281, 24);
+            this.UsersLookUpEdit.Size = new System.Drawing.Size(281, 22);
             this.UsersLookUpEdit.StyleController = this.styleController1;
             this.UsersLookUpEdit.TabIndex = 44;
             this.UsersLookUpEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.UsersLookUpEdit_ButtonClick);
@@ -1574,10 +1567,10 @@
             this.textEdit12.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Name", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textEdit12.Location = new System.Drawing.Point(15, 32);
             this.textEdit12.Name = "textEdit12";
-            editorButtonImageOptions2.ImageIndex = 13;
-            editorButtonImageOptions2.ImageList = this.ImageList;
+            editorButtonImageOptions1.ImageIndex = 13;
+            editorButtonImageOptions1.ImageList = this.ImageList;
             this.textEdit12.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.textEdit12.Size = new System.Drawing.Size(643, 24);
             this.textEdit12.TabIndex = 34;
             this.textEdit12.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.textEdit12_ButtonClick);
@@ -2397,7 +2390,7 @@
             // 
             // EditDiscountBtn
             // 
-            this.EditDiscountBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditDiscountBtn.ImageOptions.Image")));
+            this.EditDiscountBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.EditDiscountBtn.Location = new System.Drawing.Point(139, 15);
             this.EditDiscountBtn.Name = "EditDiscountBtn";
             this.EditDiscountBtn.Size = new System.Drawing.Size(106, 23);
@@ -2952,7 +2945,7 @@
             // 
             // EditPersonBtn
             // 
-            this.EditPersonBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditPersonBtn.ImageOptions.Image")));
+            this.EditPersonBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.EditPersonBtn.Location = new System.Drawing.Point(130, 11);
             this.EditPersonBtn.Name = "EditPersonBtn";
             this.EditPersonBtn.Size = new System.Drawing.Size(106, 23);
@@ -3071,7 +3064,7 @@
             // 
             // EditAccBtn
             // 
-            this.EditAccBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("EditAccBtn.ImageOptions.Image")));
+            this.EditAccBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.EditAccBtn.Location = new System.Drawing.Point(130, 11);
             this.EditAccBtn.Name = "EditAccBtn";
             this.EditAccBtn.Size = new System.Drawing.Size(106, 23);
@@ -4136,7 +4129,7 @@
             // 
             // simpleButton11
             // 
-            this.simpleButton11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton11.ImageOptions.Image")));
+            this.simpleButton11.ImageOptions.Image = global::SP_Sklad.Properties.Resources.edit_3;
             this.simpleButton11.Location = new System.Drawing.Point(140, 41);
             this.simpleButton11.Name = "simpleButton11";
             this.simpleButton11.Size = new System.Drawing.Size(106, 23);

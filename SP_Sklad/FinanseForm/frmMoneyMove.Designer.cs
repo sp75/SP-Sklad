@@ -69,7 +69,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.TurnDocCheckBox = new DevExpress.XtraEditors.CheckEdit();
-            this.PayDocFromBS = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.styleController2 = new DevExpress.XtraEditors.StyleController(this.components);
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
@@ -82,7 +81,6 @@
             this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
             this.AccountToEdit = new DevExpress.XtraEditors.LookUpEdit();
-            this.PayDocToBS = new System.Windows.Forms.BindingSource(this.components);
             this.CashToEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
@@ -100,6 +98,8 @@
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.NotesEdit = new DevExpress.XtraEditors.MemoEdit();
+            this.PayDocFromBS = new System.Windows.Forms.BindingSource(this.components);
+            this.PayDocToBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -107,7 +107,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocFromBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).BeginInit();
@@ -118,7 +117,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountToEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocToBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashToEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountFromEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashFromEdit.Properties)).BeginInit();
@@ -130,6 +128,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocFromBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocToBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl4
@@ -222,10 +222,6 @@
             this.TurnDocCheckBox.Size = new System.Drawing.Size(203, 20);
             this.TurnDocCheckBox.StyleController = this.styleController1;
             this.TurnDocCheckBox.TabIndex = 3;
-            // 
-            // PayDocFromBS
-            // 
-            this.PayDocFromBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
             // 
             // labelControl1
             // 
@@ -374,10 +370,6 @@
             this.AccountToEdit.StyleController = this.styleController1;
             this.AccountToEdit.TabIndex = 62;
             this.AccountToEdit.EditValueChanged += new System.EventHandler(this.NumEdit_EditValueChanged);
-            // 
-            // PayDocToBS
-            // 
-            this.PayDocToBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
             // 
             // CashToEdit
             // 
@@ -606,6 +598,14 @@
             this.NotesEdit.Size = new System.Drawing.Size(466, 103);
             this.NotesEdit.TabIndex = 24;
             // 
+            // PayDocFromBS
+            // 
+            this.PayDocFromBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
+            // 
+            // PayDocToBS
+            // 
+            this.PayDocToBS.DataSource = typeof(SP_Sklad.SkladData.PayDoc);
+            // 
             // frmMoneyMove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -631,7 +631,6 @@
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TurnDocCheckBox.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocFromBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OnDateDBEdit.Properties.CalendarTimeProperties)).EndInit();
@@ -643,7 +642,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SumEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountToEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PayDocToBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashToEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccountFromEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CashFromEdit.Properties)).EndInit();
@@ -656,6 +654,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.PersonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReasonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocFromBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PayDocToBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
