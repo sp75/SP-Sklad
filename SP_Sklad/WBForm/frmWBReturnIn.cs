@@ -176,16 +176,14 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            var SummAll = (_db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0) + (_db.WayBillTmc.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0);
-            wb.UpdatedAt = DateTime.Now;
-            wb.SummAll = SummAll;
-            wb.SummInCurr = SummAll * wb.OnValue;
+          //  var SummAll = (_db.WaybillDet.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0) + (_db.WayBillTmc.Where(w => w.WbillId == _wbill_id).Sum(s => s.Total) ?? 0);
+      //      wb.UpdatedAt = DateTime.Now;
+      //      wb.SummAll = SummAll;
+        //    wb.SummInCurr = SummAll * wb.OnValue;
 
             _db.SaveChanges();
 
             payDocUserControl1.Execute(wb.WbillId);
-
-            //    current_transaction.Commit();
 
             if (TurnDocCheckBox.Checked)
             {

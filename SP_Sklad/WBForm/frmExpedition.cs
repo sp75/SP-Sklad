@@ -122,10 +122,14 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_dr == null)
+            {
+                return;
+            }
+
             _db.ExpeditionDet.Remove(_db.ExpeditionDet.FirstOrDefault(w => w.Id == focused_dr.Id));
             _db.SaveChanges();
             GetDetail();
-
         }
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -192,6 +196,11 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_dr == null)
+            {
+                return;
+            }
+
             using (var frm = new frmExpeditionDet(_db, focused_dr.Id, exp, focused_dr.WbillId))
             {
                 frm.ShowDialog();

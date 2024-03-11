@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillCustomerOrder));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -45,6 +44,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillCustomerOrder));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -68,7 +68,6 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.RsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -132,6 +131,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -165,6 +165,7 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -239,7 +240,7 @@
             // 
             this.KagBalBtn.Caption = "Баланс з контрагентом";
             this.KagBalBtn.Id = 1;
-            this.KagBalBtn.ImageOptions.ImageIndex = 1;
+            this.KagBalBtn.ImageOptions.ImageIndex = 11;
             this.KagBalBtn.Name = "KagBalBtn";
             this.KagBalBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.KagBalBtn_ItemClick);
             // 
@@ -247,7 +248,7 @@
             // 
             this.barButtonItem1.Caption = "Замовлене в постачальників";
             this.barButtonItem1.Id = 9;
-            this.barButtonItem1.ImageOptions.ImageIndex = 2;
+            this.barButtonItem1.ImageOptions.ImageIndex = 20;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
@@ -255,7 +256,7 @@
             // 
             this.RsvInfoBtn.Caption = "Інформація про резерв товару";
             this.RsvInfoBtn.Id = 10;
-            this.RsvInfoBtn.ImageOptions.ImageIndex = 3;
+            this.RsvInfoBtn.ImageOptions.ImageIndex = 2;
             this.RsvInfoBtn.Name = "RsvInfoBtn";
             this.RsvInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvInfoBtn_ItemClick);
             // 
@@ -263,7 +264,7 @@
             // 
             this.MatInfoBtn.Caption = "Інформація про товар";
             this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 4;
+            this.MatInfoBtn.ImageOptions.ImageIndex = 1;
             this.MatInfoBtn.Name = "MatInfoBtn";
             this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
             // 
@@ -300,7 +301,7 @@
             // 
             this.barSubItem1.Caption = "Додати";
             this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageOptions.ImageIndex = 5;
+            this.barSubItem1.ImageOptions.ImageIndex = 6;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
@@ -316,7 +317,7 @@
             // 
             this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageOptions.ImageIndex = 8;
+            this.AddMaterialBtn.ImageOptions.ImageIndex = 5;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
@@ -325,7 +326,7 @@
             // 
             this.barButtonItem6.Caption = "Товари списком";
             this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageOptions.ImageIndex = 9;
+            this.barButtonItem6.ImageOptions.ImageIndex = 4;
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
@@ -334,8 +335,7 @@
             // 
             this.barButtonItem9.Caption = "Товари по шаблону";
             this.barButtonItem9.Id = 25;
-            this.barButtonItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
-            this.barButtonItem9.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
+            this.barButtonItem9.ImageOptions.ImageIndex = 23;
             this.barButtonItem9.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T));
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
@@ -344,7 +344,7 @@
             // 
             this.barButtonItem7.Caption = "Послугу";
             this.barButtonItem7.Id = 7;
-            this.barButtonItem7.ImageOptions.ImageIndex = 10;
+            this.barButtonItem7.ImageOptions.ImageIndex = 9;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
@@ -352,7 +352,7 @@
             // 
             this.barButtonItem8.Caption = "Послуги списком";
             this.barButtonItem8.Id = 8;
-            this.barButtonItem8.ImageOptions.ImageIndex = 11;
+            this.barButtonItem8.ImageOptions.ImageIndex = 13;
             this.barButtonItem8.Name = "barButtonItem8";
             // 
             // barButtonItem4
@@ -368,7 +368,7 @@
             // 
             this.EditMaterialBtn.Caption = "Властивості";
             this.EditMaterialBtn.Id = 2;
-            this.EditMaterialBtn.ImageOptions.ImageIndex = 6;
+            this.EditMaterialBtn.ImageOptions.ImageIndex = 8;
             this.EditMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.EditMaterialBtn.Name = "EditMaterialBtn";
             this.EditMaterialBtn.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
@@ -427,37 +427,11 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
             // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "Баланс з контрагентом.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Замовлене кл_єнтами.bmp");
-            this.WBImgList.Images.SetKeyName(3, "_нформац_я про резерв товару.bmp");
-            this.WBImgList.Images.SetKeyName(4, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(6, "edit.bmp");
-            this.WBImgList.Images.SetKeyName(7, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(8, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(9, "Товари списком.bmp");
-            this.WBImgList.Images.SetKeyName(10, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(11, "Послуги списком.bmp");
-            this.WBImgList.Images.SetKeyName(12, "Зарезервовано.bmp");
-            this.WBImgList.Images.SetKeyName(13, "Зарезервувати все.bmp");
-            this.WBImgList.Images.SetKeyName(14, "Зняти з резерву.bmp");
-            this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
-            this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
-            this.WBImgList.Images.SetKeyName(17, "Договор продажу.bmp");
-            this.WBImgList.Images.SetKeyName(18, "Дисконтна картка.bmp");
-            this.WBImgList.Images.SetKeyName(19, "icons-05.png");
-            this.WBImgList.Images.SetKeyName(20, "store-2017.png");
-            // 
             // RsvBarBtn
             // 
             this.RsvBarBtn.Caption = "Зарезервувати";
             this.RsvBarBtn.Id = 12;
-            this.RsvBarBtn.ImageOptions.ImageIndex = 12;
+            this.RsvBarBtn.ImageOptions.ImageIndex = 16;
             this.RsvBarBtn.Name = "RsvBarBtn";
             this.RsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvBarBtn_ItemClick);
             // 
@@ -465,7 +439,7 @@
             // 
             this.RsvAllBarBtn.Caption = "Зарезервувати все";
             this.RsvAllBarBtn.Id = 13;
-            this.RsvAllBarBtn.ImageOptions.ImageIndex = 13;
+            this.RsvAllBarBtn.ImageOptions.ImageIndex = 17;
             this.RsvAllBarBtn.Name = "RsvAllBarBtn";
             this.RsvAllBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RsvAllBarBtn_ItemClick);
             // 
@@ -473,7 +447,7 @@
             // 
             this.DelRsvBarBtn.Caption = "Видалити з резерву";
             this.DelRsvBarBtn.Id = 14;
-            this.DelRsvBarBtn.ImageOptions.ImageIndex = 14;
+            this.DelRsvBarBtn.ImageOptions.ImageIndex = 15;
             this.DelRsvBarBtn.Name = "DelRsvBarBtn";
             this.DelRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelRsvBarBtn_ItemClick);
             // 
@@ -481,7 +455,7 @@
             // 
             this.DelAllRsvBarBtn.Caption = "Видалити з резерву все";
             this.DelAllRsvBarBtn.Id = 15;
-            this.DelAllRsvBarBtn.ImageOptions.ImageIndex = 15;
+            this.DelAllRsvBarBtn.ImageOptions.ImageIndex = 14;
             this.DelAllRsvBarBtn.Name = "DelAllRsvBarBtn";
             this.DelAllRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelAllRsvBarBtn_ItemClick);
             // 
@@ -489,7 +463,7 @@
             // 
             this.MarkBtn.Caption = "Позначити";
             this.MarkBtn.Id = 16;
-            this.MarkBtn.ImageOptions.ImageIndex = 16;
+            this.MarkBtn.ImageOptions.ImageIndex = 12;
             this.MarkBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F2);
             this.MarkBtn.Name = "MarkBtn";
             this.MarkBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MarkBtn_ItemClick);
@@ -505,6 +479,7 @@
             // 
             this.WeighBtn.Caption = "Зважити";
             this.WeighBtn.Id = 20;
+            this.WeighBtn.ImageOptions.ImageIndex = 24;
             this.WeighBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F12);
             this.WeighBtn.Name = "WeighBtn";
             this.WeighBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WeighBtn_ItemClick);
@@ -513,6 +488,7 @@
             // 
             this.barButtonItem5.Caption = "Перенумеровати";
             this.barButtonItem5.Id = 24;
+            this.barButtonItem5.ImageOptions.ImageIndex = 22;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -520,6 +496,7 @@
             // 
             this.barButtonItem10.Caption = "Відновити налаштування сітки по замовчуванню";
             this.barButtonItem10.Id = 26;
+            this.barButtonItem10.ImageOptions.ImageIndex = 21;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
@@ -569,7 +546,7 @@
             this.PersonComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.PersonComboBox.Location = new System.Drawing.Point(92, 107);
             this.PersonComboBox.Name = "PersonComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.user_valet;
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -667,7 +644,7 @@
             this.KagentComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "KaId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.KagentComboBox.Location = new System.Drawing.Point(92, 75);
             this.KagentComboBox.Name = "KagentComboBox";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -740,7 +717,7 @@
             this.OnDateDBEdit.Location = new System.Drawing.Point(465, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
-            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
+            editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.time_16x16;
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -835,7 +812,6 @@
             this.gridColumn16,
             this.gridColumn17});
             this.WaybillDetOutGridView.GridControl = this.WaybillDetOutGridControl;
-            this.WaybillDetOutGridView.Images = this.WBImgList;
             this.WaybillDetOutGridView.Name = "WaybillDetOutGridView";
             this.WaybillDetOutGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WaybillDetOutGridView.OptionsView.ShowFooter = true;
@@ -870,7 +846,7 @@
             this.repositoryItemImageComboBox3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox3.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Позначене", 1, 16)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Позначене", 1, 12)});
             this.repositoryItemImageComboBox3.Name = "repositoryItemImageComboBox3";
             this.repositoryItemImageComboBox3.SmallImages = this.WBImgList;
             // 
@@ -901,10 +877,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 9),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("ТМС", 2, 19),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 18)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Картка", 3, 18)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
             // 
@@ -934,7 +910,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox4.Name = "repositoryItemImageComboBox4";
-            this.repositoryItemImageComboBox4.SmallImages = this.WBImgList;
             // 
             // gridColumn2
             // 
@@ -945,7 +920,7 @@
             this.gridColumn2.OptionsColumn.ReadOnly = true;
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 50;
+            this.gridColumn2.Width = 51;
             // 
             // gridColumn11
             // 
@@ -973,7 +948,7 @@
             this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Зарезервоване", 1, 12)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Зарезервоване", 1, 16)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.WBImgList;
             // 
@@ -986,7 +961,7 @@
             this.gridColumn3.OptionsColumn.ReadOnly = true;
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 5;
-            this.gridColumn3.Width = 203;
+            this.gridColumn3.Width = 210;
             // 
             // gridColumn4
             // 
@@ -998,7 +973,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 6;
-            this.gridColumn4.Width = 76;
+            this.gridColumn4.Width = 78;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -1032,7 +1007,7 @@
             this.gridColumn6.OptionsColumn.ReadOnly = true;
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 12;
-            this.gridColumn6.Width = 78;
+            this.gridColumn6.Width = 80;
             // 
             // gridColumn10
             // 
@@ -1043,7 +1018,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 11;
-            this.gridColumn10.Width = 68;
+            this.gridColumn10.Width = 69;
             // 
             // gridColumn7
             // 
@@ -1056,7 +1031,7 @@
             this.gridColumn7.OptionsColumn.ReadOnly = true;
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 13;
-            this.gridColumn7.Width = 69;
+            this.gridColumn7.Width = 70;
             // 
             // gridColumn8
             // 
@@ -1069,7 +1044,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 14;
-            this.gridColumn8.Width = 70;
+            this.gridColumn8.Width = 89;
             // 
             // gridColumn9
             // 
@@ -1080,7 +1055,7 @@
             this.gridColumn9.OptionsColumn.ReadOnly = true;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 9;
-            this.gridColumn9.Width = 69;
+            this.gridColumn9.Width = 70;
             // 
             // gridColumn13
             // 
@@ -1090,7 +1065,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 8;
-            this.gridColumn13.Width = 90;
+            this.gridColumn13.Width = 92;
             // 
             // repositoryItemComboBox1
             // 
@@ -1127,7 +1102,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 10;
-            this.gridColumn17.Width = 71;
+            this.gridColumn17.Width = 72;
             // 
             // barDockControl1
             // 
@@ -1199,6 +1174,61 @@
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
             // 
+            // WBImgList
+            // 
+            this.WBImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("WBImgList.ImageStream")));
+            this.WBImgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.WBImgList.Images.SetKeyName(0, "preview_2");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.WBImgList.Images.SetKeyName(1, "product_info_3");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.WBImgList.Images.SetKeyName(2, "product_reserved_1");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.WBImgList.Images.SetKeyName(3, "warehouse_2");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.WBImgList.Images.SetKeyName(4, "product_list_4");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.WBImgList.Images.SetKeyName(5, "product");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.WBImgList.Images.SetKeyName(6, "add_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.WBImgList.Images.SetKeyName(7, "delete_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.WBImgList.Images.SetKeyName(8, "edit_property");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.WBImgList.Images.SetKeyName(9, "service");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_1, "product_1", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.WBImgList.Images.SetKeyName(10, "product_1");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.WBImgList.Images.SetKeyName(11, "balans_businessman");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.flag_red, "flag_red", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.WBImgList.Images.SetKeyName(12, "flag_red");
+            this.WBImgList.Images.SetKeyName(13, "service_list.png");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_all_reserve, "remove_all_reserve", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.WBImgList.Images.SetKeyName(14, "remove_all_reserve");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_reserve, "remove_reserve", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.WBImgList.Images.SetKeyName(15, "remove_reserve");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.WBImgList.Images.SetKeyName(16, "reserved");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.WBImgList.Images.SetKeyName(17, "reserved_all");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.WBImgList.Images.SetKeyName(18, "debit_card");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.WBImgList.Images.SetKeyName(19, "product_tmc");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.WBImgList.Images.SetKeyName(20, "order_info");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 21);
+            this.WBImgList.Images.SetKeyName(21, "converttorange_16x16");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.WBImgList.Images.SetKeyName(22, "listnumbers_16x16");
+            this.WBImgList.Images.SetKeyName(23, "template_1.png");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.WBImgList.Images.SetKeyName(24, "w_scale");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 25);
+            this.WBImgList.Images.SetKeyName(25, "store_16");
+            // 
             // frmWayBillCustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1213,7 +1243,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmWayBillCustomerOrder.IconOptions.Image")));
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.wb_order_in;
             this.Name = "frmWayBillCustomerOrder";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1257,6 +1287,7 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1284,7 +1315,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -1351,5 +1381,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.Utils.ImageCollection WBImgList;
     }
 }
