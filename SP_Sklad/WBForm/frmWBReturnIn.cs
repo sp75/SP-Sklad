@@ -70,25 +70,16 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-
                 wb = _db.WaybillList.FirstOrDefault(f => f.WbillId == _wbill_id);
-
-                /*  try
-                  {
-                      UpdLockWB();
-                      _db.Entry<WaybillList>(wb).State = System.Data.Entity.EntityState.Modified;
-                      _db.Entry<WaybillList>(wb).Property(f => f.SummPay).IsModified = false;
-                  }
-                  catch
-                  {
-
-                      Close();
-                  }*/
-
             }
 
             if (wb != null)
             {
+                if(wb.PersonId == null)
+                {
+                    wb.PersonId = DBHelper.CurrentUser.KaId;
+                }
+
                 DBHelper.UpdateSessionWaybill(wb.WbillId);
 
                 OutDateEdit.DateTime = new[] { wb.OnDate.Date.AddDays(-3), DateTime.Now.Date.AddDays(-3) }.Min();
