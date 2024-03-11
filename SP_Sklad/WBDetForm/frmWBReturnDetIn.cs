@@ -198,6 +198,13 @@ namespace SP_Sklad.WBDetForm
             int num = _wbd.Num;
             decimal amount = _wbd.Amount;
 
+            if (_PosId.HasValue)
+            {
+                _db.DeleteWhere<WaybillDet>(w => w.PosId == _PosId);
+            }
+
+            _temp_return_rel = null;
+
             foreach (var item in ordered_in_list.Where(w => w.Remain > 0))
             {
                 if (!stop)
@@ -239,13 +246,6 @@ namespace SP_Sklad.WBDetForm
                     });
                     _db.SaveChanges();
                 }
-
-                _temp_return_rel = null;
-            }
-
-            if (_PosId.HasValue)
-            {
-                _db.DeleteWhere<WaybillDet>(w => w.PosId == _PosId);
             }
 
             _db.SaveChanges();

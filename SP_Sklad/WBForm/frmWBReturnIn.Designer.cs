@@ -197,9 +197,9 @@
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.KagBalBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.OrdInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -404,8 +404,8 @@
             this.imageCollection1.Images.SetKeyName(5, "delete_properties");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 6);
             this.imageCollection1.Images.SetKeyName(6, "edit_property");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.kontragent_balans, "kontragent_balans", typeof(global::SP_Sklad.Properties.Resources), 7);
-            this.imageCollection1.Images.SetKeyName(7, "kontragent_balans");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "balans_businessman");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.imageCollection1.Images.SetKeyName(8, "order_info");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.used_product, "used_product", typeof(global::SP_Sklad.Properties.Resources), 9);

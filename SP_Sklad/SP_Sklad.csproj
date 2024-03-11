@@ -3660,7 +3660,7 @@
       <Name>CheckboxIntegration</Name>
     </ProjectReference>
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
-      <Project>{053e5968-b5fb-41bd-9e8f-8f4a9c60d922}</Project>
+      <Project>{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}</Project>
       <Name>SkladEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\SP.Reports\SP.Reports.csproj">

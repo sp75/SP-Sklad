@@ -357,7 +357,7 @@
             // WHComboBox
             // 
             this.WHComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "WId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.WHComboBox.Location = new System.Drawing.Point(101, 44);
+            this.WHComboBox.Location = new System.Drawing.Point(101, 47);
             this.WHComboBox.Name = "WHComboBox";
             editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.warehouse_2;
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -382,7 +382,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(12, 47);
+            this.labelControl6.Location = new System.Drawing.Point(12, 51);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(40, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -853,6 +853,8 @@
             this.panelControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
+
 
             // GetPosOutBS
             // 
