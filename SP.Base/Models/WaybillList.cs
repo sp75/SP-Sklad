@@ -92,9 +92,14 @@ namespace SP.Base.Models
 
         public string WebUserId { get; set; }
 
-        public int? PTypeId { get; set; }
-
-        public DateTime? ShipmentDate { get; set; }
+        public Nullable<int> PTypeId { get; set; }
+        public Nullable<System.Guid> CarId { get; set; }
+        public Nullable<int> RouteId { get; set; }
+        public Nullable<int> CustomerId { get; set; }
+        public Nullable<int> DriverId { get; set; }
+        public Nullable<System.DateTime> ReportingDate { get; set; }
+        public Nullable<System.DateTime> ShipmentDate { get; set; }
+        public Nullable<System.Guid> ReceiptId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }
