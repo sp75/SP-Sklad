@@ -23,9 +23,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -49,6 +50,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>main_ico.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>1DC30CDE53DDA11BB58DB4F258C2EBE959AEA5F6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>SP_Sklad_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -3228,6 +3241,96 @@
       <DependentUpon>SkladModel.edmx</DependentUpon>
       <LastGenOutput>SkladModel.cs</LastGenOutput>
     </None>
+    <None Include="SP_Sklad_TemporaryKey.pfx" />
+    <None Include="TempLate\ActServicesProvided_In.xlsx" />
+    <None Include="TempLate\AnaliticsManufacture.xlsx" />
+    <None Include="TempLate\AnalizPlan_fact.xlsx" />
+    <None Include="TempLate\AnalizPlan_fac_kopchenosty.xlsx" />
+    <None Include="TempLate\BarCode.xlsx" />
+    <None Include="TempLate\CheckingRecipes.xlsx" />
+    <None Include="TempLate\Contract.xls" />
+    <None Include="TempLate\Creditors.xlsx" />
+    <None Include="TempLate\Debtors.xlsx" />
+    <None Include="TempLate\Debtors_extra.xlsx" />
+    <None Include="TempLate\Delivery.xlsx" />
+    <None Include="TempLate\DiscountCart.xlsx" />
+    <None Include="TempLate\DocList%2844%29.xlsx" />
+    <None Include="TempLate\DynamicsSsales.xlsx" />
+    <None Include="TempLate\Expedition.xlsx" />
+    <None Include="TempLate\FinResult%2817%29.xlsx" />
+    <None Include="TempLate\FontsForBilling\FRE3OF9X%28Full ASCII%29.TTF" />
+    <None Include="TempLate\FontsForBilling\FREE3OF9%28Standart%29.TTF" />
+    <None Include="TempLate\InventoryAct.xlsx" />
+    <None Include="TempLate\Invoice.xlsx" />
+    <None Include="TempLate\KABalance.xlsx" />
+    <None Include="TempLate\kss_book.xlsx" />
+    <None Include="TempLate\LossesByInventoryAct.xlsx" />
+    <None Include="TempLate\MakedProduct.xlsx" />
+    <None Include="TempLate\MakedProductShort%2829%29.xlsx" />
+    <None Include="TempLate\MatIn.xlsx" />
+    <None Include="TempLate\MatInShort%281%29.xlsx" />
+    <None Include="TempLate\MatMove.xlsx" />
+    <None Include="TempLate\MatOrdered%2849%29.xlsx" />
+    <None Include="TempLate\MatOrderedOutReturn%2850%29.xlsx" />
+    <None Include="TempLate\MatOut%2814%29.xlsx" />
+    <None Include="TempLate\MatOut.xlsx" />
+    <None Include="TempLate\MatOutByMonth%2841%29.xlsx" />
+    <None Include="TempLate\MatOutShort%282%29.xlsx" />
+    <None Include="TempLate\MatOutShort.xlsx" />
+    <None Include="TempLate\MatReturnShort%2851%29.xlsx" />
+    <None Include="TempLate\MatTurn%2819%29.xlsx" />
+    <None Include="TempLate\nakladnaDeboning.xlsx" />
+    <None Include="TempLate\nakladnaMaked.xlsx" />
+    <None Include="TempLate\nakladnaMove.xlsx" />
+    <None Include="TempLate\Oborotka.xlsx" />
+    <None Include="TempLate\OperLog.xls" />
+    <None Include="TempLate\OrderedIn.xlsx" />
+    <None Include="TempLate\OrderedMat%2828%29.xlsx" />
+    <None Include="TempLate\OrderedOut.xlsx" />
+    <None Include="TempLate\PlannedCalculation.xlsx" />
+    <None Include="TempLate\podatkova.xls" />
+    <None Include="TempLate\podatkova1.xls" />
+    <None Include="TempLate\PreparationRawMatDoc.xlsx" />
+    <None Include="TempLate\PriceList.xlsx" />
+    <None Include="TempLate\PriceList2.xlsx" />
+    <None Include="TempLate\PrihOr.xlsx" />
+    <None Include="TempLate\ProductionPlanning%2853%29.xlsx" />
+    <None Include="TempLate\ProductionPlanning%2854%29.xlsx" />
+    <None Include="TempLate\ProductionPlans.xlsx" />
+    <None Include="TempLate\rami.xlsx" />
+    <None Include="TempLate\RashOr.xlsx" />
+    <None Include="TempLate\RawMatOut%2842%29.xlsx" />
+    <None Include="TempLate\Recipe.xlsx" />
+    <None Include="TempLate\ReestrDocs.xlsx" />
+    <None Include="TempLate\RepByEmployees.xlsx" />
+    <None Include="TempLate\RepMatRest.xlsx" />
+    <None Include="TempLate\RepMatSelPr.xlsx" />
+    <None Include="TempLate\RepMinMatRest.xlsx" />
+    <None Include="TempLate\RepOnExpenditure.xlsx" />
+    <None Include="TempLate\RepOrdKAID.xlsx" />
+    <None Include="TempLate\RepOrdMat.xlsx" />
+    <None Include="TempLate\ReturnCustomer.xlsx" />
+    <None Include="TempLate\ReturnMatShort.xlsx" />
+    <None Include="TempLate\ReturnSupplier.xlsx" />
+    <None Include="TempLate\RouteList.xlsx" />
+    <None Include="TempLate\SettingMaterialPrices.xlsx" />
+    <None Include="TempLate\Shahmatka.xlsx" />
+    <None Include="TempLate\SvcOutShort%2820%29.xlsx" />
+    <None Include="TempLate\SyringeReport%2848%29.xlsx" />
+    <None Include="TempLate\tmc.xlsx" />
+    <None Include="TempLate\TmcLong.xlsx" />
+    <None Include="TempLate\TurnMoney%2823%29.xlsx" />
+    <None Include="TempLate\vidgruzka.xlsx" />
+    <None Include="TempLate\WaybillTemplate.xlsx" />
+    <None Include="TempLate\WayBill_In.xlsx" />
+    <None Include="TempLate\WayBill_Out.xlsx" />
+    <None Include="TempLate\WayBill_Out_dable.xlsx" />
+    <None Include="TempLate\WayBill_Out_Print.xlsx" />
+    <None Include="TempLate\WayBill_Out_temp.xlsx" />
+    <None Include="TempLate\WayBilSales_Out.xlsx" />
+    <None Include="TempLate\WriteOff.xlsx" />
+    <None Include="TempLate\WriteOn.xlsx" />
+    <None Include="TempLate\Звіт з виконання замовлень.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -3652,6 +3755,7 @@
     <None Include="Resources\money_in1.png" />
     <None Include="Resources\money_in.png" />
     <None Include="Resources\print_doc.png" />
+    <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -3679,7 +3783,9 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Rep\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
