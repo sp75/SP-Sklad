@@ -330,22 +330,22 @@ namespace SP_Sklad.WBForm
             }
 
             _wid = Convert.ToInt32(WHComboBox.EditValue);
-            UpdateWh();
+            UpdateWh(_wid);
         }
 
-        private void UpdateWh()
+        private void UpdateWh(int? wid)
         {
-            if (WaybillDetInBS.Count > 0)
+            if (WaybillDetInBS.Count > 0 && wid.HasValue && wid > 0)
             {
                 if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wbill_id))
                     {
-                        item.WId = Convert.ToInt32(WHComboBox.EditValue);
+                        item.WId = wid;
 
                         foreach (var turn in _db.WMatTurn.Where(w => w.SourceId == item.PosId))
                         {
-                            turn.WId = Convert.ToInt32(WHComboBox.EditValue);
+                            turn.WId = wid.Value;
                         }
                     }
                     _db.Save(wb.WbillId);
@@ -514,7 +514,10 @@ namespace SP_Sklad.WBForm
             {
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
 
-                UpdateWh();
+                if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value)
+                {
+                    UpdateWh((int)WHComboBox.EditValue);
+                }
             }
         }
 
