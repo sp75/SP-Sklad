@@ -523,17 +523,23 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Manufacturing\ucRawMaterialManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucRawMaterialManagement.Designer.cs">
+      <DependentUpon>ucRawMaterialManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucIntermediateWeighing.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Manufacturing\ucIntermediateWeighing.Designer.cs">
       <DependentUpon>ucIntermediateWeighing.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Manufacturing\usPreparationProducts.cs">
+    <Compile Include="UserControls\Manufacturing\ucPreparationProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Manufacturing\usPreparationProducts.Designer.cs">
-      <DependentUpon>usPreparationProducts.cs</DependentUpon>
+    <Compile Include="UserControls\Manufacturing\ucPreparationProducts.Designer.cs">
+      <DependentUpon>ucPreparationProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="MainTabs\OLD_ManufacturingUserControl.cs">
       <SubType>UserControl</SubType>
@@ -2601,11 +2607,14 @@
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucRawMaterialManagement.resx">
+      <DependentUpon>ucRawMaterialManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucIntermediateWeighing.resx">
       <DependentUpon>ucIntermediateWeighing.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Manufacturing\usPreparationProducts.resx">
-      <DependentUpon>usPreparationProducts.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucPreparationProducts.resx">
+      <DependentUpon>ucPreparationProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\OLD_ManufacturingUserControl.resx">
       <DependentUpon>OLD_ManufacturingUserControl.cs</DependentUpon>
