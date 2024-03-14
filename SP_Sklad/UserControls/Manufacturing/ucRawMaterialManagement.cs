@@ -23,7 +23,7 @@ namespace SP_Sklad.MainTabs
     {
         private string reg_layout_path = "ucRawMaterialManagement\\RawMaterialManagementGridView";
 
-        private int w_type = 20;
+        private int w_type = 28;
         private int fun_id = 92;
 
         private UserSettingsRepository user_settings { get; set; }
