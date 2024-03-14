@@ -59,12 +59,6 @@ namespace SP_Sklad.MainTabs
                 dateEdit2.EditValue = DateTime.Now.Date.AddDays(-30);
                 dateEdit1.EditValue = DateTime.Now.Date.SetEndDay();
 
-
-                IntermediateWeighingStartDate.EditValue = DateTime.Now.Date;
-                IntermediateWeighingEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-                lookUpEdit3.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведений" }, new { Id = 0, Name = "Новий" } };
-                lookUpEdit3.EditValue = -1;
-
                 manuf_tree = DB.SkladBase().GetManufactureTree(DBHelper.CurrentUser.UserId).ToList();
                 intermediate_weighing_access = manuf_tree.FirstOrDefault(w => w.FunId == 83);
               
@@ -79,23 +73,6 @@ namespace SP_Sklad.MainTabs
                 DocsTreeList.DataSource = manuf_tree;
                 DocsTreeList.ExpandAll(); //ExpandToLevel(0);
             }
-        }
-
-
-
-
-        void GetIntermediateWeighing()
-        {
-            int top_row = IntermediateWeighingGridView.TopRowIndex;
-            var satrt_date = IntermediateWeighingStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : IntermediateWeighingStartDate.DateTime;
-            var end_date = IntermediateWeighingEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : IntermediateWeighingEndDate.DateTime;
-
-            using (var db = DB.SkladBase())
-            {
-                IntermediateWeighingBS.DataSource = db.v_IntermediateWeighing.AsNoTracking().Where(w=> w.OnDate > satrt_date && w.OnDate <= end_date).OrderBy(o => o.OnDate).ToList();
-            }
-
-            IntermediateWeighingGridView.TopRowIndex = top_row;
         }
 
 
@@ -167,7 +144,11 @@ namespace SP_Sklad.MainTabs
                 bar1.Visible = false;
                 wbContentTab.SelectedTabPageIndex = 6;
             }
-
+            else if (focused_tree_node.GType.Value == 7)
+            {
+                bar1.Visible = false;
+                wbContentTab.SelectedTabPageIndex = 7;
+            }
             else
             {
                 RefrechItemBtn.PerformClick();
@@ -206,10 +187,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                  /*  warehouseUserControl1.set_tree_node = focused_tree_node.Id;
-                    warehouseUserControl1.WHTreeList.FocusedNode = warehouseUserControl1.WHTreeList.FindNodeByFieldValue("Id", focused_tree_node.Id);
-                    bar1.Visible = false;
-                    warehouseUserControl1.splitContainerControl1.PanelVisibility = SplitPanelVisibility.Panel2;*/
+
                     break;
 
                 case 3:
@@ -228,7 +206,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 7:
-                    GetIntermediateWeighing();
                     break;
                 case 8:
                     restore_row = RawMaterialManagementGridView.FocusedRowHandle;
@@ -786,22 +763,7 @@ namespace SP_Sklad.MainTabs
             PrintItemBtn.Enabled = (pc_focused_row != null);
         }
 
-      
 
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
-
-        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void IntermediateWeighingGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditIntermediateWeighing.PerformClick();
-        }
 
         private void AddIntermediateWeighing_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -813,53 +775,6 @@ namespace SP_Sklad.MainTabs
             
         }
 
-        private void IntermediateWeighingStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            GetIntermediateWeighing();
-        }
-
-        private void IntermediateWeighingGridView_FocusedRowObjectChanged_1(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            intermediate_weighing_focused_row = e.Row as v_IntermediateWeighing;
-
-            xtraTabControl6_SelectedPageChanged(sender, null);
-
-            DeleteItemBtn.Enabled = (intermediate_weighing_focused_row != null && intermediate_weighing_focused_row.Checked == 0 && focused_tree_node.CanDelete == 1 && intermediate_weighing_focused_row.WbChecked == 0);
-            EditItemBtn.Enabled = (intermediate_weighing_focused_row != null && /*intermediate_weighing_focused_row.Checked == 0 &&*/ focused_tree_node.CanModify == 1 && intermediate_weighing_focused_row.WbChecked == 0);
-            CopyItemBtn.Enabled = (focused_tree_node.CanInsert == 1 && intermediate_weighing_focused_row != null);
-            ExecuteItemBtn.Enabled = (intermediate_weighing_focused_row != null && focused_tree_node.CanPost == 1);
-            PrintItemBtn.Enabled = (intermediate_weighing_focused_row != null);
-
-        }
-
-        private void xtraTabControl6_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-            if (intermediate_weighing_focused_row == null)
-            {
-
-                IntermediateWeighingDetBS.DataSource = null;
-                ucRelDocGrid5.GetRelDoc(Guid.Empty);
-                return;
-            }
-
-            using (var db = DB.SkladBase())
-            {
-                switch (xtraTabControl6.SelectedTabPageIndex)
-                {
-                    case 0:
-                        var list = DB.SkladBase().v_IntermediateWeighingDet.AsNoTracking().Where(w => w.IntermediateWeighingId == intermediate_weighing_focused_row.Id).OrderBy(o => o.CreatedDate).ToList();
-
-                        int top_row = WaybillDetInGridView.TopRowIndex;
-                        IntermediateWeighingDetBS.DataSource = list;
-                        WaybillDetInGridView.TopRowIndex = top_row;
-                        break;
-
-                    case 1:
-                        ucRelDocGrid5.GetRelDoc(intermediate_weighing_focused_row.Id);
-                        break;
-                }
-            }
-        }
 
         private void RawMaterialManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {

@@ -523,6 +523,12 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Manufacturing\ucIntermediateWeighing.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucIntermediateWeighing.Designer.cs">
+      <DependentUpon>ucIntermediateWeighing.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\usPreparationProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2594,6 +2600,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucIntermediateWeighing.resx">
+      <DependentUpon>ucIntermediateWeighing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\usPreparationProducts.resx">
       <DependentUpon>usPreparationProducts.cs</DependentUpon>

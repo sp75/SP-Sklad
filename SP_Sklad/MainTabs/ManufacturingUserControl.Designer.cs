@@ -125,44 +125,8 @@
             this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.usPreparationProducts = new SP_Sklad.MainTabs.usPreparationProducts();
-            this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
-            this.splitContainerControl7 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.IntermediateWeighingGridControl = new DevExpress.XtraGrid.GridControl();
-            this.IntermediateWeighingBS = new System.Windows.Forms.BindingSource(this.components);
-            this.IntermediateWeighingGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn158 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
-            this.gridColumn159 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn160 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn161 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn162 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn163 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn195 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn196 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.panelControl7 = new DevExpress.XtraEditors.PanelControl();
-            this.lookUpEdit3 = new DevExpress.XtraEditors.LookUpEdit();
-            this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.IntermediateWeighingEndDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.IntermediateWeighingStartDate = new DevExpress.XtraEditors.DateEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.xtraTabControl6 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage22 = new DevExpress.XtraTab.XtraTabPage();
-            this.WaybillDetInGridControl = new DevExpress.XtraGrid.GridControl();
-            this.IntermediateWeighingDetBS = new System.Windows.Forms.BindingSource(this.components);
-            this.WaybillDetInGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn164 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn165 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCalcEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn166 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn167 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn168 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn169 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn170 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn171 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox28 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.xtraTabPage27 = new DevExpress.XtraTab.XtraTabPage();
-            this.ucRelDocGrid5 = new SP_Sklad.UserControls.ucRelDocGrid();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucIntermediateWeighing1 = new SP_Sklad.MainTabs.ucIntermediateWeighing();
             this.xtraTabPage26 = new DevExpress.XtraTab.XtraTabPage();
             this.splitContainerControl8 = new DevExpress.XtraEditors.SplitContainerControl();
             this.RawMaterialManagementGridControl = new DevExpress.XtraGrid.GridControl();
@@ -216,8 +180,6 @@
             this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
-            this.PreparationRawMaterialsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.IntermediateWeighingByWBBS = new System.Windows.Forms.BindingSource(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -270,33 +232,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
-            this.xtraTabPage21.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7.Panel1)).BeginInit();
-            this.splitContainerControl7.Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7.Panel2)).BeginInit();
-            this.splitContainerControl7.Panel2.SuspendLayout();
-            this.splitContainerControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).BeginInit();
-            this.panelControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl6)).BeginInit();
-            this.xtraTabControl6.SuspendLayout();
-            this.xtraTabPage22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox28)).BeginInit();
-            this.xtraTabPage27.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
@@ -329,8 +265,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).BeginInit();
             this.xtraTabPage32.SuspendLayout();
             this.xtraTabPage33.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
@@ -696,7 +630,6 @@
             this.EditIntermediateWeighing.Id = 20;
             this.EditIntermediateWeighing.ImageOptions.ImageIndex = 2;
             this.EditIntermediateWeighing.Name = "EditIntermediateWeighing";
-            this.EditIntermediateWeighing.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // DelIntermediateWeighing
             // 
@@ -704,7 +637,6 @@
             this.DelIntermediateWeighing.Id = 21;
             this.DelIntermediateWeighing.ImageOptions.ImageIndex = 3;
             this.DelIntermediateWeighing.Name = "DelIntermediateWeighing";
-            this.DelIntermediateWeighing.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
             // barButtonItem8
             // 
@@ -1088,7 +1020,7 @@
             this.xtraTabPage36,
             this.xtraTabPage17,
             this.xtraTabPage1,
-            this.xtraTabPage21,
+            this.xtraTabPage2,
             this.xtraTabPage26,
             this.xtraTabPage32,
             this.xtraTabPage33});
@@ -1552,433 +1484,20 @@
             this.usPreparationProducts.Size = new System.Drawing.Size(1049, 632);
             this.usPreparationProducts.TabIndex = 0;
             // 
-            // xtraTabPage21
-            // 
-            this.xtraTabPage21.Controls.Add(this.splitContainerControl7);
-            this.xtraTabPage21.Name = "xtraTabPage21";
-            this.xtraTabPage21.Size = new System.Drawing.Size(1049, 632);
-            this.xtraTabPage21.Text = "Проміжкові зважування";
-            // 
-            // splitContainerControl7
-            // 
-            this.splitContainerControl7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerControl7.Horizontal = false;
-            this.splitContainerControl7.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerControl7.Name = "splitContainerControl7";
-            // 
-            // splitContainerControl7.Panel1
-            // 
-            this.splitContainerControl7.Panel1.Controls.Add(this.IntermediateWeighingGridControl);
-            this.splitContainerControl7.Panel1.Controls.Add(this.panelControl7);
-            this.splitContainerControl7.Panel1.Text = "Panel1";
-            // 
-            // splitContainerControl7.Panel2
-            // 
-            this.splitContainerControl7.Panel2.Controls.Add(this.xtraTabControl6);
-            this.splitContainerControl7.Panel2.Text = "Panel2";
-            this.splitContainerControl7.Size = new System.Drawing.Size(1049, 632);
-            this.splitContainerControl7.SplitterPosition = 378;
-            this.splitContainerControl7.TabIndex = 2;
-            this.splitContainerControl7.Text = "splitContainerControl7";
-            // 
-            // IntermediateWeighingGridControl
-            // 
-            this.IntermediateWeighingGridControl.DataSource = this.IntermediateWeighingBS;
-            this.IntermediateWeighingGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.IntermediateWeighingGridControl.Location = new System.Drawing.Point(0, 50);
-            this.IntermediateWeighingGridControl.MainView = this.IntermediateWeighingGridView;
-            this.IntermediateWeighingGridControl.Name = "IntermediateWeighingGridControl";
-            this.IntermediateWeighingGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit6});
-            this.IntermediateWeighingGridControl.Size = new System.Drawing.Size(1049, 328);
-            this.IntermediateWeighingGridControl.TabIndex = 4;
-            this.IntermediateWeighingGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.IntermediateWeighingGridView});
-            // 
-            // IntermediateWeighingBS
-            // 
-            this.IntermediateWeighingBS.DataSource = typeof(SP_Sklad.SkladData.v_IntermediateWeighing);
-            // 
-            // IntermediateWeighingGridView
-            // 
-            this.IntermediateWeighingGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn158,
-            this.gridColumn159,
-            this.gridColumn160,
-            this.gridColumn161,
-            this.gridColumn162,
-            this.gridColumn163,
-            this.gridColumn195,
-            this.gridColumn196});
-            this.IntermediateWeighingGridView.GridControl = this.IntermediateWeighingGridControl;
-            this.IntermediateWeighingGridView.GroupCount = 1;
-            this.IntermediateWeighingGridView.Name = "IntermediateWeighingGridView";
-            this.IntermediateWeighingGridView.OptionsBehavior.Editable = false;
-            this.IntermediateWeighingGridView.OptionsBehavior.ReadOnly = true;
-            this.IntermediateWeighingGridView.OptionsView.ShowFooter = true;
-            this.IntermediateWeighingGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn195, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.IntermediateWeighingGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.IntermediateWeighingGridView_FocusedRowObjectChanged_1);
-            this.IntermediateWeighingGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
-            // 
-            // gridColumn158
-            // 
-            this.gridColumn158.Caption = "Статус";
-            this.gridColumn158.ColumnEdit = this.repositoryItemCheckEdit6;
-            this.gridColumn158.FieldName = "Checked";
-            this.gridColumn158.Name = "gridColumn158";
-            this.gridColumn158.Visible = true;
-            this.gridColumn158.VisibleIndex = 0;
-            this.gridColumn158.Width = 68;
-            // 
-            // repositoryItemCheckEdit6
-            // 
-            this.repositoryItemCheckEdit6.AutoHeight = false;
-            this.repositoryItemCheckEdit6.Name = "repositoryItemCheckEdit6";
-            this.repositoryItemCheckEdit6.ValueChecked = 1;
-            this.repositoryItemCheckEdit6.ValueUnchecked = 0;
-            // 
-            // gridColumn159
-            // 
-            this.gridColumn159.Caption = "#";
-            this.gridColumn159.FieldName = "Num";
-            this.gridColumn159.Name = "gridColumn159";
-            this.gridColumn159.Visible = true;
-            this.gridColumn159.VisibleIndex = 2;
-            this.gridColumn159.Width = 68;
-            // 
-            // gridColumn160
-            // 
-            this.gridColumn160.Caption = "Відповідальний";
-            this.gridColumn160.FieldName = "PersonName";
-            this.gridColumn160.Name = "gridColumn160";
-            this.gridColumn160.Visible = true;
-            this.gridColumn160.VisibleIndex = 5;
-            this.gridColumn160.Width = 145;
-            // 
-            // gridColumn161
-            // 
-            this.gridColumn161.Caption = "Дата";
-            this.gridColumn161.DisplayFormat.FormatString = "g";
-            this.gridColumn161.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn161.FieldName = "OnDate";
-            this.gridColumn161.Name = "gridColumn161";
-            this.gridColumn161.Visible = true;
-            this.gridColumn161.VisibleIndex = 3;
-            this.gridColumn161.Width = 97;
-            // 
-            // gridColumn162
-            // 
-            this.gridColumn162.Caption = "Примітка";
-            this.gridColumn162.Name = "gridColumn162";
-            this.gridColumn162.Visible = true;
-            this.gridColumn162.VisibleIndex = 6;
-            this.gridColumn162.Width = 311;
-            // 
-            // gridColumn163
-            // 
-            this.gridColumn163.Caption = "Вага закладки";
-            this.gridColumn163.FieldName = "Amount";
-            this.gridColumn163.Name = "gridColumn163";
-            this.gridColumn163.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.##}")});
-            this.gridColumn163.Visible = true;
-            this.gridColumn163.VisibleIndex = 4;
-            this.gridColumn163.Width = 137;
-            // 
-            // gridColumn195
-            // 
-            this.gridColumn195.Caption = "Рецепт";
-            this.gridColumn195.FieldName = "RecipeName";
-            this.gridColumn195.Name = "gridColumn195";
-            this.gridColumn195.Visible = true;
-            this.gridColumn195.VisibleIndex = 2;
-            this.gridColumn195.Width = 61;
-            // 
-            // gridColumn196
-            // 
-            this.gridColumn196.Caption = "№ виробництва";
-            this.gridColumn196.FieldName = "WbNum";
-            this.gridColumn196.Name = "gridColumn196";
-            this.gridColumn196.Visible = true;
-            this.gridColumn196.VisibleIndex = 1;
-            this.gridColumn196.Width = 145;
-            // 
-            // panelControl7
-            // 
-            this.panelControl7.Controls.Add(this.lookUpEdit3);
-            this.panelControl7.Controls.Add(this.labelControl18);
-            this.panelControl7.Controls.Add(this.IntermediateWeighingEndDate);
-            this.panelControl7.Controls.Add(this.labelControl20);
-            this.panelControl7.Controls.Add(this.IntermediateWeighingStartDate);
-            this.panelControl7.Controls.Add(this.labelControl21);
-            this.panelControl7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl7.Location = new System.Drawing.Point(0, 0);
-            this.panelControl7.Name = "panelControl7";
-            this.panelControl7.Size = new System.Drawing.Size(1049, 50);
-            this.panelControl7.TabIndex = 1;
-            // 
-            // lookUpEdit3
-            // 
-            this.lookUpEdit3.Location = new System.Drawing.Point(480, 14);
-            this.lookUpEdit3.Name = "lookUpEdit3";
-            this.lookUpEdit3.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUpEdit3.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
-            this.lookUpEdit3.Properties.DisplayMember = "Name";
-            this.lookUpEdit3.Properties.ShowHeader = false;
-            this.lookUpEdit3.Properties.ValueMember = "Id";
-            this.lookUpEdit3.Size = new System.Drawing.Size(240, 22);
-            this.lookUpEdit3.StyleController = this.styleController1;
-            this.lookUpEdit3.TabIndex = 8;
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Location = new System.Drawing.Point(435, 17);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(39, 16);
-            this.labelControl18.StyleController = this.styleController1;
-            this.labelControl18.TabIndex = 7;
-            this.labelControl18.Text = "Статус";
-            // 
-            // IntermediateWeighingEndDate
-            // 
-            this.IntermediateWeighingEndDate.EditValue = null;
-            this.IntermediateWeighingEndDate.Location = new System.Drawing.Point(244, 14);
-            this.IntermediateWeighingEndDate.Name = "IntermediateWeighingEndDate";
-            this.IntermediateWeighingEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingEndDate.Properties.DisplayFormat.FormatString = "g";
-            this.IntermediateWeighingEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingEndDate.Properties.Mask.EditMask = "g";
-            this.IntermediateWeighingEndDate.Properties.EditValueChanged += new System.EventHandler(this.wbStartDate_Properties_EditValueChanged);
-            this.IntermediateWeighingEndDate.Size = new System.Drawing.Size(149, 22);
-            this.IntermediateWeighingEndDate.StyleController = this.styleController1;
-            this.IntermediateWeighingEndDate.TabIndex = 3;
-            this.IntermediateWeighingEndDate.EditValueChanged += new System.EventHandler(this.IntermediateWeighingStartDate_EditValueChanged);
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Location = new System.Drawing.Point(224, 17);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(14, 16);
-            this.labelControl20.StyleController = this.styleController1;
-            this.labelControl20.TabIndex = 2;
-            this.labelControl20.Text = "по";
-            // 
-            // IntermediateWeighingStartDate
-            // 
-            this.IntermediateWeighingStartDate.EditValue = null;
-            this.IntermediateWeighingStartDate.Location = new System.Drawing.Point(68, 14);
-            this.IntermediateWeighingStartDate.Name = "IntermediateWeighingStartDate";
-            this.IntermediateWeighingStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.IntermediateWeighingStartDate.Properties.DisplayFormat.FormatString = "g";
-            this.IntermediateWeighingStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingStartDate.Properties.EditFormat.FormatString = "g";
-            this.IntermediateWeighingStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.IntermediateWeighingStartDate.Properties.Mask.EditMask = "g";
-            this.IntermediateWeighingStartDate.Properties.Mask.UseMaskAsDisplayFormat = true;
-            this.IntermediateWeighingStartDate.Size = new System.Drawing.Size(140, 22);
-            this.IntermediateWeighingStartDate.StyleController = this.styleController1;
-            this.IntermediateWeighingStartDate.TabIndex = 1;
-            this.IntermediateWeighingStartDate.EditValueChanged += new System.EventHandler(this.IntermediateWeighingStartDate_EditValueChanged);
-            // 
-            // labelControl21
-            // 
-            this.labelControl21.Location = new System.Drawing.Point(13, 17);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(49, 16);
-            this.labelControl21.StyleController = this.styleController1;
-            this.labelControl21.TabIndex = 0;
-            this.labelControl21.Text = "Період з";
-            // 
-            // xtraTabControl6
-            // 
-            this.xtraTabControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl6.Images = this.PageImageList;
-            this.xtraTabControl6.Location = new System.Drawing.Point(0, 0);
-            this.xtraTabControl6.Name = "xtraTabControl6";
-            this.xtraTabControl6.SelectedTabPage = this.xtraTabPage22;
-            this.xtraTabControl6.Size = new System.Drawing.Size(1049, 244);
-            this.xtraTabControl6.TabIndex = 0;
-            this.xtraTabControl6.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage22,
-            this.xtraTabPage27});
-            this.xtraTabControl6.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.xtraTabControl6_SelectedPageChanged);
-            // 
-            // xtraTabPage22
-            // 
-            this.xtraTabPage22.Controls.Add(this.WaybillDetInGridControl);
-            this.xtraTabPage22.ImageOptions.ImageIndex = 20;
-            this.xtraTabPage22.Name = "xtraTabPage22";
-            this.xtraTabPage22.Size = new System.Drawing.Size(1047, 216);
-            this.xtraTabPage22.Text = "Зважування";
-            // 
-            // WaybillDetInGridControl
-            // 
-            this.WaybillDetInGridControl.DataSource = this.IntermediateWeighingDetBS;
-            this.WaybillDetInGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaybillDetInGridControl.Location = new System.Drawing.Point(0, 0);
-            this.WaybillDetInGridControl.MainView = this.WaybillDetInGridView;
-            this.WaybillDetInGridControl.MenuManager = this.barManager1;
-            this.WaybillDetInGridControl.Name = "WaybillDetInGridControl";
-            this.WaybillDetInGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox28,
-            this.repositoryItemCalcEdit5});
-            this.WaybillDetInGridControl.Size = new System.Drawing.Size(1047, 216);
-            this.WaybillDetInGridControl.TabIndex = 3;
-            this.WaybillDetInGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.WaybillDetInGridView});
-            // 
-            // IntermediateWeighingDetBS
-            // 
-            this.IntermediateWeighingDetBS.DataSource = typeof(SP_Sklad.SkladData.v_IntermediateWeighingDet);
-            // 
-            // WaybillDetInGridView
-            // 
-            this.WaybillDetInGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.WaybillDetInGridView.Appearance.Row.Options.UseFont = true;
-            this.WaybillDetInGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn164,
-            this.gridColumn165,
-            this.gridColumn166,
-            this.gridColumn167,
-            this.gridColumn168,
-            this.gridColumn169,
-            this.gridColumn170,
-            this.gridColumn171});
-            this.WaybillDetInGridView.GridControl = this.WaybillDetInGridControl;
-            this.WaybillDetInGridView.Name = "WaybillDetInGridView";
-            this.WaybillDetInGridView.OptionsView.ShowFooter = true;
-            this.WaybillDetInGridView.OptionsView.ShowGroupPanel = false;
-            // 
-            // gridColumn164
-            // 
-            this.gridColumn164.Caption = "Сировина";
-            this.gridColumn164.FieldName = "MatName";
-            this.gridColumn164.Name = "gridColumn164";
-            this.gridColumn164.OptionsColumn.AllowEdit = false;
-            this.gridColumn164.OptionsColumn.ReadOnly = true;
-            this.gridColumn164.Visible = true;
-            this.gridColumn164.VisibleIndex = 1;
-            this.gridColumn164.Width = 368;
-            // 
-            // gridColumn165
-            // 
-            this.gridColumn165.AppearanceHeader.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gridColumn165.AppearanceHeader.Options.UseFont = true;
-            this.gridColumn165.Caption = "Всього";
-            this.gridColumn165.ColumnEdit = this.repositoryItemCalcEdit5;
-            this.gridColumn165.FieldName = "Total";
-            this.gridColumn165.Name = "gridColumn165";
-            this.gridColumn165.OptionsColumn.AllowEdit = false;
-            this.gridColumn165.OptionsColumn.ReadOnly = true;
-            this.gridColumn165.Visible = true;
-            this.gridColumn165.VisibleIndex = 7;
-            this.gridColumn165.Width = 135;
-            // 
-            // repositoryItemCalcEdit5
-            // 
-            this.repositoryItemCalcEdit5.AutoHeight = false;
-            this.repositoryItemCalcEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit5.DisplayFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemCalcEdit5.EditFormat.FormatString = "0.0000";
-            this.repositoryItemCalcEdit5.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.repositoryItemCalcEdit5.Name = "repositoryItemCalcEdit5";
-            // 
-            // gridColumn166
-            // 
-            this.gridColumn166.Caption = "Од. вим.";
-            this.gridColumn166.FieldName = "MsrName";
-            this.gridColumn166.Name = "gridColumn166";
-            this.gridColumn166.OptionsColumn.AllowEdit = false;
-            this.gridColumn166.OptionsColumn.ReadOnly = true;
-            this.gridColumn166.Visible = true;
-            this.gridColumn166.VisibleIndex = 2;
-            this.gridColumn166.Width = 88;
-            // 
-            // gridColumn167
-            // 
-            this.gridColumn167.Caption = "Дата зважування";
-            this.gridColumn167.DisplayFormat.FormatString = "g";
-            this.gridColumn167.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn167.FieldName = "CreatedDate";
-            this.gridColumn167.Name = "gridColumn167";
-            this.gridColumn167.OptionsColumn.AllowEdit = false;
-            this.gridColumn167.OptionsColumn.ReadOnly = true;
-            this.gridColumn167.Visible = true;
-            this.gridColumn167.VisibleIndex = 0;
-            this.gridColumn167.Width = 133;
-            // 
-            // gridColumn168
-            // 
-            this.gridColumn168.Caption = "Тара";
-            this.gridColumn168.FieldName = "TaraAmount";
-            this.gridColumn168.Name = "gridColumn168";
-            this.gridColumn168.Visible = true;
-            this.gridColumn168.VisibleIndex = 4;
-            this.gridColumn168.Width = 84;
-            // 
-            // gridColumn169
-            // 
-            this.gridColumn169.Caption = "К-сть";
-            this.gridColumn169.FieldName = "Amount";
-            this.gridColumn169.Name = "gridColumn169";
-            this.gridColumn169.Visible = true;
-            this.gridColumn169.VisibleIndex = 3;
-            this.gridColumn169.Width = 61;
-            // 
-            // gridColumn170
-            // 
-            this.gridColumn170.Caption = "Візок";
-            this.gridColumn170.FieldName = "VizokName";
-            this.gridColumn170.Name = "gridColumn170";
-            this.gridColumn170.Visible = true;
-            this.gridColumn170.VisibleIndex = 5;
-            this.gridColumn170.Width = 126;
-            // 
-            // gridColumn171
-            // 
-            this.gridColumn171.Caption = "Вага візка";
-            this.gridColumn171.FieldName = "VizokWeight";
-            this.gridColumn171.Name = "gridColumn171";
-            this.gridColumn171.Visible = true;
-            this.gridColumn171.VisibleIndex = 6;
-            this.gridColumn171.Width = 71;
-            // 
-            // repositoryItemImageComboBox28
-            // 
-            this.repositoryItemImageComboBox28.AutoHeight = false;
-            this.repositoryItemImageComboBox28.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox28.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 10)});
-            this.repositoryItemImageComboBox28.Name = "repositoryItemImageComboBox28";
-            // 
-            // xtraTabPage27
-            // 
-            this.xtraTabPage27.Controls.Add(this.ucRelDocGrid5);
-            this.xtraTabPage27.ImageOptions.ImageIndex = 2;
-            this.xtraTabPage27.Name = "xtraTabPage27";
-            this.xtraTabPage27.Size = new System.Drawing.Size(1047, 216);
-            this.xtraTabPage27.Text = "Зв\'язані документи";
-            // 
-            // ucRelDocGrid5
-            // 
-            this.ucRelDocGrid5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucRelDocGrid5.Location = new System.Drawing.Point(0, 0);
-            this.ucRelDocGrid5.Name = "ucRelDocGrid5";
-            this.ucRelDocGrid5.Size = new System.Drawing.Size(1047, 216);
-            this.ucRelDocGrid5.TabIndex = 4;
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.ucIntermediateWeighing1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage2.Text = "Проміжкові зважування";
+            // 
+            // ucIntermediateWeighing1
+            // 
+            this.ucIntermediateWeighing1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucIntermediateWeighing1.Location = new System.Drawing.Point(0, 0);
+            this.ucIntermediateWeighing1.Name = "ucIntermediateWeighing1";
+            this.ucIntermediateWeighing1.Size = new System.Drawing.Size(1049, 632);
+            this.ucIntermediateWeighing1.TabIndex = 0;
             // 
             // xtraTabPage26
             // 
@@ -2397,6 +1916,7 @@
             // 
             // ucRelDocGrid6
             // 
+            this.ucRelDocGrid6._access_token = null;
             this.ucRelDocGrid6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid6.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid6.Name = "ucRelDocGrid6";
@@ -2564,10 +2084,6 @@
             this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 632);
             this.ucWaybillWriteOn.TabIndex = 0;
             // 
-            // PreparationRawMaterialsBS
-            // 
-            this.PreparationRawMaterialsBS.DataSource = typeof(SP_Sklad.SkladData.PreparationRawMaterialsList_Result);
-            // 
             // barDockControl4
             // 
             this.barDockControl4.CausesValidation = false;
@@ -2687,34 +2203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
-            this.xtraTabPage21.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7.Panel1)).EndInit();
-            this.splitContainerControl7.Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7.Panel2)).EndInit();
-            this.splitContainerControl7.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl7)).EndInit();
-            this.splitContainerControl7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl7)).EndInit();
-            this.panelControl7.ResumeLayout(false);
-            this.panelControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit3.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingEndDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingStartDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl6)).EndInit();
-            this.xtraTabControl6.ResumeLayout(false);
-            this.xtraTabPage22.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingDetBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox28)).EndInit();
-            this.xtraTabPage27.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage26.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).EndInit();
             this.splitContainerControl8.Panel1.ResumeLayout(false);
@@ -2748,8 +2237,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).EndInit();
             this.xtraTabPage32.ResumeLayout(false);
             this.xtraTabPage33.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PreparationRawMaterialsBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWBBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
@@ -2844,48 +2331,9 @@
         private DevExpress.XtraBars.BarButtonItem EditIntermediateWeighing;
         private DevExpress.XtraBars.BarButtonItem DelIntermediateWeighing;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
-        private System.Windows.Forms.BindingSource PreparationRawMaterialsBS;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private System.Windows.Forms.BindingSource IntermediateWeighingByWBBS;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage21;
-        private DevExpress.XtraEditors.SplitContainerControl splitContainerControl7;
-        private DevExpress.XtraEditors.PanelControl panelControl7;
-        public DevExpress.XtraEditors.LookUpEdit lookUpEdit3;
-        private DevExpress.XtraEditors.LabelControl labelControl18;
-        public DevExpress.XtraEditors.DateEdit IntermediateWeighingEndDate;
-        private DevExpress.XtraEditors.LabelControl labelControl20;
-        public DevExpress.XtraEditors.DateEdit IntermediateWeighingStartDate;
-        private DevExpress.XtraEditors.LabelControl labelControl21;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl6;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage22;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage27;
-        private DevExpress.XtraGrid.GridControl IntermediateWeighingGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView IntermediateWeighingGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn158;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn159;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn160;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn161;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn162;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn163;
-        private System.Windows.Forms.BindingSource IntermediateWeighingBS;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox26;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox27;
-        private DevExpress.XtraGrid.GridControl WaybillDetInGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetInGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn164;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn165;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn166;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn167;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn168;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn169;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn170;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn171;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox28;
-        private System.Windows.Forms.BindingSource IntermediateWeighingDetBS;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn195;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn196;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage26;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl8;
@@ -2940,7 +2388,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.Bar bar8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private UserControls.ucRelDocGrid ucRelDocGrid5;
         private UserControls.ucRelDocGrid ucRelDocGrid6;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage32;
         private UserControls.ucWaybillMove ucWaybillMove;
@@ -2954,5 +2401,7 @@
         public ucProductionPlanning ucProductionPlanning;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         public usPreparationProducts usPreparationProducts;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private ucIntermediateWeighing ucIntermediateWeighing1;
     }
 }
