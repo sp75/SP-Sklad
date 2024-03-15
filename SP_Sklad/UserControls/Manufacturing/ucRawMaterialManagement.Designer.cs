@@ -56,7 +56,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl8 = new DevExpress.XtraEditors.SplitContainerControl();
             this.RawMaterialManagementGridControl = new DevExpress.XtraGrid.GridControl();
-            this.RawMaterialManagementSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.RawMaterialManagementGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn210 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox37 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -104,14 +103,13 @@
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn235 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCalcEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.RawMaterialManagementSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -150,8 +148,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -282,6 +278,7 @@
             this.barButtonItem7.Id = 17;
             this.barButtonItem7.ImageOptions.ImageIndex = 7;
             this.barButtonItem7.Name = "barButtonItem7";
+            this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
             // bar2
             // 
@@ -449,13 +446,6 @@
             this.RawMaterialManagementGridControl.TabIndex = 0;
             this.RawMaterialManagementGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.RawMaterialManagementGridView});
-            // 
-            // RawMaterialManagementSource
-            // 
-            this.RawMaterialManagementSource.AreSourceRowsThreadSafe = true;
-            this.RawMaterialManagementSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_RawMaterialManagement);
-            this.RawMaterialManagementSource.KeyExpression = "Id";
-            this.RawMaterialManagementSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.RawMaterialManagementSource_GetQueryable);
             // 
             // RawMaterialManagementGridView
             // 
@@ -975,6 +965,13 @@
             this.repositoryItemCalcEdit7.Mask.UseMaskAsDisplayFormat = true;
             this.repositoryItemCalcEdit7.Name = "repositoryItemCalcEdit7";
             // 
+            // RawMaterialManagementSource
+            // 
+            this.RawMaterialManagementSource.AreSourceRowsThreadSafe = true;
+            this.RawMaterialManagementSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_RawMaterialManagement);
+            this.RawMaterialManagementSource.KeyExpression = "Id";
+            this.RawMaterialManagementSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.RawMaterialManagementSource_GetQueryable);
+            // 
             // treeListColumn1
             // 
             this.treeListColumn1.Caption = "Назва";
@@ -1003,11 +1000,6 @@
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
-            // BottomPopupMenu
-            // 
-            this.BottomPopupMenu.Manager = this.barManager1;
-            this.BottomPopupMenu.Name = "BottomPopupMenu";
-            // 
             // bar7
             // 
             this.bar7.BarName = "Status bar";
@@ -1028,11 +1020,6 @@
             this.bar5.DockCol = 0;
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
-            // 
-            // WbDetPopupMenu
-            // 
-            this.WbDetPopupMenu.Manager = this.barManager1;
-            this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
             // ucRawMaterialManagement
             // 
@@ -1087,8 +1074,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1115,7 +1100,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl4;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
-        private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.Bar bar4;
@@ -1172,7 +1156,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn234;
-        private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
         private DevExpress.XtraBars.Bar bar8;
         private UserControls.ucRelDocGrid ucRelDocGrid6;
         private DevExpress.Utils.ImageCollection BarImageList;

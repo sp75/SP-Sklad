@@ -523,6 +523,12 @@
     <Compile Include="Interfaces\Tablet\UI\ucWaybillIn.Designer.cs">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Manufacturing\ucPlannedCalculation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Manufacturing\ucPlannedCalculation.Designer.cs">
+      <DependentUpon>ucPlannedCalculation.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucRawMaterialManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2607,6 +2613,9 @@
     <EmbeddedResource Include="Interfaces\Tablet\UI\ucWaybillIn.resx">
       <DependentUpon>ucWaybillIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Manufacturing\ucPlannedCalculation.resx">
+      <DependentUpon>ucPlannedCalculation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucRawMaterialManagement.resx">
       <DependentUpon>ucRawMaterialManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -3773,6 +3782,9 @@
     <None Include="Resources\money_in1.png" />
     <None Include="Resources\money_in.png" />
     <None Include="Resources\print_doc.png" />
+    <None Include="Resources\service_info.png" />
+    <None Include="Resources\refresh2_16x161.png" />
+    <None Include="Resources\refresh_16x163.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
@@ -3803,6 +3815,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rep\" />
+    <Folder Include="UserControls\Directories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

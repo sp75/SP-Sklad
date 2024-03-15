@@ -337,5 +337,9 @@ join WaybillList wb on wb.WbillId = wbd.WbillId", focused_raw_material_managemen
             }
         }
 
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(RawMaterialManagementGridControl);
+        }
     }
 }

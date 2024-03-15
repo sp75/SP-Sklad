@@ -35,12 +35,9 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar3 = new DevExpress.XtraBars.Bar();
@@ -53,6 +50,9 @@
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
+            this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl7 = new DevExpress.XtraEditors.SplitContainerControl();
             this.IntermediateWeighingGridControl = new DevExpress.XtraGrid.GridControl();
@@ -193,6 +193,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Custom 3";
             // 
@@ -203,14 +204,6 @@
             this.NewItemBtn.ImageOptions.ImageIndex = 0;
             this.NewItemBtn.Name = "NewItemBtn";
             this.NewItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewItemBtn_ItemClick);
-            // 
-            // CopyItemBtn
-            // 
-            this.CopyItemBtn.Caption = "Додати на підставі";
-            this.CopyItemBtn.Id = 1;
-            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
-            this.CopyItemBtn.Name = "CopyItemBtn";
-
             // 
             // EditItemBtn
             // 
@@ -235,21 +228,6 @@
             this.RefrechItemBtn.ImageOptions.ImageIndex = 6;
             this.RefrechItemBtn.Name = "RefrechItemBtn";
             this.RefrechItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RefrechItemBtn_ItemClick);
-            // 
-            // ExecuteItemBtn
-            // 
-            this.ExecuteItemBtn.Caption = "Розпочати виробництво";
-            this.ExecuteItemBtn.Id = 5;
-            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
-
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 5;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-
             // 
             // barButtonItem7
             // 
@@ -387,6 +365,26 @@
             this.BarImageList.Images.SetKeyName(10, "order_info");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.BarImageList.Images.SetKeyName(11, "w_scale");
+            // 
+            // CopyItemBtn
+            // 
+            this.CopyItemBtn.Caption = "Додати на підставі";
+            this.CopyItemBtn.Id = 1;
+            this.CopyItemBtn.ImageOptions.ImageIndex = 1;
+            this.CopyItemBtn.Name = "CopyItemBtn";
+            // 
+            // ExecuteItemBtn
+            // 
+            this.ExecuteItemBtn.Caption = "Розпочати виробництво";
+            this.ExecuteItemBtn.Id = 5;
+            this.ExecuteItemBtn.Name = "ExecuteItemBtn";
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 5;
+            this.PrintItemBtn.Name = "PrintItemBtn";
             // 
             // panelControl1
             // 

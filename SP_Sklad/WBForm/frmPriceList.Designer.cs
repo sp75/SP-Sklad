@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPriceList));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -67,7 +65,9 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
+            this.FormImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
@@ -94,7 +94,6 @@
             this.PriceListGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPlDetType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -112,6 +111,7 @@
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.treeListColumn3 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.TreeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -119,6 +119,7 @@
             this.PriceListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -145,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).BeginInit();
@@ -165,7 +167,7 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl3);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.WBImgList;
+            this.barManager1.Images = this.FormImageCollection;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
             this.DelMaterialBtn,
@@ -220,28 +222,11 @@
             this.PrevievBtn.Name = "PrevievBtn";
             this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
-            // MatInfoBtn
-            // 
-            this.MatInfoBtn.Caption = "Інформація про товар";
-            this.MatInfoBtn.Id = 11;
-            this.MatInfoBtn.ImageOptions.ImageIndex = 1;
-            this.MatInfoBtn.Name = "MatInfoBtn";
-            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Інформація про послугу";
-            this.barButtonItem1.Id = 22;
-            this.barButtonItem1.ImageOptions.ImageIndex = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // barButtonItem10
             // 
             this.barButtonItem10.Caption = "Перенумеровати";
             this.barButtonItem10.Id = 28;
-            this.barButtonItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.Image")));
-            this.barButtonItem10.ImageOptions.ImageIndex = 9;
-            this.barButtonItem10.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.ImageOptions.LargeImage")));
+            this.barButtonItem10.ImageOptions.ImageIndex = 4;
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
@@ -249,7 +234,7 @@
             // 
             this.barButtonItem12.Caption = "Прерахувати ціни ";
             this.barButtonItem12.Id = 33;
-            this.barButtonItem12.ImageOptions.ImageIndex = 10;
+            this.barButtonItem12.ImageOptions.ImageIndex = 8;
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
@@ -283,7 +268,7 @@
             // 
             this.barSubItem1.Caption = "Додати";
             this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageOptions.ImageIndex = 2;
+            this.barSubItem1.ImageOptions.ImageIndex = 1;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
@@ -297,7 +282,7 @@
             // 
             this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageOptions.ImageIndex = 4;
+            this.AddMaterialBtn.ImageOptions.ImageIndex = 6;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
@@ -331,7 +316,7 @@
             // 
             this.barButtonItem4.Caption = "Сформувати прайс лист по складських залишках";
             this.barButtonItem4.Id = 21;
-            this.barButtonItem4.ImageOptions.ImageIndex = 6;
+            this.barButtonItem4.ImageOptions.ImageIndex = 9;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -339,7 +324,7 @@
             // 
             this.barSubItem2.Caption = "Редагувати";
             this.barSubItem2.Id = 31;
-            this.barSubItem2.ImageOptions.ImageIndex = 11;
+            this.barSubItem2.ImageOptions.ImageIndex = 3;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1)});
@@ -360,9 +345,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.EditFormat.FormatString = "0.00";
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -373,7 +358,7 @@
             // 
             this.DelMaterialBtn.Caption = "Видалити";
             this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageOptions.ImageIndex = 3;
+            this.DelMaterialBtn.ImageOptions.ImageIndex = 2;
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelMaterialBtn_ItemClick);
@@ -426,7 +411,7 @@
             this.barButtonItem2.Down = true;
             this.barButtonItem2.GroupIndex = 1;
             this.barButtonItem2.Id = 18;
-            this.barButtonItem2.ImageOptions.ImageIndex = 4;
+            this.barButtonItem2.ImageOptions.ImageIndex = 6;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -500,28 +485,55 @@
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1145, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
-            // WBImgList
+            // FormImageCollection
             // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(3, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(4, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(6, "Склади.bmp");
-            this.WBImgList.Images.SetKeyName(7, "OpenFolder.bmp");
-            this.WBImgList.Images.SetKeyName(8, "_нформац_я про пслугу.bmp");
-            this.WBImgList.Images.SetKeyName(9, "renum.png");
-            this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
-            this.WBImgList.Images.SetKeyName(11, "edit.bmp");
+            this.FormImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FormImageCollection.ImageStream")));
+            this.FormImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.FormImageCollection.Images.SetKeyName(0, "preview_2");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.FormImageCollection.Images.SetKeyName(1, "add_properties");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.FormImageCollection.Images.SetKeyName(2, "delete_properties");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.FormImageCollection.Images.SetKeyName(3, "edit_property");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.FormImageCollection.Images.SetKeyName(4, "listnumbers_16x16");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.FormImageCollection.Images.SetKeyName(5, "service");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.FormImageCollection.Images.SetKeyName(6, "product");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.FormImageCollection.Images.SetKeyName(7, "open_16x16");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.recalc_money, "recalc_money", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.FormImageCollection.Images.SetKeyName(8, "recalc_money");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.pos_in_wh, "pos_in_wh", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.FormImageCollection.Images.SetKeyName(9, "pos_in_wh");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.FormImageCollection.Images.SetKeyName(10, "product_info_3");
+            this.FormImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.service_info, "service_info", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.FormImageCollection.Images.SetKeyName(11, "service_info");
+            // 
+            // MatInfoBtn
+            // 
+            this.MatInfoBtn.Caption = "Інформація про товар";
+            this.MatInfoBtn.Id = 11;
+            this.MatInfoBtn.ImageOptions.ImageIndex = 10;
+            this.MatInfoBtn.Name = "MatInfoBtn";
+            this.MatInfoBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MatInfoBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Інформація про послугу";
+            this.barButtonItem1.Id = 22;
+            this.barButtonItem1.ImageOptions.ImageIndex = 11;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barButtonItem5
             // 
             this.barButtonItem5.Caption = "Додати товар / групу";
             this.barButtonItem5.Id = 23;
-            this.barButtonItem5.ImageOptions.ImageIndex = 2;
+            this.barButtonItem5.ImageOptions.ImageIndex = 6;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -536,7 +548,7 @@
             // 
             this.barButtonItem11.Caption = "Обновити ціну";
             this.barButtonItem11.Id = 29;
-            this.barButtonItem11.ImageOptions.ImageIndex = 10;
+            this.barButtonItem11.ImageOptions.ImageIndex = 8;
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
@@ -834,18 +846,10 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 5)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.White;
-            this.imageList1.Images.SetKeyName(0, "Товари.bmp");
-            this.imageList1.Images.SetKeyName(1, "Послуги.bmp");
-            this.imageList1.Images.SetKeyName(2, "OpenFolder.bmp");
+            this.repositoryItemImageComboBox1.SmallImages = this.FormImageCollection;
             // 
             // colMatId
             // 
@@ -991,7 +995,7 @@
             this.MatTreeList.OptionsBehavior.Editable = false;
             this.MatTreeList.OptionsMenu.EnableNodeMenu = false;
             this.MatTreeList.ParentFieldName = "Pid";
-            this.MatTreeList.SelectImageList = this.imageList1;
+            this.MatTreeList.SelectImageList = this.TreeImageCollection;
             this.MatTreeList.Size = new System.Drawing.Size(365, 379);
             this.MatTreeList.TabIndex = 2;
             this.MatTreeList.PopupMenuShowing += new DevExpress.XtraTreeList.PopupMenuShowingEventHandler(this.treeList1_PopupMenuShowing);
@@ -1024,6 +1028,17 @@
             this.treeListColumn3.Visible = true;
             this.treeListColumn3.VisibleIndex = 1;
             this.treeListColumn3.Width = 63;
+            // 
+            // TreeImageCollection
+            // 
+            this.TreeImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TreeImageCollection.ImageStream")));
+            this.TreeImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.TreeImageCollection.Images.SetKeyName(0, "product");
+            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.TreeImageCollection.Images.SetKeyName(1, "service");
+            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.TreeImageCollection.Images.SetKeyName(2, "open_16x16");
             // 
             // panelControl2
             // 
@@ -1089,6 +1104,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.price_lict;
             this.Name = "frmPriceList";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1097,6 +1113,7 @@
             this.Load += new System.EventHandler(this.frmPriceList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -1126,6 +1143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TreePopupMenu)).EndInit();
@@ -1153,7 +1171,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -1182,7 +1199,6 @@
         private System.Windows.Forms.BindingSource PriceListBS;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn2;
-        public System.Windows.Forms.ImageList imageList1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.PopupMenu TreePopupMenu;
@@ -1219,5 +1235,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         public DevExpress.XtraEditors.LookUpEdit KagentComboBox;
+        private DevExpress.Utils.ImageCollection FormImageCollection;
+        private DevExpress.Utils.ImageCollection TreeImageCollection;
     }
 }

@@ -89,7 +89,7 @@ namespace SP_Sklad.WBForm
             }
             else
             {
-                wb = _db.WaybillList.FirstOrDefault(f =>  f.WbillId == _wbill_id);
+                wb = _db.WaybillList.FirstOrDefault(f => f.WbillId == _wbill_id);
                 MsrLabel.Text = wb.WayBillMake.MatRecipe.Materials.Measures.ShortName;
             }
 
@@ -168,11 +168,8 @@ namespace SP_Sklad.WBForm
             }
 
             RecipeComboBox.Enabled = GetWayBillMakeDetBS.Count == 0;
-            ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
-            WhInBtn.Enabled = RecipeComboBox.Enabled;
             AmountMakeEdit.Enabled = RecipeComboBox.Enabled;
-
             barSubItem1.Enabled = (WhComboBox.EditValue != null && RecipeComboBox.EditValue != null && AmountMakeEdit.Value > 0);
 
             EditMaterialBtn.Enabled = GetWayBillMakeDetBS.Count > 0;
@@ -199,7 +196,6 @@ namespace SP_Sklad.WBForm
         private void frmWBManufacture_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
         }
 
@@ -245,7 +241,7 @@ namespace SP_Sklad.WBForm
             if (TurnDocCheckBox.Checked)
             {
                 RefreshDet();
-                if(wbd_list.Any(w => w.Rsv == 0))
+                if (wbd_list.Any(w => w.Rsv == 0))
                 {
                     MessageBox.Show("Не всі позиції зарезервовано");
                     return;
@@ -333,8 +329,8 @@ namespace SP_Sklad.WBForm
             if (wbd_row.Rsv == 1 && wbd_row.PosId > 0)
             {
                 _db.DeleteWhere<WMatTurn>(w => w.SourceId == wbd_row.PosId);
-            //    current_transaction = current_transaction.CommitRetaining(_db);
-           //     UpdLockWB();
+                //    current_transaction = current_transaction.CommitRetaining(_db);
+                //     UpdLockWB();
                 wbd_row.Rsv = 0;
                 WaybillDetOutGridView.RefreshRow(WaybillDetOutGridView.FocusedRowHandle);
             }
@@ -371,9 +367,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
-            wb.OnDate = OnDateDBEdit.DateTime;
-            _db.SaveChanges();
+
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
@@ -432,22 +426,22 @@ namespace SP_Sklad.WBForm
 
         private void WhInBtn_Click(object sender, EventArgs e)
         {
-            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -460,7 +454,7 @@ namespace SP_Sklad.WBForm
 
         private void ReceptBtn_Click(object sender, EventArgs e)
         {
-            RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 16);
+
         }
 
         private void frmWBManufacture_FormClosing(object sender, FormClosingEventArgs e)
@@ -503,6 +497,56 @@ namespace SP_Sklad.WBForm
             _db.SaveChanges();
 
             DeboningDetGridView.RefreshRow(e.RowHandle);
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                OnDateDBEdit.EditValue = DBHelper.ServerDateTime();
+                wb.OnDate = OnDateDBEdit.DateTime;
+                _db.SaveChanges();
+            }
+        }
+
+        private void RecipeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 16);
+            }
+        }
+
+        private void WhComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+            }
+        }
+
+        private void PersonMakeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+            }
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+            }
         }
     }
 }

@@ -416,11 +416,6 @@ namespace SP_Sklad.WBForm
             }
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
            var mat_id = IHelper.ShowDirectList(null, 5);
