@@ -61,7 +61,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -3268,7 +3268,6 @@
       <DependentUpon>SkladModel.edmx</DependentUpon>
       <LastGenOutput>SkladModel.cs</LastGenOutput>
     </None>
-    <None Include="SP_Sklad_TemporaryKey.pfx" />
     <None Include="TempLate\ActServicesProvided_In.xlsx" />
     <None Include="TempLate\AnaliticsManufacture.xlsx" />
     <None Include="TempLate\AnalizPlan_fact.xlsx" />
