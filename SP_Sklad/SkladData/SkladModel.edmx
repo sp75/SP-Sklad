@@ -2193,25 +2193,22 @@ warning 6002: The table/view 'sp_base.dbo.v_BankStatementsDet' does not have a p
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_BarCodes">
+          
           <Key>
-            <PropertyRef Name="MatId" />
+            <PropertyRef Name="RowIndex" />
           </Key>
+          <Property Name="RowIndex" Type="bigint" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="BarCodeType" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DeboningDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DeboningDet">
           <Key>
-            <PropertyRef Name="DebId" />
-            
-            
-            
-            
-            
-            
-            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="RowIndex" />
           </Key>
+          <Property Name="RowIndex" Type="bigint" Nullable="false" />
           <Property Name="DebId" Type="int" Nullable="false" />
           <Property Name="WBillId" Type="int" Nullable="false" />
           <Property Name="MatId" Type="int" Nullable="false" />
@@ -4470,8 +4467,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnSuppliers' does not hav
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnСustomerDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnСustomers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WayBillReturnСustomers">
           <Key>
@@ -6514,9 +6509,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RETREL_DPOSID">
-          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="WaybillDet" Type="Self.WaybillDet" Multiplicity="0..1" />
           <End Role="ReturnRel" Type="Self.ReturnRel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="WaybillDet">
@@ -9952,12 +9945,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </EntitySet>
           <EntitySet Name="v_BarCodes" EntityType="Self.v_BarCodes" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [v_BarCodes].[RowIndex] AS [RowIndex], 
     [v_BarCodes].[MatId] AS [MatId], 
-    [v_BarCodes].[BarCode] AS [BarCode]
+    [v_BarCodes].[BarCode] AS [BarCode], 
+    [v_BarCodes].[BarCodeType] AS [BarCodeType]
     FROM [dbo].[v_BarCodes] AS [v_BarCodes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_DeboningDet" EntityType="Self.v_DeboningDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [v_DeboningDet].[RowIndex] AS [RowIndex], 
     [v_DeboningDet].[DebId] AS [DebId], 
     [v_DeboningDet].[WBillId] AS [WBillId], 
     [v_DeboningDet].[MatId] AS [MatId], 
@@ -13822,7 +13818,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetUserAccessMatGroup" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessMatGroup_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="v_BarCodes" EntityType="BaseModel.v_BarCodes" />
           <EntitySet Name="v_GetRetailTree" EntityType="BaseModel.v_GetRetailTree" />
           <FunctionImport Name="GetRemainByWh" IsComposable="true" ReturnType="Collection(BaseModel.GetRemainByWh_Result)">
             <Parameter Name="w_id" Mode="In" Type="Int32" />
@@ -14468,6 +14463,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_ManufacturingProducts" EntityType="BaseModel.v_ManufacturingProducts" />
           <EntitySet Name="v_DeboningProducts" EntityType="BaseModel.v_DeboningProducts" />
           <EntitySet Name="v_WayBillReturnCustomerDet" EntityType="BaseModel.v_WayBillReturnCustomerDet" />
+          <EntitySet Name="v_BarCodes" EntityType="BaseModel.v_BarCodes" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19424,13 +19420,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
           <Property Type="Int32" Name="Allow" Nullable="false" />
         </ComplexType>
-        <EntityType Name="v_BarCodes">
-          <Key>
-            <PropertyRef Name="MatId" />
-          </Key>
-          <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="v_GetRetailTree">
           <Key>
             <PropertyRef Name="Id" />
@@ -22245,8 +22234,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         </EntityType>
         <EntityType Name="v_DeboningDet">
           <Key>
-            <PropertyRef Name="DebId" />
-            <PropertyRef Name="MsrName" />
+            <PropertyRef Name="RowIndex" />
           </Key>
           <Property Name="DebId" Type="Int32" Nullable="false" />
           <Property Name="WBillId" Type="Int32" Nullable="false" />
@@ -22259,6 +22247,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Total" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="TotalWeighing" Type="Decimal" Precision="38" Scale="4" />
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="RowIndex" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="DeboningWeighing">
           <Key>
@@ -23826,6 +23815,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdateAt" Type="DateTime" Precision="3" />
           <Property Name="TotalInCurrency" Type="Decimal" Precision="31" Scale="6" />
           <Property Name="MId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_BarCodes">
+          <Key>
+            <PropertyRef Name="RowIndex" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="BarCodeType" Type="Int32" Nullable="false" />
+          <Property Name="RowIndex" Type="Int64" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -27375,14 +27373,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="v_BarCodes">
-            <EntityTypeMapping TypeName="BaseModel.v_BarCodes">
-              <MappingFragment StoreEntitySet="v_BarCodes">
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_GetRetailTree">
             <EntityTypeMapping TypeName="BaseModel.v_GetRetailTree">
               <MappingFragment StoreEntitySet="v_GetRetailTree">
@@ -28979,6 +28969,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_DeboningDet">
             <EntityTypeMapping TypeName="BaseModel.v_DeboningDet">
               <MappingFragment StoreEntitySet="v_DeboningDet">
+                <ScalarProperty Name="RowIndex" ColumnName="RowIndex" />
                 <ScalarProperty Name="MsrName" ColumnName="MsrName" />
                 <ScalarProperty Name="TotalWeighing" ColumnName="TotalWeighing" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
@@ -30233,6 +30224,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_BarCodes">
+            <EntityTypeMapping TypeName="BaseModel.v_BarCodes">
+              <MappingFragment StoreEntitySet="v_BarCodes">
+                <ScalarProperty Name="RowIndex" ColumnName="RowIndex" />
+                <ScalarProperty Name="BarCodeType" ColumnName="BarCodeType" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

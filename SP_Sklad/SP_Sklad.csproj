@@ -3201,6 +3201,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ViewModels.MaterialMeasuresView.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BankStatementsDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BarCodes.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionWBMaterialsDet.datasource" />

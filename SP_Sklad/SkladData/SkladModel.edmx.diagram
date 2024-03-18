@@ -415,7 +415,6 @@
         <EntityTypeShape EntityType="BaseModel.v_MatRecipe" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_PosRemains" Width="1.5" PointX="4.75" PointY="4.375" />
         <EntityTypeShape EntityType="BaseModel.KagentList" Width="1.5" PointX="12.875" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_BarCodes" Width="1.5" PointX="16.5" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_GetRetailTree" Width="1.5" PointX="3.375" PointY="8.75" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighing" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_IntermediateWeighingDet" Width="1.5" PointX="14.75" PointY="6.5" />
@@ -453,6 +452,7 @@
         <EntityTypeShape EntityType="BaseModel.v_ManufacturingProducts" Width="1.5" PointX="26.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_DeboningProducts" Width="1.5" PointX="28.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnCustomerDet" Width="1.5" PointX="25.375" PointY="12.75" />
+        <EntityTypeShape EntityType="BaseModel.v_BarCodes" Width="1.5" PointX="7.375" PointY="23.75" />
       </Diagram>
       <Diagram DiagramId="8b08ca94632048c3b594ad7efc11006d" Name="Report" >
         <EntityTypeShape EntityType="BaseModel.v_Report_55" Width="1.5" PointX="0.75" PointY="0.75" />

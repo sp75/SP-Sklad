@@ -16,5 +16,7 @@ namespace SP_Sklad.SkladData
     {
         public int MatId { get; set; }
         public string BarCode { get; set; }
+        public int BarCodeType { get; set; }
+        public long RowIndex { get; set; }
     }
 }

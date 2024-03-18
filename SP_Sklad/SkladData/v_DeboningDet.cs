@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Total { get; set; }
         public Nullable<decimal> TotalWeighing { get; set; }
         public string MsrName { get; set; }
+        public long RowIndex { get; set; }
     }
 }

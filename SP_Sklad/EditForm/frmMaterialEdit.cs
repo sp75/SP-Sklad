@@ -123,8 +123,7 @@ namespace SP_Sklad.EditForm
                 GetTreeMatPrices();
                 GetMatChange();
                 GetMatMeasures();
-
-                MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
+                GetMatBarCode(_mat.MatId);
             }
 
             #region Init
@@ -136,6 +135,36 @@ namespace SP_Sklad.EditForm
             GetNdsInfo();
 
             #endregion
+        }
+
+        private void GetMatBarCode(int mat_id)
+        {
+            var list = _db.WayBillDetAddProps.Where(w => w.WaybillDet.MatId == mat_id && w.BarCode != null).Select(s => new
+            {
+                BarCode = s.BarCode,
+                BarCodeType = 2,
+                MatId = mat_id
+            }).Distinct()
+            .Concat(_db.MatBarCode.Where(w => w.MatId == mat_id).Select(s => new
+            {
+                BarCode = s.BarCode,
+                BarCodeType = 1,
+                MatId = mat_id
+            }))
+            .Concat(_db.Materials.Where(w => w.BarCode != null && w.MatId == mat_id).Select(s => new
+            {
+                BarCode = s.BarCode,
+                BarCodeType = 0,
+                MatId = mat_id
+            })).ToList()
+            .Select(s => new v_BarCodes
+            {
+                BarCode = s.BarCode,
+                BarCodeType = s.BarCodeType,
+                MatId = s.MatId
+            }).ToList();
+
+            MatBarCodeBS.DataSource = list;
         }
 
         private void GetListMatPrices()
@@ -286,36 +315,12 @@ namespace SP_Sklad.EditForm
             Text = "Товар: " + NameTextEdit.Text;
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-         
-        }
-
-        private void WhBtn_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ShowMatRSV(_mat_id.Value, _db);
         }
 
-        private void NowDateBtn_Click(object sender, EventArgs e)
-        {
-
-          
-        }
-
-        private void simpleButton3_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-            CIdLookUpEdit.EditValue = IHelper.ShowDirectList(CIdLookUpEdit.EditValue, 7);
-        }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -698,10 +703,6 @@ namespace SP_Sklad.EditForm
             GoTopMatPricesBtn.PerformClick();
         }
 
-        private void simpleButton7_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
         {
@@ -727,24 +728,37 @@ namespace SP_Sklad.EditForm
             }
         }
 
-        private void MatBarCodeBS_AddingNew(object sender, AddingNewEventArgs e)
-        {
-            e.NewObject = _db.MatBarCode.Add(new MatBarCode{  MatId = _mat_id.Value });
-        }
-
         private void MatBarCodeGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
         {
-            _db.MatBarCode.Remove((e.Row as MatBarCode));
+            var barcode_row = e.Row as v_BarCodes;
+            if (barcode_row.BarCodeType == 2)
+            {
+                foreach (var item in _db.WayBillDetAddProps.Where(w => w.BarCode == barcode_row.BarCode && w.WaybillDet.MatId == _mat_id))
+                {
+                    item.BarCode = null;
+                }
+            }
+
+            if (barcode_row.BarCodeType == 1)
+            {
+                _db.MatBarCode.Remove(_db.MatBarCode.FirstOrDefault(w => w.BarCode == barcode_row.BarCode && w.MatId == _mat_id));
+            }
+
+            if (barcode_row.BarCodeType == 0)
+            {
+                _mat.BarCode = null;
+            }
+
+            _db.SaveChanges();
         }
 
         private void CIdLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if(e.Button.Index == 1)
             {
-
+                CIdLookUpEdit.EditValue = IHelper.ShowDirectList(CIdLookUpEdit.EditValue, 7);
             }
         }
-
   
         private void MsrComboBox_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
@@ -762,12 +776,6 @@ namespace SP_Sklad.EditForm
             }
         }
 
-        private void simpleButton4_Click_1(object sender, EventArgs e)
-        {
-            MatBarCodeGridView.AddNewRow();
-            MatBarCodeGridView.ShowEditForm();
-        }
-
         private void simpleButton5_Click_1(object sender, EventArgs e)
         {
             MatBarCodeGridView.DeleteSelectedRows();
@@ -781,7 +789,6 @@ namespace SP_Sklad.EditForm
                 e.Cancel = true;
             }
         }
-
 
         private void NewBarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -797,7 +804,7 @@ namespace SP_Sklad.EditForm
 
                     _db.SaveChanges();
 
-                    MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
+                    GetMatBarCode(_mat.MatId);
                 }
 
                 NewBarCodeEdit.EditValue = null;
@@ -817,8 +824,8 @@ namespace SP_Sklad.EditForm
                     });
 
                     _db.SaveChanges();
-
-                    MatBarCodeBS.DataSource = _db.MatBarCode.Where(w => w.MatId == _mat.MatId).ToList();
+                    
+                    GetMatBarCode(_mat.MatId);
                 }
             }
         }
@@ -867,6 +874,4 @@ namespace SP_Sklad.EditForm
 
         }
     }
-
-
 }

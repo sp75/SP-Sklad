@@ -281,7 +281,7 @@
 </value>
   </data>
   <metadata name="MaterialMeasuresBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1049, 19</value>
+    <value>1033, 19</value>
   </metadata>
   <data name="simpleButton5.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -294,6 +294,6 @@
 </value>
   </data>
   <metadata name="MatBarCodeBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1201, 20</value>
+    <value>1194, 20</value>
   </metadata>
 </root>

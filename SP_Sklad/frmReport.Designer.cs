@@ -35,6 +35,21 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnShowGrid = new DevExpress.XtraEditors.SimpleButton();
@@ -92,19 +107,16 @@
             this.GrpKagentLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
             this.KontragentPanel = new System.Windows.Forms.Panel();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.KagentComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.MatGroupBox = new System.Windows.Forms.Panel();
             this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.MatComboBox = new DevExpress.XtraEditors.LookUpEdit();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.GRPGroupBox = new System.Windows.Forms.Panel();
             this.ChildGroupCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.GrpComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.WHGroupBox = new System.Windows.Forms.Panel();
-            this.WhBtn = new DevExpress.XtraEditors.SimpleButton();
             this.WhComboBox = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.PeriodGroupBox = new System.Windows.Forms.Panel();
@@ -334,7 +346,7 @@
             this.KaKindLookUpEdit.Properties.ShowHeader = false;
             this.KaKindLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KaKindLookUpEdit.Properties.ValueMember = "Id";
-            this.KaKindLookUpEdit.Size = new System.Drawing.Size(295, 22);
+            this.KaKindLookUpEdit.Size = new System.Drawing.Size(323, 22);
             this.KaKindLookUpEdit.StyleController = this.styleController1;
             this.KaKindLookUpEdit.TabIndex = 41;
             // 
@@ -442,7 +454,7 @@
             // 
             this.CashEditComboBox.Location = new System.Drawing.Point(79, 12);
             this.CashEditComboBox.Name = "CashEditComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.cash_register;
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -851,7 +863,7 @@
             this.GrpKagentLookUpEdit.Properties.ShowHeader = false;
             this.GrpKagentLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.GrpKagentLookUpEdit.Properties.ValueMember = "Id";
-            this.GrpKagentLookUpEdit.Size = new System.Drawing.Size(321, 22);
+            this.GrpKagentLookUpEdit.Size = new System.Drawing.Size(349, 22);
             this.GrpKagentLookUpEdit.StyleController = this.styleController1;
             this.GrpKagentLookUpEdit.TabIndex = 13;
             // 
@@ -866,7 +878,6 @@
             // 
             // KontragentPanel
             // 
-            this.KontragentPanel.Controls.Add(this.simpleButton3);
             this.KontragentPanel.Controls.Add(this.KagentComboBox);
             this.KontragentPanel.Controls.Add(this.labelControl12);
             this.KontragentPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -876,22 +887,14 @@
             this.KontragentPanel.Size = new System.Drawing.Size(464, 47);
             this.KontragentPanel.TabIndex = 34;
             // 
-            // simpleButton3
-            // 
-            this.simpleButton3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
-            this.simpleButton3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton3.Location = new System.Drawing.Point(415, 11);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton3.TabIndex = 14;
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
             // KagentComboBox
             // 
-            this.KagentComboBox.Location = new System.Drawing.Point(87, 11);
+            this.KagentComboBox.Location = new System.Drawing.Point(88, 11);
             this.KagentComboBox.Name = "KagentComboBox";
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
@@ -899,9 +902,10 @@
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.KagentComboBox.Properties.ValueMember = "KaId";
-            this.KagentComboBox.Size = new System.Drawing.Size(322, 22);
+            this.KagentComboBox.Size = new System.Drawing.Size(349, 24);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 13;
+            this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
             // 
             // labelControl12
             // 
@@ -916,7 +920,6 @@
             // 
             this.MatGroupBox.Controls.Add(this.labelControl13);
             this.MatGroupBox.Controls.Add(this.MatComboBox);
-            this.MatGroupBox.Controls.Add(this.simpleButton2);
             this.MatGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.MatGroupBox.Location = new System.Drawing.Point(0, 398);
             this.MatGroupBox.Name = "MatGroupBox";
@@ -935,10 +938,12 @@
             // 
             // MatComboBox
             // 
-            this.MatComboBox.Location = new System.Drawing.Point(79, 13);
+            this.MatComboBox.Location = new System.Drawing.Point(88, 13);
             this.MatComboBox.Name = "MatComboBox";
+            editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.product;
             this.MatComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.MatComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.MatComboBox.Properties.DisplayMember = "Name";
@@ -946,19 +951,10 @@
             this.MatComboBox.Properties.ShowHeader = false;
             this.MatComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MatComboBox.Properties.ValueMember = "MatId";
-            this.MatComboBox.Size = new System.Drawing.Size(330, 22);
+            this.MatComboBox.Size = new System.Drawing.Size(349, 24);
             this.MatComboBox.StyleController = this.styleController1;
             this.MatComboBox.TabIndex = 21;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton2.Location = new System.Drawing.Point(415, 13);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(22, 22);
-            this.simpleButton2.TabIndex = 20;
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            this.MatComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MatComboBox_ButtonClick);
             // 
             // GRPGroupBox
             // 
@@ -1009,7 +1005,6 @@
             // 
             // WHGroupBox
             // 
-            this.WHGroupBox.Controls.Add(this.WhBtn);
             this.WHGroupBox.Controls.Add(this.WhComboBox);
             this.WHGroupBox.Controls.Add(this.labelControl10);
             this.WHGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1019,22 +1014,14 @@
             this.WHGroupBox.Size = new System.Drawing.Size(464, 47);
             this.WHGroupBox.TabIndex = 32;
             // 
-            // WhBtn
-            // 
-            this.WhBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("WhBtn.ImageOptions.Image")));
-            this.WhBtn.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.WhBtn.Location = new System.Drawing.Point(415, 12);
-            this.WhBtn.Name = "WhBtn";
-            this.WhBtn.Size = new System.Drawing.Size(22, 22);
-            this.WhBtn.TabIndex = 27;
-            this.WhBtn.Click += new System.EventHandler(this.WhBtn_Click);
-            // 
             // WhComboBox
             // 
-            this.WhComboBox.Location = new System.Drawing.Point(79, 12);
+            this.WhComboBox.Location = new System.Drawing.Point(88, 11);
             this.WhComboBox.Name = "WhComboBox";
+            editorButtonImageOptions4.Image = global::SP_Sklad.Properties.Resources.warehouse_2;
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WhComboBox.Properties.DisplayMember = "Name";
@@ -1042,9 +1029,10 @@
             this.WhComboBox.Properties.ShowHeader = false;
             this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhComboBox.Properties.ValueMember = "WId";
-            this.WhComboBox.Size = new System.Drawing.Size(330, 22);
+            this.WhComboBox.Size = new System.Drawing.Size(349, 24);
             this.WhComboBox.StyleController = this.styleController1;
             this.WhComboBox.TabIndex = 26;
+            this.WhComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WhComboBox_ButtonClick);
             // 
             // labelControl10
             // 
@@ -1095,8 +1083,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.YearEdit2.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.YearEdit2.Properties.IsFloatValue = false;
-            this.YearEdit2.Properties.Mask.EditMask = "N00";
-            this.YearEdit2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.YearEdit2.Properties.MaskSettings.Set("mask", "N00");
             this.YearEdit2.Size = new System.Drawing.Size(143, 22);
             this.YearEdit2.StyleController = this.styleController1;
             this.YearEdit2.TabIndex = 31;
@@ -1161,9 +1148,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.YearEdit.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Default;
             this.YearEdit.Properties.IsFloatValue = false;
-            this.YearEdit.Properties.Mask.EditMask = "N00";
-            this.YearEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
-            this.YearEdit.Size = new System.Drawing.Size(144, 22);
+            this.YearEdit.Properties.MaskSettings.Set("mask", "N00");
+            this.YearEdit.Size = new System.Drawing.Size(143, 22);
             this.YearEdit.StyleController = this.styleController1;
             this.YearEdit.TabIndex = 27;
             // 
@@ -1231,10 +1217,10 @@
             this.EndDateEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.EndDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.EndDateEdit.Properties.Mask.EditMask = "g";
             this.EndDateEdit.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.EndDateEdit.Properties.MaskSettings.Set("mask", "g");
             this.EndDateEdit.Properties.MinValue = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.EndDateEdit.Size = new System.Drawing.Size(144, 22);
+            this.EndDateEdit.Size = new System.Drawing.Size(143, 22);
             this.EndDateEdit.StyleController = this.styleController1;
             this.EndDateEdit.TabIndex = 27;
             // 
@@ -1345,7 +1331,7 @@
             "За місяць",
             "За квартал ",
             "За рік"});
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(359, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(358, 22);
             this.PeriodComboBoxEdit.StyleController = this.styleController1;
             this.PeriodComboBoxEdit.TabIndex = 20;
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
@@ -1561,20 +1547,17 @@
         private DevExpress.XtraEditors.SpinEdit YearEdit3;
         public System.Windows.Forms.Panel WHGroupBox;
         private DevExpress.XtraEditors.LabelControl labelControl10;
-        private DevExpress.XtraEditors.SimpleButton WhBtn;
         private DevExpress.XtraEditors.LookUpEdit WhComboBox;
         public System.Windows.Forms.Panel ChargeGroupBox;
         public System.Windows.Forms.Panel MatGroupBox;
         public System.Windows.Forms.Panel KontragentPanel;
         public System.Windows.Forms.Panel GRPGroupBox;
         private DevExpress.XtraEditors.LabelControl labelControl11;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.LookUpEdit KagentComboBox;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         public System.Windows.Forms.Panel DocTypeGroupBox;
         private DevExpress.XtraEditors.LabelControl labelControl13;
         private DevExpress.XtraEditors.LookUpEdit MatComboBox;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.LookUpEdit ChTypeEdit;
         private DevExpress.XtraEditors.LabelControl labelControl14;
         private DevExpress.XtraEditors.LookUpEdit DocTypeEdit;

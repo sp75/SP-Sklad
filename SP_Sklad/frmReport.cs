@@ -820,17 +820,17 @@ namespace SP_Sklad
 
         private void WhBtn_Click(object sender, EventArgs e)
         {
-            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+         
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+          
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+           
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -867,6 +867,30 @@ namespace SP_Sklad
                 form.Calendar.InactiveDaysVisibility = CalendarInactiveDaysVisibility.Hidden;
 
                
+            }
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+            }
+        }
+
+        private void MatComboBox_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
+            }
+        }
+
+        private void WhComboBox_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
             }
         }
     }

@@ -2003,8 +2003,7 @@
             // 
             // MatBarCodeBS
             // 
-            this.MatBarCodeBS.DataSource = typeof(SP_Sklad.SkladData.MatBarCode);
-            this.MatBarCodeBS.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.MatBarCodeBS_AddingNew);
+            this.MatBarCodeBS.DataSource = typeof(SP_Sklad.SkladData.v_BarCodes);
             // 
             // MatBarCodeGridView
             // 
