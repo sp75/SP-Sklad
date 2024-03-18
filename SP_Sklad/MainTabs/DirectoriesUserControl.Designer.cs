@@ -119,17 +119,9 @@
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.KAgentInfoBS = new System.Windows.Forms.BindingSource(this.components);
-            this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl4 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.KAgentInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.editorRow2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
@@ -142,6 +134,14 @@
             this.row19 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
+            this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row3 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.gridControl3 = new DevExpress.XtraGrid.GridControl();
             this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -445,11 +445,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).BeginInit();
-            this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).BeginInit();
             this.xtraTabPage15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
             this.xtraTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -1365,7 +1365,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 22);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.report_16x16, "report_16x16", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 25);
@@ -1768,74 +1769,6 @@
             this.PageImageList.InsertImage(global::SP_Sklad.Properties.Resources.note_1, "note_1", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.PageImageList.Images.SetKeyName(11, "note_1");
             // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Controls.Add(this.vGridControl1);
-            this.xtraTabPage1.ImageOptions.ImageIndex = 1;
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1086, 197);
-            this.xtraTabPage1.Text = "Контактна інформація";
-            // 
-            // vGridControl1
-            // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.vGridControl1.DataSource = this.KAgentInfoBS;
-            this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.vGridControl1.Location = new System.Drawing.Point(0, 0);
-            this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.RecordWidth = 186;
-            this.vGridControl1.RowHeaderWidth = 288;
-            this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.row1,
-            this.row3,
-            this.row4,
-            this.row2,
-            this.row6,
-            this.row5});
-            this.vGridControl1.Size = new System.Drawing.Size(1086, 197);
-            this.vGridControl1.TabIndex = 0;
-            // 
-            // KAgentInfoBS
-            // 
-            this.KAgentInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_Kagent);
-            // 
-            // row1
-            // 
-            this.row1.Name = "row1";
-            this.row1.Properties.Caption = "Юридична адреса";
-            this.row1.Properties.FieldName = "FullUrADDR";
-            // 
-            // row3
-            // 
-            this.row3.Height = 16;
-            this.row3.Name = "row3";
-            this.row3.Properties.Caption = "Фактична адреса";
-            this.row3.Properties.FieldName = "FullFactADDR";
-            // 
-            // row4
-            // 
-            this.row4.Name = "row4";
-            this.row4.Properties.Caption = "Телефон";
-            this.row4.Properties.FieldName = "Phone";
-            // 
-            // row2
-            // 
-            this.row2.Name = "row2";
-            this.row2.Properties.Caption = "Факс";
-            this.row2.Properties.FieldName = "Fax";
-            // 
-            // row6
-            // 
-            this.row6.Name = "row6";
-            this.row6.Properties.Caption = "Сайт";
-            this.row6.Properties.FieldName = "www";
-            // 
-            // row5
-            // 
-            this.row5.Name = "row5";
-            this.row5.Properties.Caption = "Ел. пошта";
-            this.row5.Properties.FieldName = "Email";
-            // 
             // xtraTabPage15
             // 
             this.xtraTabPage15.Controls.Add(this.vGridControl4);
@@ -1846,7 +1779,7 @@
             // 
             // vGridControl4
             // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -1868,6 +1801,10 @@
             this.editorRow12});
             this.vGridControl4.Size = new System.Drawing.Size(1086, 197);
             this.vGridControl4.TabIndex = 1;
+            // 
+            // KAgentInfoBS
+            // 
+            this.KAgentInfoBS.DataSource = typeof(SP_Sklad.SkladData.v_Kagent);
             // 
             // editorRow2
             // 
@@ -1942,6 +1879,70 @@
             this.editorRow12.Name = "editorRow12";
             this.editorRow12.Properties.Caption = "Api Token";
             this.editorRow12.Properties.FieldName = "Id";
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.vGridControl1);
+            this.xtraTabPage1.ImageOptions.ImageIndex = 1;
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1086, 197);
+            this.xtraTabPage1.Text = "Контактна інформація";
+            // 
+            // vGridControl1
+            // 
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.DataSource = this.KAgentInfoBS;
+            this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vGridControl1.Location = new System.Drawing.Point(0, 0);
+            this.vGridControl1.Name = "vGridControl1";
+            this.vGridControl1.RecordWidth = 186;
+            this.vGridControl1.RowHeaderWidth = 288;
+            this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
+            this.row1,
+            this.row3,
+            this.row4,
+            this.row2,
+            this.row6,
+            this.row5});
+            this.vGridControl1.Size = new System.Drawing.Size(1086, 197);
+            this.vGridControl1.TabIndex = 0;
+            // 
+            // row1
+            // 
+            this.row1.Name = "row1";
+            this.row1.Properties.Caption = "Юридична адреса";
+            this.row1.Properties.FieldName = "FullUrADDR";
+            // 
+            // row3
+            // 
+            this.row3.Height = 16;
+            this.row3.Name = "row3";
+            this.row3.Properties.Caption = "Фактична адреса";
+            this.row3.Properties.FieldName = "FullFactADDR";
+            // 
+            // row4
+            // 
+            this.row4.Name = "row4";
+            this.row4.Properties.Caption = "Телефон";
+            this.row4.Properties.FieldName = "Phone";
+            // 
+            // row2
+            // 
+            this.row2.Name = "row2";
+            this.row2.Properties.Caption = "Факс";
+            this.row2.Properties.FieldName = "Fax";
+            // 
+            // row6
+            // 
+            this.row6.Name = "row6";
+            this.row6.Properties.Caption = "Сайт";
+            this.row6.Properties.FieldName = "www";
+            // 
+            // row5
+            // 
+            this.row5.Name = "row5";
+            this.row5.Properties.Caption = "Ел. пошта";
+            this.row5.Properties.FieldName = "Email";
             // 
             // xtraTabPage2
             // 
@@ -4581,11 +4582,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).EndInit();
-            this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).EndInit();
             this.xtraTabPage15.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KAgentInfoBS)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
             this.xtraTabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();

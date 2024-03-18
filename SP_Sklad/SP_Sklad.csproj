@@ -61,7 +61,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
@@ -3268,7 +3268,6 @@
       <DependentUpon>SkladModel.edmx</DependentUpon>
       <LastGenOutput>SkladModel.cs</LastGenOutput>
     </None>
-    <None Include="SP_Sklad_TemporaryKey.pfx" />
     <None Include="TempLate\ActServicesProvided_In.xlsx" />
     <None Include="TempLate\AnaliticsManufacture.xlsx" />
     <None Include="TempLate\AnalizPlan_fact.xlsx" />
@@ -3785,6 +3784,15 @@
     <None Include="Resources\service_info.png" />
     <None Include="Resources\refresh2_16x161.png" />
     <None Include="Resources\refresh_16x163.png" />
+    <None Include="Resources\printdialog_16x16.png" />
+    <None Include="Resources\printdialog_32x32.png" />
+    <None Include="Resources\export_16x16.png" />
+    <None Include="Resources\export_32x32.png" />
+    <None Include="Resources\customizegrid_16x16.png" />
+    <None Include="Resources\customizegrid_32x32.png" />
+    <None Include="Resources\copy_16x161.png" />
+    <None Include="Resources\report_16x16.png" />
+    <None Include="Resources\document.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

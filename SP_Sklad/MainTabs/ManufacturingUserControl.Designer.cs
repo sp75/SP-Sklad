@@ -49,7 +49,7 @@
             this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
             this.ucProductionPlanning = new SP_Sklad.MainTabs.ucProductionPlanning();
             this.xtraTabPage17 = new DevExpress.XtraTab.XtraTabPage();
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.ucPlannedCalculation = new SP_Sklad.MainTabs.ucPlannedCalculation();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.usPreparationProducts = new SP_Sklad.MainTabs.usPreparationProducts();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
@@ -60,11 +60,11 @@
             this.ucWaybillMove = new SP_Sklad.UserControls.ucWaybillMove();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillWriteOn = new SP_Sklad.UserControls.ucWaybillWriteOn();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.bar7 = new DevExpress.XtraBars.Bar();
             this.bar6 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.ucPlannedCalculation = new SP_Sklad.MainTabs.ucPlannedCalculation();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -84,12 +84,12 @@
             this.xtraTabPage35.SuspendLayout();
             this.xtraTabPage36.SuspendLayout();
             this.xtraTabPage17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage26.SuspendLayout();
             this.xtraTabPage32.SuspendLayout();
             this.xtraTabPage33.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox26
@@ -241,7 +241,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(21, "WBWriteOff_2");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 22);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(22, "inventory_act");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.report_16x16, "report_16x16", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(23, "report_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.morefunctions_16x16, "morefunctions_16x16", typeof(global::SP_Sklad.Properties.Resources), 24);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(24, "morefunctions_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.kontragents_folder, "kontragents_folder", typeof(global::SP_Sklad.Properties.Resources), 25);
@@ -383,14 +384,14 @@
             // xtraTabPage6
             // 
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage6.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage6.Text = "ViewList";
             // 
             // xtraTabPage34
             // 
             this.xtraTabPage34.Controls.Add(this.ucManufacturingProducts);
             this.xtraTabPage34.Name = "xtraTabPage34";
-            this.xtraTabPage34.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage34.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage34.Text = "Виробництво";
             // 
             // ucManufacturingProducts
@@ -398,20 +399,20 @@
             this.ucManufacturingProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucManufacturingProducts.Location = new System.Drawing.Point(0, 0);
             this.ucManufacturingProducts.Name = "ucManufacturingProducts";
-            this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 632);
+            this.ucManufacturingProducts.Size = new System.Drawing.Size(1049, 656);
             this.ucManufacturingProducts.TabIndex = 0;
             // 
             // xtraTabPage8
             // 
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage8.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage8.Text = "Склад";
             // 
             // xtraTabPage35
             // 
             this.xtraTabPage35.Controls.Add(this.ucDeboningProducts);
             this.xtraTabPage35.Name = "xtraTabPage35";
-            this.xtraTabPage35.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage35.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage35.Text = "Обвалка";
             // 
             // ucDeboningProducts
@@ -420,14 +421,14 @@
             this.ucDeboningProducts.grp_id = 0;
             this.ucDeboningProducts.Location = new System.Drawing.Point(0, 0);
             this.ucDeboningProducts.Name = "ucDeboningProducts";
-            this.ucDeboningProducts.Size = new System.Drawing.Size(1049, 632);
+            this.ucDeboningProducts.Size = new System.Drawing.Size(1049, 656);
             this.ucDeboningProducts.TabIndex = 0;
             // 
             // xtraTabPage36
             // 
             this.xtraTabPage36.Controls.Add(this.ucProductionPlanning);
             this.xtraTabPage36.Name = "xtraTabPage36";
-            this.xtraTabPage36.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage36.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage36.Text = "Планування виробництва";
             // 
             // ucProductionPlanning
@@ -435,7 +436,7 @@
             this.ucProductionPlanning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucProductionPlanning.Location = new System.Drawing.Point(0, 0);
             this.ucProductionPlanning.Name = "ucProductionPlanning";
-            this.ucProductionPlanning.Size = new System.Drawing.Size(1049, 632);
+            this.ucProductionPlanning.Size = new System.Drawing.Size(1049, 656);
             this.ucProductionPlanning.TabIndex = 0;
             // 
             // xtraTabPage17
@@ -445,16 +446,19 @@
             this.xtraTabPage17.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage17.Text = "Планова калькуляція";
             // 
-            // styleController1
+            // ucPlannedCalculation
             // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
+            this.ucPlannedCalculation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPlannedCalculation.Location = new System.Drawing.Point(0, 0);
+            this.ucPlannedCalculation.Name = "ucPlannedCalculation";
+            this.ucPlannedCalculation.Size = new System.Drawing.Size(1049, 656);
+            this.ucPlannedCalculation.TabIndex = 0;
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.usPreparationProducts);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage1.Text = "Підготовка сировини";
             // 
             // usPreparationProducts
@@ -462,14 +466,14 @@
             this.usPreparationProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usPreparationProducts.Location = new System.Drawing.Point(0, 0);
             this.usPreparationProducts.Name = "usPreparationProducts";
-            this.usPreparationProducts.Size = new System.Drawing.Size(1049, 632);
+            this.usPreparationProducts.Size = new System.Drawing.Size(1049, 656);
             this.usPreparationProducts.TabIndex = 0;
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.ucIntermediateWeighing1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage2.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage2.Text = "Проміжкові зважування";
             // 
             // ucIntermediateWeighing1
@@ -477,14 +481,14 @@
             this.ucIntermediateWeighing1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucIntermediateWeighing1.Location = new System.Drawing.Point(0, 0);
             this.ucIntermediateWeighing1.Name = "ucIntermediateWeighing1";
-            this.ucIntermediateWeighing1.Size = new System.Drawing.Size(1049, 632);
+            this.ucIntermediateWeighing1.Size = new System.Drawing.Size(1049, 656);
             this.ucIntermediateWeighing1.TabIndex = 0;
             // 
             // xtraTabPage26
             // 
             this.xtraTabPage26.Controls.Add(this.ucRawMaterialManagement);
             this.xtraTabPage26.Name = "xtraTabPage26";
-            this.xtraTabPage26.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage26.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage26.Text = "Управління сировиною";
             // 
             // ucRawMaterialManagement
@@ -492,14 +496,14 @@
             this.ucRawMaterialManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRawMaterialManagement.Location = new System.Drawing.Point(0, 0);
             this.ucRawMaterialManagement.Name = "ucRawMaterialManagement";
-            this.ucRawMaterialManagement.Size = new System.Drawing.Size(1049, 632);
+            this.ucRawMaterialManagement.Size = new System.Drawing.Size(1049, 656);
             this.ucRawMaterialManagement.TabIndex = 0;
             // 
             // xtraTabPage32
             // 
             this.xtraTabPage32.Controls.Add(this.ucWaybillMove);
             this.xtraTabPage32.Name = "xtraTabPage32";
-            this.xtraTabPage32.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage32.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage32.Text = "Накладні переміщення";
             // 
             // ucWaybillMove
@@ -507,14 +511,14 @@
             this.ucWaybillMove.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucWaybillMove.Location = new System.Drawing.Point(0, 0);
             this.ucWaybillMove.Name = "ucWaybillMove";
-            this.ucWaybillMove.Size = new System.Drawing.Size(1049, 632);
+            this.ucWaybillMove.Size = new System.Drawing.Size(1049, 656);
             this.ucWaybillMove.TabIndex = 0;
             // 
             // xtraTabPage33
             // 
             this.xtraTabPage33.Controls.Add(this.ucWaybillWriteOn);
             this.xtraTabPage33.Name = "xtraTabPage33";
-            this.xtraTabPage33.Size = new System.Drawing.Size(1049, 632);
+            this.xtraTabPage33.Size = new System.Drawing.Size(1049, 656);
             this.xtraTabPage33.Text = "Введення залишків";
             // 
             // ucWaybillWriteOn
@@ -522,8 +526,13 @@
             this.ucWaybillWriteOn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucWaybillWriteOn.Location = new System.Drawing.Point(0, 0);
             this.ucWaybillWriteOn.Name = "ucWaybillWriteOn";
-            this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 632);
+            this.ucWaybillWriteOn.Size = new System.Drawing.Size(1049, 656);
             this.ucWaybillWriteOn.TabIndex = 0;
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // barDockControl4
             // 
@@ -554,14 +563,6 @@
             this.bar5.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar5.Text = "Tools";
             // 
-            // ucPlannedCalculation
-            // 
-            this.ucPlannedCalculation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPlannedCalculation.Location = new System.Drawing.Point(0, 0);
-            this.ucPlannedCalculation.Name = "ucPlannedCalculation";
-            this.ucPlannedCalculation.Size = new System.Drawing.Size(1049, 656);
-            this.ucPlannedCalculation.TabIndex = 0;
-            // 
             // ManufacturingUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -591,12 +592,12 @@
             this.xtraTabPage35.ResumeLayout(false);
             this.xtraTabPage36.ResumeLayout(false);
             this.xtraTabPage17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage26.ResumeLayout(false);
             this.xtraTabPage32.ResumeLayout(false);
             this.xtraTabPage33.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

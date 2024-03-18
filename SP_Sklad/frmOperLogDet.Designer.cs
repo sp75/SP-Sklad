@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOperLogDet));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -43,7 +44,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.FormImgList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -64,6 +64,7 @@
             this.PTypeComboBox = new DevExpress.XtraEditors.ImageComboBoxEdit();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
+            this.FormImgList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FormImgList)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -118,16 +120,15 @@
             // 
             this.PrevievBtn.Caption = "Переглянути друковану форму документа";
             this.PrevievBtn.Id = 0;
-            this.PrevievBtn.ImageIndex = 0;
+            this.PrevievBtn.ImageOptions.ImageIndex = 0;
             this.PrevievBtn.Name = "PrevievBtn";
             this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
             // 
             // HistoryBtn
             // 
             this.HistoryBtn.Caption = "Історія зміни запису";
-            this.HistoryBtn.Glyph = ((System.Drawing.Image)(resources.GetObject("HistoryBtn.Glyph")));
             this.HistoryBtn.Id = 1;
-            this.HistoryBtn.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("HistoryBtn.LargeGlyph")));
+            this.HistoryBtn.ImageOptions.ImageIndex = 8;
             this.HistoryBtn.Name = "HistoryBtn";
             this.HistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.HistoryBtn_ItemClick);
             // 
@@ -136,6 +137,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(492, 24);
             // 
             // barDockControlBottom
@@ -143,6 +145,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 491);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(492, 0);
             // 
             // barDockControlLeft
@@ -150,6 +153,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 467);
             // 
             // barDockControlRight
@@ -157,6 +161,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(492, 24);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 467);
             // 
             // standaloneBarDockControl1
@@ -165,22 +170,10 @@
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(492, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // FormImgList
-            // 
-            this.FormImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("FormImgList.ImageStream")));
-            this.FormImgList.TransparentColor = System.Drawing.Color.White;
-            this.FormImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.FormImgList.Images.SetKeyName(1, "Документ.bmp");
-            this.FormImgList.Images.SetKeyName(2, "Add.bmp");
-            this.FormImgList.Images.SetKeyName(3, "н_чого.bmp");
-            this.FormImgList.Images.SetKeyName(4, "edit.bmp");
-            this.FormImgList.Images.SetKeyName(5, "Delete.bmp");
-            this.FormImgList.Images.SetKeyName(6, "storno.png");
-            this.FormImgList.Images.SetKeyName(7, "execute.png");
             // 
             // styleController1
             // 
@@ -376,8 +369,9 @@
             this.PTypeComboBox.Name = "PTypeComboBox";
             this.PTypeComboBox.Properties.AppearanceReadOnly.BackColor = System.Drawing.Color.LightYellow;
             this.PTypeComboBox.Properties.AppearanceReadOnly.Options.UseBackColor = true;
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("PTypeComboBox.Properties.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PTypeComboBox.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Створення", "I", 2),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Редагування", "U", 4),
@@ -389,7 +383,7 @@
             this.PTypeComboBox.Properties.PopupSizeable = true;
             this.PTypeComboBox.Properties.ReadOnly = true;
             this.PTypeComboBox.Properties.SmallImages = this.FormImgList;
-            this.PTypeComboBox.Size = new System.Drawing.Size(348, 22);
+            this.PTypeComboBox.Size = new System.Drawing.Size(348, 24);
             this.PTypeComboBox.TabIndex = 9;
             // 
             // panelControl4
@@ -410,6 +404,29 @@
             this.OkButton.Size = new System.Drawing.Size(83, 30);
             this.OkButton.TabIndex = 1;
             this.OkButton.Text = "Вихід";
+            // 
+            // FormImgList
+            // 
+            this.FormImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("FormImgList.ImageStream")));
+            this.FormImgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.FormImgList.Images.SetKeyName(0, "preview_2");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.document, "document", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.FormImgList.Images.SetKeyName(1, "document");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.FormImgList.Images.SetKeyName(2, "additem_3");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.FormImgList.Images.SetKeyName(3, "new_document");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.FormImgList.Images.SetKeyName(4, "edit_2");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.deletelist_16x16, "deletelist_16x16", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.FormImgList.Images.SetKeyName(5, "deletelist_16x16");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.storno, "storno", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.FormImgList.Images.SetKeyName(6, "storno");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.FormImgList.Images.SetKeyName(7, "checked_green");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.FormImgList.Images.SetKeyName(8, "historyitem_16x16");
             // 
             // frmOperLogDet
             // 
@@ -446,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PTypeComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FormImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,7 +480,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        public System.Windows.Forms.ImageList FormImgList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -483,5 +500,6 @@
         public System.Windows.Forms.BindingSource OperLogDetBS;
         private DevExpress.XtraEditors.DateEdit wbStartDate;
         private DevExpress.XtraEditors.DateEdit dateEdit2;
+        private DevExpress.Utils.ImageCollection FormImgList;
     }
 }
