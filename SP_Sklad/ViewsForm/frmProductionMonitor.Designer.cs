@@ -48,6 +48,9 @@
             this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -59,13 +62,10 @@
             this.standaloneBarDockControl5 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.EditTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelTechProcBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.BottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ProductionMonitorGridView)).BeginInit();
@@ -73,6 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductionMonitorGrid
@@ -275,6 +276,35 @@
             this.barButtonItem1});
             this.barManager1.MaxItemId = 26;
             // 
+            // bar1
+            // 
+            this.bar1.BarName = "Custom 2";
+            this.bar1.DockCol = 0;
+            this.bar1.DockRow = 0;
+            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
+            this.bar1.OptionsBar.DrawDragBorder = false;
+            this.bar1.OptionsBar.UseWholeRow = true;
+            this.bar1.Text = "Custom 2";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Перейти до документа";
+            this.barButtonItem1.Id = 12;
+            this.barButtonItem1.ImageOptions.ImageIndex = 1;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 0;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -384,30 +414,6 @@
             this.standaloneBarDockControl7.Size = new System.Drawing.Size(1485, 0);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(8, "Замовлене кл_єнтами.bmp");
-            this.BarImageList.Images.SetKeyName(9, "Перейти до  документа.bmp");
-            this.BarImageList.Images.SetKeyName(10, "weighing-scale.png");
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 6;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
             // EditTechProcBtn
             // 
             this.EditTechProcBtn.Caption = "Властивості";
@@ -422,14 +428,6 @@
             this.DelTechProcBtn.ImageOptions.ImageIndex = 3;
             this.DelTechProcBtn.Name = "DelTechProcBtn";
             // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Перейти до документа";
-            this.barButtonItem1.Id = 12;
-            this.barButtonItem1.ImageOptions.ImageIndex = 9;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
             // BottomPopupMenu
             // 
             this.BottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -438,16 +436,14 @@
             this.BottomPopupMenu.Manager = this.barManager1;
             this.BottomPopupMenu.Name = "BottomPopupMenu";
             // 
-            // bar1
+            // BarImageList
             // 
-            this.bar1.BarName = "Custom 2";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 0;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
-            this.bar1.Text = "Custom 2";
+            this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList.Images.SetKeyName(0, "preview_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.BarImageList.Images.SetKeyName(1, "walking_16x16");
             // 
             // frmProductionMonitor
             // 
@@ -479,6 +475,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -519,7 +516,7 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.PopupMenu BottomPopupMenu;
-        public System.Windows.Forms.ImageList BarImageList;
         private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.Utils.ImageCollection BarImageList;
     }
 }

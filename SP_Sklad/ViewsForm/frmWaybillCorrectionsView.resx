@@ -118,59 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="WaybillCorrectionSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>320, 11</value>
+    <value>303, 15</value>
   </metadata>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>29, 15</value>
+  <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>144, 13</value>
   </metadata>
-  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>22, 12</value>
+  </metadata>
+  <metadata name="imageCollection1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>144, 13</value>
+  </metadata>
+  <assembly alias="DevExpress.Utils.v21.1" name="DevExpress.Utils.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="imageCollection1.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABg
-        CAAAAk1TRnQBSQFMAgEBAgEAAfgBBQH4AQUBEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABEAMAAQEBAAEYBgABDGkAARABnAEYeAABrQFaASkBvQFzAVInAAG9AXsBYwGtAVoBKQ8AASkBpQEp
-        AUoB5wF7AQABcwEAATkBjAE5bAAB/wGEAVoBxgFaATkBxgFaATkBxgGMAVoBnAE5AQABtQFzAUohAAGl
-        AUIBCAHGAYQBSgGcATkBEAGtAVoBKQYAAYQBxgFzATEBzgFSATkBtQFCAQABc20AAf8BlAFrAe8BYwE5
-        Af8B3gLGAVoBOQH/Ae8BxgH3Ae8CxgGMAVoBnAE5AQABtQFrAUIYAAG9AXMBOQHWAZwBYwH/AfcB1gHv
-        AdYBrQG1AWMBOQGtAVoBKQGlAUoBGAGcATkBEAFSAXMBMQEAAXMBAAEpAYQBKWkAAf8BjAFrAd4BYwE5
-        Af8B1gG9Af8B3gHOAb0BUgE5AcYBUgE5AcYBWgE5AcYBWgE5AcYBWgE5AcYBjAFaAZwBOQEAAbUBawFC
-        EgABtQFaARgB/wH3AdYB7wG1AYwBtQFzAUoBxgGMAXMB7wHWAb0B9wHnAb0B7wHWAb0BtQFjATkBnAEx
-        agAB/wGEAVoBzgFaATkB/wGtAZQB/wG9AaUB/wHGAa0B/wHOAbUB/wHWAb0B/wHWAcYB/wHeAc4BxgFa
-        ATkB/wHvAcYB9wHvAc4BxgGEAVIBnAE5AQABtQFjATkJAAG9AXMBOQHeAaUBcwHvAdYBrQG9AXsBYwHe
-        Ab0BpQH/AecBvQH/AfcBzgH/AfcB5wH/AfcB5wH/AfcB5wG1AWMBOQGcATkBEGMAAf8BhAFaAd4BYwE5
-        Af8BnAFzAf8BlAFzAf8BnAF7Af8BpQGEAf8BrQGMAf8BtQGUAf8BvQGcAf8B3gHOAb0BUgE5Af8B5wG9
-        Af8B7wHOAf8B7wLOAZwBawGlAUoBEAYAAd4BvQGlAcYBawEhAf8B9wHWAe8BtQGMAcYBjAFzAf8B7wHG
-        Af8B5wG9Av8B3gH/AfcB5wH/AfcB5wH/AfcB5wH3AecBvQGcATFkAAH/AXsBUgHnAWMBOQH/AcYBrQH/
-        AYwBYwH/AYQBWgH/AYQBYwH/AYwBawH/AZQBcwH/AZwBewH/AdYBxgG1AVIBMQH/Ae8BxgH/AfcBzgH/
-        AfcB1gHOAZQBYwHWAa0BnAYAAb0BcwE5AecBxgGcAf8B3gG1AdYBrQGUAdYBrQGUAf8B3gG1Af8B9wHO
-        Av8B3gH/AfcB5wH/AfcB5wH/AfcB5wH3Ae8B1gGlAUoBGGYAAf8BcwFCAecBYwE5Af8BxgGtAf8BewFK
-        Af8BzgG1Af8BzgG9Af8B1gG9Af8B1gG9Af8BzgG9Aa0BUgExAf8B9wHWAv8B3gHvAdYBrQG9AXsBUgYA
-        Ad4BvQGlAcYBewE5Af8B9wHWAf8B1gGtAdYBrQGUAdYBrQGUAf8B5wG9Af8B7wHGAf8B9wHWAv8B3gL/
-        Ad4C/wHeAfcB7wHWAaUBSgEYZgAB1gGcAWMB/wFzAUoB3gFaATkB/wG9AaUB/wHOAbUBlAFCATEBlAFC
-        ATEBlAFKATEBnAFKATEBpQFKATEC/wHeAf8B9wHWAb0BcwE5CQABxgF7ATkB7wHWAa0B/wHeAbUB/wHW
-        Aa0B5wHGAZwBxgGMAXMB/wH3Ac4B/wHWAa0B9wHnAdYB/wH3Ad4C/wHeAv8B1gHvAdYBvQGcATFnAAHW
-        AZwBYwHvAcYBlAH/AYQBWgHeAVoBOQH/Ab0BpQGUAUIBMQL/AdYC/wHWAv8B3gL/Ad4C/wHeAdYBnAFr
-        Ad4BtQGcBgAB5wG9AYQB3gGUAVIB/wH3AdYB/wHWAaUB/wHWAa0B/wHeAbUBxgGMAXMB1gGtAZQB/wH3
-        AecB/wH3Ae8B9wHvAdYB/wH3AdYB9wHvAdYBtQFjATkBtQFjATlmAAHOAYQBKQH/AfcBzgH/Ae8BxgH/
-        AYQBWgGUAUIBMQGUAUIBMQH/AfcBxgL/AdYB/wH3AdYC/wHeAe8B1gGtAc4BjAFaCQABzgGEATkB9wHn
-        Ab0B/wHeAbUB/wHWAa0B/wHWAa0B/wHnAb0B7wHWAa0BxgGMAXMBxgGMAXMB5wHGAaUB7wHWAb0B1gGt
-        AZQBtQFjATkBrQFaASlpAAHWAYwBQgHeAZwBUgHvAc4BlAH/AfcBzgL/Ad4C/wHeAecBzgGlAbUBUgEQ
-        AcYBawEhAd4BpQFjAc4BhAE5DAAB1gGEATEB/wHeAbUB/wHWAaUB/wHWAa0B/wHeAbUB/wHnAb0B/wHv
-        AcYB3gGlAXMBxgGMAXMBvQF7AWMBtQFjATkBrQFaASkBxgGMAXNyAAHeAa0BcwHWAYwBQgHnAbUBewH3
-        AecBvQHOAYQBOQHWAXsBIQHeAYwBKQHeAZQBMQ8AAd4BlAFSAdYBjAFCAe8BtQFrAf8BzgGcAf8B5wG9
-        Af8B5wG9Af8B3gK1AVoBGAG9AWMBGIQAAecBxgGlAdYBnAFSAd4BlAExAecBrQFrGwAB5wG9AYQB1gGM
-        AUIB3gGUAVIB5wG9AYQB3gGUAVIB1gF7ASG3AAHeAaUBcwHeAZQBMXsAAUIBTQE+BwABPgMAASgDAAFA
-        AwABEAMAAQEBAAEBBQABgBcAA/8BAAP/AfsEAAH8Af8B+QHwBAAB8AE/AfgBYQQAAeABDwHwAQEEAAHA
-        AQMB8AEDBAABgAEAAeABAQYAAcABAQYAAcABAQQAAYABAQGAAQEEAAGAAQMBgAEBBAABgAEDAQABAQQA
-        AYABBwEAAQMEAAGAAQ8BAAEHBAAB4AEfAQABfwQAAfgBfwHAAf8EAAL/AfkB/wQACw==
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLlV0aWxzLnYyMS4xLCBWZXJzaW9uPTIxLjEu
+        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEMAwAAAFFT
+        eXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRv
+        a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
+        cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
+        /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
+        BQAAAAAAAAACCw==
 </value>
   </data>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>146, 11</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="editorButtonImageOptions1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="editorButtonImageOptions2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
         EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABK2lDQ1BQaG90b3Nob3AgSUNDIHByb2Zp

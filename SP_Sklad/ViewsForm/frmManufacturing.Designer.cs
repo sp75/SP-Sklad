@@ -38,7 +38,6 @@
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.GridImageList = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.CheckedItemImageComboBox = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -74,7 +73,6 @@
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl8 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl9 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
@@ -97,6 +95,7 @@
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WBGridControl)).BeginInit();
@@ -105,6 +104,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
+            this.splitContainerControl2.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).BeginInit();
+            this.splitContainerControl2.Panel2.SuspendLayout();
             this.splitContainerControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -119,6 +122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ManufListGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -228,15 +232,6 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 3)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
-            // 
-            // GridImageList
-            // 
-            this.GridImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("GridImageList.ImageStream")));
-            this.GridImageList.TransparentColor = System.Drawing.Color.White;
-            this.GridImageList.Images.SetKeyName(0, "Так.bmp");
-            this.GridImageList.Images.SetKeyName(1, "н_чого.bmp");
-            this.GridImageList.Images.SetKeyName(2, "Частково оброблений.bmp");
-            this.GridImageList.Images.SetKeyName(3, "exec16.png");
             // 
             // gridColumn2
             // 
@@ -388,9 +383,15 @@
             this.splitContainerControl2.Horizontal = false;
             this.splitContainerControl2.Location = new System.Drawing.Point(0, 0);
             this.splitContainerControl2.Name = "splitContainerControl2";
+            // 
+            // splitContainerControl2.Panel1
+            // 
             this.splitContainerControl2.Panel1.Controls.Add(this.WBGridControl);
             this.splitContainerControl2.Panel1.Controls.Add(this.panelControl3);
             this.splitContainerControl2.Panel1.Text = "Panel1";
+            // 
+            // splitContainerControl2.Panel2
+            // 
             this.splitContainerControl2.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl2.Panel2.Controls.Add(this.standaloneBarDockControl1);
             this.splitContainerControl2.Panel2.Controls.Add(this.standaloneBarDockControl2);
@@ -443,7 +444,6 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl8);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl9);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.BarImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.AddItem,
             this.DelItem});
@@ -468,7 +468,7 @@
             // 
             this.AddItem.Caption = "Додати";
             this.AddItem.Id = 28;
-            this.AddItem.ImageIndex = 8;
+            this.AddItem.ImageOptions.ImageIndex = 8;
             this.AddItem.Name = "AddItem";
             this.AddItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddItem_ItemClick);
             // 
@@ -476,7 +476,7 @@
             // 
             this.DelItem.Caption = "Видалити";
             this.DelItem.Id = 29;
-            this.DelItem.ImageIndex = 7;
+            this.DelItem.ImageOptions.ImageIndex = 7;
             this.DelItem.Name = "DelItem";
             this.DelItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelItem_ItemClick);
             // 
@@ -486,8 +486,9 @@
             this.standaloneBarDockControl7.CausesValidation = false;
             this.standaloneBarDockControl7.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl7.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl7.Manager = this.barManager1;
             this.standaloneBarDockControl7.Name = "standaloneBarDockControl7";
-            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1262, 31);
+            this.standaloneBarDockControl7.Size = new System.Drawing.Size(1266, 24);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
             // barDockControlTop
@@ -495,6 +496,7 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Size = new System.Drawing.Size(1268, 0);
             // 
             // barDockControlBottom
@@ -502,6 +504,7 @@
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 655);
+            this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1268, 0);
             // 
             // barDockControlLeft
@@ -509,6 +512,7 @@
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barManager1;
             this.barDockControlLeft.Size = new System.Drawing.Size(0, 655);
             // 
             // barDockControlRight
@@ -516,6 +520,7 @@
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1268, 0);
+            this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 655);
             // 
             // standaloneBarDockControl1
@@ -524,6 +529,7 @@
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
@@ -534,6 +540,7 @@
             this.standaloneBarDockControl2.CausesValidation = false;
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
@@ -544,6 +551,7 @@
             this.standaloneBarDockControl3.CausesValidation = false;
             this.standaloneBarDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl3.Manager = this.barManager1;
             this.standaloneBarDockControl3.Name = "standaloneBarDockControl3";
             this.standaloneBarDockControl3.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl3.Text = "standaloneBarDockControl3";
@@ -554,6 +562,7 @@
             this.standaloneBarDockControl4.CausesValidation = false;
             this.standaloneBarDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl4.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl4.Manager = this.barManager1;
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
             this.standaloneBarDockControl4.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
@@ -564,6 +573,7 @@
             this.standaloneBarDockControl5.CausesValidation = false;
             this.standaloneBarDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl5.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl5.Manager = this.barManager1;
             this.standaloneBarDockControl5.Name = "standaloneBarDockControl5";
             this.standaloneBarDockControl5.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl5.Text = "standaloneBarDockControl5";
@@ -574,6 +584,7 @@
             this.standaloneBarDockControl6.CausesValidation = false;
             this.standaloneBarDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl6.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl6.Manager = this.barManager1;
             this.standaloneBarDockControl6.Name = "standaloneBarDockControl6";
             this.standaloneBarDockControl6.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl6.Text = "standaloneBarDockControl6";
@@ -584,6 +595,7 @@
             this.standaloneBarDockControl8.CausesValidation = false;
             this.standaloneBarDockControl8.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl8.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl8.Manager = this.barManager1;
             this.standaloneBarDockControl8.Name = "standaloneBarDockControl8";
             this.standaloneBarDockControl8.Size = new System.Drawing.Size(1268, 0);
             this.standaloneBarDockControl8.Text = "standaloneBarDockControl8";
@@ -593,32 +605,11 @@
             this.standaloneBarDockControl9.AutoSize = true;
             this.standaloneBarDockControl9.CausesValidation = false;
             this.standaloneBarDockControl9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl9.Location = new System.Drawing.Point(0, 31);
+            this.standaloneBarDockControl9.Location = new System.Drawing.Point(0, 24);
+            this.standaloneBarDockControl9.Manager = this.barManager1;
             this.standaloneBarDockControl9.Name = "standaloneBarDockControl9";
-            this.standaloneBarDockControl9.Size = new System.Drawing.Size(1262, 0);
+            this.standaloneBarDockControl9.Size = new System.Drawing.Size(1266, 0);
             this.standaloneBarDockControl9.Text = "standaloneBarDockControl9";
-            // 
-            // BarImageList
-            // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Баланс з контрагентом.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Замовлене кл_єнтами.bmp");
-            this.BarImageList.Images.SetKeyName(7, "Up.bmp");
-            this.BarImageList.Images.SetKeyName(8, "down.bmp");
-            this.BarImageList.Images.SetKeyName(9, "_нформац_я про резерв товару.bmp");
-            this.BarImageList.Images.SetKeyName(10, "Рух товар_в.bmp");
-            this.BarImageList.Images.SetKeyName(11, "Склади.bmp");
-            this.BarImageList.Images.SetKeyName(12, "treeview.png");
-            this.BarImageList.Images.SetKeyName(13, "Послуги.bmp");
-            this.BarImageList.Images.SetKeyName(14, "Товари.bmp");
-            this.BarImageList.Images.SetKeyName(15, "iconfinder_folder_edit_36067.png");
-            this.BarImageList.Images.SetKeyName(16, "tree.png");
             // 
             // labelControl5
             // 
@@ -635,7 +626,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage4;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 232);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1268, 227);
             this.xtraTabControl1.TabIndex = 16;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage4,
@@ -644,14 +635,13 @@
             // xtraTabPage4
             // 
             this.xtraTabPage4.Controls.Add(this.vGridControl2);
-            this.xtraTabPage4.ImageIndex = 1;
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(1262, 175);
+            this.xtraTabPage4.Size = new System.Drawing.Size(1266, 202);
             this.xtraTabPage4.Text = "Дод. Інформація";
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);
             this.vGridControl2.Name = "vGridControl2";
@@ -665,7 +655,7 @@
             this.row14,
             this.row15,
             this.row16});
-            this.vGridControl2.Size = new System.Drawing.Size(1262, 175);
+            this.vGridControl2.Size = new System.Drawing.Size(1266, 202);
             this.vGridControl2.TabIndex = 0;
             // 
             // editorRow1
@@ -719,21 +709,20 @@
             this.xtraTabPage14.Controls.Add(this.ManufListGridControl);
             this.xtraTabPage14.Controls.Add(this.standaloneBarDockControl9);
             this.xtraTabPage14.Controls.Add(this.standaloneBarDockControl7);
-            this.xtraTabPage14.ImageIndex = 14;
             this.xtraTabPage14.Name = "xtraTabPage14";
             this.xtraTabPage14.PageVisible = false;
-            this.xtraTabPage14.Size = new System.Drawing.Size(1262, 204);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1266, 202);
             this.xtraTabPage14.Text = "Список товарів";
             // 
             // ManufListGridControl
             // 
             this.ManufListGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ManufListGridControl.Location = new System.Drawing.Point(0, 31);
+            this.ManufListGridControl.Location = new System.Drawing.Point(0, 24);
             this.ManufListGridControl.MainView = this.ManufListGridView;
             this.ManufListGridControl.Name = "ManufListGridControl";
             this.ManufListGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1});
-            this.ManufListGridControl.Size = new System.Drawing.Size(1262, 173);
+            this.ManufListGridControl.Size = new System.Drawing.Size(1266, 178);
             this.ManufListGridControl.TabIndex = 2;
             this.ManufListGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ManufListGridView,
@@ -828,6 +817,19 @@
             this.gridView7.GridControl = this.ManufListGridControl;
             this.gridView7.Name = "gridView7";
             // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "checked_green");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "new_document");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "checked_blue");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "manufacturing_products");
+            // 
             // frmManufacturing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -851,6 +853,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).EndInit();
+            this.splitContainerControl2.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel2)).EndInit();
+            this.splitContainerControl2.Panel2.ResumeLayout(false);
+            this.splitContainerControl2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).EndInit();
             this.splitContainerControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
@@ -868,6 +875,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ManufListGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -895,7 +903,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
-        public System.Windows.Forms.ImageList GridImageList;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl2;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
@@ -932,7 +939,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
-        public System.Windows.Forms.ImageList BarImageList;
         public DevExpress.XtraTab.XtraTabControl xtraTabControl1;
         private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.TextEdit BarCodeEdit;
@@ -942,5 +948,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.Utils.ImageCollection GridImageList;
     }
 }

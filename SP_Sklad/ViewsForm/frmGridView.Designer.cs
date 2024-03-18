@@ -194,8 +194,7 @@
             // 
             this.barSubItem2.Caption = "Експорт";
             this.barSubItem2.Id = 48;
-            this.barSubItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.Image")));
-            this.barSubItem2.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem2.ImageOptions.LargeImage")));
+            this.barSubItem2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.export_16x16;
             this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
@@ -204,7 +203,7 @@
             // 
             // barButtonItem11
             // 
-            this.barButtonItem11.Caption = "Excel";
+            this.barButtonItem11.Caption = "Експотр в Excel";
             this.barButtonItem11.Id = 49;
             this.barButtonItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.Image")));
             this.barButtonItem11.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.LargeImage")));
@@ -213,7 +212,7 @@
             // 
             // barButtonItem9
             // 
-            this.barButtonItem9.Caption = "PDF";
+            this.barButtonItem9.Caption = "Експорт в PDF";
             this.barButtonItem9.Id = 50;
             this.barButtonItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
             this.barButtonItem9.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
@@ -224,8 +223,7 @@
             // 
             this.barButtonItem12.Caption = "Друк";
             this.barButtonItem12.Id = 51;
-            this.barButtonItem12.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem12.ImageOptions.Image")));
-            this.barButtonItem12.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem12.ImageOptions.LargeImage")));
+            this.barButtonItem12.ImageOptions.Image = global::SP_Sklad.Properties.Resources.printdialog_16x16;
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
@@ -234,8 +232,7 @@
             // 
             this.barSubItem3.Caption = "Налаштування";
             this.barSubItem3.Id = 54;
-            this.barSubItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.Image")));
-            this.barSubItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barSubItem3.ImageOptions.LargeImage")));
+            this.barSubItem3.ImageOptions.Image = global::SP_Sklad.Properties.Resources.customizegrid_16x16;
             this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barCheckItem1)});
             this.barSubItem3.Name = "barSubItem3";
@@ -245,6 +242,7 @@
             // 
             this.barCheckItem1.Caption = "Підсумки групи перемістити в рядок групи";
             this.barCheckItem1.Id = 55;
+            this.barCheckItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCheckItem1.ImageOptions.Image")));
             this.barCheckItem1.Name = "barCheckItem1";
             toolTipItem1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipItem1.Text = resources.GetString("toolTipItem1.Text");
@@ -645,6 +643,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.grid_16x16;
             this.Name = "frmGridView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список";
