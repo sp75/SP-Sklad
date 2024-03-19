@@ -793,8 +793,8 @@
             this.TradeTabPage.ImageOptions.ImageIndex = 3;
             this.TradeTabPage.Name = "TradeTabPage";
             this.TradeTabPage.Size = new System.Drawing.Size(1186, 591);
-            this.TradeTabPage.TabPageWidth = 120;
-            this.TradeTabPage.Text = "Продажі";
+            this.TradeTabPage.TabPageWidth = 150;
+            this.TradeTabPage.Text = "Роздрібна торгівля";
             // 
             // tradeUserControl1
             // 

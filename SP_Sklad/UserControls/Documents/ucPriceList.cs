@@ -393,7 +393,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    ka_template_list = _db.PriceList.FirstOrDefault(w => w.PlId == focused_row.PlId).Kagent.Select(s => new KaTemplateList
+                    ka_template_list = _db.PriceList.AsNoTracking().FirstOrDefault(w => w.PlId == focused_row.PlId).Kagent.Select(s => new KaTemplateList
                     {
                         Check = true,
                         KaId = s.KaId,
@@ -436,7 +436,7 @@ namespace SP_Sklad.UserControls
 
                     if (_wb.Kontragent.RouteId.HasValue)
                     {
-                        var r = _db.Routes.FirstOrDefault(w => w.Id == _wb.Kontragent.RouteId);
+                        var r = db.Routes.FirstOrDefault(w => w.Id == _wb.Kontragent.RouteId);
                         _wb.CarId = r.CarId;
                         _wb.RouteId = _wb.Kontragent.RouteId;
                         _wb.Received = r.Kagent1 != null ? r.Kagent1.Name : "";

@@ -22,6 +22,7 @@ namespace SP_Sklad.WBForm
         private int? _pl_id { get; set; }
         public BaseEntities _db { get; set; }
         public int? doc_id { get; set; }
+        private GetPriceListDet_Result pl_det_row => PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
         private DbContextTransaction current_transaction { get; set; }
         private PriceList pl { get; set; }
 
@@ -246,7 +247,7 @@ namespace SP_Sklad.WBForm
         void GetDetail()
         {
             int top_row = PriceListGrid.TopRowIndex;
-            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id);
+            PriceListDetBS.DataSource = _db.GetPriceListDet(_pl_id).ToList();
             PriceListGrid.ExpandAllGroups();
             PriceListGrid.TopRowIndex = top_row;
         }
@@ -254,43 +255,47 @@ namespace SP_Sklad.WBForm
         private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var dr = PriceListGrid.GetRow(e.RowHandle) as GetPriceListDet_Result;
+
             var pld = _db.PriceListDet.Find(dr.PlDetId);
+
             if (e.Column.FieldName == "Price")
             {
-                //dr.MatId
                 pld.Price = Convert.ToDecimal(e.Value);
+                _db.SaveChanges();
             }
 
             if (e.Column.FieldName == "Discount")
             {
                 pld.Discount = Convert.ToDecimal(e.Value);
+                _db.SaveChanges();
             }
 
             if (e.Column.FieldName == "Notes")
             {
                 pld.Notes = Convert.ToString(e.Value);
+                _db.SaveChanges();
             }
 
             if(e.Column.FieldName == "WId")
             {
                 pld.WId = Convert.ToInt32(e.Value);
+                _db.SaveChanges();
             }
+
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
-
             if (PriceListGrid.IsGroupRow(PriceListGrid.FocusedRowHandle))
             {
-                if (MessageBox.Show($"Ви дійсно бажаєте відалити групу товарів {dr.GrpName} ?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (MessageBox.Show($"Ви дійсно бажаєте відалити групу товарів {pl_det_row.GrpName} ?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    _db.DeleteWhere<PriceListDet>(w => w.GrpId == dr.GrpId && w.PlId == _pl_id);
+                    _db.DeleteWhere<PriceListDet>(w => w.GrpId == pl_det_row.GrpId && w.PlId == _pl_id);
                 }
             }
             else
             {
-                _db.DeleteWhere<PriceListDet>(w => w.PlDetId == dr.PlDetId);
+                _db.DeleteWhere<PriceListDet>(w => w.PlDetId == pl_det_row.PlDetId);
             }
 
             GetDetail();
@@ -312,6 +317,7 @@ namespace SP_Sklad.WBForm
                     PlDetType = 0
                 });
             }
+            _db.SaveChanges();
 
             GetDetail();
         }
@@ -359,8 +365,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
-            IHelper.ShowMatInfo(dr.MatId);
+            IHelper.ShowMatInfo(pl_det_row.MatId);
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -550,10 +555,9 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
-            var pld = _db.PriceListDet.Find(dr.PlDetId);
-            pld.Price = GetPrice(dr.MatId.Value);
-            dr.Price = pld.Price;
+            var pld = _db.PriceListDet.Find(pl_det_row.PlDetId);
+            pld.Price = GetPrice(pl_det_row.MatId.Value);
+            pl_det_row.Price = pld.Price;
             _db.SaveChanges();
 
             PriceListGrid.RefreshRow(PriceListGrid.FocusedRowHandle);
@@ -561,8 +565,6 @@ namespace SP_Sklad.WBForm
 
         private void PriceListPopupMenu_BeforePopup(object sender, CancelEventArgs e)
         {
-            var dr = PriceListGrid.GetFocusedRow() as GetPriceListDet_Result;
-
             if (PriceListGrid.IsGroupRow(PriceListGrid.FocusedRowHandle))
             {
                 DelMaterialBtn.Caption = "Видалити групу товарів";
