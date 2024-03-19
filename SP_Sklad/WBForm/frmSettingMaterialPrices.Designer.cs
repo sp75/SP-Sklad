@@ -35,7 +35,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettingMaterialPrices));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -45,6 +44,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettingMaterialPrices));
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -61,7 +61,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
@@ -102,6 +101,7 @@
             this.SettingMaterialPricesDetBS = new System.Windows.Forms.BindingSource(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
+            this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -128,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -216,7 +217,7 @@
             // 
             this.barSubItem1.Caption = "Додати";
             this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageOptions.ImageIndex = 2;
+            this.barSubItem1.ImageOptions.ImageIndex = 3;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
@@ -227,7 +228,7 @@
             // 
             this.AddMaterialBtn.Caption = "Товар";
             this.AddMaterialBtn.Id = 5;
-            this.AddMaterialBtn.ImageOptions.ImageIndex = 4;
+            this.AddMaterialBtn.ImageOptions.ImageIndex = 1;
             this.AddMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Insert));
             this.AddMaterialBtn.Name = "AddMaterialBtn";
             this.AddMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddMaterialBtn_ItemClick);
@@ -236,7 +237,7 @@
             // 
             this.barButtonItem6.Caption = "Товарну групу";
             this.barButtonItem6.Id = 6;
-            this.barButtonItem6.ImageOptions.ImageIndex = 7;
+            this.barButtonItem6.ImageOptions.ImageIndex = 2;
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
@@ -245,7 +246,7 @@
             // 
             this.DelMaterialBtn.Caption = "Видалити";
             this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageOptions.ImageIndex = 3;
+            this.DelMaterialBtn.ImageOptions.ImageIndex = 4;
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelMaterialBtn_ItemClick);
@@ -303,23 +304,6 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1066, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
-            // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(3, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(4, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(6, "Склади.bmp");
-            this.WBImgList.Images.SetKeyName(7, "OpenFolder.bmp");
-            this.WBImgList.Images.SetKeyName(8, "_нформац_я про пслугу.bmp");
-            this.WBImgList.Images.SetKeyName(9, "renum.png");
-            this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
-            this.WBImgList.Images.SetKeyName(11, "edit.bmp");
             // 
             // MatInfoBtn
             // 
@@ -427,7 +411,7 @@
             this.PersonComboBox.Enabled = false;
             this.PersonComboBox.Location = new System.Drawing.Point(587, 87);
             this.PersonComboBox.Name = "PersonComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.user_valet;
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -448,7 +432,7 @@
             this.OnDateDBEdit.Location = new System.Drawing.Point(266, 48);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.time_16x16;
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -746,6 +730,23 @@
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Custom 2";
             // 
+            // WBImgList
+            // 
+            this.WBImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("WBImgList.ImageStream")));
+            this.WBImgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.WBImgList.Images.SetKeyName(0, "print_doc");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.WBImgList.Images.SetKeyName(1, "product");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.WBImgList.Images.SetKeyName(2, "open_16x16");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.WBImgList.Images.SetKeyName(3, "add_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.WBImgList.Images.SetKeyName(4, "delete_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.WBImgList.Images.SetKeyName(5, "edit_property");
+            // 
             // frmSettingMaterialPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -760,7 +761,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("frmSettingMaterialPrices.IconOptions.Image")));
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.price_settings;
             this.Name = "frmSettingMaterialPrices";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -795,6 +796,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillTemplateDetGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -815,7 +817,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.StyleController styleController1;
         private System.Windows.Forms.Panel panel1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -859,5 +860,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.Utils.ImageCollection WBImgList;
     }
 }

@@ -254,10 +254,6 @@ namespace SP_Sklad.WBForm
             FindDoc.Find(pm_det_row.Id, pm_det_row.WType, pm_det_row.OnDate);
         }
 
-        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ;
-        }
 
         private void ProjectManagementDetGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {

@@ -105,6 +105,7 @@
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -132,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -161,7 +163,7 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.WBImgList;
+            this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
             this.DelMaterialBtn,
@@ -179,6 +181,8 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.FloatLocation = new System.Drawing.Point(275, 401);
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -207,7 +211,7 @@
             // 
             this.AddDocBtnItem.Caption = "Додати документ";
             this.AddDocBtnItem.Id = 34;
-            this.AddDocBtnItem.ImageOptions.ImageIndex = 2;
+            this.AddDocBtnItem.ImageOptions.ImageIndex = 3;
             this.AddDocBtnItem.Name = "AddDocBtnItem";
             this.AddDocBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddDocBtnItem_ItemClick);
             // 
@@ -215,7 +219,7 @@
             // 
             this.DelMaterialBtn.Caption = "Видалити";
             this.DelMaterialBtn.Id = 3;
-            this.DelMaterialBtn.ImageOptions.ImageIndex = 3;
+            this.DelMaterialBtn.ImageOptions.ImageIndex = 2;
             this.DelMaterialBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
             this.DelMaterialBtn.Name = "DelMaterialBtn";
             this.DelMaterialBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelMaterialBtn_ItemClick);
@@ -225,7 +229,7 @@
             this.standaloneBarDockControl2.AutoSize = true;
             this.standaloneBarDockControl2.CausesValidation = false;
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 127);
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 131);
             this.standaloneBarDockControl2.Manager = this.barManager1;
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1021, 24);
@@ -237,7 +241,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1021, 20);
+            this.barDockControlTop.Size = new System.Drawing.Size(1021, 24);
             // 
             // barDockControlBottom
             // 
@@ -251,24 +255,24 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 20);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 498);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 494);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1021, 20);
+            this.barDockControlRight.Location = new System.Drawing.Point(1021, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 498);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 494);
             // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
             this.standaloneBarDockControl1.CausesValidation = false;
             this.standaloneBarDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 20);
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 24);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1021, 0);
@@ -327,7 +331,7 @@
             // 
             this.panel1.Controls.Add(this.panelControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 20);
+            this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(1021, 107);
@@ -555,7 +559,7 @@
             // 
             this.WaybillCorrectionDetGridControl.DataSource = this.WaybillCorrectionDetBS;
             this.WaybillCorrectionDetGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WaybillCorrectionDetGridControl.Location = new System.Drawing.Point(0, 151);
+            this.WaybillCorrectionDetGridControl.Location = new System.Drawing.Point(0, 155);
             this.WaybillCorrectionDetGridControl.MainView = this.WaybillCorrectionDetGridView;
             this.WaybillCorrectionDetGridControl.Name = "WaybillCorrectionDetGridControl";
             this.WaybillCorrectionDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -563,7 +567,7 @@
             this.repositoryItemCheckEdit1,
             this.repositoryItemCalcEdit1,
             this.repositoryItemButtonEdit2});
-            this.WaybillCorrectionDetGridControl.Size = new System.Drawing.Size(1021, 315);
+            this.WaybillCorrectionDetGridControl.Size = new System.Drawing.Size(1021, 311);
             this.WaybillCorrectionDetGridControl.TabIndex = 38;
             this.WaybillCorrectionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillCorrectionDetGridView});
@@ -760,6 +764,19 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "print_doc");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "add_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "delete_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "edit_property");
+            // 
             // frmWaybillCorrection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -810,6 +827,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -877,5 +895,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }

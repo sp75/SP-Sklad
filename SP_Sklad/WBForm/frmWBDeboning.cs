@@ -164,9 +164,7 @@ namespace SP_Sklad.WBForm
             }
 
             RecipeComboBox.Enabled = WaybillDetOutBS.Count == 0;
-            ReceptBtn.Enabled = RecipeComboBox.Enabled;
             WhComboBox.Enabled = RecipeComboBox.Enabled;
-            WhInBtn.Enabled = RecipeComboBox.Enabled;
 
             AddMaterialBtn.Enabled = (WhComboBox.EditValue != DBNull.Value && RecipeComboBox.EditValue != DBNull.Value);
 
@@ -195,7 +193,6 @@ namespace SP_Sklad.WBForm
         private void frmWBDeboning_Shown(object sender, EventArgs e)
         {
             OnDateDBEdit.Enabled = (DBHelper.CurrentUser.EnableEditDate == 1);
-            NowDateBtn.Enabled = OnDateDBEdit.Enabled;
 
             WaybillDetOutGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
@@ -346,10 +343,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            wb.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = wb.OnDate;
-
-            _db.SaveChanges();
+          
         }
 
         private void NumEdit_EditValueChanged(object sender, EventArgs e)
@@ -457,27 +451,27 @@ namespace SP_Sklad.WBForm
 
         private void WhInBtn_Click(object sender, EventArgs e)
         {
-            WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+          
          }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+           
         }
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-            KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+           
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
+          
         }
 
         private void ReceptBtn_Click(object sender, EventArgs e)
         {
-            RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 15);
+           
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -529,6 +523,57 @@ namespace SP_Sklad.WBForm
             {
                 Point p2 = Control.MousePosition;
                 popupMenu1.ShowPopup(p2);
+            }
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                wb.OnDate = DBHelper.ServerDateTime();
+                OnDateDBEdit.DateTime = wb.OnDate;
+
+                _db.SaveChanges();
+            }
+        }
+
+        private void RecipeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                RecipeComboBox.EditValue = IHelper.ShowDirectList(RecipeComboBox.EditValue, 15);
+            }
+        }
+
+        private void WhComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+            }
+        }
+
+        private void PersonMakeComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+ if (e.Button.Index == 1)
+            {
+                PersonMakeComboBox.EditValue = IHelper.ShowDirectList(PersonMakeComboBox.EditValue, 3);
+            }
+        }
+
+        private void KagentComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+ if (e.Button.Index == 1)
+            {
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 3);
+            }
+        }
+
+        private void PersonComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+ if (e.Button.Index == 1)
+            {
+                PersonComboBox.EditValue = IHelper.ShowDirectList(PersonComboBox.EditValue, 3);
             }
         }
     }

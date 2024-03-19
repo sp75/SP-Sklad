@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIntermediateWeighing));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -44,7 +45,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIntermediateWeighing));
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -64,6 +64,7 @@
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl3 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.IntermediateWeighingBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
@@ -103,9 +104,9 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
@@ -132,7 +133,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // styleController1
@@ -175,7 +175,7 @@
             this.bar2.FloatLocation = new System.Drawing.Point(103, 422);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.PrevievBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
@@ -340,6 +340,23 @@
             this.standaloneBarDockControl4.Name = "standaloneBarDockControl4";
             this.standaloneBarDockControl4.Size = new System.Drawing.Size(1088, 0);
             this.standaloneBarDockControl4.Text = "standaloneBarDockControl4";
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "preview_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "add_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "delete_properties");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "edit_property");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "product_reserved_1");
             // 
             // WbDetPopupMenu
             // 
@@ -779,23 +796,6 @@
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection1.Images.SetKeyName(0, "preview_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "add_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "delete_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "edit_property");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.imageCollection1.Images.SetKeyName(4, "product_info_3");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "product_reserved_1");
-            // 
             // frmIntermediateWeighing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -813,6 +813,7 @@
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.weightedpies_16x16;
             this.Name = "frmIntermediateWeighing";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Проміжкове зважування";
@@ -820,6 +821,7 @@
             this.Load += new System.EventHandler(this.frmIntermediateWeighing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
@@ -849,7 +851,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetInGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

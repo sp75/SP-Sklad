@@ -238,8 +238,7 @@ namespace SP_Sklad.WBForm
 
         private void NowDateBtn_Click(object sender, EventArgs e)
         {
-            pp.OnDate = DBHelper.ServerDateTime();
-            OnDateDBEdit.DateTime = pp.OnDate;
+          
         }
 
         private void WaybillDetInGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
@@ -353,6 +352,15 @@ namespace SP_Sklad.WBForm
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
+        }
+
+        private void OnDateDBEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                pp.OnDate = DBHelper.ServerDateTime();
+                OnDateDBEdit.DateTime = pp.OnDate;
+            }
         }
     }
 }
