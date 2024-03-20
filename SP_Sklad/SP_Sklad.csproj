@@ -3499,7 +3499,6 @@
     <None Include="Resources\addgroupheader_16x16.png" />
     <None Include="Resources\copy_16x16.png" />
     <None Include="Resources\deletelist_16x16.png" />
-    <None Include="Resources\additem_16x16.png" />
     <None Include="Resources\refresh_16x16.png" />
     <None Include="Resources\apply_16x16.png" />
     <None Include="Resources\preview_16x16.png" />
@@ -3794,6 +3793,19 @@
     <None Include="Resources\copy_16x161.png" />
     <None Include="Resources\report_16x16.png" />
     <None Include="Resources\document.png" />
+    <None Include="Resources\clear.png" />
+    <None Include="Resources\additem_16x162.png" />
+    <None Include="Resources\addfile_16x161.png" />
+    <None Include="Resources\deletelist_16x161.png" />
+    <None Include="Resources\addnewdatasource_16x16.png" />
+    <None Include="Resources\add_row.png" />
+    <None Include="Resources\product_supplier_list.png" />
+    <None Include="Resources\pay_wb_1.png" />
+    <None Include="Resources\actives.png" />
+    <None Include="Resources\transaction.png" />
+    <None Include="Resources\add_file.png" />
+    <None Include="Resources\money_in_2.png" />
+    <None Include="Resources\money_out_2.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

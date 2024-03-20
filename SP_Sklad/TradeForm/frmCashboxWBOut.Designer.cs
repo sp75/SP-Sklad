@@ -1551,6 +1551,7 @@
             this.Controls.Add(this.panelControl6);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.standaloneBarDockControl1);
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.cash_register;
             this.KeyPreview = true;
             this.Name = "frmCashboxWBOut";
             this.Text = "РМК";

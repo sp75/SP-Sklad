@@ -415,7 +415,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "production_planning");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.planned_calculation, "planned_calculation", typeof(global::SP_Sklad.Properties.Resources), 56);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "planned_calculation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.actives, "actives", typeof(global::SP_Sklad.Properties.Resources), 57);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "actives");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);

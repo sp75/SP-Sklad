@@ -74,9 +74,8 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.BarImageList = new System.Windows.Forms.ImageList(this.components);
+            this.BarImageList1 = new DevExpress.Utils.ImageCollection(this.components);
             this.GridImageList = new System.Windows.Forms.ImageList(this.components);
-            this.PageImageList = new System.Windows.Forms.ImageList(this.components);
             this.MoneyTurnoverBS = new System.Windows.Forms.BindingSource(this.components);
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
@@ -107,6 +106,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -202,6 +202,7 @@
             this.docsUserControl1 = new SP_Sklad.MainTabs.DocsUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnoverBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -234,6 +235,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CurrensyList.Properties)).BeginInit();
@@ -427,7 +429,7 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl4);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl5);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.BarImageList;
+            this.barManager1.Images = this.BarImageList1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.NewItemBtn,
             this.CopyItemBtn,
@@ -492,7 +494,7 @@
             // 
             this.barButtonItem3.Caption = "Зарахування коштів";
             this.barButtonItem3.Id = 17;
-            this.barButtonItem3.ImageOptions.ImageIndex = 10;
+            this.barButtonItem3.ImageOptions.ImageIndex = 9;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
@@ -500,8 +502,7 @@
             // 
             this.barButtonItem5.Caption = "Експорт";
             this.barButtonItem5.Id = 18;
-            this.barButtonItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.Image")));
-            this.barButtonItem5.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.ImageOptions.LargeImage")));
+            this.barButtonItem5.ImageOptions.ImageIndex = 10;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
             // 
@@ -620,21 +621,31 @@
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1142, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
-            // BarImageList
+            // BarImageList1
             // 
-            this.BarImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("BarImageList.ImageStream")));
-            this.BarImageList.TransparentColor = System.Drawing.Color.White;
-            this.BarImageList.Images.SetKeyName(0, "Add.bmp");
-            this.BarImageList.Images.SetKeyName(1, "Copy.bmp");
-            this.BarImageList.Images.SetKeyName(2, "edit.bmp");
-            this.BarImageList.Images.SetKeyName(3, "Delete.bmp");
-            this.BarImageList.Images.SetKeyName(4, "refresh.bmp");
-            this.BarImageList.Images.SetKeyName(5, "Провести документ.bmp");
-            this.BarImageList.Images.SetKeyName(6, "Попередн_й перегляд.bmp");
-            this.BarImageList.Images.SetKeyName(7, "moneymove.png");
-            this.BarImageList.Images.SetKeyName(8, "зарахувати.bmp");
-            this.BarImageList.Images.SetKeyName(9, "salary.png");
-            this.BarImageList.Images.SetKeyName(10, "crediting the funds to the account.png");
+            this.BarImageList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList1.ImageStream")));
+            this.BarImageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList1.Images.SetKeyName(0, "add_file");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.BarImageList1.Images.SetKeyName(1, "copy_2");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList1.Images.SetKeyName(2, "edit_3");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList1.Images.SetKeyName(3, "clear");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_16x161, "refresh_16x161", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList1.Images.SetKeyName(4, "refresh_16x161");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.BarImageList1.Images.SetKeyName(6, "print_doc");
+            this.BarImageList1.Images.SetKeyName(7, "money_move.png");
+            this.BarImageList1.Images.SetKeyName(8, "icons8-bank-16 (4).png");
+            this.BarImageList1.Images.SetKeyName(9, "money_in1.png");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.BarImageList1.Images.SetKeyName(10, "xls_export");
+            this.BarImageList1.Images.SetKeyName(11, "actives_up.png");
+            this.BarImageList1.Images.SetKeyName(12, "money_edit.png");
             // 
             // GridImageList
             // 
@@ -681,30 +692,6 @@
             this.GridImageList.Images.SetKeyName(38, "1335611569_link.png");
             this.GridImageList.Images.SetKeyName(39, "moneymove.png");
             this.GridImageList.Images.SetKeyName(40, "crediting the funds to the account.png");
-            // 
-            // PageImageList
-            // 
-            this.PageImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("PageImageList.ImageStream")));
-            this.PageImageList.TransparentColor = System.Drawing.Color.White;
-            this.PageImageList.Images.SetKeyName(0, "Товари.bmp");
-            this.PageImageList.Images.SetKeyName(1, "info.bmp");
-            this.PageImageList.Images.SetKeyName(2, "Зв\'язан_ документи.bmp");
-            this.PageImageList.Images.SetKeyName(3, "Склади.bmp");
-            this.PageImageList.Images.SetKeyName(4, "Парт_ї.bmp");
-            this.PageImageList.Images.SetKeyName(5, "Замовлене кл_єнтами.bmp");
-            this.PageImageList.Images.SetKeyName(6, "Аналоги.bmp");
-            this.PageImageList.Images.SetKeyName(7, "Наявн_сть на сладах.bmp");
-            this.PageImageList.Images.SetKeyName(8, "Ц_нов_ кат.bmp");
-            this.PageImageList.Images.SetKeyName(9, "edit.bmp");
-            this.PageImageList.Images.SetKeyName(10, "UserInfo.bmp");
-            this.PageImageList.Images.SetKeyName(11, "Типи рахунк_в.bmp");
-            this.PageImageList.Images.SetKeyName(12, "Службовц_.bmp");
-            this.PageImageList.Images.SetKeyName(13, "Документ.bmp");
-            this.PageImageList.Images.SetKeyName(14, "Товари списком.bmp");
-            this.PageImageList.Images.SetKeyName(15, "system-users.png");
-            this.PageImageList.Images.SetKeyName(16, "Доступ до склад_в.bmp");
-            this.PageImageList.Images.SetKeyName(17, "Ф_нанси.bmp");
-            this.PageImageList.Images.SetKeyName(18, "_нформац_я про рух товар_в.bmp");
             // 
             // MoneyTurnoverBS
             // 
@@ -885,7 +872,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "production_planning");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.planned_calculation, "planned_calculation", typeof(global::SP_Sklad.Properties.Resources), 56);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "planned_calculation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.actives, "actives", typeof(global::SP_Sklad.Properties.Resources), 57);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "actives");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);
@@ -1100,7 +1088,6 @@
             // xtraTabControl2
             // 
             this.xtraTabControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl2.Images = this.PageImageList;
             this.xtraTabControl2.Location = new System.Drawing.Point(0, 44);
             this.xtraTabControl2.Name = "xtraTabControl2";
             this.xtraTabControl2.SelectedTabPage = this.xtraTabPage15;
@@ -1112,7 +1099,7 @@
             // xtraTabPage15
             // 
             this.xtraTabPage15.Controls.Add(this.MoneyTurnGridControl);
-            this.xtraTabPage15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage15.ImageOptions.Image")));
+            this.xtraTabPage15.ImageOptions.Image = global::SP_Sklad.Properties.Resources.transaction;
             this.xtraTabPage15.Name = "xtraTabPage15";
             this.xtraTabPage15.Size = new System.Drawing.Size(1138, 221);
             this.xtraTabPage15.Text = "Обороти";
@@ -1220,16 +1207,41 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 30),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 39),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 39),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 29),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 11, 30)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 11, 5)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
+            this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
+            // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "pay_doc_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "pay_doc_out");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out_2, "pay_doc_out_2", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "pay_doc_out_2");
+            this.imageCollection1.Images.SetKeyName(3, "money_move.png");
+            this.imageCollection1.Images.SetKeyName(4, "icons8-bank-16 (4).png");
+            this.imageCollection1.Images.SetKeyName(5, "money_in1.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money_out_2, "money_out_2", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "money_out_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money_in_2, "money_in_2", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "money_in_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "new_document");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "checked_green");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "checked_blue");
+            this.imageCollection1.Images.SetKeyName(11, "money_edit.png");
             // 
             // gridColumn4
             // 
@@ -1486,12 +1498,12 @@
             this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 29),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 30),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 39),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 40)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 5)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
-            this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
+            this.repositoryItemImageComboBox2.SmallImages = this.imageCollection1;
             // 
             // gridColumn7
             // 
@@ -1513,11 +1525,11 @@
             this.CheckedItemImageComboBox.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.CheckedItemImageComboBox.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 10)});
             this.CheckedItemImageComboBox.Name = "CheckedItemImageComboBox";
-            this.CheckedItemImageComboBox.SmallImages = this.GridImageList;
+            this.CheckedItemImageComboBox.SmallImages = this.imageCollection1;
             // 
             // gridColumn8
             // 
@@ -1770,7 +1782,6 @@
             // xtraTabControl3
             // 
             this.xtraTabControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl3.Images = this.PageImageList;
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage2;
@@ -1783,6 +1794,7 @@
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.vGridControl1);
+            this.xtraTabPage2.ImageOptions.Image = global::SP_Sklad.Properties.Resources.wb_info;
             this.xtraTabPage2.ImageOptions.ImageIndex = 1;
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(1138, 236);
@@ -1922,7 +1934,7 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.memoEdit1);
-            this.xtraTabPage3.ImageOptions.ImageIndex = 9;
+            this.xtraTabPage3.ImageOptions.Image = global::SP_Sklad.Properties.Resources.note_1;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1138, 236);
             this.xtraTabPage3.Text = "Примітка";
@@ -2053,7 +2065,7 @@
             // xtraTabControl4
             // 
             this.xtraTabControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraTabControl4.Images = this.PageImageList;
+            this.xtraTabControl4.Images = this.BarImageList1;
             this.xtraTabControl4.Location = new System.Drawing.Point(0, 44);
             this.xtraTabControl4.Name = "xtraTabControl4";
             this.xtraTabControl4.SelectedTabPage = this.xtraTabPage1;
@@ -2065,7 +2077,7 @@
             // xtraTabPage1
             // 
             this.xtraTabPage1.Controls.Add(this.chartControl1);
-            this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
+            this.xtraTabPage1.ImageOptions.ImageIndex = 11;
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1138, 221);
             this.xtraTabPage1.Text = "Зростання активів";
@@ -2219,6 +2231,7 @@
             this.Load += new System.EventHandler(this.FinancesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnoverBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -2253,6 +2266,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MoneyTurnGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
@@ -2357,9 +2371,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        public System.Windows.Forms.ImageList BarImageList;
         public System.Windows.Forms.ImageList GridImageList;
-        public System.Windows.Forms.ImageList PageImageList;
         private System.Windows.Forms.BindingSource MoneyTurnoverBS;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
@@ -2495,5 +2507,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn9;
+        private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.Utils.ImageCollection BarImageList1;
     }
 }

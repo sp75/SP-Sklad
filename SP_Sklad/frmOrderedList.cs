@@ -74,10 +74,19 @@ namespace SP_Sklad
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var path = Path.Combine(Application.StartupPath, "expotr.pdf");
-            gridControl1.ExportToPdf(path);
+            var file_format = DBHelper.CurrentUser.ReportFormat;
 
-            Process.Start(path);
+            if (file_format == "pdf")
+            {
+                var path = Path.Combine(Application.StartupPath, "expotr.pdf");
+                gridControl1.ExportToPdf(path);
+
+                Process.Start(path);
+            }
+            else if (file_format == "xlsx")
+            {
+                IHelper.ExportToXlsx(gridControl1);
+            }
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -345,7 +345,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(55, "production_planning");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.planned_calculation, "planned_calculation", typeof(global::SP_Sklad.Properties.Resources), 56);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(56, "planned_calculation");
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "ROI-PNG-Clipart.png");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.actives, "actives", typeof(global::SP_Sklad.Properties.Resources), 57);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(57, "actives");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 58);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(58, "money");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance_process, "finance_process", typeof(global::SP_Sklad.Properties.Resources), 59);
@@ -1112,8 +1113,8 @@
             this.BarImageList1.Images.SetKeyName(6, "preview_2");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.find_barcode, "find_barcode", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.BarImageList1.Images.SetKeyName(7, "find_barcode");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.showtestreport_16x162, "showtestreport_16x162", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.BarImageList1.Images.SetKeyName(8, "showtestreport_16x162");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edittask_16x16, "edittask_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.BarImageList1.Images.SetKeyName(8, "edittask_16x16");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList1.Images.SetKeyName(9, "xls_export");
             // 
