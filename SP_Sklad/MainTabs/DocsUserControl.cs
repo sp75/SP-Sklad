@@ -1,55 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
-using SP_Sklad;
-using SP_Sklad.WBForm;
-using DevExpress.XtraGrid.Views.Grid;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using SP_Sklad.Properties;
-using System.Data.SqlClient;
-using DevExpress.XtraGrid;
-using SP_Sklad.FinanseForm;
 using SP_Sklad.Common;
-using SP_Sklad.Reports;
 using DevExpress.XtraBars;
-using SP_Sklad.WBDetForm;
-using System.IO;
-using DevExpress.Data;
 using SP_Sklad.ViewsForm;
-using System.Diagnostics;
 using DevExpress.XtraEditors;
-using System.Data.Entity.SqlServer;
-using System.Data.Entity;
 
 namespace SP_Sklad.MainTabs
 {
     public partial class DocsUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         int cur_wtype = 0;
-        int show_null_balance = 1;
+
         BaseEntities _db { get; set; }
         v_GetDocsTree focused_tree_node { get; set; }
         public int? set_tree_node { get; set; }
-        private UserSettingsRepository user_settings { get; set; }
-        private List<KaTemplateList> ka_template_list { get; set; }
 
         public DocsUserControl()
         {
             InitializeComponent();
-            ka_template_list = new List<KaTemplateList>();
         }
 
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
- 
+
             if (!DesignMode)
             {
                 _db = new BaseEntities();
@@ -100,9 +79,9 @@ namespace SP_Sklad.MainTabs
                     ucPayDoc.w_types += "-2,";
                 }
                 wbContentTab.SelectedTabPageIndex = 6;
-              //  ucPayDoc.GetData();
+                //  ucPayDoc.GetData();
             }
-            else if(focused_tree_node.Id == 32) //Прибуткові , видаткові , рахунки
+            else if (focused_tree_node.Id == 32) //Прибуткові , видаткові , рахунки
             {
                 ucWayBill.w_types = "";
                 if (IHelper.GetUserAccess(21)?.CanView == 1)
@@ -220,10 +199,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-            RefrechItemBtn.PerformClick();
-        }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -281,14 +256,14 @@ namespace SP_Sklad.MainTabs
 
                 case 4:
 
-                    if (cur_wtype == 3)  
+                    if (cur_wtype == 3)
                     {
                         ucPayDocIn.NewItem();
-                    }else
+                    } else
                     if (cur_wtype == -3)
                     {
                         ucPayDocOut.NewItem();
-                    }else
+                    } else
                     if (cur_wtype == -2)
                     {
                         ucPayDocExtOut.NewItem();
@@ -309,7 +284,7 @@ namespace SP_Sklad.MainTabs
                     {
                         ucKAgentAdjustmentOut.NewItem();
                     }
-                    
+
                     break;
 
                 case 10:
@@ -369,11 +344,11 @@ namespace SP_Sklad.MainTabs
                         {
                             ucServicesIn.EditItem();
                         }
-                        else if(focused_tree_node.WType == 6)
+                        else if (focused_tree_node.WType == 6)
                         {
                             ucWayBillReturnСustomers.EditItem();
                         }
-                        else if(focused_tree_node.WType == -6)
+                        else if (focused_tree_node.WType == -6)
                         {
                             ucWaybillReturnSuppliers.EditItem();
                         }
@@ -383,11 +358,11 @@ namespace SP_Sklad.MainTabs
                         if (cur_wtype == 3)
                         {
                             ucPayDocIn.EditItem();
-                        }else
+                        } else
                         if (cur_wtype == -3)
                         {
                             ucPayDocOut.EditItem();
-                        }else
+                        } else
                         if (cur_wtype == -2)
                         {
                             ucPayDocExtOut.EditItem();
@@ -428,11 +403,6 @@ namespace SP_Sklad.MainTabs
             }
 
             RefrechItemBtn.PerformClick();
-        }
-
-        private void WbGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -561,7 +531,6 @@ namespace SP_Sklad.MainTabs
 
             bar1.Visible = true;
 
-        //    var child_node_list = _db.v_GetDocsTree.Where(w => (w.UserId == null || w.UserId == DBHelper.CurrentUser.UserId) && w.PId == focused_tree_node.Id).ToList();
             switch (focused_tree_node.GType)
             {
                 case 0:
@@ -840,11 +809,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void PDStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            RefrechItemBtn.PerformClick();
-        }
-
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             switch (focused_tree_node.GType)
@@ -917,193 +881,14 @@ namespace SP_Sklad.MainTabs
             else createTaxWBbtn.Visibility = BarItemVisibility.Never;
 
             ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) && (cur_wtype == -1 || cur_wtype == 1);
-            WbHistoryBtn.Enabled =  IHelper.GetUserAccess(39)?.CanView == 1;
+            WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
-        private void WbGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                DocsPopupMenu.ShowPopup(p2);
-            }
-        }
-
-        private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-          /*  var wbl = DB.SkladBase().WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-            if (wbl == null)
-            {
-                return;
-            }
-
-            if (wbl.Checked == 0)
-            {
-                using (var f = new frmWayBillOut(-1, null))
-                {
-                    var result = f._db.ExecuteWayBill(wbl.WbillId, null, DBHelper.CurrentUser.KaId).ToList().FirstOrDefault();
-                    f.doc_id = result.NewDocId;
-                    f.is_new_record = true;
-                    f.ShowDialog();
-                }
-            }
-
-            RefrechItemBtn.PerformClick();*/
-        }
-
-
-        private void NewPayDocBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-         /*   if ((wb_focused_row.SummInCurr - wb_focused_row.SummPay) <= 0)
-            {
-                MessageBox.Show("Документ вже оплачено!");
-                return;
-            }
-
-            int? doc_type;
-            if (new[] { 26, 57, 108, 140 }.Any(a => a == focused_tree_node.Id))
-            {
-                doc_type = -1;
-            }
-            else if (new[] { 27, 56, 39, 107 }.Any(a => a == focused_tree_node.Id))
-            {
-                doc_type = 1;
-            }
-            else
-            {
-                return;
-            }
-
-            var frm = new frmPayDoc(doc_type, null, wb_focused_row.SummInCurr)
-            {
-                PayDocCheckEdit = { Checked = true },
-                TypDocsEdit = { EditValue = wb_focused_row.WType },
-                _ka_id = wb_focused_row.KaId,
-                KagentComboBox = { EditValue = wb_focused_row.KaId }
-            };
-
-            frm.GetDocList();
-            frm.DocListEdit.EditValue = wb_focused_row.Id;
-
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                RefrechItemBtn.PerformClick();
-            }*/
-        }
-
-        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
-        {
-          
-        }
-
-  
-        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var dr = e.Row as GetWayBillList_Result;
-
-            SetWBEditorBarBtn(dr);
-        }
-
-        private void SetWBEditorBarBtn(GetWayBillList_Result row)
-        {
-            /*  if (row == null)
-              {
-                  return;
-              }*/
-
-            xtraTabControl2_SelectedPageChanged(null, null);
-
-            DeleteItemBtn.Enabled = (row != null && row.Checked == 0 && focused_tree_node.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (row != null && row.WType != 2 && row.WType != -16 && row.WType != 16 && focused_tree_node.CanPost == 1);
-            EditItemBtn.Enabled = (row != null && focused_tree_node.CanModify == 1 && (row.Checked == 0 || row.Checked == 1));
-            CopyItemBtn.Enabled = (row != null && focused_tree_node.CanModify == 1);
-            PrintItemBtn.Enabled = (row != null);
-        }
-
- 
         private class KaTemplateList
         {
             public bool Check { get; set; }
             public int KaId { get; set; }
             public string KaName { get; set; }
-        }
-
-        private void gridView2_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                WbDetPopupMenu.ShowPopup(p2);
-            }
-        }
-
-
-        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
-        {
-          /*  if ((wb_focused_row.WType == 6 || wb_focused_row.WType == 1) && wb_focused_row.Checked == 1)
-            {
-                DBHelper.CreateWBWriteOff(wb_focused_row.WbillId);
-            }*/
-        }
-
-        private void xtraTabControl2_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
-        {
-
-        }
-
-
-        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
-        {
- 
-        }
-
-        private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
-        {
-          /*  switch (focused_tree_node.GType)
-            {
-                case 1:
-                    for (int i = 0; i < WbGridView.RowCount; i++)
-                    {
-                        var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
-
-                        if (dr != null)
-                        {
-                            if (dr.WType == -1)
-                            {
-                                var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                                IHelper.Print(data_report, TemlateList.wb_out, false);
-                            }
-
-                            if (dr.WType == -16)
-                            {
-                                var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
-                                IHelper.Print(ord_out, TemlateList.ord_out, false);
-                            }
-                        }
-
-                    }
-
-                    MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");
-
-                    break;
-            }*/
-        }
-
-
-        private void DocsPopupMenu_Popup(object sender, EventArgs e)
-        {
-         /*   if (wb_focused_row == null)
-            {
-                return;
-            }
-
-            barButtonItem11.Enabled = wb_focused_row.WType == 6 || wb_focused_row.WType == 1;*/
-            
         }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
@@ -1155,116 +940,6 @@ namespace SP_Sklad.MainTabs
         }
 
 
-        private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
-        {
-         /*  if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-            {
-                switch (focused_tree_node.GType)
-                {
-                    case 1:
-                        for (int i = 0; i < WbGridView.RowCount; i++)
-                        {
-                            var dr = WbGridView.GetRow(i) as GetWayBillList_Result;
-
-                            if (dr != null)
-                            {
-                                if (dr.WType == -1)
-                                {
-                                    var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                                    IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
-                                }
-
-                                if (dr.WType == -16)
-                                {
-                                    var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
-                                    IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
-                                }
-                            }
-
-                        }
-                        break;
-                }
-            }*/
-        }
-
-        private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-         /*   if (e.Button.Index == 1)
-            {
-                wbKagentList.EditValue = IHelper.ShowDirectList(wbKagentList.EditValue, 1);
-            }*/
-        }
-
-        
-
-
-        private void WaybillDetGridView_CustomSummaryCalculate(object sender, DevExpress.Data.CustomSummaryEventArgs e)
-        {
-
-         /* if (e.SummaryProcess == CustomSummaryProcess.Finalize && gridControl2.DataSource != null)
-            {
-                var def_m = DBHelper.MeasuresList.FirstOrDefault(w => w.Def == 1);
-
-                GridSummaryItem item = e.Item as GridSummaryItem;
-
-                if (item.FieldName == "Amount")
-                {
-                    var mat_list = gridControl2.DataSource as IOrderedEnumerable<GetWaybillDetIn_Result>;
-                    var amount_sum = mat_list.Where(w => w.MId == def_m.MId).Sum(s => s.Amount);
-
-                    e.TotalValue = amount_sum.ToString() + " " + def_m.ShortName;//Math.Round(amount_sum + ext_sum, 2);
-                }
-            }*/
-        }
-
-
-        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        //    IHelper.ShowManufacturingMaterial(wb_det_focused_row.MatId);
-        }
-
-        private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
-        {
-         /*   if (!EditItemBtn.Enabled)
-            {
-                return;
-            }
-
-            var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
-
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.PTypeId = PTypeId;
-            _db.SaveChanges();
-
-            RefrechItemBtn.PerformClick();*/
-        }
-
-        private void BankStatementsGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
-        }
-
-
-
-        private void repositoryItemLookUpEdit5_EditValueChanged(object sender, EventArgs e)
-        {
-          /*  if (!EditItemBtn.Enabled)
-            {
-                return;
-            }
-
-            var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
-
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.EntId = EntId;
-            _db.SaveChanges();
-
-            RefrechItemBtn.PerformClick();*/
-        }
-
-
         private void barButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (var frm = new frmBarCode())
@@ -1291,65 +966,9 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void repositoryItemDateEdit1_EditValueChanged(object sender, EventArgs e)
-        {
-          /*  if (!EditItemBtn.Enabled)
-            {
-                return;
-            }
-
-            var s_date = ((DateEdit)sender).DateTime;
-
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.ShipmentDate = s_date;
-            _db.SaveChanges();
-
-            RefrechItemBtn.PerformClick();*/
-        }
-
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-         /*   using (var frm = new frmKagents(-1, ""))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    var new_id = frm.focused_row?.KaId;
-
-                    if(new_id !=null)
-                    {
-                        _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
-
-                        RefrechItemBtn.PerformClick();
-                    }
-                }
-            }*/
-        }
-
-        private void WaybillCorrectionDetBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-         /*   using (var frm = new frmWaybillCorrection(wb_det_focused_row.PosId))
-            {
-                frm.ShowDialog();
-            }*/
-        }
-
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
         {
             new frmWaybillCorrectionsView().ShowDialog();
-        }
-
-        private void WbDetPopupMenu_BeforePopup(object sender, CancelEventArgs e)
-        {
-         //   WaybillCorrectionDetBtn.Enabled =( wb_focused_row.WType == -1 && DBHelper.is_buh && wb_focused_row.Checked == 1);
-        }
-
-        private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-        /*    using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
-            {
-                frm.ShowDialog();
-            }*/
         }
     }
 }

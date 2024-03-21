@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Models\RemoteCustomerReturned.cs" />
     <Compile Include="Models\v_WayBillBase.cs" />
+    <Compile Include="Models\v_WayBillCustomerOrder.cs" />
+    <Compile Include="Models\v_WayBillCustomerOrderDet.cs" />
     <Compile Include="Models\v_WayBillReturnCustomerDet.cs" />
     <Compile Include="SPDatabase.cs" />
     <Compile Include="Models\AccountType.cs" />

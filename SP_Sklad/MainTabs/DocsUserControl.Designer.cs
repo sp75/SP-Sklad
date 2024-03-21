@@ -1059,7 +1059,7 @@
             this.barButtonItem12.Id = 23;
             this.barButtonItem12.ImageOptions.ImageIndex = 18;
             this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+
             // 
             // barDockControlTop
             // 
@@ -1123,14 +1123,14 @@
             this.ExecuteInvBtn.Caption = "Відвантажити весь товар";
             this.ExecuteInvBtn.Id = 7;
             this.ExecuteInvBtn.Name = "ExecuteInvBtn";
-            this.ExecuteInvBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteInvBtn_ItemClick);
+
             // 
             // NewPayDocBtn
             // 
             this.NewPayDocBtn.Caption = "Додати платіж по документу";
             this.NewPayDocBtn.Id = 9;
             this.NewPayDocBtn.Name = "NewPayDocBtn";
-            this.NewPayDocBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.NewPayDocBtn_ItemClick);
+
             // 
             // createTaxWBbtn
             // 
@@ -1152,7 +1152,7 @@
             this.barButtonItem2.Id = 12;
             this.barButtonItem2.ImageOptions.ImageIndex = 7;
             this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+
             // 
             // barButtonItem3
             // 
@@ -1160,7 +1160,7 @@
             this.barButtonItem3.Id = 13;
             this.barButtonItem3.ImageOptions.ImageIndex = 6;
             this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+
             // 
             // barButtonItem4
             // 
@@ -1217,7 +1217,7 @@
             this.barButtonItem11.Id = 22;
             this.barButtonItem11.ImageOptions.ImageIndex = 15;
             this.barButtonItem11.Name = "barButtonItem11";
-            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
+
             // 
             // barButtonItem13
             // 
@@ -1227,7 +1227,7 @@
             this.barButtonItem13.ImageOptions.ImageIndex = 16;
             this.barButtonItem13.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.LargeImage")));
             this.barButtonItem13.Name = "barButtonItem13";
-            this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
+
             // 
             // barButtonItem15
             // 
@@ -1236,7 +1236,7 @@
             this.barButtonItem15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.ImageOptions.Image")));
             this.barButtonItem15.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.ImageOptions.LargeImage")));
             this.barButtonItem15.Name = "barButtonItem15";
-            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
+
             // 
             // barButtonItem16
             // 
@@ -1244,14 +1244,14 @@
             this.barButtonItem16.Id = 28;
             this.barButtonItem16.ImageOptions.ImageIndex = 19;
             this.barButtonItem16.Name = "barButtonItem16";
-            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
+
             // 
             // ChangeWaybillKagentBtn
             // 
             this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
             this.ChangeWaybillKagentBtn.Id = 30;
             this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
-            this.ChangeWaybillKagentBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeWaybillKagentBtn_ItemClick);
+
             // 
             // WaybillCorrectionDetBtn
             // 
@@ -1259,7 +1259,7 @@
             this.WaybillCorrectionDetBtn.Id = 31;
             this.WaybillCorrectionDetBtn.ImageOptions.ImageIndex = 21;
             this.WaybillCorrectionDetBtn.Name = "WaybillCorrectionDetBtn";
-            this.WaybillCorrectionDetBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WaybillCorrectionDetBtn_ItemClick);
+
             // 
             // WbHistoryBtn
             // 
@@ -1267,7 +1267,7 @@
             this.WbHistoryBtn.Id = 33;
             this.WbHistoryBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.historyitem_16x16;
             this.WbHistoryBtn.Name = "WbHistoryBtn";
-            this.WbHistoryBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WbHistoryBtn_ItemClick);
+
             // 
             // GetWayBillListBS
             // 
@@ -1313,7 +1313,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15)});
             this.DocsPopupMenu.Manager = this.barManager1;
             this.DocsPopupMenu.Name = "DocsPopupMenu";
-            this.DocsPopupMenu.Popup += new System.EventHandler(this.DocsPopupMenu_Popup);
+
             this.DocsPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.DocsPopupMenu_BeforePopup);
             // 
             // WbDetPopupMenu
@@ -1330,7 +1330,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            this.WbDetPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbDetPopupMenu_BeforePopup);
+
             // 
             // bar4
             // 

@@ -191,6 +191,8 @@ namespace SP.Base.Models
         public virtual DbSet<v_WayBillReturnCustomerDet> v_WayBillReturnCustomerDet { get; set; }
         public virtual DbSet<v_WayBillBase> v_WayBillBase { get; set; }
         public virtual DbSet<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
+        public virtual DbSet<v_WayBillCustomerOrder> v_WayBillCustomerOrder { get; set; }
+        public virtual DbSet<v_WayBillCustomerOrderDet> v_WayBillCustomerOrderDet { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {

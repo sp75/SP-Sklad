@@ -605,5 +605,13 @@ namespace SP_Sklad.EditForm
                 TechProcLookUpEdit.EditValue = IHelper.ShowDirectList(TechProcLookUpEdit.EditValue, 14);
             }
         }
+
+        private void WIdLookUpEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
+            }
+        }
     }
 }
