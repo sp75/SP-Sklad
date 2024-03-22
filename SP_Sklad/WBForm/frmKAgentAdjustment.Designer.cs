@@ -770,7 +770,9 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 3, 2),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -3, 3),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 6),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 7)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 9)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.DocTypeImageCollection;
             // 
@@ -794,6 +796,10 @@
             this.DocTypeImageCollection.Images.SetKeyName(6, "credit_adjustmen");
             this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.DocTypeImageCollection.Images.SetKeyName(7, "debt_adjustment");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.DocTypeImageCollection.Images.SetKeyName(8, "purchase");
+            this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.DocTypeImageCollection.Images.SetKeyName(9, "wb_return_sale");
             // 
             // bandedGridColumn1
             // 

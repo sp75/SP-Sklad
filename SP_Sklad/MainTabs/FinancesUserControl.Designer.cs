@@ -640,12 +640,12 @@
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 6);
             this.BarImageList1.Images.SetKeyName(6, "print_doc");
             this.BarImageList1.Images.SetKeyName(7, "money_move.png");
-            this.BarImageList1.Images.SetKeyName(8, "icons8-bank-16 (4).png");
+            this.BarImageList1.Images.SetKeyName(8, "money_edit.png");
             this.BarImageList1.Images.SetKeyName(9, "money_in1.png");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.BarImageList1.Images.SetKeyName(10, "xls_export");
             this.BarImageList1.Images.SetKeyName(11, "actives_up.png");
-            this.BarImageList1.Images.SetKeyName(12, "money_edit.png");
+            this.BarImageList1.Images.SetKeyName(12, "icons8-bank-16 (4).png");
             // 
             // GridImageList
             // 

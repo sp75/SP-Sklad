@@ -215,7 +215,7 @@ namespace SP_Sklad.WBForm
 
                 decimal saldo = 0;
                 int idx = 0;
-                var saldo_types = new List<int>() { 1, -1, -6, 6, -3, 3, -23, 23, 100, -100, 29 };
+                var saldo_types = new List<int>() { 1, -1, -6, 6, -3, 3, -23, 23, 100, -100, 29, 25,-25 };
 
                 foreach (var item in result.Where(w => saldo_types.Contains(w.WType.Value) && w.SummInCurr != 0))
                 {

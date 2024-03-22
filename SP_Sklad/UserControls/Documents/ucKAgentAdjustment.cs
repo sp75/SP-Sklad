@@ -92,16 +92,19 @@ namespace SP_Sklad.UserControls
 
         public void DeleteItem()
         {
-            var adj = _db.KAgentAdjustment.Find(focused_row.Id);
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ {focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                var adj = _db.KAgentAdjustment.Find(focused_row.Id);
 
-            if (adj != null)
-            {
-                _db.KAgentAdjustment.Remove(adj);
-                _db.SaveChanges();
-            }
-            else
-            {
-                MessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.Num));
+                if (adj != null)
+                {
+                    _db.KAgentAdjustment.Remove(adj);
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Документ #{0} не знайдено", focused_row.Num));
+                }
             }
         }
 

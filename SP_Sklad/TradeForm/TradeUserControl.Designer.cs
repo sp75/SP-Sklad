@@ -677,14 +677,13 @@
             this.imageCollection1.Images.SetKeyName(3, "copy_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "edit_3");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "clear");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection1.Images.SetKeyName(6, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "close");
+            this.imageCollection1.Images.SetKeyName(6, "icons8-check-file-16 (2).png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.imageCollection1.Images.SetKeyName(7, "preview_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_16x161, "refresh_16x161", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.imageCollection1.Images.SetKeyName(8, "refresh_16x161");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "refresh_office");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.showproduct_16x16, "showproduct_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.imageCollection1.Images.SetKeyName(9, "showproduct_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_info, "wb_info", typeof(global::SP_Sklad.Properties.Resources), 10);
@@ -711,6 +710,14 @@
             this.imageCollection1.Images.SetKeyName(20, "print_doc");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.imageCollection1.Images.SetKeyName(21, "wb_return_sale");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.imageCollection1.Images.SetKeyName(22, "pay_doc_out");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.imageCollection1.Images.SetKeyName(23, "execute_16x16_red");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.execute_3, "execute_3", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.imageCollection1.Images.SetKeyName(24, "execute_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 25);
+            this.imageCollection1.Images.SetKeyName(25, "clear");
             // 
             // gridColumn2
             // 
@@ -1071,7 +1078,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl1.DataSource = this.WayBillListInfoBS;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
@@ -1382,10 +1389,10 @@
             this.repositoryItemImageComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox5.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -2, 6)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 22)});
             this.repositoryItemImageComboBox5.Name = "repositoryItemImageComboBox5";
+            this.repositoryItemImageComboBox5.SmallImages = this.imageCollection1;
             // 
             // gridColumn23
             // 
@@ -1407,10 +1414,10 @@
             this.repositoryItemImageComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox4.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 24),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 22),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 25)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 1)});
             this.repositoryItemImageComboBox4.Name = "repositoryItemImageComboBox4";
+            this.repositoryItemImageComboBox4.SmallImages = this.imageCollection1;
             // 
             // gridColumn24
             // 
@@ -1725,7 +1732,7 @@
             // 
             // vGridControl2
             // 
-            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl2.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl2.DataSource = this.PayDocListInfoBS;
             this.vGridControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl2.Location = new System.Drawing.Point(0, 0);

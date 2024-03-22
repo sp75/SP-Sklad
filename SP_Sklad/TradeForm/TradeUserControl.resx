@@ -195,10 +195,10 @@
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>103</value>
+    <value>78</value>
   </metadata>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>337, 19</value>
+    <value>320, 19</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ExecuteItemBtn.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -247,35 +247,42 @@
         a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
         cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
         /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
-        BQAAAAAAAAACCw==
+        BQAAAKcBAAACowEAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAAFzUkdCAK7OHOkA
+        AAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAABOElEQVQ4T6WRz0vCYBjH17H/r1so
+        1C06CXMYlc1TyEhZGP1wyULRMjKoQyuhixQUaF3qUMfo2q3liPy2Z3vStr24oC98edn2fD7vu036SUYz
+        MK7LWuVRAiZ4PBoaAr6EpWerW/XBkm7e8Xg0cQL7w0Zh9xDZonnPSDBxAlpJkt9uDLJr5i1jo8QJwmVs
+        FLopgkX9t6B+1vm7wPns46hrQW7mMVtZ8FbdamLqIDXJqB+RgODcSQlJQ4l2R7kOSEQC2lkEb1zWMOOe
+        JlFOq4yLBXTcMHzcu8DL2yvmqqp7LT8zLhbQOxPUuDnFYqs4hOdrOe/+tKH0GR9/Ar29B9t5D8DURFl5
+        YlwsaHXPh8OaZQRg7grjvuB31fUq2r0HpPcLYYgrX0V+pSg0RF+bPlhyM+V4q7uzD0vSNx2tZpKDwhye
+        AAAAAElFTkSuQmCCCw==
 </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="SharedImageCollection.Timestamp" type="System.DateTime, mscorlib">
-    <value>03/20/2024 15:12:13</value>
+    <value>03/22/2024 16:05:09</value>
   </data>
   <data name="SharedImageCollection.ImageSize" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
   <metadata name="GetTradeWayBillListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>823, 21</value>
+    <value>745, 21</value>
   </metadata>
   <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1321, 17</value>
+    <value>1320, 22</value>
   </metadata>
   <metadata name="WayBillListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1018, 19</value>
+    <value>901, 21</value>
   </metadata>
   <metadata name="GetPayDocListBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1173, 57</value>
+    <value>1175, 23</value>
   </metadata>
   <metadata name="PayDocListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1170, 22</value>
+    <value>1037, 20</value>
   </metadata>
   <metadata name="DocsPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>662, 20</value>
+    <value>601, 24</value>
   </metadata>
   <metadata name="PayDocsPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>470, 15</value>
+    <value>449, 21</value>
   </metadata>
 </root>
