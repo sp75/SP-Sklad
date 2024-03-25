@@ -631,10 +631,10 @@
             this.BarImageList1.Images.SetKeyName(1, "copy_2");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.BarImageList1.Images.SetKeyName(2, "edit_3");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.BarImageList1.Images.SetKeyName(3, "clear");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_16x161, "refresh_16x161", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList1.Images.SetKeyName(4, "refresh_16x161");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList1.Images.SetKeyName(3, "close");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList1.Images.SetKeyName(4, "refresh_office");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 6);
@@ -645,7 +645,10 @@
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.BarImageList1.Images.SetKeyName(10, "xls_export");
             this.BarImageList1.Images.SetKeyName(11, "actives_up.png");
-            this.BarImageList1.Images.SetKeyName(12, "icons8-bank-16 (4).png");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList1.Images.SetKeyName(12, "clear");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_16x161, "refresh_16x161", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.BarImageList1.Images.SetKeyName(13, "refresh_16x161");
             // 
             // GridImageList
             // 
