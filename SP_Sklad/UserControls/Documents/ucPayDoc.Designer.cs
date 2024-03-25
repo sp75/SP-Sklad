@@ -399,6 +399,11 @@
             // 
             this.PayDocGridControl.DataSource = this.GgridDataSource;
             this.PayDocGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PayDocGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.PayDocGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.PayDocGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.PayDocGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.PayDocGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.PayDocGridControl.Location = new System.Drawing.Point(0, 50);
             this.PayDocGridControl.MainView = this.PayDocGridView;
             this.PayDocGridControl.Name = "PayDocGridControl";
@@ -409,6 +414,7 @@
             this.repositoryItemImageComboBox5});
             this.PayDocGridControl.Size = new System.Drawing.Size(1344, 412);
             this.PayDocGridControl.TabIndex = 0;
+            this.PayDocGridControl.UseEmbeddedNavigator = true;
             this.PayDocGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.PayDocGridView});
             // 
@@ -938,6 +944,7 @@
             // 
             // ucRelDocGrid2
             // 
+            this.ucRelDocGrid2._access_token = null;
             this.ucRelDocGrid2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid2.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid2.Name = "ucRelDocGrid2";
