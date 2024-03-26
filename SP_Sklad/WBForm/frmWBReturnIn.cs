@@ -343,6 +343,11 @@ namespace SP_Sklad.WBForm
             if (e.Button.Index == 1)
             {
                 WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+
+                if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value)
+                {
+                    UpdateWh((int)WHComboBox.EditValue);
+                }
             }
         }
 
@@ -471,6 +476,37 @@ namespace SP_Sklad.WBForm
         private void WbDetPopupMenu_BeforePopup(object sender, System.ComponentModel.CancelEventArgs e)
         {
             barButtonItem2.Enabled = focused_dr.PosType == 0 && DBHelper.WhList.Any(w => w.RecyclingWarehouse == 1);
+        }
+
+        private void WHComboBox_EditValueChanged(object sender, EventArgs e)
+        {
+            if (!WHComboBox.ContainsFocus)
+            {
+                return;
+            }
+
+            UpdateWh((int?)WHComboBox.EditValue);
+        }
+
+        private void UpdateWh(int? wid)
+        {
+            if (WaybillDetInBS.Count > 0 && wid.HasValue && wid > 0)
+            {
+                if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wbill_id))
+                    {
+                        item.WId = wid;
+
+                        foreach (var turn in _db.WMatTurn.Where(w => w.SourceId == item.PosId))
+                        {
+                            turn.WId = wid.Value;
+                        }
+                    }
+                    _db.Save(wb.WbillId);
+                    RefreshDet();
+                }
+            }
         }
     }
 }

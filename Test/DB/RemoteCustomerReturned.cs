@@ -1,4 +1,4 @@
-namespace SP.Base.Models
+namespace Test.DB
 {
     using System;
     using System.Collections.Generic;
@@ -28,10 +28,10 @@ namespace SP.Base.Models
 
         public virtual Materials Materials { get; set; }
 
+        public virtual WaybillDet WaybillDet { get; set; }
+
+        public virtual WaybillDet WaybillDet1 { get; set; }
+
         public virtual WaybillList WaybillList { get; set; }
-
-        public virtual WaybillDet WaybillDet_OutPosId { get; set; }
-
-        public virtual WaybillDet WaybillDet_PosId { get; set; }
     }
 }

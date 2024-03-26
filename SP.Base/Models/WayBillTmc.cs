@@ -24,6 +24,8 @@ namespace SP.Base.Models
         public decimal Amount { get; set; }
 
         public int TurnType { get; set; }
+        public decimal? Price { get; set; }
+        public decimal? Total { get; set; }
 
         [Column(TypeName = "numeric")]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]

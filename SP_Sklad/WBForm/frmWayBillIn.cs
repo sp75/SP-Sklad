@@ -324,7 +324,7 @@ namespace SP_Sklad.WBForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (!WHComboBox.Focused)
+            if (!WHComboBox.ContainsFocus)
             {
                 return;
             }

@@ -118,9 +118,74 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
 
         public async Task<List<MaterialRemainViews>> GetRemainingMaterials(int? grp_id, int? wid, int? ka_id, DateTime? on_date, int? get_empty, string wh, int? show_all_mats, string grp, int? get_child_node)
         {
+            var sql = @" SELECT 
+		   ROW_NUMBER() OVER(ORDER BY m.MatId ) AS RecNo, 
+		   m.MatId, 
+		   wh_item.Remain, 
+		   wh_item.Rsv,   
+		   m.NAME MatName, 
+		   ms.SHORTNAME MsrName, 
+		   m.Artikul,
+		   wh_item.AvgPrice,  
+		   mg.NAME GrpName, 
+		   m.Num,  
+		   m.BarCode,   
+		   c.NAME Country, 
+		   m.Producer, 
+		   m.MinReserv, 
+		   wh_item.Ordered, 
+		   wh_item.ORsv,  
+		   m.SERIALS IsSerial, 
+		   m.GRPID OutGrpId, 
+		   wh_item.CurRemain, 
+		   wh_item.SumRemain,
+		   m.MId,
+		   mg.Num GrpNum
+         FROM Materials m 
+	   	 JOIN MEASURES ms ON ms.MId = m.MId 
+		 JOIN MATGROUP mg ON m.GRPID = mg.GRPID 
+		 LEFT OUTER JOIN COUNTRIES c ON m.CID = c.CID
+         left join (
+                   select 
+                   pr.MatId,
+				   sum( pr.remain) Remain,  
+				   sum(pr.Rsv) Rsv,
+				   cast(sum( (pr.remain + pr.Ordered) * pr.AvgPrice) / sum( pr.remain + pr.Ordered) as NUMERIC(15, 2) ) AvgPrice,
+				   sum (pr.Ordered) Ordered, 
+				   sum(OrderedRsv) ORsv,
+				   sum(ActualRemain) CurRemain ,
+				   cast( sum( (pr.remain + pr.Ordered) * pr.AvgPrice) as NUMERIC(15, 2) ) SumRemain
+				   from PosRemains pr
+				   join (
+						 SELECT 
+							[PosId],
+							max(OnDate) OnDate
+						 FROM [PosRemains]
+					     where ondate <= {3}
+					     group by [PosId]
+						) x on x.PosId = pr.PosId and pr.OnDate = x.OnDate
+                   inner join UserAccessWh awh on awh.WId = pr.wid
+                   where  (pr.remain > 0 or Ordered > 0) and awh.UserId = {8}
+				          and (pr.WId = {1} or {1} = 0 or EXISTS (SELECT * FROM Split(',', {5}) WHERE s = pr.WId))
+				          and ({2} = 0 or pr.SupplierId = {2}) 
+                   group by  pr.MatId ) wh_item on m.MatId = wh_item.MatId
+
+         left join (
+                   select 
+				   MatId,
+				   max(pr.OnDate) OnDate
+				   from PosRemains pr
+                   where  (pr.remain = 0 ) and (pr.WId = {1} or {1} = 0 or EXISTS (SELECT * FROM Split(',', {5}) WHERE s = pr.WId))
+                   group by  pr.MatId ) empty_item on m.MatId = empty_item.MatId
+
+        WHERE m.Deleted = 0 AND m.ARCHIVED = 0 AND ( {0} = 0 OR m.GRPID = {0} OR m.GRPID IN (SELECT s FROM Split(',', {7})) OR ({9} = 1 AND m.GRPID IN (SELECT GRPID FROM GetMatGroupTree({0}))) )
+	           and ( (wh_item.remain > 0) OR (wh_item.ordered > 0) OR ( {4} = 1 AND empty_item.OnDate IS NOT NULL ) OR ({6} = 1 and  {1} in (0,-1)) )
+";
+
             using (var db = SPDatabase.SPBase())
             {
-                return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
+                //return await db.Database.SqlQuery<MaterialRemainViews>(@"select * from WhMatGet({0},{1},{2},{3},{4},{5},{6},{7},{8},{9})", grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
+                return await db.Database.SqlQuery<MaterialRemainViews>(sql, grp_id, wid, ka_id, on_date, get_empty, wh, show_all_mats, grp, _user_id, get_child_node).ToListAsync();
             }
         }
 

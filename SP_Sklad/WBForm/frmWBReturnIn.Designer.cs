@@ -585,6 +585,7 @@
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 26;
             this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
+            this.WHComboBox.EditValueChanged += new System.EventHandler(this.WHComboBox_EditValueChanged);
             // 
             // labelControl6
             // 

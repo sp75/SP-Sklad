@@ -3058,10 +3058,9 @@ namespace SP.Base.Models
                .HasPrecision(15, 4);
 
             modelBuilder.Entity<WaybillDet>()
-              .HasMany(e => e.RemoteCustomerReturnedOutPosId)
-              .WithRequired(e => e.WaybillDet_OutPosId)
-              .HasForeignKey(e => e.OutPosId)
-              .WillCascadeOnDelete(false);
+               .HasMany(e => e.RemoteCustomerReturnedOutPosId)
+               .WithOptional(e => e.WaybillDet_OutPosId)
+               .HasForeignKey(e => e.OutPosId);
 
             modelBuilder.Entity<WaybillDet>()
                 .HasMany(e => e.RemoteCustomerReturnedPosId)

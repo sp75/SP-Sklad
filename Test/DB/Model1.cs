@@ -8,77 +8,113 @@ namespace Test.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model110")
+            : base("name=Model111")
         {
         }
 
-        public virtual DbSet<v_PayDoc> v_PayDoc { get; set; }
+        public virtual DbSet<Materials> Materials { get; set; }
+        public virtual DbSet<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
+        public virtual DbSet<WaybillDet> WaybillDet { get; set; }
+        public virtual DbSet<WaybillList> WaybillList { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Total)
+            modelBuilder.Entity<Materials>()
+                .Property(e => e.MinReserv)
                 .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.DocNum)
-                .IsUnicode(false);
+            modelBuilder.Entity<Materials>()
+                .Property(e => e.Weight)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Reason)
-                .IsUnicode(false);
+            modelBuilder.Entity<Materials>()
+                .Property(e => e.MSize)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Notes)
-                .IsUnicode(false);
+            modelBuilder.Entity<Materials>()
+                .Property(e => e.NDS)
+                .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_PayDoc>()
+            modelBuilder.Entity<Materials>()
+                .HasMany(e => e.RemoteCustomerReturned)
+                .WithRequired(e => e.Materials)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Materials>()
+                .HasMany(e => e.WaybillDet)
+                .WithRequired(e => e.Materials)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<RemoteCustomerReturned>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.Amount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.Price)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.Discount)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.Nds)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<WaybillDet>()
                 .Property(e => e.OnValue)
                 .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Schet)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.Total)
+                .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Address)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.BasePrice)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.City)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillDet>()
+                .Property(e => e.AvgInPrice)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.District)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.RemoteCustomerReturned)
+                .WithOptional(e => e.WaybillDet)
+                .HasForeignKey(e => e.OutPosId);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.Country)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillDet>()
+                .HasMany(e => e.RemoteCustomerReturned1)
+                .WithOptional(e => e.WaybillDet1)
+                .HasForeignKey(e => e.PosId);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.PostIndex)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillList>()
+                .Property(e => e.SummAll)
+                .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.AccNum)
-                .IsUnicode(false);
+            modelBuilder.Entity<WaybillList>()
+                .Property(e => e.Nds)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
+            modelBuilder.Entity<WaybillList>()
+                .Property(e => e.SummPay)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<WaybillList>()
                 .Property(e => e.SummInCurr)
                 .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.ActualSummInCurr)
-                .HasPrecision(15, 2);
+            modelBuilder.Entity<WaybillList>()
+                .Property(e => e.OnValue)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.KaAccNum)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<v_PayDoc>()
-                .Property(e => e.BankCommission)
-                .HasPrecision(15, 2);
+            modelBuilder.Entity<WaybillList>()
+                .HasMany(e => e.WaybillDet)
+                .WithRequired(e => e.WaybillList)
+                .WillCascadeOnDelete(false);
         }
     }
 }

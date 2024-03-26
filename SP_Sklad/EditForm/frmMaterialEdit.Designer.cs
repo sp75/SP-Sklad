@@ -475,11 +475,11 @@
             this.groupControl3.Controls.Add(this.labelControl11);
             this.groupControl3.Controls.Add(this.ProducerLookUpEdit);
             this.groupControl3.Controls.Add(this.calcEdit4);
+            this.groupControl3.Controls.Add(this.labelControl3);
+            this.groupControl3.Controls.Add(this.MinSizeEdit);
             this.groupControl3.Controls.Add(this.WeightEdit);
             this.groupControl3.Controls.Add(this.labelControl19);
             this.groupControl3.Controls.Add(this.labelControl18);
-            this.groupControl3.Controls.Add(this.lookUpEdit4);
-            this.groupControl3.Controls.Add(this.labelControl8);
             this.groupControl3.Controls.Add(this.labelControl7);
             this.groupControl3.Controls.Add(this.textEdit4);
             this.groupControl3.Controls.Add(this.labelControl5);
@@ -625,7 +625,7 @@
             // lookUpEdit4
             // 
             this.lookUpEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "RawMaterialTypeId", true));
-            this.lookUpEdit4.Location = new System.Drawing.Point(347, 130);
+            this.lookUpEdit4.Location = new System.Drawing.Point(485, 170);
             this.lookUpEdit4.Name = "lookUpEdit4";
             this.lookUpEdit4.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -636,13 +636,13 @@
             this.lookUpEdit4.Properties.ShowHeader = false;
             this.lookUpEdit4.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lookUpEdit4.Properties.ValueMember = "Id";
-            this.lookUpEdit4.Size = new System.Drawing.Size(164, 22);
+            this.lookUpEdit4.Size = new System.Drawing.Size(194, 22);
             this.lookUpEdit4.StyleController = this.styleController1;
             this.lookUpEdit4.TabIndex = 40;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(347, 108);
+            this.labelControl8.Location = new System.Drawing.Point(398, 173);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(81, 16);
             this.labelControl8.StyleController = this.styleController1;
@@ -730,10 +730,10 @@
             this.panelControl1.Controls.Add(this.MatTypeEdit);
             this.panelControl1.Controls.Add(this.WIdLookUpEdit);
             this.panelControl1.Controls.Add(this.labelControl4);
-            this.panelControl1.Controls.Add(this.labelControl3);
             this.panelControl1.Controls.Add(this.labelControl22);
-            this.panelControl1.Controls.Add(this.MinSizeEdit);
+            this.panelControl1.Controls.Add(this.lookUpEdit4);
             this.panelControl1.Controls.Add(this.labelControl2);
+            this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.MsrComboBox);
             this.panelControl1.Controls.Add(this.labelControl6);
@@ -866,12 +866,12 @@
             // 
             // labelControl12
             // 
-            this.labelControl12.Location = new System.Drawing.Point(457, 136);
+            this.labelControl12.Location = new System.Drawing.Point(371, 137);
             this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(22, 16);
+            this.labelControl12.Size = new System.Drawing.Size(108, 16);
             this.labelControl12.StyleController = this.styleController1;
             this.labelControl12.TabIndex = 51;
-            this.labelControl12.Text = "Тип";
+            this.labelControl12.Text = "Тип номенклатури";
             // 
             // MatTypeEdit
             // 
@@ -926,7 +926,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(438, 173);
+            this.labelControl3.Location = new System.Drawing.Point(347, 108);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(117, 16);
             this.labelControl3.StyleController = this.styleController1;
@@ -945,13 +945,13 @@
             // MinSizeEdit
             // 
             this.MinSizeEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "MinReserv", true));
-            this.MinSizeEdit.Location = new System.Drawing.Point(561, 170);
+            this.MinSizeEdit.Location = new System.Drawing.Point(347, 130);
             this.MinSizeEdit.Name = "MinSizeEdit";
             this.MinSizeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.MinSizeEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.MinSizeEdit.Properties.ShowCloseButton = true;
-            this.MinSizeEdit.Size = new System.Drawing.Size(118, 22);
+            this.MinSizeEdit.Size = new System.Drawing.Size(143, 22);
             this.MinSizeEdit.StyleController = this.styleController1;
             this.MinSizeEdit.TabIndex = 24;
             // 
