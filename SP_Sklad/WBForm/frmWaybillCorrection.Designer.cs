@@ -49,6 +49,7 @@
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.AddDocBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -58,10 +59,10 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
-            this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -105,10 +106,10 @@
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -133,7 +134,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -189,6 +189,14 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // PrevievBtn
+            // 
+            this.PrevievBtn.Caption = "Переглянути друковану форму документа";
+            this.PrevievBtn.Id = 0;
+            this.PrevievBtn.ImageOptions.ImageIndex = 0;
+            this.PrevievBtn.Name = "PrevievBtn";
+            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
+            // 
             // bar3
             // 
             this.bar3.BarName = "Custom 2";
@@ -211,7 +219,7 @@
             // 
             this.AddDocBtnItem.Caption = "Додати документ";
             this.AddDocBtnItem.Id = 34;
-            this.AddDocBtnItem.ImageOptions.ImageIndex = 3;
+            this.AddDocBtnItem.ImageOptions.ImageIndex = 1;
             this.AddDocBtnItem.Name = "AddDocBtnItem";
             this.AddDocBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.AddDocBtnItem_ItemClick);
             // 
@@ -278,30 +286,16 @@
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(1021, 0);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
-            // WBImgList
+            // imageCollection1
             // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(3, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(4, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(6, "Склади.bmp");
-            this.WBImgList.Images.SetKeyName(7, "OpenFolder.bmp");
-            this.WBImgList.Images.SetKeyName(8, "_нформац_я про пслугу.bmp");
-            this.WBImgList.Images.SetKeyName(9, "renum.png");
-            this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
-            this.WBImgList.Images.SetKeyName(11, "edit.bmp");
-            // 
-            // PrevievBtn
-            // 
-            this.PrevievBtn.Caption = "Переглянути друковану форму документа";
-            this.PrevievBtn.Id = 0;
-            this.PrevievBtn.ImageOptions.ImageIndex = 0;
-            this.PrevievBtn.Name = "PrevievBtn";
-            this.PrevievBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrevievBtn_ItemClick);
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "print_doc");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "add_file");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deletelist_16x161, "deletelist_16x161", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "deletelist_16x161");
             // 
             // barButtonItem1
             // 
@@ -321,6 +315,23 @@
             this.repositoryItemButtonEdit1.EditFormat.FormatString = "0.00";
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            // 
+            // WBImgList
+            // 
+            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
+            this.WBImgList.TransparentColor = System.Drawing.Color.White;
+            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
+            this.WBImgList.Images.SetKeyName(1, "_нформац_я про товар.bmp");
+            this.WBImgList.Images.SetKeyName(2, "Add.bmp");
+            this.WBImgList.Images.SetKeyName(3, "Delete.bmp");
+            this.WBImgList.Images.SetKeyName(4, "Товари.bmp");
+            this.WBImgList.Images.SetKeyName(5, "Послуги.bmp");
+            this.WBImgList.Images.SetKeyName(6, "Склади.bmp");
+            this.WBImgList.Images.SetKeyName(7, "OpenFolder.bmp");
+            this.WBImgList.Images.SetKeyName(8, "_нформац_я про пслугу.bmp");
+            this.WBImgList.Images.SetKeyName(9, "renum.png");
+            this.WBImgList.Images.SetKeyName(10, "recalc_money.png");
+            this.WBImgList.Images.SetKeyName(11, "edit.bmp");
             // 
             // styleController1
             // 
@@ -764,19 +775,6 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "WId";
             // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_doc, "print_doc", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection1.Images.SetKeyName(0, "print_doc");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "add_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "delete_properties");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "edit_property");
-            // 
             // frmWaybillCorrection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -802,6 +800,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -827,7 +826,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
