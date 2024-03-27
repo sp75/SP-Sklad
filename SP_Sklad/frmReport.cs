@@ -216,6 +216,7 @@ namespace SP_Sklad
                     this.ChargeGroupBox.Visible = false;
                     this.GroupKontragentPanel.Visible = true;
                     this.PersonPanel.Visible = true;
+                    btnShowGrid.Visible = true;
                     break;
 
                 case 29:

@@ -91,24 +91,14 @@ namespace SP.Reports
             object result;
             switch (_rep_id)
             {
+                case 27:
+                    result = _db.REP_27(StartDate, EndDate, Kagent.KaId, MatGroup.GrpId, Material.MatId, KontragentGroup.Id, (int)Person.KaId).ToList();
+                    break;
+
                 case 39:
                     var sort_list = GetSortedList(_rep_id);
 
-                    result = _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).Select(s => new
-                    {
-                        ГрупаКонтрагентів = s.KaGrpName,
-                        Контрагент = s.KaName,
-                        ГрупаТоварів = s.GrpName,
-                        Товар = s.Name,
-                        ОдВиміру = s.ShortName,
-                        Артикул = s.Artikul,
-                        Штрихкод = s.BarCode,
-                        ВиданоКсть = s.Amount,
-                        ВиданоСума = s.Summ,
-                        ПовернутоКсть = s.ReturnAmountIn,
-                        ПовернутоСума = s.ReturnSummIn,
-                        ВсьогоКсть = (s.Amount ?? 0) - (s.ReturnAmountIn ?? 0)
-                    }).ToList();
+                    result = _db.REP_39(StartDate, EndDate, MatGroup.GrpId, Kagent.KaId, KontragentGroup.Id).OrderBy(sort_list).ToList();
                     break;
 
                 case 56:

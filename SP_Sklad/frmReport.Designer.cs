@@ -1414,7 +1414,9 @@
             this.ClientSize = new System.Drawing.Size(481, 580);
             this.Controls.Add(this.xtraScrollableControl1);
             this.Controls.Add(this.panelControl2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.report_16x16;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmReport";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
