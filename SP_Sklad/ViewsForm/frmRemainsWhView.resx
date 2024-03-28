@@ -117,39 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>27, 22</value>
-  </metadata>
-  <metadata name="WaybillDetOutBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>392, 27</value>
-  </metadata>
-  <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>145, 24</value>
-  </metadata>
-  <assembly alias="DevExpress.Utils.v21.1" name="DevExpress.Utils.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="WBImgList.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFpEZXZFeHByZXNzLlV0aWxzLnYyMS4xLCBWZXJzaW9uPTIxLjEu
-        My4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI4OGQxNzU0ZDcwMGU0OWEMAwAAAFFT
-        eXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRv
-        a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
-        cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
-        /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
-        BQAAAA4CAAACCgIAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGsSURBVDhPlZFNS0JBFIZnFfRN/8mFtOgPtCyUihYVgiZm
-        ligopqJZYB+YldIyEdEgTESLKLN/kJsWpqmQXfPjNGfmelVscTvch3fumXnfOdxLfMFc8jD8CgfhPCeU
-        B9/lC2MfuUBy4D3Pges0kyK8RkQlBA+2O50/oQ8Flb+7A08g2kZFJcQTfGabWYVColxrcKoCoyTiOH7s
-        BoyLSogr0AsoeC1MS9UGLK6dgdmdgF3KjivOAmz+++EAx8nD0AR4uC60BihVBCh+Ct2ACVEJsfl5QKnS
-        4KOiMgQIRVKwpHeDSudkqHUuUGn3TNQ2yd20LL4MC5jbjEp8UDOC5sJ7ld2M77ie1xkFapviblrbnrQU
-        YI9VpAA04a2o/WCP2qa5m9aWMwntdm+CDfsFaO1HsjA4A1mis91CiwYUK9/sBq3ND2/Fmiy0RmuHaKw3
-        0Gx1ILA8y8BktineMmTq66OSdXOcBrSZGdKDI8qBrJpi8NPkAUjCrwQoB6UDuO6nv49nyYohCg0aUKs3
-        ofbVlALkwAIWNFd3an0EVPpr9hH/HUBrjIL/dQbBpnyU8At6TcBDjGgjgQAAAABJRU5ErkJgggs=
-</value>
-  </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>255, 27</value>
-  </metadata>
-  <metadata name="WbDetPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>537, 27</value>
-  </metadata>
 </root>

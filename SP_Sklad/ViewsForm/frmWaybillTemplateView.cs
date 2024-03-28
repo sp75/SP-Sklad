@@ -20,7 +20,7 @@ namespace SP_Sklad.EditForm
             _id = id;
             InitializeComponent();
 
-            waybillTemplateUserControl1.view_frm = this;
+            waybillTemplateUserControl1.isDirectList = true;
         }
 
         private void frmWaybillTemplateView_Load(object sender, EventArgs e)

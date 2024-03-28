@@ -1732,6 +1732,12 @@
     <Compile Include="ViewsForm\frmUserGroup.Designer.cs">
       <DependentUpon>frmUserGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmRemainsWhView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmRemainsWhView.Designer.cs">
+      <DependentUpon>frmRemainsWhView.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWhCatalog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2861,6 +2867,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmUserGroup.resx">
       <DependentUpon>frmUserGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmRemainsWhView.resx">
+      <DependentUpon>frmRemainsWhView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWhCatalog.resx">
       <DependentUpon>frmWhCatalog.cs</DependentUpon>

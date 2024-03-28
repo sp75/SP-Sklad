@@ -115,7 +115,7 @@ namespace SP_Sklad.WBDetForm
                 BasePriceEdit.EditValue = pos_in.Where(w => w.Amount > 0).Select(s => s.BasePrice * s.OnValue).Average();
             }
 
-            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.EditValue != DBNull.Value && AmountEdit.EditValue != DBNull.Value);
+            bool recult = (MatComboBox.EditValue != DBNull.Value && WHComboBox.EditValue != DBNull.Value && BasePriceEdit.Value >0 && AmountEdit.Value > 0);
 
             OkButton.Enabled = recult;
 
@@ -228,9 +228,15 @@ namespace SP_Sklad.WBDetForm
                 RSVCheckBox.Checked = (sum_amount <= 0);
 
             }
-            else RSVCheckBox.Checked = false;
+            else
+            {
+                RSVCheckBox.Checked = false;
+            }
 
-            if (AmountEdit.Value <= sum_full_remain) RSVCheckBox.Checked = false;
+            if (AmountEdit.Value <= sum_full_remain)
+            {
+                RSVCheckBox.Checked = false;
+            }
 
             GetOk();
         }
@@ -291,8 +297,10 @@ namespace SP_Sklad.WBDetForm
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)
         {
-        //    _wbd.Amount = AmountEdit.Value;
-            SetAmount();
+            if (AmountEdit.ContainsFocus)
+            {
+                SetAmount();
+            }
         }
 
         private void RSVCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -343,26 +351,24 @@ namespace SP_Sklad.WBDetForm
 
         private void MatComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if(e.Button.Index == 1)
+            if (e.Button.Index == 1)
             {
-                var f = new frmWhCatalog();
-
-                f.uc.ucWhMat.whKagentList.EditValue = _ka_id;
-                f.uc.ucWhMat.whKagentList.Enabled = false;
-                f.uc.ucWhMat.OnDateEdit.Enabled = false;
-                f.uc.bar3.Visible = false;
-                f.uc.ByWhBtn.Down = true;
-                f.uc.splitContainerControl1.SplitterPosition = 0;
-                f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-                f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-
-                f.uc.ucWhMat.isDirectList = true;
-                if (f.ShowDialog() == DialogResult.OK)
+                using (var f = new frmRemainsWhView())
                 {
-                    _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
-                    MatComboBox.EditValue = _wbd.MatId;
-                    GetContent();
-                    SetAmount();
+                    f.ucWhMat.whKagentList.EditValue = _ka_id;
+                    f.ucWhMat.whKagentList.Enabled = false;
+                    f.ucWhMat.OnDateEdit.Enabled = false;
+                    f.ucWhMat.by_grp = false;
+                    f.ucWhMat.focused_tree_node_num = 0;
+                    f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+                    f.ucWhMat.isDirectList = true;
+                    if (f.ShowDialog() == DialogResult.OK)
+                    {
+                        _wbd.MatId = f.ucWhMat.focused_wh_mat.MatId;
+                        MatComboBox.EditValue = _wbd.MatId;
+                        GetContent();
+                        SetAmount();
+                    }
                 }
             }
         }

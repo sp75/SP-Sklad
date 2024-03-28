@@ -148,28 +148,18 @@ namespace SP_Sklad.WBDetForm
         {
             if(e.Button.Index == 1)
             {
-                /*
-             MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-             _wbd.MatId = MatComboBox.EditValue != null && MatComboBox.EditValue != DBNull.Value ? (int)MatComboBox.EditValue : _wbd.MatId;*/
-
-                using (var f = new frmWhCatalog())
+                using (var f = new frmRemainsWhView() { WhName = WHComboBox.Text })
                 {
+                    f.ucWhMat.OnDateEdit.Enabled = false;
+                    f.ucWhMat.WhCheckedComboBox.Enabled = false;
+                    f.ucWhMat.by_grp = false;
+                    f.ucWhMat.focused_tree_node_num = _wbd.WId.Value;
+                    f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+                    f.ucWhMat.isDirectList = true;
 
-                    f.uc.ucWhMat.whKagentList.Enabled = false;
-                    f.uc.ucWhMat.OnDateEdit.Enabled = false;
-                    f.uc.bar3.Visible = false;
-                    f.uc.ByWhBtn.Down = true;
-                    f.uc.splitContainerControl1.SplitterPosition = 0;
-                    using (var db = new BaseEntities())
-                    {
-                        f.uc.WHTreeList.DataSource = db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == _wbd.WId).ToList();
-                    }
-                    f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-
-                    f.uc.ucWhMat.isDirectList = true;
                     if (f.ShowDialog() == DialogResult.OK)
                     {
-                        _wbd.MatId = f.uc.ucWhMat.focused_wh_mat.MatId;
+                        _wbd.MatId = f.ucWhMat.focused_wh_mat.MatId;
                         MatComboBox.EditValue = _wbd.MatId;
                         SetValue();
                     }

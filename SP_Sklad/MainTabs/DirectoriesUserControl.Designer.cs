@@ -4338,7 +4338,6 @@
             this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
             this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1088, 568);
             this.waybillTemplateUserControl1.TabIndex = 0;
-            this.waybillTemplateUserControl1.view_frm = null;
             // 
             // xtraTabPage33
             // 

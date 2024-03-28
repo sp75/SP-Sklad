@@ -27,7 +27,15 @@ namespace SP_Sklad.UserControls.Warehouse
 {
     public partial class ucWhMat : DevExpress.XtraEditors.XtraUserControl
     {
-        public int wid = 0;
+        [Browsable(true)]
+        public event EventHandler WhMatGridViewDoubleClick
+        {
+            add => this.WhMatGridView.DoubleClick += value;
+            remove => this.WhMatGridView.DoubleClick -= value;
+        }
+
+
+        private int _wid = 0;
         public string wh_list = "*";
         public bool by_grp { get; set; }
         public bool display_child_groups { get; set; }
@@ -104,7 +112,7 @@ namespace SP_Sklad.UserControls.Warehouse
                 }
 
 
-                var whlist = new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = s.WId == wid }).ToList();
+                var whlist = new BaseEntities().Warehouse.Select(s => new checkedWhList { WId = s.WId.ToString(), Name = s.Name, IsChecked = s.WId == _wid }).ToList();
                 foreach (var item in whlist)
                 {
                     WhCheckedComboBox.Properties.Items.Add(item.WId, item.Name, item.IsChecked ? CheckState.Checked : CheckState.Unchecked, true);
@@ -136,11 +144,11 @@ namespace SP_Sklad.UserControls.Warehouse
             string grp = "";
 
             grp_id = by_grp ? focused_tree_node_num : 0;
-            wid = by_grp ? 0 : focused_tree_node_num;
+            _wid = by_grp ? 0 : focused_tree_node_num;
 
             if (wh_list != "*")
             {
-                wid = -1;
+                _wid = -1;
             }
 
             if (display_child_groups && by_grp && focused_tree_node_num != 0)
@@ -151,7 +159,7 @@ namespace SP_Sklad.UserControls.Warehouse
             WhMatGridView.ShowLoadingPanel();
             int top_row = WhMatGridView.TopRowIndex;
             //     wh_mat_list = await DB.SkladBase().WhMatGet(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, ShowEmptyItemsCheck.Checked ? 1 : 0, wh_list, ShowAllItemsCheck.Checked ? 1 : 0, grp, DBHelper.CurrentUser.UserId, display_child_groups ? 1 : 0).ToListAsync();
-            wh_mat_list = await new MaterialRemain(UserSession.UserId).GetRemainingMaterials(grp_id, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, (ShowEmptyItemsCheck.Checked ? 1 : 0), wh_list, (ShowAllItemsCheck.Checked ? 1 : 0), "", (display_child_groups ? 1 : 0));
+            wh_mat_list = await new MaterialRemain(UserSession.UserId).GetRemainingMaterials(grp_id, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, (ShowEmptyItemsCheck.Checked ? 1 : 0), wh_list, (ShowAllItemsCheck.Checked ? 1 : 0), "", (display_child_groups ? 1 : 0));
 
             WhMatGetBS.DataSource = wh_mat_list;
             WhMatGridView.TopRowIndex = top_row;
@@ -174,8 +182,7 @@ namespace SP_Sklad.UserControls.Warehouse
             }
             else if (isDirectList)
             {
-                var frm = this.Parent as frmWhCatalog;
-                frm.OkButton.PerformClick();
+                return;
             }
             else
             {
@@ -200,7 +207,7 @@ namespace SP_Sklad.UserControls.Warehouse
             }
 
 
-            var remain_in_wh = DB.SkladBase().MatRemainByWh(wh_mat.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
+            var remain_in_wh = DB.SkladBase().MatRemainByWh(wh_mat.MatId, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
             var p_type = (wb.Kontragent != null ? (wb.Kontragent.PTypeId ?? DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId) : DB.SkladBase().PriceTypes.First(w => w.Def == 1).PTypeId);
             var mat_price = DB.SkladBase().GetMatPrice(wh_mat.MatId, wb.CurrId, p_type, wb.KaId).FirstOrDefault();
 
@@ -614,15 +621,15 @@ namespace SP_Sklad.UserControls.Warehouse
             {
                 case 0:
 
-                    RemainOnWhGrid.DataSource = DB.SkladBase().MatRemainByWh(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
+                    RemainOnWhGrid.DataSource = DB.SkladBase().MatRemainByWh(row.MatId, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, wh_list, DBHelper.CurrentUser.UserId).ToList();
                     break;
                 case 1:
 
-                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
+                    PosGridControl.DataSource = DB.SkladBase().PosGet(row.MatId, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list, DBHelper.CurrentUser.UserId).OrderBy(o => o.OnDate).ToList();
                     break;
                 case 2:
 
-                    GetOrderedBS.DataSource = DB.SkladBase().GetOrdered(row.MatId, wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
+                    GetOrderedBS.DataSource = DB.SkladBase().GetOrdered(row.MatId, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, 0, wh_list).ToList();
                     break;
                 case 3:
                     MatChangeGridControl.DataSource = DB.SkladBase().GetMatChange(row.MatId).ToList();
@@ -744,11 +751,11 @@ namespace SP_Sklad.UserControls.Warehouse
             string grp = "";
 
             grp_id = by_grp ? focused_tree_node_num : 0;
-            wid = by_grp ? 0 : focused_tree_node_num;
+            _wid = by_grp ? 0 : focused_tree_node_num;
 
             if (wh_list != "*")
             {
-                wid = -1;
+                _wid = -1;
             }
 
             if (display_child_groups && by_grp && focused_tree_node_num != 0)
@@ -789,7 +796,7 @@ namespace SP_Sklad.UserControls.Warehouse
                                  join ms in objectContext.Measures on m.MId equals ms.MId
                                  join mg in objectContext.MatGroup on m.GrpId equals mg.GrpId
                                  join wh_item in (objectContext.PosRemains.Join(objectContext.UserAccessWh.Where(wu => wu.UserId == UserSession.UserId), pr => pr.WId, ua => ua.WId, (pr, ua) => pr)
-                                 .Where(w => (w.Remain > 0 || w.Ordered > 0) && (w.WId == wid || wid == 0) && (ka_id == 0 || w.SupplierId == ka_id) && w.OnDate == (objectContext.PosRemains.Where(w2 => w2.PosId == w.PosId && w2.OnDate <= OnDateEdit.DateTime).Max(prm => prm.OnDate)))
+                                 .Where(w => (w.Remain > 0 || w.Ordered > 0) && (w.WId == _wid || _wid == 0) && (ka_id == 0 || w.SupplierId == ka_id) && w.OnDate == (objectContext.PosRemains.Where(w2 => w2.PosId == w.PosId && w2.OnDate <= OnDateEdit.DateTime).Max(prm => prm.OnDate)))
                                  .GroupBy(g => g.MatId)
                                  .Select(s => new
                                  {
@@ -805,7 +812,7 @@ namespace SP_Sklad.UserControls.Warehouse
                                      SumRemain = s.Sum(sr => (sr.Remain + sr.Ordered) * sr.AvgPrice)
                                  })) on m.MatId equals wh_item.MatId into gj
                                  from subwh_item in gj.DefaultIfEmpty()
-                                 join wh_emty_item in (objectContext.PosRemains.Where(w=>  w.Remain == 0 && (w.WId == wid || wid == 0)).GroupBy(g=> g.MatId).Select(ss=> new { OnDate =ss.Max(m=> m.OnDate), MatId = ss.Key }) ) on m.MatId equals wh_emty_item.MatId into gje
+                                 join wh_emty_item in (objectContext.PosRemains.Where(w=>  w.Remain == 0 && (w.WId == _wid || _wid == 0)).GroupBy(g=> g.MatId).Select(ss=> new { OnDate =ss.Max(m=> m.OnDate), MatId = ss.Key }) ) on m.MatId equals wh_emty_item.MatId into gje
                                  from subwh_empty_item in gje.DefaultIfEmpty()
 
                                  where m.Deleted == 0 && m.Archived == 0 && (subwh_item.Remain > 0 || subwh_item.Ordered > 0) && (m.GrpId == grp_id || grp_id == 0)

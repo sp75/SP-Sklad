@@ -177,7 +177,7 @@ namespace SP_Sklad.Common
                 f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
                 f.uc.ucWhMat.wb = wb;
                 f.uc.ucWhMat.isMatList = true;
-                f.uc.ucWhMat.wid = WId.Value;
+          //      f.uc.ucWhMat._wid = WId.Value;
 
                 if (WId != -1)
                 {
@@ -245,59 +245,6 @@ namespace SP_Sklad.Common
             }
         }
 
-        static public void ShowMatListByWH2(BaseEntities db, WaybillList wb, int ka_id)
-        {
-            //Не доделано
-            var f = new frmWhCatalog();
-
-            f.uc.ucWhMat.xtraTabPage4.PageVisible = false;
-            f.uc.ucWhMat.xtraTabPage5.PageVisible = false;
-            f.uc.ucWhMat.xtraTabPage9.PageVisible = false;
-            f.uc.ucWhMat.MatListTabPage.PageVisible = true;
-            f.uc.ucWhMat.xtraTabControl1.SelectedTabPageIndex = 4;
-            f.uc.ucWhMat.gridColumn49.Visible = false;
-            f.uc.ucWhMat.gridColumn51.Visible = false;
-            f.uc.ucWhMat.gridColumn52.Visible = false;
-            f.uc.bar3.Visible = false;
-            f.uc.ByWhBtn.Down = true;
-            f.uc.splitContainerControl1.SplitterPosition = 0;
-
-            f.uc.ucWhMat.whKagentList.EditValue = ka_id;
-            f.uc.ucWhMat.whKagentList.Enabled = false;
-
-            f.uc.WHTreeList.DataSource = new BaseEntities().GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1).ToList();
-
-            f.uc.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-
-            f.uc.ucWhMat.wb = wb;
-            f.uc.ucWhMat.isMatList = true;
-            if (f.ShowDialog() == DialogResult.OK)
-            {
-                foreach (var item in f.uc.ucWhMat.custom_mat_list)
-                {
-                    var wbd = db.WaybillDet.Add(new WaybillDet
-                    {
-                        WbillId = wb.WbillId,
-                        OnDate = wb.OnDate,
-                        MatId = item.MatId,
-                        WId = item.WId,
-                        Amount = item.Amount,
-                        Price = item.Price,
-                        Discount = 0,
-                        Nds = wb.Nds,
-                        CurrId = wb.CurrId,
-                        OnValue = wb.OnValue,
-                        BasePrice = item.Price,
-                        PosKind = 0,
-                        PosParent = 0,
-                        DiscountKind = 0
-
-                    });
-                }
-                db.SaveChanges();
-            }
-        }
-
         static public void ShowMatListByWH3(BaseEntities db, WaybillList wb, String WID)
         {
             using (var f = new frmWhCatalog())
@@ -322,8 +269,8 @@ namespace SP_Sklad.Common
 
                 using (var _db = new BaseEntities())
                 {
-                    int wid;
-                    if (int.TryParse(WID, out wid))
+                //    int wid;
+                    if (int.TryParse(WID, out int wid))
                     {
                         f.uc.WHTreeList.DataSource = _db.GetWhTree(DBHelper.CurrentUser.UserId, 2).Where(w => w.GType == 1 && w.Num == wid).ToList();
                     }

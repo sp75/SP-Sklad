@@ -28,7 +28,7 @@ namespace SP_Sklad
         private int user_id { get; set; }
         public static mainForm main_form { get; set; }
 
-        private int? _wid => (mainTabControl.SelectedTabPageIndex == 2 && whUserControl.ByWhBtn.Down) ? (int?)whUserControl.ucWhMat.wid : null;
+        private int? _wid => (mainTabControl.SelectedTabPageIndex == 2 && whUserControl.ByWhBtn.Down) ? whUserControl.focused_tree_node?.Num : null;
 
 
         public mainForm() : this(UserSession.UserId) { }

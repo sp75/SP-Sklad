@@ -421,7 +421,6 @@
             // 
             // BasePriceEdit
             // 
-            this.BasePriceEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillDetBS, "BasePrice", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.BasePriceEdit.Enabled = false;
             this.BasePriceEdit.Location = new System.Drawing.Point(101, 45);
             this.BasePriceEdit.MenuManager = this.barManager1;

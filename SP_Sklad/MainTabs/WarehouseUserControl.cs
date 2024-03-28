@@ -11,7 +11,7 @@ namespace SP_Sklad.MainTabs
 {
     public partial class WarehouseUserControl : DevExpress.XtraEditors.XtraUserControl
     {
-        GetWhTree_Result focused_tree_node { get; set; }
+        public GetWhTree_Result focused_tree_node { get; set; }
         public int? set_tree_node { get; set; }
         public int g_type = -1;
 
