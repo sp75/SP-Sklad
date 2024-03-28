@@ -50,7 +50,7 @@
             this.DelItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddItem = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl7 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.TreeListBar = new DevExpress.XtraBars.Bar();
             this.showChildNodeBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddGroupMatBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -665,7 +665,7 @@
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.bar1,
             this.bar2,
-            this.bar3});
+            this.TreeListBar});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
@@ -841,21 +841,21 @@
             this.standaloneBarDockControl7.Size = new System.Drawing.Size(1086, 24);
             this.standaloneBarDockControl7.Text = "standaloneBarDockControl7";
             // 
-            // bar3
+            // TreeListBar
             // 
-            this.bar3.BarName = "Custom 4";
-            this.bar3.DockCol = 0;
-            this.bar3.DockRow = 0;
-            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
-            this.bar3.FloatLocation = new System.Drawing.Point(62, 139);
-            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.TreeListBar.BarName = "Custom 4";
+            this.TreeListBar.DockCol = 0;
+            this.TreeListBar.DockRow = 0;
+            this.TreeListBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.TreeListBar.FloatLocation = new System.Drawing.Point(62, 139);
+            this.TreeListBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.showChildNodeBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
-            this.bar3.OptionsBar.AllowQuickCustomization = false;
-            this.bar3.OptionsBar.DrawDragBorder = false;
-            this.bar3.OptionsBar.UseWholeRow = true;
-            this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl8;
-            this.bar3.Text = "Custom 4";
+            this.TreeListBar.OptionsBar.AllowQuickCustomization = false;
+            this.TreeListBar.OptionsBar.DrawDragBorder = false;
+            this.TreeListBar.OptionsBar.UseWholeRow = true;
+            this.TreeListBar.StandaloneBarDockControl = this.standaloneBarDockControl8;
+            this.TreeListBar.Text = "Custom 4";
             // 
             // showChildNodeBtn
             // 
@@ -1780,7 +1780,7 @@
             // 
             // vGridControl4
             // 
-            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl4.Location = new System.Drawing.Point(0, 0);
@@ -4338,6 +4338,7 @@
             this.waybillTemplateUserControl1.Name = "waybillTemplateUserControl1";
             this.waybillTemplateUserControl1.Size = new System.Drawing.Size(1088, 568);
             this.waybillTemplateUserControl1.TabIndex = 0;
+            this.waybillTemplateUserControl1.GridViewDoubleClick += new System.EventHandler(this.waybillTemplateUserControl1_GridViewDoubleClick);
             // 
             // xtraTabPage33
             // 
@@ -4939,7 +4940,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit7;
         private DevExpress.XtraGrid.Columns.GridColumn ArchivedGridColumn;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit8;
-        private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl8;
         private DevExpress.XtraBars.BarButtonItem showChildNodeBtn;
         public DevExpress.XtraTreeList.TreeList DirTreeList;
@@ -5116,5 +5116,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn115;
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection BarImageList;
+        public DevExpress.XtraBars.Bar TreeListBar;
     }
 }

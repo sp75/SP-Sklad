@@ -301,7 +301,7 @@ namespace SP_Sklad.UserControls
             this.WaybillTemplateGridView.OptionsView.EnableAppearanceOddRow = true;
             this.WaybillTemplateGridView.OptionsView.ShowGroupPanel = false;
             this.WaybillTemplateGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WaybillTemplateGridView_FocusedRowObjectChanged);
-            this.WaybillTemplateGridView.DoubleClick += new System.EventHandler(this.PriceListGridView_DoubleClick);
+
             // 
             // gridColumn47
             // 

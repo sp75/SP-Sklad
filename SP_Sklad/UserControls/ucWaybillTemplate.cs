@@ -17,7 +17,6 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucWaybillTemplate : DevExpress.XtraEditors.XtraUserControl
     {
-        public bool isDirectList { get; set; }
 
         [Browsable(true)]
         public event EventHandler GridViewDoubleClick
@@ -84,19 +83,6 @@ namespace SP_Sklad.UserControls
         public void AddNewItem()
         {
             new frmWaybillTemplate().ShowDialog();
-        }
-
-        private void PriceListGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (isDirectList)
-            {
-                return;
-            }
-
-            if (EditFocusedRow() == DialogResult.OK)
-            {
-                GetDataList();
-            }
         }
 
         private void WaybillTemplateGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

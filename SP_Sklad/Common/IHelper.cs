@@ -537,6 +537,7 @@ namespace SP_Sklad.Common
                 case 18:
                     using (var f = new frmCatalog(null, 143))
                     {
+                        f.uc.TreeListBar.Visible = false;
                         f.uc.isDirectList = true;
                         f.uc.splitContainerControl1.Collapsed = true;
                         f.Text = "Шаблони";

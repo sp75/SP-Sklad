@@ -1902,5 +1902,18 @@ namespace SP_Sklad.MainTabs
         {
             EditItemBtn.PerformClick();
         }
+
+        private void waybillTemplateUserControl1_GridViewDoubleClick(object sender, EventArgs e)
+        {
+            if (isDirectList)
+            {
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+            else
+            {
+                EditItemBtn.PerformClick();
+            }
+        }
     }
 }
