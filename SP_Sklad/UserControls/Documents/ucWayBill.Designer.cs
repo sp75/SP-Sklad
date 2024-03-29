@@ -287,8 +287,8 @@
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.imageCollection1.Images.SetKeyName(17, "checked_blue");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.imageCollection1.Images.SetKeyName(18, "historyitem_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.order_history, "order_history", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "order_history");
             // 
             // NewItemBtn
             // 

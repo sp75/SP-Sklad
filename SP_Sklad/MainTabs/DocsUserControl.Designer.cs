@@ -94,38 +94,15 @@
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.BarImageList1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.ExecuteInvBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.NewPayDocBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.createTaxWBbtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-            this.ChangeWaybillKagentBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.WaybillCorrectionDetBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.WbHistoryBtn = new DevExpress.XtraBars.BarButtonItem();
             this.GetWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.DocsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -166,8 +143,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -948,30 +923,9 @@
             this.RefrechItemBtn,
             this.ExecuteItemBtn,
             this.PrintItemBtn,
-            this.ExecuteInvBtn,
-            this.NewPayDocBtn,
-            this.createTaxWBbtn,
-            this.barButtonItem1,
-            this.barButtonItem2,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem5,
-            this.barButtonItem6,
-            this.barButtonItem7,
-            this.barButtonItem8,
-            this.barButtonItem9,
-            this.barButtonItem10,
-            this.barButtonItem11,
-            this.barButtonItem12,
-            this.barButtonItem13,
             this.barButtonItem14,
-            this.barButtonItem15,
-            this.barButtonItem16,
             this.barButtonItem17,
-            this.ChangeWaybillKagentBtn,
-            this.WaybillCorrectionDetBtn,
-            this.barButtonItem18,
-            this.WbHistoryBtn});
+            this.barButtonItem18});
             this.barManager1.MaxItemId = 34;
             // 
             // bar1
@@ -1046,20 +1000,10 @@
             this.bar3.DockRow = 0;
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar3.FloatLocation = new System.Drawing.Point(626, 675);
-            this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Custom 2";
-            // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "Створити замовлення від кліента";
-            this.barButtonItem12.Id = 23;
-            this.barButtonItem12.ImageOptions.ImageIndex = 18;
-            this.barButtonItem12.Name = "barButtonItem12";
-
             // 
             // barDockControlTop
             // 
@@ -1118,157 +1062,6 @@
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList1.Images.SetKeyName(9, "xls_export");
             // 
-            // ExecuteInvBtn
-            // 
-            this.ExecuteInvBtn.Caption = "Відвантажити весь товар";
-            this.ExecuteInvBtn.Id = 7;
-            this.ExecuteInvBtn.Name = "ExecuteInvBtn";
-
-            // 
-            // NewPayDocBtn
-            // 
-            this.NewPayDocBtn.Caption = "Додати платіж по документу";
-            this.NewPayDocBtn.Id = 9;
-            this.NewPayDocBtn.Name = "NewPayDocBtn";
-
-            // 
-            // createTaxWBbtn
-            // 
-            this.createTaxWBbtn.Caption = "Створити податкову накладну";
-            this.createTaxWBbtn.Id = 10;
-            this.createTaxWBbtn.Name = "createTaxWBbtn";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Показувати документи з нульовим балансом";
-            this.barButtonItem1.Id = 11;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Перейти до документа";
-            this.barButtonItem2.Id = 12;
-            this.barButtonItem2.ImageOptions.ImageIndex = 7;
-            this.barButtonItem2.Name = "barButtonItem2";
-
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Друк/Попередній перегляд";
-            this.barButtonItem3.Id = 13;
-            this.barButtonItem3.ImageOptions.ImageIndex = 6;
-            this.barButtonItem3.Name = "barButtonItem3";
-
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "Інформація про товар";
-            this.barButtonItem4.Id = 14;
-            this.barButtonItem4.ImageOptions.ImageIndex = 9;
-            this.barButtonItem4.Name = "barButtonItem4";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Інформація про рух товару";
-            this.barButtonItem5.Id = 15;
-            this.barButtonItem5.ImageOptions.ImageIndex = 10;
-            this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "Інформація про резерв товару";
-            this.barButtonItem6.Id = 16;
-            this.barButtonItem6.ImageOptions.ImageIndex = 8;
-            this.barButtonItem6.Name = "barButtonItem6";
-            // 
-            // barButtonItem7
-            // 
-            this.barButtonItem7.Caption = "Показати список аналогів";
-            this.barButtonItem7.Id = 17;
-            this.barButtonItem7.ImageOptions.ImageIndex = 14;
-            this.barButtonItem7.Name = "barButtonItem7";
-            // 
-            // barButtonItem8
-            // 
-            this.barButtonItem8.Caption = "Знайти на складі...";
-            this.barButtonItem8.Id = 18;
-            this.barButtonItem8.ImageOptions.ImageIndex = 11;
-            this.barButtonItem8.Name = "barButtonItem8";
-            // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Знайти в довіднику товарів...";
-            this.barButtonItem9.Id = 19;
-            this.barButtonItem9.ImageOptions.ImageIndex = 12;
-            this.barButtonItem9.Name = "barButtonItem9";
-            // 
-            // barButtonItem10
-            // 
-            this.barButtonItem10.Caption = "Властивості позиції";
-            this.barButtonItem10.Id = 20;
-            this.barButtonItem10.ImageOptions.ImageIndex = 2;
-            this.barButtonItem10.Name = "barButtonItem10";
-            // 
-            // barButtonItem11
-            // 
-            this.barButtonItem11.Caption = "Акт списання";
-            this.barButtonItem11.Id = 22;
-            this.barButtonItem11.ImageOptions.ImageIndex = 15;
-            this.barButtonItem11.Name = "barButtonItem11";
-
-            // 
-            // barButtonItem13
-            // 
-            this.barButtonItem13.Caption = "Експорт документів у файл";
-            this.barButtonItem13.Id = 24;
-            this.barButtonItem13.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.Image")));
-            this.barButtonItem13.ImageOptions.ImageIndex = 16;
-            this.barButtonItem13.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.LargeImage")));
-            this.barButtonItem13.Name = "barButtonItem13";
-
-            // 
-            // barButtonItem15
-            // 
-            this.barButtonItem15.Caption = "Друк вибраних документів";
-            this.barButtonItem15.Id = 26;
-            this.barButtonItem15.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.ImageOptions.Image")));
-            this.barButtonItem15.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.ImageOptions.LargeImage")));
-            this.barButtonItem15.Name = "barButtonItem15";
-
-            // 
-            // barButtonItem16
-            // 
-            this.barButtonItem16.Caption = "Інформація про виробництво товару";
-            this.barButtonItem16.Id = 28;
-            this.barButtonItem16.ImageOptions.ImageIndex = 19;
-            this.barButtonItem16.Name = "barButtonItem16";
-
-            // 
-            // ChangeWaybillKagentBtn
-            // 
-            this.ChangeWaybillKagentBtn.Caption = "Змінити контрагента";
-            this.ChangeWaybillKagentBtn.Id = 30;
-            this.ChangeWaybillKagentBtn.Name = "ChangeWaybillKagentBtn";
-
-            // 
-            // WaybillCorrectionDetBtn
-            // 
-            this.WaybillCorrectionDetBtn.Caption = "Корегувати позицію";
-            this.WaybillCorrectionDetBtn.Id = 31;
-            this.WaybillCorrectionDetBtn.ImageOptions.ImageIndex = 21;
-            this.WaybillCorrectionDetBtn.Name = "WaybillCorrectionDetBtn";
-
-            // 
-            // WbHistoryBtn
-            // 
-            this.WbHistoryBtn.Caption = "Історія змін в документі";
-            this.WbHistoryBtn.Id = 33;
-            this.WbHistoryBtn.ImageOptions.Image = global::SP_Sklad.Properties.Resources.historyitem_16x16;
-            this.WbHistoryBtn.Name = "WbHistoryBtn";
-
-            // 
             // GetWayBillListBS
             // 
             this.GetWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
@@ -1292,45 +1085,6 @@
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
-            // 
-            // DocsPopupMenu
-            // 
-            this.DocsPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteInvBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeWaybillKagentBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
-            new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15)});
-            this.DocsPopupMenu.Manager = this.barManager1;
-            this.DocsPopupMenu.Name = "DocsPopupMenu";
-
-            this.DocsPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.DocsPopupMenu_BeforePopup);
-            // 
-            // WbDetPopupMenu
-            // 
-            this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.WaybillCorrectionDetBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
-            this.WbDetPopupMenu.Manager = this.barManager1;
-            this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-
             // 
             // bar4
             // 
@@ -1416,8 +1170,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DocsPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1449,30 +1201,11 @@
         private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
         private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarButtonItem ExecuteInvBtn;
-        private DevExpress.XtraBars.BarButtonItem NewPayDocBtn;
-        private DevExpress.XtraBars.BarButtonItem createTaxWBbtn;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.PopupMenu DocsPopupMenu;
         private System.Windows.Forms.BindingSource WayBillListInfoBS;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         public DevExpress.XtraTreeList.TreeList DocsTreeList;
         public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
         private System.Windows.Forms.BindingSource GetWayBillListBS;
-        private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
@@ -1480,7 +1213,6 @@
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.Bar bar4;
         private DevExpress.XtraBars.Bar bar5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage25;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage29;
@@ -1489,10 +1221,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage33;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         public UserControls.ucExpedition expeditionUserControl;
-        private DevExpress.XtraBars.BarButtonItem ChangeWaybillKagentBtn;
-        private DevExpress.XtraBars.BarButtonItem WaybillCorrectionDetBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;
-        private DevExpress.XtraBars.BarButtonItem WbHistoryBtn;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage34;
         public UserControls.ucWayBillIn wayBillInUserControl;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage35;

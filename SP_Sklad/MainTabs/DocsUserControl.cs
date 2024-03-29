@@ -872,24 +872,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void DocsPopupMenu_BeforePopup(object sender, CancelEventArgs e)
-        {
-            if (cur_wtype == -16 || cur_wtype == 2) ExecuteInvBtn.Visibility = BarItemVisibility.Always;
-            else ExecuteInvBtn.Visibility = BarItemVisibility.Never;
-
-            if (cur_wtype == -1) createTaxWBbtn.Visibility = BarItemVisibility.Always;
-            else createTaxWBbtn.Visibility = BarItemVisibility.Never;
-
-            ChangeWaybillKagentBtn.Enabled = (DBHelper.is_admin || DBHelper.is_buh) && (cur_wtype == -1 || cur_wtype == 1);
-            WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
-        }
-
-        private class KaTemplateList
-        {
-            public bool Check { get; set; }
-            public int KaId { get; set; }
-            public string KaName { get; set; }
-        }
 
         private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
         {

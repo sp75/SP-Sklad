@@ -285,8 +285,8 @@
             this.imageCollection1.Images.SetKeyName(12, "pay_wb");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.imageCollection1.Images.SetKeyName(14, "historyitem_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.order_history, "order_history", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "order_history");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "checked_blue");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 16);
