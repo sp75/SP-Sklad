@@ -141,6 +141,14 @@ namespace SP_Sklad.UserControls
                 {
                     DBHelper.ExecuteOrder(db, wb_focused_row.WbillId);
                 }
+
+                wb.UpdatedAt = DBHelper.ServerDateTime();
+                wb.UpdatedBy = DBHelper.CurrentUser.UserId;
+                if (wb.PersonId == null)
+                {
+                    wb.PersonId = DBHelper.CurrentUser.KaId;
+                }
+                db.SaveChanges();
             }
         }
         public void PrintItem()

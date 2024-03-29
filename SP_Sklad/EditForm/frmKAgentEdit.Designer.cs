@@ -624,8 +624,8 @@
             this.ImageList.Images.SetKeyName(7, "product_1");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.ImageList.Images.SetKeyName(8, "open_16x16");
-            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.kontragent_balans, "kontragent_balans", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.ImageList.Images.SetKeyName(9, "kontragent_balans");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.ImageList.Images.SetKeyName(9, "balans_businessman");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.contract, "contract", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.ImageList.Images.SetKeyName(10, "contract");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 11);
@@ -1334,7 +1334,7 @@
             this.xtraTabControl2.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.Flat;
             this.xtraTabControl2.LookAndFeel.UseDefaultLookAndFeel = false;
             this.xtraTabControl2.Name = "xtraTabControl2";
-            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage10;
+            this.xtraTabControl2.SelectedTabPage = this.xtraTabPage17;
             this.xtraTabControl2.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             this.xtraTabControl2.Size = new System.Drawing.Size(673, 204);
             this.xtraTabControl2.TabIndex = 42;

@@ -402,7 +402,7 @@
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_Materials1" />
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" />
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillDet" />
-        <AssociationConnector Association="BaseModel.EmployeeKagent" />
+
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />
