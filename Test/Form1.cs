@@ -126,9 +126,6 @@ namespace Test
 
                 db.SaveChanges();
             }
-
-
-
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

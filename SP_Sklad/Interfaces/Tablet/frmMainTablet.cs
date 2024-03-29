@@ -91,7 +91,7 @@ namespace SP_Sklad.Interfaces.Tablet
         {
             if (!mainContainer.Controls.Contains(mainContainer.Controls["ucWayBillIn"]))
             {
-                mainContainer.Controls.Add(new ucWayBillIn());
+                mainContainer.Controls.Add(new ucWayBillIn() {  Dock = DockStyle.Fill});
             }
         }
     }

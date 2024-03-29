@@ -375,6 +375,14 @@
           <Property Name="FunId" Type="int" />
           <Property Name="TemlateName" Type="nvarchar" MaxLength="128" />
         </EntityType>
+        <EntityType Name="EmployeeKagent">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="KaId" />
+          </Key>
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="EnterpriseWorker">
           <Key>
             <PropertyRef Name="EnterpriseId" />
@@ -2205,6 +2213,7 @@ warning 6002: The table/view 'sp_base.dbo.v_BarCodes' does not have a primary ke
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DeboningDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DeboningDet">
+          
           <Key>
             <PropertyRef Name="RowIndex" />
           </Key>
@@ -3167,6 +3176,7 @@ warning 6002: The table/view 'sp_base.dbo.v_PayDoc' does not have a primary key 
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="SourceType" Type="nvarchar" MaxLength="128" />
           <Property Name="ReportingDate" Type="datetime" />
+          <Property Name="KagentId" Type="uniqueidentifier" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_PlannedCalculation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5472,6 +5482,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <PropertyRef Name="KaId" />
             </Principal>
             <Dependent Role="DiscCards">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeKagent_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="EmployeeKagent" Type="Self.EmployeeKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EmployeeKagent">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeKagent_Kagent1">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="EmployeeKagent" Type="Self.EmployeeKagent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EmployeeKagent">
               <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -9661,6 +9695,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="DiscCards" EntityType="Self.DiscCards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocRels" EntityType="Self.DocRels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocType" EntityType="Self.DocType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeKagent" EntityType="Self.EmployeeKagent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EnterpriseWorker" EntityType="Self.EnterpriseWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ENTPARAMS" EntityType="Self.ENTPARAMS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
@@ -10667,7 +10702,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_PayDoc].[KaGroupName] AS [KaGroupName], 
     [v_PayDoc].[DocTypeName] AS [DocTypeName], 
     [v_PayDoc].[SourceType] AS [SourceType], 
-    [v_PayDoc].[ReportingDate] AS [ReportingDate]
+    [v_PayDoc].[ReportingDate] AS [ReportingDate], 
+    [v_PayDoc].[KagentId] AS [KagentId]
     FROM [dbo].[v_PayDoc] AS [v_PayDoc]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_PlannedCalculation" EntityType="Self.v_PlannedCalculation" store:Type="Views" store:Schema="dbo">
@@ -12060,6 +12096,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_DISCCARDS_KAID" Association="Self.FK_DISCCARDS_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DiscCards" EntitySet="DiscCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeKagent_Kagent" Association="Self.FK_EmployeeKagent_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EmployeeKagent" EntitySet="EmployeeKagent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeKagent_Kagent1" Association="Self.FK_EmployeeKagent_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EmployeeKagent" EntitySet="EmployeeKagent" />
           </AssociationSet>
           <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="Self.FK_EnterpriseWorker_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -14464,6 +14508,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_DeboningProducts" EntityType="BaseModel.v_DeboningProducts" />
           <EntitySet Name="v_WayBillReturnCustomerDet" EntityType="BaseModel.v_WayBillReturnCustomerDet" />
           <EntitySet Name="v_BarCodes" EntityType="BaseModel.v_BarCodes" />
+          <AssociationSet Name="EmployeeKagent" Association="BaseModel.EmployeeKagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="Kagent1" EntitySet="Kagent" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -21586,6 +21634,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="FOPId" Type="Int32" />
           <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_Kagent_Kagent" FromRole="Kagent" ToRole="Kagent1" />
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_Kagent_Kagent" FromRole="Kagent1" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent11" Relationship="BaseModel.EmployeeKagent" FromRole="Kagent" ToRole="Kagent1" />
+          <NavigationProperty Name="Kagent3" Relationship="BaseModel.EmployeeKagent" FromRole="Kagent1" ToRole="Kagent" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -23458,6 +23508,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="SourceType" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ReportingDate" Type="DateTime" Precision="3" />
+          <Property Name="KagentId" Type="Guid" />
         </EntityType>
         <EntityType Name="v_Report_55">
           <Key>
@@ -23825,6 +23876,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="BarCodeType" Type="Int32" Nullable="false" />
           <Property Name="RowIndex" Type="Int64" Nullable="false" />
         </EntityType>
+        <Association Name="EmployeeKagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="*" />
+          <End Type="BaseModel.Kagent" Role="Kagent1" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -29879,6 +29934,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_PayDoc">
             <EntityTypeMapping TypeName="BaseModel.v_PayDoc">
               <MappingFragment StoreEntitySet="v_PayDoc">
+                <ScalarProperty Name="KagentId" ColumnName="KagentId" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
                 <ScalarProperty Name="SourceType" ColumnName="SourceType" />
                 <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
@@ -30237,6 +30293,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="EmployeeKagent" TypeName="BaseModel.EmployeeKagent" StoreEntitySet="EmployeeKagent">
+            <EndProperty Name="Kagent1">
+              <ScalarProperty Name="KaId" ColumnName="KaId" />
+            </EndProperty>
+            <EndProperty Name="Kagent">
+              <ScalarProperty Name="KaId" ColumnName="EmployeeId" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

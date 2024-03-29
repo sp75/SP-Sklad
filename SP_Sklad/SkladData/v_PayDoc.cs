@@ -67,5 +67,6 @@ namespace SP_Sklad.SkladData
         public string DocTypeName { get; set; }
         public string SourceType { get; set; }
         public Nullable<System.DateTime> ReportingDate { get; set; }
+        public Nullable<System.Guid> KagentId { get; set; }
     }
 }

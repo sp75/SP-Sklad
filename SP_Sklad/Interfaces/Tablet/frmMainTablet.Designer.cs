@@ -86,9 +86,9 @@
             // mainContainer
             // 
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer.Location = new System.Drawing.Point(279, 31);
+            this.mainContainer.Location = new System.Drawing.Point(48, 31);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(1046, 569);
+            this.mainContainer.Size = new System.Drawing.Size(1277, 569);
             this.mainContainer.TabIndex = 0;
             // 
             // accordionControl1
@@ -103,8 +103,9 @@
             this.accordionControlElement31});
             this.accordionControl1.Location = new System.Drawing.Point(0, 31);
             this.accordionControl1.Name = "accordionControl1";
+            this.accordionControl1.OptionsMinimizing.State = DevExpress.XtraBars.Navigation.AccordionControlState.Minimized;
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(279, 569);
+            this.accordionControl1.Size = new System.Drawing.Size(48, 569);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -115,7 +116,6 @@
             this.accordionControlElement5,
             this.accordionControlElement6,
             this.accordionControlElement7});
-            this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement1.ImageOptions.Image")));
             this.accordionControlElement1.Name = "accordionControlElement1";
             this.accordionControlElement1.Text = "Документи";
@@ -126,7 +126,6 @@
             this.accordionControlElement4,
             this.accordionControlElement8,
             this.accordionControlElement9});
-            this.accordionControlElement3.Expanded = true;
             this.accordionControlElement3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement3.ImageOptions.Image")));
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "Накладні";
@@ -206,6 +205,7 @@
             this.accordionControlElement7.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement15,
             this.accordionControlElement16});
+            this.accordionControlElement7.Expanded = true;
             this.accordionControlElement7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement7.ImageOptions.Image")));
             this.accordionControlElement7.Name = "accordionControlElement7";
             this.accordionControlElement7.Text = "Замовлення";
@@ -326,7 +326,6 @@
             // 
             // accordionControlElement2
             // 
-            this.accordionControlElement2.Expanded = true;
             this.accordionControlElement2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement2.ImageOptions.Image")));
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Text = "Звіти";
@@ -336,7 +335,6 @@
             this.accordionControlElement31.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement32,
             this.accordionControlElement38});
-            this.accordionControlElement31.Expanded = true;
             this.accordionControlElement31.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement31.ImageOptions.Image")));
             this.accordionControlElement31.Name = "accordionControlElement31";
             this.accordionControlElement31.Text = "Довідники";
