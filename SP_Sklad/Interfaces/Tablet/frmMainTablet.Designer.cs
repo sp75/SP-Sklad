@@ -157,7 +157,6 @@
             this.accordionControlElement10,
             this.accordionControlElement11,
             this.accordionControlElement12});
-            this.accordionControlElement5.Expanded = true;
             this.accordionControlElement5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement5.ImageOptions.Image")));
             this.accordionControlElement5.Name = "accordionControlElement5";
             this.accordionControlElement5.Text = "Платіжні документи";
@@ -186,7 +185,6 @@
             this.accordionControlElement6.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement13,
             this.accordionControlElement14});
-            this.accordionControlElement6.Expanded = true;
             this.accordionControlElement6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement6.ImageOptions.Image")));
             this.accordionControlElement6.Name = "accordionControlElement6";
             this.accordionControlElement6.Text = "Накладні повернення";
@@ -208,7 +206,6 @@
             this.accordionControlElement7.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement15,
             this.accordionControlElement16});
-            this.accordionControlElement7.Expanded = true;
             this.accordionControlElement7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement7.ImageOptions.Image")));
             this.accordionControlElement7.Name = "accordionControlElement7";
             this.accordionControlElement7.Text = "Замовлення";
@@ -232,7 +229,6 @@
             this.accordionControlElement18,
             this.accordionControlElement19,
             this.accordionControlElement20});
-            this.accordionControlElement17.Expanded = true;
             this.accordionControlElement17.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement17.ImageOptions.Image")));
             this.accordionControlElement17.Name = "accordionControlElement17";
             this.accordionControlElement17.Text = "Виробництво";
@@ -306,7 +302,6 @@
             this.accordionControlElement28,
             this.accordionControlElement29,
             this.accordionControlElement30});
-            this.accordionControlElement27.Expanded = true;
             this.accordionControlElement27.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement27.ImageOptions.Image")));
             this.accordionControlElement27.Name = "accordionControlElement27";
             this.accordionControlElement27.Text = "Фінанси";
@@ -341,6 +336,7 @@
             this.accordionControlElement31.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement32,
             this.accordionControlElement38});
+            this.accordionControlElement31.Expanded = true;
             this.accordionControlElement31.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement31.ImageOptions.Image")));
             this.accordionControlElement31.Name = "accordionControlElement31";
             this.accordionControlElement31.Text = "Довідники";
