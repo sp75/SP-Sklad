@@ -425,8 +425,8 @@
             this.FormImgList.Images.SetKeyName(6, "storno");
             this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.checked_green, "checked_green", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.FormImgList.Images.SetKeyName(7, "checked_green");
-            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.order_history, "order_history", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.FormImgList.Images.SetKeyName(8, "order_history");
+            this.FormImgList.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.FormImgList.Images.SetKeyName(8, "historyitem_16x16");
             // 
             // frmOperLogDet
             // 

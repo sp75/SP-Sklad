@@ -287,8 +287,8 @@
             this.imageCollection1.Images.SetKeyName(15, "pay_doc_out");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 16);
             this.imageCollection1.Images.SetKeyName(16, "converttorange_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.order_history, "order_history", typeof(global::SP_Sklad.Properties.Resources), 17);
-            this.imageCollection1.Images.SetKeyName(17, "order_history");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.imageCollection1.Images.SetKeyName(17, "historyitem_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "xls_export");
             // 

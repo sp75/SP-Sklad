@@ -99,9 +99,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.BarImageList1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.GetWayBillListBS = new System.Windows.Forms.BindingSource(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.WayBillListInfoBS = new System.Windows.Forms.BindingSource(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
@@ -140,9 +138,7 @@
             this.xtraTabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -1062,18 +1058,10 @@
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList1.Images.SetKeyName(9, "xls_export");
             // 
-            // GetWayBillListBS
-            // 
-            this.GetWayBillListBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
-            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
-            // 
-            // WayBillListInfoBS
-            // 
-            this.WayBillListInfoBS.DataSource = typeof(SP_Sklad.SkladData.GetWayBillList_Result);
             // 
             // bar2
             // 
@@ -1167,9 +1155,7 @@
             this.xtraTabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GetWayBillListBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WayBillListInfoBS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1201,10 +1187,8 @@
         private DevExpress.XtraBars.BarButtonItem ExecuteItemBtn;
         private DevExpress.XtraBars.BarButtonItem PrintItemBtn;
         private DevExpress.XtraBars.Bar bar2;
-        private System.Windows.Forms.BindingSource WayBillListInfoBS;
         public DevExpress.XtraTreeList.TreeList DocsTreeList;
         public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
-        private System.Windows.Forms.BindingSource GetWayBillListBS;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.Utils.SharedImageCollection UserTreeImgList;
         public DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
