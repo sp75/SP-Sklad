@@ -38,7 +38,6 @@
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -80,7 +79,6 @@
             this.barManager1.Form = this;
             this.barManager1.Images = this.imageCollection1;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.EditItemBtn,
             this.RefrechItemBtn,
             this.barButtonItem4,
             this.barButtonItem5,
@@ -149,21 +147,22 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "інформація про товар.png");
-            this.imageCollection1.Images.SetKeyName(1, "інформація про резерв товару.png");
-            this.imageCollection1.Images.SetKeyName(2, "Рух товарів.png");
-            this.imageCollection1.Images.SetKeyName(3, "взаємозамінність.png");
-            this.imageCollection1.Images.SetKeyName(4, "Товари.png");
-            this.imageCollection1.Images.SetKeyName(5, "Склади.bmp");
-            this.imageCollection1.Images.SetKeyName(6, "edit.png");
-            this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
-            // 
-            // EditItemBtn
-            // 
-            this.EditItemBtn.Caption = "Властивості";
-            this.EditItemBtn.Id = 2;
-            this.EditItemBtn.ImageOptions.ImageIndex = 2;
-            this.EditItemBtn.Name = "EditItemBtn";
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "product_reserved_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "move_warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "interchangeability");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "product");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "edit_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "refresh_office");
             // 
             // RefrechItemBtn
             // 
@@ -412,7 +411,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
-        private DevExpress.XtraBars.BarButtonItem EditItemBtn;
         public DevExpress.XtraBars.BarButtonItem RefrechItemBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;

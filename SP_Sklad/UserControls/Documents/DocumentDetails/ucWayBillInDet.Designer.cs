@@ -37,7 +37,6 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -62,16 +61,13 @@
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemImageComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -83,7 +79,7 @@
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.imageCollection1;
+            this.barManager1.Images = this.imageCollection2;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.EditItemBtn,
             this.RefrechItemBtn,
@@ -149,19 +145,6 @@
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1185, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
-            // 
-            // imageCollection1
-            // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "інформація про товар.png");
-            this.imageCollection1.Images.SetKeyName(1, "інформація про резерв товару.png");
-            this.imageCollection1.Images.SetKeyName(2, "Рух товарів.png");
-            this.imageCollection1.Images.SetKeyName(3, "взаємозамінність.png");
-            this.imageCollection1.Images.SetKeyName(4, "Товари.png");
-            this.imageCollection1.Images.SetKeyName(5, "Склади.bmp");
-            this.imageCollection1.Images.SetKeyName(6, "edit.png");
-            this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
             // 
             // EditItemBtn
             // 
@@ -255,9 +238,7 @@
             this.gridControl2.MainView = this.WaybillDetGridView;
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCalcEdit1,
-            this.repositoryItemImageComboBox33,
-            this.repositoryItemImageComboBox2});
+            this.repositoryItemCalcEdit1});
             this.gridControl2.Size = new System.Drawing.Size(1185, 287);
             this.gridControl2.TabIndex = 8;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -403,24 +384,26 @@
             this.gridColumn150.Visible = true;
             this.gridColumn150.VisibleIndex = 6;
             // 
-            // repositoryItemImageComboBox33
+            // imageCollection2
             // 
-            this.repositoryItemImageComboBox33.AutoHeight = false;
-            this.repositoryItemImageComboBox33.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox33.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 43)});
-            this.repositoryItemImageComboBox33.Name = "repositoryItemImageComboBox33";
-            // 
-            // repositoryItemImageComboBox2
-            // 
-            this.repositoryItemImageComboBox2.AutoHeight = false;
-            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 49),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
-            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
+            this.imageCollection2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection2.Images.SetKeyName(0, "product_info_3");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection2.Images.SetKeyName(1, "product_reserved_1");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection2.Images.SetKeyName(2, "move_warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection2.Images.SetKeyName(3, "interchangeability");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection2.Images.SetKeyName(4, "product");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection2.Images.SetKeyName(5, "warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection2.Images.SetKeyName(6, "edit_3");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection2.Images.SetKeyName(7, "refresh_office");
             // 
             // ucWayBillInDet
             // 
@@ -437,13 +420,11 @@
             this.Size = new System.Drawing.Size(1185, 287);
             this.Load += new System.EventHandler(this.WayBillInDetUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,7 +449,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.PopupMenu WbDetPopupMenu;
-        private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraGrid.GridControl gridControl2;
         private DevExpress.XtraGrid.Views.Grid.GridView WaybillDetGridView;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
@@ -483,7 +463,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox33;
-        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.Utils.ImageCollection imageCollection2;
     }
 }

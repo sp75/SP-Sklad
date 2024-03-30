@@ -511,10 +511,9 @@
             // 
             // barButtonItem7
             // 
-            this.barButtonItem7.Caption = "Загрузити";
+            this.barButtonItem7.Caption = "Відкрити скрипт";
             this.barButtonItem7.Id = 45;
-            this.barButtonItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.Image")));
-            this.barButtonItem7.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem7.ImageOptions.LargeImage")));
+            this.barButtonItem7.ImageOptions.ImageIndex = 9;
             this.barButtonItem7.Name = "barButtonItem7";
             this.barButtonItem7.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem7_ItemClick);
             // 
@@ -951,6 +950,8 @@
             this.BarImageList.Images.SetKeyName(7, "rename.png");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 8);
             this.BarImageList.Images.SetKeyName(8, "xls_export");
+            this.BarImageList.InsertGalleryImage("loadfrom_16x16.png", "office2013/actions/loadfrom_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/actions/loadfrom_16x16.png"), 9);
+            this.BarImageList.Images.SetKeyName(9, "loadfrom_16x16.png");
             // 
             // CopyItemBtn
             // 

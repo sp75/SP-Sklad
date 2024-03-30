@@ -158,18 +158,30 @@
             // 
             this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
             this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.Images.SetKeyName(0, "інформація про товар.png");
-            this.imageCollection1.Images.SetKeyName(1, "інформація про резерв товару.png");
-            this.imageCollection1.Images.SetKeyName(2, "Рух товарів.png");
-            this.imageCollection1.Images.SetKeyName(3, "взаємозамінність.png");
-            this.imageCollection1.Images.SetKeyName(4, "Товари.png");
-            this.imageCollection1.Images.SetKeyName(5, "Склади.bmp");
-            this.imageCollection1.Images.SetKeyName(6, "edit.png");
-            this.imageCollection1.Images.SetKeyName(7, "refresh.bmp");
-            this.imageCollection1.Images.SetKeyName(8, "Зарезервовано.bmp");
-            this.imageCollection1.Images.SetKeyName(9, "store-2017.png");
-            this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16.png");
-            this.imageCollection1.Images.SetKeyName(11, "Зарезервувати все.bmp");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "product_info_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "product_reserved_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "move_warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "interchangeability");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "product");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "edit_3");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "refresh_office");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "reserved");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "store_16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16, "snapmodifytablecellstyle_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "reserved_all");
             // 
             // EditItemBtn
             // 
