@@ -98,9 +98,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.NumEdit = new DevExpress.XtraEditors.TextEdit();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.payDocUserControl4 = new SP_Sklad.MainTabs.PayDocUserControl();
-            this.payDocUserControl3 = new SP_Sklad.MainTabs.PayDocUserControl();
-            this.payDocUserControl2 = new SP_Sklad.MainTabs.PayDocUserControl();
             this.payDocUserControl1 = new SP_Sklad.MainTabs.PayDocUserControl();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
@@ -714,9 +711,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.payDocUserControl4);
-            this.panel1.Controls.Add(this.payDocUserControl3);
-            this.panel1.Controls.Add(this.payDocUserControl2);
             this.panel1.Controls.Add(this.payDocUserControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(594, 5);
@@ -724,27 +718,6 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.panel1.Size = new System.Drawing.Size(388, 209);
             this.panel1.TabIndex = 12;
-            // 
-            // payDocUserControl4
-            // 
-            this.payDocUserControl4.Location = new System.Drawing.Point(0, 0);
-            this.payDocUserControl4.Name = "payDocUserControl4";
-            this.payDocUserControl4.Size = new System.Drawing.Size(395, 213);
-            this.payDocUserControl4.TabIndex = 3;
-            // 
-            // payDocUserControl3
-            // 
-            this.payDocUserControl3.Location = new System.Drawing.Point(0, 0);
-            this.payDocUserControl3.Name = "payDocUserControl3";
-            this.payDocUserControl3.Size = new System.Drawing.Size(395, 213);
-            this.payDocUserControl3.TabIndex = 2;
-            // 
-            // payDocUserControl2
-            // 
-            this.payDocUserControl2.Location = new System.Drawing.Point(0, 0);
-            this.payDocUserControl2.Name = "payDocUserControl2";
-            this.payDocUserControl2.Size = new System.Drawing.Size(395, 213);
-            this.payDocUserControl2.TabIndex = 1;
             // 
             // payDocUserControl1
             // 
@@ -1093,9 +1066,6 @@
         private DevExpress.XtraBars.BarButtonItem TMCBtnItem;
         private DevExpress.XtraEditors.LabelControl labelControl9;
         private DevExpress.XtraEditors.DateEdit ReportingDateEdit;
-        private MainTabs.PayDocUserControl payDocUserControl4;
-        private MainTabs.PayDocUserControl payDocUserControl3;
-        private MainTabs.PayDocUserControl payDocUserControl2;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit BarCodeEdit;
         private DevExpress.Utils.ImageCollection imageCollection1;
