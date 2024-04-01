@@ -36,7 +36,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
             this.WayBillOutSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -65,6 +64,7 @@
             this.colPersonName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox42 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -178,17 +178,6 @@
             this.splitContainerControl2.SplitterPosition = 227;
             this.splitContainerControl2.TabIndex = 1;
             this.splitContainerControl2.Text = "splitContainerControl2";
-            // 
-            // ucDocumentFilterPanel
-            // 
-            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucDocumentFilterPanel.KagentImageIndex = 0;
-            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
-            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
-            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1375, 54);
-            this.ucDocumentFilterPanel.TabIndex = 6;
-            this.ucDocumentFilterPanel.Title = "Кліент";
-            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
             // 
             // WBGridControl
             // 
@@ -324,6 +313,8 @@
             this.imageCollection1.Images.SetKeyName(17, "checked_blue");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.imageCollection1.Images.SetKeyName(18, "pay_doc_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.imageCollection1.Images.SetKeyName(19, "xls_export");
             // 
             // gridColumn2
             // 
@@ -512,6 +503,18 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox42.Name = "repositoryItemImageComboBox42";
             // 
+            // ucDocumentFilterPanel
+            // 
+            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucDocumentFilterPanel.KagentImageIndex = 0;
+            this.ucDocumentFilterPanel.KagentPanelVisible = true;
+            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
+            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1375, 54);
+            this.ucDocumentFilterPanel.TabIndex = 6;
+            this.ucDocumentFilterPanel.Title = "Кліент";
+            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -678,6 +681,7 @@
             // 
             this.ExportToExcelBtn.Caption = "Експорт в Excel...";
             this.ExportToExcelBtn.Id = 36;
+            this.ExportToExcelBtn.ImageOptions.ImageIndex = 19;
             this.ExportToExcelBtn.Name = "ExportToExcelBtn";
             this.ExportToExcelBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportToExcelBtn_ItemClick);
             // 
@@ -1017,6 +1021,7 @@
             // 
             // ucRelDocGrid1
             // 
+            this.ucRelDocGrid1._access_token = null;
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";

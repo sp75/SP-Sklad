@@ -163,6 +163,12 @@ namespace SP_Sklad.EditForm
                     checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
                 }
 
+                foreach(var item in new BaseEntities().Kagent.Where(w => w.KType == 4 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).OrderBy(o=> o.Name).Select(s=> new { s.KaId, s.Name, IsWork = s.EmployeeKagent1.Any(a=> a.EmployeeId == _ka_id)  }).ToList())
+                {
+                    checkedComboBoxEdit2.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
+                }
+
+
                 PayTypeEdit.Properties.DataSource = DB.SkladBase().PayType.ToList();
                 CashEditComboBox.Properties.DataSource = DBHelper.AllCashDesks;
                 WarehouseEdit.Properties.DataSource = _db.Warehouse.Where(w => w.Deleted == 0).Select(s => new WhList
@@ -664,6 +670,9 @@ namespace SP_Sklad.EditForm
 
             JobLookUpEdit.Visible = (int)lookUpEdit3.EditValue == 0;
 
+            checkedComboBoxEdit2.Visible = (int)lookUpEdit3.EditValue == 5;
+            labelControl11.Visible = (int)lookUpEdit3.EditValue == 5;
+
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -980,5 +989,21 @@ namespace SP_Sklad.EditForm
                
             }
         }
+
+        private void checkedComboBoxEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            if (checkedComboBoxEdit2.ContainsFocus)
+            {
+                _db.EmployeeKagent.RemoveRange(_db.EmployeeKagent.Where(w => w.EmployeeId == _ka_id));
+
+                foreach (var item in checkedComboBoxEdit2.Properties.Items.Where(w => w.CheckState == CheckState.Checked))
+                {
+                    _db.EmployeeKagent.Add(new EmployeeKagent {  KaId = (int)item.Value,  EmployeeId = _ka_id.Value });
+                }
+
+                _db.SaveChanges();
+            }
+        }
+
     }
 }

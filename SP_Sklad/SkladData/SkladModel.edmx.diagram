@@ -402,6 +402,9 @@
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_Materials1" />
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" />
         <AssociationConnector Association="BaseModel.FK_WaybillCorrectionDet_WaybillDet" />
+        <EntityTypeShape EntityType="BaseModel.EmployeeKagent" Width="1.5" PointX="40" PointY="26.25" />
+        <AssociationConnector Association="BaseModel.FK_EmployeeKagent_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_EmployeeKagent_Kagent1" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >

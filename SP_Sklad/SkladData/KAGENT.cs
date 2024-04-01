@@ -56,6 +56,8 @@ namespace SP_Sklad.SkladData
             this.PriceList = new HashSet<PriceList>();
             this.WaybillTemplate = new HashSet<WaybillTemplate>();
             this.Kagent1 = new HashSet<Kagent>();
+            this.EmployeeKagent = new HashSet<EmployeeKagent>();
+            this.EmployeeKagent1 = new HashSet<EmployeeKagent>();
         }
     
         public int KaId { get; set; }
@@ -147,5 +149,7 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillTemplate> WaybillTemplate { get; set; }
         public virtual ICollection<Kagent> Kagent1 { get; set; }
         public virtual Kagent Kagent2 { get; set; }
+        public virtual ICollection<EmployeeKagent> EmployeeKagent { get; set; }
+        public virtual ICollection<EmployeeKagent> EmployeeKagent1 { get; set; }
     }
 }

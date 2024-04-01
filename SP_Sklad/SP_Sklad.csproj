@@ -517,6 +517,9 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\EmployeeKagent.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucPlannedCalculation.cs">
       <SubType>UserControl</SubType>
     </Compile>
