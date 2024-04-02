@@ -517,6 +517,12 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Directories\ucKagents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Directories\ucKagents.Designer.cs">
+      <DependentUpon>ucKagents.cs</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\EmployeeKagent.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -2607,6 +2613,9 @@
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Directories\ucKagents.resx">
+      <DependentUpon>ucKagents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucPlannedCalculation.resx">
       <DependentUpon>ucPlannedCalculation.cs</DependentUpon>
     </EmbeddedResource>
@@ -3832,7 +3841,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rep\" />
-    <Folder Include="UserControls\Directories\" />
     <Folder Include="UserControls\Finances\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

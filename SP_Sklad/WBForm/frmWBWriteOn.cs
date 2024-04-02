@@ -283,8 +283,12 @@ order by  ma.ondate desc */
                 return;
             }
 
-            _wid = Convert.ToInt32(WHComboBox.EditValue);
-            UpdateWh();
+            _wid = (int?)WHComboBox.EditValue;
+
+            if (_wid.HasValue)
+            {
+                UpdateWh();
+            }
         }
 
         private void UpdateWh()
@@ -339,16 +343,6 @@ order by  ma.ondate desc */
             RefreshDet();
         }
 
-        private void PersonEditBtn_Click(object sender, EventArgs e)
-        {
-            WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
-            UpdateWh();
-        }
-
-        private void simpleButton4_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -432,8 +426,10 @@ order by  ma.ondate desc */
         {
             if(e.Button.Index == 1)
             {
-                WHComboBox.EditValue = IHelper.ShowDirectList(WHComboBox.EditValue, 2);
-                UpdateWh();
+                WHComboBox.ClosePopup();
+                _wid = (int?)IHelper.ShowDirectList(WHComboBox.EditValue, 2);
+                WHComboBox.EditValue = _wid;
+             //   UpdateWh();
             }
         }
 

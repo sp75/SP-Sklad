@@ -91,8 +91,10 @@ namespace SP_Sklad.MainTabs
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
+
+
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
-            if(focused_tree_node == null)
+            if (focused_tree_node == null)
             {
                 return;
             }
@@ -108,9 +110,24 @@ namespace SP_Sklad.MainTabs
             btnMoveDown.Enabled = DelExplorerBtn.Enabled;
             btnMoveUp.Enabled = DelExplorerBtn.Enabled;
 
-            
+
             RefrechItemBtn.PerformClick();
+
+
+            if (focused_tree_node.GType.Value == 1)
+            {
+                bar1.Visible = false;
+                ucKagents.KType = focused_tree_node.GrpId;
+                ucKagents.GetData(false);
+            }
+            else
+            {
+                bar1.Visible = true;
+            }
+
+
             mainContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+
 
             if (focused_tree_node.FunId != null)
             {
@@ -133,38 +150,15 @@ namespace SP_Sklad.MainTabs
             {
                 case 1:
 
-                    LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
-
-                    //       var ent = DBHelper.EnterpriseList.ToList().Select(s => (int?)s.KaId);
-
-                    /*    var ka = (from k in _db.KagentList
-                                  join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
-                                  from subfg in gj.DefaultIfEmpty()
-                                  where (subfg.EnterpriseId == null || ent.Contains(subfg.EnterpriseId)) && k.Deleted == 0
-                                  select k
-                                  );
-
-                        if (focused_tree_node.Id != 10)
-                        {
-                            ka = ka.Where(w => w.KType == focused_tree_node.GrpId);
-                        }
-
-                        if (_ka_archived == 0)
-                        {
-                            ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
-                        }
-
-                        KAgentDS.DataSource = ka.Distinct().ToList();*/
-
+                  /*  LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
                     kagent_restore_row = KaGridView.FocusedRowHandle;
                     restore = true;
-               //     KagentListSource.Refresh();
 
                     KaGridControl.DataSource = null;
                     KaGridControl.DataSource = KagentListSource;
               
 
-                    DBHelper.ReloadKagents();
+                    DBHelper.ReloadKagents();*/
                     break;
 
                 case 2:

@@ -204,8 +204,8 @@ namespace SP_Sklad.WBForm
 
         bool GetOk()
         {
-            bool recult = (NumEdit.EditValue != null  && KagentComboBox.EditValue != null && OnDateDBEdit.EditValue != null && WaybillDetInBS.List.Count > 0);
-            barSubItem1.Enabled = KagentComboBox.EditValue != null;
+            bool recult = (NumEdit.EditValue != null  && KagentComboBox.GetSelectedDataRow() != null && OnDateDBEdit.EditValue != null && WaybillDetInBS.List.Count > 0);
+            barSubItem1.Enabled = KagentComboBox.GetSelectedDataRow() != null;
 
             OkButton.Enabled = recult;
             EditMaterialBtn.Enabled = WaybillDetInBS.List.Count > 0;
@@ -264,7 +264,7 @@ namespace SP_Sklad.WBForm
                 return;
             }
 
-            wb.KaId = (int?)KagentComboBox.EditValue;
+            wb.KaId = row.KaId;
             wb.Nds = row.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0;
             GetOk();
         }
@@ -281,7 +281,11 @@ namespace SP_Sklad.WBForm
 
         private void KagBalBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (KagentComboBox.EditValue == DBNull.Value) return;
+            if (KagentComboBox.GetSelectedDataRow() == null)
+            {
+                return;
+            }
+
             IHelper.ShowKABalans((int)KagentComboBox.EditValue);
         }
 
@@ -317,7 +321,8 @@ namespace SP_Sklad.WBForm
             if (e.Button.Index == 1)
             {
                 KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-                if (KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value)
+
+                if (KagentComboBox.GetSelectedDataRow() != null)
                 {
                     wb.KaId = Convert.ToInt32(KagentComboBox.EditValue);
                 }

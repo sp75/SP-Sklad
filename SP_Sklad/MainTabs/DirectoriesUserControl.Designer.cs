@@ -411,6 +411,8 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage37 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucKagents = new SP_Sklad.MainTabs.ucKagents();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -592,6 +594,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).BeginInit();
+            this.xtraTabPage37.SuspendLayout();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1493,19 +1496,20 @@
             this.mainContentTab.TabIndex = 2;
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
-            this.xtraTabPage7,
+            this.xtraTabPage37,
             this.xtraTabPage10,
             this.xtraTabPage8,
             this.xtraTabPage9,
             this.xtraTabPage33,
-            this.xtraTabPage11});
+            this.xtraTabPage11,
+            this.xtraTabPage7});
             // 
             // xtraTabPage7
             // 
             this.xtraTabPage7.Controls.Add(this.splitContainerControl2);
             this.xtraTabPage7.Name = "xtraTabPage7";
             this.xtraTabPage7.Size = new System.Drawing.Size(1088, 590);
-            this.xtraTabPage7.Text = "Контрагенти";
+            this.xtraTabPage7.Text = "Контрагенти old";
             // 
             // splitContainerControl2
             // 
@@ -4530,6 +4534,22 @@
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
             // 
+            // xtraTabPage37
+            // 
+            this.xtraTabPage37.Controls.Add(this.ucKagents);
+            this.xtraTabPage37.Name = "xtraTabPage37";
+            this.xtraTabPage37.Size = new System.Drawing.Size(1088, 590);
+            this.xtraTabPage37.Text = "Контрагенти";
+            // 
+            // ucKagents
+            // 
+            this.ucKagents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucKagents.isDirectList = false;
+            this.ucKagents.Location = new System.Drawing.Point(0, 0);
+            this.ucKagents.Name = "ucKagents";
+            this.ucKagents.Size = new System.Drawing.Size(1088, 590);
+            this.ucKagents.TabIndex = 0;
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4732,6 +4752,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).EndInit();
+            this.xtraTabPage37.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5117,5 +5138,7 @@
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage37;
+        public ucKagents ucKagents;
     }
 }
