@@ -517,6 +517,18 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Directories\ucMaterials.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Directories\ucMaterials.Designer.cs">
+      <DependentUpon>ucMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainTabs\OLD_DirectoriesUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\OLD_DirectoriesUserControl.Designer.cs">
+      <DependentUpon>OLD_DirectoriesUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Directories\ucKagents.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2612,6 +2624,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Directories\ucMaterials.resx">
+      <DependentUpon>ucMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\OLD_DirectoriesUserControl.resx">
+      <DependentUpon>OLD_DirectoriesUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Directories\ucKagents.resx">
       <DependentUpon>ucKagents.cs</DependentUpon>

@@ -44,6 +44,13 @@ namespace SP_Sklad.MainTabs
         {
             if (!DesignMode)
             {
+                var user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 10 && w.UserId == UserSession.UserId);
+
+                NewItemBtn.Enabled = user_access.CanInsert == 1;
+                DeleteItemBtn.Enabled = (focused_kagent != null && user_access.CanDelete == 1);
+                EditItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
+                CopyItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
+
                 KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }

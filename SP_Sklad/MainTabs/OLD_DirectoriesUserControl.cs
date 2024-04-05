@@ -24,7 +24,7 @@ using DevExpress.XtraGrid;
 
 namespace SP_Sklad.MainTabs
 {
-    public partial class DirectoriesUserControl : DevExpress.XtraEditors.XtraUserControl
+    public partial class OLD_DirectoriesUserControl : DevExpress.XtraEditors.XtraUserControl
     {
         GetDirTree_Result focused_tree_node { get; set; }
         public bool isDirectList { get; set; }
@@ -51,7 +51,7 @@ namespace SP_Sklad.MainTabs
             public int Def { get; set; }
         }
 
-        public DirectoriesUserControl()
+        public OLD_DirectoriesUserControl()
         {
             InitializeComponent();
             _ka_archived = 0;
@@ -73,8 +73,6 @@ namespace SP_Sklad.MainTabs
         {
             mainContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             extDirTabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            ucMaterials.isDirectList = isDirectList;
-            ucKagents.isDirectList = isDirectList;
 
             if (!DesignMode)
             {
@@ -122,12 +120,6 @@ namespace SP_Sklad.MainTabs
                 ucKagents.KType = focused_tree_node.GrpId;
                 ucKagents.GetData(false);
             }
-            else if (focused_tree_node.GType.Value == 2)
-            {
-                bar1.Visible = false;
-                ucMaterials.GrpId = focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId ;
-                ucMaterials.GetData(showChildNodeBtn.Down, restore:false);
-            }
             else
             {
                 bar1.Visible = true;
@@ -170,7 +162,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
-                    /*prev_rowHandle = MatGridView.FocusedRowHandle;
+                    prev_rowHandle = MatGridView.FocusedRowHandle;
 
                     if (focused_mat != null && !find_id.HasValue)
                     {
@@ -188,7 +180,7 @@ namespace SP_Sklad.MainTabs
                     restore = true;
 
                     MatGridControl.DataSource = null;
-                    MatGridControl.DataSource = MatListSource;*/
+                    MatGridControl.DataSource = MatListSource;
 
                     break;
 
@@ -1164,7 +1156,6 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ucMaterials.GetData(showChildNodeBtn.Down, restore: false);
             RefrechItemBtn.PerformClick();
         }
 
@@ -1916,15 +1907,6 @@ namespace SP_Sklad.MainTabs
             else
             {
                 EditItemBtn.PerformClick();
-            }
-        }
-
-        private void ucMaterials_MatGridViewDoubleClick(object sender, EventArgs e)
-        {
-            if (isDirectList && !ucMaterials.MatListTabPage.PageVisible)
-            {
-                var frm = this.Parent as frmCatalog;
-                frm.OkButton.PerformClick();
             }
         }
     }

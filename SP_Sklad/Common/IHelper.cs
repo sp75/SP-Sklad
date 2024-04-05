@@ -89,19 +89,19 @@ namespace SP_Sklad.Common
         {
             var f = new frmCatalog(2);
 
-            f.uc.xtraTabPage3.PageVisible = false;
-            f.uc.xtraTabPage4.PageVisible = false;
-            f.uc.xtraTabPage5.PageVisible = false;
-            f.uc.xtraTabPage12.PageVisible = false;
-            f.uc.xtraTabPage13.PageVisible = false;
-            f.uc.xtraTabPage14.PageVisible = true;
-            f.uc.wb = wb;
-            f.uc.isMatList = true;
+            f.uc.ucMaterials.xtraTabPage3.PageVisible = false;
+            f.uc.ucMaterials.xtraTabPage4.PageVisible = false;
+            f.uc.ucMaterials.xtraTabPage5.PageVisible = false;
+            f.uc.ucMaterials.xtraTabPage12.PageVisible = false;
+            f.uc.ucMaterials.xtraTabPage13.PageVisible = false;
+            f.uc.ucMaterials.MatListTabPage.PageVisible = true;
+            f.uc.ucMaterials.wb = wb;
+      //      f.uc.ucMaterials.isMatList = true;
             f.uc.isDirectList = true;
 
             if (f.ShowDialog() == DialogResult.OK)
             {
-                foreach (var item in f.uc.custom_mat_list.OrderBy(o => o.Num).ToList())
+                foreach (var item in f.uc.ucMaterials.custom_mat_list.OrderBy(o => o.Num).ToList())
                 {
                     var price = (item.Price ?? 0);
 
@@ -379,7 +379,7 @@ namespace SP_Sklad.Common
                         f.Text = "Товари";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.MatGridView.GetFocusedRow() as v_Materials).MatId;
+                            old_id = f.uc.ucMaterials.focused_mat?.MatId;
                         }
                     }
                     break;
