@@ -53,7 +53,7 @@ namespace SP_Sklad
             }
 
             pos_out_list = _db.GetPosOut(StartDate.DateTime.Date, EndDate.DateTime, (int)MatComboBox.EditValue, _kaId, _w_type).ToList();
-            
+
             GetPosOutBS.DataSource = pos_out_list;
 
             OkButton.Enabled = pos_out_list.Count > 0;
@@ -79,5 +79,12 @@ namespace SP_Sklad
                 MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
             }
         }
+
+        private void bandedGridView1_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            OkButton.Enabled = bandedGridView1.RowCount > 0;
+        }
+
+  
     }
 }

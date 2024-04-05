@@ -100,8 +100,14 @@ namespace SP_Sklad.MainTabs
             else if (focused_tree_node.GType.Value == 2)
             {
                 bar1.Visible = false;
-                ucMaterials.GrpId = focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId ;
-                ucMaterials.GetData(showChildNodeBtn.Down, restore:false);
+                ucMaterials.GrpId = focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId;
+                ucMaterials.GetData(showChildNodeBtn.Down, restore: false);
+            }
+            else if (focused_tree_node.GType.Value == 3)
+            {
+                bar1.Visible = false;
+                ucServices.GrpId = focused_tree_node.Id == 51 ? -1 : focused_tree_node.GrpId;
+                ucServices.GetData(false);
             }
             else
             {
@@ -138,8 +144,8 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    if (focused_tree_node.Id == 51) ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().ToList();
-                    else ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().Where(w => w.GrpId == focused_tree_node.GrpId).ToList();
+                 /*   if (focused_tree_node.Id == 51) ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().ToList();
+                    else ServicesBS.DataSource = DB.SkladBase().v_Services.AsNoTracking().Where(w => w.GrpId == focused_tree_node.GrpId).ToList();*/
                     break;
 
                 case 4:
@@ -320,11 +326,6 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 3:
-                    var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
-                    if (svc_row != null)
-                    {
-                        result = new frmServicesEdit(svc_row.SvcId).ShowDialog();
-                    }
                     break;
 
                 case 5:
@@ -586,15 +587,7 @@ namespace SP_Sklad.MainTabs
                         break;
 
                     case 3:
-                        var svc_row = ServicesGridView.GetFocusedRow() as v_Services;
-
-                        var svc = db.Services.Find(svc_row.SvcId);
-                        if (svc != null)
-                        {
-                            svc.Deleted = 1;
-                        }
                         break;
-
 
                     case 5:
                         var tara_row = TaraGridView.GetFocusedRow() as GetTaraList_Result;

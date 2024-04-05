@@ -369,7 +369,7 @@ namespace SP_Sklad.WBDetForm
                         {
                             var mat_row = frm.bandedGridView1.GetFocusedRow() as GetPosOutView;
 
-                            MatComboBox.EditValue = mat_row.PosId;
+                            MatComboBox.EditValue = mat_row?.PosId;
                         }
                     }
                 }

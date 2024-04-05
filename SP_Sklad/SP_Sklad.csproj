@@ -517,6 +517,12 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Directories\ucServices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Directories\ucServices.Designer.cs">
+      <DependentUpon>ucServices.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Directories\ucMaterials.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2624,6 +2630,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Directories\ucServices.resx">
+      <DependentUpon>ucServices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Directories\ucMaterials.resx">
       <DependentUpon>ucMaterials.cs</DependentUpon>

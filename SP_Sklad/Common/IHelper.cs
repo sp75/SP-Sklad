@@ -452,7 +452,7 @@ namespace SP_Sklad.Common
                         f.Text = "Послуги";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.ServicesGridView.GetFocusedRow() as v_Services).SvcId;
+                            old_id = f.uc.ucServices.svc_row?.SvcId;
                         }
                     }
                     break;

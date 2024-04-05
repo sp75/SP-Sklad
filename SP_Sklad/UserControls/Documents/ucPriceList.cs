@@ -402,6 +402,8 @@ namespace SP_Sklad.UserControls
 
 
                     KaTemplateListGridControl.DataSource = ka_template_list;
+
+                    KaTemplateListGridView.SelectAll();
                     break;
             }
 
@@ -453,6 +455,20 @@ namespace SP_Sklad.UserControls
 
                 MessageBox.Show(string.Format("Створено {0} замовлень !", wb_count));
             }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ka_template_list.ForEach(f => { f.Check = true; });
+
+            KaTemplateListGridView.RefreshData();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ka_template_list.ForEach(f => { f.Check = false; });
+
+            KaTemplateListGridView.RefreshData();
         }
     }
 }
