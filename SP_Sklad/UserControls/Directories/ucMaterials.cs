@@ -21,6 +21,7 @@ using DevExpress.Data;
 using SkladEngine.DBFunction;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.MainTabs
 {
@@ -59,18 +60,15 @@ namespace SP_Sklad.MainTabs
         private int prev_rowHandle = 0;
         private int? find_id { get; set; }
         private bool _restore = false;
-
+        private UserAccess user_access { get; set; }
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
             if (!DesignMode)
             {
-                var user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 6 && w.UserId == UserSession.UserId);
+                user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 6 && w.UserId == UserSession.UserId);
 
                 NewItemBtn.Enabled = user_access.CanInsert == 1;
-                DeleteItemBtn.Enabled = (focused_mat != null && user_access.CanDelete == 1);
-                EditItemBtn.Enabled = (focused_mat != null && user_access.CanModify == 1);
-                CopyItemBtn.Enabled = (focused_mat != null && user_access.CanModify == 1);
 
                 custom_mat_list = new List<CustomMatList>();
                 MatListGridControl.DataSource = custom_mat_list;
@@ -102,6 +100,8 @@ namespace SP_Sklad.MainTabs
 
             MatGridControl.DataSource = null;
             MatGridControl.DataSource = MatListSource;
+
+            SetWBEditorBarBtn();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -200,7 +200,7 @@ namespace SP_Sklad.MainTabs
             AddMatItemToList(focused_mat);
         }
 
-        private void AddMatItemToList(v_Materials row)
+        private void AddMatItemToList(v_Materials row, string  bar_code = null )
         {
             if (row == null)
             {
@@ -217,7 +217,7 @@ namespace SP_Sklad.MainTabs
                 Price = ka_price,
                 PriceWithoutNDS = wb.Nds > 0 ? Math.Round(ka_price * 100 / (100 + (wb.Nds ?? 0)), 4) : ka_price,
                 WId = row.WId != null ? row.WId.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId,
-                BarCode = BarCodeEdit.Text
+                BarCode = bar_code
             });
 
             MatListGridView.RefreshData();
@@ -319,7 +319,16 @@ namespace SP_Sklad.MainTabs
 
         private void MatGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            xtraTabControl1_SelectedPageChanged(sender, null);
+            SetWBEditorBarBtn();
+        }
+
+        private void SetWBEditorBarBtn()
+        {
+            xtraTabControl1_SelectedPageChanged(null, null);
+
+            DeleteItemBtn.Enabled = (focused_mat != null && user_access.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_mat != null && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_mat != null && user_access.CanModify == 1);
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
@@ -373,37 +382,12 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void BarCodeEdit_KeyPress(object sender, KeyPressEventArgs e)
+
+        private v_Materials FindByBarCode(string br_code)
         {
-            if (e.KeyChar == 13 && !String.IsNullOrEmpty(BarCodeEdit.Text))
+            if (!String.IsNullOrEmpty(br_code))
             {
-
-                if (/*FindByBarCode() != null &&*/ MatListTabPage.PageVisible)
-                {
-                    //   AddItem.PerformClick();
-
-                    var BarCodeSplit = BarCodeEdit.Text.Split('+');
-                    String kod = BarCodeSplit[0];
-                    var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
-                    if (bc != null)
-                    {
-                        AddMatItemToList(DB.SkladBase().v_Materials.AsNoTracking().FirstOrDefault(w => w.MatId == bc.MatId));
-                    }
-                }
-                else
-                {
-                    FindByBarCode();
-                }
-
-                BarCodeEdit.Text = "";
-            }
-        }
-
-        private v_Materials FindByBarCode()
-        {
-            if (!String.IsNullOrEmpty(BarCodeEdit.Text))
-            {
-                var BarCodeSplit = BarCodeEdit.Text.Split('+');
+                var BarCodeSplit = br_code.Split('+');
                 String kod = BarCodeSplit[0];
                 var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
 
@@ -429,14 +413,6 @@ namespace SP_Sklad.MainTabs
             IHelper.ExportToXlsx(MatGridControl);
         }
 
-     
-        private void BarCodeEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if(e.Button.Index == 0)
-            {
-                FindByBarCode();
-            }
-        }
 
         private void MatListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
@@ -529,6 +505,46 @@ namespace SP_Sklad.MainTabs
             if (e.Column.FieldName == "PriceWithoutNDS")
             {
                 row.Price = wb.Nds > 0 ? Math.Round((decimal)e.Value + ((decimal)e.Value * (wb.Nds ?? 0) / 100), 4) : (decimal)e.Value;
+            }
+        }
+
+        private void MatGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            SetWBEditorBarBtn();
+        }
+
+        private void BarCodeBtnEdit_KeyDown(object sender, KeyEventArgs e)
+        {
+            var textEdit = sender as TextEdit;
+
+            if (e.KeyCode == Keys.Enter && !String.IsNullOrEmpty(textEdit.Text))
+            {
+                if ( MatListTabPage.PageVisible)
+                {
+                    var BarCodeSplit = textEdit.Text.Split('+');
+                    String kod = BarCodeSplit[0];
+                    var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
+                    if (bc != null)
+                    {
+                        AddMatItemToList(DB.SkladBase().v_Materials.AsNoTracking().FirstOrDefault(w => w.MatId == bc.MatId), textEdit.Text);
+                    }
+                }
+                else
+                {
+                    FindByBarCode(textEdit.Text);
+                }
+
+                textEdit.Text = "";
+            }
+        }
+
+        private void BarCodeBtnEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var textEdit = sender as TextEdit;
+
+            if (e.Button.Index == 0)
+            {
+                FindByBarCode(textEdit.Text);
             }
         }
     }

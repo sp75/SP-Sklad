@@ -35,9 +35,6 @@ namespace SP_Sklad.MainTabs
         private int _mat_archived { get; set; }
         private bool _show_rec_archived { get; set; }
        
-
-        private dynamic focused_kagent => KaGridView.GetFocusedRow() is NotLoadedObject ? null : KaGridView.GetFocusedRow() as dynamic;
-
         public class PriceTypesView
         {
             public int PTypeId { get; set; }
@@ -53,17 +50,7 @@ namespace SP_Sklad.MainTabs
             _ka_archived = 0;
             _mat_archived = 0;
             _show_rec_archived = false;
-
-    //        KaGridControl.DataSource = null;
         }
-
-        private int prev_focused_id = 0;
-        private int prev_top_row_index = 0;
-        private int prev_rowHandle = 0;
-        private int? find_id { get; set; }
-        private bool restore = false;
-
-         int kagent_restore_row = 0;
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
@@ -78,16 +65,11 @@ namespace SP_Sklad.MainTabs
 
                 DirTreeBS.DataSource = DB.SkladBase().GetDirTree(DBHelper.CurrentUser.UserId).ToList();
                 DirTreeList.ExpandToLevel(1);
-
-                KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
-                KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-
-
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
             if (focused_tree_node == null)
             {
@@ -150,39 +132,9 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-
-                  /*  LoginGridColumn.Visible = focused_tree_node.GrpId == 2;
-                    kagent_restore_row = KaGridView.FocusedRowHandle;
-                    restore = true;
-
-                    KaGridControl.DataSource = null;
-                    KaGridControl.DataSource = KagentListSource;
-              
-
-                    DBHelper.ReloadKagents();*/
                     break;
 
                 case 2:
-                    /*prev_rowHandle = MatGridView.FocusedRowHandle;
-
-                    if (focused_mat != null && !find_id.HasValue)
-                    {
-                        prev_top_row_index = MatGridView.TopRowIndex;
-                        prev_focused_id = focused_mat.MatId;
-                    }
-
-                    if (find_id.HasValue)
-                    {
-                        prev_top_row_index = -1;
-                        prev_focused_id = find_id.Value;
-                        find_id = null;
-                    }
-
-                    restore = true;
-
-                    MatGridControl.DataSource = null;
-                    MatGridControl.DataSource = MatListSource;*/
-
                     break;
 
                 case 3:
@@ -355,17 +307,13 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             DialogResult result = DialogResult.Cancel;
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    if (focused_kagent != null)
-                    {
-                        result = new frmKAgentEdit(null, focused_kagent.KaId).ShowDialog();
-                    }
+                  
                     break;
 
                 case 2:
@@ -632,22 +580,6 @@ namespace SP_Sklad.MainTabs
                 switch (focused_tree_node.GType)
                 {
                     case 1:
-                        int KaId = focused_kagent.KaId;
-                        decimal? Saldo = focused_kagent.Saldo;
-
-                        if ((Saldo ?? 0) != 0)
-                        {
-                            MessageBox.Show("Не можливо видяляти, є залишок по контрагенту");
-                            break;
-                        }
-
-                        var item = db.Kagent.Find(KaId);
-                        if (item != null)
-                        {
-                            item.UserId = null;
-                            item.Deleted = 1;
-                        }
-
                         break;
 
                     case 2:
@@ -904,7 +836,7 @@ namespace SP_Sklad.MainTabs
 
         private void KagentBalansBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowKABalans(focused_kagent.KaId);
+           
         }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -920,9 +852,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ShowOrdered(focused_kagent.KaId, 0, 0);
         }
-
 
         private void WarehouseGridView_DoubleClick(object sender, EventArgs e)
         {
@@ -935,81 +865,6 @@ namespace SP_Sklad.MainTabs
             {
                 EditItemBtn.PerformClick();
             }
-        }
-
-        private void AddItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
-
-
-        private void DelItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-          
-        }
-
-        private void barButtonItem5_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void barCheckItem1_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
-
-        private void barCheckItem1_CheckedChanged_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            _ka_archived = ShowKagentArchiveRecordBarCheckItem.Checked ? 1 : 0;
-            KagentGridColumnArchived.Visible = ShowKagentArchiveRecordBarCheckItem.Checked;
-            RefrechItemBtn.PerformClick();
-        }
-
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var db = DB.SkladBase();
-            var ka = db.Kagent.Find(focused_kagent.KaId);
-
-            if (ka == null)
-            {
-                return;
-            }
-
-            if (ka.Archived == 1)
-            {
-                ka.Archived = 0;
-            }
-            else
-            {
-                if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити контрагента <{0}> в архів?", ka.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    if (focused_kagent.Saldo == 0 || focused_kagent.Saldo == null)
-                    {
-                        ka.Archived = 1;
-                    }
-                    else
-                    {
-                        MessageBox.Show(string.Format("Неможливо перемістити контрагента <{0}> в архів, \nтому що його поточний баланс рівний {1}", ka.Name, focused_kagent.Saldo.ToString()));
-                    }
-                }
-            }
-            db.SaveChanges();
-            RefrechItemBtn.PerformClick();
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1043,7 +898,6 @@ namespace SP_Sklad.MainTabs
 
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -1095,7 +949,6 @@ namespace SP_Sklad.MainTabs
             switch (focused_tree_node.GType)
             {
                 case 1:
-                    IHelper.ExportToXlsx(KaGridControl);
                     break;
 
                 case 2:
@@ -1105,38 +958,6 @@ namespace SP_Sklad.MainTabs
                     IHelper.ExportToXlsx(TaraGridControl);
                     break;
             }
-        }
-
-        private void GetKontragentDetail()
-        {
-            if (focused_kagent == null)
-            {
-                return;
-            }
-
-            using (var db = DB.SkladBase())
-            {
-                int KaId = focused_kagent.KaId;
-
-                var kagent = db.v_Kagent.AsNoTracking().FirstOrDefault(w => w.KaId == KaId);
-
-                KAgentInfoBS.DataSource = kagent;
-                memoEdit1.Text = kagent.Notes;
-
-                gridControl3.DataSource = db.KAgentPersons.Where(w => w.KAId == KaId).Join(db.Jobs,
-                                    person => person.JobType,
-                                    job => job.Id,
-                                    (person, job) => new { person.Name, person.Notes, person.Phone, person.Email, Post = person.JobType == 0 ? person.Post : job.Name }).ToList();
-
-                gridControl1.DataSource = db.KAgentAccount.Where(w => w.KAId == KaId).Select(s => new { s.AccNum, s.Banks.MFO, BankName = s.Banks.Name, TypeName = s.AccountType.Name }).ToList();
-
-                gridControl4.DataSource = db.EnterpriseWorker.Where(w => w.EnterpriseId == KaId).Join(db.Kagent, p => p.WorkerId, k => k.KaId, (p, k) => new { k.KaId, k.Name }).ToList();
-            }
-        }
-
-        private void KaGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            GetKontragentDetail();
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1311,18 +1132,6 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void gridView5_DoubleClick(object sender, EventArgs e)
-        {
-            var row = gridView5.GetFocusedRow() as dynamic;
-            using (var frm = new frmKAgentEdit(null, row.KaId))
-            {
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    GetKontragentDetail();
-                }
-            }
-        }
-
         private void PreparationMatRecipeGridView_DoubleClick(object sender, EventArgs e)
         {
             EditItemBtn.PerformClick();
@@ -1404,59 +1213,6 @@ namespace SP_Sklad.MainTabs
             e.Tag = _db;
         }
 
-
-        private void KaGridView_AsyncCompleted(object sender, EventArgs e)
-        {
-            if (!restore)
-            {
-                return;
-            }
-
-            KaGridView.TopRowIndex = kagent_restore_row;
-            KaGridView.FocusedRowHandle = kagent_restore_row;
-            restore = false;
-        }
-
-        private void MatListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
-        {
-            if (focused_tree_node == null)
-            {
-                return;
-            }
-
-            var _db = DB.SkladBase();
-
-            var mat = _db.v_Materials.AsQueryable();
-            if(_mat_archived == 0)
-            {
-                mat = mat.Where(w => w.Archived == 0);
-            }
-
-            var grp_id = focused_tree_node.Id == 6 ? -1 : focused_tree_node.GrpId;
-
-            if ( grp_id > 0)
-            {
-                if (showChildNodeBtn.Down)
-                {
-                    var grp_list = _db.GetMatGroupTree(grp_id).Select(s => s.GrpId).ToList();
-
-                    if (grp_list.Any())
-                    {
-                        mat = mat.Where(w => grp_list.Contains(w.GrpId));
-                    }
-                }
-                else
-                {
-                    mat = mat.Where(w => w.GrpId == grp_id);
-                }
-            }
-
-            e.QueryableSource = mat;
-
-            e.Tag = _db;
-        }
-
-
         private void PrintRecipeBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MatRecipeGridView.FocusedRowHandle >= 0)
@@ -1469,54 +1225,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         { 
-            using (var _db =  DB.SkladBase())
-            {
-                int? p_type = focused_kagent.PTypeId;
-                int? ka_id = focused_kagent.KaId;
-
-                var pl = _db.PriceList.Add(new PriceList
-                {
-                    Id = Guid.NewGuid(),
-                    Deleted = 0,
-                    UseLogo = 0,
-                    CurrId = 2,
-                    OnDate = DateTime.Now,
-                    UpdatedAt = DateTime.Now,
-                    UpdatedBy = DBHelper.CurrentUser.UserId,
-                    PTypeId = p_type,
-                    Name = $"ПЛ-{focused_kagent.Name}"
-                });
-                _db.SaveChanges();
-
-                foreach (var mat_item in _db.v_Materials.Where(w => (w.TypeId == 1 || w.TypeId == 5) && w.Archived == 0).Select(s => new { s.MatId, s.GrpId, s.WId }).ToList())
-                {
-                    var mat_price = _db.GetMatPrice(mat_item.MatId, pl.CurrId, p_type, ka_id).FirstOrDefault();
-                    var dis = _db.GetDiscount(ka_id, mat_item.MatId).FirstOrDefault();
-                    var discount = dis.DiscountType == 0 ? dis.Discount : (mat_price?.Price > 0 ? (dis.Discount / mat_price.Price * 100) : 0);
-
-                    _db.PriceListDet.Add(new PriceListDet
-                    {
-                        PlId = pl.PlId,
-                        MatId = mat_item.MatId,
-                        Price = mat_price?.Price ?? 0,
-                        GrpId = mat_item.GrpId,
-                        PlDetType = 0,
-                        Discount = discount,
-                        WId = mat_item.WId
-                    });
-                }
-                _db.SaveChanges();
-
-                using (var frm = new frmPriceList(pl.PlId))
-                {
-                    frm.KagentComboBox.EditValue = ka_id;
-                    if (frm.ShowDialog() != DialogResult.OK)
-                    {
-                        _db.PriceList.Remove(pl);
-                        _db.SaveChanges();
-                    }
-                }
-            }
+       
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1546,11 +1255,8 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DB.SkladBase().RecalcKaSaldo(focused_kagent.KaId);
 
-            RefrechItemBtn.PerformClick();
         }
-
  
         private void ServicesGridView_DoubleClick(object sender, EventArgs e)
         {

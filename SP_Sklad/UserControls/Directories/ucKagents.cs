@@ -18,7 +18,8 @@ namespace SP_Sklad.MainTabs
         public bool isDirectList { get; set; }
         private int _ka_archived { get; set; }
         private bool _show_rec_archived { get; set; }
-        private dynamic focused_kagent => KaGridView.GetFocusedRow() is NotLoadedObject ? null : KaGridView.GetFocusedRow() as dynamic;
+        public KagentListView focused_kagent => KaGridView.GetFocusedRow() is NotLoadedObject ? null : KaGridView.GetFocusedRow() as KagentListView;
+        private UserAccess user_access { get; set; }
 
         [Browsable(true)]
         public event EventHandler KaGridViewDoubleClick
@@ -44,13 +45,9 @@ namespace SP_Sklad.MainTabs
         {
             if (!DesignMode)
             {
-                var user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 10 && w.UserId == UserSession.UserId);
+                user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 10 && w.UserId == UserSession.UserId);
 
                 NewItemBtn.Enabled = user_access.CanInsert == 1;
-                DeleteItemBtn.Enabled = (focused_kagent != null && user_access.CanDelete == 1);
-                EditItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
-                CopyItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
-
                 KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
@@ -66,6 +63,8 @@ namespace SP_Sklad.MainTabs
 
             KaGridControl.DataSource = null;
             KaGridControl.DataSource = KagentListSource;
+
+            GetKontragentDetail();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -231,13 +230,10 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        
-
         private void CopyItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             RefrechItemBtn.PerformClick();
         }
-
 
         private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -246,8 +242,18 @@ namespace SP_Sklad.MainTabs
 
         private void GetKontragentDetail()
         {
+            DeleteItemBtn.Enabled = (focused_kagent != null && user_access.CanDelete == 1);
+            EditItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
+
             if (focused_kagent == null)
             {
+                gridControl4.DataSource = null;
+                gridControl1.DataSource = null;
+                gridControl3.DataSource = null;
+                KAgentInfoBS.DataSource = null;
+                memoEdit1.Text = "";
+
                 return;
             }
 
@@ -276,7 +282,6 @@ namespace SP_Sklad.MainTabs
             GetKontragentDetail();
         }
 
-
         private void gridView5_DoubleClick(object sender, EventArgs e)
         {
             var row = gridView5.GetFocusedRow() as dynamic;
@@ -284,11 +289,10 @@ namespace SP_Sklad.MainTabs
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    GetKontragentDetail();
+                    RefrechItemBtn.PerformClick();
                 }
             }
         }
-
 
         private void KagentListSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
@@ -334,11 +338,46 @@ namespace SP_Sklad.MainTabs
                 ka = ka.Where(w => w.Archived == 0 || w.Archived == null);
             }
 
-            e.QueryableSource = ka;
+            e.QueryableSource = ka.Select(s => new KagentListView
+            {
+                Archived = s.Archived,
+                GroupName = s.GroupName,
+                INN = s.INN,
+                JobName = s.JobName,
+                KAgentKind = s.KAgentKind,
+                KaId = s.KaId,
+                KType = s.KType,
+                Login = s.Login,
+                Name = s.Name,
+                OKPO = s.OKPO,
+                PriceName = s.PriceName,
+                PTypeId = s.PTypeId,
+                RouteName = s.RouteName,
+                Saldo = s.Saldo,
+                WebUserName = s.WebUserName
+            });
 
             e.Tag = _db;
         }
 
+        public class KagentListView
+        {
+            public int KaId { get; set; }
+            public int KType { get; set; }
+            public int? Archived { get; set; }
+            public string Name { get; set; }
+            public string GroupName { get; set; }
+            public string PriceName { get; set; }
+            public string KAgentKind { get; set; }
+            public string OKPO { get; set; }
+            public string INN { get; set; }
+            public string JobName { get; set; }
+            public string Login { get; set; }
+            public string WebUserName { get; set; }
+            public decimal? Saldo { get; set; }
+            public int? PTypeId { get; set; }
+            public string RouteName { get; set; }
+        }
 
         private void KaGridView_AsyncCompleted(object sender, EventArgs e)
         {
@@ -352,7 +391,6 @@ namespace SP_Sklad.MainTabs
 
             _restore = false;
         }
-
 
         private void barButtonItem7_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         { 
@@ -414,5 +452,9 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
+        private void KaGridView_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            GetKontragentDetail();
+        }
     }
 }

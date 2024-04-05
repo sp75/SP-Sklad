@@ -43,6 +43,9 @@
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+            this.BarCodeBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.DelItem = new DevExpress.XtraBars.BarButtonItem();
             this.AddItem = new DevExpress.XtraBars.BarButtonItem();
@@ -84,9 +87,6 @@
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.BarCodeEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
@@ -146,6 +146,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeBtnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -159,9 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
-            this.panelControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).BeginInit();
@@ -286,8 +284,12 @@
             this.barButtonItem12,
             this.MoveMatToArchiveBarBtnItem,
             this.showMatArhivedBtn,
-            this.barButtonItem11});
-            this.barManager1.MaxItemId = 49;
+            this.barButtonItem11,
+            this.barStaticItem1,
+            this.barEditItem2});
+            this.barManager1.MaxItemId = 52;
+            this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.BarCodeBtnEdit});
             // 
             // bar1
             // 
@@ -302,8 +304,11 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.Text = "Custom 3";
             // 
@@ -355,6 +360,32 @@
             this.barButtonItem11.ImageOptions.ImageIndex = 23;
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItem1.Caption = "Штрих-код";
+            this.barStaticItem1.Id = 50;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Edit = this.BarCodeBtnEdit;
+            this.barEditItem2.Id = 51;
+            this.barEditItem2.Name = "barEditItem2";
+            this.barEditItem2.Size = new System.Drawing.Size(200, 0);
+            // 
+            // BarCodeBtnEdit
+            // 
+            this.BarCodeBtnEdit.AutoHeight = false;
+            this.BarCodeBtnEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
+            this.BarCodeBtnEdit.Name = "BarCodeBtnEdit";
+            this.BarCodeBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeBtnEdit_ButtonClick);
+            this.BarCodeBtnEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarCodeBtnEdit_KeyDown);
+
             // 
             // bar2
             // 
@@ -616,7 +647,6 @@
             // splitContainerControl3.Panel1
             // 
             this.splitContainerControl3.Panel1.Controls.Add(this.MatGridControl);
-            this.splitContainerControl3.Panel1.Controls.Add(this.panelControl3);
             this.splitContainerControl3.Panel1.Text = "Panel1";
             // 
             // splitContainerControl3.Panel2
@@ -637,12 +667,12 @@
             this.MatGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.MatGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.MatGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.MatGridControl.Location = new System.Drawing.Point(0, 44);
+            this.MatGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatGridControl.MainView = this.MatGridView;
             this.MatGridControl.Name = "MatGridControl";
             this.MatGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit8});
-            this.MatGridControl.Size = new System.Drawing.Size(1420, 336);
+            this.MatGridControl.Size = new System.Drawing.Size(1420, 380);
             this.MatGridControl.TabIndex = 0;
             this.MatGridControl.UseEmbeddedNavigator = true;
             this.MatGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -682,6 +712,7 @@
             this.MatGridView.OptionsView.ShowGroupPanel = false;
             this.MatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatGridView_PopupMenuShowing);
             this.MatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatGridView_FocusedRowObjectChanged);
+            this.MatGridView.ColumnFilterChanged += new System.EventHandler(this.MatGridView_ColumnFilterChanged);
             this.MatGridView.AsyncCompleted += new System.EventHandler(this.MatGridView_AsyncCompleted);
             this.MatGridView.DoubleClick += new System.EventHandler(this.MatGridView_DoubleClick);
             // 
@@ -813,38 +844,6 @@
             this.gridView4.GridControl = this.MatGridControl;
             this.gridView4.Name = "gridView4";
             // 
-            // panelControl3
-            // 
-            this.panelControl3.Controls.Add(this.labelControl5);
-            this.panelControl3.Controls.Add(this.BarCodeEdit);
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(0, 0);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1420, 44);
-            this.panelControl3.TabIndex = 2;
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl5.Location = new System.Drawing.Point(1113, 14);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(57, 13);
-            this.labelControl5.TabIndex = 7;
-            this.labelControl5.Text = "Штрих-код";
-            // 
-            // BarCodeEdit
-            // 
-            this.BarCodeEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BarCodeEdit.Location = new System.Drawing.Point(1176, 11);
-            this.BarCodeEdit.MenuManager = this.barManager1;
-            this.BarCodeEdit.Name = "BarCodeEdit";
-            this.BarCodeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search)});
-            this.BarCodeEdit.Size = new System.Drawing.Size(239, 20);
-            this.BarCodeEdit.TabIndex = 9;
-            this.BarCodeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeEdit_ButtonClick);
-            this.BarCodeEdit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BarCodeEdit_KeyPress);
-            // 
             // xtraTabControl1
             // 
             this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -902,7 +901,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -1394,6 +1393,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarCodeBtnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
@@ -1407,10 +1407,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
-            this.panelControl3.ResumeLayout(false);
-            this.panelControl3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BarCodeEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PageImageList)).EndInit();
@@ -1533,15 +1529,12 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit10;
         private DevExpress.XtraEditors.MemoEdit MatNotesEdit;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn78;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn79;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn74;
-        private DevExpress.XtraEditors.ButtonEdit BarCodeEdit;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn111;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource MatListSource;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow10;
@@ -1553,5 +1546,8 @@
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit BarCodeBtnEdit;
     }
 }

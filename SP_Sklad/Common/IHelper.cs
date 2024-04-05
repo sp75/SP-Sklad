@@ -322,7 +322,7 @@ namespace SP_Sklad.Common
                          f.Text = "Контрагенти";
                          if (f.ShowDialog() == DialogResult.OK)
                          {
-                             old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
+                             old_id = f.uc.ucKagents.focused_kagent?.KaId;
                          }
                      }*/
                     using (var frm = new frmKagents(-1, ""))
@@ -347,7 +347,6 @@ namespace SP_Sklad.Common
                     }
                     break;
 
-
                 case 3:
                     using (var f = new frmCatalog(null, 5))
                     {
@@ -355,7 +354,7 @@ namespace SP_Sklad.Common
                         f.Text = "Службовці";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.KaGridView.GetFocusedRow() as dynamic).KaId;
+                            old_id = f.uc.ucKagents.focused_kagent?.KaId;
                         }
                     }
                     break;

@@ -602,6 +602,7 @@
             this.KaGridView.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.KaGridView_RowCellStyle);
             this.KaGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KaGridView_PopupMenuShowing);
             this.KaGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KaGridView_FocusedRowObjectChanged);
+            this.KaGridView.ColumnFilterChanged += new System.EventHandler(this.KaGridView_ColumnFilterChanged);
             this.KaGridView.AsyncCompleted += new System.EventHandler(this.KaGridView_AsyncCompleted);
             this.KaGridView.DoubleClick += new System.EventHandler(this.KaGridView_DoubleClick);
             // 
