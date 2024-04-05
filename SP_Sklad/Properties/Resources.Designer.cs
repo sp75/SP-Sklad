@@ -413,6 +413,26 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_file {
+            get {
+                object obj = ResourceManager.GetObject("check_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap check_file_red {
+            get {
+                object obj = ResourceManager.GetObject("check_file_red", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap checked_blue {
             get {
                 object obj = ResourceManager.GetObject("checked_blue", resourceCulture);
@@ -2318,6 +2338,16 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap service_info {
             get {
                 object obj = ResourceManager.GetObject("service_info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap set_as_default {
+            get {
+                object obj = ResourceManager.GetObject("set_as_default", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1037,14 +1037,14 @@
             // 
             this.BarImageList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList1.ImageStream")));
             this.BarImageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.additem_3, "additem_3", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.BarImageList1.Images.SetKeyName(0, "additem_3");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList1.Images.SetKeyName(0, "add_file");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.BarImageList1.Images.SetKeyName(1, "copy_2");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.BarImageList1.Images.SetKeyName(2, "edit_2");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.delete_16x16, "delete_16x16", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.BarImageList1.Images.SetKeyName(3, "delete_16x16");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList1.Images.SetKeyName(3, "clear");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.BarImageList1.Images.SetKeyName(4, "refresh");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
@@ -1057,6 +1057,12 @@
             this.BarImageList1.Images.SetKeyName(8, "edittask_16x16");
             this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList1.Images.SetKeyName(9, "xls_export");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.BarImageList1.Images.SetKeyName(10, "close");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.BarImageList1.Images.SetKeyName(11, "edit_3");
+            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList1.Images.SetKeyName(12, "refresh_office");
             // 
             // styleController1
             // 

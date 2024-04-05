@@ -3838,6 +3838,9 @@
     <None Include="Resources\money_out_2.png" />
     <None Include="Resources\execute_3.png" />
     <None Include="Resources\order_history.png" />
+    <None Include="Resources\set_as_default.png" />
+    <None Include="Resources\check_file.png" />
+    <None Include="Resources\check_file_red.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>
