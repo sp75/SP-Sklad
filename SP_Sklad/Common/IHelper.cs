@@ -748,7 +748,7 @@ namespace SP_Sklad.Common
             mainForm.main_form.mainTabControl.SelectedTabPageIndex = 6;
             var first_node = mainForm.main_form.DirUserControl.DirTreeList.FindNodeByFieldValue("Id", 6);
             mainForm.main_form.DirUserControl.DirTreeList.SetFocusedNode(first_node);
-            mainForm.main_form.DirUserControl.FindItem(mat_id.Value) ;
+            mainForm.main_form.DirUserControl.ucMaterials.FindItem(mat_id.Value) ;
 
             //    mainForm.main_form.DirUserControl.MatGridView.ClearFindFilter();
 
