@@ -187,7 +187,7 @@ namespace SP_Sklad.MainTabs
                 case 2:
                     using (var db = DB.SkladBase())
                     {
-                        UsersOnlineBS.DataSource = db.Users.AsNoTracking().Where(w => w.IsOnline == true).ToList();
+                        UsersOnlineBS.DataSource = db.Users.AsNoTracking().Where(w => w.IsOnline == true && w.IsWorking).ToList();
                         gridControl2.DataSource = db.WaybillList.Join(db.DocType, w => w.WType, t => t.Id, (w, t) => new
                         {
                             w.Id,
