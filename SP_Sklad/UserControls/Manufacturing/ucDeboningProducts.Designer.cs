@@ -478,8 +478,8 @@
             this.BarImageList.Images.SetKeyName(10, "order_info");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.BarImageList.Images.SetKeyName(11, "w_scale");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.BarImageList.Images.SetKeyName(12, "converttorange_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList.Images.SetKeyName(12, "def_settings_grid");
             // 
             // StopProcesBtn
             // 

@@ -342,8 +342,8 @@
             this.imageCollection1.Images.SetKeyName(14, "WBWriteOff_2");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.imageCollection1.Images.SetKeyName(15, "pay_doc_out");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.set_as_default, "set_as_default", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.imageCollection1.Images.SetKeyName(16, "set_as_default");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.imageCollection1.Images.SetKeyName(16, "def_settings_grid");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 17);
             this.imageCollection1.Images.SetKeyName(17, "checked_blue");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.historyitem_16x16, "historyitem_16x16", typeof(global::SP_Sklad.Properties.Resources), 18);

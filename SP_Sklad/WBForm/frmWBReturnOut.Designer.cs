@@ -396,8 +396,8 @@
             this.WBImgList.Images.SetKeyName(18, "order_info");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.handshake, "handshake", typeof(global::SP_Sklad.Properties.Resources), 19);
             this.WBImgList.Images.SetKeyName(19, "handshake");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 20);
-            this.WBImgList.Images.SetKeyName(20, "converttorange_16x16");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.WBImgList.Images.SetKeyName(20, "def_settings_grid");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.WBImgList.Images.SetKeyName(21, "listnumbers_16x16");
             // 

@@ -98,7 +98,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.BarImageList1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
@@ -137,7 +137,7 @@
             this.xtraTabPage20.SuspendLayout();
             this.xtraTabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -910,7 +910,7 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
             this.barManager1.Form = this;
-            this.barManager1.Images = this.BarImageList1;
+            this.barManager1.Images = this.BarImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.NewItemBtn,
             this.CopyItemBtn,
@@ -1033,36 +1033,34 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 748);
             // 
-            // BarImageList1
+            // BarImageList
             // 
-            this.BarImageList1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList1.ImageStream")));
-            this.BarImageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.BarImageList1.Images.SetKeyName(0, "add_file");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.BarImageList1.Images.SetKeyName(1, "copy_2");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_2, "edit_2", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.BarImageList1.Images.SetKeyName(2, "edit_2");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.BarImageList1.Images.SetKeyName(3, "clear");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList1.Images.SetKeyName(4, "refresh");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.BarImageList1.Images.SetKeyName(5, "execute_16x16_red");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.BarImageList1.Images.SetKeyName(6, "preview_2");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.find_barcode, "find_barcode", typeof(global::SP_Sklad.Properties.Resources), 7);
-            this.BarImageList1.Images.SetKeyName(7, "find_barcode");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edittask_16x16, "edittask_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.BarImageList1.Images.SetKeyName(8, "edittask_16x16");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.BarImageList1.Images.SetKeyName(9, "xls_export");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 10);
-            this.BarImageList1.Images.SetKeyName(10, "close");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.BarImageList1.Images.SetKeyName(11, "edit_3");
-            this.BarImageList1.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.BarImageList1.Images.SetKeyName(12, "refresh_office");
+            this.BarImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("BarImageList.ImageStream")));
+            this.BarImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.add_file, "add_file", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.BarImageList.Images.SetKeyName(0, "add_file");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_2, "copy_2", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.BarImageList.Images.SetKeyName(1, "copy_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.BarImageList.Images.SetKeyName(2, "edit_3");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList.Images.SetKeyName(3, "clear");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList.Images.SetKeyName(4, "refresh");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.BarImageList.Images.SetKeyName(5, "execute_16x16_red");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.BarImageList.Images.SetKeyName(6, "preview_2");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.find_barcode, "find_barcode", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.BarImageList.Images.SetKeyName(7, "find_barcode");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edittask_16x16, "edittask_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.BarImageList.Images.SetKeyName(8, "edittask_16x16");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.BarImageList.Images.SetKeyName(9, "xls_export");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.BarImageList.Images.SetKeyName(10, "close");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.BarImageList.Images.SetKeyName(11, "refresh_office");
             // 
             // styleController1
             // 
@@ -1160,7 +1158,7 @@
             this.xtraTabPage20.ResumeLayout(false);
             this.xtraTabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BarImageList1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1241,6 +1239,6 @@
         public UserControls.ucPayDoc ucPayDoc;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         public UserControls.ucWayBill ucWayBill;
-        private DevExpress.Utils.ImageCollection BarImageList1;
+        private DevExpress.Utils.ImageCollection BarImageList;
     }
 }

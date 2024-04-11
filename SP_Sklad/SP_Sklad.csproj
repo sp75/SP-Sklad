@@ -3841,6 +3841,11 @@
     <None Include="Resources\set_as_default.png" />
     <None Include="Resources\check_file.png" />
     <None Include="Resources\check_file_red.png" />
+    <None Include="Resources\def_settings_grid.png" />
+    <None Include="Resources\table.png" />
+    <None Include="Resources\execute_2.png" />
+    <None Include="Resources\historyitem_2.png" />
+    <None Include="Resources\historyitem_1.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

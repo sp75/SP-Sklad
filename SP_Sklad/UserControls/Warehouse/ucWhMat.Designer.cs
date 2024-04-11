@@ -594,8 +594,8 @@
             this.imageCollection1.Images.SetKeyName(9, "product_down");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_up, "product_up", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "product_up");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.converttorange_16x16, "converttorange_16x16", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.imageCollection1.Images.SetKeyName(11, "converttorange_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "def_settings_grid");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pageinfo_16x16, "pageinfo_16x16", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "pageinfo_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 13);
@@ -614,10 +614,12 @@
             this.imageCollection1.Images.SetKeyName(20, "re_calc_remain_1.png");
             this.imageCollection1.InsertGalleryImage("copy_16x16.png", "images/edit/copy_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png"), 21);
             this.imageCollection1.Images.SetKeyName(21, "copy_16x16.png");
-            this.imageCollection1.InsertGalleryImage("table_16x16.png", "images/toolbox%20items/table_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/toolbox%20items/table_16x16.png"), 22);
-            this.imageCollection1.Images.SetKeyName(22, "table_16x16.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.table, "table", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.imageCollection1.Images.SetKeyName(22, "table");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 23);
             this.imageCollection1.Images.SetKeyName(23, "product_tmc");
+            this.imageCollection1.InsertGalleryImage("table_16x16.png", "images/toolbox%20items/table_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/toolbox%20items/table_16x16.png"), 24);
+            this.imageCollection1.Images.SetKeyName(24, "table_16x16.png");
             // 
             // barButtonItem4
             // 
