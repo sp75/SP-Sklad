@@ -800,6 +800,7 @@
             // gridColumn20
             // 
             this.gridColumn20.Caption = "Всього, кг";
+            this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn20.FieldName = "TotalWeight";
             this.gridColumn20.Name = "gridColumn20";
             this.gridColumn20.Visible = true;
