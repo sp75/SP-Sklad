@@ -34,5 +34,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RouteId { get; set; }
         public string RouteName { get; set; }
         public Nullable<System.DateTime> Duration { get; set; }
+        public Nullable<decimal> TotalTareWeight { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
     }
 }

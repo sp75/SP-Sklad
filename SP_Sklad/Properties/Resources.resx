@@ -967,4 +967,10 @@
   <data name="historyitem_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\historyitem_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="print_selected_documents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_selected_documents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_select_row" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_select_row.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

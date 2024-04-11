@@ -91,6 +91,8 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.ExpeditionsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ExpeditionsDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -135,7 +137,7 @@
             // 
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 628);
+            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 633);
             this.splitContainerControl4.SplitterPosition = 354;
             this.splitContainerControl4.TabIndex = 9;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -185,7 +187,9 @@
             this.gridColumn13,
             this.gridColumn16,
             this.gridColumn17,
-            this.gridColumn18});
+            this.gridColumn18,
+            this.gridColumn19,
+            this.gridColumn20});
             this.ExpeditionsGridView.GridControl = this.ExpeditionsGridControl;
             this.ExpeditionsGridView.Name = "ExpeditionsGridView";
             this.ExpeditionsGridView.OptionsBehavior.Editable = false;
@@ -204,7 +208,6 @@
             this.gridColumn47.Name = "gridColumn47";
             this.gridColumn47.Visible = true;
             this.gridColumn47.VisibleIndex = 1;
-            this.gridColumn47.Width = 85;
             // 
             // gridColumn46
             // 
@@ -216,7 +219,7 @@
             this.gridColumn46.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn46.Visible = true;
             this.gridColumn46.VisibleIndex = 2;
-            this.gridColumn46.Width = 118;
+            this.gridColumn46.Width = 104;
             // 
             // gridColumn48
             // 
@@ -225,7 +228,7 @@
             this.gridColumn48.Name = "gridColumn48";
             this.gridColumn48.Visible = true;
             this.gridColumn48.VisibleIndex = 8;
-            this.gridColumn48.Width = 115;
+            this.gridColumn48.Width = 102;
             // 
             // gridColumn112
             // 
@@ -234,7 +237,7 @@
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 7;
-            this.gridColumn112.Width = 119;
+            this.gridColumn112.Width = 105;
             // 
             // gridColumn3
             // 
@@ -299,16 +302,16 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 5;
-            this.gridColumn5.Width = 129;
+            this.gridColumn5.Width = 114;
             // 
             // gridColumn11
             // 
-            this.gridColumn11.Caption = "Всього, кг.";
+            this.gridColumn11.Caption = "Загальна вага товарів";
             this.gridColumn11.FieldName = "TotalKilograms";
             this.gridColumn11.Name = "gridColumn11";
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 10;
-            this.gridColumn11.Width = 117;
+            this.gridColumn11.Width = 96;
             // 
             // gridColumn13
             // 
@@ -317,7 +320,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 9;
-            this.gridColumn13.Width = 136;
+            this.gridColumn13.Width = 102;
             // 
             // gridColumn16
             // 
@@ -329,7 +332,7 @@
             this.gridColumn16.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 3;
-            this.gridColumn16.Width = 134;
+            this.gridColumn16.Width = 119;
             // 
             // gridColumn17
             // 
@@ -338,7 +341,7 @@
             this.gridColumn17.Name = "gridColumn17";
             this.gridColumn17.Visible = true;
             this.gridColumn17.VisibleIndex = 6;
-            this.gridColumn17.Width = 163;
+            this.gridColumn17.Width = 144;
             // 
             // gridColumn18
             // 
@@ -348,7 +351,7 @@
             this.gridColumn18.Name = "gridColumn18";
             this.gridColumn18.Visible = true;
             this.gridColumn18.VisibleIndex = 4;
-            this.gridColumn18.Width = 82;
+            this.gridColumn18.Width = 72;
             // 
             // repositoryItemTimeEdit1
             // 
@@ -417,7 +420,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 628);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 633);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1248, 0);
             // 
@@ -427,7 +430,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 628);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 633);
             // 
             // barDockControlRight
             // 
@@ -435,7 +438,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1248, 0);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 628);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 633);
             // 
             // standaloneBarDockControl1
             // 
@@ -548,7 +551,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 264);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 269);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage14,
@@ -559,7 +562,7 @@
             this.xtraTabPage14.Controls.Add(this.ExpeditionDetGridControl);
             this.xtraTabPage14.ImageOptions.ImageIndex = 10;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 236);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 241);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // ExpeditionDetGridControl
@@ -573,7 +576,7 @@
             this.repositoryItemImageComboBox1,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemCheckEdit1});
-            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 236);
+            this.ExpeditionDetGridControl.Size = new System.Drawing.Size(1246, 241);
             this.ExpeditionDetGridControl.TabIndex = 2;
             this.ExpeditionDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.ExpeditionDetGridView});
@@ -751,15 +754,16 @@
             this.xtraTabPage1.Controls.Add(this.ucRelDocGrid1);
             this.xtraTabPage1.ImageOptions.ImageIndex = 11;
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(1246, 236);
+            this.xtraTabPage1.Size = new System.Drawing.Size(1246, 241);
             this.xtraTabPage1.Text = "Зв\'язані документи";
             // 
             // ucRelDocGrid1
             // 
+            this.ucRelDocGrid1._access_token = null;
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";
-            this.ucRelDocGrid1.Size = new System.Drawing.Size(1246, 236);
+            this.ucRelDocGrid1.Size = new System.Drawing.Size(1246, 241);
             this.ucRelDocGrid1.TabIndex = 0;
             // 
             // ExpeditionsPopupMenu
@@ -784,6 +788,24 @@
             this.ExpeditionsDetPopupMenu.Manager = this.barManager1;
             this.ExpeditionsDetPopupMenu.Name = "ExpeditionsDetPopupMenu";
             // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Загальна вага тари";
+            this.gridColumn19.FieldName = "TotalTareWeight";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 11;
+            this.gridColumn19.Width = 76;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Всього, кг";
+            this.gridColumn20.FieldName = "TotalWeight";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 12;
+            this.gridColumn20.Width = 89;
+            // 
             // ucExpedition
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,7 +818,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucExpedition";
-            this.Size = new System.Drawing.Size(1248, 628);
+            this.Size = new System.Drawing.Size(1248, 633);
             this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();
             this.splitContainerControl4.Panel1.ResumeLayout(false);
@@ -891,5 +913,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
         private ucDocumentFilterPanel ucDocumentFilterPanel;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
     }
 }
