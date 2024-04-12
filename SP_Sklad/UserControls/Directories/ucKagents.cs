@@ -15,6 +15,7 @@ namespace SP_Sklad.MainTabs
     public partial class ucKagents : DevExpress.XtraEditors.XtraUserControl
     {
         public int? KType { get; set; }
+        public int? FunId { get; set; }
         public bool isDirectList { get; set; }
         private int _ka_archived { get; set; }
         private bool _show_rec_archived { get; set; }
@@ -45,9 +46,6 @@ namespace SP_Sklad.MainTabs
         {
             if (!DesignMode)
             {
-                user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 10 && w.UserId == UserSession.UserId);
-
-                NewItemBtn.Enabled = user_access.CanInsert == 1;
                 KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
@@ -242,9 +240,12 @@ namespace SP_Sklad.MainTabs
 
         private void GetKontragentDetail()
         {
+            user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == FunId && w.UserId == UserSession.UserId);
+
+            NewItemBtn.Enabled = user_access.CanInsert == 1;
             DeleteItemBtn.Enabled = (focused_kagent != null && user_access.CanDelete == 1);
             EditItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
-            CopyItemBtn.Enabled = (focused_kagent != null && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (focused_kagent != null && user_access.CanInsert == 1);
 
             if (focused_kagent == null)
             {
@@ -328,7 +329,7 @@ namespace SP_Sklad.MainTabs
                           k.RouteName
                       }).Distinct();
 
-            if (KType != 0)
+            if (KType >= 0)
             {
                 ka = ka.Where(w => w.KType == KType);
             }

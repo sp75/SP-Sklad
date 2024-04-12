@@ -94,7 +94,8 @@ namespace SP_Sklad.MainTabs
             if (focused_tree_node.GType.Value == 1)
             {
                 bar1.Visible = false;
-                ucKagents.KType = focused_tree_node.GrpId;
+                ucKagents.KType =  focused_tree_node.Id != 10 ? focused_tree_node.GrpId : -1;
+                ucKagents.FunId = focused_tree_node.FunId;
                 ucKagents.GetData(false);
             }
             else if (focused_tree_node.GType.Value == 2)
