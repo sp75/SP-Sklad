@@ -973,4 +973,13 @@
   <data name="print_select_row" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\print_select_row.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="money_move_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_move_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_move_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_move_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="move_warehouse_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\move_warehouse_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

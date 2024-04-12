@@ -515,6 +515,7 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox42.Name = "repositoryItemImageComboBox42";
+            this.repositoryItemImageComboBox42.SmallImages = this.imageCollection1;
             // 
             // ucDocumentFilterPanel
             // 

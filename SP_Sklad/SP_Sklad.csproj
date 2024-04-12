@@ -3491,7 +3491,6 @@
     <None Include="Resources\technology_16x16.png" />
     <None Include="Resources\projectdirectory_16x16.png" />
     <None Include="Resources\gaugestylehalfcircular_16x16.png" />
-    <None Include="Resources\boorderitem_16x16.png" />
     <None Include="Resources\info_32x32.png" />
     <None Include="Resources\weightedpies_16x16.png" />
     <None Include="Resources\table_16x16.png" />
@@ -3531,9 +3530,7 @@
     <None Include="Resources\deletelist_16x16.png" />
     <None Include="Resources\refresh_16x16.png" />
     <None Include="Resources\apply_16x16.png" />
-    <None Include="Resources\preview_16x16.png" />
     <None Include="Resources\showtestreport_16x162.png" />
-    <None Include="Resources\additem_16x161.png" />
     <None Include="Resources\iconsetsymbols3_16x16.png" />
     <None Include="Resources\new_16x16.png" />
     <None Include="Resources\preview_16x161.png" />
@@ -3555,7 +3552,6 @@
     <None Include="Resources\insert_16x16.png" />
     <None Include="Resources\textbox_16x16.png" />
     <None Include="Resources\converttoparagraphs_16x16.png" />
-    <None Include="Resources\currency_16x161.png" />
     <None Include="Resources\pivottablegroupselection_16x16.png" />
     <None Include="Resources\pageinfo_16x16.png" />
     <None Include="Resources\converttorange_16x16.png" />
@@ -3564,7 +3560,6 @@
     <None Include="Resources\employees_16x16.png" />
     <None Include="Resources\movepivottable_16x16.png" />
     <None Include="Resources\indentdecrease_16x16.png" />
-    <None Include="Resources\allowuserstoeditranges_16x16.png" />
     <None Include="Resources\reverssort_16x16.png" />
     <None Include="Resources\sortgroupheader_16x16.png" />
     <None Include="Resources\chartswitchrowcolumn_16x16.png" />
@@ -3584,7 +3579,6 @@
     <None Include="Resources\snapinsertheader_16x16.png" />
     <None Include="Resources\exporttopdf_16x16.png" />
     <None Include="Resources\version_16x16.png" />
-    <None Include="Resources\cube_16x16.png" />
     <None Include="Resources\groupheader_16x16.png" />
     <None Include="Resources\salesanalysis_16x16.png" />
     <None Include="Resources\sales_16x16.png" />
@@ -3656,14 +3650,12 @@
     <None Include="Resources\countries.png" />
     <None Include="Resources\taxes.png" />
     <None Include="Resources\event_log.png" />
-    <None Include="Resources\boproduct_reserved.png" />
     <None Include="Resources\boproduct_reserved_2.png" />
     <None Include="Resources\product_reserved_1.png" />
     <None Include="Resources\product_reserved_2.png" />
     <None Include="Resources\product_info_3.png" />
     <None Include="Resources\formatnumbershortdate_16x16.png" />
     <None Include="Resources\production_planning.png" />
-    <None Include="Resources\product_movement.png" />
     <None Include="Resources\service_3.png" />
     <None Include="Resources\supplier.png" />
     <None Include="Resources\type_acounts.png" />
@@ -3836,7 +3828,6 @@
     <None Include="Resources\add_file.png" />
     <None Include="Resources\money_in_2.png" />
     <None Include="Resources\money_out_2.png" />
-    <None Include="Resources\execute_3.png" />
     <None Include="Resources\order_history.png" />
     <None Include="Resources\set_as_default.png" />
     <None Include="Resources\check_file.png" />
@@ -3844,10 +3835,12 @@
     <None Include="Resources\def_settings_grid.png" />
     <None Include="Resources\table.png" />
     <None Include="Resources\execute_2.png" />
-    <None Include="Resources\historyitem_2.png" />
     <None Include="Resources\historyitem_1.png" />
     <None Include="Resources\print_selected_documents.png" />
     <None Include="Resources\print_select_row.png" />
+    <None Include="Resources\move_warehouse_1.png" />
+    <None Include="Resources\money_move_2.png" />
+    <None Include="Resources\money_move_1.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

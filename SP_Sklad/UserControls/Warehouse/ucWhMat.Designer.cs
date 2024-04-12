@@ -618,8 +618,6 @@
             this.imageCollection1.Images.SetKeyName(22, "table");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 23);
             this.imageCollection1.Images.SetKeyName(23, "product_tmc");
-            this.imageCollection1.InsertGalleryImage("table_16x16.png", "images/toolbox%20items/table_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/toolbox%20items/table_16x16.png"), 24);
-            this.imageCollection1.Images.SetKeyName(24, "table_16x16.png");
             // 
             // barButtonItem4
             // 
