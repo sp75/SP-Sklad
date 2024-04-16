@@ -43,7 +43,6 @@
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             this.BarCodeBtnEdit = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -285,7 +284,6 @@
             this.MoveMatToArchiveBarBtnItem,
             this.showMatArhivedBtn,
             this.barButtonItem11,
-            this.barStaticItem1,
             this.barEditItem2});
             this.barManager1.MaxItemId = 52;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
@@ -305,7 +303,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.DrawDragBorder = false;
@@ -361,21 +358,15 @@
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick_1);
             // 
-            // barStaticItem1
-            // 
-            this.barStaticItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barStaticItem1.Caption = "Штрих-код";
-            this.barStaticItem1.Id = 50;
-            this.barStaticItem1.Name = "barStaticItem1";
-            // 
             // barEditItem2
             // 
             this.barEditItem2.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.barEditItem2.Caption = "barEditItem2";
+            this.barEditItem2.Caption = "Штрих-код";
             this.barEditItem2.Edit = this.BarCodeBtnEdit;
             this.barEditItem2.Id = 51;
             this.barEditItem2.Name = "barEditItem2";
-            this.barEditItem2.Size = new System.Drawing.Size(200, 0);
+            this.barEditItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barEditItem2.Size = new System.Drawing.Size(250, 0);
             // 
             // BarCodeBtnEdit
             // 
@@ -385,7 +376,6 @@
             this.BarCodeBtnEdit.Name = "BarCodeBtnEdit";
             this.BarCodeBtnEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BarCodeBtnEdit_ButtonClick);
             this.BarCodeBtnEdit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BarCodeBtnEdit_KeyDown);
-
             // 
             // bar2
             // 
@@ -901,7 +891,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -1546,7 +1536,6 @@
         private DevExpress.Utils.ImageCollection PageImageList;
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit BarCodeBtnEdit;
     }

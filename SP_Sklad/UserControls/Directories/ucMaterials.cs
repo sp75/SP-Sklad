@@ -36,6 +36,7 @@ namespace SP_Sklad.MainTabs
         private bool _show_rec_archived { get; set; }
         private bool _show_child_group { get; set; }
 
+
         [Browsable(true)]
         public event EventHandler MatGridViewDoubleClick
         {
@@ -200,7 +201,7 @@ namespace SP_Sklad.MainTabs
             AddMatItemToList(focused_mat);
         }
 
-        private void AddMatItemToList(v_Materials row, string  bar_code = null )
+        public void AddMatItemToList(v_Materials row, string  bar_code = null )
         {
             if (row == null)
             {
@@ -383,7 +384,7 @@ namespace SP_Sklad.MainTabs
         }
 
 
-        private v_Materials FindByBarCode(string br_code)
+        public v_Materials FindByBarCode(string br_code)
         {
             if (!String.IsNullOrEmpty(br_code))
             {
@@ -535,6 +536,8 @@ namespace SP_Sklad.MainTabs
                 }
 
                 textEdit.Text = "";
+                //  (barEditItem2.Links[0] as BarEditItemLink).ShowEditor();
+                e.Handled = true;
             }
         }
 
@@ -547,5 +550,6 @@ namespace SP_Sklad.MainTabs
                 FindByBarCode(textEdit.Text);
             }
         }
+
     }
 }

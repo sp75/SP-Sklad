@@ -18,7 +18,6 @@ using SP_Sklad.Properties;
 using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
-using SkladEngine.DBFunction;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
 
@@ -34,7 +33,7 @@ namespace SP_Sklad.MainTabs
         private int _ka_archived { get; set; }
         private int _mat_archived { get; set; }
         private bool _show_rec_archived { get; set; }
-       
+
         public class PriceTypesView
         {
             public int PTypeId { get; set; }
@@ -71,6 +70,7 @@ namespace SP_Sklad.MainTabs
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
             focused_tree_node = DirTreeList.GetDataRecordByNode(e.Node) as GetDirTree_Result;
+
             if (focused_tree_node == null)
             {
                 return;
