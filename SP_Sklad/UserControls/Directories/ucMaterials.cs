@@ -383,7 +383,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-
         public v_Materials FindByBarCode(string br_code)
         {
             if (!String.IsNullOrEmpty(br_code))
@@ -392,16 +391,10 @@ namespace SP_Sklad.MainTabs
                 String kod = BarCodeSplit[0];
                 var bc = DB.SkladBase().v_BarCodes.FirstOrDefault(w => w.BarCode == kod);
 
-              //  MatGridView.ClearFindFilter();
                 if (bc != null)
                 {
-                    //  gridColumn111.FilterInfo = new DevExpress.XtraGrid.Columns.ColumnFilterInfo($"MatId='{bc.MatId}'");
-
                     FindItem(bc.MatId);
                 }
-
-
-              
 
                 return focused_mat;
             }
