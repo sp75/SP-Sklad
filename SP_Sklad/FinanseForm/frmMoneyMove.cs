@@ -38,7 +38,7 @@ namespace SP_Sklad.FinanseForm
             CashFromEdit.Properties.DataSource = DBHelper.CashDesks;
             CashToEdit.Properties.DataSource = DBHelper.CashDesks;
 
-            var ent_id = DBHelper.Enterprise.KaId ;
+            var ent_id = DBHelper.CurrentEnterprise.KaId ;
             AccountFromEdit.Properties.DataSource = _db.EnterpriseAccount./*Where(w => w.KaId == ent_id).*/Select(s => new { s.AccId, s.AccNum, s.BankName, s.KaName }).ToList();
             AccountToEdit.Properties.DataSource = AccountFromEdit.Properties.DataSource;
 
@@ -66,7 +66,7 @@ namespace SP_Sklad.FinanseForm
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = -3,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     OperId = oper_id
                 });
 
@@ -86,7 +86,7 @@ namespace SP_Sklad.FinanseForm
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = 3,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     OperId = oper_id
                 });
             }

@@ -70,10 +70,10 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     KaId = user_settings.DefaultBuyer,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
+                    Nds = DBHelper.CurrentEnterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
                 });
 
                 _db.SaveChanges();
@@ -132,7 +132,7 @@ namespace SP_Sklad.WBForm
 
         private void SetFormCaption()
         {
-            Text = "Реалізація товарів, Продавець: " + DBHelper.Enterprise.Name;
+            Text = "Реалізація товарів, Продавець: " + DBHelper.CurrentEnterprise.Name;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

@@ -70,7 +70,7 @@ namespace SP_Sklad.WBForm
                     WaybillMove = new WaybillMove { SourceWid = _wid.HasValue ? _wid.Value : DBHelper.WhList.FirstOrDefault(w => w.Def == 1).WId },
                     Nds = 0,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.CurrentEnterprise.KaId
                 });
 
                 _db.SaveChanges();

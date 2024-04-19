@@ -61,7 +61,7 @@ namespace SP_Sklad.WBForm
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     ReportingDate = DBHelper.ServerDateTime()
                 });
                 _db.SaveChanges();

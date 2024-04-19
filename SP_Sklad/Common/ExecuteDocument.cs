@@ -31,7 +31,7 @@ namespace SP_Sklad.Common
                 PersonId = DBHelper.CurrentUser.KaId,
                 Nds = _db.Kagent.Find(_rmm.KaId)?.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                 UpdatedBy = DBHelper.CurrentUser.UserId,
-                EntId = DBHelper.Enterprise.KaId,
+                EntId = DBHelper.CurrentEnterprise.KaId,
                 PTypeId = 1,
                 Reason = $"Зважування напівтуш №{_rmm.Num}",
                 KaId = _rmm.KaId
@@ -110,7 +110,7 @@ namespace SP_Sklad.Common
                 PersonId = DBHelper.CurrentUser.KaId,
                 WaybillMove = new WaybillMove { SourceWid = _rmm.WId.Value },
                 UpdatedBy = DBHelper.CurrentUser.UserId,
-                EntId = DBHelper.Enterprise.KaId
+                EntId = DBHelper.CurrentEnterprise.KaId
             });
 
             _db.SetDocRel(id, wb.Id);
@@ -177,7 +177,7 @@ namespace SP_Sklad.Common
                 WaybillMove = new WaybillMove { SourceWid = _rmm.WId.Value },
                 Nds = 0,
                 UpdatedBy = DBHelper.CurrentUser.UserId,
-                EntId = DBHelper.Enterprise.KaId,
+                EntId = DBHelper.CurrentEnterprise.KaId,
                 Commission = new List<Commission>() { new Commission { KaId = DBHelper.CurrentUser.KaId } }
             });
 

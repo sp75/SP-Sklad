@@ -63,10 +63,10 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     PTypeId = 1,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
+                    Nds = DBHelper.CurrentEnterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                 });
 
                 _db.SaveChanges();

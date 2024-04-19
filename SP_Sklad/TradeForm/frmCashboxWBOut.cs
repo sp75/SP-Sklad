@@ -921,7 +921,7 @@ namespace SP_Sklad.WBForm
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = 6,//Коригування залишку
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     OperId = Guid.NewGuid(),
                     ReceiptId = receipt_id
                 });
@@ -1046,7 +1046,7 @@ namespace SP_Sklad.WBForm
                             OnValue = 1,
                             PersonId = DBHelper.CurrentUser.KaId,
                             UpdatedBy = DBHelper.CurrentUser.UserId,
-                            EntId = DBHelper.Enterprise.KaId,
+                            EntId = DBHelper.CurrentEnterprise.KaId,
                             KaId = user_settings.DefaultBuyer
                         });
                         _db.SaveChanges();

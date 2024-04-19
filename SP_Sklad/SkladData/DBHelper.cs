@@ -215,7 +215,7 @@ namespace SP_Sklad.SkladData
                     return _retail_outlets = (from k in _db.v_Kagent
                                               join ew in _db.EnterpriseWorker on k.KaId equals ew.WorkerId into gj
                                               from subfg in gj.DefaultIfEmpty()
-                                              where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.Enterprise.KaId && k.Archived == 0
+                                              where k.KaKind == 5 && subfg.EnterpriseId == DBHelper.CurrentEnterprise.KaId && k.Archived == 0
                                               select k
                              ).AsNoTracking().ToList();
                 }
@@ -289,7 +289,7 @@ namespace SP_Sklad.SkladData
             }
         }
 
-        public static Enterprise Enterprise
+        public static Enterprise CurrentEnterprise
         {
             get
             {
@@ -807,7 +807,7 @@ order by wbd.ondate desc
                             WaybillMove = new WaybillMove { SourceWid = wid.Value },
                             Nds = 0,
                             UpdatedBy = DBHelper.CurrentUser.UserId,
-                            EntId = DBHelper.Enterprise.KaId
+                            EntId = DBHelper.CurrentEnterprise.KaId
                         });
 
                         db.SaveChanges();

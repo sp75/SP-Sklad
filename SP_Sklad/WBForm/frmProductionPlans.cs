@@ -61,7 +61,7 @@ namespace SP_Sklad.WBForm
                     Num = "",
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.CurrentEnterprise.KaId
                 });
 
                 _db.SaveChanges();
@@ -167,7 +167,7 @@ namespace SP_Sklad.WBForm
                     WType = -20,
                     OnDate = pp.OnDate,
                     Num = new BaseEntities().GetDocNum("wb_make").FirstOrDefault() + "_" + pp.Num,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,

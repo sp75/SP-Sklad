@@ -41,7 +41,7 @@ namespace SP_Sklad
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            CurDateEditBarItem.EditValue = DateTime.Now;
+         //   CurDateEditBarItem.EditValue = DateTime.Now;
             repositoryItemLookUpEdit1.DataSource = DBHelper.EnterpriseList;
 
             if (barEditItem3.EditValue == null || barEditItem3.EditValue == DBNull.Value || (barEditItem3.EditValue != null && barEditItem3.EditValue != DBNull.Value && !DBHelper.EnterpriseList.Any(a => a.KaId == Convert.ToInt32(barEditItem3.EditValue))))
@@ -188,7 +188,7 @@ namespace SP_Sklad
             else
             {
                 UserSession.EnterpriseId = (int)barEditItem3.EditValue;
-                DBHelper.Enterprise = null;
+                DBHelper.CurrentEnterprise = null;
             }
 
             GetMainHeder();
@@ -197,7 +197,7 @@ namespace SP_Sklad
         private void GetMainHeder()
         {
             var date = new FileInfo(Assembly.GetExecutingAssembly().Location).LastWriteTime;
-            Text = $"{DBHelper.CommonParam.ProgramName} [Користувач: {DBHelper.CurrentUser.Name}, Підприємство: {(DBHelper.Enterprise != null ? DBHelper.Enterprise.Name : "")}] [v.{ date }]";
+            Text = $"{DBHelper.CommonParam.ProgramName} [Користувач: {DBHelper.CurrentUser.Name}, Підприємство: {(DBHelper.CurrentEnterprise != null ? DBHelper.CurrentEnterprise.Name : "")}] [v.{ date }]";
         }
 
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

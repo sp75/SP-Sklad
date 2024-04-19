@@ -88,7 +88,7 @@ namespace SP_Sklad.WBForm
                 MPersonId = _wb.PersonId,
                 KaId = _wb.KaId,
                 UpdatedBy = DBHelper.CurrentUser.UserId,
-                EntId = DBHelper.Enterprise.KaId,
+                EntId = DBHelper.CurrentEnterprise.KaId,
                 ReportingDate = _wb.OnDate,
                 ReceiptId = receipt?.id
             });

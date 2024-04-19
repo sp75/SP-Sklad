@@ -736,7 +736,7 @@ namespace SP_Sklad.WBForm
                     Num = "",
                     PersonId = DBHelper.CurrentUser.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId
+                    EntId = DBHelper.CurrentEnterprise.KaId
                 });
 
                 _db.SaveChanges();

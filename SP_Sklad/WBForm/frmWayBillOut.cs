@@ -62,6 +62,7 @@ namespace SP_Sklad.WBForm
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemComboBox1.Items.AddRange(DBHelper.Packaging.Select(s => s.Name).ToList());
             PTypeComboBox.Properties.DataSource = DBHelper.PayTypes;
+            EnterpriseEdit.Properties.DataSource = DBHelper.EnterpriseList;
 
             if (_wbill_id == null && doc_id == null)
             {
@@ -76,11 +77,11 @@ namespace SP_Sklad.WBForm
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                     OnValue = 1,
                     PersonId = DBHelper.CurrentUser.KaId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     ShipmentDate = DBHelper.ServerDateTime().Date.AddHours(8),
                     PTypeId = 1,
-                    Nds = DBHelper.Enterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
+                    Nds = DBHelper.CurrentEnterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
                 });
 
                 _db.SaveChanges();
@@ -170,9 +171,9 @@ namespace SP_Sklad.WBForm
 
         private void SetFormCaption()
         {
-            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.Enterprise.Name ;
-            if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.Enterprise.Name;
-            if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.Enterprise.Name;
+            if (_wtype == -1) Text = "Властивості видаткової накладної, Продавець: " + DBHelper.CurrentEnterprise.Name ;
+            if (_wtype == 2) Text = "Властивості рахунка, Продавець: " + DBHelper.CurrentEnterprise.Name;
+            if (_wtype == -16) Text = "Замовлення від клієнтів, Продавець: " + DBHelper.CurrentEnterprise.Name;
         }
 
         private void OkButton_Click(object sender, EventArgs e)

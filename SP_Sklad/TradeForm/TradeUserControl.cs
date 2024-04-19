@@ -780,7 +780,7 @@ namespace SP_Sklad.MainTabs
                                    WaybillMove = new WaybillMove { SourceWid = wid.Value },
                                    Nds = 0,
                                    UpdatedBy = DBHelper.CurrentUser.UserId,
-                                   EntId = DBHelper.Enterprise.KaId
+                                   EntId = DBHelper.CurrentEnterprise.KaId
                                });
 
                             db.SaveChanges();

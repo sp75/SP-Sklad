@@ -1043,10 +1043,10 @@
             this.BarImageList.Images.SetKeyName(1, "copy_2");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.BarImageList.Images.SetKeyName(2, "edit_3");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.clear, "clear", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.BarImageList.Images.SetKeyName(3, "clear");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh, "refresh", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.BarImageList.Images.SetKeyName(4, "refresh");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.BarImageList.Images.SetKeyName(3, "close");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.BarImageList.Images.SetKeyName(4, "refresh_office");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.execute_16x16_red, "execute_16x16_red", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.BarImageList.Images.SetKeyName(5, "execute_16x16_red");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 6);
@@ -1057,10 +1057,6 @@
             this.BarImageList.Images.SetKeyName(8, "edittask_16x16");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList.Images.SetKeyName(9, "xls_export");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.close, "close", typeof(global::SP_Sklad.Properties.Resources), 10);
-            this.BarImageList.Images.SetKeyName(10, "close");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.BarImageList.Images.SetKeyName(11, "refresh_office");
             // 
             // styleController1
             // 

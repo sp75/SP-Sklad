@@ -53,7 +53,6 @@
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.CurDateEditBarItem = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.WbCorrBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -133,7 +132,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barSubItem1,
             this.barSubItem2,
-            this.CurDateEditBarItem,
             this.barButtonItem3,
             this.barButtonItem4,
             this.barSubItem3,
@@ -303,7 +301,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CurDateEditBarItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
@@ -370,6 +367,7 @@
             this.barEditItem3.Id = 16;
             this.barEditItem3.ImageOptions.ImageIndex = 25;
             this.barEditItem3.Name = "barEditItem3";
+            this.barEditItem3.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.barEditItem3.EditValueChanged += new System.EventHandler(this.barEditItem3_EditValueChanged);
             // 
             // repositoryItemLookUpEdit1
@@ -384,15 +382,6 @@
             this.repositoryItemLookUpEdit1.ShowFooter = false;
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "KaId";
-            // 
-            // CurDateEditBarItem
-            // 
-            this.CurDateEditBarItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.CurDateEditBarItem.Caption = "Поточна дата";
-            this.CurDateEditBarItem.Edit = this.repositoryItemDateEdit;
-            this.CurDateEditBarItem.EditWidth = 120;
-            this.CurDateEditBarItem.Id = 6;
-            this.CurDateEditBarItem.Name = "CurDateEditBarItem";
             // 
             // repositoryItemDateEdit
             // 
@@ -702,6 +691,7 @@
             // whUserControl
             // 
             this.whUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.whUserControl.focused_tree_node = null;
             this.whUserControl.Location = new System.Drawing.Point(0, 0);
             this.whUserControl.Name = "whUserControl";
             this.whUserControl.set_tree_node = null;
@@ -866,7 +856,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit repositoryItemTimeEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.XtraBars.BarEditItem CurDateEditBarItem;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit;
         private DevExpress.XtraGrid.GridSplitContainer gridSplitContainer1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;

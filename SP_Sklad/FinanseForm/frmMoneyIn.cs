@@ -40,7 +40,7 @@ namespace SP_Sklad.FinanseForm
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
             CurrEdit.Properties.DataSource = DBHelper.Currency;
 
-            var ent_id = DBHelper.Enterprise.KaId;
+            var ent_id = DBHelper.CurrentEnterprise.KaId;
             AccountEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
 
             if (_PayDocId == null)

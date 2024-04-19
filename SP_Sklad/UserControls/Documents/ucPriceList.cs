@@ -428,7 +428,7 @@ namespace SP_Sklad.UserControls
                         CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
                         OnValue = 1,
                         PersonId = DBHelper.CurrentUser.KaId,
-                        EntId = DBHelper.Enterprise.KaId,
+                        EntId = DBHelper.CurrentEnterprise.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
                         Nds = 0,
                         KaId = kagent.KaId,

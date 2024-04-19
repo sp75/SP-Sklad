@@ -39,7 +39,7 @@ namespace SP_Sklad.FinanseForm
 
             ChargeTypesEdit.Properties.DataSource = DBHelper.ChargeTypes;
 
-            var ent_id = DBHelper.Enterprise.KaId ;
+            var ent_id = DBHelper.CurrentEnterprise.KaId ;
             AccountFromEdit.Properties.DataSource = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new { s.AccId, s.AccNum, s.BankName }).ToList();
 
             PersonEdit.Properties.DataSource = DBHelper.Persons;
@@ -84,7 +84,7 @@ namespace SP_Sklad.FinanseForm
                     MPersonId = DBHelper.CurrentUser.KaId,
                     DocType = -10, // Зарахування зарплати на карточку працівника
                     UpdatedBy = DBHelper.CurrentUser.UserId,
-                    EntId = DBHelper.Enterprise.KaId,
+                    EntId = DBHelper.CurrentEnterprise.KaId,
                //     OperId = oper_id
                 });
             }

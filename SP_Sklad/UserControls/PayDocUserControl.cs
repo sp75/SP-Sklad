@@ -131,7 +131,7 @@ namespace SP_Sklad.MainTabs
             CurrencyLookUpEdit.Properties.DataSource = _db.Currency.ToList();
 
 
-            var ent_id = DBHelper.Enterprise.KaId;
+            var ent_id = DBHelper.CurrentEnterprise.KaId;
             user_acc_list = _db.EnterpriseAccount.Where(w => w.KaId == ent_id).Select(s => new user_acc
             {
                 AccId = s.AccId,
@@ -219,7 +219,7 @@ namespace SP_Sklad.MainTabs
                         MPersonId = _wb.PersonId,
                         KaId = _wb.KaId,
                         UpdatedBy = DBHelper.CurrentUser.UserId,
-                        EntId = DBHelper.Enterprise.KaId,
+                        EntId = DBHelper.CurrentEnterprise.KaId,
                         ReportingDate = _wb.OnDate
                     });
 

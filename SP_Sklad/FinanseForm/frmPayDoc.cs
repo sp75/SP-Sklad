@@ -194,7 +194,7 @@ namespace SP_Sklad.FinanseForm
                 KagentComboBox.Enabled = false;
             }
 
-            Text += $" [{DBHelper.Enterprise.Name}]";
+            Text += $" [{DBHelper.CurrentEnterprise.Name}]";
         }
 
         private void OkButton_Click(object sender, EventArgs e)
