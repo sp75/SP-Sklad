@@ -61,7 +61,6 @@
             this.WaybillDetOutGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.WBImgList = new System.Windows.Forms.ImageList(this.components);
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -137,6 +136,7 @@
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
+            this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetOutBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillListBS)).BeginInit();
@@ -176,6 +176,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             this.SuspendLayout();
             // 
             // standaloneBarDockControl1
@@ -562,36 +563,11 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Картка", 3, 18)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Товар", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Послуга", 1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Картка", 3, 2)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.WBImgList;
-            // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.White;
-            this.WBImgList.Images.SetKeyName(0, "Попередн_й перегляд.bmp");
-            this.WBImgList.Images.SetKeyName(1, "Баланс з контрагентом.bmp");
-            this.WBImgList.Images.SetKeyName(2, "Замовлене кл_єнтами.bmp");
-            this.WBImgList.Images.SetKeyName(3, "_нформац_я про резерв товару.bmp");
-            this.WBImgList.Images.SetKeyName(4, "_нформац_я про товар.bmp");
-            this.WBImgList.Images.SetKeyName(5, "Add.bmp");
-            this.WBImgList.Images.SetKeyName(6, "edit.bmp");
-            this.WBImgList.Images.SetKeyName(7, "Delete.bmp");
-            this.WBImgList.Images.SetKeyName(8, "Товари.bmp");
-            this.WBImgList.Images.SetKeyName(9, "Товари списком.bmp");
-            this.WBImgList.Images.SetKeyName(10, "Послуги.bmp");
-            this.WBImgList.Images.SetKeyName(11, "Послуги списком.bmp");
-            this.WBImgList.Images.SetKeyName(12, "Зарезервовано.bmp");
-            this.WBImgList.Images.SetKeyName(13, "Зарезервувати все.bmp");
-            this.WBImgList.Images.SetKeyName(14, "Зняти з резерву.bmp");
-            this.WBImgList.Images.SetKeyName(15, "Зняти з резерву все.bmp");
-            this.WBImgList.Images.SetKeyName(16, "позначити.bmp");
-            this.WBImgList.Images.SetKeyName(17, "Договор продажу.bmp");
-            this.WBImgList.Images.SetKeyName(18, "Дисконтна картка.bmp");
-            this.WBImgList.Images.SetKeyName(19, "icons-05.png");
             // 
             // gridColumn2
             // 
@@ -1543,6 +1519,21 @@
             this.textEdit2.TabIndex = 11;
             this.textEdit2.TabStop = false;
             // 
+            // WBImgList
+            // 
+            this.WBImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("WBImgList.ImageStream")));
+            this.WBImgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.WBImgList.Images.SetKeyName(0, "product");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.WBImgList.Images.SetKeyName(1, "service");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.WBImgList.Images.SetKeyName(2, "debit_card");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.WBImgList.Images.SetKeyName(3, "product_tmc");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.WBImgList.Images.SetKeyName(4, "product_list_4");
+            // 
             // frmCashboxWBOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1605,6 +1596,7 @@
             this.panelControl3.ResumeLayout(false);
             this.panelControl3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1682,7 +1674,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraEditors.SimpleButton DisCartButton;
-        public System.Windows.Forms.ImageList WBImgList;
         private DevExpress.XtraEditors.CalcEdit AmountEdit;
         private DevExpress.XtraEditors.SimpleButton DiscountBtn;
         private DevExpress.XtraEditors.SimpleButton KAgentBtn;
@@ -1718,5 +1709,6 @@
         private DevExpress.XtraEditors.SimpleButton QuickBtn3;
         private DevExpress.XtraEditors.SimpleButton QuickBtn1;
         private DevExpress.XtraEditors.SimpleButton QuickBtn2;
+        private DevExpress.Utils.ImageCollection WBImgList;
     }
 }
