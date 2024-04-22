@@ -25,7 +25,6 @@ namespace SP_Sklad.SkladData
             this.CONTRACTS1 = new HashSet<CONTRACTS>();
             this.Customers = new HashSet<Customers>();
             this.DiscCards = new HashSet<DiscCards>();
-            this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
             this.IntermediateWeighing = new HashSet<IntermediateWeighing>();
             this.KaAddr = new HashSet<KaAddr>();
             this.KAMatDiscount = new HashSet<KAMatDiscount>();
@@ -58,6 +57,8 @@ namespace SP_Sklad.SkladData
             this.Kagent1 = new HashSet<Kagent>();
             this.EmployeeKagent = new HashSet<EmployeeKagent>();
             this.EmployeeKagent1 = new HashSet<EmployeeKagent>();
+            this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
+            this.EnterpriseWorker1 = new HashSet<EnterpriseWorker>();
         }
     
         public int KaId { get; set; }
@@ -112,7 +113,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CONTRACTS> CONTRACTS1 { get; set; }
         public virtual ICollection<Customers> Customers { get; set; }
         public virtual ICollection<DiscCards> DiscCards { get; set; }
-        public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
         public virtual ICollection<IntermediateWeighing> IntermediateWeighing { get; set; }
         public virtual ICollection<KaAddr> KaAddr { get; set; }
         public virtual KADiscount KADiscount { get; set; }
@@ -151,5 +151,7 @@ namespace SP_Sklad.SkladData
         public virtual Kagent Kagent2 { get; set; }
         public virtual ICollection<EmployeeKagent> EmployeeKagent { get; set; }
         public virtual ICollection<EmployeeKagent> EmployeeKagent1 { get; set; }
+        public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
+        public virtual ICollection<EnterpriseWorker> EnterpriseWorker1 { get; set; }
     }
 }

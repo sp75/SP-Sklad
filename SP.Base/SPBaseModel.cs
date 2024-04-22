@@ -1224,6 +1224,17 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWayBillList_Result>("[SPBaseModel].[GetWayBillList](@from_date, @to_date, @w_type, @checked, @ka_id, @show_null_balance, @wh, @person_id)", from_dateParameter, to_dateParameter, w_typeParameter, checkedParameter, ka_idParameter, show_null_balanceParameter, whParameter, person_idParameter);
         }
 
+        public virtual DbSet<GetRelDocIds_Result> GetRelDocIds_Result { get; set; }
+        [DbFunction("SPBaseModel", "GetRelDocIds")]
+        public virtual IQueryable<GetRelDocIds_Result> GetRelDocIds(Nullable<System.Guid> originator_id)
+        {
+            var originator_idParameter = originator_id.HasValue ?
+                new ObjectParameter("originator_id", originator_id) :
+                new ObjectParameter("originator_id", typeof(System.Guid));
+
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetRelDocIds_Result>("[SPBaseModel].[GetRelDocIds](@originator_id)", originator_idParameter);
+        }
+
         public virtual ObjectResult<string> GetDocNum(string name)
         {
             var nameParameter = name != null ?

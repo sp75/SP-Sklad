@@ -16,7 +16,9 @@ namespace SP_Sklad.SkladData
     {
         public int EnterpriseId { get; set; }
         public int WorkerId { get; set; }
+        public int Id { get; set; }
     
         public virtual Kagent Kagent { get; set; }
+        public virtual Kagent Kagent1 { get; set; }
     }
 }

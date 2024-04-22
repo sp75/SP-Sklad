@@ -124,7 +124,6 @@ namespace SP_Sklad.SkladData
         public DbSet<WayBillMakeProps> WayBillMakeProps { get; set; }
         public DbSet<v_Actives> v_Actives { get; set; }
         public DbSet<v_WorkDate> v_WorkDate { get; set; }
-        public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
         public DbSet<ErrorLog> ErrorLog { get; set; }
         public DbSet<v_Users> v_Users { get; set; }
         public DbSet<ProductionPlans> ProductionPlans { get; set; }
@@ -265,6 +264,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WayBillReturnCustomerDet> v_WayBillReturnCustomerDet { get; set; }
         public DbSet<v_BarCodes> v_BarCodes { get; set; }
         public DbSet<EmployeeKagent> EmployeeKagent { get; set; }
+        public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

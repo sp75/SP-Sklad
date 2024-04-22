@@ -385,11 +385,11 @@
         </EntityType>
         <EntityType Name="EnterpriseWorker">
           <Key>
-            <PropertyRef Name="EnterpriseId" />
-            <PropertyRef Name="WorkerId" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="EnterpriseId" Type="int" Nullable="false" />
           <Property Name="WorkerId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="ENTPARAMS">
           <Key>
@@ -5521,6 +5521,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="EnterpriseWorker">
               <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterpriseWorker_Kagent1">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EnterpriseWorker" Type="Self.EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="WorkerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12113,6 +12127,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
           </AssociationSet>
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent1" Association="Self.FK_EnterpriseWorker_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
+          </AssociationSet>
           <AssociationSet Name="FK_Expedition_Cars" Association="Self.FK_Expedition_Cars">
             <End Role="Cars" EntitySet="Cars" />
             <End Role="Expedition" EntitySet="Expedition" />
@@ -13395,7 +13413,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="active" Mode="In" Type="Int32" />
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
           </FunctionImport>
-          <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.EnterpriseWorker" />
           <EntitySet Name="ErrorLog" EntityType="BaseModel.ErrorLog" />
           <EntitySet Name="v_Users" EntityType="BaseModel.v_Users" />
           <EntitySet Name="ProductionPlans" EntityType="BaseModel.ProductionPlans" />
@@ -14237,10 +14254,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DiscCards" EntitySet="DiscCards" />
           </AssociationSet>
-          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.FK_EnterpriseWorker_Kagent">
-            <End Role="Kagent" EntitySet="Kagent" />
-            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
-          </AssociationSet>
           <AssociationSet Name="FK_IntermediateWeighing_Kagent" Association="BaseModel.FK_IntermediateWeighing_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="IntermediateWeighing" EntitySet="IntermediateWeighing" />
@@ -14520,6 +14533,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_EmployeeKagent_Kagent1" Association="BaseModel.FK_EmployeeKagent_Kagent1">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="EmployeeKagent" EntitySet="EmployeeKagent" />
+          </AssociationSet>
+          <EntitySet Name="EnterpriseWorker" EntityType="BaseModel.EnterpriseWorker" />
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent" Association="BaseModel.FK_EnterpriseWorker_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EnterpriseWorker_Kagent1" Association="BaseModel.FK_EnterpriseWorker_Kagent1">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="EnterpriseWorker" EntitySet="EnterpriseWorker" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -17545,15 +17567,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="BarCode" Nullable="true" MaxLength="64" />
           <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="EnterpriseWorker">
-          <Key>
-            <PropertyRef Name="EnterpriseId" />
-            <PropertyRef Name="WorkerId" />
-          </Key>
-          <Property Type="Int32" Name="EnterpriseId" Nullable="false" />
-          <Property Type="Int32" Name="WorkerId" Nullable="false" />
-          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="EnterpriseWorker" ToRole="Kagent" />
-        </EntityType>
         <EntityType Name="ErrorLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -21604,7 +21617,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="CONTRACTS1" Relationship="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" FromRole="Kagent" ToRole="CONTRACTS" />
           <NavigationProperty Name="Customers" Relationship="BaseModel.FK_Customers_Kagent" FromRole="Kagent" ToRole="Customers" />
           <NavigationProperty Name="DiscCards" Relationship="BaseModel.FK_DISCCARDS_KAID" FromRole="Kagent" ToRole="DiscCards" />
-          <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
           <NavigationProperty Name="IntermediateWeighing" Relationship="BaseModel.FK_IntermediateWeighing_Kagent" FromRole="Kagent" ToRole="IntermediateWeighing" />
           <NavigationProperty Name="KaAddr" Relationship="BaseModel.FK_KAADDR_KAID" FromRole="Kagent" ToRole="KaAddr" />
           <NavigationProperty Name="KADiscount" Relationship="BaseModel.FK_KADiscount_Kagent" FromRole="Kagent" ToRole="KADiscount" />
@@ -21645,6 +21657,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_Kagent_Kagent" FromRole="Kagent1" ToRole="Kagent" />
           <NavigationProperty Name="EmployeeKagent" Relationship="BaseModel.FK_EmployeeKagent_Kagent" FromRole="Kagent" ToRole="EmployeeKagent" />
           <NavigationProperty Name="EmployeeKagent1" Relationship="BaseModel.FK_EmployeeKagent_Kagent1" FromRole="Kagent" ToRole="EmployeeKagent" />
+          <NavigationProperty Name="EnterpriseWorker" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="Kagent" ToRole="EnterpriseWorker" />
+          <NavigationProperty Name="EnterpriseWorker1" Relationship="BaseModel.FK_EnterpriseWorker_Kagent1" FromRole="Kagent" ToRole="EnterpriseWorker" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -21755,18 +21769,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="DiscCards">
               <PropertyRef Name="KaId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EnterpriseWorker_Kagent">
-          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
-          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kagent">
-              <PropertyRef Name="KaId" />
-            </Principal>
-            <Dependent Role="EnterpriseWorker">
-              <PropertyRef Name="EnterpriseId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -23921,6 +23923,42 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="EnterpriseWorker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="EnterpriseId" Type="Int32" Nullable="false" />
+          <Property Name="WorkerId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_EnterpriseWorker_Kagent" FromRole="EnterpriseWorker" ToRole="Kagent" />
+          <NavigationProperty Name="Kagent1" Relationship="BaseModel.FK_EnterpriseWorker_Kagent1" FromRole="EnterpriseWorker" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_EnterpriseWorker_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="EnterpriseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EnterpriseWorker_Kagent1">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.EnterpriseWorker" Role="EnterpriseWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="EnterpriseWorker">
+              <PropertyRef Name="WorkerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -25960,14 +25998,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="EnterpriseWorker">
-            <EntityTypeMapping TypeName="BaseModel.EnterpriseWorker">
-              <MappingFragment StoreEntitySet="EnterpriseWorker">
-                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
-                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ErrorLog">
             <EntityTypeMapping TypeName="BaseModel.ErrorLog">
               <MappingFragment StoreEntitySet="ErrorLog">
@@ -30342,6 +30372,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EnterpriseWorker">
+            <EntityTypeMapping TypeName="BaseModel.EnterpriseWorker">
+              <MappingFragment StoreEntitySet="EnterpriseWorker">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
+                <ScalarProperty Name="EnterpriseId" ColumnName="EnterpriseId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

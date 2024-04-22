@@ -683,12 +683,12 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(419, 44);
+            this.labelControl6.Location = new System.Drawing.Point(415, 44);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(79, 16);
+            this.labelControl6.Size = new System.Drawing.Size(83, 16);
             this.labelControl6.StyleController = this.styleController1;
             this.labelControl6.TabIndex = 33;
-            this.labelControl6.Text = "Підприємство";
+            this.labelControl6.Text = "Постачальник";
             // 
             // labelControl5
             // 

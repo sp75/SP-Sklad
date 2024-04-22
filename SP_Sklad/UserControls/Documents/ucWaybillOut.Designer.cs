@@ -126,6 +126,7 @@
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.MoveToStoreWarehouseBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -563,8 +564,9 @@
             this.barButtonItem1,
             this.ExportToExcelBtn,
             this.barButtonItem2,
-            this.barButtonItem3});
-            this.barManager1.MaxItemId = 38;
+            this.barButtonItem3,
+            this.MoveToStoreWarehouseBtn});
+            this.barManager1.MaxItemId = 39;
             // 
             // barDockControlTop
             // 
@@ -1081,6 +1083,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.NewPayDocBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.MoveToStoreWarehouseBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
@@ -1091,6 +1094,13 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
+            // 
+            // MoveToStoreWarehouseBtn
+            // 
+            this.MoveToStoreWarehouseBtn.Caption = "Додати прибуткова накладну";
+            this.MoveToStoreWarehouseBtn.Id = 38;
+            this.MoveToStoreWarehouseBtn.Name = "MoveToStoreWarehouseBtn";
+            this.MoveToStoreWarehouseBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveToStoreWarehouseBtn_ItemClick);
             // 
             // ucWaybillOut
             // 
@@ -1231,5 +1241,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private ucDocumentFilterPanel ucDocumentFilterPanel;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraBars.BarButtonItem MoveToStoreWarehouseBtn;
     }
 }

@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\GetRelDocIds_Result.cs" />
     <Compile Include="Models\RemoteCustomerReturned.cs" />
     <Compile Include="Models\v_WayBillBase.cs" />
     <Compile Include="Models\v_WayBillCustomerOrder.cs" />

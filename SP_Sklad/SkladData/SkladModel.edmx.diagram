@@ -165,7 +165,6 @@
         <AssociationConnector Association="BaseModel.FK_WayBillMakeProps_WaybillList" />
         <EntityTypeShape EntityType="BaseModel.v_Actives" Width="1.5" PointX="1.8467574910478468" PointY="12.967575466710876" />
         <EntityTypeShape EntityType="BaseModel.v_WorkDate" Width="1.5" PointX="0.55420357573507517" PointY="30.3547968409745" />
-        <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="25.5" PointY="15.25" />
         <EntityTypeShape EntityType="BaseModel.ErrorLog" Width="1.5" PointX="6.265295659315445" PointY="24.135572236094426" />
         <EntityTypeShape EntityType="BaseModel.ProductionPlans" Width="1.5" PointX="9.0676300158107779" PointY="27.027135250636906" />
         <EntityTypeShape EntityType="BaseModel.v_ProductionPlanDet" Width="1.5" PointX="7.1313695288874994" PointY="13.55405656134433" />
@@ -344,7 +343,6 @@
         <AssociationConnector Association="BaseModel.FK_CONTRACT_REFERENCE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_Customers_Kagent" />
         <AssociationConnector Association="BaseModel.FK_DISCCARDS_KAID" />
-        <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
         <AssociationConnector Association="BaseModel.FK_IntermediateWeighing_Kagent" />
         <AssociationConnector Association="BaseModel.FK_KAADDR_KAID" />
         <AssociationConnector Association="BaseModel.FK_KADiscount_Kagent" />
@@ -405,6 +403,9 @@
         <EntityTypeShape EntityType="BaseModel.EmployeeKagent" Width="1.5" PointX="40" PointY="26.25" />
         <AssociationConnector Association="BaseModel.FK_EmployeeKagent_Kagent" />
         <AssociationConnector Association="BaseModel.FK_EmployeeKagent_Kagent1" />
+        <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="39.625" PointY="41.75" />
+        <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
+        <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent1" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
