@@ -1047,20 +1047,21 @@ namespace SP_Sklad.Common
                 return;
             }
 
-            var ms = new MemoryStream(png_data) { Position = 0 };
-            Image i = Image.FromStream(ms);
-
-            PrintDocument p = new PrintDocument();
-            p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
-            p.DefaultPageSettings.Landscape = false;
-            p.DefaultPageSettings.PaperSize = new PaperSize("Custom", p.DefaultPageSettings.PaperSize.Width, Convert.ToInt32(((p.DefaultPageSettings.PaperSize.Width) * i.Height) / i.Width));
-
-            p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
-            {
-                e1.Graphics.DrawImage(i, e1.PageBounds);
-            };
             try
             {
+                var ms = new MemoryStream(png_data) { Position = 0 };
+                Image i = Image.FromStream(ms);
+
+                PrintDocument p = new PrintDocument();
+                p.PrinterSettings.PrinterName = Settings.Default.receipt_printer;
+                p.DefaultPageSettings.Landscape = false;
+                p.DefaultPageSettings.PaperSize = new PaperSize("Custom", p.DefaultPageSettings.PaperSize.Width, Convert.ToInt32(((p.DefaultPageSettings.PaperSize.Width) * i.Height) / i.Width));
+
+                p.PrintPage += delegate (object sender1, PrintPageEventArgs e1)
+                {
+                    e1.Graphics.DrawImage(i, e1.PageBounds);
+                };
+
                 p.Print();
 
             }
