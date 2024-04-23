@@ -84,17 +84,22 @@ group by pr.MatId", _user_id).ToList();
 SELECT   pr.MatId,
          m.Name MatName,
          ms.ShortName as MsrName,
+         m.Artikul,
          sum( pr.remain) Remain,
          sum( pr.Rsv ) Rsv,
-         sum( pr.ActualRemain ) CurRemain 
+         sum( pr.ActualRemain ) CurRemain,
+         cast(sum( (pr.remain + pr.Ordered) * pr.AvgPrice) / sum( pr.remain + pr.Ordered) as NUMERIC(15, 2) ) AvgPrice,
+         mg.Name GrpName,
+	 	 cast( sum( (pr.remain + pr.Ordered) * pr.AvgPrice) as NUMERIC(15, 2) ) SumRemain
 FROM  PosRemains AS pr 
 join ( SELECT PosId, MAX(OnDate) AS OnDate
        FROM  dbo.PosRemains
        GROUP BY PosId) AS x ON x.PosId = pr.PosId AND pr.OnDate = x.OnDate
 inner join Materials m on m.MatId =pr.MatId
 inner join Measures ms on ms.MId = m.MId
+inner join MatGroup mg ON m.GrpId = mg.GrpId 
 WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} 
-group by pr.MatId, m.Name, ms.ShortName", wh_id).ToList();
+group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name", wh_id).ToList();
             }
         }
 
