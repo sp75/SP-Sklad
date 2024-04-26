@@ -64,6 +64,10 @@
     <Compile Include="Models\v_WayBillBase.cs" />
     <Compile Include="Models\v_WayBillCustomerOrder.cs" />
     <Compile Include="Models\v_WayBillCustomerOrderDet.cs" />
+    <Compile Include="Models\v_WayBillIn.cs" />
+    <Compile Include="Models\v_WayBillInDet.cs" />
+    <Compile Include="Models\v_WayBillOut.cs" />
+    <Compile Include="Models\v_WayBillOutDet.cs" />
     <Compile Include="Models\v_WayBillReturnCustomerDet.cs" />
     <Compile Include="SPDatabase.cs" />
     <Compile Include="Models\AccountType.cs" />

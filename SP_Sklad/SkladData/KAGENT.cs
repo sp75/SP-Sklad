@@ -59,6 +59,7 @@ namespace SP_Sklad.SkladData
             this.EmployeeKagent1 = new HashSet<EmployeeKagent>();
             this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
             this.EnterpriseWorker1 = new HashSet<EnterpriseWorker>();
+            this.CashDesks = new HashSet<CashDesks>();
         }
     
         public int KaId { get; set; }
@@ -102,7 +103,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> CurrentSaldo { get; set; }
         public Nullable<int> ParentKagentId { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
-        public Nullable<int> FOPId { get; set; }
+        public Nullable<int> OpenStoreAreaId { get; set; }
     
         public virtual ICollection<Cars> Cars { get; set; }
         public virtual ICollection<Commission> Commission { get; set; }
@@ -153,5 +154,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<EmployeeKagent> EmployeeKagent1 { get; set; }
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker1 { get; set; }
+        public virtual ICollection<CashDesks> CashDesks { get; set; }
     }
 }

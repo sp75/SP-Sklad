@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="63">
+      <Diagram DiagramId="5e7c272d2512446f8ce1b9cffb9ff8cd" Name="Diagram1" ZoomLevel="62">
         <EntityTypeShape EntityType="BaseModel.CONTRACTS" Width="1.5" PointX="6" PointY="40.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRDET" Width="1.5" PointX="13.25" PointY="45.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BaseModel.CONTRPARAMS" Width="1.5" PointX="8.25" PointY="48.75" IsExpanded="true" />
@@ -16,7 +16,7 @@
         <AssociationConnector Association="BaseModel.FK_CONTRPARAMS_CONTRACTS" ManuallyRouted="false" />
         <AssociationConnector Association="BaseModel.FK_CONTRRESULTS_CONTRACTS" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BaseModel.WMatTurn" Width="1.5" PointX="3.125" PointY="7.25" />
-        <EntityTypeShape EntityType="BaseModel.CashDesks" Width="1.5" PointX="5.4358159105460233" PointY="15.156837589646148" />
+        <EntityTypeShape EntityType="BaseModel.CashDesks" Width="1.5" PointX="13.125" PointY="15.75" />
         <EntityTypeShape EntityType="BaseModel.PayType" Width="1.5" PointX="10.82716750112696" PointY="18.358269968236922" />
         <EntityTypeShape EntityType="BaseModel.ChargeType" Width="1.5" PointX="0.75" PointY="0.875" />
         <EntityTypeShape EntityType="BaseModel.Currency" Width="1.5" PointX="7.6469049209947251" PointY="22.547881896862705" />
@@ -333,7 +333,7 @@
         <EntityTypeShape EntityType="BaseModel.MatRecipeTechProcDet" Width="1.5" PointX="37.625" PointY="3.625" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_MatRecipe" />
         <AssociationConnector Association="BaseModel.FK_MatRecipeTechProcDet_TechProcess" />
-        <EntityTypeShape EntityType="BaseModel.Kagent" Width="1.5" PointX="37.375" PointY="22.5" />
+        <EntityTypeShape EntityType="BaseModel.Kagent" Width="2.375" PointX="37.375" PointY="22.5" />
         <AssociationConnector Association="BaseModel.FK_Cars_Kagent" />
         <AssociationConnector Association="BaseModel.FK_COMMISSI_REFERENCE_KAGENT" />
         <AssociationConnector Association="BaseModel.FK_COMMISSION_1" />
@@ -406,6 +406,7 @@
         <EntityTypeShape EntityType="BaseModel.EnterpriseWorker" Width="1.5" PointX="39.625" PointY="41.75" />
         <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent" />
         <AssociationConnector Association="BaseModel.FK_EnterpriseWorker_Kagent1" />
+        <AssociationConnector Association="BaseModel.FK_CashDesks_Kagent" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >

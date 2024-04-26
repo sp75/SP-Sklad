@@ -79,6 +79,7 @@ namespace SP_Sklad.SkladData
         public string SerialNumber { get; set; }
         public Nullable<int> RawMaterialTypeId { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<int> OpenStoreId { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }

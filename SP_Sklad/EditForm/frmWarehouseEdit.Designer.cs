@@ -49,6 +49,8 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
+            this.textEdit43 = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -62,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit43.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -69,16 +72,16 @@
             this.BottomPanel.Controls.Add(this.OkButton);
             this.BottomPanel.Controls.Add(this.simpleButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 483);
+            this.BottomPanel.Location = new System.Drawing.Point(0, 509);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(492, 52);
+            this.BottomPanel.Size = new System.Drawing.Size(728, 52);
             this.BottomPanel.TabIndex = 16;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(270, 10);
+            this.OkButton.Location = new System.Drawing.Point(506, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -89,7 +92,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(380, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(616, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -121,12 +124,10 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Addr", true));
             this.textEdit1.Location = new System.Drawing.Point(21, 98);
             this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Size = new System.Drawing.Size(459, 35);
+            this.textEdit1.Size = new System.Drawing.Size(337, 35);
             this.textEdit1.TabIndex = 31;
             // 
             // WarehouseDS
@@ -144,34 +145,31 @@
             // 
             // memoEdit1
             // 
-            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Notes", true));
             this.memoEdit1.Location = new System.Drawing.Point(21, 170);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(459, 37);
+            this.memoEdit1.Size = new System.Drawing.Size(337, 37);
             this.memoEdit1.TabIndex = 33;
             // 
             // NotesTextEdit
             // 
-            this.NotesTextEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.NotesTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Name", true));
             this.NotesTextEdit.Location = new System.Drawing.Point(21, 36);
             this.NotesTextEdit.Name = "NotesTextEdit";
-            this.NotesTextEdit.Size = new System.Drawing.Size(459, 22);
+            this.NotesTextEdit.Size = new System.Drawing.Size(337, 22);
             this.NotesTextEdit.StyleController = this.styleController1;
             this.NotesTextEdit.TabIndex = 34;
             // 
             // DefCheckBox
             // 
+            this.DefCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.DefCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "Def", true));
-            this.DefCheckBox.Location = new System.Drawing.Point(21, 446);
+            this.DefCheckBox.Location = new System.Drawing.Point(21, 473);
             this.DefCheckBox.Name = "DefCheckBox";
             this.DefCheckBox.Properties.Caption = "Основний склад (використовувати за змовчуванням)";
             this.DefCheckBox.Properties.ValueChecked = 1;
             this.DefCheckBox.Properties.ValueUnchecked = 0;
-            this.DefCheckBox.Size = new System.Drawing.Size(397, 20);
+            this.DefCheckBox.Size = new System.Drawing.Size(337, 20);
             this.DefCheckBox.StyleController = this.styleController1;
             this.DefCheckBox.TabIndex = 35;
             // 
@@ -181,12 +179,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.UsersGridControl.DataSource = this.UserListBS;
-            this.UsersGridControl.Location = new System.Drawing.Point(21, 251);
+            this.UsersGridControl.Location = new System.Drawing.Point(374, 36);
             this.UsersGridControl.MainView = this.UsersGridView;
             this.UsersGridControl.Name = "UsersGridControl";
             this.UsersGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.UsersGridControl.Size = new System.Drawing.Size(459, 143);
+            this.UsersGridControl.Size = new System.Drawing.Size(342, 457);
             this.UsersGridControl.TabIndex = 36;
             this.UsersGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UsersGridView});
@@ -234,7 +232,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(21, 229);
+            this.labelControl2.Location = new System.Drawing.Point(374, 14);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(102, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -243,21 +241,44 @@
             // 
             // checkEdit1
             // 
+            this.checkEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "RecyclingWarehouse", true));
-            this.checkEdit1.Location = new System.Drawing.Point(21, 413);
+            this.checkEdit1.Location = new System.Drawing.Point(21, 440);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Cклад для зіпсованих товарів";
             this.checkEdit1.Properties.ValueChecked = 1;
             this.checkEdit1.Properties.ValueUnchecked = 0;
-            this.checkEdit1.Size = new System.Drawing.Size(397, 20);
+            this.checkEdit1.Size = new System.Drawing.Size(337, 20);
             this.checkEdit1.StyleController = this.styleController1;
             this.checkEdit1.TabIndex = 38;
+            // 
+            // textEdit43
+            // 
+            this.textEdit43.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "OpenStoreId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textEdit43.Location = new System.Drawing.Point(21, 254);
+            this.textEdit43.Name = "textEdit43";
+            this.textEdit43.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEdit43.Size = new System.Drawing.Size(182, 22);
+            this.textEdit43.StyleController = this.styleController1;
+            this.textEdit43.TabIndex = 60;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(21, 232);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(139, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 59;
+            this.labelControl4.Text = "Код складу (OpenStore)";
             // 
             // frmWarehouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 535);
+            this.ClientSize = new System.Drawing.Size(728, 561);
+            this.Controls.Add(this.textEdit43);
+            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.checkEdit1);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.UsersGridControl);
@@ -292,6 +313,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit43.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,5 +341,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.BindingSource UserListBS;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraEditors.CalcEdit textEdit43;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

@@ -333,7 +333,7 @@ namespace SP_Sklad.SkladData
                         CashId = s.CashId,
                         Name = s.Name,
                         Def = s.Def,
-                        EnterpriseId = s.EnterpriseId
+                        KaId = s.KaId
                     }).ToList();
 
                     /*  if (!_cash_desks.Any())

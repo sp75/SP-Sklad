@@ -25,11 +25,13 @@ namespace SP_Sklad.SkladData
         public string Name { get; set; }
         public int Deleted { get; set; }
         public Nullable<int> Def { get; set; }
-        public Nullable<int> EnterpriseId { get; set; }
         public string LicenseKey { get; set; }
+        public Nullable<int> KaId { get; set; }
+        public Nullable<int> OpenStoreId { get; set; }
     
         public virtual ICollection<MoneySaldo> MoneySaldo { get; set; }
         public virtual ICollection<UserAccessCashDesks> UserAccessCashDesks { get; set; }
         public virtual ICollection<PayDoc> PayDoc { get; set; }
+        public virtual Kagent Kagent { get; set; }
     }
 }

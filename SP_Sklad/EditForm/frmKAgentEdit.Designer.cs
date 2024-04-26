@@ -151,6 +151,8 @@
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.panel4 = new System.Windows.Forms.Panel();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.textEdit46 = new DevExpress.XtraEditors.CalcEdit();
+            this.labelControl79 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl67 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit40 = new DevExpress.XtraEditors.TextEdit();
             this.AspNetUserLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
@@ -452,6 +454,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit46.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit40.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AspNetUserLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
@@ -830,7 +833,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(719, 12);
+            this.OkButton.Location = new System.Drawing.Point(714, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 30);
             this.OkButton.TabIndex = 3;
@@ -841,7 +844,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(823, 12);
+            this.simpleButton1.Location = new System.Drawing.Point(818, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 30);
             this.simpleButton1.TabIndex = 2;
@@ -1875,6 +1878,8 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.textEdit46);
+            this.groupControl4.Controls.Add(this.labelControl79);
             this.groupControl4.Controls.Add(this.labelControl67);
             this.groupControl4.Controls.Add(this.textEdit40);
             this.groupControl4.Controls.Add(this.AspNetUserLookUpEdit);
@@ -1896,9 +1901,29 @@
             this.groupControl4.Tag = "";
             this.groupControl4.Text = "Додаткова інформація ";
             // 
+            // textEdit46
+            // 
+            this.textEdit46.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "OpenStoreAreaId", true));
+            this.textEdit46.Location = new System.Drawing.Point(380, 198);
+            this.textEdit46.Name = "textEdit46";
+            this.textEdit46.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.textEdit46.Size = new System.Drawing.Size(282, 22);
+            this.textEdit46.StyleController = this.styleController1;
+            this.textEdit46.TabIndex = 36;
+            // 
+            // labelControl79
+            // 
+            this.labelControl79.Location = new System.Drawing.Point(380, 176);
+            this.labelControl79.Name = "labelControl79";
+            this.labelControl79.Size = new System.Drawing.Size(191, 16);
+            this.labelControl79.StyleController = this.styleController1;
+            this.labelControl79.TabIndex = 35;
+            this.labelControl79.Text = "Склацька територія (OpenStore)";
+            // 
             // labelControl67
             // 
-            this.labelControl67.Location = new System.Drawing.Point(188, 176);
+            this.labelControl67.Location = new System.Drawing.Point(176, 176);
             this.labelControl67.Name = "labelControl67";
             this.labelControl67.Size = new System.Drawing.Size(112, 16);
             this.labelControl67.StyleController = this.styleController1;
@@ -1908,9 +1933,9 @@
             // textEdit40
             // 
             this.textEdit40.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "POSTerminalCode", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit40.Location = new System.Drawing.Point(188, 198);
+            this.textEdit40.Location = new System.Drawing.Point(176, 198);
             this.textEdit40.Name = "textEdit40";
-            this.textEdit40.Size = new System.Drawing.Size(182, 22);
+            this.textEdit40.Size = new System.Drawing.Size(194, 22);
             this.textEdit40.StyleController = this.styleController1;
             this.textEdit40.TabIndex = 89;
             // 
@@ -1945,7 +1970,7 @@
             // 
             // labelControl62
             // 
-            this.labelControl62.Location = new System.Drawing.Point(15, 246);
+            this.labelControl62.Location = new System.Drawing.Point(15, 252);
             this.labelControl62.Name = "labelControl62";
             this.labelControl62.Size = new System.Drawing.Size(67, 16);
             this.labelControl62.StyleController = this.styleController1;
@@ -1955,10 +1980,10 @@
             // memoEdit1
             // 
             this.memoEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.KagentBindingSource, "Declaration", true));
-            this.memoEdit1.Location = new System.Drawing.Point(15, 268);
+            this.memoEdit1.Location = new System.Drawing.Point(15, 274);
             this.memoEdit1.MenuManager = this.barManager1;
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(647, 184);
+            this.memoEdit1.Size = new System.Drawing.Size(647, 318);
             this.memoEdit1.TabIndex = 49;
             // 
             // CashEditComboBox
@@ -4506,6 +4531,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit46.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit40.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AspNetUserLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
@@ -5007,5 +5033,7 @@
         private DevExpress.XtraEditors.ButtonEdit textEdit12;
         private DevExpress.XtraEditors.LabelControl labelControl11;
         private DevExpress.XtraEditors.CheckedComboBoxEdit checkedComboBoxEdit2;
+        private DevExpress.XtraEditors.LabelControl labelControl79;
+        private DevExpress.XtraEditors.CalcEdit textEdit46;
     }
 }

@@ -693,7 +693,7 @@
             // labelControl5
             // 
             this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl5.Location = new System.Drawing.Point(497, 110);
+            this.labelControl5.Location = new System.Drawing.Point(425, 110);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(71, 16);
             this.labelControl5.StyleController = this.styleController1;
@@ -705,7 +705,7 @@
             // 
             this.PTypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.PTypeComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "PTypeId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.PTypeComboBox.Location = new System.Drawing.Point(574, 107);
+            this.PTypeComboBox.Location = new System.Drawing.Point(504, 107);
             this.PTypeComboBox.Name = "PTypeComboBox";
             this.PTypeComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -716,7 +716,7 @@
             this.PTypeComboBox.Properties.ShowHeader = false;
             this.PTypeComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.PTypeComboBox.Properties.ValueMember = "PTypeId";
-            this.PTypeComboBox.Size = new System.Drawing.Size(175, 22);
+            this.PTypeComboBox.Size = new System.Drawing.Size(243, 22);
             this.PTypeComboBox.StyleController = this.styleController1;
             this.PTypeComboBox.TabIndex = 31;
             this.PTypeComboBox.Visible = false;
@@ -738,7 +738,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(362, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(309, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 23;
             this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);

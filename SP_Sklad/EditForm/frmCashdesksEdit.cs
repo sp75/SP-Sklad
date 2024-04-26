@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 
 namespace SP_Sklad.EditForm
@@ -23,12 +24,13 @@ namespace SP_Sklad.EditForm
             _db = DB.SkladBase();
 
             InitializeComponent();
-
-            EntEdit.Properties.DataSource = DBHelper.EnterpriseList;
         }
 
         private void frmCashdesksEdit_Load(object sender, EventArgs e)
         {
+            KagentComboBox.Properties.DataSource = DBHelper.KagentsWorkerList;
+
+
             if (_CashId == null)
             {
                 cd = _db.CashDesks.Add(new CashDesks
@@ -61,7 +63,17 @@ namespace SP_Sklad.EditForm
         {
             if (e.Button.Index == 1)
             {
-                EntEdit.EditValue = null;
+                KagentComboBox.EditValue = null;
+            }
+        }
+
+        private void EntEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 2)
+            {
+                KagentComboBox.ClosePopup();
+
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             }
         }
     }

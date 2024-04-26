@@ -10,7 +10,7 @@
         public int CashId { get; set; }
         public string Name { get; set; }
         public Nullable<int> Def { get; set; }
-        public Nullable<int> EnterpriseId { get; set; }
+        public Nullable<int> KaId { get; set; }
         public int Allow { get; set; }
     }
 }

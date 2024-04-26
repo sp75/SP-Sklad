@@ -71,5 +71,6 @@ namespace SP_Sklad.SkladData
         public int WorkerId { get; set; }
         public Nullable<decimal> Balans { get; set; }
         public Nullable<decimal> TotalAmount { get; set; }
+        public Nullable<System.Guid> KagentId { get; set; }
     }
 }

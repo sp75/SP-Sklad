@@ -8,113 +8,69 @@ namespace Test.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model111")
+            : base("name=Model114")
         {
         }
 
-        public virtual DbSet<Materials> Materials { get; set; }
-        public virtual DbSet<RemoteCustomerReturned> RemoteCustomerReturned { get; set; }
-        public virtual DbSet<WaybillDet> WaybillDet { get; set; }
-        public virtual DbSet<WaybillList> WaybillList { get; set; }
+        public virtual DbSet<v_WayBillOut> v_WayBillOut { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Materials>()
-                .Property(e => e.MinReserv)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<Materials>()
-                .Property(e => e.Weight)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<Materials>()
-                .Property(e => e.MSize)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<Materials>()
-                .Property(e => e.NDS)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<Materials>()
-                .HasMany(e => e.RemoteCustomerReturned)
-                .WithRequired(e => e.Materials)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Materials>()
-                .HasMany(e => e.WaybillDet)
-                .WithRequired(e => e.Materials)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<RemoteCustomerReturned>()
-                .Property(e => e.Amount)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.Amount)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.Price)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.Discount)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.Nds)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.OnValue)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.Total)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.BasePrice)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .Property(e => e.AvgInPrice)
-                .HasPrecision(15, 4);
-
-            modelBuilder.Entity<WaybillDet>()
-                .HasMany(e => e.RemoteCustomerReturned)
-                .WithOptional(e => e.WaybillDet)
-                .HasForeignKey(e => e.OutPosId);
-
-            modelBuilder.Entity<WaybillDet>()
-                .HasMany(e => e.RemoteCustomerReturned1)
-                .WithOptional(e => e.WaybillDet1)
-                .HasForeignKey(e => e.PosId);
-
-            modelBuilder.Entity<WaybillList>()
+            modelBuilder.Entity<v_WayBillOut>()
                 .Property(e => e.SummAll)
                 .HasPrecision(15, 2);
 
-            modelBuilder.Entity<WaybillList>()
+            modelBuilder.Entity<v_WayBillOut>()
                 .Property(e => e.Nds)
                 .HasPrecision(15, 4);
 
-            modelBuilder.Entity<WaybillList>()
+            modelBuilder.Entity<v_WayBillOut>()
                 .Property(e => e.SummPay)
                 .HasPrecision(15, 2);
 
-            modelBuilder.Entity<WaybillList>()
+            modelBuilder.Entity<v_WayBillOut>()
                 .Property(e => e.SummInCurr)
                 .HasPrecision(15, 2);
 
-            modelBuilder.Entity<WaybillList>()
-                .Property(e => e.OnValue)
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.CurrRate)
                 .HasPrecision(15, 4);
 
-            modelBuilder.Entity<WaybillList>()
-                .HasMany(e => e.WaybillDet)
-                .WithRequired(e => e.WaybillList)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.Address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.City)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.District)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.Country)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.PostIndex)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.DefTotalAmount)
+                .HasPrecision(38, 4);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.ExTotalAmount)
+                .HasPrecision(38, 8);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.Balans)
+                .HasPrecision(17, 2);
+
+            modelBuilder.Entity<v_WayBillOut>()
+                .Property(e => e.TotalAmount)
+                .HasPrecision(38, 4);
         }
     }
 }

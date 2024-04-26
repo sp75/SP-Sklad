@@ -1593,16 +1593,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyPriceList", price_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetUserAccessCashDesks")]
-        public virtual IQueryable<GetUserAccessCashDesks_Result> GetUserAccessCashDesks(Nullable<int> user_id)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[BaseEntities].[GetUserAccessCashDesks](@user_id)", user_idParameter);
-        }
-    
         public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
         {
             var user_idParameter = user_id.HasValue ?
@@ -2673,6 +2663,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("wbill_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetWaybillDetIn_Result>("[BaseEntities].[GetWaybillDetIn](@wbill_id)", wbill_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUserAccessCashDesks")]
+        public virtual IQueryable<GetUserAccessCashDesks_Result> GetUserAccessCashDesks(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[BaseEntities].[GetUserAccessCashDesks](@user_id)", user_idParameter);
         }
     }
 }

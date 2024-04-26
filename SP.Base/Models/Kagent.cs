@@ -156,6 +156,7 @@ namespace SP.Base.Models
         public int? ParentKagentId { get; set; }
 
         public int? UpdatedBy { get; set; }
+        public int?  OpenStoreAreaId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kagent> Kagent1 { get; set; }

@@ -261,6 +261,7 @@ namespace SP_Sklad.EditForm
                 return;
             }
             KaKindLookUpEdit.Enabled = true;
+            panel3.Visible = false;
             switch ((int)KTypeLookUpEdit.EditValue)
             {
                 case 0: xtraTabControl2.SelectedTabPageIndex = 0;
