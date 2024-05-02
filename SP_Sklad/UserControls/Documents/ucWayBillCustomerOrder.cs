@@ -28,7 +28,6 @@ namespace SP_Sklad.UserControls
         int w_type = -16;
         private int fun_id = 64;
         private string reg_layout_path = "ucWBOrdersIn\\WbGridView";
-        BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
         public BarButtonItem ExtExecuteBtn { get; set; }
@@ -102,16 +101,19 @@ namespace SP_Sklad.UserControls
 
             if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити замовлення від клієнта {wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
-                if (wb != null)
+                using (var _db = new BaseEntities())
                 {
-                    _db.WaybillList.Remove(wb);
+                    var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                    if (wb != null)
+                    {
+                        _db.WaybillList.Remove(wb);
 
-                    _db.SaveChanges();
-                }
-                else
-                {
-                    XtraMessageBox.Show(Resources.deadlock);
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(Resources.deadlock);
+                    }
                 }
             }
         }
@@ -143,7 +145,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            PrintDoc.Show(wb_focused_row.Id, w_type, _db);
+            PrintDoc.Show(wb_focused_row.Id, w_type, new BaseEntities());
         }
         public void ExportToExcel()
         {
@@ -182,8 +184,7 @@ namespace SP_Sklad.UserControls
 
             if (!DesignMode)
             {
-                _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+                user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
@@ -193,7 +194,7 @@ namespace SP_Sklad.UserControls
 
                 gridColumn44.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
 
-                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
              
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
@@ -393,12 +394,15 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+            using (var _db = new BaseEntities())
+            {
+                var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            wb.PTypeId = PTypeId;
-            _db.SaveChanges();
+                wb.PTypeId = PTypeId;
+                _db.SaveChanges();
+            }
 
             RefrechItemBtn.PerformClick();
         }
@@ -422,12 +426,15 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+            using (var _db = new BaseEntities())
+            {
+                var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
+                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            wb.EntId = EntId;
-            _db.SaveChanges();
+                wb.EntId = EntId;
+                _db.SaveChanges();
+            }
 
             GetData();
         }
@@ -486,20 +493,17 @@ namespace SP_Sklad.UserControls
             {
                 return;
             }
+            using (var _db = new BaseEntities())
+            {
+                var s_date = ((DateEdit)sender).DateTime;
 
-            var s_date = ((DateEdit)sender).DateTime;
+                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.ShipmentDate = s_date;
-            _db.SaveChanges();
+                wb.ShipmentDate = s_date;
+                _db.SaveChanges();
+            }
 
             RefrechItemBtn.PerformClick();
-        }
-
-        private void ExecuteInvBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-           
         }
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -514,7 +518,7 @@ namespace SP_Sklad.UserControls
 
                         if (new_id != null)
                         {
-                            _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
+                            new BaseEntities().ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
 
                             GetData();
                         }

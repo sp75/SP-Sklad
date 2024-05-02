@@ -2674,5 +2674,14 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserAccessCashDesks_Result>("[BaseEntities].[GetUserAccessCashDesks](@user_id)", user_idParameter);
         }
+    
+        public virtual ObjectResult<Nullable<int>> ReservedPositionV2(Nullable<int> pos_id)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ReservedPositionV2", pos_idParameter);
+        }
     }
 }

@@ -114,6 +114,9 @@ namespace SP.Base.Models
 
         [StringLength(50)]
         public string SerialNumber { get; set; }
+        public Nullable<int> RawMaterialTypeId { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
+        public Nullable<int> OpenStoreId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }

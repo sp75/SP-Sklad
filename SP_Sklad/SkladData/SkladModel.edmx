@@ -9400,6 +9400,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="rsv" Type="int" Mode="InOut" />
           <Parameter Name="user_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="ReservedPositionV2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pos_id" Type="int" Mode="In" />
+        </Function>
         <Function Name="SetDocRel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="originator_id" Type="uniqueidentifier" Mode="In" />
           <Parameter Name="rel_originator_id" Type="uniqueidentifier" Mode="In" />
@@ -14567,6 +14570,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </AssociationSet>
           <FunctionImport Name="GetUserAccessCashDesks" IsComposable="true" ReturnType="Collection(BaseModel.GetUserAccessCashDesks_Result)">
           <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ReservedPositionV2" ReturnType="Collection(Int32)">
+            <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -30431,6 +30437,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ReservedPositionV2" FunctionName="BaseModel.Store.ReservedPositionV2" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

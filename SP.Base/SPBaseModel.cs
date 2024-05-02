@@ -1248,6 +1248,15 @@ namespace SP.Base.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("GetDocNum", nameParameter);
         }
 
+        public virtual ObjectResult<Nullable<int>> ReservedPositionV2(Nullable<int> pos_id)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ReservedPositionV2", pos_idParameter);
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(new CodeFirstStoreFunctions.FunctionsConvention<SPBaseModel>("dbo"));
