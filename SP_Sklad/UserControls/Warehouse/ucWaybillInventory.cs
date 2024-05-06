@@ -202,7 +202,8 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillInventory.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillInventory.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId)
+            .Join(objectContext.UserAccessWh.Where(w=> w.UserId == UserSession.UserId), w => w.FromWId, ew => ew.WId, (w, ew) => w);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

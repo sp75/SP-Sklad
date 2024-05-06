@@ -55,6 +55,11 @@
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.bar2 = new DevExpress.XtraBars.Bar();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -182,6 +187,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -262,17 +268,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
             // 
             this.barManager1.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1});
+            this.bar1,
+            this.bar2});
             this.barManager1.DockControls.Add(this.barDockControlTop);
             this.barManager1.DockControls.Add(this.barDockControlBottom);
             this.barManager1.DockControls.Add(this.barDockControlLeft);
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.DockControls.Add(this.standaloneBarDockControl1);
+            this.barManager1.DockControls.Add(this.standaloneBarDockControl2);
             this.barManager1.Form = this;
             this.barManager1.Images = this.ImageList;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
@@ -283,8 +292,11 @@
             this.barButtonItem5,
             this.barButtonItem6,
             this.barButtonItem7,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 15;
+            this.barButtonItem8,
+            this.barButtonItem9,
+            this.barSubItem1,
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 18;
             // 
             // bar1
             // 
@@ -329,6 +341,59 @@
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(628, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // bar2
+            // 
+            this.bar2.BarName = "Custom 3";
+            this.bar2.DockCol = 0;
+            this.bar2.DockRow = 0;
+            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
+            this.bar2.FloatLocation = new System.Drawing.Point(314, 210);
+            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
+            this.bar2.OptionsBar.DrawDragBorder = false;
+            this.bar2.OptionsBar.UseWholeRow = true;
+            this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl2;
+            this.bar2.Text = "Custom 3";
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Список";
+            this.barSubItem1.Id = 16;
+            this.barSubItem1.ImageOptions.ImageIndex = 22;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Дати доступ до всіх";
+            this.barButtonItem9.Id = 15;
+            this.barButtonItem9.ImageOptions.ImageIndex = 9;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Зняти доступ з усіх";
+            this.barButtonItem10.Id = 17;
+            this.barButtonItem10.ImageOptions.ImageIndex = 7;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            // 
+            // standaloneBarDockControl2
+            // 
+            this.standaloneBarDockControl2.AutoSize = true;
+            this.standaloneBarDockControl2.CausesValidation = false;
+            this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
+            this.standaloneBarDockControl2.Manager = this.barManager1;
+            this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
+            this.standaloneBarDockControl2.Size = new System.Drawing.Size(630, 24);
+            this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
             // 
             // barDockControlTop
             // 
@@ -398,6 +463,8 @@
             this.ImageList.Images.SetKeyName(20, "apply_16x16.png");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.contact, "contact", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.ImageList.Images.SetKeyName(21, "contact");
+            this.ImageList.InsertGalleryImage("list_16x16.png", "devav/layout/list_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("devav/layout/list_16x16.png"), 22);
+            this.ImageList.Images.SetKeyName(22, "list_16x16.png");
             // 
             // barButtonItem1
             // 
@@ -1065,6 +1132,7 @@
             // xtraTabPage3
             // 
             this.xtraTabPage3.Controls.Add(this.UserAccessWhGridControl);
+            this.xtraTabPage3.Controls.Add(this.standaloneBarDockControl2);
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(630, 358);
             this.xtraTabPage3.Text = "Доступ до залишків на сладах";
@@ -1072,13 +1140,14 @@
             // UserAccessWhGridControl
             // 
             this.UserAccessWhGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UserAccessWhGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UserAccessWhGridControl.Location = new System.Drawing.Point(0, 24);
             this.UserAccessWhGridControl.MainView = this.UserAccessWhGridView;
             this.UserAccessWhGridControl.MenuManager = this.barManager1;
             this.UserAccessWhGridControl.Name = "UserAccessWhGridControl";
             this.UserAccessWhGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1});
-            this.UserAccessWhGridControl.Size = new System.Drawing.Size(630, 358);
+            this.repositoryItemImageComboBox1,
+            this.repositoryItemCheckEdit5});
+            this.UserAccessWhGridControl.Size = new System.Drawing.Size(630, 334);
             this.UserAccessWhGridControl.TabIndex = 8;
             this.UserAccessWhGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.UserAccessWhGridView});
@@ -1129,6 +1198,7 @@
             // gridColumn6
             // 
             this.gridColumn6.Caption = "Резервування";
+            this.gridColumn6.ColumnEdit = this.repositoryItemCheckEdit5;
             this.gridColumn6.FieldName = "UseReceived";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
@@ -1853,6 +1923,11 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // repositoryItemCheckEdit5
+            // 
+            this.repositoryItemCheckEdit5.AutoHeight = false;
+            this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1905,6 +1980,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
@@ -1957,6 +2033,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2096,5 +2173,11 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.CalcEdit comboBoxEdit1;
         private DevExpress.XtraEditors.FontEdit comboBoxEdit2;
+        private DevExpress.XtraBars.Bar bar2;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
     }
 }

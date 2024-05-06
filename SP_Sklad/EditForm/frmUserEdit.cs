@@ -359,19 +359,22 @@ namespace SP_Sklad.EditForm
             {
                 if ((int)e.CellValue == 0)
                 {
-                    var uaw = _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = row.WId });
+                    var uaw = _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = row.WId, UseReceived = true });
                     row.Allow = 1;
+                    row.UseReceived = true;
                     _db.SaveChanges();
+
                     row.Id = uaw.Id;
                 }
                 else
                 {
-                    _db.DeleteWhere<UserAccessWh>(w => w.UserId == _user_id.Value && w.WId == row.WId);
+                    _db.UserAccessWh.RemoveRange(_db.UserAccessWh.Where(w => w.UserId == _user_id.Value && w.WId == row.WId));
                     row.Allow = 0;
+                    row.UseReceived = false;
+                    _db.SaveChanges();
                 }
-                row.UseReceived = false;
 
-                UserAccessWhGridView.RefreshRowCell(UserAccessWhGridView.FocusedRowHandle, e.Column);
+                UserAccessWhGridView.RefreshRow(UserAccessWhGridView.FocusedRowHandle);
             }
 
             if (e.Column.FieldName == "UseReceived" && row.Allow ==1)
@@ -684,6 +687,28 @@ namespace SP_Sklad.EditForm
             {
 
             }*/
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            foreach (var item in _db.GetUserAccessWh(_user_id).ToList())
+            {
+                if (!_db.UserAccessWh.Any(a => a.UserId == _user_id.Value && a.WId == item.WId))
+                {
+                    _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = item.WId, UseReceived = true });
+                }
+            }
+            _db.SaveChanges();
+
+            UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.UserAccessWh.RemoveRange(_db.UserAccessWh.Where(w => w.UserId == _user_id.Value));
+            _db.SaveChanges();
+
+            UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
         }
     }
 }
