@@ -382,7 +382,7 @@ namespace SP_Sklad.UserControls
             EditItemBtn.Enabled = ExtEditBtn.Enabled;
             CopyItemBtn.Enabled = ExtCopyBtn.Enabled;
             PrintItemBtn.Enabled = ExtPrintBtn.Enabled;
-            barButtonItem11.Enabled = wb_focused_row.Checked == 1;
+            barButtonItem11.Enabled = wb_focused_row?.Checked == 1;
 
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
@@ -466,11 +466,6 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
-        }
-
-        private void ChangeWaybillKagentBtn_ItemClick(object sender, ItemClickEventArgs e)
-        {
-           
         }
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)

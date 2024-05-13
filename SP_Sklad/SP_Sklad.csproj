@@ -273,6 +273,12 @@
     <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="frmReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReg.Designer.cs">
+      <DependentUpon>frmReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2511,6 +2517,9 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmReg.resx">
+      <DependentUpon>frmReg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\DeboningWeighingInterface\frmDeboningWeighing.resx">
       <DependentUpon>frmDeboningWeighing.cs</DependentUpon>
     </EmbeddedResource>

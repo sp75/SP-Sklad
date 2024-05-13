@@ -457,5 +457,20 @@ namespace SP_Sklad.MainTabs
         {
             GetKontragentDetail();
         }
+
+        private void vGridControl4_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            if (e.Row.Properties.FieldName == "Id" && DBHelper.is_admin)
+            {
+                using (var _db = DB.SkladBase())
+                {
+                    var k = _db.Kagent.FirstOrDefault(w => w.KaId == focused_kagent.KaId);
+                    k.Id = new Guid((string)e.Value) ;
+                    _db.SaveChanges();
+
+                    KAgentInfoBS.DataSource = _db.v_Kagent.AsNoTracking().FirstOrDefault(w => w.KaId == focused_kagent.KaId); 
+                }
+            }
+        }
     }
 }

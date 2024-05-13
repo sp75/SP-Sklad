@@ -789,6 +789,7 @@
             this.editorRow12});
             this.vGridControl4.Size = new System.Drawing.Size(1418, 197);
             this.vGridControl4.TabIndex = 1;
+            this.vGridControl4.CellValueChanged += new DevExpress.XtraVerticalGrid.Events.CellValueChangedEventHandler(this.vGridControl4_CellValueChanged);
             // 
             // KAgentInfoBS
             // 
@@ -796,74 +797,84 @@
             // 
             // editorRow2
             // 
+            this.editorRow2.Height = 17;
             this.editorRow2.Name = "editorRow2";
             this.editorRow2.Properties.Caption = "Повна назва";
             this.editorRow2.Properties.FieldName = "FullName";
             // 
             // editorRow4
             // 
-            this.editorRow4.Height = 16;
+            this.editorRow4.Height = 17;
             this.editorRow4.Name = "editorRow4";
             this.editorRow4.Properties.Caption = "Скорочена назва";
             this.editorRow4.Properties.FieldName = "Name";
             // 
             // editorRow6
             // 
+            this.editorRow6.Height = 17;
             this.editorRow6.Name = "editorRow6";
             this.editorRow6.Properties.Caption = "Тип контрагента";
             this.editorRow6.Properties.FieldName = "TypKAgent";
             // 
             // editorRow9
             // 
+            this.editorRow9.Height = 17;
             this.editorRow9.Name = "editorRow9";
             this.editorRow9.Properties.Caption = "Ким є";
             this.editorRow9.Properties.FieldName = "KAgentKind";
             // 
             // editorRow3
             // 
+            this.editorRow3.Height = 17;
             this.editorRow3.Name = "editorRow3";
             this.editorRow3.Properties.Caption = "Категорія цін";
             this.editorRow3.Properties.FieldName = "PriceName";
             // 
             // editorRow5
             // 
+            this.editorRow5.Height = 17;
             this.editorRow5.Name = "editorRow5";
             this.editorRow5.Properties.Caption = "ОКПО";
             this.editorRow5.Properties.FieldName = "OKPO";
             // 
             // editorRow7
             // 
+            this.editorRow7.Height = 17;
             this.editorRow7.Name = "editorRow7";
             this.editorRow7.Properties.Caption = "КПП";
             this.editorRow7.Properties.FieldName = "KPP";
             // 
             // row17
             // 
+            this.row17.Height = 17;
             this.row17.Name = "row17";
             this.row17.Properties.Caption = "Платник ПДВ";
             this.row17.Properties.FieldName = "NdsPayer";
             // 
             // row18
             // 
+            this.row18.Height = 17;
             this.row18.Name = "row18";
             this.row18.Properties.Caption = "ІНН";
             this.row18.Properties.FieldName = "INN";
             // 
             // row19
             // 
-            this.row19.Height = 16;
+            this.row19.Height = 17;
             this.row19.Name = "row19";
             this.row19.Properties.Caption = "№ Свідоцтва";
             this.row19.Properties.FieldName = "CertNum";
             // 
             // editorRow11
             // 
+            this.editorRow11.Height = 17;
             this.editorRow11.Name = "editorRow11";
             this.editorRow11.Properties.Caption = "Номер в системі";
             this.editorRow11.Properties.FieldName = "KaId";
             // 
             // editorRow12
             // 
+            this.editorRow12.Height = 17;
             this.editorRow12.Name = "editorRow12";
             this.editorRow12.Properties.Caption = "Api Token";
             this.editorRow12.Properties.FieldName = "Id";

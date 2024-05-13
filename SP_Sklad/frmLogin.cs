@@ -35,6 +35,7 @@ namespace SP_Sklad
         private int user_id => (int)UserIDEdit.EditValue;
         private string ip_address => UniqueID.GetPhysicalIPAdress();
         private string user_name => string.IsNullOrEmpty(Environment.UserDomainName) ? Environment.UserName : Environment.UserDomainName + "\\" + Environment.UserName;
+        private string _kay_id { get; set; }
 
         public frmLogin()
         {
@@ -67,24 +68,24 @@ namespace SP_Sklad
                 label1.Text = "З'явилася нова версія , загрузіть оновлення!";
             }
 
-            var kay_id = UniqueID.getMotherBoardID();
-            if (String.IsNullOrEmpty(kay_id)) //якщо невдалось отримати ID bother board
+            _kay_id = UniqueID.getMotherBoardID();
+            if (String.IsNullOrEmpty(_kay_id)) //якщо невдалось отримати ID bother board
             {
-                kay_id = UniqueID.GetMacAddress();
+                _kay_id = UniqueID.GetMacAddress();
             }
 
-            if (String.IsNullOrEmpty(kay_id)) //якщо невдалось отримати MacAddress
+            if (String.IsNullOrEmpty(_kay_id)) //якщо невдалось отримати MacAddress
             {
                 try
                 {
-                    kay_id = UniqueID.getUniqueID("C");
+                    _kay_id = UniqueID.getUniqueID("C");
                 }
                 catch { }
             }
 
-            if (String.IsNullOrEmpty(kay_id))
+            if (String.IsNullOrEmpty(_kay_id))
             {
-                kay_id = "123456789";
+                _kay_id = "123456789";
             }
             //            var ddd = DeCoding(Coding("77419"));  //test
 
@@ -101,17 +102,17 @@ namespace SP_Sklad
                         sum += s;
                     }
                 }
-                kay_id = sum.ToString();
+                _kay_id = sum.ToString();
             }
 
             using (var db = new BaseEntities())
             {
-                var lic = db.Licenses.ToList().FirstOrDefault(w => w.MacAddress == kay_id /*&& user_name.ToLower() == w.UserName.ToLower()*/);
+                var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == _kay_id);
                 if (lic == null)
                 {
                     db.Licenses.Add(new Licenses
                     {
-                        MacAddress = kay_id,
+                        MacAddress = _kay_id,
                         LicencesKay = "",
                         IpAddress = ip_address,
                         MachineName = Environment.MachineName,
@@ -123,13 +124,16 @@ namespace SP_Sklad
                 {
                     lic.IpAddress = ip_address;
                     lic.MachineName = Environment.MachineName;
-                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress /*&& user_name.ToLower() == lic.UserName.ToLower()*/;
+                    lic.UseDate = DateTime.Now;
+
+                    is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress;
                 }
 
                 if (!is_registered)
                 {
-                    label1.Text = "Програма не зареєстрована, зверніться до адміністратора!";
+                    label1.Text = "Програма не зареєстрована !";
                     label1.Visible = true;
+                    RegBtn.Visible = true;
                 }
                 db.SaveChanges();
             }
@@ -243,7 +247,7 @@ namespace SP_Sklad
             return rezult;
         }
 
-       
+
 
         private void OkButton_Click(object sender, EventArgs e)
         {
@@ -258,7 +262,7 @@ namespace SP_Sklad
 
             UserSession.UserId = user_id;
             UserSession.SessionId = Guid.NewGuid();
-            UserSession.EnterpriseId  = Settings.Default.ent_id;
+            UserSession.EnterpriseId = Settings.Default.ent_id;
             UserSession.login_form = this;
 
             using (var db = new BaseEntities())
@@ -339,8 +343,8 @@ namespace SP_Sklad
                         case 7:
 
                             WindowsFormsSettings.ForceDirectXPaint();
-                     //       WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
-                          //  WindowsFormsSettings.TouchScaleFactor = 2;
+                            //       WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                            //  WindowsFormsSettings.TouchScaleFactor = 2;
                             frmMainTablet.main_form = new frmMainTablet();
                             frmMainTablet.main_form.Show();
                             break;
@@ -422,6 +426,35 @@ namespace SP_Sklad
             Text = $"Авторизація користувача [{InterfaceLookUpEdit.Text}]";
 
             GetOk();
+        }
+
+        private void RegBtn_Click(object sender, EventArgs e)
+        {
+            using (var frm = new frmReg(_kay_id))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    using (var db = new BaseEntities())
+                    {
+                        var lic = db.Licenses.FirstOrDefault(w => w.MacAddress == _kay_id);
+
+                        is_registered = DeCoding(lic.LicencesKay) == lic.MacAddress;
+                        if (!is_registered)
+                        {
+                            label1.Text = "Програма не зареєстрована!";
+                            label1.Visible = true;
+                        }
+                        else
+                        {
+                            RegBtn.Visible = false;
+                            label1.Visible = false;
+                            lic.UseDate = DateTime.Now;
+                        }
+
+                        db.SaveChanges();
+                    }
+                }
+            }
         }
     }
 }
