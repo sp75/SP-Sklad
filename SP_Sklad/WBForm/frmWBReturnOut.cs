@@ -204,10 +204,9 @@ namespace SP_Sklad.WBForm
 
         private void EditMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillDetOutGridView.GetRow(WaybillDetOutGridView.FocusedRowHandle) as GetWayBillDetOut_Result;
-            if (dr != null)
+            if (focused_dr != null)
             {
-                new frmWBReturnDetOut(_db, dr.PosId, wb, (int)KagentComboBox.EditValue).ShowDialog();
+                new frmWBReturnDetOut(_db, focused_dr.PosId, wb, (int)KagentComboBox.EditValue).ShowDialog();
 
                 RefreshDet();
             }
@@ -310,6 +309,11 @@ namespace SP_Sklad.WBForm
 
         private void MarkBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_dr == null)
+            {
+                return;
+            }
+
             var wbd = _db.WaybillDet.Find(focused_dr.PosId);
             if (wbd.Checked == 1)
             {
