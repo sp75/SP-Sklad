@@ -117,14 +117,12 @@ namespace SP_Sklad.MainTabs
             RepBtn.PerformClick();
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+  
+        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-         
-        }
+          var d = new SP.Reports.Reports.RepMatMove.GetReport();
 
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
+      //      new frmGridView("Рух товарів", d).ShowDialog();
         }
     }
 }
