@@ -37,6 +37,12 @@
             this.UserTreeImgList = new DevExpress.Utils.SharedImageCollection(this.components);
             this.wbContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.hyperlinkLabelControl2 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
+            this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -99,7 +105,6 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.BarImageList = new DevExpress.Utils.ImageCollection(this.components);
-            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
@@ -116,6 +121,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList.ImageSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).BeginInit();
             this.wbContentTab.SuspendLayout();
+            this.xtraTabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage9.SuspendLayout();
@@ -138,7 +149,6 @@
             this.xtraTabPage21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -407,9 +417,75 @@
             // 
             // xtraTabPage6
             // 
+            this.xtraTabPage6.Controls.Add(this.groupControl1);
+            this.xtraTabPage6.Controls.Add(this.groupControl3);
+            this.xtraTabPage6.Controls.Add(this.groupControl2);
             this.xtraTabPage6.Name = "xtraTabPage6";
             this.xtraTabPage6.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage6.Text = "ViewList";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.groupControl1.AppearanceCaption.Options.UseFont = true;
+            this.groupControl1.Controls.Add(this.hyperlinkLabelControl2);
+            this.groupControl1.Controls.Add(this.hyperlinkLabelControl1);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Title;
+            this.groupControl1.Location = new System.Drawing.Point(0, 400);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(1138, 295);
+            this.groupControl1.TabIndex = 0;
+            this.groupControl1.Text = "Звіти";
+            // 
+            // hyperlinkLabelControl2
+            // 
+            this.hyperlinkLabelControl2.Location = new System.Drawing.Point(29, 80);
+            this.hyperlinkLabelControl2.Name = "hyperlinkLabelControl2";
+            this.hyperlinkLabelControl2.Size = new System.Drawing.Size(176, 16);
+            this.hyperlinkLabelControl2.StyleController = this.styleController1;
+            this.hyperlinkLabelControl2.TabIndex = 1;
+            this.hyperlinkLabelControl2.Text = "2. Динамика продажу товарів";
+            this.hyperlinkLabelControl2.Click += new System.EventHandler(this.hyperlinkLabelControl2_Click);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // hyperlinkLabelControl1
+            // 
+            this.hyperlinkLabelControl1.Location = new System.Drawing.Point(29, 45);
+            this.hyperlinkLabelControl1.Name = "hyperlinkLabelControl1";
+            this.hyperlinkLabelControl1.Size = new System.Drawing.Size(229, 16);
+            this.hyperlinkLabelControl1.StyleController = this.styleController1;
+            this.hyperlinkLabelControl1.TabIndex = 0;
+            this.hyperlinkLabelControl1.Text = "1. Реєстр по документах (розгорнутий)";
+            this.hyperlinkLabelControl1.Click += new System.EventHandler(this.hyperlinkLabelControl1_Click);
+            // 
+            // groupControl3
+            // 
+            this.groupControl3.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.groupControl3.AppearanceCaption.Options.UseFont = true;
+            this.groupControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl3.GroupStyle = DevExpress.Utils.GroupStyle.Title;
+            this.groupControl3.Location = new System.Drawing.Point(0, 200);
+            this.groupControl3.Name = "groupControl3";
+            this.groupControl3.Size = new System.Drawing.Size(1138, 200);
+            this.groupControl3.TabIndex = 2;
+            this.groupControl3.Text = "Довідники";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.groupControl2.AppearanceCaption.Options.UseFont = true;
+            this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupControl2.GroupStyle = DevExpress.Utils.GroupStyle.Title;
+            this.groupControl2.Location = new System.Drawing.Point(0, 0);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.Size = new System.Drawing.Size(1138, 200);
+            this.groupControl2.TabIndex = 1;
+            this.groupControl2.Text = "Документи";
             // 
             // xtraTabPage7
             // 
@@ -1058,11 +1134,6 @@
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList.Images.SetKeyName(9, "xls_export");
             // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
-            // 
             // bar2
             // 
             this.bar2.BarName = "Main menu";
@@ -1133,6 +1204,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserTreeImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbContentTab)).EndInit();
             this.wbContentTab.ResumeLayout(false);
+            this.xtraTabPage6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage9.ResumeLayout(false);
@@ -1155,7 +1233,6 @@
             this.xtraTabPage21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1236,5 +1313,10 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage7;
         public UserControls.ucWayBill ucWayBill;
         private DevExpress.Utils.ImageCollection BarImageList;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl1;
+        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl2;
+        private DevExpress.XtraEditors.GroupControl groupControl3;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
     }
 }

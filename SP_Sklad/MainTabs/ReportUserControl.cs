@@ -73,27 +73,24 @@ namespace SP_Sklad.MainTabs
 
         private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            dynamic row = RepGridView.GetFocusedRow() as RepView;
-            string report_name = DB.SkladBase().RepLng.Where(w => w.LangId == 2 && w.RepId == report_row.RepId).Select(s => s.Name).FirstOrDefault();
-
-            if(row == null)
+             if(report_row == null)
             {
                 return;
             }
 
-            if(row.RepId == 51)
+            if(report_row.RepId == 51)
             {
                 new frmReport51().ShowDialog();
             }
-            else if (row.RepId == 53)
+            else if (report_row.RepId == 53)
             {
                 new frmReport53().ShowDialog();
             }
-            else if (row.RepId == 54)
+            else if (report_row.RepId == 54)
             {
                 new frmReport54().ShowDialog();
             }
-            else if (row.RepId == 55)
+            else if (report_row.RepId == 55)
             {
                 XtraReport55 report = new XtraReport55();
 
@@ -103,9 +100,9 @@ namespace SP_Sklad.MainTabs
             else
             {
 
-                using (var frm = new frmReport((int)row.RepId))
+                using (var frm = new frmReport(report_row.RepId))
                 {
-                    frm.Text = row.Name;
+                    frm.Text = report_row.Name;
                     frm.ShowDialog();
                 }
             }
@@ -116,13 +113,6 @@ namespace SP_Sklad.MainTabs
         {
             RepBtn.PerformClick();
         }
-
-  
-        private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-          var d = new SP.Reports.Reports.RepMatMove.GetReport();
-
-      //      new frmGridView("Рух товарів", d).ShowDialog();
-        }
+ 
     }
 }

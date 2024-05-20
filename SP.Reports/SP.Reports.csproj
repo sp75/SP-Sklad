@@ -102,7 +102,6 @@
     <Compile Include="PrintReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportBuilder\ReportBuilder.cs" />
-    <Compile Include="Reports\RepMatMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

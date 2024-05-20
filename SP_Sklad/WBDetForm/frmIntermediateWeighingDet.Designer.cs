@@ -106,7 +106,7 @@
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(282, 280);
+            this.OkButton.Location = new System.Drawing.Point(282, 294);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(98, 26);
             this.OkButton.TabIndex = 5;
@@ -117,7 +117,7 @@
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton1.Location = new System.Drawing.Point(386, 280);
+            this.simpleButton1.Location = new System.Drawing.Point(386, 294);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(93, 26);
             this.simpleButton1.TabIndex = 4;
@@ -132,7 +132,7 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(496, 318);
+            this.panelControl2.Size = new System.Drawing.Size(496, 332);
             this.panelControl2.TabIndex = 31;
             // 
             // panel1
@@ -143,7 +143,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(492, 267);
+            this.panel1.Size = new System.Drawing.Size(492, 280);
             this.panel1.TabIndex = 25;
             // 
             // groupControl3
@@ -157,9 +157,9 @@
             this.groupControl3.Controls.Add(this.labelControl17);
             this.groupControl3.Controls.Add(this.labelControl29);
             this.groupControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupControl3.Location = new System.Drawing.Point(5, 127);
+            this.groupControl3.Location = new System.Drawing.Point(5, 131);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(482, 135);
+            this.groupControl3.Size = new System.Drawing.Size(482, 144);
             this.groupControl3.TabIndex = 26;
             this.groupControl3.Tag = "";
             this.groupControl3.Text = "Підсумок";
@@ -167,7 +167,7 @@
             // TotalEdit
             // 
             this.TotalEdit.Enabled = false;
-            this.TotalEdit.Location = new System.Drawing.Point(316, 100);
+            this.TotalEdit.Location = new System.Drawing.Point(316, 110);
             this.TotalEdit.Name = "TotalEdit";
             this.TotalEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -185,7 +185,7 @@
             // IntermediateWeighingEdit
             // 
             this.IntermediateWeighingEdit.Enabled = false;
-            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(316, 45);
+            this.IntermediateWeighingEdit.Location = new System.Drawing.Point(316, 55);
             this.IntermediateWeighingEdit.Name = "IntermediateWeighingEdit";
             this.IntermediateWeighingEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -198,7 +198,7 @@
             // ByRecipeEdit
             // 
             this.ByRecipeEdit.Enabled = false;
-            this.ByRecipeEdit.Location = new System.Drawing.Point(12, 100);
+            this.ByRecipeEdit.Location = new System.Drawing.Point(12, 110);
             this.ByRecipeEdit.Name = "ByRecipeEdit";
             this.ByRecipeEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -211,7 +211,7 @@
             // CalcAmount
             // 
             this.CalcAmount.Enabled = false;
-            this.CalcAmount.Location = new System.Drawing.Point(12, 45);
+            this.CalcAmount.Location = new System.Drawing.Point(12, 55);
             this.CalcAmount.Name = "CalcAmount";
             this.CalcAmount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
@@ -227,7 +227,7 @@
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Red;
             this.labelControl4.Appearance.Options.UseFont = true;
             this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Location = new System.Drawing.Point(12, 23);
+            this.labelControl4.Location = new System.Drawing.Point(12, 33);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(80, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -236,7 +236,7 @@
             // 
             // labelControl18
             // 
-            this.labelControl18.Location = new System.Drawing.Point(316, 78);
+            this.labelControl18.Location = new System.Drawing.Point(316, 88);
             this.labelControl18.Name = "labelControl18";
             this.labelControl18.Size = new System.Drawing.Size(131, 16);
             this.labelControl18.StyleController = this.styleController1;
@@ -245,7 +245,7 @@
             // 
             // labelControl17
             // 
-            this.labelControl17.Location = new System.Drawing.Point(316, 23);
+            this.labelControl17.Location = new System.Drawing.Point(316, 33);
             this.labelControl17.Name = "labelControl17";
             this.labelControl17.Size = new System.Drawing.Size(99, 16);
             this.labelControl17.StyleController = this.styleController1;
@@ -254,7 +254,7 @@
             // 
             // labelControl29
             // 
-            this.labelControl29.Location = new System.Drawing.Point(12, 78);
+            this.labelControl29.Location = new System.Drawing.Point(12, 88);
             this.labelControl29.Name = "labelControl29";
             this.labelControl29.Size = new System.Drawing.Size(93, 16);
             this.labelControl29.StyleController = this.styleController1;
@@ -274,7 +274,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(482, 122);
+            this.panelControl1.Size = new System.Drawing.Size(482, 126);
             this.panelControl1.TabIndex = 0;
             // 
             // TareMatEdit
@@ -402,7 +402,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 318);
+            this.ClientSize = new System.Drawing.Size(496, 332);
             this.Controls.Add(this.panelControl2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmIntermediateWeighingDet";

@@ -9,6 +9,7 @@ using SP_Sklad.Common;
 using DevExpress.XtraBars;
 using SP_Sklad.ViewsForm;
 using DevExpress.XtraEditors;
+using SP_Sklad.Reports;
 
 namespace SP_Sklad.MainTabs
 {
@@ -951,6 +952,16 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
         {
             new frmWaybillCorrectionsView().ShowDialog();
+        }
+
+        private void hyperlinkLabelControl1_Click(object sender, EventArgs e)
+        {
+            new frmDocumentDetails().Show();
+        }
+
+        private void hyperlinkLabelControl2_Click(object sender, EventArgs e)
+        {
+            new frmReport51().Show();
         }
     }
 }

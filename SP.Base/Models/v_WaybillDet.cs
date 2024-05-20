@@ -119,5 +119,7 @@ namespace SP.Base.Models
         public string WhName { get; set; }
         public string PersonName { get; set; }
         public int? Defective { get; set; }
+        public string KagentGroupName { get; set; }
+        public string DocTypeName { get; set; }
     }
 }

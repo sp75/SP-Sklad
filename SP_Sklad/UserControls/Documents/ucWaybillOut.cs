@@ -605,7 +605,7 @@ namespace SP_Sklad.UserControls
             }
             else
             {
-                XtraMessageBox.Show("Прибуткова накладана вже стовена!");
+                XtraMessageBox.Show("Прибуткова накладана вже створена!");
             }
 
          

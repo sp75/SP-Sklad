@@ -591,6 +591,11 @@ namespace SP_Sklad.WBForm
         {
             var row = MatRecipeAdditionalCostsView.GetFocusedRow() as AdditionalCostsDet;
 
+            if(row == null)
+            {
+                return;
+            }
+
             _db.DeleteWhere<AdditionalCostsDet>(w => w.Id == row.Id);
 
             MatRecipeAdditionalCostsGridControl.DataSource = _db.AdditionalCostsDet.Where(w => w.WbillId == _wbill_id).ToList();

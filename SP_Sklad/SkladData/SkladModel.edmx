@@ -3891,6 +3891,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillDet' does not have a primary 
           <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="PersonName" Type="nvarchar" MaxLength="100" />
           <Property Name="Defective" Type="int" />
+          <Property Name="KagentGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillIn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11253,7 +11255,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillDet].[WbNotes] AS [WbNotes], 
     [v_WaybillDet].[WhName] AS [WhName], 
     [v_WaybillDet].[PersonName] AS [PersonName], 
-    [v_WaybillDet].[Defective] AS [Defective]
+    [v_WaybillDet].[Defective] AS [Defective], 
+    [v_WaybillDet].[KagentGroupName] AS [KagentGroupName], 
+    [v_WaybillDet].[DocTypeName] AS [DocTypeName]
     FROM [dbo].[v_WaybillDet] AS [v_WaybillDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillIn" EntityType="Self.v_WayBillIn" store:Type="Views" store:Schema="dbo">
@@ -20115,6 +20119,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="PersonName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Defective" Type="Int32" />
+          <Property Name="KagentGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_IntermediateWeighingSummary">
           <Key>
@@ -27856,6 +27862,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillDet">
               <MappingFragment StoreEntitySet="v_WaybillDet">
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="KagentGroupName" ColumnName="KagentGroupName" />
                 <ScalarProperty Name="Defective" ColumnName="Defective" />
                 <ScalarProperty Name="PersonName" ColumnName="PersonName" />
                 <ScalarProperty Name="WhName" ColumnName="WhName" />

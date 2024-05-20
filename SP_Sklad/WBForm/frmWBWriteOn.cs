@@ -278,7 +278,7 @@ order by  ma.ondate desc */
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (!WHComboBox.Focused)
+            if (!WHComboBox.ContainsFocus)
             {
                 return;
             }
@@ -287,26 +287,29 @@ order by  ma.ondate desc */
 
             if (_wid.HasValue)
             {
-                UpdateWh();
+                UpdateWh(_wid.Value);
             }
         }
 
-        private void UpdateWh()
+        private void UpdateWh(int wid)
         {
-            if (WaybillDetInBS.Count > 0)
+            var wh = _db.Warehouse.FirstOrDefault(w => w.WId == wid);
+
+            if (WaybillDetInBS.Count > 0 && wh != null)
             {
-                if (MessageBox.Show("Оприходувати весь товар на склад <" + WHComboBox.Text + ">?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (MessageBox.Show($"Оприходувати весь товар на склад <{wh.Name}>?", "Інформація", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     foreach (var item in _db.WaybillDet.Where(w => w.WbillId == _wbill_id))
                     {
-                        item.WId = Convert.ToInt32(WHComboBox.EditValue);
+                        item.WId = wid;
 
                         foreach (var turn in _db.WMatTurn.Where(w => w.SourceId == item.PosId))
                         {
-                            turn.WId = Convert.ToInt32(WHComboBox.EditValue);
+                            turn.WId = wid;
                         }
                     }
                     _db.Save(wb.WbillId);
+
                     RefreshDet();
                 }
             }

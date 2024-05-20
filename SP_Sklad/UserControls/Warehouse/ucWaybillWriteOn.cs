@@ -358,11 +358,11 @@ namespace SP_Sklad.UserControls
         {
             xtraTabControl2_SelectedPageChanged(null, null);
 
-            NewItemBtn.Enabled = (user_access.CanInsert == 1);
-            DeleteItemBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access.CanDelete == 1);
-            ExecuteItemBtn.Enabled = (wb_focused_row != null && user_access.CanPost == 1);
-            EditItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
-            CopyItemBtn.Enabled = (wb_focused_row != null && user_access.CanModify == 1);
+            NewItemBtn.Enabled = (user_access?.CanInsert == 1);
+            DeleteItemBtn.Enabled = (wb_focused_row != null && wb_focused_row.Checked == 0 && user_access?.CanDelete == 1);
+            ExecuteItemBtn.Enabled = (wb_focused_row != null && user_access?.CanPost == 1);
+            EditItemBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1);
+            CopyItemBtn.Enabled = (wb_focused_row != null && user_access?.CanModify == 1);
             PrintItemBtn.Enabled = (wb_focused_row != null);
         }
 

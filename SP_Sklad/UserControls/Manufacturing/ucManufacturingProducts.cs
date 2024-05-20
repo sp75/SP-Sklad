@@ -507,6 +507,7 @@ namespace SP_Sklad.MainTabs
                 WayBillMakeDetGridControl.DataSource = null;
                 ucRelDocGrid1.GetRelDoc(Guid.Empty);
                 ManufacturedPosGridControl.DataSource = null;
+                IntermediateWeighingByWBBS.DataSource = null;
                 return;
             }
 
@@ -659,6 +660,11 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem8_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_row == null)
+            {
+                return;
+            }
+
             var mat_list = DB.SkladBase().GetWayBillMakeDet(focused_row.WbillId).OrderBy(o => o.Num).ToList().Select(s => new make_det
             {
                 MatName = s.MatName,

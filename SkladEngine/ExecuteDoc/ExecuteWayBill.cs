@@ -57,13 +57,14 @@ namespace SkladEngine.ExecuteDoc
                             OnValue = wb_in.OnValue,
                             Num = ++num,
                             PosKind = 0,
-                            PosParent = 0,
                             DiscountKind = 0,
                             Amount = det_item.Amount,
                             BasePrice = det_item.Price,
                             Price = det_item.Price,
                             WId = wb_out.Kagent1.WId,
+                            PosParent = det_item.PosId
                         });
+                      
                     }
 
                     db.DocRels.Add(new DocRels { OriginatorId = wb_out.Id, RelOriginatorId = wb_in.Id });

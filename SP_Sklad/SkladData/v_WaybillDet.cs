@@ -54,5 +54,7 @@ namespace SP_Sklad.SkladData
         public string WhName { get; set; }
         public string PersonName { get; set; }
         public Nullable<int> Defective { get; set; }
+        public string KagentGroupName { get; set; }
+        public string DocTypeName { get; set; }
     }
 }

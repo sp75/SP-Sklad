@@ -570,7 +570,7 @@ namespace SP_Sklad.Common
                 case 1: f.Text = "Склад";//(f.uc.WHTreeList.DataSource as List<GetWhTree_Result>).fir
 
                     // frmWHPanel->SP_WMAT_GET->Locate("MATID",MATID, TLocateOptions()) ;
-                    if (f.ShowDialog() == DialogResult.OK)
+                    if (f.ShowDialog() == DialogResult.OK && f.uc.ucWhMat.focused_wh_mat != null)
                     {
                         result.mat_id = f.uc.ucWhMat.focused_wh_mat.MatId;
                         //   result.wid = (f.uc.WhRemainGridView.GetFocusedRow() as WMatGetByWh_Result).WId;
@@ -907,7 +907,10 @@ namespace SP_Sklad.Common
                     grid.ExportToXlsx(result_file);
                 }
 
-                Process.Start(result_file);
+                if (File.Exists(result_file))
+                {
+                    Process.Start(result_file);
+                }
             }
         }
 
