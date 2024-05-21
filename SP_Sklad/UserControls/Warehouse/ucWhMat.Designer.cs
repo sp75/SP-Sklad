@@ -1076,6 +1076,7 @@
             this.WhCheckedComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
+            this.WhCheckedComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhCheckedComboBox.Size = new System.Drawing.Size(381, 22);
             this.WhCheckedComboBox.StyleController = this.styleController1;
             this.WhCheckedComboBox.TabIndex = 49;

@@ -26,6 +26,8 @@ namespace SP.Base.Models
 
         public int? OutPosId { get; set; }
 
+        public int? WbillIdOut { get; set; }
+
         public virtual Materials Materials { get; set; }
 
         public virtual WaybillList WaybillList { get; set; }

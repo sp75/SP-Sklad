@@ -50,7 +50,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ReportingDate { get; set; }
         public Nullable<System.DateTime> UpdatedAt { get; set; }
         public string UpdatedUserName { get; set; }
-        public int WorkerId { get; set; }
+        public Nullable<int> WorkerId { get; set; }
         public string KaName { get; set; }
         public string DocTypeName { get; set; }
     }
