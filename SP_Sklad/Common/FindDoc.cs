@@ -183,6 +183,7 @@ namespace SP_Sklad.Common
 
                 case 4:
                     PageIndex = 2;
+                    mainForm.main_form.whUserControl.WHTreeList.ClearFindFilter();
                     _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 48);
                     _wh_user_control.ucWaybillMove.FindItem(doc_id.Value, date.Value);
                  //   SetWhDocFilter(48);
@@ -190,6 +191,7 @@ namespace SP_Sklad.Common
 
                 case -5:
                     PageIndex = 2;
+                    mainForm.main_form.whUserControl.WHTreeList.ClearFindFilter();
                     _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 54);
                     _wh_user_control.ucWaybillWriteOff.FindItem(doc_id.Value, date.Value);
                     //SetWhDocFilter(54);
@@ -197,6 +199,7 @@ namespace SP_Sklad.Common
 
                 case 5:
                     PageIndex = 2;
+                    mainForm.main_form.whUserControl.WHTreeList.ClearFindFilter();
                     _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 58);
                     _wh_user_control.ucWaybillWriteOn.FindItem(doc_id.Value, date.Value);
 
@@ -205,6 +208,7 @@ namespace SP_Sklad.Common
 
                 case 7:
                     PageIndex = 2;
+                    mainForm.main_form.whUserControl.WHTreeList.ClearFindFilter();
                     _wh_user_control.WHTreeList.FocusedNode = _wh_user_control.WHTreeList.FindNodeByFieldValue("Id", 104);
                     _wh_user_control.ucWaybillInventory.FindItem(doc_id.Value, date.Value);
 

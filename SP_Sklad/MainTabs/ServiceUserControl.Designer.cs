@@ -1143,8 +1143,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance, "finance", typeof(global::SP_Sklad.Properties.Resources), 46);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.product_group, "product_group", typeof(global::SP_Sklad.Properties.Resources), 47);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "product_group");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "trash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);

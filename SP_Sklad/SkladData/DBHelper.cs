@@ -903,6 +903,7 @@ order by wbd.ondate desc
         public String Name { get; set; }
         public int Def { get; set; }
         public int? RecyclingWarehouse { get; set; }
+        public string Addr { get; set; }
     }
 
     public class Kontragent

@@ -547,6 +547,19 @@ namespace SP_Sklad.Common
                     }
                     break;
 
+                case 19:
+                    using (var f = new frmCatalog(null, 38))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Групи товарів";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.MatGroupGridView.GetFocusedRow() as MatGroup).GrpId;
+                        }
+                    }
+                    break;
+     
+
             }
 
             return old_id;

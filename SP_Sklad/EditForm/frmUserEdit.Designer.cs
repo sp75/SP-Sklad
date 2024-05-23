@@ -123,6 +123,7 @@
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
@@ -187,7 +188,6 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -222,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             this.xtraTabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).BeginInit();
@@ -268,7 +269,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -1057,8 +1057,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(45, "properties_16x16");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.finance, "finance", typeof(global::SP_Sklad.Properties.Resources), 46);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(46, "finance");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.arrow, "arrow", typeof(global::SP_Sklad.Properties.Resources), 47);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "arrow");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.product_group, "product_group", typeof(global::SP_Sklad.Properties.Resources), 47);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(47, "product_group");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.trash, "trash", typeof(global::SP_Sklad.Properties.Resources), 48);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(48, "trash");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.user_monitor, "user_monitor", typeof(global::SP_Sklad.Properties.Resources), 49);
@@ -1204,6 +1204,11 @@
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 2;
             this.gridColumn6.Width = 103;
+            // 
+            // repositoryItemCheckEdit5
+            // 
+            this.repositoryItemCheckEdit5.AutoHeight = false;
+            this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
             // 
             // xtraTabPage5
             // 
@@ -1923,11 +1928,6 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
-            // repositoryItemCheckEdit5
-            // 
-            this.repositoryItemCheckEdit5.AutoHeight = false;
-            this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
-            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1984,6 +1984,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UserAccessWhGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             this.xtraTabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit8.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit7.Properties)).EndInit();
@@ -2033,7 +2034,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

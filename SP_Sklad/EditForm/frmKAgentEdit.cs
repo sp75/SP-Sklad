@@ -175,10 +175,11 @@ namespace SP_Sklad.EditForm
                 {
                     WId = s.WId,
                     Name = s.Name,
-                    Def = s.Def
+                    Def = s.Def,
+                    Addr = s.Addr
                 }).ToList();
 
-                lookUpEdit4.Properties.DataSource = DBHelper.KagentsWorkerList.Where(w => w.KType == 1 || w.KType == 0);
+                lookUpEdit4.Properties.DataSource = DBHelper.KagentsWorkerList.Where(w => w.KType == 1 || w.KType == 0).ToList();
 
                 lookUpEdit5.Properties.DataSource = new List<object>() { new { Id = 0, Name = "%" }, new { Id = 1, Name = "грн." } };
                 lookUpEdit6.Properties.DataSource = lookUpEdit5.Properties.DataSource;
@@ -1006,5 +1007,20 @@ namespace SP_Sklad.EditForm
             }
         }
 
+        private void WarehouseEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                WarehouseEdit.EditValue = IHelper.ShowDirectList(WarehouseEdit.EditValue, 2);
+            }
+        }
+
+        private void lookUpEdit4_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                lookUpEdit4.EditValue = IHelper.ShowDirectList(lookUpEdit4.EditValue, 1);
+            }
+        }
     }
 }

@@ -544,5 +544,32 @@ namespace SP_Sklad.MainTabs
             }
         }
 
+        private void ChangeMatGrpBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var mg = IHelper.ShowDirectList(null, 19);
+
+            if (mg != null && MatGridView.GetSelectedRows().Any())
+            {
+                using (var db = DB.SkladBase())
+                {
+                    foreach (var item in MatGridView.GetSelectedRows())
+                    {
+                        var row = MatGridView.GetRow(item) as v_Materials;
+
+                        db.Materials.FirstOrDefault(w => w.MatId == row.MatId).GrpId = (int)mg;
+                    }
+
+                    db.SaveChanges();
+
+                    RefrechItemBtn.PerformClick();
+                }
+            }
+
+        }
+
+        private void SelectAllBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MatGridView.SelectAll();
+        }
     }
 }

@@ -172,6 +172,13 @@ namespace SP_Sklad.MainTabs
                             extDirTabControl.SelectedTabPageIndex = 5;
                             break;
 
+                        case 29:
+                            var top1 = MatGroupGridView.TopRowIndex;
+                            MatGroupBS.DataSource = DB.SkladBase().MatGroup.OrderBy(o=> o.Num).ToList();
+                            MatGroupGridView.TopRowIndex = top1;
+                            extDirTabControl.SelectedTabPageIndex = 17;
+                            break;
+
                         case 32:
                             var top = CountriesGridView.TopRowIndex;
                             CountriesBS.DataSource = DB.SkladBase().Countries.ToList();
@@ -368,6 +375,10 @@ namespace SP_Sklad.MainTabs
                             result = new frmAccountTypeEdit((AccountTypeGridView.GetFocusedRow() as AccountType).TypeId).ShowDialog();
                             break;
 
+                        case 29:
+                            result = new frmMatGroupEdit((MatGroupGridView.GetFocusedRow() as MatGroup).GrpId).ShowDialog();
+                            break;
+
                         case 32:
                             var c_row = (CountriesGridView.GetFocusedRow() as Countries);
                             result = new frmCountriesEdit(c_row.CId).ShowDialog();
@@ -515,6 +526,10 @@ namespace SP_Sklad.MainTabs
                             new frmAccountTypeEdit().ShowDialog();
                             break;
 
+                        case 29:
+                            new frmMatGroupEdit(PId: (MatGroupGridView.GetFocusedRow() as MatGroup)?.GrpId).ShowDialog();
+                            break;
+
                         case 32:
                             new frmCountriesEdit().ShowDialog();
                             break;
@@ -628,6 +643,10 @@ namespace SP_Sklad.MainTabs
                                 db.DeleteWhere<AccountType>(w => w.TypeId == at.TypeId);
                                 break;
 
+                            case 29:
+                                db.DeleteWhere<MatGroup>(w => w.GrpId == (MatGroupGridView.GetFocusedRow() as MatGroup).GrpId);
+                                break;
+
                             case 51:
                                 var ct = ChargeTypeGridView.GetFocusedRow() as ChargeType;
                                 db.DeleteWhere<ChargeType>(w => w.CTypeId == ct.CTypeId);
@@ -690,6 +709,7 @@ namespace SP_Sklad.MainTabs
 
                 db.SaveChanges();
             }
+
             RefrechItemBtn.PerformClick();
         }
 
@@ -1276,6 +1296,19 @@ namespace SP_Sklad.MainTabs
             {
                 var frm = this.Parent as frmCatalog;
                 frm.OkButton.PerformClick();
+            }
+        }
+
+        private void MatGroupGridView_DoubleClick(object sender, EventArgs e)
+        {
+            if (isDirectList)
+            {
+                var frm = this.Parent as frmCatalog;
+                frm.OkButton.PerformClick();
+            }
+            else
+            {
+                EditItemBtn.PerformClick();
             }
         }
     }

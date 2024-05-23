@@ -873,5 +873,13 @@ namespace SP_Sklad.EditForm
             }
 
         }
+
+        private void GrpIdEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                GrpIdEdit.EditValue = IHelper.ShowDirectList(GrpIdEdit.EditValue, 19);
+            }
+        }
     }
 }

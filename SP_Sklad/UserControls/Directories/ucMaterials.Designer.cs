@@ -65,6 +65,9 @@
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.MoveMatToArchiveBarBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.showMatArhivedBtn = new DevExpress.XtraBars.BarCheckItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.ChangeMatGrpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
@@ -284,8 +287,11 @@
             this.MoveMatToArchiveBarBtnItem,
             this.showMatArhivedBtn,
             this.barButtonItem11,
-            this.barEditItem2});
-            this.barManager1.MaxItemId = 52;
+            this.barEditItem2,
+            this.barSubItem1,
+            this.ChangeMatGrpBtn,
+            this.SelectAllBtn});
+            this.barManager1.MaxItemId = 55;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.BarCodeBtnEdit});
             // 
@@ -578,6 +584,8 @@
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.copy_object, "copy_object", typeof(global::SP_Sklad.Properties.Resources), 27);
             this.BarImageList.Images.SetKeyName(27, "copy_object");
             this.BarImageList.Images.SetKeyName(28, "add_16x16.png");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.table, "table", typeof(global::SP_Sklad.Properties.Resources), 29);
+            this.BarImageList.Images.SetKeyName(29, "table");
             // 
             // barButtonItem4
             // 
@@ -616,6 +624,30 @@
             this.showMatArhivedBtn.Id = 35;
             this.showMatArhivedBtn.Name = "showMatArhivedBtn";
             this.showMatArhivedBtn.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem1_CheckedChanged);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Таблиця";
+            this.barSubItem1.Id = 52;
+            this.barSubItem1.ImageOptions.ImageIndex = 29;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
+            new DevExpress.XtraBars.LinkPersistInfo(this.SelectAllBtn)});
+            this.barSubItem1.Name = "barSubItem1";
+            // 
+            // SelectAllBtn
+            // 
+            this.SelectAllBtn.Caption = "Вибрати все";
+            this.SelectAllBtn.Id = 54;
+            this.SelectAllBtn.Name = "SelectAllBtn";
+            this.SelectAllBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SelectAllBtn_ItemClick);
+            // 
+            // ChangeMatGrpBtn
+            // 
+            this.ChangeMatGrpBtn.Caption = "Змінити групу";
+            this.ChangeMatGrpBtn.Id = 53;
+            this.ChangeMatGrpBtn.Name = "ChangeMatGrpBtn";
+            this.ChangeMatGrpBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeMatGrpBtn_ItemClick);
             // 
             // panelControl1
             // 
@@ -699,6 +731,7 @@
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.MatGridView.OptionsBehavior.Editable = false;
+            this.MatGridView.OptionsSelection.MultiSelect = true;
             this.MatGridView.OptionsView.ShowGroupPanel = false;
             this.MatGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.MatGridView_PopupMenuShowing);
             this.MatGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.MatGridView_FocusedRowObjectChanged);
@@ -1354,6 +1387,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ChangeMatGrpBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveMatToArchiveBarBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.showMatArhivedBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
@@ -1538,5 +1573,8 @@
         public DevExpress.XtraBars.Bar TreeListBar;
         private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit BarCodeBtnEdit;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem ChangeMatGrpBtn;
+        private DevExpress.XtraBars.BarButtonItem SelectAllBtn;
     }
 }
