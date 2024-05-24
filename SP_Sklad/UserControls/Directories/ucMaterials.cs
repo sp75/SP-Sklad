@@ -571,5 +571,10 @@ namespace SP_Sklad.MainTabs
         {
             MatGridView.SelectAll();
         }
+
+        private void CopyCellContentsBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Clipboard.SetText(MatGridView.GetFocusedDisplayText());
+        }
     }
 }

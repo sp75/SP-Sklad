@@ -66,6 +66,7 @@
             this.MoveMatToArchiveBarBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.showMatArhivedBtn = new DevExpress.XtraBars.BarCheckItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ChangeMatGrpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -290,8 +291,9 @@
             this.barEditItem2,
             this.barSubItem1,
             this.ChangeMatGrpBtn,
-            this.SelectAllBtn});
-            this.barManager1.MaxItemId = 55;
+            this.SelectAllBtn,
+            this.CopyCellContentsBtn});
+            this.barManager1.MaxItemId = 56;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.BarCodeBtnEdit});
             // 
@@ -586,6 +588,10 @@
             this.BarImageList.Images.SetKeyName(28, "add_16x16.png");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.table, "table", typeof(global::SP_Sklad.Properties.Resources), 29);
             this.BarImageList.Images.SetKeyName(29, "table");
+            this.BarImageList.InsertGalleryImage("copy_16x16.png", "images/edit/copy_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/edit/copy_16x16.png"), 30);
+            this.BarImageList.Images.SetKeyName(30, "copy_16x16.png");
+            this.BarImageList.InsertGalleryImage("selecttable_16x16.png", "images/richedit/selecttable_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/richedit/selecttable_16x16.png"), 31);
+            this.BarImageList.Images.SetKeyName(31, "selecttable_16x16.png");
             // 
             // barButtonItem4
             // 
@@ -631,14 +637,24 @@
             this.barSubItem1.Id = 52;
             this.barSubItem1.ImageOptions.ImageIndex = 29;
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
-            new DevExpress.XtraBars.LinkPersistInfo(this.SelectAllBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.CopyCellContentsBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.SelectAllBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
             this.barSubItem1.Name = "barSubItem1";
+            // 
+            // CopyCellContentsBtn
+            // 
+            this.CopyCellContentsBtn.Caption = "Скопіювати вміст клітинки";
+            this.CopyCellContentsBtn.Id = 55;
+            this.CopyCellContentsBtn.ImageOptions.ImageIndex = 30;
+            this.CopyCellContentsBtn.Name = "CopyCellContentsBtn";
+            this.CopyCellContentsBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyCellContentsBtn_ItemClick);
             // 
             // SelectAllBtn
             // 
-            this.SelectAllBtn.Caption = "Вибрати все";
+            this.SelectAllBtn.Caption = "Виділити всі рядки";
             this.SelectAllBtn.Id = 54;
+            this.SelectAllBtn.ImageOptions.ImageIndex = 31;
             this.SelectAllBtn.Name = "SelectAllBtn";
             this.SelectAllBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SelectAllBtn_ItemClick);
             // 
@@ -1576,5 +1592,6 @@
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem ChangeMatGrpBtn;
         private DevExpress.XtraBars.BarButtonItem SelectAllBtn;
+        private DevExpress.XtraBars.BarButtonItem CopyCellContentsBtn;
     }
 }

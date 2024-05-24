@@ -134,7 +134,7 @@
             // ByGrpBtn
             // 
             this.ByGrpBtn.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
-            this.ByGrpBtn.Caption = "По групах";
+            this.ByGrpBtn.Caption = "По групах товарів";
             this.ByGrpBtn.Down = true;
             this.ByGrpBtn.GroupIndex = 1;
             this.ByGrpBtn.Id = 13;

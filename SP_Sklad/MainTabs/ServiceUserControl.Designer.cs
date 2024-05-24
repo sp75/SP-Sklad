@@ -1281,8 +1281,6 @@
             this.UsersGridView.Name = "UsersGridView";
             this.UsersGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.UsersGridView.OptionsBehavior.Editable = false;
-            this.UsersGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.UsersGridView.OptionsView.EnableAppearanceOddRow = true;
             this.UsersGridView.OptionsView.ShowGroupPanel = false;
             this.UsersGridView.DoubleClick += new System.EventHandler(this.UsersGridView_DoubleClick);
             // 
@@ -1410,8 +1408,6 @@
             this.UsersOnlineGridView.Name = "UsersOnlineGridView";
             this.UsersOnlineGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.UsersOnlineGridView.OptionsBehavior.Editable = false;
-            this.UsersOnlineGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.UsersOnlineGridView.OptionsView.EnableAppearanceOddRow = true;
             this.UsersOnlineGridView.OptionsView.ShowGroupPanel = false;
             // 
             // gridColumn1
@@ -1492,8 +1488,6 @@
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.AllowIncrementalSearch = true;
             this.gridView2.OptionsBehavior.Editable = false;
-            this.gridView2.OptionsView.EnableAppearanceEvenRow = true;
-            this.gridView2.OptionsView.EnableAppearanceOddRow = true;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.gridView2_PopupMenuShowing);
             // 

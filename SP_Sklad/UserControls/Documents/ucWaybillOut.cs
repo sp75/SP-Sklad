@@ -594,6 +594,11 @@ namespace SP_Sklad.UserControls
 
         private void MoveToStoreWarehouseBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if(wb_focused_row == null)
+            {
+                return;
+            }
+
             var new_doc = new ExecuteWayBill().MoveToStoreWarehouse(wb_focused_row.WbillId, false);
             if (new_doc.HasValue)
             {

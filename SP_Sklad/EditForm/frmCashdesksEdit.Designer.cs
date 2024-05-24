@@ -155,6 +155,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DataSource = this.CashDesksBS;
             this.KagentComboBox.Properties.DisplayMember = "Name";
+            this.KagentComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
