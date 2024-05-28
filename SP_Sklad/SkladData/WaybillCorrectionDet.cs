@@ -23,6 +23,8 @@ namespace SP_Sklad.SkladData
         public int PosId { get; set; }
         public string Notes { get; set; }
         public Nullable<System.Guid> WaybillCorrectionId { get; set; }
+        public Nullable<decimal> OldDiscount { get; set; }
+        public Nullable<decimal> NewDiscount { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual Materials Materials1 { get; set; }

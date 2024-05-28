@@ -288,10 +288,19 @@ namespace SP_Sklad.EditForm
         private void OkButton_Click(object sender, EventArgs e)
         {
             //DialogResult = XtraMessageBox.Show("Close Main Form?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-           // DialogResult = DialogResult.None;
 
-            _db.SaveChanges();
-            current_transaction.Commit();
+            if ((_mat.TypeId == 1 || _mat.TypeId == 5) && string.IsNullOrEmpty(ArtikulEdit.Text))
+            {
+                DialogResult = DialogResult.None;
+                ArtikulEdit.Focus();
+                OkButton.Focus();
+            }
+            else
+            {
+
+                _db.SaveChanges();
+                current_transaction.Commit();
+            }
         }
 
         private void frmMaterialEdit_FormClosed(object sender, FormClosedEventArgs e)
@@ -703,12 +712,11 @@ namespace SP_Sklad.EditForm
             GoTopMatPricesBtn.PerformClick();
         }
 
-
         private void ArtikulEdit_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrEmpty( ArtikulEdit.Text))
+            if(string.IsNullOrEmpty( ArtikulEdit.Text) && (_mat.TypeId == 1 || _mat.TypeId == 5))
             {
-                ArtikulEdit.ErrorText = "Артикул не може бути пустим!";
+                ArtikulEdit.ErrorText = $"Артикул не може бути пустим для типу {MatTypeEdit.Text}!";
                 e.Cancel = true;
             }
 
@@ -785,7 +793,7 @@ namespace SP_Sklad.EditForm
         {
             if (string.IsNullOrEmpty(NameTextEdit.Text))
             {
-                ArtikulEdit.ErrorText = "Назва товара не може бути пустою!";
+                NameTextEdit.ErrorText = "Назва товара не може бути пустою!";
                 e.Cancel = true;
             }
         }
@@ -879,6 +887,14 @@ namespace SP_Sklad.EditForm
             if(e.Button.Index == 1)
             {
                 GrpIdEdit.EditValue = IHelper.ShowDirectList(GrpIdEdit.EditValue, 19);
+            }
+        }
+
+        private void MatTypeEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if ((_mat.TypeId == 1 || _mat.TypeId == 5) && string.IsNullOrEmpty(ArtikulEdit.Text))
+            {
+                ArtikulEdit.Focus();
             }
         }
     }

@@ -919,6 +919,7 @@
             this.MatTypeEdit.StyleController = this.styleController1;
             this.MatTypeEdit.TabIndex = 50;
             this.MatTypeEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lookUpEdit5_ButtonClick);
+            this.MatTypeEdit.EditValueChanged += new System.EventHandler(this.MatTypeEdit_EditValueChanged);
             // 
             // WIdLookUpEdit
             // 

@@ -424,8 +424,6 @@
             this.gridColumn50.Name = "gridColumn50";
             this.gridColumn50.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalInCurrency", "{0:0.##}")});
-            this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 10;
             this.gridColumn50.Width = 125;
             // 
             // gridColumn94

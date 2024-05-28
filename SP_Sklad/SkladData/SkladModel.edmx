@@ -1771,6 +1771,8 @@
           <Property Name="PosId" Type="int" Nullable="false" />
           <Property Name="Notes" Type="nvarchar" MaxLength="100" />
           <Property Name="WaybillCorrectionId" Type="uniqueidentifier" />
+          <Property Name="OldDiscount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="NewDiscount" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="WaybillDet">
           <Key>
@@ -3707,6 +3709,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillCorrectionDet' does not have 
           <Property Name="Reason" Type="nvarchar" MaxLength="250" />
           <Property Name="WbOnDate" Type="datetime" Nullable="false" />
           <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OldDiscount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="NewDiscount" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4373,6 +4377,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOutDet' does not have a prima
           <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="numeric" Precision="32" Scale="8" />
           <Property Name="MId" Type="int" />
+          <Property Name="TotalInCurrency" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillReturnCustomerDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11105,7 +11110,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillCorrectionDet].[WhName] AS [WhName], 
     [v_WaybillCorrectionDet].[Reason] AS [Reason], 
     [v_WaybillCorrectionDet].[WbOnDate] AS [WbOnDate], 
-    [v_WaybillCorrectionDet].[WaybillListId] AS [WaybillListId]
+    [v_WaybillCorrectionDet].[WaybillListId] AS [WaybillListId], 
+    [v_WaybillCorrectionDet].[OldDiscount] AS [OldDiscount], 
+    [v_WaybillCorrectionDet].[NewDiscount] AS [NewDiscount]
     FROM [dbo].[v_WaybillCorrectionDet] AS [v_WaybillCorrectionDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillCustomerOrder" EntityType="Self.v_WayBillCustomerOrder" store:Type="Views" store:Schema="dbo">
@@ -11651,7 +11658,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillOutDet].[UpdateAt] AS [UpdateAt], 
     [v_WayBillOutDet].[AvgInPrice] AS [AvgInPrice], 
     [v_WayBillOutDet].[DiscountTotal] AS [DiscountTotal], 
-    [v_WayBillOutDet].[MId] AS [MId]
+    [v_WayBillOutDet].[MId] AS [MId], 
+    [v_WayBillOutDet].[TotalInCurrency] AS [TotalInCurrency]
     FROM [dbo].[v_WayBillOutDet] AS [v_WayBillOutDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillReturnCustomerDet" EntityType="Self.v_WayBillReturnCustomerDet" store:Type="Views" store:Schema="dbo">
@@ -22780,6 +22788,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Materials1" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials1" FromRole="WaybillCorrectionDet" ToRole="Materials" />
           <NavigationProperty Name="WaybillCorrection" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillCorrection" FromRole="WaybillCorrectionDet" ToRole="WaybillCorrection" />
           <NavigationProperty Name="WaybillDet" Relationship="BaseModel.FK_WaybillCorrectionDet_WaybillDet" FromRole="WaybillCorrectionDet" ToRole="WaybillDet" />
+          <Property Name="OldDiscount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="NewDiscount" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_WaybillCorrectionDet_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -22893,6 +22903,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Reason" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="WbOnDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="WaybillListId" Type="Guid" Nullable="false" />
+          <Property Name="OldDiscount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="NewDiscount" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <ComplexType Name="GetWayBillDetOut_Result">
           <Property Type="Int32" Name="Num" Nullable="false" />
@@ -23270,6 +23282,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AvgInPrice" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="DiscountTotal" Type="Decimal" Precision="32" Scale="8" />
           <Property Name="MId" Type="Int32" />
+          <Property Name="TotalInCurrency" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_WayBillCustomerOrder">
           <Key>
@@ -29435,6 +29448,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillCorrectionDet">
             <EntityTypeMapping TypeName="BaseModel.WaybillCorrectionDet">
               <MappingFragment StoreEntitySet="WaybillCorrectionDet">
+                <ScalarProperty Name="NewDiscount" ColumnName="NewDiscount" />
+                <ScalarProperty Name="OldDiscount" ColumnName="OldDiscount" />
                 <ScalarProperty Name="WaybillCorrectionId" ColumnName="WaybillCorrectionId" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="PosId" ColumnName="PosId" />
@@ -29468,6 +29483,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillCorrectionDet">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillCorrectionDet">
               <MappingFragment StoreEntitySet="v_WaybillCorrectionDet">
+                <ScalarProperty Name="NewDiscount" ColumnName="NewDiscount" />
+                <ScalarProperty Name="OldDiscount" ColumnName="OldDiscount" />
                 <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
                 <ScalarProperty Name="WbOnDate" ColumnName="WbOnDate" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
@@ -29807,6 +29824,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillOutDet">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillOutDet">
               <MappingFragment StoreEntitySet="v_WayBillOutDet">
+                <ScalarProperty Name="TotalInCurrency" ColumnName="TotalInCurrency" />
                 <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="DiscountTotal" ColumnName="DiscountTotal" />
                 <ScalarProperty Name="AvgInPrice" ColumnName="AvgInPrice" />

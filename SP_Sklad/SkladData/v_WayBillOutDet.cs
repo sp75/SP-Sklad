@@ -60,5 +60,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AvgInPrice { get; set; }
         public Nullable<decimal> DiscountTotal { get; set; }
         public Nullable<int> MId { get; set; }
+        public Nullable<decimal> TotalInCurrency { get; set; }
     }
 }

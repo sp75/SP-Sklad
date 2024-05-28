@@ -963,5 +963,10 @@ namespace SP_Sklad.MainTabs
         {
             new frmReport51().Show();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            new frmWaybillCorrectionsView().ShowDialog();
+        }
     }
 }

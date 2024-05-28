@@ -48,6 +48,7 @@ namespace SP_Sklad.MainTabs
         {
             get { return MatGridView.GetFocusedRow() is NotLoadedObject ? null : MatGridView.GetFocusedRow() as v_Materials; }
         }
+        private int[] selected_rows => MatGridView.GetSelectedRows();
 
         public ucMaterials()
         {
@@ -75,6 +76,7 @@ namespace SP_Sklad.MainTabs
                 MatListGridControl.DataSource = custom_mat_list;
 
                 repositoryItemLookUpEdit1.DataSource = DBHelper.WhList;
+                repositoryItemLookUpEdit2.DataSource =  DB.SkladBase().MatGroup.OrderBy(o=> o.Num).Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 17 }).ToList();
             }
         }
 
@@ -275,36 +277,38 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var db = DB.SkladBase();
-            var mat = db.Materials.Find(focused_mat.MatId);
-            if (mat != null)
+            using (var db = DB.SkladBase())
             {
-                if (mat.Archived == 1)
+                var mat = db.Materials.Find(focused_mat.MatId);
+                if (mat != null)
                 {
-                    mat.Archived = 0;
-                }
-                else
-                {
-                    if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (mat.Archived == 1)
                     {
-                        var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
-                        if (mat_remain == null || mat_remain.Remain == null || mat_remain.Remain == 0)
+                        mat.Archived = 0;
+                    }
+                    else
+                    {
+                        if (MessageBox.Show(string.Format("Ви дійсно хочете перемістити матеріал <{0}> в архів?", focused_mat.Name), "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            foreach(var item in db.MatRecipe.Where(w => w.MatId == focused_mat.MatId))
+                            var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                            if (mat_remain == null || mat_remain.Remain == null || mat_remain.Remain == 0)
                             {
-                                item.Archived = true;
-                            }
+                                foreach (var item in db.MatRecipe.Where(w => w.MatId == focused_mat.MatId))
+                                {
+                                    item.Archived = true;
+                                }
 
-                            mat.Archived = 1;
-                        }
-                        else
-                        {
-                            MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, mat_remain.Remain.Value.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                                mat.Archived = 1;
+                            }
+                            else
+                            {
+                                MessageBox.Show(string.Format("Неможливо перемістити матеріал <{0}> в архів, \nтому що його залишок складає {1} {2}", focused_mat.Name, mat_remain.Remain.Value.ToString(CultureInfo.InvariantCulture), focused_mat.ShortName));
+                            }
                         }
                     }
                 }
+                db.SaveChanges();
             }
-            db.SaveChanges();
 
             RefrechItemBtn.PerformClick();
         }
@@ -342,8 +346,13 @@ namespace SP_Sklad.MainTabs
             switch (xtraTabControl1.SelectedTabPageIndex)
             {
                 case 0:
+                    MatListInfoBS.DataSource = focused_mat;
+                    break;
+
                 case 1:
                     MatListInfoBS.DataSource = focused_mat;
+                    repositoryItemComboBox1.Items.Clear();
+                    repositoryItemComboBox1.Items.AddRange(DB.SkladBase().Materials.Where(w => w.Producer != null).Select(s => s.Producer).Distinct().ToList());
                     break;
 
                 case 2:
@@ -548,11 +557,11 @@ namespace SP_Sklad.MainTabs
         {
             var mg = IHelper.ShowDirectList(null, 19);
 
-            if (mg != null && MatGridView.GetSelectedRows().Any())
+            if (mg != null && selected_rows.Any())
             {
                 using (var db = DB.SkladBase())
                 {
-                    foreach (var item in MatGridView.GetSelectedRows())
+                    foreach (var item in selected_rows)
                     {
                         var row = MatGridView.GetRow(item) as v_Materials;
 
@@ -575,6 +584,57 @@ namespace SP_Sklad.MainTabs
         private void CopyCellContentsBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Clipboard.SetText(MatGridView.GetFocusedDisplayText());
+        }
+
+        private void vGridControl2_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            if (user_access?.CanModify != 1)
+            {
+                return;
+            }
+
+            if(e.Row.Properties.FieldName== "Producer")
+            {
+                using (var db = DB.SkladBase())
+                {
+                    foreach (var item in selected_rows)
+                    {
+                        var row = MatGridView.GetRow(item) as v_Materials;
+
+                        db.Materials.FirstOrDefault(w => w.MatId == row.MatId).Producer = Convert.ToString(e.Value);
+                    }
+
+                    db.SaveChanges();
+
+                    RefrechItemBtn.PerformClick();
+                }
+            }
+        }
+
+        private void vGridControl3_CellValueChanged(object sender, DevExpress.XtraVerticalGrid.Events.CellValueChangedEventArgs e)
+        {
+            if (user_access?.CanModify != 1)
+            {
+                return;
+            }
+
+            if (e.Row.Properties.FieldName == "GrpId")
+            {
+                using (var db = DB.SkladBase())
+                {
+                    foreach (var item in selected_rows)
+                    {
+                        var row = MatGridView.GetRow(item) as v_Materials;
+
+                        db.Materials.FirstOrDefault(w => w.MatId == row.MatId).GrpId = Convert.ToInt32(e.Value);
+                    }
+
+                    db.SaveChanges();
+
+                    RefrechItemBtn.PerformClick();
+                }
+            }
+
         }
     }
 }

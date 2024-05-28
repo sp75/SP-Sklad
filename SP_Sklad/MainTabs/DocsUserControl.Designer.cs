@@ -108,6 +108,7 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -127,6 +128,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             this.xtraTabPage7.SuspendLayout();
             this.xtraTabPage8.SuspendLayout();
             this.xtraTabPage9.SuspendLayout();
@@ -479,6 +481,7 @@
             // 
             this.groupControl2.AppearanceCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.groupControl2.AppearanceCaption.Options.UseFont = true;
+            this.groupControl2.Controls.Add(this.simpleButton1);
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupControl2.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.groupControl2.Location = new System.Drawing.Point(0, 0);
@@ -1178,6 +1181,19 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(17, 38);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(70, 56);
+            this.simpleButton1.StyleController = this.styleController1;
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Корегування ";
+            this.simpleButton1.ToolTip = "Корегування видаткових накладних";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1211,6 +1227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             this.xtraTabPage7.ResumeLayout(false);
             this.xtraTabPage8.ResumeLayout(false);
             this.xtraTabPage9.ResumeLayout(false);
@@ -1318,5 +1335,6 @@
         private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControl2;
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

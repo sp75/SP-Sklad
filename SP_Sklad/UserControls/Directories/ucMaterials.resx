@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="GridImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>19, 24</value>
+    <value>19, 18</value>
   </metadata>
   <assembly alias="DevExpress.Utils.v21.1" name="DevExpress.Utils.v21.1, Version=21.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
   <data name="GridImageList.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -133,16 +133,16 @@
 </value>
   </data>
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>280, 24</value>
+    <value>279, 22</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>72</value>
+    <value>61</value>
   </metadata>
   <metadata name="MatListSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>548, 27</value>
+    <value>526, 25</value>
   </metadata>
   <metadata name="PageImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>154, 22</value>
+    <value>153, 16</value>
   </metadata>
   <data name="PageImageList.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -156,10 +156,10 @@
 </value>
   </data>
   <metadata name="MatListInfoBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>683, 25</value>
+    <value>647, 27</value>
   </metadata>
   <metadata name="BarImageList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>406, 27</value>
+    <value>405, 26</value>
   </metadata>
   <data name="BarImageList.ImageStream" type="DevExpress.Utils.ImageCollectionStreamer, DevExpress.Utils.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -169,17 +169,16 @@
         a2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAAChEZXZFeHByZXNzLlV0aWxzLkltYWdlQ29sbGVjdGlvblN0
         cmVhbWVyAgAAAAlJbWFnZVNpemUERGF0YQQHE1N5c3RlbS5EcmF3aW5nLlNpemUDAAAAAgIAAAAF/P//
         /xNTeXN0ZW0uRHJhd2luZy5TaXplAgAAAAV3aWR0aAZoZWlnaHQAAAgIAwAAABAAAAAQAAAACQUAAAAP
-        BQAAAK4BAAACCwEAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAAFzUkdCAK7OHOkA
-        AAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAoElEQVQ4T2MY/MDMwfe/mb3LTzM7
-        3z1mdv62Jvbee8F8oDhUCWGgFRrKZubgU2di7/vO1N6nBsSHShEPVDw82M3sff9jaK7onvOfWAxyNroY
-        2ACoWQQBur9RDDj04v9/bBisEgpoawAxAKcBxGKsgUgsgEUjiIYKEQ/Amh186g3tfd6CEhRJhoCcDUq6
-        pg7eu8ztA2yABuwmOSnTEDAwAAA64cGt8f1BGQAAAABJRU5ErkJggpsAAACJUE5HDQoaCgAAAA1JSERS
-        AAAAEAAAABAIBgAAAB/z/2EAAAABc1JHQgCuzhzpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwwAA
-        DsMBx2+oZAAAADBJREFUOE9joCnwbdrxH4ShXNLBqAEkGABTSCqGaqeCAbgA0QpxgVEDqGAAYcDAAABh
-        roM5PTxWbwAAAABJRU5ErkJgggs=
+        BQAAAJQBAAAC/gAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAAH/P/YQAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACgSURBVDhPYxj8wMzB97+ZvctPMzvfPWZ2/rYm9t57wXyg
+        OFQJYaAVGspm5uBTZ2Lv+87U3qcGxIdKEQ9UPDzYzex9/2Noruie859YDHI2uhjYAKhZBAG6v1EMOPTi
+        /39sGKwSCmhrADEApwHEYqyBSCyARSOIhgoRD8CaHXzqDe193oISFEmGgJwNSrqmDt67zO0DbIAG7CY5
+        KdMQMDAAADrhwa3x/UEZAAAAAElFTkSuQmCCjgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgGAAAA
+        H/P/YQAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAwSURBVDhPY6Ap8G3a8R+E
+        oVzSwagBJBgAU0gqhmqnggG4ANEKcYFRA6hgAGHAwAAAYa6DOT08Vm8AAAAASUVORK5CYIIL
 </value>
   </data>
   <metadata name="MatPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>808, 28</value>
+    <value>770, 26</value>
   </metadata>
 </root>

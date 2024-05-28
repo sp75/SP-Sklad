@@ -40,5 +40,7 @@ namespace SP_Sklad.SkladData
         public string Reason { get; set; }
         public System.DateTime WbOnDate { get; set; }
         public System.Guid WaybillListId { get; set; }
+        public Nullable<decimal> OldDiscount { get; set; }
+        public Nullable<decimal> NewDiscount { get; set; }
     }
 }

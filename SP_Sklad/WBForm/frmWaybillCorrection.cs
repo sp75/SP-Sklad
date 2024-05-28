@@ -96,6 +96,8 @@ namespace SP_Sklad.WBForm
                     OldPrice = pos.BasePrice,
                     WaybillCorrectionId = wbcor.Id,
                     PosId = pos.PosId,
+                    OldDiscount = pos.Discount,
+                //    NewDiscount = pos.Discount
                 });
 
                 _db.SaveChanges();
@@ -117,9 +119,12 @@ namespace SP_Sklad.WBForm
 
                 if (!_db.ReturnRel.Any(a => a.OutPosId == item.PosId))
                 {
-                    if (item.OldPrice != item.NewPrice && item.NewPrice.HasValue)
+
+                    if ((item.OldPrice != item.NewPrice && item.NewPrice.HasValue) || (item.OldDiscount != item.NewDiscount && item.NewDiscount.HasValue))
                     {
-                        wbd.BasePrice = item.NewPrice;
+                        wbd.BasePrice = item.NewPrice.HasValue ? item.NewPrice : wbd.BasePrice;
+                        wbd.Discount = item.NewDiscount.HasValue ? item.NewDiscount : wbd.Discount;
+
                         wbd.Price = wbd.BasePrice - (wbd.BasePrice * (wbd.Discount ?? 0) / 100);
 
                         foreach (var pr in _db.PosRemains.Where(w => w.PosId == item.PosId))
@@ -304,6 +309,15 @@ namespace SP_Sklad.WBForm
             {
                 var wbcor_det = _db.WaybillCorrectionDet.Find(focused_correction_det.Id);
                 wbcor_det.NewPrice = Convert.ToDecimal(e.Value);
+                _db.SaveChanges();
+
+                GetDetail();
+            }
+
+            if (e.Column.FieldName == "NewDiscount")
+            {
+                var wbcor_det = _db.WaybillCorrectionDet.Find(focused_correction_det.Id);
+                wbcor_det.NewDiscount = Convert.ToDecimal(e.Value);
                 _db.SaveChanges();
 
                 GetDetail();

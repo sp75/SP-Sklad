@@ -56,6 +56,10 @@ namespace SP_Sklad.UserControls
             public decimal Nds { get; set; }
             public decimal AmountAll { get; set; }
             public decimal SumAll { get; set; }
+            public string Notes { get; set; }
+            public decimal ActualTotal { get; set; }
+            public decimal AccountingTotal { get; set; }
+            public string GrpName { get; set; }
         }
 
         public ucWaybillInventory()
@@ -405,10 +409,14 @@ namespace SP_Sklad.UserControls
                         Amount = s.Amount,
                         Price = s.Price,
                         Discount = (s.Discount ?? 0),
+                        AccountingTotal = (s.Amount * (s.Price ?? 0)),
                         Nds = (s.Nds ?? 0),
+                        ActualTotal = (s.Discount ?? 0) * (s.Nds ?? 0),
                         AmountAll = (s.Discount ?? 0) - s.Amount,
-                        SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0))
-                    }).ToList(); 
+                        SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0)),
+                        Notes = s.Notes,
+                        GrpName = s.Materials.MatGroup.Name
+                    }).ToList();
                     break;
 
                 case 1:
