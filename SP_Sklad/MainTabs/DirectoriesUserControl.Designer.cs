@@ -245,13 +245,11 @@
             this.xtraTabPage36 = new DevExpress.XtraTab.XtraTabPage();
             this.waybillTemplateUserControl1 = new SP_Sklad.UserControls.ucWaybillTemplate();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.MatGroupGridControl = new DevExpress.XtraGrid.GridControl();
+            this.MatGroupTreeList = new DevExpress.XtraTreeList.TreeList();
+            this.colName2 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colNotes1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colNum = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.MatGroupBS = new System.Windows.Forms.BindingSource(this.components);
-            this.MatGroupGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit7 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -275,6 +273,9 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
+            this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
+            this.TreeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -376,10 +377,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).BeginInit();
             this.xtraTabPage36.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MatGroupGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatGroupTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatGroupGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
@@ -396,6 +395,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -1060,6 +1061,8 @@
             // 
             this.DirTreeList.Appearance.FocusedCell.BackColor = System.Drawing.Color.LightSkyBlue;
             this.DirTreeList.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.behaviorManager1.SetBehaviors(this.DirTreeList, new DevExpress.Utils.Behaviors.Behavior[] {
+            ((DevExpress.Utils.Behaviors.Behavior)(DevExpress.Utils.DragDrop.DragDropBehavior.Create(typeof(DevExpress.XtraTreeList.TreeListDragDropSource), true, true, true, false, this.dragDropEvents1)))});
             this.DirTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.treeListColumn1});
             this.DirTreeList.Cursor = System.Windows.Forms.Cursors.Default;
@@ -2712,80 +2715,61 @@
             // 
             // xtraTabPage1
             // 
-            this.xtraTabPage1.Controls.Add(this.MatGroupGridControl);
+            this.xtraTabPage1.Controls.Add(this.MatGroupTreeList);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1088, 568);
             this.xtraTabPage1.Text = "Групи товарів";
             // 
-            // MatGroupGridControl
+            // MatGroupTreeList
             // 
-            this.MatGroupGridControl.DataSource = this.MatGroupBS;
-            this.MatGroupGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MatGroupGridControl.Location = new System.Drawing.Point(0, 0);
-            this.MatGroupGridControl.MainView = this.MatGroupGridView;
-            this.MatGroupGridControl.Name = "MatGroupGridControl";
-            this.MatGroupGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit7});
-            this.MatGroupGridControl.Size = new System.Drawing.Size(1088, 568);
-            this.MatGroupGridControl.TabIndex = 2;
-            this.MatGroupGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.MatGroupGridView});
+            this.MatGroupTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
+            this.colName2,
+            this.colNotes1,
+            this.colNum});
+            this.MatGroupTreeList.DataSource = this.MatGroupBS;
+            this.MatGroupTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MatGroupTreeList.KeyFieldName = "GrpId";
+            this.MatGroupTreeList.Location = new System.Drawing.Point(0, 0);
+            this.MatGroupTreeList.MenuManager = this.barManager1;
+            this.MatGroupTreeList.Name = "MatGroupTreeList";
+            this.MatGroupTreeList.OptionsBehavior.Editable = false;
+            this.MatGroupTreeList.OptionsBehavior.ReadOnly = true;
+            this.MatGroupTreeList.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.MatGroupTreeList.OptionsView.FocusRectStyle = DevExpress.XtraTreeList.DrawFocusRectStyle.RowFullFocus;
+            this.MatGroupTreeList.OptionsView.ShowIndicator = false;
+            this.MatGroupTreeList.ParentFieldName = "PId";
+            this.MatGroupTreeList.SelectImageList = this.TreeImageCollection;
+            this.MatGroupTreeList.Size = new System.Drawing.Size(1088, 568);
+            this.MatGroupTreeList.TabIndex = 3;
+            this.MatGroupTreeList.DoubleClick += new System.EventHandler(this.MatGroupTreeList_DoubleClick);
+            // 
+            // colName2
+            // 
+            this.colName2.Caption = "Назва групи";
+            this.colName2.FieldName = "Name";
+            this.colName2.Name = "colName2";
+            this.colName2.Visible = true;
+            this.colName2.VisibleIndex = 0;
+            this.colName2.Width = 699;
+            // 
+            // colNotes1
+            // 
+            this.colNotes1.Caption = "Примітка";
+            this.colNotes1.FieldName = "Notes";
+            this.colNotes1.Name = "colNotes1";
+            this.colNotes1.Visible = true;
+            this.colNotes1.VisibleIndex = 1;
+            this.colNotes1.Width = 387;
+            // 
+            // colNum
+            // 
+            this.colNum.Caption = "#";
+            this.colNum.FieldName = "Num";
+            this.colNum.Name = "colNum";
             // 
             // MatGroupBS
             // 
             this.MatGroupBS.DataSource = typeof(SP_Sklad.SkladData.MatGroup);
-            // 
-            // MatGroupGridView
-            // 
-            this.MatGroupGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.MatGroupGridView.Appearance.Row.Options.UseFont = true;
-            this.MatGroupGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn1,
-            this.gridColumn3,
-            this.gridColumn4});
-            this.MatGroupGridView.GridControl = this.MatGroupGridControl;
-            this.MatGroupGridView.Name = "MatGroupGridView";
-            this.MatGroupGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.MatGroupGridView.OptionsBehavior.Editable = false;
-            this.MatGroupGridView.OptionsBehavior.ReadOnly = true;
-            this.MatGroupGridView.OptionsView.ShowGroupPanel = false;
-            this.MatGroupGridView.DoubleClick += new System.EventHandler(this.MatGroupGridView_DoubleClick);
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Назва групи";
-            this.gridColumn1.FieldName = "Name";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 599;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "#";
-            this.gridColumn3.DisplayFormat.FormatString = "0";
-            this.gridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn3.FieldName = "Num";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 77;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.Caption = "Примітка";
-            this.gridColumn4.FieldName = "Notes";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 387;
-            // 
-            // repositoryItemCheckEdit7
-            // 
-            this.repositoryItemCheckEdit7.AutoHeight = false;
-            this.repositoryItemCheckEdit7.Name = "repositoryItemCheckEdit7";
-            this.repositoryItemCheckEdit7.ValueChecked = 1;
-            this.repositoryItemCheckEdit7.ValueUnchecked = 0;
             // 
             // xtraTabPage33
             // 
@@ -3014,6 +2998,18 @@
             this.PriceTypesPopupMenu.Name = "PriceTypesPopupMenu";
             this.PriceTypesPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PriceTypesPopupMenu_BeforePopup);
             // 
+            // dragDropEvents1
+            // 
+            this.dragDropEvents1.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents1_DragOver);
+            this.dragDropEvents1.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents1_DragDrop);
+            // 
+            // TreeImageCollection
+            // 
+            this.TreeImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TreeImageCollection.ImageStream")));
+            this.TreeImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.TreeImageCollection.Images.SetKeyName(0, "open_16x16");
+            // 
             // DirectoriesUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3134,10 +3130,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit13)).EndInit();
             this.xtraTabPage36.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.MatGroupGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MatGroupTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatGroupGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
             this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
@@ -3154,6 +3148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3396,12 +3392,13 @@
         public ucMaterials ucMaterials;
         public ucServices ucServices;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraGrid.GridControl MatGroupGridControl;
         public System.Windows.Forms.BindingSource MatGroupBS;
-        public DevExpress.XtraGrid.Views.Grid.GridView MatGroupGridView;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit7;
+        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private DevExpress.Utils.DragDrop.DragDropEvents dragDropEvents1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colName2;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colNotes1;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colNum;
+        public DevExpress.XtraTreeList.TreeList MatGroupTreeList;
+        private DevExpress.Utils.ImageCollection TreeImageCollection;
     }
 }

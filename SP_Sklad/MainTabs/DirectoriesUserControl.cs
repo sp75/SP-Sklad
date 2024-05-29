@@ -20,6 +20,8 @@ using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
+using DevExpress.Utils.DragDrop;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.MainTabs
 {
@@ -173,9 +175,7 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 29:
-                            var top1 = MatGroupGridView.TopRowIndex;
                             MatGroupBS.DataSource = DB.SkladBase().MatGroup.OrderBy(o=> o.Num).ToList();
-                            MatGroupGridView.TopRowIndex = top1;
                             extDirTabControl.SelectedTabPageIndex = 17;
                             break;
 
@@ -376,7 +376,7 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 29:
-                            result = new frmMatGroupEdit((MatGroupGridView.GetFocusedRow() as MatGroup).GrpId).ShowDialog();
+                            result = new frmMatGroupEdit((MatGroupTreeList.GetFocusedRow() as MatGroup).GrpId).ShowDialog();
                             break;
 
                         case 32:
@@ -527,7 +527,7 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 29:
-                            new frmMatGroupEdit(PId: (MatGroupGridView.GetFocusedRow() as MatGroup)?.GrpId).ShowDialog();
+                            new frmMatGroupEdit(PId: (MatGroupTreeList.GetFocusedRow() as MatGroup)?.GrpId).ShowDialog();
                             break;
 
                         case 32:
@@ -644,7 +644,7 @@ namespace SP_Sklad.MainTabs
                                 break;
 
                             case 29:
-                                db.DeleteWhere<MatGroup>(w => w.GrpId == (MatGroupGridView.GetFocusedRow() as MatGroup).GrpId);
+                                db.DeleteWhere<MatGroup>(w => w.GrpId == (MatGroupTreeList.GetFocusedRow() as MatGroup).GrpId);
                                 break;
 
                             case 51:
@@ -1299,7 +1299,75 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        private void MatGroupGridView_DoubleClick(object sender, EventArgs e)
+        private void dragDropEvents1_DragOver(object sender, DevExpress.Utils.DragDrop.DragOverEventArgs e)
+        {
+            e.Default();
+
+            TreeList treeList = e.Target as TreeList;
+            var hitInfo = treeList.CalcHitInfo(treeList.PointToClient(e.Location));
+            if (hitInfo.Node != null && e.InsertType == InsertType.AsChild)
+            {
+                var treeListNode = hitInfo.Node;
+                var tree_node = DirTreeList.GetDataRecordByNode(treeListNode) as GetDirTree_Result;
+                if (tree_node!= null &&tree_node.GType.Value == 2)
+                {
+                    e.Cursor = Cursors.Hand;
+                    e.Action = DragDropActions.Move;
+
+                    var grp_id = tree_node.Id == 6 ? -1 : tree_node.GrpId;
+                }
+                else
+                {
+                    e.Action = DragDropActions.None;
+                }
+            }
+            else
+            {
+                e.Action = DragDropActions.None;
+            }
+        }
+
+        private void dragDropEvents1_DragDrop(object sender, DevExpress.Utils.DragDrop.DragDropEventArgs e)
+        {
+            if (e.Action == DragDropActions.Move )
+            {
+                TreeList treeList = e.Target as TreeList;
+                var hitInfo = treeList.CalcHitInfo(treeList.PointToClient(e.Location));
+                if (hitInfo.Node != null)
+                {
+                    var tree_node = DirTreeList.GetDataRecordByNode(hitInfo.Node) as GetDirTree_Result;
+                    if (tree_node != null && tree_node.GType.Value == 2)
+                    {
+                        if ( XtraMessageBox.Show($"Ви дійсно бажаєте змінити групу для товарів на {tree_node.Name}?", @"Зміна групи товарів", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            var grp_id = tree_node.Id == 6 ? -1 : tree_node.GrpId;
+
+                            if (e.Data != null)
+                            {
+                                using (var db = DB.SkladBase())
+                                {
+                                    var selected_rows = (int[])e.Data;
+
+                                    foreach (var item in selected_rows)
+                                    {
+                                        var row = ucMaterials.MatGridView.GetRow(item) as v_Materials;
+
+                                        db.Materials.FirstOrDefault(w => w.MatId == row.MatId).GrpId = (tree_node.Id == 6 ? null : (int?)tree_node.GrpId);
+                                    }
+
+                                    db.SaveChanges();
+
+                                    ucMaterials.GetData(showChildNodeBtn.Down, restore: false);
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void MatGroupTreeList_DoubleClick(object sender, EventArgs e)
         {
             if (isDirectList)
             {

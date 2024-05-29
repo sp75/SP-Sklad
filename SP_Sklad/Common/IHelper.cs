@@ -554,7 +554,7 @@ namespace SP_Sklad.Common
                         f.Text = "Групи товарів";
                         if (f.ShowDialog() == DialogResult.OK)
                         {
-                            old_id = (f.uc.MatGroupGridView.GetFocusedRow() as MatGroup).GrpId;
+                            old_id = (f.uc.MatGroupTreeList.GetFocusedRow() as MatGroup).GrpId;
                         }
                     }
                     break;
