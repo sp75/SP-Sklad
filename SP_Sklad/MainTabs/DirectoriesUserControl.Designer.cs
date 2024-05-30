@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -250,6 +250,7 @@
             this.colNotes1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colNum = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.MatGroupBS = new System.Windows.Forms.BindingSource(this.components);
+            this.TreeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
             this.TaraGridControl = new DevExpress.XtraGrid.GridControl();
             this.TaraListDS = new System.Windows.Forms.BindingSource(this.components);
@@ -269,13 +270,11 @@
             this.MatListDS = new System.Windows.Forms.BindingSource(this.components);
             this.KAgentDS = new System.Windows.Forms.BindingSource(this.components);
             this.ExplorerPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.RecipePopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.PriceTypesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
-            this.TreeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.dragDropEvents2 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -379,6 +378,7 @@
             this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).BeginInit();
             this.xtraTabPage33.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).BeginInit();
@@ -391,12 +391,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemImageComboBox1
@@ -907,7 +904,6 @@
             this.KagentBalansBtn.Id = 21;
             this.KagentBalansBtn.ImageOptions.ImageIndex = 5;
             this.KagentBalansBtn.Name = "KagentBalansBtn";
-            this.KagentBalansBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.KagentBalansBtn_ItemClick);
             // 
             // barButtonItem3
             // 
@@ -1023,7 +1019,6 @@
             this.barButtonItem9.Id = 48;
             this.barButtonItem9.ImageOptions.ImageIndex = 13;
             this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick_1);
             // 
             // panelControl1
             // 
@@ -1395,9 +1390,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode2.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -2423,9 +2418,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode3.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode3});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";
@@ -2722,6 +2717,8 @@
             // 
             // MatGroupTreeList
             // 
+            this.behaviorManager1.SetBehaviors(this.MatGroupTreeList, new DevExpress.Utils.Behaviors.Behavior[] {
+            ((DevExpress.Utils.Behaviors.Behavior)(DevExpress.Utils.DragDrop.DragDropBehavior.Create(typeof(DevExpress.XtraTreeList.TreeListDragDropSource), true, true, true, true, this.dragDropEvents2)))});
             this.MatGroupTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
             this.colName2,
             this.colNotes1,
@@ -2770,6 +2767,13 @@
             // MatGroupBS
             // 
             this.MatGroupBS.DataSource = typeof(SP_Sklad.SkladData.MatGroup);
+            // 
+            // TreeImageCollection
+            // 
+            this.TreeImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TreeImageCollection.ImageStream")));
+            this.TreeImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.TreeImageCollection.Images.SetKeyName(0, "open_16x16");
             // 
             // xtraTabPage33
             // 
@@ -2941,39 +2945,6 @@
             this.ExplorerPopupMenu.Manager = this.barManager1;
             this.ExplorerPopupMenu.Name = "ExplorerPopupMenu";
             // 
-            // KAgentPopupMenu
-            // 
-            this.KAgentPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.KAgentPopupMenu.Manager = this.barManager1;
-            this.KAgentPopupMenu.Name = "KAgentPopupMenu";
-            // 
-            // MatPopupMenu
-            // 
-            this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.NewItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.CopyItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-            new DevExpress.XtraBars.LinkPersistInfo(this.MoveMatToArchiveBarBtnItem, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.showMatArhivedBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
-            this.MatPopupMenu.Manager = this.barManager1;
-            this.MatPopupMenu.Name = "MatPopupMenu";
-            // 
             // RecipePopupMenu
             // 
             this.RecipePopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -3003,12 +2974,11 @@
             this.dragDropEvents1.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents1_DragOver);
             this.dragDropEvents1.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents1_DragDrop);
             // 
-            // TreeImageCollection
+            // dragDropEvents2
             // 
-            this.TreeImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TreeImageCollection.ImageStream")));
-            this.TreeImageCollection.TransparentColor = System.Drawing.Color.Transparent;
-            this.TreeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.open_16x16, "open_16x16", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.TreeImageCollection.Images.SetKeyName(0, "open_16x16");
+            this.dragDropEvents2.DragOver += new DevExpress.Utils.DragDrop.DragOverEventHandler(this.dragDropEvents2_DragOver);
+            this.dragDropEvents2.DragDrop += new DevExpress.Utils.DragDrop.DragDropEventHandler(this.dragDropEvents2_DragDrop);
+            this.dragDropEvents2.EndDragDrop += new DevExpress.Utils.DragDrop.EndDragDropEventHandler(this.dragDropEvents2_EndDragDrop);
             // 
             // DirectoriesUserControl
             // 
@@ -3132,6 +3102,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MatGroupBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).EndInit();
             this.xtraTabPage33.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TaraGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TaraListDS)).EndInit();
@@ -3144,12 +3115,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.MatListDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KAgentDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KAgentPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MatPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RecipePopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PriceTypesPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TreeImageCollection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3206,7 +3174,6 @@
         private DevExpress.XtraBars.BarButtonItem KagentBalansBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarButtonItem MoveKagentArchiveBtnItem;
-        private DevExpress.XtraBars.PopupMenu KAgentPopupMenu;
         private System.Windows.Forms.BindingSource KAgentDS;
         private System.Windows.Forms.BindingSource MatListDS;
         private System.Windows.Forms.BindingSource MatRecipeDS;
@@ -3281,7 +3248,6 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem AddItem;
         private DevExpress.XtraBars.BarButtonItem DelItem;
-        private DevExpress.XtraBars.PopupMenu MatPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
@@ -3400,5 +3366,6 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colNum;
         public DevExpress.XtraTreeList.TreeList MatGroupTreeList;
         private DevExpress.Utils.ImageCollection TreeImageCollection;
+        private DevExpress.Utils.DragDrop.DragDropEvents dragDropEvents2;
     }
 }

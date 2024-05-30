@@ -175,7 +175,9 @@ namespace SP_Sklad.MainTabs
                             break;
 
                         case 29:
-                            MatGroupBS.DataSource = DB.SkladBase().MatGroup.OrderBy(o=> o.Num).ToList();
+                            var dd = DB.SkladBase();
+                            MatGroupBS.DataSource = dd.MatGroup.OrderBy(o=> o.Num).ToList();
+                            MatGroupTreeList.Tag = dd;
                             extDirTabControl.SelectedTabPageIndex = 17;
                             break;
 
@@ -713,26 +715,6 @@ namespace SP_Sklad.MainTabs
             RefrechItemBtn.PerformClick();
         }
 
-        private void KaGridView_DoubleClick(object sender, EventArgs e)
-        {
-            if (isDirectList)
-            {
-                var frm = this.Parent as frmCatalog;
-                frm.OkButton.PerformClick();
-            }
-            else
-            {
-                EditItemBtn.PerformClick();
-            }
-        }
-
-        private void KaGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                KAgentPopupMenu.ShowPopup(Control.MousePosition);
-            }
-        }
 
         private void DirTreeList_PopupMenuShowing(object sender, DevExpress.XtraTreeList.PopupMenuShowingEventArgs e)
         {
@@ -848,10 +830,6 @@ namespace SP_Sklad.MainTabs
             EditItemBtn.PerformClick();
         }
 
-        private void KagentBalansBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-           
-        }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -885,28 +863,6 @@ namespace SP_Sklad.MainTabs
         {
             ucMaterials.GetData(showChildNodeBtn.Down, restore: false);
             RefrechItemBtn.PerformClick();
-        }
-
-        private void KaGridView_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
-        {
-            if (e.Column.FieldName == "Saldo")
-            {
-                if ( e.CellValue is NotLoadedObject || e.CellValue == null || e.CellValue == DBNull.Value  )
-                {
-                    return;
-                }
-
-                var saldo =  Convert.ToInt32(e.CellValue);
-
-                if (saldo < 0)
-                {
-                    e.Appearance.ForeColor = Color.Red;
-                }
-                else
-                {
-                    e.Appearance.ForeColor = Color.Blue;
-                }
-            }
         }
 
 
@@ -1267,16 +1223,6 @@ namespace SP_Sklad.MainTabs
             SetPriceBtnItem.Enabled = IHelper.GetUserAccess(97)?.CanInsert == 1;
         }
 
-        private void barButtonItem9_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
- 
-        private void ServicesGridView_DoubleClick(object sender, EventArgs e)
-        {
-            EditItemBtn.PerformClick();
-        }
-
         private void waybillTemplateUserControl1_GridViewDoubleClick(object sender, EventArgs e)
         {
             if (isDirectList)
@@ -1304,8 +1250,10 @@ namespace SP_Sklad.MainTabs
             e.Default();
 
             TreeList treeList = e.Target as TreeList;
+            GridView sourceGrid = e.Source as GridView;
+
             var hitInfo = treeList.CalcHitInfo(treeList.PointToClient(e.Location));
-            if (hitInfo.Node != null && e.InsertType == InsertType.AsChild)
+            if (hitInfo.Node != null && e.InsertType == InsertType.AsChild && sourceGrid?.Name == "MatGridView")
             {
                 var treeListNode = hitInfo.Node;
                 var tree_node = DirTreeList.GetDataRecordByNode(treeListNode) as GetDirTree_Result;
@@ -1340,8 +1288,6 @@ namespace SP_Sklad.MainTabs
                     {
                         if ( XtraMessageBox.Show($"Ви дійсно бажаєте змінити групу для товарів на {tree_node.Name}?", @"Зміна групи товарів", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            var grp_id = tree_node.Id == 6 ? -1 : tree_node.GrpId;
-
                             if (e.Data != null)
                             {
                                 using (var db = DB.SkladBase())
@@ -1377,6 +1323,91 @@ namespace SP_Sklad.MainTabs
             else
             {
                 EditItemBtn.PerformClick();
+            }
+        }
+
+        private void dragDropEvents2_DragDrop(object sender, DragDropEventArgs e)
+        {
+            if (e.Action == DragDropActions.Move)
+            {
+                TreeList treeList = e.Target as TreeList;
+
+                (treeList.Tag as BaseEntities).SaveChanges();
+
+                var target_hitInfo = treeList.CalcHitInfo(treeList.PointToClient(e.Location));
+                if (target_hitInfo.Node != null)
+                {
+                    var target_tree_node = MatGroupTreeList.GetDataRecordByNode(target_hitInfo.Node) as MatGroup;
+                    var parent_node = MatGroupTreeList.GetDataRecordByNode(target_hitInfo.Node.ParentNode) as MatGroup;
+
+                    using (var db = DB.SkladBase())
+                    {
+                        int? grp_id = null;
+                        if (e.InsertType == InsertType.AsChild)
+                        {
+                            grp_id = target_tree_node.GrpId;
+
+                        }
+                        else if (e.InsertType == InsertType.After || e.InsertType == InsertType.Before)
+                        {
+                            grp_id = parent_node?.GrpId;
+                        }
+
+                        if (e.InsertType != InsertType.None)
+                        {
+                            var selected_rows = e.Data as List<TreeListNode>;
+
+                            foreach (var item in selected_rows)
+                            {
+                                var row = MatGroupTreeList.GetDataRecordByNode(item) as MatGroup;
+
+                                db.MatGroup.FirstOrDefault(w => w.GrpId == row.GrpId).PId = grp_id.HasValue ? grp_id.Value : row.GrpId;
+                            }
+                        }
+
+                        db.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        private void dragDropEvents2_DragOver(object sender, DragOverEventArgs e)
+        {
+            e.Default();
+
+            if (((TreeList)e.Target)?.Name == ((TreeList)e.Source)?.Name)
+            {
+
+            }
+            else
+            {
+                e.Action = DragDropActions.None;
+            }
+        }
+
+        private void dragDropEvents2_EndDragDrop(object sender, EndDragDropEventArgs e)
+        {
+            using (var db = DB.SkladBase())
+            {
+                int idx = 0;
+                foreach (TreeListNode item in MatGroupTreeList.GetNodeList())
+                {
+                    //           var parent_node = MatGroupTreeList.GetDataRecordByNode(item.ParentNode) as MatGroup;
+                    var node = MatGroupTreeList.GetDataRecordByNode(item) as MatGroup;
+
+                    var mg = db.MatGroup.Find(node.GrpId);
+                    if (mg != null)
+                    {
+                        mg.Num = ++idx;
+
+                        /*    if (parent_node != null)
+                            {
+                                mg.PId = parent_node.GrpId;
+                            }*/
+                    }
+                }
+
+                db.SaveChanges();
             }
         }
     }
