@@ -197,6 +197,7 @@ namespace SP.Base.Models
         public virtual DbSet<v_WayBillInDet> v_WayBillInDet { get; set; }
         public virtual DbSet<v_WayBillOut> v_WayBillOut { get; set; }
         public virtual DbSet<v_WayBillOutDet> v_WayBillOutDet { get; set; }
+        public virtual DbSet<v_WaybillMove> v_WaybillMove { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {
@@ -3090,6 +3091,26 @@ namespace SP.Base.Models
                 .HasMany(e => e.RemoteCustomerReturnedPosId)
                 .WithOptional(e => e.WaybillDet_PosId)
                 .HasForeignKey(e => e.PosId);
+
+            modelBuilder.Entity<v_WaybillMove>()
+                .Property(e => e.SummAll)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_WaybillMove>()
+                .Property(e => e.SummPay)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_WaybillMove>()
+                .Property(e => e.SummInCurr)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_WaybillMove>()
+                .Property(e => e.DefTotalAmount)
+                .HasPrecision(38, 4);
+
+            modelBuilder.Entity<v_WaybillMove>()
+                .Property(e => e.ExTotalAmount)
+                .HasPrecision(38, 8);
         }
     }
 }

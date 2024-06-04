@@ -450,7 +450,6 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillCustomerOrderDet" Width="1.5" PointX="22.375" PointY="0.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnСustomers" Width="1.5" PointX="5.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_PayDoc" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BaseModel.v_WaybillMove" Width="1.5" PointX="15.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillWriteOn" Width="1.5" PointX="17.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillWriteOff" Width="1.5" PointX="23.375" PointY="21.75" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillInventory" Width="1.5" PointX="24.375" PointY="0.75" />
@@ -459,6 +458,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnCustomerDet" Width="1.5" PointX="25.375" PointY="12.75" />
         <EntityTypeShape EntityType="BaseModel.v_BarCodes" Width="1.5" PointX="7.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnSuppliers" Width="1.5" PointX="28" PointY="12.125" />
+        <EntityTypeShape EntityType="BaseModel.v_WaybillMove" Width="1.5" PointX="25.375" PointY="23.75" />
       </Diagram>
       <Diagram DiagramId="8b08ca94632048c3b594ad7efc11006d" Name="Report" >
         <EntityTypeShape EntityType="BaseModel.v_Report_55" Width="1.5" PointX="0.75" PointY="0.75" />

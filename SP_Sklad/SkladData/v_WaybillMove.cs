@@ -44,6 +44,5 @@ namespace SP_Sklad.SkladData
         public string FromWh { get; set; }
         public Nullable<int> ToWId { get; set; }
         public string ToWh { get; set; }
-        public int WorkerId { get; set; }
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="Models\v_WayBillCustomerOrderDet.cs" />
     <Compile Include="Models\v_WayBillIn.cs" />
     <Compile Include="Models\v_WayBillInDet.cs" />
+    <Compile Include="Models\v_WaybillMove.cs" />
     <Compile Include="Models\v_WayBillOut.cs" />
     <Compile Include="Models\v_WayBillOutDet.cs" />
     <Compile Include="Models\v_WayBillReturnCustomerDet.cs" />

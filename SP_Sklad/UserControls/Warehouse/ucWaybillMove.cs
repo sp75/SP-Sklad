@@ -193,7 +193,8 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillMove.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || w.ToWId == wh_id || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillMove.Join(objectContext.EnterpriseWorker.Where(eww => eww.WorkerId == DBHelper.CurrentUser.KaId), pd => pd.EntId, ew => ew.EnterpriseId, (pd, ew) => pd)
+                .Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || w.ToWId == wh_id || wh_id == -1) );
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -388,7 +389,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WaybillMove.AsNoTracking().Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WaybillMove.AsNoTracking().Where(w => w.WbillId == wb_focused_row.WbillId).ToList();
                     break;
 
                 case 2:
@@ -405,10 +406,6 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void wbKagentList_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void wbEndDate_EditValueChanged(object sender, EventArgs e)
         {
@@ -492,14 +489,5 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        private void WbGridView_Layout(object sender, EventArgs e)
-        {
-            ;
-        }
-
-        private void WbGridView_LayoutUpgrade(object sender, DevExpress.Utils.LayoutUpgradeEventArgs e)
-        {
-            ;
-        }
     }
 }

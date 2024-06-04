@@ -254,7 +254,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WayBillReturnСustomers> v_WayBillReturnСustomers { get; set; }
         public DbSet<v_PayDoc> v_PayDoc { get; set; }
         public DbSet<v_Report_55> v_Report_55 { get; set; }
-        public DbSet<v_WaybillMove> v_WaybillMove { get; set; }
         public DbSet<v_WaybillWriteOn> v_WaybillWriteOn { get; set; }
         public DbSet<v_WaybillWriteOff> v_WaybillWriteOff { get; set; }
         public DbSet<v_WaybillInventory> v_WaybillInventory { get; set; }
@@ -265,6 +264,7 @@ namespace SP_Sklad.SkladData
         public DbSet<EmployeeKagent> EmployeeKagent { get; set; }
         public DbSet<EnterpriseWorker> EnterpriseWorker { get; set; }
         public DbSet<v_WayBillReturnSuppliers> v_WayBillReturnSuppliers { get; set; }
+        public DbSet<v_WaybillMove> v_WaybillMove { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

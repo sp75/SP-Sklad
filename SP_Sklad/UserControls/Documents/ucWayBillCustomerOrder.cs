@@ -431,9 +431,15 @@ namespace SP_Sklad.UserControls
                 var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
 
                 var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-                wb.EntId = EntId;
-                _db.SaveChanges();
+                if (wb != null)
+                {
+                    wb.EntId = EntId;
+                    _db.SaveChanges();
+                }
+                else
+                {
+                    XtraMessageBox.Show(Resources.not_find_wb);
+                }
             }
 
             GetData();
