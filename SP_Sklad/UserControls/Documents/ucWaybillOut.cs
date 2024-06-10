@@ -30,7 +30,6 @@ namespace SP_Sklad.UserControls
         int w_type = -1;
         private int fun_id = 23;
         private string reg_layout_path = "ucWaybillOut\\WbInGridView";
-        BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
         public BarButtonItem ExtExecuteBtn { get; set; }
@@ -101,16 +100,19 @@ namespace SP_Sklad.UserControls
 
             if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити видаткову накладну {wb_focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
-                if (wb != null)
+                using (var db = new BaseEntities())
                 {
-                    _db.WaybillList.Remove(wb);
+                    var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                    if (wb != null)
+                    {
+                        db.WaybillList.Remove(wb);
 
-                    _db.SaveChanges();
-                }
-                else
-                {
-                    XtraMessageBox.Show(Resources.deadlock);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(Resources.deadlock);
+                    }
                 }
             }
         }
@@ -181,7 +183,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            PrintDoc.Show(wb_focused_row.Id, w_type, _db);
+            PrintDoc.Show(wb_focused_row.Id, w_type, new BaseEntities());
         }
 
         public void FindItem(Guid id, DateTime on_date)
@@ -215,8 +217,7 @@ namespace SP_Sklad.UserControls
 
             if (!DesignMode)
             {
-                _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+                user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 WbBalansGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 WbBalansGridColumn.OptionsColumn.ShowInCustomizationForm = WbBalansGridColumn.Visible;
@@ -226,7 +227,7 @@ namespace SP_Sklad.UserControls
 
                 gridColumn44.Caption = "Сума в нац. валюті, " + DBHelper.NationalCurrency.ShortName;
 
-                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
              
                 repositoryItemLookUpEdit3.DataSource = DBHelper.PayTypes;
@@ -389,11 +390,13 @@ namespace SP_Sklad.UserControls
             }
 
             var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+            using (var db = new BaseEntities())
+            {
+                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.PTypeId = PTypeId;
-            _db.SaveChanges();
+                wb.PTypeId = PTypeId;
+                db.SaveChanges();
+            }
 
             RefrechItemBtn.PerformClick();
         }
@@ -418,12 +421,13 @@ namespace SP_Sklad.UserControls
             }
 
             var EntId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+            using (var db = new BaseEntities())
+            {
+                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.EntId = EntId;
-            _db.SaveChanges();
-
+                wb.EntId = EntId;
+                db.SaveChanges();
+            }
             GetData();
         }
 
@@ -483,12 +487,13 @@ namespace SP_Sklad.UserControls
             }
 
             var s_date = ((DateEdit)sender).DateTime;
+            using (var db = new BaseEntities())
+            {
+                var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-            var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
-
-            wb.ShipmentDate = s_date;
-            _db.SaveChanges();
-
+                wb.ShipmentDate = s_date;
+                db.SaveChanges();
+            }
             RefrechItemBtn.PerformClick();
         }
 
@@ -504,7 +509,7 @@ namespace SP_Sklad.UserControls
 
                         if (new_id != null)
                         {
-                            _db.ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
+                            new BaseEntities().ChangeWaybillKagent(new_id, wb_focused_row.WbillId);
 
                             GetData();
                         }
@@ -533,54 +538,31 @@ namespace SP_Sklad.UserControls
             {
                 IHelper.PrintSelectedWayBill(w_type, doc_list);
             }
-
-
-            /*  if (MessageBox.Show("Ви бажаєте роздрукувати " + WbGridView.RowCount.ToString() + " документів!", "Друк документів", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-              {
-                  for (int i = 0; i < WbGridView.RowCount; i++)
-                  {
-                      var dr = WbGridView.GetRow(i) as v_WayBillOut;
-
-                      if (dr != null)
-                      {
-                          if (dr.WType == -1)
-                          {
-                              var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                              IHelper.Print(data_report, TemlateList.wb_out_print, false, true);
-                          }
-
-                          if (dr.WType == -16)
-                          {
-                              var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
-                              IHelper.Print(ord_out, TemlateList.wb_vidgruzka, false, true);
-                          }
-                      }
-                  }
-              }*/
         }
 
         private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-            for (int i = 0; i < WbGridView.RowCount; i++)
+            using (var db = new BaseEntities())
             {
-                var dr = WbGridView.GetRow(i) as v_WayBillOut;
-
-                if (dr != null)
+                for (int i = 0; i < WbGridView.RowCount; i++)
                 {
-                    if (dr.WType == -1)
-                    {
-                        var data_report = PrintDoc.WayBillOutReport(dr.Id, _db);
-                        IHelper.Print(data_report, TemlateList.wb_out, false);
-                    }
+                    var dr = WbGridView.GetRow(i) as v_WayBillOut;
 
-                    if (dr.WType == -16)
+                    if (dr != null)
                     {
-                        var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, _db);
-                        IHelper.Print(ord_out, TemlateList.ord_out, false);
+                        if (dr.WType == -1)
+                        {
+                            var data_report = PrintDoc.WayBillOutReport(dr.Id, db);
+                            IHelper.Print(data_report, TemlateList.wb_out, false);
+                        }
+
+                        if (dr.WType == -16)
+                        {
+                            var ord_out = PrintDoc.WayBillOrderedOutReport(dr.Id, db);
+                            IHelper.Print(ord_out, TemlateList.ord_out, false);
+                        }
                     }
                 }
-
             }
 
             MessageBox.Show("Експортовано " + WbGridView.RowCount.ToString() + " документів !");

@@ -92,7 +92,7 @@
             // 
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 408);
+            this.panelControl2.Location = new System.Drawing.Point(0, 484);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1176, 54);
             this.panelControl2.TabIndex = 32;
@@ -143,6 +143,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
+            this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -184,7 +185,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 462);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 538);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1176, 0);
             // 
@@ -194,7 +195,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 514);
             // 
             // barDockControlRight
             // 
@@ -202,7 +203,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1176, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
             // 
             // ImageList
             // 
@@ -234,7 +235,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(1176, 340);
+            this.gridControl1.Size = new System.Drawing.Size(1176, 416);
             this.gridControl1.TabIndex = 37;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -309,7 +310,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 7),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 29, 15),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 23, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 8)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -23, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 16)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -349,6 +351,8 @@
             this.GridImageList.Images.SetKeyName(14, "invoice");
             this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.act_services_provider, "act_services_provider", typeof(global::SP_Sklad.Properties.Resources), 15);
             this.GridImageList.Images.SetKeyName(15, "act_services_provider");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.GridImageList.Images.SetKeyName(16, "move_stock");
             // 
             // bandedGridColumn1
             // 
@@ -532,7 +536,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1176, 462);
+            this.ClientSize = new System.Drawing.Size(1176, 538);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);

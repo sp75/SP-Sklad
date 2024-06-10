@@ -43,6 +43,7 @@
             this.hyperlinkLabelControl1 = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWayBill = new SP_Sklad.UserControls.ucWayBill();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -108,7 +109,6 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -379,6 +379,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(81, "enterprise");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.businessman, "businessman", typeof(global::SP_Sklad.Properties.Resources), 82);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 83);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "debit_card");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab
@@ -489,6 +491,19 @@
             this.groupControl2.Size = new System.Drawing.Size(1138, 200);
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "Документи";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.simpleButton1.Location = new System.Drawing.Point(17, 38);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(70, 56);
+            this.simpleButton1.StyleController = this.styleController1;
+            this.simpleButton1.TabIndex = 0;
+            this.simpleButton1.Text = "Корегування ";
+            this.simpleButton1.ToolTip = "Корегування видаткових накладних";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // xtraTabPage7
             // 
@@ -1180,19 +1195,6 @@
             this.bar5.OptionsBar.DrawDragBorder = false;
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.simpleButton1.Location = new System.Drawing.Point(17, 38);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(70, 56);
-            this.simpleButton1.StyleController = this.styleController1;
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Корегування ";
-            this.simpleButton1.ToolTip = "Корегування видаткових накладних";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // DocsUserControl
             // 

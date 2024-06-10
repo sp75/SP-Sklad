@@ -1770,6 +1770,8 @@ SELECT WaybillList.[WbillId]
             public int MatId { get; set; }
             public string MeasuresShortName { get; set; }
             public decimal? ConvertedToKilograms { get; set; }
+            public int? RouteId { get; set; }
+            public string RouteName { get; set; }
         }
 
         private void REP_49()
@@ -1785,7 +1787,9 @@ SELECT WaybillList.[WbillId]
        m.Name MatName,
        m.MatId,
        ms.ShortName MeasuresShortName,
-       coalesce (mm.Amount * wbd.Amount, 0) ConvertedToKilograms
+       coalesce (mm.Amount * wbd.Amount, 0) ConvertedToKilograms,
+       wbl.RouteId,
+       Routes.Name RouteName
     from materials m
     join waybilldet wbd on m.matid=wbd.matid
     join waybilllist wbl on wbl.wbillid=wbd.wbillid
@@ -1793,6 +1797,7 @@ SELECT WaybillList.[WbillId]
 	join MatGroup mg on m.GrpId = mg.GrpId
     left outer join kagent ka on ka.kaid=wbl.kaid
     left outer join MaterialMeasures mm on mm.MatId = m.MatId and mm.MId = 2
+    left outer join Routes on Routes.Id = wbl.RouteId
 
     where  wbl.WType = -16 
            and wbl.ondate between {0} and {1}
@@ -1857,6 +1862,14 @@ SELECT WaybillList.[WbillId]
                 Total = s.Sum(xs =>  xs.Amount )
             }).OrderBy(o => o.GrpName).ToList();
             data_for_report.Add("MatGroup2", mat_group);
+
+            var route = mat.GroupBy(g => new { g.RouteId, g.RouteName }).Select(s => new
+            {
+                s.Key.RouteId,
+                Name = s.Key.RouteName,
+                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0) + s.Sum(ss => ss.ConvertedToKilograms)
+            }).OrderBy(o => o.Name).ToList();
+            data_for_report.Add("routegrp", route);
 
 
             data_for_report.Add("_realation_", realation);
