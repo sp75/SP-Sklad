@@ -401,6 +401,7 @@ namespace SP_Sklad
                     this.ChargeGroupBox.Visible = false;
                     break;
 
+                case 57:
                 case 49:
                     this.InDocGroupBox.Visible = false;
                     this.MatGroupBox.Visible = false;

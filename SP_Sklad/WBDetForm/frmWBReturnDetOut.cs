@@ -48,17 +48,17 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBReturnDetOut_Load(object sender, EventArgs e)
         {
-            WHComboBox.Properties.DataSource = DBHelper.WhList;
+      //      WHComboBox.Properties.DataSource = DBHelper.WhList;
 
             int wh_id = _wb.WaybillMove != null ? _wb.WaybillMove.SourceWid : 0;
 
             MatComboBox.Properties.DataSource = _db.WhMatGet(0, wh_id, _ka_id, DBHelper.ServerDateTime(), 0, "*", 0, "", DBHelper.CurrentUser.UserId, 0).ToList();
            
 
-            if (_wb.WType == 4)
+        /*    if (_wb.WType == 4)
             {
                 WHComboBox.Enabled = false;
-            }
+            }*/
 
             _wbd = new WaybillDet
             {
@@ -318,7 +318,7 @@ namespace SP_Sklad.WBDetForm
 
         private void WHComboBox_EditValueChanged(object sender, EventArgs e)
         {
-            if (!WHComboBox.ContainsFocus)
+            if (!WHComboBox.ContainsFocus || WHComboBox.EditValue == DBNull.Value)
             {
                 return;
             }

@@ -302,6 +302,10 @@ namespace SP.Reports
                     REP_52();
                     break;
 
+                case 57:
+                    REP_57();
+                    break;
+
                 default:
                     break;
             }
@@ -1046,22 +1050,37 @@ namespace SP.Reports
               }).OrderBy(o => o.OnDate);*/
 
             var list = _db.Database.SqlQuery<rep_30>(@"
-SELECT        x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, 
-              dbo.DocType.ShortName AS DocShortName, dbo.DocType.Name AS DocTypeName,
-              (SELECT top 1 Saldo FROM GetKAgentSaldoByReportingDate (   x.KaId  , cast(OnDate as date) )) Saldo
-FROM            (
-                          SELECT        wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
-                          FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
-                                                    dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
-                                                    dbo.Currency AS c ON c.CurrId = wbl.CurrId
-                          WHERE        (wbl.Checked = 1 and wbl.WType <> 6)
+            SELECT x.Id, x.WType, x.Num, x.OnDate, x.KaId, x.Name, x.Checked, x.Nds, x.SummAll, x.SummInCurr, x.ShortName, x.OnValue, x.CurrId, x.ToDate, x.SummPay, 
+                   DocType.ShortName AS DocShortName, DocType.Name AS DocTypeName, (SELECT top 1 Saldo FROM GetKAgentSaldoByReportingDate (   x.KaId  , cast(OnDate as date) )) Saldo
+            FROM  (
+                          SELECT wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM WaybillList AS wbl 
+                          LEFT OUTER JOIN dbo.Kagent AS ka ON ka.KaId = wbl.KaId 
+                          LEFT OUTER JOIN dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE (wbl.Checked = 1 and wbl.WType not in (6, 4))
                           
                           UNION
-                          SELECT        wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
-                          FROM            dbo.WaybillList AS wbl LEFT OUTER JOIN
-                                                    dbo.Kagent AS ka ON ka.KaId = wbl.KaId LEFT OUTER JOIN
-                                                    dbo.Currency AS c ON c.CurrId = wbl.CurrId
-                          WHERE        (wbl.Checked = 1 and wbl.WType = 6)
+                          SELECT wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka_from.KaId, ka_from.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM WaybillList AS wbl 
+                          inner join WaybillMove wbm on wbm.WBillId = wbl.WbillId
+     	                  inner join Kagent ka_from on wbm.SourceWid = ka_from.WId
+                          LEFT OUTER JOIN dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE (wbl.Checked = 1 and wbl.WType = 4)
+
+                          UNION
+                          SELECT wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka_to.KaId, ka_to.Name, wbl.Checked, wbl.Nds, wbl.SummAll * -1, wbl.SummInCurr * -1, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM WaybillList AS wbl 
+                          inner join WaybillMove wbm on wbm.WBillId = wbl.WbillId
+     	                  inner join Kagent ka_to on wbm.DestWId = ka_to.WId
+                          LEFT OUTER JOIN dbo.Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE (wbl.Checked = 1 and wbl.WType = 4)
+
+                          UNION
+                          SELECT wbl.Id, wbl.WType, wbl.Num, coalesce(wbl.ReportingDate, wbl.ondate) OnDate, ka.KaId, ka.Name, wbl.Checked, wbl.Nds, wbl.SummAll, wbl.SummInCurr, c.ShortName, wbl.OnValue, wbl.CurrId, wbl.ToDate, wbl.SummPay
+                          FROM WaybillList AS wbl 
+                          LEFT OUTER JOIN Kagent AS ka ON ka.KaId = wbl.KaId 
+                          LEFT OUTER JOIN Currency AS c ON c.CurrId = wbl.CurrId
+                          WHERE (wbl.Checked = 1 and wbl.WType = 6)
 
 						  UNION
 						  SELECT        wbl.Id, wbl.WType, wbl.Num, wbl.OnDate, COALESCE (debtka.KaId, creditka.KaId) AS KaId, COALESCE (debtka.Name, creditka.Name) AS Name, wbl.Checked, NULL , wbl.SummAll, 
@@ -1080,10 +1099,10 @@ FROM            (
                                                    dbo.Currency AS c ON c.CurrId = pd.CurrId
                           WHERE        (pd.Checked = 1)
                         
-                          ) AS x 
-						  LEFT OUTER JOIN dbo.DocType ON x.WType = dbo.DocType.Id
-						  where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23) and x.KaId = {0} and x.OnDate between {1} and {2}
-                          order by x.OnDate", Kagent.KaId, StartDate, EndDate).OrderBy(o => o.OnDate).ToList();
+                  ) AS x 
+			 LEFT OUTER JOIN dbo.DocType ON x.WType = dbo.DocType.Id
+			 where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23, 4) and x.KaId = {0} and x.OnDate between {1} and {2}
+             order by x.OnDate", Kagent.KaId, StartDate, EndDate).OrderBy(o => o.OnDate).ToList();
 
             if (!list.Any())
             {
@@ -1114,7 +1133,8 @@ FROM            (
                 PDP = s.WType == -6 ? s.SummInCurr : null,
                 PVK = s.WType == 6 ? s.SummInCurr : null,
                 SZP = s.WType == -23 ? s.SummInCurr : null,
-                SZK = s.WType == 23 ? s.SummInCurr : null
+                SZK = s.WType == 23 ? s.SummInCurr : null,
+                NP = s.WType == 4 ? s.SummInCurr : null,
             }).OrderBy(o => o.OnDate).ToList());
         }
 
@@ -1580,11 +1600,13 @@ select x.*, ROW_NUMBER() over ( order by x.Name) as N from
     select
         k.[KaId],
         k.Name,
-        (select top 1 Saldo from GetKAgentSaldo(k.KaId, {0})) Saldo,
-        (select top 1 Saldo from GetKAgentSaldoByReportingDate(k.KaId, {0})) ReportingSaldo,
+        s.Saldo,
+        rs.Saldo ReportingSaldo,
         (SELECT TOP 1 pd.ReportingDate FROM PayDoc pd WHERE pd.CTypeId = 58 and  pd.KaId = k.KaId ORDER BY pd.ReportingDate desc) LastCorectDate,
         kg.Name GroupName
     from[dbo].[Kagent] k
+    cross apply (select *  from GetKAgentSaldo(k.[KaId], {0})) s 
+	cross apply  (select * from GetKAgentSaldoByReportingDate(k.KaId, {0})) rs
     left outer join [KontragentGroup] kg on kg.[Id] =  k.GroupId
 	where {1} in ( k.GroupId , '00000000-0000-0000-0000-000000000000' ) 
   )x
@@ -1966,6 +1988,79 @@ SELECT WaybillList.[WbillId]
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", mat_grp);
             data_for_report.Add("MatInDet", mat);
+            data_for_report.Add("_realation_", realation);
+        }
+
+        private void REP_57()
+        {
+            var mat = _db.Database.SqlQuery<rep_49>(@"select * from (
+    select 
+       ka.KaId, 
+	   m.GrpId,
+       mg.Name GrpName,
+	   ka.Name KagentName,
+       wbd.Amount,
+       m.Mid,
+       m.Name MatName,
+       m.MatId,
+       ms.ShortName MeasuresShortName,
+       coalesce (mm.Amount * wbd.Amount, 0) ConvertedToKilograms,
+       wbl.RouteId,
+       Routes.Name RouteName
+    from materials m
+    join waybilldet wbd on m.matid=wbd.matid
+    join waybilllist wbl on wbl.wbillid=wbd.wbillid
+    join measures ms on ms.mid=m.mid
+	join MatGroup mg on m.GrpId = mg.GrpId
+    left outer join kagent ka on ka.kaid=wbl.kaid
+    left outer join MaterialMeasures mm on mm.MatId = m.MatId and mm.MId = 2
+    left outer join Routes on Routes.Id = wbl.RouteId
+
+    where  wbl.WType = -16 
+           and wbl.ondate between {0} and {1}
+           and {2} in ( ka.GroupId , '00000000-0000-0000-0000-000000000000' )
+           and {3} in (ka.kaid , 0 )
+           and ( {4} in(m.GrpId , 0) or m.grpid in(SELECT s FROM Split(',', {5}) where s<>'') )
+           and {6}  in (-1, wbl.RouteId) 
+    )x
+    where x.Amount > 0 ", StartDate.Date, EndDate.Date.AddDays(1), KontragentGroup.Id, Kagent.KaId, MatGroup.GrpId, GrpStr, RouteId.Id).ToList();
+
+            if (!mat.Any())
+            {
+                return;
+            }
+            data_for_report.Add("XLRPARAMS", XLR_PARAMS);
+
+            var route = mat.GroupBy(g => new { g.RouteId, g.RouteName }).Select(s => new
+            {
+                s.Key.RouteId,
+                Name = s.Key.RouteName,
+                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0) + s.Sum(ss => ss.ConvertedToKilograms)
+            }).OrderBy(o => o.Name).ToList();
+            data_for_report.Add("RouteGroup", route);
+
+            var ka_grp = mat.GroupBy(g => new { g.KaId, g.KagentName, g.RouteId }).Select(s => new
+            {
+                s.Key.KaId,
+                Name = s.Key.KagentName,
+                RouteId = s.Key.RouteId,
+                Summ = s.Sum(xs => xs.Mid == 2 ? xs.Amount : 0) + s.Sum(ss => ss.ConvertedToKilograms)
+            }).OrderBy(o => o.Name).ToList();
+            data_for_report.Add("KagentGroup", ka_grp);
+
+            realation.Add(new
+            {
+                pk = "RouteId",
+                fk = "RouteId",
+                master_table = "RouteGroup",
+                child_table = "KagentGroup"
+            });
+
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                AmountOut = s.Sum(ss => ss.Mid == 2 ? ss.Amount : 0) + s.Sum(sss => sss.ConvertedToKilograms)
+            }).ToList());
+
             data_for_report.Add("_realation_", realation);
         }
 

@@ -314,7 +314,7 @@ namespace SP_Sklad.WBDetForm
             }
         }
 
-        private void frmWBReturnDetOut_FormClosed(object sender, FormClosedEventArgs e)
+        private void frmWBMoveDet_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (_db.Entry<WaybillDet>(_wbd).State == EntityState.Modified)
             {
