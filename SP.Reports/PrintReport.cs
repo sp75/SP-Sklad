@@ -1101,7 +1101,7 @@ namespace SP.Reports
                         
                   ) AS x 
 			 LEFT OUTER JOIN dbo.DocType ON x.WType = dbo.DocType.Id
-			 where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23, 4) and x.KaId = {0} and x.OnDate between {1} and {2}
+			 where x.WType in ( 1, -1, 3, -3, -6, 6, -23, 23/*, 4*/) and x.KaId = {0} and x.OnDate between {1} and {2}
              order by x.OnDate", Kagent.KaId, StartDate, EndDate).OrderBy(o => o.OnDate).ToList();
 
             if (!list.Any())

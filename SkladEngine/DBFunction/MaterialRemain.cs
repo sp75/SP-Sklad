@@ -145,11 +145,13 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
 		   wh_item.CurRemain, 
 		   wh_item.SumRemain,
 		   m.MId,
-		   mg.Num GrpNum
+		   mg.Num GrpNum,
+           mt.Name MaterialTypeName
          FROM Materials m 
 	   	 JOIN MEASURES ms ON ms.MId = m.MId 
 		 JOIN MATGROUP mg ON m.GRPID = mg.GRPID 
-		 LEFT OUTER JOIN COUNTRIES c ON m.CID = c.CID
+         left outer join MaterialType mt on mt.Id = m.TypeId
+		 left outer join COUNTRIES c ON m.CID = c.CID
          left join (
                    select 
                    pr.MatId,
@@ -185,8 +187,7 @@ WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} and pr.MatId = {1
 
         WHERE m.Deleted = 0 AND m.ARCHIVED = 0 AND ( {0} = 0 OR m.GRPID = {0} OR m.GRPID IN (SELECT s FROM Split(',', {7})) OR ({9} = 1 AND m.GRPID IN (SELECT GRPID FROM GetMatGroupTree({0}))) )
 	           and ( (wh_item.remain > 0) OR (wh_item.ordered > 0) OR ( {4} = 1 AND empty_item.OnDate IS NOT NULL ) OR ({6} = 1 and  {1} in (0,-1)) )
-        OPTION(RECOMPILE)
-";
+        OPTION(RECOMPILE)";
 
             using (var db = SPDatabase.SPBase())
             {

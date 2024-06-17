@@ -29,5 +29,6 @@ namespace SkladEngine.DBFunction.Models
         public Nullable<decimal> CurRemain { get; set; }
         public Nullable<decimal> SumRemain { get; set; }
         public int MId { get; set; }
+        public string MaterialTypeName { get; set; }
     }
 }
