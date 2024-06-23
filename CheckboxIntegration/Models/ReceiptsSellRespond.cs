@@ -178,15 +178,23 @@ namespace CheckboxIntegration.Models
                 {
                     break;
                 }
-                var receipt = new CheckboxClient(access_token).GetReceipt(this.id);
 
-                if(receipt.error != null)
+                try
+                {
+                    var receipt = new CheckboxClient(access_token).GetReceipt(this.id);
+
+                    if (receipt.error != null)
+                    {
+                        break;
+                    }
+
+                    fiscal_date = receipt.fiscal_date;
+                    fiscal_code = receipt.fiscal_code;
+                }
+                catch
                 {
                     break;
                 }
-
-                fiscal_date = receipt.fiscal_date;
-                fiscal_code = receipt.fiscal_code;
                 
                 Thread.Sleep(1000);
 
