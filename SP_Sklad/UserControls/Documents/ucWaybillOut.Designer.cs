@@ -86,6 +86,7 @@
             this.ExportToExcelBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.MoveToStoreWarehouseBtn = new DevExpress.XtraBars.BarButtonItem();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWayBillOutDet = new SP_Sklad.UserControls.ucWayBillOutDet();
@@ -126,7 +127,6 @@
             this.ucDocumentPaymentGrid = new SP_Sklad.UserControls.ucDocumentPaymentGrid();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.MoveToStoreWarehouseBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -245,6 +245,7 @@
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
+            this.WbGridView.OptionsView.ShowFooter = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
@@ -436,6 +437,8 @@
             this.gridColumn44.Caption = "Сума у нац. валюті";
             this.gridColumn44.FieldName = "SummInCurr";
             this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.##}")});
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 7;
             this.gridColumn44.Width = 86;
@@ -716,6 +719,13 @@
             this.barButtonItem3.Id = 37;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // MoveToStoreWarehouseBtn
+            // 
+            this.MoveToStoreWarehouseBtn.Caption = "Додати прибуткова накладну";
+            this.MoveToStoreWarehouseBtn.Id = 38;
+            this.MoveToStoreWarehouseBtn.Name = "MoveToStoreWarehouseBtn";
+            this.MoveToStoreWarehouseBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveToStoreWarehouseBtn_ItemClick);
             // 
             // xtraTabControl2
             // 
@@ -1094,13 +1104,6 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // MoveToStoreWarehouseBtn
-            // 
-            this.MoveToStoreWarehouseBtn.Caption = "Додати прибуткова накладну";
-            this.MoveToStoreWarehouseBtn.Id = 38;
-            this.MoveToStoreWarehouseBtn.Name = "MoveToStoreWarehouseBtn";
-            this.MoveToStoreWarehouseBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.MoveToStoreWarehouseBtn_ItemClick);
             // 
             // ucWaybillOut
             // 

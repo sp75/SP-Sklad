@@ -160,7 +160,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 505);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 584);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1139, 0);
             // 
@@ -170,7 +170,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 560);
             // 
             // barDockControlRight
             // 
@@ -178,7 +178,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1139, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 481);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 560);
             // 
             // ImageList
             // 
@@ -213,7 +213,7 @@
             // 
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 451);
+            this.panelControl2.Location = new System.Drawing.Point(0, 530);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(1139, 54);
             this.panelControl2.TabIndex = 33;
@@ -353,7 +353,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(1139, 383);
+            this.gridControl1.Size = new System.Drawing.Size(1139, 462);
             this.gridControl1.TabIndex = 44;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -379,6 +379,7 @@
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.bandedGridView1.OptionsBehavior.Editable = false;
+            this.bandedGridView1.OptionsView.ShowFooter = true;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             this.bandedGridView1.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.bandedGridView1_PopupMenuShowing);
             // 
@@ -415,18 +416,18 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 6, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -1, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -6, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 5, 12),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -5, 11),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 4, 13),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -20, 9),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -22, 8),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -24, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", -25, 6),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 25, 7)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибуткова накладна", 1, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення від клієнта", 6, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видаткова накладна", -1, 1),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення постачальнику", -6, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Введення залишків товарів", 5, 12),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 11),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Накладна переміщення", 4, 13),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Виготовлення продукції", -20, 9),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Обвалка сировини", -22, 8),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Підготовка сировини", -24, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Продажі", -25, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення продаж", 25, 7)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -515,6 +516,8 @@
             this.bandedGridColumn3.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn3.FieldName = "Amount";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
+            this.bandedGridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.0000}")});
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.Width = 70;
             // 
@@ -567,7 +570,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 505);
+            this.ClientSize = new System.Drawing.Size(1139, 584);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);

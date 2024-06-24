@@ -31,6 +31,11 @@ namespace SP_Sklad.UserControls
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDocumentFilterPanel));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -38,30 +43,30 @@ namespace SP_Sklad.UserControls
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.KagentPanel = new DevExpress.XtraEditors.PanelControl();
+            this.wbKagentList = new DevExpress.XtraEditors.LookUpEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.kaListLabelControl = new DevExpress.XtraEditors.LabelControl();
+            this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.wbStatusList = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.wbKagentList = new DevExpress.XtraEditors.LookUpEdit();
-            this.kaListLabelControl = new DevExpress.XtraEditors.LabelControl();
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
             this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
-            this.KagentPanel = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KagentPanel)).BeginInit();
+            this.KagentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KagentPanel)).BeginInit();
-            this.KagentPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageCollection1
@@ -88,6 +93,57 @@ namespace SP_Sklad.UserControls
             this.panelControl2.Size = new System.Drawing.Size(1293, 54);
             this.panelControl2.TabIndex = 2;
             // 
+            // KagentPanel
+            // 
+            this.KagentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KagentPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.KagentPanel.Controls.Add(this.wbKagentList);
+            this.KagentPanel.Controls.Add(this.kaListLabelControl);
+            this.KagentPanel.Location = new System.Drawing.Point(495, 0);
+            this.KagentPanel.Name = "KagentPanel";
+            this.KagentPanel.Size = new System.Drawing.Size(526, 54);
+            this.KagentPanel.TabIndex = 22;
+            // 
+            // wbKagentList
+            // 
+            this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.wbKagentList.Location = new System.Drawing.Point(101, 14);
+            this.wbKagentList.Name = "wbKagentList";
+            editorButtonImageOptions1.ImageIndex = 0;
+            editorButtonImageOptions1.ImageList = this.imageCollection1;
+            this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.wbKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.wbKagentList.Properties.DisplayMember = "Name";
+            this.wbKagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
+            this.wbKagentList.Properties.ShowHeader = false;
+            this.wbKagentList.Properties.ValueMember = "KaId";
+            this.wbKagentList.Properties.MouseUp += new System.Windows.Forms.MouseEventHandler(this.wbKagentList_Properties_MouseUp);
+            this.wbKagentList.Size = new System.Drawing.Size(408, 24);
+            this.wbKagentList.StyleController = this.styleController1;
+            this.wbKagentList.TabIndex = 6;
+            this.wbKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.wbKagentList_ButtonClick);
+            this.wbKagentList.EditValueChanged += new System.EventHandler(this.wbKagentList_EditValueChanged);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // kaListLabelControl
+            // 
+            this.kaListLabelControl.Location = new System.Drawing.Point(12, 18);
+            this.kaListLabelControl.Name = "kaListLabelControl";
+            this.kaListLabelControl.Size = new System.Drawing.Size(83, 16);
+            this.kaListLabelControl.StyleController = this.styleController1;
+            this.kaListLabelControl.TabIndex = 4;
+            this.kaListLabelControl.Text = "Постачальник";
+            // 
             // PeriodComboBoxEdit
             // 
             this.PeriodComboBoxEdit.EditValue = "Довільний період";
@@ -95,8 +151,10 @@ namespace SP_Sklad.UserControls
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.refresh_16x161;
             this.PeriodComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PeriodComboBoxEdit.Properties.Items.AddRange(new object[] {
             "Довільний період",
             "За поточний день",
@@ -105,15 +163,11 @@ namespace SP_Sklad.UserControls
             "З початку року",
             "З самого початку"});
             this.PeriodComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(156, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(180, 24);
             this.PeriodComboBoxEdit.StyleController = this.styleController1;
             this.PeriodComboBoxEdit.TabIndex = 21;
+            this.PeriodComboBoxEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PeriodComboBoxEdit_ButtonClick);
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
-            // 
-            // styleController1
-            // 
-            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.styleController1.Appearance.Options.UseFont = true;
             // 
             // wbStatusList
             // 
@@ -142,44 +196,10 @@ namespace SP_Sklad.UserControls
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Статус";
             // 
-            // wbKagentList
-            // 
-            this.wbKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wbKagentList.Location = new System.Drawing.Point(105, 14);
-            this.wbKagentList.Name = "wbKagentList";
-            editorButtonImageOptions2.ImageIndex = 0;
-            editorButtonImageOptions2.ImageList = this.imageCollection1;
-            this.wbKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.wbKagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
-            this.wbKagentList.Properties.DisplayMember = "Name";
-            this.wbKagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
-            this.wbKagentList.Properties.ShowHeader = false;
-            this.wbKagentList.Properties.ValueMember = "KaId";
-            this.wbKagentList.Properties.MouseUp += new System.Windows.Forms.MouseEventHandler(this.wbKagentList_Properties_MouseUp);
-            this.wbKagentList.Size = new System.Drawing.Size(428, 24);
-            this.wbKagentList.StyleController = this.styleController1;
-            this.wbKagentList.TabIndex = 6;
-            this.wbKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.wbKagentList_ButtonClick);
-            this.wbKagentList.EditValueChanged += new System.EventHandler(this.wbKagentList_EditValueChanged);
-            // 
-            // kaListLabelControl
-            // 
-            this.kaListLabelControl.Location = new System.Drawing.Point(16, 18);
-            this.kaListLabelControl.Name = "kaListLabelControl";
-            this.kaListLabelControl.Size = new System.Drawing.Size(83, 16);
-            this.kaListLabelControl.StyleController = this.styleController1;
-            this.kaListLabelControl.TabIndex = 4;
-            this.kaListLabelControl.Text = "Постачальник";
-            // 
             // wbEndDate
             // 
             this.wbEndDate.EditValue = null;
-            this.wbEndDate.Location = new System.Drawing.Point(318, 15);
+            this.wbEndDate.Location = new System.Drawing.Point(342, 15);
             this.wbEndDate.Name = "wbEndDate";
             this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -200,7 +220,7 @@ namespace SP_Sklad.UserControls
             // wbStartDate
             // 
             this.wbStartDate.EditValue = null;
-            this.wbStartDate.Location = new System.Drawing.Point(172, 15);
+            this.wbStartDate.Location = new System.Drawing.Point(196, 15);
             this.wbStartDate.Name = "wbStartDate";
             this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -227,18 +247,6 @@ namespace SP_Sklad.UserControls
             this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.supplier, "supplier", typeof(global::SP_Sklad.Properties.Resources), 1);
             this.imageCollection2.Images.SetKeyName(1, "supplier");
             // 
-            // KagentPanel
-            // 
-            this.KagentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.KagentPanel.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.KagentPanel.Controls.Add(this.wbKagentList);
-            this.KagentPanel.Controls.Add(this.kaListLabelControl);
-            this.KagentPanel.Location = new System.Drawing.Point(475, 0);
-            this.KagentPanel.Name = "KagentPanel";
-            this.KagentPanel.Size = new System.Drawing.Size(552, 54);
-            this.KagentPanel.TabIndex = 22;
-            // 
             // ucDocumentFilterPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,18 +259,18 @@ namespace SP_Sklad.UserControls
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KagentPanel)).EndInit();
+            this.KagentPanel.ResumeLayout(false);
+            this.KagentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.wbKagentList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStatusList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KagentPanel)).EndInit();
-            this.KagentPanel.ResumeLayout(false);
-            this.KagentPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

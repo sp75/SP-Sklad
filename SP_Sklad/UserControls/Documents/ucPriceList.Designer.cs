@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPriceList));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.splitContainerControl8 = new DevExpress.XtraEditors.SplitContainerControl();
             this.PriceListGridControl = new DevExpress.XtraGrid.GridControl();
             this.GgridDataSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
@@ -77,7 +77,6 @@
             this.panelControl8 = new DevExpress.XtraEditors.PanelControl();
             this.EndDate = new DevExpress.XtraEditors.DateEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.StartDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
             this.xtraTabControl3 = new DevExpress.XtraTab.XtraTabControl();
@@ -602,7 +601,6 @@
             // panelControl8
             // 
             this.panelControl8.Controls.Add(this.EndDate);
-            this.panelControl8.Controls.Add(this.labelControl2);
             this.panelControl8.Controls.Add(this.StartDate);
             this.panelControl8.Controls.Add(this.labelControl20);
             this.panelControl8.Dock = System.Windows.Forms.DockStyle.Top;
@@ -614,7 +612,7 @@
             // EndDate
             // 
             this.EndDate.EditValue = null;
-            this.EndDate.Location = new System.Drawing.Point(228, 13);
+            this.EndDate.Location = new System.Drawing.Point(217, 15);
             this.EndDate.Name = "EndDate";
             this.EndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -637,18 +635,10 @@
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.styleController1.Appearance.Options.UseFont = true;
             // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(210, 18);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(12, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "по";
-            // 
             // StartDate
             // 
             this.StartDate.EditValue = null;
-            this.StartDate.Location = new System.Drawing.Point(64, 13);
+            this.StartDate.Location = new System.Drawing.Point(71, 15);
             this.StartDate.Name = "StartDate";
             this.StartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -670,9 +660,10 @@
             // 
             this.labelControl20.Location = new System.Drawing.Point(16, 18);
             this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(42, 13);
+            this.labelControl20.Size = new System.Drawing.Size(39, 16);
+            this.labelControl20.StyleController = this.styleController1;
             this.labelControl20.TabIndex = 0;
-            this.labelControl20.Text = "Період з";
+            this.labelControl20.Text = "Період";
             // 
             // xtraTabControl3
             // 
@@ -897,9 +888,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             this.repositoryItemButtonEdit1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -989,7 +980,6 @@
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl8;
         private DevExpress.XtraEditors.PanelControl panelControl8;
         public DevExpress.XtraEditors.DateEdit EndDate;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
         public DevExpress.XtraEditors.DateEdit StartDate;
         private DevExpress.XtraEditors.LabelControl labelControl20;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;

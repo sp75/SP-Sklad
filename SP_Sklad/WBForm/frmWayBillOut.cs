@@ -212,7 +212,6 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-             //wbd_list = _db.GetWayBillDetOut(_wbill_id).AsNoTracking().ToList().OrderBy(o=> o.Num).ToList();
             wbd_list = _db.v_WayBillOutDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).OrderBy(o => o.Num).ToList();
             if (disc_card != null)
             {
@@ -473,18 +472,24 @@ namespace SP_Sklad.WBForm
 
             var r = new ObjectParameter("RSV", typeof(Int32));
 
-            var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1 && w.PosType == 0).ToList();
+            var wb_list = _db.v_WayBillOutDet.AsNoTracking().Where(w => w.WbillId == _wbill_id).Where(w => w.Rsv != 1 && w.PosType == 0).ToList();
 
-           
             int i = 0;
             barEditItem1.EditValue = i;
             repositoryItemProgressBar1.Maximum = wb_list.Count;
             barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
             foreach (var item in wb_list)
             {
-                _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
+                try
+                {
+                    _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
 
-                if (r.Value != null && (int)r.Value == 0)
+                    if (r.Value != null && (int)r.Value == 0)
+                    {
+                        list.Add(item.MatName);
+                    }
+                }
+                catch
                 {
                     list.Add(item.MatName);
                 }
@@ -492,6 +497,7 @@ namespace SP_Sklad.WBForm
                 barEditItem1.EditValue = ++i;
                 barEditItem1.Refresh();
             }
+
             barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
             if (list.Any())
@@ -658,7 +664,7 @@ namespace SP_Sklad.WBForm
 
             _db.SaveChanges();
 
-           IHelper.MapProp(_db.GetWayBillDetOut(_wbill_id).AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
+           IHelper.MapProp(_db.v_WayBillOutDet.AsNoTracking().FirstOrDefault(w => w.PosId == wbd_row.PosId), wbd_row);
 
             is_update_record = true;
         }

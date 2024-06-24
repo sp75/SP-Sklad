@@ -264,7 +264,7 @@ namespace SP_Sklad.UserControls
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
-    
+
         void OnRowSearchComplete(object rh)
         {
             int rowHandle = (int)rh;
@@ -295,10 +295,10 @@ namespace SP_Sklad.UserControls
 
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-         /*   using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
-            {
-                frm.ShowDialog();
-            }*/
+            /*   using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
+               {
+                   frm.ShowDialog();
+               }*/
         }
 
         private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -456,6 +456,11 @@ namespace SP_Sklad.UserControls
 
         private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
         {
+            SetFilter();
+        }
+
+        private void SetFilter()
+        {
             PDEndDate.DateTime = DateTime.Now.Date.SetEndDay();
             switch (PeriodComboBoxEdit.SelectedIndex)
             {
@@ -484,6 +489,14 @@ namespace SP_Sklad.UserControls
             if (e.Button.Index == 1)
             {
                 PDKagentList.EditValue = IHelper.ShowDirectList(PDKagentList.EditValue, 1);
+            }
+        }
+
+        private void PeriodComboBoxEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                SetFilter();
             }
         }
     }

@@ -90,6 +90,11 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
+            SetFilter();
+        }
+
+        private void SetFilter()
+        {
             wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
             switch (PeriodComboBoxEdit.SelectedIndex)
             {
@@ -114,7 +119,7 @@ namespace SP_Sklad.UserControls
                     break;
             }
 
-            OnFilterChangedEvent?.Invoke( sender,  e);
+            OnFilterChangedEvent?.Invoke(null, null);
         }
 
         private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -166,5 +171,12 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        private void PeriodComboBoxEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                SetFilter();
+            }
+        }
     }
 }

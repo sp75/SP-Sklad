@@ -35,6 +35,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -445,6 +450,7 @@
             this.PayDocGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.PayDocGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.PayDocGridView.OptionsBehavior.ReadOnly = true;
+            this.PayDocGridView.OptionsView.ShowFooter = true;
             this.PayDocGridView.OptionsView.ShowGroupPanel = false;
             this.PayDocGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.KAgentAdjustmentGridView_PopupMenuShowing);
             this.PayDocGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.KAgentAdjustmentGridView_FocusedRowObjectChanged);
@@ -624,6 +630,8 @@
             this.gridColumn107.Caption = "Сума в нац. валюті";
             this.gridColumn107.FieldName = "SummInCurr";
             this.gridColumn107.Name = "gridColumn107";
+            this.gridColumn107.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.##}")});
             this.gridColumn107.Visible = true;
             this.gridColumn107.VisibleIndex = 11;
             // 
@@ -668,7 +676,7 @@
             // 
             this.PDKagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PDKagentList.Location = new System.Drawing.Point(584, 13);
+            this.PDKagentList.Location = new System.Drawing.Point(601, 13);
             this.PDKagentList.Name = "PDKagentList";
             editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
             this.PDKagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -680,7 +688,7 @@
             this.PDKagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
             this.PDKagentList.Properties.ShowHeader = false;
             this.PDKagentList.Properties.ValueMember = "KaId";
-            this.PDKagentList.Size = new System.Drawing.Size(476, 24);
+            this.PDKagentList.Size = new System.Drawing.Size(464, 24);
             this.PDKagentList.StyleController = this.styleController1;
             this.PDKagentList.TabIndex = 23;
             this.PDKagentList.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PDKagentList_ButtonClick_1);
@@ -693,8 +701,10 @@
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.refresh_16x161;
             this.PeriodComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PeriodComboBoxEdit.Properties.Items.AddRange(new object[] {
             "Довільний період",
             "За поточний день",
@@ -702,9 +712,10 @@
             "З початку місяця",
             "З початку року"});
             this.PeriodComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(156, 22);
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(175, 24);
             this.PeriodComboBoxEdit.StyleController = this.styleController1;
             this.PeriodComboBoxEdit.TabIndex = 22;
+            this.PeriodComboBoxEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PeriodComboBoxEdit_ButtonClick);
             this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
             // 
             // PDSatusList
@@ -736,7 +747,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(512, 17);
+            this.labelControl6.Location = new System.Drawing.Point(529, 17);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(66, 16);
             this.labelControl6.StyleController = this.styleController1;
@@ -746,7 +757,7 @@
             // PDEndDate
             // 
             this.PDEndDate.EditValue = null;
-            this.PDEndDate.Location = new System.Drawing.Point(342, 15);
+            this.PDEndDate.Location = new System.Drawing.Point(361, 15);
             this.PDEndDate.Name = "PDEndDate";
             this.PDEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -764,7 +775,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(322, 18);
+            this.labelControl7.Location = new System.Drawing.Point(341, 17);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(14, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -774,7 +785,7 @@
             // PDStartDate
             // 
             this.PDStartDate.EditValue = null;
-            this.PDStartDate.Location = new System.Drawing.Point(176, 14);
+            this.PDStartDate.Location = new System.Drawing.Point(195, 14);
             this.PDStartDate.Name = "PDStartDate";
             this.PDStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
