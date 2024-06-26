@@ -31,6 +31,14 @@
           <Property Name="WbillId" Type="int" />
           <Property Name="AdditionalCostsId" Type="int" />
         </EntityType>
+        <EntityType Name="AdditionalDocType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="WType" Type="int" />
+        </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
@@ -929,7 +937,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RecId" Type="int" Nullable="false" />
           <Property Name="AdditionalCostsId" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="MatRecipeTechProcDet">
           <Key>
@@ -1870,6 +1878,7 @@
           <Property Name="ReportingDate" Type="datetime" />
           <Property Name="ShipmentDate" Type="datetime" />
           <Property Name="ReceiptId" Type="uniqueidentifier" />
+          <Property Name="AdditionalDocTypeId" Type="int" />
         </EntityType>
         <EntityType Name="WayBillMake">
           <Key>
@@ -2891,6 +2900,8 @@ warning 6002: The table/view 'sp_base.dbo.v_KAgentDocs' does not have a primary 
           <Property Name="DocShortName" Type="nvarchar" MaxLength="50" />
           <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
           <Property Name="Balans" Type="numeric" Precision="35" Scale="8" />
+          <Property Name="FromKaId" Type="int" />
+          <Property Name="ToKaId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4244,6 +4255,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillMove' does not have a primary
           <Property Name="FromWh" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="ToWId" Type="int" />
           <Property Name="ToWh" Type="nvarchar" MaxLength="64" />
+          <Property Name="AdditionalDocTypeName" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7665,6 +7677,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <CollectionType>
               <RowType>
                 <Property Name="KaId" Type="int" Nullable="false" />
+                <Property Name="wb_sum_in" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_sum_out" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_move_sum_in" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_move_sum_out" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="kagent_adjustment" Type="numeric" Precision="38" Scale="13" />
+                <Property Name="pd_sum" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="start_saldo" Type="numeric" Precision="15" Scale="8" />
+                <Property Name="wb_sum_in_cash" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_sum_in_cashless" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_sum_out_cash" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="wb_sum_out_cashless" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="pd_sum_cash" Type="numeric" Precision="38" Scale="2" />
+                <Property Name="pd_sum_cashless" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="OnDate" Type="datetime" />
                 <Property Name="Saldo" Type="numeric" Precision="38" Scale="2" />
                 <Property Name="CashSaldo" Type="numeric" Precision="38" Scale="2" />
@@ -9707,6 +9732,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="AccountType" EntityType="Self.AccountType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCosts" EntityType="Self.AdditionalCosts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCostsDet" EntityType="Self.AdditionalCostsDet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdditionalDocType" EntityType="Self.AdditionalDocType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanksPersons" EntityType="Self.BanksPersons" Schema="dbo" store:Type="Tables" />
@@ -10527,7 +10553,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KAgentDocs].[SummPay] AS [SummPay], 
     [v_KAgentDocs].[DocShortName] AS [DocShortName], 
     [v_KAgentDocs].[DocTypeName] AS [DocTypeName], 
-    [v_KAgentDocs].[Balans] AS [Balans]
+    [v_KAgentDocs].[Balans] AS [Balans], 
+    [v_KAgentDocs].[FromKaId] AS [FromKaId], 
+    [v_KAgentDocs].[ToKaId] AS [ToKaId]
     FROM [dbo].[v_KAgentDocs] AS [v_KAgentDocs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KagentMaterilPrices" EntityType="Self.v_KagentMaterilPrices" store:Type="Views" store:Schema="dbo">
@@ -11543,7 +11571,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillMove].[FromWId] AS [FromWId], 
     [v_WaybillMove].[FromWh] AS [FromWh], 
     [v_WaybillMove].[ToWId] AS [ToWId], 
-    [v_WaybillMove].[ToWh] AS [ToWh]
+    [v_WaybillMove].[ToWh] AS [ToWh], 
+    [v_WaybillMove].[AdditionalDocTypeName] AS [AdditionalDocTypeName]
     FROM [dbo].[v_WaybillMove] AS [v_WaybillMove]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillOut" EntityType="Self.v_WayBillOut" store:Type="Views" store:Schema="dbo">
@@ -14583,6 +14612,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </FunctionImport>
           <EntitySet Name="v_WayBillReturnSuppliers" EntityType="BaseModel.v_WayBillReturnSuppliers" />
           <EntitySet Name="v_WaybillMove" EntityType="BaseModel.v_WaybillMove" />
+          <EntitySet Name="AdditionalDocType" EntityType="BaseModel.AdditionalDocType" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -16954,6 +16984,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="Kagent2" Relationship="BaseModel.FK_WBL_ENTID" FromRole="WaybillList" ToRole="Kagent" />
           <NavigationProperty Name="DeboningWeighing" Relationship="BaseModel.FK_DeboningWeighing_WaybillList" FromRole="WaybillList" ToRole="DeboningWeighing" />
           <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_WaybillList" FromRole="WaybillList" ToRole="ExpeditionDet" />
+          <Property Name="AdditionalDocTypeId" Type="Int32" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -19045,6 +19076,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DocShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="Balans" Type="Decimal" Precision="35" Scale="8" />
+          <Property Name="FromKaId" Type="Int32" />
+          <Property Name="ToKaId" Type="Int32" />
         </EntityType>
         <EntityType Name="v_KAgentAdjustmentDet">
           <Key>
@@ -19290,7 +19323,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RecId" Type="Int32" Nullable="false" />
           <Property Name="AdditionalCostsId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
           <NavigationProperty Name="AdditionalCosts" Relationship="BaseModel.FK_MatRecipeAdditionalCosts_AdditionalCosts" FromRole="MatRecipeAdditionalCosts" ToRole="AdditionalCosts" />
         </EntityType>
         <Association Name="FK_MatRecipeAdditionalCosts_AdditionalCosts">
@@ -24021,6 +24054,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="FromWh" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="ToWId" Type="Int32" />
           <Property Name="ToWh" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalDocTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AdditionalDocType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WType" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -25693,6 +25735,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="WaybillList">
             <EntityTypeMapping TypeName="BaseModel.WaybillList">
               <MappingFragment StoreEntitySet="WaybillList">
+                <ScalarProperty Name="AdditionalDocTypeId" ColumnName="AdditionalDocTypeId" />
                 <ScalarProperty Name="ReceiptId" ColumnName="ReceiptId" />
                 <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
                 <ScalarProperty Name="ReportingDate" ColumnName="ReportingDate" />
@@ -27120,6 +27163,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KAgentDocs">
             <EntityTypeMapping TypeName="BaseModel.v_KAgentDocs">
               <MappingFragment StoreEntitySet="v_KAgentDocs">
+                <ScalarProperty Name="ToKaId" ColumnName="ToKaId" />
+                <ScalarProperty Name="FromKaId" ColumnName="FromKaId" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
                 <ScalarProperty Name="DocShortName" ColumnName="DocShortName" />
@@ -30426,6 +30471,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillMove">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillMove">
               <MappingFragment StoreEntitySet="v_WaybillMove">
+                <ScalarProperty Name="AdditionalDocTypeName" ColumnName="AdditionalDocTypeName" />
                 <ScalarProperty Name="ToWh" ColumnName="ToWh" />
                 <ScalarProperty Name="ToWId" ColumnName="ToWId" />
                 <ScalarProperty Name="FromWh" ColumnName="FromWh" />
@@ -30455,6 +30501,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="OnDate" ColumnName="OnDate" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="WbillId" ColumnName="WbillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdditionalDocType">
+            <EntityTypeMapping TypeName="BaseModel.AdditionalDocType">
+              <MappingFragment StoreEntitySet="AdditionalDocType">
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

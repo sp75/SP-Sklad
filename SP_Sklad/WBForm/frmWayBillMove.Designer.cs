@@ -98,6 +98,8 @@
             this.OnDateDBEdit = new DevExpress.XtraEditors.DateEdit();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
+            this.AdditionalDocTypeLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.NotesEdit = new DevExpress.XtraEditors.TextEdit();
             this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.PersonInComboBox = new DevExpress.XtraEditors.LookUpEdit();
@@ -143,6 +145,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
             this.panelControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdditionalDocTypeLookUpEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonInComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).BeginInit();
@@ -602,6 +605,8 @@
             // 
             // panelControl4
             // 
+            this.panelControl4.Controls.Add(this.AdditionalDocTypeLookUpEdit);
+            this.panelControl4.Controls.Add(this.labelControl4);
             this.panelControl4.Controls.Add(this.NotesEdit);
             this.panelControl4.Controls.Add(this.labelControl8);
             this.panelControl4.Controls.Add(this.PersonInComboBox);
@@ -615,6 +620,33 @@
             this.panelControl4.Name = "panelControl4";
             this.panelControl4.Size = new System.Drawing.Size(386, 183);
             this.panelControl4.TabIndex = 1;
+            // 
+            // AdditionalDocTypeLookUpEdit
+            // 
+            this.AdditionalDocTypeLookUpEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdditionalDocTypeLookUpEdit.Location = new System.Drawing.Point(90, 7);
+            this.AdditionalDocTypeLookUpEdit.Name = "AdditionalDocTypeLookUpEdit";
+            this.AdditionalDocTypeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.AdditionalDocTypeLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.AdditionalDocTypeLookUpEdit.Properties.DisplayMember = "Name";
+            this.AdditionalDocTypeLookUpEdit.Properties.ShowFooter = false;
+            this.AdditionalDocTypeLookUpEdit.Properties.ShowHeader = false;
+            this.AdditionalDocTypeLookUpEdit.Properties.ValueMember = "Id";
+            this.AdditionalDocTypeLookUpEdit.Size = new System.Drawing.Size(279, 22);
+            this.AdditionalDocTypeLookUpEdit.StyleController = this.styleController1;
+            this.AdditionalDocTypeLookUpEdit.TabIndex = 26;
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Location = new System.Drawing.Point(13, 10);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(27, 16);
+            this.labelControl4.StyleController = this.styleController1;
+            this.labelControl4.TabIndex = 25;
+            this.labelControl4.Text = "Тип:";
             // 
             // NotesEdit
             // 
@@ -978,6 +1010,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
             this.panelControl4.ResumeLayout(false);
             this.panelControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AdditionalDocTypeLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NotesEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PersonInComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KagentComboBox.Properties)).EndInit();
@@ -1066,5 +1099,7 @@
         private System.Windows.Forms.BindingSource WaybillDetOutBS;
         private DevExpress.XtraEditors.ProgressBarControl progressBarControl1;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LookUpEdit AdditionalDocTypeLookUpEdit;
     }
 }

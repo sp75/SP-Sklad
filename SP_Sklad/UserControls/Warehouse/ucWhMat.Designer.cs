@@ -79,6 +79,7 @@
             this.RecalcRemainsPostBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -86,17 +87,21 @@
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WhMatGridControl = new DevExpress.XtraGrid.GridControl();
             this.WhMatGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn24 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn27 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn28 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.GrpNameGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.AvgMatPriceGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SumMatRemainGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -201,10 +206,7 @@
             this.editorRow1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
-            this.bandedGridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.WhRemainPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -274,6 +276,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhRemainPopupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -322,8 +325,9 @@
             this.SetPriceBtnItem,
             this.RecalcRemainsPostBtn,
             this.CopyCellContentsBtn,
-            this.barSubItem1});
-            this.barManager1.MaxItemId = 49;
+            this.barSubItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 50;
             // 
             // bar2
             // 
@@ -757,6 +761,14 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7)});
             this.barSubItem1.Name = "barSubItem1";
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Експорт залишків на складах";
+            this.barButtonItem2.Id = 49;
+            this.barButtonItem2.ImageOptions.ImageIndex = 19;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -885,6 +897,20 @@
             this.WhMatGridView.BeforeLoadLayout += new DevExpress.Utils.LayoutAllowEventHandler(this.WhMatGridView_BeforeLoadLayout);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
             // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Товар";
+            this.gridBand1.Columns.Add(this.gridColumn24);
+            this.gridBand1.Columns.Add(this.gridColumn25);
+            this.gridBand1.Columns.Add(this.gridColumn26);
+            this.gridBand1.Columns.Add(this.gridColumn27);
+            this.gridBand1.Columns.Add(this.gridColumn28);
+            this.gridBand1.Columns.Add(this.GrpNameGridColumn);
+            this.gridBand1.Columns.Add(this.bandedGridColumn19);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 504;
+            // 
             // gridColumn24
             // 
             this.gridColumn24.Caption = "№";
@@ -933,6 +959,25 @@
             this.GrpNameGridColumn.Visible = true;
             this.GrpNameGridColumn.Width = 121;
             // 
+            // bandedGridColumn19
+            // 
+            this.bandedGridColumn19.Caption = "Тип";
+            this.bandedGridColumn19.FieldName = "MaterialTypeName";
+            this.bandedGridColumn19.Name = "bandedGridColumn19";
+            this.bandedGridColumn19.Visible = true;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Залишки";
+            this.gridBand2.Columns.Add(this.bandedGridColumn4);
+            this.gridBand2.Columns.Add(this.bandedGridColumn5);
+            this.gridBand2.Columns.Add(this.bandedGridColumn3);
+            this.gridBand2.Columns.Add(this.AvgMatPriceGridColumn);
+            this.gridBand2.Columns.Add(this.SumMatRemainGridColumn);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 409;
+            // 
             // bandedGridColumn4
             // 
             this.bandedGridColumn4.Caption = "Залишок на складі";
@@ -976,6 +1021,15 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumRemain", "{0:0.##}")});
             this.SumMatRemainGridColumn.Visible = true;
             this.SumMatRemainGridColumn.Width = 74;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.Caption = "Замовлення постачальникам";
+            this.gridBand6.Columns.Add(this.bandedGridColumn11);
+            this.gridBand6.Columns.Add(this.bandedGridColumn12);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.VisibleIndex = 2;
+            this.gridBand6.Width = 150;
             // 
             // bandedGridColumn11
             // 
@@ -1186,6 +1240,7 @@
             this.WhRemainGridView.OptionsBehavior.ReadOnly = true;
             this.WhRemainGridView.OptionsView.ShowFooter = true;
             this.WhRemainGridView.OptionsView.ShowGroupPanel = false;
+            this.WhRemainGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhRemainGridView_PopupMenuShowing);
             // 
             // gridColumn30
             // 
@@ -2106,47 +2161,12 @@
             this.WhMatGetSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_GetQueryable);
             this.WhMatGetSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.WhMatGetSource_DismissQueryable);
             // 
-            // bandedGridColumn19
+            // WhRemainPopupMenu
             // 
-            this.bandedGridColumn19.Caption = "Тип";
-            this.bandedGridColumn19.FieldName = "MaterialTypeName";
-            this.bandedGridColumn19.Name = "bandedGridColumn19";
-            this.bandedGridColumn19.Visible = true;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Товар";
-            this.gridBand1.Columns.Add(this.gridColumn24);
-            this.gridBand1.Columns.Add(this.gridColumn25);
-            this.gridBand1.Columns.Add(this.gridColumn26);
-            this.gridBand1.Columns.Add(this.gridColumn27);
-            this.gridBand1.Columns.Add(this.gridColumn28);
-            this.gridBand1.Columns.Add(this.GrpNameGridColumn);
-            this.gridBand1.Columns.Add(this.bandedGridColumn19);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 504;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Залишки";
-            this.gridBand2.Columns.Add(this.bandedGridColumn4);
-            this.gridBand2.Columns.Add(this.bandedGridColumn5);
-            this.gridBand2.Columns.Add(this.bandedGridColumn3);
-            this.gridBand2.Columns.Add(this.AvgMatPriceGridColumn);
-            this.gridBand2.Columns.Add(this.SumMatRemainGridColumn);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 409;
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "Замовлення постачальникам";
-            this.gridBand6.Columns.Add(this.bandedGridColumn11);
-            this.gridBand6.Columns.Add(this.bandedGridColumn12);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.VisibleIndex = 2;
-            this.gridBand6.Width = 150;
+            this.WhRemainPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
+            this.WhRemainPopupMenu.Manager = this.barManager1;
+            this.WhRemainPopupMenu.Name = "WhRemainPopupMenu";
             // 
             // ucWhMat
             // 
@@ -2239,6 +2259,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExtMatIfoBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WhRemainPopupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2415,5 +2436,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn19;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.PopupMenu WhRemainPopupMenu;
     }
 }

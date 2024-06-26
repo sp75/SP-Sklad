@@ -252,6 +252,10 @@ namespace CheckboxIntegration.Client
                 var result = response.Content.ReadAsAsync<ReceiptsSellRespond>().Result;
 
                 result.WaitingReceiptFiscalCode(_access_token);
+                if (!result.fiscal_date.HasValue)
+                {
+                    result.error = new ErrorMessage { message = $"Не вдалось отримати фіскальний номер !" };
+                }
 
                 return result;
             }
@@ -271,7 +275,7 @@ namespace CheckboxIntegration.Client
                     return new ReceiptsSellRespond
                     {
                         id = properties.id,
-                        error = new ErrorMessage {  message = $"{err.Message} [{response.Content.ReadAsStringAsync().Result}]" }
+                        error = new ErrorMessage {  message = $"{err.Message}" }
                     };
                 }
             }

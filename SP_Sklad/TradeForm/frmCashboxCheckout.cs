@@ -177,6 +177,13 @@ namespace SP_Sklad.WBForm
         {
             if (is_authorization)
             {
+                var c_sign = new CheckboxClient(_access_token).CheckSignature();
+                if(c_sign == null || c_sign.error != null)
+                {
+                    MessageBox.Show($@"Помилка оплати, checkbox сервіс тимчасово не доступний!");
+                    return;
+                }
+
                 List<Payment> payments = new List<Payment>();
 
                 if (PutCashSumEdit.Value > 0)
@@ -208,6 +215,7 @@ namespace SP_Sklad.WBForm
 
                     MessageBox.Show($@"Помилка при отриманні фіксального номера! {(receipt.is_error ? receipt.error.message : "")}");
 
+                    DialogResult = DialogResult.OK;
                     return;
                 }
                 else
@@ -240,7 +248,14 @@ namespace SP_Sklad.WBForm
 
                     _db.SaveChanges();
 
-                    IHelper.PrintReceiptPng(_access_token, receipt.id);
+                    try
+                    {
+                        IHelper.PrintReceiptPng(_access_token, receipt.id);
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show($"Помилка в налаштуваннях прінтера, {err.Message}!"); 
+                    }
                 }
             }
             else

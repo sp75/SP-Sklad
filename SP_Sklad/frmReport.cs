@@ -555,7 +555,7 @@ namespace SP_Sklad
                     {
                         WId = s.WId,
                         Name = s.Name
-                    }).ToList());
+                    }).ToList()).ToList();
 
                     WhComboBox.EditValue = "*";
                 }
@@ -892,7 +892,8 @@ namespace SP_Sklad
         {
             if (e.Button.Index == 1)
             {
-                WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+                var d = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+                WhComboBox.EditValue = d.ToString();
             }
         }
     }

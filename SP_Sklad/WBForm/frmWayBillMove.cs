@@ -31,6 +31,7 @@ namespace SP_Sklad.WBForm
         private List<GetWayBillDetOut_Result> wbd_list { get; set; }
         public bool is_new_record { get; set; }
         private int? _wid { get; set; }
+        private int? _additional_doc_type_id { get; set; }
         private GetWayBillDetOut_Result focused_dr
         {
             get { return WaybillDetOutGridView.GetFocusedRow() as GetWayBillDetOut_Result; }
@@ -38,11 +39,12 @@ namespace SP_Sklad.WBForm
 
         private UserSettingsRepository user_settings { get; set; }
 
-        public frmWayBillMove(int? wbill_id = null, int? wid = null)
+        public frmWayBillMove(int? wbill_id = null, int? wid = null, int? additional_doc_type_id = 0)
         {
             is_new_record = false;
             _wbill_id = wbill_id;
             _wid = wid;
+            _additional_doc_type_id = additional_doc_type_id;
             _db = new BaseEntities();
             user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
 
@@ -55,7 +57,8 @@ namespace SP_Sklad.WBForm
             PersonOutComboBox.Properties.DataSource = DBHelper.Persons;
             PersonInComboBox.Properties.DataSource = DBHelper.Persons;
             WhOutComboBox.Properties.DataSource = DBHelper.WhList;
-             WhInComboBox.Properties.DataSource = DBHelper.WhList;
+            WhInComboBox.Properties.DataSource = DBHelper.WhList;
+            AdditionalDocTypeLookUpEdit.Properties.DataSource = _db.AdditionalDocType.Where(w=> w.WType == _wtype).AsNoTracking().ToList();
 
             if (_wbill_id == null)
             {
@@ -65,6 +68,7 @@ namespace SP_Sklad.WBForm
                 {
                     Id = Guid.NewGuid(),
                     WType = _wtype,
+                    AdditionalDocTypeId = _additional_doc_type_id,
                     OnDate = DBHelper.ServerDateTime(),
                     Num = "",
                     CurrId = DBHelper.Currency.FirstOrDefault(w => w.Def == 1).CurrId,
@@ -74,7 +78,7 @@ namespace SP_Sklad.WBForm
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     EntId = DBHelper.CurrentEnterprise.KaId
                 });
-                
+
                 _db.SaveChanges();
 
                 _wbill_id = wb.WbillId;
@@ -107,6 +111,8 @@ namespace SP_Sklad.WBForm
 
                 NotesEdit.DataBindings.Add(new Binding("EditValue", wb, "Notes"));
                 ReasonEdit.DataBindings.Add(new Binding("EditValue", wb, "Reason"));
+
+                AdditionalDocTypeLookUpEdit.DataBindings.Add(new Binding("EditValue", wb, "AdditionalDocTypeId", true, DataSourceUpdateMode.OnPropertyChanged));
             }
 
             RefreshDet();

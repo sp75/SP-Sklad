@@ -924,5 +924,19 @@ namespace SP_Sklad.UserControls.Warehouse
                 PosBottomPopupMenu.ShowPopup(p2);
             }
         }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(RemainOnWhGrid);
+        }
+
+        private void WhRemainGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                WhRemainPopupMenu.ShowPopup(p2);
+            }
+        }
     }
 }

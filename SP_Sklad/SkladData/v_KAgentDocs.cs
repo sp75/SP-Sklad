@@ -32,5 +32,7 @@ namespace SP_Sklad.SkladData
         public string DocShortName { get; set; }
         public string DocTypeName { get; set; }
         public Nullable<decimal> Balans { get; set; }
+        public Nullable<int> FromKaId { get; set; }
+        public Nullable<int> ToKaId { get; set; }
     }
 }

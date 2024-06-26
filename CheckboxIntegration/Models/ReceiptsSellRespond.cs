@@ -174,7 +174,7 @@ namespace CheckboxIntegration.Models
             int interval = 0;
             while (!this.fiscal_date.HasValue)
             {
-                if(interval > 120)
+                if (interval > 120)
                 {
                     break;
                 }
@@ -183,19 +183,21 @@ namespace CheckboxIntegration.Models
                 {
                     var receipt = new CheckboxClient(access_token).GetReceipt(this.id);
 
-                    if (receipt.error != null)
+                    if (!receipt.is_error)
+                    {
+                        fiscal_date = receipt.fiscal_date;
+                        fiscal_code = receipt.fiscal_code;
+                    }
+                    else
                     {
                         break;
                     }
-
-                    fiscal_date = receipt.fiscal_date;
-                    fiscal_code = receipt.fiscal_code;
                 }
                 catch
                 {
                     break;
                 }
-                
+
                 Thread.Sleep(1000);
 
                 ++interval;

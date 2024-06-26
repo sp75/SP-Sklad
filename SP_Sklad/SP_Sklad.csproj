@@ -536,6 +536,9 @@
     <Compile Include="SkladData\AdditionalCostsDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\AdditionalDocType.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\AspNetUsers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
