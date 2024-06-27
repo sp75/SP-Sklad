@@ -100,6 +100,7 @@ namespace SP.Base.Models
         public Nullable<System.DateTime> ReportingDate { get; set; }
         public Nullable<System.DateTime> ShipmentDate { get; set; }
         public Nullable<System.Guid> ReceiptId { get; set; }
+        public int? AdditionalDocTypeId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commission> Commission { get; set; }
