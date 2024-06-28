@@ -371,6 +371,7 @@
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
             this.bandedGridView1.OptionsBehavior.Editable = false;
+            this.bandedGridView1.OptionsView.ShowFooter = true;
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             // 
             // gridBand1
@@ -497,6 +498,8 @@
             this.colOnValue.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colOnValue.FieldName = "Amount";
             this.colOnValue.Name = "colOnValue";
+            this.colOnValue.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.00}")});
             this.colOnValue.Visible = true;
             this.colOnValue.Width = 74;
             // 

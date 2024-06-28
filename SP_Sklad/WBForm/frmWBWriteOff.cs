@@ -312,21 +312,31 @@ namespace SP_Sklad.WBForm
             var r = new ObjectParameter("RSV", typeof(Int32));
 
             var wb_list = _db.GetWayBillDetOut(_wbill_id).ToList().Where(w => w.Rsv != 1).ToList();
-      //      progressBarControl1.Visible = true;
-       //     progressBarControl1.Properties.Maximum = wb_list.Count;
-            foreach (var i in wb_list)
+            int i = 0;
+            barEditItem1.EditValue = i;
+            repositoryItemProgressBar1.Maximum = wb_list.Count;
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+            foreach (var item in wb_list)
             {
-                _db.ReservedPosition(i.PosId, r, DBHelper.CurrentUser.UserId);
-
-                if (r.Value != null && (int)r.Value == 0)
+                try
                 {
-                    list.Add(i.MatName);
+                    _db.ReservedPosition(item.PosId, r, DBHelper.CurrentUser.UserId);
+
+                    if (r.Value != null && (int)r.Value == 0)
+                    {
+                        list.Add(item.MatName);
+                    }
+                }
+                catch
+                {
+                    list.Add(item.MatName);
                 }
 
-      //          progressBarControl1.PerformStep();
-     //           progressBarControl1.Update();
+                barEditItem1.EditValue = ++i;
+                barEditItem1.Refresh();
             }
-       //     progressBarControl1.Visible = false;
+
+            barEditItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 
             if (list.Any())
             {
@@ -449,6 +459,11 @@ namespace SP_Sklad.WBForm
             {
                 WhOutComboBox.EditValue = IHelper.ShowDirectList(WhOutComboBox.EditValue, 2);
             }
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowTurnMaterial(focused_dr.MatId);
         }
     }
 }
