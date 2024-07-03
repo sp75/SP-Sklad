@@ -179,12 +179,13 @@ namespace SP_Sklad.WBForm
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var mat_id = IHelper.ShowDirectList(null, 5);
-            if (mat_id != null)
+            var GrpId = IHelper.ShowDirectList(null, 19);
+            if (GrpId != null)
             {
-                var id = Convert.ToInt32(mat_id);
-                var mat = _db.Materials.Find(id);
-                foreach (var item in _db.Materials.Where(w => w.GrpId == mat.GrpId && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
+                // var id = Convert.ToInt32(mat_id);
+                // var mat = _db.Materials.Find(id);
+                var grp_id = (int)GrpId;
+                foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
 
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
