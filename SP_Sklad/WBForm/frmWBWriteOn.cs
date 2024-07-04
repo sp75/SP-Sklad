@@ -173,6 +173,20 @@ namespace SP_Sklad.WBForm
         {
             wb.UpdatedAt = DateTime.Now;
 
+            if (WHComboBox.EditValue != null && WHComboBox.EditValue != DBNull.Value)
+            {
+                var wid = (int)WHComboBox.EditValue;
+                if (wb.WaybillMove != null)
+                {
+                    wb.WaybillMove.SourceWid = wid;
+                    wb.WaybillMove.DestWId = wid;
+                }
+                else
+                {
+                    wb.WaybillMove = new WaybillMove { SourceWid = wid, DestWId = wid };
+                }
+            }
+
             if (!CheckDate())
             {
                 return;

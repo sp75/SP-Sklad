@@ -158,5 +158,6 @@ namespace SP.Base.Models
         public decimal? ExTotalAmount { get; set; }
 
         public Guid? KagentId { get; set; }
+        public int? DeliveredWaybillId { get; set; }
     }
 }

@@ -86,6 +86,8 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.WayBillMoveSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -170,7 +172,9 @@
             this.gridColumn7,
             this.gridColumn45,
             this.gridColumn58,
-            this.gridColumn59});
+            this.gridColumn59,
+            this.gridColumn8,
+            this.gridColumn9});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.Editable = false;
@@ -274,7 +278,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 66;
+            this.gridColumn3.Width = 149;
             // 
             // gridColumn4
             // 
@@ -286,7 +290,7 @@
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 116;
+            this.gridColumn4.Width = 263;
             // 
             // gridColumn5
             // 
@@ -302,7 +306,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 4;
-            this.gridColumn6.Width = 55;
+            this.gridColumn6.Width = 124;
             // 
             // gridColumn7
             // 
@@ -317,8 +321,8 @@
             this.gridColumn45.FieldName = "PersonName";
             this.gridColumn45.Name = "gridColumn45";
             this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 5;
-            this.gridColumn45.Width = 195;
+            this.gridColumn45.VisibleIndex = 6;
+            this.gridColumn45.Width = 204;
             // 
             // gridColumn58
             // 
@@ -728,6 +732,7 @@
             // 
             // ucRelDocGrid1
             // 
+            this.ucRelDocGrid1._access_token = null;
             this.ucRelDocGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucRelDocGrid1.Location = new System.Drawing.Point(0, 0);
             this.ucRelDocGrid1.Name = "ucRelDocGrid1";
@@ -759,6 +764,24 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Тип документа";
+            this.gridColumn8.FieldName = "AdditionalDocTypeName";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 246;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "На склад";
+            this.gridColumn9.FieldName = "ToWh";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 5;
+            this.gridColumn9.Width = 238;
             // 
             // ucWaybillWriteOn
             // 
@@ -866,5 +889,7 @@
         private ucRelDocGrid ucRelDocGrid1;
         private DevExpress.XtraBars.Bar bar1;
         private ucWayBillInDet ucWayBillInDet;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
     }
 }

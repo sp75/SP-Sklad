@@ -324,6 +324,7 @@
             this.imageCollection1.Images.SetKeyName(20, "expedition");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_selected_documents, "print_selected_documents", typeof(global::SP_Sklad.Properties.Resources), 21);
             this.imageCollection1.Images.SetKeyName(21, "print_selected_documents");
+            this.imageCollection1.Images.SetKeyName(22, "in_transit.png");
             // 
             // gridColumn2
             // 
@@ -516,7 +517,8 @@
             this.repositoryItemImageComboBox42.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox42.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Доставлено", 1, 20),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("В дорозі", 2, 22),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox42.Name = "repositoryItemImageComboBox42";
             this.repositoryItemImageComboBox42.SmallImages = this.imageCollection1;

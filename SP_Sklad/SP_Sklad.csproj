@@ -271,6 +271,12 @@
     <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="frmPosMatTurn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPosMatTurn.Designer.cs">
+      <DependentUpon>frmPosMatTurn.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmReg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2530,6 +2536,9 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmPosMatTurn.resx">
+      <DependentUpon>frmPosMatTurn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmReg.resx">
       <DependentUpon>frmReg.cs</DependentUpon>
     </EmbeddedResource>
@@ -3300,6 +3309,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WayBillTmc.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WBListMake_Result.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WhMatGet_Result.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.WMatTurn.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.WBDetForm.frmIntermediateWeighingDet+make_det.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -58,5 +58,8 @@ namespace SP_Sklad.SkladData
         public Nullable<int> WId { get; set; }
         public string JobName { get; set; }
         public System.Guid Id { get; set; }
+        public Nullable<System.DateTime> LastInventoryDate { get; set; }
+        public Nullable<int> OpenStoreAreaId { get; set; }
+        public Nullable<int> EnterpriseId { get; set; }
     }
 }

@@ -174,7 +174,7 @@ namespace SP_Sklad.UserControls
 
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (wbStatusList.EditValue == null || WhComboBox.EditValue == null )
+            if (wbStatusList.EditValue == null || WhComboBox.EditValue == null)
             {
                 return;
             }
@@ -182,11 +182,12 @@ namespace SP_Sklad.UserControls
             var satrt_date = wbStartDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(-100) : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < DateTime.Now.AddYears(-100) ? DateTime.Now.AddYears(100) : wbEndDate.DateTime;
             var status = (int)wbStatusList.EditValue;
-            var wh_id= (int)WhComboBox.EditValue;
+            var wh_id = (int)WhComboBox.EditValue;
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillWriteOff.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id  || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WaybillWriteOff.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && (w.FromWId == wh_id || wh_id == -1) && w.WorkerId == DBHelper.CurrentUser.KaId)
+                 .Join(objectContext.UserAccessWh.Where(w => w.UserId == UserSession.UserId), w => w.FromWId, ew => ew.WId, (w, ew) => w);
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

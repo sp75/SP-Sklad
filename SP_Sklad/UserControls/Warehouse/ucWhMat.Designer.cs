@@ -80,6 +80,7 @@
             this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.PosBottomPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -326,8 +327,9 @@
             this.RecalcRemainsPostBtn,
             this.CopyCellContentsBtn,
             this.barSubItem1,
-            this.barButtonItem2});
-            this.barManager1.MaxItemId = 50;
+            this.barButtonItem2,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 51;
             // 
             // bar2
             // 
@@ -769,6 +771,13 @@
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Історія партій товару";
+            this.barButtonItem3.Id = 50;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -787,11 +796,12 @@
             // 
             this.MatPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.MatTurnInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
             new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem),
@@ -1238,6 +1248,7 @@
             this.WhRemainGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WhRemainGridView.OptionsBehavior.Editable = false;
             this.WhRemainGridView.OptionsBehavior.ReadOnly = true;
+            this.WhRemainGridView.OptionsPrint.RtfPageHeader = resources.GetString("WhRemainGridView.OptionsPrint.RtfPageHeader");
             this.WhRemainGridView.OptionsView.ShowFooter = true;
             this.WhRemainGridView.OptionsView.ShowGroupPanel = false;
             this.WhRemainGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhRemainGridView_PopupMenuShowing);
@@ -2438,5 +2449,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.PopupMenu WhRemainPopupMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

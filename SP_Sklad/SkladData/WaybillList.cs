@@ -67,6 +67,7 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> ShipmentDate { get; set; }
         public Nullable<System.Guid> ReceiptId { get; set; }
         public Nullable<int> AdditionalDocTypeId { get; set; }
+        public Nullable<int> DeliveredWaybillId { get; set; }
     
         public virtual ICollection<Commission> Commission { get; set; }
         public virtual Currency Currency { get; set; }

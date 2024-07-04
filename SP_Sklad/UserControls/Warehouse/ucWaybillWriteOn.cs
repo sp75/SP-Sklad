@@ -191,7 +191,9 @@ namespace SP_Sklad.UserControls
 
 
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WaybillWriteOn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var whg_user = objectContext.UserAccessWh.Where(w => w.UserId == UserSession.UserId).Select(s => s.WId).ToList().Select(s=> (int?)s).Concat(new List<int?>(){ null } );
+
+            var list = objectContext.v_WaybillWriteOn.Where(w => w.WType == w_type && w.OnDate > satrt_date && w.OnDate <= end_date && (w.Checked == status || status == -1) && w.WorkerId == DBHelper.CurrentUser.KaId && (whg_user.Contains(w.ToWId)) );
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

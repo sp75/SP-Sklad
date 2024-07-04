@@ -43,5 +43,6 @@ namespace SP_Sklad.SkladData
         public int FromWId { get; set; }
         public string FromWh { get; set; }
         public int WorkerId { get; set; }
+        public string AdditionalDocTypeName { get; set; }
     }
 }

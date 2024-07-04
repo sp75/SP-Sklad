@@ -21,8 +21,9 @@ namespace SkladEngine.ExecuteDoc
             using (var db = SPDatabase.SPBase())
             {
                 var wb_out = db.WaybillList.Find(wbill_id);
+                var ka = db.v_Kagent.FirstOrDefault(w => w.KaId == wb_out.KaId);
 
-                if (wb_out.Checked == 1 && wb_out.Kagent1.WId.HasValue && wb_out.Kagent1.KType == 4 && !db.GetRelDocIds(wb_out.Id).Any(a => a.DocType == 1 && a.RelType == 1))
+                if (wb_out.Checked == 1 && wb_out.Kagent1.WId.HasValue && wb_out.Kagent1.KType == 4 && !db.GetRelDocIds(wb_out.Id).Any(a => a.DocType == 1 && a.RelType == 1) && wb_out.OnDate > ka.LastInventoryDate)
                 {
                     var wb_in = db.WaybillList.Add(new WaybillList()
                     {
@@ -68,6 +69,7 @@ namespace SkladEngine.ExecuteDoc
                     }
 
                     db.DocRels.Add(new DocRels { OriginatorId = wb_out.Id, RelOriginatorId = wb_in.Id });
+                    wb_out.DeliveredWaybillId = wb_in.WbillId;
                     db.SaveChanges();
 
                     if (execute_doc)

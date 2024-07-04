@@ -41,5 +41,8 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> DefTotalAmount { get; set; }
         public Nullable<decimal> ExTotalAmount { get; set; }
         public int WorkerId { get; set; }
+        public string AdditionalDocTypeName { get; set; }
+        public Nullable<int> ToWId { get; set; }
+        public string ToWh { get; set; }
     }
 }

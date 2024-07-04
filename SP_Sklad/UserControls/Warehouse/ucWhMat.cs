@@ -927,7 +927,9 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ExportToXlsx(RemainOnWhGrid);
+            WhRemainGridView.OptionsPrint.RtfPageHeader =  string.Format(@"{{\rtf1\ansi \b \fs40 {0}\b0 \line\line \fs25 {1}\line }}",  "Залишки на складах", focused_wh_mat?.MatName) ;
+
+            IHelper.ExportToXlsx(RemainOnWhGrid, DevExpress.Export.ExportType.WYSIWYG);
         }
 
         private void WhRemainGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
@@ -937,6 +939,11 @@ namespace SP_Sklad.UserControls.Warehouse
                 Point p2 = Control.MousePosition;
                 WhRemainPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmPosMatTurn(focused_wh_mat.MatId).ShowDialog();
         }
     }
 }

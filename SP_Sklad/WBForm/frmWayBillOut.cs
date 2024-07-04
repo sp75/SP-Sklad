@@ -81,7 +81,7 @@ namespace SP_Sklad.WBForm
                     UpdatedBy = DBHelper.CurrentUser.UserId,
                     ShipmentDate = DBHelper.ServerDateTime().Date.AddHours(8),
                     PTypeId = 1,
-                    Nds = DBHelper.CurrentEnterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0,
+                    Nds = DBHelper.CurrentEnterprise.NdsPayer == 1 ? DBHelper.CommonParam.Nds : 0
                 });
 
                 _db.SaveChanges();

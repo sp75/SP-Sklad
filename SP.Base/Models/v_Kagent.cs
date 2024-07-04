@@ -138,5 +138,8 @@ namespace SP.Base.Models
         [StringLength(50)]
         public string JobName { get; set; }
         public Guid Id { get; set; }
+        public Nullable<System.DateTime> LastInventoryDate { get; set; }
+        public Nullable<int> OpenStoreAreaId { get; set; }
+        public Nullable<int> EnterpriseId { get; set; }
     }
 }

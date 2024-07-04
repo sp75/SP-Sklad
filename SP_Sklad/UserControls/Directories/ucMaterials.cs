@@ -484,6 +484,7 @@ namespace SP_Sklad.MainTabs
         {
             view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
             view.FocusedRowHandle = rowHandle;
+            view.SelectRow(rowHandle);
         }
 
         public void FindItem(int mat_id)

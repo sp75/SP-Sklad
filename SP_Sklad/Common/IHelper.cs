@@ -884,7 +884,7 @@ namespace SP_Sklad.Common
             }
         }
 
-        public static void ExportToXlsx(GridControl grid)
+        public static void ExportToXlsx(GridControl grid, DevExpress.Export.ExportType exp_type = DevExpress.Export.ExportType.DataAware  )
         {
             var file_format = DBHelper.CurrentUser.ReportFormat;
 
@@ -901,6 +901,7 @@ namespace SP_Sklad.Common
                 }
                 else if (file_format == "xlsx")
                 {
+                    DevExpress.Export.ExportSettings.DefaultExportType = exp_type;
                     using (MemoryStream ms_xlsx = new MemoryStream())
                     {
                         grid.ExportToXlsx(ms_xlsx);
@@ -917,6 +918,7 @@ namespace SP_Sklad.Common
                 }
                 else if (file_format == "xlsx")
                 {
+                    DevExpress.Export.ExportSettings.DefaultExportType = exp_type;
                     grid.ExportToXlsx(result_file);
                 }
 
