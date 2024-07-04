@@ -73,5 +73,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> TotalAmount { get; set; }
         public Nullable<System.Guid> KagentId { get; set; }
         public int IsDelivered { get; set; }
+        public int InTransit { get; set; }
     }
 }

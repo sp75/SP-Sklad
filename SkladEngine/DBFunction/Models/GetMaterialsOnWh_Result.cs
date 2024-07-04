@@ -19,5 +19,7 @@ namespace SkladEngine.DBFunction.Models
         public decimal? AvgPrice { get; set; }
         public string GrpName { get; set; }
         public decimal? SumRemain { get; set; }
+        public int? OpenStoreId { get; set; }
+        public int? TypeId { get; set; }
     }
 }

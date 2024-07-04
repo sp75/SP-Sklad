@@ -1303,11 +1303,10 @@ namespace SP_Sklad.MainTabs
 
                                     db.SaveChanges();
 
-                                    ucMaterials.GetData(showChildNodeBtn.Down, restore: false);
+                                    ucMaterials.GetData(showChildNodeBtn.Down, restore: true);
                                 }
                             }
                         }
-
                     }
                 }
             }

@@ -224,7 +224,7 @@ namespace SP_Sklad.UserControls
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
-                WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId, s.Name }).ToList());
+                WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId, s.Name }).ToList()).ToList();
                 WhComboBox.EditValue =-1;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };

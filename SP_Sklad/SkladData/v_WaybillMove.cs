@@ -45,5 +45,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> ToWId { get; set; }
         public string ToWh { get; set; }
         public string AdditionalDocTypeName { get; set; }
+        public Nullable<int> AdditionalDocTypeId { get; set; }
     }
 }

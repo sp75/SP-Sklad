@@ -90,7 +90,9 @@ SELECT   pr.MatId,
          sum( pr.ActualRemain ) CurRemain,
          cast(sum( (pr.remain + pr.Ordered) * pr.AvgPrice) / sum( pr.remain + pr.Ordered) as NUMERIC(15, 2) ) AvgPrice,
          mg.Name GrpName,
-	 	 cast( sum( (pr.remain + pr.Ordered) * pr.AvgPrice) as NUMERIC(15, 2) ) SumRemain
+	 	 cast( sum( (pr.remain + pr.Ordered) * pr.AvgPrice) as NUMERIC(15, 2) ) SumRemain,
+         m.OpenStoreId,
+         m.TypeId
 FROM  PosRemains AS pr 
 join ( SELECT PosId, MAX(OnDate) AS OnDate
        FROM  dbo.PosRemains
@@ -99,7 +101,7 @@ inner join Materials m on m.MatId =pr.MatId
 inner join Measures ms on ms.MId = m.MId
 inner join MatGroup mg ON m.GrpId = mg.GrpId 
 WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.WId = {0} 
-group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name", wh_id).ToList();
+group by pr.MatId, m.Name, m.Artikul, ms.ShortName, mg.Name, m.OpenStoreId, m.TypeId", wh_id).ToList();
             }
         }
 

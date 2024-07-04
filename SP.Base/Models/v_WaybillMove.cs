@@ -105,6 +105,6 @@ namespace SP.Base.Models
 
         [StringLength(64)]
         public string ToWh { get; set; }
-
+        public int? AdditionalDocTypeId { get; set; }
     }
 }

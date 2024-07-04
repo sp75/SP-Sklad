@@ -4260,6 +4260,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillMove' does not have a primary
           <Property Name="ToWId" Type="int" />
           <Property Name="ToWh" Type="nvarchar" MaxLength="64" />
           <Property Name="AdditionalDocTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdditionalDocTypeId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillOut' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4275,6 +4276,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOut' does not have a primary 
             <PropertyRef Name="Expedition" />
             <PropertyRef Name="WorkerId" />
             <PropertyRef Name="IsDelivered" />
+            <PropertyRef Name="InTransit" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
@@ -4335,6 +4337,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillOut' does not have a primary 
           <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
           <Property Name="KagentId" Type="uniqueidentifier" />
           <Property Name="IsDelivered" Type="int" Nullable="false" />
+          <Property Name="InTransit" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillOutDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11585,7 +11588,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillMove].[FromWh] AS [FromWh], 
     [v_WaybillMove].[ToWId] AS [ToWId], 
     [v_WaybillMove].[ToWh] AS [ToWh], 
-    [v_WaybillMove].[AdditionalDocTypeName] AS [AdditionalDocTypeName]
+    [v_WaybillMove].[AdditionalDocTypeName] AS [AdditionalDocTypeName], 
+    [v_WaybillMove].[AdditionalDocTypeId] AS [AdditionalDocTypeId]
     FROM [dbo].[v_WaybillMove] AS [v_WaybillMove]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillOut" EntityType="Self.v_WayBillOut" store:Type="Views" store:Schema="dbo">
@@ -11648,7 +11652,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillOut].[Balans] AS [Balans], 
     [v_WayBillOut].[TotalAmount] AS [TotalAmount], 
     [v_WayBillOut].[KagentId] AS [KagentId], 
-    [v_WayBillOut].[IsDelivered] AS [IsDelivered]
+    [v_WayBillOut].[IsDelivered] AS [IsDelivered], 
+    [v_WayBillOut].[InTransit] AS [InTransit]
     FROM [dbo].[v_WayBillOut] AS [v_WayBillOut]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillOutDet" EntityType="Self.v_WayBillOutDet" store:Type="Views" store:Schema="dbo">
@@ -23120,6 +23125,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="Expedition" />
             <PropertyRef Name="WorkerId" />
             <PropertyRef Name="IsDelivered" />
+            <PropertyRef Name="InTransit" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
@@ -23180,6 +23186,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="4" />
           <Property Name="KagentId" Type="Guid" />
           <Property Name="IsDelivered" Type="Int32" Nullable="false" />
+          <Property Name="InTransit" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="v_WayBillIn">
           <Key>
@@ -24083,6 +24090,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="ToWId" Type="Int32" />
           <Property Name="ToWh" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="AdditionalDocTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalDocTypeId" Type="Int32" />
         </EntityType>
         <EntityType Name="AdditionalDocType">
           <Key>
@@ -29742,6 +29750,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillOut">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillOut">
               <MappingFragment StoreEntitySet="v_WayBillOut">
+                <ScalarProperty Name="InTransit" ColumnName="InTransit" />
                 <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
                 <ScalarProperty Name="KagentId" ColumnName="KagentId" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
@@ -30508,6 +30517,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WaybillMove">
             <EntityTypeMapping TypeName="BaseModel.v_WaybillMove">
               <MappingFragment StoreEntitySet="v_WaybillMove">
+                <ScalarProperty Name="AdditionalDocTypeId" ColumnName="AdditionalDocTypeId" />
                 <ScalarProperty Name="AdditionalDocTypeName" ColumnName="AdditionalDocTypeName" />
                 <ScalarProperty Name="ToWh" ColumnName="ToWh" />
                 <ScalarProperty Name="ToWId" ColumnName="ToWId" />

@@ -113,13 +113,13 @@
             this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row4 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -693,6 +693,7 @@
             this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WhComboBox.Properties.DisplayMember = "Name";
+            this.WhComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.WhComboBox.Properties.ShowFooter = false;
             this.WhComboBox.Properties.ShowHeader = false;
             this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
@@ -1152,6 +1153,12 @@
             this.row5.Properties.Caption = "Виконавець";
             this.row5.Properties.FieldName = "PersonName";
             // 
+            // row2
+            // 
+            this.row2.Name = "row2";
+            this.row2.Properties.Caption = "Склад";
+            this.row2.Properties.FieldName = "FromWh";
+            // 
             // row6
             // 
             this.row6.Name = "row6";
@@ -1207,12 +1214,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // row2
-            // 
-            this.row2.Name = "row2";
-            this.row2.Properties.Caption = "Склад";
-            this.row2.Properties.FieldName = "FromWh";
             // 
             // ucWaybillInventory
             // 
