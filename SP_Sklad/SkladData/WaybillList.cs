@@ -87,5 +87,6 @@ namespace SP_Sklad.SkladData
         public virtual Kagent Kagent2 { get; set; }
         public virtual ICollection<DeboningWeighing> DeboningWeighing { get; set; }
         public virtual ICollection<ExpeditionDet> ExpeditionDet { get; set; }
+        public virtual AdditionalDocType AdditionalDocType { get; set; }
     }
 }

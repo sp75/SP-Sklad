@@ -21,30 +21,30 @@ namespace SP_Sklad
     {
         public int _mat_id { get; set; }
         private bool is_show { get; set; }
+        private int? _wid { get; set; }
 
-        public frmPosMatTurn(int mat_id)
+        public frmPosMatTurn(int mat_id, int? wid = null)
         {
             InitializeComponent();
             is_show = false;
             _mat_id = mat_id;
+            _wid = wid;
         }
 
         private void frmMatTurn_Load(object sender, EventArgs e)
         {
-         //   wTypeList.Properties.DataSource = new List<object>() { new { Id = 0, Name = "Усі" } }.Concat(new BaseEntities().DocType.Select(s => new { s.Id, s.Name })).ToList();
-         //   wTypeList.EditValue = 0;
-       //     KagentComboBox.Properties.DataSource =  DBHelper.KagentsList;
-        //    KagentComboBox.EditValue = 0;
+            WHComboBox.Properties.DataSource = DBHelper.WhList;
+            WHComboBox.EditValue = _wid;
 
             wbStartDate.DateTime = DateTimeDayOfMonthExtensions.FirstDayOfMonth(DateTime.Now);
             wbEndDate.DateTime = DateTime.Now.AddDays(1);
 
-            var mat =new BaseEntities().Materials.Find(_mat_id);
+            var mat = new BaseEntities().Materials.Find(_mat_id);
             if (mat != null)
             {
-                this.Text = "Рух товару: " + mat.Name;
+                this.Text = "Історія партій товару: " + mat.Name;
             }
-            
+
             GetTurns();
         }
 
@@ -52,7 +52,10 @@ namespace SP_Sklad
         {
             var start_date = wbStartDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MinValue.Value : wbStartDate.DateTime;
             var end_date = wbEndDate.DateTime < SqlDateTime.MinValue.Value ? SqlDateTime.MaxValue.Value : wbEndDate.DateTime.SetEndDay();
-            DocListBindingSource.DataSource = DB.SkladBase().WMatTurn.Where(w => w.OnDate > start_date && w.OnDate <= end_date && w.MatId == _mat_id).OrderBy(o=> o.OnDate).ToList();
+            var wid = WHComboBox.EditValue != null ? (int)WHComboBox.EditValue : -1;
+
+
+            DocListBindingSource.DataSource = DB.SkladBase().WMatTurn.Where(w => w.OnDate > start_date && w.OnDate <= end_date && w.MatId == _mat_id && (w.WId == wid || wid == -1)).OrderBy(o => o.OnDate).ToList();
             bandedGridView1.ExpandAllGroups();
         }
 
@@ -76,14 +79,8 @@ namespace SP_Sklad
                 }
             }
 
-          
-        }
-
-        private void bandedGridView1_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
 
         }
-
         private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
             if (!is_show)
@@ -101,20 +98,20 @@ namespace SP_Sklad
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-         /*   var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
-            if ( row != null )
+            var row = bandedGridView1.GetFocusedRow() as WMatTurn;
+            if (row != null)
             {
-                PrintDoc.Show(row.Id.Value, row.WType.Value, DB.SkladBase());
-            }*/
+                PrintDoc.Show(row.WaybillDet1.WaybillList.Id, row.WaybillDet1.WaybillList.WType, DB.SkladBase());
+            }
         }
 
         private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-          /*  var row = bandedGridView1.GetFocusedRow() as GetMatMove_Result;
-            if ( row != null )
+            var row = bandedGridView1.GetFocusedRow() as WMatTurn;
+            if (row != null)
             {
-                FindDoc.Find(row.Id, row.WType, row.OnDate);
-            }*/
+                FindDoc.Find(row.WaybillDet1.WaybillList.Id, row.WaybillDet1.WaybillList.WType, row.WaybillDet1.WaybillList.OnDate);
+            }
         }
     }
 }

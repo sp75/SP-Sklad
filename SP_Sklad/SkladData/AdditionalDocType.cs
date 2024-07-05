@@ -14,8 +14,15 @@ namespace SP_Sklad.SkladData
     
     public partial class AdditionalDocType
     {
+        public AdditionalDocType()
+        {
+            this.WaybillList = new HashSet<WaybillList>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<int> WType { get; set; }
+    
+        public virtual ICollection<WaybillList> WaybillList { get; set; }
     }
 }

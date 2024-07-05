@@ -465,5 +465,10 @@ namespace SP_Sklad.WBForm
         {
             IHelper.ShowTurnMaterial(focused_dr.MatId);
         }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmPosMatTurn(focused_dr.MatId, wb.WaybillMove.SourceWid).ShowDialog();
+        }
     }
 }

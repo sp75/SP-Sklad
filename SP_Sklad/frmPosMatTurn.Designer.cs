@@ -46,6 +46,8 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.WHComboBox = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
@@ -53,7 +55,6 @@
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colWType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -61,13 +62,14 @@
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colCurrName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -77,6 +79,7 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -149,7 +152,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1139, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1331, 24);
             // 
             // barDockControlBottom
             // 
@@ -157,7 +160,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 584);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1139, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1331, 0);
             // 
             // barDockControlLeft
             // 
@@ -171,7 +174,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1139, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1331, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 560);
             // 
@@ -210,14 +213,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 530);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1139, 54);
+            this.panelControl2.Size = new System.Drawing.Size(1331, 54);
             this.panelControl2.TabIndex = 33;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1052, 12);
+            this.OkButton.Location = new System.Drawing.Point(1244, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 30);
             this.OkButton.TabIndex = 3;
@@ -225,6 +228,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.WHComboBox);
+            this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.wbEndDate);
             this.panelControl1.Controls.Add(this.labelControl2);
             this.panelControl1.Controls.Add(this.wbStartDate);
@@ -232,8 +237,34 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 24);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1139, 44);
+            this.panelControl1.Size = new System.Drawing.Size(1331, 44);
             this.panelControl1.TabIndex = 43;
+            // 
+            // WHComboBox
+            // 
+            this.WHComboBox.Location = new System.Drawing.Point(417, 11);
+            this.WHComboBox.Name = "WHComboBox";
+            this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)});
+            this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
+            this.WHComboBox.Properties.DisplayMember = "Name";
+            this.WHComboBox.Properties.ShowFooter = false;
+            this.WHComboBox.Properties.ShowHeader = false;
+            this.WHComboBox.Properties.ValueMember = "WId";
+            this.WHComboBox.Size = new System.Drawing.Size(427, 22);
+            this.WHComboBox.StyleController = this.styleController1;
+            this.WHComboBox.TabIndex = 16;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(371, 14);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(40, 16);
+            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.TabIndex = 15;
+            this.labelControl6.Text = "Склад:";
             // 
             // wbEndDate
             // 
@@ -324,7 +355,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(1139, 462);
+            this.gridControl1.Size = new System.Drawing.Size(1331, 462);
             this.gridControl1.TabIndex = 53;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -333,20 +364,20 @@
             // 
             this.bandedGridView1.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand1,
-            this.gridBand3,
-            this.gridBand2});
+            this.gridBand3});
             this.bandedGridView1.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.colWType,
             this.colNum,
             this.colOnDate,
             this.colKaName,
-            this.colCurrName,
             this.colPrice,
             this.bandedGridColumn1,
             this.bandedGridColumn2,
             this.bandedGridColumn3,
             this.bandedGridColumn4,
-            this.bandedGridColumn5});
+            this.bandedGridColumn5,
+            this.bandedGridColumn6,
+            this.bandedGridColumn7});
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.GroupCount = 1;
             this.bandedGridView1.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
@@ -357,19 +388,6 @@
             this.bandedGridView1.OptionsView.ShowGroupPanel = false;
             this.bandedGridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.bandedGridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Документ";
-            this.gridBand1.Columns.Add(this.colWType);
-            this.gridBand1.Columns.Add(this.bandedGridColumn1);
-            this.gridBand1.Columns.Add(this.colNum);
-            this.gridBand1.Columns.Add(this.colOnDate);
-            this.gridBand1.Columns.Add(this.colKaName);
-            this.gridBand1.Columns.Add(this.bandedGridColumn5);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 627;
             // 
             // colWType
             // 
@@ -434,7 +452,7 @@
             this.colKaName.FieldName = "WaybillDet1.WaybillList.Kagent2.Name";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 234;
+            this.colKaName.Width = 179;
             // 
             // bandedGridColumn5
             // 
@@ -444,14 +462,12 @@
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.Width = 77;
             // 
-            // gridBand3
+            // bandedGridColumn6
             // 
-            this.gridBand3.Caption = "Позиція";
-            this.gridBand3.Columns.Add(this.bandedGridColumn3);
-            this.gridBand3.Columns.Add(this.bandedGridColumn2);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 341;
+            this.bandedGridColumn6.Caption = "Підстава";
+            this.bandedGridColumn6.FieldName = "WaybillDet1.WaybillList.Reason";
+            this.bandedGridColumn6.Name = "bandedGridColumn6";
+            this.bandedGridColumn6.Visible = true;
             // 
             // bandedGridColumn3
             // 
@@ -473,32 +489,15 @@
             this.bandedGridColumn2.Visible = true;
             this.bandedGridColumn2.Width = 257;
             // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Ціна";
-            this.gridBand2.Columns.Add(this.colPrice);
-            this.gridBand2.Columns.Add(this.colCurrName);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 146;
-            // 
             // colPrice
             // 
-            this.colPrice.Caption = "В валюті";
+            this.colPrice.Caption = "Ціна";
             this.colPrice.DisplayFormat.FormatString = "0.00";
             this.colPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colPrice.FieldName = "WaybillDet1.Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
             this.colPrice.Width = 78;
-            // 
-            // colCurrName
-            // 
-            this.colCurrName.Caption = "Валюта";
-            this.colCurrName.FieldName = "WaybillDet1.Currency.ShortName";
-            this.colCurrName.Name = "colCurrName";
-            this.colCurrName.Visible = true;
-            this.colCurrName.Width = 68;
             // 
             // bandedGridColumn4
             // 
@@ -507,11 +506,43 @@
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
             // 
+            // bandedGridColumn7
+            // 
+            this.bandedGridColumn7.Caption = "Тип";
+            this.bandedGridColumn7.FieldName = "WaybillDet1.WaybillList.AdditionalDocType.Name";
+            this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Visible = true;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Документ";
+            this.gridBand1.Columns.Add(this.colWType);
+            this.gridBand1.Columns.Add(this.bandedGridColumn1);
+            this.gridBand1.Columns.Add(this.colNum);
+            this.gridBand1.Columns.Add(this.colOnDate);
+            this.gridBand1.Columns.Add(this.colKaName);
+            this.gridBand1.Columns.Add(this.bandedGridColumn7);
+            this.gridBand1.Columns.Add(this.bandedGridColumn5);
+            this.gridBand1.Columns.Add(this.bandedGridColumn6);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 722;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Позиція";
+            this.gridBand3.Columns.Add(this.bandedGridColumn3);
+            this.gridBand3.Columns.Add(this.bandedGridColumn2);
+            this.gridBand3.Columns.Add(this.colPrice);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 1;
+            this.gridBand3.Width = 419;
+            // 
             // frmPosMatTurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 584);
+            this.ClientSize = new System.Drawing.Size(1331, 584);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
@@ -535,6 +566,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.WHComboBox.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
@@ -582,11 +614,13 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPrice;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCurrName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
+        private DevExpress.XtraEditors.LookUpEdit WHComboBox;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn6;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn7;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
     }
 }

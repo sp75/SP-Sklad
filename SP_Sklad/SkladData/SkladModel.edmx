@@ -7188,6 +7188,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_WaybillList_AdditionalDocType">
+          <End Role="AdditionalDocType" Type="Self.AdditionalDocType" Multiplicity="0..1" />
+          <End Role="WaybillList" Type="Self.WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalDocType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="AdditionalDocTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
           <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
           <End Role="WaybillMove" Type="Self.WaybillMove" Multiplicity="*" />
@@ -12720,6 +12732,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
+          <AssociationSet Name="FK_WaybillList_AdditionalDocType" Association="Self.FK_WaybillList_AdditionalDocType">
+            <End Role="AdditionalDocType" EntitySet="AdditionalDocType" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
           <AssociationSet Name="FK_WAYBILLM_FK_WBM_DE_WAREHOUS" Association="Self.FK_WAYBILLM_FK_WBM_DE_WAREHOUS">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="WaybillMove" EntitySet="WaybillMove" />
@@ -14636,6 +14652,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_WayBillReturnSuppliers" EntityType="BaseModel.v_WayBillReturnSuppliers" />
           <EntitySet Name="v_WaybillMove" EntityType="BaseModel.v_WaybillMove" />
           <EntitySet Name="AdditionalDocType" EntityType="BaseModel.AdditionalDocType" />
+          <AssociationSet Name="FK_WaybillList_AdditionalDocType" Association="BaseModel.FK_WaybillList_AdditionalDocType">
+            <End Role="AdditionalDocType" EntitySet="AdditionalDocType" />
+            <End Role="WaybillList" EntitySet="WaybillList" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -17009,6 +17029,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="ExpeditionDet" Relationship="BaseModel.FK_ExpeditionDet_WaybillList" FromRole="WaybillList" ToRole="ExpeditionDet" />
           <Property Name="AdditionalDocTypeId" Type="Int32" />
           <Property Name="DeliveredWaybillId" Type="Int32" />
+          <NavigationProperty Name="AdditionalDocType" Relationship="BaseModel.FK_WaybillList_AdditionalDocType" FromRole="WaybillList" ToRole="AdditionalDocType" />
           </EntityType>
         <Association Name="FK_COMMISSION_WBILLID">
           <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="1">
@@ -24099,7 +24120,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="WType" Type="Int32" />
+          <NavigationProperty Name="WaybillList" Relationship="BaseModel.FK_WaybillList_AdditionalDocType" FromRole="AdditionalDocType" ToRole="WaybillList" />
         </EntityType>
+        <Association Name="FK_WaybillList_AdditionalDocType">
+          <End Type="BaseModel.AdditionalDocType" Role="AdditionalDocType" Multiplicity="0..1" />
+          <End Type="BaseModel.WaybillList" Role="WaybillList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdditionalDocType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WaybillList">
+              <PropertyRef Name="AdditionalDocTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
