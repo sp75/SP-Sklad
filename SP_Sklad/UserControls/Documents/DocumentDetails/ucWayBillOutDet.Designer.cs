@@ -48,6 +48,7 @@
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.WaybillCorrectionDetBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -97,8 +98,9 @@
             this.barButtonItem8,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.WaybillCorrectionDetBtn});
-            this.barManager1.MaxItemId = 35;
+            this.WaybillCorrectionDetBtn,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 36;
             // 
             // barDockControlTop
             // 
@@ -182,6 +184,8 @@
             this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "reserved_all");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "xls_export");
             // 
             // EditItemBtn
             // 
@@ -262,6 +266,14 @@
             this.WaybillCorrectionDetBtn.Name = "WaybillCorrectionDetBtn";
             this.WaybillCorrectionDetBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.WaybillCorrectionDetBtn_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Експорт списка в Excel...";
+            this.barButtonItem1.Id = 35;
+            this.barButtonItem1.ImageOptions.ImageIndex = 12;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
@@ -271,6 +283,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.WaybillCorrectionDetBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
@@ -547,5 +560,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraBars.BarButtonItem WaybillCorrectionDetBtn;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

@@ -146,5 +146,10 @@ namespace SP_Sklad.UserControls
                 }
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(gridControl2);
+        }
     }
 }

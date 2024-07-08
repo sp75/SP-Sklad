@@ -6030,6 +6030,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Materials_MaterialType">
+          <End Role="MaterialType" Type="Self.MaterialType" Multiplicity="0..1" />
+          <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Materials_RawMaterialType">
           <End Role="RawMaterialType" Type="Self.RawMaterialType" Multiplicity="0..1" />
           <End Role="Materials" Type="Self.Materials" Multiplicity="*" />
@@ -12368,6 +12380,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Measures" EntitySet="Measures" />
             <End Role="MaterialMeasures" EntitySet="MaterialMeasures" />
           </AssociationSet>
+          <AssociationSet Name="FK_Materials_MaterialType" Association="Self.FK_Materials_MaterialType">
+            <End Role="MaterialType" EntitySet="MaterialType" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
           <AssociationSet Name="FK_Materials_RawMaterialType" Association="Self.FK_Materials_RawMaterialType">
             <End Role="RawMaterialType" EntitySet="RawMaterialType" />
             <End Role="Materials" EntitySet="Materials" />
@@ -14656,6 +14672,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="AdditionalDocType" EntitySet="AdditionalDocType" />
             <End Role="WaybillList" EntitySet="WaybillList" />
           </AssociationSet>
+          <AssociationSet Name="FK_Materials_MaterialType" Association="BaseModel.FK_Materials_MaterialType">
+            <End Role="MaterialType" EntitySet="MaterialType" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15680,6 +15700,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillCorrectionDet" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials" FromRole="Materials" ToRole="WaybillCorrectionDet" />
           <NavigationProperty Name="WaybillCorrectionDet1" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials1" FromRole="Materials" ToRole="WaybillCorrectionDet" />
           <Property Name="OpenStoreId" Type="Int32" />
+          <NavigationProperty Name="MaterialType" Relationship="BaseModel.FK_Materials_MaterialType" FromRole="Materials" ToRole="MaterialType" />
           </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -21333,6 +21354,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_Materials_MaterialType" FromRole="MaterialType" ToRole="Materials" />
         </EntityType>
         <ComplexType Name="GetMatPrice_Result">
           <Property Type="Int32" Name="PType" Nullable="true" />
@@ -24131,6 +24153,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="WaybillList">
               <PropertyRef Name="AdditionalDocTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materials_MaterialType">
+          <End Type="BaseModel.MaterialType" Role="MaterialType" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaterialType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="TypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -409,6 +409,7 @@
         <AssociationConnector Association="BaseModel.FK_CashDesks_Kagent" />
         <EntityTypeShape EntityType="BaseModel.AdditionalDocType" Width="1.5" PointX="24.375" PointY="14.75" />
         <AssociationConnector Association="BaseModel.FK_WaybillList_AdditionalDocType" />
+        <AssociationConnector Association="BaseModel.FK_Materials_MaterialType" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >

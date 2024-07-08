@@ -60,6 +60,7 @@ namespace SP_Sklad.UserControls
             public decimal ActualTotal { get; set; }
             public decimal AccountingTotal { get; set; }
             public string GrpName { get; set; }
+            public string MaterialTypeName { get; set; }
         }
 
         public ucWaybillInventory()
@@ -415,7 +416,8 @@ namespace SP_Sklad.UserControls
                         AmountAll = (s.Discount ?? 0) - s.Amount,
                         SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0)),
                         Notes = s.Notes,
-                        GrpName = s.Materials.MatGroup.Name
+                        GrpName = s.Materials.MatGroup.Name,
+                        MaterialTypeName = s.Materials.MaterialType.Name
                     }).ToList();
                     break;
 
@@ -577,6 +579,11 @@ namespace SP_Sklad.UserControls
                 Point p2 = Control.MousePosition;
                 WbDetPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(InventoryDetGridControl);
         }
     }
 }

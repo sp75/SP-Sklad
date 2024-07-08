@@ -114,5 +114,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<UserQuickMaterials> UserQuickMaterials { get; set; }
         public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet { get; set; }
         public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet1 { get; set; }
+        public virtual MaterialType MaterialType { get; set; }
     }
 }
