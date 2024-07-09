@@ -88,6 +88,7 @@
             this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelAllRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -151,7 +152,6 @@
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -477,6 +477,8 @@
             this.imageCollection1.Images.SetKeyName(12, "reserved_all");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 13);
             this.imageCollection1.Images.SetKeyName(13, "move_warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "mat_pos_wh_1");
             // 
             // RsvBarBtn
             // 
@@ -509,6 +511,14 @@
             this.DelAllRsvBarBtn.ImageOptions.ImageIndex = 9;
             this.DelAllRsvBarBtn.Name = "DelAllRsvBarBtn";
             this.DelAllRsvBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelAllRsvBarBtn_ItemClick);
+            // 
+            // barButtonItem16
+            // 
+            this.barButtonItem16.Caption = "Інформація по партіям";
+            this.barButtonItem16.Id = 19;
+            this.barButtonItem16.ImageOptions.ImageIndex = 14;
+            this.barButtonItem16.Name = "barButtonItem16";
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
             // styleController1
             // 
@@ -960,7 +970,8 @@
             this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 11)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 11),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.SmallImages = this.imageCollection1;
             // 
@@ -1196,13 +1207,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.EditMaterialBtn, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
-            // 
-            // barButtonItem16
-            // 
-            this.barButtonItem16.Caption = "Інформація по партіям";
-            this.barButtonItem16.Id = 19;
-            this.barButtonItem16.Name = "barButtonItem16";
-            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
             // frmWBWriteOff
             // 

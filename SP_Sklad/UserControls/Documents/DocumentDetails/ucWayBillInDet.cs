@@ -107,5 +107,10 @@ namespace SP_Sklad.UserControls
                 frm.ShowDialog();
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmPosMatTurn(wb_det_focused_row.MatId, wb_det_focused_row.Wid).ShowDialog();
+        }
     }
 }

@@ -37,6 +37,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
             this.EditItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
@@ -46,6 +47,7 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.WaybillDetGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -61,13 +63,12 @@
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -89,8 +90,9 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
-            this.barManager1.MaxItemId = 34;
+            this.barButtonItem10,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 35;
             // 
             // barDockControlTop
             // 
@@ -145,6 +147,29 @@
             this.standaloneBarDockControl2.Name = "standaloneBarDockControl2";
             this.standaloneBarDockControl2.Size = new System.Drawing.Size(1185, 0);
             this.standaloneBarDockControl2.Text = "standaloneBarDockControl2";
+            // 
+            // imageCollection2
+            // 
+            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
+            this.imageCollection2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection2.Images.SetKeyName(0, "product_info_3");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection2.Images.SetKeyName(1, "product_reserved_1");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection2.Images.SetKeyName(2, "move_warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection2.Images.SetKeyName(3, "interchangeability");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection2.Images.SetKeyName(4, "product");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection2.Images.SetKeyName(5, "warehouse");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection2.Images.SetKeyName(6, "edit_3");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection2.Images.SetKeyName(7, "refresh_office");
+            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection2.Images.SetKeyName(8, "mat_pos_wh_1");
             // 
             // EditItemBtn
             // 
@@ -217,12 +242,21 @@
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Історія по партіям";
+            this.barButtonItem1.Id = 34;
+            this.barButtonItem1.ImageOptions.ImageIndex = 8;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
@@ -384,27 +418,6 @@
             this.gridColumn150.Visible = true;
             this.gridColumn150.VisibleIndex = 6;
             // 
-            // imageCollection2
-            // 
-            this.imageCollection2.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection2.ImageStream")));
-            this.imageCollection2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection2.Images.SetKeyName(0, "product_info_3");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection2.Images.SetKeyName(1, "product_reserved_1");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection2.Images.SetKeyName(2, "move_warehouse");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.interchangeability, "interchangeability", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection2.Images.SetKeyName(3, "interchangeability");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.imageCollection2.Images.SetKeyName(4, "product");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection2.Images.SetKeyName(5, "warehouse");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.edit_3, "edit_3", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.imageCollection2.Images.SetKeyName(6, "edit_3");
-            this.imageCollection2.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 7);
-            this.imageCollection2.Images.SetKeyName(7, "refresh_office");
-            // 
             // ucWayBillInDet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,11 +433,11 @@
             this.Size = new System.Drawing.Size(1185, 287);
             this.Load += new System.EventHandler(this.WayBillInDetUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,5 +477,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn150;
         private DevExpress.Utils.ImageCollection imageCollection2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
