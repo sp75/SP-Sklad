@@ -245,7 +245,6 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WaybillCorrection> v_WaybillCorrection { get; set; }
         public DbSet<v_WaybillCorrectionDet> v_WaybillCorrectionDet { get; set; }
         public DbSet<v_WayBillInDet> v_WayBillInDet { get; set; }
-        public DbSet<v_WayBillOut> v_WayBillOut { get; set; }
         public DbSet<v_WayBillIn> v_WayBillIn { get; set; }
         public DbSet<v_Invoices> v_Invoices { get; set; }
         public DbSet<v_WayBillOutDet> v_WayBillOutDet { get; set; }
@@ -266,6 +265,7 @@ namespace SP_Sklad.SkladData
         public DbSet<v_WayBillReturnSuppliers> v_WayBillReturnSuppliers { get; set; }
         public DbSet<v_WaybillMove> v_WaybillMove { get; set; }
         public DbSet<AdditionalDocType> AdditionalDocType { get; set; }
+        public DbSet<v_WayBillOut> v_WayBillOut { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

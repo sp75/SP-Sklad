@@ -203,7 +203,8 @@ namespace SP_Sklad.UserControls
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
             BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_WayBillOut.Where(w => w.WType == w_type && w.OnDate > ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (w.Checked == ucDocumentFilterPanel.StatusId || ucDocumentFilterPanel.StatusId == -1) && (w.KaId == ucDocumentFilterPanel.KagentId || ucDocumentFilterPanel.KagentId == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            var list = objectContext.v_WayBillOut.Join(objectContext.EnterpriseWorker.Where(eww => eww.WorkerId == DBHelper.CurrentUser.KaId), pd => pd.EntId, ew => ew.EnterpriseId, (pd, ew) => pd)
+                .Where(w => w.WType == w_type && w.OnDate > ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (w.Checked == ucDocumentFilterPanel.StatusId || ucDocumentFilterPanel.StatusId == -1) && (w.KaId == ucDocumentFilterPanel.KagentId || ucDocumentFilterPanel.KagentId == 0) );
             e.QueryableSource = list;
             e.Tag = objectContext;
         }
@@ -346,7 +347,7 @@ namespace SP_Sklad.UserControls
                     break;
 
                 case 1:
-                    vGridControl1.DataSource = new BaseEntities().v_WayBillOut.AsNoTracking().Where(w => w.WbillId == wb_focused_row.WbillId && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                    vGridControl1.DataSource = new BaseEntities().v_WayBillOut.AsNoTracking().Where(w => w.WbillId == wb_focused_row.WbillId).ToList();
                     break;
 
                 case 2:

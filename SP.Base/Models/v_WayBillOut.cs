@@ -171,10 +171,6 @@ namespace SP.Base.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Expedition { get; set; }
 
-        [Key]
-        [Column(Order = 8)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int WorkerId { get; set; }
 
         [Column(TypeName = "numeric")]
         public decimal? Balans { get; set; }

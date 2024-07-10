@@ -22,6 +22,7 @@ namespace SkladEngine.ExecuteDoc
             {
                 var wb_out = db.WaybillList.Find(wbill_id);
                 var ka = db.v_Kagent.FirstOrDefault(w => w.KaId == wb_out.KaId);
+                var wh = db.Warehouse.Find(ka.WId);
 
                 if (wb_out.Checked == 1 && ka.WId.HasValue && ka.KType == 4 && !db.GetRelDocIds(wb_out.Id).Any(a => a.DocType == 1 && a.RelType == 1) && wb_out.ShipmentDate > ka.LastInventoryDate)
                 {
@@ -41,6 +42,8 @@ namespace SkladEngine.ExecuteDoc
                         UpdatedAt = DateTime.Now,
                         EntId = wb_out.EntId,
                         PTypeId = wb_out.PTypeId,
+                        Notes = wh.Name,
+                        Reason = $"Оприбуткування на склад {wh.Name} згідно видаткової накладної №{wb_out.Num}"
                     });
 
                     db.SaveChanges();
