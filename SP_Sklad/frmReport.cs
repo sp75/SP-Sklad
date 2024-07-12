@@ -199,7 +199,7 @@ namespace SP_Sklad
                     this.MatGroupBox.Visible = false;
                     this.DocTypeGroupBox.Visible = false;
                     this.WHGroupBox.Visible = false;
-                    this.GrpComboBox.Properties.DataSource = new List<object>() { new { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().SvcGroup.Where(w => w.Deleted == 0).Select(s => new { s.GrpId, s.Name }).ToList());
+                    this.GrpComboBox.Properties.DataSource = (new List<object>() { new { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().SvcGroup.Where(w => w.Deleted == 0).Select(s => new { s.GrpId, s.Name }).ToList())).ToList();
                     this.ChargeGroupBox.Visible = false;
                     break;
 
@@ -565,7 +565,7 @@ namespace SP_Sklad
             {
                 Height += GRPGroupBox.Height;
 
-                GrpComboBox.Properties.DataSource = new List<MatGrpComboBoxItem>() { new MatGrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new MatGrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList());
+                GrpComboBox.Properties.DataSource = (new List<MatGrpComboBoxItem>() { new MatGrpComboBoxItem { GrpId = 0, Name = "Усі" } }.Concat(new BaseEntities().MatGroup.Where(w => w.Deleted == 0).Select(s => new MatGrpComboBoxItem { GrpId = s.GrpId, Name = s.Name }).ToList())).ToList();
                 GrpComboBox.EditValue = 0;
             }
 
@@ -575,13 +575,13 @@ namespace SP_Sklad
 
                 if (_rep_id == 3)
                 {
-                    KagentComboBox.Properties.DataSource = new List<object>() { new KagentComboBoxItem { KaId = 0, Name = "Усі" } }.Concat( DBHelper.KagentsWorkerList.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }));
+                    KagentComboBox.Properties.DataSource =( new List<object>() { new KagentComboBoxItem { KaId = 0, Name = "Усі" } }.Concat( DBHelper.KagentsWorkerList.Select(s => new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }))).ToList();
                     // KagentComboBox.EditValue = DBHelper.Kagents.FirstOrDefault().KaId;
                     KagentComboBox.EditValue = 0;
                 }
                 else
                 {
-                    KagentComboBox.Properties.DataSource = DBHelper.KagentsList.Select(s=> new KagentComboBoxItem { KaId = s.KaId, Name = s.Name });// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
+                    KagentComboBox.Properties.DataSource = DBHelper.KagentsList.Select(s=> new KagentComboBoxItem { KaId = s.KaId, Name = s.Name }).ToList();// new List<object>() { new { KaId = 0, Name = "Усі" } }.Concat(new BaseEntities().Kagent.Where(w => w.Archived == null || w.Archived == 0).Select(s => new { s.KaId, s.Name }));
                     KagentComboBox.EditValue = 0;
                 }
             }
@@ -894,6 +894,14 @@ namespace SP_Sklad
             {
                 var d = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
                 WhComboBox.EditValue = d.ToString();
+            }
+        }
+
+        private void GrpComboBox_ButtonClick(object sender, ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                GrpComboBox.EditValue = IHelper.ShowDirectList(GrpComboBox.EditValue, 19);
             }
         }
     }

@@ -50,6 +50,11 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.btnShowGrid = new DevExpress.XtraEditors.SimpleButton();
@@ -898,6 +903,7 @@
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
+            this.KagentComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
@@ -981,18 +987,22 @@
             // 
             this.GrpComboBox.Location = new System.Drawing.Point(119, 12);
             this.GrpComboBox.Name = "GrpComboBox";
+            editorButtonImageOptions4.Image = global::SP_Sklad.Properties.Resources.product_group;
             this.GrpComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.GrpComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.GrpComboBox.Properties.DisplayMember = "Name";
+            this.GrpComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.GrpComboBox.Properties.ShowFooter = false;
             this.GrpComboBox.Properties.ShowHeader = false;
             this.GrpComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.GrpComboBox.Properties.ValueMember = "GrpId";
-            this.GrpComboBox.Size = new System.Drawing.Size(211, 22);
+            this.GrpComboBox.Size = new System.Drawing.Size(211, 24);
             this.GrpComboBox.StyleController = this.styleController1;
             this.GrpComboBox.TabIndex = 28;
+            this.GrpComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.GrpComboBox_ButtonClick);
             // 
             // labelControl11
             // 
@@ -1018,17 +1028,16 @@
             // 
             this.WhComboBox.Location = new System.Drawing.Point(88, 11);
             this.WhComboBox.Name = "WhComboBox";
-            editorButtonImageOptions4.Image = global::SP_Sklad.Properties.Resources.warehouse_2;
+            editorButtonImageOptions5.Image = global::SP_Sklad.Properties.Resources.warehouse_2;
             this.WhComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.WhComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WhComboBox.Properties.DisplayMember = "Name";
             this.WhComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.WhComboBox.Properties.ShowFooter = false;
             this.WhComboBox.Properties.ShowHeader = false;
-            this.WhComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.WhComboBox.Properties.ValueMember = "WId";
             this.WhComboBox.Size = new System.Drawing.Size(349, 24);
             this.WhComboBox.StyleController = this.styleController1;
