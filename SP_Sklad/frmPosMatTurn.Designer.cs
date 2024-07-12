@@ -55,21 +55,21 @@
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bandedGridView1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colWType = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn6 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.bandedGridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -246,16 +246,19 @@
             this.WHComboBox.Name = "WHComboBox";
             this.WHComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear)});
             this.WHComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.WHComboBox.Properties.DisplayMember = "Name";
+            this.WHComboBox.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.WHComboBox.Properties.ShowFooter = false;
             this.WHComboBox.Properties.ShowHeader = false;
             this.WHComboBox.Properties.ValueMember = "WId";
             this.WHComboBox.Size = new System.Drawing.Size(427, 22);
             this.WHComboBox.StyleController = this.styleController1;
             this.WHComboBox.TabIndex = 16;
+            this.WHComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.WHComboBox_ButtonClick);
+            this.WHComboBox.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
             // 
             // labelControl6
             // 
@@ -389,6 +392,21 @@
             this.bandedGridView1.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.bandedGridColumn4, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Документ";
+            this.gridBand1.Columns.Add(this.colWType);
+            this.gridBand1.Columns.Add(this.bandedGridColumn1);
+            this.gridBand1.Columns.Add(this.colNum);
+            this.gridBand1.Columns.Add(this.colOnDate);
+            this.gridBand1.Columns.Add(this.colKaName);
+            this.gridBand1.Columns.Add(this.bandedGridColumn7);
+            this.gridBand1.Columns.Add(this.bandedGridColumn5);
+            this.gridBand1.Columns.Add(this.bandedGridColumn6);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 722;
+            // 
             // colWType
             // 
             this.colWType.Caption = "Тип";
@@ -454,6 +472,13 @@
             this.colKaName.Visible = true;
             this.colKaName.Width = 179;
             // 
+            // bandedGridColumn7
+            // 
+            this.bandedGridColumn7.Caption = "Тип";
+            this.bandedGridColumn7.FieldName = "WaybillDet1.WaybillList.AdditionalDocType.Name";
+            this.bandedGridColumn7.Name = "bandedGridColumn7";
+            this.bandedGridColumn7.Visible = true;
+            // 
             // bandedGridColumn5
             // 
             this.bandedGridColumn5.Caption = "Примітка";
@@ -468,6 +493,16 @@
             this.bandedGridColumn6.FieldName = "WaybillDet1.WaybillList.Reason";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
             this.bandedGridColumn6.Visible = true;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Позиція";
+            this.gridBand3.Columns.Add(this.bandedGridColumn3);
+            this.gridBand3.Columns.Add(this.bandedGridColumn2);
+            this.gridBand3.Columns.Add(this.colPrice);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 1;
+            this.gridBand3.Width = 419;
             // 
             // bandedGridColumn3
             // 
@@ -505,38 +540,6 @@
             this.bandedGridColumn4.FieldName = "PosId";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
             this.bandedGridColumn4.Visible = true;
-            // 
-            // bandedGridColumn7
-            // 
-            this.bandedGridColumn7.Caption = "Тип";
-            this.bandedGridColumn7.FieldName = "WaybillDet1.WaybillList.AdditionalDocType.Name";
-            this.bandedGridColumn7.Name = "bandedGridColumn7";
-            this.bandedGridColumn7.Visible = true;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Документ";
-            this.gridBand1.Columns.Add(this.colWType);
-            this.gridBand1.Columns.Add(this.bandedGridColumn1);
-            this.gridBand1.Columns.Add(this.colNum);
-            this.gridBand1.Columns.Add(this.colOnDate);
-            this.gridBand1.Columns.Add(this.colKaName);
-            this.gridBand1.Columns.Add(this.bandedGridColumn7);
-            this.gridBand1.Columns.Add(this.bandedGridColumn5);
-            this.gridBand1.Columns.Add(this.bandedGridColumn6);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 722;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "Позиція";
-            this.gridBand3.Columns.Add(this.bandedGridColumn3);
-            this.gridBand3.Columns.Add(this.bandedGridColumn2);
-            this.gridBand3.Columns.Add(this.colPrice);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 419;
             // 
             // frmPosMatTurn
             // 

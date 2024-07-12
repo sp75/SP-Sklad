@@ -63,6 +63,7 @@
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colKaName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -154,7 +155,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1139, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1341, 24);
             // 
             // barDockControlBottom
             // 
@@ -162,7 +163,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 584);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1139, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1341, 0);
             // 
             // barDockControlLeft
             // 
@@ -176,7 +177,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1139, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1341, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 560);
             // 
@@ -215,14 +216,14 @@
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl2.Location = new System.Drawing.Point(0, 530);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1139, 54);
+            this.panelControl2.Size = new System.Drawing.Size(1341, 54);
             this.panelControl2.TabIndex = 33;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OkButton.Location = new System.Drawing.Point(1052, 12);
+            this.OkButton.Location = new System.Drawing.Point(1254, 12);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 30);
             this.OkButton.TabIndex = 3;
@@ -241,7 +242,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 24);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1139, 44);
+            this.panelControl1.Size = new System.Drawing.Size(1341, 44);
             this.panelControl1.TabIndex = 43;
             // 
             // KagentComboBox
@@ -353,7 +354,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1});
-            this.gridControl1.Size = new System.Drawing.Size(1139, 462);
+            this.gridControl1.Size = new System.Drawing.Size(1341, 462);
             this.gridControl1.TabIndex = 44;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.bandedGridView1});
@@ -374,7 +375,8 @@
             this.colRemain,
             this.bandedGridColumn1,
             this.bandedGridColumn2,
-            this.bandedGridColumn3});
+            this.bandedGridColumn3,
+            this.bandedGridColumn4});
             this.bandedGridView1.GridControl = this.gridControl1;
             this.bandedGridView1.Name = "bandedGridView1";
             this.bandedGridView1.OptionsBehavior.AllowIncrementalSearch = true;
@@ -390,10 +392,11 @@
             this.gridBand1.Columns.Add(this.bandedGridColumn1);
             this.gridBand1.Columns.Add(this.colNum);
             this.gridBand1.Columns.Add(this.colOnDate);
+            this.gridBand1.Columns.Add(this.bandedGridColumn4);
             this.gridBand1.Columns.Add(this.colKaName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 559;
+            this.gridBand1.Width = 711;
             // 
             // colWType
             // 
@@ -408,7 +411,7 @@
             this.colWType.OptionsColumn.ShowCaption = false;
             this.colWType.OptionsColumn.ShowInCustomizationForm = false;
             this.colWType.Visible = true;
-            this.colWType.Width = 25;
+            this.colWType.Width = 26;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -471,7 +474,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.ShowCaption = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 40;
+            this.bandedGridColumn1.Width = 42;
             // 
             // colNum
             // 
@@ -479,7 +482,7 @@
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 81;
+            this.colNum.Width = 85;
             // 
             // colOnDate
             // 
@@ -489,7 +492,15 @@
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 113;
+            this.colOnDate.Width = 119;
+            // 
+            // bandedGridColumn4
+            // 
+            this.bandedGridColumn4.Caption = "Тип";
+            this.bandedGridColumn4.FieldName = "AdditionalDocTypeName";
+            this.bandedGridColumn4.Name = "bandedGridColumn4";
+            this.bandedGridColumn4.Visible = true;
+            this.bandedGridColumn4.Width = 120;
             // 
             // colKaName
             // 
@@ -497,7 +508,7 @@
             this.colKaName.FieldName = "KAgentName";
             this.colKaName.Name = "colKaName";
             this.colKaName.Visible = true;
-            this.colKaName.Width = 300;
+            this.colKaName.Width = 319;
             // 
             // gridBand3
             // 
@@ -507,7 +518,7 @@
             this.gridBand3.Columns.Add(this.colRemain);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 1;
-            this.gridBand3.Width = 418;
+            this.gridBand3.Width = 455;
             // 
             // bandedGridColumn3
             // 
@@ -519,7 +530,7 @@
             this.bandedGridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Amount", "{0:0.0000}")});
             this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 70;
+            this.bandedGridColumn3.Width = 59;
             // 
             // bandedGridColumn2
             // 
@@ -527,7 +538,7 @@
             this.bandedGridColumn2.FieldName = "WhName";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 234;
+            this.bandedGridColumn2.Width = 293;
             // 
             // colRemain
             // 
@@ -537,7 +548,7 @@
             this.colRemain.FieldName = "Remain";
             this.colRemain.Name = "colRemain";
             this.colRemain.Visible = true;
-            this.colRemain.Width = 114;
+            this.colRemain.Width = 103;
             // 
             // gridBand2
             // 
@@ -546,7 +557,7 @@
             this.gridBand2.Columns.Add(this.colCurrName);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 2;
-            this.gridBand2.Width = 154;
+            this.gridBand2.Width = 150;
             // 
             // colPrice
             // 
@@ -556,7 +567,7 @@
             this.colPrice.FieldName = "Price";
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.Width = 88;
+            this.colPrice.Width = 81;
             // 
             // colCurrName
             // 
@@ -564,13 +575,13 @@
             this.colCurrName.FieldName = "CurrName";
             this.colCurrName.Name = "colCurrName";
             this.colCurrName.Visible = true;
-            this.colCurrName.Width = 66;
+            this.colCurrName.Width = 69;
             // 
             // frmMatTurn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1139, 584);
+            this.ClientSize = new System.Drawing.Size(1341, 584);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.panelControl2);
@@ -644,13 +655,14 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colCurrName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colRemain;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraEditors.LookUpEdit KagentComboBox;
         private DevExpress.Utils.ImageCollection ImageList;
         private DevExpress.Utils.ImageCollection GridImageList;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
     }
 }

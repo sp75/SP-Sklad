@@ -775,6 +775,7 @@
             // 
             this.barButtonItem3.Caption = "Історія партій товару";
             this.barButtonItem3.Id = 50;
+            this.barButtonItem3.ImageOptions.ImageIndex = 16;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 

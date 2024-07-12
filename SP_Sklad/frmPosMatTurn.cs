@@ -113,5 +113,13 @@ namespace SP_Sklad
                 FindDoc.Find(row.WaybillDet1.WaybillList.Id, row.WaybillDet1.WaybillList.WType, row.WaybillDet1.WaybillList.OnDate);
             }
         }
+
+        private void WHComboBox_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                WHComboBox.EditValue = null;
+            }
+        }
     }
 }

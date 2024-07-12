@@ -7948,6 +7948,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <Property Name="WhName" Type="nvarchar" MaxLength="250" />
                 <Property Name="KAgentGroupId" Type="uniqueidentifier" />
                 <Property Name="TurnDescription" Type="nvarchar" MaxLength="250" />
+                <Property Name="AdditionalDocTypeName" Type="nvarchar" MaxLength="100" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -13687,9 +13688,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="UserAccessWh" EntitySet="UserAccessWh" />
           </AssociationSet>
-          <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
-          <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <FunctionImport Name="REP_27" IsComposable="true" ReturnType="Collection(BaseModel.REP_27_Result)">
             <Parameter Name="from_date" Mode="In" Type="DateTime" />
             <Parameter Name="to_date" Mode="In" Type="DateTime" />
@@ -14529,17 +14527,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="RecalcKaSaldo">
           <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="GetMatMove" IsComposable="true" ReturnType="Collection(BaseModel.GetMatMove_Result)">
-            <Parameter Name="mat_id" Mode="In" Type="Int32" />
-            <Parameter Name="from_date" Mode="In" Type="DateTime" />
-            <Parameter Name="to_date" Mode="In" Type="DateTime" />
-            <Parameter Name="wid" Mode="In" Type="Int32" />
-            <Parameter Name="ka_id" Mode="In" Type="Int32" />
-            <Parameter Name="w_type" Mode="In" Type="Int32" />
-            <Parameter Name="wh" Mode="In" Type="String" />
-            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
-            <Parameter Name="user_id" Mode="In" Type="Int32" />
-          </FunctionImport>
           <AssociationSet Name="FK_MatRecDet_Warehouse" Association="BaseModel.FK_MatRecDet_Warehouse">
             <End Role="Warehouse" EntitySet="Warehouse" />
             <End Role="MatRecDet" EntitySet="MatRecDet" />
@@ -14673,6 +14660,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
           <EntitySet Name="v_WayBillOut" EntityType="BaseModel.v_WayBillOut" />
+          <FunctionImport Name="GetUserAccessWh" ReturnType="Collection(BaseModel.GetUserAccessWh_Result)">
+          <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMatMove" IsComposable="true" ReturnType="Collection(BaseModel.GetMatMove_Result)">
+            <Parameter Name="mat_id" Mode="In" Type="Int32" />
+            <Parameter Name="from_date" Mode="In" Type="DateTime" />
+            <Parameter Name="to_date" Mode="In" Type="DateTime" />
+            <Parameter Name="wid" Mode="In" Type="Int32" />
+            <Parameter Name="ka_id" Mode="In" Type="Int32" />
+            <Parameter Name="w_type" Mode="In" Type="Int32" />
+            <Parameter Name="wh" Mode="In" Type="String" />
+            <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -18269,13 +18270,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="GetUserAccessWh_Result">
-          <Property Type="Int32" Name="WId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
-          <Property Type="Int32" Name="Allow" Nullable="false" />
-          <Property Type="Boolean" Name="UseReceived" Nullable="true" />
-          <Property Type="Int32" Name="Id" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="REP_27_Result">
           <Property Type="Int32" Name="MatId" Nullable="false" />
           <Property Type="String" Name="MatName" Nullable="true" MaxLength="255" />
@@ -22565,35 +22559,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="RouteDuration" Type="Int64" />
           <Property Name="RouteId" Type="Int32" />
         </EntityType>
-        <ComplexType Name="GetMatMove_Result">
-          <Property Type="Guid" Name="Id" Nullable="true" />
-          <Property Type="Int32" Name="WBillId" Nullable="true" />
-          <Property Type="Int32" Name="WType" Nullable="true" />
-          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
-          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
-          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Int32" Name="PosId" Nullable="true" />
-          <Property Type="String" Name="KAgentName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="FromWId" Nullable="true" />
-          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="ToWId" Nullable="true" />
-          <Property Type="Int32" Name="DocId" Nullable="true" />
-          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="MsrName" Nullable="true" MaxLength="10" />
-          <Property Type="Decimal" Name="SumIn" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="SumOut" Nullable="true" Precision="15" Scale="2" />
-          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="4" />
-          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
-          <Property Type="Guid" Name="KAgentGroupId" Nullable="true" />
-          <Property Type="String" Name="TurnDescription" Nullable="true" MaxLength="250" />
-        </ComplexType>
         <Association Name="FK_MatRecDet_Warehouse">
           <End Type="BaseModel.Warehouse" Role="Warehouse" Multiplicity="0..1" />
           <End Type="BaseModel.MatRecDet" Role="MatRecDet" Multiplicity="*" />
@@ -24163,6 +24128,44 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="IsDelivered" Type="Int32" Nullable="false" />
           <Property Name="InTransit" Type="Int32" Nullable="false" />
         </EntityType>
+        <ComplexType Name="GetUserAccessWh_Result">
+          <Property Type="Int32" Name="WId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="Int32" Name="Allow" Nullable="false" />
+          <Property Type="Boolean" Name="UseReceived" Nullable="true" />
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="String" Name="Notes" Nullable="true" MaxLength="255" />
+        </ComplexType>
+        <ComplexType Name="GetMatMove_Result">
+          <Property Type="Guid" Name="Id" Nullable="true" />
+          <Property Type="Int32" Name="WBillId" Nullable="true" />
+          <Property Type="Int32" Name="WType" Nullable="true" />
+          <Property Type="DateTime" Name="OnDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Num" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="Price" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="CurrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="OnValue" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Int32" Name="PosId" Nullable="true" />
+          <Property Type="String" Name="KAgentName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="FromWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="FromWId" Nullable="true" />
+          <Property Type="String" Name="ToWh" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="ToWId" Nullable="true" />
+          <Property Type="Int32" Name="DocId" Nullable="true" />
+          <Property Type="Decimal" Name="Remain" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="MsrName" Nullable="true" MaxLength="10" />
+          <Property Type="Decimal" Name="SumIn" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="SumOut" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="AmountIn" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="AmountOut" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="Decimal" Name="AvgPrice" Nullable="true" Precision="15" Scale="4" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WhName" Nullable="true" MaxLength="250" />
+          <Property Type="Guid" Name="KAgentGroupId" Nullable="true" />
+          <Property Type="String" Name="TurnDescription" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="AdditionalDocTypeName" Nullable="true" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -26676,17 +26679,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="GetUserAccessWh" FunctionName="BaseModel.Store.GetUserAccessWh">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessWh_Result">
-                <ScalarProperty Name="WId" ColumnName="WId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Allow" ColumnName="Allow" />
-                <ScalarProperty Name="UseReceived" ColumnName="UseReceived" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="REP_27" FunctionName="BaseModel.Store.REP_27">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BaseModel.REP_27_Result">
@@ -29386,39 +29378,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="RecalcKaSaldo" FunctionName="BaseModel.Store.RecalcKaSaldo" />
-          <FunctionImportMapping FunctionImportName="GetMatMove" FunctionName="BaseModel.Store.GetMatMove">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BaseModel.GetMatMove_Result">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
-                <ScalarProperty Name="WType" ColumnName="WType" />
-                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
-                <ScalarProperty Name="PosId" ColumnName="PosId" />
-                <ScalarProperty Name="KAgentName" ColumnName="KAgentName" />
-                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
-                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
-                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
-                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
-                <ScalarProperty Name="DocId" ColumnName="DocId" />
-                <ScalarProperty Name="Remain" ColumnName="Remain" />
-                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
-                <ScalarProperty Name="SumIn" ColumnName="SumIn" />
-                <ScalarProperty Name="SumOut" ColumnName="SumOut" />
-                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
-                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
-                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
-                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
-                <ScalarProperty Name="WhName" ColumnName="WhName" />
-                <ScalarProperty Name="KAgentGroupId" ColumnName="KAgentGroupId" />
-                <ScalarProperty Name="TurnDescription" ColumnName="TurnDescription" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="ExpeditionMaterialsDet">
             <EntityTypeMapping TypeName="BaseModel.ExpeditionMaterialsDet">
               <MappingFragment StoreEntitySet="ExpeditionMaterialsDet">
@@ -30623,6 +30582,52 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetUserAccessWh" FunctionName="BaseModel.Store.GetUserAccessWh">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetUserAccessWh_Result">
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Allow" ColumnName="Allow" />
+                <ScalarProperty Name="UseReceived" ColumnName="UseReceived" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetMatMove" FunctionName="BaseModel.Store.GetMatMove">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BaseModel.GetMatMove_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WBillId" ColumnName="WBillId" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="OnValue" ColumnName="OnValue" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="KAgentName" ColumnName="KAgentName" />
+                <ScalarProperty Name="FromWh" ColumnName="FromWh" />
+                <ScalarProperty Name="FromWId" ColumnName="FromWId" />
+                <ScalarProperty Name="ToWh" ColumnName="ToWh" />
+                <ScalarProperty Name="ToWId" ColumnName="ToWId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="SumIn" ColumnName="SumIn" />
+                <ScalarProperty Name="SumOut" ColumnName="SumOut" />
+                <ScalarProperty Name="AmountIn" ColumnName="AmountIn" />
+                <ScalarProperty Name="AmountOut" ColumnName="AmountOut" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="KAgentGroupId" ColumnName="KAgentGroupId" />
+                <ScalarProperty Name="TurnDescription" ColumnName="TurnDescription" />
+                <ScalarProperty Name="AdditionalDocTypeName" ColumnName="AdditionalDocTypeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

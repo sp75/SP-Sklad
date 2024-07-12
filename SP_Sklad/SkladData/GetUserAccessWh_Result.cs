@@ -18,5 +18,6 @@ namespace SP_Sklad.SkladData
         public int Allow { get; set; }
         public Nullable<bool> UseReceived { get; set; }
         public Nullable<int> Id { get; set; }
+        public string Notes { get; set; }
     }
 }

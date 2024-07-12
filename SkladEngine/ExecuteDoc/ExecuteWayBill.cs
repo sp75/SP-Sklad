@@ -20,6 +20,11 @@ namespace SkladEngine.ExecuteDoc
         {
             using (var db = SPDatabase.SPBase())
             {
+                if (!db.v_WayBillOut.Any(a => a.WbillId == wbill_id && a.IsDelivered == 0 && a.InTransit == 1))
+                {
+                    return null;
+                }
+
                 var wb_out = db.WaybillList.Find(wbill_id);
                 var ka = db.v_Kagent.FirstOrDefault(w => w.KaId == wb_out.KaId);
                 var wh = db.Warehouse.Find(ka.WId);

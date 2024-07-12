@@ -1594,15 +1594,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CopyPriceList", price_idParameter);
         }
     
-        public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
-        {
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
-        }
-    
         [EdmFunction("BaseEntities", "REP_27")]
         public virtual IQueryable<REP_27_Result> REP_27(Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> ka_id, Nullable<int> grp_id, Nullable<int> mat_id, Nullable<System.Guid> ka_grp_id, Nullable<int> person_id)
         {
@@ -2553,48 +2544,6 @@ namespace SP_Sklad.SkladData
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RecalcKaSaldo", ka_idParameter);
         }
     
-        [EdmFunction("BaseEntities", "GetMatMove")]
-        public virtual IQueryable<GetMatMove_Result> GetMatMove(Nullable<int> mat_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> wid, Nullable<int> ka_id, Nullable<int> w_type, string wh, Nullable<System.Guid> ka_grp_id, Nullable<int> user_id)
-        {
-            var mat_idParameter = mat_id.HasValue ?
-                new ObjectParameter("mat_id", mat_id) :
-                new ObjectParameter("mat_id", typeof(int));
-    
-            var from_dateParameter = from_date.HasValue ?
-                new ObjectParameter("from_date", from_date) :
-                new ObjectParameter("from_date", typeof(System.DateTime));
-    
-            var to_dateParameter = to_date.HasValue ?
-                new ObjectParameter("to_date", to_date) :
-                new ObjectParameter("to_date", typeof(System.DateTime));
-    
-            var widParameter = wid.HasValue ?
-                new ObjectParameter("wid", wid) :
-                new ObjectParameter("wid", typeof(int));
-    
-            var ka_idParameter = ka_id.HasValue ?
-                new ObjectParameter("ka_id", ka_id) :
-                new ObjectParameter("ka_id", typeof(int));
-    
-            var w_typeParameter = w_type.HasValue ?
-                new ObjectParameter("w_type", w_type) :
-                new ObjectParameter("w_type", typeof(int));
-    
-            var whParameter = wh != null ?
-                new ObjectParameter("wh", wh) :
-                new ObjectParameter("wh", typeof(string));
-    
-            var ka_grp_idParameter = ka_grp_id.HasValue ?
-                new ObjectParameter("ka_grp_id", ka_grp_id) :
-                new ObjectParameter("ka_grp_id", typeof(System.Guid));
-    
-            var user_idParameter = user_id.HasValue ?
-                new ObjectParameter("user_id", user_id) :
-                new ObjectParameter("user_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh, @ka_grp_id, @user_id)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter, ka_grp_idParameter, user_idParameter);
-        }
-    
         public virtual int ChangeWaybillKagent(Nullable<int> new_kaid, Nullable<int> wbill_id)
         {
             var new_kaidParameter = new_kaid.HasValue ?
@@ -2683,6 +2632,57 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pos_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ReservedPositionV2", pos_idParameter);
+        }
+    
+        public virtual ObjectResult<GetUserAccessWh_Result> GetUserAccessWh(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetUserAccessWh_Result>("GetUserAccessWh", user_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetMatMove")]
+        public virtual IQueryable<GetMatMove_Result> GetMatMove(Nullable<int> mat_id, Nullable<System.DateTime> from_date, Nullable<System.DateTime> to_date, Nullable<int> wid, Nullable<int> ka_id, Nullable<int> w_type, string wh, Nullable<System.Guid> ka_grp_id, Nullable<int> user_id)
+        {
+            var mat_idParameter = mat_id.HasValue ?
+                new ObjectParameter("mat_id", mat_id) :
+                new ObjectParameter("mat_id", typeof(int));
+    
+            var from_dateParameter = from_date.HasValue ?
+                new ObjectParameter("from_date", from_date) :
+                new ObjectParameter("from_date", typeof(System.DateTime));
+    
+            var to_dateParameter = to_date.HasValue ?
+                new ObjectParameter("to_date", to_date) :
+                new ObjectParameter("to_date", typeof(System.DateTime));
+    
+            var widParameter = wid.HasValue ?
+                new ObjectParameter("wid", wid) :
+                new ObjectParameter("wid", typeof(int));
+    
+            var ka_idParameter = ka_id.HasValue ?
+                new ObjectParameter("ka_id", ka_id) :
+                new ObjectParameter("ka_id", typeof(int));
+    
+            var w_typeParameter = w_type.HasValue ?
+                new ObjectParameter("w_type", w_type) :
+                new ObjectParameter("w_type", typeof(int));
+    
+            var whParameter = wh != null ?
+                new ObjectParameter("wh", wh) :
+                new ObjectParameter("wh", typeof(string));
+    
+            var ka_grp_idParameter = ka_grp_id.HasValue ?
+                new ObjectParameter("ka_grp_id", ka_grp_id) :
+                new ObjectParameter("ka_grp_id", typeof(System.Guid));
+    
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh, @ka_grp_id, @user_id)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter, ka_grp_idParameter, user_idParameter);
         }
     }
 }

@@ -188,6 +188,7 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -1159,7 +1160,8 @@
             this.UserAccessWhGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn2,
             this.gridColumn3,
-            this.gridColumn6});
+            this.gridColumn6,
+            this.gridColumn14});
             this.UserAccessWhGridView.GridControl = this.UserAccessWhGridControl;
             this.UserAccessWhGridView.Name = "UserAccessWhGridView";
             this.UserAccessWhGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1174,8 +1176,8 @@
             this.gridColumn2.FieldName = "Allow";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 1;
-            this.gridColumn2.Width = 93;
+            this.gridColumn2.VisibleIndex = 2;
+            this.gridColumn2.Width = 59;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -1195,7 +1197,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 0;
-            this.gridColumn3.Width = 421;
+            this.gridColumn3.Width = 284;
             // 
             // gridColumn6
             // 
@@ -1204,8 +1206,8 @@
             this.gridColumn6.FieldName = "UseReceived";
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 2;
-            this.gridColumn6.Width = 103;
+            this.gridColumn6.VisibleIndex = 3;
+            this.gridColumn6.Width = 91;
             // 
             // repositoryItemCheckEdit5
             // 
@@ -1930,6 +1932,15 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Примітка";
+            this.gridColumn14.FieldName = "Notes";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 1;
+            this.gridColumn14.Width = 171;
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2181,5 +2192,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

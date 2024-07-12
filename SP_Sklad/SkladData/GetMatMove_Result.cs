@@ -40,5 +40,6 @@ namespace SP_Sklad.SkladData
         public string WhName { get; set; }
         public Nullable<System.Guid> KAgentGroupId { get; set; }
         public string TurnDescription { get; set; }
+        public string AdditionalDocTypeName { get; set; }
     }
 }
