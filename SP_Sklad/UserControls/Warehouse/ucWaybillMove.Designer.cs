@@ -151,6 +151,11 @@
             // WBGridControl
             // 
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WBGridControl.Location = new System.Drawing.Point(0, 50);
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
@@ -159,6 +164,7 @@
             this.CheckedItemImageComboBox});
             this.WBGridControl.Size = new System.Drawing.Size(1299, 348);
             this.WBGridControl.TabIndex = 5;
+            this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 

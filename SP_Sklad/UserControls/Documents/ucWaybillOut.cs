@@ -49,6 +49,18 @@ namespace SP_Sklad.UserControls
             fgr = new FocusGridRow(WbGridView);
         }
 
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
+
         public void NewItem()
         {
             using (var wb_in = new frmWayBillOut(w_type, null))
@@ -299,11 +311,6 @@ namespace SP_Sklad.UserControls
         {
             EditItem();
             GetData();
-        }
-
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SetWBEditorBarBtn()
@@ -598,5 +605,6 @@ namespace SP_Sklad.UserControls
 
          
         }
+
     }
 }

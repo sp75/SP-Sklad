@@ -58,6 +58,18 @@ namespace SP_Sklad.UserControls
             ka_template_list = new List<KaTemplateList>();
         }
 
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PriceListGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
+
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ucProjectManagement_Load(object sender, EventArgs e)
         {
@@ -176,10 +188,6 @@ namespace SP_Sklad.UserControls
             SetWBEditorBarBtn();
         }
 
-        public void SaveGridLayouts()
-        {
-            PriceListGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
-        }
 
         private void ProjectManagementStartDateEdit_EditValueChanged(object sender, EventArgs e)
         {

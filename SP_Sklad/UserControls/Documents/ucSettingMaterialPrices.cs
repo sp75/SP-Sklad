@@ -42,6 +42,17 @@ namespace SP_Sklad.UserControls
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SettingMaterialPricesGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         public void GetData()
         {
@@ -161,11 +172,6 @@ namespace SP_Sklad.UserControls
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
-        }
-
-        public void SaveGridLayouts()
-        {
-            SettingMaterialPricesGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)

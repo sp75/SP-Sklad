@@ -48,6 +48,17 @@ namespace SP_Sklad.UserControls
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            KAgentAdjustmentGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ucProjectManagement_Load(object sender, EventArgs e)
@@ -175,10 +186,7 @@ namespace SP_Sklad.UserControls
             SetWBEditorBarBtn();
         }
 
-        public void SaveGridLayouts()
-        {
-            KAgentAdjustmentGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
-        }
+
 
 
         private void SetWBEditorBarBtn()

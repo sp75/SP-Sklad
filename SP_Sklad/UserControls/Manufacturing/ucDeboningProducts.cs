@@ -49,8 +49,14 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
 
-        public void SaveGridLayouts()
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             DeboningGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }

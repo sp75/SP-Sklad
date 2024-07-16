@@ -511,7 +511,7 @@
             // 
             // barButtonItem7
             // 
-            this.barButtonItem7.Caption = "Відкрити скрипт";
+            this.barButtonItem7.Caption = "Відкрити SQL запит";
             this.barButtonItem7.Id = 45;
             this.barButtonItem7.ImageOptions.ImageIndex = 9;
             this.barButtonItem7.Name = "barButtonItem7";
@@ -519,7 +519,7 @@
             // 
             // barButtonItem8
             // 
-            this.barButtonItem8.Caption = "Зберегти";
+            this.barButtonItem8.Caption = "Зберегти SQL запит";
             this.barButtonItem8.Id = 46;
             this.barButtonItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.Image")));
             this.barButtonItem8.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem8.ImageOptions.LargeImage")));

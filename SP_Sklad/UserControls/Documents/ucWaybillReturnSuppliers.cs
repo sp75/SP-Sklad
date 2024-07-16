@@ -51,6 +51,17 @@ namespace SP_Sklad.UserControls
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         public void NewItem()
         {
@@ -310,11 +321,6 @@ namespace SP_Sklad.UserControls
         {
             EditItem();
             GetData();
-        }
-
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void SetWBEditorBarBtn()

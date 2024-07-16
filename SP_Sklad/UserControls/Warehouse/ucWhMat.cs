@@ -86,12 +86,24 @@ namespace SP_Sklad.UserControls.Warehouse
             public int MatId { get; set; }
         }
 
-        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
+       
         public ucWhMat()
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
 
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WhMatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWhMat\\WhMatGridView");
+        }
+
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ucWhMat_Load(object sender, EventArgs e)
         {
             WhMatGridView.SaveLayoutToStream(wh_layout_stream);
@@ -672,11 +684,6 @@ namespace SP_Sklad.UserControls.Warehouse
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             GetWhBottomInfo(focused_wh_mat);
-        }
-
-        public void SaveGridLayouts()
-        {
-            WhMatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "ucWhMat\\WhMatGridView");
         }
 
         private void WhCheckedComboBox_EditValueChanged(object sender, EventArgs e)

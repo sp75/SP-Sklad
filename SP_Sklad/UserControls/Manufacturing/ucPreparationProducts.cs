@@ -35,6 +35,17 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PreparationRawMaterialsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
@@ -171,11 +182,6 @@ namespace SP_Sklad.MainTabs
         public void PrintItem()
         {
             PrintDoc.Show(focused_prep_raw_mat_row.Id, focused_prep_raw_mat_row.WType, DB.SkladBase());
-        }
-
-        public void SaveGridLayouts()
-        {
-            PreparationRawMaterialsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

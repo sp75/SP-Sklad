@@ -25,7 +25,7 @@ namespace SP_Sklad.Reports
 
         private void frmDocumentDetails_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ucDocumentDetails1.SaveGridLayouts();
+            
         }
     }
 }

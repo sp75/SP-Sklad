@@ -38,6 +38,17 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            IntermediateWeighingGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         private void wbStartDate_Properties_EditValueChanged(object sender, EventArgs e)
         {
@@ -58,10 +69,6 @@ namespace SP_Sklad.MainTabs
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
                 user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
-        }
-        public void SaveGridLayouts()
-        {
-            IntermediateWeighingGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         public void NewItem()

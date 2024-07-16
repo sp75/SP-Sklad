@@ -47,7 +47,17 @@ namespace SP_Sklad.UserControls
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
 
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ExpeditionsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
         public void GetData()
         {
             prev_rowHandle = ExpeditionsGridView.FocusedRowHandle;
@@ -203,12 +213,7 @@ namespace SP_Sklad.UserControls
             }
         }
 
-        public void SaveGridLayouts()
-        {
-            ExpeditionsGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
-        }
-
-        private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
+         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
         {
             EditBtn.PerformClick();
         }

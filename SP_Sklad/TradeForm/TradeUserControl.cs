@@ -55,6 +55,18 @@ namespace SP_Sklad.MainTabs
             InitializeComponent();
             ka_template_list = new List<KaTemplateList>();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\WbGridView");
+            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\PayDocGridView");
+        }
 
         private void DocumentsPanel_Load(object sender, EventArgs e)
         {
@@ -905,11 +917,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\WbGridView");
-            PayDocGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "\\TradeUserControl\\PayDocGridView");
-        }
+
 
  
         private void wbKagentList_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

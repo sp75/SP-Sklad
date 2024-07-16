@@ -95,34 +95,6 @@ namespace SP_Sklad
 
         private void mainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            docsUserControl1.wayBillInUserControl.SaveGridLayouts();
-            docsUserControl1.ucWBOrdersOut.SaveGridLayouts();
-            docsUserControl1.ucWaybillOut.SaveGridLayouts();
-            docsUserControl1.ucWBOrdersIn.SaveGridLayouts();
-            docsUserControl1.ucInvoices.SaveGridLayouts();
-            docsUserControl1.ucServicesIn.SaveGridLayouts();
-            docsUserControl1.ucWayBillReturnСustomers.SaveGridLayouts();
-            docsUserControl1.ucWaybillReturnSuppliers.SaveGridLayouts();
-            docsUserControl1.ucKAgentAdjustmentIn.SaveGridLayouts();
-            docsUserControl1.ucKAgentAdjustmentOut.SaveGridLayouts();
-            docsUserControl1.ucPayDocIn.SaveGridLayouts();
-            docsUserControl1.ucPayDocOut.SaveGridLayouts();
-            docsUserControl1.ucPayDocExtOut.SaveGridLayouts();
-            docsUserControl1.ucPayDoc.SaveGridLayouts();
-            docsUserControl1.ucProjectManagement.SaveGridLayouts();
-
-            whUserControl.ucWaybillMove.SaveGridLayouts();
-            whUserControl.ucWaybillWriteOn.SaveGridLayouts();
-            whUserControl.ucWaybillWriteOff.SaveGridLayouts();
-            whUserControl.ucWhMat.SaveGridLayouts();
-            whUserControl.ucWaybillInventory.SaveGridLayouts();
-
-            manufacturingUserControl1.ucManufacturingProducts.SaveGridLayouts();
-            manufacturingUserControl1.ucDeboningProducts.SaveGridLayouts();
-
-            tradeUserControl1.SaveGridLayouts();
-            financesUserControl1.SaveGridLayouts();
-
             using (var db = new BaseEntities())
             {
                 var user = db.Users.Find(user_id);

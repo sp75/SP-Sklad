@@ -47,6 +47,17 @@ namespace SP_Sklad.MainTabs
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
@@ -583,11 +594,6 @@ namespace SP_Sklad.MainTabs
         {
             DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1) && TechProcGridView.DataRowCount > 0);
             EditTechProcBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/);
-        }
-
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

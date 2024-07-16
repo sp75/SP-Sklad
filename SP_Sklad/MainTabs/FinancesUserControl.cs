@@ -36,6 +36,17 @@ namespace SP_Sklad.MainTabs
 
             wbContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MoneyMoveGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
+        }
 
         private void FinancesUserControl_Load(object sender, EventArgs e)
         {
@@ -76,10 +87,6 @@ namespace SP_Sklad.MainTabs
             
         }
 
-        public void SaveGridLayouts()
-        {
-            MoneyMoveGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + "FinancesUserControl\\MoneyMoveGridView");
-        }
 
         private void FinancesTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {

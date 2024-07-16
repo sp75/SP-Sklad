@@ -178,11 +178,13 @@
             this.MatRecipeAdditionalCostsView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -304,8 +306,10 @@
             this.barButtonItem4,
             this.barButtonItem2,
             this.barButtonItem5,
-            this.PrintBtn});
-            this.barManager1.MaxItemId = 8;
+            this.PrintBtn,
+            this.barButtonItem6,
+            this.barSubItem1});
+            this.barManager1.MaxItemId = 10;
             // 
             // bar2
             // 
@@ -318,7 +322,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true)});
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -350,9 +354,9 @@
             // 
             // PrintBtn
             // 
-            this.PrintBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintBtn.Caption = "Рецептура";
             this.PrintBtn.Id = 7;
-            this.PrintBtn.ImageOptions.ImageIndex = 9;
+            this.PrintBtn.ImageOptions.ImageIndex = 14;
             this.PrintBtn.Name = "PrintBtn";
             this.PrintBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintBtn_ItemClick);
             // 
@@ -1637,6 +1641,13 @@
             this.gridColumn12.VisibleIndex = 2;
             this.gridColumn12.Width = 149;
             // 
+            // repositoryItemCalcEdit1
+            // 
+            this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            // 
             // gridColumn13
             // 
             this.gridColumn13.Caption = "Од. виміру";
@@ -1674,12 +1685,24 @@
             this.simpleButton8.Text = "Видалити";
             this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
-            // repositoryItemCalcEdit1
+            // barButtonItem6
             // 
-            this.repositoryItemCalcEdit1.AutoHeight = false;
-            this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.barButtonItem6.Caption = "Калькуляція";
+            this.barButtonItem6.Id = 8;
+            this.barButtonItem6.ImageOptions.ImageIndex = 14;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
+            // barSubItem1
+            // 
+            this.barSubItem1.Caption = "Друк/Попередній перегляд";
+            this.barSubItem1.Id = 9;
+            this.barSubItem1.ImageOptions.ImageIndex = 9;
+            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
             // 
             // frmMatRecipe
             // 
@@ -1909,5 +1932,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
         private DevExpress.Utils.ImageCollection ImageList;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
+        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
     }
 }

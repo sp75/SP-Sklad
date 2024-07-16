@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -612,6 +613,47 @@ namespace SP_Sklad.EditForm
             {
                 WIdLookUpEdit.EditValue = IHelper.ShowDirectList(WIdLookUpEdit.EditValue, 2);
             }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var mr = _db.MatRecipe.Where(w => w.RecId == _mr.RecId).Select(s => new { s.Materials.Name, s.Amount, s.Out, s.ThermoLossOut, s.Materials.Measures.ShortName }).ToList();
+            var raw_mat_type = _db.RawMaterialType.ToList();
+            var mrd = _db.MatRecDet.Where(w => w.RecId == _mr.RecId).Select(s => new
+            {
+                s.MatId,
+                s.Materials.Name,
+                s.Amount,
+                RawMaterialTypeId = s.Materials.RawMaterialTypeId ?? 0,
+                s.Materials.Measures.ShortName,
+                AvgPrice = _db.v_PosRemains.Where(ww => ww.MatId == s.MatId).GroupBy(g => g.MatId).Select(ss => ss.Sum(s1 => s1.Remain * s1.AvgPrice) / ss.Sum(s1 => s1.Remain)).FirstOrDefault()
+            }).ToList();
+
+            var acost = _db.MatRecipeAdditionalCosts.Where(w => w.RecId == _mr.RecId).Select(s=> new
+            {
+                s.Amount,
+                s.AdditionalCosts.Name,
+                s.AdditionalCosts.Kod
+            }).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "Id",
+                fk = "RawMaterialTypeId",
+                master_table = "RawMaterialGrp",
+                child_table = "MatRecDet"
+            });
+
+            dataForReport.Add("MatRecipe", mr);
+            dataForReport.Add("MatRecDet", mrd);
+            dataForReport.Add("RawMaterialGrp", raw_mat_type.Where(w=> mrd.Select(s=> s.RawMaterialTypeId).ToList().Contains(w.Id)).ToList());
+            dataForReport.Add("AdditionalCosts", acost);
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, "RecipeCalculation.xlsx");
         }
     }
 }

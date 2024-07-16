@@ -33,6 +33,7 @@ namespace SP_Sklad.WBDetForm
 
         private void frmWBInventoryDet_Load(object sender, EventArgs e)
         {
+            NdsEdit.Enabled = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db).AccessEditPrice;
             _wbd = _db.WaybillDet.Find(_PosId);
 
             if (_wbd == null)

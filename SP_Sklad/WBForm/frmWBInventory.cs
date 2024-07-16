@@ -342,7 +342,7 @@ namespace SP_Sklad.WBForm
             {
                 wbd.Discount = Convert.ToDecimal(e.Value);
             }
-            if (e.Column.FieldName == "Nds")
+            if (e.Column.FieldName == "Nds" && user_settings.AccessEditPrice)
             {
                 wbd.Nds = Convert.ToDecimal(e.Value);
             }

@@ -49,6 +49,17 @@ namespace SP_Sklad.UserControls
         {
             InitializeComponent();
         }
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
 
         public void NewItem()
         {
@@ -305,11 +316,6 @@ namespace SP_Sklad.UserControls
             GetData();
         }
 
-        public void SaveGridLayouts()
-        {
-            WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
-        }
-
         private void SetWBEditorBarBtn()
         {
             xtraTabControl2_SelectedPageChanged(null, null);
@@ -389,19 +395,28 @@ namespace SP_Sklad.UserControls
 
         private void repositoryItemLookUpEdit3_EditValueChanged(object sender, EventArgs e)
         {
-            if (!ExtEditBtn.Enabled)
+            if (!ExtEditBtn.Enabled || wb_focused_row == null)
             {
                 return;
             }
 
             using (var _db = new BaseEntities())
             {
-                var PTypeId = Convert.ToInt32(((LookUpEdit)sender).EditValue);
+                var edit_v = ((LookUpEdit)sender).EditValue;
+                if(edit_v == null)
+                {
+                    return;
+                }
+
+                var PTypeId = Convert.ToInt32(edit_v);
 
                 var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId);
 
-                wb.PTypeId = PTypeId;
-                _db.SaveChanges();
+                if (wb != null)
+                {
+                    wb.PTypeId = PTypeId;
+                    _db.SaveChanges();
+                }
             }
 
             RefrechItemBtn.PerformClick();

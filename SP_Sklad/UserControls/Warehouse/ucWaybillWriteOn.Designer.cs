@@ -46,6 +46,8 @@
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn58 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -86,8 +88,6 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.WayBillMoveSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -147,6 +147,11 @@
             // WBGridControl
             // 
             this.WBGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WBGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WBGridControl.Location = new System.Drawing.Point(0, 50);
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
@@ -155,6 +160,7 @@
             this.CheckedItemImageComboBox});
             this.WBGridControl.Size = new System.Drawing.Size(1299, 348);
             this.WBGridControl.TabIndex = 5;
+            this.WBGridControl.UseEmbeddedNavigator = true;
             this.WBGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WbGridView});
             // 
@@ -335,6 +341,24 @@
             this.gridColumn59.Caption = "Підстава";
             this.gridColumn59.FieldName = "Reason";
             this.gridColumn59.Name = "gridColumn59";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Тип документа";
+            this.gridColumn8.FieldName = "AdditionalDocTypeName";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.VisibleIndex = 7;
+            this.gridColumn8.Width = 246;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "На склад";
+            this.gridColumn9.FieldName = "ToWh";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 5;
+            this.gridColumn9.Width = 238;
             // 
             // standaloneBarDockControl1
             // 
@@ -764,24 +788,6 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Тип документа";
-            this.gridColumn8.FieldName = "AdditionalDocTypeName";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 246;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "На склад";
-            this.gridColumn9.FieldName = "ToWh";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 5;
-            this.gridColumn9.Width = 238;
             // 
             // ucWaybillWriteOn
             // 
