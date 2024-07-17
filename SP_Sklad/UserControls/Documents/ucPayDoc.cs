@@ -130,7 +130,7 @@ namespace SP_Sklad.UserControls
 
             if (_pd != null)
             {
-                if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити платіжний документ {_pd.DocNum}", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити платіжний документ {_pd.DocNum}", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     _db.PayDoc.Remove(_pd);
                     _db.SaveChanges();

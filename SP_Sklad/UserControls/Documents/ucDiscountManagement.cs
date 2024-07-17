@@ -20,10 +20,10 @@ using SP_Sklad.WBForm;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucProjectManagement : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucDiscountManagement : DevExpress.XtraEditors.XtraUserControl
     {
         private int fun_id = 95;
-        private string reg_layout_path = "ucProjectManagement\\ProjectManagementGridView";
+        private string reg_layout_path = "ucDiscountManagement\\DiscountManagementGridView";
         BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
@@ -42,7 +42,7 @@ namespace SP_Sklad.UserControls
         private Guid? find_id { get; set; }
         private bool restore = false;
 
-        public ucProjectManagement()
+        public ucDiscountManagement()
         {
             InitializeComponent();
         }

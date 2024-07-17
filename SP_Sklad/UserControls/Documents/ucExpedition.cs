@@ -17,6 +17,7 @@ using DevExpress.XtraGrid;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.UserControls
 {
@@ -102,8 +103,11 @@ namespace SP_Sklad.UserControls
             var exp = _db.Expedition.Find(row_exp.Id);
             if (exp != null)
             {
-                _db.Expedition.Remove(exp);
-                _db.SaveChanges();
+                if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити екпедицію #{exp.Num}", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    _db.Expedition.Remove(exp);
+                    _db.SaveChanges();
+                }
             }
         }
 

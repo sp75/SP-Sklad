@@ -103,7 +103,7 @@ namespace SP_Sklad.UserControls
 
         public void DeleteItem()
         {
-            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ {focused_row.Num}?", "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ {focused_row.Num}?", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 var adj = _db.KAgentAdjustment.Find(focused_row.Id);
 

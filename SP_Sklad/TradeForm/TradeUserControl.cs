@@ -329,7 +329,7 @@ namespace SP_Sklad.MainTabs
                             //	case 6: ContractsList->LockRecord();  break;
                             //	case 7: TaxWBList->LockRecord();  break;
                     }
-                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show(Resources.delete_wb, "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         switch (gtype)
                         {

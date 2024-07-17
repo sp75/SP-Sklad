@@ -92,6 +92,7 @@
             this.ucKAgentAdjustmentIn = new SP_Sklad.UserControls.ucKAgentAdjustment();
             this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
             this.ucKAgentAdjustmentOut = new SP_Sklad.UserControls.ucKAgentAdjustment();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -417,7 +418,8 @@
             this.xtraTabPage40,
             this.xtraTabPage41,
             this.xtraTabPage20,
-            this.xtraTabPage21});
+            this.xtraTabPage21,
+            this.xtraTabPage1});
             // 
             // xtraTabPage6
             // 
@@ -982,6 +984,12 @@
             this.ucKAgentAdjustmentOut.TabIndex = 1;
             this.ucKAgentAdjustmentOut.w_type = -23;
             // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1138, 695);
+            this.xtraTabPage1.Text = "Управління знижка";
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -1338,5 +1346,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl3;
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
     }
 }

@@ -1568,6 +1568,12 @@
     <Compile Include="UserControls\Documents\ucDocumentDetails.Designer.cs">
       <DependentUpon>ucDocumentDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Documents\ucDiscountManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucDiscountManagement.Designer.cs">
+      <DependentUpon>ucDiscountManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Manufacturing\ucPlannedCalculation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2679,6 +2685,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Documents\ucDocumentDetails.resx">
       <DependentUpon>ucDocumentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Documents\ucDiscountManagement.resx">
+      <DependentUpon>ucDiscountManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucPlannedCalculation.resx">
       <DependentUpon>ucPlannedCalculation.cs</DependentUpon>

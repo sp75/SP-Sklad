@@ -88,8 +88,11 @@ namespace SP_Sklad.UserControls
             var smp = _db.SettingMaterialPrices.Find(row_smp.Id);
             if (smp != null)
             {
-                _db.SettingMaterialPrices.Remove(smp);
-                _db.SaveChanges();
+                if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ #{smp.Num}", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    _db.SettingMaterialPrices.Remove(smp);
+                    _db.SaveChanges();
+                }
             }
         }
 

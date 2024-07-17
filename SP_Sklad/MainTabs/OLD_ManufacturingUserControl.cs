@@ -726,7 +726,7 @@ namespace SP_Sklad.MainTabs
             {
                 try
                 {
-                    if (MessageBox.Show(Resources.delete_wb, "Відалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    if (MessageBox.Show(Resources.delete_wb, "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                     {
                         switch (focused_tree_node.GType)
                         {
