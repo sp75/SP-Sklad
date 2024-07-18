@@ -102,7 +102,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<MaterialMeasures> MaterialMeasures { get; set; }
         public virtual ICollection<PosRemains> PosRemains { get; set; }
         public virtual ICollection<IntermediateWeighingDet> IntermediateWeighingDet { get; set; }
-        public virtual MatGroup MatGroup { get; set; }
         public virtual ICollection<RawMaterialManagementDet> RawMaterialManagementDet { get; set; }
         public virtual ICollection<MatBarCode> MatBarCode { get; set; }
         public virtual RawMaterialType RawMaterialType { get; set; }
@@ -115,5 +114,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet { get; set; }
         public virtual ICollection<WaybillCorrectionDet> WaybillCorrectionDet1 { get; set; }
         public virtual MaterialType MaterialType { get; set; }
+        public virtual MatGroup MatGroup { get; set; }
     }
 }

@@ -747,10 +747,11 @@ namespace SP_Sklad.Common
             var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
             mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
 
-            var rowHandle = mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.LocateByValue("MatId", mat_id);
-            mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.FocusedRowHandle = rowHandle;
+            //   var rowHandle = mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.LocateByValue("MatId", mat_id);
+            //   mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.FocusedRowHandle = rowHandle;
+            //  mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.TopRowIndex = rowHandle;
 
-            return rowHandle != GridControl.InvalidRowHandle;
+            return mainForm.main_form.whUserControl.ucWhMat.FindItem(mat_id) != GridControl.InvalidRowHandle;
         }
 
         static public bool FindMatInDir(int? mat_id)

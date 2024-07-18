@@ -174,7 +174,18 @@ namespace SP_Sklad.UserControls.Warehouse
             wh_mat_list = await new MaterialRemain(UserSession.UserId).GetRemainingMaterials(grp_id, _wid, (int)whKagentList.EditValue, OnDateEdit.DateTime, (ShowEmptyItemsCheck.Checked ? 1 : 0), wh_list, (ShowAllItemsCheck.Checked ? 1 : 0), "", (display_child_groups ? 1 : 0));
 
             WhMatGetBS.DataSource = wh_mat_list;
-            WhMatGridView.TopRowIndex = top_row;
+
+            if (find_id.HasValue)
+            {
+                    WhMatGridView.FocusedRowHandle = find_id.Value;
+                       WhMatGridView.TopRowIndex = find_id.Value;
+                find_id = null;
+            }
+            else
+            {
+                WhMatGridView.TopRowIndex = top_row;
+            }
+
             WhMatGridView.HideLoadingPanel();
         }
 
@@ -856,6 +867,20 @@ namespace SP_Sklad.UserControls.Warehouse
                 return;
 
             ((BaseEntities)e.Tag).Dispose();
+        }
+
+        public int FindItem(int? mat_id)
+        {
+            WhMatGridView.ClearColumnsFilter();
+            WhMatGridView.ClearFindFilter();
+
+            var rowHandle = WhMatGridView.LocateByValue("MatId", mat_id);
+            find_id = rowHandle;
+       //     WhMatGridView.FocusedRowHandle = rowHandle;
+       //        WhMatGridView.TopRowIndex = rowHandle;
+
+            return rowHandle;
+            //    GetData();
         }
 
         public void GetData()

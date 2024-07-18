@@ -861,10 +861,10 @@
           </Key>
           <Property Name="GrpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="Nds" Type="numeric" Precision="15" Scale="8" />
-          <Property Name="Notes" Type="varchar" MaxLength="255" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
           <Property Name="Num" Type="numeric" Precision="5" Scale="1" />
         </EntityType>
         <EntityType Name="MatGroupPrices">
@@ -14088,15 +14088,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_BankStatements" EntityType="BaseModel.v_BankStatements" />
           <EntitySet Name="BankStatements" EntityType="BaseModel.BankStatements" />
           <EntitySet Name="DefectsClassifier" EntityType="BaseModel.DefectsClassifier" />
-          <EntitySet Name="MatGroup" EntityType="BaseModel.MatGroup" />
-          <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.FK__MATERIALS__GRPID__58D1301D">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="Materials" EntitySet="Materials" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.FK_MGP_MATID">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
-          </AssociationSet>
           <EntitySet Name="v_PriceListDet" EntityType="BaseModel.v_PriceListDet" />
           <EntitySet Name="v_BankStatementsDet" EntityType="BaseModel.v_BankStatementsDet" />
           <EntitySet Name="BankStatementsDet" EntityType="BaseModel.BankStatementsDet" />
@@ -14244,10 +14235,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Materials" EntitySet="Materials" />
             <End Role="KAMatDiscount" EntitySet="KAMatDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
-          </AssociationSet>
           <FunctionImport Name="DiscountList" ReturnType="Collection(BaseModel.DiscountList_Result)">
           <Parameter Name="ka_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -14270,10 +14257,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_KAgentPrices" EntityType="BaseModel.v_KAgentPrices" />
           <EntitySet Name="KAgentMatGroupPrices" EntityType="BaseModel.KAgentMatGroupPrices" />
           <EntitySet Name="KAgentMatPrices" EntityType="BaseModel.KAgentMatPrices" />
-          <AssociationSet Name="FK_KAgentMatGroupPrices_MatGroup" Association="BaseModel.FK_KAgentMatGroupPrices_MatGroup">
-            <End Role="MatGroup" EntitySet="MatGroup" />
-            <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
-          </AssociationSet>
           <AssociationSet Name="FK_KAgentMatGroupPrices_PriceTypes" Association="BaseModel.FK_KAgentMatGroupPrices_PriceTypes">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
@@ -14674,6 +14657,23 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <Parameter Name="ka_grp_id" Mode="In" Type="Guid" />
             <Parameter Name="user_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="MatGroup" EntityType="BaseModel.MatGroup" />
+          <AssociationSet Name="FK_KAgentMatGroupPrices_MatGroup" Association="BaseModel.FK_KAgentMatGroupPrices_MatGroup">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="KAgentMatGroupPrices" EntitySet="KAgentMatGroupPrices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__KAMATGROU__GRPID__395884C4" Association="BaseModel.FK__KAMATGROU__GRPID__395884C4">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="KAMatGroupDiscount" EntitySet="KAMatGroupDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MATERIALS__GRPID__58D1301D" Association="BaseModel.FK__MATERIALS__GRPID__58D1301D">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="Materials" EntitySet="Materials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MGP_MATID" Association="BaseModel.FK_MGP_MATID">
+            <End Role="MatGroup" EntitySet="MatGroup" />
+            <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15683,7 +15683,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MaterialMeasures" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="Materials" ToRole="MaterialMeasures" />
           <NavigationProperty Name="PosRemains" Relationship="BaseModel.FK__POSREMAIN__MATID__2CBDA3B5" FromRole="Materials" ToRole="PosRemains" />
           <NavigationProperty Name="IntermediateWeighingDet" Relationship="BaseModel.FK_IntermediateWeighingDet_Materials" FromRole="Materials" ToRole="IntermediateWeighingDet" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
           <Property Name="RawMaterialTypeId" Type="Int32" />
           <NavigationProperty Name="RawMaterialManagementDet" Relationship="BaseModel.FK_RawMaterialManagementDet_Materials" FromRole="Materials" ToRole="RawMaterialManagementDet" />
           <NavigationProperty Name="MatBarCode" Relationship="BaseModel.FK_MatBarCode_Materials" FromRole="Materials" ToRole="MatBarCode" />
@@ -15699,6 +15698,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="WaybillCorrectionDet1" Relationship="BaseModel.FK_WaybillCorrectionDet_Materials1" FromRole="Materials" ToRole="WaybillCorrectionDet" />
           <Property Name="OpenStoreId" Type="Int32" />
           <NavigationProperty Name="MaterialType" Relationship="BaseModel.FK_Materials_MaterialType" FromRole="Materials" ToRole="MaterialType" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
           </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -16564,9 +16564,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WithNds" Type="Int32" />
           <Property Name="Dis" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Currency" Relationship="BaseModel.FK__MATGROUPP__CURRI__6EC0713C" FromRole="MatGroupPrices" ToRole="Currency" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroupPrices" ToRole="MatGroup" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK__MATGROUPP__PTYPE__6DCC4D03" FromRole="MatGroupPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="PriceTypes1" Relationship="BaseModel.FK_MGP_PPTYPEID" FromRole="MatGroupPrices" ToRole="PriceTypes" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroupPrices" ToRole="MatGroup" />
           </EntityType>
         <EntityType Name="MatPrices">
           <Key>
@@ -20341,48 +20341,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="GrpId" Type="Int32" />
         </EntityType>
-        <EntityType Name="MatGroup">
-          <Key>
-            <PropertyRef Name="GrpId" />
-          </Key>
-          <Property Name="GrpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="Deleted" Type="Int32" Nullable="false" />
-          <Property Name="Nds" Type="Decimal" Precision="15" Scale="8" />
-          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Num" Type="Decimal" Precision="5" Scale="1" />
-          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MatGroup" ToRole="Materials" />
-          <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroup" ToRole="MatGroupPrices" />
-          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
-          <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_MatGroup" FromRole="MatGroup" ToRole="KAgentMatGroupPrices" />
-        </EntityType>
-        <Association Name="FK__MATERIALS__GRPID__58D1301D">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="0..1" />
-          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="Materials">
-              <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MGP_MATID">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="MatGroupPrices">
-              <PropertyRef Name="GrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="v_PriceListDet">
           <Key>
             <PropertyRef Name="PlDetId" />
@@ -21260,8 +21218,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="GrpId" Type="Int32" Nullable="false" />
           <Property Name="OnValue" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
           <Property Name="DiscountType" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK__KAMATGROUP__KAID__3A4CA8FD" FromRole="KAMatGroupDiscount" ToRole="Kagent" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="KAMatGroupDiscount" ToRole="MatGroup" />
         </EntityType>
         <Association Name="FK__KAMATDISC__MATID__32AB8735">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
@@ -21274,20 +21232,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="KAMatDiscount">
               <PropertyRef Name="MatId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__KAMATGROU__GRPID__395884C4">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="KAMatGroupDiscount">
-              <PropertyRef Name="GrpId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -21379,9 +21323,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PricingType" Type="Int32" Nullable="false" />
           <Property Name="ValueType" Type="Int32" Nullable="false" />
           <Property Name="PTypeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_KAgentMatGroupPrices_MatGroup" FromRole="KAgentMatGroupPrices" ToRole="MatGroup" />
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_KAgentMatGroupPrices_PriceTypes" FromRole="KAgentMatGroupPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatGroupPrices_Kagent" FromRole="KAgentMatGroupPrices" ToRole="Kagent" />
+          <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK_KAgentMatGroupPrices_MatGroup" FromRole="KAgentMatGroupPrices" ToRole="MatGroup" />
         </EntityType>
         <EntityType Name="KAgentMatPrices">
           <Key>
@@ -21398,18 +21342,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="PriceTypes" Relationship="BaseModel.FK_KAgentMatPrices_PriceTypes" FromRole="KAgentMatPrices" ToRole="PriceTypes" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_KAgentMatPrices_Kagent" FromRole="KAgentMatPrices" ToRole="Kagent" />
         </EntityType>
-        <Association Name="FK_KAgentMatGroupPrices_MatGroup">
-          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1" />
-          <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MatGroup">
-              <PropertyRef Name="GrpId" />
-            </Principal>
-            <Dependent Role="KAgentMatGroupPrices">
-              <PropertyRef Name="MatGrpId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_KAgentMatGroupPrices_PriceTypes">
           <End Type="BaseModel.PriceTypes" Role="PriceTypes" Multiplicity="1" />
           <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
@@ -24166,6 +24098,74 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="String" Name="TurnDescription" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="AdditionalDocTypeName" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="MatGroup">
+          <Key>
+            <PropertyRef Name="GrpId" />
+          </Key>
+          <Property Name="GrpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="Nds" Type="Decimal" Precision="15" Scale="8" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Num" Type="Decimal" Precision="5" Scale="1" />
+          <NavigationProperty Name="KAgentMatGroupPrices" Relationship="BaseModel.FK_KAgentMatGroupPrices_MatGroup" FromRole="MatGroup" ToRole="KAgentMatGroupPrices" />
+          <NavigationProperty Name="KAMatGroupDiscount" Relationship="BaseModel.FK__KAMATGROU__GRPID__395884C4" FromRole="MatGroup" ToRole="KAMatGroupDiscount" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="MatGroup" ToRole="Materials" />
+          <NavigationProperty Name="MatGroupPrices" Relationship="BaseModel.FK_MGP_MATID" FromRole="MatGroup" ToRole="MatGroupPrices" />
+        </EntityType>
+        <Association Name="FK_KAgentMatGroupPrices_MatGroup">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1" />
+          <End Type="BaseModel.KAgentMatGroupPrices" Role="KAgentMatGroupPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="KAgentMatGroupPrices">
+              <PropertyRef Name="MatGrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__KAMATGROU__GRPID__395884C4">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.KAMatGroupDiscount" Role="KAMatGroupDiscount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="KAMatGroupDiscount">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MATERIALS__GRPID__58D1301D">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="0..1" />
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="Materials">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MGP_MATID">
+          <End Type="BaseModel.MatGroup" Role="MatGroup" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.MatGroupPrices" Role="MatGroupPrices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MatGroup">
+              <PropertyRef Name="GrpId" />
+            </Principal>
+            <Dependent Role="MatGroupPrices">
+              <PropertyRef Name="GrpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -28163,19 +28163,6 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MatGroup">
-            <EntityTypeMapping TypeName="BaseModel.MatGroup">
-              <MappingFragment StoreEntitySet="MatGroup">
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Nds" ColumnName="Nds" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="PId" ColumnName="PId" />
-                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="v_PriceListDet">
             <EntityTypeMapping TypeName="BaseModel.v_PriceListDet">
               <MappingFragment StoreEntitySet="v_PriceListDet">
@@ -30628,6 +30615,19 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="MatGroup">
+            <EntityTypeMapping TypeName="BaseModel.MatGroup">
+              <MappingFragment StoreEntitySet="MatGroup">
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Nds" ColumnName="Nds" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
