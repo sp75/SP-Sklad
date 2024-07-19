@@ -372,6 +372,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="Checked" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="250" />
@@ -2343,20 +2344,17 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary k
 warning 6002: The table/view 'sp_base.dbo.v_DiscountManagementDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DiscountManagementDet">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="DiscountManagementId" />
             <PropertyRef Name="KaId" />
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="Discount" />
             <PropertyRef Name="KaName" />
+            <PropertyRef Name="MatId" />
           </Key>
-          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="DiscountManagementId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="KaId" Type="int" Nullable="false" />
-          <Property Name="MatId" Type="int" Nullable="false" />
-          <Property Name="Discount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="DiscountManagementId" Type="uniqueidentifier" />
+          <Property Name="Id" Type="uniqueidentifier" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10222,13 +10220,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           </EntitySet>
           <EntitySet Name="v_DiscountManagementDet" EntityType="Self.v_DiscountManagementDet" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [v_DiscountManagementDet].[Id] AS [Id], 
-    [v_DiscountManagementDet].[DiscountManagementId] AS [DiscountManagementId], 
     [v_DiscountManagementDet].[KaId] AS [KaId], 
-    [v_DiscountManagementDet].[MatId] AS [MatId], 
-    [v_DiscountManagementDet].[Discount] AS [Discount], 
     [v_DiscountManagementDet].[KaName] AS [KaName], 
-    [v_DiscountManagementDet].[MatName] AS [MatName]
+    [v_DiscountManagementDet].[MatId] AS [MatId], 
+    [v_DiscountManagementDet].[MatName] AS [MatName], 
+    [v_DiscountManagementDet].[Discount] AS [Discount], 
+    [v_DiscountManagementDet].[DiscountManagementId] AS [DiscountManagementId], 
+    [v_DiscountManagementDet].[Id] AS [Id]
     FROM [dbo].[v_DiscountManagementDet] AS [v_DiscountManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Docs" EntityType="Self.v_Docs" store:Type="Views" store:Schema="dbo">
@@ -24284,6 +24282,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="UpdatedBy" Type="Int32" />
           <Property Name="DocType" Type="Int32" />
           <Property Name="SessionId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DiscountManagementDet">
           <Key>
@@ -24325,20 +24324,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         </Association>
         <EntityType Name="v_DiscountManagementDet">
           <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="DiscountManagementId" />
             <PropertyRef Name="KaId" />
-            <PropertyRef Name="MatId" />
-            <PropertyRef Name="Discount" />
             <PropertyRef Name="KaName" />
+            <PropertyRef Name="MatId" />
           </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="DiscountManagementId" Type="Guid" Nullable="false" />
           <Property Name="KaId" Type="Int32" Nullable="false" />
-          <Property Name="MatId" Type="Int32" Nullable="false" />
-          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="DiscountManagementId" Type="Guid" />
+          <Property Name="Id" Type="Guid" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -30805,6 +30801,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="DiscountManagement">
             <EntityTypeMapping TypeName="BaseModel.DiscountManagement">
               <MappingFragment StoreEntitySet="DiscountManagement">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SessionId" ColumnName="SessionId" />
                 <ScalarProperty Name="DocType" ColumnName="DocType" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
@@ -30832,13 +30829,13 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_DiscountManagementDet">
             <EntityTypeMapping TypeName="BaseModel.v_DiscountManagementDet">
               <MappingFragment StoreEntitySet="v_DiscountManagementDet">
-                <ScalarProperty Name="MatName" ColumnName="MatName" />
-                <ScalarProperty Name="KaName" ColumnName="KaName" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="MatId" ColumnName="MatId" />
-                <ScalarProperty Name="KaId" ColumnName="KaId" />
-                <ScalarProperty Name="DiscountManagementId" ColumnName="DiscountManagementId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DiscountManagementId" ColumnName="DiscountManagementId" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -2401,6 +2401,12 @@
     <Compile Include="WBForm\frmWayBillCustomerOrder.Designer.cs">
       <DependentUpon>frmWayBillCustomerOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="WBForm\frmDiscountManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WBForm\frmDiscountManagement.Designer.cs">
+      <DependentUpon>frmDiscountManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="WBForm\frmWaybillTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3097,6 +3103,9 @@
     <EmbeddedResource Include="WBForm\frmWayBillCustomerOrder.resx">
       <DependentUpon>frmWayBillCustomerOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WBForm\frmDiscountManagement.resx">
+      <DependentUpon>frmDiscountManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WBForm\frmWaybillTemplate.resx">
       <DependentUpon>frmWaybillTemplate.cs</DependentUpon>
     </EmbeddedResource>
@@ -3195,6 +3204,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.CurrencyRate.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DefectsClassifier.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscCards.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.DiscountManagement.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Expedition.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ExpeditionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.ExpeditionMaterialsDet.datasource" />

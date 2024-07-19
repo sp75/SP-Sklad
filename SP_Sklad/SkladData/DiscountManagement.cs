@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<int> DocType { get; set; }
         public Nullable<System.Guid> SessionId { get; set; }
+        public string Name { get; set; }
     }
 }

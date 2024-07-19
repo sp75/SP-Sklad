@@ -14,12 +14,12 @@ namespace SP_Sklad.SkladData
     
     public partial class v_DiscountManagementDet
     {
-        public System.Guid Id { get; set; }
-        public System.Guid DiscountManagementId { get; set; }
         public int KaId { get; set; }
-        public int MatId { get; set; }
-        public decimal Discount { get; set; }
         public string KaName { get; set; }
+        public int MatId { get; set; }
         public string MatName { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public Nullable<System.Guid> DiscountManagementId { get; set; }
+        public Nullable<System.Guid> Id { get; set; }
     }
 }
