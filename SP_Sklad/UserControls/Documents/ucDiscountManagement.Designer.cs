@@ -42,6 +42,7 @@
             this.gridColumn124 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn125 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn127 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -78,7 +79,6 @@
             this.bandedGridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.DiscountManagementPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl8.Panel1)).BeginInit();
             this.splitContainerControl8.Panel1.SuspendLayout();
@@ -146,6 +146,7 @@
             // 
             this.DiscountManagementSource.AreSourceRowsThreadSafe = true;
             this.DiscountManagementSource.DefaultSorting = "OnDate DESC";
+            this.DiscountManagementSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.DiscountManagement);
             this.DiscountManagementSource.KeyExpression = "Id";
             this.DiscountManagementSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.DiscountManagementSource_GetQueryable);
             this.DiscountManagementSource.DismissQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.DiscountManagementSource_DismissQueryable);
@@ -284,6 +285,18 @@
             this.gridColumn127.Visible = true;
             this.gridColumn127.VisibleIndex = 4;
             this.gridColumn127.Width = 115;
+            // 
+            // ucDocumentFilterPanel
+            // 
+            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucDocumentFilterPanel.KagentImageIndex = 1;
+            this.ucDocumentFilterPanel.KagentPanelVisible = false;
+            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
+            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
+            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1344, 54);
+            this.ucDocumentFilterPanel.TabIndex = 11;
+            this.ucDocumentFilterPanel.Title = "Постачальник";
+            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
             // 
             // standaloneBarDockControl1
             // 
@@ -654,18 +667,6 @@
             this.DiscountManagementPopupMenu.Manager = this.barManager1;
             this.DiscountManagementPopupMenu.Name = "DiscountManagementPopupMenu";
             this.DiscountManagementPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.PMGridPopupMenu_BeforePopup);
-            // 
-            // ucDocumentFilterPanel
-            // 
-            this.ucDocumentFilterPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ucDocumentFilterPanel.KagentImageIndex = 1;
-            this.ucDocumentFilterPanel.KagentPanelVisible = false;
-            this.ucDocumentFilterPanel.Location = new System.Drawing.Point(0, 0);
-            this.ucDocumentFilterPanel.Name = "ucDocumentFilterPanel";
-            this.ucDocumentFilterPanel.Size = new System.Drawing.Size(1344, 54);
-            this.ucDocumentFilterPanel.TabIndex = 11;
-            this.ucDocumentFilterPanel.Title = "Постачальник";
-            this.ucDocumentFilterPanel.FilterChanged += new SP_Sklad.UserControls.ucDocumentFilterPanel.OnFilterChanged(this.ucDocumentFilterPanel_FilterChanged);
             // 
             // ucDiscountManagement
             // 

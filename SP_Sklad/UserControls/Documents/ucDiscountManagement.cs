@@ -85,30 +85,33 @@ namespace SP_Sklad.UserControls
 
         public void DeleteItem()
         {
-        /*    if (pm_focused_row == null)
+            if (pm_focused_row == null)
             {
                 return;
             }
 
             if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ #{pm_focused_row.Num}?", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var wb = _db.DiscountManagement.FirstOrDefault(w => w.Id == pm_focused_row.Id && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
-                if (wb != null)
+                using (var db = new BaseEntities())
                 {
-                    _db.DiscountManagement.Remove(wb);
+                    var wb = db.DiscountManagement.FirstOrDefault(w => w.Id == pm_focused_row.Id && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                    if (wb != null)
+                    {
+                        db.DiscountManagement.Remove(wb);
 
-                    _db.SaveChanges();
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(Resources.deadlock);
+                    }
                 }
-                else
-                {
-                    XtraMessageBox.Show(Resources.deadlock);
-                }
-            }*/
+            }
         }
 
         public void ExecuteItem()
         {
-       /*     if (pm_focused_row == null)
+            if (pm_focused_row == null)
             {
                 return;
             }
@@ -141,7 +144,7 @@ namespace SP_Sklad.UserControls
                 }
 
                 db.SaveChanges();
-            }*/
+            }
         }
 
         public void PrintItem()
@@ -195,7 +198,7 @@ namespace SP_Sklad.UserControls
 
         private void xtraTabControl7_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-       /*     if (pm_focused_row == null)
+            if (pm_focused_row == null)
             {
                 DiscountManagementDetGridControl.DataSource = null;
                 return;
@@ -206,18 +209,18 @@ namespace SP_Sklad.UserControls
                 case 0:
                     DiscountManagementDetGridControl.DataSource = new BaseEntities().v_DiscountManagementDet.AsNoTracking().Where(w => w.DiscountManagementId == pm_focused_row.Id).ToList();
                     break;
-            }*/
+            }
         }
 
         private void DiscountManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-        /*    if (!DesignMode)
+            if (!DesignMode)
             {
                 BaseEntities objectContext = new BaseEntities();
                 var list = objectContext.DiscountManagement.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate < ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId));
                 e.QueryableSource = list;
                 e.Tag = objectContext;
-            }*/
+            }
         }
 
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
@@ -226,13 +229,12 @@ namespace SP_Sklad.UserControls
             DiscountManagementGridView.SaveLayoutToStream(wh_layout_stream);
             DiscountManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
-        /* if (!DesignMode)
+            if (!DesignMode)
             {
-                _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+                user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 GetData();
-            }*/
+            }
         }
 
         private void SetWBEditorBarBtn()
@@ -305,10 +307,10 @@ namespace SP_Sklad.UserControls
 
         private void DiscountManagementSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-        /*    if (e.Tag == null)
+            if (e.Tag == null)
                 return;
 
-            ((BaseEntities)e.Tag).Dispose();*/
+            ((BaseEntities)e.Tag).Dispose();
         }
 
         private void DiscountManagementGridView_ColumnFilterChanged(object sender, EventArgs e)
