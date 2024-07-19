@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillCustomerOrder));
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -44,7 +45,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWayBillCustomerOrder));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -68,6 +68,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             this.RsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RsvAllBarBtn = new DevExpress.XtraBars.BarButtonItem();
             this.DelRsvBarBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -131,8 +132,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             this.panelControl3.SuspendLayout();
@@ -165,7 +166,6 @@
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -426,6 +426,61 @@
             this.barDockControlRight.Location = new System.Drawing.Point(1052, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
+            // 
+            // WBImgList
+            // 
+            this.WBImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("WBImgList.ImageStream")));
+            this.WBImgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.WBImgList.Images.SetKeyName(0, "preview_2");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.WBImgList.Images.SetKeyName(1, "product_info_3");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.WBImgList.Images.SetKeyName(2, "product_reserved_1");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.WBImgList.Images.SetKeyName(3, "warehouse_2");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.WBImgList.Images.SetKeyName(4, "product_list_4");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.WBImgList.Images.SetKeyName(5, "product");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.WBImgList.Images.SetKeyName(6, "add_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.WBImgList.Images.SetKeyName(7, "delete_properties");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.WBImgList.Images.SetKeyName(8, "edit_property");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.WBImgList.Images.SetKeyName(9, "service");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_1, "product_1", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.WBImgList.Images.SetKeyName(10, "product_1");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.WBImgList.Images.SetKeyName(11, "balans_businessman");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.flag_red, "flag_red", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.WBImgList.Images.SetKeyName(12, "flag_red");
+            this.WBImgList.Images.SetKeyName(13, "service_list.png");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_all_reserve, "remove_all_reserve", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.WBImgList.Images.SetKeyName(14, "remove_all_reserve");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_reserve, "remove_reserve", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.WBImgList.Images.SetKeyName(15, "remove_reserve");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.WBImgList.Images.SetKeyName(16, "reserved");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.WBImgList.Images.SetKeyName(17, "reserved_all");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.WBImgList.Images.SetKeyName(18, "debit_card");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.WBImgList.Images.SetKeyName(19, "product_tmc");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.WBImgList.Images.SetKeyName(20, "order_info");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 21);
+            this.WBImgList.Images.SetKeyName(21, "def_settings_grid");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.WBImgList.Images.SetKeyName(22, "listnumbers_16x16");
+            this.WBImgList.Images.SetKeyName(23, "template_1.png");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.WBImgList.Images.SetKeyName(24, "w_scale");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 25);
+            this.WBImgList.Images.SetKeyName(25, "store_16");
             // 
             // RsvBarBtn
             // 
@@ -907,9 +962,10 @@
             this.repositoryItemImageComboBox4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox4.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 20),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 25),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
             this.repositoryItemImageComboBox4.Name = "repositoryItemImageComboBox4";
+            this.repositoryItemImageComboBox4.SmallImages = this.WBImgList;
             // 
             // gridColumn2
             // 
@@ -1174,61 +1230,6 @@
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
             // 
-            // WBImgList
-            // 
-            this.WBImgList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("WBImgList.ImageStream")));
-            this.WBImgList.TransparentColor = System.Drawing.Color.Transparent;
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.preview_2, "preview_2", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.WBImgList.Images.SetKeyName(0, "preview_2");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.WBImgList.Images.SetKeyName(1, "product_info_3");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.WBImgList.Images.SetKeyName(2, "product_reserved_1");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.warehouse_2, "warehouse_2", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.WBImgList.Images.SetKeyName(3, "warehouse_2");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_list_4, "product_list_4", typeof(global::SP_Sklad.Properties.Resources), 4);
-            this.WBImgList.Images.SetKeyName(4, "product_list_4");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product, "product", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.WBImgList.Images.SetKeyName(5, "product");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.add_properties, "add_properties", typeof(global::SP_Sklad.Properties.Resources), 6);
-            this.WBImgList.Images.SetKeyName(6, "add_properties");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.delete_properties, "delete_properties", typeof(global::SP_Sklad.Properties.Resources), 7);
-            this.WBImgList.Images.SetKeyName(7, "delete_properties");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.edit_property, "edit_property", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.WBImgList.Images.SetKeyName(8, "edit_property");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.service, "service", typeof(global::SP_Sklad.Properties.Resources), 9);
-            this.WBImgList.Images.SetKeyName(9, "service");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_1, "product_1", typeof(global::SP_Sklad.Properties.Resources), 10);
-            this.WBImgList.Images.SetKeyName(10, "product_1");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.balans_businessman, "balans_businessman", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.WBImgList.Images.SetKeyName(11, "balans_businessman");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.flag_red, "flag_red", typeof(global::SP_Sklad.Properties.Resources), 12);
-            this.WBImgList.Images.SetKeyName(12, "flag_red");
-            this.WBImgList.Images.SetKeyName(13, "service_list.png");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_all_reserve, "remove_all_reserve", typeof(global::SP_Sklad.Properties.Resources), 14);
-            this.WBImgList.Images.SetKeyName(14, "remove_all_reserve");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.remove_reserve, "remove_reserve", typeof(global::SP_Sklad.Properties.Resources), 15);
-            this.WBImgList.Images.SetKeyName(15, "remove_reserve");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved, "reserved", typeof(global::SP_Sklad.Properties.Resources), 16);
-            this.WBImgList.Images.SetKeyName(16, "reserved");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 17);
-            this.WBImgList.Images.SetKeyName(17, "reserved_all");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 18);
-            this.WBImgList.Images.SetKeyName(18, "debit_card");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.product_tmc, "product_tmc", typeof(global::SP_Sklad.Properties.Resources), 19);
-            this.WBImgList.Images.SetKeyName(19, "product_tmc");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.order_info, "order_info", typeof(global::SP_Sklad.Properties.Resources), 20);
-            this.WBImgList.Images.SetKeyName(20, "order_info");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 21);
-            this.WBImgList.Images.SetKeyName(21, "def_settings_grid");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.listnumbers_16x16, "listnumbers_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
-            this.WBImgList.Images.SetKeyName(22, "listnumbers_16x16");
-            this.WBImgList.Images.SetKeyName(23, "template_1.png");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 24);
-            this.WBImgList.Images.SetKeyName(24, "w_scale");
-            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 25);
-            this.WBImgList.Images.SetKeyName(25, "store_16");
-            // 
             // frmWayBillCustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1253,6 +1254,7 @@
             this.Load += new System.EventHandler(this.frmWayBillOut_Load);
             this.Shown += new System.EventHandler(this.frmWayBillOut_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             this.panelControl3.ResumeLayout(false);
@@ -1287,7 +1289,6 @@
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.progressBarControl1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
