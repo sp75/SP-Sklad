@@ -68,6 +68,7 @@
             this.ucBankStatements = new SP_Sklad.UserControls.ucBankStatements();
             this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
             this.ucProjectManagement = new SP_Sklad.UserControls.ucProjectManagement();
+            this.ucDiscountManagement = new SP_Sklad.UserControls.ucDiscountManagement() ;
             this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
             this.settingMaterialPricesUserControl1 = new SP_Sklad.UserControls.ucSettingMaterialPrices();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
@@ -986,9 +987,26 @@
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.ucDiscountManagement);
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage1.Text = "Управління знижка";
+
+            // 
+            // ucDiscountManagement
+            // 
+            this.ucDiscountManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDiscountManagement.ExtCopyBtn = this.CopyItemBtn;
+            this.ucDiscountManagement.ExtDeleteBtn = this.DeleteItemBtn;
+            this.ucDiscountManagement.ExtEditBtn = this.EditItemBtn;
+            this.ucDiscountManagement.ExtExecuteBtn = this.ExecuteItemBtn;
+            this.ucDiscountManagement.ExtPrintBtn = this.PrintItemBtn;
+            this.ucDiscountManagement.Location = new System.Drawing.Point(0, 0);
+            this.ucDiscountManagement.Name = "ucDiscountManagement";
+            this.ucDiscountManagement.Size = new System.Drawing.Size(1138, 695);
+            this.ucDiscountManagement.TabIndex = 0;
+
+
             // 
             // standaloneBarDockControl1
             // 
@@ -1327,6 +1345,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage41;
         public UserControls.ucWaybillReturnSuppliers ucWaybillReturnSuppliers;
         public UserControls.ucProjectManagement ucProjectManagement;
+        public UserControls.ucDiscountManagement ucDiscountManagement;
         public UserControls.ucBankStatements ucBankStatements;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage20;
         public UserControls.ucKAgentAdjustment ucKAgentAdjustmentIn;

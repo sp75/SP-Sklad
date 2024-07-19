@@ -48,8 +48,10 @@ namespace SP_Sklad.UserControls
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-
-            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+            if (!DesignMode)
+            {
+                this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+            }
         }
 
         void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
