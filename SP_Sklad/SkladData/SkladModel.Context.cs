@@ -266,6 +266,9 @@ namespace SP_Sklad.SkladData
         public DbSet<AdditionalDocType> AdditionalDocType { get; set; }
         public DbSet<v_WayBillOut> v_WayBillOut { get; set; }
         public DbSet<MatGroup> MatGroup { get; set; }
+        public DbSet<DiscountManagement> DiscountManagement { get; set; }
+        public DbSet<DiscountManagementDet> DiscountManagementDet { get; set; }
+        public DbSet<v_DiscountManagementDet> v_DiscountManagementDet { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)

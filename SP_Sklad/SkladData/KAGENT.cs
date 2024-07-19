@@ -60,6 +60,7 @@ namespace SP_Sklad.SkladData
             this.EnterpriseWorker = new HashSet<EnterpriseWorker>();
             this.EnterpriseWorker1 = new HashSet<EnterpriseWorker>();
             this.CashDesks = new HashSet<CashDesks>();
+            this.DiscountManagementDet = new HashSet<DiscountManagementDet>();
         }
     
         public int KaId { get; set; }
@@ -155,5 +156,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker { get; set; }
         public virtual ICollection<EnterpriseWorker> EnterpriseWorker1 { get; set; }
         public virtual ICollection<CashDesks> CashDesks { get; set; }
+        public virtual ICollection<DiscountManagementDet> DiscountManagementDet { get; set; }
     }
 }

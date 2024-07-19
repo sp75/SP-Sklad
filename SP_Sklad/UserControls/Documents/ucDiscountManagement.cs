@@ -22,16 +22,15 @@ namespace SP_Sklad.UserControls
 {
     public partial class ucDiscountManagement : DevExpress.XtraEditors.XtraUserControl
     {
-        private int fun_id = 95;
+        private int fun_id = 105;
         private string reg_layout_path = "ucDiscountManagement\\DiscountManagementGridView";
-        BaseEntities _db { get; set; }
         public BarButtonItem ExtEditBtn { get; set; }
         public BarButtonItem ExtDeleteBtn { get; set; }
         public BarButtonItem ExtExecuteBtn { get; set; }
         public BarButtonItem ExtCopyBtn { get; set; }
         public BarButtonItem ExtPrintBtn { get; set; }
 
-        public v_ProjectManagement pm_focused_row => ProjectManagementGridView.GetFocusedRow() is NotLoadedObject ? null : ProjectManagementGridView.GetFocusedRow() as v_ProjectManagement;
+        public DiscountManagement pm_focused_row => DiscountManagementGridView.GetFocusedRow() is NotLoadedObject ? null : DiscountManagementGridView.GetFocusedRow() as DiscountManagement;
 
         private UserAccess user_access { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -55,7 +54,7 @@ namespace SP_Sklad.UserControls
 
         void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ProjectManagementGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+            DiscountManagementGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         public void NewItem()
@@ -86,17 +85,17 @@ namespace SP_Sklad.UserControls
 
         public void DeleteItem()
         {
-            if (pm_focused_row == null)
+        /*    if (pm_focused_row == null)
             {
                 return;
             }
 
             if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити документ #{pm_focused_row.Num}?", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var wb = _db.ProjectManagement.FirstOrDefault(w => w.Id == pm_focused_row.Id && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                var wb = _db.DiscountManagement.FirstOrDefault(w => w.Id == pm_focused_row.Id && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
                 if (wb != null)
                 {
-                    _db.ProjectManagement.Remove(wb);
+                    _db.DiscountManagement.Remove(wb);
 
                     _db.SaveChanges();
                 }
@@ -104,19 +103,19 @@ namespace SP_Sklad.UserControls
                 {
                     XtraMessageBox.Show(Resources.deadlock);
                 }
-            }
+            }*/
         }
 
         public void ExecuteItem()
         {
-            if (pm_focused_row == null)
+       /*     if (pm_focused_row == null)
             {
                 return;
             }
 
             using (var db = new BaseEntities())
             {
-                var pm = db.ProjectManagement.Find(pm_focused_row.Id);
+                var pm = db.DiscountManagement.Find(pm_focused_row.Id);
 
                 if (pm == null)
                 {
@@ -129,20 +128,20 @@ namespace SP_Sklad.UserControls
                     return;
                 }
 
-                var rel = db.GetRelDocList(pm_focused_row.Id).OrderBy(o => o.OnDate).ToList();
-                if (rel.Any())
-                {
-                    XtraMessageBox.Show(Resources.not_storno_wb, "Відміна проводки", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+              
+
 
                 if (pm.Checked == 1)
                 {
                     pm.Checked = 0;
                 }
+                else
+                {
+                    pm.Checked = 1;
+                }
 
                 db.SaveChanges();
-            }
+            }*/
         }
 
         public void PrintItem()
@@ -156,24 +155,24 @@ namespace SP_Sklad.UserControls
         public void FindItem(Guid id, DateTime on_date)
         {
             find_id = id;
-            ProjectManagementGridView.ClearColumnsFilter();
-            ProjectManagementGridView.ClearFindFilter();
+            DiscountManagementGridView.ClearColumnsFilter();
+            DiscountManagementGridView.ClearFindFilter();
             ucDocumentFilterPanel.ClearFindFilter(on_date);
 
             GetData();
         }
         public void ExportToExcel()
         {
-            IHelper.ExportToXlsx(ProjectManagementGridControl);
+            IHelper.ExportToXlsx(DiscountManagementGridControl);
         }
 
         public void GetData()
         {
-            prev_rowHandle = ProjectManagementGridView.FocusedRowHandle;
+            prev_rowHandle = DiscountManagementGridView.FocusedRowHandle;
 
             if (pm_focused_row != null && !find_id.HasValue)
             {
-                prev_top_row_index = ProjectManagementGridView.TopRowIndex;
+                prev_top_row_index = DiscountManagementGridView.TopRowIndex;
                 prev_focused_id = pm_focused_row.Id;
             }
 
@@ -186,8 +185,8 @@ namespace SP_Sklad.UserControls
 
             restore = true;
 
-            ProjectManagementGridControl.DataSource = null;
-            ProjectManagementGridControl.DataSource = ProjectManagementSource;
+            DiscountManagementGridControl.DataSource = null;
+            DiscountManagementGridControl.DataSource = DiscountManagementSource;
 
             SetWBEditorBarBtn();
         }
@@ -196,46 +195,44 @@ namespace SP_Sklad.UserControls
 
         private void xtraTabControl7_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (pm_focused_row == null)
+       /*     if (pm_focused_row == null)
             {
-                ProjectManagementDetGridControl.DataSource = null;
-                ucRelDocGrid6.GetRelDoc(Guid.Empty);
+                DiscountManagementDetGridControl.DataSource = null;
                 return;
             }
 
             switch (xtraTabControl7.SelectedTabPageIndex)
             {
                 case 0:
-                    ProjectManagementDetGridControl.DataSource = _db.v_ProjectManagementDet.AsNoTracking().Where(w => w.ProjectManagementId == pm_focused_row.Id).OrderBy(o => o.Num).ToList();
+                    DiscountManagementDetGridControl.DataSource = new BaseEntities().v_DiscountManagementDet.AsNoTracking().Where(w => w.DiscountManagementId == pm_focused_row.Id).ToList();
                     break;
-
-                case 2:
-                    ucRelDocGrid6.GetRelDoc(pm_focused_row.Id);
-                    break;
-            }
+            }*/
         }
 
-        private void ProjectManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        private void DiscountManagementSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            BaseEntities objectContext = new BaseEntities();
-            var list = objectContext.v_ProjectManagement.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate < ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId));
-            e.QueryableSource = list;
-            e.Tag = objectContext;
+        /*    if (!DesignMode)
+            {
+                BaseEntities objectContext = new BaseEntities();
+                var list = objectContext.DiscountManagement.Where(w => w.OnDate >= ucDocumentFilterPanel.StartDate && w.OnDate < ucDocumentFilterPanel.EndDate && (ucDocumentFilterPanel.StatusId == -1 || w.Checked == ucDocumentFilterPanel.StatusId));
+                e.QueryableSource = list;
+                e.Tag = objectContext;
+            }*/
         }
 
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
-        private void ucProjectManagement_Load(object sender, EventArgs e)
+        private void ucDiscountManagement_Load(object sender, EventArgs e)
         {
-            ProjectManagementGridView.SaveLayoutToStream(wh_layout_stream);
-            ProjectManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+            DiscountManagementGridView.SaveLayoutToStream(wh_layout_stream);
+            DiscountManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
-            if (!DesignMode)
+        /* if (!DesignMode)
             {
                 _db = new BaseEntities();
                 user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 GetData();
-            }
+            }*/
         }
 
         private void SetWBEditorBarBtn()
@@ -271,21 +268,21 @@ namespace SP_Sklad.UserControls
             WbHistoryBtn.Enabled = IHelper.GetUserAccess(39)?.CanView == 1;
         }
 
-        private void ProjectManagementGridView_AsyncCompleted(object sender, EventArgs e)
+        private void DiscountManagementSourceGridView_AsyncCompleted(object sender, EventArgs e)
         {
             if (pm_focused_row == null || !restore)
             {
                 return;
             }
 
-            int rowHandle = ProjectManagementGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
+            int rowHandle = DiscountManagementGridView.LocateByValue("Id", prev_focused_id, OnRowSearchComplete);
             if (rowHandle != DevExpress.Data.DataController.OperationInProgress)
             {
-                FocusRow(ProjectManagementGridView, rowHandle);
+                FocusRow(DiscountManagementGridView, rowHandle);
             }
             else
             {
-                ProjectManagementGridView.FocusedRowHandle = prev_rowHandle;
+                DiscountManagementGridView.FocusedRowHandle = prev_rowHandle;
             }
 
             restore = false;
@@ -294,9 +291,9 @@ namespace SP_Sklad.UserControls
         void OnRowSearchComplete(object rh)
         {
             int rowHandle = (int)rh;
-            if (ProjectManagementGridView.IsValidRowHandle(rowHandle))
+            if (DiscountManagementGridView.IsValidRowHandle(rowHandle))
             {
-                FocusRow(ProjectManagementGridView, rowHandle);
+                FocusRow(DiscountManagementGridView, rowHandle);
             }
         }
 
@@ -306,20 +303,20 @@ namespace SP_Sklad.UserControls
             view.FocusedRowHandle = rowHandle;
         }
 
-        private void ProjectManagementSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
+        private void DiscountManagementSource_DismissQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            if (e.Tag == null)
+        /*    if (e.Tag == null)
                 return;
 
-            ((BaseEntities)e.Tag).Dispose();
+            ((BaseEntities)e.Tag).Dispose();*/
         }
 
-        private void ProjectManagementGridView_ColumnFilterChanged(object sender, EventArgs e)
+        private void DiscountManagementGridView_ColumnFilterChanged(object sender, EventArgs e)
         {
             SetWBEditorBarBtn();
         }
 
-        private void ProjectManagementGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        private void DiscountManagementSourceGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             SetWBEditorBarBtn();
         }
@@ -348,17 +345,17 @@ namespace SP_Sklad.UserControls
             ExportToExcel();
         }
 
-        private void ProjectManagementGridView_DoubleClick(object sender, EventArgs e)
+        private void DiscountManagementGridView_DoubleClick(object sender, EventArgs e)
         {
             if (IHelper.isRowDublClick(sender)) EditItemBtn.PerformClick();
         }
 
-        private void ProjectManagementGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
+        private void DiscountManagementGridView_PopupMenuShowing(object sender, PopupMenuShowingEventArgs e)
         {
             if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
-                ProjectManagementPopupMenu.ShowPopup(p2);
+                DiscountManagementPopupMenu.ShowPopup(p2);
             }
         }
 
@@ -394,7 +391,7 @@ namespace SP_Sklad.UserControls
         {
             wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
-            ProjectManagementGridView.RestoreLayoutFromStream(wh_layout_stream);
+            DiscountManagementGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
 
         private void ucDocumentFilterPanel_FilterChanged(object sender, EventArgs e)

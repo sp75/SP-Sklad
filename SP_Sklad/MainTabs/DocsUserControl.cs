@@ -178,6 +178,10 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.SelectedTabPageIndex = 4;
             }
+            else if (focused_tree_node.FunId == 105) //Додаткові витрати
+            {
+                wbContentTab.SelectedTabPageIndex = 24;
+            }
             else
             {
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;

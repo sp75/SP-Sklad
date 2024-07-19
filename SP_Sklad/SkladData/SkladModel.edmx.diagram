@@ -410,6 +410,10 @@
         <AssociationConnector Association="BaseModel.FK__KAMATGROU__GRPID__395884C4" />
         <AssociationConnector Association="BaseModel.FK__MATERIALS__GRPID__58D1301D" />
         <AssociationConnector Association="BaseModel.FK_MGP_MATID" />
+        <EntityTypeShape EntityType="BaseModel.DiscountManagement" Width="1.5" PointX="18.375" PointY="36.75" />
+        <EntityTypeShape EntityType="BaseModel.DiscountManagementDet" Width="1.5" PointX="42.5" PointY="25.875" />
+        <AssociationConnector Association="BaseModel.FK_DiscountManagementDet_DiscountManagement" />
+        <AssociationConnector Association="BaseModel.FK_DiscountManagementDet_Kagent" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
@@ -462,6 +466,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WayBillReturnSuppliers" Width="1.5" PointX="28" PointY="12.125" />
         <EntityTypeShape EntityType="BaseModel.v_WaybillMove" Width="1.5" PointX="25.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillOut" Width="1.5" PointX="3.375" PointY="20.75" />
+        <EntityTypeShape EntityType="BaseModel.v_DiscountManagementDet" Width="1.5" PointX="0.75" PointY="26.75" />
       </Diagram>
       <Diagram DiagramId="8b08ca94632048c3b594ad7efc11006d" Name="Report" >
         <EntityTypeShape EntityType="BaseModel.v_Report_55" Width="1.5" PointX="0.75" PointY="0.75" />

@@ -366,6 +366,31 @@
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="StartSaldo" Type="numeric" Precision="15" Scale="8" />
         </EntityType>
+        <EntityType Name="DiscountManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="Checked" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="SessionId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="DiscountManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DiscountManagementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+        </EntityType>
         <EntityType Name="DocRels">
           <Key>
             <PropertyRef Name="OriginatorId" />
@@ -2313,6 +2338,25 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary k
           <Property Name="KaFullName" Type="nvarchar" MaxLength="255" />
           <Property Name="GrpName" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_DiscountManagementDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_DiscountManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DiscountManagementId" />
+            <PropertyRef Name="KaId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="KaName" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DiscountManagementId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -5528,6 +5572,32 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               <PropertyRef Name="KaId" />
             </Principal>
             <Dependent Role="DiscCards">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountManagementDet_DiscountManagement">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DiscountManagementDet" Type="Self.DiscountManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DiscountManagementDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountManagementDet_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="DiscountManagementDet" Type="Self.DiscountManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="DiscountManagementDet">
               <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
@@ -9795,6 +9865,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="DemandGroup" EntityType="Self.DemandGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscCardGrp" EntityType="Self.DiscCardGrp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscCards" EntityType="Self.DiscCards" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountManagement" EntityType="Self.DiscountManagement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountManagementDet" EntityType="Self.DiscountManagementDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocRels" EntityType="Self.DocRels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocType" EntityType="Self.DocType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployeeKagent" EntityType="Self.EmployeeKagent" Schema="dbo" store:Type="Tables" />
@@ -10147,6 +10219,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DiscCards].[GrpName] AS [GrpName], 
     [v_DiscCards].[GrpId] AS [GrpId]
     FROM [dbo].[v_DiscCards] AS [v_DiscCards]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_DiscountManagementDet" EntityType="Self.v_DiscountManagementDet" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_DiscountManagementDet].[Id] AS [Id], 
+    [v_DiscountManagementDet].[DiscountManagementId] AS [DiscountManagementId], 
+    [v_DiscountManagementDet].[KaId] AS [KaId], 
+    [v_DiscountManagementDet].[MatId] AS [MatId], 
+    [v_DiscountManagementDet].[Discount] AS [Discount], 
+    [v_DiscountManagementDet].[KaName] AS [KaName], 
+    [v_DiscountManagementDet].[MatName] AS [MatName]
+    FROM [dbo].[v_DiscountManagementDet] AS [v_DiscountManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Docs" EntityType="Self.v_Docs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -12221,6 +12304,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_DISCCARDS_KAID" Association="Self.FK_DISCCARDS_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="DiscCards" EntitySet="DiscCards" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountManagementDet_DiscountManagement" Association="Self.FK_DiscountManagementDet_DiscountManagement">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DiscountManagementDet" EntitySet="DiscountManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountManagementDet_Kagent" Association="Self.FK_DiscountManagementDet_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="DiscountManagementDet" EntitySet="DiscountManagementDet" />
           </AssociationSet>
           <AssociationSet Name="FK_EmployeeKagent_Kagent" Association="Self.FK_EmployeeKagent_Kagent">
             <End Role="Kagent" EntitySet="Kagent" />
@@ -14674,6 +14765,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="MatGroup" EntitySet="MatGroup" />
             <End Role="MatGroupPrices" EntitySet="MatGroupPrices" />
           </AssociationSet>
+          <EntitySet Name="DiscountManagement" EntityType="BaseModel.DiscountManagement" />
+          <EntitySet Name="DiscountManagementDet" EntityType="BaseModel.DiscountManagementDet" />
+          <AssociationSet Name="FK_DiscountManagementDet_DiscountManagement" Association="BaseModel.FK_DiscountManagementDet_DiscountManagement">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="DiscountManagementDet" EntitySet="DiscountManagementDet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscountManagementDet_Kagent" Association="BaseModel.FK_DiscountManagementDet_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="DiscountManagementDet" EntitySet="DiscountManagementDet" />
+          </AssociationSet>
+          <EntitySet Name="v_DiscountManagementDet" EntityType="BaseModel.v_DiscountManagementDet" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15699,6 +15801,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="OpenStoreId" Type="Int32" />
           <NavigationProperty Name="MaterialType" Relationship="BaseModel.FK_Materials_MaterialType" FromRole="Materials" ToRole="MaterialType" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
+          <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_DiscountManagement" FromRole="Materials" ToRole="DiscountManagementDet" />
           </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -21726,6 +21829,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="EnterpriseWorker1" Relationship="BaseModel.FK_EnterpriseWorker_Kagent1" FromRole="Kagent" ToRole="EnterpriseWorker" />
           <Property Name="OpenStoreAreaId" Type="Int32" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_CashDesks_Kagent" FromRole="Kagent" ToRole="CashDesks" />
+          <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_Kagent" FromRole="Kagent" ToRole="DiscountManagementDet" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -24166,6 +24270,76 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DiscountManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="Checked" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="SessionId" Type="Guid" />
+        </EntityType>
+        <EntityType Name="DiscountManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DiscountManagementId" Type="Guid" Nullable="false" />
+          <Property Name="KaId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_DiscountManagementDet_DiscountManagement" FromRole="DiscountManagementDet" ToRole="Materials" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_DiscountManagementDet_Kagent" FromRole="DiscountManagementDet" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_DiscountManagementDet_DiscountManagement">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="BaseModel.DiscountManagementDet" Role="DiscountManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="DiscountManagementDet">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscountManagementDet_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.DiscountManagementDet" Role="DiscountManagementDet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="DiscountManagementDet">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_DiscountManagementDet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DiscountManagementId" />
+            <PropertyRef Name="KaId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Discount" />
+            <PropertyRef Name="KaName" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DiscountManagementId" Type="Guid" Nullable="false" />
+          <Property Name="KaId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -30625,6 +30799,46 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PId" ColumnName="PId" />
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscountManagement">
+            <EntityTypeMapping TypeName="BaseModel.DiscountManagement">
+              <MappingFragment StoreEntitySet="DiscountManagement">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscountManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.DiscountManagementDet">
+              <MappingFragment StoreEntitySet="DiscountManagementDet">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="DiscountManagementId" ColumnName="DiscountManagementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_DiscountManagementDet">
+            <EntityTypeMapping TypeName="BaseModel.v_DiscountManagementDet">
+              <MappingFragment StoreEntitySet="v_DiscountManagementDet">
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="DiscountManagementId" ColumnName="DiscountManagementId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
