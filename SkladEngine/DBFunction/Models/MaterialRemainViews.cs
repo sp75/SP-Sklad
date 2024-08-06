@@ -30,5 +30,6 @@ namespace SkladEngine.DBFunction.Models
         public Nullable<decimal> SumRemain { get; set; }
         public int MId { get; set; }
         public string MaterialTypeName { get; set; }
+        public decimal ? GrpNum { get; set; }
     }
 }
