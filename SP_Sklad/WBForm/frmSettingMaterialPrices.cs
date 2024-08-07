@@ -14,6 +14,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraTreeList;
 using SP_Sklad.Common;
+using SP_Sklad.EditForm;
 using SP_Sklad.Properties;
 using SP_Sklad.Reports;
 using SP_Sklad.SkladData;
@@ -136,6 +137,24 @@ namespace SP_Sklad.WBForm
              
         private void AddMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            using (var f = new frmCatalog(2))
+            {
+                f.uc.isDirectList = true;
+                f.Text = "Товари";
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (var item in f.uc.ucMaterials.MatGridView.GetSelectedRows())
+                    {
+                        var row = f.uc.ucMaterials.MatGridView.GetRow(item) as v_Materials;
+
+                        AddNewMaterial(row.MatId);
+                    }
+
+                    GetDetail();
+                }
+            }
+
+
             var mat_id = IHelper.ShowDirectList(null, 5);
             if (mat_id != null)
             {
