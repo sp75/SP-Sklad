@@ -1358,6 +1358,9 @@
     <Compile Include="SkladData\v_ManufacturingProducts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_MaterialBarCodes.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_Materials.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>

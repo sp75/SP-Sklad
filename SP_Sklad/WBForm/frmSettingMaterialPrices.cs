@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +30,9 @@ namespace SP_Sklad.WBForm
         private SettingMaterialPrices wbt { get; set; }
         private int?  _PTypeId { get; set; }
         private int? _mat_id { get; set; }
+        private UserSettingsRepository user_settings { get; set; }
 
-        private v_SettingMaterialPricesDet focused_dr => WaybillTemplateDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
+        private v_SettingMaterialPricesDet focused_dr => SettingMaterialPricesDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
 
         public frmSettingMaterialPrices(Guid? wbt_id = null, int? PTypeId = null, int? mat_id = null )
         {
@@ -41,12 +43,19 @@ namespace SP_Sklad.WBForm
             _mat_id = mat_id;
             _db = new BaseEntities();
             current_transaction = _db.Database.BeginTransaction();
+
+            user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
         }
-          
+
+        Stream wb_det_layout_stream = new MemoryStream();
         private void frmPriceList_Load(object sender, EventArgs e)
         {
+            SettingMaterialPricesDetGrid.SaveLayoutToStream(wb_det_layout_stream);
+            SettingMaterialPricesDetGrid.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmSettingMaterialPrices\\SettingMaterialPricesDetGrid");
+
             PTypeEdit.Properties.DataSource = _db.PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
+            repositoryItemLookUpEdit1.DataSource = _db.v_MaterialBarCodes.AsNoTracking().Where(w => w.Archived == 0 && (w.TypeId == 1 || w.TypeId == 5 || w.TypeId == 6)).ToList();
 
             if (_wbt_id == null)
             {
@@ -87,6 +96,8 @@ namespace SP_Sklad.WBForm
             wbt.UpdatedAt = DateTime.Now;
             wbt.UpdatedBy = DBHelper.CurrentUser.UserId;
 
+            GetDetail();
+
             _db.SaveChanges();
             current_transaction.Commit();
             Close();
@@ -94,6 +105,8 @@ namespace SP_Sklad.WBForm
 
         private void frmPriceList_FormClosed(object sender, FormClosedEventArgs e)
         {
+            SettingMaterialPricesDetGrid.SaveLayoutToRegistry(IHelper.reg_layout_path + "frmSettingMaterialPrices\\SettingMaterialPricesDetGrid");
+
             if (current_transaction.UnderlyingTransaction.Connection != null)
             {
                 current_transaction.Rollback();
@@ -105,16 +118,21 @@ namespace SP_Sklad.WBForm
 
         void GetDetail()
         {
-            int top_row = WaybillTemplateDetGrid.TopRowIndex;
-            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.AsNoTracking().Where(w=> w.SettingMaterialPricesId == _wbt_id).ToList();
-            WaybillTemplateDetGrid.ExpandAllGroups();
-            WaybillTemplateDetGrid.TopRowIndex = top_row;
+            int top_row = SettingMaterialPricesDetGrid.TopRowIndex;
+            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.AsNoTracking().OrderBy(o=> o.Num).Where(w=> w.SettingMaterialPricesId == _wbt_id).ToList();
+            SettingMaterialPricesDetGrid.ExpandAllGroups();
+            SettingMaterialPricesDetGrid.TopRowIndex = top_row;
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.SettingMaterialPricesDet.Remove(_db.SettingMaterialPricesDet.FirstOrDefault(w => w.Id == focused_dr.Id));
-            _db.SaveChanges();
+            var smp = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.Id == focused_dr.Id);
+            if (smp != null)
+            {
+                _db.SettingMaterialPricesDet.Remove(smp);
+                _db.SaveChanges();
+            }
+
             GetDetail();
 
         }
@@ -126,7 +144,7 @@ namespace SP_Sklad.WBForm
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dr = WaybillTemplateDetGrid.GetFocusedRow() as GetPriceListDet_Result;
+            var dr = SettingMaterialPricesDetGrid.GetFocusedRow() as GetPriceListDet_Result;
             IHelper.ShowMatInfo(dr.MatId);
         }
 
@@ -154,29 +172,14 @@ namespace SP_Sklad.WBForm
                 }
             }
 
-
+/*
             var mat_id = IHelper.ShowDirectList(null, 5);
             if (mat_id != null)
             {
                 var id = Convert.ToInt32(mat_id);
                 AddNewMaterial(id);
                 GetDetail();
-                /* var mat = _db.Materials.Find(id);
-                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == id && w.SettingMaterialPricesId == _wbt_id.Value).Any())
-                 {
-                     _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
-                     {
-                         Id = Guid.NewGuid(),
-                         MatId = mat.MatId,
-                         SettingMaterialPricesId = _wbt_id.Value,
-                          CreatedAt = DBHelper.ServerDateTime(),
-                           Price =0
-                     });
-
-                     _db.SaveChanges();
-                     GetDetail();
-                 }*/
-            }
+            }*/
         }
 
         private void AddNewMaterial( int mat_id)
@@ -186,6 +189,7 @@ namespace SP_Sklad.WBForm
                 _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                 {
                     Id = Guid.NewGuid(),
+                    Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count() ,
                     MatId = mat_id,
                     SettingMaterialPricesId = _wbt_id.Value,
                     CreatedAt = DBHelper.ServerDateTime(),
@@ -206,12 +210,13 @@ namespace SP_Sklad.WBForm
                 var grp_id = (int)GrpId;
                 foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
-
+                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count();
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                     {
                         _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                         {
                             Id = Guid.NewGuid(),
+                            Num = ++num,
                             MatId = item.MatId,
                             SettingMaterialPricesId = _wbt_id.Value,
                             CreatedAt = DBHelper.ServerDateTime(),
@@ -239,12 +244,42 @@ namespace SP_Sklad.WBForm
         {
             var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
 
-            if (e.Column.FieldName == "Price")
+            if (wbtd != null)
             {
-                wbtd.Price = Convert.ToDecimal(e.Value);
+
+                if (e.Column.FieldName == "Price")
+                {
+                    wbtd.Price = Convert.ToDecimal(e.Value);
+                }
+
+                if (e.Column.FieldName == "MatId")
+                {
+                    wbtd.MatId = Convert.ToInt32(e.Value);
+                }
+            }
+            else
+            {
+                if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == focused_dr.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
+                {
+                    wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
+                    {
+                        Id = focused_dr.Id,
+                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count() ,
+                        MatId = focused_dr.MatId,
+                        SettingMaterialPricesId = _wbt_id.Value,
+                        CreatedAt = DBHelper.ServerDateTime(),
+                        Price = focused_dr.Price
+                    });
+                }
             }
 
             _db.SaveChanges();
+
+         /*   if (e.Column.FieldName == "MatId")
+            {
+                GetDetail();
+            }*/
+
         }
 
         private void OnDateDBEdit_Validating(object sender, CancelEventArgs e)
@@ -279,6 +314,8 @@ namespace SP_Sklad.WBForm
 
         private void frmSettingMaterialPrices_Shown(object sender, EventArgs e)
         {
+            SettingMaterialPricesDetGrid.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+
             OnDateDBEdit.Focus();
             NumEdit.Focus();
         }
@@ -291,6 +328,58 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
 
                 GetDetail();
+            }
+        }
+
+        private void SettingMaterialPricesDetBS_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            e.NewObject = new v_SettingMaterialPricesDet
+            {
+                Id = Guid.NewGuid(),
+                SettingMaterialPricesId = _wbt_id.Value,
+                CreatedAt = DBHelper.ServerDateTime(),
+                Price = 0,
+                GrpId = 0,
+                MatId = 0
+            };
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GetDetail();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            for (int i = 0; SettingMaterialPricesDetGrid.RowCount > i; i++)
+            {
+                var row = SettingMaterialPricesDetGrid.GetRow(i) as v_SettingMaterialPricesDet;
+                if (row != null)
+                {
+                    var wbd = _db.SettingMaterialPricesDet.Find(row.Id);
+
+                    wbd.Num = i + 1;
+                }
+            }
+
+            _db.SaveChanges();
+
+            GetDetail();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wb_det_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            SettingMaterialPricesDetGrid.RestoreLayoutFromStream(wb_det_layout_stream);
+        }
+
+        private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
+        {
+            if (e.HitInfo.InRow)
+            {
+                Point p2 = Control.MousePosition;
+                this.TemplateListPopupMenu.ShowPopup(p2);
             }
         }
     }

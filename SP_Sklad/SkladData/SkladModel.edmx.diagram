@@ -467,6 +467,7 @@
         <EntityTypeShape EntityType="BaseModel.v_WaybillMove" Width="1.5" PointX="25.375" PointY="23.75" />
         <EntityTypeShape EntityType="BaseModel.v_WayBillOut" Width="1.5" PointX="3.375" PointY="20.75" />
         <EntityTypeShape EntityType="BaseModel.v_DiscountManagementDet" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="BaseModel.v_MaterialBarCodes" Width="1.5" PointX="7.375" PointY="26.75" />
       </Diagram>
       <Diagram DiagramId="8b08ca94632048c3b594ad7efc11006d" Name="Report" >
         <EntityTypeShape EntityType="BaseModel.v_Report_55" Width="1.5" PointX="0.75" PointY="0.75" />

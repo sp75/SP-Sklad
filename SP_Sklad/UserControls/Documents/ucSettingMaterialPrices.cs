@@ -156,7 +156,7 @@ namespace SP_Sklad.UserControls
         {
             if (row_smp != null)
             {
-                SettingMaterialPricesDetBS.DataSource = DB.SkladBase().v_SettingMaterialPricesDet.AsNoTracking().Where(w => w.SettingMaterialPricesId == row_smp.Id).ToList();
+                SettingMaterialPricesDetBS.DataSource = DB.SkladBase().v_SettingMaterialPricesDet.AsNoTracking().OrderBy(o=> o.Num).Where(w => w.SettingMaterialPricesId == row_smp.Id).ToList();
             }
             else
             {

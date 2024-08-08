@@ -12,16 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class v_DiscountManagementDet
+    public partial class v_MaterialBarCodes
     {
-        public int KaId { get; set; }
-        public string KaName { get; set; }
         public int MatId { get; set; }
-        public string MatName { get; set; }
-        public Nullable<decimal> Discount { get; set; }
-        public Nullable<System.Guid> DiscountManagementId { get; set; }
-        public Nullable<System.Guid> Id { get; set; }
-        public string GrpName { get; set; }
+        public string Name { get; set; }
         public string Artikul { get; set; }
+        public string BarCode { get; set; }
+        public Nullable<int> TypeId { get; set; }
+        public Nullable<int> Archived { get; set; }
     }
 }

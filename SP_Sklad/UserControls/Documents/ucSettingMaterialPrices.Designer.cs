@@ -83,6 +83,7 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -581,7 +582,8 @@
             this.colMatId,
             this.gridColumn2,
             this.gridColumn4,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn6});
             this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
             this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
             this.SettingMaterialPricesDetGrid.OptionsBehavior.ReadOnly = true;
@@ -594,8 +596,8 @@
             this.colMatId.FieldName = "MatName";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.VisibleIndex = 0;
-            this.colMatId.Width = 609;
+            this.colMatId.VisibleIndex = 1;
+            this.colMatId.Width = 578;
             // 
             // gridColumn2
             // 
@@ -603,8 +605,8 @@
             this.gridColumn2.FieldName = "GrpName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 3;
-            this.gridColumn2.Width = 332;
+            this.gridColumn2.VisibleIndex = 4;
+            this.gridColumn2.Width = 320;
             // 
             // gridColumn4
             // 
@@ -612,8 +614,8 @@
             this.gridColumn4.FieldName = "Price";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 109;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 102;
             // 
             // gridColumn1
             // 
@@ -621,8 +623,8 @@
             this.gridColumn1.FieldName = "Artikul";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 1;
-            this.gridColumn1.Width = 171;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 162;
             // 
             // repositoryItemImageComboBox1
             // 
@@ -670,6 +672,15 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.HistoryBtnItem, true)});
             this.SettingMaterialPricesDetPopupMenu.Manager = this.barManager1;
             this.SettingMaterialPricesDetPopupMenu.Name = "SettingMaterialPricesDetPopupMenu";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "№";
+            this.gridColumn6.FieldName = "Num";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 0;
+            this.gridColumn6.Width = 59;
             // 
             // ucSettingMaterialPrices
             // 
@@ -767,5 +778,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
     }
 }

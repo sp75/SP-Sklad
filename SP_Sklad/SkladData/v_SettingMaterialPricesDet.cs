@@ -26,5 +26,6 @@ namespace SP_Sklad.SkladData
         public int Checked { get; set; }
         public string Artikul { get; set; }
         public Nullable<decimal> LastPrice { get; set; }
+        public Nullable<int> Num { get; set; }
     }
 }
