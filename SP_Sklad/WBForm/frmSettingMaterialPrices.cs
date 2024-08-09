@@ -385,8 +385,9 @@ namespace SP_Sklad.WBForm
 
         private void SettingMaterialPricesDetGrid_MouseWheel(object sender, MouseEventArgs e)
         {
-            var view = sender as GridView;
-            view.CloseEditor();
+            SettingMaterialPricesDetGrid.CloseEditor();
         }
+
+
     }
 }

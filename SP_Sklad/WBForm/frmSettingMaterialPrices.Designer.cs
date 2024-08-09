@@ -713,6 +713,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.MaskSettings.Set("mask", "");
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.repositoryItemCalcEdit1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.SettingMaterialPricesDetGrid_MouseWheel);
             // 
             // gridColumn5
             // 
