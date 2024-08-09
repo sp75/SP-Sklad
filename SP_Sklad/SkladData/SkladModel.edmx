@@ -3632,6 +3632,7 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="Checked" />
+            <PropertyRef Name="MsrName" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
@@ -3646,6 +3647,7 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
           <Property Name="LastPrice" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Num" Type="int" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11192,7 +11194,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[Checked] AS [Checked], 
     [v_SettingMaterialPricesDet].[Artikul] AS [Artikul], 
     [v_SettingMaterialPricesDet].[LastPrice] AS [LastPrice], 
-    [v_SettingMaterialPricesDet].[Num] AS [Num]
+    [v_SettingMaterialPricesDet].[Num] AS [Num], 
+    [v_SettingMaterialPricesDet].[MsrName] AS [MsrName]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
@@ -21601,6 +21604,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="Checked" />
+            <PropertyRef Name="MsrName" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
@@ -21615,6 +21619,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LastPrice" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Num" Type="Int32" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_SummarySettingMaterialPrices">
           <Key>
@@ -29201,6 +29206,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
                 <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
                 <ScalarProperty Name="Artikul" ColumnName="Artikul" />

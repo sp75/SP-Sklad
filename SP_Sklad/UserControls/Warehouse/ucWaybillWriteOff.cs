@@ -21,6 +21,7 @@ using SP_Sklad.ViewsForm;
 using SP_Sklad.FinanseForm;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using SkladEngine.ExecuteDoc;
 
 namespace SP_Sklad.UserControls
 {
@@ -487,6 +488,32 @@ namespace SP_Sklad.UserControls
             {
                 GetData();
             }
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (wb_focused_row == null)
+            {
+                return;
+            }
+
+            var new_doc = new ExecuteWayBill().CorrectDocument(wb_focused_row.WbillId, $"Корегування продажу товрів по документу №{ wb_focused_row.Num}", false);
+            if (new_doc.HasValue)
+            {
+                using (var wb_in = new frmWBWriteOn(new_doc))
+                {
+                    wb_in.is_new_record = true;
+                    wb_in.ShowDialog();
+                }
+            }
+            else
+            {
+                XtraMessageBox.Show("Документ не створено!", "Створення документу на введення залишків", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+
+
+
         }
     }
 }

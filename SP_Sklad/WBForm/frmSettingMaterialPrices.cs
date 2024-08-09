@@ -27,7 +27,7 @@ namespace SP_Sklad.WBForm
         private Guid? _wbt_id { get; set; }
         public BaseEntities _db { get; set; }
         private DbContextTransaction current_transaction { get; set; }
-        private SettingMaterialPrices wbt { get; set; }
+        private SettingMaterialPrices smp { get; set; }
         private int?  _PTypeId { get; set; }
         private int? _mat_id { get; set; }
         private UserSettingsRepository user_settings { get; set; }
@@ -59,7 +59,7 @@ namespace SP_Sklad.WBForm
 
             if (_wbt_id == null)
             {
-                wbt = _db.SettingMaterialPrices.Add(new SettingMaterialPrices
+                smp = _db.SettingMaterialPrices.Add(new SettingMaterialPrices
                 {
                     Id = Guid.NewGuid(),
                     DocType = 31,
@@ -71,16 +71,16 @@ namespace SP_Sklad.WBForm
                 });
 
                 _db.SaveChanges();
-                _wbt_id = wbt.Id;
+                _wbt_id = smp.Id;
             }
             else
             {
-                wbt = _db.SettingMaterialPrices.Find(_wbt_id);
+                smp = _db.SettingMaterialPrices.Find(_wbt_id);
             }
 
-            if (wbt != null)
+            if (smp != null)
             {
-                SettingMaterialPricesBS.DataSource = wbt;
+                SettingMaterialPricesBS.DataSource = smp;
             }
 
             if (_mat_id.HasValue)
@@ -93,8 +93,8 @@ namespace SP_Sklad.WBForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
-            wbt.UpdatedAt = DateTime.Now;
-            wbt.UpdatedBy = DBHelper.CurrentUser.UserId;
+            smp.UpdatedAt = DateTime.Now;
+            smp.UpdatedBy = DBHelper.CurrentUser.UserId;
 
             GetDetail();
 
@@ -139,7 +139,7 @@ namespace SP_Sklad.WBForm
 
         private void PrevievBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            PrintDoc.SettingMaterialPricesReport(wbt.PTypeId, _db);
+            PrintDoc.SettingMaterialPricesReport(smp.Id, _db);
         }
 
         private void MatInfoBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -324,7 +324,7 @@ namespace SP_Sklad.WBForm
         {
             if (PTypeEdit.ContainsFocus)
             {
-                wbt.PTypeId = (int)PTypeEdit.EditValue;
+                smp.PTypeId = (int)PTypeEdit.EditValue;
                 _db.SaveChanges();
 
                 GetDetail();
@@ -381,6 +381,12 @@ namespace SP_Sklad.WBForm
                 Point p2 = Control.MousePosition;
                 this.TemplateListPopupMenu.ShowPopup(p2);
             }
+        }
+
+        private void SettingMaterialPricesDetGrid_MouseWheel(object sender, MouseEventArgs e)
+        {
+            var view = sender as GridView;
+            view.CloseEditor();
         }
     }
 }

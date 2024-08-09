@@ -649,6 +649,7 @@
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn5, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
             this.SettingMaterialPricesDetGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillTemplateDetGrid_CellValueChanged);
+            this.SettingMaterialPricesDetGrid.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.SettingMaterialPricesDetGrid_MouseWheel);
             // 
             // gridColumn9
             // 
@@ -695,6 +696,8 @@
             this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
             this.gridColumn4.Caption = "Ціна";
             this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn4.DisplayFormat.FormatString = "0.00";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn4.FieldName = "Price";
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
@@ -703,9 +706,12 @@
             // 
             // repositoryItemCalcEdit1
             // 
+            this.repositoryItemCalcEdit1.AllowMouseWheel = false;
             this.repositoryItemCalcEdit1.AutoHeight = false;
+            this.repositoryItemCalcEdit1.BeepOnError = false;
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemCalcEdit1.MaskSettings.Set("mask", "");
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
             // gridColumn5

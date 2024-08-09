@@ -86,10 +86,12 @@
             this.row5 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row6 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row1 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.WayBillMoveSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WbListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl2.Panel1)).BeginInit();
             this.splitContainerControl2.Panel1.SuspendLayout();
@@ -396,8 +398,9 @@
             this.PrintItemBtn,
             this.WbHistoryBtn,
             this.barButtonItem1,
-            this.ExportToExcelBtn});
-            this.barManager1.MaxItemId = 38;
+            this.ExportToExcelBtn,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 39;
             // 
             // bar1
             // 
@@ -725,6 +728,7 @@
             // vGridControl1
             // 
             this.vGridControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl1.Location = new System.Drawing.Point(0, 0);
             this.vGridControl1.Name = "vGridControl1";
@@ -737,7 +741,8 @@
             this.row4,
             this.row5,
             this.row6,
-            this.row1});
+            this.row1,
+            this.row2});
             this.vGridControl1.Size = new System.Drawing.Size(1297, 199);
             this.vGridControl1.TabIndex = 0;
             // 
@@ -780,6 +785,12 @@
             this.row1.Properties.Caption = "Підстава";
             this.row1.Properties.FieldName = "Reason";
             // 
+            // row2
+            // 
+            this.row2.Name = "row2";
+            this.row2.Properties.Caption = "Номер в системі";
+            this.row2.Properties.FieldName = "WbillId";
+            // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Controls.Add(this.ucRelDocGrid1);
@@ -814,6 +825,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.WbHistoryBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn, true),
@@ -822,6 +834,13 @@
             this.WbListPopupMenu.Manager = this.barManager1;
             this.WbListPopupMenu.Name = "WbListPopupMenu";
             this.WbListPopupMenu.BeforePopup += new System.ComponentModel.CancelEventHandler(this.WbListPopupMenu_BeforePopup);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Стоврити корегуючий документ";
+            this.barButtonItem2.Id = 38;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // ucWaybillWriteOff
             // 
@@ -934,5 +953,7 @@
         private DevExpress.XtraBars.Bar bar1;
         private ucWayBillInDet ucWayBillInDet;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

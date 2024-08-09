@@ -27,5 +27,6 @@ namespace SP_Sklad.SkladData
         public string Artikul { get; set; }
         public Nullable<decimal> LastPrice { get; set; }
         public Nullable<int> Num { get; set; }
+        public string MsrName { get; set; }
     }
 }

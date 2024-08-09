@@ -761,18 +761,18 @@ namespace SP_Sklad.Reports
             IHelper.Print(dataForReport, template_name);
         }
 
-        public static void SettingMaterialPricesReport(int PTypeId, BaseEntities db)
+        public static void SettingMaterialPricesReport(Guid price_id, BaseEntities db)
         {
             var dataForReport = new Dictionary<string, IList>();
 
-            var pl = db.SettingMaterialPrices.Where(w => w.PTypeId == PTypeId).OrderByDescending(o=> o.OnDate).Take(1).Select(s=> new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num}) .ToList();
-            var pl_d = db.v_SummarySettingMaterialPrices.Where(w => w.PTypeId == PTypeId).ToList();
+            var pl = db.SettingMaterialPrices.Where(w => w.Id == price_id).Select(s=> new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num}) .ToList();
+            var pl_d = db.v_SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == price_id).ToList();
 
-            var mat_grp = pl_d.GroupBy(g => new { g.GrpNum, g.GrpName }).Select(s => new
+            var mat_grp = pl_d.GroupBy(g => new { g.GrpId, g.GrpName }).Select(s => new
             {
                 s.Key.GrpName,
-                s.Key.GrpNum
-            }).OrderBy(o => o.GrpNum).ToList();
+                s.Key.GrpId
+            }).OrderBy(o => o.GrpId).ToList();
 
             List<object> realation = new List<object>();
             realation.Add(new

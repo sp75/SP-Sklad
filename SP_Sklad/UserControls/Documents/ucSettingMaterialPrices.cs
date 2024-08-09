@@ -16,6 +16,7 @@ using SP_Sklad.ViewsForm;
 using SP_Sklad.Properties;
 using DevExpress.XtraEditors;
 using SP_Sklad.Reports;
+using System.Collections;
 
 namespace SP_Sklad.UserControls
 {
@@ -137,7 +138,7 @@ namespace SP_Sklad.UserControls
 
         public void PrintItem()
         {
-            PrintDoc.SettingMaterialPricesReport(row_smp.PTypeId, _db);
+            PrintDoc.SettingMaterialPricesReport(row_smp.Id, _db);
         }
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
@@ -274,6 +275,41 @@ namespace SP_Sklad.UserControls
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             new frmKagentMaterilPrices().ShowDialog();
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var dataForReport = new Dictionary<string, IList>();
+
+            var pl = _db.SettingMaterialPrices.Where(w => w.PTypeId == row_smp.PTypeId).OrderByDescending(o => o.OnDate).Take(1).Select(s => new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num }).ToList();
+            var pl_d = _db.v_SummarySettingMaterialPrices.Where(w => w.PTypeId == row_smp.PTypeId).ToList();
+
+            var mat_grp = pl_d.GroupBy(g => new { g.GrpNum, g.GrpName }).Select(s => new
+            {
+                s.Key.GrpName,
+                s.Key.GrpNum
+            }).OrderBy(o => o.GrpNum).ToList();
+
+            List<object> realation = new List<object>();
+            realation.Add(new
+            {
+                pk = "GrpName",
+                fk = "GrpName",
+                master_table = "MatGroup",
+                child_table = "PriceListDet"
+            });
+
+            dataForReport.Add("PriceList", pl);
+            dataForReport.Add("PriceListDet", pl_d);
+            dataForReport.Add("MatGroup", mat_grp);
+            dataForReport.Add("_realation_", realation);
+
+            IHelper.Print(dataForReport, "SummarySettingMaterialPrices.xlsx");
+        }
+
+        private void SettingMaterialPricesGridView_MouseWheel(object sender, MouseEventArgs e)
+        {
+           
         }
     }
 }
