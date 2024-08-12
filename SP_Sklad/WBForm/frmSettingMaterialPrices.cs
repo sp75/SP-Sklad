@@ -63,7 +63,7 @@ namespace SP_Sklad.WBForm
                 {
                     Id = Guid.NewGuid(),
                     DocType = 31,
-                    Checked = 1,
+                    Checked = 0,
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
                     PTypeId = _PTypeId ?? _db.PriceTypes.FirstOrDefault().PTypeId,
@@ -246,7 +246,7 @@ namespace SP_Sklad.WBForm
 
             if (wbtd != null)
             {
-
+                
                 if (e.Column.FieldName == "Price")
                 {
                     wbtd.Price = Convert.ToDecimal(e.Value);
@@ -256,6 +256,28 @@ namespace SP_Sklad.WBForm
                 {
                     wbtd.MatId = Convert.ToInt32(e.Value);
                 }
+
+                if (e.Column.FieldName == "ProcurementPrice")
+                {
+                    wbtd.ProcurementPrice = Convert.ToDecimal(e.Value);
+                    if(wbtd.Markup.HasValue)
+                    {
+                        wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
+                        focused_dr.Price = wbtd.Price;
+                        SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
+                    }
+                }
+
+                if (e.Column.FieldName == "Markup")
+                {
+                    wbtd.Markup = Convert.ToDecimal(e.Value);
+                    if (wbtd.ProcurementPrice.HasValue)
+                    {
+                        wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
+                        focused_dr.Price = wbtd.Price;
+                        SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
+                    }
+                }
             }
             else
             {
@@ -264,7 +286,7 @@ namespace SP_Sklad.WBForm
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
-                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count() ,
+                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count(),
                         MatId = focused_dr.MatId,
                         SettingMaterialPricesId = _wbt_id.Value,
                         CreatedAt = DBHelper.ServerDateTime(),
@@ -274,11 +296,6 @@ namespace SP_Sklad.WBForm
             }
 
             _db.SaveChanges();
-
-         /*   if (e.Column.FieldName == "MatId")
-            {
-                GetDetail();
-            }*/
 
         }
 
@@ -388,6 +405,36 @@ namespace SP_Sklad.WBForm
             SettingMaterialPricesDetGrid.CloseEditor();
         }
 
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var btn_edit = sender as ButtonEdit;
 
+            foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
+            {
+                item.Markup = Convert.ToDecimal(btn_edit.EditValue);
+                if(item.ProcurementPrice.HasValue)
+                {
+                    item.Price = item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100);
+                }
+            }
+            _db.SaveChanges();
+            GetDetail();
+        }
+
+        private void repositoryItemCalcEdit2_EditValueChanged(object sender, EventArgs e)
+        {
+            var btn_edit = sender as CalcEdit;
+
+            foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
+            {
+                item.Markup = Convert.ToDecimal(btn_edit.EditValue);
+                if (item.ProcurementPrice.HasValue)
+                {
+                    item.Price = item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100);
+                }
+            }
+            _db.SaveChanges();
+            GetDetail();
+        }
     }
 }

@@ -3910,6 +3910,7 @@
     <None Include="Resources\move_warehouse_1.png" />
     <None Include="Resources\money_move_2.png" />
     <None Include="Resources\money_move_1.png" />
+    <None Include="Resources\percent.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

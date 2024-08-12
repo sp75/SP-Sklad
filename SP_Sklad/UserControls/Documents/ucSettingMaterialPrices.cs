@@ -136,6 +136,24 @@ namespace SP_Sklad.UserControls
             _db.SaveChanges();
         }
 
+        public void CopyItem()
+        {
+            using (var frm = new frmMessageBox("Інформація", Resources.wb_copy))
+            {
+                if (!frm.user_settings.NotShowMessageCopyDocuments && frm.ShowDialog() != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
+            var pl_id = DB.SkladBase().CopySettingMaterialPrice(row_smp.Id).FirstOrDefault();
+
+            using (var smp_frm = new frmSettingMaterialPrices(pl_id))
+            {
+                smp_frm.ShowDialog();
+            }
+        }
+
         public void PrintItem()
         {
             PrintDoc.SettingMaterialPricesReport(row_smp.Id, _db);

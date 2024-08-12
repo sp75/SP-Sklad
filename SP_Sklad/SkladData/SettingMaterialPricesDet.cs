@@ -20,6 +20,8 @@ namespace SP_Sklad.SkladData
         public System.Guid SettingMaterialPricesId { get; set; }
         public decimal Price { get; set; }
         public Nullable<int> Num { get; set; }
+        public Nullable<decimal> ProcurementPrice { get; set; }
+        public Nullable<decimal> Markup { get; set; }
     
         public virtual SettingMaterialPrices SettingMaterialPrices { get; set; }
     }
