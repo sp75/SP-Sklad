@@ -30,5 +30,6 @@ namespace SP_Sklad.SkladData
         public string MsrName { get; set; }
         public Nullable<decimal> ProcurementPrice { get; set; }
         public Nullable<decimal> Markup { get; set; }
+        public Nullable<decimal> LastProcurementPrice { get; set; }
     }
 }

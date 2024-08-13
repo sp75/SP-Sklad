@@ -3652,6 +3652,7 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
           <Property Name="ProcurementPrice" Type="numeric" Precision="15" Scale="2" />
           <Property Name="Markup" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="LastProcurementPrice" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11204,7 +11205,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[Num] AS [Num], 
     [v_SettingMaterialPricesDet].[MsrName] AS [MsrName], 
     [v_SettingMaterialPricesDet].[ProcurementPrice] AS [ProcurementPrice], 
-    [v_SettingMaterialPricesDet].[Markup] AS [Markup]
+    [v_SettingMaterialPricesDet].[Markup] AS [Markup], 
+    [v_SettingMaterialPricesDet].[LastProcurementPrice] AS [LastProcurementPrice]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
@@ -14822,7 +14824,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="v_DiscountManagementDet" EntityType="BaseModel.v_DiscountManagementDet" />
           <EntitySet Name="v_MaterialBarCodes" EntityType="BaseModel.v_MaterialBarCodes" />
           <FunctionImport Name="CopySettingMaterialPrice" ReturnType="Collection(Guid)">
-            <Parameter Name="id" Mode="In" Type="Guid" />
+          <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
@@ -21636,6 +21638,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="ProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Markup" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="LastProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_SummarySettingMaterialPrices">
           <Key>
@@ -29224,6 +29227,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="LastProcurementPrice" ColumnName="LastProcurementPrice" />
                 <ScalarProperty Name="Markup" ColumnName="Markup" />
                 <ScalarProperty Name="ProcurementPrice" ColumnName="ProcurementPrice" />
                 <ScalarProperty Name="MsrName" ColumnName="MsrName" />

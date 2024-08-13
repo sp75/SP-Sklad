@@ -53,7 +53,7 @@ namespace SP_Sklad.WBForm
             SettingMaterialPricesDetGrid.SaveLayoutToStream(wb_det_layout_stream);
             SettingMaterialPricesDetGrid.RestoreLayoutFromRegistry(IHelper.reg_layout_path + "frmSettingMaterialPrices\\SettingMaterialPricesDetGrid");
 
-            PTypeEdit.Properties.DataSource = _db.PriceTypes.Select(s => new { s.PTypeId, s.Name }).ToList();
+            PTypeEdit.Properties.DataSource = _db.PriceTypes.AsNoTracking().ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemLookUpEdit1.DataSource = _db.v_MaterialBarCodes.AsNoTracking().Where(w => w.Archived == 0 && (w.TypeId == 1 || w.TypeId == 5 || w.TypeId == 6)).ToList();
 
@@ -230,19 +230,11 @@ namespace SP_Sklad.WBForm
         }
 
 
-        private void PriceListGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
-        {
-            if (e.HitInfo.InRow)
-            {
-                Point p2 = Control.MousePosition;
-                this.TemplateListPopupMenu.ShowPopup(p2);
-            }
-        }
-
 
         private void WaybillTemplateDetGrid_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
+            var pt = PTypeEdit.GetSelectedDataRow() as PriceTypes;
 
             if (wbtd != null)
             {
@@ -263,7 +255,7 @@ namespace SP_Sklad.WBForm
                     if(wbtd.Markup.HasValue)
                     {
                         wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
-                        focused_dr.Price = wbtd.Price;
+                        focused_dr.Price = Math.Round(wbtd.Price, pt.RoundUpTo ?? 2);
                         SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
                     }
                 }
@@ -274,7 +266,7 @@ namespace SP_Sklad.WBForm
                     if (wbtd.ProcurementPrice.HasValue)
                     {
                         wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
-                        focused_dr.Price = wbtd.Price;
+                        focused_dr.Price = Math.Round(wbtd.Price, pt.RoundUpTo ?? 2);
                         SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
                     }
                 }
@@ -332,6 +324,7 @@ namespace SP_Sklad.WBForm
         private void frmSettingMaterialPrices_Shown(object sender, EventArgs e)
         {
             SettingMaterialPricesDetGrid.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+            repositoryItemLookUpEdit1.AppearanceDropDown.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
             OnDateDBEdit.Focus();
             NumEdit.Focus();
@@ -424,17 +417,28 @@ namespace SP_Sklad.WBForm
         private void repositoryItemCalcEdit2_EditValueChanged(object sender, EventArgs e)
         {
             var btn_edit = sender as CalcEdit;
+            var pt = PTypeEdit.GetSelectedDataRow() as PriceTypes;
 
             foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
             {
                 item.Markup = Convert.ToDecimal(btn_edit.EditValue);
                 if (item.ProcurementPrice.HasValue)
                 {
-                    item.Price = item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100);
+                    item.Price = Math.Round((item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100)), pt.RoundUpTo ?? 2); ;
                 }
             }
             _db.SaveChanges();
             GetDetail();
         }
+
+        private void repositoryItemCalcEdit1_MouseUp(object sender, MouseEventArgs e)
+        {
+            var edit = ((CalcEdit)sender);
+            BeginInvoke(new MethodInvoker(() =>
+            {
+                edit.SelectAll();
+            }));
+        }
+ 
     }
 }

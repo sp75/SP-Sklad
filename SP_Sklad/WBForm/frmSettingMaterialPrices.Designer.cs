@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettingMaterialPrices));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -92,24 +92,24 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.TemplateListPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.SettingMaterialPricesDetGrid = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SettingMaterialPricesDetGridControl = new DevExpress.XtraGrid.GridControl();
             this.SettingMaterialPricesDetBS = new System.Windows.Forms.BindingSource(this.components);
+            this.SettingMaterialPricesDetGrid = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridColumn10 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn9 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -135,12 +135,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -421,9 +420,9 @@
             // repositoryItemButtonEdit1
             // 
             this.repositoryItemButtonEdit1.AutoHeight = false;
-            editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.recalc_money;
+            editorButtonImageOptions4.Image = global::SP_Sklad.Properties.Resources.recalc_money;
             this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemButtonEdit1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.repositoryItemButtonEdit1.EditFormat.FormatString = "0.00";
             this.repositoryItemButtonEdit1.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -510,10 +509,10 @@
             this.PersonComboBox.Enabled = false;
             this.PersonComboBox.Location = new System.Drawing.Point(587, 87);
             this.PersonComboBox.Name = "PersonComboBox";
-            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.user_valet;
+            editorButtonImageOptions5.Image = global::SP_Sklad.Properties.Resources.user_valet;
             this.PersonComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.PersonComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
             this.PersonComboBox.Properties.DisplayMember = "Name";
@@ -531,10 +530,10 @@
             this.OnDateDBEdit.Location = new System.Drawing.Point(266, 48);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
-            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.time_16x16;
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.time_16x16;
             this.OnDateDBEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Встановити поточний час", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.OnDateDBEdit.Properties.CalendarTimeEditing = DevExpress.Utils.DefaultBoolean.True;
             this.OnDateDBEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -664,46 +663,6 @@
             this.TemplateListPopupMenu.Manager = this.barManager1;
             this.TemplateListPopupMenu.Name = "TemplateListPopupMenu";
             // 
-            // SettingMaterialPricesDetGrid
-            // 
-            this.SettingMaterialPricesDetGrid.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn9,
-            this.gridColumn2,
-            this.gridColumn4,
-            this.gridColumn5,
-            this.gridColumn1,
-            this.gridColumn3,
-            this.gridColumn6,
-            this.gridColumn7,
-            this.gridColumn8,
-            this.gridColumn10,
-            this.gridColumn11,
-            this.gridColumn12});
-            this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
-            this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
-            this.SettingMaterialPricesDetGrid.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.SettingMaterialPricesDetGrid.OptionsClipboard.AllowHtmlFormat = DevExpress.Utils.DefaultBoolean.True;
-            this.SettingMaterialPricesDetGrid.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
-            this.SettingMaterialPricesDetGrid.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.Append;
-            this.SettingMaterialPricesDetGrid.OptionsView.ShowGroupPanel = false;
-            this.SettingMaterialPricesDetGrid.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.gridColumn5, DevExpress.Data.ColumnSortOrder.Ascending)});
-            this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
-            this.SettingMaterialPricesDetGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillTemplateDetGrid_CellValueChanged);
-            this.SettingMaterialPricesDetGrid.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.SettingMaterialPricesDetGrid_MouseWheel);
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
-            this.gridColumn9.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn9.Caption = "Назва товару";
-            this.gridColumn9.ColumnEdit = this.repositoryItemLookUpEdit1;
-            this.gridColumn9.FieldName = "MatId";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 390;
-            // 
             // repositoryItemLookUpEdit1
             // 
             this.repositoryItemLookUpEdit1.AutoHeight = false;
@@ -719,32 +678,6 @@
             this.repositoryItemLookUpEdit1.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.repositoryItemLookUpEdit1.ValueMember = "MatId";
             // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Група";
-            this.gridColumn2.FieldName = "GrpName";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.OptionsColumn.AllowEdit = false;
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            this.gridColumn2.Width = 146;
-            // 
-            // gridColumn4
-            // 
-            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.LightYellow;
-            this.gridColumn4.AppearanceCell.Options.UseBackColor = true;
-            this.gridColumn4.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
-            this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
-            this.gridColumn4.Caption = "Ціна";
-            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn4.DisplayFormat.FormatString = "0.00";
-            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn4.FieldName = "Price";
-            this.gridColumn4.Name = "gridColumn4";
-            this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 8;
-            this.gridColumn4.Width = 116;
-            // 
             // repositoryItemCalcEdit1
             // 
             this.repositoryItemCalcEdit1.AllowMouseWheel = false;
@@ -754,110 +687,8 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.MaskSettings.Set("mask", "");
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            this.repositoryItemCalcEdit1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.repositoryItemCalcEdit1_MouseUp);
             this.repositoryItemCalcEdit1.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.SettingMaterialPricesDetGrid_MouseWheel);
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "# групи";
-            this.gridColumn5.DisplayFormat.FormatString = "0";
-            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn5.FieldName = "GrpNum";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.OptionsColumn.AllowEdit = false;
-            this.gridColumn5.Width = 67;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Дата створення";
-            this.gridColumn1.DisplayFormat.FormatString = "g";
-            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.gridColumn1.FieldName = "CreatedAt";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.OptionsColumn.AllowEdit = false;
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 3;
-            this.gridColumn1.Width = 140;
-            // 
-            // gridColumn3
-            // 
-            this.gridColumn3.Caption = "Примітка";
-            this.gridColumn3.FieldName = "Notes";
-            this.gridColumn3.Name = "gridColumn3";
-            this.gridColumn3.Width = 80;
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Склад";
-            this.gridColumn6.ColumnEdit = this.repositoryItemLookUpEdit2;
-            this.gridColumn6.FieldName = "WId";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Width = 103;
-            // 
-            // repositoryItemLookUpEdit2
-            // 
-            this.repositoryItemLookUpEdit2.AutoHeight = false;
-            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name1")});
-            this.repositoryItemLookUpEdit2.DisplayMember = "Name";
-            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
-            this.repositoryItemLookUpEdit2.ShowFooter = false;
-            this.repositoryItemLookUpEdit2.ShowHeader = false;
-            this.repositoryItemLookUpEdit2.ValueMember = "WId";
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Артикул";
-            this.gridColumn7.FieldName = "Artikul";
-            this.gridColumn7.Name = "gridColumn7";
-            this.gridColumn7.OptionsColumn.AllowEdit = false;
-            this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 2;
-            this.gridColumn7.Width = 139;
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.Caption = "Попередня ціна";
-            this.gridColumn8.FieldName = "LastPrice";
-            this.gridColumn8.Name = "gridColumn8";
-            this.gridColumn8.OptionsColumn.AllowEdit = false;
-            this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 7;
-            this.gridColumn8.Width = 115;
-            // 
-            // gridColumn10
-            // 
-            this.gridColumn10.Caption = "№";
-            this.gridColumn10.FieldName = "Num";
-            this.gridColumn10.Name = "gridColumn10";
-            this.gridColumn10.OptionsColumn.AllowEdit = false;
-            this.gridColumn10.OptionsColumn.ReadOnly = true;
-            this.gridColumn10.Visible = true;
-            this.gridColumn10.VisibleIndex = 0;
-            this.gridColumn10.Width = 46;
-            // 
-            // gridColumn11
-            // 
-            this.gridColumn11.Caption = "Закупівельна ціна";
-            this.gridColumn11.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn11.FieldName = "ProcurementPrice";
-            this.gridColumn11.Name = "gridColumn11";
-            this.gridColumn11.Visible = true;
-            this.gridColumn11.VisibleIndex = 5;
-            this.gridColumn11.Width = 116;
-            // 
-            // gridColumn12
-            // 
-            this.gridColumn12.Caption = "Націнка, %";
-            this.gridColumn12.ColumnEdit = this.repositoryItemCalcEdit1;
-            this.gridColumn12.DisplayFormat.FormatString = "0.00";
-            this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn12.FieldName = "Markup";
-            this.gridColumn12.Name = "gridColumn12";
-            this.gridColumn12.Visible = true;
-            this.gridColumn12.VisibleIndex = 6;
-            this.gridColumn12.Width = 79;
             // 
             // SettingMaterialPricesDetGridControl
             // 
@@ -872,7 +703,6 @@
             this.SettingMaterialPricesDetGridControl.MenuManager = this.barManager1;
             this.SettingMaterialPricesDetGridControl.Name = "SettingMaterialPricesDetGridControl";
             this.SettingMaterialPricesDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemLookUpEdit2,
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1});
             this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1312, 440);
@@ -885,6 +715,177 @@
             // 
             this.SettingMaterialPricesDetBS.DataSource = typeof(SP_Sklad.SkladData.v_SettingMaterialPricesDet);
             this.SettingMaterialPricesDetBS.AddingNew += new System.ComponentModel.AddingNewEventHandler(this.SettingMaterialPricesDetBS_AddingNew);
+            // 
+            // SettingMaterialPricesDetGrid
+            // 
+            this.SettingMaterialPricesDetGrid.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
+            this.gridBand1,
+            this.gridBand2,
+            this.gridBand3});
+            this.SettingMaterialPricesDetGrid.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
+            this.gridColumn9,
+            this.gridColumn2,
+            this.gridColumn4,
+            this.gridColumn1,
+            this.gridColumn7,
+            this.gridColumn8,
+            this.gridColumn10,
+            this.gridColumn11,
+            this.gridColumn12,
+            this.bandedGridColumn1});
+            this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
+            this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
+            this.SettingMaterialPricesDetGrid.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
+            this.SettingMaterialPricesDetGrid.OptionsClipboard.AllowHtmlFormat = DevExpress.Utils.DefaultBoolean.True;
+            this.SettingMaterialPricesDetGrid.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
+            this.SettingMaterialPricesDetGrid.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.Append;
+            this.SettingMaterialPricesDetGrid.OptionsView.ShowGroupPanel = false;
+            this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
+            this.SettingMaterialPricesDetGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillTemplateDetGrid_CellValueChanged);
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Номенклатура";
+            this.gridBand1.Columns.Add(this.gridColumn10);
+            this.gridBand1.Columns.Add(this.gridColumn9);
+            this.gridBand1.Columns.Add(this.gridColumn2);
+            this.gridBand1.Columns.Add(this.gridColumn1);
+            this.gridBand1.Columns.Add(this.gridColumn7);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 658;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "№";
+            this.gridColumn10.FieldName = "Num";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.OptionsColumn.AllowEdit = false;
+            this.gridColumn10.OptionsColumn.ReadOnly = true;
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.Width = 37;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
+            this.gridColumn9.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn9.Caption = "Назва";
+            this.gridColumn9.ColumnEdit = this.repositoryItemLookUpEdit1;
+            this.gridColumn9.FieldName = "MatId";
+            this.gridColumn9.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
+            this.gridColumn9.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.Width = 356;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Група";
+            this.gridColumn2.FieldName = "GrpName";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowEdit = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.Width = 130;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Дата створення";
+            this.gridColumn1.DisplayFormat.FormatString = "g";
+            this.gridColumn1.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.gridColumn1.FieldName = "CreatedAt";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.Width = 119;
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Артикул";
+            this.gridColumn7.FieldName = "Artikul";
+            this.gridColumn7.Name = "gridColumn7";
+            this.gridColumn7.OptionsColumn.AllowEdit = false;
+            this.gridColumn7.Visible = true;
+            this.gridColumn7.Width = 135;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Закупівельна, грн";
+            this.gridBand2.Columns.Add(this.bandedGridColumn1);
+            this.gridBand2.Columns.Add(this.gridColumn11);
+            this.gridBand2.Columns.Add(this.gridColumn12);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 358;
+            // 
+            // bandedGridColumn1
+            // 
+            this.bandedGridColumn1.Caption = "Попередня ціна";
+            this.bandedGridColumn1.FieldName = "LastProcurementPrice";
+            this.bandedGridColumn1.Name = "bandedGridColumn1";
+            this.bandedGridColumn1.Visible = true;
+            this.bandedGridColumn1.Width = 137;
+            // 
+            // gridColumn11
+            // 
+            this.gridColumn11.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
+            this.gridColumn11.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn11.Caption = "Ціна";
+            this.gridColumn11.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn11.FieldName = "ProcurementPrice";
+            this.gridColumn11.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
+            this.gridColumn11.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.gridColumn11.Name = "gridColumn11";
+            this.gridColumn11.Visible = true;
+            this.gridColumn11.Width = 113;
+            // 
+            // gridColumn12
+            // 
+            this.gridColumn12.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
+            this.gridColumn12.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn12.Caption = "Націнка, %";
+            this.gridColumn12.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn12.DisplayFormat.FormatString = "0.00";
+            this.gridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn12.FieldName = "Markup";
+            this.gridColumn12.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
+            this.gridColumn12.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.gridColumn12.Name = "gridColumn12";
+            this.gridColumn12.Visible = true;
+            this.gridColumn12.Width = 108;
+            // 
+            // gridBand3
+            // 
+            this.gridBand3.Caption = "Роздрібна, грн";
+            this.gridBand3.Columns.Add(this.gridColumn8);
+            this.gridBand3.Columns.Add(this.gridColumn4);
+            this.gridBand3.Name = "gridBand3";
+            this.gridBand3.VisibleIndex = 2;
+            this.gridBand3.Width = 271;
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.Caption = "Попередня ціна";
+            this.gridColumn8.FieldName = "LastPrice";
+            this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.OptionsColumn.AllowEdit = false;
+            this.gridColumn8.Visible = true;
+            this.gridColumn8.Width = 134;
+            // 
+            // gridColumn4
+            // 
+            this.gridColumn4.AppearanceCell.BackColor = System.Drawing.Color.Ivory;
+            this.gridColumn4.AppearanceCell.Options.UseBackColor = true;
+            this.gridColumn4.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
+            this.gridColumn4.AppearanceHeader.Options.UseBackColor = true;
+            this.gridColumn4.Caption = "Ціна";
+            this.gridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
+            this.gridColumn4.DisplayFormat.FormatString = "0.00";
+            this.gridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn4.FieldName = "Price";
+            this.gridColumn4.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
+            this.gridColumn4.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.gridColumn4.Name = "gridColumn4";
+            this.gridColumn4.Visible = true;
+            this.gridColumn4.Width = 137;
             // 
             // bar1
             // 
@@ -948,12 +949,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TemplateListPopupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -994,14 +994,6 @@
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraGrid.GridControl SettingMaterialPricesDetGridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView SettingMaterialPricesDetGrid;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
-        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.TextEdit NumEdit;
@@ -1014,19 +1006,27 @@
         private DevExpress.XtraEditors.LookUpEdit PTypeEdit;
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.Utils.ImageCollection WBImgList;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraBars.BarSubItem barSubItem2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView SettingMaterialPricesDetGrid;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn10;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn9;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn4;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn7;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn8;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn11;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn12;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }
