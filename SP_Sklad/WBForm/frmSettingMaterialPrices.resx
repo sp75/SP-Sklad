@@ -121,10 +121,16 @@
     <value>41, 31</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>77</value>
+    <value>72</value>
   </metadata>
   <metadata name="SettingMaterialPricesDetBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>606, 30</value>
+  </metadata>
+  <metadata name="SettingMaterialPricesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>413, 31</value>
+  </metadata>
+  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>276, 31</value>
   </metadata>
   <metadata name="WBImgList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 32</value>
@@ -141,13 +147,13 @@
         BQAAAAAAAAACCw==
 </value>
   </data>
-  <metadata name="styleController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>276, 31</value>
-  </metadata>
-  <metadata name="SettingMaterialPricesBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>413, 31</value>
-  </metadata>
   <metadata name="TemplateListPopupMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>832, 28</value>
   </metadata>
+  <metadata name="excelDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1020, 28</value>
+  </metadata>
+  <data name="excelDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PFZpZXc+PEZpZWxkIE5hbWU9IuKEliIgVHlwZT0iRG91YmxlIiAvPjxGaWVsZCBOYW1lPSLQndCw0LfQstCwIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ItCT0YDRg9C/0LAiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i0JDRgNGC0LjQutGD0LsiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0i0J/QvtC/0LXRgNC10LTQvdGPINGG0ZbQvdCwIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9ItCm0ZbQvdCwIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9ItCd0LDRhtGW0L3QutCwLCAlIiBUeXBlPSJEb3VibGUiIC8+PEZpZWxkIE5hbWU9IkNvbHVtbjgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iQ29sdW1uOSIgVHlwZT0iRG91YmxlIiAvPjwvVmlldz4=</value>
+  </data>
 </root>

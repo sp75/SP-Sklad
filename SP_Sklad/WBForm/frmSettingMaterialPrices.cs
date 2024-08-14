@@ -119,9 +119,16 @@ namespace SP_Sklad.WBForm
         void GetDetail()
         {
             int top_row = SettingMaterialPricesDetGrid.TopRowIndex;
-            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.AsNoTracking().OrderBy(o=> o.Num).Where(w=> w.SettingMaterialPricesId == _wbt_id).ToList();
+            var focus_row_id = focused_dr != null ? focused_dr.Id : Guid.Empty;
+            SettingMaterialPricesDetBS.DataSource = _db.v_SettingMaterialPricesDet.AsNoTracking().OrderBy(o => o.Num).Where(w => w.SettingMaterialPricesId == _wbt_id).ToList();
             SettingMaterialPricesDetGrid.ExpandAllGroups();
             SettingMaterialPricesDetGrid.TopRowIndex = top_row;
+            var rowHandle = SettingMaterialPricesDetGrid.LocateByValue("Id", focus_row_id);
+
+            if (rowHandle != DevExpress.XtraGrid.GridControl.InvalidRowHandle)
+            {
+                SettingMaterialPricesDetGrid.FocusedRowHandle = rowHandle;
+            }
         }
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -210,7 +217,7 @@ namespace SP_Sklad.WBForm
                 var grp_id = (int)GrpId;
                 foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
-                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count();
+                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num);
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                     {
                         _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
@@ -229,34 +236,35 @@ namespace SP_Sklad.WBForm
             }
         }
 
-
-
         private void WaybillTemplateDetGrid_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
             var wbtd = _db.SettingMaterialPricesDet.Find(focused_dr.Id);
-            var pt = PTypeEdit.GetSelectedDataRow() as PriceTypes;
 
             if (wbtd != null)
             {
-                
+
                 if (e.Column.FieldName == "Price")
                 {
                     wbtd.Price = Convert.ToDecimal(e.Value);
+                    wbtd.Markup = null;
+                    wbtd.ProcurementPrice = null;
+                    focused_dr.Markup = null;
+                    focused_dr.ProcurementPrice = null;
                 }
 
                 if (e.Column.FieldName == "MatId")
                 {
                     wbtd.MatId = Convert.ToInt32(e.Value);
+              //      focused_dr.Artikul = _db.Materials.Find(wbtd.MatId).Artikul;
                 }
 
                 if (e.Column.FieldName == "ProcurementPrice")
                 {
                     wbtd.ProcurementPrice = Convert.ToDecimal(e.Value);
-                    if(wbtd.Markup.HasValue)
+                    if (wbtd.Markup.HasValue)
                     {
-                        wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
-                        focused_dr.Price = Math.Round(wbtd.Price, pt.RoundUpTo ?? 2);
-                        SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
+                        wbtd.Price = Math.Round(wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100), Convert.ToInt32( barEditItem2.EditValue));
+                        focused_dr.Price = wbtd.Price;
                     }
                 }
 
@@ -265,11 +273,11 @@ namespace SP_Sklad.WBForm
                     wbtd.Markup = Convert.ToDecimal(e.Value);
                     if (wbtd.ProcurementPrice.HasValue)
                     {
-                        wbtd.Price = wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100);
-                        focused_dr.Price = Math.Round(wbtd.Price, pt.RoundUpTo ?? 2);
-                        SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
+                        wbtd.Price = Math.Round(wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100), Convert.ToInt32(barEditItem2.EditValue));
+                        focused_dr.Price = wbtd.Price;
                     }
                 }
+             
             }
             else
             {
@@ -278,17 +286,24 @@ namespace SP_Sklad.WBForm
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
-                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count(),
+                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m=> m.Num)+1,
                         MatId = focused_dr.MatId,
                         SettingMaterialPricesId = _wbt_id.Value,
                         CreatedAt = DBHelper.ServerDateTime(),
                         Price = focused_dr.Price
                     });
+
+                    _db.SaveChanges();
+
+                    var v_smpd = _db.v_SettingMaterialPricesDet.FirstOrDefault(w => w.Id == focused_dr.Id);
+                    focused_dr.Num = v_smpd.Num;
+                    focused_dr.Artikul = v_smpd.Artikul;
+                    focused_dr.GrpName = v_smpd.GrpName;
                 }
             }
 
             _db.SaveChanges();
-
+            SettingMaterialPricesDetGrid.RefreshRow(SettingMaterialPricesDetGrid.FocusedRowHandle);
         }
 
         private void OnDateDBEdit_Validating(object sender, CancelEventArgs e)
@@ -398,33 +413,16 @@ namespace SP_Sklad.WBForm
             SettingMaterialPricesDetGrid.CloseEditor();
         }
 
-        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            var btn_edit = sender as ButtonEdit;
-
-            foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
-            {
-                item.Markup = Convert.ToDecimal(btn_edit.EditValue);
-                if(item.ProcurementPrice.HasValue)
-                {
-                    item.Price = item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100);
-                }
-            }
-            _db.SaveChanges();
-            GetDetail();
-        }
-
         private void repositoryItemCalcEdit2_EditValueChanged(object sender, EventArgs e)
         {
             var btn_edit = sender as CalcEdit;
-            var pt = PTypeEdit.GetSelectedDataRow() as PriceTypes;
-
+            
             foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
             {
                 item.Markup = Convert.ToDecimal(btn_edit.EditValue);
                 if (item.ProcurementPrice.HasValue)
                 {
-                    item.Price = Math.Round((item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100)), pt.RoundUpTo ?? 2); ;
+                    item.Price = Math.Round((item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100)), Convert.ToInt32(barEditItem2.EditValue)); 
                 }
             }
             _db.SaveChanges();
@@ -439,6 +437,69 @@ namespace SP_Sklad.WBForm
                 edit.SelectAll();
             }));
         }
- 
+
+        private void repositoryItemCalcEdit3_EditValueChanged(object sender, EventArgs e)
+        {
+            var btn_edit = sender as CalcEdit;
+            foreach (var item in _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id))
+            {
+                if (item.ProcurementPrice.HasValue)
+                {
+                    item.Price = Math.Round((item.ProcurementPrice.Value + (item.ProcurementPrice.Value * item.Markup.Value / 100)), Convert.ToInt32(btn_edit.EditValue));
+                }
+            }
+            _db.SaveChanges();
+            GetDetail();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ExportToXlsx(SettingMaterialPricesDetGridControl);
+
+            /*        excelDataSource1.Fill();
+
+                    DevExpress.DataAccess.Native.Excel.DataView dv = ((IListSource)excelDataSource1).GetList() as DevExpress.DataAccess.Native.Excel.DataView;
+                    for (int i = 0; i < dv.Count; i++)
+                    {
+                        DevExpress.DataAccess.Native.Excel.ViewRow row = dv[i] as DevExpress.DataAccess.Native.Excel.ViewRow;
+                        foreach (DevExpress.DataAccess.Native.Excel.ViewColumn col in dv.Columns)
+                        {
+                            object val = col.GetValue(row);
+                        }
+                    }*/
+
+        }
+
+        private void SettingMaterialPricesDetGrid_ClipboardRowPasting(object sender, ClipboardRowPastingEventArgs e)
+        {
+            if (e.IsRowValid())
+            {
+                var MatId = (int)e.Values[gridColumn9];
+
+                var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num);
+                var det = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.MatId == MatId && w.SettingMaterialPricesId == _wbt_id.Value);
+
+                if (det == null)
+                {
+                    _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
+                    {
+                        Id = Guid.NewGuid(),
+                        Num = ++num,
+                        MatId = MatId,
+                        SettingMaterialPricesId = _wbt_id.Value,
+                        CreatedAt = DBHelper.ServerDateTime(),
+                        Price = Convert.ToDecimal(e.Values[colPrice]),
+                        Markup = e.Values[colMarkup] != null ? (decimal?)Convert.ToDecimal(e.Values[colMarkup]) : null,
+                        ProcurementPrice = e.Values[colProcurementPrice] != null ? (decimal?)Convert.ToDecimal(e.Values[colProcurementPrice]) : null,
+                    });
+                }
+                else
+                {
+                    det.Markup = e.Values[colMarkup] != null ? (decimal?)Convert.ToDecimal(e.Values[colMarkup]) : null;
+                    det.ProcurementPrice = e.Values[colProcurementPrice] != null ? (decimal?)Convert.ToDecimal(e.Values[colProcurementPrice]) : null;
+                    det.Price = Convert.ToDecimal(e.Values[colPrice]);
+                }
+            }
+        }
     }
 }
