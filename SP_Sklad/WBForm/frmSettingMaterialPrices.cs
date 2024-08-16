@@ -474,7 +474,7 @@ namespace SP_Sklad.WBForm
         {
             if (e.IsRowValid())
             {
-                var MatId = (int)e.Values[gridColumn9];
+                var MatId = Convert.ToInt32( e.Values[colMaterial]);
 
                 var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num);
                 var det = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.MatId == MatId && w.SettingMaterialPricesId == _wbt_id.Value);
@@ -500,6 +500,16 @@ namespace SP_Sklad.WBForm
                     det.Price = Convert.ToDecimal(e.Values[colPrice]);
                 }
             }
+        }
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SettingMaterialPricesDetGrid.PasteFromClipboard();
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SettingMaterialPricesDetGrid.CopyToClipboard();
         }
     }
 }
