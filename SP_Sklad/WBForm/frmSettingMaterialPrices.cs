@@ -511,5 +511,11 @@ namespace SP_Sklad.WBForm
         {
             SettingMaterialPricesDetGrid.CopyToClipboard();
         }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IHelper.ShowMatInfo(focused_dr.MatId);
+            repositoryItemLookUpEdit1.DataSource = _db.v_MaterialBarCodes.AsNoTracking().Where(w => w.Archived == 0 && (w.TypeId == 1 || w.TypeId == 5 || w.TypeId == 6)).ToList();
+        }
     }
 }

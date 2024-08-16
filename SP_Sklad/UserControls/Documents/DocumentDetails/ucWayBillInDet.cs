@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using SP_Sklad.SkladData;
 using SP_Sklad.Common;
 using SP_Sklad.WBDetForm;
+using SP_Sklad.EditForm;
 
 namespace SP_Sklad.UserControls
 {
@@ -111,6 +112,27 @@ namespace SP_Sklad.UserControls
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new frmPosMatTurn(wb_det_focused_row.MatId, wb_det_focused_row.Wid).ShowDialog();
+        }
+
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 0)
+            {
+                using (var f = new frmRemainsWhView() { WhName = wb_det_focused_row.WhName })
+                {
+                    f.BottomPanel.Visible = false;
+
+                    f.ucWhMat.WhCheckedComboBox.Enabled = false;
+                    f.ucWhMat.by_grp = false;
+                    f.ucWhMat.focused_tree_node_num = wb_det_focused_row.Wid.Value;
+                    f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+                    f.ucWhMat.isDirectList = true;
+                   
+                    f.ShowDialog();
+                    
+                }
+            }
         }
     }
 }

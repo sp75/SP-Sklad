@@ -124,6 +124,7 @@
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -198,8 +199,9 @@
             this.barEditItem2,
             this.barButtonItem4,
             this.barButtonItem7,
-            this.barButtonItem8});
-            this.barManager1.MaxItemId = 43;
+            this.barButtonItem8,
+            this.barButtonItem9});
+            this.barManager1.MaxItemId = 44;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit2,
             this.repositoryItemCalcEdit3});
@@ -712,6 +714,7 @@
             this.TemplateListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
@@ -1011,6 +1014,13 @@
             excelSourceOptions1.ImportSettings = excelWorksheetSettings1;
             this.excelDataSource1.SourceOptions = excelSourceOptions1;
             // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Іформація про товар";
+            this.barButtonItem9.Id = 43;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
             // frmSettingMaterialPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1142,5 +1152,6 @@
         private DevExpress.DataAccess.Excel.ExcelDataSource excelDataSource1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
     }
 }
