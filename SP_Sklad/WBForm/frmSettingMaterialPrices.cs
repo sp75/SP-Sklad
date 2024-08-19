@@ -212,8 +212,6 @@ namespace SP_Sklad.WBForm
             var GrpId = IHelper.ShowDirectList(null, 19);
             if (GrpId != null)
             {
-                // var id = Convert.ToInt32(mat_id);
-                // var mat = _db.Materials.Find(id);
                 var grp_id = (int)GrpId;
                 foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
@@ -255,7 +253,8 @@ namespace SP_Sklad.WBForm
                 if (e.Column.FieldName == "MatId")
                 {
                     wbtd.MatId = Convert.ToInt32(e.Value);
-              //      focused_dr.Artikul = _db.Materials.Find(wbtd.MatId).Artikul;
+                    _db.SaveChanges();
+                     GetDetail();
                 }
 
                 if (e.Column.FieldName == "ProcurementPrice")
