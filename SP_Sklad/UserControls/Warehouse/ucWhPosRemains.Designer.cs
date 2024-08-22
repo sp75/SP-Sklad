@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWhPosRemains));
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -378,9 +377,8 @@
             this.BarImageList.Images.SetKeyName(6, "warehouse");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.findbyid_16x16, "findbyid_16x16", typeof(global::SP_Sklad.Properties.Resources), 7);
             this.BarImageList.Images.SetKeyName(7, "findbyid_16x16");
-            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.recalc_money, "recalc_money", typeof(global::SP_Sklad.Properties.Resources), 8);
-            this.BarImageList.Images.SetKeyName(8, "recalc_money");
-            this.BarImageList.Images.SetKeyName(9, "re_calc_remain_1.png");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.re_calc_remain_1, "re_calc_remain_1", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.BarImageList.Images.SetKeyName(8, "re_calc_remain_1");
             // 
             // barButtonItem1
             // 
@@ -394,6 +392,7 @@
             // 
             this.barButtonItem2.Caption = "Перерахувати залишки по партії";
             this.barButtonItem2.Id = 50;
+            this.barButtonItem2.ImageOptions.ImageIndex = 8;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
@@ -408,7 +407,7 @@
             // 
             this.barButtonItem4.Caption = "Знайти на складі";
             this.barButtonItem4.Id = 52;
-            this.barButtonItem4.ImageOptions.ImageIndex = 6;
+            this.barButtonItem4.ImageOptions.ImageIndex = 7;
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
@@ -778,10 +777,10 @@
             // PosBottomPopupMenu
             // 
             this.PosBottomPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
             // 
