@@ -900,7 +900,7 @@
             // 
             // OnDateDBEdit
             // 
-            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true));
+            this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.OnDateDBEdit.EditValue = null;
             this.OnDateDBEdit.Location = new System.Drawing.Point(246, 40);
             this.OnDateDBEdit.MenuManager = this.barManager1;
@@ -919,6 +919,7 @@
             this.OnDateDBEdit.StyleController = this.styleController1;
             this.OnDateDBEdit.TabIndex = 8;
             this.OnDateDBEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.OnDateDBEdit_ButtonClick);
+            this.OnDateDBEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
             // 
             // panel1
             // 

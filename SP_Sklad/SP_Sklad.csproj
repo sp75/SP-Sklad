@@ -1487,6 +1487,9 @@
     <Compile Include="SkladData\v_WaybillWriteOn.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_WhPosRemains.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_WorkDate.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1549,6 +1552,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWhPosRemains.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Warehouse\ucWhPosRemains.Designer.cs">
+      <DependentUpon>ucWhPosRemains.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Directories\ucServices.cs">
       <SubType>UserControl</SubType>
@@ -2688,6 +2697,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmDocumentDetails.resx">
       <DependentUpon>frmDocumentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Warehouse\ucWhPosRemains.resx">
+      <DependentUpon>ucWhPosRemains.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Directories\ucServices.resx">
       <DependentUpon>ucServices.cs</DependentUpon>
@@ -3911,6 +3923,7 @@
     <None Include="Resources\money_move_2.png" />
     <None Include="Resources\money_move_1.png" />
     <None Include="Resources\percent.png" />
+    <None Include="Resources\re_calc_remain_1.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

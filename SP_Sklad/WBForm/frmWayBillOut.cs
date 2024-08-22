@@ -338,6 +338,8 @@ namespace SP_Sklad.WBForm
             }
             wb.KaId = row.KaId;
 
+            _db.SaveChanges();
+
             if (row.RouteId.HasValue /*&& wb.WType == -1*/)
             {
                 var r = _db.Routes.FirstOrDefault(w => w.Id == row.RouteId.Value);
@@ -957,6 +959,14 @@ namespace SP_Sklad.WBForm
             wb_det_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
 
             WaybillDetOutGridView.RestoreLayoutFromStream(wb_det_layout_stream);
+        }
+
+        private void OnDateDBEdit_EditValueChanged(object sender, EventArgs e)
+        {
+         /*   if(OnDateDBEdit.ContainsFocus)
+            {
+                _db.SaveChanges();
+            }*/
         }
     }
 }

@@ -2166,6 +2166,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap re_calc_remain_1 {
+            get {
+                object obj = ResourceManager.GetObject("re_calc_remain_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap recalc_money {
             get {
                 object obj = ResourceManager.GetObject("recalc_money", resourceCulture);

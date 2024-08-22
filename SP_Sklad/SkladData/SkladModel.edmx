@@ -4740,6 +4740,46 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillWriteOn' does not have a prim
           <Property Name="ToWh" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WhPosRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WhPosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Remain" />
+            <PropertyRef Name="Rsv" />
+            <PropertyRef Name="Ordered" />
+            <PropertyRef Name="OrderedRsv" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WaybillListId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Remain" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Rsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="OrderedRsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+          <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_WorkDate">
           <Key>
@@ -12074,6 +12114,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillWriteOn].[ToWh] AS [ToWh]
     FROM [dbo].[v_WaybillWriteOn] AS [v_WaybillWriteOn]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_WhPosRemains" EntityType="Self.v_WhPosRemains" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WhPosRemains].[Id] AS [Id], 
+    [v_WhPosRemains].[PosId] AS [PosId], 
+    [v_WhPosRemains].[WId] AS [WId], 
+    [v_WhPosRemains].[MatId] AS [MatId], 
+    [v_WhPosRemains].[Remain] AS [Remain], 
+    [v_WhPosRemains].[Rsv] AS [Rsv], 
+    [v_WhPosRemains].[AvgPrice] AS [AvgPrice], 
+    [v_WhPosRemains].[Ordered] AS [Ordered], 
+    [v_WhPosRemains].[OrderedRsv] AS [OrderedRsv], 
+    [v_WhPosRemains].[ActualRemain] AS [ActualRemain], 
+    [v_WhPosRemains].[Num] AS [Num], 
+    [v_WhPosRemains].[OnDate] AS [OnDate], 
+    [v_WhPosRemains].[SupplierId] AS [SupplierId], 
+    [v_WhPosRemains].[MatName] AS [MatName], 
+    [v_WhPosRemains].[GrpName] AS [GrpName], 
+    [v_WhPosRemains].[WhName] AS [WhName], 
+    [v_WhPosRemains].[WType] AS [WType], 
+    [v_WhPosRemains].[DocTypeName] AS [DocTypeName], 
+    [v_WhPosRemains].[SupplierName] AS [SupplierName], 
+    [v_WhPosRemains].[WaybillListId] AS [WaybillListId]
+    FROM [dbo].[v_WhPosRemains] AS [v_WhPosRemains]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_WorkDate].[OnDate] AS [OnDate]
@@ -14826,6 +14890,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="CopySettingMaterialPrice" ReturnType="Collection(Guid)">
           <Parameter Name="id" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="v_WhPosRemains" EntityType="BaseModel.v_WhPosRemains" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -24413,6 +24478,44 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="TypeId" Type="Int32" />
           <Property Name="Archived" Type="Int32" />
         </EntityType>
+        <EntityType Name="v_WhPosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Remain" />
+            <PropertyRef Name="Rsv" />
+            <PropertyRef Name="Ordered" />
+            <PropertyRef Name="OrderedRsv" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WaybillListId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Remain" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Rsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="AvgPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="OrderedRsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ActualRemain" Type="Decimal" Precision="17" Scale="4" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillListId" Type="Guid" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -30940,6 +31043,32 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="CopySettingMaterialPrice" FunctionName="BaseModel.Store.CopySettingMaterialPrice" />
+          <EntitySetMapping Name="v_WhPosRemains">
+            <EntityTypeMapping TypeName="BaseModel.v_WhPosRemains">
+              <MappingFragment StoreEntitySet="v_WhPosRemains">
+                <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
+                <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
