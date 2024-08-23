@@ -2122,6 +2122,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="JobName" Type="nvarchar" MaxLength="50" />
           <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10121,7 +10122,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[WId] AS [WId], 
     [KagentList].[JobName] AS [JobName], 
     [KagentList].[RouteName] AS [RouteName], 
-    [KagentList].[Id] AS [Id]
+    [KagentList].[Id] AS [Id], 
+    [KagentList].[WhName] AS [WhName]
     FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="Self.MaterialsList" store:Type="Views" store:Schema="dbo">
@@ -19580,6 +19582,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WhName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AdditionalCosts">
           <Key>
@@ -27784,6 +27787,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="JobName" ColumnName="JobName" />

@@ -527,6 +527,12 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainTabs\OpenStoreUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainTabs\OpenStoreUserControl.Designer.cs">
+      <DependentUpon>OpenStoreUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmDocumentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1552,6 +1558,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreSales.Designer.cs">
+      <DependentUpon>ucOpenStoreSales.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Warehouse\ucWhPosRemains.cs">
       <SubType>UserControl</SubType>
@@ -2695,8 +2707,14 @@
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainTabs\OpenStoreUserControl.resx">
+      <DependentUpon>OpenStoreUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmDocumentDetails.resx">
       <DependentUpon>frmDocumentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreSales.resx">
+      <DependentUpon>ucOpenStoreSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Warehouse\ucWhPosRemains.resx">
       <DependentUpon>ucWhPosRemains.cs</DependentUpon>

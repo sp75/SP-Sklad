@@ -128,6 +128,7 @@
             this.gridColumn83 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -590,7 +591,8 @@
             this.gridColumn75,
             this.gridColumn103,
             this.gridColumn104,
-            this.gridColumn114});
+            this.gridColumn114,
+            this.gridColumn2});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1157,6 +1159,12 @@
             this.KAgentPopupMenu.Manager = this.barManager1;
             this.KAgentPopupMenu.Name = "KAgentPopupMenu";
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Склад";
+            this.gridColumn2.FieldName = "WhName";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
             // ucKagents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1315,5 +1323,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

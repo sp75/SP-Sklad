@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.34729.46
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SP_Sklad", "SP_Sklad\SP_Sklad.csproj", "{A1A2E2A4-9F01-4E90-A921-10B929BF694B}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckboxIntegration", "CheckboxIntegration\CheckboxIntegration.csproj", "{B2814945-82A8-4B37-8EED-A6FE751BB8B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyERPTablet", "MyERPTablet\MyERPTablet.csproj", "{79B9BF27-461E-41B4-AA26-08E5D31FA2D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenStore.Tranzit.Base", "OpenStore.Tranzit.Base\OpenStore.Tranzit.Base.csproj", "{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,14 @@ Global
 		{79B9BF27-461E-41B4-AA26-08E5D31FA2D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79B9BF27-461E-41B4-AA26-08E5D31FA2D6}.Release|x86.ActiveCfg = Release|Any CPU
 		{79B9BF27-461E-41B4-AA26-08E5D31FA2D6}.Release|x86.Build.0 = Release|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Debug|x86.Build.0 = Debug|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Release|x86.ActiveCfg = Release|Any CPU
+		{86A76BE1-EF35-429A-9D53-BDCB4C72BF7A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

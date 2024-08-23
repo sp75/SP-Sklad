@@ -326,7 +326,8 @@ namespace SP_Sklad.MainTabs
                           k.WebUserName,
                           k.Saldo,
                           k.PTypeId,
-                          k.RouteName
+                          k.RouteName,
+                          k.WhName
                       }).Distinct();
 
             if (KType >= 0)
@@ -355,7 +356,8 @@ namespace SP_Sklad.MainTabs
                 PTypeId = s.PTypeId,
                 RouteName = s.RouteName,
                 Saldo = s.Saldo,
-                WebUserName = s.WebUserName
+                WebUserName = s.WebUserName,
+                WhName = s.WhName
             });
 
             e.Tag = _db;
@@ -378,6 +380,7 @@ namespace SP_Sklad.MainTabs
             public decimal? Saldo { get; set; }
             public int? PTypeId { get; set; }
             public string RouteName { get; set; }
+            public string WhName { get; set; }
         }
 
         private void KaGridView_AsyncCompleted(object sender, EventArgs e)

@@ -24,7 +24,7 @@ using DevExpress.XtraGrid;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
-    public partial class ucWhPosRemains : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucOpenStoreSales : DevExpress.XtraEditors.XtraUserControl
     {
         public v_WhPosRemains row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_WhPosRemains;
 
@@ -32,7 +32,7 @@ namespace SP_Sklad.UserControls.Warehouse
         private int prev_top_row_index = 0;
         private int prev_rowHandle = 0;
         private bool _restore = false;
-        public ucWhPosRemains()
+        public ucOpenStoreSales()
         {
             InitializeComponent();
         }

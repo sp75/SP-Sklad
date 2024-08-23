@@ -60,5 +60,6 @@ namespace SP_Sklad.SkladData
         public string JobName { get; set; }
         public string RouteName { get; set; }
         public System.Guid Id { get; set; }
+        public string WhName { get; set; }
     }
 }
