@@ -745,6 +745,8 @@ namespace SP_Sklad.Common
             mainForm.main_form.mainTabControl.SelectedTabPageIndex = 2;
 
             var first_node = mainForm.main_form.whUserControl.WHTreeList.GetNodeByVisibleIndex(0);
+            mainForm.main_form.whUserControl.whContentTab.SelectedTabPageIndex = 1;
+
             mainForm.main_form.whUserControl.WHTreeList.SetFocusedNode(first_node);
 
             //   var rowHandle = mainForm.main_form.whUserControl.ucWhMat.WhMatGridView.LocateByValue("MatId", mat_id);

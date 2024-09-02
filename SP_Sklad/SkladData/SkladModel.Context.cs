@@ -269,6 +269,8 @@ namespace SP_Sklad.SkladData
         public DbSet<DiscountManagement> DiscountManagement { get; set; }
         public DbSet<DiscountManagementDet> DiscountManagementDet { get; set; }
         public DbSet<v_DiscountManagementDet> v_DiscountManagementDet { get; set; }
+        public DbSet<v_MaterialBarCodes> v_MaterialBarCodes { get; set; }
+        public DbSet<v_WhPosRemains> v_WhPosRemains { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2686,6 +2688,15 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("user_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetMatMove_Result>("[BaseEntities].[GetMatMove](@mat_id, @from_date, @to_date, @wid, @ka_id, @w_type, @wh, @ka_grp_id, @user_id)", mat_idParameter, from_dateParameter, to_dateParameter, widParameter, ka_idParameter, w_typeParameter, whParameter, ka_grp_idParameter, user_idParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<System.Guid>> CopySettingMaterialPrice(Nullable<System.Guid> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("CopySettingMaterialPrice", idParameter);
         }
     }
 }

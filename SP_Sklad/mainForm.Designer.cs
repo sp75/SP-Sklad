@@ -53,7 +53,6 @@
             this.skinBarSubItem1 = new DevExpress.XtraBars.SkinBarSubItem();
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
             this.WbCorrBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
@@ -74,6 +73,7 @@
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.repositoryItemDateEdit = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.gridSplitContainer1 = new DevExpress.XtraGrid.GridSplitContainer();
             this.xtraTabPage7 = new DevExpress.XtraTab.XtraTabPage();
             this.serviceUserControl1 = new SP_Sklad.MainTabs.ServiceUserControl();
@@ -93,13 +93,15 @@
             this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.TradeTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
+            this.xtraTabPage8 = new DevExpress.XtraTab.XtraTabPage();
+            this.openStoreUserControl = new SP_Sklad.MainTabs.OpenStoreUserControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel2)).BeginInit();
@@ -115,6 +117,7 @@
             this.mainTabControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             this.TradeTabPage.SuspendLayout();
+            this.xtraTabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -383,15 +386,6 @@
             this.repositoryItemLookUpEdit1.ShowHeader = false;
             this.repositoryItemLookUpEdit1.ValueMember = "KaId";
             // 
-            // repositoryItemDateEdit
-            // 
-            this.repositoryItemDateEdit.AutoHeight = false;
-            this.repositoryItemDateEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemDateEdit.Name = "repositoryItemDateEdit";
-            // 
             // barSubItem3
             // 
             this.barSubItem3.Caption = "Створити документ";
@@ -522,7 +516,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1188, 45);
+            this.barDockControlTop.Size = new System.Drawing.Size(1321, 45);
             // 
             // barDockControlBottom
             // 
@@ -530,7 +524,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 680);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1188, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1321, 20);
             // 
             // barDockControlLeft
             // 
@@ -544,7 +538,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1188, 45);
+            this.barDockControlRight.Location = new System.Drawing.Point(1321, 45);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 635);
             // 
@@ -597,6 +591,15 @@
             this.repositoryItemCalcEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
+            // 
+            // repositoryItemDateEdit
+            // 
+            this.repositoryItemDateEdit.AutoHeight = false;
+            this.repositoryItemDateEdit.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemDateEdit.Name = "repositoryItemDateEdit";
             // 
             // gridSplitContainer1
             // 
@@ -744,13 +747,14 @@
             this.mainTabControl.Location = new System.Drawing.Point(0, 45);
             this.mainTabControl.Name = "mainTabControl";
             this.mainTabControl.SelectedTabPage = this.xtraTabPage1;
-            this.mainTabControl.Size = new System.Drawing.Size(1188, 635);
+            this.mainTabControl.Size = new System.Drawing.Size(1321, 635);
             this.mainTabControl.TabIndex = 0;
             this.mainTabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
             this.TradeTabPage,
+            this.xtraTabPage8,
             this.xtraTabPage4,
             this.xtraTabPage5,
             this.xtraTabPage6,
@@ -769,13 +773,14 @@
             this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
             this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
             this.TabImageCollection.Images.SetKeyName(6, "morefunctions_32x32.png");
-            this.TabImageCollection.Images.SetKeyName(7, "editrangepermission_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(7, "os_logo.png");
             this.TabImageCollection.Images.SetKeyName(8, "ide_32x32.png");
             this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
             this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
             this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
             this.TabImageCollection.Images.SetKeyName(12, "warehouse_32.png");
             this.TabImageCollection.Images.SetKeyName(13, "functionsfinancial_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(14, "editrangepermission_32x32.png");
             // 
             // TradeTabPage
             // 
@@ -795,11 +800,27 @@
             this.tradeUserControl1.Size = new System.Drawing.Size(1186, 591);
             this.tradeUserControl1.TabIndex = 0;
             // 
+            // xtraTabPage8
+            // 
+            this.xtraTabPage8.Controls.Add(this.openStoreUserControl);
+            this.xtraTabPage8.ImageOptions.ImageIndex = 7;
+            this.xtraTabPage8.Name = "xtraTabPage8";
+            this.xtraTabPage8.Size = new System.Drawing.Size(1319, 591);
+            this.xtraTabPage8.Text = "OpenStore";
+            // 
+            // openStoreUserControl
+            // 
+            this.openStoreUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.openStoreUserControl.Location = new System.Drawing.Point(0, 0);
+            this.openStoreUserControl.Name = "openStoreUserControl";
+            this.openStoreUserControl.Size = new System.Drawing.Size(1319, 591);
+            this.openStoreUserControl.TabIndex = 0;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 700);
+            this.ClientSize = new System.Drawing.Size(1321, 700);
             this.Controls.Add(this.mainTabControl);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -817,11 +838,11 @@
             this.Shown += new System.EventHandler(this.mainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTimeEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridSplitContainer1)).EndInit();
@@ -837,6 +858,7 @@
             this.mainTabControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             this.TradeTabPage.ResumeLayout(false);
+            this.xtraTabPage8.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,6 +929,8 @@
         private DevExpress.XtraBars.BarButtonItem WbCorrListBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage8;
+        public MainTabs.OpenStoreUserControl openStoreUserControl;
     }
 }
 

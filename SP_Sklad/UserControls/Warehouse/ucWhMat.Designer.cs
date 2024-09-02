@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWhMat));
-            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView1 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView2 = new DevExpress.XtraCharts.StackedBarSeriesView();
-            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView3 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView4 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView5 = new DevExpress.XtraCharts.StackedBarSeriesView();
+            DevExpress.XtraCharts.StackedBarSeriesView stackedBarSeriesView6 = new DevExpress.XtraCharts.StackedBarSeriesView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -88,7 +88,6 @@
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WhMatGridControl = new DevExpress.XtraGrid.GridControl();
             this.WhMatGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
-            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn24 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn25 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn26 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -96,13 +95,11 @@
             this.gridColumn28 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.GrpNameGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn19 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.AvgMatPriceGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.SumMatRemainGridColumn = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn11 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.bandedGridColumn12 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -208,6 +205,10 @@
             this.row2 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.WhMatGetSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WhRemainPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.bandedGridColumn20 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.gridBand6 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -266,12 +267,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.xtraTabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).BeginInit();
             this.xtraTabPage13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vGridControl2)).BeginInit();
@@ -684,7 +685,7 @@
             // 
             // DelRemainsMatBtn
             // 
-            this.DelRemainsMatBtn.Caption = "Видалити історію по залишкам для всіх товарів";
+            this.DelRemainsMatBtn.Caption = "Видалити історію по залишкам для товару";
             this.DelRemainsMatBtn.Id = 30;
             this.DelRemainsMatBtn.Name = "DelRemainsMatBtn";
             this.DelRemainsMatBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DelRemainsMatBtn_ItemClick);
@@ -807,8 +808,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeboningMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.SetPriceBtnItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsMatBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsAllMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelRemainsMatBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.RecalcRemainsAllMatBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowEmptyItemsCheck, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowAllItemsCheck),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1, true)});
@@ -890,7 +891,8 @@
             this.bandedGridColumn5,
             this.bandedGridColumn11,
             this.bandedGridColumn12,
-            this.bandedGridColumn19});
+            this.bandedGridColumn19,
+            this.bandedGridColumn20});
             this.WhMatGridView.GridControl = this.WhMatGridControl;
             this.WhMatGridView.Name = "WhMatGridView";
             this.WhMatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -907,20 +909,6 @@
             this.WhMatGridView.AsyncCompleted += new System.EventHandler(this.WhMatGridView_AsyncCompleted);
             this.WhMatGridView.BeforeLoadLayout += new DevExpress.Utils.LayoutAllowEventHandler(this.WhMatGridView_BeforeLoadLayout);
             this.WhMatGridView.DoubleClick += new System.EventHandler(this.WhMatGridView_DoubleClick);
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Товар";
-            this.gridBand1.Columns.Add(this.gridColumn24);
-            this.gridBand1.Columns.Add(this.gridColumn25);
-            this.gridBand1.Columns.Add(this.gridColumn26);
-            this.gridBand1.Columns.Add(this.gridColumn27);
-            this.gridBand1.Columns.Add(this.gridColumn28);
-            this.gridBand1.Columns.Add(this.GrpNameGridColumn);
-            this.gridBand1.Columns.Add(this.bandedGridColumn19);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 504;
             // 
             // gridColumn24
             // 
@@ -977,18 +965,6 @@
             this.bandedGridColumn19.Name = "bandedGridColumn19";
             this.bandedGridColumn19.Visible = true;
             // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Залишки";
-            this.gridBand2.Columns.Add(this.bandedGridColumn4);
-            this.gridBand2.Columns.Add(this.bandedGridColumn5);
-            this.gridBand2.Columns.Add(this.bandedGridColumn3);
-            this.gridBand2.Columns.Add(this.AvgMatPriceGridColumn);
-            this.gridBand2.Columns.Add(this.SumMatRemainGridColumn);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 409;
-            // 
             // bandedGridColumn4
             // 
             this.bandedGridColumn4.Caption = "Залишок на складі";
@@ -1032,15 +1008,6 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumRemain", "{0:0.##}")});
             this.SumMatRemainGridColumn.Visible = true;
             this.SumMatRemainGridColumn.Width = 74;
-            // 
-            // gridBand6
-            // 
-            this.gridBand6.Caption = "Замовлення постачальникам";
-            this.gridBand6.Columns.Add(this.bandedGridColumn11);
-            this.gridBand6.Columns.Add(this.bandedGridColumn12);
-            this.gridBand6.Name = "gridBand6";
-            this.gridBand6.VisibleIndex = 2;
-            this.gridBand6.Width = 150;
             // 
             // bandedGridColumn11
             // 
@@ -2084,33 +2051,33 @@
             // chartControl1
             // 
             this.chartControl1.DataSource = this.REP_15BS;
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.Interlaced = true;
-            xyDiagram1.AxisY.MinorCount = 4;
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram1;
+            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Interlaced = true;
+            xyDiagram2.AxisY.MinorCount = 4;
+            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram2;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Border.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Legend.MarkerMode = DevExpress.XtraCharts.LegendMarkerMode.CheckBox;
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.True;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
             this.chartControl1.Name = "chartControl1";
-            series1.ArgumentDataMember = "OnDate";
-            series1.LegendTextPattern = "Відгрузка";
-            series1.Name = "OutLine";
-            series1.ValueDataMembersSerializable = "AmountOut";
-            stackedBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            series1.View = stackedBarSeriesView1;
-            series2.ArgumentDataMember = "OnDate";
-            series2.LegendTextPattern = "Повернення";
-            series2.Name = "ReturnLine";
-            series2.ValueDataMembersSerializable = "ReturnAmount";
-            stackedBarSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.View = stackedBarSeriesView2;
+            series3.ArgumentDataMember = "OnDate";
+            series3.LegendTextPattern = "Відгрузка";
+            series3.Name = "OutLine";
+            series3.ValueDataMembersSerializable = "AmountOut";
+            stackedBarSeriesView4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            series3.View = stackedBarSeriesView4;
+            series4.ArgumentDataMember = "OnDate";
+            series4.LegendTextPattern = "Повернення";
+            series4.Name = "ReturnLine";
+            series4.ValueDataMembersSerializable = "ReturnAmount";
+            stackedBarSeriesView5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series4.View = stackedBarSeriesView5;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2};
-            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView3;
+        series3,
+        series4};
+            this.chartControl1.SeriesTemplate.View = stackedBarSeriesView6;
             this.chartControl1.Size = new System.Drawing.Size(1370, 156);
             this.chartControl1.TabIndex = 1;
             this.chartControl1.DoubleClick += new System.EventHandler(this.chartControl1_DoubleClick);
@@ -2179,6 +2146,48 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.WhRemainPopupMenu.Manager = this.barManager1;
             this.WhRemainPopupMenu.Name = "WhRemainPopupMenu";
+            // 
+            // bandedGridColumn20
+            // 
+            this.bandedGridColumn20.Caption = "Код товара";
+            this.bandedGridColumn20.FieldName = "MatId";
+            this.bandedGridColumn20.Name = "bandedGridColumn20";
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Товар";
+            this.gridBand1.Columns.Add(this.gridColumn24);
+            this.gridBand1.Columns.Add(this.gridColumn25);
+            this.gridBand1.Columns.Add(this.gridColumn26);
+            this.gridBand1.Columns.Add(this.gridColumn27);
+            this.gridBand1.Columns.Add(this.gridColumn28);
+            this.gridBand1.Columns.Add(this.GrpNameGridColumn);
+            this.gridBand1.Columns.Add(this.bandedGridColumn19);
+            this.gridBand1.Columns.Add(this.bandedGridColumn20);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 0;
+            this.gridBand1.Width = 504;
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Залишки";
+            this.gridBand2.Columns.Add(this.bandedGridColumn4);
+            this.gridBand2.Columns.Add(this.bandedGridColumn5);
+            this.gridBand2.Columns.Add(this.bandedGridColumn3);
+            this.gridBand2.Columns.Add(this.AvgMatPriceGridColumn);
+            this.gridBand2.Columns.Add(this.SumMatRemainGridColumn);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 409;
+            // 
+            // gridBand6
+            // 
+            this.gridBand6.Caption = "Замовлення постачальникам";
+            this.gridBand6.Columns.Add(this.bandedGridColumn11);
+            this.gridBand6.Columns.Add(this.bandedGridColumn12);
+            this.gridBand6.Name = "gridBand6";
+            this.gridBand6.VisibleIndex = 2;
+            this.gridBand6.Width = 150;
             // 
             // ucWhMat
             // 
@@ -2259,12 +2268,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.xtraTabPage12.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedBarSeriesView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.REP_15BS)).EndInit();
             this.xtraTabPage13.ResumeLayout(false);
@@ -2444,12 +2453,13 @@
         private DevExpress.XtraBars.BarButtonItem CopyCellContentsBtn;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.Data.Linq.LinqInstantFeedbackSource WhMatGetSource;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn19;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.PopupMenu WhRemainPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn20;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand6;
     }
 }

@@ -876,8 +876,8 @@ namespace SP_Sklad.UserControls.Warehouse
 
             var rowHandle = WhMatGridView.LocateByValue("MatId", mat_id);
             find_id = rowHandle;
-       //     WhMatGridView.FocusedRowHandle = rowHandle;
-       //        WhMatGridView.TopRowIndex = rowHandle;
+            WhMatGridView.FocusedRowHandle = rowHandle;
+            WhMatGridView.TopRowIndex = rowHandle;
 
             return rowHandle;
             //    GetData();

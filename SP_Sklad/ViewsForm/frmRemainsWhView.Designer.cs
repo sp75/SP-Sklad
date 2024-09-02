@@ -106,10 +106,9 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.PanelControl BottomPanel;
         public DevExpress.XtraEditors.SimpleButton OkButton;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         public UserControls.Warehouse.ucWhMat ucWhMat;
+        public DevExpress.XtraEditors.PanelControl BottomPanel;
     }
 }

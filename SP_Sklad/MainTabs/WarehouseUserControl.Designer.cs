@@ -35,6 +35,7 @@
             this.ByGrpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ByWhBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ViewDetailTree = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl6 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -60,6 +61,8 @@
             this.ucWaybillWriteOff = new SP_Sklad.UserControls.ucWaybillWriteOff();
             this.xtraTabPage18 = new DevExpress.XtraTab.XtraTabPage();
             this.ucWaybillInventory = new SP_Sklad.UserControls.ucWaybillInventory();
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucWhPosRemains = new SP_Sklad.UserControls.Warehouse.ucWhPosRemains();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
@@ -92,6 +95,7 @@
             this.xtraTabPage16.SuspendLayout();
             this.xtraTabPage17.SuspendLayout();
             this.xtraTabPage18.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,8 +115,9 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ByGrpBtn,
             this.ByWhBtn,
-            this.ViewDetailTree});
-            this.barManager1.MaxItemId = 47;
+            this.ViewDetailTree,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 48;
             // 
             // bar3
             // 
@@ -124,7 +129,8 @@
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.ByGrpBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ByWhBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.ViewDetailTree, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ViewDetailTree, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
@@ -161,6 +167,16 @@
             this.ViewDetailTree.ImageOptions.ImageIndex = 2;
             this.ViewDetailTree.Name = "ViewDetailTree";
             this.ViewDetailTree.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ViewDetailTree_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.Check;
+            this.barButtonItem1.Caption = "По партіях";
+            this.barButtonItem1.GroupIndex = 1;
+            this.barButtonItem1.Id = 47;
+            this.barButtonItem1.ImageOptions.ImageIndex = 4;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // standaloneBarDockControl6
             // 
@@ -238,6 +254,8 @@
             this.imageCollection1.Images.SetKeyName(2, "tree_structure.png");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.warehouse, "warehouse", typeof(global::SP_Sklad.Properties.Resources), 3);
             this.imageCollection1.Images.SetKeyName(3, "warehouse");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.mat_pos_wh_1, "mat_pos_wh_1", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "mat_pos_wh_1");
             // 
             // panelControl1
             // 
@@ -487,7 +505,8 @@
             this.xtraTabPage14,
             this.xtraTabPage16,
             this.xtraTabPage17,
-            this.xtraTabPage18});
+            this.xtraTabPage18,
+            this.xtraTabPage1});
             // 
             // xtraTabPage6
             // 
@@ -580,6 +599,21 @@
             this.ucWaybillInventory.Name = "ucWaybillInventory";
             this.ucWaybillInventory.Size = new System.Drawing.Size(1214, 645);
             this.ucWaybillInventory.TabIndex = 0;
+            // 
+            // xtraTabPage1
+            // 
+            this.xtraTabPage1.Controls.Add(this.ucWhPosRemains);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1214, 645);
+            this.xtraTabPage1.Text = "Залишки по партіям";
+            // 
+            // ucWhPosRemains
+            // 
+            this.ucWhPosRemains.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucWhPosRemains.Location = new System.Drawing.Point(0, 0);
+            this.ucWhPosRemains.Name = "ucWhPosRemains";
+            this.ucWhPosRemains.Size = new System.Drawing.Size(1214, 645);
+            this.ucWhPosRemains.TabIndex = 0;
             // 
             // styleController1
             // 
@@ -706,6 +740,7 @@
             this.xtraTabPage16.ResumeLayout(false);
             this.xtraTabPage17.ResumeLayout(false);
             this.xtraTabPage18.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -721,7 +756,6 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraTreeList.Columns.TreeListColumn treeListColumn1;
-        private DevExpress.XtraTab.XtraTabControl whContentTab;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage6;
         private DevExpress.XtraBars.BarButtonItem ByGrpBtn;
         private DevExpress.XtraBars.BarButtonItem ViewDetailTree;
@@ -755,5 +789,9 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage19;
         public UserControls.Warehouse.ucWhMat ucWhMat;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private UserControls.Warehouse.ucWhPosRemains ucWhPosRemains;
+        public DevExpress.XtraTab.XtraTabControl whContentTab;
     }
 }

@@ -114,6 +114,8 @@ namespace SP_Sklad.MainTabs
 
         private void ByWhBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            whContentTab.SelectedTabPageIndex = 1;
+
             ViewDetailTree.Enabled = !ByWhBtn.Down;
 
             ucWhMat.display_child_groups = ViewDetailTree.Down;
@@ -129,6 +131,9 @@ namespace SP_Sklad.MainTabs
           //  ucWhMat.GetData();
         }
 
- 
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            whContentTab.SelectedTabPageIndex = 6;
+        }
     }
 }

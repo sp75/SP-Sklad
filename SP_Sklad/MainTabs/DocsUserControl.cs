@@ -870,7 +870,10 @@ namespace SP_Sklad.MainTabs
 
                 case 5:
                     ucPriceList.CopyItem();
+                    break;
 
+                case 12:
+                    settingMaterialPricesUserControl1.CopyItem();
                     break;
             }
 

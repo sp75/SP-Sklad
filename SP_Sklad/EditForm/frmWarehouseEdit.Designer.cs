@@ -49,8 +49,6 @@
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.checkEdit1 = new DevExpress.XtraEditors.CheckEdit();
-            this.textEdit43 = new DevExpress.XtraEditors.CalcEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -64,7 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit43.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -252,33 +249,11 @@
             this.checkEdit1.StyleController = this.styleController1;
             this.checkEdit1.TabIndex = 38;
             // 
-            // textEdit43
-            // 
-            this.textEdit43.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WarehouseDS, "OpenStoreId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit43.Location = new System.Drawing.Point(21, 254);
-            this.textEdit43.Name = "textEdit43";
-            this.textEdit43.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.textEdit43.Size = new System.Drawing.Size(182, 22);
-            this.textEdit43.StyleController = this.styleController1;
-            this.textEdit43.TabIndex = 60;
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(21, 232);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(139, 16);
-            this.labelControl4.StyleController = this.styleController1;
-            this.labelControl4.TabIndex = 59;
-            this.labelControl4.Text = "Код складу (OpenStore)";
-            // 
             // frmWarehouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 561);
-            this.Controls.Add(this.textEdit43);
-            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.checkEdit1);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.UsersGridControl);
@@ -313,7 +288,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit43.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,7 +315,5 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private System.Windows.Forms.BindingSource UserListBS;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
-        private DevExpress.XtraEditors.CalcEdit textEdit43;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
     }
 }

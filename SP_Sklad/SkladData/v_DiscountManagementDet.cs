@@ -21,5 +21,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> Discount { get; set; }
         public Nullable<System.Guid> DiscountManagementId { get; set; }
         public Nullable<System.Guid> Id { get; set; }
+        public string GrpName { get; set; }
+        public string Artikul { get; set; }
     }
 }

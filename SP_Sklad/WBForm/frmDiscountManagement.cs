@@ -298,11 +298,6 @@ namespace SP_Sklad.WBForm
             e.Handled = true;
         }
 
-        private void dragDropEvents2_DragDrop(object sender, DragDropEventArgs e)
-        {
-            AddSelectedRow((int[])e.Data);
-            GetDetail();
-        }
 
         private void MatGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {

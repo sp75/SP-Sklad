@@ -1484,10 +1484,13 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Num" Type="int" />
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
           <Property Name="SettingMaterialPricesId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="ProcurementPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Markup" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Shift">
           <Key>
@@ -2119,6 +2122,7 @@ warning 6002: The table/view 'sp_base.dbo.KagentList' does not have a primary ke
           <Property Name="JobName" Type="nvarchar" MaxLength="50" />
           <Property Name="RouteName" Type="nvarchar" MaxLength="50" />
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.MaterialsList' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2347,6 +2351,7 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscountManagementDet' does not have
             <PropertyRef Name="KaId" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatId" />
+            <PropertyRef Name="GrpName" />
           </Key>
           <Property Name="KaId" Type="int" Nullable="false" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
@@ -2355,6 +2360,8 @@ warning 6002: The table/view 'sp_base.dbo.v_DiscountManagementDet' does not have
           <Property Name="Discount" Type="numeric" Precision="15" Scale="4" />
           <Property Name="DiscountManagementId" Type="uniqueidentifier" />
           <Property Name="Id" Type="uniqueidentifier" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Docs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2957,6 +2964,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
             <PropertyRef Name="KaId" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatGrpName" />
+            <PropertyRef Name="PriceTypeName" />
           </Key>
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="KaId" Type="int" Nullable="false" />
@@ -2965,8 +2973,9 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
           <Property Name="PTypeId" Type="int" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
           <Property Name="KaName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="MatGrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MatGrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3089,6 +3098,19 @@ warning 6002: The table/view 'sp_base.dbo.v_ManufacturingProducts' does not have
           <Property Name="AdditionalCosts" Type="numeric" Precision="38" Scale="6" />
           <Property Name="MatOut" Type="numeric" Precision="15" Scale="2" />
           <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_MaterialBarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_MaterialBarCodes">
+          <Key>
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
+          <Property Name="BarCode" Type="nvarchar" MaxLength="64" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="Archived" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Materials' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3613,6 +3635,7 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="Checked" />
+            <PropertyRef Name="MsrName" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
@@ -3620,12 +3643,17 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="Price" Type="numeric" Precision="15" Scale="2" Nullable="false" />
           <Property Name="SettingMaterialPricesId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="MatName" Type="nvarchar" MaxLength="255" />
-          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="GrpId" Type="int" />
           <Property Name="OnDate" Type="datetime" Nullable="false" />
           <Property Name="Checked" Type="int" Nullable="false" />
           <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
           <Property Name="LastPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Num" Type="int" />
+          <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="ProcurementPrice" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="Markup" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="LastProcurementPrice" Type="numeric" Precision="15" Scale="2" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -4711,6 +4739,46 @@ warning 6002: The table/view 'sp_base.dbo.v_WaybillWriteOn' does not have a prim
           <Property Name="AdditionalDocTypeName" Type="nvarchar" MaxLength="50" />
           <Property Name="ToWId" Type="int" />
           <Property Name="ToWh" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_WhPosRemains' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_WhPosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Remain" />
+            <PropertyRef Name="Rsv" />
+            <PropertyRef Name="Ordered" />
+            <PropertyRef Name="OrderedRsv" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WaybillListId" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PosId" Type="int" Nullable="false" />
+          <Property Name="WId" Type="int" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Remain" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="Rsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="AvgPrice" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="OrderedRsv" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="ActualRemain" Type="numeric" Precision="17" Scale="4" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="MatName" Type="nvarchar" MaxLength="255" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="WhName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="WType" Type="int" Nullable="false" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+          <Property Name="WaybillListId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -7618,6 +7686,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
         <Function Name="CopyPriceList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="price_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="CopySettingMaterialPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="uniqueidentifier" Mode="In" />
+        </Function>
         <Function Name="CreateOrderByPriceList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="WbillId" Type="int" Mode="In" />
           <Parameter Name="PlId" Type="int" Mode="In" />
@@ -10051,7 +10122,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [KagentList].[WId] AS [WId], 
     [KagentList].[JobName] AS [JobName], 
     [KagentList].[RouteName] AS [RouteName], 
-    [KagentList].[Id] AS [Id]
+    [KagentList].[Id] AS [Id], 
+    [KagentList].[WhName] AS [WhName]
     FROM [dbo].[KagentList] AS [KagentList]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MaterialsList" EntityType="Self.MaterialsList" store:Type="Views" store:Schema="dbo">
@@ -10226,7 +10298,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DiscountManagementDet].[MatName] AS [MatName], 
     [v_DiscountManagementDet].[Discount] AS [Discount], 
     [v_DiscountManagementDet].[DiscountManagementId] AS [DiscountManagementId], 
-    [v_DiscountManagementDet].[Id] AS [Id]
+    [v_DiscountManagementDet].[Id] AS [Id], 
+    [v_DiscountManagementDet].[GrpName] AS [GrpName], 
+    [v_DiscountManagementDet].[Artikul] AS [Artikul]
     FROM [dbo].[v_DiscountManagementDet] AS [v_DiscountManagementDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Docs" EntityType="Self.v_Docs" store:Type="Views" store:Schema="dbo">
@@ -10688,7 +10762,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KagentMaterilPrices].[MatName] AS [MatName], 
     [v_KagentMaterilPrices].[KaName] AS [KaName], 
     [v_KagentMaterilPrices].[MatGrpName] AS [MatGrpName], 
-    [v_KagentMaterilPrices].[KaGrpName] AS [KaGrpName]
+    [v_KagentMaterilPrices].[KaGrpName] AS [KaGrpName], 
+    [v_KagentMaterilPrices].[PriceTypeName] AS [PriceTypeName]
     FROM [dbo].[v_KagentMaterilPrices] AS [v_KagentMaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentPrices" EntityType="Self.v_KAgentPrices" store:Type="Views" store:Schema="dbo">
@@ -10776,6 +10851,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ManufacturingProducts].[MatOut] AS [MatOut], 
     [v_ManufacturingProducts].[UserId] AS [UserId]
     FROM [dbo].[v_ManufacturingProducts] AS [v_ManufacturingProducts]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_MaterialBarCodes" EntityType="Self.v_MaterialBarCodes" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_MaterialBarCodes].[MatId] AS [MatId], 
+    [v_MaterialBarCodes].[Name] AS [Name], 
+    [v_MaterialBarCodes].[Artikul] AS [Artikul], 
+    [v_MaterialBarCodes].[BarCode] AS [BarCode], 
+    [v_MaterialBarCodes].[TypeId] AS [TypeId], 
+    [v_MaterialBarCodes].[Archived] AS [Archived]
+    FROM [dbo].[v_MaterialBarCodes] AS [v_MaterialBarCodes]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Materials" EntityType="Self.v_Materials" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -11158,7 +11243,12 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[OnDate] AS [OnDate], 
     [v_SettingMaterialPricesDet].[Checked] AS [Checked], 
     [v_SettingMaterialPricesDet].[Artikul] AS [Artikul], 
-    [v_SettingMaterialPricesDet].[LastPrice] AS [LastPrice]
+    [v_SettingMaterialPricesDet].[LastPrice] AS [LastPrice], 
+    [v_SettingMaterialPricesDet].[Num] AS [Num], 
+    [v_SettingMaterialPricesDet].[MsrName] AS [MsrName], 
+    [v_SettingMaterialPricesDet].[ProcurementPrice] AS [ProcurementPrice], 
+    [v_SettingMaterialPricesDet].[Markup] AS [Markup], 
+    [v_SettingMaterialPricesDet].[LastProcurementPrice] AS [LastProcurementPrice]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
@@ -12025,6 +12115,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WaybillWriteOn].[ToWId] AS [ToWId], 
     [v_WaybillWriteOn].[ToWh] AS [ToWh]
     FROM [dbo].[v_WaybillWriteOn] AS [v_WaybillWriteOn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_WhPosRemains" EntityType="Self.v_WhPosRemains" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_WhPosRemains].[Id] AS [Id], 
+    [v_WhPosRemains].[PosId] AS [PosId], 
+    [v_WhPosRemains].[WId] AS [WId], 
+    [v_WhPosRemains].[MatId] AS [MatId], 
+    [v_WhPosRemains].[Remain] AS [Remain], 
+    [v_WhPosRemains].[Rsv] AS [Rsv], 
+    [v_WhPosRemains].[AvgPrice] AS [AvgPrice], 
+    [v_WhPosRemains].[Ordered] AS [Ordered], 
+    [v_WhPosRemains].[OrderedRsv] AS [OrderedRsv], 
+    [v_WhPosRemains].[ActualRemain] AS [ActualRemain], 
+    [v_WhPosRemains].[Num] AS [Num], 
+    [v_WhPosRemains].[OnDate] AS [OnDate], 
+    [v_WhPosRemains].[SupplierId] AS [SupplierId], 
+    [v_WhPosRemains].[MatName] AS [MatName], 
+    [v_WhPosRemains].[GrpName] AS [GrpName], 
+    [v_WhPosRemains].[WhName] AS [WhName], 
+    [v_WhPosRemains].[WType] AS [WType], 
+    [v_WhPosRemains].[DocTypeName] AS [DocTypeName], 
+    [v_WhPosRemains].[SupplierName] AS [SupplierName], 
+    [v_WhPosRemains].[WaybillListId] AS [WaybillListId]
+    FROM [dbo].[v_WhPosRemains] AS [v_WhPosRemains]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WorkDate" EntityType="Self.v_WorkDate" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -14774,6 +14888,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="DiscountManagementDet" EntitySet="DiscountManagementDet" />
           </AssociationSet>
           <EntitySet Name="v_DiscountManagementDet" EntityType="BaseModel.v_DiscountManagementDet" />
+          <EntitySet Name="v_MaterialBarCodes" EntityType="BaseModel.v_MaterialBarCodes" />
+          <FunctionImport Name="CopySettingMaterialPrice" ReturnType="Collection(Guid)">
+          <Parameter Name="id" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <EntitySet Name="v_WhPosRemains" EntityType="BaseModel.v_WhPosRemains" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19463,6 +19582,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="JobName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WhName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AdditionalCosts">
           <Key>
@@ -21510,6 +21630,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="SettingMaterialPricesId" Type="Guid" Nullable="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <NavigationProperty Name="SettingMaterialPrices" Relationship="BaseModel.FK_SettingMaterialPricesDet_SettingMaterialPrices" FromRole="SettingMaterialPricesDet" ToRole="SettingMaterialPrices" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="ProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Markup" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="v_SettingMaterialPrices">
           <Key>
@@ -21565,6 +21688,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="GrpName" />
             <PropertyRef Name="OnDate" />
             <PropertyRef Name="Checked" />
+            <PropertyRef Name="MsrName" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
@@ -21572,12 +21696,17 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <Property Name="SettingMaterialPricesId" Type="Guid" Nullable="false" />
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="GrpId" Type="Int32" />
           <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Checked" Type="Int32" Nullable="false" />
           <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LastPrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Num" Type="Int32" />
+          <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Markup" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="LastProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
         </EntityType>
         <EntityType Name="v_SummarySettingMaterialPrices">
           <Key>
@@ -21657,6 +21786,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="KaId" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatGrpName" />
+            <PropertyRef Name="PriceTypeName" />
           </Key>
           <Property Name="MatId" Type="Int32" Nullable="false" />
           <Property Name="KaId" Type="Int32" Nullable="false" />
@@ -21665,8 +21795,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PTypeId" Type="Int32" />
           <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MatGrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MatGrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="v_ProjectManagementDet">
           <Key>
@@ -24327,6 +24458,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="KaId" />
             <PropertyRef Name="KaName" />
             <PropertyRef Name="MatId" />
+            <PropertyRef Name="GrpName" />
           </Key>
           <Property Name="KaId" Type="Int32" Nullable="false" />
           <Property Name="KaName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -24335,6 +24467,57 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Discount" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="DiscountManagementId" Type="Guid" />
           <Property Name="Id" Type="Guid" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_MaterialBarCodes">
+          <Key>
+            <PropertyRef Name="MatId" />
+          </Key>
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BarCode" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="Archived" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_WhPosRemains">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PosId" />
+            <PropertyRef Name="WId" />
+            <PropertyRef Name="MatId" />
+            <PropertyRef Name="Remain" />
+            <PropertyRef Name="Rsv" />
+            <PropertyRef Name="Ordered" />
+            <PropertyRef Name="OrderedRsv" />
+            <PropertyRef Name="Num" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="GrpName" />
+            <PropertyRef Name="WhName" />
+            <PropertyRef Name="WType" />
+            <PropertyRef Name="WaybillListId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PosId" Type="Int32" Nullable="false" />
+          <Property Name="WId" Type="Int32" Nullable="false" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Remain" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="Rsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="AvgPrice" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="Ordered" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="OrderedRsv" Type="Decimal" Nullable="false" Precision="15" Scale="4" />
+          <Property Name="ActualRemain" Type="Decimal" Precision="17" Scale="4" />
+          <Property Name="Num" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="MatName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="WhName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="WType" Type="Int32" Nullable="false" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WaybillListId" Type="Guid" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -27604,6 +27787,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="KagentList">
             <EntityTypeMapping TypeName="BaseModel.KagentList">
               <MappingFragment StoreEntitySet="KagentList">
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RouteName" ColumnName="RouteName" />
                 <ScalarProperty Name="JobName" ColumnName="JobName" />
@@ -29120,6 +29304,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="SettingMaterialPricesDet">
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
+                <ScalarProperty Name="ProcurementPrice" ColumnName="ProcurementPrice" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="SettingMaterialPricesId" ColumnName="SettingMaterialPricesId" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
@@ -29147,6 +29334,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="LastProcurementPrice" ColumnName="LastProcurementPrice" />
+                <ScalarProperty Name="Markup" ColumnName="Markup" />
+                <ScalarProperty Name="ProcurementPrice" ColumnName="ProcurementPrice" />
+                <ScalarProperty Name="MsrName" ColumnName="MsrName" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
                 <ScalarProperty Name="LastPrice" ColumnName="LastPrice" />
                 <ScalarProperty Name="Artikul" ColumnName="Artikul" />
                 <ScalarProperty Name="Checked" ColumnName="Checked" />
@@ -29229,6 +29421,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KagentMaterilPrices">
             <EntityTypeMapping TypeName="BaseModel.v_KagentMaterilPrices">
               <MappingFragment StoreEntitySet="v_KagentMaterilPrices">
+                <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
                 <ScalarProperty Name="KaGrpName" ColumnName="KaGrpName" />
                 <ScalarProperty Name="MatGrpName" ColumnName="MatGrpName" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
@@ -30829,6 +31022,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_DiscountManagementDet">
             <EntityTypeMapping TypeName="BaseModel.v_DiscountManagementDet">
               <MappingFragment StoreEntitySet="v_DiscountManagementDet">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DiscountManagementId" ColumnName="DiscountManagementId" />
                 <ScalarProperty Name="Discount" ColumnName="Discount" />
@@ -30836,6 +31031,45 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="KaName" ColumnName="KaName" />
                 <ScalarProperty Name="KaId" ColumnName="KaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_MaterialBarCodes">
+            <EntityTypeMapping TypeName="BaseModel.v_MaterialBarCodes">
+              <MappingFragment StoreEntitySet="v_MaterialBarCodes">
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CopySettingMaterialPrice" FunctionName="BaseModel.Store.CopySettingMaterialPrice" />
+          <EntitySetMapping Name="v_WhPosRemains">
+            <EntityTypeMapping TypeName="BaseModel.v_WhPosRemains">
+              <MappingFragment StoreEntitySet="v_WhPosRemains">
+                <ScalarProperty Name="WaybillListId" ColumnName="WaybillListId" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="WType" ColumnName="WType" />
+                <ScalarProperty Name="WhName" ColumnName="WhName" />
+                <ScalarProperty Name="GrpName" ColumnName="GrpName" />
+                <ScalarProperty Name="MatName" ColumnName="MatName" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="ActualRemain" ColumnName="ActualRemain" />
+                <ScalarProperty Name="OrderedRsv" ColumnName="OrderedRsv" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="AvgPrice" ColumnName="AvgPrice" />
+                <ScalarProperty Name="Rsv" ColumnName="Rsv" />
+                <ScalarProperty Name="Remain" ColumnName="Remain" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
+                <ScalarProperty Name="WId" ColumnName="WId" />
+                <ScalarProperty Name="PosId" ColumnName="PosId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
