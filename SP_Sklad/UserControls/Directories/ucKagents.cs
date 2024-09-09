@@ -502,19 +502,7 @@ namespace SP_Sklad.MainTabs
         {
             if (e.Button.Index == 0)
             {
-                using (var f = new frmRemainsWhView() { WhName = focused_kagent.WhName })
-                {
-                    f.BottomPanel.Visible = false;
-
-                    f.ucWhMat.WhCheckedComboBox.Enabled = false;
-                    f.ucWhMat.by_grp = false;
-                    f.ucWhMat.focused_tree_node_num = focused_kagent.WId.Value;
-                    f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
-                    f.ucWhMat.isDirectList = true;
-
-                    f.ShowDialog();
-
-                }
+                IHelper.ShowRemainsInWh(focused_kagent.WId.Value, focused_kagent.WhName);
             }
         }
     }

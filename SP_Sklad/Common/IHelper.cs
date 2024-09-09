@@ -740,6 +740,24 @@ namespace SP_Sklad.Common
             }
         }
 
+        static public void ShowRemainsInWh(int wid , string wh_name)
+        {
+            using (var f = new frmRemainsWhView() { WhName = wh_name })
+            {
+                f.BottomPanel.Visible = false;
+
+                f.ucWhMat.WhCheckedComboBox.Enabled = false;
+                f.ucWhMat.by_grp = false;
+                f.ucWhMat.focused_tree_node_num = wid;
+                f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+                f.ucWhMat.isDirectList = true;
+
+                f.ShowDialog();
+
+            }
+        }
+
+
         static public bool FindMatInWH(int? mat_id)
         {
             mainForm.main_form.mainTabControl.SelectedTabPageIndex = 2;
