@@ -22,6 +22,8 @@ namespace SP_Sklad.MainTabs
         public KagentListView focused_kagent => KaGridView.GetFocusedRow() is NotLoadedObject ? null : KaGridView.GetFocusedRow() as KagentListView;
         private UserAccess user_access { get; set; }
 
+        private string reg_layout_path = "ucKagents\\KaGridView";
+
         [Browsable(true)]
         public event EventHandler KaGridViewDoubleClick
         {
@@ -42,13 +44,30 @@ namespace SP_Sklad.MainTabs
          int kagent_restore_row = 0;
         int kagent_restore_top_row = 0;
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
+            KaGridView.SaveLayoutToStream(wh_layout_stream);
+
+            KaGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+
             if (!DesignMode)
             {
                 KagentSaldoGridColumn.Visible = (DBHelper.CurrentUser.ShowBalance == 1);
                 KagentSaldoGridColumn.OptionsColumn.ShowInCustomizationForm = KagentSaldoGridColumn.Visible;
             }
+        }
+
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            KaGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
         public void GetData(bool restore = true)
@@ -327,7 +346,8 @@ namespace SP_Sklad.MainTabs
                           k.Saldo,
                           k.PTypeId,
                           k.RouteName,
-                          k.WhName
+                          k.WhName,
+                          k.WId
                       }).Distinct();
 
             if (KType >= 0)
@@ -357,7 +377,8 @@ namespace SP_Sklad.MainTabs
                 RouteName = s.RouteName,
                 Saldo = s.Saldo,
                 WebUserName = s.WebUserName,
-                WhName = s.WhName
+                WhName = s.WhName,
+                WId = s.WId
             });
 
             e.Tag = _db;
@@ -381,6 +402,7 @@ namespace SP_Sklad.MainTabs
             public int? PTypeId { get; set; }
             public string RouteName { get; set; }
             public string WhName { get; set; }
+            public int? WId { get; set; }
         }
 
         private void KaGridView_AsyncCompleted(object sender, EventArgs e)
@@ -472,6 +494,26 @@ namespace SP_Sklad.MainTabs
                     _db.SaveChanges();
 
                     KAgentInfoBS.DataSource = _db.v_Kagent.AsNoTracking().FirstOrDefault(w => w.KaId == focused_kagent.KaId); 
+                }
+            }
+        }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 0)
+            {
+                using (var f = new frmRemainsWhView() { WhName = focused_kagent.WhName })
+                {
+                    f.BottomPanel.Visible = false;
+
+                    f.ucWhMat.WhCheckedComboBox.Enabled = false;
+                    f.ucWhMat.by_grp = false;
+                    f.ucWhMat.focused_tree_node_num = focused_kagent.WId.Value;
+                    f.ucWhMat.GrpNameGridColumn.GroupIndex = 0;
+                    f.ucWhMat.isDirectList = true;
+
+                    f.ShowDialog();
+
                 }
             }
         }

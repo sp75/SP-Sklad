@@ -81,6 +81,9 @@
             this.gridColumn103 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn104 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn114 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl4 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -128,7 +131,6 @@
             this.gridColumn83 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.KAgentPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -147,6 +149,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KaGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage15.SuspendLayout();
@@ -559,7 +562,8 @@
             this.KaGridControl.MainView = this.KaGridView;
             this.KaGridControl.Name = "KaGridControl";
             this.KaGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit7});
+            this.repositoryItemCheckEdit7,
+            this.repositoryItemButtonEdit1});
             this.KaGridControl.Size = new System.Drawing.Size(1420, 380);
             this.KaGridControl.TabIndex = 0;
             this.KaGridControl.UseEmbeddedNavigator = true;
@@ -592,11 +596,12 @@
             this.gridColumn103,
             this.gridColumn104,
             this.gridColumn114,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.gridColumn5});
             this.KaGridView.GridControl = this.KaGridControl;
             this.KaGridView.Name = "KaGridView";
             this.KaGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.KaGridView.OptionsBehavior.Editable = false;
+            this.KaGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.KaGridView.OptionsBehavior.ReadOnly = true;
             this.KaGridView.OptionsCustomization.CustomizationFormSnapMode = DevExpress.Utils.Controls.SnapMode.None;
             this.KaGridView.OptionsView.ShowFooter = true;
@@ -742,6 +747,27 @@
             this.gridColumn114.Caption = "Маршрут";
             this.gridColumn114.FieldName = "RouteName";
             this.gridColumn114.Name = "gridColumn114";
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Склад";
+            this.gridColumn2.ColumnEdit = this.repositoryItemButtonEdit1;
+            this.gridColumn2.FieldName = "WhName";
+            this.gridColumn2.Name = "gridColumn2";
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Примітка";
+            this.gridColumn5.FieldName = "Notes";
+            this.gridColumn5.Name = "gridColumn5";
             // 
             // xtraTabControl2
             // 
@@ -1159,12 +1185,6 @@
             this.KAgentPopupMenu.Manager = this.barManager1;
             this.KAgentPopupMenu.Name = "KAgentPopupMenu";
             // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Склад";
-            this.gridColumn2.FieldName = "WhName";
-            this.gridColumn2.Name = "gridColumn2";
-            // 
             // ucKagents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1200,6 +1220,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KaGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage15.ResumeLayout(false);
@@ -1324,5 +1345,7 @@
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }
