@@ -3950,6 +3950,10 @@
       <Project>{b2814945-82a8-4b37-8eed-a6fe751bb8b3}</Project>
       <Name>CheckboxIntegration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenStore.Tranzit.Base\OpenStore.Tranzit.Base.csproj">
+      <Project>{86a76be1-ef35-429a-9d53-bdcb4c72bf7a}</Project>
+      <Name>OpenStore.Tranzit.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SkladEngine\SkladEngine.csproj">
       <Project>{053E5968-B5FB-41BD-9E8F-8F4A9C60D922}</Project>
       <Name>SkladEngine</Name>

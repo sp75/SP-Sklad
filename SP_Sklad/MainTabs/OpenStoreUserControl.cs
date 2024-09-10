@@ -25,25 +25,21 @@ namespace SP_Sklad.MainTabs
             if (!DesignMode)
             {
 
-                using (var db = new BaseEntities())
+           /*     using (var db = new BaseEntities())
                 {
                     DirTreeList.DataSource = db.GetReportTree(DBHelper.CurrentUser.UserId).ToList();
                     DirTreeList.ExpandToLevel(1);
-                }
+                }*/
             }
         }
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-           
+         /*   if ((int)e.Node.Tag == 0)
+            {
+                mainContentTab.SelectedTabPageIndex = 1;
+                ucOpenStoreSales.GetData();
+            }*/
         }
-   
-           private void RepBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-
-        }
-
- 
     }
 }

@@ -21,12 +21,13 @@ using DevExpress.Data;
 using SkladEngine.DBFunction;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
+using OpenStore.Tranzit.Base;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
     public partial class ucOpenStoreSales : DevExpress.XtraEditors.XtraUserControl
     {
-        public v_WhPosRemains row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_WhPosRemains;
+        public v_Sales row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_Sales;
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
@@ -39,9 +40,13 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
-
             if (!DesignMode)
             {
+                wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
+                wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
+
+                KagentList.Properties.DataSource = new Tranzit_OSEntities().SAREA.ToList();
+
                 var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
 
                 WhPosRemainsGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
@@ -53,16 +58,30 @@ namespace SP_Sklad.UserControls.Warehouse
 
             prev_rowHandle = WhPosRemainsGridView.FocusedRowHandle;
 
-            if (row_smp != null )
+            if (row_smp != null)
             {
                 prev_top_row_index = WhPosRemainsGridView.TopRowIndex;
-                prev_focused_id = row_smp.Id;
+                //     prev_focused_id = row_smp.Id;
             }
 
             _restore = restore;
 
-            WhPosRemainsGridControl.DataSource = null;
-            WhPosRemainsGridControl.DataSource = WhPosRemainsSource;
+            var area = KagentList.GetSelectedDataRow() as SAREA;
+
+            if(area == null)
+            {
+                return;
+            }
+
+            Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
+            var list = objectContext.v_Sales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && w.SAREAID == area.SAREAID).ToList();
+
+            WhPosRemainsGridControl.DataSource = list;
+
+            WhPosRemainsGridView.ExpandAllGroups();
+
+            //     WhPosRemainsGridControl.DataSource = null;
+            //    WhPosRemainsGridControl.DataSource = SalesSource;
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -77,15 +96,18 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            BaseEntities objectContext = DB.SkladBase();
+            Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
+       //     var satrt_date = PDStartDate.DateTime;
+       //     var end_date = PDEndDate.DateTime;
 
-            var list = objectContext.v_WhPosRemains.Join(objectContext.UserAccessWh.Where(w => w.UserId == UserSession.UserId), w => w.WId, ew => ew.WId, (w, ew) => w);
+            var list = objectContext.v_Sales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime);
             e.QueryableSource = list;
+            e.Tag = objectContext;
         }
 
         private void WhPosRemainsGridView_AsyncCompleted(object sender, EventArgs e)
         {
-            if (row_smp == null || !_restore)
+         /*   if (row_smp == null || !_restore)
             {
                 return;
             }
@@ -100,7 +122,7 @@ namespace SP_Sklad.UserControls.Warehouse
                 WhPosRemainsGridView.FocusedRowHandle = prev_rowHandle;
             }
 
-            _restore = false;
+            _restore = false;*/
         }
 
         void OnRowSearchComplete(object rh)
@@ -114,50 +136,81 @@ namespace SP_Sklad.UserControls.Warehouse
 
         public void FocusRow(GridView view, int rowHandle)
         {
-            view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
+    /*        view.TopRowIndex = prev_top_row_index == -1 ? rowHandle : prev_top_row_index;
             view.FocusedRowHandle = rowHandle;
-            view.SelectRow(rowHandle);
+            view.SelectRow(rowHandle);*/
         }
 
         private void WhPosRemainsGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-            if (e.HitInfo.InRow)
+         /*   if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
                 PosBottomPopupMenu.ShowPopup(p2);
-            }
+            }*/
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
-            FindDoc.Find(row_smp.WaybillListId, row_smp.WType, row_smp.OnDate);
+
         }
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (var db = DB.SkladBase())
+           
+        }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+          
+        }
+
+        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
+            switch (PeriodComboBoxEdit.SelectedIndex)
             {
-                db.DeleteWhere<PosRemains>(w => w.PosId == row_smp.PosId);
+                case 1:
+                    wbStartDate.DateTime = DateTime.Now.Date;
+                    break;
 
-                var pos = db.WMatTurn.Where(w => w.PosId == row_smp.PosId).OrderBy(o => o.OnDate).Select(s => new { s.PosId, s.WId, s.OnDate }).ToList().Distinct();
+                case 2:
+                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
+                    break;
 
-                foreach (var item in pos)
-                {
-                    db.SP_RECALC_POSREMAINS(item.PosId, row_smp.MatId, item.WId, item.OnDate, 0);
-                }
+                case 3:
+                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
+                    break;
 
-                db.SaveChanges();
+                case 4:
+                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
+                    break;
             }
 
             GetData();
         }
 
-        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
         {
-            if (!IHelper.FindMatInWH(row_smp.MatId))
+            if (wbStartDate.ContainsFocus)
             {
-                MessageBox.Show(string.Format("На даний час товар <{0}> на складі вдсутній!", row_smp.MatName));
+                GetData();
+            }
+        }
+
+        private void wbEndDate_EditValueChanged(object sender, EventArgs e)
+        {
+            if (wbEndDate.ContainsFocus)
+            {
+                GetData();
+            }
+        }
+
+        private void KagentList_EditValueChanged(object sender, EventArgs e)
+        {
+            if (KagentList.ContainsFocus)
+            {
+                GetData();
             }
         }
     }

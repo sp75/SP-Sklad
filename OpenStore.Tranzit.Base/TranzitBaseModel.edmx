@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Tranzit_OSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ART">
+          <Key>
+            <PropertyRef Name="ARTID" />
+          </Key>
+          <Property Name="ARTID" Type="int" Nullable="false" />
+          <Property Name="GRPID" Type="int" Nullable="false" />
+          <Property Name="OFFERID" Type="int" />
+          <Property Name="DEFAULTUNITID" Type="int" />
+          <Property Name="ARTCODE" Type="int" Nullable="false" />
+          <Property Name="COMPOSCARDID" Type="int" />
+          <Property Name="ARTTYPE" Type="int" Nullable="false" />
+          <Property Name="ARTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ARTSNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DELFLAG" Type="smallint" Nullable="false" />
+          <Property Name="UPDATENUM" Type="int" Nullable="false" />
+          <Property Name="UKEZEDCODE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SAREA">
+          <Key>
+            <PropertyRef Name="SAREAID" />
+          </Key>
+          <Property Name="SAREAID" Type="int" Nullable="false" />
+          <Property Name="PRCLEVELID" Type="int" Nullable="false" />
+          <Property Name="CASHPROFILEID" Type="int" Nullable="false" />
+          <Property Name="ARTHOTKEYSETID" Type="int" />
+          <Property Name="WAREHOUSEID" Type="int" Nullable="false" />
+          <Property Name="PRNSCHEMEID" Type="int" />
+          <Property Name="CURRENCYID" Type="int" />
+          <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SAREAADDR" Type="nvarchar" MaxLength="100" />
+          <Property Name="ASKPINCODE" Type="smallint" />
+          <Property Name="RECEIPTHEADER" Type="nvarchar" MaxLength="100" />
+          <Property Name="DELFLAG" Type="smallint" Nullable="false" />
+          <Property Name="RECEIPTFOOTER" Type="nvarchar" MaxLength="100" />
+          <Property Name="UPDATENUM" Type="int" Nullable="false" />
+          <Property Name="RECEIPTFIRSTHEADER" Type="nvarchar" MaxLength="100" />
+          <Property Name="RECEIPTENDFOOTER" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tranzit_OS.dbo.v_Payment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Payment">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="SESSSTART" />
+          </Key>
+          <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SAREAID" Type="int" Nullable="false" />
+          <Property Name="SYSTEMID" Type="int" Nullable="false" />
+          <Property Name="SESSID" Type="int" Nullable="false" />
+          <Property Name="SALESNUM" Type="int" Nullable="false" />
+          <Property Name="SALESTIME" Type="varchar" MaxLength="14" />
+          <Property Name="Price" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="Total" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRECNUM" Type="int" Nullable="false" />
+          <Property Name="SESSSTART" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="SESSEND" Type="varchar" MaxLength="14" />
+          <Property Name="OnDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tranzit_OS.dbo.v_ReturnSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_ReturnSales">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="UNITNAME" />
+            <PropertyRef Name="ARTNAME" />
+            <PropertyRef Name="SESSSTART" />
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="GRPNAME" />
+            <PropertyRef Name="ARTCODE" />
+          </Key>
+          <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SAREAID" Type="int" Nullable="false" />
+          <Property Name="SYSTEMID" Type="int" Nullable="false" />
+          <Property Name="SESSID" Type="int" Nullable="false" />
+          <Property Name="SALESNUM" Type="int" Nullable="false" />
+          <Property Name="SALESTIME" Type="varchar" MaxLength="14" />
+          <Property Name="PRICE" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="AMOUNT" Type="numeric" Precision="19" Scale="7" />
+          <Property Name="TOTAL" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRECNUM" Type="int" Nullable="false" />
+          <Property Name="PACKID" Type="int" />
+          <Property Name="UNITNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ARTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SESSSTART" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="SESSEND" Type="varchar" MaxLength="14" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="GRPID" Type="int" Nullable="false" />
+          <Property Name="GRPNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ARTCODE" Type="int" Nullable="false" />
+          <Property Name="ARTID" Type="int" />
+          <Property Name="SessionStartDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_Sales">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="UNITNAME" />
+            <PropertyRef Name="ARTNAME" />
+            <PropertyRef Name="SESSSTART" />
+            <PropertyRef Name="ARTCODE" />
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="GRPNAME" />
+          </Key>
+          <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SAREAID" Type="int" Nullable="false" />
+          <Property Name="SYSTEMID" Type="int" Nullable="false" />
+          <Property Name="SESSID" Type="int" Nullable="false" />
+          <Property Name="SALESNUM" Type="int" Nullable="false" />
+          <Property Name="SALESTIME" Type="varchar" MaxLength="14" />
+          <Property Name="PRICE" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="AMOUNT" Type="numeric" Precision="19" Scale="7" />
+          <Property Name="TOTAL" Type="decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="nvarchar" MaxLength="30" />
+          <Property Name="SRECNUM" Type="int" Nullable="false" />
+          <Property Name="PACKID" Type="int" />
+          <Property Name="UNITNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ARTNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SESSSTART" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="SESSEND" Type="varchar" MaxLength="14" />
+          <Property Name="OnDate" Type="datetime" />
+          <Property Name="ARTID" Type="int" />
+          <Property Name="ARTCODE" Type="int" Nullable="false" />
+          <Property Name="GRPID" Type="int" Nullable="false" />
+          <Property Name="GRPNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SessionStartDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="Tranzit_OSModelStoreContainer">
+          <EntitySet Name="ART" EntityType="Self.ART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAREA" EntityType="Self.SAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_Payment" EntityType="Self.v_Payment" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Payment].[SAREANAME] AS [SAREANAME], 
+    [v_Payment].[SAREAID] AS [SAREAID], 
+    [v_Payment].[SYSTEMID] AS [SYSTEMID], 
+    [v_Payment].[SESSID] AS [SESSID], 
+    [v_Payment].[SALESNUM] AS [SALESNUM], 
+    [v_Payment].[SALESTIME] AS [SALESTIME], 
+    [v_Payment].[Price] AS [Price], 
+    [v_Payment].[Total] AS [Total], 
+    [v_Payment].[FRECNUM] AS [FRECNUM], 
+    [v_Payment].[SRECNUM] AS [SRECNUM], 
+    [v_Payment].[SESSSTART] AS [SESSSTART], 
+    [v_Payment].[SESSEND] AS [SESSEND], 
+    [v_Payment].[OnDate] AS [OnDate]
+    FROM [dbo].[v_Payment] AS [v_Payment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_ReturnSales].[SAREANAME] AS [SAREANAME], 
+    [v_ReturnSales].[SAREAID] AS [SAREAID], 
+    [v_ReturnSales].[SYSTEMID] AS [SYSTEMID], 
+    [v_ReturnSales].[SESSID] AS [SESSID], 
+    [v_ReturnSales].[SALESNUM] AS [SALESNUM], 
+    [v_ReturnSales].[SALESTIME] AS [SALESTIME], 
+    [v_ReturnSales].[PRICE] AS [PRICE], 
+    [v_ReturnSales].[AMOUNT] AS [AMOUNT], 
+    [v_ReturnSales].[TOTAL] AS [TOTAL], 
+    [v_ReturnSales].[FRECNUM] AS [FRECNUM], 
+    [v_ReturnSales].[SRECNUM] AS [SRECNUM], 
+    [v_ReturnSales].[PACKID] AS [PACKID], 
+    [v_ReturnSales].[UNITNAME] AS [UNITNAME], 
+    [v_ReturnSales].[ARTNAME] AS [ARTNAME], 
+    [v_ReturnSales].[SESSSTART] AS [SESSSTART], 
+    [v_ReturnSales].[SESSEND] AS [SESSEND], 
+    [v_ReturnSales].[OnDate] AS [OnDate], 
+    [v_ReturnSales].[GRPID] AS [GRPID], 
+    [v_ReturnSales].[GRPNAME] AS [GRPNAME], 
+    [v_ReturnSales].[ARTCODE] AS [ARTCODE], 
+    [v_ReturnSales].[ARTID] AS [ARTID], 
+    [v_ReturnSales].[SessionStartDate] AS [SessionStartDate]
+    FROM [dbo].[v_ReturnSales] AS [v_ReturnSales]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_Sales" EntityType="Self.v_Sales" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_Sales].[SAREANAME] AS [SAREANAME], 
+    [v_Sales].[SAREAID] AS [SAREAID], 
+    [v_Sales].[SYSTEMID] AS [SYSTEMID], 
+    [v_Sales].[SESSID] AS [SESSID], 
+    [v_Sales].[SALESNUM] AS [SALESNUM], 
+    [v_Sales].[SALESTIME] AS [SALESTIME], 
+    [v_Sales].[PRICE] AS [PRICE], 
+    [v_Sales].[AMOUNT] AS [AMOUNT], 
+    [v_Sales].[TOTAL] AS [TOTAL], 
+    [v_Sales].[FRECNUM] AS [FRECNUM], 
+    [v_Sales].[SRECNUM] AS [SRECNUM], 
+    [v_Sales].[PACKID] AS [PACKID], 
+    [v_Sales].[UNITNAME] AS [UNITNAME], 
+    [v_Sales].[ARTNAME] AS [ARTNAME], 
+    [v_Sales].[SESSSTART] AS [SESSSTART], 
+    [v_Sales].[SESSEND] AS [SESSEND], 
+    [v_Sales].[OnDate] AS [OnDate], 
+    [v_Sales].[ARTID] AS [ARTID], 
+    [v_Sales].[ARTCODE] AS [ARTCODE], 
+    [v_Sales].[GRPID] AS [GRPID], 
+    [v_Sales].[GRPNAME] AS [GRPNAME], 
+    [v_Sales].[SessionStartDate] AS [SessionStartDate]
+    FROM [dbo].[v_Sales] AS [v_Sales]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Tranzit_OSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ART">
+          <Key>
+            <PropertyRef Name="ARTID" />
+          </Key>
+          <Property Name="ARTID" Type="Int32" Nullable="false" />
+          <Property Name="GRPID" Type="Int32" Nullable="false" />
+          <Property Name="OFFERID" Type="Int32" />
+          <Property Name="DEFAULTUNITID" Type="Int32" />
+          <Property Name="ARTCODE" Type="Int32" Nullable="false" />
+          <Property Name="COMPOSCARDID" Type="Int32" />
+          <Property Name="ARTTYPE" Type="Int32" Nullable="false" />
+          <Property Name="ARTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ARTSNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DELFLAG" Type="Int16" Nullable="false" />
+          <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
+          <Property Name="UKEZEDCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SAREA">
+          <Key>
+            <PropertyRef Name="SAREAID" />
+          </Key>
+          <Property Name="SAREAID" Type="Int32" Nullable="false" />
+          <Property Name="PRCLEVELID" Type="Int32" Nullable="false" />
+          <Property Name="CASHPROFILEID" Type="Int32" Nullable="false" />
+          <Property Name="ARTHOTKEYSETID" Type="Int32" />
+          <Property Name="WAREHOUSEID" Type="Int32" Nullable="false" />
+          <Property Name="PRNSCHEMEID" Type="Int32" />
+          <Property Name="CURRENCYID" Type="Int32" />
+          <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAREAADDR" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ASKPINCODE" Type="Int16" />
+          <Property Name="RECEIPTHEADER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DELFLAG" Type="Int16" Nullable="false" />
+          <Property Name="RECEIPTFOOTER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
+          <Property Name="RECEIPTFIRSTHEADER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIPTENDFOOTER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_Payment">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="SESSSTART" />
+          </Key>
+          <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAREAID" Type="Int32" Nullable="false" />
+          <Property Name="SYSTEMID" Type="Int32" Nullable="false" />
+          <Property Name="SESSID" Type="Int32" Nullable="false" />
+          <Property Name="SALESNUM" Type="Int32" Nullable="false" />
+          <Property Name="SALESTIME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="Total" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SRECNUM" Type="Int32" Nullable="false" />
+          <Property Name="SESSSTART" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SESSEND" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="v_ReturnSales">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="UNITNAME" />
+            <PropertyRef Name="ARTNAME" />
+            <PropertyRef Name="SESSSTART" />
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="GRPNAME" />
+            <PropertyRef Name="ARTCODE" />
+          </Key>
+          <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAREAID" Type="Int32" Nullable="false" />
+          <Property Name="SYSTEMID" Type="Int32" Nullable="false" />
+          <Property Name="SESSID" Type="Int32" Nullable="false" />
+          <Property Name="SALESNUM" Type="Int32" Nullable="false" />
+          <Property Name="SALESTIME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="19" Scale="7" />
+          <Property Name="TOTAL" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SRECNUM" Type="Int32" Nullable="false" />
+          <Property Name="PACKID" Type="Int32" />
+          <Property Name="UNITNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ARTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SESSSTART" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SESSEND" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="GRPID" Type="Int32" Nullable="false" />
+          <Property Name="GRPNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ARTCODE" Type="Int32" Nullable="false" />
+          <Property Name="ARTID" Type="Int32" />
+          <Property Name="SessionStartDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="v_Sales">
+          <Key>
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SYSTEMID" />
+            <PropertyRef Name="SESSID" />
+            <PropertyRef Name="SALESNUM" />
+            <PropertyRef Name="SRECNUM" />
+            <PropertyRef Name="UNITNAME" />
+            <PropertyRef Name="ARTNAME" />
+            <PropertyRef Name="SESSSTART" />
+            <PropertyRef Name="ARTCODE" />
+            <PropertyRef Name="GRPID" />
+            <PropertyRef Name="GRPNAME" />
+          </Key>
+          <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SAREAID" Type="Int32" Nullable="false" />
+          <Property Name="SYSTEMID" Type="Int32" Nullable="false" />
+          <Property Name="SESSID" Type="Int32" Nullable="false" />
+          <Property Name="SALESNUM" Type="Int32" Nullable="false" />
+          <Property Name="SALESTIME" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="PRICE" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="19" Scale="7" />
+          <Property Name="TOTAL" Type="Decimal" Precision="22" Scale="10" />
+          <Property Name="FRECNUM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="SRECNUM" Type="Int32" Nullable="false" />
+          <Property Name="PACKID" Type="Int32" />
+          <Property Name="UNITNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ARTNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SESSSTART" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SESSEND" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="ARTID" Type="Int32" />
+          <Property Name="ARTCODE" Type="Int32" Nullable="false" />
+          <Property Name="GRPID" Type="Int32" Nullable="false" />
+          <Property Name="GRPNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SessionStartDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Tranzit_OSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ART" EntityType="Self.ART" />
+          <EntitySet Name="SAREA" EntityType="Self.SAREA" />
+          <EntitySet Name="v_Payment" EntityType="Self.v_Payment" />
+          <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" />
+          <EntitySet Name="v_Sales" EntityType="Self.v_Sales" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Tranzit_OSModelStoreContainer" CdmEntityContainer="Tranzit_OSEntities">
+          <EntitySetMapping Name="ART">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.ART">
+              <MappingFragment StoreEntitySet="ART">
+                <ScalarProperty Name="ARTID" ColumnName="ARTID" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+                <ScalarProperty Name="OFFERID" ColumnName="OFFERID" />
+                <ScalarProperty Name="DEFAULTUNITID" ColumnName="DEFAULTUNITID" />
+                <ScalarProperty Name="ARTCODE" ColumnName="ARTCODE" />
+                <ScalarProperty Name="COMPOSCARDID" ColumnName="COMPOSCARDID" />
+                <ScalarProperty Name="ARTTYPE" ColumnName="ARTTYPE" />
+                <ScalarProperty Name="ARTNAME" ColumnName="ARTNAME" />
+                <ScalarProperty Name="ARTSNAME" ColumnName="ARTSNAME" />
+                <ScalarProperty Name="DELFLAG" ColumnName="DELFLAG" />
+                <ScalarProperty Name="UPDATENUM" ColumnName="UPDATENUM" />
+                <ScalarProperty Name="UKEZEDCODE" ColumnName="UKEZEDCODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAREA">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.SAREA">
+              <MappingFragment StoreEntitySet="SAREA">
+                <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
+                <ScalarProperty Name="PRCLEVELID" ColumnName="PRCLEVELID" />
+                <ScalarProperty Name="CASHPROFILEID" ColumnName="CASHPROFILEID" />
+                <ScalarProperty Name="ARTHOTKEYSETID" ColumnName="ARTHOTKEYSETID" />
+                <ScalarProperty Name="WAREHOUSEID" ColumnName="WAREHOUSEID" />
+                <ScalarProperty Name="PRNSCHEMEID" ColumnName="PRNSCHEMEID" />
+                <ScalarProperty Name="CURRENCYID" ColumnName="CURRENCYID" />
+                <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
+                <ScalarProperty Name="SAREAADDR" ColumnName="SAREAADDR" />
+                <ScalarProperty Name="ASKPINCODE" ColumnName="ASKPINCODE" />
+                <ScalarProperty Name="RECEIPTHEADER" ColumnName="RECEIPTHEADER" />
+                <ScalarProperty Name="DELFLAG" ColumnName="DELFLAG" />
+                <ScalarProperty Name="RECEIPTFOOTER" ColumnName="RECEIPTFOOTER" />
+                <ScalarProperty Name="UPDATENUM" ColumnName="UPDATENUM" />
+                <ScalarProperty Name="RECEIPTFIRSTHEADER" ColumnName="RECEIPTFIRSTHEADER" />
+                <ScalarProperty Name="RECEIPTENDFOOTER" ColumnName="RECEIPTENDFOOTER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Payment">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.v_Payment">
+              <MappingFragment StoreEntitySet="v_Payment">
+                <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
+                <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
+                <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
+                <ScalarProperty Name="SESSID" ColumnName="SESSID" />
+                <ScalarProperty Name="SALESNUM" ColumnName="SALESNUM" />
+                <ScalarProperty Name="SALESTIME" ColumnName="SALESTIME" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="FRECNUM" ColumnName="FRECNUM" />
+                <ScalarProperty Name="SRECNUM" ColumnName="SRECNUM" />
+                <ScalarProperty Name="SESSSTART" ColumnName="SESSSTART" />
+                <ScalarProperty Name="SESSEND" ColumnName="SESSEND" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_ReturnSales">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.v_ReturnSales">
+              <MappingFragment StoreEntitySet="v_ReturnSales">
+                <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
+                <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
+                <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
+                <ScalarProperty Name="SESSID" ColumnName="SESSID" />
+                <ScalarProperty Name="SALESNUM" ColumnName="SALESNUM" />
+                <ScalarProperty Name="SALESTIME" ColumnName="SALESTIME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="FRECNUM" ColumnName="FRECNUM" />
+                <ScalarProperty Name="SRECNUM" ColumnName="SRECNUM" />
+                <ScalarProperty Name="PACKID" ColumnName="PACKID" />
+                <ScalarProperty Name="UNITNAME" ColumnName="UNITNAME" />
+                <ScalarProperty Name="ARTNAME" ColumnName="ARTNAME" />
+                <ScalarProperty Name="SESSSTART" ColumnName="SESSSTART" />
+                <ScalarProperty Name="SESSEND" ColumnName="SESSEND" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
+                <ScalarProperty Name="ARTCODE" ColumnName="ARTCODE" />
+                <ScalarProperty Name="ARTID" ColumnName="ARTID" />
+                <ScalarProperty Name="SessionStartDate" ColumnName="SessionStartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_Sales">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.v_Sales">
+              <MappingFragment StoreEntitySet="v_Sales">
+                <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
+                <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
+                <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
+                <ScalarProperty Name="SESSID" ColumnName="SESSID" />
+                <ScalarProperty Name="SALESNUM" ColumnName="SALESNUM" />
+                <ScalarProperty Name="SALESTIME" ColumnName="SALESTIME" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
+                <ScalarProperty Name="FRECNUM" ColumnName="FRECNUM" />
+                <ScalarProperty Name="SRECNUM" ColumnName="SRECNUM" />
+                <ScalarProperty Name="PACKID" ColumnName="PACKID" />
+                <ScalarProperty Name="UNITNAME" ColumnName="UNITNAME" />
+                <ScalarProperty Name="ARTNAME" ColumnName="ARTNAME" />
+                <ScalarProperty Name="SESSSTART" ColumnName="SESSSTART" />
+                <ScalarProperty Name="SESSEND" ColumnName="SESSEND" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="ARTID" ColumnName="ARTID" />
+                <ScalarProperty Name="ARTCODE" ColumnName="ARTCODE" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
+                <ScalarProperty Name="SessionStartDate" ColumnName="SessionStartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

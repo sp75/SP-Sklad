@@ -29,7 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucWhPosRemains));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucOpenStoreSales));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.repositoryItemImageComboBox3 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -57,31 +62,36 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.WhPosRemainsGridControl = new DevExpress.XtraGrid.GridControl();
-            this.WhPosRemainsSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.WhPosRemainsGridView = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
             this.gridBand5 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.DocTypeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
-            this.colDocTypeName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colNum = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand1 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colMatId = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colMatName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colGrpName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colOnDate = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colOrdered = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colWhName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colAvgPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colRemain = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.colGrpName = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colRsv = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colActualRemain = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.colOrdered = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.colOrderedRsv = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemImageComboBox4 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.DocTypeImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
+            this.KagentList = new DevExpress.XtraEditors.LookUpEdit();
+            this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
+            this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.PDSatusList = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.wbEndDate = new DevExpress.XtraEditors.DateEdit();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.wbStartDate = new DevExpress.XtraEditors.DateEdit();
+            this.SalesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -114,6 +124,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
+            this.panelControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KagentList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PDSatusList.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
@@ -414,6 +434,7 @@
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.WhPosRemainsGridControl);
+            this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.standaloneBarDockControl6);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -423,32 +444,23 @@
             // 
             // WhPosRemainsGridControl
             // 
-            this.WhPosRemainsGridControl.DataSource = this.WhPosRemainsSource;
             this.WhPosRemainsGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WhPosRemainsGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.WhPosRemainsGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
             this.WhPosRemainsGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.WhPosRemainsGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.WhPosRemainsGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.WhPosRemainsGridControl.Location = new System.Drawing.Point(2, 26);
+            this.WhPosRemainsGridControl.Location = new System.Drawing.Point(2, 76);
             this.WhPosRemainsGridControl.MainView = this.WhPosRemainsGridView;
             this.WhPosRemainsGridControl.Name = "WhPosRemainsGridControl";
             this.WhPosRemainsGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4});
-            this.WhPosRemainsGridControl.Size = new System.Drawing.Size(1420, 615);
+            this.WhPosRemainsGridControl.Size = new System.Drawing.Size(1420, 565);
             this.WhPosRemainsGridControl.TabIndex = 1;
             this.WhPosRemainsGridControl.UseEmbeddedNavigator = true;
             this.WhPosRemainsGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WhPosRemainsGridView,
             this.gridView8});
-            // 
-            // WhPosRemainsSource
-            // 
-            this.WhPosRemainsSource.AreSourceRowsThreadSafe = true;
-            this.WhPosRemainsSource.DefaultSorting = "OnDate";
-            this.WhPosRemainsSource.DesignTimeElementType = typeof(SP_Sklad.SkladData.v_WhPosRemains);
-            this.WhPosRemainsSource.KeyExpression = "Id";
-            this.WhPosRemainsSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
             // 
             // WhPosRemainsGridView
             // 
@@ -461,51 +473,167 @@
             this.WhPosRemainsGridView.Bands.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.GridBand[] {
             this.gridBand5,
             this.gridBand1,
-            this.gridBand4,
-            this.gridBand2,
-            this.gridBand3});
+            this.gridBand4});
             this.WhPosRemainsGridView.Columns.AddRange(new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn[] {
             this.colMatId,
             this.colRemain,
             this.colRsv,
             this.colAvgPrice,
             this.colOrdered,
-            this.colOrderedRsv,
-            this.colActualRemain,
             this.colNum,
             this.colOnDate,
             this.colMatName,
             this.colGrpName,
             this.colWhName,
-            this.colDocTypeName,
             this.bandedGridColumn1,
-            this.bandedGridColumn2});
+            this.bandedGridColumn3});
             this.WhPosRemainsGridView.GridControl = this.WhPosRemainsGridControl;
+            this.WhPosRemainsGridView.GroupCount = 1;
             this.WhPosRemainsGridView.Name = "WhPosRemainsGridView";
             this.WhPosRemainsGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WhPosRemainsGridView.OptionsBehavior.Editable = false;
+            this.WhPosRemainsGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
+            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.bandedGridColumn3, DevExpress.Data.ColumnSortOrder.Ascending)});
             this.WhPosRemainsGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WhPosRemainsGridView_PopupMenuShowing);
             this.WhPosRemainsGridView.AsyncCompleted += new System.EventHandler(this.WhPosRemainsGridView_AsyncCompleted);
             // 
             // gridBand5
             // 
-            this.gridBand5.Caption = "Документ";
-            this.gridBand5.Columns.Add(this.bandedGridColumn2);
-            this.gridBand5.Columns.Add(this.colDocTypeName);
+            this.gridBand5.Caption = "Чек";
+            this.gridBand5.Columns.Add(this.bandedGridColumn3);
             this.gridBand5.Columns.Add(this.colNum);
+            this.gridBand5.Columns.Add(this.colOnDate);
+            this.gridBand5.Columns.Add(this.bandedGridColumn1);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 0;
-            this.gridBand5.Width = 125;
+            this.gridBand5.Width = 466;
             // 
-            // bandedGridColumn2
+            // bandedGridColumn3
             // 
-            this.bandedGridColumn2.Caption = "Тип документа";
-            this.bandedGridColumn2.ColumnEdit = this.repositoryItemImageComboBox4;
-            this.bandedGridColumn2.FieldName = "WType";
-            this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.OptionsColumn.ShowCaption = false;
-            this.bandedGridColumn2.Visible = true;
-            this.bandedGridColumn2.Width = 44;
+            this.bandedGridColumn3.Caption = "#";
+            this.bandedGridColumn3.FieldName = "SRECNUM";
+            this.bandedGridColumn3.Name = "bandedGridColumn3";
+            this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 36;
+            // 
+            // colNum
+            // 
+            this.colNum.Caption = "Фіксальний номер";
+            this.colNum.FieldName = "FRECNUM";
+            this.colNum.Name = "colNum";
+            this.colNum.Visible = true;
+            this.colNum.Width = 149;
+            // 
+            // colOnDate
+            // 
+            this.colOnDate.Caption = "Дата";
+            this.colOnDate.DisplayFormat.FormatString = "g";
+            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colOnDate.FieldName = "OnDate";
+            this.colOnDate.Name = "colOnDate";
+            this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
+            this.colOnDate.Visible = true;
+            this.colOnDate.Width = 105;
+            // 
+            // bandedGridColumn1
+            // 
+            this.bandedGridColumn1.Caption = "Торгова точка";
+            this.bandedGridColumn1.FieldName = "SAREANAME";
+            this.bandedGridColumn1.Name = "bandedGridColumn1";
+            this.bandedGridColumn1.Visible = true;
+            this.bandedGridColumn1.Width = 176;
+            // 
+            // gridBand1
+            // 
+            this.gridBand1.Caption = "Товар";
+            this.gridBand1.Columns.Add(this.colMatId);
+            this.gridBand1.Columns.Add(this.colMatName);
+            this.gridBand1.Columns.Add(this.colOrdered);
+            this.gridBand1.Columns.Add(this.colWhName);
+            this.gridBand1.Columns.Add(this.colAvgPrice);
+            this.gridBand1.Columns.Add(this.colRemain);
+            this.gridBand1.Columns.Add(this.colGrpName);
+            this.gridBand1.Name = "gridBand1";
+            this.gridBand1.VisibleIndex = 1;
+            this.gridBand1.Width = 929;
+            // 
+            // colMatId
+            // 
+            this.colMatId.Caption = "Артикул";
+            this.colMatId.FieldName = "ARTCODE";
+            this.colMatId.Name = "colMatId";
+            this.colMatId.Visible = true;
+            this.colMatId.Width = 108;
+            // 
+            // colMatName
+            // 
+            this.colMatName.Caption = "Назва";
+            this.colMatName.FieldName = "ARTNAME";
+            this.colMatName.Name = "colMatName";
+            this.colMatName.Visible = true;
+            this.colMatName.Width = 162;
+            // 
+            // colOrdered
+            // 
+            this.colOrdered.Caption = "Од.";
+            this.colOrdered.FieldName = "UNITNAME";
+            this.colOrdered.Name = "colOrdered";
+            this.colOrdered.Visible = true;
+            this.colOrdered.Width = 64;
+            // 
+            // colWhName
+            // 
+            this.colWhName.Caption = "К-сть";
+            this.colWhName.DisplayFormat.FormatString = "0.000";
+            this.colWhName.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colWhName.FieldName = "AMOUNT";
+            this.colWhName.Name = "colWhName";
+            this.colWhName.Visible = true;
+            this.colWhName.Width = 137;
+            // 
+            // colAvgPrice
+            // 
+            this.colAvgPrice.Caption = "Ціна";
+            this.colAvgPrice.DisplayFormat.FormatString = "0.00";
+            this.colAvgPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colAvgPrice.FieldName = "PRICE";
+            this.colAvgPrice.Name = "colAvgPrice";
+            this.colAvgPrice.Visible = true;
+            this.colAvgPrice.Width = 158;
+            // 
+            // colRemain
+            // 
+            this.colRemain.Caption = "Разом";
+            this.colRemain.DisplayFormat.FormatString = "0.00";
+            this.colRemain.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colRemain.FieldName = "TOTAL";
+            this.colRemain.Name = "colRemain";
+            this.colRemain.Visible = true;
+            this.colRemain.Width = 86;
+            // 
+            // colGrpName
+            // 
+            this.colGrpName.Caption = "Група";
+            this.colGrpName.FieldName = "GRPNAME";
+            this.colGrpName.Name = "colGrpName";
+            this.colGrpName.Visible = true;
+            this.colGrpName.Width = 214;
+            // 
+            // gridBand4
+            // 
+            this.gridBand4.Caption = "Позиція";
+            this.gridBand4.Name = "gridBand4";
+            this.gridBand4.Visible = false;
+            this.gridBand4.VisibleIndex = -1;
+            this.gridBand4.Width = 89;
+            // 
+            // colRsv
+            // 
+            this.colRsv.Caption = "В резерві";
+            this.colRsv.FieldName = "Rsv";
+            this.colRsv.Name = "colRsv";
+            this.colRsv.Visible = true;
+            this.colRsv.Width = 55;
             // 
             // repositoryItemImageComboBox4
             // 
@@ -538,164 +666,163 @@
             this.DocTypeImageCollection.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.DocTypeImageCollection.Images.SetKeyName(5, "wb_return_sale");
             // 
-            // colDocTypeName
-            // 
-            this.colDocTypeName.Caption = "Тип докуманта";
-            this.colDocTypeName.FieldName = "DocTypeName";
-            this.colDocTypeName.Name = "colDocTypeName";
-            this.colDocTypeName.Width = 118;
-            // 
-            // colNum
-            // 
-            this.colNum.Caption = "#";
-            this.colNum.FieldName = "Num";
-            this.colNum.Name = "colNum";
-            this.colNum.Visible = true;
-            this.colNum.Width = 81;
-            // 
-            // gridBand1
-            // 
-            this.gridBand1.Caption = "Товар";
-            this.gridBand1.Columns.Add(this.colMatId);
-            this.gridBand1.Columns.Add(this.colMatName);
-            this.gridBand1.Columns.Add(this.colGrpName);
-            this.gridBand1.Name = "gridBand1";
-            this.gridBand1.VisibleIndex = 1;
-            this.gridBand1.Width = 353;
-            // 
-            // colMatId
-            // 
-            this.colMatId.Caption = "Код товара";
-            this.colMatId.FieldName = "MatId";
-            this.colMatId.Name = "colMatId";
-            this.colMatId.Visible = true;
-            this.colMatId.Width = 66;
-            // 
-            // colMatName
-            // 
-            this.colMatName.Caption = "Назва";
-            this.colMatName.FieldName = "MatName";
-            this.colMatName.Name = "colMatName";
-            this.colMatName.Visible = true;
-            this.colMatName.Width = 135;
-            // 
-            // colGrpName
-            // 
-            this.colGrpName.Caption = "Група";
-            this.colGrpName.FieldName = "GrpName";
-            this.colGrpName.Name = "colGrpName";
-            this.colGrpName.Visible = true;
-            this.colGrpName.Width = 152;
-            // 
-            // gridBand4
-            // 
-            this.gridBand4.Caption = "Партія";
-            this.gridBand4.Columns.Add(this.bandedGridColumn1);
-            this.gridBand4.Columns.Add(this.colOnDate);
-            this.gridBand4.Columns.Add(this.colWhName);
-            this.gridBand4.Columns.Add(this.colAvgPrice);
-            this.gridBand4.Name = "gridBand4";
-            this.gridBand4.VisibleIndex = 2;
-            this.gridBand4.Width = 498;
-            // 
-            // bandedGridColumn1
-            // 
-            this.bandedGridColumn1.Caption = "Постачальник";
-            this.bandedGridColumn1.FieldName = "SupplierName";
-            this.bandedGridColumn1.Name = "bandedGridColumn1";
-            this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 118;
-            // 
-            // colOnDate
-            // 
-            this.colOnDate.Caption = "Дата";
-            this.colOnDate.DisplayFormat.FormatString = "g";
-            this.colOnDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colOnDate.FieldName = "OnDate";
-            this.colOnDate.Name = "colOnDate";
-            this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
-            this.colOnDate.Visible = true;
-            this.colOnDate.Width = 111;
-            // 
-            // colWhName
-            // 
-            this.colWhName.Caption = "Склад";
-            this.colWhName.FieldName = "WhName";
-            this.colWhName.Name = "colWhName";
-            this.colWhName.Visible = true;
-            this.colWhName.Width = 141;
-            // 
-            // colAvgPrice
-            // 
-            this.colAvgPrice.Caption = "Вхідна ціна";
-            this.colAvgPrice.FieldName = "AvgPrice";
-            this.colAvgPrice.Name = "colAvgPrice";
-            this.colAvgPrice.Visible = true;
-            this.colAvgPrice.Width = 128;
-            // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Залишки на складі";
-            this.gridBand2.Columns.Add(this.colRemain);
-            this.gridBand2.Columns.Add(this.colRsv);
-            this.gridBand2.Columns.Add(this.colActualRemain);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 3;
-            this.gridBand2.Width = 234;
-            // 
-            // colRemain
-            // 
-            this.colRemain.Caption = "Залишок";
-            this.colRemain.FieldName = "Remain";
-            this.colRemain.Name = "colRemain";
-            this.colRemain.Visible = true;
-            this.colRemain.Width = 79;
-            // 
-            // colRsv
-            // 
-            this.colRsv.Caption = "В резерві";
-            this.colRsv.FieldName = "Rsv";
-            this.colRsv.Name = "colRsv";
-            this.colRsv.Visible = true;
-            this.colRsv.Width = 65;
-            // 
-            // colActualRemain
-            // 
-            this.colActualRemain.Caption = "Всього";
-            this.colActualRemain.FieldName = "ActualRemain";
-            this.colActualRemain.Name = "colActualRemain";
-            this.colActualRemain.Visible = true;
-            this.colActualRemain.Width = 90;
-            // 
-            // gridBand3
-            // 
-            this.gridBand3.Caption = "Замовлене в постачальників";
-            this.gridBand3.Columns.Add(this.colOrdered);
-            this.gridBand3.Columns.Add(this.colOrderedRsv);
-            this.gridBand3.Name = "gridBand3";
-            this.gridBand3.VisibleIndex = 4;
-            this.gridBand3.Width = 185;
-            // 
-            // colOrdered
-            // 
-            this.colOrdered.Caption = "Замовлено";
-            this.colOrdered.FieldName = "Ordered";
-            this.colOrdered.Name = "colOrdered";
-            this.colOrdered.Visible = true;
-            this.colOrdered.Width = 77;
-            // 
-            // colOrderedRsv
-            // 
-            this.colOrderedRsv.Caption = "В резерві";
-            this.colOrderedRsv.FieldName = "OrderedRsv";
-            this.colOrderedRsv.Name = "colOrderedRsv";
-            this.colOrderedRsv.Visible = true;
-            this.colOrderedRsv.Width = 108;
-            // 
             // gridView8
             // 
             this.gridView8.GridControl = this.WhPosRemainsGridControl;
             this.gridView8.Name = "gridView8";
+            // 
+            // panelControl3
+            // 
+            this.panelControl3.Controls.Add(this.KagentList);
+            this.panelControl3.Controls.Add(this.PeriodComboBoxEdit);
+            this.panelControl3.Controls.Add(this.PDSatusList);
+            this.panelControl3.Controls.Add(this.labelControl5);
+            this.panelControl3.Controls.Add(this.labelControl6);
+            this.panelControl3.Controls.Add(this.wbEndDate);
+            this.panelControl3.Controls.Add(this.labelControl7);
+            this.panelControl3.Controls.Add(this.wbStartDate);
+            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl3.Location = new System.Drawing.Point(2, 26);
+            this.panelControl3.Name = "panelControl3";
+            this.panelControl3.Size = new System.Drawing.Size(1420, 50);
+            this.panelControl3.TabIndex = 3;
+            // 
+            // KagentList
+            // 
+            this.KagentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KagentList.Location = new System.Drawing.Point(620, 13);
+            this.KagentList.Name = "KagentList";
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.kontragents_folder;
+            this.KagentList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.KagentList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SAREANAME", "Назва")});
+            this.KagentList.Properties.DisplayMember = "SAREANAME";
+            this.KagentList.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSuggest;
+            this.KagentList.Properties.ShowHeader = false;
+            this.KagentList.Properties.ValueMember = "SAREAID";
+            this.KagentList.Size = new System.Drawing.Size(521, 24);
+            this.KagentList.StyleController = this.styleController1;
+            this.KagentList.TabIndex = 23;
+            this.KagentList.EditValueChanged += new System.EventHandler(this.KagentList_EditValueChanged);
+            // 
+            // styleController1
+            // 
+            this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.styleController1.Appearance.Options.UseFont = true;
+            // 
+            // PeriodComboBoxEdit
+            // 
+            this.PeriodComboBoxEdit.EditValue = "Довільний період";
+            this.PeriodComboBoxEdit.Location = new System.Drawing.Point(14, 14);
+            this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
+            this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
+            this.PeriodComboBoxEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PeriodComboBoxEdit.Properties.Items.AddRange(new object[] {
+            "Довільний період",
+            "За поточний день",
+            "З початку неділі",
+            "З початку місяця",
+            "З початку року"});
+            this.PeriodComboBoxEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.PeriodComboBoxEdit.Size = new System.Drawing.Size(175, 22);
+            this.PeriodComboBoxEdit.StyleController = this.styleController1;
+            this.PeriodComboBoxEdit.TabIndex = 22;
+            this.PeriodComboBoxEdit.EditValueChanged += new System.EventHandler(this.PeriodComboBoxEdit_EditValueChanged);
+            // 
+            // PDSatusList
+            // 
+            this.PDSatusList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PDSatusList.Location = new System.Drawing.Point(1222, 14);
+            this.PDSatusList.Name = "PDSatusList";
+            this.PDSatusList.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.PDSatusList.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name")});
+            this.PDSatusList.Properties.DisplayMember = "Name";
+            this.PDSatusList.Properties.ShowHeader = false;
+            this.PDSatusList.Properties.ValueMember = "Id";
+            this.PDSatusList.Size = new System.Drawing.Size(187, 22);
+            this.PDSatusList.StyleController = this.styleController1;
+            this.PDSatusList.TabIndex = 8;
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelControl5.Location = new System.Drawing.Point(1177, 17);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(39, 16);
+            this.labelControl5.StyleController = this.styleController1;
+            this.labelControl5.TabIndex = 7;
+            this.labelControl5.Text = "Статус";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(529, 17);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(85, 16);
+            this.labelControl6.StyleController = this.styleController1;
+            this.labelControl6.TabIndex = 4;
+            this.labelControl6.Text = "Торгова точка";
+            // 
+            // wbEndDate
+            // 
+            this.wbEndDate.EditValue = null;
+            this.wbEndDate.Location = new System.Drawing.Point(361, 15);
+            this.wbEndDate.Name = "wbEndDate";
+            this.wbEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbEndDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbEndDate.Properties.DisplayFormat.FormatString = "g";
+            this.wbEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbEndDate.Properties.EditFormat.FormatString = "g";
+            this.wbEndDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbEndDate.Properties.MaskSettings.Set("mask", "g");
+            this.wbEndDate.Size = new System.Drawing.Size(140, 22);
+            this.wbEndDate.StyleController = this.styleController1;
+            this.wbEndDate.TabIndex = 3;
+            this.wbEndDate.EditValueChanged += new System.EventHandler(this.wbEndDate_EditValueChanged);
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(341, 17);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(14, 16);
+            this.labelControl7.StyleController = this.styleController1;
+            this.labelControl7.TabIndex = 2;
+            this.labelControl7.Text = "по";
+            // 
+            // wbStartDate
+            // 
+            this.wbStartDate.EditValue = null;
+            this.wbStartDate.Location = new System.Drawing.Point(195, 14);
+            this.wbStartDate.Name = "wbStartDate";
+            this.wbStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStartDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.wbStartDate.Properties.DisplayFormat.FormatString = "g";
+            this.wbStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbStartDate.Properties.EditFormat.FormatString = "g";
+            this.wbStartDate.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.wbStartDate.Properties.MaskSettings.Set("mask", "g");
+            this.wbStartDate.Size = new System.Drawing.Size(140, 22);
+            this.wbStartDate.StyleController = this.styleController1;
+            this.wbStartDate.TabIndex = 1;
+            this.wbStartDate.EditValueChanged += new System.EventHandler(this.wbStartDate_EditValueChanged);
+            // 
+            // SalesSource
+            // 
+            this.SalesSource.AreSourceRowsThreadSafe = true;
+            this.SalesSource.DefaultSorting = "OnDate";
+            this.SalesSource.DesignTimeElementType = typeof(OpenStore.Tranzit.Base.v_Sales);
+            this.SalesSource.KeyExpression = "SYSTEMID;SESSID;SALESTIME;SRECNUM";
+            this.SalesSource.GetQueryable += new System.EventHandler<DevExpress.Data.Linq.GetQueryableEventArgs>(this.SettingMaterialPricesSource_GetQueryable);
             // 
             // treeListColumn1
             // 
@@ -784,7 +911,7 @@
             this.PosBottomPopupMenu.Manager = this.barManager1;
             this.PosBottomPopupMenu.Name = "PosBottomPopupMenu";
             // 
-            // ucWhPosRemains
+            // ucOpenStoreSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -798,7 +925,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucWhPosRemains";
+            this.Name = "ucOpenStoreSales";
             this.Size = new System.Drawing.Size(1424, 643);
             this.Load += new System.EventHandler(this.DirectoriesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
@@ -815,6 +942,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocTypeImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
+            this.panelControl3.ResumeLayout(false);
+            this.panelControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.KagentList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PDSatusList.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbEndDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wbStartDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
@@ -881,34 +1019,39 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView17;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView18;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView19;
-        private DevExpress.Data.Linq.LinqInstantFeedbackSource WhPosRemainsSource;
+        private DevExpress.Data.Linq.LinqInstantFeedbackSource SalesSource;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView WhPosRemainsGridView;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMatId;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colRemain;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colRsv;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colAvgPrice;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOrdered;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOrderedRsv;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colActualRemain;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colNum;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colOnDate;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMatName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colGrpName;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colWhName;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colDocTypeName;
         private DevExpress.XtraBars.PopupMenu PosBottomPopupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
-        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.Utils.ImageCollection DocTypeImageCollection;
+        private DevExpress.XtraEditors.PanelControl panelControl3;
+        public DevExpress.XtraEditors.LookUpEdit KagentList;
+        private DevExpress.XtraEditors.ComboBoxEdit PeriodComboBoxEdit;
+        public DevExpress.XtraEditors.LookUpEdit PDSatusList;
+        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        public DevExpress.XtraEditors.DateEdit wbEndDate;
+        private DevExpress.XtraEditors.LabelControl labelControl7;
+        public DevExpress.XtraEditors.DateEdit wbStartDate;
+        private DevExpress.XtraEditors.StyleController styleController1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand5;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }
