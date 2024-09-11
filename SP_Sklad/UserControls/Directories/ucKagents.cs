@@ -347,7 +347,8 @@ namespace SP_Sklad.MainTabs
                           k.PTypeId,
                           k.RouteName,
                           k.WhName,
-                          k.WId
+                          k.WId,
+                          k.Notes
                       }).Distinct();
 
             if (KType >= 0)
@@ -378,7 +379,8 @@ namespace SP_Sklad.MainTabs
                 Saldo = s.Saldo,
                 WebUserName = s.WebUserName,
                 WhName = s.WhName,
-                WId = s.WId
+                WId = s.WId,
+                Notes = s.Notes
             });
 
             e.Tag = _db;
@@ -403,6 +405,7 @@ namespace SP_Sklad.MainTabs
             public string RouteName { get; set; }
             public string WhName { get; set; }
             public int? WId { get; set; }
+            public string Notes { get; set; }
         }
 
         private void KaGridView_AsyncCompleted(object sender, EventArgs e)

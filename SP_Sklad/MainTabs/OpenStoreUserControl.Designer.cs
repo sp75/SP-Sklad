@@ -48,11 +48,13 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.DirTreeList = new DevExpress.XtraTreeList.TreeList();
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.mainContentTab = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.ucOpenStoreSales = new SP_Sklad.UserControls.Warehouse.ucOpenStoreSales();
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucOpenStorePayments = new SP_Sklad.UserControls.Warehouse.ucOpenStorePayments();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
@@ -65,10 +67,11 @@
             this.splitContainerControl1.Panel2.SuspendLayout();
             this.splitContainerControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).BeginInit();
             this.mainContentTab.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
+            this.xtraTabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -253,7 +256,11 @@
             this.DirTreeList.AppendNode(new object[] {
             "Чеки"}, -1, 1);
             this.DirTreeList.AppendNode(new object[] {
-            "Продажі"}, -1, 2, 2, -1, 0);
+            "Оплата"}, -1, 2, 2, -1, 0);
+            this.DirTreeList.AppendNode(new object[] {
+            "Повернення"}, -1);
+            this.DirTreeList.AppendNode(new object[] {
+            "Торгові площадки"}, -1, 1, 1, -1);
             this.DirTreeList.EndUnboundLoad();
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -275,6 +282,19 @@
             this.treeListColumn1.Visible = true;
             this.treeListColumn1.VisibleIndex = 0;
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.receipt_2, "receipt_2", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "receipt_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "store_16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "cash");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "money");
+            // 
             // mainContentTab
             // 
             this.mainContentTab.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
@@ -288,7 +308,8 @@
             this.mainContentTab.TabIndex = 2;
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
-            this.xtraTabPage10});
+            this.xtraTabPage10,
+            this.xtraTabPage1});
             // 
             // xtraTabPage10
             // 
@@ -311,18 +332,20 @@
             this.xtraTabPage6.Size = new System.Drawing.Size(1152, 574);
             this.xtraTabPage6.Text = "ViewList";
             // 
-            // imageCollection1
+            // xtraTabPage1
             // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.receipt_2, "receipt_2", typeof(global::SP_Sklad.Properties.Resources), 0);
-            this.imageCollection1.Images.SetKeyName(0, "receipt_2");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 1);
-            this.imageCollection1.Images.SetKeyName(1, "store_16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 2);
-            this.imageCollection1.Images.SetKeyName(2, "cash");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "money");
+            this.xtraTabPage1.Controls.Add(this.ucOpenStorePayments);
+            this.xtraTabPage1.Name = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(1152, 574);
+            this.xtraTabPage1.Text = "Оплата";
+            // 
+            // ucOpenStorePayments
+            // 
+            this.ucOpenStorePayments.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOpenStorePayments.Location = new System.Drawing.Point(0, 0);
+            this.ucOpenStorePayments.Name = "ucOpenStorePayments";
+            this.ucOpenStorePayments.Size = new System.Drawing.Size(1152, 574);
+            this.ucOpenStorePayments.TabIndex = 0;
             // 
             // OpenStoreUserControl
             // 
@@ -355,10 +378,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).EndInit();
             this.splitContainerControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DirTreeList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainContentTab)).EndInit();
             this.mainContentTab.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
+            this.xtraTabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,5 +413,7 @@
         private DevExpress.Utils.ImageCollection BarImageList;
         private UserControls.Warehouse.ucOpenStoreSales ucOpenStoreSales;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
+        private UserControls.Warehouse.ucOpenStorePayments ucOpenStorePayments;
     }
 }

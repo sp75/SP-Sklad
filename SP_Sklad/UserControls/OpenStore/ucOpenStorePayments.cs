@@ -25,15 +25,15 @@ using OpenStore.Tranzit.Base;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
-    public partial class ucOpenStoreSales : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucOpenStorePayments : DevExpress.XtraEditors.XtraUserControl
     {
-        public v_Sales row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_Sales;
+        public v_Payment row_smp => PaymentGridView.GetFocusedRow() is NotLoadedObject ? null : PaymentGridView.GetFocusedRow() as v_Payment;
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
         private int prev_rowHandle = 0;
         private bool _restore = false;
-        public ucOpenStoreSales()
+        public ucOpenStorePayments()
         {
             InitializeComponent();
         }
@@ -49,22 +49,24 @@ namespace SP_Sklad.UserControls.Warehouse
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Фіскальні" }, new { Id = 0, Name = "Не фіскальні" } };
                 wbStatusList.EditValue = -1;
 
+                repositoryItemLookUpEdit1.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Готівка" }, new { Id = 1, Name = "Платіжна картка" }, new { Id = 2, Name = "Бонуси" }, new { Id = 4, Name = "Не фіскальний" } };
+
                 KagentList.Properties.DataSource = new Tranzit_OSEntities().SAREA.ToList();
 
                 var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
 
-                WhPosRemainsGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+                PaymentGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
             }
         }
 
         public void GetData(bool restore = true)
         {
 
-            prev_rowHandle = WhPosRemainsGridView.FocusedRowHandle;
+            prev_rowHandle = PaymentGridView.FocusedRowHandle;
 
             if (row_smp != null)
             {
-                prev_top_row_index = WhPosRemainsGridView.TopRowIndex;
+                prev_top_row_index = PaymentGridView.TopRowIndex;
                 //     prev_focused_id = row_smp.Id;
             }
 
@@ -80,11 +82,11 @@ namespace SP_Sklad.UserControls.Warehouse
             var status = (int)wbStatusList.EditValue;
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
-            var list = objectContext.v_Sales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && w.SAREAID == area.SAREAID && (status == -1 || (status == 0 && w.FRECNUM =="0") || (status ==1 && w.FRECNUM != "0"))).ToList();
+            var list = objectContext.v_Payment.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && w.SAREAID == area.SAREAID && (status == -1 || (status == 0 && w.FRECNUM =="0") || (status ==1 && w.FRECNUM != "0"))).ToList();
 
-            WhPosRemainsGridControl.DataSource = list;
+            PaymentGridControl.DataSource = list;
 
-            WhPosRemainsGridView.ExpandAllGroups();
+            PaymentGridView.ExpandAllGroups();
 
             //     WhPosRemainsGridControl.DataSource = null;
             //    WhPosRemainsGridControl.DataSource = SalesSource;
@@ -97,7 +99,7 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            IHelper.ExportToXlsx(WhPosRemainsGridControl);
+            IHelper.ExportToXlsx(PaymentGridControl);
         }
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
@@ -134,9 +136,9 @@ namespace SP_Sklad.UserControls.Warehouse
         void OnRowSearchComplete(object rh)
         {
             int rowHandle = (int)rh;
-            if (WhPosRemainsGridView.IsValidRowHandle(rowHandle))
+            if (PaymentGridView.IsValidRowHandle(rowHandle))
             {
-                FocusRow(WhPosRemainsGridView, rowHandle);
+                FocusRow(PaymentGridView, rowHandle);
             }
         }
 

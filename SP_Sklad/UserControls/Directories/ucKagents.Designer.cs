@@ -84,6 +84,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage15 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl4 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -99,6 +100,7 @@
             this.row18 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.row19 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow11 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.editorRow12 = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
@@ -150,6 +152,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.xtraTabPage15.SuspendLayout();
@@ -563,7 +566,8 @@
             this.KaGridControl.Name = "KaGridControl";
             this.KaGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit7,
-            this.repositoryItemButtonEdit1});
+            this.repositoryItemButtonEdit1,
+            this.repositoryItemMemoEdit1});
             this.KaGridControl.Size = new System.Drawing.Size(1420, 380);
             this.KaGridControl.TabIndex = 0;
             this.KaGridControl.UseEmbeddedNavigator = true;
@@ -766,8 +770,13 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Примітка";
+            this.gridColumn5.ColumnEdit = this.repositoryItemMemoEdit1;
             this.gridColumn5.FieldName = "Notes";
             this.gridColumn5.Name = "gridColumn5";
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // xtraTabControl2
             // 
@@ -795,6 +804,7 @@
             // 
             // vGridControl4
             // 
+            this.vGridControl4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.vGridControl4.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl4.DataSource = this.KAgentInfoBS;
             this.vGridControl4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -814,6 +824,7 @@
             this.row18,
             this.row19,
             this.editorRow11,
+            this.row,
             this.editorRow12});
             this.vGridControl4.Size = new System.Drawing.Size(1418, 197);
             this.vGridControl4.TabIndex = 1;
@@ -899,6 +910,12 @@
             this.editorRow11.Name = "editorRow11";
             this.editorRow11.Properties.Caption = "Номер в системі";
             this.editorRow11.Properties.FieldName = "KaId";
+            // 
+            // row
+            // 
+            this.row.Name = "row";
+            this.row.Properties.Caption = "Примітка";
+            this.row.Properties.FieldName = "Notes";
             // 
             // editorRow12
             // 
@@ -1221,6 +1238,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KaGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.xtraTabPage15.ResumeLayout(false);
@@ -1300,13 +1318,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit7;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
         private DevExpress.XtraVerticalGrid.VGridControl vGridControl4;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow2;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow3;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow4;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow5;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow6;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow7;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow9;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
@@ -1314,9 +1325,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn80;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn81;
         private System.Windows.Forms.BindingSource KAgentInfoBS;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row17;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row18;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
@@ -1336,16 +1344,28 @@
         private DevExpress.Data.Linq.LinqInstantFeedbackSource KagentListSource;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn103;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn104;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
         private DevExpress.Utils.ImageCollection GridImageList;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn114;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
         private DevExpress.Utils.ImageCollection BarImageList;
         public DevExpress.XtraBars.Bar TreeListBar;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow2;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow4;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow6;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow9;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow3;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow5;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow7;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row17;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row18;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row19;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow11;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow row;
+        private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Tranzit_OSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Tranzit_OSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ART">
           <Key>
             <PropertyRef Name="ARTID" />
@@ -68,6 +68,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Payment' does not have a primary 
           <Property Name="SESSSTART" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="SESSEND" Type="varchar" MaxLength="14" />
           <Property Name="OnDate" Type="datetime" />
+          <Property Name="SALESTYPE" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Tranzit_OS.dbo.v_ReturnSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -166,7 +167,8 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     [v_Payment].[SRECNUM] AS [SRECNUM], 
     [v_Payment].[SESSSTART] AS [SESSSTART], 
     [v_Payment].[SESSEND] AS [SESSEND], 
-    [v_Payment].[OnDate] AS [OnDate]
+    [v_Payment].[OnDate] AS [OnDate], 
+    [v_Payment].[SALESTYPE] AS [SALESTYPE]
     FROM [dbo].[v_Payment] AS [v_Payment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" store:Type="Views" store:Schema="dbo">
@@ -222,8 +224,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     FROM [dbo].[v_Sales] AS [v_Sales]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Tranzit_OSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -288,6 +289,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="SESSSTART" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SESSEND" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
+          <Property Name="SALESTYPE" Type="Int32" />
         </EntityType>
         <EntityType Name="v_ReturnSales">
           <Key>
@@ -421,6 +423,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySetMapping Name="v_Payment">
             <EntityTypeMapping TypeName="Tranzit_OSModel.v_Payment">
               <MappingFragment StoreEntitySet="v_Payment">
+                <ScalarProperty Name="SALESTYPE" ColumnName="SALESTYPE" />
                 <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
                 <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
                 <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />

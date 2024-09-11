@@ -35,11 +35,17 @@ namespace SP_Sklad.MainTabs
 
         private void DirTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
         {
-         /*   if ((int)e.Node.Tag == 0)
+            if (e.Node.Id == 0)
             {
                 mainContentTab.SelectedTabPageIndex = 1;
                 ucOpenStoreSales.GetData();
-            }*/
+            }
+
+            if (e.Node.Id == 1)
+            {
+                mainContentTab.SelectedTabPageIndex = 2;
+                ucOpenStorePayments.GetData();
+            }
         }
     }
 }
