@@ -325,9 +325,9 @@ namespace SP_Sklad.UserControls
             IHelper.Print(dataForReport, "SummarySettingMaterialPrices.xlsx");
         }
 
-        private void SettingMaterialPricesGridView_MouseWheel(object sender, MouseEventArgs e)
+        private void CopyItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-           
+            CopyItem();
         }
     }
 }

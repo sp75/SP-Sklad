@@ -318,6 +318,7 @@
             this.CopyItemBtn.Id = 1;
             this.CopyItemBtn.ImageOptions.ImageIndex = 10;
             this.CopyItemBtn.Name = "CopyItemBtn";
+            this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
             // 
             // EditItemBtn
             // 
@@ -487,7 +488,7 @@
             this.SettingMaterialPricesGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesGridView_PopupMenuShowing);
             this.SettingMaterialPricesGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.SettingMaterialPricesGridView_FocusedRowObjectChanged);
             this.SettingMaterialPricesGridView.AsyncCompleted += new System.EventHandler(this.SettingMaterialPricesGridView_AsyncCompleted);
-            this.SettingMaterialPricesGridView.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.SettingMaterialPricesGridView_MouseWheel);
+          
             this.SettingMaterialPricesGridView.DoubleClick += new System.EventHandler(this.SettingMaterialPricesGridView_DoubleClick);
             // 
             // gridColumn47
