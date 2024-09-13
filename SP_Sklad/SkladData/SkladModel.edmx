@@ -3669,8 +3669,9 @@ warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does n
           <Property Name="PTypeId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="MsrName" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="LastDocDate" Type="datetime" />
           <Property Name="Price" Type="numeric" Precision="15" Scale="2" />
-          <Property Name="GrpName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="GrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="GrpId" Type="int" Nullable="false" />
           <Property Name="GrpNum" Type="numeric" Precision="5" Scale="1" />
         </EntityType>
@@ -11257,6 +11258,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SummarySettingMaterialPrices].[PTypeId] AS [PTypeId], 
     [v_SummarySettingMaterialPrices].[Name] AS [Name], 
     [v_SummarySettingMaterialPrices].[MsrName] AS [MsrName], 
+    [v_SummarySettingMaterialPrices].[LastDocDate] AS [LastDocDate], 
     [v_SummarySettingMaterialPrices].[Price] AS [Price], 
     [v_SummarySettingMaterialPrices].[GrpName] AS [GrpName], 
     [v_SummarySettingMaterialPrices].[GrpId] AS [GrpId], 
@@ -21721,9 +21723,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MsrName" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="15" Scale="2" />
-          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="GrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="GrpId" Type="Int32" Nullable="false" />
           <Property Name="GrpNum" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="LastDocDate" Type="DateTime" Precision="3" />
         </EntityType>
         <ComplexType Name="REP_51_Result">
           <Property Type="String" Name="GrpName" Nullable="false" MaxLength="64" />
@@ -29357,6 +29360,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SummarySettingMaterialPrices">
             <EntityTypeMapping TypeName="BaseModel.v_SummarySettingMaterialPrices">
               <MappingFragment StoreEntitySet="v_SummarySettingMaterialPrices">
+                <ScalarProperty Name="LastDocDate" ColumnName="LastDocDate" />
                 <ScalarProperty Name="GrpNum" ColumnName="GrpNum" />
                 <ScalarProperty Name="GrpId" ColumnName="GrpId" />
                 <ScalarProperty Name="GrpName" ColumnName="GrpName" />

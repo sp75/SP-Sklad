@@ -22,5 +22,6 @@ namespace SP_Sklad.SkladData
         public string GrpName { get; set; }
         public int GrpId { get; set; }
         public Nullable<decimal> GrpNum { get; set; }
+        public Nullable<System.DateTime> LastDocDate { get; set; }
     }
 }
