@@ -240,14 +240,14 @@ namespace SP_Sklad.WBForm
 
             if (wbtd != null)
             {
-
                 if (e.Column.FieldName == "Price")
                 {
                     wbtd.Price = Convert.ToDecimal(e.Value);
-                    wbtd.Markup = null;
-                    wbtd.ProcurementPrice = null;
-                    focused_dr.Markup = null;
-                    focused_dr.ProcurementPrice = null;
+                    if (wbtd.ProcurementPrice.HasValue)
+                    {
+                        wbtd.Markup =  ( wbtd.Price - wbtd.ProcurementPrice) / wbtd.ProcurementPrice * 100;
+                        focused_dr.Markup = wbtd.Markup;
+                    }
                 }
 
                 if (e.Column.FieldName == "MatId")
