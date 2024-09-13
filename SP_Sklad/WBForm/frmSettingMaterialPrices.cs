@@ -196,7 +196,7 @@ namespace SP_Sklad.WBForm
                 _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                 {
                     Id = Guid.NewGuid(),
-                    Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Count() ,
+                    Num = (_db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0) + 1,
                     MatId = mat_id,
                     SettingMaterialPricesId = _wbt_id.Value,
                     CreatedAt = DBHelper.ServerDateTime(),
@@ -215,7 +215,7 @@ namespace SP_Sklad.WBForm
                 var grp_id = (int)GrpId;
                 foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
-                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num);
+                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0;
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                     {
                         _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
@@ -254,7 +254,7 @@ namespace SP_Sklad.WBForm
                 {
                     wbtd.MatId = Convert.ToInt32(e.Value);
                     _db.SaveChanges();
-                     GetDetail();
+                    GetDetail();
                 }
 
                 if (e.Column.FieldName == "ProcurementPrice")
@@ -262,7 +262,7 @@ namespace SP_Sklad.WBForm
                     wbtd.ProcurementPrice = Convert.ToDecimal(e.Value);
                     if (wbtd.Markup.HasValue)
                     {
-                        wbtd.Price = Math.Round(wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100), Convert.ToInt32( barEditItem2.EditValue));
+                        wbtd.Price = Math.Round(wbtd.ProcurementPrice.Value + (wbtd.ProcurementPrice.Value * wbtd.Markup.Value / 100), Convert.ToInt32(barEditItem2.EditValue));
                         focused_dr.Price = wbtd.Price;
                     }
                 }
@@ -276,7 +276,7 @@ namespace SP_Sklad.WBForm
                         focused_dr.Price = wbtd.Price;
                     }
                 }
-             
+
             }
             else
             {
@@ -285,7 +285,7 @@ namespace SP_Sklad.WBForm
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
-                        Num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m=> m.Num)+1,
+                        Num = (_db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0) + 1,
                         MatId = focused_dr.MatId,
                         SettingMaterialPricesId = _wbt_id.Value,
                         CreatedAt = DBHelper.ServerDateTime(),
@@ -475,7 +475,7 @@ namespace SP_Sklad.WBForm
             {
                 var MatId = Convert.ToInt32( e.Values[colMaterial]);
 
-                var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num);
+                var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0;
                 var det = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.MatId == MatId && w.SettingMaterialPricesId == _wbt_id.Value);
 
                 if (det == null)

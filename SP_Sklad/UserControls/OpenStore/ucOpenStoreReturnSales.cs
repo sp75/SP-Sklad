@@ -25,15 +25,15 @@ using OpenStore.Tranzit.Base;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
-    public partial class ucOpenStoreSales : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucOpenStoreReturnSales : DevExpress.XtraEditors.XtraUserControl
     {
-        public v_Sales row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_Sales;
+        public v_ReturnSales row_smp => WhPosRemainsGridView.GetFocusedRow() is NotLoadedObject ? null : WhPosRemainsGridView.GetFocusedRow() as v_ReturnSales;
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
         private int prev_rowHandle = 0;
         private bool _restore = false;
-        public ucOpenStoreSales()
+        public ucOpenStoreReturnSales()
         {
             InitializeComponent();
         }
@@ -44,12 +44,12 @@ namespace SP_Sklad.UserControls.Warehouse
             {
                 //wbStartDate.EditValue = DateTime.Now.Date;
                 //wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-                
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Фіскальні" }, new { Id = 0, Name = "Не фіскальні" } };
                 wbStatusList.EditValue = -1;
 
-                KagentList.Properties.DataSource = new Tranzit_OSEntities().SAREA.ToList();
+                KagentList.Properties.DataSource = new List<object>() { new { SAREAID = -1, SAREANAME = "Усі" } }.Concat(new Tranzit_OSEntities().SAREA.Select(s => new { s.SAREAID, s.SAREANAME }).ToList()).ToList();
+                KagentList.EditValue = -1;
 
                 var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
 
@@ -72,9 +72,9 @@ namespace SP_Sklad.UserControls.Warehouse
 
             _restore = restore;
 
-            var area = KagentList.GetSelectedDataRow() as SAREA;
+            var area_id = (int?)KagentList.EditValue;
 
-            if(area == null)
+            if (area_id == null)
             {
                 return;
             }
@@ -82,7 +82,7 @@ namespace SP_Sklad.UserControls.Warehouse
             var status = (int)wbStatusList.EditValue;
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
-            var list = objectContext.v_Sales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && w.SAREAID == area.SAREAID && (status == -1 || status == w.FiscalReceipt)).ToList();
+            var list = objectContext.v_ReturnSales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.SAREAID == area_id || area_id == -1) && (status == -1 || status == w.FiscalReceipt)).ToList();
 
             WhPosRemainsGridControl.DataSource = list;
 

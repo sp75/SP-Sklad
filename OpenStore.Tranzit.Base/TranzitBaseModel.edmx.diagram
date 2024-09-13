@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="Tranzit_OSModel.v_Payment" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Tranzit_OSModel.v_ReturnSales" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Tranzit_OSModel.v_Sales" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Tranzit_OSModel.v_CashRegisterSyncMonitor" Width="1.5" PointX="5" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

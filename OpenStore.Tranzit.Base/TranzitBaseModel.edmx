@@ -44,16 +44,32 @@
           <Property Name="RECEIPTENDFOOTER" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'Tranzit_OS.dbo.v_CashRegisterSyncMonitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_CashRegisterSyncMonitor">
+          <Key>
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SYSTEMID" />
+          </Key>
+          <Property Name="SAREAID" Type="int" Nullable="false" />
+          <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SYSTEMID" Type="int" Nullable="false" />
+          <Property Name="SyncDate" Type="datetime" />
+          <Property Name="ErrorText" Type="nvarchar" MaxLength="2048" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'Tranzit_OS.dbo.v_Payment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Payment">
           <Key>
-            <PropertyRef Name="SAREANAME" />
+            
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="SESSSTART" />
+            
+            
+            
+            
           </Key>
           <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SAREAID" Type="int" Nullable="false" />
@@ -69,23 +85,28 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Payment' does not have a primary 
           <Property Name="SESSEND" Type="varchar" MaxLength="14" />
           <Property Name="OnDate" Type="datetime" />
           <Property Name="SALESTYPE" Type="int" />
+          <Property Name="FiscalReceipt" Type="int" Nullable="false" />
+          <Property Name="ReturnPayment" Type="int" Nullable="false" />
+          <Property Name="SALESATTRS" Type="nvarchar" MaxLength="100" />
+          <Property Name="ENTITYSALESTIME" Type="bigint" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Tranzit_OS.dbo.v_ReturnSales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_ReturnSales">
           <Key>
-            <PropertyRef Name="SAREANAME" />
+            
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="UNITNAME" />
-            <PropertyRef Name="ARTNAME" />
-            <PropertyRef Name="SESSSTART" />
-            <PropertyRef Name="GRPID" />
-            <PropertyRef Name="GRPNAME" />
-            <PropertyRef Name="ARTCODE" />
+            
+            
+            
+            
+            
+            
+            
+            
           </Key>
           <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SAREAID" Type="int" Nullable="false" />
@@ -109,23 +130,25 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_ReturnSales' does not have a prim
           <Property Name="ARTCODE" Type="int" Nullable="false" />
           <Property Name="ARTID" Type="int" />
           <Property Name="SessionStartDate" Type="datetime" />
+          <Property Name="FiscalReceipt" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_Sales">
           <Key>
-            <PropertyRef Name="SAREANAME" />
+            
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="UNITNAME" />
-            <PropertyRef Name="ARTNAME" />
-            <PropertyRef Name="SESSSTART" />
-            <PropertyRef Name="ARTCODE" />
-            <PropertyRef Name="GRPID" />
-            <PropertyRef Name="GRPNAME" />
+            
+            
+            
+            
+            
+            
+            
+            
           </Key>
           <Property Name="SAREANAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SAREAID" Type="int" Nullable="false" />
@@ -149,10 +172,21 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="GRPID" Type="int" Nullable="false" />
           <Property Name="GRPNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SessionStartDate" Type="datetime" />
+          <Property Name="FiscalReceipt" Type="int" Nullable="false" />
+          <Property Name="ENTITYSALESTIME" Type="bigint" />
         </EntityType>
         <EntityContainer Name="Tranzit_OSModelStoreContainer">
           <EntitySet Name="ART" EntityType="Self.ART" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SAREA" EntityType="Self.SAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_CashRegisterSyncMonitor" EntityType="Self.v_CashRegisterSyncMonitor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_CashRegisterSyncMonitor].[SAREAID] AS [SAREAID], 
+    [v_CashRegisterSyncMonitor].[SAREANAME] AS [SAREANAME], 
+    [v_CashRegisterSyncMonitor].[SYSTEMID] AS [SYSTEMID], 
+    [v_CashRegisterSyncMonitor].[SyncDate] AS [SyncDate], 
+    [v_CashRegisterSyncMonitor].[ErrorText] AS [ErrorText]
+    FROM [dbo].[v_CashRegisterSyncMonitor] AS [v_CashRegisterSyncMonitor]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_Payment" EntityType="Self.v_Payment" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_Payment].[SAREANAME] AS [SAREANAME], 
@@ -168,7 +202,11 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     [v_Payment].[SESSSTART] AS [SESSSTART], 
     [v_Payment].[SESSEND] AS [SESSEND], 
     [v_Payment].[OnDate] AS [OnDate], 
-    [v_Payment].[SALESTYPE] AS [SALESTYPE]
+    [v_Payment].[SALESTYPE] AS [SALESTYPE], 
+    [v_Payment].[FiscalReceipt] AS [FiscalReceipt], 
+    [v_Payment].[ReturnPayment] AS [ReturnPayment], 
+    [v_Payment].[SALESATTRS] AS [SALESATTRS], 
+    [v_Payment].[ENTITYSALESTIME] AS [ENTITYSALESTIME]
     FROM [dbo].[v_Payment] AS [v_Payment]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" store:Type="Views" store:Schema="dbo">
@@ -194,7 +232,8 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     [v_ReturnSales].[GRPNAME] AS [GRPNAME], 
     [v_ReturnSales].[ARTCODE] AS [ARTCODE], 
     [v_ReturnSales].[ARTID] AS [ARTID], 
-    [v_ReturnSales].[SessionStartDate] AS [SessionStartDate]
+    [v_ReturnSales].[SessionStartDate] AS [SessionStartDate], 
+    [v_ReturnSales].[FiscalReceipt] AS [FiscalReceipt]
     FROM [dbo].[v_ReturnSales] AS [v_ReturnSales]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Sales" EntityType="Self.v_Sales" store:Type="Views" store:Schema="dbo">
@@ -220,7 +259,9 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     [v_Sales].[ARTCODE] AS [ARTCODE], 
     [v_Sales].[GRPID] AS [GRPID], 
     [v_Sales].[GRPNAME] AS [GRPNAME], 
-    [v_Sales].[SessionStartDate] AS [SessionStartDate]
+    [v_Sales].[SessionStartDate] AS [SessionStartDate], 
+    [v_Sales].[FiscalReceipt] AS [FiscalReceipt], 
+    [v_Sales].[ENTITYSALESTIME] AS [ENTITYSALESTIME]
     FROM [dbo].[v_Sales] AS [v_Sales]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -268,13 +309,10 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
         </EntityType>
         <EntityType Name="v_Payment">
           <Key>
-            <PropertyRef Name="SAREANAME" />
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="SESSSTART" />
           </Key>
           <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SAREAID" Type="Int32" Nullable="false" />
@@ -290,21 +328,17 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="SESSEND" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
           <Property Name="OnDate" Type="DateTime" Precision="3" />
           <Property Name="SALESTYPE" Type="Int32" />
+          <Property Name="FiscalReceipt" Type="Int32" Nullable="false" />
+          <Property Name="ReturnPayment" Type="Int32" Nullable="false" />
+          <Property Name="SALESATTRS" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ENTITYSALESTIME" Type="Int64" />
         </EntityType>
         <EntityType Name="v_ReturnSales">
           <Key>
-            <PropertyRef Name="SAREANAME" />
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="UNITNAME" />
-            <PropertyRef Name="ARTNAME" />
-            <PropertyRef Name="SESSSTART" />
-            <PropertyRef Name="GRPID" />
-            <PropertyRef Name="GRPNAME" />
-            <PropertyRef Name="ARTCODE" />
           </Key>
           <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SAREAID" Type="Int32" Nullable="false" />
@@ -328,21 +362,14 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="ARTCODE" Type="Int32" Nullable="false" />
           <Property Name="ARTID" Type="Int32" />
           <Property Name="SessionStartDate" Type="DateTime" Precision="3" />
+          <Property Name="FiscalReceipt" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="v_Sales">
           <Key>
-            <PropertyRef Name="SAREANAME" />
             <PropertyRef Name="SAREAID" />
             <PropertyRef Name="SYSTEMID" />
             <PropertyRef Name="SESSID" />
             <PropertyRef Name="SALESNUM" />
-            <PropertyRef Name="SRECNUM" />
-            <PropertyRef Name="UNITNAME" />
-            <PropertyRef Name="ARTNAME" />
-            <PropertyRef Name="SESSSTART" />
-            <PropertyRef Name="ARTCODE" />
-            <PropertyRef Name="GRPID" />
-            <PropertyRef Name="GRPNAME" />
           </Key>
           <Property Name="SAREANAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SAREAID" Type="Int32" Nullable="false" />
@@ -366,6 +393,8 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="GRPID" Type="Int32" Nullable="false" />
           <Property Name="GRPNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SessionStartDate" Type="DateTime" Precision="3" />
+          <Property Name="FiscalReceipt" Type="Int32" Nullable="false" />
+          <Property Name="ENTITYSALESTIME" Type="Int64" />
         </EntityType>
         <EntityContainer Name="Tranzit_OSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ART" EntityType="Self.ART" />
@@ -373,7 +402,20 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySet Name="v_Payment" EntityType="Self.v_Payment" />
           <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" />
           <EntitySet Name="v_Sales" EntityType="Self.v_Sales" />
+          <EntitySet Name="v_CashRegisterSyncMonitor" EntityType="Tranzit_OSModel.v_CashRegisterSyncMonitor" />
         </EntityContainer>
+        <EntityType Name="v_CashRegisterSyncMonitor">
+          <Key>
+            <PropertyRef Name="SAREAID" />
+            <PropertyRef Name="SAREANAME" />
+            <PropertyRef Name="SYSTEMID" />
+          </Key>
+          <Property Name="SAREAID" Type="Int32" Nullable="false" />
+          <Property Name="SAREANAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SYSTEMID" Type="Int32" Nullable="false" />
+          <Property Name="SyncDate" Type="DateTime" Precision="3" />
+          <Property Name="ErrorText" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -423,6 +465,10 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySetMapping Name="v_Payment">
             <EntityTypeMapping TypeName="Tranzit_OSModel.v_Payment">
               <MappingFragment StoreEntitySet="v_Payment">
+                <ScalarProperty Name="ENTITYSALESTIME" ColumnName="ENTITYSALESTIME" />
+                <ScalarProperty Name="SALESATTRS" ColumnName="SALESATTRS" />
+                <ScalarProperty Name="ReturnPayment" ColumnName="ReturnPayment" />
+                <ScalarProperty Name="FiscalReceipt" ColumnName="FiscalReceipt" />
                 <ScalarProperty Name="SALESTYPE" ColumnName="SALESTYPE" />
                 <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
                 <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
@@ -443,6 +489,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySetMapping Name="v_ReturnSales">
             <EntityTypeMapping TypeName="Tranzit_OSModel.v_ReturnSales">
               <MappingFragment StoreEntitySet="v_ReturnSales">
+                <ScalarProperty Name="FiscalReceipt" ColumnName="FiscalReceipt" />
                 <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
                 <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
                 <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
@@ -471,6 +518,8 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySetMapping Name="v_Sales">
             <EntityTypeMapping TypeName="Tranzit_OSModel.v_Sales">
               <MappingFragment StoreEntitySet="v_Sales">
+                <ScalarProperty Name="ENTITYSALESTIME" ColumnName="ENTITYSALESTIME" />
+                <ScalarProperty Name="FiscalReceipt" ColumnName="FiscalReceipt" />
                 <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
                 <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
                 <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
@@ -493,6 +542,17 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
                 <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
                 <ScalarProperty Name="SessionStartDate" ColumnName="SessionStartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_CashRegisterSyncMonitor">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.v_CashRegisterSyncMonitor">
+              <MappingFragment StoreEntitySet="v_CashRegisterSyncMonitor">
+                <ScalarProperty Name="ErrorText" ColumnName="ErrorText" />
+                <ScalarProperty Name="SyncDate" ColumnName="SyncDate" />
+                <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
+                <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
+                <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

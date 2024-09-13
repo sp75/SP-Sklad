@@ -36,5 +36,6 @@ namespace OpenStore.Tranzit.Base
         public int ARTCODE { get; set; }
         public Nullable<int> ARTID { get; set; }
         public Nullable<System.DateTime> SessionStartDate { get; set; }
+        public int FiscalReceipt { get; set; }
     }
 }

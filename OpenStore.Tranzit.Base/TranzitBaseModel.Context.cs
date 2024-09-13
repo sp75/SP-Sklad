@@ -30,5 +30,6 @@ namespace OpenStore.Tranzit.Base
         public virtual DbSet<v_Payment> v_Payment { get; set; }
         public virtual DbSet<v_ReturnSales> v_ReturnSales { get; set; }
         public virtual DbSet<v_Sales> v_Sales { get; set; }
+        public virtual DbSet<v_CashRegisterSyncMonitor> v_CashRegisterSyncMonitor { get; set; }
     }
 }

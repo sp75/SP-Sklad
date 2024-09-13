@@ -36,5 +36,7 @@ namespace OpenStore.Tranzit.Base
         public int GRPID { get; set; }
         public string GRPNAME { get; set; }
         public Nullable<System.DateTime> SessionStartDate { get; set; }
+        public int FiscalReceipt { get; set; }
+        public Nullable<long> ENTITYSALESTIME { get; set; }
     }
 }

@@ -25,15 +25,15 @@ using OpenStore.Tranzit.Base;
 
 namespace SP_Sklad.UserControls.Warehouse
 {
-    public partial class ucOpenStorePayments : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucOpenStoreCashRegisterSyncMonitor : DevExpress.XtraEditors.XtraUserControl
     {
-        public v_Payment row_smp => PaymentGridView.GetFocusedRow() is NotLoadedObject ? null : PaymentGridView.GetFocusedRow() as v_Payment;
+        public v_CashRegisterSyncMonitor row_smp => PaymentGridView.GetFocusedRow() is NotLoadedObject ? null : PaymentGridView.GetFocusedRow() as v_CashRegisterSyncMonitor;
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
         private int prev_rowHandle = 0;
         private bool _restore = false;
-        public ucOpenStorePayments()
+        public ucOpenStoreCashRegisterSyncMonitor()
         {
             InitializeComponent();
         }
@@ -42,23 +42,11 @@ namespace SP_Sklad.UserControls.Warehouse
         {
             if (!DesignMode)
             {
-                //wbStartDate.EditValue = DateTime.Now.Date;
-                //wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
-
-                wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Фіскальні" }, new { Id = 0, Name = "Не фіскальні" } };
-                wbStatusList.EditValue = -1;
-
-                repositoryItemLookUpEdit1.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 0, Name = "Готівка" }, new { Id = 1, Name = "Платіжна картка" }, new { Id = 2, Name = "Бонуси" }, new { Id = 4, Name = "Не фіскальний" } };
-                repositoryItemLookUpEdit2.DataSource = new List<object>() { new { Id = 1, Name = "Фіскальні" }, new { Id = 0, Name = "Не фіскальні" } };
-
-                KagentList.Properties.DataSource = new List<object>() { new { SAREAID = -1, SAREANAME = "Усі" } }.Concat(new Tranzit_OSEntities().SAREA.Select(s=> new { s.SAREAID , s.SAREANAME}).ToList()).ToList();
-                KagentList.EditValue = -1;
-
                 var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
 
                 PaymentGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
-                PeriodComboBoxEdit.SelectedIndex = 1;
+                GetData();
             }
         }
 
@@ -75,20 +63,13 @@ namespace SP_Sklad.UserControls.Warehouse
 
             _restore = restore;
 
-                      var area_id = (int)KagentList.EditValue;
-                      var status = (int)wbStatusList.EditValue;
-                      var start_date = Convert.ToInt64( wbStartDate.DateTime.ToString("yyyyMMddHHmmss"));
-                      var end_date = Convert.ToInt64(wbEndDate.DateTime.ToString("yyyyMMddHHmmss"));
+            Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
+            var list = objectContext.v_CashRegisterSyncMonitor.OrderBy(o=> o.SyncDate).ToList().Where(w => w.SyncDate > DateTime.Now.AddDays(-30)).ToList();
 
-                      Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
-                      var list = objectContext.v_Payment.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.SAREAID == area_id || area_id == -1) && (status == -1 || status == w.FiscalReceipt  )).ToList();
+            PaymentGridControl.DataSource = list;
 
-                      PaymentGridControl.DataSource = list;
-
-                      PaymentGridView.ExpandAllGroups();
-
-        //    PaymentGridControl.DataSource = null;
-        //    PaymentGridControl.DataSource = PaymentSource;
+            //    PaymentGridControl.DataSource = null;
+            //    PaymentGridControl.DataSource = PaymentSource;
         }
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -103,13 +84,13 @@ namespace SP_Sklad.UserControls.Warehouse
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
+         /*   Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
             var area_id = (int)KagentList.EditValue;
             var status = (int)wbStatusList.EditValue;
 
             var list = objectContext.v_Payment.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.SAREAID == area_id || area_id == -1) && (status == -1 || status == w.FiscalReceipt) );
             e.QueryableSource = list;
-            e.Tag = objectContext;
+            e.Tag = objectContext;*/
         }
 
         private void WhPosRemainsGridView_AsyncCompleted(object sender, EventArgs e)
@@ -173,72 +154,18 @@ namespace SP_Sklad.UserControls.Warehouse
           
         }
 
-        private void PeriodComboBoxEdit_EditValueChanged(object sender, EventArgs e)
+        private void PaymentGridView_RowStyle(object sender, RowStyleEventArgs e)
         {
-            wbEndDate.DateTime = DateTime.Now.Date.SetEndDay();
-            switch (PeriodComboBoxEdit.SelectedIndex)
+            if (e.RowHandle < 0)
             {
-                case 1:
-                    wbStartDate.DateTime = DateTime.Now.Date;
-                    break;
-
-                case 2:
-                    wbStartDate.DateTime = DateTime.Now.Date.StartOfWeek(DayOfWeek.Monday);
-                    break;
-
-                case 3:
-                    wbStartDate.DateTime = DateTime.Now.Date.FirstDayOfMonth();
-                    break;
-
-                case 4:
-                    wbStartDate.DateTime = new DateTime(DateTime.Now.Year, 1, 1);
-                    break;
+                return;
             }
 
-            GetData();
-        }
+            var wh_row = PaymentGridView.GetRow(e.RowHandle) as v_CashRegisterSyncMonitor;
 
-        private void wbStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbStartDate.ContainsFocus)
+            if (wh_row != null && wh_row.SyncDate < DateTime.Now.AddMinutes(-30))
             {
-                GetData();
-            }
-        }
-
-        private void wbEndDate_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbEndDate.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void KagentList_EditValueChanged(object sender, EventArgs e)
-        {
-            if (KagentList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void wbStatusList_EditValueChanged(object sender, EventArgs e)
-        {
-            if (wbStatusList.ContainsFocus)
-            {
-                GetData();
-            }
-        }
-
-        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (PaymentGridView.OptionsBehavior.AlignGroupSummaryInGroupRow == DevExpress.Utils.DefaultBoolean.Default)
-            {
-                PaymentGridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.True;
-            }
-            else
-            {
-                PaymentGridView.OptionsBehavior.AlignGroupSummaryInGroupRow = DevExpress.Utils.DefaultBoolean.Default;
+                e.Appearance.ForeColor = Color.Red;
             }
         }
     }

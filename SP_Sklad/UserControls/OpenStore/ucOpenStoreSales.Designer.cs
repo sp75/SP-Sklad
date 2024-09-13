@@ -512,7 +512,7 @@
             this.gridBand5.Columns.Add(this.bandedGridColumn1);
             this.gridBand5.Name = "gridBand5";
             this.gridBand5.VisibleIndex = 0;
-            this.gridBand5.Width = 561;
+            this.gridBand5.Width = 624;
             // 
             // bandedGridColumn3
             // 
@@ -520,7 +520,7 @@
             this.bandedGridColumn3.FieldName = "SRECNUM";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
             this.bandedGridColumn3.Visible = true;
-            this.bandedGridColumn3.Width = 62;
+            this.bandedGridColumn3.Width = 67;
             // 
             // colNum
             // 
@@ -528,7 +528,7 @@
             this.colNum.FieldName = "FRECNUM";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
-            this.colNum.Width = 95;
+            this.colNum.Width = 103;
             // 
             // colOnDate
             // 
@@ -539,7 +539,7 @@
             this.colOnDate.Name = "colOnDate";
             this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.colOnDate.Visible = true;
-            this.colOnDate.Width = 115;
+            this.colOnDate.Width = 125;
             // 
             // colRsv
             // 
@@ -547,7 +547,7 @@
             this.colRsv.FieldName = "SYSTEMID";
             this.colRsv.Name = "colRsv";
             this.colRsv.Visible = true;
-            this.colRsv.Width = 77;
+            this.colRsv.Width = 95;
             // 
             // bandedGridColumn1
             // 
@@ -555,7 +555,7 @@
             this.bandedGridColumn1.FieldName = "SAREANAME";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 212;
+            this.bandedGridColumn1.Width = 234;
             // 
             // gridBand1
             // 
@@ -569,7 +569,7 @@
             this.gridBand1.Columns.Add(this.colGrpName);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 1;
-            this.gridBand1.Width = 840;
+            this.gridBand1.Width = 777;
             // 
             // colMatId
             // 
@@ -577,7 +577,7 @@
             this.colMatId.FieldName = "ARTCODE";
             this.colMatId.Name = "colMatId";
             this.colMatId.Visible = true;
-            this.colMatId.Width = 86;
+            this.colMatId.Width = 84;
             // 
             // colMatName
             // 
@@ -585,7 +585,7 @@
             this.colMatName.FieldName = "ARTNAME";
             this.colMatName.Name = "colMatName";
             this.colMatName.Visible = true;
-            this.colMatName.Width = 135;
+            this.colMatName.Width = 133;
             // 
             // colOrdered
             // 
@@ -593,7 +593,7 @@
             this.colOrdered.FieldName = "UNITNAME";
             this.colOrdered.Name = "colOrdered";
             this.colOrdered.Visible = true;
-            this.colOrdered.Width = 48;
+            this.colOrdered.Width = 47;
             // 
             // colWhName
             // 
@@ -603,7 +603,7 @@
             this.colWhName.FieldName = "AMOUNT";
             this.colWhName.Name = "colWhName";
             this.colWhName.Visible = true;
-            this.colWhName.Width = 113;
+            this.colWhName.Width = 59;
             // 
             // colAvgPrice
             // 
@@ -613,7 +613,7 @@
             this.colAvgPrice.FieldName = "PRICE";
             this.colAvgPrice.Name = "colAvgPrice";
             this.colAvgPrice.Visible = true;
-            this.colAvgPrice.Width = 132;
+            this.colAvgPrice.Width = 70;
             // 
             // colTotal
             // 
@@ -625,7 +625,7 @@
             this.colTotal.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TOTAL", "{0:0.00}")});
             this.colTotal.Visible = true;
-            this.colTotal.Width = 67;
+            this.colTotal.Width = 76;
             // 
             // colGrpName
             // 
@@ -633,7 +633,7 @@
             this.colGrpName.FieldName = "GRPNAME";
             this.colGrpName.Name = "colGrpName";
             this.colGrpName.Visible = true;
-            this.colGrpName.Width = 259;
+            this.colGrpName.Width = 308;
             // 
             // gridBand4
             // 

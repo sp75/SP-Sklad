@@ -38,14 +38,26 @@ namespace SP_Sklad.MainTabs
             if (e.Node.Id == 0)
             {
                 mainContentTab.SelectedTabPageIndex = 1;
-                ucOpenStoreSales.GetData();
+            //    ucOpenStoreSales.GetData();
             }
 
             if (e.Node.Id == 1)
             {
                 mainContentTab.SelectedTabPageIndex = 2;
-                ucOpenStorePayments.GetData();
+           //     ucOpenStorePayments.GetData();
             }
+            if (e.Node.Id == 2 )
+            {
+                mainContentTab.SelectedTabPageIndex = 3;
+                //     ucOpenStorePayments.GetData();
+            }
+
+            if (e.Node.Id == 3)
+            {
+                mainContentTab.SelectedTabPageIndex = 4;
+                //     ucOpenStorePayments.GetData();
+            }
+            
         }
     }
 }

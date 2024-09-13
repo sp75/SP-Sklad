@@ -1559,11 +1559,23 @@
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.Designer.cs">
+      <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStorePayments.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStorePayments.Designer.cs">
       <DependentUpon>ucOpenStorePayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreReturnSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStoreReturnSales.Designer.cs">
+      <DependentUpon>ucOpenStoreReturnSales.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreSales.cs">
       <SubType>UserControl</SubType>
@@ -2719,8 +2731,14 @@
     <EmbeddedResource Include="Reports\frmDocumentDetails.resx">
       <DependentUpon>frmDocumentDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
+      <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStorePayments.resx">
       <DependentUpon>ucOpenStorePayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreReturnSales.resx">
+      <DependentUpon>ucOpenStoreReturnSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreSales.resx">
       <DependentUpon>ucOpenStoreSales.cs</DependentUpon>
@@ -3951,6 +3969,7 @@
     <None Include="Resources\money_move_1.png" />
     <None Include="Resources\percent.png" />
     <None Include="Resources\re_calc_remain_1.png" />
+    <None Include="Resources\system_report.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

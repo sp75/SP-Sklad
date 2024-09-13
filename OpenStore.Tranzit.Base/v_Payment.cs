@@ -28,5 +28,9 @@ namespace OpenStore.Tranzit.Base
         public string SESSEND { get; set; }
         public Nullable<System.DateTime> OnDate { get; set; }
         public Nullable<int> SALESTYPE { get; set; }
+        public int FiscalReceipt { get; set; }
+        public int ReturnPayment { get; set; }
+        public string SALESATTRS { get; set; }
+        public Nullable<long> ENTITYSALESTIME { get; set; }
     }
 }

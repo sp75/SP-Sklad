@@ -55,6 +55,10 @@
             this.xtraTabPage6 = new DevExpress.XtraTab.XtraTabPage();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.ucOpenStorePayments = new SP_Sklad.UserControls.Warehouse.ucOpenStorePayments();
+            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucOpenStoreReturnSales1 = new SP_Sklad.UserControls.Warehouse.ucOpenStoreReturnSales();
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucOpenStoreCashRegisterSyncMonitor = new SP_Sklad.UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
@@ -72,6 +76,8 @@
             this.mainContentTab.SuspendLayout();
             this.xtraTabPage10.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            this.xtraTabPage2.SuspendLayout();
+            this.xtraTabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -258,9 +264,9 @@
             this.DirTreeList.AppendNode(new object[] {
             "Оплата"}, -1, 2, 2, -1, 0);
             this.DirTreeList.AppendNode(new object[] {
-            "Повернення"}, -1);
+            "Повернення (чеки)"}, -1, 4, 4, -1);
             this.DirTreeList.AppendNode(new object[] {
-            "Торгові площадки"}, -1, 1, 1, -1);
+            "Монітор синхронизаціїї кас"}, -1, 3, 3, -1);
             this.DirTreeList.EndUnboundLoad();
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -292,8 +298,12 @@
             this.imageCollection1.Images.SetKeyName(1, "store_16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.cash, "cash", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.imageCollection1.Images.SetKeyName(2, "cash");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 3);
-            this.imageCollection1.Images.SetKeyName(3, "money");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.system_report, "system_report", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "system_report");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "wb_return_sale");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "money");
             // 
             // mainContentTab
             // 
@@ -309,7 +319,9 @@
             this.mainContentTab.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage6,
             this.xtraTabPage10,
-            this.xtraTabPage1});
+            this.xtraTabPage1,
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             // 
             // xtraTabPage10
             // 
@@ -347,6 +359,36 @@
             this.ucOpenStorePayments.Size = new System.Drawing.Size(1152, 574);
             this.ucOpenStorePayments.TabIndex = 0;
             // 
+            // xtraTabPage2
+            // 
+            this.xtraTabPage2.Controls.Add(this.ucOpenStoreReturnSales1);
+            this.xtraTabPage2.Name = "xtraTabPage2";
+            this.xtraTabPage2.Size = new System.Drawing.Size(1152, 574);
+            this.xtraTabPage2.Text = "Повернення";
+            // 
+            // ucOpenStoreReturnSales1
+            // 
+            this.ucOpenStoreReturnSales1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOpenStoreReturnSales1.Location = new System.Drawing.Point(0, 0);
+            this.ucOpenStoreReturnSales1.Name = "ucOpenStoreReturnSales1";
+            this.ucOpenStoreReturnSales1.Size = new System.Drawing.Size(1152, 574);
+            this.ucOpenStoreReturnSales1.TabIndex = 0;
+            // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Controls.Add(this.ucOpenStoreCashRegisterSyncMonitor);
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(1152, 574);
+            this.xtraTabPage3.Text = "Монітор";
+            // 
+            // ucOpenStoreCashRegisterSyncMonitor
+            // 
+            this.ucOpenStoreCashRegisterSyncMonitor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOpenStoreCashRegisterSyncMonitor.Location = new System.Drawing.Point(0, 0);
+            this.ucOpenStoreCashRegisterSyncMonitor.Name = "ucOpenStoreCashRegisterSyncMonitor";
+            this.ucOpenStoreCashRegisterSyncMonitor.Size = new System.Drawing.Size(1152, 574);
+            this.ucOpenStoreCashRegisterSyncMonitor.TabIndex = 0;
+            // 
             // OpenStoreUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,6 +425,8 @@
             this.mainContentTab.ResumeLayout(false);
             this.xtraTabPage10.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
+            this.xtraTabPage2.ResumeLayout(false);
+            this.xtraTabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,5 +459,9 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private UserControls.Warehouse.ucOpenStorePayments ucOpenStorePayments;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
+        private UserControls.Warehouse.ucOpenStoreReturnSales ucOpenStoreReturnSales1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
+        private UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor ucOpenStoreCashRegisterSyncMonitor;
     }
 }
