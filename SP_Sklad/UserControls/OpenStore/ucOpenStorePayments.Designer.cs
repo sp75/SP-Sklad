@@ -521,7 +521,7 @@
             // 
             // colNum
             // 
-            this.colNum.Caption = "Фіксальний номер";
+            this.colNum.Caption = "Фіскальний номер";
             this.colNum.FieldName = "FRECNUM";
             this.colNum.Name = "colNum";
             this.colNum.Visible = true;
