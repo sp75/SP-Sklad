@@ -22,6 +22,7 @@ using SkladEngine.DBFunction;
 using SP_Sklad.WBForm;
 using DevExpress.XtraGrid;
 using DevExpress.XtraEditors;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -636,6 +637,11 @@ namespace SP_Sklad.MainTabs
                 }
             }
 
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmKagentMaterilPrices(focused_mat.MatId).ShowDialog();
         }
     }
 }
