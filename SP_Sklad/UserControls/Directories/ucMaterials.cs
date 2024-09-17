@@ -357,6 +357,8 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 2:
+                    var prices = DB.SkladBase().GetListMatPrices(focused_mat.MatId, 2, -1);
+
                     MatPriceGridControl.DataSource = DB.SkladBase().GetMatPriceTypes(focused_mat.MatId).ToList().Select(s => new
                     {
                         s.PTypeId,
@@ -369,7 +371,8 @@ namespace SP_Sklad.MainTabs
                                                     ? s.OnValue.Value.ToString("0.00") + "% на категорію " + s.PtName : (s.ExtraType == 3)
                                                     ? s.OnValue.Value.ToString("0.00") + "% на прайс-лист " + s.PtName : "")
                                                     : s.OnValue.Value.ToString("0.00") + "% від " + s.PtName,
-                        s.Dis
+                        s.Dis,
+                        Price = DB.SkladBase().GetMatPrice(focused_mat.MatId,2, s.PTypeId,0).Select(s1 => s1.Price).FirstOrDefault()  //prices.Where(w=> w.PType == s.PTypeId).Select(s1=> s1.Price).FirstOrDefault()
                     });
                     break;
 
@@ -641,7 +644,7 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            new frmKagentMaterilPrices(focused_mat.MatId).ShowDialog();
+            new frmKagentMaterilPrices(mat_id: focused_mat.MatId).ShowDialog();
         }
     }
 }

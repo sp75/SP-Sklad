@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public string MatGrpName { get; set; }
         public string KaGrpName { get; set; }
         public string PriceTypeName { get; set; }
+        public string Artikul { get; set; }
     }
 }

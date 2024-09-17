@@ -68,7 +68,6 @@
             this.ucBankStatements = new SP_Sklad.UserControls.ucBankStatements();
             this.xtraTabPage29 = new DevExpress.XtraTab.XtraTabPage();
             this.ucProjectManagement = new SP_Sklad.UserControls.ucProjectManagement();
-            this.ucDiscountManagement = new SP_Sklad.UserControls.ucDiscountManagement() ;
             this.xtraTabPage31 = new DevExpress.XtraTab.XtraTabPage();
             this.settingMaterialPricesUserControl1 = new SP_Sklad.UserControls.ucSettingMaterialPrices();
             this.xtraTabPage33 = new DevExpress.XtraTab.XtraTabPage();
@@ -94,6 +93,7 @@
             this.xtraTabPage21 = new DevExpress.XtraTab.XtraTabPage();
             this.ucKAgentAdjustmentOut = new SP_Sklad.UserControls.ucKAgentAdjustment();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucDiscountManagement = new SP_Sklad.UserControls.ucDiscountManagement();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -151,6 +151,7 @@
             this.xtraTabPage41.SuspendLayout();
             this.xtraTabPage20.SuspendLayout();
             this.xtraTabPage21.SuspendLayout();
+            this.xtraTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             this.SuspendLayout();
@@ -991,7 +992,6 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage1.Text = "Управління знижка";
-
             // 
             // ucDiscountManagement
             // 
@@ -1005,8 +1005,6 @@
             this.ucDiscountManagement.Name = "ucDiscountManagement";
             this.ucDiscountManagement.Size = new System.Drawing.Size(1138, 695);
             this.ucDiscountManagement.TabIndex = 0;
-
-
             // 
             // standaloneBarDockControl1
             // 
@@ -1276,6 +1274,7 @@
             this.xtraTabPage41.ResumeLayout(false);
             this.xtraTabPage20.ResumeLayout(false);
             this.xtraTabPage21.ResumeLayout(false);
+            this.xtraTabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).EndInit();
             this.ResumeLayout(false);

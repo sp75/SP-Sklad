@@ -2976,6 +2976,7 @@ warning 6002: The table/view 'sp_base.dbo.v_KagentMaterilPrices' does not have a
           <Property Name="MatGrpName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="KaGrpName" Type="nvarchar" MaxLength="50" />
           <Property Name="PriceTypeName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Artikul" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_KAgentPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10764,7 +10765,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_KagentMaterilPrices].[KaName] AS [KaName], 
     [v_KagentMaterilPrices].[MatGrpName] AS [MatGrpName], 
     [v_KagentMaterilPrices].[KaGrpName] AS [KaGrpName], 
-    [v_KagentMaterilPrices].[PriceTypeName] AS [PriceTypeName]
+    [v_KagentMaterilPrices].[PriceTypeName] AS [PriceTypeName], 
+    [v_KagentMaterilPrices].[Artikul] AS [Artikul]
     FROM [dbo].[v_KagentMaterilPrices] AS [v_KagentMaterilPrices]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_KAgentPrices" EntityType="Self.v_KAgentPrices" store:Type="Views" store:Schema="dbo">
@@ -21801,6 +21803,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="MatGrpName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="KaGrpName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PriceTypeName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Artikul" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="v_ProjectManagementDet">
           <Key>
@@ -29425,6 +29428,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_KagentMaterilPrices">
             <EntityTypeMapping TypeName="BaseModel.v_KagentMaterilPrices">
               <MappingFragment StoreEntitySet="v_KagentMaterilPrices">
+                <ScalarProperty Name="Artikul" ColumnName="Artikul" />
                 <ScalarProperty Name="PriceTypeName" ColumnName="PriceTypeName" />
                 <ScalarProperty Name="KaGrpName" ColumnName="KaGrpName" />
                 <ScalarProperty Name="MatGrpName" ColumnName="MatGrpName" />

@@ -9,6 +9,7 @@ using SP_Sklad.Common;
 using DevExpress.Data;
 using SP_Sklad.WBForm;
 using System.ComponentModel;
+using SP_Sklad.ViewsForm;
 
 namespace SP_Sklad.MainTabs
 {
@@ -507,6 +508,11 @@ namespace SP_Sklad.MainTabs
             {
                 IHelper.ShowRemainsInWh(focused_kagent.WId.Value, focused_kagent.WhName);
             }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmKagentMaterilPrices(ka_id: focused_kagent.KaId).ShowDialog();
         }
     }
 }

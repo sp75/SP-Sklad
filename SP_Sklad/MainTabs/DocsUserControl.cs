@@ -53,6 +53,8 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
+            
+            bar1.Visible = true;
 
             NewItemBtn.Enabled = (focused_tree_node != null && focused_tree_node.CanInsert == 1);
 
@@ -185,6 +187,11 @@ namespace SP_Sklad.MainTabs
             else
             {
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
+            }
+
+            if(focused_tree_node.FunId == 97)
+            {
+                bar1.Visible = false;
             }
 
             RefrechItemBtn.PerformClick();
@@ -534,12 +541,12 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            bar1.Visible = true;
+      //      bar1.Visible = true;
 
             switch (focused_tree_node.GType)
             {
                 case 0:
-                    bar1.Visible = false;
+               //     bar1.Visible = false;
                     break;
 
                 case 1:
@@ -628,6 +635,7 @@ namespace SP_Sklad.MainTabs
                     break;
 
                 case 12:
+            //        bar1.Visible = false;
                     settingMaterialPricesUserControl1.GetData();
                     break;
 

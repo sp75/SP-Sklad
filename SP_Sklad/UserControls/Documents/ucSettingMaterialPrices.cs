@@ -162,10 +162,20 @@ namespace SP_Sklad.UserControls
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
+            DeleteItemBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
+
             ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
+            ExecuteItemBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
+
             EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
+            EditItemBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
+
             CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
+            CopyItemBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
+
             PrintBtn.Enabled = (row_smp != null);
+            PrintItemBtn.Enabled = (row_smp != null);
+            PrintItemBtn2.Enabled = (row_smp != null);
 
             GetDetailData();
         }

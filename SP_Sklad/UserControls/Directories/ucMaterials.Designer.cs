@@ -69,6 +69,7 @@
             this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ChangeMatGrpBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl3 = new DevExpress.XtraEditors.SplitContainerControl();
             this.MatGridControl = new DevExpress.XtraGrid.GridControl();
@@ -149,7 +150,7 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -603,6 +604,8 @@
             this.BarImageList.Images.SetKeyName(30, "copy_16x16.png");
             this.BarImageList.InsertGalleryImage("selecttable_16x16.png", "images/richedit/selecttable_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("images/richedit/selecttable_16x16.png"), 31);
             this.BarImageList.Images.SetKeyName(31, "selecttable_16x16.png");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 32);
+            this.BarImageList.Images.SetKeyName(32, "pricing");
             // 
             // barButtonItem4
             // 
@@ -675,6 +678,14 @@
             this.ChangeMatGrpBtn.Id = 53;
             this.ChangeMatGrpBtn.Name = "ChangeMatGrpBtn";
             this.ChangeMatGrpBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ChangeMatGrpBtn_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Актуалні ціни по контрагентах";
+            this.barButtonItem1.Id = 56;
+            this.barButtonItem1.ImageOptions.ImageIndex = 32;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // panelControl1
             // 
@@ -960,7 +971,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeWE;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -1153,7 +1164,8 @@
             this.gridColumn29,
             this.gridColumn30,
             this.gridColumn31,
-            this.gridColumn32});
+            this.gridColumn32,
+            this.gridColumn2});
             this.MatPriceGridView.GridControl = this.MatPriceGridControl;
             this.MatPriceGridView.Name = "MatPriceGridView";
             this.MatPriceGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1469,12 +1481,13 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
-            // barButtonItem1
+            // gridColumn2
             // 
-            this.barButtonItem1.Caption = "Актуалні ціни по контрагентах";
-            this.barButtonItem1.Id = 56;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            this.gridColumn2.Caption = "Ціна, грн";
+            this.gridColumn2.FieldName = "Price";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 4;
             // 
             // ucMaterials
             // 
@@ -1668,5 +1681,6 @@
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
         private DevExpress.Utils.DragDrop.DragDropEvents dragDropEvents1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

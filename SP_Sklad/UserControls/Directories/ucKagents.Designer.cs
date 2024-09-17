@@ -61,6 +61,7 @@
             this.ShowKagentArchiveRecordBarCheckItem = new DevExpress.XtraBars.BarCheckItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.KaGridControl = new DevExpress.XtraGrid.GridControl();
@@ -269,8 +270,9 @@
             this.ShowKagentArchiveRecordBarCheckItem,
             this.barButtonItem11,
             this.barButtonItem7,
-            this.barButtonItem9});
-            this.barManager1.MaxItemId = 49;
+            this.barButtonItem9,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 50;
             // 
             // bar1
             // 
@@ -474,6 +476,8 @@
             this.BarImageList.Images.SetKeyName(8, "price_lict");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.recalc_money, "recalc_money", typeof(global::SP_Sklad.Properties.Resources), 9);
             this.BarImageList.Images.SetKeyName(9, "recalc_money");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.BarImageList.Images.SetKeyName(10, "pricing");
             // 
             // KagentBalansBtn
             // 
@@ -520,6 +524,14 @@
             this.barButtonItem9.ImageOptions.ImageIndex = 9;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick_1);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Актуалні ціни по товарах";
+            this.barButtonItem1.Id = 49;
+            this.barButtonItem1.ImageOptions.ImageIndex = 10;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // panelControl1
             // 
@@ -1194,7 +1206,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.KagentBalansBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem7),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.MoveKagentArchiveBtnItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ShowKagentArchiveRecordBarCheckItem),
@@ -1367,5 +1380,6 @@
         private DevExpress.XtraVerticalGrid.Rows.EditorRow row;
         private DevExpress.XtraVerticalGrid.Rows.EditorRow editorRow12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
