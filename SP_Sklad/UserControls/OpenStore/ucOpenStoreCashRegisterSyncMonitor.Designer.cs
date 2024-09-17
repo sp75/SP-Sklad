@@ -496,7 +496,7 @@
             // 
             // colSYSTEMID
             // 
-            this.colSYSTEMID.Caption = "Каса";
+            this.colSYSTEMID.Caption = "Номер каси";
             this.colSYSTEMID.FieldName = "SYSTEMID";
             this.colSYSTEMID.Name = "colSYSTEMID";
             this.colSYSTEMID.Visible = true;

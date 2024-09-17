@@ -823,7 +823,7 @@ namespace SP_Sklad.EditForm
         {
             if(e.Button.Index == 0)
             {
-                if (!_db.MatBarCode.Any(a => a.BarCode == NewBarCodeEdit.Text))
+                if (!_db.MatBarCode.Any(a => a.BarCode == NewBarCodeEdit.Text) && !string.IsNullOrEmpty(NewBarCodeEdit.Text))
                 {
                     _db.MatBarCode.Add(new MatBarCode
                     {
@@ -832,8 +832,12 @@ namespace SP_Sklad.EditForm
                     });
 
                     _db.SaveChanges();
-                    
+
                     GetMatBarCode(_mat.MatId);
+                }
+                else
+                {
+                    XtraMessageBox.Show("Штрих код вже назначений на інший товар!");
                 }
             }
         }
