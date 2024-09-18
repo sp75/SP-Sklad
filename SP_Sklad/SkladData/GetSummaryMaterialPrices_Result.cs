@@ -10,20 +10,20 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SettingMaterialPricesDet
+    public partial class GetSummaryMaterialPrices_Result
     {
-        public System.Guid Id { get; set; }
         public int MatId { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
-        public System.Guid SettingMaterialPricesId { get; set; }
+        public int PTypeId { get; set; }
+        public string Name { get; set; }
+        public string MsrName { get; set; }
+        public Nullable<System.DateTime> LastDocDate { get; set; }
         public decimal Price { get; set; }
-        public Nullable<int> Num { get; set; }
         public Nullable<decimal> ProcurementPrice { get; set; }
-        public Nullable<decimal> Markup { get; set; }
-        public Nullable<int> SupplierId { get; set; }
-    
-        public virtual SettingMaterialPrices SettingMaterialPrices { get; set; }
+        public string SupplierName { get; set; }
+        public string GrpName { get; set; }
+        public int GrpId { get; set; }
+        public Nullable<decimal> GrpNum { get; set; }
+        public string Artikul { get; set; }
     }
 }

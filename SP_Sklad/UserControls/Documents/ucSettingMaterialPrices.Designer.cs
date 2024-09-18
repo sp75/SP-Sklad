@@ -69,6 +69,7 @@
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn112 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox15 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -105,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).BeginInit();
             this.xtraTabControl3.SuspendLayout();
@@ -481,7 +483,8 @@
             this.SettingMaterialPricesGridControl.MainView = this.SettingMaterialPricesGridView;
             this.SettingMaterialPricesGridControl.Name = "SettingMaterialPricesGridControl";
             this.SettingMaterialPricesGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox15});
+            this.repositoryItemImageComboBox15,
+            this.repositoryItemButtonEdit1});
             this.SettingMaterialPricesGridControl.Size = new System.Drawing.Size(1248, 354);
             this.SettingMaterialPricesGridControl.TabIndex = 0;
             this.SettingMaterialPricesGridControl.UseEmbeddedNavigator = true;
@@ -509,7 +512,7 @@
             this.gridColumn5});
             this.SettingMaterialPricesGridView.GridControl = this.SettingMaterialPricesGridControl;
             this.SettingMaterialPricesGridView.Name = "SettingMaterialPricesGridView";
-            this.SettingMaterialPricesGridView.OptionsBehavior.Editable = false;
+            this.SettingMaterialPricesGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.SettingMaterialPricesGridView.OptionsBehavior.ReadOnly = true;
             this.SettingMaterialPricesGridView.OptionsView.ShowGroupPanel = false;
             this.SettingMaterialPricesGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesGridView_PopupMenuShowing);
@@ -550,11 +553,20 @@
             // gridColumn112
             // 
             this.gridColumn112.Caption = "Категорія цін";
+            this.gridColumn112.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn112.FieldName = "PriceTypeName";
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 4;
             this.gridColumn112.Width = 228;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
             // gridColumn3
             // 
@@ -562,6 +574,7 @@
             this.gridColumn3.ColumnEdit = this.repositoryItemImageComboBox15;
             this.gridColumn3.FieldName = "Checked";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.OptionsColumn.AllowEdit = false;
             this.gridColumn3.OptionsColumn.AllowMove = false;
             this.gridColumn3.OptionsColumn.AllowSize = false;
             this.gridColumn3.OptionsColumn.FixedWidth = true;
@@ -873,6 +886,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox15)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl3)).EndInit();
             this.xtraTabControl3.ResumeLayout(false);
@@ -956,5 +970,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn8;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPrice;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
     }
 }

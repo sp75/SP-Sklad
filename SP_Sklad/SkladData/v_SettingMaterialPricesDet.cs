@@ -31,5 +31,7 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> ProcurementPrice { get; set; }
         public Nullable<decimal> Markup { get; set; }
         public Nullable<decimal> LastProcurementPrice { get; set; }
+        public Nullable<int> SupplierId { get; set; }
+        public string SupplierName { get; set; }
     }
 }

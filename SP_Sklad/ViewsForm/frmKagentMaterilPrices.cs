@@ -53,11 +53,6 @@ namespace SP_Sklad.ViewsForm
             e.QueryableSource = qery.AsQueryable();
         }
 
-        private void OkButton_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void KagentMaterilPricesGridView_AsyncCompleted(object sender, EventArgs e)
         {
             KagentMaterilPricesGridView.ExpandAllGroups();

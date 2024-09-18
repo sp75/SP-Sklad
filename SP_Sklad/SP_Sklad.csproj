@@ -803,6 +803,9 @@
     <Compile Include="SkladData\GetShippedPosIn_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetSummaryMaterialPrices_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetSvcGroupTree_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1928,6 +1931,12 @@
     <Compile Include="UserControls\Warehouse\ucWhMat.Designer.cs">
       <DependentUpon>ucWhMat.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsForm\frmMaterilPrices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewsForm\frmMaterilPrices.Designer.cs">
+      <DependentUpon>frmMaterilPrices.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsForm\frmWaybillDetView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2910,6 +2919,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Warehouse\ucWhMat.resx">
       <DependentUpon>ucWhMat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsForm\frmMaterilPrices.resx">
+      <DependentUpon>frmMaterilPrices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsForm\frmWaybillDetView.resx">
       <DependentUpon>frmWaybillDetView.cs</DependentUpon>

@@ -339,5 +339,10 @@ namespace SP_Sklad.UserControls
         {
             CopyItem();
         }
+
+        private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            new frmMaterilPrices(row_smp.PTypeId).ShowDialog();
+        }
     }
 }

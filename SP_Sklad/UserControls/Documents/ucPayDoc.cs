@@ -144,6 +144,11 @@ namespace SP_Sklad.UserControls
 
         public void ExecuteItem()
         {
+            if(focused_row == null)
+            {
+                return;
+            }
+
             var pd = _db.PayDoc.Find(focused_row.PayDocId);
             if (pd != null)
             {

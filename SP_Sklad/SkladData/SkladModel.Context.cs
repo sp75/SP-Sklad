@@ -2698,5 +2698,15 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.Guid>>("CopySettingMaterialPrice", idParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetSummaryMaterialPrices")]
+        public virtual IQueryable<GetSummaryMaterialPrices_Result> GetSummaryMaterialPrices(Nullable<System.DateTime> on_date)
+        {
+            var on_dateParameter = on_date.HasValue ?
+                new ObjectParameter("on_date", on_date) :
+                new ObjectParameter("on_date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetSummaryMaterialPrices_Result>("[BaseEntities].[GetSummaryMaterialPrices](@on_date)", on_dateParameter);
+        }
     }
 }

@@ -81,6 +81,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -115,6 +116,8 @@
             this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colProcurementPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colMarkup = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -124,7 +127,6 @@
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -153,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             this.SuspendLayout();
             // 
             // repositoryItemTextEdit1
@@ -485,6 +488,13 @@
             this.barButtonItem8.Name = "barButtonItem8";
             this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
+            // barButtonItem9
+            // 
+            this.barButtonItem9.Caption = "Іформація про товар";
+            this.barButtonItem9.Id = 43;
+            this.barButtonItem9.Name = "barButtonItem9";
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
             // styleController1
             // 
             this.styleController1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
@@ -763,7 +773,8 @@
             this.SettingMaterialPricesDetGridControl.Name = "SettingMaterialPricesDetGridControl";
             this.SettingMaterialPricesDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1,
-            this.repositoryItemLookUpEdit1});
+            this.repositoryItemLookUpEdit1,
+            this.repositoryItemLookUpEdit2});
             this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1312, 440);
             this.SettingMaterialPricesDetGridControl.TabIndex = 31;
             this.SettingMaterialPricesDetGridControl.UseEmbeddedNavigator = true;
@@ -792,7 +803,8 @@
             this.colProcurementPrice,
             this.colMarkup,
             this.bandedGridColumn1,
-            this.bandedGridColumn2});
+            this.bandedGridColumn2,
+            this.bandedGridColumn3});
             this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
             this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
             this.SettingMaterialPricesDetGrid.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
@@ -814,9 +826,10 @@
             this.gridBand1.Columns.Add(this.gridColumn2);
             this.gridBand1.Columns.Add(this.gridColumn1);
             this.gridBand1.Columns.Add(this.gridColumn7);
+            this.gridBand1.Columns.Add(this.bandedGridColumn3);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 658;
+            this.gridBand1.Width = 799;
             // 
             // gridColumn10
             // 
@@ -826,7 +839,7 @@
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.Width = 37;
+            this.gridColumn10.Width = 31;
             // 
             // bandedGridColumn2
             // 
@@ -847,7 +860,7 @@
             this.colMaterial.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
             this.colMaterial.Name = "colMaterial";
             this.colMaterial.Visible = true;
-            this.colMaterial.Width = 356;
+            this.colMaterial.Width = 309;
             // 
             // gridColumn2
             // 
@@ -856,7 +869,7 @@
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.OptionsColumn.AllowEdit = false;
             this.gridColumn2.Visible = true;
-            this.gridColumn2.Width = 130;
+            this.gridColumn2.Width = 186;
             // 
             // gridColumn1
             // 
@@ -875,7 +888,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.OptionsColumn.AllowEdit = false;
             this.gridColumn7.Visible = true;
-            this.gridColumn7.Width = 135;
+            this.gridColumn7.Width = 118;
             // 
             // gridBand2
             // 
@@ -885,7 +898,34 @@
             this.gridBand2.Columns.Add(this.colMarkup);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 358;
+            this.gridBand2.Width = 278;
+            // 
+            // bandedGridColumn3
+            // 
+            this.bandedGridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
+            this.bandedGridColumn3.AppearanceHeader.Options.UseBackColor = true;
+            this.bandedGridColumn3.Caption = "Постачальник";
+            this.bandedGridColumn3.ColumnEdit = this.repositoryItemLookUpEdit2;
+            this.bandedGridColumn3.FieldName = "SupplierId";
+            this.bandedGridColumn3.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
+            this.bandedGridColumn3.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
+            this.bandedGridColumn3.Name = "bandedGridColumn3";
+            this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 155;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
+            this.repositoryItemLookUpEdit2.DisplayMember = "Name";
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+            this.repositoryItemLookUpEdit2.ShowFooter = false;
+            this.repositoryItemLookUpEdit2.ShowHeader = false;
+            this.repositoryItemLookUpEdit2.ValueMember = "KaId";
             // 
             // bandedGridColumn1
             // 
@@ -894,7 +934,7 @@
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.OptionsColumn.AllowEdit = false;
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 137;
+            this.bandedGridColumn1.Width = 101;
             // 
             // colProcurementPrice
             // 
@@ -907,7 +947,7 @@
             this.colProcurementPrice.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
             this.colProcurementPrice.Name = "colProcurementPrice";
             this.colProcurementPrice.Visible = true;
-            this.colProcurementPrice.Width = 113;
+            this.colProcurementPrice.Width = 78;
             // 
             // colMarkup
             // 
@@ -922,7 +962,7 @@
             this.colMarkup.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
             this.colMarkup.Name = "colMarkup";
             this.colMarkup.Visible = true;
-            this.colMarkup.Width = 108;
+            this.colMarkup.Width = 99;
             // 
             // gridBand3
             // 
@@ -931,7 +971,7 @@
             this.gridBand3.Columns.Add(this.colPrice);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 271;
+            this.gridBand3.Width = 210;
             // 
             // gridColumn8
             // 
@@ -940,7 +980,7 @@
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.OptionsColumn.AllowEdit = false;
             this.gridColumn8.Visible = true;
-            this.gridColumn8.Width = 134;
+            this.gridColumn8.Width = 96;
             // 
             // colPrice
             // 
@@ -957,7 +997,7 @@
             this.colPrice.ImageOptions.Image = global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16;
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.Width = 137;
+            this.colPrice.Width = 114;
             // 
             // bar1
             // 
@@ -1014,13 +1054,6 @@
             excelSourceOptions1.ImportSettings = excelWorksheetSettings1;
             this.excelDataSource1.SourceOptions = excelSourceOptions1;
             // 
-            // barButtonItem9
-            // 
-            this.barButtonItem9.Caption = "Іформація про товар";
-            this.barButtonItem9.Id = 43;
-            this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
-            // 
             // frmSettingMaterialPrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1072,6 +1105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SettingMaterialPricesDetGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1145,13 +1179,15 @@
         private DevExpress.XtraBars.BarEditItem barEditItem2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit3;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.DataAccess.Excel.ExcelDataSource excelDataSource1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
     }
 }

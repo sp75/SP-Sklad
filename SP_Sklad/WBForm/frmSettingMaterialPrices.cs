@@ -56,6 +56,7 @@ namespace SP_Sklad.WBForm
             PTypeEdit.Properties.DataSource = _db.PriceTypes.AsNoTracking().ToList();
             PersonComboBox.Properties.DataSource = DBHelper.Persons;
             repositoryItemLookUpEdit1.DataSource = _db.v_MaterialBarCodes.AsNoTracking().Where(w => w.Archived == 0 && (w.TypeId == 1 || w.TypeId == 5 || w.TypeId == 6)).ToList();
+            repositoryItemLookUpEdit2.DataSource = _db.Kagent.Where(w => w.Deleted == 0 && w.KaKind == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
             if (_wbt_id == null)
             {
@@ -277,11 +278,23 @@ namespace SP_Sklad.WBForm
                     }
                 }
 
+                if (e.Column.FieldName == "SupplierId")
+                {
+                    wbtd.SupplierId = Convert.ToInt32(e.Value);
+                    _db.SaveChanges();
+                }
+
             }
             else
             {
                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == focused_dr.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                 {
+                    if (wbtd.ProcurementPrice.HasValue)
+                    {
+                        wbtd.Markup = (wbtd.Price - wbtd.ProcurementPrice) / wbtd.ProcurementPrice * 100;
+                        focused_dr.Markup = wbtd.Markup;
+                    }
+
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
@@ -289,7 +302,9 @@ namespace SP_Sklad.WBForm
                         MatId = focused_dr.MatId,
                         SettingMaterialPricesId = _wbt_id.Value,
                         CreatedAt = DBHelper.ServerDateTime(),
-                        Price = focused_dr.Price
+                        Price = focused_dr.Price,
+                        ProcurementPrice = focused_dr.ProcurementPrice,
+                        Markup = focused_dr.ProcurementPrice.HasValue ? (focused_dr.Price - focused_dr.ProcurementPrice) / focused_dr.ProcurementPrice * 100 : null
                     });
 
                     _db.SaveChanges();
@@ -497,13 +512,18 @@ namespace SP_Sklad.WBForm
                     det.Markup = e.Values[colMarkup] != null ? (decimal?)Convert.ToDecimal(e.Values[colMarkup]) : null;
                     det.ProcurementPrice = e.Values[colProcurementPrice] != null ? (decimal?)Convert.ToDecimal(e.Values[colProcurementPrice]) : null;
                     det.Price = Convert.ToDecimal(e.Values[colPrice]);
+
+                    e.Cancel = true;
                 }
+
+                _db.SaveChanges();
             }
         }
 
         private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SettingMaterialPricesDetGrid.PasteFromClipboard();
+            GetDetail();
         }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
