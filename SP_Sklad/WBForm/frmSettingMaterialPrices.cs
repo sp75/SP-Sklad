@@ -134,6 +134,12 @@ namespace SP_Sklad.WBForm
 
         private void DelMaterialBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_dr == null)
+            {
+                return;
+            }
+
+
             var smp = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.Id == focused_dr.Id);
             if (smp != null)
             {

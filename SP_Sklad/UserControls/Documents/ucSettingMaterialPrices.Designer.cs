@@ -297,6 +297,7 @@
             this.barButtonItem14.Id = 25;
             this.barButtonItem14.ImageOptions.ImageIndex = 16;
             this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
             // 
             // barButtonItem1
             // 

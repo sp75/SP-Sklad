@@ -37,6 +37,7 @@ namespace SP_Sklad.MainTabs
         private bool _show_rec_archived { get; set; }
         private bool _show_child_group { get; set; }
 
+        private string reg_layout_path = "ucMaterials\\MatGridView";
 
         [Browsable(true)]
         public event EventHandler MatGridViewDoubleClick
@@ -65,8 +66,13 @@ namespace SP_Sklad.MainTabs
         private bool _restore = false;
         private UserAccess user_access { get; set; }
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void DirectoriesUserControl_Load(object sender, EventArgs e)
         {
+            MatGridView.SaveLayoutToStream(wh_layout_stream);
+
+            MatGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+
             if (!DesignMode)
             {
                 user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == 6 && w.UserId == UserSession.UserId);
@@ -80,6 +86,19 @@ namespace SP_Sklad.MainTabs
                 repositoryItemLookUpEdit2.DataSource =  DB.SkladBase().MatGroup.OrderBy(o=> o.Num).Select(s => new { s.GrpId, s.PId, s.Name, ImageIndex = 17 }).ToList();
             }
         }
+
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+
+            this.ParentForm.FormClosing += new FormClosingEventHandler(ParentForm_FormClosing);
+        }
+
+        void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
+        }
+
 
         public void GetData(bool show_child_group, bool restore = true)
         {
@@ -645,6 +664,13 @@ namespace SP_Sklad.MainTabs
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             new frmKagentMaterilPrices(mat_id: focused_mat.MatId).ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            MatGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
     }
 }

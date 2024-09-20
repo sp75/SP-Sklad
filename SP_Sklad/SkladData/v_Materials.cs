@@ -42,5 +42,6 @@ namespace SP_Sklad.SkladData
         public string RawMaterialTypeName { get; set; }
         public Nullable<int> TypeId { get; set; }
         public string TypeName { get; set; }
+        public string LabelDescr { get; set; }
     }
 }

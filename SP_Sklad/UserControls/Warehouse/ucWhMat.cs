@@ -443,7 +443,7 @@ namespace SP_Sklad.UserControls.Warehouse
         private void RecalcRemainsMatBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 
-            using (var db = DB.SkladBase())
+        /*    using (var db = DB.SkladBase())
             {
                 db.DeleteWhere<PosRemains>(w => w.MatId == focused_wh_mat.MatId);
 
@@ -455,9 +455,9 @@ namespace SP_Sklad.UserControls.Warehouse
                 }
 
                 db.SaveChanges();
-            }
+            }*/
 
-            //     DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
+            DB.SkladBase().RecalcRemainsMat(focused_wh_mat.MatId);
             RefreshWhBtn.PerformClick();
         }
 

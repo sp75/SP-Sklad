@@ -159,6 +159,11 @@ namespace SP_Sklad.UserControls
             PrintDoc.SettingMaterialPricesReport(row_smp.Id, _db);
         }
 
+        public void ExportToExcel()
+        {
+            IHelper.ExportToXlsx(SettingMaterialPricesGridControl);
+        }
+
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
@@ -343,6 +348,11 @@ namespace SP_Sklad.UserControls
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             new frmMaterilPrices(row_smp.PTypeId).ShowDialog();
+        }
+
+        private void barButtonItem14_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ExportToExcel();
         }
     }
 }

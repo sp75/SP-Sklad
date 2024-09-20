@@ -68,6 +68,7 @@
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.CopyCellContentsBtn = new DevExpress.XtraBars.BarButtonItem();
             this.SelectAllBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ChangeMatGrpBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -91,6 +92,7 @@
             this.gridColumn113 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMatId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView4 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.PageImageList = new DevExpress.Utils.ImageCollection(this.components);
@@ -122,6 +124,7 @@
             this.repositoryItemCheckEdit9 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage12 = new DevExpress.XtraTab.XtraTabPage();
             this.MatChangeGridControl = new DevExpress.XtraGrid.GridControl();
             this.MatChangeGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -150,7 +153,6 @@
             this.MatPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
@@ -304,8 +306,9 @@
             this.ChangeMatGrpBtn,
             this.SelectAllBtn,
             this.CopyCellContentsBtn,
-            this.barButtonItem1});
-            this.barManager1.MaxItemId = 57;
+            this.barButtonItem1,
+            this.barButtonItem2});
+            this.barManager1.MaxItemId = 58;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.BarCodeBtnEdit});
             // 
@@ -606,6 +609,8 @@
             this.BarImageList.Images.SetKeyName(31, "selecttable_16x16.png");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.pricing, "pricing", typeof(global::SP_Sklad.Properties.Resources), 32);
             this.BarImageList.Images.SetKeyName(32, "pricing");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 33);
+            this.BarImageList.Images.SetKeyName(33, "def_settings_grid");
             // 
             // barButtonItem4
             // 
@@ -653,7 +658,8 @@
             this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.CopyCellContentsBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.SelectAllBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.barSubItem1.Name = "barSubItem1";
             // 
             // CopyCellContentsBtn
@@ -671,6 +677,14 @@
             this.SelectAllBtn.ImageOptions.ImageIndex = 31;
             this.SelectAllBtn.Name = "SelectAllBtn";
             this.SelectAllBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.SelectAllBtn_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem2.Id = 57;
+            this.barButtonItem2.ImageOptions.ImageIndex = 33;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // ChangeMatGrpBtn
             // 
@@ -767,7 +781,8 @@
             this.gridColumn112,
             this.gridColumn113,
             this.colMatId,
-            this.gridColumn1});
+            this.gridColumn1,
+            this.gridColumn3});
             this.MatGridView.GridControl = this.MatGridControl;
             this.MatGridView.Name = "MatGridView";
             this.MatGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -800,7 +815,7 @@
             this.gridColumn24.Name = "gridColumn24";
             this.gridColumn24.Visible = true;
             this.gridColumn24.VisibleIndex = 1;
-            this.gridColumn24.Width = 270;
+            this.gridColumn24.Width = 444;
             // 
             // gridColumn25
             // 
@@ -809,7 +824,7 @@
             this.gridColumn25.Name = "gridColumn25";
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 2;
-            this.gridColumn25.Width = 188;
+            this.gridColumn25.Width = 143;
             // 
             // gridColumn26
             // 
@@ -818,7 +833,7 @@
             this.gridColumn26.Name = "gridColumn26";
             this.gridColumn26.Visible = true;
             this.gridColumn26.VisibleIndex = 3;
-            this.gridColumn26.Width = 74;
+            this.gridColumn26.Width = 152;
             // 
             // gridColumn28
             // 
@@ -827,8 +842,6 @@
             this.gridColumn28.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn28.FieldName = "MinReserv";
             this.gridColumn28.Name = "gridColumn28";
-            this.gridColumn28.Visible = true;
-            this.gridColumn28.VisibleIndex = 7;
             this.gridColumn28.Width = 109;
             // 
             // ArchivedGridColumn
@@ -850,8 +863,6 @@
             this.gridColumn78.Caption = "Вага";
             this.gridColumn78.FieldName = "Weight";
             this.gridColumn78.Name = "gridColumn78";
-            this.gridColumn78.Visible = true;
-            this.gridColumn78.VisibleIndex = 6;
             // 
             // gridColumn23
             // 
@@ -859,7 +870,8 @@
             this.gridColumn23.FieldName = "GrpName";
             this.gridColumn23.Name = "gridColumn23";
             this.gridColumn23.Visible = true;
-            this.gridColumn23.VisibleIndex = 8;
+            this.gridColumn23.VisibleIndex = 4;
+            this.gridColumn23.Width = 181;
             // 
             // gridColumn79
             // 
@@ -873,7 +885,8 @@
             this.gridColumn72.FieldName = "WhName";
             this.gridColumn72.Name = "gridColumn72";
             this.gridColumn72.Visible = true;
-            this.gridColumn72.VisibleIndex = 9;
+            this.gridColumn72.VisibleIndex = 7;
+            this.gridColumn72.Width = 158;
             // 
             // gridColumn111
             // 
@@ -881,7 +894,8 @@
             this.gridColumn111.FieldName = "BarCode";
             this.gridColumn111.Name = "gridColumn111";
             this.gridColumn111.Visible = true;
-            this.gridColumn111.VisibleIndex = 5;
+            this.gridColumn111.VisibleIndex = 6;
+            this.gridColumn111.Width = 146;
             // 
             // gridColumn112
             // 
@@ -895,7 +909,8 @@
             this.gridColumn113.FieldName = "TypeName";
             this.gridColumn113.Name = "gridColumn113";
             this.gridColumn113.Visible = true;
-            this.gridColumn113.VisibleIndex = 4;
+            this.gridColumn113.VisibleIndex = 5;
+            this.gridColumn113.Width = 146;
             // 
             // colMatId
             // 
@@ -908,6 +923,12 @@
             this.gridColumn1.Caption = "Виробник";
             this.gridColumn1.FieldName = "Producer";
             this.gridColumn1.Name = "gridColumn1";
+            // 
+            // gridColumn3
+            // 
+            this.gridColumn3.Caption = "Опис для цінника";
+            this.gridColumn3.FieldName = "LabelDescr";
+            this.gridColumn3.Name = "gridColumn3";
             // 
             // gridView4
             // 
@@ -971,7 +992,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeWE;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -1215,6 +1236,14 @@
             this.gridColumn32.Visible = true;
             this.gridColumn32.VisibleIndex = 2;
             this.gridColumn32.Width = 252;
+            // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "Ціна, грн";
+            this.gridColumn2.FieldName = "Price";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 4;
             // 
             // xtraTabPage12
             // 
@@ -1481,14 +1510,6 @@
             this.MatPopupMenu.Manager = this.barManager1;
             this.MatPopupMenu.Name = "MatPopupMenu";
             // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "Ціна, грн";
-            this.gridColumn2.FieldName = "Price";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 4;
-            // 
             // ucMaterials
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1682,5 +1703,7 @@
         private DevExpress.Utils.DragDrop.DragDropEvents dragDropEvents1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
     }
 }
