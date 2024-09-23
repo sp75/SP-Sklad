@@ -906,7 +906,7 @@ namespace SP_Sklad.MainTabs
                     _db.AttachedFiles.Add(new AttachedFiles
                     {
                         Id = Guid.NewGuid(),
-                        CreatedAt = DateTime.Now,
+                        CreatedAt = DBHelper.ServerDateTime(),
                         FileName = dest_patth,
                         DocId = focused_row.Id,
                         PersonId = DBHelper.CurrentUser.KaId

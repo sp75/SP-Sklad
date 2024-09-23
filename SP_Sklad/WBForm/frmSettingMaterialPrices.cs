@@ -247,6 +247,11 @@ namespace SP_Sklad.WBForm
 
             if (wbtd != null)
             {
+                if(!wbtd.CreatedAt.HasValue)
+                {
+                    wbtd.CreatedAt = DBHelper.ServerDateTime();
+                }
+
                 if (e.Column.FieldName == "Price")
                 {
                     wbtd.Price = Convert.ToDecimal(e.Value);
