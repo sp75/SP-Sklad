@@ -554,6 +554,9 @@
     <Compile Include="SkladData\AspNetUsers.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\AttachedFiles.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\Banks.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -3982,6 +3985,7 @@
     <None Include="Resources\percent.png" />
     <None Include="Resources\re_calc_remain_1.png" />
     <None Include="Resources\system_report.png" />
+    <None Include="Resources\attach.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

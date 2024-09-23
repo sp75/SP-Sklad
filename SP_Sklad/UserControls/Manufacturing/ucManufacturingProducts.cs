@@ -550,8 +550,23 @@ namespace SP_Sklad.MainTabs
                     case 5:
                         RefreshIntermediateWeighing();
                         break;
+                    case 6:
+                        RefreshAttachedFiles();
+                        break;
                 }
             }
+        }
+
+        private void RefreshAttachedFiles()
+        {
+            AttachedFilesGridControl.DataSource = DB.SkladBase().AttachedFiles.Where(w => w.DocId == focused_row.Id).Select(s => new AttachedFilesPathLiew
+            {
+                Id = s.Id,
+                PersonName = s.Kagent.Name,
+                Notes = s.Notes,
+                CreatedAt = s.CreatedAt,
+                FileName = s.FileName
+            }).ToList();
         }
 
         private void RefreshIntermediateWeighing()
@@ -572,7 +587,8 @@ namespace SP_Sklad.MainTabs
                     Checked = s.Checked,
                     Num = s.Num,
                     PersonName = s.Kagent.Name,
-                    Amount = s.Amount
+                    Amount = s.Amount,
+                    Notes = s.Notes
                 }).ToList();
             }
 
@@ -587,6 +603,7 @@ namespace SP_Sklad.MainTabs
             public string Num { get; set; }
             public string PersonName { get; set; }
             public Decimal? Amount { get; set; }
+            public string Notes { get; set; }
         }
 
 
@@ -859,6 +876,99 @@ namespace SP_Sklad.MainTabs
             if (e.Button.Index == 1)
             {
                 WhComboBox.EditValue = IHelper.ShowDirectList(WhComboBox.EditValue, 2);
+            }
+        }
+
+        public class AttachedFilesPathLiew
+        {
+            public Guid Id { get; set; }
+            public DateTime? CreatedAt { get; set; }
+            public string FileName { get; set; }
+       //     public Guid DocId { get; set; }
+            public string PersonName { get; set; }
+            public string Notes { get; set; }
+        }
+
+        private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(focused_row == null)
+            {
+                return;
+            }
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                using (var _db = DB.SkladBase())
+                {
+                    var dest_patth = Path.Combine(DBHelper.CommonParam.AttachedFilesPath, Path.GetFileName(openFileDialog1.FileName));
+                    File.Copy(openFileDialog1.FileName, dest_patth, true);
+
+                    _db.AttachedFiles.Add(new AttachedFiles
+                    {
+                        Id = Guid.NewGuid(),
+                        CreatedAt = DateTime.Now,
+                        FileName = dest_patth,
+                        DocId = focused_row.Id,
+                        PersonId = DBHelper.CurrentUser.KaId
+                    });
+
+                    _db.SaveChanges();
+                    RefreshAttachedFiles();
+                }
+            }
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_row == null)
+            {
+                return;
+            }
+
+            using (var _db = DB.SkladBase())
+            {
+                var row = AttachedFilesGridView.GetFocusedRow() as dynamic;
+                Guid id = row.Id;
+                _db.AttachedFiles.Remove(_db.AttachedFiles.Find(id));
+                _db.SaveChanges();
+                RefreshAttachedFiles();
+            }
+        }
+
+        private void barButtonItem13_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (focused_row == null)
+            {
+                return;
+            }
+
+            var row = AttachedFilesGridView.GetFocusedRow() as dynamic;
+
+            string file = row.FileName;
+            if (File.Exists(file) )
+            {
+                Process.Start(file);
+            }
+        }
+
+        private void AttachedFilesGridView_DoubleClick(object sender, EventArgs e)
+        {
+            barButtonItem13.PerformClick();
+        }
+
+        private void AttachedFilesGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "Notes")
+            {
+                using (var _db = DB.SkladBase())
+                {
+                    var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesPathLiew;
+
+                    var af = _db.AttachedFiles.Find(row.Id);
+                    af.Notes = (string)e.Value;
+                    _db.SaveChanges();
+                    RefreshAttachedFiles();
+                }
             }
         }
     }

@@ -56,6 +56,17 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
+        <EntityType Name="AttachedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+        </EntityType>
         <EntityType Name="Banks">
           <Key>
             <PropertyRef Name="BankId" />
@@ -199,6 +210,7 @@
           <Property Name="EndCalcPeriod" Type="datetime" />
           <Property Name="TrialPeriod" Type="datetime" />
           <Property Name="ProgramName" Type="nvarchar" MaxLength="100" />
+          <Property Name="AttachedFilesPath" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="CONTRACTS">
           <Key>
@@ -5279,6 +5291,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AttachedFiles_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="0..1" />
+          <End Role="AttachedFiles" Type="Self.AttachedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="AttachedFiles">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BANKSPERSONS_1">
           <End Role="Banks" Type="Self.Banks" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -9937,6 +9961,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="AdditionalCostsDet" EntityType="Self.AdditionalCostsDet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalDocType" EntityType="Self.AdditionalDocType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttachedFiles" EntityType="Self.AttachedFiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Banks" EntityType="Self.Banks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanksPersons" EntityType="Self.BanksPersons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BanksProvidingStatements" EntityType="Self.BanksProvidingStatements" Schema="dbo" store:Type="Tables" />
@@ -12334,6 +12359,10 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <AssociationSet Name="FK_AP_KAID" Association="Self.FK_AP_KAID">
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="KAgentPersons" EntitySet="KAgentPersons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AttachedFiles_Kagent" Association="Self.FK_AttachedFiles_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="AttachedFiles" EntitySet="AttachedFiles" />
           </AssociationSet>
           <AssociationSet Name="FK_BANKSPERSONS_1" Association="Self.FK_BANKSPERSONS_1">
             <End Role="Banks" EntitySet="Banks" />
@@ -14930,6 +14959,11 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <FunctionImport Name="GetSummaryMaterialPrices" IsComposable="true" ReturnType="Collection(BaseModel.GetSummaryMaterialPrices_Result)">
           <Parameter Name="on_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="AttachedFiles" EntityType="BaseModel.AttachedFiles" />
+          <AssociationSet Name="FK_AttachedFiles_Kagent" Association="BaseModel.FK_AttachedFiles_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="AttachedFiles" EntitySet="AttachedFiles" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15352,6 +15386,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="DateTime" Name="EndCalcPeriod" Precision="3" />
           <Property Name="TrialPeriod" Type="DateTime" Precision="3" />
           <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AttachedFilesPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <ComplexType Name="GetMatExtra_Result">
           <Property Type="Decimal" Name="Extra" Nullable="true" Precision="15" Scale="4" />
@@ -22003,6 +22038,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="OpenStoreAreaId" Type="Int32" />
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_CashDesks_Kagent" FromRole="Kagent" ToRole="CashDesks" />
           <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_Kagent" FromRole="Kagent" ToRole="DiscountManagementDet" />
+          <NavigationProperty Name="AttachedFiles" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="Kagent" ToRole="AttachedFiles" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -24577,6 +24613,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="GrpNum" Nullable="true" Precision="5" Scale="1" />
           <Property Type="String" Name="Artikul" Nullable="true" MaxLength="255" />
         </ComplexType>
+        <EntityType Name="AttachedFiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="DocId" Type="Guid" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="AttachedFiles" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_AttachedFiles_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
+          <End Type="BaseModel.AttachedFiles" Role="AttachedFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="AttachedFiles">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -24932,6 +24992,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="CommonParams">
             <EntityTypeMapping TypeName="BaseModel.CommonParams">
               <MappingFragment StoreEntitySet="CommonParams">
+                <ScalarProperty Name="AttachedFilesPath" ColumnName="AttachedFilesPath" />
                 <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
                 <ScalarProperty Name="TrialPeriod" ColumnName="TrialPeriod" />
                 <ScalarProperty Name="EndCalcPeriod" ColumnName="EndCalcPeriod" />
@@ -31156,6 +31217,18 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="AttachedFiles">
+            <EntityTypeMapping TypeName="BaseModel.AttachedFiles">
+              <MappingFragment StoreEntitySet="AttachedFiles">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

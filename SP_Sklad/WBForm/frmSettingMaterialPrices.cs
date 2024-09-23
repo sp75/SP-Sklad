@@ -295,12 +295,6 @@ namespace SP_Sklad.WBForm
             {
                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == focused_dr.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                 {
-                    if (wbtd.ProcurementPrice.HasValue)
-                    {
-                        wbtd.Markup = (wbtd.Price - wbtd.ProcurementPrice) / wbtd.ProcurementPrice * 100;
-                        focused_dr.Markup = wbtd.Markup;
-                    }
-
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
@@ -541,6 +535,21 @@ namespace SP_Sklad.WBForm
         {
             IHelper.ShowMatInfo(focused_dr.MatId);
             repositoryItemLookUpEdit1.DataSource = _db.v_MaterialBarCodes.AsNoTracking().Where(w => w.Archived == 0 && (w.TypeId == 1 || w.TypeId == 5 || w.TypeId == 6)).ToList();
+        }
+
+        private void addButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SettingMaterialPricesDetGrid.AddNewRow();
+           
+        }
+
+        private void SettingMaterialPricesDetGrid_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            var row = e.Row as v_SettingMaterialPricesDet;
+            if (row.MatId == 0 && _db.SettingMaterialPricesDet.Find(row.Id) == null)
+            {
+                GetDetail();
+            }
         }
     }
 }

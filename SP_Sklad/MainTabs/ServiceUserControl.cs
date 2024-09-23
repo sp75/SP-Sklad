@@ -603,5 +603,25 @@ namespace SP_Sklad.MainTabs
             if (col == null) return;
             item.DisplayFormat = "{0:" + col.DisplayFormat.FormatString + "}";
         }
+
+        private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                AttachedFilesPathEdit.EditValue = folderBrowserDialog1.SelectedPath;
+
+                using (var db = DB.SkladBase())
+                {
+                    var c = db.CommonParams.FirstOrDefault();
+                    if (c != null)
+                    {
+                        c.AttachedFilesPath = folderBrowserDialog1.SelectedPath;
+                        db.SaveChanges();
+                    }
+                }
+
+                DBHelper.CommonParam = null;
+            }
+        }
     }
 }

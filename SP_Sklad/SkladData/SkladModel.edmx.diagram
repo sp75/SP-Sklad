@@ -414,6 +414,8 @@
         <EntityTypeShape EntityType="BaseModel.DiscountManagementDet" Width="1.5" PointX="42.5" PointY="25.875" />
         <AssociationConnector Association="BaseModel.FK_DiscountManagementDet_DiscountManagement" />
         <AssociationConnector Association="BaseModel.FK_DiscountManagementDet_Kagent" />
+        <EntityTypeShape EntityType="BaseModel.AttachedFiles" Width="1.5" PointX="40.5" PointY="44.875" />
+        <AssociationConnector Association="BaseModel.FK_AttachedFiles_Kagent" />
 
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >

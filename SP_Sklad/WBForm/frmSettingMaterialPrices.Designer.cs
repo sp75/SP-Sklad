@@ -57,13 +57,15 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.PrevievBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.addButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemCalcEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
@@ -78,7 +80,6 @@
             this.WBImgList = new DevExpress.Utils.ImageCollection(this.components);
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
@@ -115,9 +116,9 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
-            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colProcurementPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colMarkup = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -130,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
@@ -189,7 +191,6 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.PrevievBtn,
             this.DelMaterialBtn,
-            this.barSubItem1,
             this.AddMaterialBtn,
             this.barButtonItem6,
             this.MatInfoBtn,
@@ -203,8 +204,9 @@
             this.barButtonItem4,
             this.barButtonItem7,
             this.barButtonItem8,
-            this.barButtonItem9});
-            this.barManager1.MaxItemId = 44;
+            this.barButtonItem9,
+            this.addButtonItem});
+            this.barManager1.MaxItemId = 45;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit2,
             this.repositoryItemCalcEdit3});
@@ -241,11 +243,12 @@
             this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar3.FloatLocation = new System.Drawing.Point(34, 243);
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.addButtonItem),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem2)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
@@ -256,16 +259,25 @@
             this.bar3.StandaloneBarDockControl = this.standaloneBarDockControl2;
             this.bar3.Text = "Custom 2";
             // 
-            // barSubItem1
+            // addButtonItem
             // 
-            this.barSubItem1.Caption = "Додати";
-            this.barSubItem1.Id = 4;
-            this.barSubItem1.ImageOptions.ImageIndex = 3;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.addButtonItem.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.addButtonItem.Caption = "Додати";
+            this.addButtonItem.DropDownControl = this.popupMenu1;
+            this.addButtonItem.Id = 44;
+            this.addButtonItem.ImageOptions.ImageIndex = 3;
+            this.addButtonItem.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Insert);
+            this.addButtonItem.Name = "addButtonItem";
+            this.addButtonItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.addButtonItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.addButtonItem_ItemClick);
+            // 
+            // popupMenu1
+            // 
+            this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.popupMenu1.Manager = this.barManager1;
+            this.popupMenu1.Name = "popupMenu1";
             // 
             // AddMaterialBtn
             // 
@@ -320,6 +332,14 @@
             this.barButtonItem3.ImageOptions.ImageIndex = 8;
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Обновити";
+            this.barButtonItem1.Id = 34;
+            this.barButtonItem1.ImageOptions.ImageIndex = 6;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -463,14 +483,6 @@
             this.barButtonItem5.Id = 23;
             this.barButtonItem5.ImageOptions.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Обновити";
-            this.barButtonItem1.Id = 34;
-            this.barButtonItem1.ImageOptions.ImageIndex = 6;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -722,7 +734,6 @@
             // TemplateListPopupMenu
             // 
             this.TemplateListPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8, true),
@@ -816,6 +827,7 @@
             this.SettingMaterialPricesDetGrid.ClipboardRowPasting += new DevExpress.XtraGrid.Views.Grid.ClipboardRowPastingEventHandler(this.SettingMaterialPricesDetGrid_ClipboardRowPasting);
             this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
             this.SettingMaterialPricesDetGrid.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.WaybillTemplateDetGrid_CellValueChanged);
+            this.SettingMaterialPricesDetGrid.RowUpdated += new DevExpress.XtraGrid.Views.Base.RowObjectEventHandler(this.SettingMaterialPricesDetGrid_RowUpdated);
             // 
             // gridBand1
             // 
@@ -890,16 +902,6 @@
             this.gridColumn7.Visible = true;
             this.gridColumn7.Width = 118;
             // 
-            // gridBand2
-            // 
-            this.gridBand2.Caption = "Закупівельна, грн";
-            this.gridBand2.Columns.Add(this.bandedGridColumn1);
-            this.gridBand2.Columns.Add(this.colProcurementPrice);
-            this.gridBand2.Columns.Add(this.colMarkup);
-            this.gridBand2.Name = "gridBand2";
-            this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 278;
-            // 
             // bandedGridColumn3
             // 
             this.bandedGridColumn3.AppearanceHeader.BackColor = System.Drawing.Color.FloralWhite;
@@ -926,6 +928,16 @@
             this.repositoryItemLookUpEdit2.ShowFooter = false;
             this.repositoryItemLookUpEdit2.ShowHeader = false;
             this.repositoryItemLookUpEdit2.ValueMember = "KaId";
+            // 
+            // gridBand2
+            // 
+            this.gridBand2.Caption = "Закупівельна, грн";
+            this.gridBand2.Columns.Add(this.bandedGridColumn1);
+            this.gridBand2.Columns.Add(this.colProcurementPrice);
+            this.gridBand2.Columns.Add(this.colMarkup);
+            this.gridBand2.Name = "gridBand2";
+            this.gridBand2.VisibleIndex = 1;
+            this.gridBand2.Width = 278;
             // 
             // bandedGridColumn1
             // 
@@ -1007,7 +1019,6 @@
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar1.FloatLocation = new System.Drawing.Point(278, 275);
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelMaterialBtn, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
             this.bar1.OptionsBar.AllowRename = true;
@@ -1079,6 +1090,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).EndInit();
@@ -1117,7 +1129,6 @@
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem PrevievBtn;
         private DevExpress.XtraBars.BarButtonItem MatInfoBtn;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraBars.BarButtonItem AddMaterialBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarButtonItem DelMaterialBtn;
@@ -1189,5 +1200,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraBars.BarButtonItem addButtonItem;
+        private DevExpress.XtraBars.PopupMenu popupMenu1;
     }
 }

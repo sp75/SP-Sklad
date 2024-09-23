@@ -25,5 +25,6 @@ namespace SP_Sklad.SkladData
         public Nullable<System.DateTime> EndCalcPeriod { get; set; }
         public Nullable<System.DateTime> TrialPeriod { get; set; }
         public string ProgramName { get; set; }
+        public string AttachedFilesPath { get; set; }
     }
 }

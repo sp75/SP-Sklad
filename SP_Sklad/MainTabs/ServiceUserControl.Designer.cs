@@ -225,10 +225,12 @@
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.DeviceNameRMKTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.xtraTabPage9 = new DevExpress.XtraTab.XtraTabPage();
+            this.AttachedFilesPathEdit = new DevExpress.XtraEditors.ButtonEdit();
+            this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
             this.PeriodChangeBtn = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.EndPeriodDateEdit = new DevExpress.XtraEditors.DateEdit();
-            this.CommonParamsBS = new System.Windows.Forms.BindingSource(this.components);
             this.AttLabel = new DevExpress.XtraEditors.LabelControl();
             this.PatchEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.xtraTabPage14 = new DevExpress.XtraTab.XtraTabPage();
@@ -337,9 +339,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ComPortNameEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).BeginInit();
             this.xtraTabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachedFilesPathEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).BeginInit();
             this.xtraTabPage14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.delTurnDate.Properties.CalendarTimeProperties)).BeginInit();
@@ -2733,6 +2736,8 @@
             // 
             // xtraTabPage9
             // 
+            this.xtraTabPage9.Controls.Add(this.AttachedFilesPathEdit);
+            this.xtraTabPage9.Controls.Add(this.labelControl21);
             this.xtraTabPage9.Controls.Add(this.PeriodChangeBtn);
             this.xtraTabPage9.Controls.Add(this.labelControl7);
             this.xtraTabPage9.Controls.Add(this.EndPeriodDateEdit);
@@ -2743,9 +2748,33 @@
             this.xtraTabPage9.Text = "Додаткові";
             this.xtraTabPage9.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage9_Paint);
             // 
+            // AttachedFilesPathEdit
+            // 
+            this.AttachedFilesPathEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "AttachedFilesPath", true));
+            this.AttachedFilesPathEdit.Location = new System.Drawing.Point(31, 114);
+            this.AttachedFilesPathEdit.MenuManager = this.barManager1;
+            this.AttachedFilesPathEdit.Name = "AttachedFilesPathEdit";
+            this.AttachedFilesPathEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.AttachedFilesPathEdit.Size = new System.Drawing.Size(427, 20);
+            this.AttachedFilesPathEdit.TabIndex = 32;
+            this.AttachedFilesPathEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.buttonEdit1_ButtonClick);
+            // 
+            // CommonParamsBS
+            // 
+            this.CommonParamsBS.DataSource = typeof(SP_Sklad.SkladData.CommonParams);
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Location = new System.Drawing.Point(31, 95);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(152, 13);
+            this.labelControl21.TabIndex = 31;
+            this.labelControl21.Text = "Шлях до прикріплених файлів";
+            // 
             // PeriodChangeBtn
             // 
-            this.PeriodChangeBtn.Location = new System.Drawing.Point(231, 117);
+            this.PeriodChangeBtn.Location = new System.Drawing.Point(229, 211);
             this.PeriodChangeBtn.Name = "PeriodChangeBtn";
             this.PeriodChangeBtn.Size = new System.Drawing.Size(66, 22);
             this.PeriodChangeBtn.TabIndex = 30;
@@ -2754,7 +2783,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(31, 98);
+            this.labelControl7.Location = new System.Drawing.Point(29, 192);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(126, 13);
             this.labelControl7.TabIndex = 29;
@@ -2764,7 +2793,7 @@
             // 
             this.EndPeriodDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.CommonParamsBS, "EndCalcPeriod", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.EndPeriodDateEdit.EditValue = null;
-            this.EndPeriodDateEdit.Location = new System.Drawing.Point(31, 117);
+            this.EndPeriodDateEdit.Location = new System.Drawing.Point(29, 211);
             this.EndPeriodDateEdit.MenuManager = this.barManager1;
             this.EndPeriodDateEdit.Name = "EndPeriodDateEdit";
             this.EndPeriodDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -2776,10 +2805,6 @@
             this.EndPeriodDateEdit.StyleController = this.styleController1;
             this.EndPeriodDateEdit.TabIndex = 28;
             this.EndPeriodDateEdit.EditValueChanged += new System.EventHandler(this.OnDateDBEdit_EditValueChanged);
-            // 
-            // CommonParamsBS
-            // 
-            this.CommonParamsBS.DataSource = typeof(SP_Sklad.SkladData.CommonParams);
             // 
             // AttLabel
             // 
@@ -3023,9 +3048,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DeviceNameRMKTextEdit.Properties)).EndInit();
             this.xtraTabPage9.ResumeLayout(false);
             this.xtraTabPage9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AttachedFilesPathEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EndPeriodDateEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CommonParamsBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PatchEdit.Properties)).EndInit();
             this.xtraTabPage14.ResumeLayout(false);
             this.xtraTabPage14.PerformLayout();
@@ -3253,5 +3279,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl19;
         private DevExpress.Utils.ImageCollection BarImageList;
         private DevExpress.Utils.ImageCollection GridImageList;
+        private DevExpress.XtraEditors.ButtonEdit AttachedFilesPathEdit;
+        private DevExpress.XtraEditors.LabelControl labelControl21;
     }
 }
