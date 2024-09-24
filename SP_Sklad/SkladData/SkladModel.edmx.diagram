@@ -416,7 +416,9 @@
         <AssociationConnector Association="BaseModel.FK_DiscountManagementDet_Kagent" />
         <EntityTypeShape EntityType="BaseModel.AttachedFiles" Width="1.5" PointX="40.5" PointY="44.875" />
         <AssociationConnector Association="BaseModel.FK_AttachedFiles_Kagent" />
-
+        <EntityTypeShape EntityType="BaseModel.MaterialSupplier" Width="1.5" PointX="26.625" PointY="15.75" />
+        <AssociationConnector Association="BaseModel.FK_MaterialSupplier_Materials" />
+        <AssociationConnector Association="BaseModel.FK_MaterialSupplier_Kagent" />
         </Diagram>
       <Diagram DiagramId="d17bab3174514a3c887ad670db219b96" Name="Vews" ZoomLevel="66" >
         <EntityTypeShape EntityType="BaseModel.v_GetDocsTree" Width="1.5" PointX="0.75" PointY="4.125" />

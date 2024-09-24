@@ -62,6 +62,7 @@ namespace SP_Sklad.MainTabs
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+      
             if (!DesignMode)
             {
                 var wh_list = new List<WhList>() { new WhList { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList).ToList();
@@ -80,6 +81,8 @@ namespace SP_Sklad.MainTabs
 
                 user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, DB.SkladBase());
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
+         
+                delAttachedFilesBtn.Enabled = DBHelper.is_admin;
 
                 user_access = DB.SkladBase().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
             }
@@ -610,7 +613,7 @@ namespace SP_Sklad.MainTabs
         private void TechProcGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
             DelTechProcBtn.Enabled = ((focused_row != null && focused_row.Checked != 1 && user_access.CanModify == 1) && TechProcGridView.DataRowCount > 0);
-            EditTechProcBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && TechProcGridView.DataRowCount > 0 /*&& focused_row.Checked != 1*/);
+            EditTechProcBtn.Enabled = (focused_row != null && user_access.CanModify == 1 && TechProcGridView.DataRowCount > 0 && focused_row.Checked != 1);
         }
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -924,12 +927,17 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
+            var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesPathLiew;
+
+            if (File.Exists(row.FileName))
+            {
+                File.Delete(row.FileName);
+            }
 
             using (var _db = DB.SkladBase())
             {
-                var row = AttachedFilesGridView.GetFocusedRow() as dynamic;
-                Guid id = row.Id;
-                _db.AttachedFiles.Remove(_db.AttachedFiles.Find(id));
+               
+                _db.AttachedFiles.Remove(_db.AttachedFiles.Find(row.Id));
                 _db.SaveChanges();
                 RefreshAttachedFiles();
             }

@@ -62,6 +62,7 @@ namespace SP_Sklad.SkladData
             this.CashDesks = new HashSet<CashDesks>();
             this.DiscountManagementDet = new HashSet<DiscountManagementDet>();
             this.AttachedFiles = new HashSet<AttachedFiles>();
+            this.MaterialSupplier = new HashSet<MaterialSupplier>();
         }
     
         public int KaId { get; set; }
@@ -159,5 +160,6 @@ namespace SP_Sklad.SkladData
         public virtual ICollection<CashDesks> CashDesks { get; set; }
         public virtual ICollection<DiscountManagementDet> DiscountManagementDet { get; set; }
         public virtual ICollection<AttachedFiles> AttachedFiles { get; set; }
+        public virtual ICollection<MaterialSupplier> MaterialSupplier { get; set; }
     }
 }

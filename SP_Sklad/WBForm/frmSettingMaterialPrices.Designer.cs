@@ -924,6 +924,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Name4")});
             this.repositoryItemLookUpEdit2.DisplayMember = "Name";
             this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            this.repositoryItemLookUpEdit2.NullText = "";
             this.repositoryItemLookUpEdit2.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
             this.repositoryItemLookUpEdit2.ShowFooter = false;
             this.repositoryItemLookUpEdit2.ShowHeader = false;

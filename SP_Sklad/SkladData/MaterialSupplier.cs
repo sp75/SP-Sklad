@@ -12,15 +12,14 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class AttachedFiles
+    public partial class MaterialSupplier
     {
-        public System.Guid Id { get; set; }
-        public string FileName { get; set; }
-        public Nullable<System.DateTime> CreatedAt { get; set; }
-        public System.Guid DocId { get; set; }
-        public Nullable<int> PersonId { get; set; }
-        public string Notes { get; set; }
+        public int Id { get; set; }
+        public int MatId { get; set; }
+        public int Def { get; set; }
+        public int KaId { get; set; }
     
+        public virtual Materials Materials { get; set; }
         public virtual Kagent Kagent { get; set; }
     }
 }

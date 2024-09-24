@@ -947,6 +947,9 @@
     <Compile Include="SkladData\MaterialsList.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\MaterialSupplier.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\MaterialType.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -3324,6 +3327,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.KontragentGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatBarCode.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Materials.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.MaterialSupplier.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroup.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatGroupPrices.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.MatPrices.datasource" />

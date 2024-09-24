@@ -61,9 +61,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="CreatedAt" Type="datetime" />
-          <Property Name="DocId" Type="uniqueidentifier" />
+          <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PersonId" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="250" />
         </EntityType>
@@ -885,6 +885,15 @@
           <Property Name="RawMaterialTypeId" Type="int" />
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="OpenStoreId" Type="int" />
+        </EntityType>
+        <EntityType Name="MaterialSupplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MatId" Type="int" Nullable="false" />
+          <Property Name="Def" Type="int" Nullable="false" />
+          <Property Name="KaId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MaterialType">
           <Key>
@@ -6219,6 +6228,30 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MaterialSupplier_Kagent">
+          <End Role="Kagent" Type="Self.Kagent" Multiplicity="1" />
+          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="KaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialSupplier_Materials">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="MaterialSupplier" Type="Self.MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MATPRICES_PPTYPEID">
           <End Role="PriceTypes" Type="Self.PriceTypes" Multiplicity="0..1" />
           <End Role="MatPrices" Type="Self.MatPrices" Multiplicity="*" />
@@ -10026,6 +10059,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySet Name="MatChange" EntityType="Self.MatChange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialMeasures" EntityType="Self.MaterialMeasures" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialSupplier" EntityType="Self.MaterialSupplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaterialType" EntityType="Self.MaterialType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatGroup" EntityType="Self.MatGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MatGroupPrices" EntityType="Self.MatGroupPrices" Schema="dbo" store:Type="Tables" />
@@ -12652,6 +12686,14 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="RawMaterialType" EntitySet="RawMaterialType" />
             <End Role="Materials" EntitySet="Materials" />
           </AssociationSet>
+          <AssociationSet Name="FK_MaterialSupplier_Kagent" Association="Self.FK_MaterialSupplier_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialSupplier_Materials" Association="Self.FK_MaterialSupplier_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
           <AssociationSet Name="FK_MATPRICES_PPTYPEID" Association="Self.FK_MATPRICES_PPTYPEID">
             <End Role="PriceTypes" EntitySet="PriceTypes" />
             <End Role="MatPrices" EntitySet="MatPrices" />
@@ -14964,6 +15006,15 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="AttachedFiles" EntitySet="AttachedFiles" />
           </AssociationSet>
+          <EntitySet Name="MaterialSupplier" EntityType="BaseModel.MaterialSupplier" />
+          <AssociationSet Name="FK_MaterialSupplier_Materials" Association="BaseModel.FK_MaterialSupplier_Materials">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialSupplier_Kagent" Association="BaseModel.FK_MaterialSupplier_Kagent">
+            <End Role="Kagent" EntitySet="Kagent" />
+            <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -15991,6 +16042,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="MaterialType" Relationship="BaseModel.FK_Materials_MaterialType" FromRole="Materials" ToRole="MaterialType" />
           <NavigationProperty Name="MatGroup" Relationship="BaseModel.FK__MATERIALS__GRPID__58D1301D" FromRole="Materials" ToRole="MatGroup" />
           <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_DiscountManagement" FromRole="Materials" ToRole="DiscountManagementDet" />
+          <NavigationProperty Name="MaterialSupplier" Relationship="BaseModel.FK_MaterialSupplier_Materials" FromRole="Materials" ToRole="MaterialSupplier" />
           </EntityType>
         <Association Name="FK_CONTRDET_REFERENCE_MATERIAL">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="0..1" />
@@ -22039,6 +22091,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <NavigationProperty Name="CashDesks" Relationship="BaseModel.FK_CashDesks_Kagent" FromRole="Kagent" ToRole="CashDesks" />
           <NavigationProperty Name="DiscountManagementDet" Relationship="BaseModel.FK_DiscountManagementDet_Kagent" FromRole="Kagent" ToRole="DiscountManagementDet" />
           <NavigationProperty Name="AttachedFiles" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="Kagent" ToRole="AttachedFiles" />
+          <NavigationProperty Name="MaterialSupplier" Relationship="BaseModel.FK_MaterialSupplier_Kagent" FromRole="Kagent" ToRole="MaterialSupplier" />
         </EntityType>
         <Association Name="FK_Cars_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1">
@@ -24618,9 +24671,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="FileName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CreatedAt" Type="DateTime" Precision="3" />
-          <Property Name="DocId" Type="Guid" />
+          <Property Name="DocId" Type="Guid" Nullable="false" />
           <Property Name="PersonId" Type="Int32" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="AttachedFiles" ToRole="Kagent" />
@@ -24634,6 +24687,41 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Principal>
             <Dependent Role="AttachedFiles">
               <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MaterialSupplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MatId" Type="Int32" Nullable="false" />
+          <Property Name="Def" Type="Int32" Nullable="false" />
+          <Property Name="KaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MaterialSupplier_Materials" FromRole="MaterialSupplier" ToRole="Materials" />
+          <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_MaterialSupplier_Kagent" FromRole="MaterialSupplier" ToRole="Kagent" />
+        </EntityType>
+        <Association Name="FK_MaterialSupplier_Materials">
+          <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1" />
+          <End Type="BaseModel.MaterialSupplier" Role="MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="MatId" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="MatId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialSupplier_Kagent">
+          <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="1" />
+          <End Type="BaseModel.MaterialSupplier" Role="MaterialSupplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kagent">
+              <PropertyRef Name="KaId" />
+            </Principal>
+            <Dependent Role="MaterialSupplier">
+              <PropertyRef Name="KaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -31225,6 +31313,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="DocId" ColumnName="DocId" />
                 <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
                 <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialSupplier">
+            <EntityTypeMapping TypeName="BaseModel.MaterialSupplier">
+              <MappingFragment StoreEntitySet="MaterialSupplier">
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="Def" ColumnName="Def" />
+                <ScalarProperty Name="MatId" ColumnName="MatId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

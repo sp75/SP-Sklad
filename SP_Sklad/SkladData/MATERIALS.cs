@@ -43,6 +43,7 @@ namespace SP_Sklad.SkladData
             this.WaybillCorrectionDet = new HashSet<WaybillCorrectionDet>();
             this.WaybillCorrectionDet1 = new HashSet<WaybillCorrectionDet>();
             this.DiscountManagementDet = new HashSet<DiscountManagementDet>();
+            this.MaterialSupplier = new HashSet<MaterialSupplier>();
         }
     
         public int MatId { get; set; }
@@ -117,5 +118,6 @@ namespace SP_Sklad.SkladData
         public virtual MaterialType MaterialType { get; set; }
         public virtual MatGroup MatGroup { get; set; }
         public virtual ICollection<DiscountManagementDet> DiscountManagementDet { get; set; }
+        public virtual ICollection<MaterialSupplier> MaterialSupplier { get; set; }
     }
 }

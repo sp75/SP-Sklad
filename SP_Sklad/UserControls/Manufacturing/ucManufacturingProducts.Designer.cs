@@ -68,7 +68,7 @@
             this.bar9 = new DevExpress.XtraBars.Bar();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.delAttachedFilesBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -332,7 +332,7 @@
             this.barButtonItem9,
             this.barButtonItem10,
             this.barButtonItem11,
-            this.barButtonItem12,
+            this.delAttachedFilesBtn,
             this.barButtonItem13});
             this.barManager1.MaxItemId = 29;
             // 
@@ -615,7 +615,7 @@
             this.bar9.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.delAttachedFilesBtn)});
             this.bar9.OptionsBar.AllowQuickCustomization = false;
             this.bar9.OptionsBar.DrawDragBorder = false;
             this.bar9.OptionsBar.UseWholeRow = true;
@@ -638,13 +638,13 @@
             this.barButtonItem13.Name = "barButtonItem13";
             this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem13_ItemClick);
             // 
-            // barButtonItem12
+            // delAttachedFilesBtn
             // 
-            this.barButtonItem12.Caption = "Видалити";
-            this.barButtonItem12.Id = 27;
-            this.barButtonItem12.ImageOptions.ImageIndex = 3;
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            this.delAttachedFilesBtn.Caption = "Видалити";
+            this.delAttachedFilesBtn.Id = 27;
+            this.delAttachedFilesBtn.ImageOptions.ImageIndex = 3;
+            this.delAttachedFilesBtn.Name = "delAttachedFilesBtn";
+            this.delAttachedFilesBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // standaloneBarDockControl2
             // 
@@ -2429,7 +2429,7 @@
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private DevExpress.XtraBars.Bar bar9;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem delAttachedFilesBtn;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraGrid.GridControl AttachedFilesGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView AttachedFilesGridView;

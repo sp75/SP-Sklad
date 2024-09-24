@@ -265,6 +265,7 @@ namespace SP_Sklad.WBForm
                 if (e.Column.FieldName == "MatId")
                 {
                     wbtd.MatId = Convert.ToInt32(e.Value);
+                    wbtd.SupplierId = _db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null;
                     _db.SaveChanges();
                     GetDetail();
                 }
@@ -300,6 +301,7 @@ namespace SP_Sklad.WBForm
             {
                 if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == focused_dr.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                 {
+
                     wbtd = _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
                     {
                         Id = focused_dr.Id,
@@ -309,8 +311,9 @@ namespace SP_Sklad.WBForm
                         CreatedAt = DBHelper.ServerDateTime(),
                         Price = focused_dr.Price,
                         ProcurementPrice = focused_dr.ProcurementPrice,
-                        Markup = focused_dr.ProcurementPrice.HasValue ? (focused_dr.Price - focused_dr.ProcurementPrice) / focused_dr.ProcurementPrice * 100 : null
-                    });
+                        Markup = focused_dr.ProcurementPrice.HasValue ? (focused_dr.Price - focused_dr.ProcurementPrice) / focused_dr.ProcurementPrice * 100 : null,
+                        SupplierId = _db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == focused_dr.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
+                });
 
                     _db.SaveChanges();
 

@@ -66,9 +66,11 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 3, ParentId = 255, Text = "Оподаткування", ImgIdx = 2, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 4, ParentId = 255, Text = "Взаємозамінність", ImgIdx = 3, TabIdx = 3 });
             tree.Add(new CatalogTreeList { Id = 5, ParentId = 255, Text = "Штрих-коди", ImgIdx = 19, TabIdx = 9 });
-            tree.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
-            tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
-            tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+            tree.Add(new CatalogTreeList { Id = 6, ParentId = 255, Text = "Постачальники", ImgIdx = 22, TabIdx = 10 });
+            tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
+            tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
+            tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
+            
 
             TreeListBS.DataSource = tree;
 
@@ -107,6 +109,7 @@ namespace SP_Sklad.EditForm
                 MsrComboBox.Properties.DataSource = DBHelper.MeasuresList;
                 WIdLookUpEdit.Properties.DataSource = DBHelper.WhList;
                 CIdLookUpEdit.Properties.DataSource = DBHelper.CountersList;
+                repositoryItemLookUpEdit1.DataSource = _db.Kagent.Where(w => w.Deleted == 0 && w.KaKind == 0).Select(s => new { s.KaId, s.Name }).ToList();
 
                 MaterialsBS.DataSource = _mat;
 
@@ -124,6 +127,7 @@ namespace SP_Sklad.EditForm
                 GetMatChange();
                 GetMatMeasures();
                 GetMatBarCode(_mat.MatId);
+                GetMaterialSupplier(_mat.MatId);
             }
 
             #region Init
@@ -165,6 +169,11 @@ namespace SP_Sklad.EditForm
             }).ToList();
 
             MatBarCodeBS.DataSource = list;
+        }
+
+        private void GetMaterialSupplier(int mat_id)
+        {
+            MaterialSupplierBS.DataSource = _db.MaterialSupplier.Where(w => w.MatId == mat_id).ToList();
         }
 
         private void GetListMatPrices()
@@ -900,6 +909,51 @@ namespace SP_Sklad.EditForm
             {
                 ArtikulEdit.Focus();
             }
+        }
+
+        private void SupplierGridView_InitNewRow(object sender, DevExpress.XtraGrid.Views.Grid.InitNewRowEventArgs e)
+        {
+            ;
+        }
+
+        private void SupplierGridView_RowUpdated(object sender, DevExpress.XtraGrid.Views.Base.RowObjectEventArgs e)
+        {
+            var upd_row = e.Row as MaterialSupplier;
+            if (upd_row.Id == 0 && upd_row.KaId != 0)
+            {
+                upd_row.MatId = _mat_id.Value;
+                _db.MaterialSupplier.Add(new MaterialSupplier
+                {
+                    KaId = upd_row.KaId,
+                    MatId = upd_row.MatId,
+                    Def = upd_row.Def
+                });
+            }
+
+            _db.SaveChanges();
+
+            GetMaterialSupplier(_mat.MatId);
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            SupplierGridView.AddNewRow();
+        }
+
+        private void MaterialSupplierBS_AddingNew(object sender, AddingNewEventArgs e)
+        {
+            ;
+        }
+
+        private void simpleButton3_Click(object sender, EventArgs e)
+        {
+            SupplierGridView.DeleteSelectedRows();
+        }
+
+        private void SupplierGridView_RowDeleted(object sender, DevExpress.Data.RowDeletedEventArgs e)
+        {
+            var row = e.Row as MaterialSupplier;
+            _db.MaterialSupplier.Remove(row);
         }
     }
 }
