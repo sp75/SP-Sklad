@@ -3071,6 +3071,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ManufacturingProducts' does not have
             <PropertyRef Name="WId" />
             <PropertyRef Name="DocStatus" />
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="IsAttachedFiles" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="WbillId" Type="int" Nullable="false" />
@@ -3121,6 +3122,7 @@ warning 6002: The table/view 'sp_base.dbo.v_ManufacturingProducts' does not have
           <Property Name="AdditionalCosts" Type="numeric" Precision="38" Scale="6" />
           <Property Name="MatOut" Type="numeric" Precision="15" Scale="2" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IsAttachedFiles" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_MaterialBarCodes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10937,7 +10939,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_ManufacturingProducts].[AdditionalCostsAmount] AS [AdditionalCostsAmount], 
     [v_ManufacturingProducts].[AdditionalCosts] AS [AdditionalCosts], 
     [v_ManufacturingProducts].[MatOut] AS [MatOut], 
-    [v_ManufacturingProducts].[UserId] AS [UserId]
+    [v_ManufacturingProducts].[UserId] AS [UserId], 
+    [v_ManufacturingProducts].[IsAttachedFiles] AS [IsAttachedFiles]
     FROM [dbo].[v_ManufacturingProducts] AS [v_ManufacturingProducts]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_MaterialBarCodes" EntityType="Self.v_MaterialBarCodes" store:Type="Views" store:Schema="dbo">
@@ -23973,6 +23976,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <PropertyRef Name="WId" />
             <PropertyRef Name="DocStatus" />
             <PropertyRef Name="UserId" />
+            <PropertyRef Name="IsAttachedFiles" />
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="WbillId" Type="Int32" Nullable="false" />
@@ -24023,6 +24027,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="AdditionalCosts" Type="Decimal" Precision="38" Scale="6" />
           <Property Name="MatOut" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IsAttachedFiles" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="v_DeboningProducts">
           <Key>
@@ -30814,6 +30819,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_ManufacturingProducts">
             <EntityTypeMapping TypeName="BaseModel.v_ManufacturingProducts">
               <MappingFragment StoreEntitySet="v_ManufacturingProducts">
+                <ScalarProperty Name="IsAttachedFiles" ColumnName="IsAttachedFiles" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="MatOut" ColumnName="MatOut" />
                 <ScalarProperty Name="AdditionalCosts" ColumnName="AdditionalCosts" />

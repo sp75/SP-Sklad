@@ -82,6 +82,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
@@ -112,6 +113,8 @@
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn157 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn198 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.PeriodComboBoxEdit = new DevExpress.XtraEditors.ComboBoxEdit();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
@@ -224,6 +227,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PeriodComboBoxEdit.Properties)).BeginInit();
@@ -333,8 +337,9 @@
             this.barButtonItem10,
             this.barButtonItem11,
             this.delAttachedFilesBtn,
-            this.barButtonItem13});
-            this.barManager1.MaxItemId = 29;
+            this.barButtonItem13,
+            this.barButtonItem12});
+            this.barManager1.MaxItemId = 30;
             // 
             // bar1
             // 
@@ -738,6 +743,8 @@
             this.BarImageList.Images.SetKeyName(10, "order_info");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.BarImageList.Images.SetKeyName(11, "w_scale");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.BarImageList.Images.SetKeyName(12, "def_settings_grid");
             // 
             // StopProcesBtn
             // 
@@ -776,6 +783,14 @@
             this.barButtonItem9.ImageOptions.ImageIndex = 2;
             this.barButtonItem9.Name = "barButtonItem9";
             this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem9_ItemClick);
+            // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Встановити налаштування сітки по замовчуванню";
+            this.barButtonItem12.Id = 29;
+            this.barButtonItem12.ImageOptions.ImageIndex = 12;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick_1);
             // 
             // panelControl1
             // 
@@ -822,7 +837,8 @@
             this.WBGridControl.Name = "WBGridControl";
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox1,
-            this.CheckedItemImageComboBox});
+            this.CheckedItemImageComboBox,
+            this.repositoryItemImageComboBox2});
             this.WBGridControl.Size = new System.Drawing.Size(1334, 328);
             this.WBGridControl.TabIndex = 0;
             this.WBGridControl.UseEmbeddedNavigator = true;
@@ -864,7 +880,8 @@
             this.gridColumn137,
             this.gridColumn150,
             this.gridColumn157,
-            this.gridColumn198});
+            this.gridColumn198,
+            this.gridColumn14});
             this.WbGridView.GridControl = this.WBGridControl;
             this.WbGridView.Name = "WbGridView";
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -917,6 +934,8 @@
             this.GridImageList.Images.SetKeyName(4, "reserved");
             this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.w_scale, "w_scale", typeof(global::SP_Sklad.Properties.Resources), 5);
             this.GridImageList.Images.SetKeyName(5, "w_scale");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.attach, "attach", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.GridImageList.Images.SetKeyName(6, "attach");
             // 
             // gridColumn2
             // 
@@ -951,7 +970,7 @@
             this.gridColumn3.Name = "gridColumn3";
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
-            this.gridColumn3.Width = 87;
+            this.gridColumn3.Width = 80;
             // 
             // gridColumn37
             // 
@@ -962,7 +981,7 @@
             this.gridColumn37.Name = "gridColumn37";
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 6;
-            this.gridColumn37.Width = 45;
+            this.gridColumn37.Width = 41;
             // 
             // gridColumn4
             // 
@@ -973,7 +992,7 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.Visible = true;
             this.gridColumn4.VisibleIndex = 3;
-            this.gridColumn4.Width = 99;
+            this.gridColumn4.Width = 91;
             // 
             // gridColumn5
             // 
@@ -982,7 +1001,7 @@
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
-            this.gridColumn5.Width = 124;
+            this.gridColumn5.Width = 115;
             // 
             // gridColumn6
             // 
@@ -991,7 +1010,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 7;
-            this.gridColumn6.Width = 31;
+            this.gridColumn6.Width = 28;
             // 
             // gridColumn7
             // 
@@ -1001,7 +1020,7 @@
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
             this.gridColumn7.VisibleIndex = 8;
-            this.gridColumn7.Width = 45;
+            this.gridColumn7.Width = 41;
             // 
             // gridColumn8
             // 
@@ -1020,7 +1039,7 @@
             this.gridColumn38.Name = "gridColumn38";
             this.gridColumn38.Visible = true;
             this.gridColumn38.VisibleIndex = 11;
-            this.gridColumn38.Width = 70;
+            this.gridColumn38.Width = 64;
             // 
             // gridColumn82
             // 
@@ -1040,7 +1059,7 @@
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 12;
-            this.gridColumn39.Width = 68;
+            this.gridColumn39.Width = 63;
             // 
             // gridColumn126
             // 
@@ -1059,7 +1078,7 @@
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
             this.gridColumn40.VisibleIndex = 15;
-            this.gridColumn40.Width = 34;
+            this.gridColumn40.Width = 31;
             // 
             // gridColumn41
             // 
@@ -1070,7 +1089,7 @@
             this.gridColumn41.Name = "gridColumn41";
             this.gridColumn41.Visible = true;
             this.gridColumn41.VisibleIndex = 17;
-            this.gridColumn41.Width = 74;
+            this.gridColumn41.Width = 68;
             // 
             // gridColumn65
             // 
@@ -1081,7 +1100,7 @@
             this.gridColumn65.Name = "gridColumn65";
             this.gridColumn65.Visible = true;
             this.gridColumn65.VisibleIndex = 13;
-            this.gridColumn65.Width = 91;
+            this.gridColumn65.Width = 84;
             // 
             // gridColumn127
             // 
@@ -1090,7 +1109,7 @@
             this.gridColumn127.Name = "gridColumn127";
             this.gridColumn127.Visible = true;
             this.gridColumn127.VisibleIndex = 14;
-            this.gridColumn127.Width = 64;
+            this.gridColumn127.Width = 59;
             // 
             // gridColumn136
             // 
@@ -1099,6 +1118,7 @@
             this.gridColumn136.Name = "gridColumn136";
             this.gridColumn136.Visible = true;
             this.gridColumn136.VisibleIndex = 16;
+            this.gridColumn136.Width = 69;
             // 
             // gridColumn137
             // 
@@ -1113,6 +1133,7 @@
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
             this.gridColumn150.VisibleIndex = 5;
+            this.gridColumn150.Width = 69;
             // 
             // gridColumn157
             // 
@@ -1123,6 +1144,7 @@
             this.gridColumn157.Name = "gridColumn157";
             this.gridColumn157.Visible = true;
             this.gridColumn157.VisibleIndex = 9;
+            this.gridColumn157.Width = 69;
             // 
             // gridColumn198
             // 
@@ -1131,6 +1153,33 @@
             this.gridColumn198.Name = "gridColumn198";
             this.gridColumn198.Visible = true;
             this.gridColumn198.VisibleIndex = 18;
+            this.gridColumn198.Width = 69;
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Прикріплені файли";
+            this.gridColumn14.ColumnEdit = this.repositoryItemImageComboBox2;
+            this.gridColumn14.FieldName = "IsAttachedFiles";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.OptionsColumn.AllowEdit = false;
+            this.gridColumn14.OptionsColumn.AllowFocus = false;
+            this.gridColumn14.OptionsColumn.AllowSize = false;
+            this.gridColumn14.OptionsColumn.FixedWidth = true;
+            this.gridColumn14.OptionsColumn.ReadOnly = true;
+            this.gridColumn14.OptionsColumn.ShowCaption = false;
+            this.gridColumn14.Width = 25;
+            // 
+            // repositoryItemImageComboBox2
+            // 
+            this.repositoryItemImageComboBox2.AutoHeight = false;
+            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, -1)});
+            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.repositoryItemImageComboBox2.ShowDropDown = DevExpress.XtraEditors.Controls.ShowDropDown.Never;
+            this.repositoryItemImageComboBox2.SmallImages = this.GridImageList;
             // 
             // panelControl2
             // 
@@ -2151,7 +2200,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.StopProcesBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.AddIntermediateWeighing),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditItemBtn)});
             this.WbGridPopupMenu.Manager = this.barManager1;
             this.WbGridPopupMenu.Name = "WbGridPopupMenu";
             // 
@@ -2218,6 +2268,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheckedItemImageComboBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
@@ -2441,5 +2492,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
     }
 }

@@ -1611,12 +1611,6 @@
     <Compile Include="UserControls\Directories\ucMaterials.Designer.cs">
       <DependentUpon>ucMaterials.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainTabs\OLD_DirectoriesUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MainTabs\OLD_DirectoriesUserControl.Designer.cs">
-      <DependentUpon>OLD_DirectoriesUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Directories\ucKagents.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1659,12 +1653,6 @@
     <Compile Include="UserControls\Manufacturing\ucPreparationProducts.Designer.cs">
       <DependentUpon>ucPreparationProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainTabs\OLD_ManufacturingUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MainTabs\OLD_ManufacturingUserControl.Designer.cs">
-      <DependentUpon>OLD_ManufacturingUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Manufacturing\ucProductionPlanning.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1682,12 +1670,6 @@
     </Compile>
     <Compile Include="UserControls\Manufacturing\ucManufacturingProducts.Designer.cs">
       <DependentUpon>ucManufacturingProducts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainTabs\OLD_WarehouseUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MainTabs\OLD_WarehouseUserControl.Designer.cs">
-      <DependentUpon>OLD_WarehouseUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -2768,9 +2750,6 @@
     <EmbeddedResource Include="UserControls\Directories\ucMaterials.resx">
       <DependentUpon>ucMaterials.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainTabs\OLD_DirectoriesUserControl.resx">
-      <DependentUpon>OLD_DirectoriesUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Directories\ucKagents.resx">
       <DependentUpon>ucKagents.cs</DependentUpon>
     </EmbeddedResource>
@@ -2792,9 +2771,6 @@
     <EmbeddedResource Include="UserControls\Manufacturing\ucPreparationProducts.resx">
       <DependentUpon>ucPreparationProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainTabs\OLD_ManufacturingUserControl.resx">
-      <DependentUpon>OLD_ManufacturingUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucProductionPlanning.resx">
       <DependentUpon>ucProductionPlanning.cs</DependentUpon>
     </EmbeddedResource>
@@ -2803,9 +2779,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Manufacturing\ucManufacturingProducts.resx">
       <DependentUpon>ucManufacturingProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainTabs\OLD_WarehouseUserControl.resx">
-      <DependentUpon>OLD_WarehouseUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReport54.resx">
       <DependentUpon>frmReport54.cs</DependentUpon>

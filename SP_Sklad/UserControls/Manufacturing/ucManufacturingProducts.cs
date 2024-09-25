@@ -59,8 +59,10 @@ namespace SP_Sklad.MainTabs
             WbGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
 
+        System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ManufacturingUserControl_Load(object sender, EventArgs e)
         {
+            WbGridView.SaveLayoutToStream(wh_layout_stream);
             WbGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
       
             if (!DesignMode)
@@ -562,7 +564,7 @@ namespace SP_Sklad.MainTabs
 
         private void RefreshAttachedFiles()
         {
-            AttachedFilesGridControl.DataSource = DB.SkladBase().AttachedFiles.Where(w => w.DocId == focused_row.Id).Select(s => new AttachedFilesPathLiew
+            AttachedFilesGridControl.DataSource = DB.SkladBase().AttachedFiles.Where(w => w.DocId == focused_row.Id).Select(s => new AttachedFilesView
             {
                 Id = s.Id,
                 PersonName = s.Kagent.Name,
@@ -882,7 +884,7 @@ namespace SP_Sklad.MainTabs
             }
         }
 
-        public class AttachedFilesPathLiew
+        public class AttachedFilesView
         {
             public Guid Id { get; set; }
             public DateTime? CreatedAt { get; set; }
@@ -927,7 +929,7 @@ namespace SP_Sklad.MainTabs
             {
                 return;
             }
-            var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesPathLiew;
+            var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesView;
 
             if (File.Exists(row.FileName))
             {
@@ -970,7 +972,7 @@ namespace SP_Sklad.MainTabs
             {
                 using (var _db = DB.SkladBase())
                 {
-                    var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesPathLiew;
+                    var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesView;
 
                     var af = _db.AttachedFiles.Find(row.Id);
                     af.Notes = (string)e.Value;
@@ -978,6 +980,13 @@ namespace SP_Sklad.MainTabs
                     RefreshAttachedFiles();
                 }
             }
+        }
+
+        private void barButtonItem12_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            wh_layout_stream.Seek(0, System.IO.SeekOrigin.Begin);
+
+            WbGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
     }
 }

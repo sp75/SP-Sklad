@@ -63,5 +63,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> AdditionalCosts { get; set; }
         public Nullable<decimal> MatOut { get; set; }
         public int UserId { get; set; }
+        public int IsAttachedFiles { get; set; }
     }
 }
