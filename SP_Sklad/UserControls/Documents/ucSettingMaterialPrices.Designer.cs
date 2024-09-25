@@ -137,7 +137,7 @@
             // 
             this.splitContainerControl4.Panel2.Controls.Add(this.xtraTabControl3);
             this.splitContainerControl4.Panel2.Text = "Panel2";
-            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 604);
+            this.splitContainerControl4.Size = new System.Drawing.Size(1248, 661);
             this.splitContainerControl4.SplitterPosition = 354;
             this.splitContainerControl4.TabIndex = 9;
             this.splitContainerControl4.Text = "splitContainerControl4";
@@ -320,7 +320,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 628);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 685);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(1248, 0);
             // 
@@ -330,7 +330,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 604);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 661);
             // 
             // barDockControlRight
             // 
@@ -338,7 +338,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(1248, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 604);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 661);
             // 
             // standaloneBarDockControl1
             // 
@@ -611,7 +611,7 @@
             this.xtraTabControl3.Location = new System.Drawing.Point(0, 0);
             this.xtraTabControl3.Name = "xtraTabControl3";
             this.xtraTabControl3.SelectedTabPage = this.xtraTabPage14;
-            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 240);
+            this.xtraTabControl3.Size = new System.Drawing.Size(1248, 297);
             this.xtraTabControl3.TabIndex = 0;
             this.xtraTabControl3.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage14});
@@ -621,7 +621,7 @@
             this.xtraTabPage14.Controls.Add(this.SettingMaterialPricesDetGridControl);
             this.xtraTabPage14.ImageOptions.ImageIndex = 14;
             this.xtraTabPage14.Name = "xtraTabPage14";
-            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 212);
+            this.xtraTabPage14.Size = new System.Drawing.Size(1246, 269);
             this.xtraTabPage14.Text = "Позиції";
             // 
             // SettingMaterialPricesDetGridControl
@@ -639,7 +639,7 @@
             this.SettingMaterialPricesDetGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit1,
             this.repositoryItemLookUpEdit1});
-            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 212);
+            this.SettingMaterialPricesDetGridControl.Size = new System.Drawing.Size(1246, 269);
             this.SettingMaterialPricesDetGridControl.TabIndex = 32;
             this.SettingMaterialPricesDetGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.SettingMaterialPricesDetGrid});
@@ -765,6 +765,8 @@
             // 
             // colProcurementPrice
             // 
+            this.colProcurementPrice.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colProcurementPrice.AppearanceCell.Options.UseFont = true;
             this.colProcurementPrice.Caption = "Ціна";
             this.colProcurementPrice.ColumnEdit = this.repositoryItemCalcEdit1;
             this.colProcurementPrice.FieldName = "ProcurementPrice";
@@ -814,6 +816,8 @@
             // 
             // colPrice
             // 
+            this.colPrice.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colPrice.AppearanceCell.Options.UseFont = true;
             this.colPrice.Caption = "Ціна";
             this.colPrice.ColumnEdit = this.repositoryItemCalcEdit1;
             this.colPrice.DisplayFormat.FormatString = "0.00";
@@ -874,7 +878,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "ucSettingMaterialPrices";
-            this.Size = new System.Drawing.Size(1248, 628);
+            this.Size = new System.Drawing.Size(1248, 685);
             this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();
             this.splitContainerControl4.Panel1.ResumeLayout(false);

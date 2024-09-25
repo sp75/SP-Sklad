@@ -1157,7 +1157,7 @@
             // 
             // gridColumn14
             // 
-            this.gridColumn14.Caption = "Прикріплені файли";
+            this.gridColumn14.Caption = "Вкладення";
             this.gridColumn14.ColumnEdit = this.repositoryItemImageComboBox2;
             this.gridColumn14.FieldName = "IsAttachedFiles";
             this.gridColumn14.Name = "gridColumn14";
@@ -2091,7 +2091,7 @@
             this.xtraTabPage3.ImageOptions.ImageIndex = 6;
             this.xtraTabPage3.Name = "xtraTabPage3";
             this.xtraTabPage3.Size = new System.Drawing.Size(1332, 241);
-            this.xtraTabPage3.Text = "Прикріплені файли";
+            this.xtraTabPage3.Text = "Вкладення";
             // 
             // AttachedFilesGridControl
             // 
@@ -2124,7 +2124,7 @@
             // 
             // gridColumn15
             // 
-            this.gridColumn15.Caption = "Файл";
+            this.gridColumn15.Caption = "Ім\'я файла";
             this.gridColumn15.FieldName = "FileName";
             this.gridColumn15.Name = "gridColumn15";
             this.gridColumn15.OptionsColumn.AllowEdit = false;
@@ -2135,7 +2135,7 @@
             // 
             // gridColumn16
             // 
-            this.gridColumn16.Caption = "Відповідальний";
+            this.gridColumn16.Caption = "Автор";
             this.gridColumn16.FieldName = "PersonName";
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.OptionsColumn.AllowEdit = false;
@@ -2146,7 +2146,7 @@
             // 
             // gridColumn17
             // 
-            this.gridColumn17.Caption = "Дата";
+            this.gridColumn17.Caption = "Дата створення";
             this.gridColumn17.DisplayFormat.FormatString = "g";
             this.gridColumn17.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn17.FieldName = "CreatedAt";
