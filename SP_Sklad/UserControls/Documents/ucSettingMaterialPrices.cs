@@ -25,11 +25,11 @@ namespace SP_Sklad.UserControls
         private int fun_id = 97;
         private string reg_layout_path = "ucSettingMaterialPrices\\SettingMaterialPricesGridView";
         BaseEntities _db { get; set; }
-        public BarButtonItem EditBtn { get; set; }
-        public BarButtonItem DeleteBtn { get; set; }
-        public BarButtonItem ExecuteBtn { get; set; }
-        public BarButtonItem CopyBtn { get; set; }
-        public BarButtonItem PrintBtn { get; set; }
+     //   public BarButtonItem EditBtn { get; set; }
+     //   public BarButtonItem DeleteBtn { get; set; }
+   //     public BarButtonItem ExecuteBtn { get; set; }
+   //     public BarButtonItem CopyBtn { get; set; }
+   //     public BarButtonItem PrintBtn { get; set; }
 
         public v_SettingMaterialPrices row_smp => SettingMaterialPricesGridView.GetFocusedRow() is NotLoadedObject ? null : SettingMaterialPricesGridView.GetFocusedRow() as v_SettingMaterialPrices;
         public v_SettingMaterialPricesDet row_smp_det => SettingMaterialPricesDetGrid.GetFocusedRow() as v_SettingMaterialPricesDet;
@@ -166,19 +166,19 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
+    //        DeleteBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
             DeleteItemBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanDelete == 1);
 
-            ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
+     //       ExecuteBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
             ExecuteItemBtn.Enabled = (row_smp != null && user_access.CanPost == 1);
 
-            EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
+     //       EditBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
             EditItemBtn.Enabled = (row_smp != null && row_smp.Checked == 0 && user_access.CanModify == 1);
 
-            CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
+     //       CopyBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
             CopyItemBtn.Enabled = (row_smp != null && user_access.CanModify == 1);
 
-            PrintBtn.Enabled = (row_smp != null);
+   //         PrintBtn.Enabled = (row_smp != null);
             PrintItemBtn.Enabled = (row_smp != null);
             PrintItemBtn2.Enabled = (row_smp != null);
 
@@ -213,7 +213,7 @@ namespace SP_Sklad.UserControls
 
         private void SettingMaterialPricesGridView_DoubleClick(object sender, EventArgs e)
         {
-            EditBtn.PerformClick();
+            EditItemBtn.PerformClick();
         }
 
         private void SettingMaterialPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
@@ -237,6 +237,7 @@ namespace SP_Sklad.UserControls
         private void NewItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             NewItem();
+            GetData();
         }
 
         private void SettingMaterialPricesGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -250,7 +251,8 @@ namespace SP_Sklad.UserControls
 
         private void DeleteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            DeleteBtn.PerformClick();
+            DeleteItem();
+            GetData();
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -260,17 +262,19 @@ namespace SP_Sklad.UserControls
 
         private void ExecuteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ExecuteBtn.PerformClick();
+            ExecuteItem();
+            GetData();
         }
 
         private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            PrintBtn.PerformClick();
+            PrintItem();
         }
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            EditBtn.PerformClick();
+            EditItem();
+            GetData();
         }
 
         private void SettingMaterialPricesDetGrid_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
@@ -343,6 +347,7 @@ namespace SP_Sklad.UserControls
         private void CopyItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
             CopyItem();
+            GetData();
         }
 
         private void repositoryItemButtonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)

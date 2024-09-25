@@ -751,14 +751,13 @@
             // 
             // settingMaterialPricesUserControl1
             // 
-            this.settingMaterialPricesUserControl1.CopyBtn = this.CopyItemBtn;
-            this.settingMaterialPricesUserControl1.DeleteBtn = this.DeleteItemBtn;
+       
+
             this.settingMaterialPricesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingMaterialPricesUserControl1.EditBtn = this.EditItemBtn;
-            this.settingMaterialPricesUserControl1.ExecuteBtn = this.ExecuteItemBtn;
+
             this.settingMaterialPricesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.settingMaterialPricesUserControl1.Name = "settingMaterialPricesUserControl1";
-            this.settingMaterialPricesUserControl1.PrintBtn = this.PrintItemBtn;
+
             this.settingMaterialPricesUserControl1.Size = new System.Drawing.Size(1138, 695);
             this.settingMaterialPricesUserControl1.TabIndex = 0;
             // 

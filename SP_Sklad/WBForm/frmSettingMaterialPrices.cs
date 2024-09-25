@@ -67,7 +67,7 @@ namespace SP_Sklad.WBForm
                     Checked = 0,
                     OnDate = DBHelper.ServerDateTime(),
                     PersonId = DBHelper.CurrentUser.KaId,
-                    PTypeId = _PTypeId ?? _db.PriceTypes.FirstOrDefault().PTypeId,
+                    PTypeId = _PTypeId ?? _db.PriceTypes.Where(w => w.Def == 1).Select(s => s.PTypeId).FirstOrDefault(),
                     Num = new BaseEntities().GetDocNum("setting_material_prices").FirstOrDefault()
                 });
 
@@ -207,7 +207,8 @@ namespace SP_Sklad.WBForm
                     MatId = mat_id,
                     SettingMaterialPricesId = _wbt_id.Value,
                     CreatedAt = DBHelper.ServerDateTime(),
-                    Price = 0
+                    Price = 0,
+                    SupplierId = _db.MaterialSupplier.Where(w => w.MatId == mat_id).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == mat_id).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
                 });
 
                 _db.SaveChanges();
@@ -220,9 +221,10 @@ namespace SP_Sklad.WBForm
             if (GrpId != null)
             {
                 var grp_id = (int)GrpId;
+                var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0;
+
                 foreach (var item in _db.Materials.Where(w => w.GrpId == grp_id && w.Deleted == 0 && (w.Archived ?? 0) == 0).ToList())
                 {
-                    var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0;
                     if (!_db.SettingMaterialPricesDet.Where(w => w.MatId == item.MatId && w.SettingMaterialPricesId == _wbt_id.Value).Any())
                     {
                         _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
@@ -232,7 +234,8 @@ namespace SP_Sklad.WBForm
                             MatId = item.MatId,
                             SettingMaterialPricesId = _wbt_id.Value,
                             CreatedAt = DBHelper.ServerDateTime(),
-                            Price = 0
+                            Price = 0,
+                            SupplierId = _db.MaterialSupplier.Where(w => w.MatId == item.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == item.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
                         });
                     }
                 }
@@ -477,19 +480,6 @@ namespace SP_Sklad.WBForm
         private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             IHelper.ExportToXlsx(SettingMaterialPricesDetGridControl);
-
-            /*        excelDataSource1.Fill();
-
-                    DevExpress.DataAccess.Native.Excel.DataView dv = ((IListSource)excelDataSource1).GetList() as DevExpress.DataAccess.Native.Excel.DataView;
-                    for (int i = 0; i < dv.Count; i++)
-                    {
-                        DevExpress.DataAccess.Native.Excel.ViewRow row = dv[i] as DevExpress.DataAccess.Native.Excel.ViewRow;
-                        foreach (DevExpress.DataAccess.Native.Excel.ViewColumn col in dv.Columns)
-                        {
-                            object val = col.GetValue(row);
-                        }
-                    }*/
-
         }
 
         private void SettingMaterialPricesDetGrid_ClipboardRowPasting(object sender, ClipboardRowPastingEventArgs e)
@@ -513,6 +503,7 @@ namespace SP_Sklad.WBForm
                         Price = Convert.ToDecimal(e.Values[colPrice]),
                         Markup = e.Values[colMarkup] != null ? (decimal?)Convert.ToDecimal(e.Values[colMarkup]) : null,
                         ProcurementPrice = e.Values[colProcurementPrice] != null ? (decimal?)Convert.ToDecimal(e.Values[colProcurementPrice]) : null,
+                        SupplierId = _db.MaterialSupplier.Where(w => w.MatId == MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
                     });
                 }
                 else
@@ -559,5 +550,63 @@ namespace SP_Sklad.WBForm
                 GetDetail();
             }
         }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                excelDataSource1.FileName = openFileDialog1.FileName;
+
+                excelDataSource1.Fill();
+
+                var data_table = excelDataSource1.ToDataTable();
+                foreach(DataRow dr in data_table.Rows)
+                {
+                    int? mat_id = dr[0] == DBNull.Value ? null : (int?)Convert.ToInt32(dr[0]);
+                    string articul = dr[1] == DBNull.Value ? "" : Convert.ToString(dr[1]);
+                    string bar_code= dr[2] == DBNull.Value ? "" : Convert.ToString(dr[2]);
+                    decimal? procurement_price = dr[3] == DBNull.Value ? null : (decimal?)Convert.ToDecimal (dr[3]);
+                    decimal? price = dr[4] == DBNull.Value ? null : (decimal?)Convert.ToDecimal(dr[4]);
+
+                    var material = _db.v_MaterialBarCodes.Where(w => w.MatId == mat_id || w.Artikul == articul || w.BarCode == bar_code).FirstOrDefault();
+
+                    if (material != null && price.HasValue)
+                    {
+
+                        var num = _db.SettingMaterialPricesDet.Where(w => w.SettingMaterialPricesId == _wbt_id.Value).Max(m => m.Num) ?? 0;
+                        var det = _db.SettingMaterialPricesDet.FirstOrDefault(w => w.MatId == material.MatId && w.SettingMaterialPricesId == _wbt_id.Value);
+
+                        if (det == null)
+                        {
+                            _db.SettingMaterialPricesDet.Add(new SettingMaterialPricesDet
+                            {
+                                Id = Guid.NewGuid(),
+                                Num = ++num,
+                                MatId = material.MatId,
+                                SettingMaterialPricesId = _wbt_id.Value,
+                                CreatedAt = DBHelper.ServerDateTime(),
+                                Price = price.Value,
+                                Markup = procurement_price.HasValue ? (price.Value - procurement_price) / procurement_price * 100 : null,
+                                ProcurementPrice = procurement_price,
+                                SupplierId = _db.MaterialSupplier.Where(w => w.MatId == material.MatId).Any() ? (int?)_db.MaterialSupplier.Where(w => w.MatId == material.MatId).OrderByDescending(o => o.Def).Select(s => s.KaId).FirstOrDefault() : null
+                            });
+                        }
+                        else
+                        {
+                            det.Markup = procurement_price.HasValue ? (price.Value - procurement_price) / procurement_price * 100 : null;
+                            det.ProcurementPrice = procurement_price;
+                            det.Price = price.Value;
+                        }
+
+                        _db.SaveChanges();
+
+                        GetDetail();
+                    }
+                }
+
+            }
+        }
+
+       
     }
 }

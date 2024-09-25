@@ -258,6 +258,7 @@
     <Compile Include="Common\DocEdit.cs" />
     <Compile Include="Common\EAN13.cs" />
     <Compile Include="Common\EFAuditingHelperMethods.cs" />
+    <Compile Include="Common\ExcelDataSourceExtension.cs" />
     <Compile Include="Common\ExecuteDocument.cs" />
     <Compile Include="Common\ExtensionMethods.cs" />
     <Compile Include="Common\FindDoc.cs" />
@@ -3990,6 +3991,7 @@
     <None Include="Resources\re_calc_remain_1.png" />
     <None Include="Resources\system_report.png" />
     <None Include="Resources\attach.png" />
+    <None Include="Resources\xls_import.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

@@ -45,10 +45,6 @@
             DevExpress.DataAccess.Excel.FieldInfo fieldInfo3 = new DevExpress.DataAccess.Excel.FieldInfo();
             DevExpress.DataAccess.Excel.FieldInfo fieldInfo4 = new DevExpress.DataAccess.Excel.FieldInfo();
             DevExpress.DataAccess.Excel.FieldInfo fieldInfo5 = new DevExpress.DataAccess.Excel.FieldInfo();
-            DevExpress.DataAccess.Excel.FieldInfo fieldInfo6 = new DevExpress.DataAccess.Excel.FieldInfo();
-            DevExpress.DataAccess.Excel.FieldInfo fieldInfo7 = new DevExpress.DataAccess.Excel.FieldInfo();
-            DevExpress.DataAccess.Excel.FieldInfo fieldInfo8 = new DevExpress.DataAccess.Excel.FieldInfo();
-            DevExpress.DataAccess.Excel.FieldInfo fieldInfo9 = new DevExpress.DataAccess.Excel.FieldInfo();
             DevExpress.DataAccess.Excel.ExcelWorksheetSettings excelWorksheetSettings1 = new DevExpress.DataAccess.Excel.ExcelWorksheetSettings();
             DevExpress.DataAccess.Excel.ExcelSourceOptions excelSourceOptions1 = new DevExpress.DataAccess.Excel.ExcelSourceOptions(excelWorksheetSettings1);
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -61,6 +57,7 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.DelMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -128,6 +125,7 @@
             this.dragDropEvents1 = new DevExpress.Utils.DragDrop.DragDropEvents(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
@@ -205,8 +203,9 @@
             this.barButtonItem7,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.addButtonItem});
-            this.barManager1.MaxItemId = 45;
+            this.addButtonItem,
+            this.barButtonItem10});
+            this.barManager1.MaxItemId = 46;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCalcEdit2,
             this.repositoryItemCalcEdit3});
@@ -275,7 +274,8 @@
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.AddMaterialBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
@@ -296,6 +296,14 @@
             this.barButtonItem6.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
             this.barButtonItem6.Name = "barButtonItem6";
             this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
+            // barButtonItem10
+            // 
+            this.barButtonItem10.Caption = "Імпорт з Excel";
+            this.barButtonItem10.Id = 45;
+            this.barButtonItem10.ImageOptions.ImageIndex = 13;
+            this.barButtonItem10.Name = "barButtonItem10";
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
             // 
             // barSubItem2
             // 
@@ -468,6 +476,8 @@
             this.WBImgList.Images.SetKeyName(11, "paste_16x16.png");
             this.WBImgList.InsertGalleryImage("copy_16x16.png", "office2013/edit/copy_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/edit/copy_16x16.png"), 12);
             this.WBImgList.Images.SetKeyName(12, "copy_16x16.png");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.xls_import, "xls_import", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.WBImgList.Images.SetKeyName(13, "xls_import");
             // 
             // MatInfoBtn
             // 
@@ -1029,42 +1039,35 @@
             // 
             // excelDataSource1
             // 
-            this.excelDataSource1.FileName = "C:\\WinVSProjects\\SP-Sklad\\SP_Sklad\\Rep\\expotr_638592428986205164.xlsx";
+            this.excelDataSource1.FileName = "";
             this.excelDataSource1.Name = "excelDataSource1";
             this.excelDataSource1.ResultSchemaSerializable = resources.GetString("excelDataSource1.ResultSchemaSerializable");
-            fieldInfo1.Name = "№";
+            fieldInfo1.Name = "Код товару";
             fieldInfo1.Type = typeof(double);
-            fieldInfo2.Name = "Назва";
+            fieldInfo2.Name = "Артикул";
             fieldInfo2.Type = typeof(string);
-            fieldInfo3.Name = "Група";
+            fieldInfo3.Name = "Штрих код";
             fieldInfo3.Type = typeof(string);
-            fieldInfo4.Name = "Артикул";
-            fieldInfo4.Type = typeof(string);
-            fieldInfo5.Name = "Попередня ціна";
-            fieldInfo5.Type = typeof(string);
-            fieldInfo6.Name = "Ціна";
-            fieldInfo6.Type = typeof(double);
-            fieldInfo7.Name = "Націнка, %";
-            fieldInfo7.Type = typeof(double);
-            fieldInfo8.Name = "Column8";
-            fieldInfo8.Type = typeof(string);
-            fieldInfo9.Name = "Column9";
-            fieldInfo9.Type = typeof(double);
+            fieldInfo4.Name = "Закупівельна ціна";
+            fieldInfo4.Type = typeof(double);
+            fieldInfo5.Name = "Роздрібна ціна";
+            fieldInfo5.Type = typeof(double);
             this.excelDataSource1.Schema.AddRange(new DevExpress.DataAccess.Excel.FieldInfo[] {
             fieldInfo1,
             fieldInfo2,
             fieldInfo3,
             fieldInfo4,
-            fieldInfo5,
-            fieldInfo6,
-            fieldInfo7,
-            fieldInfo8,
-            fieldInfo9});
+            fieldInfo5});
             excelWorksheetSettings1.CellRange = null;
             excelWorksheetSettings1.WorksheetIndex = null;
             excelWorksheetSettings1.WorksheetName = "Sheet";
             excelSourceOptions1.ImportSettings = excelWorksheetSettings1;
             this.excelDataSource1.SourceOptions = excelSourceOptions1;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Excel Files|*.xlsx";
             // 
             // frmSettingMaterialPrices
             // 
@@ -1203,5 +1206,7 @@
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraBars.BarButtonItem addButtonItem;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

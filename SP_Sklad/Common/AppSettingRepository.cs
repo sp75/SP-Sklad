@@ -79,6 +79,16 @@ namespace SP_Sklad.Common
             }
          
         }
+
+        public bool ShowOpenStoreApp
+        {
+            get
+            {
+                var v = Get("ShowOpenStoreApp");
+                return string.IsNullOrEmpty(v) ? false : Convert.ToBoolean(v);
+            }
+
+        }
         #endregion
 
         public int WBOutRoundingMethod
