@@ -66,6 +66,7 @@
           <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="PersonId" Type="int" />
           <Property Name="Notes" Type="nvarchar" MaxLength="250" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Banks">
           <Key>
@@ -3682,6 +3683,8 @@ warning 6002: The table/view 'sp_base.dbo.v_SettingMaterialPricesDet' does not h
           <Property Name="LastProcurementPrice" Type="numeric" Precision="15" Scale="2" />
           <Property Name="SupplierId" Type="int" />
           <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PriceIncrease" Type="numeric" Precision="38" Scale="18" />
+          <Property Name="ProcurementPriceIncrease" Type="numeric" Precision="38" Scale="18" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_SummarySettingMaterialPrices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -11342,7 +11345,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_SettingMaterialPricesDet].[Markup] AS [Markup], 
     [v_SettingMaterialPricesDet].[LastProcurementPrice] AS [LastProcurementPrice], 
     [v_SettingMaterialPricesDet].[SupplierId] AS [SupplierId], 
-    [v_SettingMaterialPricesDet].[SupplierName] AS [SupplierName]
+    [v_SettingMaterialPricesDet].[SupplierName] AS [SupplierName], 
+    [v_SettingMaterialPricesDet].[PriceIncrease] AS [PriceIncrease], 
+    [v_SettingMaterialPricesDet].[ProcurementPriceIncrease] AS [ProcurementPriceIncrease]
     FROM [dbo].[v_SettingMaterialPricesDet] AS [v_SettingMaterialPricesDet]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_SummarySettingMaterialPrices" EntityType="Self.v_SummarySettingMaterialPrices" store:Type="Views" store:Schema="dbo">
@@ -21838,6 +21843,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="LastProcurementPrice" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="SupplierId" Type="Int32" />
           <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PriceIncrease" Type="Decimal" Precision="38" Scale="18" />
+          <Property Name="ProcurementPriceIncrease" Type="Decimal" Precision="38" Scale="18" />
         </EntityType>
         <EntityType Name="v_SummarySettingMaterialPrices">
           <Key>
@@ -24682,6 +24689,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="PersonId" Type="Int32" />
           <Property Name="Notes" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_AttachedFiles_Kagent" FromRole="AttachedFiles" ToRole="Kagent" />
+          <Property Name="FilePath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_AttachedFiles_Kagent">
           <End Type="BaseModel.Kagent" Role="Kagent" Multiplicity="0..1" />
@@ -29548,6 +29556,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_SettingMaterialPricesDet">
             <EntityTypeMapping TypeName="BaseModel.v_SettingMaterialPricesDet">
               <MappingFragment StoreEntitySet="v_SettingMaterialPricesDet">
+                <ScalarProperty Name="ProcurementPriceIncrease" ColumnName="ProcurementPriceIncrease" />
+                <ScalarProperty Name="PriceIncrease" ColumnName="PriceIncrease" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="LastProcurementPrice" ColumnName="LastProcurementPrice" />
@@ -31314,6 +31324,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="AttachedFiles">
             <EntityTypeMapping TypeName="BaseModel.AttachedFiles">
               <MappingFragment StoreEntitySet="AttachedFiles">
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="PersonId" ColumnName="PersonId" />
                 <ScalarProperty Name="DocId" ColumnName="DocId" />

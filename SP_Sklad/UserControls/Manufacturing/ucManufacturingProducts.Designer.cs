@@ -2095,7 +2095,6 @@
             // 
             // AttachedFilesGridControl
             // 
-            this.AttachedFilesGridControl.DataSource = this.IntermediateWeighingByWBBS;
             this.AttachedFilesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AttachedFilesGridControl.Location = new System.Drawing.Point(0, 24);
             this.AttachedFilesGridControl.MainView = this.AttachedFilesGridView;

@@ -85,14 +85,17 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand2 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.bandedGridColumn1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colProcurementPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.bandedGridColumn4 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colMarkup = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridColumn8 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colPrice = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.bandedGridColumn5 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.SettingMaterialPricesPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.SettingMaterialPricesDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -667,7 +670,10 @@
             this.colProcurementPrice,
             this.colMarkup,
             this.bandedGridColumn1,
-            this.bandedGridColumn2});
+            this.bandedGridColumn2,
+            this.bandedGridColumn3,
+            this.bandedGridColumn4,
+            this.bandedGridColumn5});
             this.SettingMaterialPricesDetGrid.GridControl = this.SettingMaterialPricesDetGridControl;
             this.SettingMaterialPricesDetGrid.Name = "SettingMaterialPricesDetGrid";
             this.SettingMaterialPricesDetGrid.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
@@ -676,6 +682,7 @@
             this.SettingMaterialPricesDetGrid.OptionsClipboard.ClipboardMode = DevExpress.Export.ClipboardMode.Formatted;
             this.SettingMaterialPricesDetGrid.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.Append;
             this.SettingMaterialPricesDetGrid.OptionsSelection.MultiSelect = true;
+            this.SettingMaterialPricesDetGrid.OptionsView.ColumnHeaderAutoHeight = DevExpress.Utils.DefaultBoolean.True;
             this.SettingMaterialPricesDetGrid.OptionsView.ShowGroupPanel = false;
             this.SettingMaterialPricesDetGrid.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.SettingMaterialPricesDetGrid_PopupMenuShowing);
             // 
@@ -688,9 +695,10 @@
             this.gridBand1.Columns.Add(this.gridColumn2);
             this.gridBand1.Columns.Add(this.gridColumn1);
             this.gridBand1.Columns.Add(this.gridColumn7);
+            this.gridBand1.Columns.Add(this.bandedGridColumn3);
             this.gridBand1.Name = "gridBand1";
             this.gridBand1.VisibleIndex = 0;
-            this.gridBand1.Width = 658;
+            this.gridBand1.Width = 827;
             // 
             // gridColumn10
             // 
@@ -700,7 +708,7 @@
             this.gridColumn10.OptionsColumn.AllowEdit = false;
             this.gridColumn10.OptionsColumn.ReadOnly = true;
             this.gridColumn10.Visible = true;
-            this.gridColumn10.Width = 37;
+            this.gridColumn10.Width = 39;
             // 
             // bandedGridColumn2
             // 
@@ -708,7 +716,8 @@
             this.bandedGridColumn2.FieldName = "MatId";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
             this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn2.Width = 76;
+            this.bandedGridColumn2.Visible = true;
+            this.bandedGridColumn2.Width = 70;
             // 
             // colMaterial
             // 
@@ -717,7 +726,7 @@
             this.colMaterial.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
             this.colMaterial.Name = "colMaterial";
             this.colMaterial.Visible = true;
-            this.colMaterial.Width = 356;
+            this.colMaterial.Width = 311;
             // 
             // gridColumn2
             // 
@@ -725,7 +734,7 @@
             this.gridColumn2.FieldName = "GrpName";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.Width = 130;
+            this.gridColumn2.Width = 88;
             // 
             // gridColumn1
             // 
@@ -743,17 +752,26 @@
             this.gridColumn7.FieldName = "Artikul";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.Width = 135;
+            this.gridColumn7.Width = 87;
+            // 
+            // bandedGridColumn3
+            // 
+            this.bandedGridColumn3.Caption = "Постачальник";
+            this.bandedGridColumn3.FieldName = "SupplierName";
+            this.bandedGridColumn3.Name = "bandedGridColumn3";
+            this.bandedGridColumn3.Visible = true;
+            this.bandedGridColumn3.Width = 232;
             // 
             // gridBand2
             // 
             this.gridBand2.Caption = "Закупівельна, грн";
             this.gridBand2.Columns.Add(this.bandedGridColumn1);
             this.gridBand2.Columns.Add(this.colProcurementPrice);
+            this.gridBand2.Columns.Add(this.bandedGridColumn4);
             this.gridBand2.Columns.Add(this.colMarkup);
             this.gridBand2.Name = "gridBand2";
             this.gridBand2.VisibleIndex = 1;
-            this.gridBand2.Width = 358;
+            this.gridBand2.Width = 304;
             // 
             // bandedGridColumn1
             // 
@@ -761,11 +779,13 @@
             this.bandedGridColumn1.FieldName = "LastProcurementPrice";
             this.bandedGridColumn1.Name = "bandedGridColumn1";
             this.bandedGridColumn1.Visible = true;
-            this.bandedGridColumn1.Width = 137;
+            this.bandedGridColumn1.Width = 90;
             // 
             // colProcurementPrice
             // 
+            this.colProcurementPrice.AppearanceCell.BackColor = System.Drawing.Color.Ivory;
             this.colProcurementPrice.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colProcurementPrice.AppearanceCell.Options.UseBackColor = true;
             this.colProcurementPrice.AppearanceCell.Options.UseFont = true;
             this.colProcurementPrice.Caption = "Ціна";
             this.colProcurementPrice.ColumnEdit = this.repositoryItemCalcEdit1;
@@ -773,7 +793,7 @@
             this.colProcurementPrice.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
             this.colProcurementPrice.Name = "colProcurementPrice";
             this.colProcurementPrice.Visible = true;
-            this.colProcurementPrice.Width = 113;
+            this.colProcurementPrice.Width = 59;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -785,6 +805,15 @@
             this.repositoryItemCalcEdit1.MaskSettings.Set("mask", "");
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
+            // bandedGridColumn4
+            // 
+            this.bandedGridColumn4.Caption = "Підвищення ціни, %";
+            this.bandedGridColumn4.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn4.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn4.FieldName = "ProcurementPriceIncrease";
+            this.bandedGridColumn4.Name = "bandedGridColumn4";
+            this.bandedGridColumn4.Visible = true;
+            // 
             // colMarkup
             // 
             this.colMarkup.Caption = "Націнка, %";
@@ -795,16 +824,17 @@
             this.colMarkup.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
             this.colMarkup.Name = "colMarkup";
             this.colMarkup.Visible = true;
-            this.colMarkup.Width = 108;
+            this.colMarkup.Width = 80;
             // 
             // gridBand3
             // 
             this.gridBand3.Caption = "Роздрібна, грн";
             this.gridBand3.Columns.Add(this.gridColumn8);
             this.gridBand3.Columns.Add(this.colPrice);
+            this.gridBand3.Columns.Add(this.bandedGridColumn5);
             this.gridBand3.Name = "gridBand3";
             this.gridBand3.VisibleIndex = 2;
-            this.gridBand3.Width = 271;
+            this.gridBand3.Width = 239;
             // 
             // gridColumn8
             // 
@@ -812,11 +842,13 @@
             this.gridColumn8.FieldName = "LastPrice";
             this.gridColumn8.Name = "gridColumn8";
             this.gridColumn8.Visible = true;
-            this.gridColumn8.Width = 134;
+            this.gridColumn8.Width = 100;
             // 
             // colPrice
             // 
+            this.colPrice.AppearanceCell.BackColor = System.Drawing.Color.Ivory;
             this.colPrice.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.colPrice.AppearanceCell.Options.UseBackColor = true;
             this.colPrice.AppearanceCell.Options.UseFont = true;
             this.colPrice.Caption = "Ціна";
             this.colPrice.ColumnEdit = this.repositoryItemCalcEdit1;
@@ -826,7 +858,16 @@
             this.colPrice.ImageOptions.Alignment = System.Drawing.StringAlignment.Far;
             this.colPrice.Name = "colPrice";
             this.colPrice.Visible = true;
-            this.colPrice.Width = 137;
+            this.colPrice.Width = 64;
+            // 
+            // bandedGridColumn5
+            // 
+            this.bandedGridColumn5.Caption = "Підвищення ціни, %";
+            this.bandedGridColumn5.DisplayFormat.FormatString = "0.00";
+            this.bandedGridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.bandedGridColumn5.FieldName = "PriceIncrease";
+            this.bandedGridColumn5.Name = "bandedGridColumn5";
+            this.bandedGridColumn5.Visible = true;
             // 
             // repositoryItemLookUpEdit1
             // 
@@ -958,7 +999,6 @@
         private DevExpress.XtraBars.BarButtonItem PrintItemBtn2;
         private DevExpress.XtraGrid.GridControl SettingMaterialPricesDetGridControl;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridView SettingMaterialPricesDetGrid;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn10;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMaterial;
@@ -966,15 +1006,19 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn7;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colProcurementPrice;
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMarkup;
-        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn8;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPrice;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn4;
+        private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
+        private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn5;
     }
 }

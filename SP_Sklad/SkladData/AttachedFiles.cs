@@ -20,6 +20,7 @@ namespace SP_Sklad.SkladData
         public System.Guid DocId { get; set; }
         public Nullable<int> PersonId { get; set; }
         public string Notes { get; set; }
+        public string FilePath { get; set; }
     
         public virtual Kagent Kagent { get; set; }
     }

@@ -570,7 +570,8 @@ namespace SP_Sklad.MainTabs
                 PersonName = s.Kagent.Name,
                 Notes = s.Notes,
                 CreatedAt = s.CreatedAt,
-                FileName = s.FileName
+                FileName = s.FileName,
+                FilePath = s.FilePath
             }).ToList();
         }
 
@@ -892,11 +893,12 @@ namespace SP_Sklad.MainTabs
        //     public Guid DocId { get; set; }
             public string PersonName { get; set; }
             public string Notes { get; set; }
+            public string FilePath { get; set; }
         }
 
         private void barButtonItem11_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if(focused_row == null)
+            if (focused_row == null)
             {
                 return;
             }
@@ -912,9 +914,10 @@ namespace SP_Sklad.MainTabs
                     {
                         Id = Guid.NewGuid(),
                         CreatedAt = DBHelper.ServerDateTime(),
-                        FileName = dest_patth,
+                        FileName = Path.GetFileName(openFileDialog1.FileName),
                         DocId = focused_row.Id,
-                        PersonId = DBHelper.CurrentUser.KaId
+                        PersonId = DBHelper.CurrentUser.KaId,
+                        FilePath = dest_patth
                     });
 
                     _db.SaveChanges();
@@ -931,9 +934,9 @@ namespace SP_Sklad.MainTabs
             }
             var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesView;
 
-            if (File.Exists(row.FileName))
+            if (File.Exists(row.FilePath))
             {
-                File.Delete(row.FileName);
+                File.Delete(row.FilePath);
             }
 
             using (var _db = DB.SkladBase())
@@ -954,7 +957,7 @@ namespace SP_Sklad.MainTabs
 
             var row = AttachedFilesGridView.GetFocusedRow() as dynamic;
 
-            string file = row.FileName;
+            string file = row.FilePath;
             if (File.Exists(file) )
             {
                 Process.Start(file);
