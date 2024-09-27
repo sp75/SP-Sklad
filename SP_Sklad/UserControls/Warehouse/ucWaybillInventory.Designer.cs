@@ -889,6 +889,8 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ActualTotal", this.bandedGridColumn12, "{0:0.00}"),
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AccountingTotal", this.bandedGridColumn11, "{0:0.00}")});
             this.InventoryDetGridView.Name = "InventoryDetGridView";
+            this.InventoryDetGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
+            this.InventoryDetGridView.OptionsBehavior.ReadOnly = true;
             this.InventoryDetGridView.OptionsView.ShowFooter = true;
             this.InventoryDetGridView.OptionsView.ShowGroupPanel = false;
             this.InventoryDetGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.InventoryDetGridView_PopupMenuShowing);
@@ -923,8 +925,6 @@
             this.bandedGridColumn2.Caption = "Назва товару/послуги";
             this.bandedGridColumn2.FieldName = "MatName";
             this.bandedGridColumn2.Name = "bandedGridColumn2";
-            this.bandedGridColumn2.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn2.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn2.Visible = true;
             this.bandedGridColumn2.Width = 309;
             // 
@@ -933,8 +933,6 @@
             this.bandedGridColumn3.Caption = "Од. вим.";
             this.bandedGridColumn3.FieldName = "MsrName";
             this.bandedGridColumn3.Name = "bandedGridColumn3";
-            this.bandedGridColumn3.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn3.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn3.Visible = true;
             this.bandedGridColumn3.Width = 78;
             // 
@@ -976,8 +974,6 @@
             this.bandedGridColumn4.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn4.FieldName = "Amount";
             this.bandedGridColumn4.Name = "bandedGridColumn4";
-            this.bandedGridColumn4.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn4.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn4.Visible = true;
             this.bandedGridColumn4.Width = 71;
             // 
@@ -996,8 +992,6 @@
             this.bandedGridColumn5.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn5.FieldName = "Price";
             this.bandedGridColumn5.Name = "bandedGridColumn5";
-            this.bandedGridColumn5.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn5.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn5.Visible = true;
             this.bandedGridColumn5.Width = 92;
             // 
@@ -1008,8 +1002,6 @@
             this.bandedGridColumn11.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn11.FieldName = "AccountingTotal";
             this.bandedGridColumn11.Name = "bandedGridColumn11";
-            this.bandedGridColumn11.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn11.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn11.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "AccountingTotal", "{0:0.00}")});
             this.bandedGridColumn11.Visible = true;
@@ -1032,8 +1024,6 @@
             this.bandedGridColumn6.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn6.FieldName = "Discount";
             this.bandedGridColumn6.Name = "bandedGridColumn6";
-            this.bandedGridColumn6.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn6.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn6.Visible = true;
             this.bandedGridColumn6.Width = 72;
             // 
@@ -1043,8 +1033,6 @@
             this.bandedGridColumn7.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn7.FieldName = "Nds";
             this.bandedGridColumn7.Name = "bandedGridColumn7";
-            this.bandedGridColumn7.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn7.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn7.Visible = true;
             this.bandedGridColumn7.Width = 84;
             // 
@@ -1055,8 +1043,6 @@
             this.bandedGridColumn12.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn12.FieldName = "ActualTotal";
             this.bandedGridColumn12.Name = "bandedGridColumn12";
-            this.bandedGridColumn12.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn12.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn12.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "ActualTotal", "{0:0.00}")});
             this.bandedGridColumn12.Visible = true;
@@ -1078,8 +1064,6 @@
             this.bandedGridColumn8.ColumnEdit = this.repositoryItemCalcEdit1;
             this.bandedGridColumn8.FieldName = "AmountAll";
             this.bandedGridColumn8.Name = "bandedGridColumn8";
-            this.bandedGridColumn8.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn8.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn8.Visible = true;
             this.bandedGridColumn8.Width = 95;
             // 
@@ -1090,8 +1074,6 @@
             this.bandedGridColumn9.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.bandedGridColumn9.FieldName = "SumAll";
             this.bandedGridColumn9.Name = "bandedGridColumn9";
-            this.bandedGridColumn9.OptionsColumn.AllowEdit = false;
-            this.bandedGridColumn9.OptionsColumn.ReadOnly = true;
             this.bandedGridColumn9.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SumAll", "{0:0.00}")});
             this.bandedGridColumn9.Visible = true;

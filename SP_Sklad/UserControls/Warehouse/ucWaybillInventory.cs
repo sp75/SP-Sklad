@@ -29,13 +29,11 @@ namespace SP_Sklad.UserControls
         int w_type = 7;
         private int fun_id = 53;
         private string reg_layout_path = "ucWaybillInventory\\WbGridView";
-        BaseEntities _db { get; set; }
 
         public v_WaybillInventory wb_focused_row => WbGridView.GetFocusedRow() is NotLoadedObject ? null : WbGridView.GetFocusedRow() as v_WaybillInventory;
         public InventoryDet wb_det_focused_row => InventoryDetGridView.GetFocusedRow() as InventoryDet;
 
         private UserAccess user_access { get; set; }
-        private UserSettingsRepository user_settings { get; set; }
 
         private int prev_focused_id = 0;
         private int prev_top_row_index = 0;
@@ -129,16 +127,19 @@ namespace SP_Sklad.UserControls
 
             if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити акт інвентаризації №{wb_focused_row.Num}?", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
-                if (wb != null)
+                using (var db = new BaseEntities())
                 {
-                    _db.WaybillList.Remove(wb);
+                    var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                    if (wb != null)
+                    {
+                        db.WaybillList.Remove(wb);
 
-                    _db.SaveChanges();
-                }
-                else
-                {
-                    XtraMessageBox.Show(Resources.deadlock);
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(Resources.deadlock);
+                    }
                 }
             }
         }
@@ -182,7 +183,7 @@ namespace SP_Sklad.UserControls
                 return;
             }
 
-            PrintDoc.Show(wb_focused_row.Id, w_type, _db);
+            PrintDoc.Show(wb_focused_row.Id, w_type, new BaseEntities());
         }
 
         public void FindItem(Guid id, DateTime on_date)
@@ -233,11 +234,11 @@ namespace SP_Sklad.UserControls
 
             if (!DesignMode)
             {
-                _db = new BaseEntities();
-                user_access = _db.UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+                var db = new BaseEntities();
+                user_access = db.UserAccess.AsNoTracking().FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 WhComboBox.Properties.DataSource = new List<object>() { new { WId = -1, Name = "Усі" } }.Concat(DBHelper.WhList.Select(s => new { WId = s.WId, s.Name }).ToList()).ToList();
-                WhComboBox.EditValue =-1;
+                WhComboBox.EditValue = -1;
 
                 wbStatusList.Properties.DataSource = new List<object>() { new { Id = -1, Name = "Усі" }, new { Id = 1, Name = "Проведені" }, new { Id = 0, Name = "Непроведені" } };
                 wbStatusList.EditValue = -1;
@@ -245,7 +246,7 @@ namespace SP_Sklad.UserControls
                 wbStartDate.EditValue = DateTime.Now.Date.AddDays(-1);
                 wbEndDate.EditValue = DateTime.Now.Date.SetEndDay();
 
-                user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, _db);
+                var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, db);
                 WbGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
 
                 GetData();
@@ -407,7 +408,7 @@ namespace SP_Sklad.UserControls
             {
                 case 0:
                     //  ucWayBillInDet.GetDate(wb_focused_row.WbillId);
-                    InventoryDetGridControl.DataSource = _db.WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId).Select(s => new InventoryDet
+                    InventoryDetGridControl.DataSource = new BaseEntities().WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId).Select(s => new InventoryDet
                     {
                         PosId = s.PosId,
                         Num = s.Num,
