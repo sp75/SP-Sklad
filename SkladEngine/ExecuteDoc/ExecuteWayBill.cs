@@ -16,6 +16,54 @@ namespace SkladEngine.ExecuteDoc
         {
         }
 
+        public string ExecuteWayBillOut(int wb_id)
+        {
+            string msg = "false";
+
+            using (var db = SPDatabase.SPBase())
+            {
+                var wb_out = db.WaybillList.Find(wb_id);
+                if(wb_out.Checked == 0)
+                {
+                    if(!db.v_WayBillOutDet.Where(w => w.WbillId == wb_id && w.PosType == 0).Any(a=> a.Rsv == 0))
+                    {
+                        foreach (var wb_det in db.WaybillDet.Where(w => w.WbillId == wb_id).ToList())
+                        {
+                            var wmt_list = db.WMatTurn.Where(w => w.SourceId == wb_det.PosId);
+                            foreach (var wmt in wmt_list)
+                            {
+                                wmt.TurnType = -1;
+                            }
+
+                            wb_det.AvgInPrice = wmt_list.Sum(su => su.Amount) > 0 ? wmt_list.Sum(su => su.Amount * su.WaybillDet.Price) / wmt_list.Sum(su => su.Amount) : wmt_list.Average(a => a.WaybillDet.Price);
+                        }
+
+                        wb_out.Checked = 1;
+
+                        var v_rdocid = db.GetRelDocIds(wb_out.Id).Where(w => w.DocType == -16 || w.DocType == 2).FirstOrDefault(); //Взнаемо чи є замовлення від клієнтів або рахунок
+                        if (v_rdocid != null)
+                        {
+                            var wb_rel = db.WaybillList.Where(w => w.Id == v_rdocid.OriginatorId).FirstOrDefault();
+                            wb_rel.Checked = 1; //Товар відвантажений
+                        }
+
+                        db.SaveChanges();
+                    
+                    }
+                    else
+                    {
+                        msg = "Не всі товари зарезервовано";
+                    }
+                }
+                else
+                {
+                    msg = "Документ вже проведений";
+                }
+            }
+
+            return msg;
+        }
+
         public int? MoveToStoreWarehouse(int wbill_id, bool execute_doc)
         {
             using (var db = SPDatabase.SPBase())

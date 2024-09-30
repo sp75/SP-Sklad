@@ -18,6 +18,7 @@ using SP_Sklad.Properties;
 using DevExpress.Data;
 using System.IO;
 using System.Threading;
+using SkladEngine.ExecuteDoc;
 
 namespace SP_Sklad.WBForm
 {
@@ -196,6 +197,13 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
+               /* var msg = new ExecuteWayBill().ExecuteWayBillOut(wb.WbillId);
+                if (msg != "false")
+                {
+                    MessageBox.Show(msg);
+                    return;
+                }*/
+                
                 var ex_wb = _db.ExecuteWayBill(wb.WbillId, null, DBHelper.CurrentUser.KaId).FirstOrDefault();
                 if (ex_wb.ErrorMessage != "False")
                 {
@@ -231,7 +239,7 @@ namespace SP_Sklad.WBForm
 
             if (recult && wb.WType == -1 && TurnDocCheckBox.Checked)
             {
-                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0 && w.Total > 0);
+                recult = !wbd_list.Any(w => w.Rsv == 0 && w.PosType == 0 /*&& w.Total > 0*/);
             }
 
             barSubItem1.Enabled = KagentComboBox.EditValue != null && KagentComboBox.EditValue != DBNull.Value;

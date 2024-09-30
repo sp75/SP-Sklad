@@ -934,6 +934,11 @@ namespace SP_Sklad.MainTabs
             }
             var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesView;
 
+            if(row == null)
+            {
+                return;
+            }
+
             if (File.Exists(row.FilePath))
             {
                 File.Delete(row.FilePath);
@@ -955,12 +960,16 @@ namespace SP_Sklad.MainTabs
                 return;
             }
 
-            var row = AttachedFilesGridView.GetFocusedRow() as dynamic;
-
-            string file = row.FilePath;
-            if (File.Exists(file) )
+            var row = AttachedFilesGridView.GetFocusedRow() as AttachedFilesView;
+      
+            if (row == null)
             {
-                Process.Start(file);
+                return;
+            }
+
+            if (File.Exists(row.FilePath) )
+            {
+                Process.Start(row.FilePath);
             }
         }
 

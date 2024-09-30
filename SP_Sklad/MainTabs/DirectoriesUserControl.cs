@@ -135,6 +135,11 @@ namespace SP_Sklad.MainTabs
 
         private void RefrechItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if(focused_tree_node == null)
+            {
+                return;
+            }
+
             var _db = DB.SkladBase();
             int top_row;
 
