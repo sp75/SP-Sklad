@@ -409,8 +409,11 @@ namespace SP_Sklad.WBForm
         {
             if(e.Button.Index == 1)
             {
-                wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
-                KagentComboBox.EditValue = wb.KaId;
+                /*   wb.KaId = (int)IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
+                   KagentComboBox.EditValue = wb.KaId;*/
+                KagentComboBox.ClosePopup();
+
+                KagentComboBox.EditValue = IHelper.ShowDirectList(KagentComboBox.EditValue, 1);
             }
         }
 

@@ -128,6 +128,11 @@ namespace SP_Sklad.MainTabs
 
         private void EditItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -255,6 +260,11 @@ namespace SP_Sklad.MainTabs
 
         private void NewItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
             switch (focused_tree_node.GType)
             {
                 case 1:
@@ -283,6 +293,11 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_tree_node == null)
+            {
+                return;
+            }
+
             if (MessageBox.Show("Ви дійсно бажаєте видалити вибрані записи ?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
             {
                 return;

@@ -16,7 +16,7 @@ namespace SP_Sklad.ViewsForm
 {
     public partial class frmKagentMaterilPrices : DevExpress.XtraEditors.XtraForm
     {
-        private BaseEntities _db { get; set; }
+     //   private BaseEntities _db { get; set; }
         private int? _mat_id { get; set; }
         private int? _ka_id { get; set; }
         private int? find_id { get; set; }
@@ -31,14 +31,16 @@ namespace SP_Sklad.ViewsForm
         public frmKagentMaterilPrices(int? mat_id = null, int? ka_id = null)
         {
             InitializeComponent();
-            _db = DB.SkladBase();
+       //     _db = DB.SkladBase();
             _mat_id = mat_id;
             _ka_id = ka_id;
         }
 
         private void KagentMaterilPricesSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
-            var qery = _db.v_KagentMaterilPrices.AsQueryable();
+            BaseEntities objectContext = new BaseEntities();
+
+            var qery = objectContext.v_KagentMaterilPrices.AsQueryable();
 
             if (_mat_id.HasValue)
             {
@@ -51,6 +53,8 @@ namespace SP_Sklad.ViewsForm
             }
 
             e.QueryableSource = qery.AsQueryable();
+
+            e.Tag = objectContext;
         }
 
         private void KagentMaterilPricesGridView_AsyncCompleted(object sender, EventArgs e)

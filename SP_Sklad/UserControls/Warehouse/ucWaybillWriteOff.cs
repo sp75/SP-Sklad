@@ -167,7 +167,7 @@ namespace SP_Sklad.UserControls
 
         public void FindItem(Guid id, DateTime on_date)
         {
-            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+            find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id)?.WbillId;
             WbGridView.ClearColumnsFilter();
             WbGridView.ClearFindFilter();
             PeriodComboBoxEdit.SelectedIndex = 0;

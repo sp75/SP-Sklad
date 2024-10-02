@@ -161,7 +161,7 @@ namespace SP_Sklad.UserControls
 
         public void FindItem(Guid id, DateTime on_date)
         {
-            fgr.find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id).WbillId;
+            fgr.find_id = new BaseEntities().WaybillList.FirstOrDefault(w => w.Id == id)?.WbillId;
             WbGridView.ClearColumnsFilter();
             WbGridView.ClearFindFilter();
             ucDocumentFilterPanel.ClearFindFilter(on_date);

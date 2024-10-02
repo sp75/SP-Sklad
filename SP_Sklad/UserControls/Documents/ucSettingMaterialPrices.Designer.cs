@@ -40,9 +40,7 @@
             this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ExecuteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -62,6 +60,7 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.HistoryBtnItem = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn2 = new DevExpress.XtraBars.BarButtonItem();
             this.SettingMaterialPricesGridControl = new DevExpress.XtraGrid.GridControl();
             this.SettingMaterialPricesSource = new DevExpress.Data.Linq.LinqInstantFeedbackSource();
             this.SettingMaterialPricesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -189,8 +188,7 @@
             this.barButtonItem16,
             this.HistoryBtnItem,
             this.barButtonItem1,
-            this.PrintItemBtn2,
-            this.barSubItem1});
+            this.PrintItemBtn2});
             this.barManager1.MaxItemId = 34;
             // 
             // bar1
@@ -206,7 +204,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteItemBtn, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
             this.bar1.OptionsBar.AllowQuickCustomization = false;
@@ -266,17 +264,6 @@
             this.ExecuteItemBtn.Name = "ExecuteItemBtn";
             this.ExecuteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExecuteItemBtn_ItemClick);
             // 
-            // barSubItem1
-            // 
-            this.barSubItem1.Caption = "Друк";
-            this.barSubItem1.Id = 33;
-            this.barSubItem1.ImageOptions.ImageIndex = 15;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn2)});
-            this.barSubItem1.Name = "barSubItem1";
-            this.barSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            // 
             // PrintItemBtn
             // 
             this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
@@ -284,15 +271,6 @@
             this.PrintItemBtn.ImageOptions.ImageIndex = 8;
             this.PrintItemBtn.Name = "PrintItemBtn";
             this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
-            // PrintItemBtn2
-            // 
-            this.PrintItemBtn2.Caption = "Актуалні ціни по ціновій категорії ";
-            this.PrintItemBtn2.Id = 31;
-            this.PrintItemBtn2.ImageOptions.ImageIndex = 8;
-            this.PrintItemBtn2.Name = "PrintItemBtn2";
-            this.PrintItemBtn2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.PrintItemBtn2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barButtonItem14
             // 
@@ -473,6 +451,15 @@
             this.HistoryBtnItem.ImageOptions.ImageIndex = 12;
             this.HistoryBtnItem.Name = "HistoryBtnItem";
             this.HistoryBtnItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.HistoryBtnItem_ItemClick);
+            // 
+            // PrintItemBtn2
+            // 
+            this.PrintItemBtn2.Caption = "Актуалні ціни по ціновій категорії ";
+            this.PrintItemBtn2.Id = 31;
+            this.PrintItemBtn2.ImageOptions.ImageIndex = 8;
+            this.PrintItemBtn2.Name = "PrintItemBtn2";
+            this.PrintItemBtn2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.PrintItemBtn2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // SettingMaterialPricesGridControl
             // 
@@ -1012,7 +999,6 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMarkup;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn gridColumn8;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colPrice;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn bandedGridColumn3;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand1;
