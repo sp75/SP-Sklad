@@ -245,6 +245,7 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tab1 = new DevExpress.XtraVerticalGrid.Tab();
             this.tab2 = new DevExpress.XtraVerticalGrid.Tab();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
@@ -419,8 +420,9 @@
             this.barButtonItem9,
             this.barButtonItem12,
             this.barSubItem3,
-            this.barCheckItem1});
-            this.barManager1.MaxItemId = 57;
+            this.barCheckItem1,
+            this.barButtonItem1});
+            this.barManager1.MaxItemId = 58;
             // 
             // bar1
             // 
@@ -573,7 +575,8 @@
             this.bar4.FloatLocation = new System.Drawing.Point(273, 190);
             this.bar4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.RefrechItemBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true)});
             this.bar4.OptionsBar.AllowQuickCustomization = false;
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl23;
@@ -2922,6 +2925,14 @@
             this.tab2.Caption = "Tab 2";
             this.tab2.Name = "tab2";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Експорт в Excel";
+            this.barButtonItem1.Id = 57;
+            this.barButtonItem1.ImageOptions.ImageIndex = 8;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // ServiceUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3281,5 +3292,6 @@
         private DevExpress.Utils.ImageCollection GridImageList;
         private DevExpress.XtraEditors.ButtonEdit AttachedFilesPathEdit;
         private DevExpress.XtraEditors.LabelControl labelControl21;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

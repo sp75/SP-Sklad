@@ -60,6 +60,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridColumn115 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -67,15 +68,14 @@
             this.repositoryItemImageComboBox33 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn119 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn150 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbDetPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -182,8 +182,8 @@
             this.imageCollection1.Images.SetKeyName(9, "store_16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.snapmodifytablecellstyle_16x16, "snapmodifytablecellstyle_16x16", typeof(global::SP_Sklad.Properties.Resources), 10);
             this.imageCollection1.Images.SetKeyName(10, "snapmodifytablecellstyle_16x16");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.reserved_all, "reserved_all", typeof(global::SP_Sklad.Properties.Resources), 11);
-            this.imageCollection1.Images.SetKeyName(11, "reserved_all");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.lock_1, "lock_1", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.imageCollection1.Images.SetKeyName(11, "lock_1");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.xls_export, "xls_export", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.imageCollection1.Images.SetKeyName(12, "xls_export");
             // 
@@ -343,7 +343,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 1;
-            this.gridColumn9.Width = 48;
+            this.gridColumn9.Width = 52;
             // 
             // gridColumn10
             // 
@@ -352,7 +352,7 @@
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 2;
-            this.gridColumn10.Width = 307;
+            this.gridColumn10.Width = 347;
             // 
             // gridColumn11
             // 
@@ -364,7 +364,7 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Custom)});
             this.gridColumn11.Visible = true;
             this.gridColumn11.VisibleIndex = 4;
-            this.gridColumn11.Width = 55;
+            this.gridColumn11.Width = 60;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -381,7 +381,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 5;
-            this.gridColumn12.Width = 64;
+            this.gridColumn12.Width = 70;
             // 
             // gridColumn13
             // 
@@ -392,7 +392,7 @@
             this.gridColumn13.Name = "gridColumn13";
             this.gridColumn13.Visible = true;
             this.gridColumn13.VisibleIndex = 8;
-            this.gridColumn13.Width = 81;
+            this.gridColumn13.Width = 90;
             // 
             // gridColumn37
             // 
@@ -403,16 +403,26 @@
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Total", "{0:0.##}")});
             this.gridColumn37.Visible = true;
             this.gridColumn37.VisibleIndex = 9;
+            this.gridColumn37.Width = 103;
             // 
             // gridColumn39
             // 
             this.gridColumn39.Caption = "Склад";
             this.gridColumn39.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn39.FieldName = "WhName";
+            this.gridColumn39.ImageOptions.Image = global::SP_Sklad.Properties.Resources.open_view;
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 3;
-            this.gridColumn39.Width = 236;
+            this.gridColumn39.Width = 266;
+            // 
+            // repositoryItemButtonEdit1
+            // 
+            this.repositoryItemButtonEdit1.AutoHeight = false;
+            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
+            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
             // 
             // gridColumn115
             // 
@@ -421,7 +431,7 @@
             this.gridColumn115.Name = "gridColumn115";
             this.gridColumn115.Visible = true;
             this.gridColumn115.VisibleIndex = 6;
-            this.gridColumn115.Width = 70;
+            this.gridColumn115.Width = 77;
             // 
             // gridColumn41
             // 
@@ -444,9 +454,12 @@
             // 
             // gridColumn94
             // 
+            this.gridColumn94.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn94.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gridColumn94.Caption = "gridColumn94";
             this.gridColumn94.ColumnEdit = this.repositoryItemImageComboBox33;
             this.gridColumn94.FieldName = "Rsv";
+            this.gridColumn94.ImageOptions.Alignment = System.Drawing.StringAlignment.Center;
             this.gridColumn94.ImageOptions.ImageIndex = 11;
             this.gridColumn94.Name = "gridColumn94";
             this.gridColumn94.OptionsColumn.AllowEdit = false;
@@ -458,7 +471,7 @@
             this.gridColumn94.OptionsFilter.AllowFilter = false;
             this.gridColumn94.Visible = true;
             this.gridColumn94.VisibleIndex = 0;
-            this.gridColumn94.Width = 35;
+            this.gridColumn94.Width = 25;
             // 
             // repositoryItemImageComboBox33
             // 
@@ -484,15 +497,7 @@
             this.gridColumn150.Name = "gridColumn150";
             this.gridColumn150.Visible = true;
             this.gridColumn150.VisibleIndex = 7;
-            this.gridColumn150.Width = 66;
-            // 
-            // repositoryItemButtonEdit1
-            // 
-            this.repositoryItemButtonEdit1.AutoHeight = false;
-            this.repositoryItemButtonEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
-            this.repositoryItemButtonEdit1.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.repositoryItemButtonEdit1_ButtonClick);
+            this.gridColumn150.Width = 72;
             // 
             // ucWayBillOutDet
             // 
@@ -514,8 +519,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WaybillDetGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCalcEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox33)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

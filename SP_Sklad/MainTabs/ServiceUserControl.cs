@@ -638,5 +638,28 @@ namespace SP_Sklad.MainTabs
                 DBHelper.CommonParam = null;
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if(xtraTabControl2.SelectedTabPageIndex == 0)
+            {
+                IHelper.ExportToXlsx(OprLogGridControl); 
+            }
+
+            if (xtraTabControl2.SelectedTabPageIndex == 1)
+            {
+                IHelper.ExportToXlsx(PrintLogGridControl);
+            }
+
+            if (xtraTabControl2.SelectedTabPageIndex == 2)
+            {
+                IHelper.ExportToXlsx(ErrorLogGridControl);
+            }
+
+            if (xtraTabControl2.SelectedTabPageIndex == 3)
+            {
+                IHelper.ExportToXlsx(LoginHistoryGridControl);
+            }
+        }
     }
 }

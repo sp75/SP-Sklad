@@ -182,5 +182,19 @@ namespace SP_Sklad.UserControls
                 }
             }
         }
+
+        private void barButtonItem4_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ka_template_list.ForEach(f => { f.Check = true; });
+
+            KaTemplateListGridView.RefreshData();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ka_template_list.ForEach(f => { f.Check = false; });
+
+            KaTemplateListGridView.RefreshData();
+        }
     }
 }

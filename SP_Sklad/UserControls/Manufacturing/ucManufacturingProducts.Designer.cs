@@ -83,6 +83,9 @@
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.splitContainerControl2 = new DevExpress.XtraEditors.SplitContainerControl();
             this.WBGridControl = new DevExpress.XtraGrid.GridControl();
@@ -338,8 +341,11 @@
             this.barButtonItem11,
             this.delAttachedFilesBtn,
             this.barButtonItem13,
-            this.barButtonItem12});
-            this.barManager1.MaxItemId = 30;
+            this.barButtonItem12,
+            this.barButtonItem14,
+            this.barButtonItem15,
+            this.barButtonItem16});
+            this.barManager1.MaxItemId = 33;
             // 
             // bar1
             // 
@@ -745,6 +751,12 @@
             this.BarImageList.Images.SetKeyName(11, "w_scale");
             this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.def_settings_grid, "def_settings_grid", typeof(global::SP_Sklad.Properties.Resources), 12);
             this.BarImageList.Images.SetKeyName(12, "def_settings_grid");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.move_warehouse, "move_warehouse", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.BarImageList.Images.SetKeyName(13, "move_warehouse");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_info_3, "product_info_3", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.BarImageList.Images.SetKeyName(14, "product_info_3");
+            this.BarImageList.InsertImage(global::SP_Sklad.Properties.Resources.product_reserved_1, "product_reserved_1", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.BarImageList.Images.SetKeyName(15, "product_reserved_1");
             // 
             // StopProcesBtn
             // 
@@ -791,6 +803,30 @@
             this.barButtonItem12.ImageOptions.ImageIndex = 12;
             this.barButtonItem12.Name = "barButtonItem12";
             this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick_1);
+            // 
+            // barButtonItem14
+            // 
+            this.barButtonItem14.Caption = "Інформація про товар";
+            this.barButtonItem14.Id = 30;
+            this.barButtonItem14.ImageOptions.ImageIndex = 14;
+            this.barButtonItem14.Name = "barButtonItem14";
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
+            // barButtonItem15
+            // 
+            this.barButtonItem15.Caption = "Інформація про рух товару";
+            this.barButtonItem15.Id = 31;
+            this.barButtonItem15.ImageOptions.ImageIndex = 13;
+            this.barButtonItem15.Name = "barButtonItem15";
+            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
+            // 
+            // barButtonItem16
+            // 
+            this.barButtonItem16.Caption = "Інформація про резерв товару";
+            this.barButtonItem16.Id = 32;
+            this.barButtonItem16.ImageOptions.ImageIndex = 15;
+            this.barButtonItem16.Name = "barButtonItem16";
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
             // 
             // panelControl1
             // 
@@ -1664,7 +1700,7 @@
             this.WayBillMakeDetGridView.GroupCount = 1;
             this.WayBillMakeDetGridView.Images = this.GridImageList;
             this.WayBillMakeDetGridView.Name = "WayBillMakeDetGridView";
-            this.WayBillMakeDetGridView.OptionsBehavior.Editable = false;
+            this.WayBillMakeDetGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WayBillMakeDetGridView.OptionsBehavior.ReadOnly = true;
             this.WayBillMakeDetGridView.OptionsView.ShowGroupPanel = false;
             this.WayBillMakeDetGridView.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
@@ -2228,7 +2264,10 @@
             // WbDetPopupMenu
             // 
             this.WbDetPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem9, true)});
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             // 
@@ -2494,5 +2533,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem14;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem15;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem16;
     }
 }

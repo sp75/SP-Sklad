@@ -134,9 +134,16 @@ namespace SP_Sklad.ViewsForm
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var dataForReport = new Dictionary<string, IList>();
+            var on_date = (DateTime)barEditItem1.EditValue;
 
-            var pl = _db.SettingMaterialPrices.Where(w => w.PTypeId == _ptype_id).OrderByDescending(o => o.OnDate).Take(1).Select(s => new { PriceTypesName = s.PriceTypes.Name, s.PTypeId, s.OnDate, s.Num }).ToList();
-            var pl_d = _db.GetSummaryMaterialPrices((DateTime)barEditItem1.EditValue).Where(w => w.PTypeId == _ptype_id).ToList() ;
+            var pl = _db.SettingMaterialPrices.Where(w => w.PTypeId == _ptype_id && w.OnDate <= on_date).OrderByDescending(o => o.OnDate).Take(1).Select(s => new
+            {
+                PriceTypesName = s.PriceTypes.Name,
+                s.PTypeId,
+                OnDate = on_date,
+                s.Num
+            }).ToList();
+            var pl_d = _db.GetSummaryMaterialPrices(on_date).Where(w => w.PTypeId == _ptype_id).ToList() ;
 
             var mat_grp = pl_d.GroupBy(g => new { g.GrpNum, g.GrpName }).Select(s => new
             {

@@ -80,9 +80,39 @@ namespace SP_Sklad.UserControls.Warehouse
             }
 
             var status = (int)wbStatusList.EditValue;
+            var start_date = wbStartDate.DateTime.ToString("yyyyMMddHHmmss");
+            var end_date = wbEndDate.DateTime.ToString("yyyyMMddHHmmss");
 
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
-            var list = objectContext.v_ReturnSales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.SAREAID == area_id || area_id == -1) && (status == -1 || status == w.FiscalReceipt)).ToList();
+            //   var list = objectContext.v_ReturnSales.Where(w => w.OnDate >= wbStartDate.DateTime && w.OnDate <= wbEndDate.DateTime && (w.SAREAID == area_id || area_id == -1) && (status == -1 || status == w.FiscalReceipt)).ToList();
+            var sql = @"SELECT [SAREANAME]
+      ,[SAREAID]
+      ,[SYSTEMID]
+      ,[SESSID]
+      ,[SALESNUM]
+      ,[SALESTIME]
+      ,[PRICE]
+      ,[AMOUNT]
+      ,[TOTAL]
+      ,[FRECNUM]
+      ,[SRECNUM]
+      ,[PACKID]
+      ,[UNITNAME]
+      ,[ARTNAME]
+      ,[SESSSTART]
+      ,[SESSEND]
+      ,[OnDate]
+      ,[GRPID]
+      ,[GRPNAME]
+      ,[ARTCODE]
+      ,[ARTID]
+      ,[SessionStartDate]
+      ,[FiscalReceipt]
+  FROM [v_ReturnSales]
+  where [SALESTIME]  between '{0}' and '{1}' and (SAREAID = {2} or {2} = -1) and (FiscalReceipt = {3} or {3} = -1) ";
+
+            var list = objectContext.Database.SqlQuery<v_ReturnSales>(string.Format(sql, start_date, end_date, area_id, status)).ToList();
+
 
             WhPosRemainsGridControl.DataSource = list;
 

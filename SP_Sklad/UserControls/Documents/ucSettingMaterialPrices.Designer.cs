@@ -546,6 +546,7 @@
             this.gridColumn112.Caption = "Категорія цін";
             this.gridColumn112.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn112.FieldName = "PriceTypeName";
+            this.gridColumn112.ImageOptions.Image = global::SP_Sklad.Properties.Resources.open_view;
             this.gridColumn112.Name = "gridColumn112";
             this.gridColumn112.Visible = true;
             this.gridColumn112.VisibleIndex = 4;

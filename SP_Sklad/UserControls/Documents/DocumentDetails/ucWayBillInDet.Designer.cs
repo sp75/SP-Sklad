@@ -379,6 +379,7 @@
             this.gridColumn39.Caption = "Склад";
             this.gridColumn39.ColumnEdit = this.repositoryItemButtonEdit1;
             this.gridColumn39.FieldName = "WhName";
+            this.gridColumn39.ImageOptions.Image = global::SP_Sklad.Properties.Resources.open_view;
             this.gridColumn39.Name = "gridColumn39";
             this.gridColumn39.Visible = true;
             this.gridColumn39.VisibleIndex = 2;

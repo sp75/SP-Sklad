@@ -992,7 +992,7 @@
             // 
             // vGridControl3
             // 
-            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.vGridControl3.Cursor = System.Windows.Forms.Cursors.SizeNS;
             this.vGridControl3.DataSource = this.MatListInfoBS;
             this.vGridControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vGridControl3.Location = new System.Drawing.Point(0, 0);
@@ -1240,6 +1240,8 @@
             // gridColumn2
             // 
             this.gridColumn2.Caption = "Ціна, грн";
+            this.gridColumn2.DisplayFormat.FormatString = "0.00";
+            this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn2.FieldName = "Price";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;

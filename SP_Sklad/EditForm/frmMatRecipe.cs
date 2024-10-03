@@ -282,7 +282,6 @@ namespace SP_Sklad.EditForm
 
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-          //  xtraTabControl1.SelectedTabPageIndex = 1;
             _db.MatRecDet.Remove(MatRecDetBS.DataSource as MatRecDet);
             _db.SaveChanges();
 
@@ -329,14 +328,13 @@ namespace SP_Sklad.EditForm
         {
             if (_mr.RType == 1)
             {
-         //       Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
                 labelControl11.Visible = false;
                 calcEdit1.Visible = false;
                 gridColumn1.Visible = false;
             }
             if (_mr.RType == 2)
             {
-     //           Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
+                ;
             }
 
             var isDoc = _db.WayBillMake.Any(a => a.RecId == _mr.RecId);
@@ -485,11 +483,11 @@ namespace SP_Sklad.EditForm
 
                 if (_mr.RType == 1)
                 {
-                    Text = "Властивості рецепту: " + MatRecLookUpEdit.Text;
+                    Text = "Властивості специфікації товару: " + MatRecLookUpEdit.Text;
                 }
                 if (_mr.RType == 2)
                 {
-                    Text = "Властивості обвалки: " + MatRecLookUpEdit.Text;
+                    Text = "Властивості обвалки товару: " + MatRecLookUpEdit.Text;
                 }
             }
         }
@@ -587,15 +585,6 @@ namespace SP_Sklad.EditForm
                 _db.SaveChanges();
 
                 ChangeName();
-
-                /*     var det = tree.FirstOrDefault(w => w.DataSetId == MatLookUpEdit.EditValue);
-                     if (det != null)
-                     {
-                         det.Text = MatLookUpEdit.Text;
-                         DirTreeList.RefreshDataSource();
-                     }*/
-
-                //      GetRecDetail();
             }
         }
 

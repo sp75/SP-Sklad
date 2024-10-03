@@ -1000,5 +1000,23 @@ namespace SP_Sklad.MainTabs
 
             WbGridView.RestoreLayoutFromStream(wh_layout_stream);
         }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+            IHelper.ShowMatInfo(row.MatId);
+        }
+
+        private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+            IHelper.ShowTurnMaterial(row.MatId);
+        }
+
+        private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+            IHelper.ShowMatRSV(row.MatId, DB.SkladBase());
+        }
     }
 }

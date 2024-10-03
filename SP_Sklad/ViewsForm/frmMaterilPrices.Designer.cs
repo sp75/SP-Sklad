@@ -167,7 +167,7 @@
             // 
             // barButtonItem1
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Caption = "Ціни по катогоріїї на вказану  дату";
             this.barButtonItem1.Id = 58;
             this.barButtonItem1.ImageOptions.ImageIndex = 2;
             this.barButtonItem1.Name = "barButtonItem1";
