@@ -314,6 +314,8 @@ namespace SP_Sklad.WBForm
             CurrencyLookUpEdit.Enabled = WaybillDetInBS.List.Count == 0;
             CurRateEdit.Enabled = WaybillDetInBS.List.Count == 0;
 
+            payDocUserControl1.panelControl1.Enabled = recult;
+
             return recult;
         }
 
