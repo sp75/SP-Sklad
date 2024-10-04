@@ -119,7 +119,7 @@ namespace SP_Sklad.ViewsForm
     ) Remain 
 from WaybillDet wbd
         inner join  WaybillList wbl on wbd.WbillId = wbl.WbillId
-		inner join Materials m on m.MatId =  wbd.MatId  and m.TypeId in (1,5)
+		inner join Materials m on m.MatId =  wbd.MatId  and m.TypeId in (1,5,6)
 		inner join MatGroup mg on mg.GrpId = m.GrpId 
         inner join Measures on Measures.MId = m.MId
 where   wbl.WType = -16 and wbl.OnDate between {1} and DATEADD (day, 1 , {1} ) 
