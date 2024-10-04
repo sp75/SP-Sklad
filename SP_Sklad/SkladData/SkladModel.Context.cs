@@ -2710,5 +2710,15 @@ namespace SP_Sklad.SkladData
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetSummaryMaterialPrices_Result>("[BaseEntities].[GetSummaryMaterialPrices](@on_date)", on_dateParameter);
         }
+    
+        [EdmFunction("BaseEntities", "GetAvgPrice")]
+        public virtual IQueryable<Nullable<decimal>> GetAvgPrice(Nullable<int> pos_id)
+        {
+            var pos_idParameter = pos_id.HasValue ?
+                new ObjectParameter("pos_id", pos_id) :
+                new ObjectParameter("pos_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetAvgPrice](@pos_id)", pos_idParameter);
+        }
     }
 }

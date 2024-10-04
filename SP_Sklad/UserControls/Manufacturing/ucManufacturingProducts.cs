@@ -1003,20 +1003,50 @@ namespace SP_Sklad.MainTabs
 
         private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
-            IHelper.ShowMatInfo(row.MatId);
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 2:
+                    var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+                    IHelper.ShowMatInfo(row.MatId);
+                    break;
+
+                case 4:
+                    var row2 = ManufacturedPosGridView.GetFocusedRow() as GetManufacturedPos_Result;
+                    IHelper.ShowMatInfo(row2.MatId);
+                    break;
+            }
         }
 
         private void barButtonItem15_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
-            IHelper.ShowTurnMaterial(row.MatId);
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 2:
+                    var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+                    IHelper.ShowTurnMaterial(row.MatId);
+                    break;
+
+                case 4:
+                    var row2 = ManufacturedPosGridView.GetFocusedRow() as GetManufacturedPos_Result;
+                    IHelper.ShowTurnMaterial(row2.MatId);
+                    break;
+            }
         }
 
         private void barButtonItem16_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
-            IHelper.ShowMatRSV(row.MatId, DB.SkladBase());
+            switch (xtraTabControl2.SelectedTabPageIndex)
+            {
+                case 2:
+                    var row = WayBillMakeDetGridView.GetFocusedRow() as GetWayBillMakeDet_Result;
+                    IHelper.ShowMatRSV(row.MatId, DB.SkladBase());
+                    break;
+
+                case 4:
+                    var row2 = ManufacturedPosGridView.GetFocusedRow() as GetManufacturedPos_Result;
+                    IHelper.ShowMatRSV(row2.MatId, DB.SkladBase());
+                    break;
+            }
         }
     }
 }

@@ -7806,6 +7806,16 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="GetAvgPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="pos_id" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="AvgInPrice" Type="numeric" Precision="38" Scale="6" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="GetDeboningDet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="wbill_id" Type="int" Mode="In" />
         </Function>
@@ -15023,6 +15033,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="Kagent" EntitySet="Kagent" />
             <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
           </AssociationSet>
+          <FunctionImport Name="GetAvgPrice" IsComposable="true" ReturnType="Collection(Decimal)">
+            <Parameter Name="pos_id" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -31344,6 +31357,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAvgPrice" FunctionName="BaseModel.Store.GetAvgPrice" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

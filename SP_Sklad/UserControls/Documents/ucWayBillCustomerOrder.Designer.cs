@@ -156,6 +156,7 @@
             // 
             // splitContainerControl2
             // 
+            this.splitContainerControl2.CollapsePanel = DevExpress.XtraEditors.SplitCollapsePanel.Panel2;
             this.splitContainerControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl2.FixedPanel = DevExpress.XtraEditors.SplitFixedPanel.Panel2;
             this.splitContainerControl2.Horizontal = false;
@@ -241,6 +242,7 @@
             this.WbGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.WbGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WbGridView.OptionsBehavior.ReadOnly = true;
+            this.WbGridView.OptionsView.ShowFooter = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
             this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
@@ -347,6 +349,8 @@
             this.gridColumn3.Caption = "№";
             this.gridColumn3.FieldName = "Num";
             this.gridColumn3.Name = "gridColumn3";
+            this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
             this.gridColumn3.Visible = true;
             this.gridColumn3.VisibleIndex = 2;
             this.gridColumn3.Width = 63;
@@ -428,6 +432,8 @@
             this.gridColumn44.Caption = "Сума у нац. валюті";
             this.gridColumn44.FieldName = "SummInCurr";
             this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.##}")});
             this.gridColumn44.Visible = true;
             this.gridColumn44.VisibleIndex = 7;
             this.gridColumn44.Width = 86;
@@ -490,6 +496,8 @@
             this.gridColumn8.Caption = "К-сть всього, кг";
             this.gridColumn8.FieldName = "TotalAmount";
             this.gridColumn8.Name = "gridColumn8";
+            this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalAmount", "{0:0.##}")});
             this.gridColumn8.Visible = true;
             this.gridColumn8.VisibleIndex = 13;
             // 

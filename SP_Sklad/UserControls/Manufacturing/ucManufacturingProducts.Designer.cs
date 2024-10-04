@@ -659,6 +659,7 @@
             // 
             // standaloneBarDockControl2
             // 
+            this.standaloneBarDockControl2.AutoSize = true;
             this.standaloneBarDockControl2.CausesValidation = false;
             this.standaloneBarDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.standaloneBarDockControl2.Location = new System.Drawing.Point(0, 0);
@@ -2347,6 +2348,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IntermediateWeighingByWbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit2)).EndInit();
             this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AttachedFilesGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AttachedFilesGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();

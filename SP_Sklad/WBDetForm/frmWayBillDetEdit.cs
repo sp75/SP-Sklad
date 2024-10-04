@@ -104,9 +104,22 @@ namespace SP_Sklad.WBDetForm
                 item.AvgPrice = _wbd.Price;
             }
 
+          
+
             _wbd.WaybillList.UpdatedAt = DBHelper.ServerDateTime();
             _wbd.WaybillList.UpdatedBy = DBHelper.CurrentUser.UserId;
 
+            _db.SaveChanges();
+
+
+            foreach (var wmt_out in _db.WMatTurn.Where(w => w.PosId == _wbd.PosId && w.TurnType == -1).ToList())
+            {
+                var wbd_out = _db.WaybillDet.Find(wmt_out.SourceId);
+                if (wbd_out != null)
+                {
+                    wbd_out.AvgInPrice = _db.GetAvgPrice(wbd_out.PosId).FirstOrDefault();
+                }
+            }
             _db.SaveChanges();
         }
 
