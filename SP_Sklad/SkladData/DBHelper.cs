@@ -614,7 +614,7 @@ order by wbd.ondate desc
 
             if (query.Any())
             {
-                MessageBox.Show(string.Format("Неможливо сторнувати накладну, так як вона добавлена в експедицію #{0}", String.Join("\n", query.FirstOrDefault().Expedition.Num)), "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(string.Format("Заборонено сторнувати/видаляти видаткову накладну, так як вона добавлена в експедицію #{0}", String.Join("\n", query.FirstOrDefault().Expedition.Num)), "Попередження", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 r = false;
             }
 

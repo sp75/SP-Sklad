@@ -115,6 +115,12 @@ namespace SP_Sklad.UserControls
                 using (var db = new BaseEntities())
                 {
                     var wb = db.WaybillList.FirstOrDefault(w => w.WbillId == wb_focused_row.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+
+                    if (!DBHelper.CheckExpedition(wb_focused_row.WbillId, db))
+                    {
+                        return;
+                    }
+
                     if (wb != null)
                     {
                         db.WaybillList.Remove(wb);

@@ -149,6 +149,7 @@ namespace SP_Sklad.UserControls
             this.PeriodComboBoxEdit.EditValue = "Довільний період";
             this.PeriodComboBoxEdit.Location = new System.Drawing.Point(10, 15);
             this.PeriodComboBoxEdit.Name = "PeriodComboBoxEdit";
+            this.PeriodComboBoxEdit.Properties.AllowMouseWheel = false;
             this.PeriodComboBoxEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.PeriodComboBoxEdit.Properties.Appearance.Options.UseFont = true;
             editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.refresh_16x161;

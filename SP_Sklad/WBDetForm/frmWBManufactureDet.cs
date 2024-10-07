@@ -321,21 +321,20 @@ namespace SP_Sklad.WBDetForm
                         Amount = Convert.ToDecimal(item.Amount),
                         SourceId = _wbd.PosId
                     });
-
                 }
             }
 
             try
             {
                 _db.SaveChanges();
-                Close();
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
             {
                 _db.UndoAllChanges();
-
-                throw exp;
+                MessageBox.Show("Не можливо зарезервувати: " + MatComboBox.Text);
             }
+
+            Close();
         }
 
         private void AmountEdit_EditValueChanged(object sender, EventArgs e)

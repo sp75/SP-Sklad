@@ -527,8 +527,6 @@
             this.RepGridView.Name = "RepGridView";
             this.RepGridView.OptionsBehavior.AllowIncrementalSearch = true;
             this.RepGridView.OptionsBehavior.Editable = false;
-            this.RepGridView.OptionsView.EnableAppearanceEvenRow = true;
-            this.RepGridView.OptionsView.EnableAppearanceOddRow = true;
             this.RepGridView.OptionsView.ShowGroupPanel = false;
             this.RepGridView.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.RepGridView_FocusedRowChanged);
             this.RepGridView.DoubleClick += new System.EventHandler(this.RepGridView_DoubleClick);

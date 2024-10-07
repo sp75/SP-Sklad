@@ -751,13 +751,9 @@
             // 
             // settingMaterialPricesUserControl1
             // 
-       
-
             this.settingMaterialPricesUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-
             this.settingMaterialPricesUserControl1.Location = new System.Drawing.Point(0, 0);
             this.settingMaterialPricesUserControl1.Name = "settingMaterialPricesUserControl1";
-
             this.settingMaterialPricesUserControl1.Size = new System.Drawing.Size(1138, 695);
             this.settingMaterialPricesUserControl1.TabIndex = 0;
             // 
@@ -1059,7 +1055,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14)});
-            this.bar1.OptionsBar.DrawBorder = false;
+            this.bar1.OptionsBar.AllowQuickCustomization = false;
+            this.bar1.OptionsBar.DrawDragBorder = false;
             this.bar1.OptionsBar.UseWholeRow = true;
             this.bar1.StandaloneBarDockControl = this.standaloneBarDockControl1;
             this.bar1.Text = "Custom 3";
