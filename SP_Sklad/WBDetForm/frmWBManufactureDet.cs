@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SkladEngine.DBFunction;
 using SkladEngine.DBFunction.Models;
 using SP_Sklad.Common;
@@ -331,7 +332,9 @@ namespace SP_Sklad.WBDetForm
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
             {
                 _db.UndoAllChanges();
-                MessageBox.Show("Не можливо зарезервувати: " + MatComboBox.Text);
+                var b_exp = exp.GetBaseException();
+
+                XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             Close();

@@ -155,6 +155,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Number" Type="nvarchar" MaxLength="50" />
           <Property Name="DriverId" Type="int" />
+          <Property Name="СarryingСapacity" Type="numeric" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="CashDesks">
           <Key>
@@ -2349,6 +2350,23 @@ warning 6002: The table/view 'sp_base.dbo.v_DeboningProducts' does not have a pr
           <Property Name="GrpId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_DeliveryManagement' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_DeliveryManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="CarId" Type="uniqueidentifier" />
+          <Property Name="Duration" Type="bigint" />
+          <Property Name="CarName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CarNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="СarryingСapacity" Type="numeric" Precision="15" Scale="4" />
+          <Property Name="DriverName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParcentСarryingСapacity" Type="numeric" Precision="38" Scale="6" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_DiscCards">
           <Key>
@@ -3893,6 +3911,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrder' does not have 
           <Property Name="WorkerId" Type="int" Nullable="false" />
           <Property Name="Balans" Type="numeric" Precision="17" Scale="2" />
           <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
+          <Property Name="RouteId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrderDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10380,6 +10399,20 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DeboningProducts].[GrpId] AS [GrpId]
     FROM [dbo].[v_DeboningProducts] AS [v_DeboningProducts]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_DeliveryManagement" EntityType="Self.v_DeliveryManagement" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_DeliveryManagement].[Id] AS [Id], 
+    [v_DeliveryManagement].[Name] AS [Name], 
+    [v_DeliveryManagement].[DriverId] AS [DriverId], 
+    [v_DeliveryManagement].[CarId] AS [CarId], 
+    [v_DeliveryManagement].[Duration] AS [Duration], 
+    [v_DeliveryManagement].[CarName] AS [CarName], 
+    [v_DeliveryManagement].[CarNumber] AS [CarNumber], 
+    [v_DeliveryManagement].[СarryingСapacity] AS [СarryingСapacity], 
+    [v_DeliveryManagement].[DriverName] AS [DriverName], 
+    [v_DeliveryManagement].[ParcentСarryingСapacity] AS [ParcentСarryingСapacity]
+    FROM [dbo].[v_DeliveryManagement] AS [v_DeliveryManagement]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="Self.v_DiscCards" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_DiscCards].[CardId] AS [CardId], 
@@ -11513,7 +11546,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_WayBillCustomerOrder].[UpdatedUserName] AS [UpdatedUserName], 
     [v_WayBillCustomerOrder].[WorkerId] AS [WorkerId], 
     [v_WayBillCustomerOrder].[Balans] AS [Balans], 
-    [v_WayBillCustomerOrder].[TotalAmount] AS [TotalAmount]
+    [v_WayBillCustomerOrder].[TotalAmount] AS [TotalAmount], 
+    [v_WayBillCustomerOrder].[RouteId] AS [RouteId]
     FROM [dbo].[v_WayBillCustomerOrder] AS [v_WayBillCustomerOrder]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_WayBillCustomerOrderDet" EntityType="Self.v_WayBillCustomerOrderDet" store:Type="Views" store:Schema="dbo">
@@ -15034,8 +15068,9 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             <End Role="MaterialSupplier" EntitySet="MaterialSupplier" />
           </AssociationSet>
           <FunctionImport Name="GetAvgPrice" IsComposable="true" ReturnType="Collection(Decimal)">
-            <Parameter Name="pos_id" Mode="In" Type="Int32" />
+          <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="v_DeliveryManagement" EntityType="BaseModel.v_DeliveryManagement" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -19946,6 +19981,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="DriverId" Type="Int32" />
           <NavigationProperty Name="Kagent" Relationship="BaseModel.FK_Cars_Kagent" FromRole="Cars" ToRole="Kagent" />
           <NavigationProperty Name="Expedition" Relationship="BaseModel.FK_Expedition_Cars" FromRole="Cars" ToRole="Expedition" />
+          <Property Name="СarryingСapacity" Type="Decimal" Precision="15" Scale="4" />
         </EntityType>
         <Association Name="FK_Routes_Cars">
           <End Type="BaseModel.Cars" Role="Cars" Multiplicity="0..1" />
@@ -23657,6 +23693,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="WorkerId" Type="Int32" Nullable="false" />
           <Property Name="Balans" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="RouteId" Type="Int32" />
         </EntityType>
         <EntityType Name="v_WayBillCustomerOrderDet">
           <Key>
@@ -24751,6 +24788,21 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="v_DeliveryManagement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="CarId" Type="Guid" />
+          <Property Name="Duration" Type="Int64" />
+          <Property Name="CarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CarNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="СarryingСapacity" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParcentСarryingСapacity" Type="Decimal" Precision="38" Scale="6" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -28241,6 +28293,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="BaseModel.Cars">
               <MappingFragment StoreEntitySet="Cars">
+                <ScalarProperty Name="СarryingСapacity" ColumnName="СarryingСapacity" />
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -30507,6 +30560,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_WayBillCustomerOrder">
             <EntityTypeMapping TypeName="BaseModel.v_WayBillCustomerOrder">
               <MappingFragment StoreEntitySet="v_WayBillCustomerOrder">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
                 <ScalarProperty Name="WorkerId" ColumnName="WorkerId" />
@@ -31358,6 +31412,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetAvgPrice" FunctionName="BaseModel.Store.GetAvgPrice" />
+          <EntitySetMapping Name="v_DeliveryManagement">
+            <EntityTypeMapping TypeName="BaseModel.v_DeliveryManagement">
+              <MappingFragment StoreEntitySet="v_DeliveryManagement">
+                <ScalarProperty Name="ParcentСarryingСapacity" ColumnName="ParcentСarryingСapacity" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="СarryingСapacity" ColumnName="СarryingСapacity" />
+                <ScalarProperty Name="CarNumber" ColumnName="CarNumber" />
+                <ScalarProperty Name="CarName" ColumnName="CarName" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

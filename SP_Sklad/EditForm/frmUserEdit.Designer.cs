@@ -124,6 +124,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit5 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
             this.checkEdit8 = new DevExpress.XtraEditors.CheckEdit();
             this.checkEdit7 = new DevExpress.XtraEditors.CheckEdit();
@@ -188,7 +189,6 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -1130,6 +1130,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 83);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "debit_card");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.in_transit, "in_transit", typeof(global::SP_Sklad.Properties.Resources), 84);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "in_transit");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
             this.UserTreeImgList.ParentControl = this;
             // 
             // xtraTabPage3
@@ -1213,6 +1217,15 @@
             // 
             this.repositoryItemCheckEdit5.AutoHeight = false;
             this.repositoryItemCheckEdit5.Name = "repositoryItemCheckEdit5";
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Примітка";
+            this.gridColumn14.FieldName = "Notes";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 1;
+            this.gridColumn14.Width = 171;
             // 
             // xtraTabPage5
             // 
@@ -1931,15 +1944,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem6)});
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "Примітка";
-            this.gridColumn14.FieldName = "Notes";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 1;
-            this.gridColumn14.Width = 171;
             // 
             // frmUserEdit
             // 

@@ -1229,6 +1229,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap in_transit {
+            get {
+                object obj = ResourceManager.GetObject("in_transit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap info_16x16 {
             get {
                 object obj = ResourceManager.GetObject("info_16x16", resourceCulture);

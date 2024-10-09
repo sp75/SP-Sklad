@@ -1299,6 +1299,9 @@
     <Compile Include="SkladData\v_DeboningProducts.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_DeliveryManagement.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_DiscCards.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1568,6 +1571,12 @@
     </Compile>
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucDeliveryManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Documents\ucDeliveryManagement.Designer.cs">
+      <DependentUpon>ucDeliveryManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.cs">
       <SubType>UserControl</SubType>
@@ -2729,6 +2738,9 @@
     <EmbeddedResource Include="Reports\frmDocumentDetails.resx">
       <DependentUpon>frmDocumentDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Documents\ucDeliveryManagement.resx">
+      <DependentUpon>ucDeliveryManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
     </EmbeddedResource>
@@ -3350,6 +3362,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Actives.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BankStatementsDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_BarCodes.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DeliveryManagement.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_DiscCards.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_ExpeditionWBMaterialsDet.datasource" />
@@ -3376,6 +3389,7 @@
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_TechProcDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_Users.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillCorrectionDet.datasource" />
+    <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WayBillCustomerOrder.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.v_WaybillTemplateDet.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.Warehouse.datasource" />
     <None Include="Properties\DataSources\SP_Sklad.SkladData.WaybillCorrection.datasource" />
@@ -3965,6 +3979,7 @@
     <None Include="Resources\system_report.png" />
     <None Include="Resources\attach.png" />
     <None Include="Resources\xls_import.png" />
+    <None Include="Resources\in_transit.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

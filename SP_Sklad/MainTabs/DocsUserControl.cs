@@ -180,16 +180,20 @@ namespace SP_Sklad.MainTabs
             {
                 wbContentTab.SelectedTabPageIndex = 4;
             }
-            else if (focused_tree_node.FunId == 105) //Додаткові витрати
+            else if (focused_tree_node.FunId == 105) //Discount Management
             {
                 wbContentTab.SelectedTabPageIndex = 24;
+            }
+            else if (focused_tree_node.FunId == 106) //Управляіння доставкою
+            {
+                wbContentTab.SelectedTabPageIndex = 25;
             }
             else
             {
                 wbContentTab.SelectedTabPageIndex = focused_tree_node.GType.Value;
             }
 
-            if(focused_tree_node.FunId == 97)
+            if(focused_tree_node.FunId == 97 || focused_tree_node.FunId == 106)
             {
                 bar1.Visible = false;
             }

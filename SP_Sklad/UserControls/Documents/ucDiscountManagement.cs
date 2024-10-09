@@ -228,11 +228,11 @@ namespace SP_Sklad.UserControls
         System.IO.Stream wh_layout_stream = new System.IO.MemoryStream();
         private void ucDiscountManagement_Load(object sender, EventArgs e)
         {
-            DiscountManagementGridView.SaveLayoutToStream(wh_layout_stream);
-            DiscountManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
-
             if (!DesignMode)
             {
+                DiscountManagementGridView.SaveLayoutToStream(wh_layout_stream);
+                DiscountManagementGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
+
                 user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
 
                 GetData();

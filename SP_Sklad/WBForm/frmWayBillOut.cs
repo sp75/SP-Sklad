@@ -976,5 +976,16 @@ namespace SP_Sklad.WBForm
                 _db.SaveChanges();
             }*/
         }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _db.SaveChanges();
+            var wbd_list = _db.v_WayBillOutDet.AsNoTracking().Where(w => w.WbillId == _wbill_id && w.Rsv == 0).Select(s=> s.PosId).ToList();
+            using (var db = DB.SkladBase())
+            {
+                db.DeleteWhere<WaybillDet>(w => w.WbillId == _wbill_id && wbd_list.Contains(w.PosId));
+            }
+            RefreshDet();
+        }
     }
 }

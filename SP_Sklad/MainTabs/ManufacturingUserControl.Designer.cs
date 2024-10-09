@@ -359,6 +359,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 83);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "debit_card");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.in_transit, "in_transit", typeof(global::SP_Sklad.Properties.Resources), 84);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "in_transit");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
             this.UserTreeImgList.ParentControl = this;
             // 
             // wbContentTab

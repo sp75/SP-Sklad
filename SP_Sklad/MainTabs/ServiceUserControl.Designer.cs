@@ -46,6 +46,7 @@
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.standaloneBarDockControl22 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar4 = new DevExpress.XtraBars.Bar();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl23 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.bar5 = new DevExpress.XtraBars.Bar();
             this.standaloneBarDockControl24 = new DevExpress.XtraBars.StandaloneBarDockControl();
@@ -245,7 +246,6 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tab1 = new DevExpress.XtraVerticalGrid.Tab();
             this.tab2 = new DevExpress.XtraVerticalGrid.Tab();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersDS)).BeginInit();
@@ -581,6 +581,14 @@
             this.bar4.OptionsBar.UseWholeRow = true;
             this.bar4.StandaloneBarDockControl = this.standaloneBarDockControl23;
             this.bar4.Text = "Custom 5";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Експорт в Excel";
+            this.barButtonItem1.Id = 57;
+            this.barButtonItem1.ImageOptions.ImageIndex = 8;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // standaloneBarDockControl23
             // 
@@ -1221,6 +1229,10 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 83);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "debit_card");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.in_transit, "in_transit", typeof(global::SP_Sklad.Properties.Resources), 84);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "in_transit");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
             this.UserTreeImgList.ParentControl = this;
             // 
             // mainContentTab
@@ -2924,14 +2936,6 @@
             // 
             this.tab2.Caption = "Tab 2";
             this.tab2.Name = "tab2";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Експорт в Excel";
-            this.barButtonItem1.Id = 57;
-            this.barButtonItem1.ImageOptions.ImageIndex = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // ServiceUserControl
             // 

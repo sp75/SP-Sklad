@@ -144,6 +144,7 @@
             this.OkButton = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
@@ -222,8 +223,9 @@
             this.barButtonItem5,
             this.barButtonItem9,
             this.barButtonItem10,
-            this.barEditItem1});
-            this.barManager1.MaxItemId = 28;
+            this.barEditItem1,
+            this.barButtonItem11});
+            this.barManager1.MaxItemId = 29;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemProgressBar1});
             // 
@@ -1326,6 +1328,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvAllBarBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.DelAllRsvBarBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn, true),
@@ -1334,6 +1337,13 @@
             this.WbDetPopupMenu.Manager = this.barManager1;
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
+            // 
+            // barButtonItem11
+            // 
+            this.barButtonItem11.Caption = "Видалити не зарезервовані";
+            this.barButtonItem11.Id = 28;
+            this.barButtonItem11.Name = "barButtonItem11";
+            this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
             // frmWayBillOut
             // 
@@ -1497,5 +1507,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private DevExpress.XtraEditors.LookUpEdit EnterpriseEdit;
         private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
     }
 }
