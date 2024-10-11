@@ -132,6 +132,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.ProcurationBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -204,8 +205,9 @@
             this.barButtonItem4,
             this.barButtonItem5,
             this.barButtonItem9,
-            this.barButtonItem10});
-            this.barManager1.MaxItemId = 27;
+            this.barButtonItem10,
+            this.ProcurationBtn});
+            this.barManager1.MaxItemId = 28;
             // 
             // bar2
             // 
@@ -221,7 +223,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.RsvInfoBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.MatInfoBtn),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ProcurationBtn)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -481,6 +484,8 @@
             this.WBImgList.Images.SetKeyName(24, "w_scale");
             this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.store_16, "store_16", typeof(global::SP_Sklad.Properties.Resources), 25);
             this.WBImgList.Images.SetKeyName(25, "store_16");
+            this.WBImgList.InsertImage(global::SP_Sklad.Properties.Resources.handshake, "handshake", typeof(global::SP_Sklad.Properties.Resources), 26);
+            this.WBImgList.Images.SetKeyName(26, "handshake");
             // 
             // RsvBarBtn
             // 
@@ -1230,6 +1235,14 @@
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
             // 
+            // ProcurationBtn
+            // 
+            this.ProcurationBtn.Caption = "Доручення";
+            this.ProcurationBtn.Id = 27;
+            this.ProcurationBtn.ImageOptions.ImageIndex = 26;
+            this.ProcurationBtn.Name = "ProcurationBtn";
+            this.ProcurationBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ProcurationBtn_ItemClick_1);
+            // 
             // frmWayBillCustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1383,5 +1396,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.Utils.ImageCollection WBImgList;
+        private DevExpress.XtraBars.BarButtonItem ProcurationBtn;
     }
 }

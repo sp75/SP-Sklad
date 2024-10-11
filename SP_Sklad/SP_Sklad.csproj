@@ -1572,11 +1572,11 @@
     <Compile Include="SkladData\WriteOffTypes.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Documents\ucDeliveryManagement.cs">
+    <Compile Include="UserControls\Documents\ucRoutesManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\Documents\ucDeliveryManagement.Designer.cs">
-      <DependentUpon>ucDeliveryManagement.cs</DependentUpon>
+    <Compile Include="UserControls\Documents\ucRoutesManagement.Designer.cs">
+      <DependentUpon>ucRoutesManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.cs">
       <SubType>UserControl</SubType>
@@ -2738,8 +2738,8 @@
     <EmbeddedResource Include="Reports\frmDocumentDetails.resx">
       <DependentUpon>frmDocumentDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Documents\ucDeliveryManagement.resx">
-      <DependentUpon>ucDeliveryManagement.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\Documents\ucRoutesManagement.resx">
+      <DependentUpon>ucRoutesManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
@@ -3980,6 +3980,7 @@
     <None Include="Resources\attach.png" />
     <None Include="Resources\xls_import.png" />
     <None Include="Resources\in_transit.png" />
+    <None Include="Resources\delivery.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

@@ -901,5 +901,13 @@ namespace SP_Sklad.WBForm
 
             WaybillDetOutGridView.RestoreLayoutFromStream(wb_det_layout_stream);
         }
+
+        private void ProcurationBtn_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            using (var f = new frmAttEdit(wb))
+            {
+                f.ShowDialog();
+            }
+        }
     }
 }

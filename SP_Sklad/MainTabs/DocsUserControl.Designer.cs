@@ -95,6 +95,7 @@
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.ucDiscountManagement = new SP_Sklad.UserControls.ucDiscountManagement();
             this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucDeliveryManagement = new SP_Sklad.UserControls.ucRoutesManagement();
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -112,7 +113,6 @@
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.bar4 = new DevExpress.XtraBars.Bar();
             this.bar5 = new DevExpress.XtraBars.Bar();
-            this.ucDeliveryManagement = new SP_Sklad.UserControls.ucDeliveryManagement();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -387,8 +387,8 @@
             this.UserTreeImgList.ImageSource.Images.SetKeyName(82, "businessman");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.debit_card, "debit_card", typeof(global::SP_Sklad.Properties.Resources), 83);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(83, "debit_card");
-            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.in_transit, "in_transit", typeof(global::SP_Sklad.Properties.Resources), 84);
-            this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "in_transit");
+            this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.delivery, "delivery", typeof(global::SP_Sklad.Properties.Resources), 84);
+            this.UserTreeImgList.ImageSource.Images.SetKeyName(84, "delivery");
             this.UserTreeImgList.ImageSource.InsertImage(global::SP_Sklad.Properties.Resources.percent, "percent", typeof(global::SP_Sklad.Properties.Resources), 85);
             this.UserTreeImgList.ImageSource.Images.SetKeyName(85, "percent");
             this.UserTreeImgList.ParentControl = this;
@@ -1016,6 +1016,14 @@
             this.xtraTabPage2.Size = new System.Drawing.Size(1138, 695);
             this.xtraTabPage2.Text = "Доставка";
             // 
+            // ucDeliveryManagement
+            // 
+            this.ucDeliveryManagement.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucDeliveryManagement.Location = new System.Drawing.Point(0, 0);
+            this.ucDeliveryManagement.Name = "ucDeliveryManagement";
+            this.ucDeliveryManagement.Size = new System.Drawing.Size(1138, 695);
+            this.ucDeliveryManagement.TabIndex = 0;
+            // 
             // standaloneBarDockControl1
             // 
             this.standaloneBarDockControl1.AutoSize = true;
@@ -1231,14 +1239,6 @@
             this.bar5.OptionsBar.UseWholeRow = true;
             this.bar5.Text = "Custom 5";
             // 
-            // ucDeliveryManagement
-            // 
-            this.ucDeliveryManagement.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucDeliveryManagement.Location = new System.Drawing.Point(0, 0);
-            this.ucDeliveryManagement.Name = "ucDeliveryManagement";
-            this.ucDeliveryManagement.Size = new System.Drawing.Size(1138, 695);
-            this.ucDeliveryManagement.TabIndex = 0;
-            // 
             // DocsUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1386,6 +1386,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private UserControls.ucDeliveryManagement ucDeliveryManagement;
+        private UserControls.ucRoutesManagement ucDeliveryManagement;
     }
 }

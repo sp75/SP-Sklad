@@ -21,10 +21,10 @@ using SP_Sklad.EditForm;
 
 namespace SP_Sklad.UserControls
 {
-    public partial class ucDeliveryManagement : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucRoutesManagement : DevExpress.XtraEditors.XtraUserControl
     {
         private int fun_id = 106;
-        private string reg_layout_path = "ucDeliveryManagement\\RoutesGridView";
+        private string reg_layout_path = "ucRoutesManagement\\RoutesGridView";
 
         public v_DeliveryManagement row_route => RoutesGridView.GetFocusedRow() is NotLoadedObject ? null : RoutesGridView.GetFocusedRow() as v_DeliveryManagement;
         public v_WayBillCustomerOrder row_wb => WbGridView.GetFocusedRow() as v_WayBillCustomerOrder;
@@ -34,7 +34,7 @@ namespace SP_Sklad.UserControls
         private int prev_rowHandle = 0;
         int row = 0;
         bool restore = false;
-        public ucDeliveryManagement()
+        public ucRoutesManagement()
         {
             InitializeComponent();
         }
@@ -82,7 +82,7 @@ namespace SP_Sklad.UserControls
             if (row_route != null)
             {
                 var top_row = WbGridView.TopRowIndex;
-                bindingSource1.DataSource = DB.SkladBase().v_WayBillCustomerOrder.OrderBy(o=> o.OnDate).Where(w => w.RouteId == row_route.Id && w.Checked == 0 && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                bindingSource1.DataSource = DB.SkladBase().v_WayBillCustomerOrder.OrderBy(o=> o.OnDate).Where(w => w.RouteId == row_route.Id && (w.Checked == 0 || w.Checked == 2) && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
                 WbGridView.TopRowIndex = top_row;
             }
             else
@@ -102,6 +102,8 @@ namespace SP_Sklad.UserControls
                 RoutesGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
                 user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
+
+             
 
                 GetData();
             }
@@ -156,19 +158,7 @@ namespace SP_Sklad.UserControls
 
         private void RoutesGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            /*     DeleteItemBtn.Enabled = (row_route != null &&  user_access.CanDelete == 1);
-
-
-          ExecuteItemBtn.Enabled = (row_route != null && user_access.CanPost == 1);
-
-
-          EditItemBtn.Enabled = (row_route != null &&  user_access.CanModify == 1);
-
-
-          CopyItemBtn.Enabled = (row_route != null && user_access.CanModify == 1);
-
-          PrintItemBtn.Enabled = (row_route != null);
-          PrintItemBtn2.Enabled = (row_route != null);*/
+            EditItemBtn.Enabled = (row_route != null && user_access.CanModify == 1);
 
             GetDetailData();
         }

@@ -1,6 +1,6 @@
 ﻿namespace SP_Sklad.UserControls
 {
-    partial class ucDeliveryManagement
+    partial class ucRoutesManagement
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucDeliveryManagement));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucRoutesManagement));
             this.splitContainerControl4 = new DevExpress.XtraEditors.SplitContainerControl();
             this.RoutesGridControl = new DevExpress.XtraGrid.GridControl();
             this.DeliveryManagementBS = new System.Windows.Forms.BindingSource(this.components);
@@ -72,6 +72,8 @@
             this.WbGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -105,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryManagementPopupMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillPopupMenu)).BeginInit();
             this.SuspendLayout();
@@ -151,6 +154,8 @@
             // 
             // RoutesGridView
             // 
+            this.RoutesGridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.RoutesGridView.Appearance.HeaderPanel.Options.UseFont = true;
             this.RoutesGridView.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 10F);
             this.RoutesGridView.Appearance.Row.Options.UseFont = true;
             this.RoutesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -438,6 +443,10 @@
             this.imageCollection1.Images.SetKeyName(10, "showproduct_16x16");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.check_file, "check_file", typeof(global::SP_Sklad.Properties.Resources), 11);
             this.imageCollection1.Images.SetKeyName(11, "check_file");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.checked_blue, "checked_blue", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.imageCollection1.Images.SetKeyName(12, "checked_blue");
+            this.imageCollection1.InsertGalleryImage("switchtimescalesto_16x16.png", "office2013/scheduling/switchtimescalesto_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/scheduling/switchtimescalesto_16x16.png"), 13);
+            this.imageCollection1.Images.SetKeyName(13, "switchtimescalesto_16x16.png");
             // 
             // NewItemBtn
             // 
@@ -484,10 +493,11 @@
             // 
             // barEditItem1
             // 
-            this.barEditItem1.Caption = "Змінити дату для вибраних документів";
+            this.barEditItem1.Caption = "Змінити дату";
             this.barEditItem1.Edit = this.repositoryItemDateEdit1;
-            this.barEditItem1.EditWidth = 150;
+            this.barEditItem1.EditWidth = 120;
             this.barEditItem1.Id = 37;
+            this.barEditItem1.ImageOptions.ImageIndex = 13;
             this.barEditItem1.Name = "barEditItem1";
             // 
             // repositoryItemDateEdit1
@@ -539,7 +549,8 @@
             this.WBGridControl.MainView = this.WbGridView;
             this.WBGridControl.Name = "WBGridControl";
             this.WBGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageComboBox1});
+            this.repositoryItemImageComboBox1,
+            this.repositoryItemImageComboBox2});
             this.WBGridControl.Size = new System.Drawing.Size(1246, 280);
             this.WBGridControl.TabIndex = 3;
             this.WBGridControl.UseEmbeddedNavigator = true;
@@ -556,6 +567,7 @@
             this.WbGridView.Appearance.Row.Options.UseFont = true;
             this.WbGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
+            this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
             this.gridColumn5,
@@ -599,6 +611,31 @@
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.imageCollection1;
             // 
+            // gridColumn2
+            // 
+            this.gridColumn2.Caption = "gridColumn2";
+            this.gridColumn2.ColumnEdit = this.repositoryItemImageComboBox2;
+            this.gridColumn2.FieldName = "Checked";
+            this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.OptionsColumn.AllowFocus = false;
+            this.gridColumn2.OptionsColumn.AllowSize = false;
+            this.gridColumn2.OptionsColumn.FixedWidth = true;
+            this.gridColumn2.OptionsColumn.ShowCaption = false;
+            this.gridColumn2.Visible = true;
+            this.gridColumn2.VisibleIndex = 1;
+            this.gridColumn2.Width = 25;
+            // 
+            // repositoryItemImageComboBox2
+            // 
+            this.repositoryItemImageComboBox2.AutoHeight = false;
+            this.repositoryItemImageComboBox2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox2.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 0),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 2, 12)});
+            this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
+            this.repositoryItemImageComboBox2.SmallImages = this.imageCollection1;
+            // 
             // gridColumn3
             // 
             this.gridColumn3.Caption = "№";
@@ -607,8 +644,8 @@
             this.gridColumn3.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Num", "{0}")});
             this.gridColumn3.Visible = true;
-            this.gridColumn3.VisibleIndex = 1;
-            this.gridColumn3.Width = 84;
+            this.gridColumn3.VisibleIndex = 2;
+            this.gridColumn3.Width = 80;
             // 
             // gridColumn4
             // 
@@ -619,8 +656,8 @@
             this.gridColumn4.Name = "gridColumn4";
             this.gridColumn4.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.gridColumn4.Visible = true;
-            this.gridColumn4.VisibleIndex = 2;
-            this.gridColumn4.Width = 183;
+            this.gridColumn4.VisibleIndex = 3;
+            this.gridColumn4.Width = 175;
             // 
             // gridColumn5
             // 
@@ -628,8 +665,8 @@
             this.gridColumn5.FieldName = "KaName";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 3;
-            this.gridColumn5.Width = 359;
+            this.gridColumn5.VisibleIndex = 4;
+            this.gridColumn5.Width = 343;
             // 
             // gridColumn40
             // 
@@ -637,8 +674,8 @@
             this.gridColumn40.FieldName = "Notes";
             this.gridColumn40.Name = "gridColumn40";
             this.gridColumn40.Visible = true;
-            this.gridColumn40.VisibleIndex = 5;
-            this.gridColumn40.Width = 110;
+            this.gridColumn40.VisibleIndex = 6;
+            this.gridColumn40.Width = 105;
             // 
             // gridColumn44
             // 
@@ -648,8 +685,8 @@
             this.gridColumn44.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "SummInCurr", "{0:0.##}")});
             this.gridColumn44.Visible = true;
-            this.gridColumn44.VisibleIndex = 4;
-            this.gridColumn44.Width = 115;
+            this.gridColumn44.VisibleIndex = 5;
+            this.gridColumn44.Width = 110;
             // 
             // gridColumn108
             // 
@@ -663,8 +700,8 @@
             this.gridColumn109.FieldName = "CarName";
             this.gridColumn109.Name = "gridColumn109";
             this.gridColumn109.Visible = true;
-            this.gridColumn109.VisibleIndex = 6;
-            this.gridColumn109.Width = 113;
+            this.gridColumn109.VisibleIndex = 7;
+            this.gridColumn109.Width = 108;
             // 
             // gridColumn110
             // 
@@ -672,8 +709,8 @@
             this.gridColumn110.FieldName = "Received";
             this.gridColumn110.Name = "gridColumn110";
             this.gridColumn110.Visible = true;
-            this.gridColumn110.VisibleIndex = 7;
-            this.gridColumn110.Width = 101;
+            this.gridColumn110.VisibleIndex = 8;
+            this.gridColumn110.Width = 96;
             // 
             // colPersonName
             // 
@@ -689,8 +726,8 @@
             this.gridColumn8.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "TotalAmount", "{0:0.##}")});
             this.gridColumn8.Visible = true;
-            this.gridColumn8.VisibleIndex = 8;
-            this.gridColumn8.Width = 106;
+            this.gridColumn8.VisibleIndex = 9;
+            this.gridColumn8.Width = 104;
             // 
             // DeliveryManagementPopupMenu
             // 
@@ -704,10 +741,10 @@
             // WayBillPopupMenu
             // 
             this.WayBillPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.WayBillPopupMenu.Manager = this.barManager1;
             this.WayBillPopupMenu.Name = "WayBillPopupMenu";
             // 
@@ -748,6 +785,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WbGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeliveryManagementPopupMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WayBillPopupMenu)).EndInit();
             this.ResumeLayout(false);
@@ -811,5 +849,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
     }
 }

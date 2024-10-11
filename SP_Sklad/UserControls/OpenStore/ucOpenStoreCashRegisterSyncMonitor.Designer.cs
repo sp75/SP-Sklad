@@ -71,7 +71,6 @@
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.gridView8 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
             this.styleController1 = new DevExpress.XtraEditors.StyleController(this.components);
             this.treeListColumn1 = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -107,7 +106,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
@@ -421,7 +419,6 @@
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.PaymentGridControl);
-            this.panelControl1.Controls.Add(this.panelControl3);
             this.panelControl1.Controls.Add(this.standaloneBarDockControl6);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(0, 0);
@@ -438,14 +435,14 @@
             this.PaymentGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
             this.PaymentGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
             this.PaymentGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.PaymentGridControl.Location = new System.Drawing.Point(2, 76);
+            this.PaymentGridControl.Location = new System.Drawing.Point(2, 26);
             this.PaymentGridControl.MainView = this.PaymentGridView;
             this.PaymentGridControl.Name = "PaymentGridControl";
             this.PaymentGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemImageComboBox4,
             this.repositoryItemLookUpEdit1,
             this.repositoryItemLookUpEdit2});
-            this.PaymentGridControl.Size = new System.Drawing.Size(1426, 565);
+            this.PaymentGridControl.Size = new System.Drawing.Size(1426, 615);
             this.PaymentGridControl.TabIndex = 1;
             this.PaymentGridControl.UseEmbeddedNavigator = true;
             this.PaymentGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -468,22 +465,27 @@
             this.colSYSTEMID,
             this.colSyncDate,
             this.colErrorText});
+            this.PaymentGridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.PaymentGridView.GridControl = this.PaymentGridControl;
             this.PaymentGridView.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Sum, "Price", null, "{0:0.00}")});
             this.PaymentGridView.Name = "PaymentGridView";
             this.PaymentGridView.OptionsBehavior.Editable = false;
+            this.PaymentGridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.PaymentGridView.OptionsSelection.EnableAppearanceFocusedRow = false;
+            this.PaymentGridView.OptionsSelection.EnableAppearanceHideSelection = false;
+            this.PaymentGridView.OptionsSelection.InvertSelection = true;
             this.PaymentGridView.OptionsView.ShowGroupPanel = false;
             this.PaymentGridView.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.PaymentGridView_RowStyle);
             // 
             // colSAREAID
             // 
-            this.colSAREAID.Caption = "#";
+            this.colSAREAID.Caption = "Складська територія";
             this.colSAREAID.FieldName = "SAREAID";
             this.colSAREAID.Name = "colSAREAID";
             this.colSAREAID.Visible = true;
             this.colSAREAID.VisibleIndex = 0;
-            this.colSAREAID.Width = 122;
+            this.colSAREAID.Width = 124;
             // 
             // colSAREANAME
             // 
@@ -492,7 +494,7 @@
             this.colSAREANAME.Name = "colSAREANAME";
             this.colSAREANAME.Visible = true;
             this.colSAREANAME.VisibleIndex = 1;
-            this.colSAREANAME.Width = 431;
+            this.colSAREANAME.Width = 421;
             // 
             // colSYSTEMID
             // 
@@ -501,7 +503,7 @@
             this.colSYSTEMID.Name = "colSYSTEMID";
             this.colSYSTEMID.Visible = true;
             this.colSYSTEMID.VisibleIndex = 2;
-            this.colSYSTEMID.Width = 115;
+            this.colSYSTEMID.Width = 93;
             // 
             // colSyncDate
             // 
@@ -512,7 +514,7 @@
             this.colSyncDate.Name = "colSyncDate";
             this.colSyncDate.Visible = true;
             this.colSyncDate.VisibleIndex = 3;
-            this.colSyncDate.Width = 181;
+            this.colSyncDate.Width = 173;
             // 
             // colErrorText
             // 
@@ -521,7 +523,7 @@
             this.colErrorText.Name = "colErrorText";
             this.colErrorText.Visible = true;
             this.colErrorText.VisibleIndex = 4;
-            this.colErrorText.Width = 552;
+            this.colErrorText.Width = 543;
             // 
             // repositoryItemImageComboBox4
             // 
@@ -580,14 +582,6 @@
             // 
             this.gridView8.GridControl = this.PaymentGridControl;
             this.gridView8.Name = "gridView8";
-            // 
-            // panelControl3
-            // 
-            this.panelControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl3.Location = new System.Drawing.Point(2, 26);
-            this.panelControl3.Name = "panelControl3";
-            this.panelControl3.Size = new System.Drawing.Size(1426, 50);
-            this.panelControl3.TabIndex = 3;
             // 
             // styleController1
             // 
@@ -714,7 +708,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -790,7 +783,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox4;
         private DevExpress.Utils.ImageCollection DocTypeImageCollection;
-        private DevExpress.XtraEditors.PanelControl panelControl3;
         private DevExpress.XtraEditors.StyleController styleController1;
         private DevExpress.XtraGrid.Views.Grid.GridView PaymentGridView;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit1;

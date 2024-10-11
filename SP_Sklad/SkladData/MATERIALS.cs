@@ -82,6 +82,7 @@ namespace SP_Sklad.SkladData
         public Nullable<int> RawMaterialTypeId { get; set; }
         public Nullable<int> UpdatedBy { get; set; }
         public Nullable<int> OpenStoreId { get; set; }
+        public Nullable<bool> DisableWhMatTurn { get; set; }
     
         public virtual ICollection<CONTRDET> CONTRDET { get; set; }
         public virtual Countries Countries { get; set; }

@@ -130,6 +130,11 @@ namespace SP_Sklad.UserControls
 
         public void ExecuteItem()
         {
+            if(wb_focused_row == null)
+            {
+                return;
+            }
+
             using (var db =  new BaseEntities())
             {
                 var wb = db.WaybillList.Find(wb_focused_row.WbillId);
@@ -159,9 +164,11 @@ namespace SP_Sklad.UserControls
                 {
                     wb.PersonId = DBHelper.CurrentUser.KaId;
                 }
+
                 db.SaveChanges();
             }
         }
+
         public void PrintItem()
         {
             if (wb_focused_row == null)
