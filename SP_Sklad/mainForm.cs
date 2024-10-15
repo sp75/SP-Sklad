@@ -153,6 +153,14 @@ namespace SP_Sklad
                 FunId = Properties.Settings.Default.LastFunId,
                 MainTabs = Properties.Settings.Default.LastTabPage
             });
+
+            if (DB.SkladBase().v_UserDocs.Where(w => w.PersonId == DBHelper.CurrentUser.KaId && w.Checked == 0).Any())
+            {
+                if (XtraMessageBox.Show(@"Увага є не проведені документи! Показати список документів?", @"Попередження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    new frmIncompleteUserDoc(DBHelper.CurrentUser.KaId).ShowDialog();
+                }
+            }
         }
 
         private void barEditItem3_EditValueChanged(object sender, EventArgs e)
@@ -405,6 +413,11 @@ namespace SP_Sklad
                 UserSession.production_monitor_frm.WindowState = FormWindowState.Normal;
                 UserSession.production_monitor_frm.Activate();
             }
+        }
+
+        private void barButtonItem5_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            new frmIncompleteUserDoc(DBHelper.CurrentUser.KaId).ShowDialog();
         }
     }
 }

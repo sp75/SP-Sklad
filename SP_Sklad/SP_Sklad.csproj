@@ -4002,6 +4002,8 @@
     <None Include="Resources\xls_import.png" />
     <None Include="Resources\in_transit.png" />
     <None Include="Resources\delivery.png" />
+    <None Include="Resources\money_edit.png" />
+    <None Include="Resources\user_documens.png" />
     <Content Include="TempLate\FontsForBilling\FREE3OF9.TXT" />
     <Content Include="warehouse.ico" />
   </ItemGroup>

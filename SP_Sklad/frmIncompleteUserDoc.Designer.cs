@@ -63,7 +63,7 @@
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummInCurr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSummPay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -125,8 +125,9 @@
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
             this.barButtonItem2,
-            this.barButtonItem5});
-            this.barManager1.MaxItemId = 7;
+            this.barButtonItem5,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar2
             // 
@@ -138,7 +139,8 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.MultiLine = true;
@@ -211,6 +213,8 @@
             this.ImageList.Images.SetKeyName(1, "preview_2");
             this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.walking_16x16, "walking_16x16", typeof(global::SP_Sklad.Properties.Resources), 2);
             this.ImageList.Images.SetKeyName(2, "walking_16x16");
+            this.ImageList.InsertImage(global::SP_Sklad.Properties.Resources.refresh_office, "refresh_office", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.ImageList.Images.SetKeyName(3, "refresh_office");
             // 
             // popupMenu1
             // 
@@ -234,6 +238,7 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1176, 44);
             this.panelControl1.TabIndex = 42;
+            this.panelControl1.Visible = false;
             // 
             // wTypeList
             // 
@@ -343,6 +348,38 @@
             this.GridImageList.Images.SetKeyName(17, "WBWriteOff_2");
             this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 18);
             this.GridImageList.Images.SetKeyName(18, "WBWriteOn_4");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 19);
+            this.GridImageList.Images.SetKeyName(19, "deboneing");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.manufacturing_products, "manufacturing_products", typeof(global::SP_Sklad.Properties.Resources), 20);
+            this.GridImageList.Images.SetKeyName(20, "manufacturing_products");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act, "inventory_act", typeof(global::SP_Sklad.Properties.Resources), 21);
+            this.GridImageList.Images.SetKeyName(21, "inventory_act");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.weightedpies_16x16, "weightedpies_16x16", typeof(global::SP_Sklad.Properties.Resources), 22);
+            this.GridImageList.Images.SetKeyName(22, "weightedpies_16x16");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.price_settings, "price_settings", typeof(global::SP_Sklad.Properties.Resources), 23);
+            this.GridImageList.Images.SetKeyName(23, "price_settings");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.bank_statements, "bank_statements", typeof(global::SP_Sklad.Properties.Resources), 24);
+            this.GridImageList.Images.SetKeyName(24, "bank_statements");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.expedition, "expedition", typeof(global::SP_Sklad.Properties.Resources), 25);
+            this.GridImageList.Images.SetKeyName(25, "expedition");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.management_raw_materials, "management_raw_materials", typeof(global::SP_Sklad.Properties.Resources), 26);
+            this.GridImageList.Images.SetKeyName(26, "management_raw_materials");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_in_2, "money_in_2", typeof(global::SP_Sklad.Properties.Resources), 27);
+            this.GridImageList.Images.SetKeyName(27, "money_in_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_in1, "money_in1", typeof(global::SP_Sklad.Properties.Resources), 28);
+            this.GridImageList.Images.SetKeyName(28, "money_in1");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_move_2, "money_move_2", typeof(global::SP_Sklad.Properties.Resources), 29);
+            this.GridImageList.Images.SetKeyName(29, "money_move_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_out, "money_out", typeof(global::SP_Sklad.Properties.Resources), 30);
+            this.GridImageList.Images.SetKeyName(30, "money_out");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_out_2, "money_out_2", typeof(global::SP_Sklad.Properties.Resources), 31);
+            this.GridImageList.Images.SetKeyName(31, "money_out_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.preparation, "preparation", typeof(global::SP_Sklad.Properties.Resources), 32);
+            this.GridImageList.Images.SetKeyName(32, "preparation");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.production_planning, "production_planning", typeof(global::SP_Sklad.Properties.Resources), 33);
+            this.GridImageList.Images.SetKeyName(33, "production_planning");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.money_edit, "money_edit", typeof(global::SP_Sklad.Properties.Resources), 34);
+            this.GridImageList.Images.SetKeyName(34, "money_edit");
             // 
             // PersonDocListSource
             // 
@@ -378,8 +415,7 @@
             this.colOnDate,
             this.colName,
             this.colSummAll,
-            this.colSummInCurr,
-            this.colSummPay});
+            this.colSummInCurr});
             this.DocumentGridView.GridControl = this.DocumentGridControl;
             this.DocumentGridView.Name = "DocumentGridView";
             this.DocumentGridView.OptionsBehavior.ReadOnly = true;
@@ -411,7 +447,26 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Рахунок", 2, 14),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Додаткові витрати", -2, 13),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 17),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 15)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 15),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Введення залишків товарів", 5, 18),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Виготовлення продукції", -20, 20),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Обвалка сировини", -22, 19),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Накладна переміщення", 4, 16),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення від клієнта", 6, 4),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення постачальнику", -6, 5),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Замовлення вiд клiєнтiв", -16, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Замовлення постачальникам", 16, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Проміжкові зважування", 24, 22),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти iнвентаризацiї", 7, 21),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Продажі", -25, 6),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Повернення продаж", 25, 7),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Управління проектами", 30, 10),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Встановлення цін товарів", 31, 23),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Планування виробницва", 20, 33),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (переміщення грошей)", -9, 31),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (переміщення грошей)", 9, 27),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (коригування залишку)", 18, 34),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Експедиція", 32, 25)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -420,6 +475,7 @@
             this.colNum.Caption = "№";
             this.colNum.FieldName = "Num";
             this.colNum.Name = "colNum";
+            this.colNum.OptionsColumn.AllowEdit = false;
             this.colNum.Visible = true;
             this.colNum.VisibleIndex = 1;
             this.colNum.Width = 163;
@@ -429,6 +485,7 @@
             this.colOnDate.Caption = "Дата";
             this.colOnDate.FieldName = "OnDate";
             this.colOnDate.Name = "colOnDate";
+            this.colOnDate.OptionsColumn.AllowEdit = false;
             this.colOnDate.OptionsFilter.FilterPopupMode = DevExpress.XtraGrid.Columns.FilterPopupMode.Date;
             this.colOnDate.Visible = true;
             this.colOnDate.VisibleIndex = 2;
@@ -446,9 +503,12 @@
             // 
             // colSummAll
             // 
-            this.colSummAll.Caption = "Сума";
-            this.colSummAll.FieldName = "SummAll";
+            this.colSummAll.Caption = "Тип документа";
+            this.colSummAll.FieldName = "DocType";
             this.colSummAll.Name = "colSummAll";
+            this.colSummAll.OptionsColumn.AllowEdit = false;
+            this.colSummAll.Visible = true;
+            this.colSummAll.VisibleIndex = 5;
             this.colSummAll.Width = 121;
             // 
             // colSummInCurr
@@ -463,17 +523,15 @@
             this.colSummInCurr.VisibleIndex = 4;
             this.colSummInCurr.Width = 156;
             // 
-            // colSummPay
+            // barButtonItem3
             // 
-            this.colSummPay.Caption = "Сума оплати";
-            this.colSummPay.DisplayFormat.FormatString = "0.00";
-            this.colSummPay.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colSummPay.FieldName = "SummPay";
-            this.colSummPay.Name = "colSummPay";
-            this.colSummPay.OptionsColumn.AllowEdit = false;
-            this.colSummPay.Width = 194;
+            this.barButtonItem3.Caption = "Обновити";
+            this.barButtonItem3.Id = 7;
+            this.barButtonItem3.ImageOptions.ImageIndex = 3;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
-            // frmUserDoc
+            // frmIncompleteUserDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -485,8 +543,8 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.kontragent_balans;
-            this.Name = "frmUserDoc";
+            this.IconOptions.Image = global::SP_Sklad.Properties.Resources.user_documens;
+            this.Name = "frmIncompleteUserDoc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Не завршені документи";
             this.Load += new System.EventHandler(this.frmKABalans_Load);
@@ -549,6 +607,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colSummAll;
         private DevExpress.XtraGrid.Columns.GridColumn colSummInCurr;
-        private DevExpress.XtraGrid.Columns.GridColumn colSummPay;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

@@ -95,6 +95,7 @@
             this.tradeUserControl1 = new SP_Sklad.MainTabs.TradeUserControl();
             this.OpenStoreTabPage = new DevExpress.XtraTab.XtraTabPage();
             this.openStoreUserControl = new SP_Sklad.MainTabs.OpenStoreUserControl();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -163,9 +164,10 @@
             this.barSubItem5,
             this.WbCorrBtn,
             this.WbCorrListBtn,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem5});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 41;
+            this.barManager1.MaxItemId = 42;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTimeEdit1,
             this.repositoryItemCalcEdit1,
@@ -451,7 +453,8 @@
             this.barSubItem4.Caption = "Сервіс";
             this.barSubItem4.Id = 14;
             this.barSubItem4.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10)});
             this.barSubItem4.Name = "barSubItem4";
             // 
@@ -577,6 +580,8 @@
             this.imageCollection1.Images.SetKeyName(15, "info1.png");
             this.imageCollection1.Images.SetKeyName(16, "download.png");
             this.imageCollection1.Images.SetKeyName(17, "refresh_2.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.new_document, "new_document", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.imageCollection1.Images.SetKeyName(18, "new_document");
             // 
             // repositoryItemTimeEdit1
             // 
@@ -816,6 +821,14 @@
             this.openStoreUserControl.Size = new System.Drawing.Size(1319, 591);
             this.openStoreUserControl.TabIndex = 0;
             // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Не завершені документи";
+            this.barButtonItem5.Id = 41;
+            this.barButtonItem5.ImageOptions.ImageIndex = 18;
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -931,6 +944,7 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private DevExpress.XtraTab.XtraTabPage OpenStoreTabPage;
         public MainTabs.OpenStoreUserControl openStoreUserControl;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem5;
     }
 }
 

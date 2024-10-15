@@ -1509,6 +1509,16 @@ namespace SP_Sklad.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap money_edit {
+            get {
+                object obj = ResourceManager.GetObject("money_edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap money_in {
             get {
                 object obj = ResourceManager.GetObject("money_in", resourceCulture);
@@ -2778,6 +2788,16 @@ namespace SP_Sklad.Properties {
         internal static System.Drawing.Bitmap used_product {
             get {
                 object obj = ResourceManager.GetObject("used_product", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_documens {
+            get {
+                object obj = ResourceManager.GetObject("user_documens", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
