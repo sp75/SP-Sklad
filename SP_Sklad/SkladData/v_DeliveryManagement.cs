@@ -24,5 +24,6 @@ namespace SP_Sklad.SkladData
         public Nullable<decimal> СarryingСapacity { get; set; }
         public string DriverName { get; set; }
         public Nullable<decimal> ParcentСarryingСapacity { get; set; }
+        public Nullable<decimal> TotalAmount { get; set; }
     }
 }

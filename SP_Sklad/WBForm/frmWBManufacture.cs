@@ -134,7 +134,7 @@ namespace SP_Sklad.WBForm
 
         private void RefreshDet()
         {
-            wbd_list = _db.GetWayBillMakeDet(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
+            wbd_list = _db.GetWayBillMakeDet(_wbill_id).AsNoTracking().ToList().OrderBy(o => o.Num).ToList();
 
             int top_row = WaybillDetOutGridView.TopRowIndex;
             GetWayBillMakeDetBS.DataSource = wbd_list;
@@ -268,7 +268,7 @@ namespace SP_Sklad.WBForm
 
             if (TurnDocCheckBox.Checked)
             {
-                wbd_list = new BaseEntities().GetWayBillMakeDet(_wbill_id).AsNoTracking().OrderBy(o => o.Num).ToList();
+                wbd_list = new BaseEntities().GetWayBillMakeDet(_wbill_id).AsNoTracking().ToList().OrderBy(o => o.Num).ToList();
                 if (wbd_list.Any(w => w.Rsv == 0))
                 {
                     MessageBox.Show("Не всі позиції зарезервовано");

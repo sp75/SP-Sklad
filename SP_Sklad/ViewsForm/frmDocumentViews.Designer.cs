@@ -38,18 +38,19 @@
             this.DocumentGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colWType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.colNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOnDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummInCurr = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummPay = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.BottomPanel)).BeginInit();
             this.BottomPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).BeginInit();
             this.SuspendLayout();
             // 
             // BottomPanel
@@ -145,36 +146,16 @@
             this.repositoryItemImageComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageComboBox1.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видаткова накладна", -1, 2),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видаткова накладна", -1, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибуткова накладна", 1, 0),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибутковий касовий ордер", 3, 4),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видатковий касовий ордер", -3, 5),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Рахунок", 2, 1),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Додаткові витрати", -2, 6),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 10),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 14)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Прибутковий касовий ордер", 3, 11),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Видатковий касовий ордер", -3, 12),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Рахунок", 2, 14),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Додаткові витрати", -2, 13),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти списання товару", -5, 17),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Акти наданих послуг", 29, 15)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
-            this.repositoryItemImageComboBox1.SmallImages = this.imageList1;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.White;
-            this.imageList1.Images.SetKeyName(0, "ПриходНакл.bmp");
-            this.imageList1.Images.SetKeyName(1, "Счета.bmp");
-            this.imageList1.Images.SetKeyName(2, "РасходНакл.bmp");
-            this.imageList1.Images.SetKeyName(3, "Счет-фактуры.bmp");
-            this.imageList1.Images.SetKeyName(4, "ВходПлатежи.bmp");
-            this.imageList1.Images.SetKeyName(5, "ИсходПлатежи.bmp");
-            this.imageList1.Images.SetKeyName(6, "ДопРасход.bmp");
-            this.imageList1.Images.SetKeyName(7, "Возврат Поставщику.bmp");
-            this.imageList1.Images.SetKeyName(8, "Возврат от клиетна.bmp");
-            this.imageList1.Images.SetKeyName(9, "Введення залишк_в товар_в.bmp");
-            this.imageList1.Images.SetKeyName(10, "Акти списання товару.bmp");
-            this.imageList1.Images.SetKeyName(11, "Накладн_ перем_щення.bmp");
-            this.imageList1.Images.SetKeyName(12, "Бази даних.bmp");
-            this.imageList1.Images.SetKeyName(13, "Акти iнвентаризацiї.bmp");
-            this.imageList1.Images.SetKeyName(14, "ActServices.png");
+            this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
             // colNum
             // 
@@ -236,6 +217,49 @@
             this.colSummPay.VisibleIndex = 5;
             this.colSummPay.Width = 194;
             // 
+            // GridImageList
+            // 
+            this.GridImageList.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("GridImageList.ImageStream")));
+            this.GridImageList.TransparentColor = System.Drawing.Color.Transparent;
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.GridImageList.Images.SetKeyName(0, "waybill_in");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.GridImageList.Images.SetKeyName(1, "waybill_out");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.GridImageList.Images.SetKeyName(2, "wb_order_in");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_out, "wb_order_out", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.GridImageList.Images.SetKeyName(3, "wb_order_out");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_in, "wb_return_in", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.GridImageList.Images.SetKeyName(4, "wb_return_in");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_out, "wb_return_out", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.GridImageList.Images.SetKeyName(5, "wb_return_out");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.GridImageList.Images.SetKeyName(6, "purchase");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.GridImageList.Images.SetKeyName(7, "wb_return_sale");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.credit_adjustmen, "credit_adjustmen", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.GridImageList.Images.SetKeyName(8, "credit_adjustmen");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.debt_adjustment, "debt_adjustment", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.GridImageList.Images.SetKeyName(9, "debt_adjustment");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.project_manager_2, "project_manager_2", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.GridImageList.Images.SetKeyName(10, "project_manager_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_in, "pay_doc_in", typeof(global::SP_Sklad.Properties.Resources), 11);
+            this.GridImageList.Images.SetKeyName(11, "pay_doc_in");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out, "pay_doc_out", typeof(global::SP_Sklad.Properties.Resources), 12);
+            this.GridImageList.Images.SetKeyName(12, "pay_doc_out");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.pay_doc_out_2, "pay_doc_out_2", typeof(global::SP_Sklad.Properties.Resources), 13);
+            this.GridImageList.Images.SetKeyName(13, "pay_doc_out_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.invoice, "invoice", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.GridImageList.Images.SetKeyName(14, "invoice");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.act_services_provider, "act_services_provider", typeof(global::SP_Sklad.Properties.Resources), 15);
+            this.GridImageList.Images.SetKeyName(15, "act_services_provider");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 16);
+            this.GridImageList.Images.SetKeyName(16, "move_stock");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 17);
+            this.GridImageList.Images.SetKeyName(17, "WBWriteOff_2");
+            this.GridImageList.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 18);
+            this.GridImageList.Images.SetKeyName(18, "WBWriteOn_4");
+            // 
             // frmDocumentViews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridImageList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,6 +299,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSummAll;
         private DevExpress.XtraGrid.Columns.GridColumn colSummInCurr;
         private DevExpress.XtraGrid.Columns.GridColumn colSummPay;
-        public System.Windows.Forms.ImageList imageList1;
+        private DevExpress.Utils.ImageCollection GridImageList;
     }
 }

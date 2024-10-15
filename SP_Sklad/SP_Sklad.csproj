@@ -272,6 +272,12 @@
     <Compile Include="Common\AppSettingRepository.cs" />
     <Compile Include="Common\UserSettingsRepository.cs" />
     <Compile Include="Common\WhDocEdit.cs" />
+    <Compile Include="frmIncompleteUserDoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIncompleteUserDoc.Designer.cs">
+      <DependentUpon>frmIncompleteUserDoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPosMatTurn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1446,6 +1452,9 @@
     <Compile Include="SkladData\v_TechProcDet.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\v_UserDocs.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\v_Users.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -2612,6 +2621,9 @@
     <Compile Include="WBForm\frmWBWriteOn.Designer.cs">
       <DependentUpon>frmWBWriteOn.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmIncompleteUserDoc.resx">
+      <DependentUpon>frmIncompleteUserDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPosMatTurn.resx">
       <DependentUpon>frmPosMatTurn.cs</DependentUpon>
     </EmbeddedResource>

@@ -40,6 +40,7 @@
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
+            this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
@@ -163,7 +164,8 @@
             this.gridColumn101,
             this.gridColumn102,
             this.gridColumn6,
-            this.gridColumn7});
+            this.gridColumn7,
+            this.gridColumn10});
             this.RoutesGridView.GridControl = this.RoutesGridControl;
             this.RoutesGridView.Name = "RoutesGridView";
             this.RoutesGridView.OptionsBehavior.AllowIncrementalSearch = true;
@@ -181,7 +183,7 @@
             this.gridColumn9.Name = "gridColumn9";
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 341;
+            this.gridColumn9.Width = 321;
             // 
             // gridColumn101
             // 
@@ -190,7 +192,7 @@
             this.gridColumn101.Name = "gridColumn101";
             this.gridColumn101.Visible = true;
             this.gridColumn101.VisibleIndex = 1;
-            this.gridColumn101.Width = 213;
+            this.gridColumn101.Width = 200;
             // 
             // gridColumn102
             // 
@@ -199,7 +201,7 @@
             this.gridColumn102.Name = "gridColumn102";
             this.gridColumn102.Visible = true;
             this.gridColumn102.VisibleIndex = 2;
-            this.gridColumn102.Width = 219;
+            this.gridColumn102.Width = 206;
             // 
             // gridColumn6
             // 
@@ -210,7 +212,7 @@
             this.gridColumn6.Name = "gridColumn6";
             this.gridColumn6.Visible = true;
             this.gridColumn6.VisibleIndex = 3;
-            this.gridColumn6.Width = 144;
+            this.gridColumn6.Width = 135;
             // 
             // gridColumn7
             // 
@@ -219,13 +221,22 @@
             this.gridColumn7.FieldName = "ParcentСarryingСapacity";
             this.gridColumn7.Name = "gridColumn7";
             this.gridColumn7.Visible = true;
-            this.gridColumn7.VisibleIndex = 4;
-            this.gridColumn7.Width = 306;
+            this.gridColumn7.VisibleIndex = 5;
+            this.gridColumn7.Width = 270;
             // 
             // repositoryItemProgressBar1
             // 
             this.repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
             this.repositoryItemProgressBar1.ShowTitle = true;
+            // 
+            // gridColumn10
+            // 
+            this.gridColumn10.Caption = "Всього, кг";
+            this.gridColumn10.FieldName = "ParcentСarryingСapacity";
+            this.gridColumn10.Name = "gridColumn10";
+            this.gridColumn10.Visible = true;
+            this.gridColumn10.VisibleIndex = 4;
+            this.gridColumn10.Width = 91;
             // 
             // standaloneBarDockControl2
             // 
@@ -748,7 +759,7 @@
             this.WayBillPopupMenu.Manager = this.barManager1;
             this.WayBillPopupMenu.Name = "WayBillPopupMenu";
             // 
-            // ucDeliveryManagement
+            // ucRoutesManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -759,7 +770,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Name = "ucDeliveryManagement";
+            this.Name = "ucRoutesManagement";
             this.Size = new System.Drawing.Size(1248, 685);
             this.Load += new System.EventHandler(this.SettingMaterialPricesUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).EndInit();
@@ -851,5 +862,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
     }
 }

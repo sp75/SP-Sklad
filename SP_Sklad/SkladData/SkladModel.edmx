@@ -2366,6 +2366,7 @@ warning 6002: The table/view 'sp_base.dbo.v_DeliveryManagement' does not have a 
           <Property Name="СarryingСapacity" Type="numeric" Precision="15" Scale="4" />
           <Property Name="DriverName" Type="nvarchar" MaxLength="100" />
           <Property Name="ParcentСarryingСapacity" Type="numeric" Precision="38" Scale="6" />
+          <Property Name="TotalAmount" Type="numeric" Precision="38" Scale="4" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_DiscCards' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -3754,6 +3755,28 @@ warning 6002: The table/view 'sp_base.dbo.v_TechProcDet' does not have a primary
           <Property Name="OutNetto" Type="numeric" Precision="15" Scale="4" />
           <Property Name="TareName" Type="nvarchar" MaxLength="255" />
           <Property Name="SausageSyringe" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'sp_base.dbo.v_UserDocs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_UserDocs">
+          <Key>
+            <PropertyRef Name="DocId" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="PersonName" />
+          </Key>
+          <Property Name="DocId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DocType" Type="int" />
+          <Property Name="Checked" Type="int" Nullable="false" />
+          <Property Name="OnDate" Type="datetime" Nullable="false" />
+          <Property Name="Num" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonId" Type="int" />
+          <Property Name="KaId" Type="int" />
+          <Property Name="SummInCurr" Type="numeric" Precision="15" Scale="2" />
+          <Property Name="KaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PersonName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DocTypeName" Type="nvarchar" MaxLength="64" />
+          <Property Name="FunId" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'sp_base.dbo.v_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -10411,7 +10434,8 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_DeliveryManagement].[CarNumber] AS [CarNumber], 
     [v_DeliveryManagement].[СarryingСapacity] AS [СarryingСapacity], 
     [v_DeliveryManagement].[DriverName] AS [DriverName], 
-    [v_DeliveryManagement].[ParcentСarryingСapacity] AS [ParcentСarryingСapacity]
+    [v_DeliveryManagement].[ParcentСarryingСapacity] AS [ParcentСarryingСapacity], 
+    [v_DeliveryManagement].[TotalAmount] AS [TotalAmount]
     FROM [dbo].[v_DeliveryManagement] AS [v_DeliveryManagement]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_DiscCards" EntityType="Self.v_DiscCards" store:Type="Views" store:Schema="dbo">
@@ -11428,6 +11452,22 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
     [v_TechProcDet].[TareName] AS [TareName], 
     [v_TechProcDet].[SausageSyringe] AS [SausageSyringe]
     FROM [dbo].[v_TechProcDet] AS [v_TechProcDet]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_UserDocs" EntityType="Self.v_UserDocs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_UserDocs].[DocId] AS [DocId], 
+    [v_UserDocs].[DocType] AS [DocType], 
+    [v_UserDocs].[Checked] AS [Checked], 
+    [v_UserDocs].[OnDate] AS [OnDate], 
+    [v_UserDocs].[Num] AS [Num], 
+    [v_UserDocs].[PersonId] AS [PersonId], 
+    [v_UserDocs].[KaId] AS [KaId], 
+    [v_UserDocs].[SummInCurr] AS [SummInCurr], 
+    [v_UserDocs].[KaName] AS [KaName], 
+    [v_UserDocs].[PersonName] AS [PersonName], 
+    [v_UserDocs].[DocTypeName] AS [DocTypeName], 
+    [v_UserDocs].[FunId] AS [FunId]
+    FROM [dbo].[v_UserDocs] AS [v_UserDocs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="v_Users" EntityType="Self.v_Users" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -15072,6 +15112,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Parameter Name="pos_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="v_DeliveryManagement" EntityType="BaseModel.v_DeliveryManagement" />
+          <EntitySet Name="v_UserDocs" EntityType="BaseModel.v_UserDocs" />
           </EntityContainer>
         <ComplexType Name="SP_CONTRACTS_LIST_Result">
           <Property Name="CONTRID" Type="Int32" Nullable="false" />
@@ -24804,6 +24845,27 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="СarryingСapacity" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="DriverName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ParcentСarryingСapacity" Type="Decimal" Precision="38" Scale="6" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="38" Scale="4" />
+        </EntityType>
+        <EntityType Name="v_UserDocs">
+          <Key>
+            <PropertyRef Name="DocId" />
+            <PropertyRef Name="Checked" />
+            <PropertyRef Name="OnDate" />
+            <PropertyRef Name="PersonName" />
+          </Key>
+          <Property Name="DocId" Type="Guid" Nullable="false" />
+          <Property Name="DocType" Type="Int32" />
+          <Property Name="Checked" Type="Int32" Nullable="false" />
+          <Property Name="OnDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="Int32" />
+          <Property Name="KaId" Type="Int32" />
+          <Property Name="SummInCurr" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="KaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PersonName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DocTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="FunId" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -31418,6 +31480,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="v_DeliveryManagement">
             <EntityTypeMapping TypeName="BaseModel.v_DeliveryManagement">
               <MappingFragment StoreEntitySet="v_DeliveryManagement">
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="ParcentСarryingСapacity" ColumnName="ParcentСarryingСapacity" />
                 <ScalarProperty Name="DriverName" ColumnName="DriverName" />
                 <ScalarProperty Name="СarryingСapacity" ColumnName="СarryingСapacity" />
@@ -31428,6 +31491,24 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
                 <ScalarProperty Name="DriverId" ColumnName="DriverId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_UserDocs">
+            <EntityTypeMapping TypeName="BaseModel.v_UserDocs">
+              <MappingFragment StoreEntitySet="v_UserDocs">
+                <ScalarProperty Name="FunId" ColumnName="FunId" />
+                <ScalarProperty Name="DocTypeName" ColumnName="DocTypeName" />
+                <ScalarProperty Name="PersonName" ColumnName="PersonName" />
+                <ScalarProperty Name="KaName" ColumnName="KaName" />
+                <ScalarProperty Name="SummInCurr" ColumnName="SummInCurr" />
+                <ScalarProperty Name="KaId" ColumnName="KaId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Num" ColumnName="Num" />
+                <ScalarProperty Name="OnDate" ColumnName="OnDate" />
+                <ScalarProperty Name="Checked" ColumnName="Checked" />
+                <ScalarProperty Name="DocType" ColumnName="DocType" />
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

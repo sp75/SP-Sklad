@@ -274,6 +274,7 @@ namespace SP_Sklad.SkladData
         public DbSet<AttachedFiles> AttachedFiles { get; set; }
         public DbSet<MaterialSupplier> MaterialSupplier { get; set; }
         public DbSet<v_DeliveryManagement> v_DeliveryManagement { get; set; }
+        public DbSet<v_UserDocs> v_UserDocs { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
