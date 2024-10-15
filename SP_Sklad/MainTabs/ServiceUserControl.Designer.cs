@@ -2761,7 +2761,7 @@
             this.xtraTabPage9.Name = "xtraTabPage9";
             this.xtraTabPage9.Size = new System.Drawing.Size(960, 573);
             this.xtraTabPage9.Text = "Додаткові";
-            this.xtraTabPage9.Paint += new System.Windows.Forms.PaintEventHandler(this.xtraTabPage9_Paint);
+
             // 
             // AttachedFilesPathEdit
             // 

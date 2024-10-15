@@ -48,6 +48,8 @@
             this.gridColumn17 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemTimeEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTimeEdit();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ucDocumentFilterPanel = new SP_Sklad.UserControls.ucDocumentFilterPanel();
             this.standaloneBarDockControl2 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -91,8 +93,6 @@
             this.ucRelDocGrid1 = new SP_Sklad.UserControls.ucRelDocGrid();
             this.ExpeditionsPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.ExpeditionsDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -360,6 +360,25 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemTimeEdit1.ExportMode = DevExpress.XtraEditors.Repository.ExportMode.DisplayText;
             this.repositoryItemTimeEdit1.Name = "repositoryItemTimeEdit1";
+            // 
+            // gridColumn19
+            // 
+            this.gridColumn19.Caption = "Загальна вага тари";
+            this.gridColumn19.FieldName = "TotalTareWeight";
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 11;
+            this.gridColumn19.Width = 76;
+            // 
+            // gridColumn20
+            // 
+            this.gridColumn20.Caption = "Всього, кг";
+            this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn20.FieldName = "TotalWeight";
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 12;
+            this.gridColumn20.Width = 89;
             // 
             // ucDocumentFilterPanel
             // 
@@ -787,25 +806,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1)});
             this.ExpeditionsDetPopupMenu.Manager = this.barManager1;
             this.ExpeditionsDetPopupMenu.Name = "ExpeditionsDetPopupMenu";
-            // 
-            // gridColumn19
-            // 
-            this.gridColumn19.Caption = "Загальна вага тари";
-            this.gridColumn19.FieldName = "TotalTareWeight";
-            this.gridColumn19.Name = "gridColumn19";
-            this.gridColumn19.Visible = true;
-            this.gridColumn19.VisibleIndex = 11;
-            this.gridColumn19.Width = 76;
-            // 
-            // gridColumn20
-            // 
-            this.gridColumn20.Caption = "Всього, кг";
-            this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn20.FieldName = "TotalWeight";
-            this.gridColumn20.Name = "gridColumn20";
-            this.gridColumn20.Visible = true;
-            this.gridColumn20.VisibleIndex = 12;
-            this.gridColumn20.Width = 89;
             // 
             // ucExpedition
             // 

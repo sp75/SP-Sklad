@@ -70,7 +70,7 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 7, ParentId = 255, Text = "Посвідчення якості", ImgIdx = 4, TabIdx = 4 });
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 255, Text = "Зображення", ImgIdx = 5, TabIdx = 5 });
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 255, Text = "Примітка", ImgIdx = 6, TabIdx = 6 });
-            
+
 
             TreeListBS.DataSource = tree;
 
@@ -81,7 +81,7 @@ namespace SP_Sklad.EditForm
             }
             else if (_mat_id == null)
             {
-                _mat = _db.Materials.Add(new Materials()
+                _mat = new Materials()
                 {
                     Archived = 0,
                     Serials = 0,
@@ -90,8 +90,9 @@ namespace SP_Sklad.EditForm
                     CId = DBHelper.CountersList.FirstOrDefault(w => w.Def == 1).CId,
                     NDS = 0,
                     GrpId = _mat_grp,
-                    DecPlaces = 4
-                  });
+                    DecPlaces = 4,
+                    UpdatedBy = UserSession.UserId
+                };
                 _db.SaveChanges();
                 _mat_id = _mat.MatId;
             }
@@ -306,7 +307,10 @@ namespace SP_Sklad.EditForm
             }
             else
             {
-
+                if(_db.Entry(_mat).State == System.Data.Entity.EntityState.Detached)
+                {
+                    _db.Materials.Add(_mat);
+                }
                 _db.SaveChanges();
                 current_transaction.Commit();
             }

@@ -1584,6 +1584,12 @@
     <Compile Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.Designer.cs">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStorePaymentsSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\OpenStore\ucOpenStorePaymentsSummary.Designer.cs">
+      <DependentUpon>ucOpenStorePaymentsSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\OpenStore\ucOpenStorePayments.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2743,6 +2749,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStoreCashRegisterSyncMonitor.resx">
       <DependentUpon>ucOpenStoreCashRegisterSyncMonitor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\OpenStore\ucOpenStorePaymentsSummary.resx">
+      <DependentUpon>ucOpenStorePaymentsSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\OpenStore\ucOpenStorePayments.resx">
       <DependentUpon>ucOpenStorePayments.cs</DependentUpon>

@@ -57,7 +57,12 @@ namespace SP_Sklad.MainTabs
                 mainContentTab.SelectedTabPageIndex = 4;
                 //     ucOpenStorePayments.GetData();
             }
-            
+            if (e.Node.Id == 4)
+            {
+                mainContentTab.SelectedTabPageIndex = 5;
+                //     ucOpenStorePayments.GetData();
+            }
+
         }
     }
 }

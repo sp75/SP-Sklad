@@ -6,21 +6,13 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using SP_Sklad.SkladData;
 using SP_Sklad.EditForm;
 using SP_Sklad.Common;
-using DevExpress.XtraTreeList;
-using System.IO;
-using System.Diagnostics;
-using SP_Sklad.Properties;
-using DevExpress.XtraTreeList.Nodes;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.Data;
 using SkladEngine.DBFunction;
-using SP_Sklad.WBForm;
-using DevExpress.XtraGrid;
 using DevExpress.XtraEditors;
 using SP_Sklad.ViewsForm;
 
@@ -98,7 +90,6 @@ namespace SP_Sklad.MainTabs
         {
             MatGridView.SaveLayoutToRegistry(IHelper.reg_layout_path + reg_layout_path);
         }
-
 
         public void GetData(bool show_child_group, bool restore = true)
         {
@@ -180,6 +171,11 @@ namespace SP_Sklad.MainTabs
 
         private void DeleteItemBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (focused_mat == null)
+            {
+                return;
+            }
+
             if (MessageBox.Show("Ви дійсно бажаєте відалити цей запис з довідника?", "Підтвердіть видалення", MessageBoxButtons.YesNo, MessageBoxIcon.Information) != DialogResult.Yes)
             {
                 return;
@@ -187,29 +183,19 @@ namespace SP_Sklad.MainTabs
 
             using (var db = DB.SkladBase())
             {
+                var mat = db.Materials.Find(focused_mat.MatId);
+                var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
+                var mat_recipe = db.MatRecipe.Where(w => w.MatId == focused_mat.MatId && !w.Archived).Any();
 
-                if (focused_mat != null)
+                if (mat != null && mat_remain == null && !mat_recipe)
                 {
-                    var mat = db.Materials.Find(focused_mat.MatId);
-                    var mat_remain = db.v_MatRemains.Where(w => w.MatId == focused_mat.MatId).OrderByDescending(o => o.OnDate).FirstOrDefault();
-                    var mat_recipe = db.MatRecipe.Where(w => w.MatId == focused_mat.MatId && !w.Archived).Any();
-
-                    if (mat != null && mat_remain == null && !mat_recipe)
-                    {
-                        mat.Deleted = 1;
-                        mat.UpdatedBy = UserSession.UserId;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Видаляти заборонено !");
-                    }
+                    mat.Deleted = 1;
+                    mat.UpdatedBy = UserSession.UserId;
                 }
                 else
                 {
-                    MessageBox.Show("Список товарів пустий!");
+                    MessageBox.Show("Видаляти заборонено !");
                 }
-
-
 
                 db.SaveChanges();
             }
@@ -597,7 +583,6 @@ namespace SP_Sklad.MainTabs
                     RefrechItemBtn.PerformClick();
                 }
             }
-
         }
 
         private void SelectAllBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -658,7 +643,6 @@ namespace SP_Sklad.MainTabs
                     RefrechItemBtn.PerformClick();
                 }
             }
-
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

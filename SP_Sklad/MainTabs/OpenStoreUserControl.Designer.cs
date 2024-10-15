@@ -59,6 +59,8 @@
             this.ucOpenStoreReturnSales1 = new SP_Sklad.UserControls.Warehouse.ucOpenStoreReturnSales();
             this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             this.ucOpenStoreCashRegisterSyncMonitor = new SP_Sklad.UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor();
+            this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucOpenStorePaymentsSummary1 = new SP_Sklad.UserControls.Warehouse.ucOpenStorePaymentsSummary();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
@@ -78,6 +80,7 @@
             this.xtraTabPage1.SuspendLayout();
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
+            this.xtraTabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -267,6 +270,8 @@
             "Повернення (чеки)"}, -1, 4, 4, -1);
             this.DirTreeList.AppendNode(new object[] {
             "Монітор синхронизаціїї кас"}, -1, 3, 3, -1);
+            this.DirTreeList.AppendNode(new object[] {
+            "Підсумок по оплаті"}, -1, 5, 5, -1);
             this.DirTreeList.EndUnboundLoad();
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -321,7 +326,8 @@
             this.xtraTabPage10,
             this.xtraTabPage1,
             this.xtraTabPage2,
-            this.xtraTabPage3});
+            this.xtraTabPage3,
+            this.xtraTabPage4});
             // 
             // xtraTabPage10
             // 
@@ -389,6 +395,21 @@
             this.ucOpenStoreCashRegisterSyncMonitor.Size = new System.Drawing.Size(1152, 574);
             this.ucOpenStoreCashRegisterSyncMonitor.TabIndex = 0;
             // 
+            // xtraTabPage4
+            // 
+            this.xtraTabPage4.Controls.Add(this.ucOpenStorePaymentsSummary1);
+            this.xtraTabPage4.Name = "xtraTabPage4";
+            this.xtraTabPage4.Size = new System.Drawing.Size(1152, 574);
+            this.xtraTabPage4.Text = "Підсумок по оплаті";
+            // 
+            // ucOpenStorePaymentsSummary1
+            // 
+            this.ucOpenStorePaymentsSummary1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOpenStorePaymentsSummary1.Location = new System.Drawing.Point(0, 0);
+            this.ucOpenStorePaymentsSummary1.Name = "ucOpenStorePaymentsSummary1";
+            this.ucOpenStorePaymentsSummary1.Size = new System.Drawing.Size(1152, 574);
+            this.ucOpenStorePaymentsSummary1.TabIndex = 0;
+            // 
             // OpenStoreUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +448,7 @@
             this.xtraTabPage1.ResumeLayout(false);
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
+            this.xtraTabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -463,5 +485,7 @@
         private UserControls.Warehouse.ucOpenStoreReturnSales ucOpenStoreReturnSales1;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
         private UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor ucOpenStoreCashRegisterSyncMonitor;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
+        private UserControls.Warehouse.ucOpenStorePaymentsSummary ucOpenStorePaymentsSummary1;
     }
 }
