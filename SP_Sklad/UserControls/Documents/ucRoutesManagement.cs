@@ -24,12 +24,14 @@ namespace SP_Sklad.UserControls
     public partial class ucRoutesManagement : DevExpress.XtraEditors.XtraUserControl
     {
         private int fun_id = 106;
+        private int wb_fun_id = 64;
         private string reg_layout_path = "ucRoutesManagement\\RoutesGridView";
 
         public v_DeliveryManagement row_route => RoutesGridView.GetFocusedRow() is NotLoadedObject ? null : RoutesGridView.GetFocusedRow() as v_DeliveryManagement;
         public v_WayBillCustomerOrder row_wb => WbGridView.GetFocusedRow() as v_WayBillCustomerOrder;
 
         private UserAccess user_access { get; set; }
+        private UserAccess wb_user_access { get; set; }
 
         private int prev_rowHandle = 0;
         int row = 0;
@@ -69,7 +71,12 @@ namespace SP_Sklad.UserControls
 
         public void PrintItem()
         {
-         //   PrintDoc.SettingMaterialPricesReport(row_route.Id, _db);
+            if (row_wb == null)
+            {
+                return;
+            }
+
+            PrintDoc.Show(row_wb.Id, row_wb.WType, new BaseEntities());
         }
 
         public void ExportToExcel()
@@ -102,8 +109,7 @@ namespace SP_Sklad.UserControls
                 RoutesGridView.RestoreLayoutFromRegistry(IHelper.reg_layout_path + reg_layout_path);
 
                 user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == fun_id && w.UserId == UserSession.UserId);
-
-             
+                wb_user_access = new BaseEntities().UserAccess.FirstOrDefault(w => w.FunId == wb_fun_id && w.UserId == UserSession.UserId);
 
                 GetData();
             }
@@ -122,8 +128,31 @@ namespace SP_Sklad.UserControls
 
         private void DeleteItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-   //         DeleteItem();
-    //        GetData();
+
+            if (row_wb == null)
+            {
+                return;
+            }
+
+            if (XtraMessageBox.Show($"Ви дійсно бажаєте видалити замовлення від клієнта {row_wb.Num}?", "Видалення документа", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                using (var _db = new BaseEntities())
+                {
+                    var wb = _db.WaybillList.FirstOrDefault(w => w.WbillId == row_wb.WbillId && (w.SessionId == null || w.SessionId == UserSession.SessionId) && w.Checked == 0);
+                    if (wb != null)
+                    {
+                        _db.WaybillList.Remove(wb);
+
+                        _db.SaveChanges();
+                    }
+                    else
+                    {
+                        XtraMessageBox.Show(Resources.deadlock);
+                    }
+                }
+            }
+            GetDetailData();
+           
         }
 
         private void RefrechItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -134,7 +163,7 @@ namespace SP_Sklad.UserControls
 
         private void PrintItemBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-         //   PrintItem();
+            PrintItem();
         }
 
         private void EditItemBtn_ItemClick(object sender, ItemClickEventArgs e)
@@ -209,7 +238,7 @@ namespace SP_Sklad.UserControls
 
         private void RoutesGridView_PopupMenuShowing(object sender, DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs e)
         {
-                  if (e.HitInfo.InRow)
+            if (e.HitInfo.InRow)
             {
                 Point p2 = Control.MousePosition;
                 DeliveryManagementPopupMenu.ShowPopup(p2);
@@ -258,6 +287,19 @@ namespace SP_Sklad.UserControls
 
                 GetDetailData();
             }
+        }
+
+        private void WbGridView_DoubleClick(object sender, EventArgs e)
+        {
+            EditWbBtn.PerformClick();
+        }
+
+        private void WbGridView_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
+        {
+            DeleteItemBtn.Enabled = (row_wb != null && row_wb.Checked == 0 && wb_user_access.CanDelete == 1);
+            ExecuteWbBtn.Enabled = (row_wb != null && row_wb.Checked == 0 && wb_user_access.CanPost == 1);
+            EditWbBtn.Enabled = (row_wb != null && wb_user_access.CanModify == 1 && row_wb.Checked == 0);
+            PrintItemBtn.Enabled = (row_wb != null);
         }
     }
 }

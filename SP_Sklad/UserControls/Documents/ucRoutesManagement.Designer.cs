@@ -48,9 +48,11 @@
             this.RefrechItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.EditWbBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.ExecuteWbBtn = new DevExpress.XtraBars.BarButtonItem();
+            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.standaloneBarDockControl4 = new DevExpress.XtraBars.StandaloneBarDockControl();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -61,8 +63,6 @@
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.NewItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.CopyItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.DeleteItemBtn = new DevExpress.XtraBars.BarButtonItem();
-            this.PrintItemBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -232,7 +232,9 @@
             // gridColumn10
             // 
             this.gridColumn10.Caption = "Всього, кг";
-            this.gridColumn10.FieldName = "ParcentСarryingСapacity";
+            this.gridColumn10.DisplayFormat.FormatString = "0.00";
+            this.gridColumn10.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn10.FieldName = "TotalAmount";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
             this.gridColumn10.VisibleIndex = 4;
@@ -273,11 +275,11 @@
             this.PrintItemBtn,
             this.barButtonItem2,
             this.barButtonItem14,
-            this.barButtonItem1,
-            this.barButtonItem3,
+            this.EditWbBtn,
+            this.ExecuteWbBtn,
             this.barButtonItem4,
             this.barEditItem1});
-            this.barManager1.MaxItemId = 38;
+            this.barManager1.MaxItemId = 39;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
             // 
@@ -328,22 +330,33 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Standalone;
             this.bar2.FloatLocation = new System.Drawing.Point(94, 475);
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditWbBtn),
+            new DevExpress.XtraBars.LinkPersistInfo(this.DeleteItemBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteWbBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.PrintItemBtn)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
             this.bar2.OptionsBar.DrawDragBorder = false;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.StandaloneBarDockControl = this.standaloneBarDockControl4;
             this.bar2.Text = "Custom 2";
             // 
-            // barButtonItem1
+            // EditWbBtn
             // 
-            this.barButtonItem1.Caption = "Редагувати замовлення";
-            this.barButtonItem1.Id = 34;
-            this.barButtonItem1.ImageOptions.ImageIndex = 2;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
+            this.EditWbBtn.Caption = "Редагувати замовлення";
+            this.EditWbBtn.Id = 34;
+            this.EditWbBtn.ImageOptions.ImageIndex = 2;
+            this.EditWbBtn.Name = "EditWbBtn";
+            this.EditWbBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick_1);
+            // 
+            // DeleteItemBtn
+            // 
+            this.DeleteItemBtn.Caption = "Видалити";
+            this.DeleteItemBtn.Id = 3;
+            this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
+            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
+            this.DeleteItemBtn.Name = "DeleteItemBtn";
+            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -353,13 +366,21 @@
             this.barButtonItem4.Name = "barButtonItem4";
             this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
-            // barButtonItem3
+            // ExecuteWbBtn
             // 
-            this.barButtonItem3.Caption = "Відвантажити весь товар";
-            this.barButtonItem3.Id = 35;
-            this.barButtonItem3.ImageOptions.ImageIndex = 11;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick_1);
+            this.ExecuteWbBtn.Caption = "Відвантажити весь товар";
+            this.ExecuteWbBtn.Id = 35;
+            this.ExecuteWbBtn.ImageOptions.ImageIndex = 11;
+            this.ExecuteWbBtn.Name = "ExecuteWbBtn";
+            this.ExecuteWbBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick_1);
+            // 
+            // PrintItemBtn
+            // 
+            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
+            this.PrintItemBtn.Id = 6;
+            this.PrintItemBtn.ImageOptions.ImageIndex = 4;
+            this.PrintItemBtn.Name = "PrintItemBtn";
+            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
             // 
             // standaloneBarDockControl4
             // 
@@ -477,23 +498,6 @@
             this.CopyItemBtn.Name = "CopyItemBtn";
             this.CopyItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.CopyItemBtn_ItemClick);
             // 
-            // DeleteItemBtn
-            // 
-            this.DeleteItemBtn.Caption = "Видалити";
-            this.DeleteItemBtn.Id = 3;
-            this.DeleteItemBtn.ImageOptions.ImageIndex = 5;
-            this.DeleteItemBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete));
-            this.DeleteItemBtn.Name = "DeleteItemBtn";
-            this.DeleteItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.DeleteItemBtn_ItemClick);
-            // 
-            // PrintItemBtn
-            // 
-            this.PrintItemBtn.Caption = "Друк/Попередній перегляд";
-            this.PrintItemBtn.Id = 6;
-            this.PrintItemBtn.ImageOptions.ImageIndex = 4;
-            this.PrintItemBtn.Name = "PrintItemBtn";
-            this.PrintItemBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.PrintItemBtn_ItemClick);
-            // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Перейти до документа";
@@ -598,6 +602,8 @@
             this.WbGridView.OptionsView.ShowFooter = true;
             this.WbGridView.OptionsView.ShowGroupPanel = false;
             this.WbGridView.PopupMenuShowing += new DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventHandler(this.WbGridView_PopupMenuShowing);
+            this.WbGridView.FocusedRowObjectChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventHandler(this.WbGridView_FocusedRowObjectChanged);
+            this.WbGridView.DoubleClick += new System.EventHandler(this.WbGridView_DoubleClick);
             // 
             // gridColumn1
             // 
@@ -753,8 +759,8 @@
             // 
             this.WayBillPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1, true),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.EditWbBtn, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteWbBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.WayBillPopupMenu.Manager = this.barManager1;
             this.WayBillPopupMenu.Name = "WayBillPopupMenu";
@@ -854,8 +860,8 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem EditWbBtn;
+        private DevExpress.XtraBars.BarButtonItem ExecuteWbBtn;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private System.Windows.Forms.BindingSource bindingSource1;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
