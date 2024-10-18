@@ -156,7 +156,7 @@ namespace SP_Sklad
 
             if (DB.SkladBase().v_UserDocs.Where(w => w.PersonId == DBHelper.CurrentUser.KaId && w.Checked == 0).Any())
             {
-                if (XtraMessageBox.Show(@"Увага є не проведені документи! Показати список документів?", @"Попередження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                if (XtraMessageBox.Show(@"Увага, у вас є не проведені документи! Показати список документів?", @"Попередження", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     new frmIncompleteUserDoc(DBHelper.CurrentUser.KaId).ShowDialog();
                 }

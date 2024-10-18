@@ -951,7 +951,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(491, 57);
+            this.labelControl4.Location = new System.Drawing.Point(439, 57);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(67, 16);
             this.labelControl4.StyleController = this.styleController1;
@@ -1015,7 +1015,7 @@
             // MsrComboBox
             // 
             this.MsrComboBox.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "MId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.MsrComboBox.Location = new System.Drawing.Point(564, 53);
+            this.MsrComboBox.Location = new System.Drawing.Point(512, 53);
             this.MsrComboBox.Name = "MsrComboBox";
             editorButtonImageOptions6.ImageIndex = 12;
             editorButtonImageOptions6.ImageList = this.ImageList;
@@ -1030,7 +1030,7 @@
             this.MsrComboBox.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.MsrComboBox.Properties.ValueMember = "MId";
             this.MsrComboBox.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.MsrComboBox_Properties_ButtonClick);
-            this.MsrComboBox.Size = new System.Drawing.Size(115, 24);
+            this.MsrComboBox.Size = new System.Drawing.Size(167, 24);
             this.MsrComboBox.StyleController = this.styleController1;
             this.MsrComboBox.TabIndex = 17;
             // 
@@ -1120,7 +1120,7 @@
             editorButtonImageOptions9.ImageList = this.ImageList;
             this.ArtikulEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.ArtikulEdit.Size = new System.Drawing.Size(394, 24);
+            this.ArtikulEdit.Size = new System.Drawing.Size(347, 24);
             this.ArtikulEdit.StyleController = this.styleController1;
             this.ArtikulEdit.TabIndex = 29;
             this.ArtikulEdit.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.ArtikulEdit_ButtonClick);
@@ -1133,7 +1133,7 @@
             this.xtraTabPage2.Controls.Add(this.EditPriceBtn);
             this.xtraTabPage2.Controls.Add(this.MatPriceGridControl);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(702, 570);
+            this.xtraTabPage2.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage2.Text = "Ціноутворення";
             // 
             // AddPriceBtn
@@ -1249,7 +1249,7 @@
             this.xtraTabPage3.Controls.Add(this.labelControl20);
             this.xtraTabPage3.Controls.Add(this.NdsCheckEdit);
             this.xtraTabPage3.Name = "xtraTabPage3";
-            this.xtraTabPage3.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage3.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage3.Text = "Оподаткування";
             // 
             // NdsLabel
@@ -1314,7 +1314,7 @@
             this.xtraTabPage4.Controls.Add(this.simpleButton9);
             this.xtraTabPage4.Controls.Add(this.simpleButton10);
             this.xtraTabPage4.Name = "xtraTabPage4";
-            this.xtraTabPage4.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage4.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage4.Text = "Взаємозамінність";
             // 
             // MatChangeGridControl
@@ -1437,7 +1437,7 @@
             this.xtraTabPage5.Controls.Add(this.textEdit1);
             this.xtraTabPage5.Controls.Add(this.labelControl13);
             this.xtraTabPage5.Name = "xtraTabPage5";
-            this.xtraTabPage5.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage5.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage5.Text = "Посвідчення";
             // 
             // labelControl21
@@ -1544,7 +1544,7 @@
             // 
             this.xtraTabPage6.Controls.Add(this.pictureEdit1);
             this.xtraTabPage6.Name = "xtraTabPage6";
-            this.xtraTabPage6.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage6.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage6.Text = "Зображення";
             // 
             // pictureEdit1
@@ -1556,7 +1556,7 @@
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
-            this.pictureEdit1.Size = new System.Drawing.Size(702, 564);
+            this.pictureEdit1.Size = new System.Drawing.Size(702, 563);
             this.pictureEdit1.TabIndex = 2;
             this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
             // 
@@ -1564,7 +1564,7 @@
             // 
             this.xtraTabPage7.Controls.Add(this.textEdit8);
             this.xtraTabPage7.Name = "xtraTabPage7";
-            this.xtraTabPage7.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage7.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage7.Text = "Примітка";
             // 
             // textEdit8
@@ -1573,7 +1573,7 @@
             this.textEdit8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textEdit8.Location = new System.Drawing.Point(0, 0);
             this.textEdit8.Name = "textEdit8";
-            this.textEdit8.Size = new System.Drawing.Size(702, 564);
+            this.textEdit8.Size = new System.Drawing.Size(702, 563);
             this.textEdit8.TabIndex = 35;
             // 
             // xtraTabPage8
@@ -1582,7 +1582,7 @@
             this.xtraTabPage8.Controls.Add(this.PricePanel);
             this.xtraTabPage8.Controls.Add(this.panel4);
             this.xtraTabPage8.Name = "xtraTabPage8";
-            this.xtraTabPage8.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage8.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage8.Text = "Ціна";
             // 
             // CommentLabel
@@ -1905,7 +1905,7 @@
             this.xtraTabPage9.Controls.Add(this.simpleButton12);
             this.xtraTabPage9.Controls.Add(this.gridControl1);
             this.xtraTabPage9.Name = "xtraTabPage9";
-            this.xtraTabPage9.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage9.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage9.Text = "Одиниці виміру";
             // 
             // simpleButton11
@@ -1993,7 +1993,7 @@
             this.xtraTabPage10.Controls.Add(this.simpleButton5);
             this.xtraTabPage10.Controls.Add(this.MatBarCodeGridControl);
             this.xtraTabPage10.Name = "xtraTabPage10";
-            this.xtraTabPage10.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage10.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage10.Text = "Штрих-коди";
             // 
             // NewBarCodeEdit
@@ -2084,7 +2084,7 @@
             this.xtraTabPage11.Controls.Add(this.simpleButton3);
             this.xtraTabPage11.Controls.Add(this.SupplierGridControl);
             this.xtraTabPage11.Name = "xtraTabPage11";
-            this.xtraTabPage11.Size = new System.Drawing.Size(702, 564);
+            this.xtraTabPage11.Size = new System.Drawing.Size(702, 563);
             this.xtraTabPage11.Text = "Постачальники";
             // 
             // simpleButton2

@@ -53,6 +53,7 @@
             this.RsvInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.MatInfoBtn = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.ProcurationBtn = new DevExpress.XtraBars.BarButtonItem();
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
             this.AddMaterialBtn = new DevExpress.XtraBars.BarButtonItem();
@@ -132,7 +133,6 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.progressBarControl1 = new DevExpress.XtraEditors.ProgressBarControl();
             this.WbDetPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.ProcurationBtn = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WBImgList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -280,6 +280,14 @@
             this.barButtonItem3.Name = "barButtonItem3";
             this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
+            // ProcurationBtn
+            // 
+            this.ProcurationBtn.Caption = "Доручення";
+            this.ProcurationBtn.Id = 27;
+            this.ProcurationBtn.ImageOptions.ImageIndex = 26;
+            this.ProcurationBtn.Name = "ProcurationBtn";
+            this.ProcurationBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ProcurationBtn_ItemClick_1);
+            // 
             // bar1
             // 
             this.bar1.BarName = "Custom 2";
@@ -395,7 +403,7 @@
             this.standaloneBarDockControl1.Location = new System.Drawing.Point(0, 240);
             this.standaloneBarDockControl1.Manager = this.barManager1;
             this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
-            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1052, 24);
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(1165, 24);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -404,15 +412,15 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1052, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(1165, 24);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 612);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 629);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1052, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1165, 0);
             // 
             // barDockControlLeft
             // 
@@ -420,15 +428,15 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 24);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 605);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1052, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(1165, 24);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 588);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 605);
             // 
             // WBImgList
             // 
@@ -574,7 +582,7 @@
             this.panelControl3.Location = new System.Drawing.Point(0, 24);
             this.panelControl3.Name = "panelControl3";
             this.panelControl3.Padding = new System.Windows.Forms.Padding(5);
-            this.panelControl3.Size = new System.Drawing.Size(1052, 216);
+            this.panelControl3.Size = new System.Drawing.Size(1165, 216);
             this.panelControl3.TabIndex = 7;
             // 
             // panelControl1
@@ -596,7 +604,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(5, 5);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(654, 206);
+            this.panelControl1.Size = new System.Drawing.Size(767, 206);
             this.panelControl1.TabIndex = 4;
             // 
             // PersonComboBox
@@ -616,7 +624,7 @@
             this.PersonComboBox.Properties.ShowFooter = false;
             this.PersonComboBox.Properties.ShowHeader = false;
             this.PersonComboBox.Properties.ValueMember = "KaId";
-            this.PersonComboBox.Size = new System.Drawing.Size(253, 24);
+            this.PersonComboBox.Size = new System.Drawing.Size(366, 24);
             this.PersonComboBox.StyleController = this.styleController1;
             this.PersonComboBox.TabIndex = 23;
             this.PersonComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.PersonComboBox_ButtonClick);
@@ -634,7 +642,7 @@
             this.NotesEdit.Location = new System.Drawing.Point(92, 173);
             this.NotesEdit.MenuManager = this.barManager1;
             this.NotesEdit.Name = "NotesEdit";
-            this.NotesEdit.Size = new System.Drawing.Size(547, 22);
+            this.NotesEdit.Size = new System.Drawing.Size(660, 22);
             this.NotesEdit.StyleController = this.styleController1;
             this.NotesEdit.TabIndex = 22;
             // 
@@ -661,7 +669,7 @@
             this.ToDateEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ToDateEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "ToDate", true));
             this.ToDateEdit.EditValue = null;
-            this.ToDateEdit.Location = new System.Drawing.Point(465, 107);
+            this.ToDateEdit.Location = new System.Drawing.Point(578, 107);
             this.ToDateEdit.MenuManager = this.barManager1;
             this.ToDateEdit.Name = "ToDateEdit";
             this.ToDateEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -676,7 +684,7 @@
             // checkEdit2
             // 
             this.checkEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkEdit2.Location = new System.Drawing.Point(372, 109);
+            this.checkEdit2.Location = new System.Drawing.Point(485, 109);
             this.checkEdit2.MenuManager = this.barManager1;
             this.checkEdit2.Name = "checkEdit2";
             this.checkEdit2.Properties.Caption = "Дійсний до:";
@@ -693,7 +701,7 @@
             this.ReasonEdit.Location = new System.Drawing.Point(92, 140);
             this.ReasonEdit.MenuManager = this.barManager1;
             this.ReasonEdit.Name = "ReasonEdit";
-            this.ReasonEdit.Size = new System.Drawing.Size(547, 22);
+            this.ReasonEdit.Size = new System.Drawing.Size(660, 22);
             this.ReasonEdit.StyleController = this.styleController1;
             this.ReasonEdit.TabIndex = 16;
             // 
@@ -715,7 +723,7 @@
             this.KagentComboBox.Properties.ShowFooter = false;
             this.KagentComboBox.Properties.ShowHeader = false;
             this.KagentComboBox.Properties.ValueMember = "KaId";
-            this.KagentComboBox.Size = new System.Drawing.Size(547, 24);
+            this.KagentComboBox.Size = new System.Drawing.Size(660, 24);
             this.KagentComboBox.StyleController = this.styleController1;
             this.KagentComboBox.TabIndex = 9;
             this.KagentComboBox.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.KagentComboBox_ButtonClick);
@@ -742,7 +750,7 @@
             // labelControl2
             // 
             this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelControl2.Location = new System.Drawing.Point(425, 44);
+            this.labelControl2.Location = new System.Drawing.Point(538, 44);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(34, 16);
             this.labelControl2.StyleController = this.styleController1;
@@ -774,7 +782,7 @@
             this.OnDateDBEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.OnDateDBEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.WaybillListBS, "OnDate", true));
             this.OnDateDBEdit.EditValue = null;
-            this.OnDateDBEdit.Location = new System.Drawing.Point(465, 41);
+            this.OnDateDBEdit.Location = new System.Drawing.Point(578, 41);
             this.OnDateDBEdit.MenuManager = this.barManager1;
             this.OnDateDBEdit.Name = "OnDateDBEdit";
             editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.time_16x16;
@@ -796,7 +804,7 @@
             // 
             this.panel1.Controls.Add(this.payDocUserControl1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(659, 5);
+            this.panel1.Location = new System.Drawing.Point(772, 5);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.panel1.Size = new System.Drawing.Size(388, 206);
@@ -817,7 +825,7 @@
             this.panelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl5.Location = new System.Drawing.Point(0, 264);
             this.panelControl5.Name = "panelControl5";
-            this.panelControl5.Size = new System.Drawing.Size(1052, 296);
+            this.panelControl5.Size = new System.Drawing.Size(1165, 313);
             this.panelControl5.TabIndex = 13;
             // 
             // WaybillDetOutGridControl
@@ -835,7 +843,7 @@
             this.repositoryItemCalcEdit1,
             this.repositoryItemComboBox1,
             this.repositoryItemImageComboBox4});
-            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1048, 292);
+            this.WaybillDetOutGridControl.Size = new System.Drawing.Size(1161, 309);
             this.WaybillDetOutGridControl.TabIndex = 1;
             this.WaybillDetOutGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WaybillDetOutGridView});
@@ -1171,22 +1179,22 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(2, 2);
             this.barDockControl1.Manager = null;
-            this.barDockControl1.Size = new System.Drawing.Size(1048, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1161, 0);
             // 
             // panelControl2
             // 
             this.panelControl2.Controls.Add(this.OkButton);
             this.panelControl2.Controls.Add(this.simpleButton1);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl2.Location = new System.Drawing.Point(0, 560);
+            this.panelControl2.Location = new System.Drawing.Point(0, 577);
             this.panelControl2.Name = "panelControl2";
-            this.panelControl2.Size = new System.Drawing.Size(1052, 52);
+            this.panelControl2.Size = new System.Drawing.Size(1165, 52);
             this.panelControl2.TabIndex = 14;
             // 
             // OkButton
             // 
             this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OkButton.Location = new System.Drawing.Point(830, 10);
+            this.OkButton.Location = new System.Drawing.Point(943, 10);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(100, 30);
             this.OkButton.TabIndex = 1;
@@ -1196,7 +1204,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(940, 10);
+            this.simpleButton1.Location = new System.Drawing.Point(1053, 10);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(100, 30);
             this.simpleButton1.TabIndex = 0;
@@ -1206,7 +1214,7 @@
             // progressBarControl1
             // 
             this.progressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBarControl1.Location = new System.Drawing.Point(770, 246);
+            this.progressBarControl1.Location = new System.Drawing.Point(883, 246);
             this.progressBarControl1.MenuManager = this.barManager1;
             this.progressBarControl1.Name = "progressBarControl1";
             this.progressBarControl1.Properties.Step = 1;
@@ -1235,19 +1243,11 @@
             this.WbDetPopupMenu.Name = "WbDetPopupMenu";
             this.WbDetPopupMenu.Popup += new System.EventHandler(this.WbDetPopupMenu_Popup);
             // 
-            // ProcurationBtn
-            // 
-            this.ProcurationBtn.Caption = "Доручення";
-            this.ProcurationBtn.Id = 27;
-            this.ProcurationBtn.ImageOptions.ImageIndex = 26;
-            this.ProcurationBtn.Name = "ProcurationBtn";
-            this.ProcurationBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ProcurationBtn_ItemClick_1);
-            // 
             // frmWayBillCustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 612);
+            this.ClientSize = new System.Drawing.Size(1165, 629);
             this.Controls.Add(this.progressBarControl1);
             this.Controls.Add(this.panelControl5);
             this.Controls.Add(this.standaloneBarDockControl1);

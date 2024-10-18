@@ -39,6 +39,7 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -63,7 +64,6 @@
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummAll = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSummInCurr = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -170,6 +170,14 @@
             this.barButtonItem5.ImageOptions.ImageIndex = 2;
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem5_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Обновити";
+            this.barButtonItem3.Id = 7;
+            this.barButtonItem3.ImageOptions.ImageIndex = 3;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -466,7 +474,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (переміщення грошей)", -9, 31),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (переміщення грошей)", 9, 27),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Фiнансовi операцiї (коригування залишку)", 18, 34),
-            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Експедиція", 32, 25)});
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("Експедиція", 32, 25),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 33, 28)});
             this.repositoryItemImageComboBox1.Name = "repositoryItemImageComboBox1";
             this.repositoryItemImageComboBox1.SmallImages = this.GridImageList;
             // 
@@ -522,14 +531,6 @@
             this.colSummInCurr.Visible = true;
             this.colSummInCurr.VisibleIndex = 4;
             this.colSummInCurr.Width = 156;
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Обновити";
-            this.barButtonItem3.Id = 7;
-            this.barButtonItem3.ImageOptions.ImageIndex = 3;
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // frmIncompleteUserDoc
             // 

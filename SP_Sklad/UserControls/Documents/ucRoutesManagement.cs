@@ -66,7 +66,29 @@ namespace SP_Sklad.UserControls
 
         public void EditItem()
         {
-            new frmRouteEdit(row_route.Id).ShowDialog();
+            using (var frm = new frmRouteEdit(row_route.Id))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    using (var db = DB.SkladBase())
+                    {
+                        var r = db.Routes.Find(Convert.ToInt32(row_route.Id));
+                        for (int i = 0; i < WbGridView.RowCount; i++)
+                        {
+                            var dr = WbGridView.GetRow(i) as v_WayBillCustomerOrder;
+                            var wb = db.WaybillList.Find(dr.WbillId);
+                            if (wb != null)
+                            {
+                                wb.CarId = r.CarId;
+                                wb.DriverId = r.DriverId;
+                                wb.Received = r.Kagent1.Name;
+                            }
+                        }
+                        db.SaveChanges();
+                    }
+                    GetDetailData();
+                }
+            }
         }
 
         public void PrintItem()
@@ -88,8 +110,13 @@ namespace SP_Sklad.UserControls
         {
             if (row_route != null)
             {
+                var end_date = DateTime.Now.Date.AddDays(1);
+
                 var top_row = WbGridView.TopRowIndex;
-                bindingSource1.DataSource = DB.SkladBase().v_WayBillCustomerOrder.OrderBy(o=> o.OnDate).Where(w => w.RouteId == row_route.Id && (w.Checked == 0 || w.Checked == 2) && w.WorkerId == DBHelper.CurrentUser.KaId).ToList();
+                bindingSource1.DataSource = DB.SkladBase().v_WayBillCustomerOrder
+                    .OrderBy(o=> o.OnDate)
+                    .Where(w => w.RouteId == row_route.Id && (w.Checked == 0 || w.Checked == 2) && w.WorkerId == DBHelper.CurrentUser.KaId && w.OnDate < end_date)
+                    .ToList();
                 WbGridView.TopRowIndex = top_row;
             }
             else
@@ -289,6 +316,26 @@ namespace SP_Sklad.UserControls
             }
         }
 
+        private List<v_WayBillCustomerOrder> GetSelectedCustomerOrder()
+        {
+            var result = new List<v_WayBillCustomerOrder>();
+            if (WbGridView.SelectedRowsCount > 0)
+            {
+                Int32[] selectedRowHandles = WbGridView.GetSelectedRows();
+
+                for (int i = 0; i < selectedRowHandles.Length; i++)
+                {
+                    int selectedRowHandle = selectedRowHandles[i];
+                    if (selectedRowHandle >= 0)
+                    {
+                        var wb_item = WbGridView.GetRow(selectedRowHandle) as v_WayBillCustomerOrder;
+                        result.Add(wb_item);
+                    }
+                }
+            }
+            return result;
+        }
+
         private void WbGridView_DoubleClick(object sender, EventArgs e)
         {
             EditWbBtn.PerformClick();
@@ -300,6 +347,36 @@ namespace SP_Sklad.UserControls
             ExecuteWbBtn.Enabled = (row_wb != null && row_wb.Checked == 0 && wb_user_access.CanPost == 1);
             EditWbBtn.Enabled = (row_wb != null && wb_user_access.CanModify == 1 && row_wb.Checked == 0);
             PrintItemBtn.Enabled = (row_wb != null);
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            IHelper.PrintSelectedWayBill(-16, GetSelectedCustomerOrder().Select(s => s.Id).ToList());
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var route_id = IHelper.ShowDirectList(null, 20);
+            if (route_id != null)
+            {
+                using (var db = DB.SkladBase())
+                {
+                    var r = db.Routes.Find(Convert.ToInt32(route_id));
+                    foreach (var wb_item in GetSelectedCustomerOrder())
+                    {
+                        var wb = db.WaybillList.Find(wb_item.WbillId);
+                        if (wb != null)
+                        {
+                            wb.RouteId = Convert.ToInt32(route_id);
+                            wb.CarId = r.CarId;
+                            wb.DriverId = r.DriverId;
+                            wb.Received = r.Kagent1.Name;
+                        }
+                    }
+                    db.SaveChanges();
+                }
+                GetDetailData();
+            }
         }
     }
 }

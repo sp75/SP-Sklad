@@ -306,10 +306,10 @@ namespace SP_Sklad.UserControls
 
         private void WbHistoryBtn_ItemClick(object sender, ItemClickEventArgs e)
         {
-            /*   using (var frm = new frmLogHistory(24, wb_focused_row.WbillId))
+               using (var frm = new frmLogHistory(27, focused_row.PayDocId))
                {
                    frm.ShowDialog();
-               }*/
+               }
         }
 
         private void ExportToExcelBtn_ItemClick(object sender, ItemClickEventArgs e)

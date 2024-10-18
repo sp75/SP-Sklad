@@ -87,6 +87,8 @@
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DeliveryManagementPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.WayBillPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl4.Panel1)).BeginInit();
             this.splitContainerControl4.Panel1.SuspendLayout();
@@ -278,8 +280,10 @@
             this.EditWbBtn,
             this.ExecuteWbBtn,
             this.barButtonItem4,
-            this.barEditItem1});
-            this.barManager1.MaxItemId = 39;
+            this.barEditItem1,
+            this.barButtonItem1,
+            this.barButtonItem3});
+            this.barManager1.MaxItemId = 41;
             this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemDateEdit1});
             // 
@@ -479,6 +483,8 @@
             this.imageCollection1.Images.SetKeyName(12, "checked_blue");
             this.imageCollection1.InsertGalleryImage("switchtimescalesto_16x16.png", "office2013/scheduling/switchtimescalesto_16x16.png", DevExpress.Images.ImageResourceCache.Default.GetImage("office2013/scheduling/switchtimescalesto_16x16.png"), 13);
             this.imageCollection1.Images.SetKeyName(13, "switchtimescalesto_16x16.png");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.print_selected_documents, "print_selected_documents", typeof(global::SP_Sklad.Properties.Resources), 14);
+            this.imageCollection1.Images.SetKeyName(14, "print_selected_documents");
             // 
             // NewItemBtn
             // 
@@ -759,11 +765,28 @@
             // 
             this.WayBillPopupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barEditItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
             new DevExpress.XtraBars.LinkPersistInfo(this.EditWbBtn, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.ExecuteWbBtn),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.WayBillPopupMenu.Manager = this.barManager1;
             this.WayBillPopupMenu.Name = "WayBillPopupMenu";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Друк вибраних документів";
+            this.barButtonItem1.Id = 39;
+            this.barButtonItem1.ImageOptions.ImageIndex = 14;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Змінити маршрут...";
+            this.barButtonItem3.Id = 40;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
             // ucRoutesManagement
             // 
@@ -869,5 +892,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
     }
 }

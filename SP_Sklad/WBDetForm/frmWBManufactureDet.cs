@@ -310,18 +310,22 @@ namespace SP_Sklad.WBDetForm
 
             if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
             {
-                foreach (var item in pos_in.Where(w => w.Amount > 0))
+                if (DBHelper.CheckIntermediateWeighing(_wb.WbillId, _db))
                 {
-                    _db.WMatTurn.Add(new WMatTurn
+
+                    foreach (var item in pos_in.Where(w => w.Amount > 0))
                     {
-                        PosId = item.PosId,
-                        WId = item.WId,
-                        MatId = item.MatId,
-                        OnDate = _wbd.OnDate.Value,
-                        TurnType = 2,
-                        Amount = Convert.ToDecimal(item.Amount),
-                        SourceId = _wbd.PosId
-                    });
+                        _db.WMatTurn.Add(new WMatTurn
+                        {
+                            PosId = item.PosId,
+                            WId = item.WId,
+                            MatId = item.MatId,
+                            OnDate = _wbd.OnDate.Value,
+                            TurnType = 2,
+                            Amount = Convert.ToDecimal(item.Amount),
+                            SourceId = _wbd.PosId
+                        });
+                    }
                 }
             }
 

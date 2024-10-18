@@ -561,8 +561,18 @@ namespace SP_Sklad.Common
                         }
                     }
                     break;
-     
 
+                case 20:
+                    using (var f = new frmCatalog(null, 115))
+                    {
+                        f.uc.isDirectList = true;
+                        f.Text = "Маршрути";
+                        if (f.ShowDialog() == DialogResult.OK)
+                        {
+                            old_id = (f.uc.RouteGridView.GetFocusedRow() as Routes).Id;
+                        }
+                    }
+                    break;
             }
 
             return old_id;
