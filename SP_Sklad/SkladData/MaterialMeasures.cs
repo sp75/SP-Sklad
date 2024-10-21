@@ -17,6 +17,7 @@ namespace SP_Sklad.SkladData
         public int MatId { get; set; }
         public int MId { get; set; }
         public decimal Amount { get; set; }
+        public Nullable<bool> UseInOrders { get; set; }
     
         public virtual Materials Materials { get; set; }
         public virtual Measures Measures { get; set; }

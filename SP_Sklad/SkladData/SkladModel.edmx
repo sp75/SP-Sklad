@@ -846,6 +846,7 @@
           <Property Name="MatId" Type="int" Nullable="false" />
           <Property Name="MId" Type="int" Nullable="false" />
           <Property Name="Amount" Type="numeric" Precision="15" Scale="4" Nullable="false" />
+          <Property Name="UseInOrders" Type="bit" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -3983,7 +3984,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WayBillCustomerOrderDet' does not ha
           <Property Name="CardNum" Type="varchar" MaxLength="24" />
           <Property Name="Holder" Type="nvarchar" MaxLength="100" />
           <Property Name="SerialNo" Type="nvarchar" MaxLength="64" />
-          <Property Name="GroupName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="BasePrice" Type="numeric" Precision="15" Scale="4" />
           <Property Name="Total" Type="numeric" Precision="15" Scale="2" />
           <Property Name="SumNds" Type="numeric" Precision="35" Scale="10" />
@@ -19142,6 +19143,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="15" Scale="4" />
           <NavigationProperty Name="Materials" Relationship="BaseModel.FK_MaterialMeasures_Materials" FromRole="MaterialMeasures" ToRole="Materials" />
           <NavigationProperty Name="Measures" Relationship="BaseModel.FK_MaterialMeasures_Measures" FromRole="MaterialMeasures" ToRole="Measures" />
+          <Property Name="UseInOrders" Type="Boolean" />
         </EntityType>
         <Association Name="FK_MaterialMeasures_Materials">
           <End Type="BaseModel.Materials" Role="Materials" Multiplicity="1">
@@ -23782,7 +23784,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <Property Name="CardNum" Type="String" MaxLength="24" FixedLength="false" Unicode="false" />
           <Property Name="Holder" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SerialNo" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="BasePrice" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="Total" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="SumNds" Type="Decimal" Precision="35" Scale="10" />
@@ -27702,6 +27704,7 @@ warning 6002: The table/view 'sp_base.dbo.v_WorkDate' does not have a primary ke
           <EntitySetMapping Name="MaterialMeasures">
             <EntityTypeMapping TypeName="BaseModel.MaterialMeasures">
               <MappingFragment StoreEntitySet="MaterialMeasures">
+                <ScalarProperty Name="UseInOrders" ColumnName="UseInOrders" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="MId" ColumnName="MId" />
                 <ScalarProperty Name="MatId" ColumnName="MatId" />

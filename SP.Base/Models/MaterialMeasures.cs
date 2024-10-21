@@ -20,6 +20,7 @@ namespace SP.Base.Models
 
         [Column(TypeName = "numeric")]
         public decimal Amount { get; set; }
+        public Nullable<bool> UseInOrders { get; set; }
 
         public virtual Materials Materials { get; set; }
 

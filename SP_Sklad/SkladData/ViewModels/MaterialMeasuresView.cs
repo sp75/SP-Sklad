@@ -11,5 +11,6 @@ namespace SP_Sklad.SkladData.ViewModels
         public int MId { get; set; }
         public string Name { get; set; }
         public decimal Amount { get; set; }
+        public bool? UseInOrders { get; set; }
     }
 }

@@ -198,6 +198,7 @@ namespace SP.Base.Models
         public virtual DbSet<v_WayBillOut> v_WayBillOut { get; set; }
         public virtual DbSet<v_WayBillOutDet> v_WayBillOutDet { get; set; }
         public virtual DbSet<v_WaybillMove> v_WaybillMove { get; set; }
+        public virtual DbSet<v_wrd_CustomerOrders> v_wrd_CustomerOrders { get; set; }
 
         public virtual ObjectResult<REP_1_Result> REP_1(DateTime from_date, DateTime to_date, int? grp_id, int? ka_id, string wh, string doc_types, int? user_id)
         {
@@ -3111,6 +3112,26 @@ namespace SP.Base.Models
             modelBuilder.Entity<v_WaybillMove>()
                 .Property(e => e.ExTotalAmount)
                 .HasPrecision(38, 8);
+
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+               .Property(e => e.Amount)
+               .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.Price)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.Total)
+                .HasPrecision(15, 2);
+
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.BasePrice)
+                .HasPrecision(15, 4);
+
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.PrevAmount)
+                .HasPrecision(15, 4);
         }
     }
 }

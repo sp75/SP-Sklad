@@ -239,6 +239,7 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCalcEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -1953,7 +1954,8 @@
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn9,
-            this.gridColumn12});
+            this.gridColumn12,
+            this.gridColumn14});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.AllowIncrementalSearch = true;
@@ -1968,7 +1970,7 @@
             this.gridColumn9.OptionsColumn.AllowEdit = false;
             this.gridColumn9.Visible = true;
             this.gridColumn9.VisibleIndex = 0;
-            this.gridColumn9.Width = 156;
+            this.gridColumn9.Width = 195;
             // 
             // gridColumn12
             // 
@@ -1978,7 +1980,7 @@
             this.gridColumn12.Name = "gridColumn12";
             this.gridColumn12.Visible = true;
             this.gridColumn12.VisibleIndex = 1;
-            this.gridColumn12.Width = 252;
+            this.gridColumn12.Width = 246;
             // 
             // repositoryItemCalcEdit1
             // 
@@ -2190,6 +2192,15 @@
             this.repositoryItemCalcEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit3.Name = "repositoryItemCalcEdit3";
+            // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Використовувати в замовлені";
+            this.gridColumn14.FieldName = "UseInOrders";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.Width = 211;
             // 
             // frmMaterialEdit
             // 
@@ -2483,5 +2494,6 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit repositoryItemCalcEdit3;
         private System.Windows.Forms.BindingSource MaterialSupplierBS;
         private DevExpress.XtraEditors.CheckEdit checkEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
     }
 }

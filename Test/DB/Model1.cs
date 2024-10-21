@@ -8,69 +8,33 @@ namespace Test.DB
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=Model116")
+            : base("name=Model117")
         {
         }
 
-        public virtual DbSet<v_WayBillOut> v_WayBillOut { get; set; }
+        public virtual DbSet<v_wrd_CustomerOrders> v_wrd_CustomerOrders { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.SummAll)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.Nds)
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.Amount)
                 .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.SummPay)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.SummInCurr)
-                .HasPrecision(15, 2);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.CurrRate)
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.Price)
                 .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.Address)
-                .IsUnicode(false);
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.Total)
+                .HasPrecision(15, 2);
 
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.City)
-                .IsUnicode(false);
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.BasePrice)
+                .HasPrecision(15, 4);
 
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.District)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.Country)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.PostIndex)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.DefTotalAmount)
-                .HasPrecision(38, 4);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.ExTotalAmount)
-                .HasPrecision(38, 8);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.Balans)
-                .HasPrecision(17, 2);
-
-            modelBuilder.Entity<v_WayBillOut>()
-                .Property(e => e.TotalAmount)
-                .HasPrecision(38, 4);
+            modelBuilder.Entity<v_wrd_CustomerOrders>()
+                .Property(e => e.PrevAmount)
+                .HasPrecision(15, 4);
         }
     }
 }

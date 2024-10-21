@@ -675,7 +675,8 @@ namespace SP_Sklad.EditForm
             {
                 MId = s.MId,
                 Name = s.Measures.Name,
-                Amount = s.Amount
+                Amount = s.Amount,
+                UseInOrders = s.UseInOrders
             }).ToList();
         }
 
@@ -709,7 +710,15 @@ namespace SP_Sklad.EditForm
             var mm = _db.MaterialMeasures.FirstOrDefault(w => w.MId == row.MId && w.MatId == _mat_id);
             if (mm != null)
             {
-                mm.Amount = Convert.ToDecimal(e.Value);
+                if (e.Column.FieldName == "Amount")
+                {
+                    mm.Amount = Convert.ToDecimal(e.Value);
+                }
+
+                if (e.Column.FieldName == "UseInOrders")
+                {
+                    mm.UseInOrders = Convert.ToBoolean (e.Value);
+                }
 
                 _db.SaveChanges();
             }
