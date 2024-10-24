@@ -61,6 +61,8 @@
             this.ucOpenStoreCashRegisterSyncMonitor = new SP_Sklad.UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor();
             this.xtraTabPage4 = new DevExpress.XtraTab.XtraTabPage();
             this.ucOpenStorePaymentsSummary1 = new SP_Sklad.UserControls.Warehouse.ucOpenStorePaymentsSummary();
+            this.xtraTabPage5 = new DevExpress.XtraTab.XtraTabPage();
+            this.ucOpenStoreSalesSummary1 = new SP_Sklad.UserControls.Warehouse.ucOpenStoreSalesSummary();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExplorerPopupMenu)).BeginInit();
@@ -81,6 +83,7 @@
             this.xtraTabPage2.SuspendLayout();
             this.xtraTabPage3.SuspendLayout();
             this.xtraTabPage4.SuspendLayout();
+            this.xtraTabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -271,7 +274,11 @@
             this.DirTreeList.AppendNode(new object[] {
             "Монітор синхронизаціїї кас"}, -1, 3, 3, -1);
             this.DirTreeList.AppendNode(new object[] {
-            "Підсумок по оплаті"}, -1, 5, 5, -1);
+            "Звіти"}, -1, 9, 9, -1);
+            this.DirTreeList.AppendNode(new object[] {
+            "Звіт по продажам"}, 4, 8, 8, -1);
+            this.DirTreeList.AppendNode(new object[] {
+            "Звіт по оплаті"}, 4, 5, 5, -1);
             this.DirTreeList.EndUnboundLoad();
             this.DirTreeList.OptionsBehavior.Editable = false;
             this.DirTreeList.OptionsView.ShowColumns = false;
@@ -307,8 +314,16 @@
             this.imageCollection1.Images.SetKeyName(3, "system_report");
             this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_return_sale, "wb_return_sale", typeof(global::SP_Sklad.Properties.Resources), 4);
             this.imageCollection1.Images.SetKeyName(4, "wb_return_sale");
-            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.money, "money", typeof(global::SP_Sklad.Properties.Resources), 5);
-            this.imageCollection1.Images.SetKeyName(5, "money");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.pay_wb_1, "pay_wb_1", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "pay_wb_1");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.salessummary_16x16, "salessummary_16x16", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "salessummary_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "purchase");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.salesanalysis_16x16, "salesanalysis_16x16", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "salesanalysis_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.report_16x16, "report_16x16", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "report_16x16");
             // 
             // mainContentTab
             // 
@@ -327,7 +342,8 @@
             this.xtraTabPage1,
             this.xtraTabPage2,
             this.xtraTabPage3,
-            this.xtraTabPage4});
+            this.xtraTabPage4,
+            this.xtraTabPage5});
             // 
             // xtraTabPage10
             // 
@@ -410,6 +426,21 @@
             this.ucOpenStorePaymentsSummary1.Size = new System.Drawing.Size(1152, 574);
             this.ucOpenStorePaymentsSummary1.TabIndex = 0;
             // 
+            // xtraTabPage5
+            // 
+            this.xtraTabPage5.Controls.Add(this.ucOpenStoreSalesSummary1);
+            this.xtraTabPage5.Name = "xtraTabPage5";
+            this.xtraTabPage5.Size = new System.Drawing.Size(1152, 574);
+            this.xtraTabPage5.Text = "ПІдсумок по продажам";
+            // 
+            // ucOpenStoreSalesSummary1
+            // 
+            this.ucOpenStoreSalesSummary1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOpenStoreSalesSummary1.Location = new System.Drawing.Point(0, 0);
+            this.ucOpenStoreSalesSummary1.Name = "ucOpenStoreSalesSummary1";
+            this.ucOpenStoreSalesSummary1.Size = new System.Drawing.Size(1152, 574);
+            this.ucOpenStoreSalesSummary1.TabIndex = 0;
+            // 
             // OpenStoreUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,6 +480,7 @@
             this.xtraTabPage2.ResumeLayout(false);
             this.xtraTabPage3.ResumeLayout(false);
             this.xtraTabPage4.ResumeLayout(false);
+            this.xtraTabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -487,5 +519,7 @@
         private UserControls.Warehouse.ucOpenStoreCashRegisterSyncMonitor ucOpenStoreCashRegisterSyncMonitor;
         private DevExpress.XtraTab.XtraTabPage xtraTabPage4;
         private UserControls.Warehouse.ucOpenStorePaymentsSummary ucOpenStorePaymentsSummary1;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage5;
+        private UserControls.Warehouse.ucOpenStoreSalesSummary ucOpenStoreSalesSummary1;
     }
 }

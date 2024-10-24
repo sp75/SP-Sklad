@@ -220,6 +220,7 @@
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCalcEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.xtraTabPage10 = new DevExpress.XtraTab.XtraTabPage();
             this.NewBarCodeEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
@@ -239,7 +240,6 @@
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.repositoryItemCalcEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemCalcEdit();
-            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
@@ -698,7 +698,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(15, 237);
+            this.labelControl7.Location = new System.Drawing.Point(15, 234);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(139, 16);
             this.labelControl7.StyleController = this.styleController1;
@@ -710,7 +710,7 @@
             this.textEdit4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textEdit4.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.MaterialsBS, "LabelDescr", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textEdit4.Location = new System.Drawing.Point(15, 259);
+            this.textEdit4.Location = new System.Drawing.Point(15, 256);
             this.textEdit4.Name = "textEdit4";
             this.textEdit4.Size = new System.Drawing.Size(664, 22);
             this.textEdit4.StyleController = this.styleController1;
@@ -875,7 +875,7 @@
             0,
             0,
             0});
-            this.spinEdit1.Location = new System.Drawing.Point(593, 225);
+            this.spinEdit1.Location = new System.Drawing.Point(579, 225);
             this.spinEdit1.MenuManager = this.barManager1;
             this.spinEdit1.Name = "spinEdit1";
             this.spinEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -885,18 +885,18 @@
             0,
             0,
             0});
-            this.spinEdit1.Size = new System.Drawing.Size(86, 22);
+            this.spinEdit1.Size = new System.Drawing.Size(100, 22);
             this.spinEdit1.StyleController = this.styleController1;
             this.spinEdit1.TabIndex = 54;
             // 
             // labelControl23
             // 
-            this.labelControl23.Location = new System.Drawing.Point(426, 228);
+            this.labelControl23.Location = new System.Drawing.Point(343, 228);
             this.labelControl23.Name = "labelControl23";
-            this.labelControl23.Size = new System.Drawing.Size(161, 16);
+            this.labelControl23.Size = new System.Drawing.Size(230, 16);
             this.labelControl23.StyleController = this.styleController1;
             this.labelControl23.TabIndex = 52;
-            this.labelControl23.Text = "Точність ведення залишків";
+            this.labelControl23.Text = "Точність поділу товару [0-не ділиться]";
             // 
             // labelControl12
             // 
@@ -1989,6 +1989,15 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit1.Name = "repositoryItemCalcEdit1";
             // 
+            // gridColumn14
+            // 
+            this.gridColumn14.Caption = "Використовувати в замовлені";
+            this.gridColumn14.FieldName = "UseInOrders";
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 2;
+            this.gridColumn14.Width = 211;
+            // 
             // xtraTabPage10
             // 
             this.xtraTabPage10.Controls.Add(this.NewBarCodeEdit);
@@ -2192,15 +2201,6 @@
             this.repositoryItemCalcEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemCalcEdit3.Name = "repositoryItemCalcEdit3";
-            // 
-            // gridColumn14
-            // 
-            this.gridColumn14.Caption = "Використовувати в замовлені";
-            this.gridColumn14.FieldName = "UseInOrders";
-            this.gridColumn14.Name = "gridColumn14";
-            this.gridColumn14.Visible = true;
-            this.gridColumn14.VisibleIndex = 2;
-            this.gridColumn14.Width = 211;
             // 
             // frmMaterialEdit
             // 
