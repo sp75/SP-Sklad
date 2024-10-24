@@ -11,6 +11,8 @@
         <EntityTypeShape EntityType="Tranzit_OSModel.v_ReturnSales" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Tranzit_OSModel.v_Sales" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Tranzit_OSModel.v_CashRegisterSyncMonitor" Width="1.5" PointX="5" PointY="5.75" />
+        <EntityTypeShape EntityType="Tranzit_OSModel.GRP" Width="1.5" PointX="0.75" PointY="12.25" />
+        <AssociationConnector Association="Tranzit_OSModel.R_2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

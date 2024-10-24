@@ -742,7 +742,7 @@ namespace SP_Sklad.EditForm
                 e.Cancel = true;
             }
 
-            if (_db.Materials.Where(w => w.Artikul.Length > 0 && w.MatId != _mat.MatId).Any(a => a.Artikul == ArtikulEdit.Text))
+            if (_db.Materials.Where(w => w.Artikul.Length > 0 && w.MatId != _mat.MatId && w.Deleted == 0).Any(a => a.Artikul == ArtikulEdit.Text))
             {
                 ArtikulEdit.ErrorText = "Товар з таким артикулом вже існує!";
                 e.Cancel = true;

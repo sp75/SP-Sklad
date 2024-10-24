@@ -22,6 +22,18 @@
           <Property Name="UPDATENUM" Type="int" Nullable="false" />
           <Property Name="UKEZEDCODE" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="GRP">
+          <Key>
+            <PropertyRef Name="GRPID" />
+          </Key>
+          <Property Name="GRPID" Type="int" Nullable="false" />
+          <Property Name="OFFERID" Type="int" />
+          <Property Name="PARENTGRPID" Type="int" />
+          <Property Name="GRPNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GRPPICTURE" Type="image" />
+          <Property Name="DELFLAG" Type="smallint" Nullable="false" />
+          <Property Name="UPDATENUM" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="SAREA">
           <Key>
             <PropertyRef Name="SAREAID" />
@@ -175,8 +187,21 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="FiscalReceipt" Type="int" Nullable="false" />
           <Property Name="ENTITYSALESTIME" Type="bigint" />
         </EntityType>
+        <Association Name="R_2">
+          <End Role="GRP" Type="Self.GRP" Multiplicity="1" />
+          <End Role="ART" Type="Self.ART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="ART">
+              <PropertyRef Name="GRPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Tranzit_OSModelStoreContainer">
           <EntitySet Name="ART" EntityType="Self.ART" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GRP" EntityType="Self.GRP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SAREA" EntityType="Self.SAREA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="v_CashRegisterSyncMonitor" EntityType="Self.v_CashRegisterSyncMonitor" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -264,6 +289,10 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
     [v_Sales].[ENTITYSALESTIME] AS [ENTITYSALESTIME]
     FROM [dbo].[v_Sales] AS [v_Sales]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="R_2" Association="Self.R_2">
+            <End Role="GRP" EntitySet="GRP" />
+            <End Role="ART" EntitySet="ART" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -285,6 +314,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="DELFLAG" Type="Int16" Nullable="false" />
           <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
           <Property Name="UKEZEDCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GRP" Relationship="Tranzit_OSModel.R_2" FromRole="ART" ToRole="GRP" />
         </EntityType>
         <EntityType Name="SAREA">
           <Key>
@@ -403,6 +433,11 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <EntitySet Name="v_ReturnSales" EntityType="Self.v_ReturnSales" />
           <EntitySet Name="v_Sales" EntityType="Self.v_Sales" />
           <EntitySet Name="v_CashRegisterSyncMonitor" EntityType="Tranzit_OSModel.v_CashRegisterSyncMonitor" />
+          <EntitySet Name="GRP" EntityType="Tranzit_OSModel.GRP" />
+          <AssociationSet Name="R_2" Association="Tranzit_OSModel.R_2">
+            <End Role="GRP" EntitySet="GRP" />
+            <End Role="ART" EntitySet="ART" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="v_CashRegisterSyncMonitor">
           <Key>
@@ -416,6 +451,31 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="SyncDate" Type="DateTime" Precision="3" />
           <Property Name="ErrorText" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="GRP">
+          <Key>
+            <PropertyRef Name="GRPID" />
+          </Key>
+          <Property Name="GRPID" Type="Int32" Nullable="false" />
+          <Property Name="OFFERID" Type="Int32" />
+          <Property Name="PARENTGRPID" Type="Int32" />
+          <Property Name="GRPNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GRPPICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DELFLAG" Type="Int16" Nullable="false" />
+          <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ART" Relationship="Tranzit_OSModel.R_2" FromRole="GRP" ToRole="ART" />
+        </EntityType>
+        <Association Name="R_2">
+          <End Type="Tranzit_OSModel.GRP" Role="GRP" Multiplicity="1" />
+          <End Type="Tranzit_OSModel.ART" Role="ART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GRP">
+              <PropertyRef Name="GRPID" />
+            </Principal>
+            <Dependent Role="ART">
+              <PropertyRef Name="GRPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -553,6 +613,19 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
                 <ScalarProperty Name="SYSTEMID" ColumnName="SYSTEMID" />
                 <ScalarProperty Name="SAREANAME" ColumnName="SAREANAME" />
                 <ScalarProperty Name="SAREAID" ColumnName="SAREAID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GRP">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.GRP">
+              <MappingFragment StoreEntitySet="GRP">
+                <ScalarProperty Name="UPDATENUM" ColumnName="UPDATENUM" />
+                <ScalarProperty Name="DELFLAG" ColumnName="DELFLAG" />
+                <ScalarProperty Name="GRPPICTURE" ColumnName="GRPPICTURE" />
+                <ScalarProperty Name="GRPNAME" ColumnName="GRPNAME" />
+                <ScalarProperty Name="PARENTGRPID" ColumnName="PARENTGRPID" />
+                <ScalarProperty Name="OFFERID" ColumnName="OFFERID" />
+                <ScalarProperty Name="GRPID" ColumnName="GRPID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

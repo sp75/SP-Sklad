@@ -54,6 +54,9 @@
     <Compile Include="ART.cs">
       <DependentUpon>TranzitBaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GRP.cs">
+      <DependentUpon>TranzitBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SAREA.cs">
       <DependentUpon>TranzitBaseModel.tt</DependentUpon>

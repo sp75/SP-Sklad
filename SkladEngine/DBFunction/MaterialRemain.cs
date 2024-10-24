@@ -45,7 +45,8 @@ join (  SELECT  PosId, MAX(OnDate) AS OnDate
 --INNER JOIN   dbo.WaybillList AS wbl ON wbl.WbillId = wbd.WbillId
 JOIN UserAccessWh a_wh on a_wh.WId = pr.wid
 WHERE ( (pr.Remain > 0) OR (pr.Ordered > 0) ) and pr.MatId = {0} and a_wh.UserId = {1}
-group by pr.WId", mat_id, _user_id).ToList();
+group by pr.WId
+OPTION(RECOMPILE)", mat_id, _user_id).ToList();
             }
         }
 

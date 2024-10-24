@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using DevExpress.XtraReports.UI;
+using OpenStore.Tranzit.Base;
 using SP_Sklad.Reports;
 using SP_Sklad.Reports.XtraRep;
 using SP_Sklad.SkladData;
@@ -21,6 +22,7 @@ namespace SP_Sklad.MainTabs
         private void ReportUserControl_Load(object sender, EventArgs e)
         {
             mainContentTab.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
+            DirTreeList.ExpandAll();
 
             if (!DesignMode)
             {
@@ -44,31 +46,56 @@ namespace SP_Sklad.MainTabs
             if (e.Node.Id == 1)
             {
                 mainContentTab.SelectedTabPageIndex = 2;
-           //     ucOpenStorePayments.GetData();
-            }
+                       }
             if (e.Node.Id == 2 )
             {
                 mainContentTab.SelectedTabPageIndex = 3;
-                //     ucOpenStorePayments.GetData();
+                
             }
 
             if (e.Node.Id == 3)
             {
                 mainContentTab.SelectedTabPageIndex = 4;
-                //     ucOpenStorePayments.GetData();
+                
             }
             if (e.Node.Id == 6)
             {
                 mainContentTab.SelectedTabPageIndex = 5;
-                //     ucOpenStorePayments.GetData();
+                
             }
 
             if (e.Node.Id == 5)
             {
                 mainContentTab.SelectedTabPageIndex = 6;
-                //     ucOpenStorePayments.GetData();
+                
             }
 
+            if (e.Node.Id == 8)
+            {
+                mainContentTab.SelectedTabPageIndex = 7;
+                using (var db = new Tranzit_OSEntities())
+                {
+                    MatGridControl.DataSource = db.ART.AsNoTracking().Where(w => w.DELFLAG == 0).Select(s => new
+                    {
+                        s.ARTID,
+                        s.ARTCODE,
+                        s.ARTNAME,
+                        s.ARTSNAME,
+                        s.GRP.GRPNAME
+                    }).ToList();
+
+                    MatGridView.ExpandAllGroups();
+                }
+            }
+
+            if (e.Node.Id == 9)
+            {
+                mainContentTab.SelectedTabPageIndex = 8;
+                using (var db = new Tranzit_OSEntities())
+                {
+                    gridControl1.DataSource = db.SAREA.AsNoTracking().Where(w => w.DELFLAG == 0).ToList();
+                }
+            }
         }
     }
 }

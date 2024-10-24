@@ -12,21 +12,23 @@ namespace OpenStore.Tranzit.Base
     using System;
     using System.Collections.Generic;
     
-    public partial class ART
+    public partial class GRP
     {
-        public int ARTID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public GRP()
+        {
+            this.ART = new HashSet<ART>();
+        }
+    
         public int GRPID { get; set; }
         public Nullable<int> OFFERID { get; set; }
-        public Nullable<int> DEFAULTUNITID { get; set; }
-        public int ARTCODE { get; set; }
-        public Nullable<int> COMPOSCARDID { get; set; }
-        public int ARTTYPE { get; set; }
-        public string ARTNAME { get; set; }
-        public string ARTSNAME { get; set; }
+        public Nullable<int> PARENTGRPID { get; set; }
+        public string GRPNAME { get; set; }
+        public byte[] GRPPICTURE { get; set; }
         public short DELFLAG { get; set; }
         public int UPDATENUM { get; set; }
-        public string UKEZEDCODE { get; set; }
     
-        public virtual GRP GRP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ART> ART { get; set; }
     }
 }
