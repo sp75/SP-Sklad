@@ -162,10 +162,14 @@ namespace SP_Sklad.IntermediateWeighingInterface
             using (var frm = new MainIntermediateWeighingDet(intermediate_weighing_focused_row.WbillId, _user_id))
             {
                 frm.Text = "Список сировини для зважування, Рецепт: " + intermediate_weighing_focused_row.RecipeName;
-                if (intermediate_weighing_focused_row.BMP != null)
+                try
                 {
-                    frm.pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
+                    if (intermediate_weighing_focused_row.BMP != null)
+                    {
+                        frm.pictureBox1.Image = (Bitmap)((new ImageConverter()).ConvertFrom(intermediate_weighing_focused_row.BMP));
+                    }
                 }
+                catch { }
 
                 frm.labelControl1.Text = intermediate_weighing_focused_row.RecipeName;
                 frm.ShowDialog();
