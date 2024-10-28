@@ -10,19 +10,11 @@
 namespace SP_Sklad.SkladData
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Interfaces
+    public partial class GetUserInterfaces_Result
     {
-        public Interfaces()
-        {
-            this.UserInterfaces = new HashSet<UserInterfaces>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Visible { get; set; }
-    
-        public virtual ICollection<UserInterfaces> UserInterfaces { get; set; }
+        public int Allow { get; set; }
     }
 }

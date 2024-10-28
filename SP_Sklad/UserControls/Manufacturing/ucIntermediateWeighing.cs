@@ -181,7 +181,7 @@ namespace SP_Sklad.MainTabs
         {
             xtraTabControl6_SelectedPageChanged(null, null);
 
-            DeleteItemBtn.Enabled = (intermediate_weighing_focused_row != null && intermediate_weighing_focused_row.Checked == 0 && user_access.CanDelete == 1 && intermediate_weighing_focused_row.WbChecked == 0);
+            DeleteItemBtn.Enabled = (intermediate_weighing_focused_row != null && intermediate_weighing_focused_row.Checked == 0 && user_access.CanDelete == 1 /*&& intermediate_weighing_focused_row.WbChecked == 0*/);
             EditItemBtn.Enabled = (intermediate_weighing_focused_row != null && /*intermediate_weighing_focused_row.Checked == 0 &&*/ user_access.CanModify == 1 && intermediate_weighing_focused_row.WbChecked == 0);
             CopyItemBtn.Enabled = (intermediate_weighing_focused_row != null && user_access.CanInsert == 1);
             ExecuteItemBtn.Enabled = (intermediate_weighing_focused_row != null && user_access.CanPost == 1);

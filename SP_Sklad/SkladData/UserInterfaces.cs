@@ -12,17 +12,13 @@ namespace SP_Sklad.SkladData
     using System;
     using System.Collections.Generic;
     
-    public partial class Interfaces
+    public partial class UserInterfaces
     {
-        public Interfaces()
-        {
-            this.UserInterfaces = new HashSet<UserInterfaces>();
-        }
-    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public Nullable<bool> Visible { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> InterfaceId { get; set; }
     
-        public virtual ICollection<UserInterfaces> UserInterfaces { get; set; }
+        public virtual Interfaces Interfaces { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

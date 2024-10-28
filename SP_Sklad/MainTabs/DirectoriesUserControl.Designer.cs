@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoriesUserControl));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.GridImageList = new DevExpress.Utils.ImageCollection(this.components);
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
@@ -1396,9 +1396,9 @@
             // 
             this.MatRecipeGridControl.DataSource = this.MatRecipeDS;
             this.MatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode1.RelationName = "Level1";
+            gridLevelNode3.RelationName = "Level1";
             this.MatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode3});
             this.MatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.MatRecipeGridControl.MainView = this.MatRecipeGridView;
             this.MatRecipeGridControl.Name = "MatRecipeGridControl";
@@ -1517,6 +1517,11 @@
             // 
             this.WarehouseGridControl.DataSource = this.WarehouseBS;
             this.WarehouseGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WarehouseGridControl.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.WarehouseGridControl.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.WarehouseGridControl.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.WarehouseGridControl.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.WarehouseGridControl.EmbeddedNavigator.Buttons.Remove.Visible = false;
             this.WarehouseGridControl.Location = new System.Drawing.Point(0, 0);
             this.WarehouseGridControl.MainView = this.WarehouseGridView;
             this.WarehouseGridControl.Name = "WarehouseGridControl";
@@ -1524,6 +1529,7 @@
             this.repositoryItemCheckEdit11});
             this.WarehouseGridControl.Size = new System.Drawing.Size(1088, 568);
             this.WarehouseGridControl.TabIndex = 1;
+            this.WarehouseGridControl.UseEmbeddedNavigator = true;
             this.WarehouseGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.WarehouseGridView});
             // 
@@ -1543,7 +1549,7 @@
             this.WarehouseGridView.GridControl = this.WarehouseGridControl;
             this.WarehouseGridView.Name = "WarehouseGridView";
             this.WarehouseGridView.OptionsBehavior.AllowIncrementalSearch = true;
-            this.WarehouseGridView.OptionsBehavior.Editable = false;
+            this.WarehouseGridView.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseDownFocused;
             this.WarehouseGridView.OptionsBehavior.ReadOnly = true;
             this.WarehouseGridView.OptionsView.ShowGroupPanel = false;
             this.WarehouseGridView.DoubleClick += new System.EventHandler(this.WarehouseGridView_DoubleClick);
@@ -2424,9 +2430,9 @@
             // PreparationMatRecipeGridControl
             // 
             this.PreparationMatRecipeGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            gridLevelNode2.RelationName = "Level1";
+            gridLevelNode1.RelationName = "Level1";
             this.PreparationMatRecipeGridControl.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode1});
             this.PreparationMatRecipeGridControl.Location = new System.Drawing.Point(0, 0);
             this.PreparationMatRecipeGridControl.MainView = this.PreparationMatRecipeGridView;
             this.PreparationMatRecipeGridControl.Name = "PreparationMatRecipeGridControl";

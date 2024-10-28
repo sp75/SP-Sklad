@@ -56,8 +56,8 @@ namespace SP_Sklad
             {
                 MessageBox.Show("Не вдалось підключитись до сервера, зверніться до Админістратора");
             }
-
-            InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.Where(w=> w.Visible == true).ToList();
+         //   var interfaces = new BaseEntities().GetUserInterfaces();
+        //    InterfaceLookUpEdit.Properties.DataSource = new BaseEntities().Interfaces.Where(w=> w.Visible == true).ToList();
 
             CheckTrial();
 
@@ -418,6 +418,9 @@ namespace SP_Sklad
 
         private void UserIDEdit_EditValueChanged(object sender, EventArgs e)
         {
+            var interfaces = new BaseEntities().GetUserInterfaces(user_id).ToList();
+            InterfaceLookUpEdit.Properties.DataSource = interfaces.Any(a => a.Allow == 1) ? interfaces.Where(w => w.Allow == 1).ToList() : interfaces;  //new BaseEntities().Interfaces.Where(w => w.Visible == true).ToList();
+
             GetOk();
         }
 

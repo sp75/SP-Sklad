@@ -547,7 +547,7 @@ namespace SP_Sklad
                         Name = s.Name
                     }).ToList();
 
-                    WhComboBox.EditValue = wh.FirstOrDefault(w => w.Def == 1).WId;
+                    WhComboBox.EditValue = wh.FirstOrDefault(w => w.Def == 1) != null ? wh.FirstOrDefault(w => w.Def == 1).WId : wh.FirstOrDefault()?.WId ;
                 }
                 else
                 {

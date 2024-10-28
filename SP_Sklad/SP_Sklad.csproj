@@ -846,6 +846,9 @@
     <Compile Include="SkladData\GetUserAccessWh_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkladData\GetUserInterfaces_Result.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="SkladData\GetUserRoles_Result.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
@@ -1258,6 +1261,9 @@
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserAccessWh.cs">
+      <DependentUpon>SkladModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkladData\UserInterfaces.cs">
       <DependentUpon>SkladModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SkladData\UserQuickMaterials.cs">

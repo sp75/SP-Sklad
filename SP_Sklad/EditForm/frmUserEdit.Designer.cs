@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserEdit));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -45,11 +50,6 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
@@ -189,6 +189,13 @@
             this.textEdit3 = new DevExpress.XtraEditors.ComboBoxEdit();
             this.UsersBS = new System.Windows.Forms.BindingSource(this.components);
             this.AccessPopupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.xtraTabPage13 = new DevExpress.XtraTab.XtraTabPage();
+            this.UserInterfacesGridControl = new DevExpress.XtraGrid.GridControl();
+            this.UserInterfacesGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn15 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemImageComboBox5 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.gridColumn16 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemCheckEdit6 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ImageList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.styleController1)).BeginInit();
@@ -270,6 +277,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).BeginInit();
+            this.xtraTabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UserInterfacesGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserInterfacesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -792,7 +804,8 @@
             this.xtraTabPage5,
             this.xtraTabPage7,
             this.xtraTabPage9,
-            this.xtraTabPage10});
+            this.xtraTabPage10,
+            this.xtraTabPage13});
             // 
             // xtraTabPage2
             // 
@@ -1499,7 +1512,6 @@
             // 
             // RoleGridControl
             // 
-            this.RoleGridControl.DataSource = this.UserAccessMatGroupBS;
             this.RoleGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RoleGridControl.Location = new System.Drawing.Point(0, 0);
             this.RoleGridControl.MainView = this.RoleGridView;
@@ -1548,7 +1560,7 @@
             // 
             // gridColumn10
             // 
-            this.gridColumn10.Caption = "Група товарів";
+            this.gridColumn10.Caption = "Роль";
             this.gridColumn10.FieldName = "Name";
             this.gridColumn10.Name = "gridColumn10";
             this.gridColumn10.Visible = true;
@@ -1623,10 +1635,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KagentComboBox.Location = new System.Drawing.Point(20, 43);
             this.KagentComboBox.Name = "KagentComboBox";
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions5.Image")));
             this.KagentComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, true, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.KagentComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.KagentComboBox.Properties.DisplayMember = "Name";
@@ -1677,10 +1689,10 @@
             this.ChargeTypesEdit.Name = "ChargeTypesEdit";
             this.ChargeTypesEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.ChargeTypesEdit.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.expense_items;
+            editorButtonImageOptions1.Image = global::SP_Sklad.Properties.Resources.expense_items;
             this.ChargeTypesEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.ChargeTypesEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.ChargeTypesEdit.Properties.DisplayMember = "Name";
@@ -1731,10 +1743,10 @@
             this.AccountEdit.Name = "AccountEdit";
             this.AccountEdit.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.AccountEdit.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.bank_account;
+            editorButtonImageOptions2.Image = global::SP_Sklad.Properties.Resources.bank_account;
             this.AccountEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.AccountEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccNum", "Номер"),
@@ -1753,10 +1765,10 @@
             this.CashEditComboBox.Name = "CashEditComboBox";
             this.CashEditComboBox.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.CashEditComboBox.Properties.Appearance.Options.UseFont = true;
-            editorButtonImageOptions4.Image = global::SP_Sklad.Properties.Resources.receipt_2;
+            editorButtonImageOptions3.Image = global::SP_Sklad.Properties.Resources.receipt_2;
             this.CashEditComboBox.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.CashEditComboBox.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Name", "Назва")});
             this.CashEditComboBox.Properties.DisplayMember = "Name";
@@ -1945,6 +1957,77 @@
             this.AccessPopupMenu.Manager = this.barManager1;
             this.AccessPopupMenu.Name = "AccessPopupMenu";
             // 
+            // xtraTabPage13
+            // 
+            this.xtraTabPage13.Controls.Add(this.UserInterfacesGridControl);
+            this.xtraTabPage13.Name = "xtraTabPage13";
+            this.xtraTabPage13.Size = new System.Drawing.Size(630, 358);
+            this.xtraTabPage13.Text = "Інтерфейси";
+            // 
+            // UserInterfacesGridControl
+            // 
+            this.UserInterfacesGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UserInterfacesGridControl.Location = new System.Drawing.Point(0, 0);
+            this.UserInterfacesGridControl.MainView = this.UserInterfacesGridView;
+            this.UserInterfacesGridControl.MenuManager = this.barManager1;
+            this.UserInterfacesGridControl.Name = "UserInterfacesGridControl";
+            this.UserInterfacesGridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemImageComboBox5,
+            this.repositoryItemCheckEdit6});
+            this.UserInterfacesGridControl.Size = new System.Drawing.Size(630, 358);
+            this.UserInterfacesGridControl.TabIndex = 12;
+            this.UserInterfacesGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.UserInterfacesGridView});
+            // 
+            // UserInterfacesGridView
+            // 
+            this.UserInterfacesGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn15,
+            this.gridColumn16});
+            this.UserInterfacesGridView.GridControl = this.UserInterfacesGridControl;
+            this.UserInterfacesGridView.Name = "UserInterfacesGridView";
+            this.UserInterfacesGridView.OptionsBehavior.AllowIncrementalSearch = true;
+            this.UserInterfacesGridView.OptionsBehavior.Editable = false;
+            this.UserInterfacesGridView.OptionsView.ShowGroupPanel = false;
+            this.UserInterfacesGridView.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.UserInterfacesGridView_RowCellClick);
+            // 
+            // gridColumn15
+            // 
+            this.gridColumn15.Caption = "Доступ";
+            this.gridColumn15.ColumnEdit = this.repositoryItemImageComboBox5;
+            this.gridColumn15.FieldName = "Allow";
+            this.gridColumn15.Name = "gridColumn15";
+            this.gridColumn15.Visible = true;
+            this.gridColumn15.VisibleIndex = 0;
+            this.gridColumn15.Width = 73;
+            // 
+            // repositoryItemImageComboBox5
+            // 
+            this.repositoryItemImageComboBox5.AutoHeight = false;
+            this.repositoryItemImageComboBox5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageComboBox5.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 1, 3),
+            new DevExpress.XtraEditors.Controls.ImageComboBoxItem("", 0, 4)});
+            this.repositoryItemImageComboBox5.Name = "repositoryItemImageComboBox5";
+            this.repositoryItemImageComboBox5.SmallImages = this.ImageList;
+            // 
+            // gridColumn16
+            // 
+            this.gridColumn16.Caption = "Інтерфейс";
+            this.gridColumn16.FieldName = "Name";
+            this.gridColumn16.Name = "gridColumn16";
+            this.gridColumn16.Visible = true;
+            this.gridColumn16.VisibleIndex = 1;
+            this.gridColumn16.Width = 463;
+            // 
+            // repositoryItemCheckEdit6
+            // 
+            this.repositoryItemCheckEdit6.AutoHeight = false;
+            this.repositoryItemCheckEdit6.Name = "repositoryItemCheckEdit6";
+            this.repositoryItemCheckEdit6.ValueChecked = 1;
+            this.repositoryItemCheckEdit6.ValueUnchecked = 0;
+            // 
             // frmUserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2051,6 +2134,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit3.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UsersBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AccessPopupMenu)).EndInit();
+            this.xtraTabPage13.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UserInterfacesGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UserInterfacesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageComboBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2197,5 +2285,12 @@
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl2;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit5;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage13;
+        private DevExpress.XtraGrid.GridControl UserInterfacesGridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView UserInterfacesGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn15;
+        private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn16;
+        private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit6;
     }
 }

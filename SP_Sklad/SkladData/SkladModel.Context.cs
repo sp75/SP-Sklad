@@ -275,6 +275,7 @@ namespace SP_Sklad.SkladData
         public DbSet<MaterialSupplier> MaterialSupplier { get; set; }
         public DbSet<v_DeliveryManagement> v_DeliveryManagement { get; set; }
         public DbSet<v_UserDocs> v_UserDocs { get; set; }
+        public DbSet<UserInterfaces> UserInterfaces { get; set; }
     
         [EdmFunction("BaseEntities", "SP_CONTRACTS_LIST")]
         public virtual IQueryable<SP_CONTRACTS_LIST_Result> SP_CONTRACTS_LIST(Nullable<int> iN_DOCTYPE, Nullable<System.DateTime> iN_FROMDATE, Nullable<System.DateTime> iN_TODATE, Nullable<int> iN_KAID, Nullable<int> iN_CHECKED)
@@ -2721,6 +2722,16 @@ namespace SP_Sklad.SkladData
                 new ObjectParameter("pos_id", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<Nullable<decimal>>("[BaseEntities].[GetAvgPrice](@pos_id)", pos_idParameter);
+        }
+    
+        [EdmFunction("BaseEntities", "GetUserInterfaces")]
+        public virtual IQueryable<GetUserInterfaces_Result> GetUserInterfaces(Nullable<int> user_id)
+        {
+            var user_idParameter = user_id.HasValue ?
+                new ObjectParameter("user_id", user_id) :
+                new ObjectParameter("user_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetUserInterfaces_Result>("[BaseEntities].[GetUserInterfaces](@user_id)", user_idParameter);
         }
     }
 }

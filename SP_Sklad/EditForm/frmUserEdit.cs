@@ -55,10 +55,9 @@ namespace SP_Sklad.EditForm
             tree.Add(new CatalogTreeList { Id = 6, ParentId = 1, Text = "Доступ до кас", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 8, ParentId = 1, Text = "Доступ до груп товарів", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 9, ParentId = 1, Text = "Ролі", ImgIdx = 1, TabIdx = 1 });
+            tree.Add(new CatalogTreeList { Id = 10, ParentId = 1, Text = "Інтерфейси", ImgIdx = 1, TabIdx = 1 });
             tree.Add(new CatalogTreeList { Id = 7, ParentId = -1, Text = "Робоче місце касира", ImgIdx = 18, TabIdx = 2 });
             tree.Add(new CatalogTreeList { Id = 2, ParentId = -1, Text = "Додаткові налаштування", ImgIdx = 12, TabIdx = 3 });
-
-
 
             TreeListBindingSource.DataSource = tree;
             DirTreeList.ExpandAll();
@@ -169,6 +168,11 @@ namespace SP_Sklad.EditForm
                     RefreshUserRoles();
                     xtraTabControl2.SelectedTabPageIndex = 5;
                     break;
+
+                case 10:
+                    RefreshUserInterfaces();
+                    xtraTabControl2.SelectedTabPageIndex = 6;
+                    break;
             }
 
             xtraTabControl1.SelectedTabPageIndex = focused_tree_node.TabIdx;
@@ -186,6 +190,11 @@ namespace SP_Sklad.EditForm
         private void RefreshUserRoles()
         {
             RoleGridControl.DataSource = _db.GetUserRoles(_user_id).ToList();
+        }
+
+        private void RefreshUserInterfaces()
+        {
+            UserInterfacesGridControl.DataSource = _db.GetUserInterfaces(_user_id).ToList();
         }
 
         private void OkButton_Click(object sender, EventArgs e)
@@ -691,11 +700,15 @@ namespace SP_Sklad.EditForm
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            foreach (var item in _db.GetUserAccessWh(_user_id).ToList())
+            for (int i = 0; i < UserAccessWhGridView.RowCount; i++)
             {
-                if (!_db.UserAccessWh.Any(a => a.UserId == _user_id.Value && a.WId == item.WId))
+                var dr = UserAccessWhGridView.GetRow(i) as GetUserAccessWh_Result;
+                if (dr != null)
                 {
-                    _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = item.WId, UseReceived = true });
+                    if (!_db.UserAccessWh.Any(a => a.UserId == _user_id.Value && a.WId == dr.WId))
+                    {
+                        _db.UserAccessWh.Add(new UserAccessWh { UserId = _user_id.Value, WId = dr.WId, UseReceived = true });
+                    }
                 }
             }
             _db.SaveChanges();
@@ -705,10 +718,49 @@ namespace SP_Sklad.EditForm
 
         private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _db.UserAccessWh.RemoveRange(_db.UserAccessWh.Where(w => w.UserId == _user_id.Value));
+            for (int i = 0; i < UserAccessWhGridView.RowCount; i++)
+            {
+                var dr = UserAccessWhGridView.GetRow(i) as GetUserAccessWh_Result;
+                if (dr != null)
+                {
+                    if (_db.UserAccessWh.Any(a => a.UserId == _user_id.Value && a.WId == dr.WId))
+                    {
+                        _db.UserAccessWh.RemoveRange(_db.UserAccessWh.Where(w => w.UserId == _user_id.Value && w.WId == dr.WId));
+                    }
+                }
+            }
             _db.SaveChanges();
 
             UserAccessWhGridControl.DataSource = _db.GetUserAccessWh(_user_id).ToList();
+        }
+
+        private void UserInterfacesGridView_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            if (e.CellValue == null)
+            {
+                return;
+            }
+
+            var row = UserInterfacesGridView.GetFocusedRow() as GetUserInterfaces_Result;
+
+            if (e.Column.FieldName == "Allow")
+            {
+
+                if ((int)e.CellValue == 0)
+                {
+                    _db.UserInterfaces.Add(new UserInterfaces { UserId = _user_id.Value, InterfaceId  = row.Id });
+                    row.Allow = 1;
+                }
+                else
+                {
+                    _db.DeleteWhere<UserInterfaces>(w => w.UserId == _user_id.Value && w.InterfaceId == row.Id);
+                    row.Allow = 0;
+                }
+
+                _db.SaveChanges();
+
+                UserInterfacesGridView.RefreshRow(UserInterfacesGridView.FocusedRowHandle);
+            }
         }
     }
 }
