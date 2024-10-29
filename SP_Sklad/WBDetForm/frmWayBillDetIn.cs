@@ -407,7 +407,7 @@ namespace SP_Sklad.WBDetForm
             if (e.Button.Index == 1)
             {
                 MatComboBox.EditValue = IHelper.ShowDirectList(MatComboBox.EditValue, 5);
-                if (MatComboBox.EditValue != DBNull.Value)
+                if (MatComboBox.EditValue != DBNull.Value && MatComboBox.EditValue != null)
                 {
                     SetPrice((int)MatComboBox.EditValue);
                 }
