@@ -59,6 +59,7 @@ namespace SP_Sklad.UserControls
             public decimal AccountingTotal { get; set; }
             public string GrpName { get; set; }
             public string MaterialTypeName { get; set; }
+            public string Artikul { get; set; }
         }
 
         public ucWaybillInventory()
@@ -407,7 +408,6 @@ namespace SP_Sklad.UserControls
             switch (xtraTabControl2.SelectedTabPageIndex)
             {
                 case 0:
-                    //  ucWayBillInDet.GetDate(wb_focused_row.WbillId);
                     InventoryDetGridControl.DataSource = new BaseEntities().WaybillDet.Where(w => w.WbillId == wb_focused_row.WbillId).Select(s => new InventoryDet
                     {
                         PosId = s.PosId,
@@ -425,7 +425,9 @@ namespace SP_Sklad.UserControls
                         SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0)),
                         Notes = s.Notes,
                         GrpName = s.Materials.MatGroup.Name,
-                        MaterialTypeName = s.Materials.MaterialType.Name
+                        MaterialTypeName = s.Materials.MaterialType.Name,
+                        Artikul = s.Materials.Artikul
+
                     }).ToList();
                     break;
 
