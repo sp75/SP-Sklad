@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
@@ -1020,6 +1021,31 @@ namespace SP_Sklad.EditForm
             if (e.Button.Index == 1)
             {
                 lookUpEdit4.EditValue = IHelper.ShowDirectList(lookUpEdit4.EditValue, 1);
+            }
+        }
+
+        private void checkedComboBoxEdit2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if(e.Button.Index == 1)
+            {
+                using (var frm = new frmKagents(5, ""))
+                {
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        var ka_id = frm.focused_row?.KaId;
+
+                        if (ka_id.HasValue)
+                        {
+                            foreach (CheckedListBoxItem item in checkedComboBoxEdit2.Properties.Items)
+                            {
+                                if ((int)item.Value == ka_id)
+                                {
+                                    item.CheckState = CheckState.Checked;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
