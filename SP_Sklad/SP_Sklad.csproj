@@ -4041,6 +4041,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Rep\" />
+    <Folder Include="UserControls\Finances\" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="ScalesCOMServerLib">
       <Guid>{D1D66117-8982-44F0-B31E-87EBD14FBFF9}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -4050,10 +4054,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Rep\" />
-    <Folder Include="UserControls\Finances\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

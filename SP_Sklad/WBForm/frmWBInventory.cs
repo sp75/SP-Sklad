@@ -137,7 +137,8 @@ namespace SP_Sklad.WBForm
                 Discount = (s.Discount ?? 0),
                 Nds = (s.Nds ?? 0),
                 AmountAll = (s.Discount ?? 0) - s.Amount,
-                SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0))
+                SumAll = ((s.Discount ?? 0) * (s.Nds ?? 0)) - (s.Amount * (s.Price ?? 0)),
+                Artikul = s.Materials.Artikul
             }).ToList();
 
             int top_row = InventoryDetGridView.TopRowIndex;
@@ -366,6 +367,7 @@ namespace SP_Sklad.WBForm
             public decimal Nds { get; set; }
             public decimal AmountAll { get; set; }
             public decimal SumAll { get; set; }
+            public string Artikul { get; set; }
         }
 
         private void WhBtn_Click(object sender, EventArgs e)
