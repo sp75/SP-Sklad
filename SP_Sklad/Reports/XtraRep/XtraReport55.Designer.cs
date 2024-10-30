@@ -66,7 +66,7 @@
             // 
             // TopMargin
             // 
-            this.TopMargin.HeightF = 10.54166F;
+            this.TopMargin.HeightF = 11F;
             this.TopMargin.Name = "TopMargin";
             // 
             // BottomMargin
@@ -74,7 +74,7 @@
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.pageInfo1,
             this.pageInfo2});
-            this.BottomMargin.HeightF = 36.54172F;
+            this.BottomMargin.HeightF = 37F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // pageInfo1
@@ -89,7 +89,7 @@
             // 
             this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(375F, 0F);
             this.pageInfo2.Name = "pageInfo2";
-            this.pageInfo2.SizeF = new System.Drawing.SizeF(413.9999F, 23F);
+            this.pageInfo2.SizeF = new System.Drawing.SizeF(392.9998F, 23F);
             this.pageInfo2.StyleName = "PageInfo";
             this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
             this.pageInfo2.TextFormatString = "Page {0} of {1}";
@@ -105,7 +105,7 @@
             // 
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.label1.Name = "label1";
-            this.label1.SizeF = new System.Drawing.SizeF(788.9999F, 24.19433F);
+            this.label1.SizeF = new System.Drawing.SizeF(767.9999F, 24.19433F);
             this.label1.StyleName = "Title";
             this.label1.Text = "Виробництва в яких останній тех-процес \"Посол\"";
             // 
@@ -123,7 +123,7 @@
             this.table1.Name = "table1";
             this.table1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow1});
-            this.table1.SizeF = new System.Drawing.SizeF(788.9999F, 28F);
+            this.table1.SizeF = new System.Drawing.SizeF(767.9999F, 28F);
             // 
             // tableRow1
             // 
@@ -182,7 +182,7 @@
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.StyleName = "DetailCaption1";
             this.xrTableCell3.Text = "Примітка";
-            this.xrTableCell3.Weight = 0.36820997024921986D;
+            this.xrTableCell3.Weight = 0.314129526200344D;
             // 
             // Detail
             // 
@@ -199,7 +199,7 @@
             this.table2.OddStyleName = "DetailData3_Odd";
             this.table2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.tableRow2});
-            this.table2.SizeF = new System.Drawing.SizeF(788.9999F, 25F);
+            this.table2.SizeF = new System.Drawing.SizeF(767.9999F, 25F);
             // 
             // tableRow2
             // 
@@ -267,7 +267,7 @@
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.StyleName = "DetailData1";
             this.xrTableCell4.Text = "xrTableCell4";
-            this.xrTableCell4.Weight = 0.36821017165259484D;
+            this.xrTableCell4.Weight = 0.31412958336368907D;
             // 
             // Title
             // 
@@ -339,7 +339,7 @@
             this.objectDataSource1});
             this.DataSource = this.objectDataSource1;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
-            this.Margins = new System.Drawing.Printing.Margins(18, 20, 11, 37);
+            this.Margins = new System.Drawing.Printing.Margins(27, 32, 11, 37);
             this.PageHeight = 1169;
             this.PageWidth = 827;
             this.PaperKind = System.Drawing.Printing.PaperKind.A4;

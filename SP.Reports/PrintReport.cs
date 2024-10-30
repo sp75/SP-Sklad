@@ -1147,7 +1147,9 @@ namespace SP.Reports
                 s.Key.GrpId,
                 Name = s.Key.GrpName,
                 TotalOrd = s.Sum(xs => xs.TotalOrd),
-                TotalOut = s.Sum(xs => xs.TotalOut)
+                TotalOut = s.Sum(xs => xs.TotalOut),
+                TotalAmountOrd = s.Sum(r => r.MsrName == "кг." ? r.AmountOrd : 0),
+                TotalAmountOut = s.Sum(r => r.MsrName == "кг." ? r.AmountOut : 0)
             }).OrderBy(o => o.Name).ToList();
 
             realation.Add(new
@@ -1157,6 +1159,14 @@ namespace SP.Reports
                 master_table = "MatGroup",
                 child_table = "MatList"
             });
+
+            data_for_report.Add("SummaryField", mat.GroupBy(g => 1).Select(s => new
+            {
+                TotalOrd = s.Sum(xs => xs.TotalOrd),
+                TotalOut = s.Sum(xs => xs.TotalOut),
+                TotalAmountOrd = s.Sum(r => r.MsrName == "кг." ? r.AmountOrd : 0),
+                TotalAmountOut = s.Sum(r => r.MsrName == "кг." ? r.AmountOut : 0)
+            }).ToList());
 
             data_for_report.Add("XLRPARAMS", XLR_PARAMS);
             data_for_report.Add("MatGroup", mat_grp);
