@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraEditors.DXErrorProvider;
 using SP_Sklad.Common;
 using SP_Sklad.SkladData;
 using SP_Sklad.ViewsForm;
@@ -161,7 +162,7 @@ namespace SP_Sklad.EditForm
 
                 foreach (var item in _enterprise_list)
                 {
-                    checkedComboBoxEdit1.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
+                    EntCheckedComboBoxEdit.Properties.Items.Add(item.KaId, item.Name, item.IsWork ? CheckState.Checked : CheckState.Unchecked, true);
                 }
 
                 foreach(var item in new BaseEntities().Kagent.Where(w => w.KType == 4 && w.Deleted == 0 && (w.Archived == null || w.Archived == 0)).OrderBy(o=> o.Name).Select(s=> new { s.KaId, s.Name, IsWork = s.EmployeeKagent1.Any(a=> a.EmployeeId == _ka_id)  }).ToList())
@@ -396,6 +397,15 @@ namespace SP_Sklad.EditForm
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(EntCheckedComboBoxEdit.Text) && (_ka.KaKind == 3))
+            {
+                DialogResult = DialogResult.None;
+                EntCheckedComboBoxEdit.Focus();
+                OkButton.Focus();
+            }
+           
+
             if (k_discount != null && !DiscCheckEdit.Checked)
             {
                 _db.DeleteWhere<KAMatDiscount>(w => w.KAId == _ka.KaId);
@@ -815,11 +825,11 @@ namespace SP_Sklad.EditForm
 
         private void checkedComboBoxEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            if (checkedComboBoxEdit1.ContainsFocus)
+            if (EntCheckedComboBoxEdit.ContainsFocus)
             {
                 _db.EnterpriseWorker.RemoveRange(_db.EnterpriseWorker.Where(w => w.WorkerId == _ka_id));
 
-                foreach (var item in checkedComboBoxEdit1.Properties.Items.Where(w=> w.CheckState == CheckState.Checked))
+                foreach (var item in EntCheckedComboBoxEdit.Properties.Items.Where(w=> w.CheckState == CheckState.Checked))
                 {
                     _db.EnterpriseWorker.Add(new EnterpriseWorker { EnterpriseId = (int)item.Value, WorkerId = _ka_id.Value });
                 }
@@ -1048,5 +1058,17 @@ namespace SP_Sklad.EditForm
                 }
             }
         }
+
+        private void checkedComboBoxEdit1_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(EntCheckedComboBoxEdit.Text) && (_ka.KaKind == 3))
+            {
+                EntCheckedComboBoxEdit.ErrorText = $"Підприємство не може бути пустим для типу контрагента {KTypeLookUpEdit.Text}!";
+                e.Cancel = true;
+            }
+        }
+
+
+
     }
 }
