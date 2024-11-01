@@ -204,11 +204,6 @@ namespace SP_Sklad.WBDetForm
 
         }
 
-        private void MatComboBox_Properties_EditValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void GetRemains()
         {
             var r = _db.SP_MAT_REMAIN_GET_SIMPLE((int)MatComboBox.EditValue, _wb.OnDate).FirstOrDefault();

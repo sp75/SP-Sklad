@@ -15,6 +15,7 @@ using EntityState = System.Data.Entity.EntityState;
 using System.Data.Entity;
 using SkladEngine.DBFunction.Models;
 using SkladEngine.DBFunction;
+using DevExpress.XtraEditors;
 
 namespace SP_Sklad.WBDetForm
 {
@@ -371,15 +372,14 @@ namespace SP_Sklad.WBDetForm
 
             _wbd.Price = DiscountPriceEdit.Value;
 
+            if (!modified_dataset)
+            {
+                _db.WaybillDet.Add(_wbd);
+            }
+            _db.SaveChanges();
+
             try
             {
-
-                if (!modified_dataset)
-                {
-                    _db.WaybillDet.Add(_wbd);
-                }
-                _db.SaveChanges();
-
                 if (RSVCheckBox.Checked && !_db.WMatTurn.Any(w => w.SourceId == _wbd.PosId) && _db.UserAccessWh.Any(a => a.UserId == DBHelper.CurrentUser.UserId && a.WId == _wbd.WId && a.UseReceived))
                 {
                     foreach (var item in pos_in.Where(w => w.Amount > 0))
@@ -403,8 +403,8 @@ namespace SP_Sklad.WBDetForm
             catch (System.Data.Entity.Infrastructure.DbUpdateException exp)
             {
                 _db.UndoAllChanges();
-
-                throw exp;
+                var b_exp = exp.GetBaseException();
+                XtraMessageBox.Show((b_exp != null ? b_exp.Message : exp.Message), "Залишки по партіям не актуальні", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
