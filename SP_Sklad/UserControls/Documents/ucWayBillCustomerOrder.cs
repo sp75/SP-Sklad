@@ -181,7 +181,13 @@ namespace SP_Sklad.UserControls
         private void WayBillInSource_GetQueryable(object sender, DevExpress.Data.Linq.GetQueryableEventArgs e)
         {
             BaseEntities objectContext = new BaseEntities();
+            var tt = objectContext.EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.KaId).ToList();
             var list = objectContext.v_WayBillCustomerOrder.Where(w => w.WType == w_type && w.OnDate > ucDocumentFilterPanel.StartDate && w.OnDate <= ucDocumentFilterPanel.EndDate && (w.Checked == ucDocumentFilterPanel.StatusId || ucDocumentFilterPanel.StatusId == -1) && (w.KaId == ucDocumentFilterPanel.KagentId || ucDocumentFilterPanel.KagentId == 0) && w.WorkerId == DBHelper.CurrentUser.KaId);
+            if(tt.Any())
+            {
+                list = list.Join(objectContext.EmployeeKagent.Where(eww => eww.EmployeeId == DBHelper.CurrentUser.KaId), wb => wb.KaId, ek => ek.KaId, (wb, ek) => wb);
+            }
+            
             e.QueryableSource = list;
             e.Tag = objectContext;
         }

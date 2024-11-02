@@ -405,6 +405,10 @@ namespace SP_Sklad.EditForm
                 OkButton.Focus();
             }
            
+            if(_ka.JobType != 5)
+            {
+                _db.DeleteWhere<EmployeeKagent>(w => w.EmployeeId == _ka.KaId);
+            }
 
             if (k_discount != null && !DiscCheckEdit.Checked)
             {
@@ -418,6 +422,7 @@ namespace SP_Sklad.EditForm
                 _ka.StartSaldo = null;
                 _ka.StartSaldoDate = null;
             }
+
             if (checkEdit2.Enabled && checkEdit2.Checked)
             {
                 if (checkEdit4.Checked)
