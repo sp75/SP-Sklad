@@ -343,8 +343,8 @@ namespace SP_Sklad
                         case 7:
 
                             WindowsFormsSettings.ForceDirectXPaint();
-                            //       WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
-                            //  WindowsFormsSettings.TouchScaleFactor = 2;
+                            WindowsFormsSettings.TouchUIMode = TouchUIMode.True;
+                            WindowsFormsSettings.TouchScaleFactor = 2;
                             frmMainTablet.main_form = new frmMainTablet();
                             frmMainTablet.main_form.Show();
                             break;

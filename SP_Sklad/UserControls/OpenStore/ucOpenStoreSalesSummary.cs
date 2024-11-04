@@ -38,8 +38,16 @@ namespace SP_Sklad.UserControls.Warehouse
             if (!DesignMode)
             {
                 var user_settings = new UserSettingsRepository(DBHelper.CurrentUser.UserId, new BaseEntities());
-
-                KagentList.Properties.DataSource = (new List<SAREA>() { new SAREA { SAREAID = -1, SAREANAME = "Усі" } }.Concat(  new Tranzit_OSEntities().SAREA.ToList())).ToList();
+                
+                var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
+                if (tt.Any())
+                {
+                    KagentList.Properties.DataSource = (new List<SAREA>() { new SAREA { SAREAID = -1, SAREANAME = "Усі" } }.Concat(new Tranzit_OSEntities().SAREA.Where(w=> tt.Contains(w.SAREAID)).ToList())).ToList();
+                }
+                else
+                {
+                    KagentList.Properties.DataSource = (new List<SAREA>() { new SAREA { SAREAID = -1, SAREANAME = "Усі" } }.Concat(new Tranzit_OSEntities().SAREA.ToList())).ToList();
+                }
                 KagentList.EditValue = -1;
 
                 SalesGridView.Appearance.Row.Font = new Font(user_settings.GridFontName, (float)user_settings.GridFontSize);
@@ -75,6 +83,8 @@ namespace SP_Sklad.UserControls.Warehouse
                 return;
             }
 
+            var tt = new BaseEntities().EmployeeKagent.Where(w => w.EmployeeId == DBHelper.CurrentUser.KaId).Select(s => s.Kagent1.OpenStoreAreaId).ToList();
+
             Tranzit_OSEntities objectContext = new Tranzit_OSEntities();
 
             var sql = @"SELECT [SAREANAME]
@@ -89,7 +99,7 @@ namespace SP_Sklad.UserControls.Warehouse
       ,[GRPID]
       ,[GRPNAME]
   FROM [Tranzit_OS].[dbo].[v_Sales]
-  where (SAREAID = {2} or {2} = -1) and [SALESTIME]  between '{0}' and '{1}'
+  where (SAREAID = {2} or {2} = -1) and [SALESTIME]  between '{0}' and '{1}' {3}
   group by [SAREANAME]
       ,[SAREAID],[UNITNAME]
       ,[ARTNAME]
@@ -98,7 +108,7 @@ namespace SP_Sklad.UserControls.Warehouse
       ,[GRPID]
       ,[GRPNAME]";
 
-            var list = objectContext.Database.SqlQuery<SalesSummaryView>(string.Format(sql, start_date, end_date, area.SAREAID)).ToList();
+            var list = objectContext.Database.SqlQuery<SalesSummaryView>(string.Format(sql, start_date, end_date, area.SAREAID, tt.Any() ? $"and SAREAID in ({string.Join(", ", tt)})"  : ""  )).ToList();
             SalesGridControl.DataSource = list;
         }
 

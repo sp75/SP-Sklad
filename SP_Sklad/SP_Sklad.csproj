@@ -534,6 +534,12 @@
     <Compile Include="Interfaces\Tablet\frmMainTablet.Designer.cs">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletOpenStoreSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Interfaces\Tablet\UI\ucTabletOpenStoreSales.designer.cs">
+      <DependentUpon>ucTabletOpenStoreSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainTabs\OpenStoreUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -2761,6 +2767,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaces\Tablet\frmMainTablet.resx">
       <DependentUpon>frmMainTablet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaces\Tablet\UI\ucTabletOpenStoreSales.resx">
+      <DependentUpon>ucTabletOpenStoreSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainTabs\OpenStoreUserControl.resx">
       <DependentUpon>OpenStoreUserControl.cs</DependentUpon>

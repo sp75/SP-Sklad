@@ -55,6 +55,18 @@
           <Property Name="RECEIPTFIRSTHEADER" Type="nvarchar" MaxLength="100" />
           <Property Name="RECEIPTENDFOOTER" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="UNITID" />
+          </Key>
+          <Property Name="UNITID" Type="int" Nullable="false" />
+          <Property Name="UNITNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UNITFULLNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="DEFAULTPACKDTYPE" Type="int" Nullable="false" />
+          <Property Name="DELFLAG" Type="smallint" Nullable="false" />
+          <Property Name="DEFAULTQUANTMASK" Type="int" Nullable="false" />
+          <Property Name="UPDATENUM" Type="int" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Tranzit_OS.dbo.v_CashRegisterSyncMonitor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="v_CashRegisterSyncMonitor">
@@ -199,10 +211,23 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="R_4280">
+          <End Role="UNIT" Type="Self.UNIT" Multiplicity="0..1" />
+          <End Role="ART" Type="Self.ART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="UNITID" />
+            </Principal>
+            <Dependent Role="ART">
+              <PropertyRef Name="DEFAULTUNITID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Tranzit_OSModelStoreContainer">
           <EntitySet Name="ART" EntityType="Self.ART" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GRP" EntityType="Self.GRP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SAREA" EntityType="Self.SAREA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UNIT" EntityType="Self.UNIT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="v_CashRegisterSyncMonitor" EntityType="Self.v_CashRegisterSyncMonitor" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [v_CashRegisterSyncMonitor].[SAREAID] AS [SAREAID], 
@@ -293,6 +318,10 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
             <End Role="GRP" EntitySet="GRP" />
             <End Role="ART" EntitySet="ART" />
           </AssociationSet>
+          <AssociationSet Name="R_4280" Association="Self.R_4280">
+            <End Role="UNIT" EntitySet="UNIT" />
+            <End Role="ART" EntitySet="ART" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -315,6 +344,7 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
           <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
           <Property Name="UKEZEDCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GRP" Relationship="Tranzit_OSModel.R_2" FromRole="ART" ToRole="GRP" />
+          <NavigationProperty Name="UNIT" Relationship="Tranzit_OSModel.R_4280" FromRole="ART" ToRole="UNIT" />
         </EntityType>
         <EntityType Name="SAREA">
           <Key>
@@ -438,6 +468,11 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
             <End Role="GRP" EntitySet="GRP" />
             <End Role="ART" EntitySet="ART" />
           </AssociationSet>
+          <EntitySet Name="UNIT" EntityType="Tranzit_OSModel.UNIT" />
+          <AssociationSet Name="R_4280" Association="Tranzit_OSModel.R_4280">
+            <End Role="UNIT" EntitySet="UNIT" />
+            <End Role="ART" EntitySet="ART" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="v_CashRegisterSyncMonitor">
           <Key>
@@ -473,6 +508,31 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
             </Principal>
             <Dependent Role="ART">
               <PropertyRef Name="GRPID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UNIT">
+          <Key>
+            <PropertyRef Name="UNITID" />
+          </Key>
+          <Property Name="UNITID" Type="Int32" Nullable="false" />
+          <Property Name="UNITNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UNITFULLNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DEFAULTPACKDTYPE" Type="Int32" Nullable="false" />
+          <Property Name="DELFLAG" Type="Int16" Nullable="false" />
+          <Property Name="DEFAULTQUANTMASK" Type="Int32" Nullable="false" />
+          <Property Name="UPDATENUM" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ART" Relationship="Tranzit_OSModel.R_4280" FromRole="UNIT" ToRole="ART" />
+        </EntityType>
+        <Association Name="R_4280">
+          <End Type="Tranzit_OSModel.UNIT" Role="UNIT" Multiplicity="0..1" />
+          <End Type="Tranzit_OSModel.ART" Role="ART" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIT">
+              <PropertyRef Name="UNITID" />
+            </Principal>
+            <Dependent Role="ART">
+              <PropertyRef Name="DEFAULTUNITID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -626,6 +686,19 @@ warning 6002: The table/view 'Tranzit_OS.dbo.v_Sales' does not have a primary ke
                 <ScalarProperty Name="PARENTGRPID" ColumnName="PARENTGRPID" />
                 <ScalarProperty Name="OFFERID" ColumnName="OFFERID" />
                 <ScalarProperty Name="GRPID" ColumnName="GRPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNIT">
+            <EntityTypeMapping TypeName="Tranzit_OSModel.UNIT">
+              <MappingFragment StoreEntitySet="UNIT">
+                <ScalarProperty Name="UPDATENUM" ColumnName="UPDATENUM" />
+                <ScalarProperty Name="DEFAULTQUANTMASK" ColumnName="DEFAULTQUANTMASK" />
+                <ScalarProperty Name="DELFLAG" ColumnName="DELFLAG" />
+                <ScalarProperty Name="DEFAULTPACKDTYPE" ColumnName="DEFAULTPACKDTYPE" />
+                <ScalarProperty Name="UNITFULLNAME" ColumnName="UNITFULLNAME" />
+                <ScalarProperty Name="UNITNAME" ColumnName="UNITNAME" />
+                <ScalarProperty Name="UNITID" ColumnName="UNITID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
