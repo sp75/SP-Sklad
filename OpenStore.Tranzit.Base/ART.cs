@@ -28,5 +28,6 @@ namespace OpenStore.Tranzit.Base
         public string UKEZEDCODE { get; set; }
     
         public virtual GRP GRP { get; set; }
+        public virtual UNIT UNIT { get; set; }
     }
 }

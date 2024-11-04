@@ -81,7 +81,8 @@ namespace SP_Sklad.MainTabs
                         s.ARTCODE,
                         s.ARTNAME,
                         s.ARTSNAME,
-                        s.GRP.GRPNAME
+                        s.GRP.GRPNAME,
+                        s.UNIT.UNITNAME
                     }).ToList();
 
                     MatGridView.ExpandAllGroups();

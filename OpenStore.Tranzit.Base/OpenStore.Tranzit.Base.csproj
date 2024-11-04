@@ -76,6 +76,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TranzitBaseModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UNIT.cs">
+      <DependentUpon>TranzitBaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="v_CashRegisterSyncMonitor.cs">
       <DependentUpon>TranzitBaseModel.tt</DependentUpon>
     </Compile>
