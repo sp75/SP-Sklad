@@ -56,9 +56,9 @@ namespace SP_Sklad
                 Directory.CreateDirectory(Path.Combine(Application.StartupPath, "Rep"));
             }
 
-            var setiing_repo = new AppSettingRepository();
+            var setting_repo = new AppSettingRepository();
 
-            var sta = setiing_repo.ShowTradeApp;
+            var sta = setting_repo.ShowTradeApp;
             TradeTabPage.PageVisible = sta;
             CashierWorkplaceBtn.Visibility = sta ? CashierWorkplaceBtn.Visibility : DevExpress.XtraBars.BarItemVisibility.Never;
 
@@ -76,7 +76,7 @@ namespace SP_Sklad
             AddManufacturingBtn.Enabled = IHelper.GetUserAccess(68)?.CanInsert == 1;
             AddDeboningBtn.Enabled = IHelper.GetUserAccess(72)?.CanInsert == 1;
 
-            OpenStoreTabPage.PageVisible = (DBHelper.is_buh || DBHelper.is_admin) && setiing_repo.ShowOpenStoreApp;
+            OpenStoreTabPage.PageVisible = (DBHelper.is_buh || DBHelper.is_admin) && setting_repo.ShowOpenStoreApp;
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
