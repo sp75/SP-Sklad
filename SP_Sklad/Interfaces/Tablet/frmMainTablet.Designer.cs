@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainTablet));
             this.mainContainer = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.TabImageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -57,6 +58,8 @@
             this.accordionControlElement24 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement25 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement26 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement44 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlElement45 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement27 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement28 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement29 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -78,9 +81,12 @@
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainContainer
@@ -88,8 +94,29 @@
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainContainer.Location = new System.Drawing.Point(250, 31);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(1075, 569);
+            this.mainContainer.Size = new System.Drawing.Size(1075, 644);
             this.mainContainer.TabIndex = 0;
+            // 
+            // TabImageCollection
+            // 
+            this.TabImageCollection.ImageSize = new System.Drawing.Size(32, 32);
+            this.TabImageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("TabImageCollection.ImageStream")));
+            this.TabImageCollection.TransparentColor = System.Drawing.Color.Transparent;
+            this.TabImageCollection.Images.SetKeyName(0, "article_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(1, "technology_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(2, "boproductgroup_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(3, "bosale_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(4, "money_coins2.png");
+            this.TabImageCollection.Images.SetKeyName(5, "report_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(6, "morefunctions_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(7, "os_logo.png");
+            this.TabImageCollection.Images.SetKeyName(8, "ide_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(9, "bosaleitem_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(10, "boreport2_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(11, "subreport_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(12, "warehouse_32.png");
+            this.TabImageCollection.Images.SetKeyName(13, "functionsfinancial_32x32.png");
+            this.TabImageCollection.Images.SetKeyName(14, "editrangepermission_32x32.png");
             // 
             // accordionControl1
             // 
@@ -98,13 +125,15 @@
             this.accordionControlElement1,
             this.accordionControlElement17,
             this.accordionControlElement21,
+            this.accordionControlElement44,
             this.accordionControlElement27,
             this.accordionControlElement2,
             this.accordionControlElement31});
+            this.accordionControl1.Images = this.TabImageCollection;
             this.accordionControl1.Location = new System.Drawing.Point(0, 31);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(250, 569);
+            this.accordionControl1.Size = new System.Drawing.Size(250, 644);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -126,7 +155,6 @@
             this.accordionControlElement4,
             this.accordionControlElement8,
             this.accordionControlElement9});
-            this.accordionControlElement3.Expanded = true;
             this.accordionControlElement3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement3.ImageOptions.Image")));
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Text = "Накладні";
@@ -233,6 +261,7 @@
             this.accordionControlElement17.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement17.ImageOptions.Image")));
             this.accordionControlElement17.Name = "accordionControlElement17";
             this.accordionControlElement17.Text = "Виробництво";
+            this.accordionControlElement17.Visible = false;
             // 
             // accordionControlElement18
             // 
@@ -264,6 +293,7 @@
             this.accordionControlElement21.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement21.ImageOptions.Image")));
             this.accordionControlElement21.Name = "accordionControlElement21";
             this.accordionControlElement21.Text = "Склад";
+            this.accordionControlElement21.Visible = false;
             this.accordionControlElement21.Click += new System.EventHandler(this.accordionControlElement21_Click);
             // 
             // accordionControlElement23
@@ -297,6 +327,28 @@
             this.accordionControlElement26.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement26.Text = "Акти інвентарицації";
             // 
+            // accordionControlElement44
+            // 
+            this.accordionControlElement44.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
+            this.accordionControlElement45});
+            this.accordionControlElement44.Expanded = true;
+            this.accordionControlElement44.ImageOptions.ImageIndex = 7;
+            this.accordionControlElement44.Name = "accordionControlElement44";
+            this.accordionControlElement44.Text = "OpenStore";
+            // 
+            // accordionControlElement45
+            // 
+            this.accordionControlElement45.HeaderTemplate.AddRange(new DevExpress.XtraBars.Navigation.HeaderElementInfo[] {
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Image),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.Text),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.ContextButtons),
+            new DevExpress.XtraBars.Navigation.HeaderElementInfo(DevExpress.XtraBars.Navigation.HeaderElementType.HeaderControl)});
+            this.accordionControlElement45.ImageOptions.Image = global::SP_Sklad.Properties.Resources.purchase;
+            this.accordionControlElement45.Name = "accordionControlElement45";
+            this.accordionControlElement45.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlElement45.Text = "Продажі";
+            this.accordionControlElement45.Click += new System.EventHandler(this.accordionControlElement45_Click);
+            // 
             // accordionControlElement27
             // 
             this.accordionControlElement27.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
@@ -306,6 +358,7 @@
             this.accordionControlElement27.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement27.ImageOptions.Image")));
             this.accordionControlElement27.Name = "accordionControlElement27";
             this.accordionControlElement27.Text = "Фінанси";
+            this.accordionControlElement27.Visible = false;
             // 
             // accordionControlElement28
             // 
@@ -330,15 +383,17 @@
             this.accordionControlElement2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement2.ImageOptions.Image")));
             this.accordionControlElement2.Name = "accordionControlElement2";
             this.accordionControlElement2.Text = "Звіти";
+            this.accordionControlElement2.Visible = false;
             // 
             // accordionControlElement31
             // 
             this.accordionControlElement31.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElement32,
             this.accordionControlElement38});
-            this.accordionControlElement31.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement31.ImageOptions.Image")));
+            this.accordionControlElement31.ImageOptions.ImageIndex = 6;
             this.accordionControlElement31.Name = "accordionControlElement31";
             this.accordionControlElement31.Text = "Довідники";
+            this.accordionControlElement31.Visible = false;
             // 
             // accordionControlElement32
             // 
@@ -450,11 +505,43 @@
             this.skinDropDownButtonItem1});
             this.fluentFormDefaultManager1.MaxItemId = 1;
             // 
+            // imageCollection1
+            // 
+            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            this.imageCollection1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.purchase, "purchase", typeof(global::SP_Sklad.Properties.Resources), 0);
+            this.imageCollection1.Images.SetKeyName(0, "purchase");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.technology_16x16, "technology_16x16", typeof(global::SP_Sklad.Properties.Resources), 1);
+            this.imageCollection1.Images.SetKeyName(1, "technology_16x16");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_in, "waybill_in", typeof(global::SP_Sklad.Properties.Resources), 2);
+            this.imageCollection1.Images.SetKeyName(2, "waybill_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.waybill_out, "waybill_out", typeof(global::SP_Sklad.Properties.Resources), 3);
+            this.imageCollection1.Images.SetKeyName(3, "waybill_out");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.wb_order_in, "wb_order_in", typeof(global::SP_Sklad.Properties.Resources), 4);
+            this.imageCollection1.Images.SetKeyName(4, "wb_order_in");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOff_2, "WBWriteOff_2", typeof(global::SP_Sklad.Properties.Resources), 5);
+            this.imageCollection1.Images.SetKeyName(5, "WBWriteOff_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.WBWriteOn_4, "WBWriteOn_4", typeof(global::SP_Sklad.Properties.Resources), 6);
+            this.imageCollection1.Images.SetKeyName(6, "WBWriteOn_4");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.cash_register, "cash_register", typeof(global::SP_Sklad.Properties.Resources), 7);
+            this.imageCollection1.Images.SetKeyName(7, "cash_register");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.inventory_act_2, "inventory_act_2", typeof(global::SP_Sklad.Properties.Resources), 8);
+            this.imageCollection1.Images.SetKeyName(8, "inventory_act_2");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.deboneing, "deboneing", typeof(global::SP_Sklad.Properties.Resources), 9);
+            this.imageCollection1.Images.SetKeyName(9, "deboneing");
+            this.imageCollection1.InsertImage(global::SP_Sklad.Properties.Resources.move_stock, "move_stock", typeof(global::SP_Sklad.Properties.Resources), 10);
+            this.imageCollection1.Images.SetKeyName(10, "move_stock");
+            this.imageCollection1.Images.SetKeyName(11, "change_theme.png");
+            this.imageCollection1.Images.SetKeyName(12, "exit.png");
+            this.imageCollection1.Images.SetKeyName(13, "info1.png");
+            this.imageCollection1.Images.SetKeyName(14, "download.png");
+            this.imageCollection1.Images.SetKeyName(15, "refresh_2.png");
+            // 
             // frmMainTablet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1325, 600);
+            this.ClientSize = new System.Drawing.Size(1325, 675);
             this.ControlContainer = this.mainContainer;
             this.Controls.Add(this.mainContainer);
             this.Controls.Add(this.accordionControl1);
@@ -462,12 +549,15 @@
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
             this.Name = "frmMainTablet";
             this.NavigationControl = this.accordionControl1;
-            this.Text = "frmMainTablet";
+            this.Text = "Кабінет регіонального менеджера";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMainTablet_FormClosed);
+            this.Load += new System.EventHandler(this.frmMainTablet_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TabImageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentFormDefaultManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -521,5 +611,9 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement41;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement42;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement43;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement44;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement45;
+        private DevExpress.Utils.ImageCollection TabImageCollection;
+        private DevExpress.Utils.ImageCollection imageCollection1;
     }
 }
