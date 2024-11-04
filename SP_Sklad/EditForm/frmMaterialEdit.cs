@@ -81,7 +81,7 @@ namespace SP_Sklad.EditForm
             }
             else if (_mat_id == null)
             {
-                _mat = new Materials()
+                _mat = _db.Materials.Add(new Materials()
                 {
                     Archived = 0,
                     Serials = 0,
@@ -92,7 +92,8 @@ namespace SP_Sklad.EditForm
                     GrpId = _mat_grp,
                     DecPlaces = 4,
                     UpdatedBy = UserSession.UserId
-                };
+                });
+                
                 _db.SaveChanges();
                 _mat_id = _mat.MatId;
             }
@@ -307,10 +308,10 @@ namespace SP_Sklad.EditForm
             }
             else
             {
-                if(_db.Entry(_mat).State == System.Data.Entity.EntityState.Detached)
-                {
-                    _db.Materials.Add(_mat);
-                }
+              //  if(_db.Entry(_mat).State == System.Data.Entity.EntityState.Detached)
+             //   {
+             //       _db.Materials.Add(_mat);
+             //   }
                 _db.SaveChanges();
                 current_transaction.Commit();
             }
